@@ -25,46 +25,46 @@
                                 <div class="slideshow-items">
                                 <div class="item">
                                     <div class="item-image-container">
-                                    <img class="item-image" src="https://i.pinimg.com/564x/23/a4/86/23a4860b8b70b1eb27f2791b97aaee8e.jpg" />
+                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
                                     </div>
                                     <!-- Staggered Header Elements -->
                                     <div class="item-header">
-                                    <span class="vertical-part"><b>Nike</b></span>
+                                    <span class="vertical-part"><b>DEMO 1</b></span>
                                     </div>
                                     <!-- Staggered Description Elements -->
                                     <div class="item-description">
                                     <span class="vertical-part">
-                                        <b>Nike aads a sdasd as sda dh kajshdk hask dhksah dkahsd halsdj ;sad; asd ashlld jsal haksh dk</b>
+                                        <b>This is a demo description, This is a demo description, This is a demo description, This is a demo description</b>
                                     </span>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="item-image-container">
-                                    <img class="item-image" src="https://cdn.wallpapersafari.com/63/61/UXGvQ8.jpg" />
+                                    <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
                                     </div>
                                     <!-- Staggered Header Elements -->
                                     <div class="item-header">
-                                    <span class="vertical-part"><b>S</b></span>
+                                    <span class="vertical-part"><b>DEMO 2</b></span>
                                     </div>
                                     <!-- Staggered Description Elements -->
                                     <div class="item-description">
                                     <span class="vertical-part">
-                                        <b>Spotify</b>
+                                        <b>This is a demo description, This is a demo description, This is a demo description, This is a demo description</b>
                                     </span>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="item-image-container">
-                                    <img class="item-image" src="https://i2.wp.com/www.futuristarchitecture.com/wp-content/uploads/2016/11/fantastic-small-living-room-interior-idea-7.jpg?w=700&ssl=1" />
+                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
                                     </div>
                                     <!-- Staggered Header Elements -->
                                     <div class="item-header">
-                                    <span class="vertical-part"><b>A</b></span>
+                                    <span class="vertical-part"><b>DEMO 3</b></span>
                                     </div>
                                     <!-- Staggered Description Elements -->
                                     <div class="item-description">
                                     <span class="vertical-part">
-                                        <b>Airbnb</b>
+                                        <b>This is a demo description, This is a demo description, This is a demo description, This is a demo description</b>
                                     </span>
                                     </div>
                                 </div>
