@@ -438,7 +438,6 @@
     top: -1px;
     left: 0;
     width: 101%;
-    height: 101%;
     background: #b0b0b0;
     opacity: 0;
     z-index: 1;
