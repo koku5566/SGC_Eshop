@@ -19,7 +19,6 @@
                     <div class="row">
                         <!-- Slideshow -->
                         <div class="col-xl-12 col-lg-10">
-                            <div class="content-width">
                             <div class="slideshow">
                                 <!-- Slideshow Items -->
                                 <div class="slideshow-items">
@@ -76,7 +75,6 @@
                                     <li class="control" data-index="2"></li>
                                 </ul>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -410,18 +408,10 @@
     .sidebar{
 
     }
-
-    .content-width {
-    width: 80%;
-    margin: 0 auto;
-    }
-
     .slideshow {
     position: relative;
     width: 100%;
     height: 50vh;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
     }
 
@@ -504,6 +494,7 @@
     .vertical-part b {
     display: inline-block;
     transform: translateY(100%);
+    color:white;
     }
 
     .item-header .vertical-part b {
