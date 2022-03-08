@@ -412,15 +412,14 @@
     }
 
     .content-width {
-    width: 86%;
-    height: 100vh;
+    width: 80%;
     margin: 0 auto;
     }
 
     .slideshow {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -450,7 +449,7 @@
     left: 0;
     width: 101%;
     height: 101%;
-    background: #22222A;
+    background: #b0b0b0;
     opacity: 0;
     z-index: 1;
     }
