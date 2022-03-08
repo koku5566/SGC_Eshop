@@ -18,39 +18,36 @@
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
                         <div class="col-xl-2 col-lg-2 col-0">
-                            <div class="browse-menu active">
-                                <ul class="main-menu">
-                                    <li class="menu-item" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/uncategorized/" class="nav-link">Uncategorized</a>
-                                    </li>
-                                    <li class="menu-item" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/beauty/" class="nav-link">Beauty</a>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/" class="nav-link">Clothing</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="menu-item">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/accessories/" class="dropdown-item">Accessories</a>
+                            <div class="browse-menus">
+                                <div class="browse-menu active">
+                                    <ul class="main-menu">
+                                        <li class="menu-item" style="display: list-item;">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/uncategorized/" class="nav-link">Uncategorized</a>
+                                        </li>
+                                        <li class="menu-item" style="display: list-item;">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/beauty/" class="nav-link">Beauty</a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children" style="display: list-item;">
+                                            <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/" class="nav-link">Clothing</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="menu-item">
+                                                <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/accessories/" class="dropdown-item">Accessories</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item" style="display: list-item;">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/electronic/" class="nav-link">Electronic</a>
+                                        </li>
+                                        <li class="menu-item" style="display: list-item;">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/fashion/" class="nav-link">Fashion</a>
+                                        </li>
+                                        <li class="menu-item" style="display: list-item;">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/music/" class="nav-link">Music</a>
                                         </li>
                                     </ul>
-                                    </li>
-                                    <li class="menu-item" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/electronic/" class="nav-link">Electronic</a>
-                                    </li>
-                                    <li class="menu-item" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/fashion/" class="nav-link">Fashion</a>
-                                    </li>
-                                    <li class="menu-item" style="display: list-item;">
-                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/music/" class="nav-link">Music</a>
-                                    </li>
-                                    <li class="menu-item more-item">
-                                    <button type="button" class="browse-more">
-                                        <span>More Category</span>
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                    </li>
-                                </ul>
+                                </div>
                             </div>
+                            
                         </div>
                         
                         <!-- Slideshow -->
@@ -570,6 +567,61 @@
     .browse-menu ul.main-menu{
         border: 1px solid var(--bs-gray-light);
     }
+
+    .browse-menu .main-menu li{
+        border-bottom: 1px solid #e1e1e1;
+        position: relative;
+        list-style: none;
+    }
+
+    .browse-menu .main-menu li a{
+        padding: 0 18px;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        line-height:50px;
+    }
+
+    .browse-menu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        border-bottom-width: 4px;
+        border-style: solid;
+        border-color: var(--bs-primary);
+        position: absolute;
+        z-index: 99;
+        width: 220px;
+        background: var(--bs-white);
+        padding: 4px 0;
+        margin: 0;
+        border: 0;
+        border-top-color: currentcolor;
+        border-top-style: none;
+        border-right-color: currentcolor;
+        border-right-style: none;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-left-color: currentcolor;
+        border-left-style: none;
+        border-radius: 0;
+        -moz-box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
+        box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
+        font-size: 1rem;
+        text-align: left;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    
 
 </style>
 
