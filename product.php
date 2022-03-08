@@ -81,28 +81,18 @@
 
                         </div>
                         <div class="col-3">
-                            <ul>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                        <i class="fa-light fa-star"></i>
-                                        <span>4.5</span>
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                        <i class="fa-light fa-hands-holding-diamond"></i>
-                                        <span>120</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                        <i class="fa-light fa-calendar-star"></i>
-                                        <span>2021</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div class="col-1"> 
+                                <i class="fa-light fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="col-1"> 
+                                <i class="fa-light fa-hands-holding-diamond"></i>
+                                <span>120</span>
+                            </div>
+                            <div class="col-1"> 
+                                <i class="fa-light fa-calendar-star"></i>
+                                <span>2021</span>
+                            </div>
                         </div>
                         <div class="col-3">
                             <a href="#" class="btn btn-primary">
