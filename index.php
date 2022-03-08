@@ -621,7 +621,12 @@
         transition: all 0.3s ease-in-out 0s;
     }
 
-    
+    ul.main-menu {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    }
 
 </style>
 
