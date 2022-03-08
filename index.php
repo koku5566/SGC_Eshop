@@ -1,5 +1,5 @@
 <?php
-    require "header.php";
+    require __DIR__ . '/header.php'
 ?>
 
 <?php
@@ -344,5 +344,5 @@
                 <!-- /.container-fluid -->
 
 <?php
-    require "footer.php";
+    require __DIR__ . '/footer.php'
 ?>
