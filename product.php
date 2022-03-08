@@ -20,6 +20,7 @@
 
                         <!-- Product Content -->
                         <div class="col-xl-8 col-md-6 mb-4">
+                            <hr>
                             <!-- Name -->
                             <div class="row">
                                 <div class="col">
@@ -112,7 +113,7 @@
 
 <style>
     .image-container{
-        width:50%;
+        width:100%;
         height: 40vh;
         padding: 20px;
     }
