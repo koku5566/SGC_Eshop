@@ -15,11 +15,69 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    <!-- Content Row - Slideshow -->
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="content-width">
+                            <div class="slideshow">
+                                <!-- Slideshow Items -->
+                                <div class="slideshow-items">
+                                <div class="item">
+                                    <div class="item-image-container">
+                                    <img class="item-image" src="https://i.pinimg.com/564x/23/a4/86/23a4860b8b70b1eb27f2791b97aaee8e.jpg" />
+                                    </div>
+                                    <!-- Staggered Header Elements -->
+                                    <div class="item-header">
+                                    <span class="vertical-part"><b>Nike</b></span>
+                                    </div>
+                                    <!-- Staggered Description Elements -->
+                                    <div class="item-description">
+                                    <span class="vertical-part">
+                                        <b>Nike aads a sdasd as sda dh kajshdk hask dhksah dkahsd halsdj ;sad; asd ashlld jsal haksh dk</b>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="item-image-container">
+                                    <img class="item-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a1232e48702241.589f548dc6bee.jpg" />
+                                    </div>
+                                    <!-- Staggered Header Elements -->
+                                    <div class="item-header">
+                                    <span class="vertical-part"><b>S</b></span>
+                                    </div>
+                                    <!-- Staggered Description Elements -->
+                                    <div class="item-description">
+                                    <span class="vertical-part">
+                                        <b>Spotify</b>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="item-image-container">
+                                    <img class="item-image" src="https://i2.wp.com/www.futuristarchitecture.com/wp-content/uploads/2016/11/fantastic-small-living-room-interior-idea-7.jpg?w=700&ssl=1" />
+                                    </div>
+                                    <!-- Staggered Header Elements -->
+                                    <div class="item-header">
+                                    <span class="vertical-part"><b>A</b></span>
+                                    </div>
+                                    <!-- Staggered Description Elements -->
+                                    <div class="item-description">
+                                    <span class="vertical-part">
+                                        <b>Airbnb</b>
+                                    </span>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="controls">
+                                <ul>
+                                    <li class="control" data-index="0"></li>
+                                    <li class="control" data-index="1"></li>
+                                    <li class="control" data-index="2"></li>
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
@@ -340,69 +398,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="content-width">
-                        <div class="slideshow">
-                            <!-- Slideshow Items -->
-                            <div class="slideshow-items">
-                            <div class="item">
-                                <div class="item-image-container">
-                                <img class="item-image" src="https://i.pinimg.com/564x/23/a4/86/23a4860b8b70b1eb27f2791b97aaee8e.jpg" />
-                                </div>
-                                <!-- Staggered Header Elements -->
-                                <div class="item-header">
-                                <span class="vertical-part"><b>Nike</b></span>
-                                </div>
-                                <!-- Staggered Description Elements -->
-                                <div class="item-description">
-                                <span class="vertical-part">
-                                    <b>Nike aads a sdasd as sda dh kajshdk hask dhksah dkahsd halsdj ;sad; asd ashlld jsal haksh dk</b>
-                                </span>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image-container">
-                                <img class="item-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a1232e48702241.589f548dc6bee.jpg" />
-                                </div>
-                                <!-- Staggered Header Elements -->
-                                <div class="item-header">
-                                <span class="vertical-part"><b>S</b></span>
-                                </div>
-                                <!-- Staggered Description Elements -->
-                                <div class="item-description">
-                                <span class="vertical-part">
-                                    <b>Spotify</b>
-                                </span>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image-container">
-                                <img class="item-image" src="https://i2.wp.com/www.futuristarchitecture.com/wp-content/uploads/2016/11/fantastic-small-living-room-interior-idea-7.jpg?w=700&ssl=1" />
-                                </div>
-                                <!-- Staggered Header Elements -->
-                                <div class="item-header">
-                                <span class="vertical-part"><b>A</b></span>
-                                </div>
-                                <!-- Staggered Description Elements -->
-                                <div class="item-description">
-                                <span class="vertical-part">
-                                    <b>Airbnb</b>
-                                </span>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="controls">
-                            <ul>
-                                <li class="control" data-index="0"></li>
-                                <li class="control" data-index="1"></li>
-                                <li class="control" data-index="2"></li>
-                            </ul>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -411,213 +406,213 @@
 ?>
 
 <style>
-.content-width {
-  width: 86%;
-  height: 100vh;
-  margin: 0 auto;
-}
+    .content-width {
+    width: 86%;
+    height: 100vh;
+    margin: 0 auto;
+    }
 
-.slideshow {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
+    .slideshow {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    }
 
-.slideshow-items {
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
+    .slideshow-items {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    }
 
-.item {
-  position: absolute;
-  width: 100%;
-  height: auto;
-}
+    .item {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    }
 
-.item-image-container {
-  position: relative;
-  width: 42%;
-}
+    .item-image-container {
+    position: relative;
+    width: 42%;
+    }
 
-.item-image-container::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 101%;
-  height: 101%;
-  background: #22222A;
-  opacity: 0;
-  z-index: 1;
-}
+    .item-image-container::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    background: #22222A;
+    opacity: 0;
+    z-index: 1;
+    }
 
-.item-image {
-  position: relative;
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  display: block;
-  /* transition: property name | duration | timing-function | delay  */
-  transition: opacity .3s ease-out .45s;
-}
+    .item-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    display: block;
+    /* transition: property name | duration | timing-function | delay  */
+    transition: opacity .3s ease-out .45s;
+    }
 
-.item.active .item-image {
-  opacity: 1;
-}
+    .item.active .item-image {
+    opacity: 1;
+    }
 
-.item.active .item-image-container::before {
-  opacity: .8;
-}
+    .item.active .item-image-container::before {
+    opacity: .8;
+    }
 
-.item-description {
-  position: absolute;
-  top: 182px;
-  right: 0;
-  width: 50%;
-  padding-right: 4%;
-  line-height: 1.8;
-}
+    .item-description {
+    position: absolute;
+    top: 182px;
+    right: 0;
+    width: 50%;
+    padding-right: 4%;
+    line-height: 1.8;
+    }
 
-/* Staggered Vertical Items ------------------------------------------------------*/
-.item-header {
-  position: absolute;
-  top: 150px;
-  left: -1.8%;
-  z-index: 100;
-}
+    /* Staggered Vertical Items ------------------------------------------------------*/
+    .item-header {
+    position: absolute;
+    top: 150px;
+    left: -1.8%;
+    z-index: 100;
+    }
 
-.item-header .vertical-part {
-  margin: 0 -4px;
-  font-family: 'Montserrat', sans-serif;
-  -webkit-font-smoothing: auto;
-  font-size: 7vw;
-  color: #fff;
-}
+    .item-header .vertical-part {
+    margin: 0 -4px;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: auto;
+    font-size: 7vw;
+    color: #fff;
+    }
 
-.vertical-part {
-  overflow: hidden;
-  display: inline-block;
-}
+    .vertical-part {
+    overflow: hidden;
+    display: inline-block;
+    }
 
-.vertical-part b {
-  display: inline-block;
-  transform: translateY(100%);
-}
+    .vertical-part b {
+    display: inline-block;
+    transform: translateY(100%);
+    }
 
-.item-header .vertical-part b {
-  transition: .5s;
-}
+    .item-header .vertical-part b {
+    transition: .5s;
+    }
 
-.item-description .vertical-part b {
-  transition: .21s;
-}
+    .item-description .vertical-part b {
+    transition: .21s;
+    }
 
-.item.active .item-header .vertical-part b {
-  transform: translateY(0);
-}
+    .item.active .item-header .vertical-part b {
+    transform: translateY(0);
+    }
 
-.item.active .item-description .vertical-part b {
-  transform: translateY(0);
-}
+    .item.active .item-description .vertical-part b {
+    transform: translateY(0);
+    }
 
-/* Controls ----------------------------------------------------------------------*/
-.controls {
-  position: relative;
-  text-align: right;
-  z-index: 1000;
-}
+    /* Controls ----------------------------------------------------------------------*/
+    .controls {
+    position: relative;
+    text-align: right;
+    z-index: 1000;
+    }
 
-.controls ul {
-  list-style: none;
-}
+    .controls ul {
+    list-style: none;
+    }
 
-.controls ul li {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 3px;
-  background:#bdbdd5;;
-  cursor: pointer;
-}
+    .controls ul li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    background:#bdbdd5;;
+    cursor: pointer;
+    }
 
-.controls ul li.active {
-  background:#6a6a77;;
-}
+    .controls ul li.active {
+    background:#6a6a77;;
+    }
 </style>
 
 <script>
-   // Master DOManipulator v2 ------------------------------------------------------------
-  const items = document.querySelectorAll('.item'),
-  controls = document.querySelectorAll('.control'),
-  headerItems = document.querySelectorAll('.item-header'),
-  descriptionItems = document.querySelectorAll('.item-description'),
-  activeDelay = .76,
-  interval = 5000;
+    // Master DOManipulator v2 ------------------------------------------------------------
+    const items = document.querySelectorAll('.item'),
+    controls = document.querySelectorAll('.control'),
+    headerItems = document.querySelectorAll('.item-header'),
+    descriptionItems = document.querySelectorAll('.item-description'),
+    activeDelay = .76,
+    interval = 5000;
 
-let current = 0;
+    let current = 0;
 
-const slider = {
-  init: () => {
-    controls.forEach(control => control.addEventListener('click', (e) => { slider.clickedControl(e) }));
-    controls[current].classList.add('active');
-    items[current].classList.add('active');
-  },
-  nextSlide: () => { // Increment current slide and add active class
-    slider.reset();
-    if (current === items.length - 1) current = -1; // Check if current slide is last in array
-    current++;
-    controls[current].classList.add('active');
-    items[current].classList.add('active');
-    slider.transitionDelay(headerItems);
-    slider.transitionDelay(descriptionItems);
-  },
-  clickedControl: (e) => { // Add active class to clicked control and corresponding slide
-    slider.reset();
-    clearInterval(intervalF);
+    const slider = {
+    init: () => {
+        controls.forEach(control => control.addEventListener('click', (e) => { slider.clickedControl(e) }));
+        controls[current].classList.add('active');
+        items[current].classList.add('active');
+    },
+    nextSlide: () => { // Increment current slide and add active class
+        slider.reset();
+        if (current === items.length - 1) current = -1; // Check if current slide is last in array
+        current++;
+        controls[current].classList.add('active');
+        items[current].classList.add('active');
+        slider.transitionDelay(headerItems);
+        slider.transitionDelay(descriptionItems);
+    },
+    clickedControl: (e) => { // Add active class to clicked control and corresponding slide
+        slider.reset();
+        clearInterval(intervalF);
 
-    const control = e.target,
-      dataIndex = Number(control.dataset.index);
+        const control = e.target,
+        dataIndex = Number(control.dataset.index);
 
-    control.classList.add('active');
-    items.forEach((item, index) => { 
-      if (index === dataIndex) { // Add active class to corresponding slide
-        item.classList.add('active');
-      }
-    })
-    current = dataIndex; // Update current slide
-    slider.transitionDelay(headerItems);
-    slider.transitionDelay(descriptionItems);
-    intervalF = setInterval(slider.nextSlide, interval); // Fire that bad boi back up
-  },
-  reset: () => { // Remove active classes
-    items.forEach(item => item.classList.remove('active'));
-    controls.forEach(control => control.classList.remove('active'));
-  },
-  transitionDelay: (items) => { // Set incrementing css transition-delay for .item-header & .item-description, .vertical-part, b elements
-    let seconds;
-    
-    items.forEach(item => {
-      const children = item.childNodes; // .vertical-part(s)
-      let count = 1,
-        delay;
-      
-      item.classList.value === 'item-header' ? seconds = .015 : seconds = .007;
-
-      children.forEach(child => { // iterate through .vertical-part(s) and style b element
-        if (child.classList) {
-          item.parentNode.classList.contains('active') ? delay = count * seconds + activeDelay : delay = count * seconds;
-          child.firstElementChild.style.transitionDelay = `${delay}s`; // b element
-          count++;
+        control.classList.add('active');
+        items.forEach((item, index) => { 
+        if (index === dataIndex) { // Add active class to corresponding slide
+            item.classList.add('active');
         }
-      })
-    })
-  },
-}
+        })
+        current = dataIndex; // Update current slide
+        slider.transitionDelay(headerItems);
+        slider.transitionDelay(descriptionItems);
+        intervalF = setInterval(slider.nextSlide, interval); // Fire that bad boi back up
+    },
+    reset: () => { // Remove active classes
+        items.forEach(item => item.classList.remove('active'));
+        controls.forEach(control => control.classList.remove('active'));
+    },
+    transitionDelay: (items) => { // Set incrementing css transition-delay for .item-header & .item-description, .vertical-part, b elements
+        let seconds;
+        
+        items.forEach(item => {
+        const children = item.childNodes; // .vertical-part(s)
+        let count = 1,
+            delay;
+        
+        item.classList.value === 'item-header' ? seconds = .015 : seconds = .007;
 
-let intervalF = setInterval(slider.nextSlide, interval);
-slider.init();
+        children.forEach(child => { // iterate through .vertical-part(s) and style b element
+            if (child.classList) {
+            item.parentNode.classList.contains('active') ? delay = count * seconds + activeDelay : delay = count * seconds;
+            child.firstElementChild.style.transitionDelay = `${delay}s`; // b element
+            count++;
+            }
+        })
+        })
+    },
+    }
+
+    let intervalF = setInterval(slider.nextSlide, interval);
+    slider.init();
 </script>
