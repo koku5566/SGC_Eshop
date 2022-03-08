@@ -550,6 +550,27 @@
     .controls ul li.active {
     background:#6a6a77;;
     }
+
+    /* Category Menu */
+    .browse-menus {
+        position:relative;
+        z-index:1;
+    }
+
+    .browse-menus .browse-menu{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        heigh:auto;
+        z-index:0;
+        background-color:#ffffff;
+    }
+
+    .browse-menu ul.main-menu{
+        border: 1px solid var(--bs-gray-light);
+    }
+
 </style>
 
 <script>
