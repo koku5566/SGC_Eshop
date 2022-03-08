@@ -1,6 +1,6 @@
 <?php
     define("HOST","localhost");
-    define("USERNAME","sgcprot1_SGC_ESHOP ");
+    define("USERNAME","sgcprot1_SGC_ESHOP");
     define("PASSWORD","bXrAcmvi,B#U");
     define("DATABASE","sgcprot1_SGC_ESHOP");
 
