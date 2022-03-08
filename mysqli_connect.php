@@ -1,5 +1,5 @@
 <?php
-    define("HOST","https://c129.mschosting.com:2083/cpsess3924695296/3rdparty/phpMyAdmin/db_structure.php?db=sgcprot1_SGC_ESHOP");
+    define("HOST","103.6.198.112 ");
     define("USERNAME","sgcprot1_SGC_ESHOP ");
     define("PASSWORD","bXrAcmvi,B#U");
     define("DATABASE","sgcprot1_SGC_ESHOP");
