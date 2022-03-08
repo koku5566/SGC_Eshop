@@ -341,6 +341,7 @@
                     </div>
 
                     <div class="row">
+                    <div class="col-xl-8 col-lg-7">
                         <div class="content-width">
                         <div class="slideshow">
                             <!-- Slideshow Items -->
@@ -367,107 +368,11 @@
                                 <!-- Staggered Header Elements -->
                                 <div class="item-header">
                                 <span class="vertical-part"><b>S</b></span>
-                                <span class="vertical-part"><b>p</b></span>
-                                <span class="vertical-part"><b>o</b></span>
-                                <span class="vertical-part"><b>t</b></span>
-                                <span class="vertical-part"><b>i</b></span>
-                                <span class="vertical-part"><b>f</b></span>
-                                <span class="vertical-part"><b>y</b></span>
                                 </div>
                                 <!-- Staggered Description Elements -->
                                 <div class="item-description">
                                 <span class="vertical-part">
                                     <b>Spotify</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>dolor</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>sit</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>amet,</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>consectetur</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>adipiscing</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>elit.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Pellentesque</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>elementum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>gravida</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ex</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>at</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>maximus.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Nullam</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>quis</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>leo</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Lorem</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Nam</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>consectetur</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>malesuada</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>blandit.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Mauris</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>vulputate</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>purus</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>id</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>dolor</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>euismod</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>varius.</b>
                                 </span>
                                 </div>
                             </div>
@@ -478,106 +383,11 @@
                                 <!-- Staggered Header Elements -->
                                 <div class="item-header">
                                 <span class="vertical-part"><b>A</b></span>
-                                <span class="vertical-part"><b>i</b></span>
-                                <span class="vertical-part"><b>r</b></span>
-                                <span class="vertical-part"><b>b</b></span>
-                                <span class="vertical-part"><b>n</b></span>
-                                <span class="vertical-part"><b>b</b></span>
                                 </div>
                                 <!-- Staggered Description Elements -->
                                 <div class="item-description">
                                 <span class="vertical-part">
                                     <b>Airbnb</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>dolor</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>sit</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>amet,</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>consectetur</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>adipiscing</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>elit.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Pellentesque</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>elementum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>gravida</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ex</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>at</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>maximus.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Nullam</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>quis</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>leo</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Lorem</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>ipsum</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Nam</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>consectetur</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>malesuada</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>blandit.</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>Mauris</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>vulputate</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>purus</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>id</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>dolor</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>euismod</b>
-                                </span>
-                                <span class="vertical-part">
-                                    <b>varius.</b>
                                 </span>
                                 </div>
                             </div>
@@ -592,6 +402,7 @@
                         </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <!-- /.container-fluid -->
 
