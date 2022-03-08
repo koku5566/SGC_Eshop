@@ -17,6 +17,42 @@
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-0">
+                            <div class="browse-menu active">
+                                <ul class="main-menu">
+                                    <li class="menu-item" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/uncategorized/" class="nav-link">Uncategorized</a>
+                                    </li>
+                                    <li class="menu-item" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/beauty/" class="nav-link">Beauty</a>
+                                    </li>
+                                    <li class="menu-item menu-item-has-children" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/" class="nav-link">Clothing</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="menu-item">
+                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/accessories/" class="dropdown-item">Accessories</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="menu-item" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/electronic/" class="nav-link">Electronic</a>
+                                    </li>
+                                    <li class="menu-item" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/fashion/" class="nav-link">Fashion</a>
+                                    </li>
+                                    <li class="menu-item" style="display: list-item;">
+                                    <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/music/" class="nav-link">Music</a>
+                                    </li>
+                                    <li class="menu-item more-item">
+                                    <button type="button" class="browse-more">
+                                        <span>More Category</span>
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
                         <!-- Slideshow -->
                         <div class="col-xl-6 col-lg-4">
                             <div class="slideshow">
@@ -75,6 +111,15 @@
                                     <li class="control" data-index="2"></li>
                                 </ul>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row">
+                                
                             </div>
                         </div>
                     </div>
