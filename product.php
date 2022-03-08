@@ -70,7 +70,7 @@
 
                     <!-- Shop Profile -->
                     <div class="row">
-                        <div class="col-xl-6">
+                        <div class="col-6">
                             <!-- Sidebar - Brand -->
                             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                                 <div class="sidebar-brand-icon">
@@ -80,7 +80,7 @@
                             </a>
 
                         </div>
-                        <div class="col-xl-3">
+                        <div class="col-3">
                             <ul>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html">
@@ -104,7 +104,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-xl-3">
+                        <div class="col-3">
                             <a href="#" class="btn btn-primary">
                                 <span class="text">View Shop</span>
                             </a>
