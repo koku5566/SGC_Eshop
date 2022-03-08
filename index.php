@@ -344,8 +344,7 @@
                     <div class="row">
                         <!--/ A set of walkthrough screens in HTML/CSS/JS. A personal experiment with layering images, CSS3 transitions, & flexbox. 
                         -->
-                        <button class="open-walkthrough">Start</button>
-                        <div class="walkthrough show reveal">
+                        <div class="walkthrough reveal">
                         <div class="walkthrough-pagination">
                             <a class="dot active"></a>
                             <a class="dot"></a>
@@ -424,7 +423,6 @@
                         </div>
                         <div class="walkthrough-footer">
                             <button class="button next-screen">Next</button>
-                            <button class="button finish close" disabled="true">Finish</button>
                         </div>
                         </div>
 
