@@ -18,7 +18,7 @@
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
                         <!-- Slideshow -->
-                        <div class="col-xl-12 col-lg-10">
+                        <div class="col-xl-6 col-lg-4">
                             <div class="slideshow">
                                 <!-- Slideshow Items -->
                                 <div class="slideshow-items">
