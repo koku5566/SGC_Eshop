@@ -17,57 +17,8 @@
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
-
-                        <!-- Slidebar -->
-                        <div class="col-xl-4 col-lg-5">
-                            
-                    <!-- Sidebar -->
-                    <ul class="navbar-nav bg-gradient-primary sidebar-dark accordion" id="accordionSidebar">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Heading -->
-                        <div class="sidebar-heading">
-                            Categories
-                        </div>
-
-                        <!-- Nav Item - Pages Collapse Menu -->
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="true" aria-controls="collapseTwo">
-                                <i class="fas fa-fw fa-cog"></i>
-                                <span>Components</span>
-                            </a>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <h6 class="collapse-header">Custom Components:</h6>
-                                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                                    <a class="collapse-item" href="cards.html">Cards</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        </ul>
-                        <!-- End of Sidebar -->
-                        </div>
-
                         <!-- Slideshow -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-12 col-lg-10">
                             <div class="content-width">
                             <div class="slideshow">
                                 <!-- Slideshow Items -->
@@ -89,7 +40,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="item-image-container">
-                                    <img class="item-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a1232e48702241.589f548dc6bee.jpg" />
+                                    <img class="item-image" src="https://cdn.wallpapersafari.com/63/61/UXGvQ8.jpg" />
                                     </div>
                                     <!-- Staggered Header Elements -->
                                     <div class="item-header">
@@ -128,7 +79,6 @@
                             </div>
                             </div>
                         </div>
-
                     </div>
 
                     <!-- Content Row -->
@@ -490,7 +440,7 @@
 
     .item-image-container {
     position: relative;
-    width: 42%;
+    width: 100%;
     }
 
     .item-image-container::before {
@@ -536,12 +486,11 @@
     .item-header {
     position: absolute;
     top: 150px;
-    left: -1.8%;
+    left: 1.8%;
     z-index: 100;
     }
 
     .item-header .vertical-part {
-    margin: 0 -4px;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: auto;
     font-size: 7vw;
