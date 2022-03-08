@@ -411,23 +411,6 @@
 ?>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden; 
-  background: #22222A;
-  font-family: 'Fira Mono', monospace;
-  -webkit-font-smoothing: antialiased;
-  font-size: .88rem;
-  color: #bdbdd5;
-}
-
 .content-width {
   width: 86%;
   height: 100vh;
