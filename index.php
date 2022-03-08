@@ -340,92 +340,257 @@
                         </div>
                     </div>
 
-                    <!-- Card Layout View -->
                     <div class="row">
-                        <!--/ A set of walkthrough screens in HTML/CSS/JS. A personal experiment with layering images, CSS3 transitions, & flexbox. 
-                        -->
-                        <div class="walkthrough reveal">
-                        <div class="walkthrough-pagination">
-                            <a class="dot active"></a>
-                            <a class="dot"></a>
-                            <a class="dot"></a>
-                            <a class="dot"></a>
-                            <a class="dot"></a>
-                        </div>
-                        <div class="walkthrough-body">
-                            <ul class="screens animate">
-                            <li class="screen active">
-                                <div class="media logo">
-                                <img class="logo" src="https://s3.amazonaws.com/jebbles-codepen/icon.png"/>
+                        <div class="content-width">
+                        <div class="slideshow">
+                            <!-- Slideshow Items -->
+                            <div class="slideshow-items">
+                            <div class="item">
+                                <div class="item-image-container">
+                                <img class="item-image" src="https://i.pinimg.com/564x/23/a4/86/23a4860b8b70b1eb27f2791b97aaee8e.jpg" />
                                 </div>
-                                <h3>
-                                Product Intro
-                                <br/>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                            </li>
-                            <li class="screen">
-                                <div class="media books">
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/book_icon_1.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/book_icon_2.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/book_icon_3.png"/>
+                                <!-- Staggered Header Elements -->
+                                <div class="item-header">
+                                <span class="vertical-part"><b>Nike</b></span>
                                 </div>
-                                <h3>
-                                Data and File
-                                <br/>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                            </li>
-                            <li class="screen">
-                                <div class="media bars">
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/bar_icon_axis.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/bar_icon_3.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/bar_icon_2.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/bar_icon_1.png"/>
+                                <!-- Staggered Description Elements -->
+                                <div class="item-description">
+                                <span class="vertical-part">
+                                    <b>Nike aads a sdasd as sda dh kajshdk hask dhksah dkahsd halsdj ;sad; asd ashlld jsal haksh dk</b>
+                                </span>
                                 </div>
-                                <h3>
-                                Analytics
-                                <br/>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                            </li>
-                            <li class="screen">
-                                <div class="media files">
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/file_icon_1.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/file_icon_2.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/file_icon_3.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/file_icon_4.png"/>
+                            </div>
+                            <div class="item">
+                                <div class="item-image-container">
+                                <img class="item-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a1232e48702241.589f548dc6bee.jpg" />
                                 </div>
-                                <h3>
-                                Reporting
-                                <br/>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                            </li>
-                            <li class="screen">
-                                <div class="media comm">
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/comm_icon_1.png"/>
-                                <img class="icon" src="https://s3.amazonaws.com/jebbles-codepen/comm_icon_2.png"/>
+                                <!-- Staggered Header Elements -->
+                                <div class="item-header">
+                                <span class="vertical-part"><b>S</b></span>
+                                <span class="vertical-part"><b>p</b></span>
+                                <span class="vertical-part"><b>o</b></span>
+                                <span class="vertical-part"><b>t</b></span>
+                                <span class="vertical-part"><b>i</b></span>
+                                <span class="vertical-part"><b>f</b></span>
+                                <span class="vertical-part"><b>y</b></span>
                                 </div>
-                                <h3>
-                                Communications
-                                <br/>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                            </li>
+                                <!-- Staggered Description Elements -->
+                                <div class="item-description">
+                                <span class="vertical-part">
+                                    <b>Spotify</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>dolor</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>sit</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>amet,</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>consectetur</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>adipiscing</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>elit.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Pellentesque</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>elementum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>gravida</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ex</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>at</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>maximus.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Nullam</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>quis</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>leo</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Lorem</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Nam</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>consectetur</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>malesuada</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>blandit.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Mauris</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>vulputate</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>purus</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>id</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>dolor</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>euismod</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>varius.</b>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-image-container">
+                                <img class="item-image" src="https://i2.wp.com/www.futuristarchitecture.com/wp-content/uploads/2016/11/fantastic-small-living-room-interior-idea-7.jpg?w=700&ssl=1" />
+                                </div>
+                                <!-- Staggered Header Elements -->
+                                <div class="item-header">
+                                <span class="vertical-part"><b>A</b></span>
+                                <span class="vertical-part"><b>i</b></span>
+                                <span class="vertical-part"><b>r</b></span>
+                                <span class="vertical-part"><b>b</b></span>
+                                <span class="vertical-part"><b>n</b></span>
+                                <span class="vertical-part"><b>b</b></span>
+                                </div>
+                                <!-- Staggered Description Elements -->
+                                <div class="item-description">
+                                <span class="vertical-part">
+                                    <b>Airbnb</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>dolor</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>sit</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>amet,</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>consectetur</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>adipiscing</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>elit.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Pellentesque</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>elementum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>gravida</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ex</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>at</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>maximus.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Nullam</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>quis</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>leo</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Lorem</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>ipsum</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Nam</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>consectetur</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>malesuada</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>blandit.</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>Mauris</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>vulputate</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>purus</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>id</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>dolor</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>euismod</b>
+                                </span>
+                                <span class="vertical-part">
+                                    <b>varius.</b>
+                                </span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="controls">
+                            <ul>
+                                <li class="control" data-index="0"></li>
+                                <li class="control" data-index="1"></li>
+                                <li class="control" data-index="2"></li>
                             </ul>
-                            <button class="prev-screen">
-                            <i class="icon-angle-left"></i>
-                            </button>
-                            <button class="next-screen">
-                            <i class="icon-angle-right"></i>
-                            </button>
-                        </div>
-                        <div class="walkthrough-footer">
-                            <button class="button next-screen">Next</button>
+                            </div>
                         </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -435,437 +600,230 @@
 ?>
 
 <style>
-body {
-  color: white;
-  font-family: "Lato";
-  font-weight: light;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(150deg, #e6d3f9 0%, #e6d3f9 50%, #cea0f1 50%, #cea0f1 100%);
-}
-.open-walkthrough {
-  border: 0;
-  background: #5da3f2;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 12px;
-  height: 40px;
-  width: 120px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -20px;
-  margin-left: -60px;
-}
-.walkthrough {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
-  background: linear-gradient(to right bottom, #9e66c6, #6027e1);
-  border-radius: 0;
-  display: none;
-  flex-direction: column;
-  flex: 0 0 auto;
-  font-size: 14px;
-  height: 464px;
-  overflow: hidden;
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 280px;
-  z-index: 1000;
-}
-.walkthrough.show {
-  display: flex;
-  opacity: 0;
-  transform: translateY(72px);
-}
-.walkthrough.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-.walkthrough .walkthrough-body {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  text-align: center;
-}
-.walkthrough .walkthrough-body .prev-screen, .walkthrough .walkthrough-body .next-screen {
-  align-self: stretch;
-  background: none;
-  border: 0;
-  margin-top: 40px;
-  color: rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-size: 24px;
-  opacity: 1;
-  outline: none;
-  padding: 16px;
-  transform: scale(1);
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  z-index: 1000;
-}
-.walkthrough .walkthrough-body .prev-screen:hover, .walkthrough .walkthrough-body .next-screen:hover, .walkthrough .walkthrough-body .prev-screen:active, .walkthrough .walkthrough-body .next-screen:active {
-  color: white;
-  transform-origin: center;
-  transform: scale(1.25);
-}
-.walkthrough .walkthrough-body .prev-screen:disabled, .walkthrough .walkthrough-body .next-screen:disabled {
-  opacity: 0;
-}
-.walkthrough .walkthrough-body .prev-screen {
-  order: 1;
-}
-.walkthrough .walkthrough-body .next-screen {
-  order: 3;
-}
-.walkthrough .walkthrough-body .screens {
-  flex: 1;
-  align-self: stretch;
-  position: relative;
-  margin: 0 -16px;
-  padding: 0;
-  order: 2;
-}
-.walkthrough .walkthrough-body .screens .screen {
-  position: absolute;
-  list-style-type: none;
-}
-.walkthrough .walkthrough-body .media {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 132px;
-  height: 132px;
-  margin: 32px auto;
-  width: 132px;
-}
-.walkthrough .walkthrough-body h3 {
-  font-size: 15px;
-  line-height: 1.4em;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-.walkthrough .walkthrough-body p {
-  line-height: 1.6em;
-  font-size: 13px;
-  margin-top: 16px;
-  padding-top: 0;
-  color: rgba(255, 255, 255, 0.8);
-}
-.walkthrough .walkthrough-pagination {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
-.walkthrough .walkthrough-pagination .dot {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  height: 8px;
-  margin: 0 4px;
-  transform: scale(0.75);
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 8px;
-}
-.walkthrough .walkthrough-pagination .dot.active {
-  background: white;
-  transform: scale(1);
-  transition-delay: 0.4s;
-}
-.walkthrough .walkthrough-footer {
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: space-around;
-  padding: 0;
-}
-.walkthrough .walkthrough-footer button {
-  height: 40px;
-  border: 0;
-  background: #5da3f2;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border-radius: 0;
-  color: white;
-  flex: 1;
-  font-size: 12px;
+* {
+  box-sizing: border-box;
   margin: 0;
-  outline: 0;
-  padding: 12px;
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: pointer;
+  padding: 0;
 }
-.walkthrough .walkthrough-footer button:hover {
-  background: #6babf3;
-}
-.walkthrough .walkthrough-footer button:active {
-  background: #5da3f2;
-}
-.walkthrough .walkthrough-footer button:disabled {
-  cursor: pointer;
-}
-.walkthrough .walkthrough-footer button.finish {
-  background: #3e94f5;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+
+html, body {
   width: 100%;
-  opacity: 0;
-  transform: scale(0, 1);
-  transform-origin: center;
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.walkthrough .walkthrough-footer button.finish:hover {
-  background: #4d9cf6;
-}
-.walkthrough .walkthrough-footer button.finish:active {
-  background: #3e94f5;
-}
-.walkthrough .walkthrough-footer button.finish.active {
-  transform: scale(1, 1);
-  opacity: 1;
-}
-.walkthrough .screens {
-  margin: 0;
-}
-.walkthrough .screens .media .status-badge {
-  left: 136px;
-  opacity: 0;
-  position: absolute;
-  top: 104px;
-  transform: scale(0);
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .media .status-badge i {
-  display: inline;
-}
-.walkthrough .screens .media.logo .logo {
-  margin-top: 20px;
-  opacity: 0;
-  transform: translateY(-60px);
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 80px;
-}
-.walkthrough .screens .media .icon {
-  position: absolute;
-  opacity: 0;
-  transform: translateY(-30px);
-  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 132px;
-  left: 48px;
-  top: 32px;
-}
-.walkthrough .screens .media.bars .icon {
-  transform: translate(40px, 20px);
-}
-.walkthrough .screens .media.bars .icon:nth-of-type(2) {
-  transform: scale(0.25);
-  transform-origin: 30% 54%;
-}
-.walkthrough .screens .media.bars .icon:nth-of-type(3) {
-  transform: scale(0.25);
-  transform-origin: 30% 40%;
-}
-.walkthrough .screens .media.bars .icon:nth-of-type(4) {
-  transform: scale(0.25);
-  transform-origin: 30% 26%;
-}
-.walkthrough .screens .media.files .icon {
-  transform: translate(40px, 20px);
-}
-.walkthrough .screens .media.comm .icon {
-  transform: scale(0.25);
-  transform-origin: 29% 73%;
-}
-.walkthrough .screens .media.comm .icon:nth-child(2) {
-  transform-origin: 66% 85%;
-}
-.walkthrough .screens .screen {
-  opacity: 0;
-  position: absolute;
-  transform: translateX(-72px);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.walkthrough .screens .screen.active {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-  transition-delay: 0.4s;
-}
-.walkthrough .screens .screen.active ~ .screen {
-  opacity: 0;
-  transform: translateX(72px);
-}
-.walkthrough .screens .screen.active .media .status-badge {
-  opacity: 1;
-  transform: scale(1.75);
-}
-.walkthrough .screens .screen.active .media.logo .logo {
-  opacity: 0.8;
-  transform: translateY(0);
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .screen.active .media.logo .status-badge {
-  transition-delay: 1s;
-}
-.walkthrough .screens .screen.active .media.books .icon {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .screen.active .media.books .icon:nth-child(2) {
-  transition-delay: 0.725s;
-}
-.walkthrough .screens .screen.active .media.books .icon:nth-child(3) {
-  transition-delay: 0.85s;
-}
-.walkthrough .screens .screen.active .media.books .status-badge {
-  transition-delay: 1.4s;
-}
-.walkthrough .screens .screen.active .media.bars .icon {
-  opacity: 1;
-  transform: translate(0) scale(1);
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .screen.active .media.bars .icon:nth-child(2) {
-  transition-delay: 1.05s;
-}
-.walkthrough .screens .screen.active .media.bars .icon:nth-child(3) {
-  transition-delay: 0.925s;
-}
-.walkthrough .screens .screen.active .media.bars .icon:nth-child(4) {
-  transition-delay: 0.8s;
-}
-.walkthrough .screens .screen.active .media.files .icon {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.9s;
-}
-.walkthrough .screens .screen.active .media.files .icon:nth-child(3) {
-  transition-delay: 0.8s;
-}
-.walkthrough .screens .screen.active .media.files .icon:nth-child(2) {
-  transition-delay: 0.7s;
-}
-.walkthrough .screens .screen.active .media.files .icon:nth-child(1) {
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .screen.active .media.files .status-badge {
-  transition-delay: 1.6s;
-}
-.walkthrough .screens .screen.active .media.comm .icon {
-  opacity: 1;
-  transform: scale(1);
-  transition-delay: 0.6s;
-}
-.walkthrough .screens .screen.active .media.comm .icon:nth-child(2) {
-  transition-delay: 0.8s;
-}
-.walkthrough .screens .screen.active .media.comm .status-badge {
-  transition-delay: 1.6s;
+  height: 100vh;
+  overflow: hidden; 
+  background: #22222A;
+  font-family: 'Fira Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  font-size: .88rem;
+  color: #bdbdd5;
 }
 
+.content-width {
+  width: 86%;
+  height: 100vh;
+  margin: 0 auto;
+}
 
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.slideshow-items {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.item {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.item-image-container {
+  position: relative;
+  width: 42%;
+}
+
+.item-image-container::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 101%;
+  height: 101%;
+  background: #22222A;
+  opacity: 0;
+  z-index: 1;
+}
+
+.item-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  display: block;
+  /* transition: property name | duration | timing-function | delay  */
+  transition: opacity .3s ease-out .45s;
+}
+
+.item.active .item-image {
+  opacity: 1;
+}
+
+.item.active .item-image-container::before {
+  opacity: .8;
+}
+
+.item-description {
+  position: absolute;
+  top: 182px;
+  right: 0;
+  width: 50%;
+  padding-right: 4%;
+  line-height: 1.8;
+}
+
+/* Staggered Vertical Items ------------------------------------------------------*/
+.item-header {
+  position: absolute;
+  top: 150px;
+  left: -1.8%;
+  z-index: 100;
+}
+
+.item-header .vertical-part {
+  margin: 0 -4px;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: auto;
+  font-size: 7vw;
+  color: #fff;
+}
+
+.vertical-part {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.vertical-part b {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+.item-header .vertical-part b {
+  transition: .5s;
+}
+
+.item-description .vertical-part b {
+  transition: .21s;
+}
+
+.item.active .item-header .vertical-part b {
+  transform: translateY(0);
+}
+
+.item.active .item-description .vertical-part b {
+  transform: translateY(0);
+}
+
+/* Controls ----------------------------------------------------------------------*/
+.controls {
+  position: relative;
+  text-align: right;
+  z-index: 1000;
+}
+
+.controls ul {
+  list-style: none;
+}
+
+.controls ul li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 3px;
+  background:#bdbdd5;;
+  cursor: pointer;
+}
+
+.controls ul li.active {
+  background:#6a6a77;;
+}
 </style>
 
 <script>
-    $(document).ready ->
-  walkthrough =
-    index: 0
-    
-    nextScreen: ->
-      if @index < @indexMax()
-        @index++
-        @updateScreen()
+   // Master DOManipulator v2 ------------------------------------------------------------
+  const items = document.querySelectorAll('.item'),
+  controls = document.querySelectorAll('.control'),
+  headerItems = document.querySelectorAll('.item-header'),
+  descriptionItems = document.querySelectorAll('.item-description'),
+  activeDelay = .76,
+  interval = 5000;
 
-    prevScreen: ->
-      if @index > 0
-        @index--
-        @updateScreen()
-        
-    updateScreen: ->
-      @reset()
-      @goTo @index
-      @setBtns()
+let current = 0;
+
+const slider = {
+  init: () => {
+    controls.forEach(control => control.addEventListener('click', (e) => { slider.clickedControl(e) }));
+    controls[current].classList.add('active');
+    items[current].classList.add('active');
+  },
+  nextSlide: () => { // Increment current slide and add active class
+    slider.reset();
+    if (current === items.length - 1) current = -1; // Check if current slide is last in array
+    current++;
+    controls[current].classList.add('active');
+    items[current].classList.add('active');
+    slider.transitionDelay(headerItems);
+    slider.transitionDelay(descriptionItems);
+  },
+  clickedControl: (e) => { // Add active class to clicked control and corresponding slide
+    slider.reset();
+    clearInterval(intervalF);
+
+    const control = e.target,
+      dataIndex = Number(control.dataset.index);
+
+    control.classList.add('active');
+    items.forEach((item, index) => { 
+      if (index === dataIndex) { // Add active class to corresponding slide
+        item.classList.add('active');
+      }
+    })
+    current = dataIndex; // Update current slide
+    slider.transitionDelay(headerItems);
+    slider.transitionDelay(descriptionItems);
+    intervalF = setInterval(slider.nextSlide, interval); // Fire that bad boi back up
+  },
+  reset: () => { // Remove active classes
+    items.forEach(item => item.classList.remove('active'));
+    controls.forEach(control => control.classList.remove('active'));
+  },
+  transitionDelay: (items) => { // Set incrementing css transition-delay for .item-header & .item-description, .vertical-part, b elements
+    let seconds;
+    
+    items.forEach(item => {
+      const children = item.childNodes; // .vertical-part(s)
+      let count = 1,
+        delay;
       
-    setBtns: ->
-      $nextBtn = $('.next-screen')
-      $prevBtn = $('.prev-screen')
-      $lastBtn = $('.finish')
-      
-      if walkthrough.index == walkthrough.indexMax()
-        $nextBtn.prop('disabled', true);
-        $prevBtn.prop('disabled', false);
-        $lastBtn.addClass('active').prop('disabled', false);
-        
-      else if walkthrough.index == 0
-        $nextBtn.prop('disabled', false)
-        $prevBtn.prop('disabled', true)
-        $lastBtn.removeClass('active').prop('disabled', true)
-        
-      else
-        $nextBtn.prop('disabled', false)
-        $prevBtn.prop('disabled', false)
-        $lastBtn.removeClass('active').prop('disabled', true)
+      item.classList.value === 'item-header' ? seconds = .015 : seconds = .007;
 
+      children.forEach(child => { // iterate through .vertical-part(s) and style b element
+        if (child.classList) {
+          item.parentNode.classList.contains('active') ? delay = count * seconds + activeDelay : delay = count * seconds;
+          child.firstElementChild.style.transitionDelay = `${delay}s`; // b element
+          count++;
+        }
+      })
+    })
+  },
+}
 
-    goTo: (index) ->
-      $('.screen').eq(index).addClass 'active'
-      $('.dot').eq(index).addClass 'active'
-
-    reset: ->
-      $('.screen, .dot').removeClass 'active'
-
-    indexMax: ->
-      $('.screen').length - 1
-
-    closeModal: ->
-      $('.walkthrough, .shade').removeClass('reveal')
-      setTimeout (=>
-        $('.walkthrough, .shade').removeClass('show')
-        @index = 0
-        @updateScreen()
-      ), 200
-
-    openModal: ->
-      $('.walkthrough, .shade').addClass('show')
-      setTimeout (=>
-        $('.walkthrough, .shade').addClass('reveal')
-      ), 200
-      @updateScreen()
-
-  $('.next-screen').click ->
-    walkthrough.nextScreen()
-
-  $('.prev-screen').click ->
-    walkthrough.prevScreen()
-
-  $('.close').click ->
-    walkthrough.closeModal()
-    
-  $('.open-walkthrough').click ->
-    walkthrough.openModal()
-    
-  walkthrough.openModal()
- 
-  # Optionally use arrow keys to navigate walkthrough
-  $(document).keydown (e) ->
-    switch e.which
-      when 37
-        # left
-        walkthrough.prevScreen()
-      when 38
-        # up
-        walkthrough.openModal()
-      when 39
-        # right
-        walkthrough.nextScreen()
-      when 40
-        # down
-        walkthrough.closeModal()
-      else
-        return
-    e.preventDefault()
-    return
+let intervalF = setInterval(slider.nextSlide, interval);
+slider.init();
 </script>
