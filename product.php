@@ -83,15 +83,15 @@
 
                         </div>
                         <div class="col-3">
-                            <div class="col-1"> 
+                            <div class="col-1 list-parent"> 
                                 <i class="fa fa-star"></i>
                                 <span>4.5</span>
                             </div>
-                            <div class="col-1"> 
+                            <div class="col-1 list-parent"> 
                                 <i class="fa fa-gift"></i>
                                 <span>120</span>
                             </div>
-                            <div class="col-1"> 
+                            <div class="col-1 list-parent"> 
                                 <i class="fa fa-calendar"></i>
                                 <span>2021</span>
                             </div>
@@ -119,5 +119,11 @@
     .image-container .image{
         max-height: 100%;
         max-width: 100%;
+    }
+    .list-parent{
+        white-space: nowrap;
+    }
+    .list-parent i,a{
+        display:inline-block;
     }
 </style>
