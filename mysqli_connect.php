@@ -1,8 +1,8 @@
 <?php
     define("HOST","Localhost");
-    define("USERNAME","root");
-    define("PASSWORD","");
-    define("DATABASE","groupassignment");
+    define("USERNAME","sgcprot1_SGC_ESHOP ");
+    define("PASSWORD","bXrAcmvi,B#U");
+    define("DATABASE","sgcprot1_SGC_ESHOP");
 
     //create database connection
     $conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
