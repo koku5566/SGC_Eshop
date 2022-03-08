@@ -10,7 +10,7 @@
                         <!-- Picture -->
                         <div class="col-xl-4 col-md-4 mb-4">
                             <div class="image-container">
-                                <img src="">
+                                <img class="image" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pink-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1629842709000">
                             </div>
                             <!-- Picture Thumbnail -->
                             <div class="image-thumbnail">
@@ -22,7 +22,9 @@
                         <div class="col-xl-8 col-md-6 mb-4">
                             <!-- Name -->
                             <div class="row">
-                                <b>Name</b>
+                                <div class="col">
+                                    <b>Iphone 10 Pro Max</b>
+                                </div>
                             </div>
                             <!-- Rating/Rating Number/Sold -->
                             <div class="row">
@@ -82,15 +84,15 @@
                         </div>
                         <div class="col-3">
                             <div class="col-1"> 
-                                <i class="fa-light fa-star"></i>
+                                <i class="fa fa-star"></i>
                                 <span>4.5</span>
                             </div>
                             <div class="col-1"> 
-                                <i class="fa-light fa-hands-holding-diamond"></i>
+                                <i class="fa fa-gift"></i>
                                 <span>120</span>
                             </div>
                             <div class="col-1"> 
-                                <i class="fa-light fa-calendar-star"></i>
+                                <i class="fa fa-calendar"></i>
                                 <span>2021</span>
                             </div>
                         </div>
@@ -107,3 +109,15 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+
+<style>
+    .image-container{
+        width:50%;
+        height: 40vh;
+        padding: 20px;
+    }
+    .image-container .image{
+        max-height: 100%;
+        max-width: 100%;
+    }
+</style>
