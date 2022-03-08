@@ -22,21 +22,28 @@
                         <div class="col-xl-4 col-lg-5">
                             
                     <!-- Sidebar -->
-                    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                    <ul class="navbar-nav bg-gradient-primary sidebar-dark accordion" id="accordionSidebar">
 
-                        <!-- Nav Item - Dashboard -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Dashboard</span></a>
-                        </li>
-
-                        <!-- Divider -->
-                        <hr class="sidebar-divider">
-
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Heading -->
                         <div class="sidebar-heading">
-                            Interface
+                            Categories
                         </div>
 
                         <!-- Nav Item - Pages Collapse Menu -->
@@ -51,25 +58,6 @@
                                     <h6 class="collapse-header">Custom Components:</h6>
                                     <a class="collapse-item" href="buttons.html">Buttons</a>
                                     <a class="collapse-item" href="cards.html">Cards</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Utilities Collapse Menu -->
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                                aria-expanded="true" aria-controls="collapseUtilities">
-                                <i class="fas fa-fw fa-wrench"></i>
-                                <span>Utilities</span>
-                            </a>
-                            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                                data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <h6 class="collapse-header">Custom Utilities:</h6>
-                                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                                    <a class="collapse-item" href="utilities-other.html">Other</a>
                                 </div>
                             </div>
                         </li>
@@ -141,12 +129,10 @@
                             </div>
                         </div>
 
-                        
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -470,6 +456,11 @@
 ?>
 
 <style>
+
+    .sidebar{
+
+    }
+
     .content-width {
     width: 86%;
     height: 100vh;
