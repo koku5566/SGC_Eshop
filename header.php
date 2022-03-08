@@ -17,41 +17,6 @@
     if(!isset($_SESSION)){
         session_start();
     }
-
-    $_SESSION['Restaurant_ID'] = "";
-
-    if(!isset($_SESSION['isLogin']))
-    {
-        $_SESSION['isLogin']  = false;
-    }
-    if (!isset($_SESSION['isLogin']) || $_SESSION['isLogin'] == false){
-		header('Location: Login.php');
-		exit;
-	}
-    if(!isset($_SESSION['username']))
-    {
-        $_SESSION['username']  = "";
-    }
-    if(!isset($_SESSION['userid']))
-    {
-        $_SESSION['userid']  = "";
-    }
-    if(!isset($_SESSION['position']))
-    {
-        $_SESSION['position']  = "";
-    }
-    if(!isset($_SESSION['address']))
-    {
-        $_SESSION['address']  = "";
-    }
-    if(isset($_POST['SessionLocation']))
-    {
-        $_SESSION['address'] = $_POST['SessionLocation'];
-    }
-    if(!isset($_SESSION['SearchRestaurant']))
-    {
-        $_SESSION['SearchRestaurant']  = "";
-    }
 ?>
 
 
