@@ -71,25 +71,25 @@
                         </div>
                         
                         <!-- Slideshow -->
-                        <div class="col-xl-10 col-lg-4">
+                        <div class="col-xl-10">
                             <div class="slideshow">
                                 <!-- Slideshow Items -->
                                 <div class="slideshow-items">
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                    <div class="item">
+                                        <div class="item-image-container">
+                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
+                                    <div class="item">
+                                        <div class="item-image-container">
+                                        <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
+                                    <div class="item">
+                                        <div class="item-image-container">
+                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                                 <div class="controls">
                                 <ul>
