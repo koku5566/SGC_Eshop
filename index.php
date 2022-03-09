@@ -106,9 +106,10 @@
                                 <div class="slideshow">
                                     <!-- Slideshow Items -->
                                     <div class="slideshow-items active">
-                                    <div class="item">
-                                        <div class="item-image-container">
-                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                        <div class="pictureItem">
+                                            <div class="item-image-container">
+                                                <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -117,9 +118,10 @@
                                 <div class="slideshow">
                                     <!-- Slideshow Items -->
                                     <div class="slideshow-items active">
-                                    <div class="item">
-                                        <div class="item-image-container">
-                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                        <div class="pictureItem">
+                                            <div class="item-image-container">
+                                                <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +225,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="product-list-body">
-                                            
+
                                     </div>
                                 </div>
                             </div>
@@ -406,6 +408,12 @@
     position: relative;
     width: 100%;
     height: 300px;
+    }
+
+    .pictureItem {
+    position: absolute;
+    width: 100%;
+    height: auto;
     }
 
     .item {
