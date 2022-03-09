@@ -206,12 +206,42 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="product-list-body">
+
                                         <div class="card" style="width: 18rem;">
                                             <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
                                             <div class="card-body">
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             </div>
                                         </div>      
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
                                     </div>
                                 </div>
                             </div>
