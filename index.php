@@ -215,8 +215,8 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star-half"></i>
-                                                            <i class="fa fa-star-and-crescent"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="Location">
                                                            <span style="font: size 12pt; color:grey;" >Subang Jaya</span>
