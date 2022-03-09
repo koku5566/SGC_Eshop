@@ -223,55 +223,13 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="filter-slidebar">
-                                        <div class="browse-menus">
-                                            <div class="browse-menu active">
-                                                <ul class="main-menu">
-                                                    <!-- PHP Loop here - Category -->
-                                                    <?php
-                                                        //Check for Main Category
-                                                        $sql = "SELECT * FROM mainCategory";
-                                                        $result = mysqli_query($conn, $sql);
-                                            
-                                                        if (mysqli_num_rows($result) > 0) {
-                                                            while($row = mysqli_fetch_assoc($result)) {
-
-                                                                //Check For Sub Category
-                                                                $sql_1 = "SELECT * FROM subCategory where main_category_id = ".$row['main_category_id']."";
-                                                                $result_1 = mysqli_query($conn, $sql_1);
-                                                    
-                                                                if (mysqli_num_rows($result_1) > 0) {
-
-                                                                    echo("
-                                                                        <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                            <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
-                                                                                <ul class=\"dropdown-menu\">
-                                                                    ");
-
-                                                                    while($row_1 = mysqli_fetch_assoc($result_1)) {
-                                                                        echo("
-                                                                                    <li class=\"menu-item\">
-                                                                                        <a href=\"https://eshop.sgcprototype2.com/".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
-                                                                                    </li>
-                                                                        ");
-                                                                    }
-                                                                    echo("
-                                                                            </li>
-                                                                        </ul>
-                                                                    ");
-                                                                }
-
-                                                                //If no sub category, display as normal
-                                                                echo("
-                                                                    <li class=\"menu-item\" style=\"display: list-item;\">
-                                                                    <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
-                                                                    </li>
-                                                                ");
-                                                            }
-                                                        }
-                                                    ?>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Cras justo odio</li>
+                                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item">Morbi leo risus</li>
+                                            <li class="list-group-item">Porta ac consectetur ac</li>
+                                            <li class="list-group-item">Vestibulum at eros</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -284,7 +242,7 @@
                                 <div class="card-body">
                                     <div class="product-list-body">
                                         <div class="card" style="width: 18rem;">
-                                            <img class="card-img-top" src="..." alt="Card image cap">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
                                             <div class="card-body">
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             </div>
