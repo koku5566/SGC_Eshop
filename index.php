@@ -212,11 +212,11 @@
                                                             <span style="font: size 16pt;">RM 4800<span>
                                                         </div>
                                                         <div class="Rating">
-                                                            <i class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-fill"></i>
-                                                            <i class="bi bi-star-half"></i>
-                                                            <i class="bi bi-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star-half"></i>
+                                                            <i class="fa fa-star-and-crescent"></i>
                                                         </div>
                                                         <div class="Location">
                                                            <span style="font: size 12pt; color:grey;" >Subang Jaya</span>
