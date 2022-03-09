@@ -203,13 +203,13 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text">Short Text</p>
+                                                            <p class="card-text">IPhone 10 Pro Max</p>
                                                         </div>
-                                                        <div class="Tag" style="border: 1px dashed red">
-                                                            <p class="card-text">Short Text</p>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red">Student 10% discount</span>
                                                         </div>
                                                         <div class="Price">
-                                                            <span class="card-text">RM4800<span>
+                                                            <span style="font: size 16pt;">RM 4800<span>
                                                         </div>
                                                         <div class="Rating">
                                                             <i class="bi bi-star-fill"></i>
@@ -219,7 +219,7 @@
                                                             <i class="bi bi-star"></i>
                                                         </div>
                                                         <div class="Location">
-                                                           <span>Subang Jaya</span>
+                                                           <span style="font: size 12pt; color:grey;" >Subang Jaya</span>
                                                         </div>
                                                         
                                                     </div>
