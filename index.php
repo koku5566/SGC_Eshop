@@ -205,7 +205,7 @@
                                                         <div class="Name">
                                                             <p class="card-text">Short Text</p>
                                                         </div>
-                                                        <div class="Tag">
+                                                        <div class="Tag" style="border: 1px dashed red">
                                                             <p class="card-text">Short Text</p>
                                                         </div>
                                                         <div class="Price">
