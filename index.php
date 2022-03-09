@@ -80,13 +80,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img class="d-block w-100" src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=" alt="First slide">
+                                <img class="d-block w-100 img-fluid" src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="Second slide">
+                                <img class="d-block w-100 img-fluid" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Third slide">
+                                <img class="d-block w-100 img-fluid" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -191,20 +191,13 @@
                     <div class="row">
                         <!-- Filter List -->
                         <div class="col-xl-2 col-lg-2">
-                            <div class="card shadow mb-4">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="filter-slidebar">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">Cras justo odio</li>
-                                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                                            <li class="list-group-item">Morbi leo risus</li>
-                                            <li class="list-group-item">Porta ac consectetur ac</li>
-                                            <li class="list-group-item">Vestibulum at eros</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Morbi leo risus</li>
+                                <li class="list-group-item">Porta ac consectetur ac</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
                         </div>
 
                         <!--Product List -->
