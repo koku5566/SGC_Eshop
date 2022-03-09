@@ -31,7 +31,7 @@
                                                 while($row = mysqli_fetch_assoc($result)) {
 
                                                     //Check For Sub Category
-                                                    $sql_1 = "SELECT * FROM subCategory where main_category_id = ".$row['main_category_id']."";
+                                                    $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = \"".$row['main_category_id']."\"";
                                                     $result_1 = mysqli_query($conn, $sql_1);
                                         
                                                     if (mysqli_num_rows($result_1) > 0) {
