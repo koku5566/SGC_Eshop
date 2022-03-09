@@ -31,13 +31,13 @@
                             <!-- Rating/Rating Number/Sold -->
                             <div class="row">
                                 <div class="col">
-                                    <b>4.9 Star</b>
+                                    <b>4.9 Rating</b>
                                 </div>
                                 <div class="col">
-                                    <b>200</b>
+                                    <b>200 Rated</b>
                                 </div>
                                 <div class="col">
-                                    <b>300</b>
+                                    <b>300 Sold</b>
                                 </div>
                             </div>
                             <!-- Price -->
@@ -49,18 +49,20 @@
                             <!-- Variation -->
                             <div class="row">
                                 <div class="variation">
-                                    <a class="d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                                alt="...">
-                                            <div class="status-indicator bg-success"></div>
-                                        </div>
-                                        <div class="font-weight-bold">
-                                            <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                                problem I've been having.</div>
-                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                        </div>
-                                    </a>
+                                    <!-- Variation Loop here -->
+                                    <div class="row">
+                                        <a class="d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image mr-3">
+                                                <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
+                                                    alt="...">
+                                                <div class="status-indicator bg-success"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="small text-gray-500">Red</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- Quantity -->

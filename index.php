@@ -21,29 +21,49 @@
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/uncategorized/" class="nav-link">Uncategorized</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/beauty/" class="nav-link">Beauty</a>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children" style="display: list-item;">
-                                            <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/" class="nav-link">Clothing</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="menu-item">
-                                                <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/accessories/" class="dropdown-item">Accessories</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/electronic/" class="nav-link">Electronic</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/fashion/" class="nav-link">Fashion</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/music/" class="nav-link">Music</a>
-                                        </li>
+                                        <!-- PHP Loop here - Category -->
+                                        <?php
+                                            //Check for Main Category
+                                            $sql = "SELECT * FROM mainCategory";
+                                            $result = mysqli_query($conn, $sql);
+                                
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    //Check For Sub Category
+                                                    $sql_1 = "SELECT * FROM subCategory where main_category_id = $row['main_category_id']";
+                                                    $result_1 = mysqli_query($conn, $sql_1);
+                                        
+                                                    if (mysqli_num_rows($result_1) > 0) {
+
+                                                        echo("
+                                                            <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
+                                                                <a href=\"https://eshop.sgcprototype2.com/".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                                    <ul class=\"dropdown-menu\">
+                                                        ");
+
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            echo("
+                                                                        <li class=\"menu-item\">
+                                                                            <a href=\"https://eshop.sgcprototype2.com/".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
+                                                                        </li>
+                                                            ");
+                                                        }
+                                                        echo("
+                                                                </li>
+                                                            </ul>
+                                                        ");
+                                                    }
+
+                                                    //If no sub category, display as normal
+                                                    echo("
+                                                        <li class=\"menu-item\" style=\"display: list-item;\">
+                                                        <a href=\"https://eshop.sgcprototype2.com/".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                        </li>
+                                                    ");
+                                                }
+                                            }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>
