@@ -1,0 +1,2 @@
+$('#voucher').load('voucher.html'); 
+ 
