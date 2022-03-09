@@ -72,32 +72,31 @@
                         
                         <!-- Slideshow -->
                         <div class="col-xl-10">
-                            <div class="slideshow">
-                                <!-- Slideshow Items -->
-                                <div class="slideshow-items">
-                                    <div class="item">
-                                        <div class="item-image-container">
-                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-image-container">
-                                        <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-image-container">
-                                        <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
-                                        </div>
-                                    </div>
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img class="d-block w-100" src="..." alt="First slide">
                                 </div>
-                                <div class="controls">
-                                <ul>
-                                    <li class="control" data-index="0"></li>
-                                    <li class="control" data-index="1"></li>
-                                    <li class="control" data-index="2"></li>
-                                </ul>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="..." alt="Second slide">
                                 </div>
+                                <div class="carousel-item">
+                                <img class="d-block w-100" src="..." alt="Third slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                             </div>
                         </div>
                     </div>
