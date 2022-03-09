@@ -189,19 +189,8 @@
 
                     <!-- List All Product -->
                     <div class="row">
-                        <!-- Filter List -->
-                        <div class="col-xl-2 col-lg-2">
-                            <ul class="list-group">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">Porta ac consectetur ac</li>
-                                <li class="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-
                         <!--Product List -->
-                        <div class="col-xl-10 col-lg-10">
+                        <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -213,7 +202,22 @@
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text">Short Text</p>
+                                                        <div class="Name">
+                                                            <p class="card-text">Short Text</p>
+                                                        </div>
+                                                        <div class="Tag">
+
+                                                        </div>
+                                                        <div class="Price">
+                                                            
+                                                        </div>
+                                                        <div class="Rating">
+                                                            
+                                                        </div>
+                                                        <div class="Location">
+                                                            
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>   
                                             </a>
