@@ -71,33 +71,32 @@
                         </div>
                         
                         <!-- Slideshow -->
-                        <div class="col-xl-10 col-lg-4">
-                            <div class="slideshow">
-                                <!-- Slideshow Items -->
-                                <div class="slideshow-items">
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
-                                    </div>
+                        <div class="col-xl-10">
+                            <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" style="height:20rem;">
+                                <div class="carousel-item active" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=" alt="First slide">
                                 </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
-                                    </div>
+                                <div class="carousel-item" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="Second slide">
                                 </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
-                                    </div>
+                                <div class="carousel-item" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Third slide">
                                 </div>
-                                </div>
-                                <div class="controls">
-                                <ul>
-                                    <li class="control" data-index="0"></li>
-                                    <li class="control" data-index="1"></li>
-                                    <li class="control" data-index="2"></li>
-                                </ul>
-                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -192,20 +191,13 @@
                     <div class="row">
                         <!-- Filter List -->
                         <div class="col-xl-2 col-lg-2">
-                            <div class="card shadow mb-4">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="filter-slidebar">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">Cras justo odio</li>
-                                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                                            <li class="list-group-item">Morbi leo risus</li>
-                                            <li class="list-group-item">Porta ac consectetur ac</li>
-                                            <li class="list-group-item">Vestibulum at eros</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Morbi leo risus</li>
+                                <li class="list-group-item">Porta ac consectetur ac</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
                         </div>
 
                         <!--Product List -->
@@ -214,12 +206,42 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="product-list-body">
+
                                         <div class="card" style="width: 18rem;">
                                             <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
                                             <div class="card-body">
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                             </div>
                                         </div>      
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
+                                        <div class="card" style="width: 18rem;">
+                                            <img class="card-img-top" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
+                                            <div class="card-body">
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                        </div> 
+
                                     </div>
                                 </div>
                             </div>
@@ -387,144 +409,6 @@
 ?>
 
 <style>
-
-    .sidebar{
-
-    }
-    .slideshow {
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    justify-content: space-around;
-    }
-
-    .slideshow-items {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    }
-
-    .pictureItem {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    }
-
-    .item {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    }
-
-    .item-image-container {
-    position: relative;
-    width: 100%;
-    }
-
-    .item-image-container::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 101%;
-    background: #b0b0b0;
-    opacity: 0;
-    z-index: 1;
-    }
-
-    .item-image {
-    position: relative;
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    display: block;
-    /* transition: property name | duration | timing-function | delay  */
-    transition: opacity .3s ease-out .45s;
-    }
-
-    .item.active .item-image {
-    opacity: 1;
-    }
-
-    .item.active .item-image-container::before {
-    opacity: .8;
-    }
-
-    .item-description {
-    position: absolute;
-    top: 182px;
-    right: 0;
-    width: 50%;
-    padding-right: 4%;
-    line-height: 1.8;
-    }
-
-    /* Staggered Vertical Items ------------------------------------------------------*/
-    .item-header {
-    position: absolute;
-    top: 150px;
-    left: 1.8%;
-    z-index: 100;
-    }
-
-    .item-header .vertical-part {
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: auto;
-    font-size: 7vw;
-    color: #fff;
-    }
-
-    .vertical-part {
-    overflow: hidden;
-    display: inline-block;
-    }
-
-    .vertical-part b {
-    display: inline-block;
-    transform: translateY(100%);
-    color:white;
-    }
-
-    .item-header .vertical-part b {
-    transition: .5s;
-    }
-
-    .item-description .vertical-part b {
-    transition: .21s;
-    }
-
-    .item.active .item-header .vertical-part b {
-    transform: translateY(0);
-    }
-
-    .item.active .item-description .vertical-part b {
-    transform: translateY(0);
-    }
-
-    /* Controls ----------------------------------------------------------------------*/
-    .controls {
-    position: relative;
-    text-align: right;
-    z-index: 1000;
-    }
-
-    .controls ul {
-    list-style: none;
-    }
-
-    .controls ul li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 3px;
-    background:#bdbdd5;;
-    cursor: pointer;
-    }
-
-    .controls ul li.active {
-    background:#6a6a77;;
-    }
-
     /* Category Menu */
     .browse-menus {
         position:relative;
@@ -532,11 +416,8 @@
     }
 
     .browse-menus .browse-menu{
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
-        heigh:auto;
+        height:auto;
         z-index:0;
         background-color:#ffffff;
     }
@@ -605,52 +486,8 @@
     display: block;
     }
 
-</style>
-
-<script>
-    // Master DOManipulator v2 ------------------------------------------------------------
-    const items = document.querySelectorAll('.item'),
-    controls = document.querySelectorAll('.control'),
-    activeDelay = .76,
-    interval = 5000;
-
-    let current = 0;
-
-    const slider = {
-        init: () => {
-            controls.forEach(control => control.addEventListener('click', (e) => { slider.clickedControl(e) }));
-            controls[current].classList.add('active');
-            items[current].classList.add('active');
-        },
-        nextSlide: () => { // Increment current slide and add active class
-            slider.reset();
-            if (current === items.length - 1) current = -1; // Check if current slide is last in array
-            current++;
-            controls[current].classList.add('active');
-            items[current].classList.add('active');
-        },
-        clickedControl: (e) => { // Add active class to clicked control and corresponding slide
-            slider.reset();
-            clearInterval(intervalF);
-
-            const control = e.target,
-            dataIndex = Number(control.dataset.index);
-
-            control.classList.add('active');
-            items.forEach((item, index) => { 
-            if (index === dataIndex) { // Add active class to corresponding slide
-                item.classList.add('active');
-            }
-            })
-            current = dataIndex; // Update current slide
-            intervalF = setInterval(slider.nextSlide, interval); // Fire that bad boi back up
-        },
-        reset: () => { // Remove active classes
-            items.forEach(item => item.classList.remove('active'));
-            controls.forEach(control => control.classList.remove('active'));
-        }
+    .img-div{
+        max-width:100%;
+        height:100%;
     }
-
-    let intervalF = setInterval(slider.nextSlide, interval);
-    slider.init();
-</script>
+</style>
