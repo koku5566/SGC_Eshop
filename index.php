@@ -206,7 +206,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -216,7 +216,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -226,7 +226,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -236,7 +236,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -246,7 +246,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -256,7 +256,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -266,7 +266,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -276,7 +276,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -286,7 +286,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -296,7 +296,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col" style="padding-bottom: .625rem;">
+                                        <div class="wd-20" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <img class="card-img-top img-thumbnail" style="object-fit:content;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-blue-select?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1631652954000" alt="Card image cap">
@@ -306,6 +306,8 @@
                                                 </div>   
                                             </a>
                                         </div>
+                                        
+                                           
 
 
                                     </div>
@@ -555,5 +557,10 @@
     .img-div{
         max-width:100%;
         height:100%;
+    }
+
+    .wd-20{
+        flex: 0 0 20%;
+        width:20%;
     }
 </style>
