@@ -237,7 +237,7 @@
                                             </a>
                                         </div>
                                         <!---->
-                                        <div class="col-xl-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -249,8 +249,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <!---->
-                                        <div class="col-xl-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -262,9 +261,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                       
-                                        <!---->
-                                        <div class="col-xl-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -276,9 +273,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                       
-                                        <!---->
-                                        <div class="col-xl-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -290,9 +285,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                       
-                                        <!---->
-                                        <div class="col-xl-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -304,7 +297,31 @@
                                                 </div>   
                                             </a>
                                         </div>
-                       
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://images.macrumors.com/t/HQTzTT5qiJuv1CWielf5TUR40Gs=/1600x0/article-new/2018/09/littleiphonexr.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-2 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://images.macrumors.com/t/HQTzTT5qiJuv1CWielf5TUR40Gs=/1600x0/article-new/2018/09/littleiphonexr.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        
                        
 
                                     </div>
