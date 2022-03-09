@@ -206,16 +206,20 @@
                                                             <p class="card-text">Short Text</p>
                                                         </div>
                                                         <div class="Tag">
-
+                                                            <p class="card-text">Short Text</p>
                                                         </div>
                                                         <div class="Price">
-                                                            
+                                                            <span class="card-text">RM4800<span>
                                                         </div>
                                                         <div class="Rating">
-                                                            
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-half"></i>
+                                                            <i class="bi bi-star"></i>
                                                         </div>
                                                         <div class="Location">
-                                                            
+                                                           <span>Subang Jaya</span>
                                                         </div>
                                                         
                                                     </div>
@@ -568,7 +572,7 @@
 
     .image-container{
         width:100%;
-        height:15vw;
+        height:18vw;
     }
 
 </style>
