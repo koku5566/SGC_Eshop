@@ -71,7 +71,7 @@
                         </div>
                         
                         <!-- Slideshow -->
-                        <div class="col-xl-8 col-lg-4">
+                        <div class="col-xl-10 col-lg-4">
                             <div class="slideshow">
                                 <!-- Slideshow Items -->
                                 <div class="slideshow-items">
@@ -97,33 +97,6 @@
                                     <li class="control" data-index="1"></li>
                                     <li class="control" data-index="2"></li>
                                 </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="row">
-                                <div class="slideshow">
-                                    <!-- Slideshow Items -->
-                                    <div class="slideshow-items active">
-                                        <div class="pictureItem">
-                                            <div class="item-image-container">
-                                                <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="slideshow">
-                                    <!-- Slideshow Items -->
-                                    <div class="slideshow-items active">
-                                        <div class="pictureItem">
-                                            <div class="item-image-container">
-                                                <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
