@@ -21,29 +21,49 @@
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/uncategorized/" class="nav-link">Uncategorized</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/beauty/" class="nav-link">Beauty</a>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children" style="display: list-item;">
-                                            <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/" class="nav-link">Clothing</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="menu-item">
-                                                <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/clothing/accessories/" class="dropdown-item">Accessories</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/electronic/" class="nav-link">Electronic</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/fashion/" class="nav-link">Fashion</a>
-                                        </li>
-                                        <li class="menu-item" style="display: list-item;">
-                                        <a href="https://burgerthemes.com/demo/lite/storebiz/product-category/music/" class="nav-link">Music</a>
-                                        </li>
+                                        <!-- PHP Loop here - Category -->
+                                        <?php
+                                            //Check for Main Category
+                                            $sql = "SELECT * FROM mainCategory";
+                                            $result = mysqli_query($conn, $sql);
+                                
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    //Check For Sub Category
+                                                    $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = \"".$row['main_category_id']."\"";
+                                                    $result_1 = mysqli_query($conn, $sql_1);
+                                        
+                                                    if (mysqli_num_rows($result_1) > 0) {
+
+                                                        echo("
+                                                            <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
+                                                                <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                                    <ul class=\"dropdown-menu\">
+                                                        ");
+
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            echo("
+                                                                        <li class=\"menu-item\">
+                                                                            <a href=\"https://eshop.sgcprototype2.com/".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
+                                                                        </li>
+                                                            ");
+                                                        }
+                                                        echo("
+                                                                </li>
+                                                            </ul>
+                                                        ");
+                                                    }
+
+                                                    //If no sub category, display as normal
+                                                    echo("
+                                                        <li class=\"menu-item\" style=\"display: list-item;\">
+                                                        <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                        </li>
+                                                    ");
+                                                }
+                                            }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>
@@ -51,47 +71,37 @@
                         </div>
                         
                         <!-- Slideshow -->
-                        <div class="col-xl-6 col-lg-4">
-                            <div class="slideshow">
-                                <!-- Slideshow Items -->
-                                <div class="slideshow-items">
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-vibrant-green-red-and-yellow-low-poly-abstract-banner-background-picture-image_1238020.jpg" />
-                                    </div>
+                        <div class="col-xl-10">
+                            <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" style="height:20rem;">
+                                <div class="carousel-item active" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://media.istockphoto.com/photos/freedom-chains-that-transform-into-birds-charge-concept-picture-id1322104312?b=1&k=20&m=1322104312&s=170667a&w=0&h=VQyPkFkMKmo0e4ixjhiOLjiRs_ZiyKR_4SAsagQQdkk=" alt="First slide">
                                 </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/thumb_back/fw800/background/20201113/pngtree-abstract-triangle-shapes-design-banner-image_469727.jpg" />
-                                    </div>
+                                <div class="carousel-item" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="Second slide">
                                 </div>
-                                <div class="item">
-                                    <div class="item-image-container">
-                                    <img class="item-image" src="https://png.pngtree.com/background/20210714/original/pngtree-yellow-red-green-and-blue-color-low-poly-abstract-banner-design-picture-image_1238027.jpg" />
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="controls">
-                                <ul>
-                                    <li class="control" data-index="0"></li>
-                                    <li class="control" data-index="1"></li>
-                                    <li class="control" data-index="2"></li>
-                                </ul>
+                                <div class="carousel-item" style="height:inherit;">
+                                <img class="d-block w-100 img-div" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Third slide">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-xl-4 col-lg-4">
-                            <div class="row">
-                                
-                            </div>
-                            <div class="row">
-
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Content Row -->
+                    <!-- Plan do for category (Not sure yet) -->
                     <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -177,78 +187,131 @@
                         </div>
                     </div>
 
-                    <!-- Content Row -->
-
+                    <!-- List All Product -->
                     <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
+                        <!--Product List -->
+                        <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://images.macrumors.com/t/HQTzTT5qiJuv1CWielf5TUR40Gs=/1600x0/article-new/2018/09/littleiphonexr.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Medium Text -------- ------------ ----</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-product-red-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1629907846000" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://images.macrumors.com/t/HQTzTT5qiJuv1CWielf5TUR40Gs=/1600x0/article-new/2018/09/littleiphonexr.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-product-red-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1629907846000" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://images.macrumors.com/t/HQTzTT5qiJuv1CWielf5TUR40Gs=/1600x0/article-new/2018/09/littleiphonexr.jpg" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                       
+
                                     </div>
                                 </div>
                             </div>
@@ -417,135 +480,16 @@
 
 <style>
 
-    .sidebar{
-
-    }
-    .slideshow {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    justify-content: space-around;
+    a:hover{
+        text-decoration:none;
+        color:#a31f37;
     }
 
-    .slideshow-items {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    }
 
-    .item {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    }
-
-    .item-image-container {
-    position: relative;
-    width: 100%;
-    }
-
-    .item-image-container::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 101%;
-    background: #b0b0b0;
-    opacity: 0;
-    z-index: 1;
-    }
-
-    .item-image {
-    position: relative;
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    display: block;
-    /* transition: property name | duration | timing-function | delay  */
-    transition: opacity .3s ease-out .45s;
-    }
-
-    .item.active .item-image {
-    opacity: 1;
-    }
-
-    .item.active .item-image-container::before {
-    opacity: .8;
-    }
-
-    .item-description {
-    position: absolute;
-    top: 182px;
-    right: 0;
-    width: 50%;
-    padding-right: 4%;
-    line-height: 1.8;
-    }
-
-    /* Staggered Vertical Items ------------------------------------------------------*/
-    .item-header {
-    position: absolute;
-    top: 150px;
-    left: 1.8%;
-    z-index: 100;
-    }
-
-    .item-header .vertical-part {
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: auto;
-    font-size: 7vw;
-    color: #fff;
-    }
-
-    .vertical-part {
-    overflow: hidden;
-    display: inline-block;
-    }
-
-    .vertical-part b {
-    display: inline-block;
-    transform: translateY(100%);
-    color:white;
-    }
-
-    .item-header .vertical-part b {
-    transition: .5s;
-    }
-
-    .item-description .vertical-part b {
-    transition: .21s;
-    }
-
-    .item.active .item-header .vertical-part b {
-    transform: translateY(0);
-    }
-
-    .item.active .item-description .vertical-part b {
-    transform: translateY(0);
-    }
-
-    /* Controls ----------------------------------------------------------------------*/
-    .controls {
-    position: relative;
-    text-align: right;
-    z-index: 1000;
-    }
-
-    .controls ul {
-    list-style: none;
-    }
-
-    .controls ul li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 3px;
-    background:#bdbdd5;;
-    cursor: pointer;
-    }
-
-    .controls ul li.active {
-    background:#6a6a77;;
+    .product-name{
+        color:black;
+        height:50px;
+        overflow:hidden;
     }
 
     /* Category Menu */
@@ -555,11 +499,8 @@
     }
 
     .browse-menus .browse-menu{
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
-        heigh:auto;
+        height:auto;
         z-index:0;
         background-color:#ffffff;
     }
@@ -628,52 +569,23 @@
     display: block;
     }
 
-</style>
-
-<script>
-    // Master DOManipulator v2 ------------------------------------------------------------
-    const items = document.querySelectorAll('.item'),
-    controls = document.querySelectorAll('.control'),
-    activeDelay = .76,
-    interval = 5000;
-
-    let current = 0;
-
-    const slider = {
-        init: () => {
-            controls.forEach(control => control.addEventListener('click', (e) => { slider.clickedControl(e) }));
-            controls[current].classList.add('active');
-            items[current].classList.add('active');
-        },
-        nextSlide: () => { // Increment current slide and add active class
-            slider.reset();
-            if (current === items.length - 1) current = -1; // Check if current slide is last in array
-            current++;
-            controls[current].classList.add('active');
-            items[current].classList.add('active');
-        },
-        clickedControl: (e) => { // Add active class to clicked control and corresponding slide
-            slider.reset();
-            clearInterval(intervalF);
-
-            const control = e.target,
-            dataIndex = Number(control.dataset.index);
-
-            control.classList.add('active');
-            items.forEach((item, index) => { 
-            if (index === dataIndex) { // Add active class to corresponding slide
-                item.classList.add('active');
-            }
-            })
-            current = dataIndex; // Update current slide
-            intervalF = setInterval(slider.nextSlide, interval); // Fire that bad boi back up
-        },
-        reset: () => { // Remove active classes
-            items.forEach(item => item.classList.remove('active'));
-            controls.forEach(control => control.classList.remove('active'));
-        }
+    .img-div{
+        max-width:100%;
+        height:auto;
     }
 
-    let intervalF = setInterval(slider.nextSlide, interval);
-    slider.init();
-</script>
+    .wd-20{
+        flex: 0 0 20%;
+        width:20%;
+        position: relative;
+        width: 100%;
+        padding-right: .75rem;
+        padding-left: .75rem;
+    }
+
+    .image-container{
+        width:100%;
+        height:30vh;
+    }
+
+</style>
