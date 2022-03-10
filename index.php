@@ -563,7 +563,7 @@
     .main-footer .main-menu > li.menu-item-has-children > a:before,
     .main-navbar .main-menu > li.menu-item-has-children > a:before {
         content: "\f105";
-        font-family: var(--bs-font-awesome);
+        font-family: var(--fa-style-family,);
         font-weight: 700;
         position: absolute;
         top: 0;
