@@ -66,16 +66,12 @@
                                 <div class="variation">
                                     <!-- Variation Loop here -->
                                     <div class="row">
-                                        <a class="d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
-                                                    alt="...">
-                                                <div class="status-indicator bg-success"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="small text-gray-500">Red</div>
-                                            </div>
-                                        </a>
+                                        <ol class="carousel-indicators list-inline">
+                                            <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> </a> </li>
+                                            <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> </a> </li>
+                                            <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" class="img-fluid"> </a> </li>
+                                            <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" class="img-fluid"> </a> </li>
+                                        </ol>
                                     </div>
                                     
                                 </div>
@@ -166,8 +162,8 @@
     }
 
     .carousel-inner img {
-    width: 100%;
-    height: 100%
+        width: 100%;
+        height: 100%
     }
 
     #custCarousel .carousel-indicators {
@@ -192,7 +188,4 @@
         opacity: 0.75
     }
 
-    .carousel-item img {
-        width: 80%
-    }
 </style>
