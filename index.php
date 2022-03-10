@@ -18,14 +18,6 @@
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
                         <div class="col-xl-2 col-lg-2 col-0">
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropright
-                                </button>
-                                <div class="dropdown-menu">
-                                    <!-- Dropdown menu links -->
-                                </div>
-                            </div>
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
