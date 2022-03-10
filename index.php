@@ -601,6 +601,23 @@
         color: var(--bs-primary);
     }
 
+    .browse-menu .main-menu .menu-item:hover > .dropdown-menu,
+    .browse-menu .main-menu .menu-item.focus > .dropdown-menu,
+    .main-footer .widget_nav_menu .menu-item:hover > .sub-menu,
+    .main-footer .widget_nav_menu .menu-item.focus > .sub-menu,
+    .main-header .widget_nav_menu .menu-item:hover > .sub-menu,
+    .main-header .widget_nav_menu .menu-item.focus > .sub-menu,
+    .main-footer .main-menu .menu-item:hover > .dropdown-menu,
+    .main-footer .main-menu .menu-item.focus > .dropdown-menu,
+    .main-navbar .main-menu .menu-item:hover > .dropdown-menu,
+    .main-navbar .main-menu .menu-item.focus > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+
 
     .browse-menu .main-menu > li.menu-item-has-children > a {
         padding-right: 30px;
@@ -654,6 +671,44 @@
 
     .main-mobile-menu ul.main-menu .menu-item-has-children > a {
         flex: 1;
+    }
+
+    .main-mobile-menu ul.main-menu .menu-item-has-children.current > a {
+        margin: 0;
+    }
+
+    .header-search-popup .header-search-close,
+    .more-link:after, .more-link,
+    .widget .cat-item:hover a + span,
+    .widget_title:after,
+    .navbar-brand, img.navbar-brand,
+    .is-sticky-menu img.navbar-brand,
+    .active-two .main-navbar .main-menu > li > a,
+    .main-navbar .dropdown-menu > li,
+    .main-navbar .dropdown-menu li a,
+    .main-navbar .dropdown-menu .menu-item-has-children > a:after,
+    .main-footer .dropdown-menu > li,
+    .main-footer .dropdown-menu li a,
+    .main-footer .main-menu .dropdown-menu .menu-item-has-children > a:after,
+    .sub-menu .menu-item-has-children > a:after,
+    .mobile-collapsed > button,
+    .mobile-collapsed > button:before,
+    .main-mobile-build li > a,
+    .hamburger-menu div,
+    .hamburger-menu .meat,
+    .hamburger-menu .bottom-bun,
+    .header-sidebar-toggle span,
+    .header-sidebar-toggle span:before,
+    .header-sidebar-toggle span:after,
+    .header-search-active .header-search-popup form,
+    .header-search-popup form,
+    .close-style:before, .close-style:after,
+    .header-search-popup span:before, .header-search-popup span:after,
+    .edd_checkout a, .button,
+    button, input, input[type="button"],
+    input[type="reset"], input[type="submit"] {
+        -webkit-transition: var(--bs-transition);
+        transition: var(--bs-transition);
     }
 
     ul.main-menu {
