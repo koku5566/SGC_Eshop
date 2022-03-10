@@ -209,7 +209,7 @@
                                                             <span style="border: 1px dashed red; font-size:12pt;">Student 10% discount</span>
                                                         </div>
                                                         <div class="Price">
-                                                            <b><span style="font: size 16pt;">RM 4800<span></b>
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
                                                         </div>
                                                         <div class="Rating">
                                                             <i class="fa fa-star"></i>
@@ -482,7 +482,9 @@
 
     a:hover{
         text-decoration:none;
+        color:currentColor;
     }
+
 
 
     /* Category Menu */
