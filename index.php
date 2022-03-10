@@ -203,10 +203,10 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text" style="color:black;">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
                                                         </div>
                                                         <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:12pt;">Student 10% discount</span>
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
                                                         </div>
                                                         <div class="Price">
                                                             <b><span style="font-size:16pt;">RM 4800<span></b>
@@ -482,10 +482,15 @@
 
     a:hover{
         text-decoration:none;
-        color:currentColor;
+        color:#a31f37;
     }
 
 
+    .product-name{
+        color:black;
+        height:50px;
+        overflow:hidden;
+    }
 
     /* Category Menu */
     .browse-menus {
@@ -580,7 +585,7 @@
 
     .image-container{
         width:100%;
-        height:18vw;
+        height:20vh;
     }
 
 </style>
