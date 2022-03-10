@@ -203,23 +203,23 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text">IPhone 10 Pro Max</p>
+                                                            <p class="card-text" style="color:black;">IPhone 10 Pro Max</p>
                                                         </div>
                                                         <div class="Tag">
-                                                            <span style="border: 1px dashed red">Student 10% discount</span>
+                                                            <span style="border: 1px dashed red; font-size:12pt;">Student 10% discount</span>
                                                         </div>
                                                         <div class="Price">
-                                                            <span style="font: size 16pt;">RM 4800<span>
+                                                            <b><span style="font: size 16pt;">RM 4800<span></b>
                                                         </div>
                                                         <div class="Rating">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-half-alt"></i>
                                                             <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font: size 12pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
                                                         </div>
                                                         
                                                     </div>
