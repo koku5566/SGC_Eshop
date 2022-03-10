@@ -80,9 +80,9 @@
                             <div class="row">
                                 <div class="col">
                                     <div class = "number-input">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
-                                        <input class="quantity\" min="0" name="quantity[]" value="" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-minus"></i></button>
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        <input class="quantity-input" min="1" name="quantity[]" value="" type="number">
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="10 Stock Avaiable">
@@ -194,6 +194,14 @@
 
     #custCarousel .carousel-indicators li:hover img {
         opacity: 0.75
+    }
+
+    .quantity-input{
+
+    }
+
+    .quantity-selector-btn{
+        
     }
 
 
