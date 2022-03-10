@@ -57,8 +57,8 @@
                             </div>
                             <!-- Price -->
                             <div class="row">
-                                <div class="price">
-                                    <span>RM 3500 - RM 4800</span>
+                                <div class="col">
+                                    <span style="color:#a31f37;font-size:18pt">RM 3500 - RM 4800</span>
                                 </div>
                             </div>
                             <!-- Variation -->
@@ -66,7 +66,7 @@
                                 <div class="variation">
                                     <!-- Variation Loop here -->
                                     <div class="row">
-                                        <ol class="carousel-indicators list-inline">
+                                        <ol class="list-inline">
                                             <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> </a> </li>
                                             <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> </a> </li>
                                             <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" class="img-fluid"> </a> </li>
@@ -178,6 +178,10 @@
     #custCarousel .carousel-indicators li img {
         display: block;
         opacity: 0.5
+    }
+
+    .list-inline-item{
+        width:100px;
     }
 
     #custCarousel .carousel-indicators li.active img {
