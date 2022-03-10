@@ -87,6 +87,8 @@
                                 </div>
                                 <div class="carousel-item" style="height:inherit;">
                                 <img class="d-block w-100 img-div" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="Third slide">
+                                </div>
+                            </div>
 
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
