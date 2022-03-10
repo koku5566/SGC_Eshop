@@ -80,10 +80,10 @@
                             <div class="row">
                                 <div class="col">
                                     <div class = "number-input">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"></button>
-                                            <input class="quantity\" min="0" name="quantity[]" value="" type="number">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"></button>
-                                        </div>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
+                                        <input class="quantity\" min="0" name="quantity[]" value="" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-minus"></i></button>
+                                    </div>
                                 </div>
                                 <div class="10 Stock Avaiable">
                                     
