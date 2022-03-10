@@ -15,7 +15,7 @@
                     <!-- Product Row -->
                     <div class="row">
                         <!-- Picture -->
-                        <div class="col-xl-8 col-md-6 mb-6">
+                        <div class="col-xl-8 col-md-6">
                             <div id="custCarousel" class="carousel slide" data-interval="false">
                                 <!-- slides -->
                                 <div class="carousel-inner">
@@ -34,7 +34,7 @@
                         </div>
 
                         <!-- Product Content -->
-                        <div class="col-xl-8 col-md-6 mb-4">
+                        <div class="col-xl-4 col-md-6">
                             <br>
                             <!-- Name -->
                             <div class="row">
