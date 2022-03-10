@@ -215,7 +215,7 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="Location">
