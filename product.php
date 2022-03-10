@@ -79,52 +79,11 @@
                             <!-- Quantity -->
                             <div class="row">
                                 <div class="col">
-                                    <div class="mc-quantity-selector">
-                                        <button
-                                        class="
-                                            mc-button
-                                            is-disabled
-                                            mc-button--square mc-button--bordered
-                                            mc-quantity-selector__button-left
-                                        "
-                                        aria-controls="qty-selector2"
-                                        aria-label="Decrement"
-                                        aria-hidden="true"
-                                        tabindex="-1"
-                                        >
-                                        <svg class="mc-button__icon">
-                                            <use xlink:href="#iconLeftM" />
-                                        </svg>
-                                        </button>
-
-                                        <input
-                                        id="qty-selector2"
-                                        class="mc-text-input mc-quantity-selector__input"
-                                        name="quantity-selector-input"
-                                        aria-label="QuantitySelector"
-                                        aria-valuemin="0"
-                                        aria-valuemax="100"
-                                        aria-valuenow="0"
-                                        type="number"
-                                        placeholder="1"
-                                        role="spinbutton"
-                                        />
-
-                                        <button
-                                        class="
-                                            mc-button mc-button--square mc-button--bordered
-                                            mc-quantity-selector__button-right
-                                        "
-                                        aria-controls="qty-selector2"
-                                        aria-label="Increment"
-                                        aria-hidden="true"
-                                        tabindex="-1"
-                                        >
-                                        <svg class="mc-button__icon">
-                                            <use xlink:href="#iconRightM" />
-                                        </svg>
-                                        </button>
-                                    </div>
+                                    <div class = "number-input">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"></button>
+                                            <input class="quantity\" min="0" name="quantity[]" value="" type="number">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"></button>
+                                        </div>
                                 </div>
                                 <div class="10 Stock Avaiable">
                                     
