@@ -557,6 +557,105 @@
         transition: all 0.3s ease-in-out 0s;
     }
 
+    .browse-menu .main-menu > li.menu-item-has-children > a:before,
+    .main-header .widget_nav_menu li.menu-item-has-children > a:after,
+    .main-footer .widget_nav_menu li.menu-item-has-children > a:after,
+    .main-footer .main-menu > li.menu-item-has-children > a:before,
+    .main-navbar .main-menu > li.menu-item-has-children > a:before {
+        content: "\f105";
+        font-family: var(--bs-font-awesome);
+        font-weight: 700;
+        position: absolute;
+        top: 0;
+        right: 8px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        color: inherit;
+        font-size: 16px;
+        -webkit-transition: var(--bs-transition);
+        transition: var(--bs-transition);
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children > a:before {
+        right: 23px;
+        color: #ADA7A9;
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children:hover > a:before,
+    .browse-menu .main-menu > li.menu-item-has-children.focus > a:before {
+        right: 20px;
+        color: var(--bs-primary);
+    }
+
+    .main-header .widget_nav_menu li.menu-item-has-children.focus > a:after,
+    .main-footer .widget_nav_menu li.menu-item-has-children.focus > a:after,
+    .main-footer .main-menu > li.menu-item-has-children.focus > a:before,
+    .main-navbar .main-menu > li.menu-item-has-children.focus > a:before,
+    .main-header .widget_nav_menu li.menu-item-has-children:hover > a:after,
+    .main-footer .widget_nav_menu li.menu-item-has-children:hover > a:after,
+    .main-footer .main-menu > li.menu-item-has-children:hover > a:before,
+    .main-navbar .main-menu > li.menu-item-has-children:hover > a:before,
+    .main-navbar .main-menu > li.menu-item-has-children.active > a:before  {
+        transform: rotate(90deg);
+        color: var(--bs-primary);
+    }
+
+
+    .browse-menu .main-menu > li.menu-item-has-children > a {
+        padding-right: 30px;
+    }
+
+    .main-header .widget_nav_menu li.menu-item-has-children > a,
+    .main-footer .widget_nav_menu li.menu-item-has-children > a,
+    .main-footer ul.main-menu > li.menu-item-has-children > a,
+    .main-navbar ul.main-menu > li.menu-item-has-children > a {
+        padding-right: 20px;
+    }
+
+    .main-footer .main-menu .dropdown-menu .menu-item-has-children > a:after,
+    .main-footer .widget_nav_menu .sub-menu .menu-item-has-children > a:after,
+    .main-header .widget_nav_menu .sub-menu .menu-item-has-children > a:after,
+    .main-navbar .dropdown-menu .menu-item-has-children > a:after {
+        font-family: var(--bs-font-awesome);
+        font-weight: 900;
+        content: "\f054";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        font-size: 10px;
+        opacity: 0.7;  
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .main-footer .main-menu .dropdown-menu .menu-item-has-children:hover > a:after,
+    .main-footer .main-menu .dropdown-menu .menu-item-has-children.focus > a:after,
+    .main-footer .widget_nav_menu .sub-menu .menu-item-has-children:hover > a:after,
+    .main-footer .widget_nav_menu .sub-menu .menu-item-has-children.focus > a:after,
+    .main-header .widget_nav_menu .sub-menu .menu-item-has-children:hover > a:after,
+    .main-header .widget_nav_menu .sub-menu .menu-item-has-children.focus > a:after,
+    .main-navbar .dropdown-menu .menu-item-has-children:hover > a:after,
+    .main-navbar .dropdown-menu .menu-item-has-children.focus > a:after {
+        opacity: 1;
+        right: 15px;
+    }
+
+    .main-mobile-menu ul.main-menu li.menu-item-has-children {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .main-mobile-menu ul.main-menu li.menu-item-has-children ul.dropdown-menu li > a {
+        padding-left: 25px;
+        width: 100%;
+    }
+
+    .main-mobile-menu ul.main-menu .menu-item-has-children > a {
+        flex: 1;
+    }
+
     ul.main-menu {
     list-style: none;
     margin: 0px;
