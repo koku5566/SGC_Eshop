@@ -83,7 +83,7 @@
                                         <div class="input-group-prepend">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control" style="appearance: textfield;">
+                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
@@ -205,14 +205,16 @@
     }
 
     .quantity-input{
-        min-height:3rem;
+        appearance: textfield;
+        min-height: 3rem;
+        text-align: center;
     }
 
     .quantity-selector-btn{
         min-width:3rem;
         min-height:3rem;
-        color: #78be20;
-        border-color: #78be20;
+        color: #a31f37;
+        border-color: #a31f37;
         background-color: #ffffff;
         transition: all ease 200ms;
     }
