@@ -585,7 +585,7 @@
 
     .image-container{
         width:100%;
-        height:20vh;
+        height:30vh;
     }
 
 </style>
