@@ -18,6 +18,14 @@
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
                         <div class="col-xl-2 col-lg-2 col-0">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropright
+                                </button>
+                                <div class="dropdown-menu">
+                                    <!-- Dropdown menu links -->
+                                </div>
+                            </div>
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
@@ -30,12 +38,13 @@
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
 
+                                                    $verifier = 0;
                                                     //Check For Sub Category
                                                     $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = \"".$row['main_category_id']."\"";
                                                     $result_1 = mysqli_query($conn, $sql_1);
                                         
                                                     if (mysqli_num_rows($result_1) > 0) {
-
+                                                        $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
                                                                 <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
@@ -55,12 +64,15 @@
                                                         ");
                                                     }
 
-                                                    //If no sub category, display as normal
-                                                    echo("
+                                                    if($verifier == 0)
+                                                    {
+                                                        //If no sub category, display as normal
+                                                        echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
                                                         <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
                                                         </li>
-                                                    ");
+                                                        ");
+                                                    } 
                                                 }
                                             }
                                         ?>
