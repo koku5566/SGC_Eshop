@@ -171,12 +171,13 @@
         white-space: nowrap;
         font-size: x-large;
     }
-    .list-parent i,a{
-        padding:0.8rem 1.5rem;
+    .list-inline-item{
+        background-color:white;
     }
 
     .carousel-item{
-        height:40vh;
+        height:60vh;
+        background-color:white;
     }
 
     .carousel-inner img {
