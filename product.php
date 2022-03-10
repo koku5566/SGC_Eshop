@@ -175,9 +175,14 @@
         padding:0.8rem 1.5rem;
     }
 
+    .carousel-item{
+        height:40vh;
+    }
+
     .carousel-inner img {
         width: 100%;
-        height: 100%
+        height: 100%;
+        object-fit:contain;
     }
 
     #custCarousel .carousel-indicators {
