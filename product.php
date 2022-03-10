@@ -5,16 +5,31 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Product</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Assecories</li>
+                    </ol>
+                </nav>
+
                     <!-- Product Row -->
                     <div class="row">
                         <!-- Picture -->
-                        <div class="col-xl-4 col-md-4 mb-4">
-                            <div class="image-container">
-                                <img class="image" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pink-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1629842709000">
-                            </div>
-                            <!-- Picture Thumbnail -->
-                            <div class="image-thumbnail">
-                                
+                        <div class="col-xl-8 col-md-6 mb-6">
+                            <div id="custCarousel" class="carousel slide" data-interval="false">
+                                <!-- slides -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"> <img src="https://i.imgur.com/weXVL8M.jpg" alt="Hills"> </div>
+                                    <div class="carousel-item"> <img src="https://i.imgur.com/Rpxx6wU.jpg" alt="Hills"> </div>
+                                    <div class="carousel-item"> <img src="https://i.imgur.com/83fandJ.jpg" alt="Hills"> </div>
+                                    <div class="carousel-item"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" alt="Hills"> </div>
+                                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
+                                <ol class="carousel-indicators list-inline">
+                                    <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" class="img-fluid"> </a> </li>
+                                </ol>
                             </div>
                         </div>
 
@@ -148,5 +163,36 @@
     }
     .list-parent i,a{
         padding:0.8rem 1.5rem;
+    }
+
+    .carousel-inner img {
+    width: 100%;
+    height: 100%
+    }
+
+    #custCarousel .carousel-indicators {
+        position: static;
+        margin-top: 20px
+    }
+
+    #custCarousel .carousel-indicators>li {
+        width: 100px
+    }
+
+    #custCarousel .carousel-indicators li img {
+        display: block;
+        opacity: 0.5
+    }
+
+    #custCarousel .carousel-indicators li.active img {
+        opacity: 1
+    }
+
+    #custCarousel .carousel-indicators li:hover img {
+        opacity: 0.75
+    }
+
+    .carousel-item img {
+        width: 80%
     }
 </style>

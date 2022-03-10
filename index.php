@@ -102,6 +102,8 @@
                         </div>
                     </div>
 
+                    <br>
+                    
                     <!-- Plan do for category (Not sure yet) -->
                     <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
