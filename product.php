@@ -79,6 +79,15 @@
                             <!-- Quantity -->
                             <div class="row">
                                 <div class="col">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control">
+                                        <div class="input-group-append">
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
                                     <div class = "number-input">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         <input class="quantity-input" min="1" name="quantity[]" value="" type="number">
@@ -196,12 +205,16 @@
         opacity: 0.75
     }
 
+    .numner-input{
+        padding: 0 0 1rem 0;
+    }
+
     .quantity-input{
 
     }
 
     .quantity-selector-btn{
-        
+
     }
 
 
