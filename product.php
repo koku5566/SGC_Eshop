@@ -83,15 +83,10 @@
                                         <div class="input-group-prepend">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control">
+                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control" style="appearance: textfield;">
                                         <div class="input-group-append">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
-                                    </div>
-                                    <div class = "number-input">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
-                                        <input class="quantity-input" min="1" name="quantity[]" value="" type="number">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="10 Stock Avaiable">
@@ -210,11 +205,16 @@
     }
 
     .quantity-input{
-
+        min-height:3rem;
     }
 
     .quantity-selector-btn{
-
+        min-width:3rem;
+        min-height:3rem;
+        color: #78be20;
+        border-color: #78be20;
+        background-color: #ffffff;
+        transition: all ease 200ms;
     }
 
 
