@@ -479,6 +479,12 @@
 ?>
 
 <style>
+
+    a:hover{
+        text-decoration:none;
+    }
+
+
     /* Category Menu */
     .browse-menus {
         position:relative;
