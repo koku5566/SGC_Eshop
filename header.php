@@ -27,8 +27,6 @@
         $productArray[] = $row;
     }
 
-    echo json_encode($productArray);
-
 ?>
 
 

@@ -44,11 +44,12 @@
 
     <script>
           /*An array containing all the product name list for search purpose:*/
-          <?php echo json_encode($productArray); ?>
             var json_data = <?php echo json_encode($productArray); ?>;
-
-            var obj = JSON.parse(json_data);
-            var productList = Object.values(obj);
+            var productList = [];
+            for(var i in json_data)
+            {
+                productList.push(json_data[i].product_name);
+            }  
     </script>
 
     <!-- Bootstrap core JavaScript-->
