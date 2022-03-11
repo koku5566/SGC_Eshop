@@ -1,81 +1,76 @@
 <?php require __DIR__ . '/header.php' ?>
 
-<body class="bg-gradient-primary">
+<?php
+	function SanitizeString(string $str):string{
+		if(get_magic_quotes_gpc()){
+			$str = stripslashes($str);
+		}
+		$str = strip_tags($str);
+		$str = htmlentities($str, ENT_QUOTES);
+		
+		return $str;
+	}
 
-    <div class="container">
+	if(!isset($_SESSION)){
+		session_start();
+	}
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
+	if (isset($_SESSION['isLogin']) && $_SESSION['isLogin']){
+		header('location: Main.php');
+		exit;
+	}
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		$Login = false;
+		if(isset($_POST['username'],$_POST['upassword'])&& !empty($_POST['username'])  && !empty($_POST['upassword']))
+		{
+			$uname = $_POST['username'];
+			$upass = md5($_POST['upassword']); 
+			
+			//Sanitize
+			$uname = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
+			
+			//Access Database
+			$sql = "SELECT * FROM user WHERE email='$uname' AND password='$upass'";
+			$result = mysqli_query($conn, $sql);
+			
+			if (mysqli_num_rows($result) > 0) {
+				while($row = mysqli_fetch_assoc($result)) {
+					echo "<script>alert('Login Successfully')</script>";
+					$Login = true;
+					$_SESSION['isLogin'] = true;
+					$_SESSION['id'] = $row["userID"];
+					$_SESSION['name'] = $row["name"];
+					$_SESSION['admin'] = $row["ADMIN"];
+					header("location: Main.php");
+				}
+			} else {
+				$Login = false;
+			}
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+			if($Login == false)
+			{
+				echo "<script>alert('Invalid Username or Password')</script>";
+			}
 
-            </div>
+			mysqli_close($conn);
+		}
+	}
+?>
 
-        </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-</body>
+<div id="title"><h2>Login</h2></div>
+<div id="Login">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+	<p id="label">Email Address</p>
+	<input required type="text" name="username" maxlength="50"/>
+	<p id="label">Password</p>
+	<input required type="password" name="upassword" maxlength="50"/><br><br>
+	
+	<button type="reset" name="reset">Reset</button>
+	<button type="submit" name="login">Login</button>
+	<p id="label"><a href="ForgetPass.php">Forget Password?</a></p>
+	<p id="label">New User? <a href="Register.php">Sign Up</a></p>
+</form>
+</div>
 
 <?php require __DIR__ . '/footer.php' ?>
