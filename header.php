@@ -57,12 +57,10 @@
 
 <body onload="Loader()" id="page-top">
 
-    <div id="loader"></div>
-
-    <div style="display:none;" id="myDiv" class="animate-bottom">
-    <h2>Tada!</h2>
-    <p>Some text in my newly loaded page..</p>
+    <div id="loader">
+        
     </div>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 

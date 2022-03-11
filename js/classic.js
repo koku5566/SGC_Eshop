@@ -1,12 +1,15 @@
 var myVar;
 
 function Loader() {
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("wrapper").style.display = "none";
   myVar = setTimeout(showPage, 3000);
+  
 }
 
 function showPage() {
   document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
+  document.getElementById("wrapper").style.display = "block";
 }
 
 function autocomplete(inp, arr) {
