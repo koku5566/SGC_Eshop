@@ -569,7 +569,6 @@
 
     .browse-menu .main-menu > li.menu-item-has-children >  a > i:before{
         right: 23px;
-        color: #ADA7A9;
     }
 
     .browse-menu .main-menu > li.menu-item-has-children:hover >  a > i:before,
@@ -580,6 +579,15 @@
 
     .browse-menu .main-menu .menu-item:hover > .dropdown-menu,
     .browse-menu .main-menu .menu-item.focus > .dropdown-menu{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+
+    .browse-menu .main-menu .menu-item .dropdown-menu:hover,
+    .browse-menu .main-menu .menu-item .dropdown-menu:focus{
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
