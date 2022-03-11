@@ -50,6 +50,7 @@
             {
                 productList.push(json_data [i]);
             }  
+            console.log(productList[0]);
     </script>
 
     <!-- Bootstrap core JavaScript-->
