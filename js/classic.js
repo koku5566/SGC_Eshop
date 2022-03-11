@@ -1,16 +1,10 @@
-var myVar;
 
-function Loader() {
-  document.getElementById("loader").style.display = "block";
-  document.getElementById("wrapper").style.display = "none";
-  myVar = setTimeout(showPage, 3000);
-  
-}
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("wrapper").style.display = "block";
-}
+window.addEventListener('load', function () {
+  document.getElementsByClassName("loader-wrapper")[0].style.animation = "fadeOut 0.4s";
+  setTimeout(() => {
+      document.getElementsByClassName("loader-wrapper")[0].style.display = "none";
+  }, 400);
+})
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
