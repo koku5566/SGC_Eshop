@@ -45,12 +45,9 @@
     <script>
           /*An array containing all the product name list for search purpose:*/
             var json_data = <?php echo json_encode($productArray); ?>;
-            var productList = [];
-            for(var i in json_data)
-            {
-                productList.push(json_data [i]);
-            }  
-            console.log(productList[0]);
+
+            var obj = JSON.parse(json_data);
+            var productList = Object.values(obj);
     </script>
 
     <!-- Bootstrap core JavaScript-->
