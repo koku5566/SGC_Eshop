@@ -48,10 +48,8 @@
             var productList = [];
             for(var i in json_data)
             {
-                productList.push([i, json_data [i]]);
-            }
-            console.log(productList);
-  
+                productList.push([json_data [i]]);
+            }  
     </script>
 
     <!-- Bootstrap core JavaScript-->
