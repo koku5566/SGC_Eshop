@@ -39,7 +39,12 @@
                                                         $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                                <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                                <img src=\".$row['main_category_pic'].\">
+                                                                ".$row['main_category_name']."
+                                                                <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+
+                                                                </a>
                                                                     <ul class=\"dropdown-menu\">
                                                         ");
 
