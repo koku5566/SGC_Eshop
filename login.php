@@ -1,5 +1,61 @@
 <?php require __DIR__ . '/header.php' ?>
+<?php
+	function SanitizeString(string $str):string{
+		if(get_magic_quotes_gpc()){
+			$str = stripslashes($str);
+		}
+		$str = strip_tags($str);
+		$str = htmlentities($str, ENT_QUOTES);
+		
+		return $str;
+	}
 
+	if(!isset($_SESSION)){
+		session_start();
+	}
+
+	if (isset($_SESSION['isLogin']) && $_SESSION['isLogin']){
+		header('location: Main.php');
+		exit;
+	}
+
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		$Login = false;
+		if(isset($_POST['username'],$_POST['password'])&& !empty($_POST['username'])  && !empty($_POST['password']))
+		{
+			$uname = $_POST['username'];
+			$upass = md5($_POST['password']); 
+			
+			//Sanitize
+			$uname = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
+			
+			//Access Database
+			$sql = "SELECT * FROM user WHERE email='$uname' AND password='$upass'";
+			$result = mysqli_query($conn, $sql);
+			
+			if (mysqli_num_rows($result) > 0) {
+				while($row = mysqli_fetch_assoc($result)) {
+					echo "<script>alert('Login Successfully')</script>";
+					$Login = true;
+					$_SESSION['isLogin'] = true;
+					$_SESSION['id'] = $row["userID"];
+					$_SESSION['name'] = $row["name"];
+					$_SESSION['admin'] = $row["ADMIN"];
+					header("location: Main.php");
+				}
+			} else {
+				$Login = false;
+			}
+
+			if($Login == false)
+			{
+				echo "<script>alert('Invalid Username/Email or Password')</script>";
+			}
+
+			mysqli_close($conn);
+		}
+	}
+?>
 <div class="bg-gradient-primary">
     <div class="container">
         <!-- Outer Row -->
@@ -17,15 +73,16 @@
                                     <form class="user">
                                         <div class="form-group">
                                             <label>Username/Email</label>
-                                            <input required type="email" class="form-control form-control-user"
+                                            <input required type="email" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Please Enter Your Email Address or Username">
                                         </div>
                                         <div class="form-group">
-                                        <label>Password</label>
-                                            <input required type="password" class="form-control form-control-user"
+                                            <label>Password</label>
+                                            <input required type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Please Enter Password">
                                         </div>
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -33,6 +90,7 @@
                                             </div>
                                         </div>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">Login</a>
+
                                         <div class="text-left">
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                                         </div>
