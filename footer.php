@@ -48,7 +48,7 @@
             var productList = [];
             for(var i in json_data)
             {
-                productList.push([json_data [i]]);
+                productList.push(json_data [i]);
             }  
     </script>
 
