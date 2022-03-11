@@ -1,14 +1,10 @@
 <?php require __DIR__ . '/header.php' ?>
 
-<body class="bg-gradient-primary">
-
+<div class="bg-gradient-primary">
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -23,11 +19,11 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Please Enter Your Email Address or Username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Please Enter Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -40,6 +36,9 @@
                                             Login
                                         </a>
                                         <hr>
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-microsoft fa-fw"></i> Login with Google
+                                        </a>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
@@ -59,15 +58,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-
-
-</body>
+</div>
 
 <?php require __DIR__ . '/footer.php' ?>
