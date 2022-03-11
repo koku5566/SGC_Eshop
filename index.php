@@ -40,7 +40,7 @@
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
                                                                 <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">
-                                                                <img src=\"".$row['main_category_pic']."\">
+                                                                <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                                 ".$row['main_category_name']."
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
 
@@ -554,10 +554,7 @@
         transition: all 0.3s ease-in-out 0s;
     }
 
-    .browse-menu .main-menu > li.menu-item-has-children > a:before{
-        content: "\f105";
-        font-family: var(--fa-style-family,);
-        font-weight: 700;
+    .browse-menu .main-menu > li.menu-item-has-children > a > i:before{
         position: absolute;
         top: 0;
         right: 8px;
@@ -570,13 +567,13 @@
         transition: var(--bs-transition);
     }
 
-    .browse-menu .main-menu > li.menu-item-has-children > a:before {
+    .browse-menu .main-menu > li.menu-item-has-children >  a > i:before{
         right: 23px;
         color: #ADA7A9;
     }
 
-    .browse-menu .main-menu > li.menu-item-has-children:hover > a:before,
-    .browse-menu .main-menu > li.menu-item-has-children.focus > a:before {
+    .browse-menu .main-menu > li.menu-item-has-children:hover >  a > i:before,
+    .browse-menu .main-menu > li.menu-item-has-children.focus >  a > i:before{
         right: 20px;
         color: var(--bs-primary);
     }
