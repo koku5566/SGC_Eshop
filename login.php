@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                    <div class="text-center">
+                                    <div class="text-left">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user">
@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">Login</a>
-                                        <div class="text-center">
+                                        <div class="text-left">
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                                         </div>
                                         <hr>
@@ -48,7 +48,7 @@
                                         </a>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                    <div class="text-left">
                                         New to SGC E-Shop?<a class="small" href="register.html">Sign Up</a>
                                     </div>
                                 </div>
