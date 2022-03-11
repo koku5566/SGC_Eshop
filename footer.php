@@ -42,6 +42,18 @@
         </div>
     </div>
 
+    <script>
+          /*An array containing all the product name list for search purpose:*/
+            var json_data = <?php echo json_encode($productArray); ?>;
+            var productList = [];
+            for(var i in json_data)
+            {
+                productList.push([i, json_data [i]]);
+            }
+            console.log(productList);
+  
+    </script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

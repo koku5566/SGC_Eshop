@@ -17,6 +17,18 @@
     if(!isset($_SESSION)){
         session_start();
     }
+
+    $sql = "SELECT product_name FROM product";
+    $result = mysqli_query($conn, $sql);
+
+    $emparray = array();
+    while($row =mysqli_fetch_assoc($result))
+    {
+        $productArray[] = $row;
+    }
+
+    echo json_encode($productArray);
+
 ?>
 
 
