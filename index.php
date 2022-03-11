@@ -66,7 +66,10 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">".$row['main_category_name']."</a>
+                                                        <a href=\"https://eshop.sgcprototype2.com/?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                        <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
+                                                        ".$row['main_category_name']."
+                                                        </a>
                                                         </li>
                                                         ");
                                                     } 
@@ -590,11 +593,15 @@
         padding-right: 30px;
     }
 
+    .dropdown-item{
+        color:#a31f37;
+    }
+
     ul.main-menu {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-    display: block;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: block;
     }
 
     .img-div{
