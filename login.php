@@ -37,7 +37,7 @@
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                                         </div>
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
