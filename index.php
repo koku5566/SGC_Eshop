@@ -98,11 +98,11 @@
                             <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Third slide">
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -525,7 +525,7 @@
         position: absolute;
         z-index: 99;
         width: 220px;
-        background: var(--bs-white);
+        background-color:white;
         padding: 4px 0;
         margin: 0;
         border: 0;
@@ -585,16 +585,6 @@
         -webkit-transform: scaleY(1);
         transform: scaleY(1);
     }
-
-    .browse-menu .main-menu .menu-item .dropdown-menu:hover,
-    .browse-menu .main-menu .menu-item .dropdown-menu:focus{
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-    }
-
 
     .browse-menu .main-menu > li.menu-item-has-children > a {
         padding-right: 30px;
