@@ -65,6 +65,11 @@
         <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
     <div id="loader"></div>
+
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+    <h2>Tada!</h2>
+    <p>Some text in my newly loaded page..</p>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
