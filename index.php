@@ -529,7 +529,7 @@
         z-index: 99;
         width: 220px;
         background-color:white;
-        padding: 4px 0;
+        padding: 0;
         margin: 0;
         border: 0;
         border-top-color: currentcolor;
@@ -595,6 +595,12 @@
 
     .dropdown-item{
         color:#a31f37;
+    }
+
+    .dropdown-item:focus, .dropdown-item:hover {
+        color:#a31f37;
+        text-decoration: none;
+        background-color: #eaecf4;
     }
 
     ul.main-menu {
