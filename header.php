@@ -33,7 +33,7 @@
             if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
                 ?>
                     <script type="text/javascript">
-                    window.location.href = window.location.origin + "/search.php/search=<?php echo($searchTerm)?>";
+                    window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
                     </script>
                 <?php
 

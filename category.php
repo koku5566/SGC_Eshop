@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
+                                    
 
                                 </div>
                             </div>
@@ -130,15 +130,15 @@
                                         </div>
                                         <div class="col-xl-10 col-lg-10">
                                             <div class="row" style="float:right;">
-                                                <div class="col-xl-2 col-lg-2" style="display:contents;">
+                                                <div class="col" style="display:contents;">
                                                     <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
                                                 </div>
-                                                <div class="col-xl-10 col-lg-10">
+                                                <div class="col">
                                                     <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Sort By Latest</option>
-                                                        <option value="1">Sort By Rating</option>
-                                                        <option value="2">Sort By Sold</option>
-                                                        <option value="3">Sort By Latest</option>
+                                                        <option selected>Latest</option>
+                                                        <option value="1">Rating</option>
+                                                        <option value="2">Sold</option>
+                                                        <option value="3">Price</option>
                                                     </select>
                                                 </div>
                                             </div>
