@@ -52,12 +52,19 @@ if(isset($_POST['signup']))
 <div id="title"><h2>Sign Up</h2></div>
 <div id="SignUp">
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+<div class="form-group">
 	<p id="label">Name</p>
 	<input required type="text" name="name" maxlength="50"/>
-	
+</div>
 	<p id="label">Email Address</p>
 	<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
 	
+	<div class="form-group">
+		<label>Password</label>
+		<input required type="password" name="password" class="form-control form-control-user"
+			id="exampleInputPassword" placeholder="Please Enter Password">
+     </div>
+
 	<p id="label">Password</p>
 	<input required type="password" name="password" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long"/>
 	
