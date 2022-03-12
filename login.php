@@ -61,7 +61,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
                                     
-                                    <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" img src="/img/resource/login.png">
+                                    <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
                                         <div class="form-group">
                                             <label>Username/Email</label>
                                             <input required type="email" name="username" class="form-control form-control-user"
@@ -100,7 +100,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-left">
-                                        New to SGC E-Shop?<a class="small" href="register.php">Sign Up</a>
+                                        New to SGC E-Shop?<a class="small" href="register.php"> Sign Up </a>
                                     </div>
                                 </div>
                             </div>
