@@ -3,6 +3,9 @@
 ?>
 
 <?php
+
+    $domain_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
     //Load Search Auto Complete Array
     $sql = "SELECT product_name FROM product";
     $result = mysqli_query($conn, $sql);
@@ -95,7 +98,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                         <div class="sidebar-brand-icon">
                             <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
                         </div>

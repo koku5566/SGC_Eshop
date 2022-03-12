@@ -4,7 +4,7 @@
 
 <?php
 
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+    
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['restaurant']))
@@ -41,7 +41,7 @@
                                                         $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"{$actual_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                                <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
                                                                 <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                                 ".$row['main_category_name']."
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
@@ -53,7 +53,7 @@
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             echo("
                                                                         <li class=\"menu-item\">
-                                                                            <a href=\"{$actual_link}/category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
+                                                                            <a href=\"{$domain_link}/category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
                                                                         </li>
                                                             ");
                                                         }
@@ -68,7 +68,7 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"{$actual_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                        <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
                                                         <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                         ".$row['main_category_name']."
                                                         </a>
@@ -213,7 +213,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
+                                            <a data-sqe="link" href="product.php?id=a">
                                                 <div class="card">
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
