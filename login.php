@@ -1,15 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
 <?php
-	function SanitizeString(string $str):string{
-		if(get_magic_quotes_gpc()){
-			$str = stripslashes($str);
-		}
-		$str = strip_tags($str);
-		$str = htmlentities($str, ENT_QUOTES);
-		
-		return $str;
-	}
-
 	if(!isset($_SESSION)){
 		session_start();
 	}
