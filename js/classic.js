@@ -1,9 +1,9 @@
 
 window.addEventListener('load', function () {
-  
+  document.getElementsByClassName("loader-wrapper")[0].style.animation = "fadeOut 1s";
   setTimeout(() => {
-      document.getElementsByClassName("loader-wrapper")[0].style.animation = "fadeOut 0.4s";
-      //document.getElementsByClassName("loader-wrapper")[0].style.display = "none";
+      
+      document.getElementsByClassName("loader-wrapper")[0].style.display = "none";
   }, 1000);
 })
 
