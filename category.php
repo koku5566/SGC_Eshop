@@ -31,15 +31,15 @@
                                         <div class="col">
                                             <h5>Shipped From</h5>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
-                                                <label class="form-check-label" for="flexCheckDisabled">
-                                                    Disabled checkbox
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    West Malaysia
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
-                                                <label class="form-check-label" for="flexCheckCheckedDisabled">
-                                                    Disabled checked checkbox
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    East Malaysia
                                                 </label>
                                             </div>
                                         </div>
