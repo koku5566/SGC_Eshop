@@ -476,13 +476,6 @@
 ?>
 
 <style>
-
-    a:hover{
-        text-decoration:none;
-        color:#a31f37;
-    }
-
-
     .product-name{
         color:black;
         height:50px;

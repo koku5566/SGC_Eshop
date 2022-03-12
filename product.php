@@ -81,11 +81,11 @@
                                 <div class="col">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
                                         <input min="1" name="quantity[]" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
+                                        <button class="quantity-selector-btn" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
