@@ -23,7 +23,7 @@
                         <div class="col-xl-3 col-lg-3">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Search Filter</h6>
+                                    <h5 class="m-0 font-weight-bold text-primary">Search Filter</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -123,7 +123,9 @@
                         <!--Product List -->
                         <div class="col-xl-9 col-lg-9">
                             <div class="card shadow mb-4">
-                                <!-- Card Body -->
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
