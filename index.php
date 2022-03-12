@@ -522,24 +522,6 @@
         display: block;
     }
 
-    .img-div{
-        max-width:100%;
-        height:auto;
-    }
 
-    .wd-20{
-        flex: 0 0 20%;
-        width:20%;
-        position: relative;
-        width: 100%;
-        padding-right: .75rem;
-        padding-left: .75rem;
-    }
-
-    .image-container{
-        width:100%;
-        height:30vh;
-        background-color:white;
-    }
 
 </style>
