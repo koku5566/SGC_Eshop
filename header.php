@@ -318,16 +318,11 @@
                                 </a>
                             </div>
                         </li>
-
-
-			
-
-		<?php else :?>
-            <a href="Register.php">Sign Up <i class="fas fa-user"></i></a>
-            <div class="topbar-divider d-none d-sm-block"></div>
-			<a href="Login.php">Login <i class="fas fa-user"></i></a>
-		<?php endif?>
-
+                    <?php else :?>
+                        <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <a href="login.php">Login <i class="fas fa-user"></i></a>
+                    <?php endif?>
                     </ul>
 
                 </nav>
