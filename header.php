@@ -3,6 +3,15 @@
 ?>
 
 <?php
+    //Load Search Auto Complete Array
+    $sql = "SELECT product_name FROM product";
+    $result = mysqli_query($conn, $sql);
+
+    $emparray = array();
+    while($row =mysqli_fetch_assoc($result))
+    {
+        $productArray[] = $row;
+    }
 
     function SanitizeString(string $str):string{
 		if(get_magic_quotes_gpc()){
@@ -14,17 +23,26 @@
         return $str;
     }
 
-    if(!isset($_SESSION)){
-        session_start();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['search'])) {
+            $searchTerm = test_input($_POST["search"]);
+            // check if name only contains letters and whitespace
+            if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
+                header("Location: search.php?id=\"$searchTerm\"");
+                exit;
+            }
+        }
+      }
+      
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
-    $sql = "SELECT product_name FROM product";
-    $result = mysqli_query($conn, $sql);
-
-    $emparray = array();
-    while($row =mysqli_fetch_assoc($result))
-    {
-        $productArray[] = $row;
+    if(!isset($_SESSION)){
+        session_start();
     }
 
 ?>
@@ -81,7 +99,7 @@
                     </a>
 
                     <!-- Topbar Search -->
-                    <form
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input id="myInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
