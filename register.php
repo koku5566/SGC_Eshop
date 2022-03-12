@@ -52,31 +52,36 @@ if(isset($_POST['signup']))
 <div id="title"><h2>Sign Up</h2></div>
 <div id="SignUp">
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<div class="form-group">
-	<p id="label">Name</p>
-	<input required type="text" name="name" maxlength="50"/>
-</div>
-	<p id="label">Email Address</p>
-	<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+	<div class="form-group">
+		<label>Name</label>
+		<input required type="text" name="name" maxlength="50"/>
+	</div>
+
+	<div class="form-group">
+		<label>Email Address</label>
+		<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+	</div>
 	
 	<div class="form-group">
 		<label>Password</label>
-		<input required type="password" name="password" class="form-control form-control-user"
-			id="exampleInputPassword" placeholder="Please Enter Password">
+		<input required type="password" name="password" class="form-control form-control-user" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long">
      </div>
 
-	<p id="label">Password</p>
-	<input required type="password" name="password" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long"/>
-	
-	<p id="label">Confirm Password</p>
-	<input required type="password" name="password1" maxlength="50"/>
-	
-	<p id="label">Contact</p>
-	<input required type="tel" name="contact" pattern="[0-9]{3}-[0-9]{7-8}" maxlength="12" placeholder="000-0000000"/>
-	
-	<p id="label">Address</p>
-	<textarea required type="text" name="address" maxlength="999"></textarea><br><br>
-	
+	<div class="form-group">
+		<label>Confirm Password</label>
+		<input required type="password" name="password1" maxlength="50"/>
+	</div>
+
+	<div class="form-group">
+		<label>Contact</label>
+		<input required type="tel" name="contact" pattern="[0-9]{3}-[0-9]{7-8}" maxlength="12" placeholder="000-0000000"/>
+	</div>
+
+	<div class="form-group">
+		<p id="label">Address</p>
+		<textarea required type="text" name="address" maxlength="999"></textarea><br><br>
+	</div>
+
 	<button type="reset" name="reset">Reset</button>
 	<button type="submit" name="signup">Sign Up</button>
 	<p id="label">Already a User? <a href="Login.php">Sign In</a></p>
