@@ -86,4 +86,4 @@ if(isset($_SESSION['AddUser']))
 ?>
 </div>
 
-<?php include "Footer.php"; ?>
+<?php require __DIR__ . '/footer.php' ?>
