@@ -51,6 +51,22 @@
     if(!isset($_SESSION)){
         session_start();
     }
+    if(!isset($_SESSION['isLogin']))
+    {
+        $_SESSION['isLogin'] = false;
+    }
+    if(!isset($_SESSION['name']))
+    {
+        $_SESSION['name'] = "";
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+    if(!isset($_SESSION['admin']))
+    {
+        $_SESSION['admin'] = 0;
+    }
 
 ?>
 
@@ -145,6 +161,13 @@
                                 </form>
                             </div>
                         </li>
+
+                        <!--Login-->
+                        <?php if ($_SESSION['isLogin'] == true && $_SESSION['admin'] == 1) :?>
+                        <a href="ADMIN.php" class="ADMIN" >ADMIN PANEL <i class="fas fa-cogs"></i></a>
+                        <?php endif?>
+
+                        <?php if ($_SESSION['isLogin'] == true) :?>
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -270,8 +293,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -280,6 +302,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                <?php echo("<a class='dropdown-item' href='Account.php'>".$_SESSION['name']." <i class='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i></a>");?>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
@@ -295,6 +318,15 @@
                                 </a>
                             </div>
                         </li>
+
+
+			
+
+		<?php else :?>
+            <a href="Register.php">Sign Up <i class="fas fa-user"></i></a>
+            <div class="topbar-divider d-none d-sm-block"></div>
+			<a href="Login.php">Login <i class="fas fa-user"></i></a>
+		<?php endif?>
 
                     </ul>
 

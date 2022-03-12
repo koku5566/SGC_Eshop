@@ -15,7 +15,7 @@
 	}
 
 	if (isset($_SESSION['isLogin']) && $_SESSION['isLogin']){
-		header('location: Main.php');
+		?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
 		exit;
 	}
 
@@ -23,14 +23,14 @@
 		$Login = false;
 		if(isset($_POST['username'],$_POST['password'])&& !empty($_POST['username'])  && !empty($_POST['password']))
 		{
-			$uname = $_POST['username'];
-			$upass = md5($_POST['password']); 
+			$username = $_POST['username'];
+			$password = md5($_POST['password']); 
 			
 			//Sanitize
-			$uname = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
+			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE email='$uname' AND password='$upass'";
+			$sql = "SELECT * FROM user WHERE username OR email='$username' AND password='$password'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
@@ -38,10 +38,10 @@
 					echo "<script>alert('Login Successfully')</script>";
 					$Login = true;
 					$_SESSION['isLogin'] = true;
-					$_SESSION['id'] = $row["userID"];
+					$_SESSION['id'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
-					$_SESSION['admin'] = $row["ADMIN"];
-					header("location: Main.php");
+					$_SESSION['admin'] = $row["role"];
+					?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
 				}
 			} else {
 				$Login = false;
