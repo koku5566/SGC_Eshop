@@ -46,7 +46,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col">
-                                            <h5>Shipped From</h5>
+                                            <h6 class="m-0 font-weight-bold text-primary">Shipped From</h6>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" id="term1">
                                                 <label class="form-check-label" for="term1">
@@ -124,7 +124,19 @@
                         <div class="col-xl-9 col-lg-9">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2">
+                                            <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-10">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Sort By Latest</option>
+                                                <option value="1">Sort By Rating</option>
+                                                <option value="2">Sort By Sold</option>
+                                                <option value="3">Sort By Latest</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
