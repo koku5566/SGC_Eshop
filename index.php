@@ -41,7 +41,7 @@
                                                         $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\""$actual_link"category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                                <a href=\"$actual_link category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
                                                                 <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                                 ".$row['main_category_name']."
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
