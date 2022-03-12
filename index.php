@@ -41,7 +41,7 @@
                                                         $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"{$actual_link}category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                                <a href=\"{$actual_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
                                                                 <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                                 ".$row['main_category_name']."
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
@@ -53,7 +53,7 @@
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             echo("
                                                                         <li class=\"menu-item\">
-                                                                            <a href=\"{$actual_link}category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
+                                                                            <a href=\"{$actual_link}/category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
                                                                         </li>
                                                             ");
                                                         }
@@ -68,7 +68,7 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"{$actual_link}category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                        <a href=\"{$actual_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
                                                         <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
                                                         ".$row['main_category_name']."
                                                         </a>
