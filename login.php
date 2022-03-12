@@ -1,15 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
 <?php
-	function SanitizeString(string $str):string{
-		if(get_magic_quotes_gpc()){
-			$str = stripslashes($str);
-		}
-		$str = strip_tags($str);
-		$str = htmlentities($str, ENT_QUOTES);
-		
-		return $str;
-	}
-
 	if(!isset($_SESSION)){
 		session_start();
 	}
@@ -60,23 +50,25 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-6 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-left">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user">
+                                    
+                                    <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Username/Email</label>
                                             <input required type="email" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Please Enter Your Email Address or Username">
                                         </div>
+
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input required type="password" name="password" class="form-control form-control-user"
@@ -89,6 +81,7 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
+
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">Login</a>
 
                                         <div class="text-left">
