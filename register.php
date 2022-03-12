@@ -1,11 +1,11 @@
 <?php
 	require __DIR__ . '/header.php'
 	
-	if($_SESSION['isLogin'] == true)
-	{
-		echo "<script>alert('Logout to continue');
-			window.location.href='Main.php';</script>";
-    }
+	// if($_SESSION['isLogin'] == true)
+	// {
+	// 	echo "<script>alert('Logout to continue');
+	// 		window.location.href='Main.php';</script>";
+    // }
 ?>
 <?php
 if(isset($_POST['signup']))
