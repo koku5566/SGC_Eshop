@@ -25,7 +25,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo($_POST['search']);
-        if (isset($_POST['search']) && $_POST['search'] != "") {
+        if (isset($_POST['search'])) {
             $searchTerm = test_input($_POST["search"]);
             // check if name only contains letters and whitespace
             if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
