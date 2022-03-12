@@ -17,12 +17,134 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-                    <!-- List All Product -->
+                    <!-- Filter and Product List -->
                     <div class="row">
-                        <!--Product List -->
-                        <div class="col-xl-12 col-lg-12">
+                    
+                        <div class="col-xl-3 col-lg-3">
                             <div class="card shadow mb-4">
-                                <!-- Card Body -->
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Search Filter</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="m-0 font-weight-bold text-primary">Rating</h6>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                       5 Star
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                       >= 4 Star
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="m-0 font-weight-bold text-primary">Shipped From</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    West Malaysia
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    East Malaysia
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    Standard Delivery
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Self Collection
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="m-0 font-weight-bold text-primary">Condition</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    New
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Used
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="m-0 font-weight-bold text-primary">Payment Option</h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    Debit or Credit Card
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Online Transfer
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Product List -->
+                        <div class="col-xl-9 col-lg-9">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2">
+                                            <h5 class="m-0 font-weight-bold text-primary">Products</h5>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-10">
+                                            <div class="row" style="float:right;">
+                                                <div class="col" style="display:contents;">
+                                                    <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                                </div>
+                                                <div class="col">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Latest</option>
+                                                        <option value="1">Rating</option>
+                                                        <option value="2">Sold</option>
+                                                        <option value="3">Price</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
@@ -302,121 +424,16 @@
         overflow:hidden;
     }
 
-    /* Category Menu */
-    .browse-menus {
-        position:relative;
-        z-index:1;
+    input[type=checkbox],input[type=radio]
+    {
+        /* Double-sized Checkboxes */
+        -ms-transform: scale(1.7); /* IE */
+        -moz-transform: scale(1.7); /* FF */
+        -webkit-transform: scale(1.7); /* Safari and Chrome */
+        -o-transform: scale(1.7); /* Opera */
+        padding: 10px;
     }
 
-    .browse-menus .browse-menu{
-        width: 100%;
-        height:auto;
-        z-index:0;
-        background-color:#ffffff;
-    }
-
-    .browse-menu ul.main-menu{
-        border: 1px solid var(--bs-gray-light);
-    }
-
-    .browse-menu .main-menu li{
-        border-bottom: 1px solid #e1e1e1;
-        position: relative;
-        list-style: none;
-    }
-
-    .browse-menu .main-menu li a{
-        padding: 0 18px;
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        line-height:50px;
-    }
-
-    .browse-menu .dropdown-menu {
-        top: 0;
-        left: 100%;
-        border-bottom-width: 4px;
-        border-style: solid;
-        border-color: var(--bs-primary);
-        position: absolute;
-        z-index: 99;
-        width: 220px;
-        background-color:white;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        border-top-color: currentcolor;
-        border-top-style: none;
-        border-right-color: currentcolor;
-        border-right-style: none;
-        border-bottom-color: currentcolor;
-        border-bottom-style: none;
-        border-bottom-width: 0px;
-        border-left-color: currentcolor;
-        border-left-style: none;
-        border-radius: 0;
-        -moz-box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
-        box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
-        font-size: 1rem;
-        text-align: left;
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transform: scaleY(0);
-        transform: scaleY(0);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transition: all 0.3s ease-in-out 0s;
-        transition: all 0.3s ease-in-out 0s;
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children > a > i:before{
-        position: absolute;
-        top: 0;
-        right: 8px;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        color: inherit;
-        font-size: 16px;
-        -webkit-transition: var(--bs-transition);
-        transition: var(--bs-transition);
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children >  a > i:before{
-        right: 23px;
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children:hover >  a > i:before,
-    .browse-menu .main-menu > li.menu-item-has-children.focus >  a > i:before{
-        right: 20px;
-        color: var(--bs-primary);
-    }
-
-    .browse-menu .main-menu .menu-item:hover > .dropdown-menu,
-    .browse-menu .main-menu .menu-item.focus > .dropdown-menu{
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children > a {
-        padding-right: 30px;
-    }
-
-    .dropdown-item{
-        color:#a31f37;
-    }
-
-    .dropdown-item:focus, .dropdown-item:hover {
-        color:#a31f37;
-        text-decoration: none;
-        background-color: #eaecf4;
-    }
 
     ul.main-menu {
         list-style: none;
@@ -443,6 +460,14 @@
         width:100%;
         height:30vh;
         background-color:white;
+    }
+
+    .form-check{
+        padding-top:.5rem;
+    }
+
+    .form-check-label{
+        padding: 0 10px;
     }
 
 </style>
