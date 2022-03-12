@@ -17,10 +17,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-                    <!-- List All Product -->
+                    <!-- Filter and Product List -->
                     <div class="row">
+                    
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
                         <!--Product List -->
-                        <div class="col-xl-12 col-lg-12">
+                        <div class="col-xl-8 col-lg-8">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
