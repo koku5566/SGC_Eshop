@@ -1,9 +1,9 @@
 
 window.addEventListener('load', function () {
-  document.getElementsByClassName("loader-wrapper")[0].style.animation = "fadeOut 1s";
+  document.getElementsByClassName("loader-wrapper")[0].style.animation = "fadeIn 0.4s";
   setTimeout(() => {
       document.getElementsByClassName("loader-wrapper")[0].style.display = "none";
-  }, 1000);
+  }, 3000);
 })
 
 function autocomplete(inp, arr) {
