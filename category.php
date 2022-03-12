@@ -20,16 +20,42 @@
                     <!-- Filter and Product List -->
                     <div class="row">
                     
-                        <div class="col-xl-2 col-lg-2">
+                        <div class="col-xl-3 col-lg-3">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    
+                                    <!-- Card Body -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>Shipped From</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                                                <label class="form-check-label" for="flexCheckDisabled">
+                                                    Disabled checkbox
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                                                <label class="form-check-label" for="flexCheckCheckedDisabled">
+                                                    Disabled checked checkbox
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!--Product List -->
-                        <div class="col-xl-10 col-lg-10">
+                        <div class="col-xl-9 col-lg-9">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
