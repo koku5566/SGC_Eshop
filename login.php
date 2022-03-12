@@ -15,7 +15,7 @@
 	}
 
 	if (isset($_SESSION['isLogin']) && $_SESSION['isLogin']){
-		header('location: Main.php');
+		?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
 		exit;
 	}
 
@@ -41,7 +41,7 @@
 					$_SESSION['id'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['admin'] = $row["role"];
-					header("location: Main.php");
+					?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
 				}
 			} else {
 				$Login = false;
