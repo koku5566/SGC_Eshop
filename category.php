@@ -26,7 +26,24 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Search Filter</h6>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Shipped From -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>Rating</h5>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                       5 Star
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                       >= 4 Star
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col">
                                             <h5>Shipped From</h5>
@@ -44,15 +61,62 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
-                                        
+                                        <div class="col">
+                                            <h5>Shipping Option</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    Standard Delivery
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Self Collection
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
-                                        
+                                        <div class="col">
+                                            <h5>Condition</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    New
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Used
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
-                                        
+                                        <div class="col">
+                                            <h5>Payment Option</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                <label class="form-check-label" for="term1">
+                                                    Debit or Credit Card
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                <label class="form-check-label" for="term2">
+                                                    Online Transfer
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <hr>
+
                                 </div>
                             </div>
                         </div>
