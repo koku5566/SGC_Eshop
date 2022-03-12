@@ -126,15 +126,22 @@
                                 <div class="card-header py-3">
                                     <div class="row">
                                         <div class="col-xl-2 col-lg-2">
-                                            <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                            <h5 class="m-0 font-weight-bold text-primary">Products</h5>
                                         </div>
                                         <div class="col-xl-10 col-lg-10">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected>Sort By Latest</option>
-                                                <option value="1">Sort By Rating</option>
-                                                <option value="2">Sort By Sold</option>
-                                                <option value="3">Sort By Latest</option>
-                                            </select>
+                                            <div class="row">
+                                                <div class="col-xl-2 col-lg-2">
+                                                    <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
+                                                </div>
+                                                <div class="col-xl-10 col-lg-10">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Sort By Latest</option>
+                                                        <option value="1">Sort By Rating</option>
+                                                        <option value="2">Sort By Sold</option>
+                                                        <option value="3">Sort By Latest</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
