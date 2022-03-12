@@ -8,6 +8,6 @@
 	setcookie(session_name(), '', time() - 2592000);
 	session_destroy();
 	
-	require __DIR__ . '/login.php';
+	require_once __DIR__ . '/login.php';
 	exit;
 ?>
