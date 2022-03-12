@@ -20,7 +20,7 @@
                     <!-- Filter and Product List -->
                     <div class="row">
                     
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col-xl-2 col-lg-2">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <!--Product List -->
-                        <div class="col-xl-8 col-lg-8">
+                        <div class="col-xl-10 col-lg-10">
                             <div class="card shadow mb-4">
                                 <!-- Card Body -->
                                 <div class="card-body">
