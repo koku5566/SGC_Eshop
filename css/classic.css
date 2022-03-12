@@ -1,3 +1,9 @@
+
+a:hover{
+  text-decoration:none;
+  color:#a31f37;
+}
+
 .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
