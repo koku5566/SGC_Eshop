@@ -68,6 +68,11 @@
         $_SESSION['admin'] = 0;
     }
 
+    if($_SESSION['isLogin'] == true)
+	{
+	echo "<script>alert('Logout to continue');
+		window.location.href='Main.php';</script>";
+	}
 ?>
 
 
