@@ -129,8 +129,8 @@
                                             <h5 class="m-0 font-weight-bold text-primary">Products</h5>
                                         </div>
                                         <div class="col-xl-10 col-lg-10">
-                                            <div class="row">
-                                                <div class="col-xl-2 col-lg-2">
+                                            <div class="row" style="float:right;">
+                                                <div class="col-xl-2 col-lg-2" style="display:contents;">
                                                     <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
                                                 </div>
                                                 <div class="col-xl-10 col-lg-10">
