@@ -408,10 +408,10 @@
     input[type=checkbox],input[type=radio]
     {
         /* Double-sized Checkboxes */
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
+        -ms-transform: scale(1.7); /* IE */
+        -moz-transform: scale(1.7); /* FF */
+        -webkit-transform: scale(1.7); /* Safari and Chrome */
+        -o-transform: scale(1.7); /* Opera */
         padding: 10px;
     }
 
@@ -441,6 +441,14 @@
         width:100%;
         height:30vh;
         background-color:white;
+    }
+
+    .form-check{
+        padding-top:.5rem;
+    }
+
+    .form-check-label{
+        padding: 0 10px;
     }
 
 </style>
