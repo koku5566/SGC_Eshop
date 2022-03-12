@@ -73,7 +73,7 @@
 
 </head>
 
-<body onload="Loader()" id="page-top">
+<body id="page-top">
 
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
@@ -105,7 +105,7 @@
                             <input id="myInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append" id="searchButton">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
