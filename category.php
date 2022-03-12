@@ -22,9 +22,11 @@
                     
                         <div class="col-xl-3 col-lg-3">
                             <div class="card shadow mb-4">
-                                <!-- Card Body -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Search Filter</h6>
+                                </div>
                                 <div class="card-body">
-                                    <!-- Card Body -->
+                                    <!-- Shipped From -->
                                     <div class="row">
                                         <div class="col">
                                             <h5>Shipped From</h5>
