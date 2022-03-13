@@ -13,6 +13,7 @@ if(isset($_POST['signup']))
 			$email = $_POST['email'];
 			$password = md5($_POST['password']);
 			$password1 = md5($_POST['password1']);
+			$date = date("d/m/Y");
 
 			if($password==$password1){
 				$sql_u = "SELECT * FROM user WHERE username OR email= '$username' OR '$email'";
@@ -25,7 +26,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role,)
-					VALUES ('$username','$email','$password','$username','date("d/m/Y")','USER')";
+					VALUES ('$username','$email','$password','$username','$date')','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
