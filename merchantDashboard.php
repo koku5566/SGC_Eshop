@@ -332,3 +332,7 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
