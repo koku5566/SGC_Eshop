@@ -89,24 +89,24 @@
 
                         <!-- Social buttons -->
                         <div class="text-center text-md-right">
-                        <ul class="list-unstyled list-inline">
+                        <ul class="list-unstyled list-inline" style="text-align:center">
                             <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
+                            <a class="btn-floating btn-md rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             </li>
                             <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a class="btn-floating btn-md rgba-white-slight mx-1">
                                 <i class="fab fa-twitter"></i>
                             </a>
                             </li>
                             <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a class="btn-floating btn-md rgba-white-slight mx-1">
                                 <i class="fab fa-google-plus-g"></i>
                             </a>
                             </li>
                             <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a class="btn-floating btn-md rgba-white-slight mx-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                             </li>
