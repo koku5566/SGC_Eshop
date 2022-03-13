@@ -160,7 +160,7 @@
 
                         <!--Login-->
                         <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                        <a href="ADMIN.php" class="ADMIN" >ADMIN PANEL <i class="fas fa-cogs"></i></a>
+                        <a class="nav-link" href="ADMIN.php"><i class="fas fa-cogs"></i>ADMIN PANEL</a>
                         <?php endif?>
 
                         <?php if ($_SESSION['login'] == true) :?>
@@ -314,14 +314,11 @@
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown no-arrow mx-1">
                         <?php else :?>
-                            <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                            <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
                             <div class="topbar-divider d-none d-sm-block"></div>
-                            <a href="login.php">Login <i class="fas fa-user"></i></a>
+                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
                         <?php endif?>
                         </li>
-                    </ul>
-
                 </nav>
                 <!-- End of Topbar -->
