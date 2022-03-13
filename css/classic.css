@@ -26,16 +26,17 @@ a:hover{
   display: inline;
 }
 
-#rating_bar span{
+#rating_bar a span{
   color: #a31f34;
   height: 100px;
   width: 100px;
   cursor: pointer;
-  font-size: 3em;
+  font-size: 1.2rem;
+  font-weight: initial;
 }
 
-#rating_bar>span:hover:before,
-#rating_bar span:hover~span:before {
+#rating_bar a >span:hover:before,
+#rating_bar a span:hover~span:before {
   font-weight: var(--fa-style,900);
 }
 
