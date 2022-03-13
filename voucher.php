@@ -9,34 +9,24 @@
 
 
    <div class="container">
-      <div class="row">
-         <div class="col-sm-4">
-            <div class="card card-sm" style="max-width: 350px;">
-               <div class="row g-0">
-                 <div class="col-md-3">
-                   <img src="../img/segilogo.png" class="img-fluid rounded-start p-1 voucherlogo">
-                 </div>
-                 <div class="col-md-7">
-                   <div class="card-body m-1">
-                     <h6 class="card-title"><strong>SEGi College Kuala Lumpur</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM10 off</h5>
-                      <small>Validity : 30 SEP ~ 05 OCT</small><br>
-                      <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                         <small>T&C applied.</small>
-                      </a>
-                   </div>
-                 </div>
-                 <div class="col-md-2 buttonsec">
-                  <a><button class="btn btn-outline-light bg-transparent btn-lg">CLAIM</button></a>
-                 </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-sm-4">
-            
-         </div>
-         <div class="col-sm-4">
-            
+      <div class="card card-sm" style="max-width: 350px;">
+         <div class="row g-0">
+           <div class="col-md-3">
+             <img src="../img/segilogo.png" class="img-fluid rounded-start p-1 voucherlogo">
+           </div>
+           <div class="col-md-7">
+             <div class="card-body m-1">
+               <h6 class="card-title"><strong>SEGi College Kuala Lumpur</strong></h6>
+               <h5 class="card-subtitle text-muted">RM10 off</h5>
+                <small>Validity : 30 SEP ~ 05 OCT</small><br>
+                <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   <small>T&C applied.</small>
+                </a>
+             </div>
+           </div>
+           <div class="col-md-2 buttonsec">
+            <a><button class="btn btn-outline-light bg-transparent btn-lg">CLAIM</button></a>
+           </div>
          </div>
       </div>
     </div>
