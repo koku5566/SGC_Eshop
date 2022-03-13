@@ -432,7 +432,5 @@
 
                 </nav>
                 <!-- End of Topbar -->
-            </div>
-            <!-- End of Main Content -->
 
            
