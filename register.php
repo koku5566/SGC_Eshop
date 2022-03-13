@@ -1,8 +1,4 @@
-<?php
-	require __DIR__ . '/header.php'
-	
-
-?>
+<?php require __DIR__ . '/header.php' ?>
 <?php
 if(isset($_POST['signup']))
 	{
@@ -113,5 +109,16 @@ if(isset($_POST['signup']))
         </div>
     </div>
 </div>
+
+<?php
+if(isset($_SESSION['AddUser']))
+	{
+		if($_SESSION['AddUser'] == true)
+		{
+			echo "<script>alert('Registered Successfully');</script>";
+		}
+		$_SESSION['AddUser'] = NULL;
+	}
+?>
 
 <?php require __DIR__ . '/footer.php' ?>
