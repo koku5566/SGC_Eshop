@@ -146,8 +146,10 @@
                             </div>
                         </div>
                         
-                        <!-- Slideshow -->
-                        <div class="col-xl-10">
+                    
+                </div>
+                    <!-- Slideshow -->
+                    <div class="col-xl-10">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -176,7 +178,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <!-- /.container-fluid -->
 
 <?php
