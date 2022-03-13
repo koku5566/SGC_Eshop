@@ -1,9 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
 <?php
-	if(!isset($_SESSION)){
-		session_start();
-	}
-
 	if (isset($_SESSION['login']) && $_SESSION['login']){
 		?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
         header('location: Main.php');
