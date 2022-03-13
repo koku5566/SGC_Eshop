@@ -5,10 +5,13 @@
 <br>
 <div class="container">
    <div class="row">
-   <?php
-    require __DIR__ . '/userprofilenav.php'
-   ?>
+         <?php
+         require __DIR__ . '/userprofilenav.php'
+         ?>
       <div class="col-xl-9">
+         <?php
+         require __DIR__ . '/userprofilenav.php'
+         ?>
       </div>
    </div>
 </div>
