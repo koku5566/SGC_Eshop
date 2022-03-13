@@ -51,9 +51,9 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION['isLogin']))
+    if(!isset($_SESSION['login']))
     {
-        $_SESSION['isLogin'] = false;
+        $_SESSION['login'] = false;
     }
     if(!isset($_SESSION['name']))
     {
@@ -63,12 +63,12 @@
     {
         $_SESSION['id'] = "";
     }
-    if(!isset($_SESSION['admin']))
+    if(!isset($_SESSION['role']))
     {
-        $_SESSION['admin'] = 0;
+        $_SESSION['role'] = "";
     }
 
-    if($_SESSION['isLogin'] == true)
+    if($_SESSION['login'] == true)
 	{
 	echo "<script>alert('Logout to continue');
 		window.location.href='Main.php';</script>";
@@ -168,11 +168,11 @@
                         </li>
 
                         <!--Login-->
-                        <?php if ($_SESSION['isLogin'] == true && $_SESSION['admin'] == 1) :?>
+                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
                         <a href="ADMIN.php" class="ADMIN" >ADMIN PANEL <i class="fas fa-cogs"></i></a>
                         <?php endif?>
 
-                        <?php if ($_SESSION['isLogin'] == true) :?>
+                        <?php if ($_SESSION['login'] == true) :?>
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
