@@ -1,6 +1,6 @@
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
-<div class="card" style="width: 10rem; hight: 10rem;">
+<div class="card" style="width: 20rem; hight: 10rem;">
    <div class="row">
      <div class="col-md-3">
        <img src="../img/segilogo.png" class="img-fluid rounded-start p-1 voucherlogo">
@@ -14,9 +14,6 @@
              <small>T&C applied.</small>
           </a>
        </div>
-     </div>
-     <div class="col-md-2 buttonsec">
-      <a><button class="btn btn-outline-light bg-transparent btn-lg">CLAIM</button></a>
      </div>
    </div>
 </div>
