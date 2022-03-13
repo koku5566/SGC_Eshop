@@ -29,8 +29,8 @@ a:hover{
 .rating_bar > span:before {
   color: #a31f34;
   cursor:pointer;
-  font-size:3em;
-  font-weight: unset;
+  font-size:1.2em;
+  font-weight: normal;
 }
 .rating_bar:hover > span:before {
   font-weight: var(--fa-style,900);
@@ -38,7 +38,6 @@ a:hover{
 
 .rating_bar > span:hover ~ span:before {
   color: #a31f34;
-  font-weight: var(--fa-style,900);
 }
 
 .img-div{
