@@ -29,7 +29,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h6 class="m-0 font-weight-bold text-primary">Rating</h6>
-                                            <div class="form-check rating-bar">
+                                            <div class="form-check rating_bar">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
