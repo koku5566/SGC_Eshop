@@ -10,40 +10,7 @@
       ?>
       <br>
       <div class="col-xl-9">
-         <div class="container d-flex justify-content-center" style="background-color: #ffffff">
-            <div class="row row-cols-3 m-3">
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-               <div class="col-md-6 mt-2 mb-2">
-                  <?php
-                  require __DIR__ . '/voucher.php'
-                  ?>
-               </div>
-            </div>
-         </div>
+         
          <br>
          <div class="container">
             <nav aria-label="Page navigation example">
