@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">Login</a>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">Login</button>
 
                                         <div class="text-left">
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
@@ -99,6 +99,7 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
                                         </a>
                                     </form>
+
                                     <hr>
                                     <div class="text-left">
                                         New to SGC E-Shop?<a class="small" href="register.php"> Sign Up </a>
