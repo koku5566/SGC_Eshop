@@ -10,8 +10,8 @@
                 <div class="row text-center text-md-left mt-3 pb-3">
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
+                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Our Vibrant Campuses</span></p>
                     <p>
                         <a href="https://colleges.segi.edu.my/subangjaya/" target="_blank" rel="noopener">SEGi College Subang Jaya</a><br>
                         <a href="https://colleges.segi.edu.my/kualalumpur/" target="_blank" rel="noopener">SEGi College Kuala Lumpur</a><br>
@@ -26,8 +26,8 @@
                 <hr class="w-100 clearfix d-md-none">
 
                 <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
+                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Explore</span></p>
                     <p>
                         <a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
                         <a href="https://colleges.segi.edu.my/penang/ir-4-0/">IR 4.0</a><br>
@@ -41,7 +41,7 @@
                 <hr class="w-100 clearfix d-md-none">
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
                     <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Contacts and Directories</span></p>
                     <p>
                         <i class="fa fa-phone" style="color: white;"></i> +604 263 3888<br>
