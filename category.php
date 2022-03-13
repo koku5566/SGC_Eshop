@@ -17,12 +17,12 @@
                                     <div class="row">
                                         <div class="col">
                                             <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
-                                            <div class="form-check rating_bar">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                            <div class="form-check" id="rating_bar">
+                                                <a href="?rating=5"><span class="fa fa-star"></span></a>
+                                                <a href="?rating=4"><span class="fa fa-star"></span></a>
+                                                <a href="?rating=3"><span class="fa fa-star"></span></a>
+                                                <a href="?rating=2"><span class="fa fa-star"></span></a>
+                                                <a href="?rating=1"><span class="fa fa-star"></span></a>
                                             </div>
                                         </div>
                                     </div>
