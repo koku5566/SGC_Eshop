@@ -17,7 +17,7 @@
 			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE username AND email = '$username' AND password = '$password'";
+			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
