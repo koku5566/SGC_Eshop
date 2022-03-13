@@ -1,11 +1,11 @@
 </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="page-footer font-small mdb-color pt-4">
+            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818">
 
             <!-- Footer Links -->
-            <div class="container text-center text-md-left">
-
+            <div class="container text-center text-md-left" style="width:100%;">
+ 
                 <!-- Footer links -->
                 <div class="row text-center text-md-left mt-3 pb-3">
 
@@ -73,10 +73,8 @@
                 <div class="col-md-7 col-lg-8">
 
                     <!--Copyright-->
-                    <p class="text-center text-md-left">© 2020 Copyright:
-                    <a href="https://mdbootstrap.com/">
-                        <strong> MDBootstrap.com</strong>
-                    </a>
+                    <p class="text-center text-md-left">
+                    © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice
                     </p>
 
                 </div>
