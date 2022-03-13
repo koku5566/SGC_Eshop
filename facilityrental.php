@@ -127,6 +127,7 @@
     }
     .card-body-text{
        background-color: black;
+       opacity: 0.9;
     }
     .card-body{
        background-color: #A31F37;
