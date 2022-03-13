@@ -24,7 +24,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name">SUBANG JAYA</p>
+                                                            <p class="card-text campus-name w3-text-white">SUBANG JAYA</p>
                                                         </div>            
                                                     </div>
                                                 </div>   
@@ -38,7 +38,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name">PENANG</p>
+                                                            <p class="card-text campus-name w3-text-white">PENANG</p>
                                                         </div>                                                       
                                                     </div>
                                                 </div>   
@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name">SARAWAK</p>
+                                                            <p class="card-text campus-name w3-text-white">SARAWAK</p>
                                                         </div>                                                                                                              
                                                     </div>
                                                 </div>   
@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
+                                                            <p class="card-text campus-name w3-text-white">KUALA LUMPUR</p>
                                                         </div>                                                                                                          
                                                     </div>
                                                 </div>   
@@ -118,7 +118,6 @@
 
 <style>
     .campus-name{
-        color:black;
         height:50px;
         overflow:hidden;
     }
@@ -247,7 +246,6 @@
     }
     .card-body{
        background-color: #A31F37;
-       font-color: white;
     }
 
 
