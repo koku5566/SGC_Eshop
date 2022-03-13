@@ -68,10 +68,19 @@
         $_SESSION['role'] = "";
     }
 
+    //Login/Register
     if($_SESSION['login'] == true)
 	{
 	echo "<script>alert('Logout to continue');
 		window.location.href='Main.php';</script>";
+	}
+    if(isset($_SESSION['AddUser']))
+	{
+		if($_SESSION['AddUser'] == true)
+		{
+			echo "<script>alert('Registered Successfully');</script>";
+		}
+		$_SESSION['AddUser'] = NULL;
 	}
 ?>
 
