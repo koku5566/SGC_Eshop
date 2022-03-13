@@ -98,7 +98,7 @@
 
                                     <hr>
                                     <div class="text-left">
-                                        New to SGC E-Shop?<a class="small" href="register.php"> Sign Up </a>
+                                        New to SGC E-Shop?<a href="register.php"> Sign Up </a>
                                     </div>
                                 </div>
                             </div>
