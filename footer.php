@@ -73,7 +73,7 @@
                 <div class="row d-flex align-items-center">
 
                     <!-- Grid column -->
-                    <div class="col-md-8 col-lg-8">
+                    <div class="col-md-10 col-lg-10">
 
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
@@ -85,11 +85,11 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-4 ml-lg-0">
+                    <div class="col-md-2 col-lg-2 ml-lg-0">
 
                         <!-- Social buttons -->
                         <div class="text-center text-md-right">
-                        <ul class="list-unstyled list-inline" style="text-align:center">
+                        <ul class="list-unstyled list-inline" style="text-align:left !important;">
                             <li class="list-inline-item">
                             <a class="btn-floating btn-md rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
                                 <i class="fab fa-facebook-f"></i>
