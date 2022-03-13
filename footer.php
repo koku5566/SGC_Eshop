@@ -62,9 +62,6 @@
 
 
                 </div>
-                <!-- Footer links -->
-
-                <hr>
             </div>
             <!-- Footer Links -->
 
@@ -72,49 +69,56 @@
             <!-- Footer -->
             <!-- Footer -->
             <footer class="sticky-footer bg-dark">
-                
-                <!-- Grid column -->
-                <div class="col-md-8 col-lg-8">
+                <!-- Grid row -->
+                <div class="row d-flex align-items-center">
 
-                    <!--Copyright-->
-                    <p class="text-center text-md-left" style="font-size:10pt">
-                    © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice
-                    </p>
+                    <!-- Grid column -->
+                    <div class="col-md-8 col-lg-8">
 
-                </div>
-                <!-- Grid column -->
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>&copy; © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
+                            </div>
+                        </div>
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-4 ml-lg-0">
-
-                    <!-- Social buttons -->
-                    <div class="text-center text-md-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                        <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                            <i class="fab fa-google-plus-g"></i>
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        </li>
-                    </ul>
                     </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-4 ml-lg-0">
+
+                        <!-- Social buttons -->
+                        <div class="text-center text-md-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            </li>
+                            <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            </li>
+                            <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                            </li>
+                            <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            </li>
+                        </ul>
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
 
                 </div>
-                <!-- Grid column -->
+                <!-- Grid row -->
+                
             </footer>
             <!-- End of Footer -->
 
