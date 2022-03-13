@@ -3,8 +3,10 @@
 ?>
 
 <?php
-    require __DIR__ . '/userprofile.php'
+    require __DIR__ . '/userprofilenav.php'
 ?>
+
+
 
 <?php
     require __DIR__ . '/footer.php'
