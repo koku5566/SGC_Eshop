@@ -159,12 +159,7 @@
                         </li>
 
                         <!--Login-->
-                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                        <a class="nav-link" href="ADMIN.php"><i class="fas fa-cogs"></i>ADMIN PANEL</a>
-                        <?php endif?>
-
                         <?php if ($_SESSION['login'] == true) :?>
-
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -298,6 +293,14 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     <?php echo($_SESSION['name']);?>
                                 </a>
+
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+                                <a class="dropdown-item" href="admin.php">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    ADMIN PANEL
+                                </a>
+                                <?php endif?>
+
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
