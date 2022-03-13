@@ -2,18 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['restaurant']))
-        {
-            $_SESSION['Restaurant_ID'] = $_POST['restaurant'];
-            echo("<script>window.location.href = \"main.php\";</script>");
-        }
-    }
-?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
@@ -28,7 +16,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h6 class="m-0 font-weight-bold text-primary">Rating</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
                                             <div class="form-check rating_bar">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
