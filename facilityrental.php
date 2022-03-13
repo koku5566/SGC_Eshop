@@ -118,6 +118,7 @@
 
 <style>
     .campus-name{
+        color:white;
         height:50px;
         overflow:hidden;
     }
