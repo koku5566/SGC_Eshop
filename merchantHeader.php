@@ -134,186 +134,125 @@
                 Interface
             </div>
 
-            <!-- Nav Item - Product Collapse Menu -->
+            <!-- Nav Item - Shipment Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Product</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipment"
+                    aria-expanded="true" aria-controls="collapseShipment">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Shipment</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Add Product</a>
-                        <a class="collapse-item" href="cards.html">Manage Product</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - User Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>User</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Payment Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Payment</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Promotion Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Promotion</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Shipping Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Shipping</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Review Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Review</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Chat Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Chat</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Help Center Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Help Center</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- Nav Item - Shop Profile Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Shop Profile</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="login.html">My Shipment</a>
+                        <a class="collapse-item" href="register.html">Mass Ship</a>
+                        <a class="collapse-item" href="forgot-password.html">Shipping Setting</a>
                     </div>
                 </div>
             </li>
 
              <!-- Nav Item - Order Collapse Menu -->
              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Payment</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
+                    aria-expanded="true" aria-controls="collapseOrder">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Order</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseOrder" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="login.html">My Order</a>
+                        <a class="collapse-item" href="register.html">Cancellation</a>
+                        <a class="collapse-item" href="forgot-password.html">Return/Refund</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Voucher -->
+            <!-- Nav Item - Product Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
+                    aria-expanded="true" aria-controls="collapseProduct">
+                    <i class="fas fa-fw fa-suitcase"></i>
+                    <span>Product</span>
+                </a>
+                <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="buttons.html">My Product</a>
+                        <a class="collapse-item" href="buttons.html">Add New Product</a>
+                        <a class="collapse-item" href="cards.html">Product Violations</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Marketing Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMarketing"
+                    aria-expanded="true" aria-controls="collapseMarketing">
+                    <i class="fas fa-fw fa-tag"></i>
+                    <span>Marketing Centre</span>
+                </a>
+                <div id="collapseMarketing" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="utilities-color.html">Promotion</a>
+                        <a class="collapse-item" href="utilities-border.html">Voucher</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Finance Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinance"
+                    aria-expanded="true" aria-controls="collapseFinance">
+                    <i class="fas fa-fw fa-credit-card"></i>
+                    <span>Finance</span>
+                </a>
+                <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="login.html">My Income</a>
+                        <a class="collapse-item" href="register.html">My Balance</a>
+                        <a class="collapse-item" href="forgot-password.html">Bank Account</a>
+                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Nav Item - Shop Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop"
+                    aria-expanded="true" aria-controls="collapseShop">
+                    <i class="fas fa-fw fa-shopping-bag"></i>
+                    <span>Shop</span>
+                </a>
+                <div id="collapseShop" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="login.html">Shop Rating</a>
+                        <a class="collapse-item" href="register.html">Shop Profile</a>
+                        <a class="collapse-item" href="forgot-password.html">Shop Decoration</a>
+                        <a class="collapse-item" href="forgot-password.html">Shop Categories</a>
+                        <a class="collapse-item" href="forgot-password.html">My Reports</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Nav Item - Setting Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"
+                    aria-expanded="true" aria-controls="collapseSetting">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Setting</span>
+                </a>
+                <div id="collapseSetting" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="login.html">My Address</a>
+                        <a class="collapse-item" href="register.html">Shop Setting</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Customer Services -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Voucher</span></a>
-            </li>
-
-             <!-- Nav Item - Facility Rental -->
-             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Facility Rental</span></a>
-            </li>
-
-             <!-- Nav Item - Event Voucher -->
-             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Event Voucher</span></a>
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Customer Services</span></a>
             </li>
 
             <!-- Divider -->
