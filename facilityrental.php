@@ -121,8 +121,6 @@
         height:50px;
         overflow:hidden;
         text-align: center;
-        
-        position: absolute;
        
 
     }
