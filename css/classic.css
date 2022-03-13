@@ -28,8 +28,6 @@ a:hover{
 
 #rating_bar a span{
   color: #a31f34;
-  height: 100px;
-  width: 100px;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: initial;
