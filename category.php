@@ -407,13 +407,13 @@
         overflow:hidden;
     }
 
-    input[type=checkbox],input[type=radio]
+    input[type=checkbox]
     {
         /* Double-sized Checkboxes */
-        -ms-transform: scale(1.7); /* IE */
-        -moz-transform: scale(1.7); /* FF */
-        -webkit-transform: scale(1.7); /* Safari and Chrome */
-        -o-transform: scale(1.7); /* Opera */
+        -ms-transform: scale(1.4); /* IE */
+        -moz-transform: scale(1.4); /* FF */
+        -webkit-transform: scale(1.4); /* Safari and Chrome */
+        -o-transform: scale(1.4); /* Opera */
         padding: 10px;
     }
 
