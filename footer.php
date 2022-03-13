@@ -1,7 +1,7 @@
 </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818;font-size:13pt;line-height:2;">
+            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818;font-size:13pt;line-height:2;color:#ababab;">
 
             <!-- Footer Links -->
             <div class="container text-center text-md-left">
@@ -65,10 +65,14 @@
                 <!-- Footer links -->
 
                 <hr>
+            </div>
+            <!-- Footer Links -->
 
-                <!-- Grid row -->
-                <div class="row d-flex align-items-center">
-
+            </footer>
+            <!-- Footer -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-dark">
+                
                 <!-- Grid column -->
                 <div class="col-md-8 col-lg-8">
 
@@ -111,23 +115,6 @@
 
                 </div>
                 <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-
-            </div>
-            <!-- Footer Links -->
-
-            </footer>
-            <!-- Footer -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>&copy; © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
-                    </div>
-                </div>
             </footer>
             <!-- End of Footer -->
 
