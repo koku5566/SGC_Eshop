@@ -11,7 +11,7 @@
       <br>
       <div class="col-xl-9">
          <div class="container d-flex justify-content-center" style="background-color: #ffffff">
-            <div class="row m-1">
+            <div class="row m-2">
                <div class="col-md-6">
                   <?php
                   require __DIR__ . '/voucher.php'
