@@ -11,7 +11,7 @@
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 w3-display-middle">
-                                    <h5 class="m-0 font-weight-bold text-primary ">CHOOSE A CAMPUS</h5>
+                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
