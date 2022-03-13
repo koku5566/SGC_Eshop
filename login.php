@@ -28,7 +28,7 @@
 					$_SESSION['id'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					header("location: index.php");
+					require_once __DIR__ . '/index.php';
 				}
 			} else {
 				$Login = false;
