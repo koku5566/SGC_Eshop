@@ -1,4 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
+
 <?php
 if(isset($_POST['signup']))
 	{
@@ -12,7 +13,7 @@ if(isset($_POST['signup']))
 			$date = date("d/m/Y");
 
 			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username OR email= '$username' OR '$email'";
+				$sql_u = "SELECT * FROM user WHERE username OR email = '$username' OR '$email'";
 
 				$stmt_u = mysqli_query($conn, $sql_u);
 
