@@ -120,6 +120,7 @@
         color:white;
         height:50px;
         overflow:hidden;
+        text-align: center;
     }
 
     /* Category Menu */
@@ -246,7 +247,8 @@
     }
     .card-body{
        background-color: #A31F37;
-       float: middle;
+       text-align: center;
+       
     }
 
 
