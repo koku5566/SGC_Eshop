@@ -11,45 +11,40 @@
       <br>
       <div class="col-xl-9">
          <div class="container d-flex justify-content-center" style="background-color: #ffffff">
-            <div class="row row-cols-3 m-2">
-               <div class="col-md-6">
+            <div class="row row-cols-3 m-3">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
-               <div class="col-md-6">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
-               <div class="col-md-6">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
-               <div class="col-md-6">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
-               <div class="col-md-6">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
-               <div class="col-md-6">
+               <div class="col-md-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher.php'
                   ?>
                </div>
-               <br>
             </div>
          </div>
+         <br>
          <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
             <li class="page-item disabled">
