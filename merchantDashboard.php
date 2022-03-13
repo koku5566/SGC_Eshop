@@ -334,5 +334,5 @@
 <!-- /.container-fluid -->
 
 <?php
-    require __DIR__ . '/footer.php'
+    require __DIR__ . '/merchantFooter.php'
 ?>
