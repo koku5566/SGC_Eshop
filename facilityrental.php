@@ -11,7 +11,7 @@
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
+                                    <h5 class="w3-display-middle text-align: center">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -247,7 +247,6 @@
     }
     .card-body{
        background-color: #A31F37;
-       text-align: center;
        
     }
 
