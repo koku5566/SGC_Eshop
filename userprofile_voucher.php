@@ -10,7 +10,7 @@
       ?>
       <br>
       <div class="col-xl-9">
-         <div class="container d-flex justify-content-center" style="bacground-color: #ffffff">
+         <div class="container d-flex justify-content-center" style="background-color: #ffffff">
             <div class="row">
                <div class="col-md-6">
                   <?php
