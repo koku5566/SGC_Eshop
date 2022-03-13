@@ -25,7 +25,7 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					$sql = "INSERT INTO user (username, email, password, name, registration_date, role,)
+					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
 					VALUES ('$username','$email','$password','$username','$date','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
@@ -84,7 +84,7 @@ if(isset($_POST['signup']))
 								<div class="form-group">
 									<div class="custom-control custom-checkbox small">
 										<input type="checkbox" class="custom-control-input" id="customCheck">
-										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP"; I Agree to SEGi Group Colleges E-Shop's Terms of Use and Privacy Policy.</label>
+										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP"; I Agree to SEGi Group Colleges E-Shop's <a href="x.php">Terms of Use</a> and <a href="x.php">Privacy Policy</a></label>
 									</div>
                                 </div>
 
@@ -104,7 +104,7 @@ if(isset($_POST['signup']))
 
                             <hr>
                             <div class="text-center">
-								Already Have an Account?<a class="small" href="login.php"> Login </a>
+								Already Have an Account?<a href="login.php"> Login </a>
                             </div>
                         </div>
                     </div>
