@@ -170,7 +170,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
                     aria-expanded="true" aria-controls="collapseProduct">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-suitcase"></i>
                     <span>Product</span>
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
