@@ -10,7 +10,7 @@
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                                <div>
                                     <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="card-body-text">
                                                         <div class="Name">
-                                                            <p class="campus-name">KUALA LUMPUR</p>
+                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
                                                         </div>                                                                                                          
                                                     </div>
                                                 </div>   
