@@ -11,7 +11,7 @@
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary ">CHOOSE A CAMPUS</h5>
+                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -24,7 +24,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name w3-text-white">SUBANG JAYA</p>
+                                                            <p class="card-text campus-name">SUBANG JAYA</p>
                                                         </div>            
                                                     </div>
                                                 </div>   
@@ -38,7 +38,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name w3-text-white">PENANG</p>
+                                                            <p class="card-text campus-name">PENANG</p>
                                                         </div>                                                       
                                                     </div>
                                                 </div>   
@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name w3-text-white">SARAWAK</p>
+                                                            <p class="card-text campus-name">SARAWAK</p>
                                                         </div>                                                                                                              
                                                     </div>
                                                 </div>   
@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name w3-text-white">KUALA LUMPUR</p>
+                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
                                                         </div>                                                                                                          
                                                     </div>
                                                 </div>   
@@ -78,7 +78,6 @@
                         </div>
                     </div>
                     <br>
-                      <h1>sss<h1>
                     <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
