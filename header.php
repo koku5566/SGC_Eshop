@@ -98,20 +98,16 @@
 </head>
 
 <body id="page-top">
-
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -138,7 +134,6 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -318,11 +313,14 @@
                                 </a>
                             </div>
                         </li>
-                    <?php else :?>
-                        <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <a href="login.php">Login <i class="fas fa-user"></i></a>
-                    <?php endif?>
+
+                        <li class="nav-item dropdown no-arrow mx-1">
+                        <?php else :?>
+                            <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <a href="login.php">Login <i class="fas fa-user"></i></a>
+                        <?php endif?>
+                        </li>
                     </ul>
 
                 </nav>
