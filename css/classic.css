@@ -26,7 +26,7 @@ a:hover{
   display: inline;
 }
 
-#rating_bar>span:before {
+#rating_bar span{
   color: #a31f34;
   height: 100px;
   width: 100px;
