@@ -5,7 +5,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
-<h1>ccccc<h1>
                     <!-- List All Product -->
                     <div class="row">
                         <!--Product List -->
