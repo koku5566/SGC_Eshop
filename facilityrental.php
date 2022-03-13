@@ -121,6 +121,13 @@
         height:50px;
         overflow:hidden;
         text-align: center;
+        left: 0;
+        line-height: 200px;
+        margin-top: -100px;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+
     }
     .card-body-text{
        background-color: yellow;
