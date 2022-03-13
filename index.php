@@ -2,18 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-
-    
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['restaurant']))
-        {
-            $_SESSION['Restaurant_ID'] = $_POST['restaurant'];
-            echo("<script>window.location.href = \"main.php\";</script>");
-        }
-    }
-?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
