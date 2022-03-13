@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="card-body-text">
                                                         <div class="Name">
-                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
+                                                            <p class="campus-name">KUALA LUMPUR</p>
                                                         </div>                                                                                                          
                                                     </div>
                                                 </div>   
