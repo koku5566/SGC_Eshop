@@ -8,9 +8,9 @@
                     <!-- List All Product -->
                     <div class="row">
                         <!--Product List -->
-                        <div class="w3-display-middle">
+                        <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                                <div class="card-header py-3 w3-display-middle">
                                     <h5 class="m-0 font-weight-bold text-primary ">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
