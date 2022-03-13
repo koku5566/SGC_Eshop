@@ -44,8 +44,8 @@
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
                     <p><span class="footer-title">Contacts and Directories</span></p>
                     <p>
-                        <i class="fa fa-phone" style="color: white;"></i> +604 263 3888<br>
-                        <i class="fa fa-phone" style="color: white;"></i> +6013 629 4880 (WhatsApp/Call)
+                        <i class="fa fa-phone"></i> +604 263 3888<br>
+                        <i class="fa fa-phone"></i> +6013 629 4880 (WhatsApp/Call)
                     </p>
                     <p>infopg@segi.edu.my</p>
                     <p>
