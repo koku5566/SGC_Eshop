@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
