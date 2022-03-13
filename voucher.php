@@ -60,7 +60,7 @@
                      </div>
                      <div class="col-md-7">
                         <div class="card-body m-1">
-                           <h6 class="card-title"><strong>SEGi College Kuala Lumpur hihihihi</strong></h6>
+                           <h6 class="card-title"><strong>SEGi College Kuala Lumpur</strong></h6>
                            <h5 class="card-subtitle text-muted">RM10 off</h5>
                            <small>Validity : 30 SEP ~ 05 OCT</small><br>
                            <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
