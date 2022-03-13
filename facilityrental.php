@@ -10,7 +10,7 @@
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <div>
+                                <div class="card-header py-3">
                                     <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
@@ -121,11 +121,12 @@
         height:50px;
         overflow:hidden;
         text-align: center;
+
        
 
     }
     .card-body-text{
-       background-color: yellow;
+       background-color: black;
     }
     .card-body{
        background-color: #A31F37;
