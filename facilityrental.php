@@ -78,6 +78,9 @@
                         </div>
                     </div>
                     <br>
+                    <div class="card-header py-3">
+                                    <h5 class="w3-display-middle">EXPLORE SEGI FACILITIES</h5>
+                                </div>
                     <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -120,13 +123,12 @@
         color:white;
         height:50px;
         overflow:hidden;
-        text-align: center;
-
-       
+        text-align: center;   
 
     }
     .card-body-text{
-       background-color: black;
+       background-color: gray;
+       opacity: 2;
     }
     .card-body{
        background-color: #A31F37;
