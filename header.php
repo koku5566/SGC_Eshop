@@ -324,11 +324,11 @@
                             </div>
                         </li>
                     <?php else :?>
-                        <li class="nav-item dropdown no-arrow">
+                        
                             <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
                             <div class="topbar-divider d-none d-sm-block"></div>
                             <a href="login.php">Login <i class="fas fa-user"></i></a>
-                        </li>
+                        
                     <?php endif?>
                     </ul>
 
