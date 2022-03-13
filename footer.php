@@ -12,9 +12,14 @@
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.</p>
+                    <p>
+                        <a href="https://colleges.segi.edu.my/subangjaya/" target="_blank" rel="noopener">SEGi College Subang Jaya</a><br>
+                        <a href="https://colleges.segi.edu.my/kualalumpur/" target="_blank" rel="noopener">SEGi College Kuala Lumpur</a><br>
+                        <a href="https://colleges.segi.edu.my/penang/" target="_blank" rel="noopener">SEGi College Penang</a><br>
+                        <a href="https://colleges.segi.edu.my/sarawak/" target="_blank" rel="noopener">SEGi College Sarawak</a><br>
+                        <a href="https://segicollegekd.edu.my/">SEGi College Kota Damansara</a><br>
+                        <a href="https://university.segi.edu.my/" target="_blank" rel="noopener">SEGi University Kota Damansara</a>
+                    </p>
                 </div>
                 <!-- Grid column -->
 
@@ -24,16 +29,11 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
                     <p>
-                    <a href="#!">MDBootstrap</a>
-                    </p>
-                    <p>
-                    <a href="#!">MDWordPress</a>
-                    </p>
-                    <p>
-                    <a href="#!">BrandFlow</a>
-                    </p>
-                    <p>
-                    <a href="#!">Bootstrap Angular</a>
+                        <a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
+                        <a href="https://colleges.segi.edu.my/penang/ir-4-0/">IR 4.0</a><br>
+                        <a href="https://colleges.segi.edu.my/penang/news/">News</a><br>
+                        <a href="https://colleges.segi.edu.my/penang/events-pg/">Events</a><br>
+                        <a href="https://colleges.segi.edu.my/penang/industry/valued-corporate-partner/?name_directory_startswith=A">Valued Corporate Partners</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -42,37 +42,24 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Contacts and Directories</span></p>
                     <p>
-                    <a href="#!">Your Account</a>
+                        <i class="fa fa-phone" style="color: white;"></i> +604 263 3888<br>
+                        <i class="fa fa-phone" style="color: white;"></i> +6013 629 4880 (WhatsApp/Call)
                     </p>
+                    <p>infopg@segi.edu.my</p>
                     <p>
-                    <a href="#!">Become an Affiliate</a>
-                    </p>
-                    <p>
-                    <a href="#!">Shipping Rates</a>
-                    </p>
-                    <p>
-                    <a href="#!">Help</a>
+                        <span style="color: #a31f34; font-size: 16px; font-weight: 600;">Covid-19 / CMCO InfoDesk</span><br>
+                        +013-629 4880<br>
+                        ohphaikcheng@segi.edu.my<br>
+                        scpgsao@segi.edu.my (Student Affairs)<br>
+                        infopg@segi.edu.my
                     </p>
                 </div>
 
                 <!-- Grid column -->
                 <hr class="w-100 clearfix d-md-none">
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p>
-                    <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p>
-                    <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                    <p>
-                    <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                    <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                </div>
-                <!-- Grid column -->
 
                 </div>
                 <!-- Footer links -->
@@ -140,7 +127,7 @@
                 
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>&copy; 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
+                        <span>&copy; © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
                     </div>
                 </div>
             </footer>
