@@ -26,7 +26,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role,)
-					VALUES ('$username','$email','$password','$username','$date')','USER')";
+					VALUES ('$username','$email','$password','$username','$date','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
