@@ -10,7 +10,7 @@
          ?>
       <div class="col-xl-9">
          <?php
-         require __DIR__ . '/userprofilenav.php'
+         require __DIR__ . '/voucher.php'
          ?>
       </div>
    </div>
