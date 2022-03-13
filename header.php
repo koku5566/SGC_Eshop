@@ -3,7 +3,6 @@
 ?>
 
 <?php
-
     $domain_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
     //Load Search Auto Complete Array
@@ -51,6 +50,8 @@
     if(!isset($_SESSION)){
         session_start();
     }
+
+    //User
     if(!isset($_SESSION['login']))
     {
         $_SESSION['login'] = false;
@@ -67,8 +68,6 @@
     {
         $_SESSION['role'] = "";
     }
-
-    //Login/Register
 ?>
 
 
@@ -294,6 +293,7 @@
                                     <?php echo($_SESSION['name']);?>
                                 </a>
 
+                                <!--ADMIN ONLY-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
                                 <a class="dropdown-item" href="admin.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>

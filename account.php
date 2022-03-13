@@ -1,10 +1,10 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php
-	if($_SESSION['isLogin'] == false)
+	if($_SESSION['login'] == false)
 	{
-		echo "<script>alert('Logout to continue');
-			window.location.href='Login.php';</script>";
+		echo "<script>alert('Login to Continue');
+			window.location.href='login.php';</script>";
     }
 ?>
 <?php
@@ -14,19 +14,23 @@ if(isset($_POST['update']))
 		$name = $_POST['name'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
-		$address = $_POST['address'];
 
-		$sql_u = "SELECT * FROM user WHERE userID = '$UID'";
+		if($_FILES['profile_picture']['tmp_name'] != "")
+		{
+			$proPic = addslashes(file_get_contents($_FILES['profile_picture']['tmp_name']));
+		}
+
+		$sql_u = "SELECT * FROM user WHERE user_id = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
 			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET name='$name', password='$password', contact='$contact', address='$address' WHERE userID='$UID'";
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE user_id='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', contact='$contact', address='$address' WHERE userID='$UID'";
+				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE user_id='$UID'";
 			}
 			
 			if (mysqli_query($conn, $sql)) {
@@ -40,11 +44,6 @@ if(isset($_POST['update']))
 			echo("<script>alert('Error');</script>");
 		}
 	}
-	
-	if(isset($_POST['toOrder']))
-	{
-		echo("<script>window.location.href='Account-Order.php';</script>");
-	}
 ?>
 
 <div id="title"><h2>My Profile</h2></div>
@@ -52,12 +51,15 @@ if(isset($_POST['update']))
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
 	$UID = $_SESSION["id"];
-	$sql = "SELECT * FROM user WHERE userID = '$UID'";
+	$sql = "SELECT * FROM user WHERE user_id = '$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	if (mysqli_num_rows($res_data) > 0){
 		while($row = mysqli_fetch_array($res_data)){
 			echo("
+				<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
+				<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+				
 				<p id=\"label\">Name</p>
 				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\"/>
 				
@@ -70,10 +72,6 @@ if(isset($_POST['update']))
 				<p id=\"label\">Contact</p>
 				<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\"/>
 				
-				<p id=\"label\">Address</p>
-				<textarea required type=\"text\" name=\"address\" maxlength=\"999\">".$row["address"]."</textarea><br><br>
-				
-				<button name=\"toOrder\">My Order</button>
 				<button type=\"submit\" name=\"update\">Update</button>
 				");
 		}
