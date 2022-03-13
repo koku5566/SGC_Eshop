@@ -4,6 +4,15 @@ a:hover{
   color:#a31f37;
 }
 
+.a-nostyle{
+  color:#ababab;
+}
+
+a-nostyle:hover{
+  text-decoration:none;
+  color:#ababab;
+}
+
 .img-div{
   max-width:100%;
   height:auto;

@@ -1,10 +1,10 @@
 </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818">
+            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818;font-size:13pt;">
 
             <!-- Footer Links -->
-            <div class="container text-center text-md-left" style="width:100%;">
+            <div class="container text-center text-md-left">
  
                 <!-- Footer links -->
                 <div class="row text-center text-md-left mt-3 pb-3">
@@ -12,7 +12,7 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
                     <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Our Vibrant Campuses</span></p>
-                    <p>
+                    <p class="a-nostyle">
                         <a href="https://colleges.segi.edu.my/subangjaya/" target="_blank" rel="noopener">SEGi College Subang Jaya</a><br>
                         <a href="https://colleges.segi.edu.my/kualalumpur/" target="_blank" rel="noopener">SEGi College Kuala Lumpur</a><br>
                         <a href="https://colleges.segi.edu.my/penang/" target="_blank" rel="noopener">SEGi College Penang</a><br>
