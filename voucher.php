@@ -50,7 +50,7 @@
                            <h6 class="card-title"><strong>SEGi College Kuala Lumpur</strong></h6>
                            <h5 class="card-subtitle text-muted">RM10 off</h5>
                            <small>Validity : 30 SEP ~ 05 OCT</small><br>
-                           <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                           <a class="text-muted" data-bs-toggle="modal" data-bs-target="#exampleModal">
                               <small>T&C applied.</small>
                            </a>
                         </div>
