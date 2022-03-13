@@ -112,6 +112,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h5 class="m-0 font-weight-bold text-primary">Daily Discover</h5>
+                                    <h1>HEllo<h1>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
