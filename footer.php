@@ -60,7 +60,6 @@
                     <!-- Grid column -->
                     <hr class="w-100 clearfix d-md-none">
 
-
                     </div>
                 </div>
                 <!-- Footer Links -->
@@ -112,19 +111,14 @@
                             </li>
                         </ul>
                         </div>
-
                     </div>
                     <!-- Grid column -->
-
                 </div>
                 <!-- Grid row -->
-                
             </footer>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 

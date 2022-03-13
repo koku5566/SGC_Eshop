@@ -3,7 +3,6 @@
 ?>
 
 <?php
-
     $domain_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
     //Load Search Auto Complete Array
@@ -51,6 +50,8 @@
     if(!isset($_SESSION)){
         session_start();
     }
+
+    //User
     if(!isset($_SESSION['login']))
     {
         $_SESSION['login'] = false;
@@ -67,8 +68,6 @@
     {
         $_SESSION['role'] = "";
     }
-
-    //Login/Register
 ?>
 
 
@@ -98,20 +97,16 @@
 </head>
 
 <body id="page-top">
-
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -138,7 +133,6 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -164,12 +158,7 @@
                         </li>
 
                         <!--Login-->
-                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                        <a href="ADMIN.php" class="ADMIN" >ADMIN PANEL <i class="fas fa-cogs"></i></a>
-                        <?php endif?>
-
                         <?php if ($_SESSION['login'] == true) :?>
-
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -303,6 +292,15 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     <?php echo($_SESSION['name']);?>
                                 </a>
+
+                                <!--ADMIN ONLY-->
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+                                <a class="dropdown-item" href="admin.php">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    ADMIN PANEL
+                                </a>
+                                <?php endif?>
+
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
@@ -318,12 +316,12 @@
                                 </a>
                             </div>
                         </li>
-                    <?php else :?>
-                        <a href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <a href="login.php">Login <i class="fas fa-user"></i></a>
-                    <?php endif?>
-                    </ul>
 
+                        <?php else :?>
+                            <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                        <?php endif?>
+                        </li>
                 </nav>
                 <!-- End of Topbar -->
