@@ -77,7 +77,7 @@
 
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>&copy; © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
+                                <span>&copy; 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice</span>
                             </div>
                         </div>
 
