@@ -2,7 +2,6 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
-
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -10,9 +9,7 @@
 
     <link href="/css/voucher.css" rel="stylesheet" type="text/css">
     
-</head>
 
-<body class="">
 
    <div class="container">
       <div class="row">
@@ -63,7 +60,7 @@
                      </div>
                      <div class="col-md-7">
                         <div class="card-body m-1">
-                           <h6 class="card-title"><strong>SEGi College Kuala Lumpur</strong></h6>
+                           <h6 class="card-title"><strong>SEGi College Kuala Lumpur hihihihi</strong></h6>
                            <h5 class="card-subtitle text-muted">RM10 off</h5>
                            <small>Validity : 30 SEP ~ 05 OCT</small><br>
                            <a class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -103,11 +100,9 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-</body>
 
 <?php
     require __DIR__ . '/footer.php'
 ?>
 
-</html>
 
