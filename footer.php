@@ -1,7 +1,7 @@
 </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818;font-size:13pt;">
+            <footer class="page-footer font-small mdb-color pt-4" style="background-color:#181818;font-size:13pt;line-height:2;">
 
             <!-- Footer Links -->
             <div class="container text-center text-md-left">
@@ -28,7 +28,7 @@
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
                     <p><span class="footer-title">Explore</span></p>
-                    <p>
+                    <p class="a-nostyle">
                         <a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
                         <a href="https://colleges.segi.edu.my/penang/ir-4-0/">IR 4.0</a><br>
                         <a href="https://colleges.segi.edu.my/penang/news/">News</a><br>
@@ -73,7 +73,7 @@
                 <div class="col-md-8 col-lg-8">
 
                     <!--Copyright-->
-                    <p class="text-center text-md-left">
+                    <p class="text-center text-md-left" style="font-size:10pt">
                     © 2021 SEGi College Penang 198901010318 (187620-W). All Rights Reserved. Privacy Policy | Privacy Notice
                     </p>
 
