@@ -4,8 +4,9 @@
 		session_start();
 	}
 
-	if (isset($_SESSION['isLogin']) && $_SESSION['isLogin']){
+	if (isset($_SESSION['login']) && $_SESSION['login']){
 		?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
+        header('location: Main.php');
 		exit;
 	}
 
@@ -27,10 +28,10 @@
 				while($row = mysqli_fetch_assoc($result)) {
 					echo "<script>alert('Login Successfully')</script>";
 					$Login = true;
-					$_SESSION['isLogin'] = true;
+					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
-					$_SESSION['admin'] = $row["role"];
+					$_SESSION['role'] = $row["role"];
 					?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
 				}
 			} else {
