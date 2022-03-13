@@ -122,7 +122,10 @@
         overflow:hidden;
         text-align: center;
     }
+    .name{
+        background-color: black;
 
+    }
     .card-body{
        background-color: #A31F37;
     }
