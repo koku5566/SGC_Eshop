@@ -138,7 +138,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipment"
                     aria-expanded="true" aria-controls="collapseShipment">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-box"></i>
                     <span>Shipment</span>
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -186,7 +186,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMarketing"
                     aria-expanded="true" aria-controls="collapseMarketing">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-tag"></i>
                     <span>Marketing Centre</span>
                 </a>
                 <div id="collapseMarketing" class="collapse" aria-labelledby="headingUtilities"
@@ -202,7 +202,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinance"
                     aria-expanded="true" aria-controls="collapseFinance">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-credit-card"></i>
                     <span>Finance</span>
                 </a>
                 <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -219,7 +219,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop"
                     aria-expanded="true" aria-controls="collapseShop">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-shopping-bag"></i>
                     <span>Shop</span>
                 </a>
                 <div id="collapseShop" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
