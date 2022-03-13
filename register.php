@@ -7,27 +7,25 @@
 if(isset($_POST['signup']))
 	{
 		$_SESSION['AddUser'] = false;
-		if(!empty($_POST['name']) && !empty($_POST['password']) && isset($_POST['name'],$_POST['password']))
+		if(!empty($_POST['username']) && !empty($_POST['password']) && isset($_POST['username'],$_POST['password']))
 		{
-			$name = $_POST['name'];
+			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$password = md5($_POST['password']);
 			$password1 = md5($_POST['password1']);
-			$contact = $_POST['contact'];
-			$address = $_POST['address'];
 			
 			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username OR email='$email'";
+				$sql_u = "SELECT * FROM user WHERE username OR email= '$username' OR '$email'";
 
 				$stmt_u = mysqli_query($conn, $sql_u);
 
 				if (mysqli_num_rows($stmt_u) > 0) {	
-					echo("<script>alert('This Email Already Exists');</script>");
+					echo("<script>alert('This User Already Exists');</script>");
 				}
 				else
 				{
-					$sql = "INSERT INTO user (name, email, password, contact, address)
-					VALUES ('$name','$email','$password','$contact','$address')";
+					$sql = "INSERT INTO user (username, email, password, name, role)
+					VALUES ('$username','$email','$password','$username','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
@@ -45,43 +43,67 @@ if(isset($_POST['signup']))
 	}
 ?>
 
-<div id="title"><h2>Sign Up</h2></div>
-<div id="SignUp">
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-	<div class="form-group">
-		<label>Name</label>
-		<input required type="text" name="name" maxlength="50"/>
-	</div>
+<div class="bg-gradient-primary">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-left">
+                                <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
+								Create Your SEGi Group of Colleges E-Shop Account
+                            </div>
 
-	<div class="form-group">
-		<label>Email Address</label>
-		<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
-	</div>
-	
-	<div class="form-group">
-		<label>Password</label>
-		<input required type="password" name="password" class="form-control form-control-user" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long">
-     </div>
+                            <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+										<label>Email Address</label>
+										<input required type="email" name="email" class="form-control form-control-user" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+                                    </div>
+									
+                                    <div class="col-sm-6">
+										<label>Username</label>
+										<input required type="text" name="username" class="form-control form-control-user" id="inputUsername" maxlength="50" placeholder="Enter Your Username">
+                                    </div>
+                                </div>
 
-	<div class="form-group">
-		<label>Confirm Password</label>
-		<input required type="password" name="password1" maxlength="50"/>
-	</div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+										<input required type="password" name="password" class="form-control form-control-user" id="inputPassword" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long">
+                                    </div>
+                                    <div class="col-sm-6">
+										<input required type="password" name="password1" class="form-control form-control-user" id="exampleRepeatPassword" maxlength="50">
+                                    </div>
+                                </div>
 
-	<div class="form-group">
-		<label>Contact</label>
-		<input required type="tel" name="contact" pattern="[0-9]{3}-[0-9]{7-8}" maxlength="12" placeholder="000-0000000"/>
-	</div>
+								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">Sign Up</button>
 
-	<div class="form-group">
-		<p id="label">Address</p>
-		<textarea required type="text" name="address" maxlength="999"></textarea><br><br>
-	</div>
+                                <hr>
+								<a href="index.html" class="btn btn-microsoft btn-user btn-block">
+									<i class="fab fa-microsoft fa-fw"></i> Microsoft 365
+								</a>
+								<a href="index.html" class="btn btn-google btn-user btn-block">
+									<i class="fab fa-google fa-fw"></i> Google
+								</a>
+								<a href="index.html" class="btn btn-facebook btn-user btn-block">
+									<i class="fab fa-facebook-f fa-fw"></i> Facebook
+								</a>
+                            </form>
 
-	<button type="reset" name="reset">Reset</button>
-	<button type="submit" name="signup">Sign Up</button>
-	<p id="label">Already a User? <a href="Login.php">Sign In</a></p>
-</form>
+                            <hr>
+                            <div class="text-center">
+								Already Have an Account?<a class="small" href="login.php"> Login </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php
 if(isset($_SESSION['AddUser']))
 	{
