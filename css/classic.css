@@ -4,13 +4,19 @@ a:hover{
   color:#a31f37;
 }
 
-.a-nostyle{
+.a-nostyle a{
   color:#ababab;
 }
 
-a-nostyle:hover{
+.a-nostyle a:hover{
   text-decoration:none;
   color:#ababab;
+}
+
+.footer-title{
+  color: #a31f34;
+  font-size: 14pt;
+  font-weight: 600;
 }
 
 .img-div{

@@ -11,7 +11,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
-                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Our Vibrant Campuses</span></p>
+                    <p><span class="footer-title">Our Vibrant Campuses</span></p>
                     <p class="a-nostyle">
                         <a href="https://colleges.segi.edu.my/subangjaya/" target="_blank" rel="noopener">SEGi College Subang Jaya</a><br>
                         <a href="https://colleges.segi.edu.my/kualalumpur/" target="_blank" rel="noopener">SEGi College Kuala Lumpur</a><br>
@@ -27,7 +27,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
-                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Explore</span></p>
+                    <p><span class="footer-title">Explore</span></p>
                     <p>
                         <a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
                         <a href="https://colleges.segi.edu.my/penang/ir-4-0/">IR 4.0</a><br>
@@ -42,14 +42,14 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
-                    <p><span style="color: #a31f34; font-size: 16px; font-weight: 600;">Contacts and Directories</span></p>
+                    <p><span class="footer-title">Contacts and Directories</span></p>
                     <p>
                         <i class="fa fa-phone" style="color: white;"></i> +604 263 3888<br>
                         <i class="fa fa-phone" style="color: white;"></i> +6013 629 4880 (WhatsApp/Call)
                     </p>
                     <p>infopg@segi.edu.my</p>
                     <p>
-                        <span style="color: #a31f34; font-size: 16px; font-weight: 600;">Covid-19 / CMCO InfoDesk</span><br>
+                        <span class="footer-title">Covid-19 / CMCO InfoDesk</span><br>
                         +013-629 4880<br>
                         ohphaikcheng@segi.edu.my<br>
                         scpgsao@segi.edu.my (Student Affairs)<br>
@@ -70,7 +70,7 @@
                 <div class="row d-flex align-items-center">
 
                 <!-- Grid column -->
-                <div class="col-md-7 col-lg-8">
+                <div class="col-md-8 col-lg-8">
 
                     <!--Copyright-->
                     <p class="text-center text-md-left">
@@ -81,13 +81,13 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-5 col-lg-4 ml-lg-0">
+                <div class="col-md-4 col-lg-4 ml-lg-0">
 
                     <!-- Social buttons -->
                     <div class="text-center text-md-right">
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
-                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/SEGiMalaysia/">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         </li>
