@@ -123,6 +123,9 @@
         text-align: center;
     }
     .card-body-text{
+       background-color: yellow;
+    }
+    .card-body{
        background-color: #A31F37;
     }
 
