@@ -246,7 +246,7 @@
         display: block;
     }
     .card-body{
-       background-color: red;
+       background-color: #A31F37;
     }
 
 
