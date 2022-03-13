@@ -154,7 +154,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
                     aria-expanded="true" aria-controls="collapseOrder">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -237,7 +237,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"
                     aria-expanded="true" aria-controls="collapseSetting">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Setting</span>
                 </a>
                 <div id="collapseSetting" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -251,7 +251,7 @@
             <!-- Nav Item - Customer Services -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Customer Services</span></a>
             </li>
 
