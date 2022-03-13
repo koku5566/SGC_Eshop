@@ -80,7 +80,7 @@
                     <br>
                       
                     <!-- Slideshow -->
-                    <div class="col-xl-10" style="width:100%">
+                    <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
