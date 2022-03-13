@@ -15,9 +15,9 @@ if(isset($_POST['update']))
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
 
-		if($_FILES['profile_picture']['tmp_name'] != "")
+		if($_FILES['proPic']['tmp_name'] != "")
 		{
-			$proPic = addslashes(file_get_contents($_FILES['profile_picture']['tmp_name']));
+			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
 		}
 
 		$sql_u = "SELECT * FROM user WHERE user_id = '$UID'";
