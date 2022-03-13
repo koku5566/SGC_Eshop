@@ -42,7 +42,7 @@ a:hover{
 }
 
 #rating_bar a >span:hover:before,
-#rating_bar a span:hover~span:before {
+#rating_bar a span:hover~a span:before {
   font-weight: var(--fa-style,900);
 }
 
