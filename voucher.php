@@ -6,7 +6,6 @@
 
     <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
-   <div class="container">
       <div class="card card-sm" style="max-width: 350px;">
          <div class="row g-0">
            <div class="col-md-3">
@@ -27,7 +26,7 @@
            </div>
          </div>
       </div>
-    </div>
+
 
     <!-- Modal -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
