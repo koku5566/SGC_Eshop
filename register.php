@@ -13,7 +13,6 @@ if(isset($_POST['signup']))
 			$email = $_POST['email'];
 			$password = md5($_POST['password']);
 			$password1 = md5($_POST['password1']);
-			$date = curdate();
 
 			if($password==$password1){
 				$sql_u = "SELECT * FROM user WHERE username OR email= '$username' OR '$email'";
@@ -26,7 +25,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role,)
-					VALUES ('$username','$email','$password','$username','$date','USER')";
+					VALUES ('$username','$email','$password','$username','date("d/m/Y")','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
@@ -81,7 +80,14 @@ if(isset($_POST['signup']))
                                     </div>
                                 </div>
 
-								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">Sign Up</button>
+								<div class="form-group">
+									<div class="custom-control custom-checkbox small">
+										<input type="checkbox" class="custom-control-input" id="customCheck">
+										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP"; I Agree to SEGi Group Colleges E-Shop's Terms of Use and Privacy Policy.</label>
+									</div>
+                                </div>
+
+								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">SIGN UP</button>
 
                                 <hr>
 								<a href="index.html" class="btn btn-microsoft btn-user btn-block">
