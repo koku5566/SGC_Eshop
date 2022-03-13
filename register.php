@@ -104,16 +104,4 @@ if(isset($_POST['signup']))
     </div>
 </div>
 
-<?php
-if(isset($_SESSION['AddUser']))
-	{
-		if($_SESSION['AddUser'] == true)
-		{
-			echo "<script>alert('Registered Successfully');</script>";
-		}
-		$_SESSION['AddUser'] = NULL;
-	}
-?>
-</div>
-
 <?php require __DIR__ . '/footer.php' ?>
