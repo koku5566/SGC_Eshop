@@ -125,7 +125,6 @@
 
     .card-body{
        background-color: #A31F37;
-       background-size: 300px;
     }
 
 
