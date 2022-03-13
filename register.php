@@ -71,9 +71,11 @@ if(isset($_POST['signup']))
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
+										<label>Password</label>
 										<input required type="password" name="password" class="form-control form-control-user" id="inputPassword" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long">
                                     </div>
                                     <div class="col-sm-6">
+										<label>Confirm Password</label>
 										<input required type="password" name="password1" class="form-control form-control-user" id="exampleRepeatPassword" maxlength="50">
                                     </div>
                                 </div>
