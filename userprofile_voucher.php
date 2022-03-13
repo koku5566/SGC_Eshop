@@ -9,7 +9,7 @@
       require __DIR__ . '/userprofilenav.php'
       ?>
       <br>
-      <div class="col-xl-9 container d-flex justify-content-center" style="bacground-color: #ffffff">
+      <div class="col-xl-9 container d-flex justify-content-center m-2" style="bacground-color: #ffffff">
          <div class="row">
             <div class="col-md-6">
                <?php
