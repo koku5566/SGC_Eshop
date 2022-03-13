@@ -1,7 +1,8 @@
 <?php require __DIR__ . '/header.php' ?>
+
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
-		header('location: product.php');
+		header('location: index.php');
 		exit;
 	}
 
@@ -16,7 +17,7 @@
 			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE username OR email='$username' AND password='$password'";
+			$sql = "SELECT * FROM user WHERE username OR email = '$username' AND password = '$password'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
@@ -27,7 +28,7 @@
 					$_SESSION['id'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					?><script>window.location.href = window.location.origin + "/Main.php/";</script><?php
+					header("location: index.php");
 				}
 			} else {
 				$Login = false;
@@ -42,6 +43,7 @@
 		}
 	}
 ?>
+
 <div class="bg-gradient-primary">
     <div class="container">
         <!-- Outer Row -->
@@ -60,7 +62,7 @@
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
                                         <div class="form-group">
                                             <label>Username/Email</label>
-                                            <input required type="email" name="username" class="form-control form-control-user"
+                                            <input required type="text" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Please Enter Your Email Address or Username">
                                         </div>
