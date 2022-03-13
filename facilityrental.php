@@ -11,7 +11,7 @@
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="w3-display-middle text-align: center">CHOOSE A CAMPUS</h5>
+                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -123,128 +123,6 @@
         text-align: center;
     }
 
-    /* Category Menu */
-    .browse-menus {
-        position:relative;
-        z-index:1;
-    }
-
-    .browse-menus .browse-menu{
-        width: 100%;
-        height:auto;
-        z-index:0;
-        background-color:#ffffff;
-    }
-
-    .browse-menu ul.main-menu{
-        border: 1px solid var(--bs-gray-light);
-    }
-
-    .browse-menu .main-menu li{
-        border-bottom: 1px solid #e1e1e1;
-        position: relative;
-        list-style: none;
-    }
-
-    .browse-menu .main-menu li a{
-        padding: 0 18px;
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        line-height:50px;
-    }
-
-    .browse-menu .dropdown-menu {
-        top: 0;
-        left: 100%;
-        border-bottom-width: 4px;
-        border-style: solid;
-        border-color: var(--bs-primary);
-        position: absolute;
-        z-index: 99;
-        width: 220px;
-        background-color:white;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        border-top-color: currentcolor;
-        border-top-style: none;
-        border-right-color: currentcolor;
-        border-right-style: none;
-        border-bottom-color: currentcolor;
-        border-bottom-style: none;
-        border-bottom-width: 0px;
-        border-left-color: currentcolor;
-        border-left-style: none;
-        border-radius: 0;
-        -moz-box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
-        box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
-        font-size: 1rem;
-        text-align: left;
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transform: scaleY(0);
-        transform: scaleY(0);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transition: all 0.3s ease-in-out 0s;
-        transition: all 0.3s ease-in-out 0s;
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children > a > i:before{
-        position: absolute;
-        top: 0;
-        right: 8px;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        color: inherit;
-        font-size: 16px;
-        -webkit-transition: var(--bs-transition);
-        transition: var(--bs-transition);
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children >  a > i:before{
-        right: 23px;
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children:hover >  a > i:before,
-    .browse-menu .main-menu > li.menu-item-has-children.focus >  a > i:before{
-        right: 20px;
-        color: var(--bs-primary);
-    }
-
-    .browse-menu .main-menu .menu-item:hover > .dropdown-menu,
-    .browse-menu .main-menu .menu-item.focus > .dropdown-menu{
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-    }
-
-    .browse-menu .main-menu > li.menu-item-has-children > a {
-        padding-right: 30px;
-    }
-
-    .dropdown-item{
-        color:#a31f37;
-    }
-
-    .dropdown-item:focus, .dropdown-item:hover {
-        color:#a31f37;
-        text-decoration: none;
-        background-color: #eaecf4;
-    }
-
-    ul.main-menu {
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-        display: block;
-    }
     .card-body{
        background-color: #A31F37;
        
