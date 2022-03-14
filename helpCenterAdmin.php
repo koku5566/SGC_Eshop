@@ -522,7 +522,7 @@
 		
 		
 
-		
+		<div class = "pp">	
 			<!--Display All Category-->
 			<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">		
 					 <select id="categoryDisplay" name="categorylist" onchange = 'myBtnGoFunction()'>
@@ -633,7 +633,7 @@
 						?>
 	
 				</div>
-	
+		</div>
 
 
 </div>
