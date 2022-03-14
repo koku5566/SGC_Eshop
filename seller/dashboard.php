@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/merchantHeader.php'
+    require __DIR__ . '/header.php'
 ?>
 
 <!-- Begin Page Content -->
@@ -334,5 +334,5 @@
 <!-- /.container-fluid -->
 
 <?php
-    require __DIR__ . '/merchantFooter.php'
+    require __DIR__ . '/footer.php'
 ?>
