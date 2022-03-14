@@ -1,6 +1,3 @@
-<?php
-    require __DIR__ . '/merchantHeader.php'
-?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
@@ -153,6 +150,3 @@ function myFunction(){
 
 <!-- /.container-fluid -->
 
-<?php
-    require __DIR__ . '/merchantFooter.php'
-?>
