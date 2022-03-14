@@ -16,33 +16,33 @@
       <br>
       <div class="col-xl-9">
          <div class="container" style="background-color: #ffffff">
-            <div class="row row-cols-2">
-               <div class="col-6">
+            <div class="row row-cols-2 p-1">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
