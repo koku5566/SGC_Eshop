@@ -5,7 +5,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
-
+                    <h1>Testing</h1>
                 </div>
                 <!-- /.container-fluid -->
 

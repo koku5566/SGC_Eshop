@@ -2,26 +2,15 @@
     require __DIR__ . '/header.php'
 ?>
 
-
-<!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%">
-
-
 <link rel="stylesheet" type="text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 <link rel="stylesheet" type="text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
-
-
-
-
-
+<!-- Begin Page Content -------------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="width:80%">
 
 <?php
-require_once "conn_db.php";
-
-//print_r($_POST);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])){
 	
@@ -243,8 +232,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 	</main>
 <!--END OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->		
 	
-			
-		
+
+</div>
+<!-- /.container-fluid ------------------------------------------------------------------------------------------------>
 <script>
 $('.logo-slider').slick({
 		slidesToShow: 5,
@@ -270,10 +260,6 @@ $('.logo-slider').slick({
 	
 	
 </script>
-
-</div>
-<!-- /.container-fluid -->
-
 <?php
     require __DIR__ . '/footer.php'
 ?>
