@@ -3,9 +3,9 @@
 ?>
 
 <title>Create Event</title>
-<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
-<link rel="stylesheet" href="/css/event.css">
+<link rel="stylesheet" href="../css/event.css">
 
 
     <!-- Begin Page Content -->
@@ -217,9 +217,9 @@
     </div>
     <!-- /.container-fluid -->
 
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
-    <script src="/js/Suneditor-WYSIWYG.js"></script>
+    <script src="../js/Suneditor-WYSIWYG.js"></script>
 
 <?php
     require __DIR__ . '/footer.php'
