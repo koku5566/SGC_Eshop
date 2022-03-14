@@ -175,9 +175,9 @@
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">My Product</a>
-                        <a class="collapse-item" href="buttons.html">Add New Product</a>
-                        <a class="collapse-item" href="cards.html">Product Violations</a>
+                        <a class="collapse-item" href="myProduct.php">My Product</a>
+                        <a class="collapse-item" href="addProduct.php">Add New Product</a>
+                        <a class="collapse-item" href="violationProduct.php">Product Violations</a>
                     </div>
                 </div>
             </li>
