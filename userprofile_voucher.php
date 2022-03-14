@@ -104,7 +104,7 @@
    }
 
    #vouchercard2{
-      width: 25rem;
+      width: 22rem;
       height: 10.5rem;
    }
 
