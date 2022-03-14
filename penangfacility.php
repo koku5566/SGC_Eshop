@@ -110,7 +110,109 @@
                     </div>
                 <!-- /.container-fluid -->
                 <br>
-                <div class="row">
+                <div class="container-fluid" style="width:80%">
+
+                    <!-- Content Row - Slidebar and SlideShow -->
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-0">
+                            <div class="browse-menus">
+                                <div class="browse-menu active">
+                                    <ul class="main-menu">
+                                        <!-- PHP Loop here - Category -->
+                                        <?php
+                                            //Check for Main Category
+                                            $sql = "SELECT * FROM mainCategory";
+                                            $result = mysqli_query($conn, $sql);
+                                
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    $verifier = 0;
+                                                    //Check For Sub Category
+                                                    $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = \"".$row['main_category_id']."\"";
+                                                    $result_1 = mysqli_query($conn, $sql_1);
+                                        
+                                                    if (mysqli_num_rows($result_1) > 0) {
+                                                        $verifier = 1;
+                                                        echo("
+                                                            <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
+                                                                <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                                <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
+                                                                ".$row['main_category_name']."
+                                                                <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+
+                                                                </a>
+                                                                    <ul class=\"dropdown-menu\">
+                                                        ");
+
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            echo("
+                                                                        <li class=\"menu-item\">
+                                                                            <a href=\"{$domain_link}/category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
+                                                                        </li>
+                                                            ");
+                                                        }
+                                                        echo("
+                                                                </li>
+                                                            </ul>
+                                                        ");
+                                                    }
+
+                                                    if($verifier == 0)
+                                                    {
+                                                        //If no sub category, display as normal
+                                                        echo("
+                                                        <li class=\"menu-item\" style=\"display: list-item;\">
+                                                        <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
+                                                        <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
+                                                        ".$row['main_category_name']."
+                                                        </a>
+                                                        </li>
+                                                        ");
+                                                    } 
+                                                }
+                                            }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slideshow -->
+                        <div class="col-xl-10">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <!-- List All Product -->
+                    <div class="row">
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
@@ -374,7 +476,7 @@
                         </div>
                     </div>
                 </div>
-                <h1>ssss</h1>
+            
                 <!-- /.container-fluid -->
 <br>
 <?php
