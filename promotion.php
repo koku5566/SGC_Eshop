@@ -3,7 +3,7 @@
 ?>
 
     <!-- Begin Page Content -->
-    <div class="container-fluid" style="width:100%;">
+    <div class="container-fluid" style="width:80%;">
         <!-- Slideshow -->
         <div class="row">
             <div class="col-xl-10">
