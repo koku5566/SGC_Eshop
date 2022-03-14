@@ -18,7 +18,7 @@
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon "><i class="fa fa-cart"></i></div>
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
                     <h5 class="step-title">Confirmed Order</h5>
                 </div>
@@ -162,11 +162,11 @@
                     <div class="row p-2">
                         <!-- Ordered Total-->
                         <div class="col">
-                            <h4>Ordered Total:</h4>
+                            <h5>Ordered Total:</h5>
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h4>RM465.60</h4>
+                            <h5><strong>RM465.60</strong></h5>
                         </div>
                     </div>
                 </div>
