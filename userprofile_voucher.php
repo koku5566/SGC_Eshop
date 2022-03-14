@@ -15,7 +15,7 @@
       ?>
       <br>
       <div class="col-xl-9">
-         <div class="container p-4" style="background-color: #ffffff">
+         <div class="container" style="background-color: #ffffff">
             <div class="row row-cols-2">
                <div class="col-6 m-2">
                   <?php
