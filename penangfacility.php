@@ -57,7 +57,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="product.php?id=a">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -75,7 +75,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -93,7 +93,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -111,7 +111,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -129,7 +129,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -147,7 +147,7 @@
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
