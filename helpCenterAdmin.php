@@ -244,7 +244,7 @@
                 $ext = strtolower(pathinfo($name,PATHINFO_EXTENSION));
         
             if($_POST['acContent'] === 'Add'){
-				echo "ENTER ADD";
+				
                     //USER GOT PUT IMAGE 
                     
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
@@ -261,7 +261,7 @@
                         mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
                 
                         mysqli_stmt_execute($stmt);
-                    
+						echo "ENTER ADD";
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             echo "<script>alert('Insert successfully');</script>";
