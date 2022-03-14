@@ -2,18 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['restaurant']))
-        {
-            $_SESSION['Restaurant_ID'] = $_POST['restaurant'];
-            echo("<script>window.location.href = \"main.php\";</script>");
-        }
-    }
-?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
@@ -28,18 +16,58 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h6 class="m-0 font-weight-bold text-primary">Rating</h6>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                       5 Star
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                       >= 4 Star
-                                                </label>
+                                            <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
+                                            <div class="form-check" id="rating_bar">
+                                                <?php
+                                                    if(isset($_GET['rating']))
+                                                    {
+                                                        $rating = (int) $_GET['rating'];
+                                                        $ratingArray = array();
+
+                                                        if($rating >= 1)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 2)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 3)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 4)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 5)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                    
+                                                        while(count($ratingArray) < 5) {
+                                                            $counter = count($ratingArray) + 1;
+                                                            array_push($ratingArray,"<a href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        } 
+
+                                                        
+                                                        foreach (array_reverse($ratingArray) as $value) {
+                                                            echo("{$value}");
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo("
+                                                            <a href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                        ");
+                                                    }
+
+                                                ?>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -147,6 +175,65 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
+                                        <!--PHP Loop Product List by Search Result-->
+                                        <?php
+                                         if(isset($_GET['search']))
+                                         {
+                                             $keyword = $_GET['search'];
+                                            //Check for Main Category
+                                            $sql = "SELECT * FROM product WHERE product_name LIKE %$keyword%";
+                                            $result = mysqli_query($conn, $sql);
+                                
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    //If no sub category, display as normal
+                                                    echo("
+                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
+                                                        <a data-sqe=\"link\" href=\"".$row['product_id']."\">
+                                                            <div class=\"card\">
+                                                                <div class=\"image-container\">
+                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row['product_cover_picture']."\" alt=\"".$row['product_name']."\">
+                                                                </div>
+                                                                <div class=\"card-body\">
+                                                                    <div class=\"Name\">
+                                                                        <p class=\"card-text product-name\">".$row['product_name']."</p>
+                                                                    </div>
+                                                                    <div class=\"Tag\">
+                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                    </div>
+                                                                    <div class=\"Price\">
+                                                                        <b><span style=\"font-size:16pt;\">RM 4800<span></b>
+                                                                    </div>
+                                                                    <div class=\"Rating\">
+                                                                        <i class=\"fa fa-star\"></i>
+                                                                        <i class=\"fa fa-star\"></i>
+                                                                        <i class=\"fa fa-star-half-alt\"></i>
+                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                    </div>
+                                                                    <div class=\"Location\">
+                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>   
+                                                        </a>
+                                                    </div>
+                                                    ");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                //No result
+                                            }
+                                         }
+                                         else
+                                         {
+
+                                         }
+                                            
+                                        ?>
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
@@ -424,13 +511,13 @@
         overflow:hidden;
     }
 
-    input[type=checkbox],input[type=radio]
+    input[type=checkbox]
     {
         /* Double-sized Checkboxes */
-        -ms-transform: scale(1.7); /* IE */
-        -moz-transform: scale(1.7); /* FF */
-        -webkit-transform: scale(1.7); /* Safari and Chrome */
-        -o-transform: scale(1.7); /* Opera */
+        -ms-transform: scale(1.4); /* IE */
+        -moz-transform: scale(1.4); /* FF */
+        -webkit-transform: scale(1.4); /* Safari and Chrome */
+        -o-transform: scale(1.4); /* Opera */
         padding: 10px;
     }
 
