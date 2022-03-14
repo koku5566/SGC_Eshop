@@ -22,6 +22,31 @@
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
+               <div class="col-6">
+                  <?php
+                  require __DIR__ . '/voucher2.php'
+                  ?>
+               </div>
+               <div class="col-6">
+                  <?php
+                  require __DIR__ . '/voucher2.php'
+                  ?>
+               </div>
+               <div class="col-6">
+                  <?php
+                  require __DIR__ . '/voucher2.php'
+                  ?>
+               </div>
+               <div class="col-6">
+                  <?php
+                  require __DIR__ . '/voucher2.php'
+                  ?>
+               </div>
+               <div class="col-6">
+                  <?php
+                  require __DIR__ . '/voucher2.php'
+                  ?>
+               </div>
             </div>
          </div>
          <br>
