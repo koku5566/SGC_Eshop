@@ -244,7 +244,7 @@
                 $ext = strtolower(pathinfo($name,PATHINFO_EXTENSION));
         
             if($_POST['acContent'] === 'Add'){
-        
+				echo "ENTER ADD";
                     //USER GOT PUT IMAGE 
                     
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
