@@ -3,10 +3,10 @@
 ?>
 
     <!-- Begin Page Content -->
-    <div class="container-fluid" style="width:100%;">
+    <div class="container-fluid" style="width:80%;">
         <!-- Slideshow -->
         <div class="row">
-            <div class="col-xl-10">
+            <div class="justify-content-center">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,8 +37,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- Voucher -->
+
+        <!-- Shop -->
+        
     </div>
     <!-- /.container-fluid -->
+    <br>
 
 <?php
     require __DIR__ . '/footer.php'
