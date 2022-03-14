@@ -52,13 +52,13 @@
                                                     }
                                                     else
                                                     {
-                                                        echo{"
+                                                        echo("
                                                             <a href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             <a href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             <a href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             <a href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             <a href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                        "};
+                                                        ");
                                                     }
 
                                                 ?>
