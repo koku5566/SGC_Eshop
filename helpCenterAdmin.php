@@ -297,7 +297,7 @@
 				
 				
 		
-<div  class= "sohai">
+
 	
 		
 		<!--THE MODAL EDIT QUESTION-->			
@@ -637,7 +637,7 @@
 				
 						
 					
-</div>
+
 			
 			
 		
