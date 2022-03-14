@@ -7,15 +7,12 @@
                 <div class="container-fluid" style="width:80%">
                     <!-- List All Product -->
                     <div class="card-body">
-                    <div class="card-header py-3">
+                                <div>
                                     <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                     <div class="row">
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                <div class="card-header py-3">
-                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
-                                </div>
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="product.php?id=a">
