@@ -5,26 +5,7 @@
 
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
-<div class="card" id="vouchercard">
-   <div class="container">
-      <img class="m-4" src="../img/segilogo.png" id="voucherlogo">
-   </div>
-   <div class="card-body">
-      <h6 class="card-title"><strong>SEGi Group of Colleges</strong></h6>
-      <h5 class="card-subtitle text-muted">RM1 off</h5>
-      <small>Used : 30 FEB 2022</small><br>
-      <u>
-         <a type="" class="" data-toggle="modal" data-target="#termsModal">
-         T&C applied.
-         </a>
-      </u>
-   </div>
-   <div class="card-footer">
-      <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-   </div>
-</div>
-
-<!-- <div class="card" id="vouchercard2">
+<div class="card" id="vouchercard2">
    <div class="card-body">
       <div class="row">
          <div class="col-mb-3 m-2">
@@ -42,4 +23,4 @@
          </div>
       </div>
    </div>
-</div> -->
+</div>
