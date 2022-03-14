@@ -1,6 +1,3 @@
-<?php
-    require __DIR__ . '/merchantHeader.php'
-?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
@@ -14,7 +11,7 @@
     <div class="row">
 
       <!-- This is Seller Task (All)-->
-        <div class="col-xl-2 col-md-2 mb-4">
+        <div class="col-xl-2 col-md-2 mb-4" style="margin-left:5px">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -153,6 +150,3 @@ function myFunction(){
 
 <!-- /.container-fluid -->
 
-<?php
-    require __DIR__ . '/merchantFooter.php'
-?>
