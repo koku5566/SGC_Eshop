@@ -1,5 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
-
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <?php
 	if($_SESSION['login'] == false)
 	{

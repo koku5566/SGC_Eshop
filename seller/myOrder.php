@@ -14,7 +14,7 @@
     <div class="row">
 <!-- Content Row -->
 <div class="row">
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+<button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;margin-left:80px;
       box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
       border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">ALL</button>
       <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
