@@ -12,6 +12,7 @@
               <div class="col"><span style="white-space:nowrap; margin-right:10px;">Order Creation Date: </span></div>
               <div class="col"><input type="text" class="form-control" name="daterange" value="01/01/2022 - 01/15/2022" /></div>
             </div>
+
             </div>
 
             <div class="filter-search col-6">
@@ -50,7 +51,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col md-auto text-start"><span><strong>Username</strong></span></div>
-                        <div class="col md-auto text-end" style="text-align-right"><span><strong> Order ID: 125353</strong></span></div>
+                        <div class="col md-auto text-end" style="text-align:right;"><span><strong> Order ID: 125353</strong></span></div>
                     </div>
                 </div>
                 <div class="card-body" >
