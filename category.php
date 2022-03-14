@@ -46,7 +46,7 @@
                                                         }
                                                     
                                                         while(count($ratingArray) < 5) {
-                                                            $counter = count($caratingArrayrs) + 1;
+                                                            $counter = count($ratingArray) + 1;
                                                             array_push($ratingArray,"<a href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                         } 
 
