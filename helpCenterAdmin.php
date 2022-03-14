@@ -1,6 +1,9 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+
+
+
 <?php
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
@@ -282,11 +285,7 @@
         
             
     }
-    ?>
-
-<!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">
-
+?>
 
 
 
@@ -297,9 +296,10 @@
 				
 				
 		
-<div  class= "sohai">
+
 	
-		
+<!-- Begin Page Content --------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="width:80%">		
 		<!--THE MODAL EDIT QUESTION-->			
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
@@ -514,7 +514,7 @@
 
 						</div>
 				</div>
-				
+			</div>	
 						
 			<!--END OF MODAL ADD CATEGORY-->						
 
@@ -634,89 +634,11 @@
 	
 				</div>
 		</div>
-				
-						
-					
-</div>
-			
-			
-		
-			
-		
-
-
 
 
 </div>
 <!-- /.container-fluid ----------------------------------------------------------------------------------------------->
-<script>
-//FOR EDIT QUESTION
-var modal = document.getElementById("myModal");
-//var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-//FOR ADD QUESTION
-var modalAdd = document.getElementById("myModalAdd");
-var btnAddQue = document.getElementById("addquestionbtn");
-var spanAdd = document.getElementsByClassName("close")[1];
-btnAddQue.onclick = function() {
-  modalAdd.style.display = "block";
-}
-spanAdd.onclick = function() {
-  modalAdd.style.display = "none";
-}
-
-//FOR ADD Category
-
-var modalAddCat = document.getElementById("myModalAddCat");
-var btnAddCat = document.getElementById("pidbutton");
-var spanAddCat = document.getElementsByClassName("close")[2];
-
-btnAddCat.onclick = function() {
-  modalAddCat.style.display = "block";
-}
-spanAddCat.onclick = function() {
-  modalAddCat.style.display = "none";
-  
-}
-
-/****************************************************************/
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-  else if (event.target == modalAdd) {
-	modalAdd.style.display = "none";
-  }
-  else if (event.target == modalAddCat){
-	 modalAddCat.style.display = "none";
-  }
-	  
-}
-
-	
-	
-function myBtnGoFunction(){
-		  let ddlist = document.getElementById('categoryDisplay').value;
-		  
-		  let f = false;
-			
-			if (ddlist === "" )
-			{f = false;	}	
-			else{f = true;}	
-					
-			
-			if(f == true){document.getElementById('goo').disabled = false;}
-			else{ document.getElementById('goo').disabled = true;}
-	}			
-	
-
-</script>
 <?php
     require __DIR__ . '/footer.php'
 ?>
@@ -926,3 +848,71 @@ body{
 }
 
 </style>
+<script>
+//FOR EDIT QUESTION
+var modal = document.getElementById("myModal");
+//var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+//FOR ADD QUESTION
+var modalAdd = document.getElementById("myModalAdd");
+var btnAddQue = document.getElementById("addquestionbtn");
+var spanAdd = document.getElementsByClassName("close")[1];
+btnAddQue.onclick = function() {
+  modalAdd.style.display = "block";
+}
+spanAdd.onclick = function() {
+  modalAdd.style.display = "none";
+}
+
+//FOR ADD Category
+
+var modalAddCat = document.getElementById("myModalAddCat");
+var btnAddCat = document.getElementById("pidbutton");
+var spanAddCat = document.getElementsByClassName("close")[2];
+
+btnAddCat.onclick = function() {
+  modalAddCat.style.display = "block";
+}
+spanAddCat.onclick = function() {
+  modalAddCat.style.display = "none";
+  
+}
+
+/****************************************************************/
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  else if (event.target == modalAdd) {
+	modalAdd.style.display = "none";
+  }
+  else if (event.target == modalAddCat){
+	 modalAddCat.style.display = "none";
+  }
+	  
+}
+
+	
+	
+function myBtnGoFunction(){
+		  let ddlist = document.getElementById('categoryDisplay').value;
+		  
+		  let f = false;
+			
+			if (ddlist === "" )
+			{f = false;	}	
+			else{f = true;}	
+					
+			
+			if(f == true){document.getElementById('goo').disabled = false;}
+			else{ document.getElementById('goo').disabled = true;}
+	}			
+	
+
+</script>
