@@ -24,7 +24,7 @@
                 </div>
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon  pt-4"><i class="fa-regular fa-box"></i></div>
+                        <div class="step-icon pt-4"><i class="fa-regular fa-box"></i></div>
                     </div>
                     <h5 class="step-title">Processing Order</h5>
                 </div>

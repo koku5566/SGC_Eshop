@@ -13,8 +13,8 @@
             </div>
 
             <div class="filter-search col-6">
-              <span></span>
-                <div class="input-group mb-3">
+
+                <div class="input-group mb-3 pt-4">
                     <div class="input-group-prepend">
                         <select class="form-control">
                             <option>Order ID</option>
@@ -34,15 +34,15 @@
         <div class="order-list-panel">
             <div class="top-card card-header">
                 <div class="row">
-                    <div class="col-4">Product(s)</div>
-                    <div class="col-2">Order Total</div>
+                    <div class="col-5">Product(s)</div>
+                    <div class="col-1">Order Total</div>
                     <div class="col-2">Status</div>
                     <div class="col-2">All Channels</div>
                     <div class="col-2">Actions</div>
                 </div>
             </div>
         </div>
-        <div class="order-list-body pt-3">
+        <div class="order-list-body pt-3" >
             <!--Each Order Item-->
             <div class="card">
                 <div class="card-header">
@@ -51,13 +51,13 @@
                         <div class="col md-auto text-end"><span> Order ID: 125353</span></div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="font-size: 14px;">
                     <div class="row">
                         <div class="col-1"><img width="100%" src="https://www.w3schools.com/images/w3schools_green.jpg"
                                 alt="W3Schools.com"></div>
-                        <div class="col-2">Wireless Earphone dfdfbdfbd</div>
+                        <div class="col-3">Wireless Earphone dfdfbdfbd</div>
                         <div class="col-1">X1</div>
-                        <div class="col-2">RM349.00</div>
+                        <div class="col-1">RM349.00</div>
                         <div class="col-2">Completed</div>
                         <div class="col-2">DHL eCommerce 2121113134</div>
                         <div class="col-2"><a href="#">Check details</a></div>
