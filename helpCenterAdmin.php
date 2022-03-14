@@ -2,8 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 
-<!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">
+
 
 <?php
 	
@@ -286,7 +285,7 @@
         
             
     }
-    ?>
+?>
 
 
 
@@ -299,7 +298,8 @@
 		
 
 	
-		
+<!-- Begin Page Content --------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="width:80%">		
 		<!--THE MODAL EDIT QUESTION-->			
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
@@ -514,7 +514,7 @@
 
 						</div>
 				</div>
-				
+			</div>	
 						
 			<!--END OF MODAL ADD CATEGORY-->						
 
@@ -634,17 +634,6 @@
 	
 				</div>
 		</div>
-				
-						
-					
-
-			
-			
-		
-			
-		
-
-
 
 
 </div>
