@@ -5,16 +5,18 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%">
+<div class="container-fluid" style="width:80%; font-size:14px" >
         <div class="row">
             <div class="date-filter col-6 mb-4" style="float:right;">
-                <span style="white-space:nowrap; margin-right:10px;">Order Creation Date: </span>
-                <input type="text" class="form-control" name="daterange" value="01/01/2022 - 01/15/2022" />
+            <div class="row">
+              <div class="col"><span style="white-space:nowrap; margin-right:10px;">Order Creation Date: </span></div>
+              <div class="col"><input type="text" class="form-control" name="daterange" value="01/01/2022 - 01/15/2022" /></div>
+            </div>
             </div>
 
             <div class="filter-search col-6">
 
-                <div class="input-group mb-3 pt-4">
+                <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <select class="form-control">
                             <option>Order ID</option>
@@ -47,16 +49,17 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col md-auto text-start"><span>Username</span></div>
-                        <div class="col md-auto text-end"><span> Order ID: 125353</span></div>
+                        <div class="col md-auto text-start"><span><strong>Username</strong></span></div>
+                        <div class="col md-auto text-end" style="text-align-right"><span><strong> Order ID: 125353</strong></span></div>
                     </div>
                 </div>
-                <div class="card-body" style="font-size: 14px;">
+                <div class="card-body" >
                     <div class="row">
                         <div class="col-1"><img width="100%" src="https://www.w3schools.com/images/w3schools_green.jpg"
                                 alt="W3Schools.com"></div>
                         <div class="col-3">Wireless Earphone dfdfbdfbd</div>
                         <div class="col-1">X1</div>
+
                         <div class="col-1">RM349.00</div>
                         <div class="col-2">Completed</div>
                         <div class="col-2">DHL eCommerce 2121113134</div>
