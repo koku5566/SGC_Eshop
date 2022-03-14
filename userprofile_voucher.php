@@ -2,7 +2,7 @@
     require_once __DIR__ . '/header.php'
 ?>
 
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+<link href="./css/voucher.css" rel="stylesheet" type="text/css">
 
 <br>
 <div class="container">
@@ -12,7 +12,7 @@
       ?>
       <br>
       <div class="col-xl-9">
-         <div class="container p-2" style="background-color: #ffffff">
+         <div class="container p-4" style="background-color: #ffffff">
             <!-- <div class="card" id="vouchercard2">
                <div class="card-body">
                   <div class="row">
