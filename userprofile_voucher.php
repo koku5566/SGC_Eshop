@@ -23,7 +23,7 @@
       <br>
       <div class="col-xl-9">
          <div class="" style="background-color: #ffffff">
-            <div class="row row-cols-2 p-4">
+            <div class="row row-cols-2 p-5">
                <div class="col-6 mt-2 mb-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
