@@ -21,7 +21,7 @@
                                                 <?php
                                                     if(isset($_GET['rating']))
                                                     {
-                                                        $rating = $_GET['rating'];
+                                                        $rating = (int) $_GET['rating'];
                                                         $ratingArray = array();
 
                                                         if($rating >= 1)
