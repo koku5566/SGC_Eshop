@@ -7,10 +7,7 @@
                 <div class="container-fluid" style="width:80%">
                     <!-- List All Product -->
                     <div class="row">
-                        <!--Product List -->
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                    <div class="card-header py-3">
                                     <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
                                 </div>
                                 <!-- Card Body -->
@@ -73,10 +70,8 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>  
                             </div>
-                        </div>
-                    </div>
                     <br>
                     <div class="card-header py-3">
                                     <h5 class="w3-display-middle">EXPLORE SEGI FACILITIES</h5>
