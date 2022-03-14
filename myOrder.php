@@ -1,3 +1,7 @@
+<?php
+    require __DIR__ . '/merchantHeader.php'
+?>
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
@@ -9,107 +13,15 @@
 
     <!-- Content Row -->
     <div class="row">
-
-      <!-- This is Seller Task (All)-->
-        <div class="col-xl-2 col-md-2 mb-4" style="margin-left:5px">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                All</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- This is Seller Task (Unpaid)-->
-        <div class="col-xl-2 col-md-2 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Unpaid</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seller Task To Ship -->
-        <div class="col-xl-2 col-md-2 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                To Ship</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Shipping -->
-        <div class="col-xl-2 col-md-2 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Shipping
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0</div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Completed -->
-        <div class="col-xl-2 col-md-2 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Completed</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-    
-
-  <!-- Return/refund -->
-        <div class="col-xl-2 col-md-2 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Return/ Refund</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Content Row -->
+<div class="row">
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">ALL</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">UNPAID</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">TO SHIP</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">SHIPPING</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">COMPLETE</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">RETURN/REFUND</button>
+</div>
   <!----------------Back Button------------------->
 <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 6px;margin-left: 12px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;"><i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>Back</button>
   <!---------------Search----------------------->  
@@ -148,5 +60,9 @@ function myFunction(){
 
 
 
+
 <!-- /.container-fluid -->
 
+<?php
+    require __DIR__ . '/merchantFooter.php'
+?>
