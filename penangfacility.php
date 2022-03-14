@@ -110,7 +110,272 @@
                     </div>
                 <!-- /.container-fluid -->
                 <br>
-
+                <div class="row">
+                        <!--Product List -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Daily Discover</h5>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="product.php?id=a">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                            <a data-sqe="link" href="#">
+                                                <div class="card">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="Name">
+                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                        </div>
+                                                        <div class="Tag">
+                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
+                                                        </div>
+                                                        <div class="Price">
+                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
+                                                        </div>
+                                                        <div class="Rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-alt"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
+                                                        </div>
+                                                        <div class="Location">
+                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>   
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+<br>
 <?php
     require __DIR__ . '/footer.php'
 ?>
