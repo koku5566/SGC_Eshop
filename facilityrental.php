@@ -6,6 +6,10 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
                     <!-- List All Product -->
+                    <div class="card-body">
+                    <div class="card-header py-3">
+                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
+                                </div>
                     <div class="row">
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -72,6 +76,7 @@
                                     </div>
                                 </div>  
                             </div>
+                        </div>
                     <br>
                     <div class="card-header py-3">
                                     <h5 class="w3-display-middle">EXPLORE SEGI FACILITIES</h5>
