@@ -24,6 +24,7 @@ a:hover{
   height: 100px;
   display: inline-block;
   display: inline;
+  direction: rtl;
 }
 
 #rating_bar a span{
@@ -40,7 +41,7 @@ a:hover{
   font-weight: var(--fa-style,900);
 }
 
-#rating_bar a:hover:before,
+#rating_bar a:hover,
 #rating_bar a:hover~a{
   font-weight: var(--fa-style,900);
 }
