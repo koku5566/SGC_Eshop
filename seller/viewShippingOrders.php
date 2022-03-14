@@ -6,7 +6,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
-    <div class="container justify-content-center">
         <div class="row">
             <div class="date-filter col-6 mb-4" style="float:right;">
                 <span style="white-space:nowrap; margin-right:10px;">Order Creation Date: </span>
@@ -14,6 +13,7 @@
             </div>
 
             <div class="filter-search col-6">
+              <span></span>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <select class="form-control">
@@ -25,7 +25,7 @@
                     </div>
                     <input type="text" class="form-control input-text" placeholder="Search order"
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append"> <button class="btn btn-outline-primary btn-lg" type="button"><i
+                    <div class="input-group-append"> <button class="btn btn-outline-primary" type="button"><i
                                 class="fa fa-search"></i></button> </div>
                 </div>
             </div>
@@ -53,9 +53,9 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-1"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
+                        <div class="col-1"><img width="100%" src="https://www.w3schools.com/images/w3schools_green.jpg"
                                 alt="W3Schools.com"></div>
-                        <div class="col-2">Wireless Earphonenenenenne</div>
+                        <div class="col-2">Wireless Earphone dfdfbdfbd</div>
                         <div class="col-1">X1</div>
                         <div class="col-2">RM349.00</div>
                         <div class="col-2">Completed</div>
@@ -67,7 +67,6 @@
             <!--End of Order Item-->
 
         </div>
-    </div>
 
 </div>
 <!-- /.container-fluid -->
