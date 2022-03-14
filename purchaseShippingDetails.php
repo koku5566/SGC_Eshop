@@ -18,25 +18,25 @@
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon pt-4"><i class="pe-7s-cart"></i></div>
+                        <div class="step-icon pt-4"><i class="fa-solid fa-cart-circle-check"></i></div>
                     </div>
                     <h5 class="step-title">Confirmed Order</h5>
                 </div>
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon  pt-4"><i class="pe-7s-config"></i></div>
+                        <div class="step-icon  pt-4"><i class="fa-regular fa-box"></i></div>
                     </div>
                     <h5 class="step-title">Processing Order</h5>
                 </div>
                 <div class="step">
                     <div class="step-icon-wrap">
-                        <div class="step-icon pt-4"><i class="pe-7s-car"></i></div>
+                        <div class="step-icon pt-4"><i class="fa-regular fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Product Dispatched</h5>
                 </div>
                 <div class="step">
                     <div class="step-icon-wrap">
-                        <div class="step-icon  pt-4"><i class="pe-7s-home"></i></div>
+                        <div class="step-icon  pt-4"><i class="fa-regular fa-house"></i></div>
                     </div>
                     <h5 class="step-title">Product Delivered</h5>
                 </div>
@@ -184,7 +184,6 @@
 <style>
     body {
         margin-top: 20px;
-        font-family: Poppins;
         font-size: 18px;
         margin-bottom: 20%;
     }
