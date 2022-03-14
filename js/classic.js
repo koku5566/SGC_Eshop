@@ -111,3 +111,23 @@ function autocomplete(inp, arr) {
   /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
   autocomplete(document.getElementById("searchInput"), productList);
   
+
+  //--------------------------------------------------------------------------------------
+  //Seller Dashboard
+
+  imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+      blah.src = URL.createObjectURL(file)
+    }
+  }
+
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach(box => {
+  box.addEventListener('click', function handleClick(event) {
+    console.log('box clicked', event);
+
+    box.setAttribute('style', 'background-color: yellow;');
+  });
+});
