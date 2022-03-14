@@ -61,3 +61,54 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+
+<style>
+   #voucherlogo{
+   height: 100px !important;
+   width: 100px !important;
+}
+
+#vouchercard{
+   width: 11.5rem;
+   height: 22rem;
+}
+
+#termsvouchercard{
+   width: 11.5rem;
+   height: 20rem;
+}
+
+.tnccontainer{
+   margin: 10px 30px 30px 30px;
+   padding: 15px 18px 15px 18px;
+   border-radius: 10px;
+   border: dashed;
+}
+
+.selectvoucher{
+   width: 40px;
+   height: 28px;
+}
+
+#vouchercard2{
+   width: 25rem;
+   height: 10.5rem;
+}
+
+/* -------------------- Category Scrollbar----------------------- */
+
+/* width */
+::-webkit-scrollbar {
+   width: 5px;
+   height: 5px;
+ }
+
+ .scrolling-wrapper{
+	overflow-x: auto;
+}
+
+ .scrolling-wrapper2{
+	overflow-y: auto;
+   max-height: 580px;
+}
+</style>
