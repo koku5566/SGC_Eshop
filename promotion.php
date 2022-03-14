@@ -5,7 +5,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:100%;">
         <!-- Slideshow -->
-        <div class="row">
+        <div class="row" style="width: 80px;">
             <div class="col-xl-10">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
