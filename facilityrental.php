@@ -7,8 +7,8 @@
                 <div class="container-fluid" style="width:80%">
                     <!-- List All Product -->
                     <div class="card-body">
-                                <div>
-                                    <h5 class="w3-display-middle">CHOOSE A CAMPUS</h5>
+                                <div class="w3-display-middle">
+                                    <h5 >CHOOSE A CAMPUS</h5>
                                 </div>
                     <div class="row">
                                 <!-- Card Body -->
