@@ -13,7 +13,7 @@
       <br>
       <div class="col-xl-9">
          <div class="container" style="background-color: #ffffff">
-            <div class="card" id="vouchercard2">
+            <!-- <div class="card" id="vouchercard2">
                <div class="card-body">
                   <div class="row">
                      <div class="col-mb-3 m-2">
@@ -31,7 +31,10 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
+            <?php
+            require __DIR__ . '/voucher2.php'
+            ?>
          </div>
          <br>
          <div class="container">
