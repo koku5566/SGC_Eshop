@@ -1,6 +1,10 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+
+<!-- Begin Page Content --------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="width:80%">
+
 <?php
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
@@ -283,10 +287,6 @@
             
     }
     ?>
-
-<!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">
-
 
 
 
