@@ -50,7 +50,7 @@
                                                             array_push($ratingArray,"<a href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                         } 
 
-                                                        //array_reverse($ratingArray);
+                                                        array_reverse($ratingArray);
                                                         foreach ($ratingArray as $value) {
                                                             echo("{$value}");
                                                         }
