@@ -649,6 +649,216 @@
 
 </div>
 <!-- /.container-fluid ----------------------------------------------------------------------------------------------->
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
+<style>
+body{
+	font-family:Roboto, sans-serif;
+
+}
+.addbtn{
+	width: 22px;
+	max-width: 100%;
+	height: 22px;
+	display: block;
+	margin-right: auto;
+	position: absolute;
+	left:4px;
+	top: 22px;
+ 
+}
+.gobtn:enabled{
+	background-color: #00CC66;
+	border: 2px solid #00CC66;
+	cursor: pointer;
+}
+
+.sohai{
+	background-color: #fff;
+	max-width: 50%;
+	margin: 5vh auto;
+	padding: 20px;
+	
+}
+.imgfaq{
+	width:120px;
+	max-width: 100%;
+	height: 120px;	
+}
+.pp{
+	padding: 20px 30px;
+	border: 1px solid rgba(0 0 0 / .2);
+	border-radius: 5px;
+	color: #979797;
+	position: relative;
+	line-height: 1.5em;
+	margin-top: 15px;
+	cursor: pointer;
+	background-color: none;
+}
+.faq{
+	padding: 0px 30px 0px 40px;
+	border: 1.5px solid rgba(0 0 0 / .1);
+	border-radius: 5px;
+	color: #979797;
+	position: relative;
+	line-height: 1.5em;
+	cursor: pointer;
+}
+.faq.open{
+	border: 1.5px solid #a31f37;
+}
+.faq:hover{
+	border: 1.5px solid #a31f37;
+}
+.faq .faq_text{
+	width: 95%;
+}
+.btn{
+	color: #5e5d5d;
+	position: absolute;
+	right: 25px;
+	top: 13px;
+	font-weight: 400;
+	font-size: 1.4em;
+}
+.faq h2{
+	font-size: 0.9em;
+	font-weight: 400;
+	color: #5e5d5d;
+	
+}
+
+.faq.open h2{
+	display: block;
+	color: #a31f37;
+	font-weight: bold;
+	
+}
+
+
+.faq p {
+	display: none;
+	border-radius: 5px;
+}
+.faq .baka{
+	display: none;
+}
+.faq.open .baka{
+	display: block;
+}
+.faq.open p {
+	display:block;
+}
+.faq.open .btn{
+	color: #a31f37;
+}
+
+#categoryDisplay{
+	width: 150px;
+	max-width: 100%;
+	height: 28px;
+	overflow: hidden;
+	border: 1px solid rgba(0 0 0 / .2);
+	border-radius: 2px;
+}
+#pcategoryDisplay{
+	width: 150px;
+	max-width: 100%;
+	height: 28px;
+	overflow: hidden;
+	border: 1px solid rgba(0 0 0 / .2);
+	border-radius: 2px;
+}
+.textarea{
+	resize: none;
+	outline: none;
+	width: 80%;
+	height: 80px;
+	overflow: auto;
+	border: 1px solid rgba(0 0 0 / .1);
+	border-radius: 5px;
+}
+
+.imgset{
+	width: 25px;
+	max-width:100%;
+	height: 25px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 45%;
+  height: 400px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-content .editQuestion {
+	
+	width: 80%;
+	border: 1px solid rgba(0 0 0 / .1);
+	margin: 25px auto;
+	height: 85%
+}
+.modal-content .labelinput{
+	margin: 12px 0px 0px 28px;
+}
+.modal-content .textinput{
+	width: 80%;
+	
+	
+	outline: none;
+	height: 24px;
+	
+	overflow: auto;
+	border: 1px solid rgba(0 0 0 / .1);
+	border-radius: 5px;
+}
+.editimgCss{
+	height: 55px; 
+	width: 55px;
+	max-width: 100%;  
+
+}
+
+</style>
 <script>
 //FOR EDIT QUESTION
 var modal = document.getElementById("myModal");
@@ -717,10 +927,3 @@ function myBtnGoFunction(){
 	
 
 </script>
-<?php
-    require __DIR__ . '/footer.php'
-?>
-
-<style>
-
-</style>
