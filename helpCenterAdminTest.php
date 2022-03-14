@@ -2,8 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-
-
 <?php
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
@@ -244,7 +242,7 @@
                 $ext = strtolower(pathinfo($name,PATHINFO_EXTENSION));
         
             if($_POST['acContent'] === 'Add'){
-				echo "ENTER ADD";
+        
                     //USER GOT PUT IMAGE 
                     
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
@@ -288,16 +286,6 @@
 ?>
 
 
-
-
-
-		
-				
-				
-				
-		
-
-	
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 		<!--THE MODAL EDIT QUESTION-->			
@@ -649,10 +637,7 @@
 ?>
 
 <style>
-body{
-	font-family:Roboto, sans-serif;
 
-}
 .addbtn{
 	width: 22px;
 	max-width: 100%;
@@ -670,13 +655,6 @@ body{
 	cursor: pointer;
 }
 
-.sohai{
-	background-color: #fff;
-	max-width: 50%;
-	margin: 5vh auto;
-	padding: 20px;
-	
-}
 .imgfaq{
 	width:120px;
 	max-width: 100%;
