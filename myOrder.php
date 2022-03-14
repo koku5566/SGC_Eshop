@@ -15,7 +15,7 @@
 <!-- Content Row -->
 <div class="row">
       <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
-      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;margin-left:50px;
       border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">ALL</button>
       <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
       box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
