@@ -12,7 +12,7 @@
       ?>
       <br>
       <div class="col-xl-9">
-         <div class="container" style="background-color: #ffffff">
+         <div class="container m-2" style="background-color: #ffffff">
             <!-- <div class="card" id="vouchercard2">
                <div class="card-body">
                   <div class="row">
