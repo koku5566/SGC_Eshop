@@ -17,32 +17,32 @@
       <div class="col-xl-9">
          <div class="container p-4" style="background-color: #ffffff">
             <div class="row row-cols-2">
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
                </div>
-               <div class="col-6">
+               <div class="col-6 m-2">
                   <?php
                   require __DIR__ . '/voucher2.php'
                   ?>
@@ -77,51 +77,51 @@
 
 <style>
    #voucherlogo{
-   height: 100px !important;
-   width: 100px !important;
-}
+      height: 100px !important;
+      width: 100px !important;
+   }
 
-#vouchercard{
-   width: 11.5rem;
-   height: 22rem;
-}
+   #vouchercard{
+      width: 11.5rem;
+      height: 22rem;
+   }
 
-#termsvouchercard{
-   width: 11.5rem;
-   height: 20rem;
-}
+   #termsvouchercard{
+      width: 11.5rem;
+      height: 20rem;
+   }
 
-.tnccontainer{
-   margin: 10px 30px 30px 30px;
-   padding: 15px 18px 15px 18px;
-   border-radius: 10px;
-   border: dashed;
-}
+   .tnccontainer{
+      margin: 10px 30px 30px 30px;
+      padding: 15px 18px 15px 18px;
+      border-radius: 10px;
+      border: dashed;
+   }
 
-.selectvoucher{
-   width: 40px;
-   height: 28px;
-}
+   .selectvoucher{
+      width: 40px;
+      height: 28px;
+   }
 
-#vouchercard2{
-   width: 25rem;
-   height: 10.5rem;
-}
+   #vouchercard2{
+      width: 25rem;
+      height: 10.5rem;
+   }
 
-/* -------------------- Category Scrollbar----------------------- */
+   /* -------------------- Category Scrollbar----------------------- */
 
-/* width */
-::-webkit-scrollbar {
-   width: 5px;
-   height: 5px;
- }
+   /* width */
+   ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+   }
 
- .scrolling-wrapper{
-	overflow-x: auto;
-}
+   .scrolling-wrapper{
+      overflow-x: auto;
+   }
 
- .scrolling-wrapper2{
-	overflow-y: auto;
-   max-height: 580px;
-}
+   .scrolling-wrapper2{
+      overflow-y: auto;
+      max-height: 580px;
+   }
 </style>
