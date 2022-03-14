@@ -18,11 +18,51 @@
                                         <div class="col">
                                             <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
                                             <div class="form-check" id="rating_bar">
-                                                <a href="?rating=5"><span class="fa fa-star emptyStar"></span></a>
-                                                <a href="?rating=4"><span class="fa fa-star emptyStar"></span></a>
-                                                <a href="?rating=3"><span class="fa fa-star emptyStar"></span></a>
-                                                <a href="?rating=2"><span class="fa fa-star emptyStar"></span></a>
-                                                <a href="?rating=1"><span class="fa fa-star emptyStar"></span></a>
+                                                <?php
+                                                    if(isset($_GET['rating']))
+                                                    {
+                                                        $rating = $_GET['rating'];
+                                                        $ratingArray = array();
+
+                                                        if($rating >= 1)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 2)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 3)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 4)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                        if($rating >= 5)
+                                                        {
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        }
+                                                    
+                                                        while(count($ratingArray) < 5) {
+                                                            $counter = count($caratingArrayrs) + 1;
+                                                            array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                        } 
+                                                    }
+                                                    else
+                                                    {
+                                                        echo{"
+                                                            <a href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                            <a href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                        "};
+                                                    }
+
+                                                ?>
+                                                
                                             </div>
                                         </div>
                                     </div>
