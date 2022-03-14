@@ -3,8 +3,8 @@
 ?>
 
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+<!-- Begin Page Content -->
+<div class="container-fluid" style="width:80%">
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         <table class="table">
@@ -207,7 +207,7 @@
         <div class="column"><a class="btn btn-outline-secondary" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
         <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div>
     </div>
-                </div>
+</div>
                 <!-- /.container-fluid -->
 
 <?php
