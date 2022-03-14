@@ -111,7 +111,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
+                    <img src="../img/segilogo.png" style="width:50px;height:50px;" alt="">
                 </div>
                 <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
             </a>
