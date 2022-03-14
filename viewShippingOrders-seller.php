@@ -8,42 +8,10 @@ require_once __DIR__ . '/header.php'
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
   
-    <!--Date Picker-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   
-  <style>
-    .container {
-    margin-top:10%;
-    margin-left: auto;
-    margin-right: auto;
-    width:100%;
-    text-align:center;
-  }
 
-.btn:hover {
-    color: #fff
-  }
-
-.input-text:focus {
-    box-shadow: 0px 0px 0px;
-    border-color: grey;
-    outline: 0px
-}
-
-.form-control {
-    border: 1px solid grey;
-}
-.date-filter{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center
-}
-
-  </style>
   <body>
     <div class="container padding-bottom-3x mb-1">
       <div class="container justify-content-center">
@@ -126,3 +94,7 @@ $(function() {
 <?php
     require __DIR__ . '/footer.php'
 ?>
+    <!--Date Picker-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
