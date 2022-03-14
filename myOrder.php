@@ -15,12 +15,24 @@
     <div class="row">
 <!-- Content Row -->
 <div class="row">
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">ALL</button>
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">UNPAID</button>
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">TO SHIP</button>
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">SHIPPING</button>
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">COMPLETE</button>
-      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">RETURN/REFUND</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">ALL</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">UNPAID</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">TO SHIP</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">SHIPPING</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">COMPLETE</button>
+      <button class="btn btn-primary" type="button" style="width: 189.3875px;height: 99px;margin: 0px;margin-left: 24px;color: var(--bs-blue);font-size: 19px;background: var(--bs-white);text-align: left;
+      box-shadow: 2px 2px var(--bs-gray-200);padding-top: 0px;padding-bottom: 41px;
+      border-style: solid;border-color: var(--bs-gray-200);border-radius: 4px;">RETURN/REFUND</button>
 </div>
   <!----------------Back Button------------------->
 <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 6px;margin-left: 12px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;"><i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>Back</button>
