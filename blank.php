@@ -6,7 +6,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-
                 </div>
                 <!-- /.container-fluid -->
 
