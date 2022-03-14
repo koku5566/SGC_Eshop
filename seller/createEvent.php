@@ -12,8 +12,8 @@
     <div class="container-fluid" style="width:80%">
     <!-- Above template -->
 
-    <h1 style="margin-right: 80px;margin-left: 80px;margin-top: 50px;">Create New Event</h1>
-    <div style="margin-left: 80px;margin-right: 80px;margin-top: 30px;">
+    <h1 style="margin-top: 50px;">Create New Event</h1>
+    <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
         <div class="modal fade modal-dialog-scrollable" role="dialog" tabindex="-1" id="variationForm_modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -207,7 +207,7 @@
                     </table>
                 </div>
             </section>
-            <div style="margin-top: 61px;text-align: center; margin-bottom: 61px;">
+            <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                 <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button><button class="btn btn-primary" type="submit" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Submit</button></div>
             </div>
         </form>
