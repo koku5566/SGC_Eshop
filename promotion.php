@@ -4,6 +4,7 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:100%;">
+    <!--
         <div class="col-xl-10">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -14,7 +15,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                         <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="First slide">
-                    </div>
+                        </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
                         </div>
@@ -30,9 +31,9 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div> -->
     </div>
     <!-- /.container-fluid -->
 
