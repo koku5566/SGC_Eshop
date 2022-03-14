@@ -54,9 +54,6 @@
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Daily Discover</h5>
-                                </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
@@ -293,13 +290,6 @@
                                                         <div class="Price">
                                                             <b><span style="font-size:16pt;">RM 4800<span></b>
                                                         </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
                                                         <div class="Location">
                                                            <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
                                                         </div>
@@ -328,13 +318,6 @@
         overflow:hidden;
         text-align: center;   
 
-    }
-    .card-body-text{
-       background-color: gray;
-       opacity: 2;
-    }
-    .card-body{
-       background-color: #A31F37;
     }
 
 
