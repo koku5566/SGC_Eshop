@@ -36,8 +36,6 @@
                                                 <input type="text" class="form-control" name="keyword" placeholder="Enter ..." aria-label="SearchKeyword">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
@@ -92,19 +90,83 @@
                                                     <!-- Header Bar -->
                                                     <div class="row">
                                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
-                                                            <div>
-                                                                <h5>10 Products
+                                                            <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
+
+                                                            <?php
+                                                            if(isset($_POST['keyword']) || isset($_POST['category']))
+                                                            {
+                                                                $keyword = "";
+                                                                $category="";
+
+                                                                if(isset($_POST['searchBy']))
+                                                                {
+                                                                    switch($_POST['searchBy'])
+                                                                    {
+                                                                        case "name":
+                                                                            $searchBy = "product_name";
+                                                                            break;
+                                                                        case "mainsku":
+                                                                            $searchBy = "product_sku";
+                                                                            break;
+                                                                        case "sku":
+                                                                            $searchBy = "sub_product_id";
+                                                                            break;
+                                                                        default:
+                                                                            $searchBy = "product_name";
+                                                                    }
+                                                                }
+
+                                                                if(isset($_POST['keyword']) && isset($_POST['category']))
+                                                                {
+                                                                    $keyword = $_POST['keyword'];
+                                                                    $category = $_POST['category'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
+                                                                }
+                                                                else if(isset($_POST['keyword']))
+                                                                {
+                                                                    $keyword = $_POST['keyword'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%'";
+                                                                }
+                                                                else if(isset($_POST['category']))
+                                                                {
+                                                                    $category = $_POST['category'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";
+                                                                }
+
+                                                                $result = mysqli_query($conn, $sql);
+                                                    
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $total = (int) $row["total_product"]
+                                                                        $percent = $total/10
+                                                                        $uploadAvailable = 1000 - $total;
+                                                                        echo("
+                                                                            <h5>$total Products</h5>
+                                                                        
+                                                                            <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow="$percent" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                            </div>
+                                                                            <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                                    
+                                                                        ")
+        
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    //No result
+                                                                }
+                                                            }                                                            
+                                                        ?>
+
                                                             </div>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <p data-bs-toggle="tooltip" data-bs-placement="bottom" title="Number of upload product available = 1000 - Number of current product">You can still upload 990 products</p>
+                                                            
                                                         </div>
                                                         
-                                                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
                                                             <button type="button" class="btn btn-primary">Add New Product</button>
                                                         </div>
-                                                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
                                                             <button type="button" class="btn btn-outline-primary">Mass Upload</button>
                                                         </div>
                                                     </div>
