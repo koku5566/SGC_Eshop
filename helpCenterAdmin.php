@@ -740,7 +740,7 @@ h4.displayCategoryModal{
 }
 
 .faq h2{
-	font-size: 0.9em;
+	font-size: 1em;
 	font-weight: 400;
 	color: #5e5d5d;
 	
