@@ -721,6 +721,7 @@ body{
 .faq .faq_text{
 	width: 80%;
 }
+/*
 .btn{
 	color: #5e5d5d;
 	position: absolute;
@@ -729,6 +730,7 @@ body{
 	font-weight: 400;
 	font-size: 1.4em;
 }
+*/
 .faq h2{
 	font-size: 0.9em;
 	font-weight: 400;
