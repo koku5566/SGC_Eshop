@@ -510,7 +510,7 @@
 										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br><br>
 									
 																				 
-										<label for = 'acImg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
 
 										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="gobtn">
@@ -719,7 +719,7 @@ body{
 	border: 1.5px solid #a31f37;
 }
 .faq .faq_text{
-	width: 95%;
+	width: 80%;
 }
 .btn{
 	color: #5e5d5d;
@@ -838,19 +838,16 @@ body{
 	
 	width: 80%;
 	border: 1px solid rgba(0 0 0 / .1);
-	margin: 25px auto;
-	height: 85%
+	margin: auto;
+	height: 100%
 }
 .modal-content .labelinput{
 	margin: 12px 0px 0px 28px;
 }
 .modal-content .textinput{
-	width: 80%;
-	
-	
+	width: 75%;
 	outline: none;
 	height: 24px;
-	
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
