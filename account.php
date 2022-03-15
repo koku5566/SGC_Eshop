@@ -62,17 +62,19 @@ if(isset($_POST['update']))
 					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
 					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
-					<p id=\"label\">Name</p>
-					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\"/>
+					<div class=\"form-group\">
+					<label>Name</label>
+					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
+					</div>
 					
-					<p id=\"label\">Email Address</p>
-					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\"/>
+					<label>Email Address</label>
+					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
 					
-					<p id=\"label\">Password</p>
-					<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\"/>
+					<label>Password</label>
+					<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
 					
-					<p id=\"label\">Contact</p>
-					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\"/>
+					<label>Contact</label>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
 					
 					<button type=\"submit\" name=\"update\">Update</button>
 					");
