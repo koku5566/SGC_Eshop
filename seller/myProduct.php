@@ -90,9 +90,9 @@
                                                     <!-- Header Bar -->
                                                     <div class="row">
                                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
-                                                            <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
+                                                            <div class="col-xl-10 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
 
-                                                            <?php
+                                                        <?php
                                                             if(isset($_POST['keyword']) || isset($_POST['category']))
                                                             {
                                                                 $keyword = "";
@@ -181,7 +181,7 @@
                                                         </div>
                                                         
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                                            <button type="button" class="btn btn-primary">Add New Product</button>
+                                                            <button type="button" class="btn btn-primary">New Product</button>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
                                                             <button type="button" class="btn btn-outline-primary">Mass Upload</button>
@@ -239,7 +239,7 @@
 
                                                                         //Fetch each product information
                                                                         $id = $row['product_id'];
-                                                                        $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
+                                                                        $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
                                                                         C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
                                                                         LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                                         LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
@@ -263,9 +263,6 @@
                                                                                                     <div class=\"Name\">
                                                                                                         <p class=\"card-text product-name\">".$row_1['product_name']."</p>
                                                                                                     </div>
-                                                                                                    <div class=\"Tag\">
-                                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
-                                                                                                    </div>
                                                                                                     <div class=\"Price\">
                                                                                 ");
 
@@ -276,17 +273,23 @@
 
                                                                                     echo("
                                                                                                     </div>
-                                                                                                    <div class=\"Rating\">
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col\">
+                                                                                                            <p>Stock ".$row_1['total_stock']."</p>
+                                                                                                        </div>
+                                                                                                        <div class=\"col\">
+                                                                                                            <p>Sold ".$row_1['total_sold']."</p>
+                                                                                                        </div>
                                                                                                     </div>
-                                                                                                    <div class=\"Location\">
-                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
-                                                                                                    </div>
-                                                                                                        
+                                                                                    ");
+                                                                                    echo("
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col-xl-12\">
+                                                                                                            <button value=".$row_1['product_id'].">Edit</button>
+                                                                                                        </div>
+                                                                                                        <div class=\"col-xl-12\">
+                                                                                                            <button value=".$row_1['product_id'].">Unpublish</button>
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                 </div>   
                                                                                             </a>
