@@ -6,10 +6,10 @@
 		$email=$_POST['email'];
 		
 		$to = $email;
-		$subject = "RTX-Tech Reset Password";
+		$subject = "SGC E-Shop Reset Password";
 		$from = "noreply@mail.com";
-		$from2 = "rtx@mail.com";
-		$fromName = "RTX-Tech";
+		$from2 = "SGCEShop@mail.com";
+		$fromName = "SGC E-Shop";
 
 		$headers =  "From: $fromName <$from> \r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
@@ -18,7 +18,7 @@
 		$hash = md5( rand(0,1000) );
 		$_SESSION['VerifyCode'] = $hash;
 		$message = "
-		<p>We received a request to reset your RTX-Tech account password.
+		<p>We received a request to reset your SGC E-Shop account password.
 		<br>Click the link below to reset.
 		<br><b>http://localhost/A/ResetPass.php?email=$email&hash=$hash</b>
 		<br>
