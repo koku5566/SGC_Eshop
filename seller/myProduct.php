@@ -270,7 +270,7 @@
                                                                                 ");
 
                                                                                 //If got variation
-                                                                                if($row['product_variation'] == 1)
+                                                                                if($row_1['product_variation'] == 1)
                                                                                 {
                                                                                     echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
 
@@ -339,7 +339,7 @@
 
                                                                         //Fetch each product information
                                                                         $id = $row['product_id'];
-                                                                        $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
+                                                                        $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
                                                                         C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
                                                                         LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                                         LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
@@ -367,7 +367,7 @@
                                                                                 ");
 
                                                                                 //If got variation
-                                                                                if($row['product_variation'] == 1)
+                                                                                if($row_1['product_variation'] == 1)
                                                                                 {
                                                                                     echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
 
@@ -401,7 +401,7 @@
                                                                                 //If no variation
                                                                                 else
                                                                                 {
-                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row['product_price']." <span></b>");
+                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['product_price']." <span></b>");
 
                                                                                    echo("
                                                                                                     </div>

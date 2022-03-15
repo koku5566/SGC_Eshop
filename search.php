@@ -220,7 +220,7 @@
                                                             ");
 
                                                             //If got variation
-                                                            if($row['product_variation'] == 1)
+                                                            if($row_1['product_variation'] == 1)
                                                             {
                                                                 if($row_1['min_price'] == $row_1['max_price'])
                                                                 {
@@ -254,7 +254,7 @@
                                                             //If no variation
                                                             else
                                                             {
-                                                                echo("<b><span style=\"font-size:16pt;\">RM ".$row['product_price']." <span></b>");
+                                                                echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['product_price']." <span></b>");
 
                                                                 echo("
                                                                                 </div>
