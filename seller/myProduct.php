@@ -182,10 +182,10 @@
                                                         </div>
 
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
-                                                            <button type="button" class="btn btn-primary">New Product</button>
+                                                            <a href="addProduct.php" class="btn btn-primary">New Product</a>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                                            <button type="button" class="btn btn-outline-primary">Mass Upload</button>
+                                                            <a href="massUpload.php" class="btn btn-outline-primary">Mass Upload</a>
                                                         </div>
                                                     </div>
 
@@ -592,10 +592,10 @@
                                                         </div>
 
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
-                                                            <button type="button" class="btn btn-primary">New Product</button>
+                                                            <a href="addProduct.php" class="btn btn-primary">New Product</a>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                                            <button type="button" class="btn btn-outline-primary">Mass Upload</button>
+                                                            <a href="massUpload.php" class="btn btn-outline-primary">Mass Upload</a>
                                                         </div>
                                                     </div>
 
@@ -915,10 +915,10 @@
                                                         </div>
 
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
-                                                            <button type="button" class="btn btn-primary">New Product</button>
+                                                            <a href="addProduct.php" class="btn btn-primary">New Product</a>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                                            <button type="button" class="btn btn-outline-primary">Mass Upload</button>
+                                                            <a href="massUpload.php" class="btn btn-outline-primary">Mass Upload</a>
                                                         </div>
                                                     </div>
 
@@ -1327,10 +1327,10 @@
                                                         </div>
 
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
-                                                            <button type="button" class="btn btn-primary">New Product</button>
+                                                            <a href="addProduct.php" class="btn btn-primary">New Product</a>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                                            <button type="button" class="btn btn-outline-primary">Mass Upload</button>
+                                                            <a href="massUpload.php" class="btn btn-outline-primary">Mass Upload</a>
                                                         </div>
                                                     </div>
 
