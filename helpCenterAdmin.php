@@ -246,7 +246,7 @@
             if($_POST['acContent'] === 'Add'){
 				
                     //USER GOT PUT IMAGE 
-                    echo "<script>alert('can reach inside though')</script>";
+                    
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
                         echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
                     }
@@ -255,7 +255,7 @@
                         echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
                     }
                     $imageData = file_get_contents($temp);
-                    
+                    echo "$acCategoryName -$imageData -$type";
                     $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
 
                     if($stmt = mysqli_prepare($conn, $sql)){
