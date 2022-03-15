@@ -27,7 +27,7 @@
                                         <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <select class="form-select" name="searchBy" aria-label="SearchBy">
+                                                    <select class="form-select" name="searchBy" aria-label="SearchBy" style="color:currentColor;">
                                                         <option selected value="name">Product Name</option>
                                                         <option value="mainsku">Main Product SKU</option>
                                                         <option value="sku">Product SKU</option>
@@ -179,8 +179,8 @@
                                                             </div>
                                                             
                                                         </div>
-                                                        
-                                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
+
+                                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
                                                             <button type="button" class="btn btn-primary">New Product</button>
                                                         </div>
                                                         <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
@@ -375,23 +375,23 @@
 
                                                                                     echo("
                                                                                                     </div>
-                                                                                                    <div class=\"row\">
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <p style=\"font-size:10pt;\">Stock ".$row_1['total_stock']."</p>
+                                                                                                        <div class=\"row\">
+                                                                                                            <div class=\"col-xl-6\">
+                                                                                                                <p style=\"font-size:10pt;\">Stock ".$row_1['total_stock']."</p>
+                                                                                                            </div>
+                                                                                                            <div class=\"col-xl-6\">
+                                                                                                                <p style=\"font-size:10pt;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <p style=\"font-size:10pt;\">Sold ".$row_1['total_sold']."</p>
-                                                                                                        </div>
-                                                                                                    </div>
 
-                                                                                                    <div class=\"row\">
-                                                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                            <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
+                                                                                                        <div class=\"row\">
+                                                                                                            <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
+                                                                                                            </div>
+                                                                                                            <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                            <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
-                                                                                                        </div>
-                                                                                                    </div>
                                                                                                     </div>
                                                                                                 </div>   
                                                                                             </a>
@@ -405,24 +405,23 @@
 
                                                                                    echo("
                                                                                                     </div>
-                                                                                                    <div class=\"row\">
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <p>Stock ".$row_1['product_stock']."</p>
+                                                                                                        <div class=\"row\">
+                                                                                                            <div class=\"col-xl-6\">
+                                                                                                                <p style=\"font-size:10pt;\">Stock ".$row_1['product_stock']."</p>
+                                                                                                            </div>
+                                                                                                            <div class=\"col-xl-6\">
+                                                                                                                <p style=\"font-size:10pt;\">Sold ".$row_1['product_sold']."</p>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <p>Sold ".$row_1['product_sold']."</p>
-                                                                                                        </div>
-                                                                                                    </div>
 
-                                                                                                    <div class=\"row\">
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <button>Edit</button>
+                                                                                                        <div class=\"row\">
+                                                                                                            <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
+                                                                                                            </div>
+                                                                                                            <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
+                                                                                                            </div>
                                                                                                         </div>
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <button>Unpublish</button>
-                                                                                                        </div>
-                                                                                                    </div>
-
                                                                                                         
                                                                                                     </div>
                                                                                                 </div>   
@@ -504,5 +503,10 @@
     @keyframes slide-down {
         0% { opacity: 0; transform: translateY(100%); }
         100% { opacity: 1; transform: translateY(0); }
+    }
+
+    a:hover{
+        text-decoration:none;
+        color:#a31f37;
     }
 </style>
