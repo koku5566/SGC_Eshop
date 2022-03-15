@@ -310,7 +310,8 @@
 	
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
-		<!--THE MODAL EDIT QUESTION-->			
+		<!--THE MODAL EDIT QUESTION-->	
+			<h4 class = "displayCategoryModal">Edit Question</h4>
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
@@ -442,6 +443,7 @@
 			<!--END OF MODAL EDIT QUESTION-->
 <!---------------------------------------------------------------------------------------------------------------------------------->			
 			<!--STAR OF MODAL ADD QUESTION-->
+			<h4 class = "displayCategoryModal">Add Question</h4>
 			<div id="myModalAdd" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
@@ -496,6 +498,7 @@
 			<!--END OF MODAL ADD QUESTION-->		 
 											
 			<!--STAR OF MODAL ADD CATEGORY-->
+			<h4 class = "displayCategoryModal">Add Category</h4>
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
