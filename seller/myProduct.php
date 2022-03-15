@@ -151,7 +151,8 @@
                                                                         ");
                                                                     }
                                                                 }
-                                                                else
+                                                            }    
+                                                            else
                                                                 {
                                                                     $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
                                                                     $result = mysqli_query($conn, $sql);
@@ -172,8 +173,7 @@
                                                                             ");
                                                                         }
                                                                     }
-                                                                }
-                                                            }                                                            
+                                                                }                                                        
                                                         ?>
 
                                                             </div>
