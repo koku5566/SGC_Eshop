@@ -314,7 +314,7 @@
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
-						<span class="close">&times;</span>
+						<span class="closeM">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -445,7 +445,7 @@
 			<div id="myModalAdd" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
-						<span class="close" id = "closeAdd">&times;</span>
+						<span class="closeM" id = "closeAdd">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -499,7 +499,7 @@
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
-						<span class="close" id = "closeModalAddCat">&times;</span>
+						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
 								
 								<!--ADD CATEGORY-->
@@ -821,15 +821,15 @@ body{
 }
 
 /* The Close Button */
-.close {
+.closeM {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closeM:hover,
+.closeM:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -866,7 +866,7 @@ body{
 //FOR EDIT QUESTION
 var modal = document.getElementById("myModal");
 //var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("closeM")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -875,7 +875,7 @@ span.onclick = function() {
 //FOR ADD QUESTION
 var modalAdd = document.getElementById("myModalAdd");
 var btnAddQue = document.getElementById("addquestionbtn");
-var spanAdd = document.getElementsByClassName("close")[1];
+var spanAdd = document.getElementsByClassName("closeM")[1];
 btnAddQue.onclick = function() {
   modalAdd.style.display = "block";
 }
@@ -887,7 +887,7 @@ spanAdd.onclick = function() {
 
 var modalAddCat = document.getElementById("myModalAddCat");
 var btnAddCat = document.getElementById("pidbutton");
-var spanAddCat = document.getElementsByClassName("close")[2];
+var spanAddCat = document.getElementsByClassName("closeM")[2];
 
 btnAddCat.onclick = function() {
   modalAddCat.style.display = "block";
