@@ -257,6 +257,7 @@
                     $imageData = file_get_contents($temp);
                     
                     $sql = "INSERT INTO `helpcentercategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
+					echo "<script>console.log('Preparing')</script>";
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
                 
