@@ -246,7 +246,7 @@
             if($_POST['acContent'] === 'Add'){
 				
                     //USER GOT PUT IMAGE 
-                    
+                    echo "<script>alert('can reach inside though')</script>";
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
                         echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
                     }
