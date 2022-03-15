@@ -1,5 +1,5 @@
 <?php require __DIR__ . '/header.php' ?>
-<?php require __DIR__ . '/userprofilenav.php' ?>
+
 <?php
 	if($_SESSION['login'] == false)
 	{
@@ -46,6 +46,8 @@ if(isset($_POST['update']))
 	}
 ?>
 
+<div class="row">
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="title"><h2>My Profile</h2></div>
 <div id="Account">
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -79,6 +81,7 @@ if(isset($_POST['update']))
 	/*<input required type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" value=\"".$row["password"]."\"/>*/
 ?>
 </form>
+</div>
 <?php
 if(isset($_SESSION['Update']))
 	{
