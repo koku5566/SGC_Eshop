@@ -665,7 +665,7 @@
 ?>
 
 <style>
-h4 .displayCategoryModal{
+h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
     margin: auto;
@@ -729,7 +729,7 @@ body{
 .faq:hover{
 	border: 1.5px solid #a31f37;
 }
-.faq .faq_text{
+.faq.faq_text{
 	width: 80%;
 }
 
