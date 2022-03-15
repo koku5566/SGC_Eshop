@@ -3,7 +3,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%">
+<div class="container-fluid" style="width:80%; font-size:14px">
     <!--Horizontal Order Tracking Status-->
     <div class="card mb-3">
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order
@@ -18,25 +18,25 @@
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon pt-4"><i class="fa-solid fa-cart-circle-check"></i></div>
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
                     <h5 class="step-title">Confirmed Order</h5>
                 </div>
                 <div class="step completed">
                     <div class="step-icon-wrap">
-                        <div class="step-icon pt-4"><i class="fa-regular fa-box"></i></div>
+                        <div class="step-icon "><i class="fa fa-box"></i></div>
                     </div>
                     <h5 class="step-title">Processing Order</h5>
                 </div>
                 <div class="step">
                     <div class="step-icon-wrap">
-                        <div class="step-icon pt-4"><i class="fa-regular fa-truck"></i></div>
+                        <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Product Dispatched</h5>
                 </div>
                 <div class="step">
                     <div class="step-icon-wrap">
-                        <div class="step-icon  pt-4"><i class="fa-regular fa-house"></i></div>
+                        <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
                     <h5 class="step-title">Product Delivered</h5>
                 </div>
@@ -162,11 +162,11 @@
                     <div class="row p-2">
                         <!-- Ordered Total-->
                         <div class="col">
-                            <h4>Ordered Total:</h4>
+                            <h5>Ordered Total:</h5>
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h4>RM465.60</h4>
+                            <h5><strong>RM465.60</strong></h5>
                         </div>
                     </div>
                 </div>
