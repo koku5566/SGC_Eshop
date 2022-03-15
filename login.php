@@ -87,7 +87,6 @@
                                         </div>
                                         
                                         <hr>
-                                        <div class="row">
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
@@ -100,10 +99,10 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
                                         </a>
                                         <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                                        </div>
                                     </form>
 
                                     <hr>
+                                    
                                     <div class="text-left">
                                         New to SGC E-Shop?<a href="register.php"> Sign Up </a>
                                     </div>
