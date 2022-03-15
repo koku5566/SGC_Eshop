@@ -30,9 +30,10 @@
             $searchTerm = test_input($_POST["search"]);
             // check if name only contains letters and whitespace
             if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
+                echo($searchTerm);
                 ?>
                     <script type="text/javascript">
-                    alert(echo($searchTerm));
+                    console.log(echo($searchTerm));
                     //window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
                     </script>
                 <?php
