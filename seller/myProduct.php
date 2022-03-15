@@ -377,19 +377,19 @@
                                                                                                     </div>
                                                                                                     <div class=\"row\">
                                                                                                         <div class=\"col-xl-6\">
-                                                                                                            <p>Stock ".$row_1['total_stock']."</p>
+                                                                                                            <p style=\"font-size:10pt;\">Stock ".$row_1['total_stock']."</p>
                                                                                                         </div>
                                                                                                         <div class=\"col-xl-6\">
-                                                                                                            <p>Sold ".$row_1['total_sold']."</p>
+                                                                                                            <p style=\"font-size:10pt;\">Sold ".$row_1['total_sold']."</p>
                                                                                                         </div>
                                                                                                     </div>
 
                                                                                                     <div class=\"row\">
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <button>Edit</button>
+                                                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                            <button class=\"btn btn-outline-primary\" style=\"width:100%;\">Edit</button>
                                                                                                         </div>
-                                                                                                        <div class=\"col-xl-6\">
-                                                                                                            <button>Unpublish</button>
+                                                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                                                            <button class=\"btn btn-outline-primary\" style=\"width:100%;\">Unpublish</button>
                                                                                                         </div>
                                                                                                     </div>
 
