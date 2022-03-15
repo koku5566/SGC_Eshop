@@ -263,6 +263,9 @@
                                                                                                     <div class=\"Name\">
                                                                                                         <p class=\"card-text product-name\">".$row_1['product_name']."</p>
                                                                                                     </div>
+                                                                                                    <div class=\"Tag\">
+                                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                                                    </div>
                                                                                                     <div class=\"Price\">
                                                                                 ");
 
