@@ -345,16 +345,16 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>
-											 </select><br><br><br>
+											 </select><br><br>
 											 
 											
 									
 
 									<label for = 'pquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br><br>
+									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br>
 
 									<label for = 'panswer' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br><br>
+									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br>
 
 									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
 									<!--DISPLAY IMAGE HERE-->
@@ -374,10 +374,10 @@
 													if($c6 != NULL && $c7 != NULL){
 														//echo 'Got pic';
 														echo "<img  src='data: $c7;base64, " . base64_encode($c6)."'  class='editimgCss'>".
-															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br>";
+															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 															 
 													}else{
-														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br><br>";
+														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 																	 
 													}
 		
@@ -476,16 +476,16 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br><br>		
+											</select><br><br>		
 											 
 									<label for = 'addquestion' class = 'labelinput'>Question:</label>
 									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br><br>
 
 									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br><br>
+									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
 									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
-									<input type = 'file'  name ='aimg' id = 'addimg'><br><br><br>
+									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
 																		
 									
 									
@@ -513,11 +513,11 @@
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
 
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br><br>
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br>
 									
 																				 
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
+										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
 										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
 																				
@@ -729,7 +729,7 @@ body{
 .faq:hover{
 	border: 1.5px solid #a31f37;
 }
-.faq.faq_text{
+.faq .faq_text{
 	width: 80%;
 }
 
@@ -753,6 +753,7 @@ body{
 	display: block;
 	color: #a31f37;
 	font-weight: bold;
+	width: 90%;
 	
 }
 
@@ -769,6 +770,7 @@ body{
 }
 .faq.open p {
 	display:block;
+	width:90%
 }
 .faq.open .btnd{
 	color: #a31f37;
@@ -829,6 +831,7 @@ body{
   border: 1px solid #888;
   width: 45%;
   height: 400px;
+  max-height: 100%;
 }
 
 /* The Close Button */
