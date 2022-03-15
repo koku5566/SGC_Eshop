@@ -48,7 +48,8 @@ if(isset($_POST['update']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<h1>My Profile</h1>
+<div id="title"><h2>My Profile</h2></div>
+<div id="Account">
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
 	$UID = $_SESSION["id"];
