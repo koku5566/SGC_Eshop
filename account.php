@@ -82,6 +82,7 @@ if(isset($_POST['update']))
 ?>
 </form>
 </div>
+
 <?php
 if(isset($_SESSION['Update']))
 	{

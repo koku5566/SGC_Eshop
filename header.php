@@ -25,7 +25,22 @@
         return $str;
     }
 
+    /*
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['search'])) {
+            $searchTerm = test_input($_POST["search"]);
+            // check if name only contains letters and whitespace
+            if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
+                ?>
+                    <script type="text/javascript">
+                        window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
+                    </script>
+                <?php
 
+            }
+        }
+    }
+    */
       
     function test_input($data) {
         $data = trim($data);
