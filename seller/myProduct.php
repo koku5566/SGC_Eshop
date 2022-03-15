@@ -469,7 +469,7 @@
         color:grey;
     }
 
-    .active{
+    .nav-link.active{
         color:#a31f37;
     }
 
