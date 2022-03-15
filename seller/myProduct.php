@@ -459,10 +459,6 @@
 </div>
 <!-- /.container-fluid -->
 
-<?php
-    require __DIR__ . '/footer.php'
-?>
-
 <style>
 
     .nav-link{
@@ -471,6 +467,7 @@
 
     .nav-link.active{
         color:#a31f37;
+        border-color: #fefeff #fff #a31f37;
     }
 
     .tab-pane.active {
@@ -487,3 +484,8 @@
         color:#a31f37;
     }
 </style>
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
