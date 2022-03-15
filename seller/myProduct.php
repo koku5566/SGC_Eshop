@@ -92,7 +92,89 @@
                                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                                             <div class="col-xl-10 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
 
+                                                        <?php
+                                                            if(isset($_POST['keyword']) || isset($_POST['category']))
+                                                            {
+                                                                $keyword = "";
+                                                                $category="";
 
+                                                                if(isset($_POST['searchBy']))
+                                                                {
+                                                                    switch($_POST['searchBy'])
+                                                                    {
+                                                                        case "name":
+                                                                            $searchBy = "product_name";
+                                                                            break;
+                                                                        case "mainsku":
+                                                                            $searchBy = "product_sku";
+                                                                            break;
+                                                                        case "sku":
+                                                                            $searchBy = "sub_product_id";
+                                                                            break;
+                                                                        default:
+                                                                            $searchBy = "product_name";
+                                                                    }
+                                                                }
+
+                                                                if(isset($_POST['keyword']) && isset($_POST['category']))
+                                                                {
+                                                                    $keyword = $_POST['keyword'];
+                                                                    $category = $_POST['category'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
+                                                                }
+                                                                else if(isset($_POST['keyword']))
+                                                                {
+                                                                    $keyword = $_POST['keyword'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%'";
+                                                                }
+                                                                else if(isset($_POST['category']))
+                                                                {
+                                                                    $category = $_POST['category'];
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";
+                                                                }
+
+                                                                $result = mysqli_query($conn, $sql);
+                                                    
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $total = (int) $row["total_product"];
+                                                                        $percent = $total/10;
+                                                                        $uploadAvailable = 1000 - $total;
+                                                                        echo("
+                                                                            <h5>$total Products</h5>
+                                                                        
+                                                                            <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                            </div>
+                                                                            <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                                    
+                                                                        ");
+                                                                    }
+                                                                }
+                                                            }    
+                                                            else
+                                                                {
+                                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
+                                                                    $result = mysqli_query($conn, $sql);
+                                                        
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $total = (int) $row["total_product"];
+                                                                            $percent = $total/10;
+                                                                            $uploadAvailable = 1000 - $total;
+                                                                            echo("
+                                                                                <h5>$total Products</h5>
+                                                                            
+                                                                                <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                                    <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                                </div>
+                                                                                <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                                        
+                                                                            ");
+                                                                        }
+                                                                    }
+                                                                }                                                        
+                                                        ?>
 
                                                             </div>
                                                             
@@ -248,7 +330,7 @@
                                                             }
                                                             else
                                                             {
-                                                                $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id";
+                                                                $sql = "SELECT DISTINCT A.product_id FROM product AS A";
     
                                                                 $result = mysqli_query($conn, $sql);
                                                     
@@ -281,9 +363,6 @@
                                                                                                     <div class=\"Name\">
                                                                                                         <p class=\"card-text product-name\">".$row_1['product_name']."</p>
                                                                                                     </div>
-                                                                                                    <div class=\"Tag\">
-                                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
-                                                                                                    </div>
                                                                                                     <div class=\"Price\">
                                                                                 ");
 
@@ -294,16 +373,24 @@
 
                                                                                     echo("
                                                                                                     </div>
-                                                                                                    <div class=\"Rating\">
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                    <div class\"row\">
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <p>Stock ".$row_1['total_stock']."</p>
+                                                                                                        </div>
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <p>Sold ".$row_1['total_sold']."</p>
+                                                                                                        </div>
                                                                                                     </div>
-                                                                                                    <div class=\"Location\">
-                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
+
+                                                                                                    <div class\"row\">
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <button>Edit</button>
+                                                                                                        </div>
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <button>Unpublish</button>
+                                                                                                        </div>
                                                                                                     </div>
+
                                                                                                         
                                                                                                     </div>
                                                                                                 </div>   
