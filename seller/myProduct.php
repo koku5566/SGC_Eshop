@@ -386,14 +386,12 @@
 
                                                                                                     <div class=\"row\">
                                                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                            <button class=\"btn btn-outline-primary\" style=\"width:100%;\">Edit</button>
+                                                                                                            <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
                                                                                                         </div>
                                                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                            <button class=\"btn btn-outline-primary\" style=\"width:100%;\">Unpublish</button>
+                                                                                                            <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
                                                                                                         </div>
                                                                                                     </div>
-
-                                                                                                        
                                                                                                     </div>
                                                                                                 </div>   
                                                                                             </a>
