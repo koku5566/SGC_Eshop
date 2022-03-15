@@ -249,6 +249,102 @@
                                                                     //No result
                                                                 }
                                                             }
+                                                            else
+                                                            {
+                                                                $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id";
+    
+                                                                $result = mysqli_query($conn, $sql);
+                                                    
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+
+                                                                        //Fetch each product information
+                                                                        $id = $row['product_id'];
+                                                                        $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
+                                                                        C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
+                                                                        LEFT JOIN variation AS B ON A.product_id = B.product_id 
+                                                                        LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+                                                                        LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+                                                                        LEFT JOIN (SELECT product_id, SUM(product_sold) AS total_sold FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS E ON A.product_id = E.product_id
+                                                                        LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+                                                                        LIMIT 1";
+                                                                        $result_1 = mysqli_query($conn, $sql_1);
+                                                            
+                                                                        if (mysqli_num_rows($result_1) > 0) {
+                                                                            while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                                                
+                                                                                echo("
+                                                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
+                                                                                        <a data-sqe=\"link\" href=\"".$row_1['product_id']."\">
+                                                                                            <div class=\"card\">
+                                                                                                <div class=\"image-container\">
+                                                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
+                                                                                                </div>
+                                                                                                <div class=\"card-body\">
+                                                                                                    <div class=\"Name\">
+                                                                                                        <p class=\"card-text product-name\">".$row_1['product_name']."</p>
+                                                                                                    </div>
+                                                                                                    <div class=\"Tag\">
+                                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                                                    </div>
+                                                                                                    <div class=\"Price\">
+                                                                                ");
+
+                                                                                //If got variation
+                                                                                if($row['product_variation'] == 1)
+                                                                                {
+                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+
+                                                                                    echo("
+                                                                                                    </div>
+                                                                                                    <div class=\"Rating\">
+                                                                                                        <i class=\"fa fa-star\"></i>
+                                                                                                        <i class=\"fa fa-star\"></i>
+                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
+                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                    </div>
+                                                                                                    <div class=\"Location\">
+                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
+                                                                                                    </div>
+                                                                                                        
+                                                                                                    </div>
+                                                                                                </div>   
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    ");
+                                                                                }
+                                                                                //If no variation
+                                                                                else
+                                                                                {
+                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row['product_price']." <span></b>");
+
+                                                                                    echo("
+                                                                                                    </div>
+                                                                                                    <div class=\"Rating\">
+                                                                                                        <i class=\"fa fa-star\"></i>
+                                                                                                        <i class=\"fa fa-star\"></i>
+                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
+                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                    </div>
+                                                                                                    <div class=\"Location\">
+                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
+                                                                                                    </div>
+                                                                                                        
+                                                                                                    </div>
+                                                                                                </div>   
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    ");
+                                                                                }
+
+                                                                                
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                             
                                                         ?>
 
