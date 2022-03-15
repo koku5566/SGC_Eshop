@@ -82,10 +82,11 @@
                                                 <a class="nav-item nav-link" id="nav-violation-tab" data-toggle="tab" href="#nav-violation" role="tab" aria-controls="nav-violation" aria-selected="false">Banned</a>
                                                 <a class="nav-item nav-link" id="nav-unpublish-tab" data-toggle="tab" href="#nav-unpublish" role="tab" aria-controls="nav-unpublish" aria-selected="false">Unpublished</a>
                                             </nav>
-                                        
+
+                                            <br>
 
                                             <div class="tab-content" id="nav-tabContent">
-                                                 <!-- All Product -->
+                                                 <!-- All Product Tab -->
                                                 <div class="tab-pane active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
                                                     <!-- Header Bar -->
                                                     <div class="row">
@@ -188,7 +189,7 @@
                                                         </div>
                                                     </div>
 
-
+                                                    <!-- Product List -->
                                                     <div class="row">
                                                         <!--PHP Loop Product List by Search Result-->
                                                         <?php
@@ -270,54 +271,7 @@
                                                                                                     <div class=\"Price\">
                                                                                 ");
 
-                                                                                //If got variation
-                                                                                if($row_1['product_variation'] == 1)
-                                                                                {
-                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
-
-                                                                                    echo("
-                                                                                                    </div>
-                                                                                                    <div class=\"Rating\">
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                    </div>
-                                                                                                    <div class=\"Location\">
-                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
-                                                                                                    </div>
-                                                                                                        
-                                                                                                    </div>
-                                                                                                </div>   
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    ");
-                                                                                }
-                                                                                //If no variation
-                                                                                else
-                                                                                {
-                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row['product_price']." <span></b>");
-
-                                                                                    echo("
-                                                                                                    </div>
-                                                                                                    <div class=\"Rating\">
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                    </div>
-                                                                                                    <div class=\"Location\">
-                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
-                                                                                                    </div>
-                                                                                                        
-                                                                                                    </div>
-                                                                                                </div>   
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    ");
-                                                                                }
+                                                                                
 
                                                                                 
                                                                             }
@@ -371,7 +325,7 @@
                                                                                 //If got variation
                                                                                 if($row_1['product_variation'] == 1)
                                                                                 {
-                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+                                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
 
                                                                                     echo("
                                                                                                     </div>
@@ -389,7 +343,18 @@
                                                                                                                 <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
                                                                                                             </div>
                                                                                                             <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
+                                                                                    ");
+                                                                                    if($row_1['product_status'] == 1)
+                                                                                    {
+                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>")
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>")
+                                                                                    }
+
+                                                                                    echo("
+                                                                                                                
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -401,7 +366,7 @@
                                                                                 //If no variation
                                                                                 else
                                                                                 {
-                                                                                    echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['product_price']." <span></b>");
+                                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
 
                                                                                    echo("
                                                                                                     </div>
@@ -419,18 +384,26 @@
                                                                                                                 <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
                                                                                                             </div>
                                                                                                             <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                                <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>
+                                                                                    ");
+                                                                                    if($row_1['product_status'] == 1)
+                                                                                    {
+                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>")
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>")
+                                                                                    }
+
+                                                                                    echo("
+                                                                                                                
                                                                                                             </div>
                                                                                                         </div>
-                                                                                                        
                                                                                                     </div>
                                                                                                 </div>   
                                                                                             </a>
                                                                                         </div>
                                                                                     ");
                                                                                 }
-
-                                                                                
                                                                             }
                                                                         }
                                                                     }
