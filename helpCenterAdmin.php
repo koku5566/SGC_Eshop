@@ -262,11 +262,11 @@
                     }
                     $imageData = file_get_contents($temp);
                    // echo "$acCategoryName -$imageData -$type";
-                   // $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
-					$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
+                    $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
+					//$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 's',$acCategoryName); 	//s=string , d=decimal value, i=integer
-						//'sss',$acCategoryName, $imageData,$type
+                        mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
+					
                         mysqli_stmt_execute($stmt);
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
