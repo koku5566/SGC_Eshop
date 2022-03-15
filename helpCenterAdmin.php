@@ -314,7 +314,7 @@
 			
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
+						<div class="modal-content" style = "height: 500px">
 						<h4 class = "displayCategoryModal">Edit Question</h4>
 						<span class="closeM">&times;</span>
 							<div class="editQuestion">
@@ -391,7 +391,7 @@
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
 									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right; margin-right: 20px' class="btn btn-success" disabled>
 									</form>
-									style="float:right; margin-right: 20px"
+									
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' >
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
 									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn'  style = "float:left; margin-left: 20px" class="btn btn-danger">
@@ -503,7 +503,7 @@
 			
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
+						<div class="modal-content" style = "height: 400px;">
 						<h4 class = "displayCategoryModal">Add Category</h4>
 						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
@@ -670,10 +670,7 @@ h4.displayCategoryModal{
     max-width: 80%;
     margin: auto;
 }
-body{
-	font-family:Roboto, sans-serif;
 
-}
 .addbtn{
 	width: 22px;
 	max-width: 100%;
@@ -830,7 +827,7 @@ body{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  height: 400px;
+  
   max-height: 100%;
 }
 
