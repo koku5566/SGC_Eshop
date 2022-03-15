@@ -5,7 +5,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
-                    <!-- List All Product -->
                     
                     <div class="card-header py-3">
                                     <h5>SEGI PENANG FACILITIES</h5>
@@ -49,7 +48,7 @@
                     <div class="card-header py-3">
                                     <h5>BOOK YOUR FACILITIES</h5>
                                 </div>
-                    <!-- List All Product -->
+
                     <div class="row">
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
@@ -57,7 +56,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="product.php?id=a">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -65,17 +64,17 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">SEGi space</p>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -83,17 +82,17 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">Business Meeting Room</p>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -101,17 +100,17 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">Ed-Tech Arena</p>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -119,17 +118,17 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">Computer Lab</p>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -137,17 +136,17 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">Auditorium</p>
                                                         </div>
                                                         <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
                                                 </div>   
                                             </a>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
@@ -155,10 +154,10 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
+                                                            <p class="card-text product-name">Classroom</p>
                                                         </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
+                                                        <div class="perhour">
+                                                           <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
                                                     </div>
