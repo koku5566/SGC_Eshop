@@ -371,26 +371,24 @@
                                                                                 //If got variation
                                                                                 if($row_1['product_variation'] == 1)
                                                                                 {
-                                                                                    echo($row_1['product_id']);
-                                                                                    echo($row_1['product_variation']);
                                                                                     echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
 
                                                                                     echo("
                                                                                                     </div>
-                                                                                                    <div class\"row\">
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <p>Stock ".$row_1['total_stock']."</p>
                                                                                                         </div>
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <p>Sold ".$row_1['total_sold']."</p>
                                                                                                         </div>
                                                                                                     </div>
 
-                                                                                                    <div class\"row\">
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <button>Edit</button>
                                                                                                         </div>
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <button>Unpublish</button>
                                                                                                         </div>
                                                                                                     </div>
@@ -409,20 +407,20 @@
 
                                                                                    echo("
                                                                                                     </div>
-                                                                                                    <div class\"row\">
-                                                                                                        <div class\"col-xl-6\">
-                                                                                                            <p>Stock ".$row_1['total_stock']."</p>
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col-xl-6\">
+                                                                                                            <p>Stock ".$row_1['product_stock']."</p>
                                                                                                         </div>
-                                                                                                        <div class\"col-xl-6\">
-                                                                                                            <p>Sold ".$row_1['total_sold']."</p>
+                                                                                                        <div class=\"col-xl-6\">
+                                                                                                            <p>Sold ".$row_1['product_sold']."</p>
                                                                                                         </div>
                                                                                                     </div>
 
-                                                                                                    <div class\"row\">
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                    <div class=\"row\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <button>Edit</button>
                                                                                                         </div>
-                                                                                                        <div class\"col-xl-6\">
+                                                                                                        <div class=\"col-xl-6\">
                                                                                                             <button>Unpublish</button>
                                                                                                         </div>
                                                                                                     </div>
