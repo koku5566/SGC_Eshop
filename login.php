@@ -92,9 +92,11 @@
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </a>
+                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
                                         </a>
+                                        <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                                     </form>
 
                                     <hr>
@@ -110,5 +112,28 @@
         </div>
     </div>
 </div>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=913746515960441&autoLogAppEvents=1" nonce="eUmuyEF6"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{913746515960441}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <?php require __DIR__ . '/footer.php' ?>

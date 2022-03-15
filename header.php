@@ -25,6 +25,7 @@
         return $str;
     }
 
+    /*
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['search'])) {
             $searchTerm = test_input($_POST["search"]);
@@ -32,13 +33,14 @@
             if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
                 ?>
                     <script type="text/javascript">
-                    window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
+                        window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
                     </script>
                 <?php
 
             }
         }
-      }
+    }
+    */
       
     function test_input($data) {
         $data = trim($data);
@@ -81,6 +83,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com">
 
     <title>SGC E-Shop</title>
 
@@ -118,7 +121,7 @@
                     </a>
 
                     <!-- Topbar Search -->
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
+                    <form method="post" action="<?php echo htmlspecialchars("/search.php");?>" 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input id="searchInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
