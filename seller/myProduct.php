@@ -346,11 +346,11 @@
                                                                                     ");
                                                                                     if($row_1['product_status'] == 1)
                                                                                     {
-                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>")
+                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>")
+                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                                     }
 
                                                                                     echo("
@@ -387,11 +387,11 @@
                                                                                     ");
                                                                                     if($row_1['product_status'] == 1)
                                                                                     {
-                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>")
+                                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>")
+                                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                                     }
 
                                                                                     echo("
