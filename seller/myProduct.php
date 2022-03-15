@@ -403,18 +403,26 @@
                                                                                 {
                                                                                     echo("<b><span style=\"font-size:16pt;\">RM ".$row['product_price']." <span></b>");
 
-                                                                                    echo("
+                                                                                   echo("
                                                                                                     </div>
-                                                                                                    <div class=\"Rating\">
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star\"></i>
-                                                                                                        <i class=\"fa fa-star-half-alt\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
-                                                                                                        <i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>
+                                                                                                    <div class\"row\">
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <p>Stock ".$row_1['total_stock']."</p>
+                                                                                                        </div>
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <p>Sold ".$row_1['total_sold']."</p>
+                                                                                                        </div>
                                                                                                     </div>
-                                                                                                    <div class=\"Location\">
-                                                                                                    <span style=\"font-size: 10pt; color:grey;\" >Subang Jaya</span>
+
+                                                                                                    <div class\"row\">
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <button>Edit</button>
+                                                                                                        </div>
+                                                                                                        <div class\"col-xl-6\">
+                                                                                                            <button>Unpublish</button>
+                                                                                                        </div>
                                                                                                     </div>
+
                                                                                                         
                                                                                                     </div>
                                                                                                 </div>   
