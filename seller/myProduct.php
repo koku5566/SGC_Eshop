@@ -144,7 +144,7 @@
                                                                             <h5>$total Products</h5>
                                                                         
                                                                             <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow="$percent" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
                                                                             </div>
                                                                             <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
                                                                                     
