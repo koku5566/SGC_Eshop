@@ -513,7 +513,7 @@
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="gobtn">
+										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="btn btn-success">
 																				
 									</form>
 									
