@@ -274,7 +274,7 @@
                                                                             while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                                                 
                                                                                 echo("
-                                                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
+                                                                                    <div class=\"col-xl-2 col-lg-3 col-sm-4\" style=\"padding-bottom: .625rem;\">
                                                                                         <a data-sqe=\"link\" href=\"".$row_1['product_id']."\">
                                                                                             <div class=\"card\">
                                                                                                 <div class=\"image-container\">
