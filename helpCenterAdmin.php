@@ -613,7 +613,7 @@
 												"<input type='image' alt= 'submit' name ='btnimage' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' ></form>".
 												"</p>".	
 										"</div>".
-										"<span class='btn' id='btn$c1'>+</span>".
+										"<span class='btnd' id='btn$c1'>+</span>".
 									"</div>";
 									$pp++;
 								}
@@ -623,11 +623,11 @@
 												 functionArr.push(function(){
 														document.getElementById('faq' + u[$i]).classList.toggle('open');
 							  
-														if (document.getElementById('btn' + u[$i]).innerHTML === '+'){			  
-																document.getElementById('btn' + u[$i]).innerHTML = '&#8722';
+														if (document.getElementById('btnd' + u[$i]).innerHTML === '+'){			  
+																document.getElementById('btnd' + u[$i]).innerHTML = '&#8722';
 															}
 														else{
-																document.getElementById('btn' + u[$i]).innerHTML = '+';
+																document.getElementById('btnd' + u[$i]).innerHTML = '+';
 															}
 													  }	);
 													  
@@ -721,8 +721,8 @@ body{
 .faq .faq_text{
 	width: 80%;
 }
-/*
-.btn{
+
+.btnd{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
@@ -730,7 +730,7 @@ body{
 	font-weight: 400;
 	font-size: 1.4em;
 }
-*/
+
 .faq h2{
 	font-size: 0.9em;
 	font-weight: 400;
@@ -759,7 +759,7 @@ body{
 .faq.open p {
 	display:block;
 }
-.faq.open .btn{
+.faq.open .btnd{
 	color: #a31f37;
 }
 
