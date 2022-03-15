@@ -479,17 +479,17 @@
 											</select><br><br>		
 											 
 									<label for = 'addquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br><br>
+									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br>
 
-									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
+									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 35px;'>Answer:</label>
 									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
-									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
+									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 46px;'>Image:</label>
 									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
 																		
 									
 									
-									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;' class="gobtn">
+									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;margin-right: 20px' class="btn btn-success">
 
 									</form>
 							
@@ -559,14 +559,14 @@
 						?>
 					 </select>
 					 
-					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="gobtn">
+					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="btn btn-success">
 			</form>	
 
 			<!--Add Category Button-->
 			<!--<input type='hidden' name='pps' value='addbutton'>-->
 			<input type="image" id="pidbutton" src = "https://cdn.pixabay.com/photo/2021/07/25/08/07/add-6491203__340.png" class = "addbtn">	
 			
-			<button id = "addquestionbtn">BUTTON ADD QUESTION</button>
+			<button id = "addquestionbtn" class="btn btn-success">ADD QUESTION</button>
 	
 			<!--The Space Between Category and Question-->
 				<div style = 'margin-top: 15px; max-height: 400px; overflow: auto;'>
@@ -740,7 +740,7 @@ h4.displayCategoryModal{
 }
 
 .faq h2{
-	font-size: 0.9em;
+	font-size: 1em;
 	font-weight: 400;
 	color: #5e5d5d;
 	
