@@ -331,10 +331,10 @@
                                                                                                     </div>
                                                                                                         <div class=\"row\">
                                                                                                             <div class=\"col-xl-6\">
-                                                                                                                <p style=\"font-size:10pt;\">Stock ".$row_1['total_stock']."</p>
+                                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                             </div>
                                                                                                             <div class=\"col-xl-6\">
-                                                                                                                <p style=\"font-size:10pt;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -372,10 +372,10 @@
                                                                                                     </div>
                                                                                                         <div class=\"row\">
                                                                                                             <div class=\"col-xl-6\">
-                                                                                                                <p style=\"font-size:10pt;\">Stock ".$row_1['product_stock']."</p>
+                                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
                                                                                                             </div>
                                                                                                             <div class=\"col-xl-6\">
-                                                                                                                <p style=\"font-size:10pt;\">Sold ".$row_1['product_sold']."</p>
+                                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -466,7 +466,11 @@
 <style>
 
     .nav-link{
+        color:grey;
+    }
 
+    .active{
+        color:#a31f37;
     }
 
     .tab-pane.active {
