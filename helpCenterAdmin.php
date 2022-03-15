@@ -356,7 +356,7 @@
 									<label for = 'panswer' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
 									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br>
 
-									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
+									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 35px;'>Image:</label>
 									<!--DISPLAY IMAGE HERE-->
 									
 									<?php
@@ -389,12 +389,12 @@
 									?>
 									
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right;' class="gobtn"disabled>
+									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right; margin-right: 20px' class="btn btn-success" disabled>
 									</form>
-									
+									style="float:right; margin-right: 20px"
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' >
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn' style='float:left;background-color:red;color:white'>
+									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn'  style = "float:left; margin-left: 20px" class="btn btn-danger">
 									</form>
 
 								
@@ -795,7 +795,7 @@ body{
 .textarea{
 	resize: none;
 	outline: none;
-	width: 80%;
+	width: 75%;
 	height: 80px;
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
@@ -854,7 +854,7 @@ body{
 
 .modal-content .editQuestion {
 	
-	width: 80%;
+	width: 75%;
 	border: 1px solid rgba(0 0 0 / .1);
 	margin: auto;
 	height: 100%
