@@ -265,7 +265,11 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             echo "<script>alert('Insert successfully');</script>";
-                            $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
+                           // $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
+							$sql = "UPDATE helpCenterCategory AS a, (SELECT id from helpCenterCategory order by id desc LIMIT 1) AS b 
+									SET a.hcc_id = concat('HCC', b.id)
+									WHERE a.id = b.id;";
+
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
