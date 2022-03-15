@@ -369,6 +369,7 @@
                                                                                 //If got variation
                                                                                 if($row_1['product_variation'] == 1)
                                                                                 {
+                                                                                    echo($row_1['product_id']);
                                                                                     echo($row_1['product_variation']);
                                                                                     echo("<b><span style=\"font-size:16pt;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
 
