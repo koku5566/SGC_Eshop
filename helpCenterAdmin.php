@@ -513,7 +513,7 @@
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="btn btn-success">
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
 																				
 									</form>
 									
@@ -659,6 +659,11 @@
 ?>
 
 <style>
+h4 .displayCategoryModal{
+	padding: 15px;
+    max-width: 80%;
+    margin: auto;
+}
 body{
 	font-family:Roboto, sans-serif;
 
@@ -826,6 +831,8 @@ body{
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+    right: 30px;
 }
 
 .closeM:hover,
