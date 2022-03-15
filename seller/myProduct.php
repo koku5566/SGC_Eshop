@@ -137,8 +137,8 @@
                                                     
                                                                 if (mysqli_num_rows($result) > 0) {
                                                                     while($row = mysqli_fetch_assoc($result)) {
-                                                                        $total = (int) $row["total_product"]
-                                                                        $percent = $total/10
+                                                                        $total = (int) $row["total_product"];
+                                                                        $percent = $total/10;
                                                                         $uploadAvailable = 1000 - $total;
                                                                         echo("
                                                                             <h5>$total Products</h5>
@@ -148,7 +148,7 @@
                                                                             </div>
                                                                             <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
                                                                                     
-                                                                        ")
+                                                                        ");
         
                                                                     }
                                                                 }
