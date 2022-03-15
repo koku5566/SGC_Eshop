@@ -82,7 +82,7 @@
                                                 <a class="nav-item nav-link" id="nav-violation-tab" data-toggle="tab" href="#nav-violation" role="tab" aria-controls="nav-violation" aria-selected="false">Banned</a>
                                                 <a class="nav-item nav-link" id="nav-unpublish-tab" data-toggle="tab" href="#nav-unpublish" role="tab" aria-controls="nav-unpublish" aria-selected="false">Unpublished</a>
                                             </nav>
-                                            <hr>
+                                        
 
                                             <div class="tab-content" id="nav-tabContent">
                                                  <!-- All Product -->
