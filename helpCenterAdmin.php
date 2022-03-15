@@ -10,7 +10,7 @@
             
             //echo "<script>alert('Gottacha');</script>";
             $selectedPID = $_POST['uimage'];
-            //$sql = "SELECT *  FROM `helpcenter` WHERE `hc_id` = ?";
+            //$sql = "SELECT *  FROM `helpCenter` WHERE `hc_id` = ?";
             $sql = "SELECT  hc.hc_id, hc.hcc_id, hcc.category, hc.question, hc.answer, hc.pic, hc.pic_type
                     FROM helpCenterCategory hcc INNER JOIN helpCenter hc
                     ON hcc.hcc_id = hc.hcc_id
@@ -110,7 +110,7 @@
     
         $selectedPID = $_POST['pid'];
                 echo "<script>alert($selectedPID);</script>";
-                $sql = "UPDATE helpcenter SET disable_date=? WHERE hc_id=?;";
+                $sql = "UPDATE helpCenter SET disable_date=? WHERE hc_id=?;";
                 $today = date("Y-m-d");
                  
                 // $sql = "INSERT INTO `product`(`sku`, `name`, `price`) VALUES (?,?,?)";
@@ -154,7 +154,7 @@
                 if($size == 0){
                     //echo "<script>alert('NO PIC')</script>";
                     
-                    $sql = "INSERT INTO `helpcenter`(`hcc_id`, `question`, `answer`) VALUES (?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`) VALUES (?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, 'sss', $acategorylist, $aquestion, $aans); 	//s=string , d=decimal value, i=integer
                 
@@ -164,7 +164,7 @@
                         {
                             echo "<script>alert('Insert successfully');</script>";
                             
-                            $sql = "UPDATE helpcenter set hc_id = concat('HC',id) WHERE id = (select id from helpcenter order by id desc LIMIT 1);";
+                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
@@ -192,7 +192,7 @@
                     }
                     $imageData = file_get_contents($temp);
                     
-                    $sql = "INSERT INTO `helpcenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`) VALUES (?,?,?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`) VALUES (?,?,?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, 'sssss',$acategorylist, $aquestion, $aans, $imageData,$type); 	//s=string , d=decimal value, i=integer
                 
@@ -201,7 +201,7 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             echo "<script>alert('Insert successfully');</script>";
-                            $sql = "UPDATE helpcenter set hc_id = concat('HC',id) WHERE id = (select id from helpcenter order by id desc LIMIT 1);";
+                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
