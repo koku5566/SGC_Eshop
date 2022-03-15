@@ -255,7 +255,7 @@
                         echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
                     }
                     $imageData = file_get_contents($temp);
-                    echo "$acCategoryName -$imageData -$type";
+                   // echo "$acCategoryName -$imageData -$type";
                    // $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
 					$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
