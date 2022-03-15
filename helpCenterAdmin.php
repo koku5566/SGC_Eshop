@@ -704,7 +704,7 @@ body{
 	background-color: none;
 }
 .faq{
-	padding: 0px 30px 0px 40px;
+	padding: 20px 30px;
 	border: 1.5px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
 	color: #979797;
