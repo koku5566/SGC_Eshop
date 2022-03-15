@@ -559,14 +559,14 @@
 						?>
 					 </select>
 					 
-					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="gobtn">
+					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="btn btn-success">
 			</form>	
 
 			<!--Add Category Button-->
 			<!--<input type='hidden' name='pps' value='addbutton'>-->
 			<input type="image" id="pidbutton" src = "https://cdn.pixabay.com/photo/2021/07/25/08/07/add-6491203__340.png" class = "addbtn">	
 			
-			<button id = "addquestionbtn">BUTTON ADD QUESTION</button>
+			<button id = "addquestionbtn" class="btn btn-success">ADD QUESTION</button>
 	
 			<!--The Space Between Category and Question-->
 				<div style = 'margin-top: 15px; max-height: 400px; overflow: auto;'>
