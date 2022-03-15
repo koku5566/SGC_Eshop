@@ -25,20 +25,7 @@
         return $str;
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST['search'])) {
-            $searchTerm = test_input($_POST["search"]);
-            // check if name only contains letters and whitespace
-            if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
-                ?>
-                    <script type="text/javascript">
-                        window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
-                    </script>
-                <?php
 
-            }
-        }
-      }
       
     function test_input($data) {
         $data = trim($data);
@@ -118,7 +105,7 @@
                     </a>
 
                     <!-- Topbar Search -->
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
+                    <form method="post" action="<?php echo htmlspecialchars("/search.php");?>" 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input id="searchInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."

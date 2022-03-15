@@ -177,9 +177,9 @@
                                     <div class="row">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-                                         if(isset($_GET['search']))
+                                         if(isset($_POST['search']))
                                          {
-                                             $keyword = $_GET['search'];
+                                             $keyword = $_POST['search'];
                                             //Check for Main Category
                                             $sql = "SELECT * FROM product WHERE product_name LIKE '%$keyword%'";
                                             $result = mysqli_query($conn, $sql);
