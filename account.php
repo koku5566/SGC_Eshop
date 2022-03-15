@@ -15,9 +15,9 @@ if(isset($_POST['update']))
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
 
-		if($_FILES['proPic']['tmp_name'] != "")
+		if($_FILES['profile_picture']['tmp_name'] != "")
 		{
-			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+			$proPic = addslashes(file_get_contents($_FILES['profile_picture']['tmp_name']));
 		}
 
 		$sql_u = "SELECT * FROM user WHERE user_id = '$UID'";
@@ -60,7 +60,7 @@ if(isset($_POST['update']))
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
 					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
-					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+					<input type=\"file\" name=\"profile_picture\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
 					<p id=\"label\">Name</p>
 					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\"/>
