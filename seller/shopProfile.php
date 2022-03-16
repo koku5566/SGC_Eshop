@@ -26,7 +26,7 @@
       <label class="form-label" for="formFileMultiple">Images/Video</label>
       <input type="file" class="form-control" id="formFileMultiple" multiple>
     </div>
-    <div class="row buttonContainer text-center">
+    <div class="row buttonContainer">
       <button class="saveBtn float-end">Save</button>
     </div> 
   </div>
@@ -59,10 +59,6 @@ div.absolute {
   right: 10px;
 }
 
-.buttonContainer{
-  margin: 20px 0 0 0;
-}
-
 .sellerPic{
   position: absolute;
   width: 50px;
@@ -83,5 +79,6 @@ div.absolute {
   color: white;
   border: none;
   padding: 5px 30px;
+  margin: 20px 0 0 0;
 }
 </style>
