@@ -524,7 +524,7 @@
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
 										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
-										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none"required>
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'required>
 												<option value="">-Select Category-</option>
 												<?php
 													$sql ="SELECT hcc_id, category
@@ -550,7 +550,7 @@
 										
 										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
 										
-										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete'>
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete' disabled = 'disabled'>
 																				
 									</form>
 									
@@ -981,28 +981,31 @@ imgswitch.onclick = function() {
 	acImgLabel.style.display = "none";
 	acImg.style.display = "none";
 	acContentIDAdd.style.display = "none";
-	
-	
   } else {
 	acCategoryDisplay.style.display = "none";
 	acContentIDDelete.style.display = "none";
-	
+
 	acCatName.style.display = "inline";
 	acImgLabel.style.display = "inline";
 	acImg.style.display = "inline";
 	acContentIDAdd.style.display = "block";
-	
-	
-	
-	
   }
-	
-	
-  
 
 }
 
-var x = document.getElementById("myDIV");
+function acCategoryListFunction(){
+		  let ddlist = document.getElementById('acCategoryDisplay').value;
+		  
+		  let f = false;
+			
+			if (ddlist === "" )
+			{f = false;	}	
+			else{f = true;}	
+					
+			
+			if(f == true){document.getElementById('acContentIDDelete').disabled = false;}
+			else{ document.getElementById('acContentIDDelete').disabled = true;}
+	}		
   
 	
 function myBtnGoFunction(){
