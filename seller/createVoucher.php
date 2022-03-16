@@ -3,7 +3,7 @@
 ?>
 
 <!-- Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid">
    <h2 style="margin-top: 50px;">Create Voucher</h2>
    <form>
        <div class="container d-lg-block d-xl-block d-xxl-block m-4">
