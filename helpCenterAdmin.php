@@ -323,7 +323,7 @@
 				
 				while(mysqli_stmt_fetch($stmt)){
 					$pItem = true;
-					echo "<script>alert('SOHAI')</script>"
+					echo "<script>alert('SOHAI')</script>";
 				}
 				mysqli_stmt_close($stmt);
 			}
