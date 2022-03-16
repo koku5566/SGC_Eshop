@@ -12,6 +12,7 @@
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
+        echo "<script>alert('the script is running.....');</script>";
         $checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
         if($checkImage !== false)
         {
