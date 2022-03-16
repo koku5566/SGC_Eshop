@@ -35,10 +35,15 @@
         <p style="font-size: 25px;margin-left: 744px;margin-top: -41px;width: 74.2px;">Total:</p>
         <p style="font-size: 25px;margin-left: 948px;margin-top: -57px;">RM3500.00</p>
     </div>
+    <br />
+<br />
+<br />
+<div style="height: 125px;">
+<!-----------------Other Content------------------>
+</div>
 
 
-
-                <!-- /.container-fluid -->
+   <!-- /.container-fluid -->
 
 <?php
     require __DIR__ . '/footer.php'
