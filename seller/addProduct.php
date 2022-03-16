@@ -4,12 +4,6 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:100%;">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"></h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Update</a>
-        </div>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
@@ -104,13 +98,9 @@
                                     <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
                                         
                                     </div>
-                                    <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                                        <button type="button" class="btn btn-primary">Search</button>
+                                    <div class="col-xl-2 col-lg-4 col-sm-8" style="padding-bottom: .625rem;">
+                                        <button type="button" class="btn btn-primary">Next</button>
                                     </div>
-                                    <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                                        <button type="button" class="btn btn-outline-dark">Reset</button>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
