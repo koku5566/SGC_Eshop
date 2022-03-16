@@ -85,7 +85,9 @@
                                         <div class="text-left">
                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                                         </div>
+                                        
                                         <hr>
+
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
@@ -100,6 +102,7 @@
                                     </form>
 
                                     <hr>
+                                    
                                     <div class="text-left">
                                         New to SGC E-Shop?<a href="register.php"> Sign Up </a>
                                     </div>
