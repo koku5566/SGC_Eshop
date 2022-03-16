@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 
 <!-- Page Content -->
-<div class="container-fluid" style="background-color: #FFFFFF; width:100%;">
+<div class="container-fluid" style="background-color: #FFFFFF; width:80%;">
    <h2 class="">Create Voucher</h2>
    <form>
        <div class="container">
@@ -17,10 +17,10 @@
          </div>
          <div class="row mt-2">
             <label for="">Voucher Claim Period</label>
-            <div class="col-5">
+            <div class="col-md-5">
                <input type="date" aria-label="First name" class="form-control">
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                <h6 style="justofy-content-center">To</h6>
             </div>
             <div class="col-5">
