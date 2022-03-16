@@ -2,10 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<title>Shop Rating</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
   
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -47,7 +43,7 @@ background-color: #EEEDEE;
 
 .sellerProfilePic{
   width: 70px;
-  height:55px;
+  height:35px;
 }
 
 .descriptionContainer{
