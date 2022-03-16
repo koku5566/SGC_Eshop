@@ -31,7 +31,7 @@
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
                                                         <div class="image-tools">
-                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
 
                                                         </div>
                                                     </div>
@@ -103,8 +103,9 @@
         background-color: white;
     }
 
-    .image-container:hover ~ .image-tools{
-        background:red;
+    .image-img-thumbnail:hover ~ .image-tools{
+        background:grey;
+        opacity:0.5;
     }
 
     .image-tools{
@@ -114,7 +115,7 @@
         opacity:0.1;
         z-index:100;
         position:absolute;
-        top:3%;
+        margin-top: -80px;
     }
 </style>
 
