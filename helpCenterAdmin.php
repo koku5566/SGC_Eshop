@@ -319,10 +319,11 @@
 				   WHERE hcc.hcc_id = '$categorylist' && hcc.disable_date IS NULL && hc.disable_date IS NULL";
 			if($stmt = mysqli_prepare ($conn, $sql)){
 				mysqli_stmt_execute($stmt);
-				mysqli_stmt_bind_result($stmt, $s1,$s2);
+				mysqli_stmt_bind_result($stmt, $s1,$s2,$s3,$s4,$s5,$s6,s7);
 				
 				while(mysqli_stmt_fetch($stmt)){
 					$pItem = true;
+					echo "<script>alert('SOHAI')</script>"
 				}
 				mysqli_stmt_close($stmt);
 			}
