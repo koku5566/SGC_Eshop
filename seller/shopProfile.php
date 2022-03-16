@@ -67,7 +67,7 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 470px;
+  top: 485px;
   right: 180px;
 }
 
@@ -84,7 +84,7 @@ div.absolute {
   width: 50px;
   height: 50px;
   top: 45%;
-  left: 50%;
+  left: 55%;
   
 }
 
