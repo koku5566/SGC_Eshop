@@ -43,7 +43,7 @@ body{
 
 .sellerProfilePic{
   width: 70px;
-  height:55px;
+  height:40px;
 }
 
 .statisticContainer{
