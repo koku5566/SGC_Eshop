@@ -3,7 +3,7 @@
 ?>
 
 <!-- Page Content -->
-<div class="container m-4" style="background-color: #FFFFFF">
+<div class="container m-4 w-100" style="background-color: #FFFFFF">
    <h2>Create Voucher</h2>
    <form>
        <div class="container">
