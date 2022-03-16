@@ -28,40 +28,33 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                         <div class="input-group mb-3">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-lg-4 col-sm-4" style="padding-bottom: .625rem;">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" >Main Category</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-4 col-sm-4" style="padding-bottom: .625rem;">
-                                                    <select class="form-select" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" style="color:currentColor;width: 100%;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;" required>
-                                                        <option value="">Please Select a Category</option>
-                                                            <?php
-                                                            //Main Category
-                                                            $sql = "SELECT * FROM mainCategory";
-                                                            $result = mysqli_query($conn, $sql);
-
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while($row = mysqli_fetch_assoc($result)) {
-                                                                    $categoryId = $row["main_category_id"];
-                                                                    $categoryName = $row["main_category_name"];
-
-                                                                    if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
-                                                                    {
-                                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
-                                                                    }
-                                                                }
-                                                            }
-                                                            ?>
-                                                    </select>
-                                                </div>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" >Main Category</span>
                                             </div>
-                                            
+                                            <select class="form-select" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" style="color:currentColor;width: 60%;;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;" required>
+                                                <option value="">Please Select a Category</option>
+                                                    <?php
+                                                    //Main Category
+                                                    $sql = "SELECT * FROM mainCategory";
+                                                    $result = mysqli_query($conn, $sql);
+
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            $categoryId = $row["main_category_id"];
+                                                            $categoryName = $row["main_category_name"];
+
+                                                            if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
+                                                            {
+                                                                echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                            }
+                                                            else
+                                                            {
+                                                                echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
