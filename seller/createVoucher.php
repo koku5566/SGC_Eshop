@@ -2,8 +2,10 @@
     require __DIR__ . '/header.php'
 ?>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+
 <!-- Page Content -->
-<div class="container-fluid">
+<div class="container">
    <h2 style="margin-top: 50px;">Create Voucher</h2>
    <form>
        <div class="container d-lg-block d-xl-block d-xxl-block m-4">
