@@ -3,18 +3,20 @@
 ?>
 
 
+               
+
                 <!-- Begin Page Content -->
-                <h1 style="width: 315px;margin-left: 561px;color: #c71526;">Purchase History</h1>
-    <div style="padding-left: 59px;padding-top: 40px;">
+                <h1 style="width: 315px;margin-left: 460px;color: #c71526;">Purchase History</h1>
+    <div style="padding-left: 20px;padding-top: 40px;">
         <div>
-            <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 6px;
+            <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;
             margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;
             border-color: var(--bs-body-bg);text-decoration: underline;">
             <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);
             background: rgba(255,255,255,0);">
             </i>Back</button><br /><br /><br /></div>
     </div>
-    <div style="height: 249px;width: 1117.2px;margin-left: 135px;
+    <div style="height: 249px;width: 1117.2px;margin-left: 50px;
     border: 1.5px solid black;margin-top: 13px;">
     <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 6px;width: 431.1625px;" src="img/segi kl.png" />
     <br />
@@ -28,7 +30,7 @@
             <p style="width: 166px;font-size: 25px;margin-left: 948px;margin-top: -55px;color: #ba1525;">RM3500.00</p>
         </div>
     </div>
-    <div style="width: 1117.2px;height: 89px;margin-left: 135px;
+    <div style="width: 1117.2px;height: 89px;margin-left: 50px;
     border: 1.5px solid black;">
     <button class="btn btn-primary" type="button" style="height: 49px;width: 121.5px;
     margin-left: 30px;margin-top: 19px;background: #1A2C42;">Order Status</button>
@@ -40,6 +42,18 @@
     <br />
 <br />
 <br />
+              
+
+
+
+
+   <!-- /.container-fluid -->
+
+
+<style>
+
+</style>
+
               
 
 
