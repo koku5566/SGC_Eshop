@@ -29,7 +29,7 @@
         </div>
     </div>
     <div style="width: 1117.2px;height: 89px;margin-left: 135px;
-    border: 1.5px solid var(--bs-gray-600);">
+    border: 1.5px solid black;">
     <button class="btn btn-primary" type="button" style="height: 49px;width: 121.5px;
     margin-left: 30px;margin-top: 19px;background: #1A2C42;">Order Status</button>
     <button class="btn btn-primary" type="button" style="width: 121.5px;margin-left: 15px;

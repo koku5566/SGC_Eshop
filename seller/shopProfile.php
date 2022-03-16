@@ -9,8 +9,9 @@
 <div class="container-fluid" style="width:80%">
   <div class="container profileContainer">
     <div class="row">
-      <div class="relative bg-image" style="background-image: url('https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg');">
-      <div class="absolute text-right"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
+      <div class="col-mb-5">
+      <img class="relative bg-image" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
+      <div class="absolute"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
       <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div>
       </div>
     </div>
@@ -52,23 +53,21 @@ body{
   float: right;
 }
 
-div.relative {
+.relative {
   position: relative;
-  border: 2px solid grey;
-  height: 200px;
 } 
 
 div.absolute {
   position: absolute;
-  top: 160px;
-  right: 10px;
+  top: 300px;
+  right: 20px;
 }
 
 .sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 100%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
