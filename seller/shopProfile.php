@@ -19,7 +19,7 @@
         <input type="file" id="actual-btn" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <div class="sellerPicContainer text-center"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
     </div>
     <div class="row">
@@ -39,7 +39,7 @@
         <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
       </div>
     </div>
-    <div class="row buttonContainer text-center">
+    <div class="row buttonContainer">
       <button class="saveBtn">Save</button>
     </div> 
   </div>
@@ -97,6 +97,7 @@ div.absolute {
 }
 
 .buttonContainer{
+  float:center;
 }
 
 .saveBtn{
