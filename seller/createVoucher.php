@@ -9,7 +9,7 @@
 <div class="container-fluid" style="background-color: #FFFFFF; width:80%;">
    <h2 class="">Create Voucher</h2>
    <form>
-       <div class="container m-4">
+       <div class="container m-2">
          <h5>Basic Information</h5>
          <div class="row mt-2">
             <label for="">Voucher Code</label>
@@ -19,14 +19,21 @@
          </div>
          <div class="row mt-2">
             <label for="">Voucher Claim Period</label>
-            <div class="col-md-5">
-               <input type="date" aria-label="First name" class="form-control">
+            <div class="col-md-6">
+               <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text" id="basic-addon1">Start</span>
+                  </div>
+                  <input type="date" aria-label="First name" class="form-control">
+               </div>
             </div>
-            <div class="col-md-2">
-               <h6 style="justofy-content-center">To</h6>
-            </div>
-            <div class="col-5">
-               <input type="date" aria-label="First name" class="form-control">
+            <div class="col-md-6">
+               <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text" id="basic-addon1">End</span>
+                  </div>
+                  <input type="date" aria-label="First name" class="form-control">
+               </div>
             </div>
          </div>
          <div class="row mt-2">
