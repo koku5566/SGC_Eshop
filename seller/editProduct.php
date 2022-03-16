@@ -103,19 +103,31 @@
         background-color: white;
     }
 
-    .image-img-thumbnail:hover ~ .image-tools{
-        background:grey;
-        opacity:0.5;
+    .img-thumbnail:hover ~ .image-tools{
+        display:block;
     }
 
     .image-tools{
         width: 80px;
         height: 80px;
-        background:white;
-        opacity:0.1;
+        background:grey;
+        opacity:0.5;
         z-index:100;
         position:absolute;
         margin-top: -80px;
+        display:none;
+    }
+
+    .image-tools-icon{
+        color: white;
+        justify-content: center;
+        display: grid;
+        margin-top: 30px;
+        font-size: 30px;
+    }
+
+    .image-tools-icon:hover{
+        color:#a31f37;
     }
 </style>
 
