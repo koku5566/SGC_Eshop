@@ -43,6 +43,12 @@ body{
   background-color: #EEEDEE;
 }
 
+.profileContainer{
+  background-color: white;
+  padding: 50px;
+  margin: 30px auto;
+}
+
 .buttonContainer{
   float: right;
 }
