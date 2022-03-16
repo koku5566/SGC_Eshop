@@ -48,39 +48,42 @@ if(isset($_POST['update']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div id="title"><h2>My Profile</h2></div>
-<div id="Account">
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<?php
-	$UID = $_SESSION["id"];
-	$sql = "SELECT * FROM user WHERE user_id = '$UID'";
+	<div id="account">
+	<h1>My Profile</h1>
+	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+	<?php
+		$UID = $_SESSION["id"];
+		$sql = "SELECT * FROM user WHERE user_id = '$UID'";
 
-	$res_data = mysqli_query($conn,$sql);
-	if (mysqli_num_rows($res_data) > 0){
-		while($row = mysqli_fetch_array($res_data)){
-			echo("
-				<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
-				<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
-				
-				<p id=\"label\">Name</p>
-				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\"/>
-				
-				<p id=\"label\">Email Address</p>
-				<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\"/>
-				
-				<p id=\"label\">Password</p>
-				<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\"/>
-				
-				<p id=\"label\">Contact</p>
-				<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\"/>
-				
-				<button type=\"submit\" name=\"update\">Update</button>
-				");
+		$res_data = mysqli_query($conn,$sql);
+		if (mysqli_num_rows($res_data) > 0){
+			while($row = mysqli_fetch_array($res_data)){
+				echo("
+					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
+					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+					
+					<div class=\"form-group\">
+					<label>Name</label>
+					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
+					</div>
+					
+					<label>Email Address</label>
+					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
+					
+					<label>Password</label>
+					<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
+					
+					<label>Contact</label>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					
+					<button type=\"submit\" name=\"update\">Update</button>
+					");
+			}
 		}
-	}
-	/*<input required type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" value=\"".$row["password"]."\"/>*/
-?>
-</form>
+		/*<input required type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" value=\"".$row["password"]."\"/>*/
+	?>
+	</form>
+	</div>
 </div>
 
 <?php
@@ -97,6 +100,5 @@ if(isset($_SESSION['Update']))
 		$_SESSION['Update'] = NULL;
 	}
 ?>
-</div>
 
 <?php require __DIR__ . '/footer.php' ?>

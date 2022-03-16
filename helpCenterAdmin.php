@@ -164,8 +164,11 @@
                         {
                             echo "<script>alert('Insert successfully');</script>";
                             
-                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
-                            if($stmt = mysqli_prepare($conn, $sql)){
+                            //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+                            $sql = "UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
+									SET a.hc_id = concat('HC', b.id)
+									WHERE a.id = b.id;";
+							if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                             {echo "<script>alert('Update successfully HCCID');</script>";}
@@ -201,7 +204,10 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             echo "<script>alert('Insert successfully');</script>";
-                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+                            //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+							$sql ="UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
+								   SET a.hc_id = concat('HC', b.id)
+								   WHERE a.id = b.id;";
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
@@ -256,11 +262,11 @@
                     }
                     $imageData = file_get_contents($temp);
                    // echo "$acCategoryName -$imageData -$type";
-                   // $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
-					$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
+                    $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
+					//$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 's',$acCategoryName); 	//s=string , d=decimal value, i=integer
-						//'sss',$acCategoryName, $imageData,$type
+                        mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
+					
                         mysqli_stmt_execute($stmt);
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
@@ -304,11 +310,13 @@
 	
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
-		<!--THE MODAL EDIT QUESTION-->			
+		<!--THE MODAL EDIT QUESTION-->	
+			
 				<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
-						<span class="close">&times;</span>
+						<div class="modal-content" style = "height: 500px">
+						<h4 class = "displayCategoryModal">Edit Question</h4>
+						<span class="closeM">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -337,18 +345,18 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>
-											 </select><br><br><br>
+											 </select><br><br>
 											 
 											
 									
 
 									<label for = 'pquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br><br>
+									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br>
 
 									<label for = 'panswer' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br><br>
+									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br>
 
-									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
+									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 35px;'>Image:</label>
 									<!--DISPLAY IMAGE HERE-->
 									
 									<?php
@@ -366,10 +374,10 @@
 													if($c6 != NULL && $c7 != NULL){
 														//echo 'Got pic';
 														echo "<img  src='data: $c7;base64, " . base64_encode($c6)."'  class='editimgCss'>".
-															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br>";
+															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 															 
 													}else{
-														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br><br>";
+														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 																	 
 													}
 		
@@ -381,12 +389,12 @@
 									?>
 									
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right;' class="gobtn"disabled>
+									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right; margin-right: 20px' class="btn btn-success" disabled>
 									</form>
 									
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' >
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn' style='float:left;background-color:red;color:white'>
+									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn'  style = "float:left; margin-left: 20px" class="btn btn-danger">
 									</form>
 
 								
@@ -436,10 +444,12 @@
 			<!--END OF MODAL EDIT QUESTION-->
 <!---------------------------------------------------------------------------------------------------------------------------------->			
 			<!--STAR OF MODAL ADD QUESTION-->
+			
 			<div id="myModalAdd" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
-						<span class="close" id = "closeAdd">&times;</span>
+						<h4 class = "displayCategoryModal">Add Question</h4>
+						<span class="closeM" id = "closeAdd">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -466,20 +476,20 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br><br>		
+											</select><br><br>		
 											 
 									<label for = 'addquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br><br>
+									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br>
 
-									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br><br>
+									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 35px;'>Answer:</label>
+									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
-									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
-									<input type = 'file'  name ='aimg' id = 'addimg'><br><br><br>
+									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 46px;'>Image:</label>
+									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
 																		
 									
 									
-									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;' class="gobtn">
+									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;margin-right: 20px' class="btn btn-success">
 
 									</form>
 							
@@ -490,10 +500,12 @@
 			<!--END OF MODAL ADD QUESTION-->		 
 											
 			<!--STAR OF MODAL ADD CATEGORY-->
+			
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
-						<span class="close" id = "closeModalAddCat">&times;</span>
+						<div class="modal-content" style = "height: 400px;">
+						<h4 class = "displayCategoryModal">Add Category</h4>
+						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
 								
 								<!--ADD CATEGORY-->
@@ -501,13 +513,13 @@
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
 
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br><br>
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br>
 									
 																				 
-										<label for = 'acImg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
+										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="gobtn">
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
 																				
 									</form>
 									
@@ -547,14 +559,14 @@
 						?>
 					 </select>
 					 
-					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="gobtn">
+					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="btn btn-success">
 			</form>	
 
 			<!--Add Category Button-->
 			<!--<input type='hidden' name='pps' value='addbutton'>-->
 			<input type="image" id="pidbutton" src = "https://cdn.pixabay.com/photo/2021/07/25/08/07/add-6491203__340.png" class = "addbtn">	
 			
-			<button id = "addquestionbtn">BUTTON ADD QUESTION</button>
+			<button id = "addquestionbtn" class="btn btn-success">ADD QUESTION</button>
 	
 			<!--The Space Between Category and Question-->
 				<div style = 'margin-top: 15px; max-height: 400px; overflow: auto;'>
@@ -607,7 +619,7 @@
 												"<input type='image' alt= 'submit' name ='btnimage' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' ></form>".
 												"</p>".	
 										"</div>".
-										"<span class='btn' id='btn$c1'>+</span>".
+										"<span class='btnd' id='btn$c1'>+</span>".
 									"</div>";
 									$pp++;
 								}
@@ -617,11 +629,11 @@
 												 functionArr.push(function(){
 														document.getElementById('faq' + u[$i]).classList.toggle('open');
 							  
-														if (document.getElementById('btn' + u[$i]).innerHTML === '+'){			  
-																document.getElementById('btn' + u[$i]).innerHTML = '&#8722';
+														if (document.getElementById('btnd' + u[$i]).innerHTML === '+'){			  
+																document.getElementById('btnd' + u[$i]).innerHTML = '&#8722';
 															}
 														else{
-																document.getElementById('btn' + u[$i]).innerHTML = '+';
+																document.getElementById('btnd' + u[$i]).innerHTML = '+';
 															}
 													  }	);
 													  
@@ -653,10 +665,12 @@
 ?>
 
 <style>
-body{
-	font-family:Roboto, sans-serif;
-
+h4.displayCategoryModal{
+	padding: 15px;
+    max-width: 80%;
+    margin: auto;
 }
+
 .addbtn{
 	width: 22px;
 	max-width: 100%;
@@ -698,7 +712,7 @@ body{
 	background-color: none;
 }
 .faq{
-	padding: 0px 30px 0px 40px;
+	padding: 20px 30px;
 	border: 1.5px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
 	color: #979797;
@@ -713,9 +727,10 @@ body{
 	border: 1.5px solid #a31f37;
 }
 .faq .faq_text{
-	width: 95%;
+	width: 80%;
 }
-.btn{
+
+.btnd{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
@@ -723,8 +738,9 @@ body{
 	font-weight: 400;
 	font-size: 1.4em;
 }
+
 .faq h2{
-	font-size: 0.9em;
+	font-size: 1em;
 	font-weight: 400;
 	color: #5e5d5d;
 	
@@ -734,6 +750,7 @@ body{
 	display: block;
 	color: #a31f37;
 	font-weight: bold;
+	width: 90%;
 	
 }
 
@@ -750,8 +767,9 @@ body{
 }
 .faq.open p {
 	display:block;
+	width:90%
 }
-.faq.open .btn{
+.faq.open .btnd{
 	color: #a31f37;
 }
 
@@ -774,7 +792,7 @@ body{
 .textarea{
 	resize: none;
 	outline: none;
-	width: 80%;
+	width: 75%;
 	height: 80px;
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
@@ -809,19 +827,22 @@ body{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  height: 400px;
+  
+  max-height: 100%;
 }
 
 /* The Close Button */
-.close {
+.closeM {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+    right: 30px;
 }
 
-.close:hover,
-.close:focus {
+.closeM:hover,
+.closeM:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -830,21 +851,18 @@ body{
 
 .modal-content .editQuestion {
 	
-	width: 80%;
+	width: 75%;
 	border: 1px solid rgba(0 0 0 / .1);
-	margin: 25px auto;
-	height: 85%
+	margin: auto;
+	height: 100%
 }
 .modal-content .labelinput{
 	margin: 12px 0px 0px 28px;
 }
 .modal-content .textinput{
-	width: 80%;
-	
-	
+	width: 75%;
 	outline: none;
 	height: 24px;
-	
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
@@ -861,7 +879,7 @@ body{
 //FOR EDIT QUESTION
 var modal = document.getElementById("myModal");
 //var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("closeM")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -870,7 +888,7 @@ span.onclick = function() {
 //FOR ADD QUESTION
 var modalAdd = document.getElementById("myModalAdd");
 var btnAddQue = document.getElementById("addquestionbtn");
-var spanAdd = document.getElementsByClassName("close")[1];
+var spanAdd = document.getElementsByClassName("closeM")[1];
 btnAddQue.onclick = function() {
   modalAdd.style.display = "block";
 }
@@ -882,7 +900,7 @@ spanAdd.onclick = function() {
 
 var modalAddCat = document.getElementById("myModalAddCat");
 var btnAddCat = document.getElementById("pidbutton");
-var spanAddCat = document.getElementsByClassName("close")[2];
+var spanAddCat = document.getElementsByClassName("closeM")[2];
 
 btnAddCat.onclick = function() {
   modalAddCat.style.display = "block";
