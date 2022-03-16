@@ -293,10 +293,10 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="account.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    <?php echo($_SESSION['name']);?>
+                                    My Account
                                 </a>
 
-                                <!--ADMIN ONLY-->
+                                <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
                                 <a class="dropdown-item" href="admin.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -304,14 +304,13 @@
                                 </a>
                                 <?php endif?>
 
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "ADMIN") :?>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    My Purchase
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                                <?php endif?>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
