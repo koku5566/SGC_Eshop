@@ -859,7 +859,7 @@ h4.displayCategoryModal{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  border: 1px solid rgba(0 0 0 / .2);
+ 
   max-height: 100%;
 }
 
@@ -884,7 +884,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	
+	 border: 1px solid rgba(0 0 0 / .2);
 	margin: auto;
 	height: 100%
 }
