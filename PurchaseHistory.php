@@ -4,7 +4,7 @@
 
 
                 <!-- Begin Page Content -->
-<body style="height: 780px;">
+
     <h1 style="width: 315px;margin-left: 561px;color: #c71526;">Purchase History</h1>
     <div style="padding-left: 59px;padding-top: 40px;">
         <div>
@@ -35,7 +35,7 @@
         <p style="font-size: 25px;margin-left: 744px;margin-top: -41px;width: 74.2px;">Total:</p>
         <p style="font-size: 25px;margin-left: 948px;margin-top: -57px;">RM3500.00</p>
     </div>
-</body>
+
 
 
                 <!-- /.container-fluid -->
