@@ -16,16 +16,16 @@
     </div>
     <div style="height: 249px;width: 1117.2px;margin-left: 135px;
     border: 1.5px solid black;margin-top: 13px;">
-    <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 6px;width: 431.1625px;" src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" />
+    <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 6px;width: 431.1625px;" src="img/segi kl.png" />
     <br />
     <br />
         <div style="height: 159px;">
-          <img src="https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330" style="height: 102px;margin-left: 19px; margin-top: 10px" />
-            <p style="width: 316px;margin-left: 140px;margin-top: -78px;font-size: 25px;">Sony HeadPhone</p>
+          <img src="img/product/iphone-grey.png" style="height: 102px;margin-left: 19px; margin-top: 10px" />
+            <p style="width: 316px;margin-left: 140px;margin-top: -78px;font-size: 25px;">Iphone 10 Pro Max</p>
             <p style="width: 66px;font-size: 25px;margin-left: 474px;margin-top: -56px;">Grey</p>
             <p style="font-size: 25px;width: 56px;margin-left: 631px;margin-top: -54px;">x1</p>
-            <p style="font-size: 25px;width: 126px;margin-left: 748px;margin-top: -51px;">RM43.30</p>
-            <p style="width: 166px;font-size: 25px;margin-left: 948px;margin-top: -55px;color: #ba1525;">RM43.30</p>
+            <p style="font-size: 25px;width: 126px;margin-left: 748px;margin-top: -51px;">RM3500.00</p>
+            <p style="width: 166px;font-size: 25px;margin-left: 948px;margin-top: -55px;color: #ba1525;">RM3500.00</p>
         </div>
     </div>
     <div style="width: 1117.2px;height: 89px;margin-left: 135px;
