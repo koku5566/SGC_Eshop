@@ -19,7 +19,7 @@
         <input type="file" id="actual-btn" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer text-center"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
     </div>
     <div class="row">
@@ -69,6 +69,10 @@ div.absolute {
   position: absolute;
   top: 470px;
   right: 180px;
+}
+
+.sellerPicContainer{
+  text-align: center;
 }
 
 .editBtn {
