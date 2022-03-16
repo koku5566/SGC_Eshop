@@ -43,19 +43,13 @@ body{
   background-color: #EEEDEE;
 }
 
-.profileContainer{
-  background-color: white;
-  padding: 80px;
-  margin: 30px auto;
-}
-
 .buttonContainer{
   float: right;
 }
 
 .relative {
   position: relative;
-  height: 250px;
+  height: 270px;
 } 
 
 div.absolute {
