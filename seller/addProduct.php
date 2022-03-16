@@ -35,31 +35,33 @@
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <select class="form-select" name="mainCategory" aria-label="mainCategory" style="color:currentColor;">
+                                                    <span class="input-group-text" >Main Category</span>
+                                                </div>
+                                                <select class="form-select" name="mainCategory" aria-label="mainCategory" style="color:currentColor;">
                                                         <option selected value="name">Others</option>
                                                         <?php
 
-                                                            //Main Category
-                                                            $sql = "SELECT * FROM mainCategory";
-                                                            $result = mysqli_query($conn, $sql);
+                                                        //Main Category
+                                                        $sql = "SELECT * FROM mainCategory";
+                                                        $result = mysqli_query($conn, $sql);
 
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while($row = mysqli_fetch_assoc($result)) {
-                                                                    $categoryId = $row["main_category_id"];
-                                                                    $categoryName = $row["main_category_name"];
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            while($row = mysqli_fetch_assoc($result)) {
+                                                                $categoryId = $row["main_category_id"];
+                                                                $categoryName = $row["main_category_name"];
 
-                                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
-                                                                }
+                                                                echo("<option value=\"$categoryId\">$categoryName</option>");
                                                             }
-                                                            ?>
-                                                    </select>
-                                                </div>
-                                                <input type="text" class="form-control" name="keyword" placeholder="Enter ..." aria-label="SearchKeyword">
+                                                        }
+                                                        ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
+                                                    <span class="input-group-text" >Sub Category</span>
+                                                </div>
                                                     <select class="form-select" name="mainCategory" aria-label="mainCategory" style="color:currentColor;">
                                                         <option selected value="null">None</option>
                                                         <?php
@@ -78,8 +80,6 @@
                                                             }
                                                             ?>
                                                     </select>
-                                                </div>
-                                                <input type="text" class="form-control" name="keyword" placeholder="Enter ..." aria-label="SearchKeyword">
                                             </div>
                                         </div>
                                     </div>
