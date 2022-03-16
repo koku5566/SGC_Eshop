@@ -1,4 +1,6 @@
-
+<?php
+    require __DIR__ . '/header.php'
+?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -52,3 +54,6 @@
     <!-- /.container-fluid -->
     <br>
 
+<?php
+    require __DIR__ . '/footer.php'
+?>
