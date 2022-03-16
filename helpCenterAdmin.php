@@ -513,7 +513,8 @@
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content" style = "height: 400px;">
-						<h4 class = "displayCategoryModal">Add Category</h4>
+						<h4 class = "displayCategoryModal" id ="addCategoryH4">Add Category</h4>
+						<h4 class = "displayCategoryModal" id ="deleteCategoryH4" style = "display: none;">Delete Category</h4>
 						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
 								
@@ -957,17 +958,21 @@ window.onclick = function(event) {
 	  
 }
 /****************************************************************/
-
+//TOGGLE ADD / DELETE CATEGORY (MODAL)
 var imgswitch = document.getElementById('acdSwitchImg');
 //Display out
 var acCategoryDisplay = document.getElementById('acCategoryDisplay');
 var acContentIDDelete = document.getElementById('acContentIDDelete');
+var deleteCategoryH4 = document.getElementById('deleteCategoryH4');
+
+
+
 //Hide
 var acCatName = document.getElementById('acCatName');
 var acImgLabel = document.getElementById('acImgLabel');
 var acImg = document.getElementById('acImg');
 var acContentIDAdd = document.getElementById('acContentIDAdd');
-
+var addCategoryH4 = document.getElementById('addCategoryH4');
 
 
 
@@ -976,19 +981,23 @@ imgswitch.onclick = function() {
   if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
     acCategoryDisplay.style.display = "inline";
 	acContentIDDelete.style.display = "block";
+	deleteCategoryH4.style.display = "block";
 	
 	acCatName.style.display = "none";
 	acImgLabel.style.display = "none";
 	acImg.style.display = "none";
 	acContentIDAdd.style.display = "none";
+	addCategoryH4.style.display = "none";
   } else {
 	acCategoryDisplay.style.display = "none";
 	acContentIDDelete.style.display = "none";
-
+	deleteCategoryH4.style.display = "none";
+	
 	acCatName.style.display = "inline";
 	acImgLabel.style.display = "inline";
 	acImg.style.display = "inline";
 	acContentIDAdd.style.display = "block";
+	addCategoryH4.style.display = "block";
   }
 
 }
