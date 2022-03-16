@@ -34,41 +34,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                             <?php
-                                            
-                                            $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
+
+                                            $sql = "SELECT * FROM mainCategory";
                                             $result = mysqli_query($conn, $sql);
                                 
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
-                                                    $total = (int) $row["total_product"];
-                                                    $percent = $total/10;
-                                                    $uploadAvailable = 1000 - $total;
+                                                    $categoryName = $row["main_category_name"];
+
                                                     echo("
-                                                        <h5>$total Products</h5>
-                                                    
-                                                        <div class=\"progress\" style=\"height:0.3rem;\">
-                                                            <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                    <ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">
+                                                        <li class=\"category-item selected\">
+                                                            <p class=\"text-overflow\">
+                                                            $categoryName
+                                                            </p> 
+                                                        <div class=\"category-item-right\">
+                                                            <i class=\"fa fa-angle-right\" aria-hidden=\"true\" style=\"display:$display;\"></i>
                                                         </div>
-                                                        <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                
+                                                        </li>
+                                                    </ul>
                                                     ");
                                                 }
                                             }
 
                                             
 
-                                            echo("
-                                            <ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">
-                                                <li class=\"category-item selected\">
-                                                    <p class=\"text-overflow\">
-                                                    $categoryName
-                                                    </p> 
-                                                <div class=\"category-item-right\">
-                                                    <i class=\"fa fa-angle-right\" aria-hidden=\"true\" style=\"display:$display;\"></i>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                            ")
+                                            
                                             ?>
                                             
                                         </div>
