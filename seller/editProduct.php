@@ -151,7 +151,7 @@
     }
 
     .hide{
-
+        display:none;
     }
 </style>
 
