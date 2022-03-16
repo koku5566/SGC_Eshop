@@ -65,7 +65,8 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Update successfully no img');</script>";
+                            //echo "<script>alert('Update successfully no img');</script>";
+							echo "<div class='alert alert-success'>Update successfully no img</div>";
                         }else{
                             echo "<script>alert('Fail to Update no img');</script>";
                         }
