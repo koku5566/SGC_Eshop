@@ -103,27 +103,30 @@
         background-color: white;
     }
 
-    .img-thumbnail:hover,.image-tools:hover ~ .image-tools{
+    .img-thumbnail:hover ~ .image-tools{
         display:block;
-        z-index:100;
+    }
+
+    .image-tools:hover{
+        display:block;
     }
 
     .image-tools{
         width: 80px;
-        height: 80px;
+        height: 30px;
         background:grey;
         opacity:0.5;
         position:absolute;
-        margin-top: -80px;
+        margin-top: -30px;
         display:none;
     }
 
     .image-tools-icon{
-        color: white;
+        color: #ea1414;
         justify-content: center;
         display: grid;
-        margin-top: 30px;
-        font-size: 30px;
+        margin-top: 5px;
+        font-size: 20px;
     }
 
     .image-tools-icon:hover{
