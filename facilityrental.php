@@ -124,7 +124,6 @@
     .card-body-text{
        background-color: gray;
        opacity: 3;
-       margin: 50%;
     }
     .card-body{
        background-color: #A31F37;
