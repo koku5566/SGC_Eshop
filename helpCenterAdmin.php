@@ -666,6 +666,14 @@
 ?>
 
 <style>
+.alert-fixed {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}
 h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
@@ -943,7 +951,7 @@ function myBtnGoFunction(){
 	}			
 	
 
-$(".alert").delay(4000).slideUp(200, function() {
+$(".alert").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
 </script>
