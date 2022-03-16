@@ -2,10 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<title>Shop Rating</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
   
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -24,7 +20,7 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     <div class="row reviewContainer">
-      <h3><b>User Review</b></h3>
+      <h4><b>User Review</b></h4>
       <p><span id=""></span></p>
     </div>
   </div>
@@ -46,8 +42,8 @@ background-color: #EEEDEE;
 }
 
 .sellerProfilePic{
-  width: 70px;
-  height:55px;
+  width: 65px;
+  height:40px;
 }
 
 .descriptionContainer{
