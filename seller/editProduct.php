@@ -29,12 +29,13 @@
                                             <div class="drag-list">
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
                                                         <div class="image-tools-delete">
                                                             <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="image-tools-add">
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
                                                         </div>
                                                     </div>
                                                     <p>Picture 1</p>
@@ -146,8 +147,12 @@
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 5px;
+        margin-top: 30px;
         font-size: 20px;
+    }
+
+    .hide{
+
     }
 </style>
 
@@ -239,15 +244,22 @@
     });
     draggable.init();
 
-    const deleteImg = document.querySelectorAll('.image-tools-icon');
+    const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
     deleteImg.forEach(img => {
         img.addEventListener('click', function handleClick(event) {
             img.parentElement.previousSibling.src="";
-            img.parentElement.previousSibling.classList.remove("active");
+            img.parentElement.nextSibling.classList.remove("hide");
         });
     });
 
+    const imgInp = document.querySelectorAll('.imgInp');
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            imgInp.parentElement.previousSibling.src = URL.createObjectURL(file)
+        }
+    }
 
 
 
