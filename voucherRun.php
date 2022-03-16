@@ -168,7 +168,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-2 m-2">
+            <!-- <div class="col-md-2 m-2">
                <div class="card" id="vouchercard">
                   <div class="container">
                   </div>
@@ -185,7 +185,7 @@
                      <h6 class="card-subtitle text-muted">Link to promotion page</h6>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
 

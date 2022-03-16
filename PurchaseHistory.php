@@ -4,8 +4,7 @@
 
 
                 <!-- Begin Page Content -->
-
-    <h1 style="width: 315px;margin-left: 561px;color: #c71526;">Purchase History</h1>
+                <h1 style="width: 315px;margin-left: 561px;color: #c71526;">Purchase History</h1>
     <div style="padding-left: 59px;padding-top: 40px;">
         <div>
             <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 6px;
@@ -15,11 +14,13 @@
             background: rgba(255,255,255,0);">
             </i>Back</button><br /><br /><br /></div>
     </div>
-    <div style="height: 249px;width: 1117.2px;margin-left: 135px;box-shadow: 4px 4px rgba(108,117,125,0.3);
-    border: 1.5px solid var(--bs-gray-600);margin-top: 13px;">
-    <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 0px;width: 431.1625px;" src="img/segi kl.png" />
+    <div style="height: 249px;width: 1117.2px;margin-left: 135px;
+    border: 1.5px solid black;margin-top: 13px;">
+    <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 6px;width: 431.1625px;" src="img/segi kl.png" />
+    <br />
+    <br />
         <div style="height: 159px;">
-        <img src="img/seller/iphone-grey.png" style="height: 102px;margin-left: 19px;" />
+          <img src="img/product/iphone-grey.png" style="height: 102px;margin-left: 19px; margin-top: 10px" />
             <p style="width: 316px;margin-left: 140px;margin-top: -78px;font-size: 25px;">Iphone 10 Pro Max</p>
             <p style="width: 66px;font-size: 25px;margin-left: 474px;margin-top: -56px;">Grey</p>
             <p style="font-size: 25px;width: 56px;margin-left: 631px;margin-top: -54px;">x1</p>
@@ -28,7 +29,7 @@
         </div>
     </div>
     <div style="width: 1117.2px;height: 89px;margin-left: 135px;
-    border: 1.5px solid var(--bs-gray-600);box-shadow: 4px 4px rgba(108,117,125,0.3);">
+    border: 1.5px solid black;">
     <button class="btn btn-primary" type="button" style="height: 49px;width: 121.5px;
     margin-left: 30px;margin-top: 19px;background: #1A2C42;">Order Status</button>
     <button class="btn btn-primary" type="button" style="width: 121.5px;margin-left: 15px;
@@ -39,9 +40,9 @@
     <br />
 <br />
 <br />
-<div style="height: 125px;">
-<!-----------------Other Content------------------>
-</div>
+              
+
+
 
 
    <!-- /.container-fluid -->
