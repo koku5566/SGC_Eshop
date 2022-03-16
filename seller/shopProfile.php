@@ -84,7 +84,7 @@ div.absolute {
   width: 50px;
   height: 50px;
   top: 45%;
-  left: 60%;
+  left: 50%;
   
 }
 
