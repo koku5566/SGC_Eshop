@@ -20,7 +20,7 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     <div class="row reviewContainer">
-      <h3><b>User Review</b></h3>
+      <h4><b>User Review</b></h4>
       <p><span id=""></span></p>
     </div>
   </div>
@@ -42,7 +42,7 @@ background-color: #EEEDEE;
 }
 
 .sellerProfilePic{
-  width: 70px;
+  width: 65px;
   height:40px;
 }
 

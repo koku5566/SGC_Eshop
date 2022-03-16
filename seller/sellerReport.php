@@ -13,13 +13,13 @@
 <div class="container-fluid" style="width:80%">
   <div class="container reportContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h4>SEGi College Subang Jaya</h4>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
     </div>
     <div class="row statisticContainer">
-      <h3><b>Sales Statistic</b><span id=""></span></h3>
+      <h4><b>Sales Statistic</b><span id=""></span></h4>
     </div>
     <div class="row categoryContainer">
-      <h3><b>Sales by Category</b></h3>
+      <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
     <button class="printButton float-end">PRINT REPORT</button>
@@ -42,7 +42,7 @@ body{
 }
 
 .sellerProfilePic{
-  width: 70px;
+  width: 65px;
   height:40px;
 }
 
