@@ -6,6 +6,7 @@
                
 
                 <!-- Begin Page Content -->
+                <div class="container-fluid" style="width:80%">
                 <h1 style="width: 315px;margin-left: 460px;color: #c71526;">Purchase History</h1>
     <div style="padding-left: 20px;padding-top: 40px;">
         <div>

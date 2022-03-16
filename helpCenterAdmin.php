@@ -522,7 +522,7 @@
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
 
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br>
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
 										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none"required>
 												<option value="">-Select Category-</option>
@@ -540,14 +540,17 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br>		
+											</select>
+											<br><br>		
 										
-										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
+										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
 										
-										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger">
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
+										
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete'>
 																				
 									</form>
 									
@@ -856,7 +859,7 @@ h4.displayCategoryModal{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  
+ 
   max-height: 100%;
 }
 
@@ -881,7 +884,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	
+	 border: 1px solid rgba(0 0 0 / .2);
 	margin: auto;
 	height: 100%
 }
@@ -953,8 +956,54 @@ window.onclick = function(event) {
   }
 	  
 }
+/****************************************************************/
 
+var imgswitch = document.getElementById('acdSwitchImg');
+//Display out
+var acCategoryDisplay = document.getElementById('acCategoryDisplay');
+var acContentIDDelete = document.getElementById('acContentIDDelete');
+//Hide
+var acCatName = document.getElementById('acCatName');
+var acImgLabel = document.getElementById('acImgLabel');
+var acImg = document.getElementById('acImg');
+var acContentIDAdd = document.getElementById('acContentIDAdd');
+
+
+
+
+
+imgswitch.onclick = function() {
+  if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
+    acCategoryDisplay.style.display = "inline";
+	acContentIDDelete.style.display = "block";
 	
+	acCatName.style.display = "none";
+	acImgLabel.style.display = "none";
+	acImg.style.display = "none";
+	acContentIDAdd.style.display = "none";
+	
+	
+  } else {
+	acCategoryDisplay.style.display = "none";
+	acContentIDDelete.style.display = "none";
+	
+	acCatName.style.display = "inline";
+	acImgLabel.style.display = "inline";
+	acImg.style.display = "inline";
+	acContentIDAdd.style.display = "block";
+	
+	
+	
+	
+  }
+	
+	
+  
+
+}
+
+var x = document.getElementById("myDIV");
+  
 	
 function myBtnGoFunction(){
 		  let ddlist = document.getElementById('categoryDisplay').value;
