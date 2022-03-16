@@ -103,7 +103,11 @@
         background-color: white;
     }
 
-    .image-tools:hover{
+    .image-container:hover ~ .image-tools{
+        background:red;
+    }
+
+    .image-tools{
         width: 80px;
         height: 80px;
         background:white;
