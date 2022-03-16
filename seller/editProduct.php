@@ -29,7 +29,7 @@
                                             <div class="drag-list">
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
-                                                        <img src="/img/product/iphone-black.jpg">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
                                                         <div class="image-tools">
 
                                                         </div>
@@ -103,10 +103,9 @@
     }
 
     .image-container{
-        position:absolute;
-        width:100%;
-        height:100%;
-        content:fill;
+        width: 100%;
+        height: 10vh;
+        background-color: white;
     }
 </style>
 
