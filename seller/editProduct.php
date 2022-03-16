@@ -31,9 +31,9 @@
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
                                                         <div class="image-tools">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
 
                                                         </div>
-
                                                     </div>
                                                     <p>Picture 1</p>
                                                 </div>
@@ -77,13 +77,9 @@
     margin: 10px auto;
     border: 1px solid #ccc;
     flex-basis: 770px;
-    width: 770px;
-    max-width: 770px;
     }
     .drag-item {
-
     transition: 0.25s;
-
     -webkit-box-flex: 0;
     -ms-flex: 0 0 80px;
     flex: 0 0 80px;
@@ -92,7 +88,6 @@
     min-height: 80px;
     max-height: 80px;
     margin: 0 16px 40px 0;
-    border:1px solid red;
     }
     .drag-start {
     opacity: 0.8;
@@ -103,99 +98,109 @@
     }
 
     .image-container{
-        width: 100%;
-        height: 10vh;
+        width: 80px;
+        height: 80px;
         background-color: white;
+    }
+
+    .image-tools:hover{
+        width: 80px;
+        height: 80px;
+        background:white;
+        opacity:0.1;
+        z-index:100;
+        position:absolute;
+        top:3%;
     }
 </style>
 
 <script>
     function DragNSort (config) {
-  this.$activeItem = null;
-  this.$container = config.container;
-	this.$items = this.$container.querySelectorAll('.' + config.itemClass);
-  this.dragStartClass = config.dragStartClass;
-  this.dragEnterClass = config.dragEnterClass;
-}
+        this.$activeItem = null;
+        this.$container = config.container;
+        this.$items = this.$container.querySelectorAll('.' + config.itemClass);
+        this.dragStartClass = config.dragStartClass;
+        this.dragEnterClass = config.dragEnterClass;
+    }
 
-DragNSort.prototype.removeClasses = function () {
-	[].forEach.call(this.$items, function ($item) {
-		$item.classList.remove(this.dragStartClass, this.dragEnterClass);
-  }.bind(this));
-};
+    DragNSort.prototype.removeClasses = function () {
+        [].forEach.call(this.$items, function ($item) {
+            $item.classList.remove(this.dragStartClass, this.dragEnterClass);
+    }.bind(this));
+    };
 
-DragNSort.prototype.on = function (elements, eventType, handler) {
-	[].forEach.call(elements, function (element) {
-    element.addEventListener(eventType, handler.bind(element, this), false);
-  }.bind(this));
-};
+    DragNSort.prototype.on = function (elements, eventType, handler) {
+        [].forEach.call(elements, function (element) {
+        element.addEventListener(eventType, handler.bind(element, this), false);
+    }.bind(this));
+    };
 
-DragNSort.prototype.onDragStart = function (_this, event) {
-  _this.$activeItem = this;
+    DragNSort.prototype.onDragStart = function (_this, event) {
+    _this.$activeItem = this;
 
-  this.classList.add(_this.dragStartClass);
-  event.dataTransfer.effectAllowed = 'move';
-  event.dataTransfer.setData('text/html', this.innerHTML);
-};
+    this.classList.add(_this.dragStartClass);
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/html', this.innerHTML);
+    };
 
-DragNSort.prototype.onDragEnd = function (_this) {
-	this.classList.remove(_this.dragStartClass);
-};
+    DragNSort.prototype.onDragEnd = function (_this) {
+        this.classList.remove(_this.dragStartClass);
+    };
 
-DragNSort.prototype.onDragEnter = function (_this) {
-	this.classList.add(_this.dragEnterClass);
-};
+    DragNSort.prototype.onDragEnter = function (_this) {
+        this.classList.add(_this.dragEnterClass);
+    };
 
-DragNSort.prototype.onDragLeave = function (_this) {
-	this.classList.remove(_this.dragEnterClass);
-};
+    DragNSort.prototype.onDragLeave = function (_this) {
+        this.classList.remove(_this.dragEnterClass);
+    };
 
-DragNSort.prototype.onDragOver = function (_this, event) {
-  if (event.preventDefault) {
-  event.preventDefault();
-  }
+    DragNSort.prototype.onDragOver = function (_this, event) {
+    if (event.preventDefault) {
+    event.preventDefault();
+    }
 
-  event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.dropEffect = 'move';
 
-  return false;
-};
+    return false;
+    };
 
-DragNSort.prototype.onDrop = function (_this, event) {
-	if (event.stopPropagation) {
-    event.stopPropagation();
-  }
+    DragNSort.prototype.onDrop = function (_this, event) {
+        if (event.stopPropagation) {
+        event.stopPropagation();
+    }
 
-  if (_this.$activeItem !== this) {
-    _this.$activeItem.innerHTML = this.innerHTML;
-    this.innerHTML = event.dataTransfer.getData('text/html');
-  }
+    if (_this.$activeItem !== this) {
+        _this.$activeItem.innerHTML = this.innerHTML;
+        this.innerHTML = event.dataTransfer.getData('text/html');
+    }
 
-  _this.removeClasses();
+    _this.removeClasses();
 
-  return false;
-};
+    return false;
+    };
 
-DragNSort.prototype.bind = function () {
-	this.on(this.$items, 'dragstart', this.onDragStart);
-	this.on(this.$items, 'dragend', this.onDragEnd);
-	this.on(this.$items, 'dragover', this.onDragOver);
-	this.on(this.$items, 'dragenter', this.onDragEnter);
-	this.on(this.$items, 'dragleave', this.onDragLeave);
-	this.on(this.$items, 'drop', this.onDrop);
-};
+    DragNSort.prototype.bind = function () {
+        this.on(this.$items, 'dragstart', this.onDragStart);
+        this.on(this.$items, 'dragend', this.onDragEnd);
+        this.on(this.$items, 'dragover', this.onDragOver);
+        this.on(this.$items, 'dragenter', this.onDragEnter);
+        this.on(this.$items, 'dragleave', this.onDragLeave);
+        this.on(this.$items, 'drop', this.onDrop);
+    };
 
-DragNSort.prototype.init = function () {
-	this.bind();
-};
+    DragNSort.prototype.init = function () {
+        this.bind();
+    };
 
-// Instantiate
-var draggable = new DragNSort({
-	container: document.querySelector('.drag-list'),
-  itemClass: 'drag-item',
-  dragStartClass: 'drag-start',
-  dragEnterClass: 'drag-enter'
-});
-draggable.init();
+    // Instantiate
+    var draggable = new DragNSort({
+        container: document.querySelector('.drag-list'),
+    itemClass: 'drag-item',
+    dragStartClass: 'drag-start',
+    dragEnterClass: 'drag-enter'
+    });
+    draggable.init();
 </script>
 
 <?php
