@@ -43,8 +43,54 @@
                                                     </div>
                                                     <p>Picture 1</p>
                                                 </div>
-                                                <div class="drag-item" draggable="true">B</div>
-                                                <div class="drag-item" draggable="true">C</div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -80,9 +126,10 @@
     user-select: none;
     }
     .drag-list {
-    margin: 10px auto;
-    border: 1px solid #ccc;
-    flex-basis: 770px;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        flex-basis: 770px;
+        display:flex;
     }
     .drag-item {
     transition: 0.25s;
@@ -116,7 +163,6 @@
     .image-layer{
         width: 80px;
         height: 80px;
-        background:white;
         opacity:0.5;
         position:absolute;
         margin-top: -80px;
