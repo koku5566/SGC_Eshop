@@ -8,15 +8,15 @@
 <div class="container">
    <h2 style="margin-top: 50px;">Create Voucher</h2>
    <form>
-       <div class="container d-lg-block d-xl-block d-xxl-block m-4">
+       <div class="container m-4" style="background-color: #FFFFFF">
          <h5>Basic Information</h5>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Code</label>
             <div class="col-mb-12">
                <input type="text" aria-label="First name" class="form-control mt-2" placeholder="Enter voucher code">
             </div>
          </div>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Claim Period</label>
             <div class="col-sm-1 mt-3">
                <h6 style="text-align: center">Start</h6>
