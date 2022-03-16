@@ -37,7 +37,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" >Main Category</span>
                                             </div>
-                                            <select class="form-select" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" style="color:currentColor;width: 60%;;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;">
+                                            <select class="form-select" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" style="color:currentColor;width: 60%;;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;" required>
+                                                <option value="">Please Select a Category</option>
                                                     <?php
                                                     //Main Category
                                                     $sql = "SELECT * FROM mainCategory";
