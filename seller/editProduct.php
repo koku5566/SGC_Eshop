@@ -254,12 +254,14 @@
     });
 
     const imgInp = document.querySelectorAll('.imgInp');
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-            imgInp.parentElement.previousSibling.previousSibling.src = URL.createObjectURL(file)
-        }
-    }
+    imgInp.forEach(img => {
+        img.addEventListener('change', function handleClick(event) {
+            const [file] = img.files
+            if (file) {
+                img.parentElement.previousSibling.previousSibling.src = URL.createObjectURL(file)
+            }
+        });
+    });
 
 
 
