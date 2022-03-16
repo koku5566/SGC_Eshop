@@ -285,7 +285,7 @@ h1:after{
 	position: absolute;
 	width: 100px;
 	height: 4px;
-	background-color: #ff8159;
+	background-color: #a31f37;
 	bottom: -20px;
 	left: 0;
 	right: 0;
@@ -295,7 +295,7 @@ h1:after{
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 10px;
-	border: 3px solid #111;
+	border: 2px solid #111;
 }
 .logo-slider .slick-slide{
 	margin: 15px 20px; 
@@ -308,7 +308,7 @@ h1:after{
 }
 .slick-next:before,
 .slick-prev:before{
-	color: #ff8159;
+	color: #a31f37;
 	font-size: 24px;
 }
 .item:hover{
@@ -361,7 +361,7 @@ h2{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
-	top: 35px;
+	top: 23px;
 	font-weight: 400;
 	font-size: 1.4em;
 }
