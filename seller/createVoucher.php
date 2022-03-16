@@ -10,7 +10,7 @@
          <h5>Basic Information</h5>
          <div class="row">
             <label for="">Voucher Code</label>
-            <div class="col-mb-12">
+            <div class="col-12">
                <input type="text" aria-label="First name" class="form-control" placeholder="Enter voucher code">
             </div>
          </div>
@@ -34,7 +34,7 @@
             <div class="input-group col-mb-12">
                <input type="text" aria-label="First name" class="form-control" for="inputGroupSelect02" placeholder="00.00">
                <div class="input-group-append">
-               <select class="custom-select input-group-text mt-2" id="inputGroupSelect02">
+               <select class="custom-select input-group-text" id="inputGroupSelect02">
                   <option selected>RM</option>
                   <option value="1">%</option>
                </select>
