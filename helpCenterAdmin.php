@@ -309,12 +309,12 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategorylist']) && !empty($_POST['acCategorylist']) ){
 		
 			$categorylist = $_POST['acCategorylist'];
-			$pItem = false;
+			
 		if($_POST['acContent'] === 'Delete'){
 			
 			
             $sql ="SELECT hcc.hcc_id, hcc.category, hc.question, hc.answer, hc.pic, hc.pic_type, hc.disable_date
-				   FROM helpCenterCategory hcc LEFT JOIN helpCenter hc
+				   FROM helpCenterCategory hcc INNER JOIN helpCenter hc
 				   ON hcc.hcc_id = hc.hcc_id
 				   WHERE hcc.hcc_id = ? && hcc.disable_date IS NULL && hc.disable_date IS NULL";
 		              
@@ -324,11 +324,12 @@
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 0){
-                    echo "<script>alert('No ITEM - $categorylist')</script>";
+                    //echo "<script>alert('No ITEM - $categorylist')</script>";
+					$pItem = false;
 					
                 }else{
-					
-					echo "<script>alert('GOT ITEM - $categorylist')</script>";
+					//echo "<script>alert('GOT ITEM - $categorylist')</script>";
+					$pItem = true;
 				}
                 
                 mysqli_stmt_free_result($stmt);
@@ -337,7 +338,7 @@
             }
 			
 			
-			/*
+			
 			
 			if($pItem == false){
 				echo "<div class='alert alert-success'>CLEAR CAN DELETE</div>";
@@ -346,7 +347,7 @@
 				echo "<div class='alert alert-danger'>Can't DELETE CUZ GOT ITEM</div>";
 			}
 			
-			*/
+			
 			
 			
 			
