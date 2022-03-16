@@ -12,13 +12,13 @@
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
-        echo "<script>alert('the script is running.....');</script>";
-        $checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
-        if($checkImage !== false)
-        {
+        //echo "<script>alert('the script is running.....');</script>";
+        //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
+        //if($checkImage !== false)
+        //{
             $coverIMG = $_FILES['coverImage']['tmp_name'];
             $coverImgContent = addslashes(file_get_contents($coverIMG));
-        }
+        //}
         $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
         $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
@@ -46,6 +46,7 @@
         
         $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
+                echo "<script>alert('the script is running.....');</script>";
                 mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
                 mysqli_stmt_send_long_data($stmt,6,$eDes);
