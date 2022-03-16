@@ -2,10 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<title>Shop Profile</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   
@@ -31,7 +27,7 @@
       <input type="file" class="form-control" id="formFileMultiple" multiple>
     </div>
     <div class="row buttonContainer text-center">
-      <button class="saveBtn">Save</button>
+      <button class="saveBtn float-end">Save</button>
     </div> 
   </div>
 </div>
