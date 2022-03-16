@@ -39,7 +39,7 @@
         <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
       </div>
     </div>
-    <div class="buttonContainer">
+    <div class="text-center">
       <button class="saveBtn">Save</button>
     </div> 
   </div>
@@ -99,7 +99,7 @@ div.absolute {
 }
 
 .buttonContainer{
-  float:center;
+  text-align:center;
 }
 
 .saveBtn{
