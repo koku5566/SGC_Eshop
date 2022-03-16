@@ -38,9 +38,12 @@
     <br />
 <br />
 <br />
+<div style="height: 125px;">
+<!-----------------Other Content------------------>
+</div>
 
 
-                <!-- /.container-fluid -->
+   <!-- /.container-fluid -->
 
 <?php
     require __DIR__ . '/footer.php'
