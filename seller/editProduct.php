@@ -103,7 +103,7 @@
         background-color: white;
     }
 
-    .image-img-thumbnail:hover ~ .image-tools{
+    .img-thumbnail:hover ~ .image-tools{
         background:grey;
         opacity:0.5;
     }
