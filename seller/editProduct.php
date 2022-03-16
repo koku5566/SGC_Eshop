@@ -30,9 +30,11 @@
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
-                                                        <div class="image-tools">
-                                                            <i class="fa fa-trash image-tools-icon" aria-hidden="true"></i>
-
+                                                        <div class="image-tools-delete">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                     <p>Picture 1</p>
@@ -103,15 +105,15 @@
         background-color: white;
     }
 
-    .img-thumbnail:hover ~ .image-tools{
+    .img-thumbnail:hover ~ .image-tools-delete{
         display:block;
     }
 
-    .image-tools:hover{
+    .image-tools-delete:hover{
         display:block;
     }
 
-    .image-tools{
+    .image-tools-delete{
         width: 80px;
         height: 30px;
         background:grey;
@@ -121,7 +123,7 @@
         display:none;
     }
 
-    .image-tools-icon{
+    .image-tools-delete-icon{
         color: #ea1414;
         justify-content: center;
         display: grid;
@@ -129,8 +131,23 @@
         font-size: 20px;
     }
 
-    .image-tools-icon:hover{
-        color:#a31f37;
+
+    .image-tools-add{
+        width: 80px;
+        height: 80px;
+        background:white;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+        z-index:100;
+    }
+
+    .image-tools-add-icon{
+        color: black;
+        justify-content: center;
+        display: grid;
+        margin-top: 5px;
+        font-size: 20px;
     }
 </style>
 
@@ -216,11 +233,24 @@
     // Instantiate
     var draggable = new DragNSort({
         container: document.querySelector('.drag-list'),
-    itemClass: 'drag-item',
-    dragStartClass: 'drag-start',
-    dragEnterClass: 'drag-enter'
+        itemClass: 'drag-item',
+        dragStartClass: 'drag-start',
+        dragEnterClass: 'drag-enter'
     });
     draggable.init();
+
+    const deleteImg = document.querySelectorAll('.image-tools-icon');
+
+    deleteImg.forEach(img => {
+        img.addEventListener('click', function handleClick(event) {
+            img.parentElement.previousSibling.src="";
+            img.parentElement.previousSibling.classList.remove("active");
+        });
+    });
+
+
+
+
 </script>
 
 <?php
