@@ -10,14 +10,14 @@
    <form>
        <div class="container m-4" style="background-color: #FFFFFF">
          <h5>Basic Information</h5>
-         <div class="row">
-            <label for="">Voucher Code</label>
+         <div class="row mt-4">
+            <label for="">Voucher Code</label><br>
             <div class="col-mb-12">
                <input type="text" aria-label="First name" class="form-control mt-2" placeholder="Enter voucher code">
             </div>
          </div>
-         <div class="row">
-            <label for="">Voucher Claim Period</label>
+         <div class="row mt-4">
+            <label for="">Voucher Claim Period</label><br>
             <div class="col-sm-1 mt-3">
                <h6 style="text-align: center">Start</h6>
             </div>
@@ -44,7 +44,7 @@
             </div>
          </div>
          <div class="row mt-4">
-            <label for="">Voucher Details</label>
+            <label for="">Voucher Details</label><br>
             <div class="col-mb-12 mt-3">
                <textarea class="form-control" rows="10" placeholder="Creative Ideas, Creative DISCUSS.ION." required></textarea>
                <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
