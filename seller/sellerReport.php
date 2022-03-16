@@ -13,7 +13,7 @@
 <div class="container-fluid" style="width:80%">
   <div class="container reportContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h4>SEGi College Subang Jaya</h4>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
     </div>
     <div class="row statisticContainer">
       <h4><b>Sales Statistic</b><span id=""></span></h4>
@@ -42,7 +42,7 @@ body{
 }
 
 .sellerProfilePic{
-  width: 60px;
+  width: 65px;
   height:40px;
 }
 
