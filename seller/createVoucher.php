@@ -57,7 +57,7 @@
          </div>
          <br>
          <h5>Voucher Display and Applicable Products</h5>
-         <div class="row">
+         <div class="row mt-2">
             <label for="">Voucher Display Setting</label>
             <div class="col-12">
                <div class="form-check">
