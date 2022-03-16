@@ -247,8 +247,8 @@
 
     deleteImg.forEach(img => {
         img.addEventListener('click', function handleClick(event) {
-            img.parentElement.previousSibling.src="";
-            img.parentElement.nextSibling.classList.remove("hide");
+            img.parentElement.previousElementSibling.src="";
+            img.parentElement.nextElementSibling.classList.remove("hide");
             img.parentElement.classList.add("hide");
         });
     });
@@ -258,8 +258,8 @@
         img.addEventListener('click', function handleClick(event) {
             const [file] = img.files
             if (file) {
-                img.parentElement.previousSibling.previousSibling.src = URL.createObjectURL(file)
-                img.parentElement.previousSibling.classList.remove("hide");
+                img.parentElement.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.previousElementSibling.classList.remove("hide");
                 img.parentElement.classList.add("hide");
             }
         });
