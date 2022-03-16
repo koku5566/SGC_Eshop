@@ -1015,22 +1015,28 @@ var addCategoryH4 = document.getElementById('addCategoryH4');
 imgswitch.onclick = function() {
   if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
     acCategoryDisplay.style.display = "inline";
+	acCategoryDisplay.required = "true";
 	acContentIDDelete.style.display = "block";
 	deleteCategoryH4.style.display = "block";
 	
 	acCatName.style.display = "none";
+	acCatName.required = "false";
 	acImgLabel.style.display = "none";
 	acImg.style.display = "none";
+	acImg.required = "false";
 	acContentIDAdd.style.display = "none";
 	addCategoryH4.style.display = "none";
   } else {
 	acCategoryDisplay.style.display = "none";
+	acCategoryDisplay.required = "false";
 	acContentIDDelete.style.display = "none";
 	deleteCategoryH4.style.display = "none";
 	
 	acCatName.style.display = "inline";
+	acCatName.required = "true";
 	acImgLabel.style.display = "inline";
 	acImg.style.display = "inline";
+	acImg.required = "true";
 	acContentIDAdd.style.display = "block";
 	addCategoryH4.style.display = "block";
   }
