@@ -362,7 +362,7 @@
                 }
 			}
 			else{
-				echo "<div class='alert alert-danger'>Please remove all question before deleting in ($categorylist) category </div>";
+				echo "<div class='alert alert-danger'>Please remove all questions in the category first.</div>";
 			}
 			
 	
