@@ -36,7 +36,7 @@
       <input type="file" class="form-control" id="formFileMultiple" multiple>
     </div>
     <div class="row buttonContainer">
-      <button class="saveBtn">Save</button>
+      <button class="saveBtn float-end">Save</button>
     </div> 
   </div>
 </div>

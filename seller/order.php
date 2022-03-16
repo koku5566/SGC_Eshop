@@ -541,3 +541,18 @@ input = document.value.getElementby("searchID");
 <span style="padding-left: 100px;font-size: 19px;font-weight: bold;width: 69px;">Action</span>
 </div>
 </div>          
+<!---------------------Shipping Product List----------------------------->
+</div>
+  <div style="border-style: solid;height: 155px;width: 1082px;margin-left: 144px;">
+  <img style="width: 131px;height: 116px;margin-left: 13px;margin-top: 17px;" />
+    <p style="width: 241px;margin-left: 164px;
+    margin-top: -115px;height: 100px;border-style: none;">prod_Name</p>
+    <p style="width: 146px;margin-left: 444px;
+    margin-top: -113px;height: 48px;border-style: none;">SKU</p>
+    <p style="width: 145px;margin-left: 630px;
+    margin-top: -64px;height: 48px;border-style: none;">order_ID</p>
+    <p style="width: 100px;margin-left: 807px;
+    margin-top: -64px;height: 48px;border-style: none;">status</p>
+    <button class="btn btn-primary" type="button" style="margin-left: 973px;
+    margin-top: -114px;width: 81.5px;height: 58px;">View</button>
+</div>
