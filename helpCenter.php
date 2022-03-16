@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <h2>$c4</h2>
 								 <p>$c5</p>
 							     </div>
-							     <span class='btn' id='btn$c1'>+</span>
+							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
 							 $pp++;
 							}
@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <h2>$c4</h2>
 								 <p>$c5</p>
 							     </div>
-							     <span class='btn' id='btn$c1'>+</span>
+							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
 							 $pp++;
 							}
@@ -357,7 +357,7 @@ h2{
 .faq .faq_text{
 	width:90%;
 }
-.btn{
+.btnd{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
@@ -376,7 +376,7 @@ h2{
 .faq.open p {
 	display:block;
 }
-.faq.open .btn{
+.faq.open .btnd{
 	color: #00848f;
 }
 </style>
