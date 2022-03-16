@@ -29,16 +29,68 @@
                                             <div class="drag-list">
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/iphone-black.jpg">
-                                                        <div class="image-tools">
-
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
                                                         </div>
-
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
                                                     </div>
                                                     <p>Picture 1</p>
                                                 </div>
-                                                <div class="drag-item" draggable="true">B</div>
-                                                <div class="drag-item" draggable="true">C</div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -74,16 +126,13 @@
     user-select: none;
     }
     .drag-list {
-    margin: 10px auto;
-    border: 1px solid #ccc;
-    flex-basis: 770px;
-    width: 770px;
-    max-width: 770px;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        flex-basis: 770px;
+        display:flex;
     }
     .drag-item {
-
     transition: 0.25s;
-
     -webkit-box-flex: 0;
     -ms-flex: 0 0 80px;
     flex: 0 0 80px;
@@ -92,7 +141,6 @@
     min-height: 80px;
     max-height: 80px;
     margin: 0 16px 40px 0;
-    border:1px solid red;
     }
     .drag-start {
     opacity: 0.8;
@@ -103,99 +151,180 @@
     }
 
     .image-container{
-        width: 100%;
-        height: 10vh;
+        width: 80px;
+        height: 80px;
         background-color: white;
+    }
+
+    .image-layer:hover ~ .image-tools-delete{
+        display:block;
+    }
+
+    .image-layer{
+        width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+    }
+
+    .image-tools-delete:hover{
+        display:block;
+    }
+
+    .image-tools-delete{
+        width: 80px;
+        height: 30px;
+        background:grey;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -30px;
+    }
+
+    .image-tools-delete-icon{
+        color: #ea1414;
+        justify-content: center;
+        display: grid;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+
+    .image-tools-add{
+        width: 80px;
+        height: 80px;
+        background:white;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+        z-index:100;
+    }
+
+    .image-tools-add-icon{
+        color: black;
+        justify-content: center;
+        display: grid;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .hide{
+        display:none;
     }
 </style>
 
 <script>
     function DragNSort (config) {
-  this.$activeItem = null;
-  this.$container = config.container;
-	this.$items = this.$container.querySelectorAll('.' + config.itemClass);
-  this.dragStartClass = config.dragStartClass;
-  this.dragEnterClass = config.dragEnterClass;
-}
+        this.$activeItem = null;
+        this.$container = config.container;
+        this.$items = this.$container.querySelectorAll('.' + config.itemClass);
+        this.dragStartClass = config.dragStartClass;
+        this.dragEnterClass = config.dragEnterClass;
+    }
 
-DragNSort.prototype.removeClasses = function () {
-	[].forEach.call(this.$items, function ($item) {
-		$item.classList.remove(this.dragStartClass, this.dragEnterClass);
-  }.bind(this));
-};
+    DragNSort.prototype.removeClasses = function () {
+        [].forEach.call(this.$items, function ($item) {
+            $item.classList.remove(this.dragStartClass, this.dragEnterClass);
+    }.bind(this));
+    };
 
-DragNSort.prototype.on = function (elements, eventType, handler) {
-	[].forEach.call(elements, function (element) {
-    element.addEventListener(eventType, handler.bind(element, this), false);
-  }.bind(this));
-};
+    DragNSort.prototype.on = function (elements, eventType, handler) {
+        [].forEach.call(elements, function (element) {
+        element.addEventListener(eventType, handler.bind(element, this), false);
+    }.bind(this));
+    };
 
-DragNSort.prototype.onDragStart = function (_this, event) {
-  _this.$activeItem = this;
+    DragNSort.prototype.onDragStart = function (_this, event) {
+    _this.$activeItem = this;
 
-  this.classList.add(_this.dragStartClass);
-  event.dataTransfer.effectAllowed = 'move';
-  event.dataTransfer.setData('text/html', this.innerHTML);
-};
+    this.classList.add(_this.dragStartClass);
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/html', this.innerHTML);
+    };
 
-DragNSort.prototype.onDragEnd = function (_this) {
-	this.classList.remove(_this.dragStartClass);
-};
+    DragNSort.prototype.onDragEnd = function (_this) {
+        this.classList.remove(_this.dragStartClass);
+    };
 
-DragNSort.prototype.onDragEnter = function (_this) {
-	this.classList.add(_this.dragEnterClass);
-};
+    DragNSort.prototype.onDragEnter = function (_this) {
+        this.classList.add(_this.dragEnterClass);
+    };
 
-DragNSort.prototype.onDragLeave = function (_this) {
-	this.classList.remove(_this.dragEnterClass);
-};
+    DragNSort.prototype.onDragLeave = function (_this) {
+        this.classList.remove(_this.dragEnterClass);
+    };
 
-DragNSort.prototype.onDragOver = function (_this, event) {
-  if (event.preventDefault) {
-  event.preventDefault();
-  }
+    DragNSort.prototype.onDragOver = function (_this, event) {
+    if (event.preventDefault) {
+    event.preventDefault();
+    }
 
-  event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.dropEffect = 'move';
 
-  return false;
-};
+    return false;
+    };
 
-DragNSort.prototype.onDrop = function (_this, event) {
-	if (event.stopPropagation) {
-    event.stopPropagation();
-  }
+    DragNSort.prototype.onDrop = function (_this, event) {
+        if (event.stopPropagation) {
+        event.stopPropagation();
+    }
 
-  if (_this.$activeItem !== this) {
-    _this.$activeItem.innerHTML = this.innerHTML;
-    this.innerHTML = event.dataTransfer.getData('text/html');
-  }
+    if (_this.$activeItem !== this) {
+        _this.$activeItem.innerHTML = this.innerHTML;
+        this.innerHTML = event.dataTransfer.getData('text/html');
+    }
 
-  _this.removeClasses();
+    _this.removeClasses();
 
-  return false;
-};
+    return false;
+    };
 
-DragNSort.prototype.bind = function () {
-	this.on(this.$items, 'dragstart', this.onDragStart);
-	this.on(this.$items, 'dragend', this.onDragEnd);
-	this.on(this.$items, 'dragover', this.onDragOver);
-	this.on(this.$items, 'dragenter', this.onDragEnter);
-	this.on(this.$items, 'dragleave', this.onDragLeave);
-	this.on(this.$items, 'drop', this.onDrop);
-};
+    DragNSort.prototype.bind = function () {
+        this.on(this.$items, 'dragstart', this.onDragStart);
+        this.on(this.$items, 'dragend', this.onDragEnd);
+        this.on(this.$items, 'dragover', this.onDragOver);
+        this.on(this.$items, 'dragenter', this.onDragEnter);
+        this.on(this.$items, 'dragleave', this.onDragLeave);
+        this.on(this.$items, 'drop', this.onDrop);
+    };
 
-DragNSort.prototype.init = function () {
-	this.bind();
-};
+    DragNSort.prototype.init = function () {
+        this.bind();
+    };
 
-// Instantiate
-var draggable = new DragNSort({
-	container: document.querySelector('.drag-list'),
-  itemClass: 'drag-item',
-  dragStartClass: 'drag-start',
-  dragEnterClass: 'drag-enter'
-});
-draggable.init();
+    // Instantiate
+    var draggable = new DragNSort({
+        container: document.querySelector('.drag-list'),
+        itemClass: 'drag-item',
+        dragStartClass: 'drag-start',
+        dragEnterClass: 'drag-enter'
+    });
+    draggable.init();
+
+    const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+    deleteImg.forEach(img => {
+        img.addEventListener('click', function handleClick(event) {
+            img.parentElement.previousElementSibling.previousElementSibling.src="";
+            img.parentElement.nextElementSibling.classList.remove("hide");
+            img.parentElement.classList.add("hide");
+        });
+    });
+
+    const imgInp = document.querySelectorAll('.imgInp');
+    imgInp.forEach(img => {
+        img.addEventListener('change', function handleChange(event) {
+            const [file] = img.files
+            if (file) {
+                img.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            }
+        });
+    });
+
+
+
 </script>
 
 <?php
