@@ -4,14 +4,21 @@
 
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Preview Image -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
   <div class="container profileContainer">
     <div class="row">
       <div>
-      <img class="relative bg-image" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
-      <div class="absolute"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
+      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
+      <div class="absolute">
+        <input type="file" id="actual-btn" hidden/>
+        <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
+      </div>
       <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
     </div>
@@ -49,34 +56,36 @@ body{
   margin: 30px auto;
 }
 
-.buttonContainer{
-  float: right;
-}
-
 .relative {
   position: relative;
-  height: 310px;
+  
 } 
 
 div.absolute {
   position: absolute;
-  top: 425px;
-  right: 255px;
+  top: 470px;
+  right: 180px;
+}
+
+.editBtn {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
 }
 
 .sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 49%;
+  top: 53%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
 
-.editBtn{
-  background-color: white;
-  border: none;
-  border-radius: 3px;
+.buttonContainer{
+  float: right;
 }
 
 .saveBtn{
