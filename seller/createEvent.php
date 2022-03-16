@@ -46,11 +46,10 @@
         
         $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
-                echo "<script>alert('the script is running.....');</script>";
                 mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
-                mysqli_stmt_send_long_data($stmt,6,$eDes);
-                mysqli_stmt_send_long_data($stmt,9,$eTnc);
+                //mysqli_stmt_send_long_data($stmt,6,$eDes);
+                //mysqli_stmt_send_long_data($stmt,9,$eTnc);
                 mysqli_stmt_execute($stmt);
                 
                     if(mysqli_stmt_affected_rows($stmt) == 1){
