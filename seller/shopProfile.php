@@ -60,8 +60,8 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 430px;
-  right: 260px;
+  top: 425px;
+  right: 255px;
 }
 
 .sellerPic{
