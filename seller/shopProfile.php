@@ -81,22 +81,23 @@ div.absolute {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 53%;
+  top: 45%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
 
 #myDIV {
-  width: 50%;
-  border: 2px solid grey;
+  width: 30%;
+  border: 2px solid #ADADAD;
   border-radius: 5px;
+  color: #ADADAD;
   padding: 50px 0;
   text-align: center;
   margin-top: 20px;
 }
 
 .buttonContainer{
-  float: right;
+  float: center;
 }
 
 .saveBtn{
