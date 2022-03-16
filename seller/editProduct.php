@@ -257,7 +257,7 @@
     imgInp.onchange = evt => {
         const [file] = imgInp.files
         if (file) {
-            imgInp.parentElement.previousSibling.src = URL.createObjectURL(file)
+            imgInp.parentElement.previousSibling.previousSibling.src = URL.createObjectURL(file)
         }
     }
 
