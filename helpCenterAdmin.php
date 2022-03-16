@@ -666,14 +666,7 @@
 ?>
 
 <style>
-.alert-fixed {
-    position:fixed; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%;
-    z-index:9999; 
-    border-radius:0px
-}
+
 h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
@@ -950,12 +943,10 @@ function myBtnGoFunction(){
 			else{ document.getElementById('goo').disabled = true;}
 	}			
 	
-/*
-$(".alert").delay(2000).slideUp(200, function() {
+
+$(".alert alert-success").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
-*/
-$(document).ready(function () {
-    $(".alert").delay(3000).fadeOut("slow");
-});
+
+
 </script>
