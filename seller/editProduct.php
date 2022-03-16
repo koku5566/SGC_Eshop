@@ -27,18 +27,19 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="drag-list">
-                                                <div class="drag-item" draggable="true">A</div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img>
+                                                        <div class="image-tools">
+
+                                                        </div>
+
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
                                                 <div class="drag-item" draggable="true">B</div>
                                                 <div class="drag-item" draggable="true">C</div>
-                                                <div class="drag-item" draggable="true">D</div>
-                                                <div class="drag-item" draggable="true">E</div>
-                                                <div class="drag-item" draggable="true">F</div>
-                                                <div class="drag-item" draggable="true">G</div>
-                                                <div class="drag-item" draggable="true">H</div>
-                                                <div class="drag-item" draggable="true">I</div>
-                                                <div class="drag-item" draggable="true">J</div>
-                                                <div class="drag-item" draggable="true">K</div>
-                                                <div class="drag-item" draggable="true">L</div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -73,21 +74,24 @@
     user-select: none;
     }
     .drag-list {
-    overflow: hidden;
     margin: 10px auto;
-    width: 500px;
     border: 1px solid #ccc;
+    flex-basis: 770px;
+    width: 770px;
+    max-width: 770px;
     }
     .drag-item {
-    float: left;
-    padding: 50px 20px;
-    width: 25%;
-    text-align: center;
-    color: #555;
-    background: #ddd;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+
     transition: 0.25s;
+
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 80px;
+    flex: 0 0 80px;
+    width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    margin: 0 16px 40px 0;
     }
     .drag-start {
     opacity: 0.8;
@@ -95,6 +99,13 @@
     .drag-enter {
     opacity: 0.5;
     transform: scale(0.9);
+    }
+
+    .image-container{
+        position:absolute;
+        width:100%;
+        height:100%;
+        content:fill;
     }
 </style>
 
