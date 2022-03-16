@@ -127,7 +127,6 @@
     }
     .card-body{
        background-color: #A31F37;
-       height:60px;
        margin: 60px 60px;
     }
 
