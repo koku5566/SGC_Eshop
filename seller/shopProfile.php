@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row">
-      <br><label class="form-label">Shop Name</label><br>
+      <br><br><label class="form-label">Shop Name</label><br>
       <input type="text" class="form-control" id="customFile" />
     </div>  
     <div class="row">
@@ -60,7 +60,7 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 400px;
+  top: 420px;
   right: 250px;
 }
 
@@ -68,7 +68,7 @@ div.absolute {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 50%;
+  top: 51%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
