@@ -987,9 +987,9 @@ imgswitch.onclick = function() {
 	acCategoryDisplay.style.display = "none";
 	acContentIDDelete.style.display = "none";
 	
-	acCatName.style.display = "block";
-	acImgLabel.style.display = "block";
-	acImg.style.display = "block";
+	acCatName.style.display = "inline";
+	acImgLabel.style.display = "inline";
+	acImg.style.display = "inline";
 	acContentIDAdd.style.display = "block";
 	
 	
