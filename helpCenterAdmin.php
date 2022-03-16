@@ -545,7 +545,7 @@
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										"<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
+										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
 										
 										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
 										
@@ -975,9 +975,25 @@ imgswitch.onclick = function() {
   if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
     acCategoryDisplay.style.display = "block";
 	acContentIDDelete.style.display = "block";
+	
+	acCatName.style.display = "none";
+	acImgLabel.style.display = "none";
+	acImg.style.display = "none";
+	acContentIDAdd.style.display = "none";
+	
+	
   } else {
 	acCategoryDisplay.style.display = "none";
 	acContentIDDelete.style.display = "none";
+	
+	acCatName.style.display = "block";
+	acImgLabel.style.display = "block";
+	acImg.style.display = "block";
+	acContentIDAdd.style.display = "block";
+	
+	
+	
+	
   }
 	
 	
