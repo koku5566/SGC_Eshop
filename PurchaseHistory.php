@@ -20,6 +20,7 @@
     <img style="height: 86px;padding-top: 0px;margin-left: 11px;margin-top: 0px;width: 431.1625px;" src="img/segi kl.png" />
         <div style="height: 159px;">
         <img src="img/seller/iphone-grey.png" style="height: 102px;margin-left: 19px;" />
+        <br />
             <p style="width: 316px;margin-left: 140px;margin-top: -78px;font-size: 25px;">Iphone 10 Pro Max</p>
             <p style="width: 66px;font-size: 25px;margin-left: 474px;margin-top: -56px;">Grey</p>
             <p style="font-size: 25px;width: 56px;margin-left: 631px;margin-top: -54px;">x1</p>
