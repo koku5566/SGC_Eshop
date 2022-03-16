@@ -27,7 +27,7 @@
       <input type="file" class="form-control" id="formFileMultiple" multiple>
     </div>
     <div class="row buttonContainer">
-      <button class="saveBtn float-end">Save</button>
+      <button class="saveBtn">Save</button>
     </div> 
   </div>
 </div>
@@ -48,8 +48,13 @@ body{
   margin: 30px auto;
 }
 
+.buttonContainer{
+  float: right;
+}
+
 div.relative {
   position: relative;
+  border: 2px solid grey;
   height: 200px;
 } 
 
