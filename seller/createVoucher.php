@@ -3,8 +3,8 @@
 ?>
 
 <!-- Page Content -->
-<div class="container mt-4" style="background-color: #FFFFFF; width:100%;">
-   <h2 class="m-4">Create Voucher</h2>
+<div class="container" style="background-color: #FFFFFF; width:100%;">
+   <h2 class="mt-5">Create Voucher</h2>
    <form>
        <div class="container">
          <h5>Basic Information</h5>
