@@ -75,11 +75,11 @@
                </div>
             </div>
          </div>         
-         <div class="row mt-2">
+         <div class="row m-2">
             <label for="">Applicable products</label>
             <div class="col-12">
                <div>
-                  <button type="button" class="btn light btn-lg btn-block rounded" style="border: dashed;">+ Add Products</button>
+                  <button type="button" class="btn light btn-lg btn-block rounded" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
          </div>    
