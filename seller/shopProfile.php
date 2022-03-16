@@ -53,8 +53,9 @@ body{
   float: right;
 }
 
-div.relative {
+.relative {
   position: relative;
+  height: 200px;
 } 
 
 div.absolute {
