@@ -309,7 +309,7 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategorylist']) && !empty($_POST['acCategorylist']) ){
 		
 			$categorylist = $_POST['acCategorylist'];
-			$p = 0;
+			$pItem = false;
 		if($_POST['acContent'] === 'Delete'){
 			
 			
@@ -322,13 +322,13 @@
 				mysqli_stmt_bind_result($stmt, $s1,$s2);
 				
 				while(mysqli_stmt_fetch($stmt)){
-					$p++;
+					$pItem = true;
 				}
 				mysqli_stmt_close($stmt);
 			}
 			
 			
-			if($p === 0){
+			if($pItem == false){
 				echo "<div class='alert alert-success'>CLEAR CAN DELETE</div>";
 			}
 			else{
@@ -560,7 +560,7 @@
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
 										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
-										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'required>
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'>
 												<option value="">-Select Category-</option>
 												<?php
 													$sql ="SELECT hcc_id, category
@@ -1015,7 +1015,7 @@ var addCategoryH4 = document.getElementById('addCategoryH4');
 imgswitch.onclick = function() {
   if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
     acCategoryDisplay.style.display = "inline";
-	acCategoryDisplay.required = true;
+	
 	acContentIDDelete.style.display = "block";
 	deleteCategoryH4.style.display = "block";
 	
@@ -1028,7 +1028,7 @@ imgswitch.onclick = function() {
 	addCategoryH4.style.display = "none";
   } else {
 	acCategoryDisplay.style.display = "none";
-	acCategoryDisplay.required = false;
+	
 	acContentIDDelete.style.display = "none";
 	deleteCategoryH4.style.display = "none";
 	
