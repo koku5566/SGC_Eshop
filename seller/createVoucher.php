@@ -8,13 +8,13 @@
    <form>
        <div class="container">
          <h5>Basic Information</h5>
-         <div class="row">
+         <div class="row mt-2">
             <label for="">Voucher Code</label>
             <div class="col-12">
                <input type="text" aria-label="First name" class="form-control" placeholder="Enter voucher code">
             </div>
          </div>
-         <div class="row">
+         <div class="row mt-2">
             <label for="">Voucher Claim Period</label>
             <div class="col-1">
                <h6 style="text-align: center">Start</h6>
@@ -29,7 +29,7 @@
                <input type="date" aria-label="First name" class="form-control">
             </div>
          </div>
-         <div class="row">
+         <div class="row mt-2">
             <label class="" for="">Voucer Discount Amount</label>
             <div class="input-group col-mb-12">
                <input type="text" aria-label="First name" class="form-control" for="inputGroupSelect02" placeholder="00.00">
@@ -41,7 +41,7 @@
                </div>
             </div>
          </div>
-         <div class="row">
+         <div class="row mt-2">
             <label for="">Voucher Details</label><br>
             <div class="col-12">
                <textarea class="form-control" rows="10" placeholder="Creative Ideas, Creative DISCUSS.ION." required></textarea>
@@ -68,7 +68,7 @@
                </div>
             </div>
          </div>         
-         <div class="row">
+         <div class="row mt-2">
             <label for="">Applicable products</label>
             <div class="col-12">
                <div>
