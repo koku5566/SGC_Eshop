@@ -31,8 +31,11 @@
       <textarea class="form-control" id="customFile" rows="3"></textarea>
     </div>
     <div class="row">
-      <label class="form-label" for="formFileMultiple">Images/Video</label>
-      <input type="file" class="form-control" id="formFileMultiple" multiple>
+      <div id="myDIV">
+        <img id="frame" src="" class="img-fluid" />
+        <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
+        <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
+      </div>
     </div>
     <div class="row buttonContainer">
       <button class="saveBtn">Save</button>
@@ -58,7 +61,6 @@ body{
 
 .relative {
   position: relative;
-  
 } 
 
 div.absolute {
@@ -79,13 +81,22 @@ div.absolute {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 53%;
+  top: 45%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
 
+#myDIV {
+  width: 30%;
+  border: 1px solid #ADADAD;
+  border-radius: 5px;
+  color: #ADADAD;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
 .buttonContainer{
-  float: right;
 }
 
 .saveBtn{
@@ -96,3 +107,18 @@ div.absolute {
   margin: 20px 0 0 0;
 }
 </style>
+
+<script>
+function hideLabel() {
+var x = document.getElementById("myLabel");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function preview() {
+                frame.src = URL.createObjectURL(event.target.files[0]);
+            }
+</script>
