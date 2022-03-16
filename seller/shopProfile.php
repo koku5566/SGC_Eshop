@@ -58,7 +58,7 @@ body{
 
 .relative {
   position: relative;
-  height: 310px;
+  height: 450px;
 } 
 
 div.absolute {
