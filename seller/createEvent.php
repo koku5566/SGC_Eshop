@@ -52,7 +52,7 @@
                         echo "<script>alert('Success!!!!!');</script>";
                     }
                     else{
-                        $error = mysqli_stmt_errno($stmt);
+                        $error = mysqli_stmt_error($stmt);
                         echo "<script>alert($error);</script>";
                     }		
                     mysqli_stmt_close($stmt);
@@ -74,7 +74,7 @@
     <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
         
         <!-- Form for create new event -->
-        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
+        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h2>
