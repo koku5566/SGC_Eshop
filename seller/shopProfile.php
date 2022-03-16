@@ -39,7 +39,7 @@
         <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
       </div>
     </div>
-    <div class="row buttonContainer">
+    <div class="row buttonContainer text-center">
       <button class="saveBtn">Save</button>
     </div> 
   </div>
@@ -83,9 +83,7 @@ div.absolute {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 45%;
-  left: 60%;
-  transform: translate(-50%, -50%);
+  
 }
 
 #uploadContainer {
