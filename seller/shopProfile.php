@@ -63,7 +63,7 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 500px;
+  top: 490px;
   right: 210px;
 }
 
