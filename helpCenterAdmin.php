@@ -324,9 +324,9 @@
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) > 0){
-                    echo "<script>GOT ITEM</script>";
+                    echo "<script>alert('GOT ITEM')</script>";
                 }else{
-					echo "<script>No ITEM</script>";
+					echo "<script>alert('No ITEM')</script>";
 				}
                 
                 mysqli_stmt_free_result($stmt);
