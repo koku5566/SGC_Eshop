@@ -862,7 +862,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	border: 1px solid rgba(0 0 0 / .1);
+	
 	margin: auto;
 	height: 100%
 }
