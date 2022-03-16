@@ -65,9 +65,11 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Update successfully no img');</script>";
+                            //echo "<script>alert('Update successfully no img');</script>";
+							echo "<div class='alert alert-success'>Update Successfully</div>";
                         }else{
-                            echo "<script>alert('Fail to Update no img');</script>";
+                            //echo "<script>alert('Fail to Update no img');</script>";
+							echo "<div class='alert alert-danger'>Fail to Update</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -76,11 +78,13 @@
                 }else{
                     //USER GOT PUT IMAGE 
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
-                        echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+                       // echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+						echo "<div class='alert alert-danger'>Invalid image format . Format must be in jpg, png or gif</div>";
                     }
                     
                     if($size > 1000000){
-                        echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+                        //echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+						echo "<div class='alert alert-danger'>Invalid file size. The file size must not exceed 1Mb</div>";
                     }
                     $imageData = file_get_contents($temp);
                     //echo "<script>alert('GOT PIC')</script>";
@@ -92,9 +96,11 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Update successfully got img');</script>";
+                            //echo "<script>alert('Update successfully got img');</script>";
+							echo "<div class='alert alert-success'>Update Successfully</div>";
                         }else{
-                            echo "<script>alert('Fail to Update got img');</script>";
+                            //echo "<script>alert('Fail to Update got img');</script>";
+							echo "<div class='alert alert-danger'>Fail to Update</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -121,9 +127,11 @@
                 
                     if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                     {
-                        echo "<script>alert('Delete successfully');</script>";
+                        //echo "<script>alert('Delete successfully');</script>";
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
                     }else{
-                        echo "<script>alert('Fail to Update');</script>";
+                        //echo "<script>alert('Fail to Update');</script>";
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
                     }
             
                     mysqli_stmt_close($stmt);
@@ -162,8 +170,9 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
+                           
                             
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
                             $sql = "UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 									SET a.hc_id = concat('HC', b.id)
@@ -171,12 +180,13 @@
 							if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
     
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -203,7 +213,8 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
+                            //echo "<script>alert('Insert successfully');</script>";
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
 							$sql ="UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 								   SET a.hc_id = concat('HC', b.id)
@@ -211,12 +222,13 @@
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
                             
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -226,15 +238,8 @@
                     
                     
                 }
-                
-                
-                
-                
-            
-            }
-        
-        
-            
+                                                                  
+            }                          
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategoryName']) && !empty($_POST['acCategoryName']) ){
             
@@ -254,23 +259,26 @@
                     //USER GOT PUT IMAGE 
                     
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
-                        echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+                        //echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+						echo "<div class='alert alert-danger'>Invalid image format . Format must be in jpg, png or gif</div>";
                     }
                     
                     if($size > 1000000){
-                        echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+                        //echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+						echo "<div class='alert alert-danger'>Invalid file size. The file size must not exceed 1Mb</div>";
                     }
                     $imageData = file_get_contents($temp);
-                   // echo "$acCategoryName -$imageData -$type";
+                  
                     $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
-					//$sql = "INSERT INTO `helpCenterCategory`(`category`) VALUES (?)";
+					
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
 					
                         mysqli_stmt_execute($stmt);
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
+                            //echo "<script>alert('Insert successfully');</script>";
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
                            // $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
 							$sql = "UPDATE helpCenterCategory AS a, (SELECT id from helpCenterCategory order by id desc LIMIT 1) AS b 
 									SET a.hcc_id = concat('HCC', b.id)
@@ -279,12 +287,13 @@
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
                             
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -665,6 +674,7 @@
 ?>
 
 <style>
+
 h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
@@ -852,7 +862,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	border: 1px solid rgba(0 0 0 / .1);
+	
 	margin: auto;
 	height: 100%
 }
@@ -941,5 +951,12 @@ function myBtnGoFunction(){
 			else{ document.getElementById('goo').disabled = true;}
 	}			
 	
+
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
+});
 
 </script>
