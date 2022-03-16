@@ -974,7 +974,7 @@ var acContentIDAdd = document.getElementById('acContentIDAdd');
 
 imgswitch.onclick = function() {
   if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
-    acCategoryDisplay.style.display = "block";
+    acCategoryDisplay.style.display = "inline";
 	acContentIDDelete.style.display = "block";
 	
 	acCatName.style.display = "none";
@@ -998,11 +998,7 @@ imgswitch.onclick = function() {
   }
 	
 	
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }	
+  
 
 }
 
