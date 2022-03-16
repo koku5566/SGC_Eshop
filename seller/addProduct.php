@@ -35,15 +35,16 @@
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                             <?php
 
+                                            //Main Category
                                             $sql = "SELECT * FROM mainCategory";
                                             $result = mysqli_query($conn, $sql);
-                                
+
                                             if (mysqli_num_rows($result) > 0) {
+                                                echo("<ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">");
                                                 while($row = mysqli_fetch_assoc($result)) {
                                                     $categoryName = $row["main_category_name"];
 
                                                     echo("
-                                                    <ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">
                                                         <li class=\"category-item selected\">
                                                             <p class=\"text-overflow\">
                                                             $categoryName
@@ -52,16 +53,36 @@
                                                             <i class=\"fa fa-angle-right\" aria-hidden=\"true\" style=\"display:$display;\"></i>
                                                         </div>
                                                         </li>
-                                                    </ul>
                                                     ");
                                                 }
+                                                echo("<ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">");
+                                            }
+
+                                            //Sub Category
+                                            $sql = "SELECT * FROM subCategory";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                echo("<ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">");
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    $categoryName = $row["main_category_name"];
+
+                                                    echo("
+                                                        <li class=\"category-item selected\">
+                                                            <p class=\"text-overflow\">
+                                                            $categoryName
+                                                            </p> 
+                                                        <div class=\"category-item-right\">
+                                                            <i class=\"fa fa-angle-right\" aria-hidden=\"true\" style=\"display:$display;\"></i>
+                                                        </div>
+                                                        </li>
+                                                    ");
+                                                }
+                                                echo("<ul class=\"scroll-item\" aria-labelledby=\"SelectMainCategory\">");
                                             }
 
                                             
-
-                                            
                                             ?>
-                                            
                                         </div>
                                     </div>
 
@@ -91,7 +112,7 @@
         white-space: nowrap;
     }
 
-    .scroll-tem{
+    .scroll-item{
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
