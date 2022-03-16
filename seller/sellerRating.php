@@ -43,7 +43,7 @@ background-color: #EEEDEE;
 
 .sellerProfilePic{
   width: 70px;
-  height:35px;
+  height:40px;
 }
 
 .descriptionContainer{
