@@ -298,7 +298,7 @@ h1:after{
 	border: 3px solid #111;
 }
 .logo-slider .slick-slide{
-	margin: 15px 38px 15px 28px; 
+	margin: 15px 20px; 
 }
 .slick-dots li.slick-active button:before{
 	color: #ff5722;
