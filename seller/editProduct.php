@@ -30,7 +30,7 @@
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                        <div class="image-tools-delete">
+                                                        <div class="image-tools-delete hide">
                                                             <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="image-tools-add">
@@ -121,7 +121,6 @@
         opacity:0.5;
         position:absolute;
         margin-top: -30px;
-        display:none;
     }
 
     .image-tools-delete-icon{
@@ -250,15 +249,18 @@
         img.addEventListener('click', function handleClick(event) {
             img.parentElement.previousSibling.src="";
             img.parentElement.nextSibling.classList.remove("hide");
+            img.parentElement.classList.add("hide");
         });
     });
 
     const imgInp = document.querySelectorAll('.imgInp');
     imgInp.forEach(img => {
-        img.addEventListener('change', function handleClick(event) {
+        img.addEventListener('click', function handleClick(event) {
             const [file] = img.files
             if (file) {
                 img.parentElement.previousSibling.previousSibling.src = URL.createObjectURL(file)
+                img.parentElement.previousSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
             }
         });
     });
