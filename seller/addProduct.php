@@ -99,7 +99,7 @@
                                         
                                     </div>
                                     <div class="col-xl-2 col-lg-4 col-sm-8" style="padding-bottom: .625rem;">
-                                        <button type="button" class="btn btn-primary">Next</button>
+                                        <button type="button" class="btn btn-primary" style="width:150px;">Next</button>
                                     </div>
                                 </div>
                             </div>
