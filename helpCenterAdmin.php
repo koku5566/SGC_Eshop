@@ -540,7 +540,8 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br>		
+											</select>
+											<br><br>		
 										
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
@@ -858,7 +859,7 @@ h4.displayCategoryModal{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  
+  border: 1px solid rgba(0 0 0 / .2);
   max-height: 100%;
 }
 
