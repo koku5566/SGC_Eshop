@@ -18,9 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POS
 	echo ($ppid );
 	//$array=json_decode(ujson);
 	//echo ($array);
-	
-	
-		 
+	 
 }
 
 
@@ -85,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 	
 <!--START OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->	
 	<div class="container">
-		<h1>Category</h1>
+		<!--<h1>Category</h1>-->
 		<div class="logo-slider">
 	<?php
 		
@@ -101,9 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 
 					
 					
-					if(strlen($c2) >= 16){
-						$cTrim = substr($c2, 0, 16);
-						$cTag = "$cTrim...";
+					if(strlen($c2) < 15){
+						//$cTrim = substr($c2, 0, 16);
+						//$cTag = "$cTrim...";
+						$cTag = "$c2 \n";
 					}else{$cTag = $c2;}
 					
 				echo "<div class='item'>" .
@@ -154,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <h2>$c4</h2>
 								 <p>$c5</p>
 							     </div>
-							     <span class='btn' id='btn$c1'>+</span>
+							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
 							 $pp++;
 							}
@@ -198,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <h2>$c4</h2>
 								 <p>$c5</p>
 							     </div>
-							     <span class='btn' id='btn$c1'>+</span>
+							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
 							 $pp++;
 							}
@@ -241,7 +240,7 @@ $('.logo-slider').slick({
 		slidesToScroll:1,
 		dots:true,
 		arrows:true,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 2000, 
 		infinite: true
 	});
@@ -265,10 +264,7 @@ $('.logo-slider').slick({
 ?>
 
 <style>
-body{
-	font-family:Roboto, sans-serif;
-	background-color: #f7f7f7;
-}
+
 img{
 	height: 100px; 
 	width: 100%;
@@ -290,7 +286,7 @@ h1:after{
 	position: absolute;
 	width: 100px;
 	height: 4px;
-	background-color: #ff8159;
+	background-color: #a31f37;
 	bottom: -20px;
 	left: 0;
 	right: 0;
@@ -300,26 +296,27 @@ h1:after{
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 10px;
-	border: 3px solid #111;
+	border: 2px solid #111;
 }
 .logo-slider .slick-slide{
-	margin: 15px 38px 15px 28px; 
+	margin: 15px 20px; 
 }
 .slick-dots li.slick-active button:before{
-	color: #ff5722;
+	color: #a31f37;
 }
 .slick-dots li button:before{
 	font-size: 12px;
 }
 .slick-next:before,
 .slick-prev:before{
-	color: #ff8159;
+	color: #a31f37;
 	font-size: 24px;
 }
 .item:hover{
 	display: block;
 	transition: all ease 0.3s;
 	transform: scale(1.1) translate(-5px);
+	border: 2px solid #a31f37;
 }
 .imgCss{
 	height: 100px; 
@@ -362,11 +359,11 @@ h2{
 .faq .faq_text{
 	width:90%;
 }
-.btn{
+.btnd{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
-	top: 35px;
+	top: 23px;
 	font-weight: 400;
 	font-size: 1.4em;
 }
@@ -381,7 +378,7 @@ h2{
 .faq.open p {
 	display:block;
 }
-.faq.open .btn{
+.faq.open .btnd{
 	color: #00848f;
 }
 </style>
