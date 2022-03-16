@@ -26,7 +26,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" >Product Name</span>
                                             </div>
-                                            <input type="text" pattern="{20,100}" value="<?php isset($_POST["productName"]) ? echo($_POST["productName"]) : "";?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                            <?php echo($_POST['productName']); ?>
+                                            <input type="text" pattern="{20,100}" value="<?php isset($_POST['productName']) ? echo($_POST['productName']); : "";?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                         </div>
                                     </div>
                                 </div>
