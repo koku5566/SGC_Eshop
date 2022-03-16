@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 	
 <!--START OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->	
 	<div class="container">
-		<h1>Category</h1>
+		<!--<h1>Category</h1>-->
 		<div class="logo-slider">
 	<?php
 		
@@ -100,8 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 					
 					
 					if(strlen($c2) >= 16){
-						$cTrim = substr($c2, 0, 16);
-						$cTag = "$cTrim...";
+						//$cTrim = substr($c2, 0, 16);
+						//$cTag = "$cTrim...";
+						$cTag = $c2;
 					}else{$cTag = $c2;}
 					
 				echo "<div class='item'>" .
@@ -239,7 +240,7 @@ $('.logo-slider').slick({
 		slidesToScroll:1,
 		dots:true,
 		arrows:true,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 2000, 
 		infinite: true
 	});
@@ -301,7 +302,7 @@ h1:after{
 	margin: 15px 20px; 
 }
 .slick-dots li.slick-active button:before{
-	color: #ff5722;
+	color: #a31f37;
 }
 .slick-dots li button:before{
 	font-size: 12px;
@@ -315,6 +316,7 @@ h1:after{
 	display: block;
 	transition: all ease 0.3s;
 	transform: scale(1.1) translate(-5px);
+	border: 2px solid #a31f37;
 }
 .imgCss{
 	height: 100px; 
