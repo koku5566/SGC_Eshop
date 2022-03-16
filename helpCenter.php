@@ -18,9 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POS
 	echo ($ppid );
 	//$array=json_decode(ujson);
 	//echo ($array);
-	
-	
-		 
+	 
 }
 
 
@@ -265,10 +263,7 @@ $('.logo-slider').slick({
 ?>
 
 <style>
-body{
-	font-family:Roboto, sans-serif;
-	background-color: #f7f7f7;
-}
+
 img{
 	height: 100px; 
 	width: 100%;
