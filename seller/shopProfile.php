@@ -31,8 +31,10 @@
       <textarea class="form-control" id="customFile" rows="3"></textarea>
     </div>
     <div class="row">
-      <div id="myDIV">
-        <img id="frame" src="" class="img-fluid" />
+      <div id="uploadContainer" class="imageContainer">
+        <!-- Image display frame (place where the image will display)
+          <img id="frame" src="" class="img-fluid" />
+        -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
       </div>
@@ -86,7 +88,7 @@ div.absolute {
   transform: translate(-50%, -50%);
 }
 
-#myDIV {
+#uploadContainer {
   width: 30%;
   border: 1px solid #ADADAD;
   border-radius: 5px;
@@ -118,7 +120,26 @@ var x = document.getElementById("myLabel");
   }
 }
 
+/* Preview Image 
 function preview() {
                 frame.src = URL.createObjectURL(event.target.files[0]);
             }
+*/
+
+/* Preview Multiple Images */
+$(function() {
+  $(":file").change(function() {
+    if (this.files && this.files[0]) {
+      for (var i = 0; i < this.files.length; i++) {
+        var reader = new FileReader();
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(this.files[i]);
+      }
+    }
+  });
+});
+
+function imageIsLoaded(e) {
+  $('.imageContainer').append('<img src=' + e.target.result + '>');
+};
 </script>
