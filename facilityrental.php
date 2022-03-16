@@ -88,15 +88,29 @@
                                     <?php
                                     $sql = "SELECT * FROM facilityPic";
                                     $result = mysqli_query($conn, $sql);
+                                    $i = false;
                         
                                     if (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
+
+                                            
                                             echo ("
                                             <div class=\"carousel-item\">
                                             <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
                                             </div>
                                                         
                                             ");
+                                            }
+                                            else{
+                                                echo ("
+                                            <div class=\"carousel-item active\">
+                                            <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                            </div>
+                                                        
+                                            ");
+                                            $i = true
+                                            }
                                         }
                                     }
 
