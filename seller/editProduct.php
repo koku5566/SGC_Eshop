@@ -29,7 +29,7 @@
                                             <div class="drag-list">
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
-                                                        <img>
+                                                        <img src="/img/product/iphone-black.jpg">
                                                         <div class="image-tools">
 
                                                         </div>
@@ -92,6 +92,7 @@
     min-height: 80px;
     max-height: 80px;
     margin: 0 16px 40px 0;
+    border:1px solid red;
     }
     .drag-start {
     opacity: 0.8;
