@@ -304,6 +304,41 @@
         
             
     }
+	
+	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategorylist']) && !empty($_POST['acCategorylist']) ){
+		
+			$categorylist = $_POST['acCategorylist'];
+			$p = 0;
+		if($_POST['acContent'] === 'Delete'){
+			
+			
+            $sql ="SELECT hcc.hcc_id, hcc.category, hc.question, hc.answer, hc.pic, hc.pic_type, hc.disable_date
+				   FROM helpCenterCategory hcc LEFT JOIN helpCenter hc
+				   ON hcc.hcc_id = hc.hcc_id
+				   WHERE hcc.hcc_id = '$categorylist' && hcc.disable_date IS NULL && hc.disable_date IS NULL";
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt, $s1,$s2);
+				
+				while(mysqli_stmt_fetch($stmt)){
+					$p++;
+				}
+				mysqli_stmt_close($stmt);
+			}
+			
+			
+			if($p === 0){
+				echo "<div class='alert alert-success'>CLEAR CAN DELETE</div>";
+			}
+			else{
+				echo "<div class='alert alert-danger'>Can't DELETE CUZ GOT ITEM</div>";
+			}
+			
+			
+		}
+		
+	}
 ?>
 
 
