@@ -12,11 +12,11 @@
       <div>
       <img class="relative bg-image" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
       <div class="absolute"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
-      <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div>
+      <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
     </div>
     <div class="row">
-      <br><br><label class="form-label">Shop Name</label><br>
+      <label class="form-label">Shop Name</label><br>
       <input type="text" class="form-control" id="customFile" />
     </div>  
     <div class="row">
@@ -60,15 +60,15 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 420px;
-  right: 250px;
+  top: 430px;
+  right: 260px;
 }
 
 .sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 51%;
+  top: 49%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
