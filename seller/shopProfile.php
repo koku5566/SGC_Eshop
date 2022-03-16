@@ -61,7 +61,7 @@ div.relative {
 
 div.absolute {
   position: absolute;
-  top: 160px;
+  top: 300px;
   right: 10px;
 }
 
@@ -69,9 +69,6 @@ div.absolute {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .editBtn{
