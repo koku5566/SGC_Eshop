@@ -11,7 +11,7 @@
     <div class="row">
       <div>
       <img class="relative bg-image container-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
-      <div class="absolute d-flex justify-content-end"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
+      <div class="absolute"><button class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</button></div>
       <div class="sellerPicContainer"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div>
       </div>
     </div>
@@ -55,19 +55,19 @@ body{
 
 .relative {
   position: relative;
-  height: 250px;
 } 
 
 div.absolute {
   position: absolute;
   top: 300px;
+  right: 20px;
 }
 
 .sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 45%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
