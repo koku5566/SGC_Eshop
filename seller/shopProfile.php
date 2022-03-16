@@ -55,13 +55,13 @@ body{
 
 .relative {
   position: relative;
-  height: 330px;
+  height: 310px;
 } 
 
 div.absolute {
   position: absolute;
   top: 400px;
-  right: 150px;
+  right: 250px;
 }
 
 .sellerPic{
