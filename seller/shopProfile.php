@@ -33,7 +33,7 @@
     <div class="row">
       <div id="myDIV">
         <img id="frame" src="" class="img-fluid" />
-        <label for="uploadBtn" id="myLabel" onclick="hideLabel()">+<br>Add Image & Video</label>
+        <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
       </div>
     </div>
@@ -88,16 +88,15 @@ div.absolute {
 
 #myDIV {
   width: 30%;
-  border: 2px solid #ADADAD;
+  border: 1px solid #ADADAD;
   border-radius: 5px;
   color: #ADADAD;
-  padding: 50px 0;
+  padding: 30px 0;
   text-align: center;
   margin-top: 20px;
 }
 
 .buttonContainer{
-  float: center;
 }
 
 .saveBtn{
