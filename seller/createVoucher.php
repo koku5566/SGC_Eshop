@@ -1,9 +1,6 @@
 <?php
-    require __DIR__ . '/header.php'
+    require_once __DIR__ . '/header.php'
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-<script src="../bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Page Content -->
 <div class="container-fluid" style="background-color: #FFFFFF; width:80%;">
@@ -75,16 +72,55 @@
                </div>
             </div>
          </div>         
-         <div class="row m-2">
+         <div class="row mt-2 mb-5">
             <label for="">Applicable products</label>
             <div class="col-12">
                <div>
-                  <button type="button" class="btn light btn-lg btn-block rounded" style="border: dashed;" >+ Add Products</button>
+                  <button type="button" class="btn light btn-lg btn-block rounded" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
          </div>    
        </div>
    </form>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="selectproduct" tabindex="-1" role="dialog" aria-labelledby="selectproductModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="selectproductModalLabel">Select Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="row mt-2">
+            <label for="">Product Name</label>
+            <div class="col-12">
+               <input type="text" aria-label="First name" class="form-control" placeholder="Enter your product">
+            </div>
+         </div>
+         <div class="row mt-2">
+            <label for="">Product Category</label>
+            <div class="col-12">
+               <input type="text" aria-label="First name" class="form-control" placeholder="Enter your product category">
+            </div>
+         </div>
+         <div class="row mt-2">
+            <label for="">Product Category</label>
+            <div class="col-12">
+               <button type="button" class="btn btn-light" data-dismiss="modal">Reset</button>
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Search</button>
+            </div>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <?php

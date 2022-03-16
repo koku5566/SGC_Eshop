@@ -5,7 +5,6 @@
 
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
-
       <div class="container">
          <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
             <div class="col-md-2 m-2">
