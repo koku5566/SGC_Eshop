@@ -30,6 +30,9 @@
                                                 <div class="drag-item" draggable="true">
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
                                                         <div class="image-tools-delete hide">
                                                             <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                                         </div>
@@ -40,8 +43,54 @@
                                                     </div>
                                                     <p>Picture 1</p>
                                                 </div>
-                                                <div class="drag-item" draggable="true">B</div>
-                                                <div class="drag-item" draggable="true">C</div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 1</p>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -77,9 +126,10 @@
     user-select: none;
     }
     .drag-list {
-    margin: 10px auto;
-    border: 1px solid #ccc;
-    flex-basis: 770px;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        flex-basis: 770px;
+        display:flex;
     }
     .drag-item {
     transition: 0.25s;
@@ -106,8 +156,16 @@
         background-color: white;
     }
 
-    .img-thumbnail:hover ~ .image-tools-delete{
+    .image-layer:hover ~ .image-tools-delete{
         display:block;
+    }
+
+    .image-layer{
+        width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
     }
 
     .image-tools-delete:hover{
@@ -247,7 +305,7 @@
 
     deleteImg.forEach(img => {
         img.addEventListener('click', function handleClick(event) {
-            img.parentElement.previousElementSibling.src="";
+            img.parentElement.previousElementSibling.previousElementSibling.src="";
             img.parentElement.nextElementSibling.classList.remove("hide");
             img.parentElement.classList.add("hide");
         });
@@ -258,8 +316,8 @@
         img.addEventListener('change', function handleChange(event) {
             const [file] = img.files
             if (file) {
-                img.parentElement.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                img.parentElement.previousElementSibling.classList.remove("hide");
+                img.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                 img.parentElement.classList.add("hide");
             }
         });
