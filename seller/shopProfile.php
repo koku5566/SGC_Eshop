@@ -63,8 +63,8 @@ body{
 
 div.absolute {
   position: absolute;
-  top: 505px;
-  right: 230px;
+  top: 500px;
+  right: 210px;
 }
 
 .editBtn {
