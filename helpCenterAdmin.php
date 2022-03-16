@@ -242,7 +242,7 @@
             }                          
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategoryName']) && !empty($_POST['acCategoryName']) ){
-            
+           
             $acCategoryName = $_POST['acCategoryName'];
             echo "$acCategoryName";
             
@@ -524,11 +524,30 @@
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
 										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br>
 									
-																				 
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none"required>
+												<option value="">-Select Category-</option>
+												<?php
+													$sql ="SELECT hcc_id, category
+														   FROM helpCenterCategory 								   
+														   WHERE disable_date IS NULL ";
+													if($stmt = mysqli_prepare ($conn, $sql)){
+														mysqli_stmt_execute($stmt);
+														mysqli_stmt_bind_result($stmt, $s1,$s2);
+														
+														while(mysqli_stmt_fetch($stmt)){
+																echo "<option value='$s1'>$s2</option>";
+															}
+														mysqli_stmt_close($stmt);
+													}
+												?>	
+											</select><br><br>		
+										
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
 										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
+										
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger">
 																				
 									</form>
 									
