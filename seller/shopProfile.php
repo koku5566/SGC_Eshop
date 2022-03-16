@@ -55,21 +55,21 @@ body{
 
 .relative {
   position: relative;
-  height: 300px;
+  height: 330px;
 } 
 
 div.absolute {
   position: absolute;
   top: 400px;
-  right: 100px;
+  right: 150px;
 }
 
 .sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
-  top: 47%;
-  left: 50%;
+  top: 50%;
+  left: 60%;
   transform: translate(-50%, -50%);
 }
 
