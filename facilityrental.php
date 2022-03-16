@@ -86,7 +86,7 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <?php
-                                    $sql = "SELECT * FROM product WHERE product_name LIKE '%$keyword%'";
+                                    $sql = "SELECT * FROM facilityPic";
                                     $result = mysqli_query($conn, $sql);
                         
                                     if (mysqli_num_rows($result) > 0) {
