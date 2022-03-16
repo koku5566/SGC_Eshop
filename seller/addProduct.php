@@ -51,7 +51,7 @@
 
                                                             if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
                                                             {
-                                                                echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                                echo("<option selected value=\"$categoryId\">$categoryName</option>");
                                                             }
                                                             else
                                                             {
@@ -84,7 +84,7 @@
     
                                                                     if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
                                                                     {
-                                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
                                                                     }
                                                                     else
                                                                     {
