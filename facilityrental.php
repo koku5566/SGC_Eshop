@@ -94,22 +94,20 @@
                                         while($row = mysqli_fetch_assoc($result)) {
                                             if ($i){
 
-                                            
                                             echo ("
-                                            <div class=\"carousel-item\">
-                                            <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                            </div>
-                                                        
+                                                <div class=\"carousel-item\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>         
                                             ");
                                             }
                                             else{
                                                 echo ("
-                                            <div class=\"carousel-item active\">
-                                            <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                            </div>
-                                                        
-                                            ");
-                                            $i = true
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
                                             }
                                         }
                                     }
