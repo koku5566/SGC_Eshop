@@ -304,6 +304,71 @@
         
             
     }
+	
+	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategorylist']) && !empty($_POST['acCategorylist']) ){
+		
+			$categorylist = $_POST['acCategorylist'];
+			
+		if($_POST['acContent'] === 'Delete'){
+			
+			
+            $sql ="SELECT hcc.hcc_id, hcc.category, hc.question, hc.answer, hc.pic, hc.pic_type, hc.disable_date
+				   FROM helpCenterCategory hcc INNER JOIN helpCenter hc
+				   ON hcc.hcc_id = hc.hcc_id
+				   WHERE hcc.hcc_id = ? && hcc.disable_date IS NULL && hc.disable_date IS NULL";
+		              
+            if($stmt = mysqli_prepare ($conn, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $categorylist);	//HARLO IF THIS INT = i, STRING = s
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 0){
+                    //echo "<script>alert('No ITEM - $categorylist')</script>";
+					$pItem = false;
+					
+                }else{
+					//echo "<script>alert('GOT ITEM - $categorylist')</script>";
+					$pItem = true;
+				}
+                
+                mysqli_stmt_free_result($stmt);
+                mysqli_stmt_close($stmt);
+            
+            }
+			
+			
+			
+			
+			if($pItem == false){
+				//echo "<div class='alert alert-success'>CLEAR CAN DELETE</div>";
+				$sql = "UPDATE helpCenterCategory SET disable_date=? WHERE hcc_id=?;";
+                $today = date("Y-m-d");
+                 
+                // $sql = "INSERT INTO `product`(`sku`, `name`, `price`) VALUES (?,?,?)";
+                if($stmt = mysqli_prepare($conn, $sql)){
+                    mysqli_stmt_bind_param($stmt, 'ss', $today, $categorylist); 	//s=string , d=decimal value i=ID
+            
+                    mysqli_stmt_execute($stmt);
+                
+                    if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                    { 
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
+                    }else{                     
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
+                    }
+            
+                    mysqli_stmt_close($stmt);
+                }
+			}
+			else{
+				echo "<div class='alert alert-danger'>Please remove all questions in the category first.</div>";
+			}
+			
+	
+		}
+		
+	}
 ?>
 
 
@@ -513,7 +578,8 @@
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content" style = "height: 400px;">
-						<h4 class = "displayCategoryModal">Add Category</h4>
+						<h4 class = "displayCategoryModal" id ="addCategoryH4">Add Category</h4>
+						<h4 class = "displayCategoryModal" id ="deleteCategoryH4" style = "display: none;">Delete Category</h4>
 						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
 								
@@ -522,9 +588,9 @@
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
 
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br>
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
-										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none"required>
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'>
 												<option value="">-Select Category-</option>
 												<?php
 													$sql ="SELECT hcc_id, category
@@ -540,14 +606,17 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br>		
+											</select>
+											<br><br>		
 										
-										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;'>Image:</label>
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
 										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success">
+										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
 										
-										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger">
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
+										
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete' disabled = 'disabled'>
 																				
 									</form>
 									
@@ -856,7 +925,7 @@ h4.displayCategoryModal{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  
+ 
   max-height: 100%;
 }
 
@@ -881,7 +950,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	
+	 border: 1px solid rgba(0 0 0 / .2);
 	margin: auto;
 	height: 100%
 }
@@ -953,8 +1022,71 @@ window.onclick = function(event) {
   }
 	  
 }
+/****************************************************************/
+//TOGGLE ADD / DELETE CATEGORY (MODAL)
+var imgswitch = document.getElementById('acdSwitchImg');
+//Display out
+var acCategoryDisplay = document.getElementById('acCategoryDisplay');
+var acContentIDDelete = document.getElementById('acContentIDDelete');
+var deleteCategoryH4 = document.getElementById('deleteCategoryH4');
 
+
+
+//Hide
+var acCatName = document.getElementById('acCatName');
+var acImgLabel = document.getElementById('acImgLabel');
+var acImg = document.getElementById('acImg');
+var acContentIDAdd = document.getElementById('acContentIDAdd');
+var addCategoryH4 = document.getElementById('addCategoryH4');
+
+
+
+
+imgswitch.onclick = function() {
+  if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
+    acCategoryDisplay.style.display = "inline";
 	
+	acContentIDDelete.style.display = "block";
+	deleteCategoryH4.style.display = "block";
+	
+	acCatName.style.display = "none";
+	acCatName.required = false;
+	acImgLabel.style.display = "none";
+	acImg.style.display = "none";
+	acImg.required = false;
+	acContentIDAdd.style.display = "none";
+	addCategoryH4.style.display = "none";
+  } else {
+	acCategoryDisplay.style.display = "none";
+	
+	acContentIDDelete.style.display = "none";
+	deleteCategoryH4.style.display = "none";
+	
+	acCatName.style.display = "inline";
+	acCatName.required = true;
+	acImgLabel.style.display = "inline";
+	acImg.style.display = "inline";
+	acImg.required = true;
+	acContentIDAdd.style.display = "block";
+	addCategoryH4.style.display = "block";
+  }
+
+}
+
+function acCategoryListFunction(){
+		  let ddlist = document.getElementById('acCategoryDisplay').value;
+		  
+		  let f = false;
+			
+			if (ddlist === "" )
+			{f = false;	}	
+			else{f = true;}	
+					
+			
+			if(f == true){document.getElementById('acContentIDDelete').disabled = false;}
+			else{ document.getElementById('acContentIDDelete').disabled = true;}
+	}		
+  
 	
 function myBtnGoFunction(){
 		  let ddlist = document.getElementById('categoryDisplay').value;

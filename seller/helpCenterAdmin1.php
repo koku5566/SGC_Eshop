@@ -2,7 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-   
 <?php
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
@@ -64,9 +63,11 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Update successfully no img');</script>";
+                            //echo "<script>alert('Update successfully no img');</script>";
+							echo "<div class='alert alert-success'>Update Successfully</div>";
                         }else{
-                            echo "<script>alert('Fail to Update no img');</script>";
+                            //echo "<script>alert('Fail to Update no img');</script>";
+							echo "<div class='alert alert-danger'>Fail to Update</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -75,11 +76,13 @@
                 }else{
                     //USER GOT PUT IMAGE 
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
-                        echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+                       // echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+						echo "<div class='alert alert-danger'>Invalid image format . Format must be in jpg, png or gif</div>";
                     }
                     
                     if($size > 1000000){
-                        echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+                        //echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+						echo "<div class='alert alert-danger'>Invalid file size. The file size must not exceed 1Mb</div>";
                     }
                     $imageData = file_get_contents($temp);
                     //echo "<script>alert('GOT PIC')</script>";
@@ -91,9 +94,11 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Update successfully got img');</script>";
+                            //echo "<script>alert('Update successfully got img');</script>";
+							echo "<div class='alert alert-success'>Update Successfully</div>";
                         }else{
-                            echo "<script>alert('Fail to Update got img');</script>";
+                            //echo "<script>alert('Fail to Update got img');</script>";
+							echo "<div class='alert alert-danger'>Fail to Update</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -120,9 +125,11 @@
                 
                     if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                     {
-                        echo "<script>alert('Delete successfully');</script>";
+                        //echo "<script>alert('Delete successfully');</script>";
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
                     }else{
-                        echo "<script>alert('Fail to Update');</script>";
+                        //echo "<script>alert('Fail to Update');</script>";
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
                     }
             
                     mysqli_stmt_close($stmt);
@@ -161,18 +168,23 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
+                           
                             
-                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
-                            if($stmt = mysqli_prepare($conn, $sql)){
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
+                            //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+                            $sql = "UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
+									SET a.hc_id = concat('HC', b.id)
+									WHERE a.id = b.id;";
+							if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
     
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -199,17 +211,22 @@
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
-                            $sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+                            //echo "<script>alert('Insert successfully');</script>";
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
+                            //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
+							$sql ="UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
+								   SET a.hc_id = concat('HC', b.id)
+								   WHERE a.id = b.id;";
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
                             
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -219,18 +236,11 @@
                     
                     
                 }
-                
-                
-                
-                
-            
-            }
-        
-        
-            
+                                                                  
+            }                          
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategoryName']) && !empty($_POST['acCategoryName']) ){
-            
+           
             $acCategoryName = $_POST['acCategoryName'];
             echo "$acCategoryName";
             
@@ -245,35 +255,43 @@
             if($_POST['acContent'] === 'Add'){
 				
                     //USER GOT PUT IMAGE 
-                    echo "<script>alert('can reach inside though')</script>";
+                    
                     if($ext != 'jpg' && $ext != 'png' && $ext != 'gif'){
-                        echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+                        //echo "<script>alert('Invalid image format . Format must be in jpg, png or gif')</script>";
+						echo "<div class='alert alert-danger'>Invalid image format . Format must be in jpg, png or gif</div>";
                     }
                     
                     if($size > 1000000){
-                        echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+                        //echo "<script>alert('Invalid file size. The file size must not exceed 1Mb')</script>";
+						echo "<div class='alert alert-danger'>Invalid file size. The file size must not exceed 1Mb</div>";
                     }
                     $imageData = file_get_contents($temp);
-                    
+                  
                     $sql = "INSERT INTO `helpCenterCategory`(`category`,`pic`,`pic_type`) VALUES (?,?,?)";
-
+					
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, 'sss',$acCategoryName, $imageData,$type); 	//s=string , d=decimal value, i=integer
-                
+					
                         mysqli_stmt_execute($stmt);
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
-                            echo "<script>alert('Insert successfully');</script>";
-                            $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
+                            //echo "<script>alert('Insert successfully');</script>";
+							echo "<div class='alert alert-success'>Insert Successfully</div>";
+                           // $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
+							$sql = "UPDATE helpCenterCategory AS a, (SELECT id from helpCenterCategory order by id desc LIMIT 1) AS b 
+									SET a.hcc_id = concat('HCC', b.id)
+									WHERE a.id = b.id;";
+
                             if($stmt = mysqli_prepare($conn, $sql)){
                             mysqli_stmt_execute($stmt);
                             if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {echo "<script>alert('Update successfully HCCID');</script>";}
-                            else{echo "<script>alert('Fail to Update');</script>";}}	
+                            {}
+                            else{}}	
                             //END  
                             
                         }else{
-                            echo "<script>alert('Fail to Insert');</script>";
+                            //echo "<script>alert('Fail to Insert');</script>";
+							echo "<div class='alert alert-danger'>Fail to Insert</div>";
                         }
                 
                         mysqli_stmt_close($stmt);
@@ -284,26 +302,86 @@
         
             
     }
-?>
-
-
-
-
-
-		
-				
-				
-				
-		
-
 	
-<!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">		
-		<!--THE MODAL EDIT QUESTION-->			
-				<div id="myModal" class="modal">
+	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategorylist']) && !empty($_POST['acCategorylist']) ){
+		
+			$categorylist = $_POST['acCategorylist'];
+			
+		if($_POST['acContent'] === 'Delete'){
+			
+			
+            $sql ="SELECT hcc.hcc_id, hcc.category, hc.question, hc.answer, hc.pic, hc.pic_type, hc.disable_date
+				   FROM helpCenterCategory hcc INNER JOIN helpCenter hc
+				   ON hcc.hcc_id = hc.hcc_id
+				   WHERE hcc.hcc_id = ? && hcc.disable_date IS NULL && hc.disable_date IS NULL";
+		              
+            if($stmt = mysqli_prepare ($conn, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $categorylist);	//HARLO IF THIS INT = i, STRING = s
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 0){
+                    //echo "<script>alert('No ITEM - $categorylist')</script>";
+					$pItem = false;
+					
+                }else{
+					//echo "<script>alert('GOT ITEM - $categorylist')</script>";
+					$pItem = true;
+				}
+                
+                mysqli_stmt_free_result($stmt);
+                mysqli_stmt_close($stmt);
+            
+            }
+			
+			
+			
+			
+			if($pItem == false){
+				//echo "<div class='alert alert-success'>CLEAR CAN DELETE</div>";
+				$sql = "UPDATE helpCenterCategory SET disable_date=? WHERE hcc_id=?;";
+                $today = date("Y-m-d");
+                 
+                // $sql = "INSERT INTO `product`(`sku`, `name`, `price`) VALUES (?,?,?)";
+                if($stmt = mysqli_prepare($conn, $sql)){
+                    mysqli_stmt_bind_param($stmt, 'ss', $today, $categorylist); 	//s=string , d=decimal value i=ID
+            
+                    mysqli_stmt_execute($stmt);
+                
+                    if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                    { 
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
+                    }else{                     
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
+                    }
+            
+                    mysqli_stmt_close($stmt);
+                }
+			}
+			else{
+				echo "<div class='alert alert-danger'>Please remove all questions in the category first.</div>";
+			}
+			
+	
+		}
+		
+	}
+?>
+    <!-- Begin Page Content ------------------------------------------------------------------------------------------------------------------------------------->
+<div class="container-fluid" style="width:100%;">
+	<!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Help Center</h1>
+    </div>
+
+	<!--THE MODAL EDIT QUESTION-->	
+			
+	<div id="myModal" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
-						<span class="close">&times;</span>
+						<div class="modal-content" style = "height: 500px">
+						<h4 class = "displayCategoryModal">Edit Question</h4>
+						<span class="closeM">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -332,18 +410,18 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>
-											 </select><br><br><br>
+											 </select><br><br>
 											 
 											
 									
 
 									<label for = 'pquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br><br>
+									<input type = 'text' name ='pquestion' id ='pque' class = 'textinput'  onchange='myBtnFunction()' value = '<?php echo(isset($c4) && !empty ($c4))? $c4 : ''; ?>' required><br><br>
 
 									<label for = 'panswer' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br><br>
+									<textarea id = 'pans' name = "ptextarea"class = 'textarea' onchange='myBtnFunction()' required><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></textarea><br><br>
 
-									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
+									<label for = 'pimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 35px;'>Image:</label>
 									<!--DISPLAY IMAGE HERE-->
 									
 									<?php
@@ -361,10 +439,10 @@
 													if($c6 != NULL && $c7 != NULL){
 														//echo 'Got pic';
 														echo "<img  src='data: $c7;base64, " . base64_encode($c6)."'  class='editimgCss'>".
-															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br>";
+															 "<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 															 
 													}else{
-														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br><br>";
+														echo"<input type = 'file'  name ='eimg' id = 'pimg' onchange='myBtnFunction()'><br><br>";
 																	 
 													}
 		
@@ -376,12 +454,12 @@
 									?>
 									
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right;' class="gobtn"disabled>
+									<input type = 'submit' name ='uContent' value ='Update'  id='updatebtn' style='float:right; margin-right: 20px' class="btn btn-success" disabled>
 									</form>
 									
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' >
 									<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'pid' value = '".$c1."'>" : ''; ?>
-									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn' style='float:left;background-color:red;color:white'>
+									<input type = 'submit' name ='dContent' value ='Delete'  id='deletebtn'  style = "float:left; margin-left: 20px" class="btn btn-danger">
 									</form>
 
 								
@@ -431,10 +509,12 @@
 			<!--END OF MODAL EDIT QUESTION-->
 <!---------------------------------------------------------------------------------------------------------------------------------->			
 			<!--STAR OF MODAL ADD QUESTION-->
+			
 			<div id="myModalAdd" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content">
-						<span class="close" id = "closeAdd">&times;</span>
+						<h4 class = "displayCategoryModal">Add Question</h4>
+						<span class="closeM" id = "closeAdd">&times;</span>
 							<div class="editQuestion">
 								
 
@@ -461,20 +541,20 @@
 														mysqli_stmt_close($stmt);
 													}
 												?>	
-											</select><br><br><br>		
+											</select><br><br>		
 											 
 									<label for = 'addquestion' class = 'labelinput'>Question:</label>
-									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br><br>
+									<input type = 'text' name ='aquestion' id ='addquestion' class = 'textinput' value = '' required><br><br>
 
-									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 39px;'>Answer:</label>
-									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br><br>
+									<label for = 'addans' class = 'labelinput' style = 'vertical-align: top; margin-left: 35px;'>Answer:</label>
+									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
-									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
-									<input type = 'file'  name ='aimg' id = 'addimg'><br><br><br>
+									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 46px;'>Image:</label>
+									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
 																		
 									
 									
-									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;' class="gobtn">
+									<input type = 'submit' name ='aContent' value ='Add'  id='addquebtn' style='float:right;margin-right: 20px' class="btn btn-success">
 
 									</form>
 							
@@ -485,10 +565,13 @@
 			<!--END OF MODAL ADD QUESTION-->		 
 											
 			<!--STAR OF MODAL ADD CATEGORY-->
+			
 			<div id="myModalAddCat" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content">
-						<span class="close" id = "closeModalAddCat">&times;</span>
+						<div class="modal-content" style = "height: 400px;">
+						<h4 class = "displayCategoryModal" id ="addCategoryH4">Add Category</h4>
+						<h4 class = "displayCategoryModal" id ="deleteCategoryH4" style = "display: none;">Delete Category</h4>
+						<span class="closeM" id = "closeModalAddCat">&times;</span>
 							<div class="editQuestion">
 								
 								<!--ADD CATEGORY-->
@@ -496,13 +579,35 @@
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
 
 										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required><br><br><br>
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
-																				 
-										<label for = 'acImg' class = 'labelinput' style = 'vertical-align: top; margin-left: 46px;'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br><br>
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'>
+												<option value="">-Select Category-</option>
+												<?php
+													$sql ="SELECT hcc_id, category
+														   FROM helpCenterCategory 								   
+														   WHERE disable_date IS NULL ";
+													if($stmt = mysqli_prepare ($conn, $sql)){
+														mysqli_stmt_execute($stmt);
+														mysqli_stmt_bind_result($stmt, $s1,$s2);
+														
+														while(mysqli_stmt_fetch($stmt)){
+																echo "<option value='$s1'>$s2</option>";
+															}
+														mysqli_stmt_close($stmt);
+													}
+												?>	
+											</select>
+											<br><br>		
+										
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
+										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										<input type = 'submit' name ='acContent' value ='Add' style='float:right;' class="gobtn">
+										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
+										
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
+										
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete' disabled = 'disabled'>
 																				
 									</form>
 									
@@ -542,14 +647,14 @@
 						?>
 					 </select>
 					 
-					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="gobtn">
+					<input type="submit" value = "Go" id = "goo" disabled= "disabled" class="btn btn-success">
 			</form>	
 
 			<!--Add Category Button-->
 			<!--<input type='hidden' name='pps' value='addbutton'>-->
 			<input type="image" id="pidbutton" src = "https://cdn.pixabay.com/photo/2021/07/25/08/07/add-6491203__340.png" class = "addbtn">	
 			
-			<button id = "addquestionbtn">BUTTON ADD QUESTION</button>
+			<button id = "addquestionbtn" class="btn btn-success">ADD QUESTION</button>
 	
 			<!--The Space Between Category and Question-->
 				<div style = 'margin-top: 15px; max-height: 400px; overflow: auto;'>
@@ -602,7 +707,7 @@
 												"<input type='image' alt= 'submit' name ='btnimage' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' ></form>".
 												"</p>".	
 										"</div>".
-										"<span class='btn' id='btn$c1'>+</span>".
+										"<span class='btnd' id='btn$c1'>+</span>".
 									"</div>";
 									$pp++;
 								}
@@ -612,11 +717,11 @@
 												 functionArr.push(function(){
 														document.getElementById('faq' + u[$i]).classList.toggle('open');
 							  
-														if (document.getElementById('btn' + u[$i]).innerHTML === '+'){			  
-																document.getElementById('btn' + u[$i]).innerHTML = '&#8722';
+														if (document.getElementById('btnd' + u[$i]).innerHTML === '+'){			  
+																document.getElementById('btnd' + u[$i]).innerHTML = '&#8722';
 															}
 														else{
-																document.getElementById('btn' + u[$i]).innerHTML = '+';
+																document.getElementById('btnd' + u[$i]).innerHTML = '+';
 															}
 													  }	);
 													  
@@ -634,24 +739,23 @@
 				</div>
 		</div>
 
-       <h2>JUST SOME SPACE</h2>
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2>                              
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2> 
-</div>
-<!-- /.container-fluid ----------------------------------------------------------------------------------------------->
+      
+ </div>       
+    <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------------------------->
 
 <?php
     require __DIR__ . '/footer.php'
 ?>
 
-<style>
-body{
-	font-family:Roboto, sans-serif;
 
+<style>
+
+h4.displayCategoryModal{
+	padding: 15px;
+    max-width: 80%;
+    margin: auto;
 }
+
 .addbtn{
 	width: 22px;
 	max-width: 100%;
@@ -693,7 +797,7 @@ body{
 	background-color: none;
 }
 .faq{
-	padding: 0px 30px 0px 40px;
+	padding: 20px 30px;
 	border: 1.5px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
 	color: #979797;
@@ -708,9 +812,10 @@ body{
 	border: 1.5px solid #a31f37;
 }
 .faq .faq_text{
-	width: 95%;
+	width: 80%;
 }
-.btn{
+
+.btnd{
 	color: #5e5d5d;
 	position: absolute;
 	right: 25px;
@@ -718,8 +823,9 @@ body{
 	font-weight: 400;
 	font-size: 1.4em;
 }
+
 .faq h2{
-	font-size: 0.9em;
+	font-size: 1em;
 	font-weight: 400;
 	color: #5e5d5d;
 	
@@ -729,6 +835,7 @@ body{
 	display: block;
 	color: #a31f37;
 	font-weight: bold;
+	width: 90%;
 	
 }
 
@@ -745,8 +852,9 @@ body{
 }
 .faq.open p {
 	display:block;
+	width:90%
 }
-.faq.open .btn{
+.faq.open .btnd{
 	color: #a31f37;
 }
 
@@ -769,7 +877,7 @@ body{
 .textarea{
 	resize: none;
 	outline: none;
-	width: 80%;
+	width: 75%;
 	height: 80px;
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
@@ -804,19 +912,22 @@ body{
   padding: 20px;
   border: 1px solid #888;
   width: 45%;
-  height: 400px;
+ 
+  max-height: 100%;
 }
 
 /* The Close Button */
-.close {
+.closeM {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+    right: 30px;
 }
 
-.close:hover,
-.close:focus {
+.closeM:hover,
+.closeM:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -825,21 +936,18 @@ body{
 
 .modal-content .editQuestion {
 	
-	width: 80%;
-	border: 1px solid rgba(0 0 0 / .1);
-	margin: 25px auto;
-	height: 85%
+	width: 75%;
+	 border: 1px solid rgba(0 0 0 / .2);
+	margin: auto;
+	height: 100%
 }
 .modal-content .labelinput{
 	margin: 12px 0px 0px 28px;
 }
 .modal-content .textinput{
-	width: 80%;
-	
-	
+	width: 75%;
 	outline: none;
 	height: 24px;
-	
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
@@ -856,7 +964,7 @@ body{
 //FOR EDIT QUESTION
 var modal = document.getElementById("myModal");
 //var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("closeM")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -865,7 +973,7 @@ span.onclick = function() {
 //FOR ADD QUESTION
 var modalAdd = document.getElementById("myModalAdd");
 var btnAddQue = document.getElementById("addquestionbtn");
-var spanAdd = document.getElementsByClassName("close")[1];
+var spanAdd = document.getElementsByClassName("closeM")[1];
 btnAddQue.onclick = function() {
   modalAdd.style.display = "block";
 }
@@ -877,7 +985,7 @@ spanAdd.onclick = function() {
 
 var modalAddCat = document.getElementById("myModalAddCat");
 var btnAddCat = document.getElementById("pidbutton");
-var spanAddCat = document.getElementsByClassName("close")[2];
+var spanAddCat = document.getElementsByClassName("closeM")[2];
 
 btnAddCat.onclick = function() {
   modalAddCat.style.display = "block";
@@ -901,8 +1009,71 @@ window.onclick = function(event) {
   }
 	  
 }
+/****************************************************************/
+//TOGGLE ADD / DELETE CATEGORY (MODAL)
+var imgswitch = document.getElementById('acdSwitchImg');
+//Display out
+var acCategoryDisplay = document.getElementById('acCategoryDisplay');
+var acContentIDDelete = document.getElementById('acContentIDDelete');
+var deleteCategoryH4 = document.getElementById('deleteCategoryH4');
 
+
+
+//Hide
+var acCatName = document.getElementById('acCatName');
+var acImgLabel = document.getElementById('acImgLabel');
+var acImg = document.getElementById('acImg');
+var acContentIDAdd = document.getElementById('acContentIDAdd');
+var addCategoryH4 = document.getElementById('addCategoryH4');
+
+
+
+
+imgswitch.onclick = function() {
+  if (acCategoryDisplay.style.display === "none" && acContentIDDelete.style.display === "none") {
+    acCategoryDisplay.style.display = "inline";
 	
+	acContentIDDelete.style.display = "block";
+	deleteCategoryH4.style.display = "block";
+	
+	acCatName.style.display = "none";
+	acCatName.required = false;
+	acImgLabel.style.display = "none";
+	acImg.style.display = "none";
+	acImg.required = false;
+	acContentIDAdd.style.display = "none";
+	addCategoryH4.style.display = "none";
+  } else {
+	acCategoryDisplay.style.display = "none";
+	
+	acContentIDDelete.style.display = "none";
+	deleteCategoryH4.style.display = "none";
+	
+	acCatName.style.display = "inline";
+	acCatName.required = true;
+	acImgLabel.style.display = "inline";
+	acImg.style.display = "inline";
+	acImg.required = true;
+	acContentIDAdd.style.display = "block";
+	addCategoryH4.style.display = "block";
+  }
+
+}
+
+function acCategoryListFunction(){
+		  let ddlist = document.getElementById('acCategoryDisplay').value;
+		  
+		  let f = false;
+			
+			if (ddlist === "" )
+			{f = false;	}	
+			else{f = true;}	
+					
+			
+			if(f == true){document.getElementById('acContentIDDelete').disabled = false;}
+			else{ document.getElementById('acContentIDDelete').disabled = true;}
+	}		
+  
 	
 function myBtnGoFunction(){
 		  let ddlist = document.getElementById('categoryDisplay').value;
@@ -918,5 +1089,12 @@ function myBtnGoFunction(){
 			else{ document.getElementById('goo').disabled = true;}
 	}			
 	
+
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
+});
 
 </script>
