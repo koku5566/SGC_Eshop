@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 					if(strlen($c2) < 15){
 						//$cTrim = substr($c2, 0, 16);
 						//$cTag = "$cTrim...";
-						$cTag = "$c2" . "     ";
+						$cTag = "$c2 \n";
 					}else{$cTag = $c2;}
 					
 				echo "<div class='item'>" .
