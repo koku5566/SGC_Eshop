@@ -3,35 +3,35 @@
 ?>
 
 <!-- Page Content -->
-<div class="container" style="background-color: #FFFFFF">
+<div class="container m-4 w-100" style="background-color: #FFFFFF">
    <h2>Create Voucher</h2>
    <form>
        <div class="container">
          <h5>Basic Information</h5>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Code</label><br>
             <div class="col-mb-12">
                <input type="text" aria-label="First name" class="form-control mt-2" placeholder="Enter voucher code">
             </div>
          </div>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Claim Period</label><br>
-            <div class="col-mb-1 mt-3">
+            <div class="col-mb-1">
                <h6 style="text-align: center">Start</h6>
             </div>
             <div class="col-mb-5">
                <input type="date" aria-label="First name" class="form-control mt-2">
             </div>
-            <div class="col-mb-1 mt-3">
+            <div class="col-mb-1">
                <h6 style="text-align: center">End</h6>
             </div>
             <div class="col-mb-5">
                <input type="date" aria-label="First name" class="form-control mt-2">
             </div>
          </div>
-         <div class="row mt-4">
+         <div class="row">
             <label class="" for="">Voucer Discount Amount</label>
-            <div class="input-group col-mb-12 mt-1">
+            <div class="input-group col-mb-12">
                <input type="text" aria-label="First name" class="form-control mt-2" for="inputGroupSelect02" placeholder="00.00">
                <div class="input-group-append">
                <select class="custom-select input-group-text mt-2" id="inputGroupSelect02">
@@ -41,25 +41,25 @@
                </div>
             </div>
          </div>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Details</label><br>
-            <div class="col-mb-12 mt-3">
+            <div class="col-mb-12">
                <textarea class="form-control" rows="10" placeholder="Creative Ideas, Creative DISCUSS.ION." required></textarea>
                <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
             </div>
          </div>
          <br>
          <h5>Voucher Display and Applicable Products</h5>
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Voucher Display Setting</label>
-            <div class="col-mb-12 mt-3">
-               <div class="form-check m-3">
+            <div class="col-mb-12">
+               <div class="form-check">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                   <label class="form-check-label" for="exampleRadios1">
                      Display on all pages.
                   </label>
                </div>
-               <div class="form-check m-3">
+               <div class="form-check">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                   <label class="form-check-label" for="exampleRadios2">
                      Do not display.
@@ -68,9 +68,9 @@
                </div>
             </div>
          </div>         
-         <div class="row mt-4">
+         <div class="row">
             <label for="">Applicable products</label>
-            <div class="col-mb-12 mt-3">
+            <div class="col-mb-12">
                <div>
                   <button type="button" class="btn light btn-lg btn-block rounded" style="border: dashed;">+ Add Products</button>
                </div>
