@@ -62,5 +62,3 @@
     </div>
   </div>
 </div>
-
-<div class="col-sm-5"><input class="form-control" type="date"></div>
