@@ -123,11 +123,11 @@
     }
     .card-body-text{
        background-color: gray;
-       opacity: 2;
+       opacity: 3;
+       margin: 50%;
     }
     .card-body{
        background-color: #A31F37;
-       margin: 60px 60px;
     }
 
 </style>
