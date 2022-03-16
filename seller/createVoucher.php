@@ -2,12 +2,14 @@
     require __DIR__ . '/header.php'
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Page Content -->
 <div class="container-fluid" style="background-color: #FFFFFF; width:80%;">
    <h2 class="">Create Voucher</h2>
    <form>
-       <div class="container">
+       <div class="container m-4">
          <h5>Basic Information</h5>
          <div class="row mt-2">
             <label for="">Voucher Code</label>
