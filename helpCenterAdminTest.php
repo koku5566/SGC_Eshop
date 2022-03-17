@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
   $email = $_POST['email'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
-  header('Content-Type: application/json');
+ // header('Content-Type: application/json');
   
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
