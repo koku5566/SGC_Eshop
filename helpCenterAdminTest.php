@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
   }
   
   $content="From: $name \n Email: $email \n Message: $message";
-  $recipient = "yourmamasofat2000@gmail.com";
+  $recipient = "kitmincheong@gmail.com";
   $mailheader = "From: $email \r\n";
   mail($recipient, $subject, $content, $mailheader) or die("Error!");
   echo "<script>alert('Email sent!')</script>";
