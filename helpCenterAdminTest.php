@@ -3,14 +3,14 @@
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject'],$_POST['CUSubmit']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
  
   $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
-  header('Content-Type: application/json');
-/*  
+ // header('Content-Type: application/json');
+  
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
     exit();
@@ -32,9 +32,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
     print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
     exit();
   }
-  */
+  
   $content="From: $name \n Email: $email \n Message: $message";
-  $recipient = "yourmamasofat2000@gmail.com";
+  $recipient = "kitmincheong@gmail.com";
   $mailheader = "From: $email \r\n";
   mail($recipient, $subject, $content, $mailheader) or die("Error!");
   echo "<script>alert('Email sent!')</script>";
@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control" oninput = "validateForm()" required>
+									<input type="text" id="name" name="name" class="form-control"  required>
 									
 								</div>
 							</div>
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="text" id="email" name="email" class="form-control" oninput="validateForm()" required>
+									<input type="email" id="email" name="email" class="form-control"  required>
 									
 								</div>
 							</div>
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
-									<input type="text" id="subject" name="subject" class="form-control" oninput="validateForm()" required>
+									<input type="text" id="subject" name="subject" class="form-control"  required>
 									
 								</div>
 							</div>
@@ -108,14 +108,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 
 								<div class="md-form">
 									<label for="message">Your message</label>
-									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" oninput="validateForm()" required></textarea>
+									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"  required></textarea>
 									
 								</div>
 
 							</div>
 						</div>
 						<!--Grid row-->
-						<input type = "submit" name = "CUSubmit"class="btn btn-primary"  value = "Submit" disabled>
+						<input type = "submit" name = "CUSubmit" class="btn btn-primary"  value = "Submit" >
 					</form>
 
 					<div class="text-center text-md-left">
@@ -145,6 +145,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 }
 </style>
 <script>
+/*
 function validateForm() {
   var name =  document.getElementById('name').value;
   var email =  document.getElementById('email').value;
@@ -191,9 +192,11 @@ function validateForm() {
 	  document.getElementById('CUSubmit').disabled = true;
   }
   
+  
+  
 }
 	
-	
+*/
 
 
 </script>
