@@ -24,10 +24,10 @@
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
         $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
         $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = mysqli_real_escape_string($conn, htmlentities($_POST["eDesc"]));
+        $eDes = htmlspecialchars($_POST["eDesc"]);
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = mysqli_real_escape_string($conn, htmlentities($_POST["eTnC"]));//decode using html_entity_decode()
+        $eTnc = $_POST["eTnC"];//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
