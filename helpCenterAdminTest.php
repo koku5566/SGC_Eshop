@@ -115,11 +115,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							</div>
 						</div>
 						<!--Grid row-->
-
+						<input type = "submit" class="btn btn-primary" onclick="validateForm();" value = "SUBMIT">
 					</form>
 
 					<div class="text-center text-md-left">
-						<a class="btn btn-primary" onclick="validateForm();">Send</a>
+						<!--<a class="btn btn-primary" onclick="validateForm();">Send</a>-->
 					</div>
 					<div class="status"></div>
 				</div>
