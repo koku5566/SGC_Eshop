@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control" oninput = "this.value=removeSpaces(this.value);" required>
+									<input type="text" id="name" name="name" class="form-control" oninput = "validateForm()" required>
 									
 								</div>
 							</div>
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="text" id="email" name="email" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="email" name="email" class="form-control" oninput="validateForm()" required>
 									
 								</div>
 							</div>
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
-									<input type="text" id="subject" name="subject" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="subject" name="subject" class="form-control" oninput="validateForm()" required>
 									
 								</div>
 							</div>
@@ -108,7 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 
 								<div class="md-form">
 									<label for="message">Your message</label>
-									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" onchange="validateForm()" required></textarea>
+									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" oninput="validateForm()" required></textarea>
 									
 								</div>
 
@@ -154,30 +154,32 @@ function validateForm() {
   var n = false, var e, var s, var m, var c
   
   
-  if (name != "") {
-      n = true
-  }
+  if (name.replace(/(^\s+|\s+$)/g, '') == "") {
+	  document.querySelector('.status').innerHTML = "Name cannot be empty";
+      n = false;
+  }else{n = true}
   
-  if (email != "") {
-      e = true;
+  if (email.replace(/(^\s+|\s+$)/g, '') == "") {
+	  document.querySelector('.status').innerHTML = "Email cannot be empty";
+      e = false;
   } else {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if(!re.test(email)){
           document.querySelector('.status').innerHTML = "Email format invalid";
-          return false;
-      }
+           e = false;
+      }else{e = true;}
   }
   
-  if (subject == "") {
+  if (subject.replace(/(^\s+|\s+$)/g, '') == "") {
       document.querySelector('.status').innerHTML = "Subject cannot be empty";
-      return false;
-  }
+      s = false;
+  }else{s = true;}
   
-  if (message == "") {
+  if (message.replace(/(^\s+|\s+$)/g, '') == "") {
       document.querySelector('.status').innerHTML = "Message cannot be empty";
-      return false;
-  }
-  document.querySelector('.status').innerHTML = "Sending...";
+      m = false
+  }else{m = true;}
+  
 }
 	
 	
