@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 						while(mysqli_stmt_fetch($stmt)){		
 						    echo"<script>u.push('$c1')</script>";
 							
-							if(empty($c6) && empty($c7)){
+							if(!empty($c6) && !empty($c7)){
 								echo "<div id='faq$c1' class='faq'>										  
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
