@@ -1,7 +1,6 @@
-<?php
-	$title = "RTX-Tech ADMIN PANEL";
-	include "Header.php";
-	
+<?php require __DIR__ . '/header.php' ?>
+
+<?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
 	{
 		echo "<script>alert('Login as Admin account to access');
@@ -87,4 +86,4 @@ if(isset($_SESSION['DeleteUser']))
 </div>
 </div>
 
-<?php include "Footer.php"; ?>
+<?php require __DIR__ . '/footer.php' ?>

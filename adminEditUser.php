@@ -1,3 +1,5 @@
+<?php require __DIR__ . '/header.php' ?>
+
 <?php
 	$title = "RTX-Tech ADMIN PANEL";
 	include "Header.php";
@@ -116,4 +118,4 @@ if(isset($_SESSION['Update']))
 </div>
 </div>
 
-<?php include "Footer.php"; ?>
+<?php require __DIR__ . '/footer.php' ?>
