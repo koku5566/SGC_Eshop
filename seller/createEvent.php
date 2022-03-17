@@ -177,10 +177,7 @@
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
-                    <div>
-                        <div id="toolbar_container-1" class="sun-editor"></div>
-                        <textarea class="form-control" id="editor-1" placeholder="Insert placeholder text in sunEditorInit.js" name="eTnC"></textarea>
-                    </div>
+                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here" name="eTnC"></textarea>
                 </div>
             </section>
             
@@ -199,6 +196,12 @@
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <script src="../js/Suneditor-WYSIWYG.js"></script>
     <script src="../js/createEventJS.js"></script>
+    <script src='../tinymce/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+        selector: '#eTncEditor'
+        });
+    </script>
 
 <?php
     require __DIR__ . '/footer.php'
