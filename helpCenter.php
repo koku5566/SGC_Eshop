@@ -147,12 +147,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 											
 						while(mysqli_stmt_fetch($stmt)){		
 						    echo"<script>u.push('$c1')</script>";
+							
+							if(empty($c6) && empty($c7)){
+								echo "<div id='faq$c1' class='faq'>										  
+								 <div class='faq_text'>
+								 <h2>$c4</h2>
+								 <p>$c5	\n
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>	</p>
+							     </div>
+							     <span class='btnd' id='btn$c1'>+</span>
+					             </div>";		
+								
+							}else{
+								echo "<div id='faq$c1' class='faq'>										  
+								 <div class='faq_text'>
+								 <h2>$c4</h2>
+								 <p>$c5	</p>
+							     </div>
+							     <span class='btnd' id='btn$c1'>+</span>
+					             </div>";		
+							}
+							
 						   
 							echo "<div id='faq$c1' class='faq'>										  
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
-								 <p>$c5<img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>	</p>
-								 
+								 <p>$c5	\n
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>	</p>
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
@@ -196,7 +217,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 							echo "<div id='faq$c1' class='faq'>										  
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
-								 <p>$c5<img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'></p>								
+								 <p>$c5 \n
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'></p>								
 								 							 
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
