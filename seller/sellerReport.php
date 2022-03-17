@@ -18,7 +18,7 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button class="printButton float-end">PRINT REPORT</button>
+    <button id="btnPrint" class="printButton float-end">PRINT REPORT</button>
   </div>
 </div>
 <!-- /.container-fluid -->
@@ -64,3 +64,10 @@ body{
   padding: 5px 25px;
 }
 </style>
+
+<script>
+const $btnPrint = document.querySelector("#btnPrint");
+$btnPrint.addEventListener("click", () => {
+    window.print();
+});
+</script>
