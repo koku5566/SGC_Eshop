@@ -11,7 +11,7 @@
 ?>
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
+    if(isset($_POST["eRegister"])){
         //echo "<script>alert('the script is running.....');</script>";
         //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
         //if($checkImage !== false)
@@ -44,31 +44,37 @@
         //   mysqli_stmt_close($stmt);
         // }
         
-        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            if ($stmt = mysqli_prepare($conn,$sql)){
-                if(false===$stmt){
-                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-                }
-                $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
-                mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
-                if(false===$bp){
-                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-                }
-                //mysqli_stmt_send_long_data($stmt,6,$eDes);
-                //mysqli_stmt_send_long_data($stmt,9,$eTnc);
-                $bp = mysqli_stmt_execute($stmt);
-                if ( false===$bp ) {
-                    die('Error with execute: ') . htmlspecialchars($stmt->error);
-                }
-                    if(mysqli_stmt_affected_rows($stmt) == 1){
-                        echo "<script>alert('Success!!!!!');</script>";
-                    }
-                    else{
-                        $error = mysqli_stmt_error($stmt);
-                        echo "<script>alert($error);</script>";
-                    }		
-                    mysqli_stmt_close($stmt);
+        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES ($coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser)";
+            // if ($stmt = mysqli_prepare($conn,$sql)){
+            //     if(false===$stmt){
+            //         die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+            //     }
+            //     $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+            //     mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
+            //     if(false===$bp){
+            //         die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+            //     }
+            //     //mysqli_stmt_send_long_data($stmt,6,$eDes);
+            //     //mysqli_stmt_send_long_data($stmt,9,$eTnc);
+            //     $bp = mysqli_stmt_execute($stmt);
+            //     if ( false===$bp ) {
+            //         die('Error with execute: ') . htmlspecialchars($stmt->error);
+            //     }
+            //         if(mysqli_stmt_affected_rows($stmt) == 1){
+            //             echo "<script>alert('Success!!!!!');</script>";
+            //         }
+            //         else{
+            //             $error = mysqli_stmt_error($stmt);
+            //             echo "<script>alert($error);</script>";
+            //         }		
+            //         mysqli_stmt_close($stmt);
+            // }
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>alert('Success!!!!!');</script>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
+            mysqli_close($conn);
           }
 ?>
 
