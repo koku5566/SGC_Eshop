@@ -25,7 +25,7 @@
 					echo "<script>alert('Login Successfully')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
-					$_SESSION['id'] = $row["user_id"];
+					$_SESSION['id'] = $row["username"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					header("location: index.php");
