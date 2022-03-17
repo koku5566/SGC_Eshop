@@ -5,11 +5,12 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
  
-$name = $_POST['name'];
+  $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
   header('Content-Type: application/json');
+  
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
     exit();
@@ -31,17 +32,13 @@ $name = $_POST['name'];
     print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
     exit();
   }
-  $content = "From: $name \nEmail: $email \nMessage: $message";
+  
+  $content="From: $name \n Email: $email \n Message: $message";
   $recipient = "yourmamasofat2000@gmail.com";
   $mailheader = "From: $email \r\n";
   mail($recipient, $subject, $content, $mailheader) or die("Error!");
-  print json_encode(array('message' => 'Email successfully sent!', 'code' => 1));
-  exit();
- 
+  echo "<script>alert('Email sent!')</script>";
 }
-?>
-<?php
-  
 ?>
 
 
@@ -72,7 +69,7 @@ $name = $_POST['name'];
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control">
+									<input type="text" id="name" name="name" class="form-control" onchange="validateForm()" required>
 									
 								</div>
 							</div>
@@ -82,7 +79,7 @@ $name = $_POST['name'];
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="text" id="email" name="email" class="form-control">
+									<input type="text" id="email" name="email" class="form-control" onchange="validateForm()" required>
 									
 								</div>
 							</div>
@@ -96,7 +93,7 @@ $name = $_POST['name'];
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
-									<input type="text" id="subject" name="subject" class="form-control">
+									<input type="text" id="subject" name="subject" class="form-control" onchange="validateForm()" required>
 									
 								</div>
 							</div>
@@ -111,14 +108,14 @@ $name = $_POST['name'];
 
 								<div class="md-form">
 									<label for="message">Your message</label>
-									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" onchange="validateForm()" required></textarea>
 									
 								</div>
 
 							</div>
 						</div>
 						<!--Grid row-->
-						<input type = "submit" class="btn btn-primary" onclick="validateForm();" value = "SUBMIT">
+						<input type = "submit" class="btn btn-primary"  value = "Submit">
 					</form>
 
 					<div class="text-center text-md-left">
@@ -178,29 +175,7 @@ function validateForm() {
   document.querySelector('.status').innerHTML = "Sending...";
 }
 	
-document.getElementById('status').innerHTML = "Sending...";
-formData = {
-  'name': $('input[name=name]').val(),
-  'email': $('input[name=email]').val(),
-  'subject': $('input[name=subject]').val(),
-  'message': $('textarea[name=message]').val()
-};
-
-
-$.ajax({
-  url: "mail.php",
-  type: "POST",
-  data: formData,
-  success: function (data, textStatus, jqXHR) {
-
-    $('#status').text(data.message);
-    if (data.code) //If mail was sent successfully, reset the form.
-      $('#contact-form').closest('form').find("input[type=text], textarea").val("");
-  },
-  error: function (jqXHR, textStatus, errorThrown) {
-    $('#status').text(jqXHR);
-  }
-});	
+	
 
 
 </script>
