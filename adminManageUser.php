@@ -29,15 +29,8 @@
 	}
 ?>
 
-<div id="title"><h2>ADMIN PANEL</h2></div>
-<div id="AdminPanel">
-<div id = "Panel">
-	<a class="nav" href="ADMIN-Product.php">Product</a>
-	<a class="nav active" href="ADMIN-User.php">User</a>
-	<a class="nav" href="ADMIN-Statistic.php">Statistic</a>
-</div>
-
 <div id="DataDiv">
+<h1>User</h1>
 <a href="ADMIN-AddUser.php" style="float:left; padding-bottom:10px;"><button>Add User</button></a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<table>
@@ -82,7 +75,6 @@ if(isset($_SESSION['DeleteUser']))
 		$_SESSION['DeleteUser'] = NULL;
 	}
 ?>
-</div>
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
