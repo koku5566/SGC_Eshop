@@ -24,10 +24,10 @@
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
         $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
         $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = htmlentities($_POST["eDesc"]);
+        $eDes = mysqli_real_escape_string($conn, htmlentities($_POST["eDesc"]));
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = htmlentities($_POST["eTnC"]); //decode using html_entity_decode()
+        $eTnc = mysqli_real_escape_string($conn, htmlentities($_POST["eTnC"]));//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
@@ -94,7 +94,7 @@
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Event Details</h2>
-                <h3 style="margin-top: 30px;">Event Title<input class="form-control" type="text" placeholder="Event Title" style="margin-top: 10px;" name="eventTitle"></h3>
+                <h3 style="margin-top: 30px;">Event Title<input class="form-control" type="text" required placeholder="Event Title" style="margin-top: 10px;" name="eventTitle"></h3>
                 <div>
                     <div class="row">
                         <div class="col-sm-2">
@@ -105,21 +105,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_From" id="eStartDate"></div>
+                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_From" id="eStartDate" required></div>
                         <div class="col-sm-2">
                             <h5 style="text-align: center;margin-top: 6px;">To</h5>
                         </div>
-                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_To" id="eEndDate"></div>
+                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_To" id="eEndDate" required></div>
                     </div>
                 </div>
                 <div>
                     <h3 style="margin-top: 30px;width: 100%;">Event Time</h3>
                     <div class="row">
-                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_From"></div>
+                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_From" required></div>
                         <div class="col-sm-2">
                             <h5 style="text-align: center;margin-top: 6px;">To</h5>
                         </div>
-                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_To"></div>
+                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_To" required></div>
                     </div>
                 </div>
                 <div style="margin-top: 30px;">
