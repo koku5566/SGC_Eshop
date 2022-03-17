@@ -1,9 +1,6 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php
-	$title = "RTX-Tech ADMIN PANEL";
-	include "Header.php";
-	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
 	{
 		echo "<script>alert('Login as Admin account to access');
@@ -18,7 +15,6 @@
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
-		$address = $_POST['address'];
 		$user = $_POST['user'];
 
 		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
@@ -49,7 +45,7 @@
 ?>
 
 <div id="DataDiv">
-<h1>My Profile</h1>
+<h1>User Profile</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
 	$UID = $_SESSION['ToEdit'];
@@ -105,12 +101,11 @@ if(isset($_SESSION['Update']))
 		if($_SESSION['Update'] == true)
 		{
 			echo "<script>alert('Details Updated');
-			window.location.href='ADMIN-User.php';</script>";
+			window.location.href='adminManageUser.php';</script>";
 		}
 		$_SESSION['Update'] = NULL;
 	}
 ?>
-</div>
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
