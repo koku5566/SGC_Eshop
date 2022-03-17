@@ -24,10 +24,10 @@
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
         $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
         $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = addslashes($_POST["eDesc"]); //decode using stripslashes
+        $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = base64_encode($_POST["eTnC"]);//decode using html_entity_decode()
+        $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
@@ -124,10 +124,7 @@
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Description</h3>
-                    <div>
-                        <div id="toolbar_container" class="sun-editor"></div>
-                        <textarea class="form-control" id="editor" placeholder="Edit your description here to make your event looks more fun" name="eDesc"></textarea>
-                    </div>
+                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc"></textarea>
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Category</h3><input class="form-control" type="text" name="eCategory">
@@ -177,10 +174,7 @@
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
-                    <div>
-                        <div id="toolbar_container-1" class="sun-editor"></div>
-                        <textarea class="form-control" id="editor-1" placeholder="Insert placeholder text in sunEditorInit.js" name="eTnC"></textarea>
-                    </div>
+                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
                 </div>
             </section>
             
@@ -197,8 +191,16 @@
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
-    <script src="../js/Suneditor-WYSIWYG.js"></script>
     <script src="../js/createEventJS.js"></script>
+    <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+        selector: '#eTncEditor'
+        });
+        tinymce.init({
+        selector: '#eDesceditor'
+        });
+    </script>
 
 <?php
     require __DIR__ . '/footer.php'
