@@ -48,24 +48,17 @@
 	}
 ?>
 
-<div id="title"><h2>ADMIN PANEL</h2></div>
-<div id="AdminPanel">
-<div id = "Panel">
-	<a class="nav" href="ADMIN-Product.php">Product</a>
-	<a class="nav active" href="ADMIN-User.php">User</a>
-	<a class="nav" href="ADMIN-Statistic.php">Statistic</a>
-</div>
-
 <div id="DataDiv">
+<h1>My Profile</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
 	$UID = $_SESSION['ToEdit'];
-	$sql = "SELECT * FROM user WHERE userID = '$UID'";
+	$sql = "SELECT * FROM user WHERE username = '$UID'";
 	$res_data = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($res_data) > 0){
 		while($row = mysqli_fetch_array($res_data)){
 			echo("
-				<input name=\"product\" value=\"".$row["userID"]."\" hidden/>
+				<input name=\"product\" value=\"".$row["username"]."\" hidden/>
 				
 				<p id=\"label\">User Category
 				<select id=\"user\" name=\"user\">
@@ -81,21 +74,23 @@
 				}
 				echo("
 				</select></p>
+
+				<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
+				<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 				
-				<p id=\"label\">Name</p>
-				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\"/>
+				<div class=\"form-group\">
+				<label>Name</label>
+				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
+				</div>
 				
-				<p id=\"label\">Email Address</p>
-				<input required type=\"text\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\"/>
+				<label>Email Address</label>
+				<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
 				
-				<p id=\"label\">Password</p>
-				<input type=\"password\" name=\"password\" maxlength=\"50\"/>
+				<label>Password</label>
+				<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
 				
-				<p id=\"label\">Contact</p>
-				<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\"/>
-				
-				<p id=\"label\">Address</p>
-				<textarea required type=\"text\" name=\"address\" maxlength=\"999\">".$row["address"]."</textarea><br><br>
+				<label>Contact</label>
+				<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
 				
 				<button type=\"submit\" name=\"update\">Update</button>
 				");
