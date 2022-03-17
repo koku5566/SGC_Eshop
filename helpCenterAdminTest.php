@@ -115,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							</div>
 						</div>
 						<!--Grid row-->
-						<input type = "submit" class="btn btn-primary"  value = "Submit" disabled>
+						<input type = "submit" name = "CUSubmit"class="btn btn-primary"  value = "Submit" disabled>
 					</form>
 
 					<div class="text-center text-md-left">
@@ -179,6 +179,13 @@ function validateForm() {
       document.querySelector('.status').innerHTML = "Message cannot be empty";
       m = false
   }else{m = true;}
+  
+  
+  if(n == true && e == true && s == true && m == true && c == true){
+	  document.getElementById('CUSubmit').disabled = false;
+  }else{
+	  document.getElementById('CUSubmit').disabled = true;
+  }
   
 }
 	
