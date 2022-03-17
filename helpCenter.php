@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 	</main>
 <!--END OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->		
 
-
+<!--Contact Us-->
 
 
 	
@@ -358,7 +358,7 @@ h1:after{
 .imgCss2{
 	height: 100px; 
 	width: 100%;
-	max-width: 150px; 
+	max-width: 100px; 
 	display: block;
 	margin: auto;
 }
