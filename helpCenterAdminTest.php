@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
   $message = $_POST['message'];
   $subject = $_POST['subject'];
   header('Content-Type: application/json');
-  
+/*  
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
     exit();
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
     print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
     exit();
   }
-  
+  */
   $content="From: $name \n Email: $email \n Message: $message";
   $recipient = "yourmamasofat2000@gmail.com";
   $mailheader = "From: $email \r\n";
@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="name" name="name" class="form-control" oninput = "validateForm()" required>
 									
 								</div>
 							</div>
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="text" id="email" name="email" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="email" name="email" class="form-control" oninput="validateForm()" required>
 									
 								</div>
 							</div>
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
-									<input type="text" id="subject" name="subject" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="subject" name="subject" class="form-control" oninput="validateForm()" required>
 									
 								</div>
 							</div>
@@ -108,14 +108,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 
 								<div class="md-form">
 									<label for="message">Your message</label>
-									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" onchange="validateForm()" required></textarea>
+									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" oninput="validateForm()" required></textarea>
 									
 								</div>
 
 							</div>
 						</div>
 						<!--Grid row-->
-						<input type = "submit" class="btn btn-primary"  value = "Submit">
+						<input type = "submit" name = "CUSubmit"class="btn btn-primary"  value = "Submit" disabled>
 					</form>
 
 					<div class="text-center text-md-left">
@@ -147,32 +147,50 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 <script>
 function validateForm() {
   var name =  document.getElementById('name').value;
-  if (name == "") {
-      document.querySelector('.status').innerHTML = "Name cannot be empty";
-      return false;
-  }
   var email =  document.getElementById('email').value;
-  if (email == "") {
-      document.querySelector('.status').innerHTML = "Email cannot be empty";
-      return false;
+  var subject =  document.getElementById('subject').value;
+  var message =  document.getElementById('message').value;
+  
+  var n = false 
+  var e = false
+  var s = false
+  var m = false 
+  var c = false
+  
+  
+  if (name.replace(/(^\s+|\s+$)/g, '') == "") {
+	  document.querySelector('.status').innerHTML = "Name cannot be empty";
+      n = false;
+  }else{n = true}
+  
+  if (email.replace(/(^\s+|\s+$)/g, '') == "") {
+	  document.querySelector('.status').innerHTML = "Email cannot be empty";
+      e = false;
   } else {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if(!re.test(email)){
           document.querySelector('.status').innerHTML = "Email format invalid";
-          return false;
-      }
+           e = false;
+      }else{e = true;}
   }
-  var subject =  document.getElementById('subject').value;
-  if (subject == "") {
+  
+  if (subject.replace(/(^\s+|\s+$)/g, '') == "") {
       document.querySelector('.status').innerHTML = "Subject cannot be empty";
-      return false;
-  }
-  var message =  document.getElementById('message').value;
-  if (message == "") {
+      s = false;
+  }else{s = true;}
+  
+  if (message.replace(/(^\s+|\s+$)/g, '') == "") {
       document.querySelector('.status').innerHTML = "Message cannot be empty";
-      return false;
+      m = false
+  }else{m = true;}
+  
+  
+  if(n == true && e == true && s == true && m == true && c == true){
+	  document.getElementById('CUSubmit').disabled = false;
+  }else{
+	  document.getElementById('CUSubmit').disabled = true;
   }
-  document.querySelector('.status').innerHTML = "Sending...";
+  
 }
 	
 	
