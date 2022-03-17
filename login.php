@@ -25,7 +25,7 @@
 					echo "<script>alert('Login Successfully')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
-					$_SESSION['id'] = $row["user_id"];
+					$_SESSION['id'] = $row["username"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					header("location: index.php");
@@ -83,7 +83,7 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
-                                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                            <a class="small" href="forgetPassword.php">Forgot Password?</a>
                                         </div>
                                         
                                         <hr>

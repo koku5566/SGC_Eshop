@@ -20,7 +20,7 @@
 		$message = "
 		<p>We received a request to reset your SGC E-Shop account password.
 		<br>Click the link below to reset.
-		<br><b>http://localhost/A/ResetPass.php?email=$email&hash=$hash</b>
+		<br><b>https://eshop.sgcprototype2.com/resetPassword.php?email=$email&hash=$hash</b>
 		<br>
 		<br>
 		<br>
