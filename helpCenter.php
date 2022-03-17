@@ -152,6 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
 								 <p>$c5</p>
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>	
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
@@ -195,7 +196,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 							echo "<div id='faq$c1' class='faq'>										  
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
-								 <p>$c5</p>
+								 <p>$c5</p>								
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>							 
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
@@ -230,6 +232,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 			</div>
 	</main>
 <!--END OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->		
+
+
+
+
 	
 
 </div>
