@@ -11,7 +11,7 @@
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 		
-	<div style ="width: 80%">
+	<div  class = "faker"style ="width: 80%">
       <!--Section: Contact v.2-->
 		<section class="mb-4">
 
@@ -21,7 +21,7 @@
 			<p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
 				a matter of hours to help you.</p>
 
-			<div class="row">
+			<div class="row justify-content-md-center">
 
 				<!--Grid column-->
 				<div class="col-md-9 mb-md-0 mb-5">
@@ -105,7 +105,9 @@
 ?>
 
 <style>
-
+.faker{
+	border: 1px solid black;
+}
 </style>
 <script>
 
