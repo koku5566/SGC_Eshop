@@ -24,10 +24,10 @@
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
         $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
         $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = htmlspecialchars($_POST["eDesc"]);
+        $eDes = addslashes($_POST["eDesc"]); //decode using stripslashes
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = $_POST["eTnC"];//decode using html_entity_decode()
+        $eTnc = base64_encode($_POST["eTnC"]);//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
@@ -49,13 +49,13 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                $bp = mysqli_stmt_bind_param($stmt,"bssssssssbi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
                 //mysqli_stmt_send_long_data($stmt,6,$eDes);
-                //mysqli_stmt_send_long_data($stmt,9,$eTnc);
+                mysqli_stmt_send_long_data($stmt,9,$eTnc);
                 $bp = mysqli_stmt_execute($stmt);
                 if ( false===$bp ) {
                     die('Error with execute: ') . htmlspecialchars($stmt->error);
