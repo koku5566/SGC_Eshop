@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control" onchange="validateForm()" title = "noob" required>
+									<input type="text" id="name" name="name" class="form-control" oninput = "this.value=removeSpaces(this.value);" required>
 									
 								</div>
 							</div>
@@ -115,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							</div>
 						</div>
 						<!--Grid row-->
-						<input type = "submit" class="btn btn-primary"  value = "Submit">
+						<input type = "submit" class="btn btn-primary"  value = "Submit" disabled>
 					</form>
 
 					<div class="text-center text-md-left">
@@ -151,15 +151,15 @@ function validateForm() {
   var subject =  document.getElementById('subject').value;
   var message =  document.getElementById('message').value;
   
+  var n = false, var e, var s, var m, var c
   
-  if (name == "") {
-      document.querySelector('.status').innerHTML = "Name cannot be empty";
-      return false;
+  
+  if (name != "") {
+      n = true
   }
   
-  if (email == "") {
-      document.querySelector('.status').innerHTML = "Email cannot be empty";
-      return false;
+  if (email != "") {
+      e = true;
   } else {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if(!re.test(email)){
