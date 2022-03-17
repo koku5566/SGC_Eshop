@@ -19,7 +19,7 @@
 		$address = $_POST['address'];
 		$user = $_POST['user'];
 
-		$sql_u = "SELECT * FROM user WHERE userID = '$UID'";
+		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 

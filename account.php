@@ -53,7 +53,7 @@ if(isset($_POST['update']))
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<?php
 		$UID = $_SESSION["id"];
-		$sql = "SELECT * FROM user WHERE user_id = '$UID'";
+		$sql = "SELECT * FROM user WHERE username = '$UID'";
 
 		$res_data = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($res_data) > 0){
