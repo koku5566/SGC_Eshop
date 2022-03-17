@@ -31,7 +31,7 @@
 
 <div id="DataDiv">
 <h1>User</h1>
-<a href="ADMIN-AddUser.php" style="float:left; padding-bottom:10px;"><button>Add User</button></a>
+<a href="ADMIN-AddUser.php"><button>Add User</button></a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<table>
 	<tr>
@@ -57,7 +57,7 @@
 				<td>".$row["name"]."</td>
 				<td>".$row["contact"]."</td>
 				<td>".$row["registration_date"]."</td>
-				<td>".$row["role"].("</td>
+				<td>".$row["role"]."</td>
 				<td><button name=\"edit\" value=".$row["username"].">Edit</button> <button name=\"remove\" value=".$row["username"].">Remove</button></td>
 			</tr>
 			");
