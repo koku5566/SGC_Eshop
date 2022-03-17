@@ -46,12 +46,20 @@
         
         $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
-                mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
                 //mysqli_stmt_send_long_data($stmt,6,$eDes);
                 //mysqli_stmt_send_long_data($stmt,9,$eTnc);
-                mysqli_stmt_execute($stmt);
-                
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         echo "<script>alert('Success!!!!!');</script>";
                     }
