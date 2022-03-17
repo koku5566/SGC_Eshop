@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
   $message = $_POST['message'];
   $subject = $_POST['subject'];
   header('Content-Type: application/json');
-  
+/*  
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
     exit();
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
     print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
     exit();
   }
-  
+  */
   $content="From: $name \n Email: $email \n Message: $message";
   $recipient = "yourmamasofat2000@gmail.com";
   $mailheader = "From: $email \r\n";
@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control" onchange="validateForm()" required>
+									<input type="text" id="name" name="name" class="form-control" onchange="validateForm()" title = "noob" required>
 									
 								</div>
 							</div>
@@ -147,11 +147,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 <script>
 function validateForm() {
   var name =  document.getElementById('name').value;
+  var email =  document.getElementById('email').value;
+  var subject =  document.getElementById('subject').value;
+  var message =  document.getElementById('message').value;
+  
+  
   if (name == "") {
       document.querySelector('.status').innerHTML = "Name cannot be empty";
       return false;
   }
-  var email =  document.getElementById('email').value;
+  
   if (email == "") {
       document.querySelector('.status').innerHTML = "Email cannot be empty";
       return false;
@@ -162,12 +167,12 @@ function validateForm() {
           return false;
       }
   }
-  var subject =  document.getElementById('subject').value;
+  
   if (subject == "") {
       document.querySelector('.status').innerHTML = "Subject cannot be empty";
       return false;
   }
-  var message =  document.getElementById('message').value;
+  
   if (message == "") {
       document.querySelector('.status').innerHTML = "Message cannot be empty";
       return false;
