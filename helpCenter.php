@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
 								 <p>$c5	<br>
-								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'>	</p>
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss2'>	</p>
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
@@ -210,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 									 <div class='faq_text'>
 									 <h2>$c4</h2>
 									 <p>$c5 <br>
-									 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss'></p>								
+									 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss2'></p>								
 									 </div>
 									 <span class='btnd' id='btn$c1'>+</span>
 									 </div>";								 
@@ -354,6 +354,13 @@ h1:after{
 	width: 100%;
 	max-width: 150px;  
 
+}
+.imgCss2{
+	height: 100px; 
+	width: 100%;
+	max-width: 150px; 
+	display: block;
+	margin: auto;
 }
 .catTag{
 	text-align: center;
