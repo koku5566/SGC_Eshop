@@ -38,7 +38,7 @@ body{
 }
 
 .sellerProfilePic{
-  width: 55px;
+  width: 50px;
   height:40px;
 }
 
