@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 		
-		
+		<h1>bruh</h1>
 	<div  class = "faker"style ="width: 80%; margin: auto">
 		<!--Section: Contact v.2-->
 <section class="mb-4">
