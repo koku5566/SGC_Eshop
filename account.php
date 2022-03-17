@@ -67,14 +67,20 @@ if(isset($_POST['update']))
 					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
 					</div>
 					
+					<div class=\"form-group\">
 					<label>Email Address</label>
 					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
-					
+					</div>
+
+					<div class=\"form-group\">
 					<label>Password</label>
 					<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
-					
+					</div>
+
+					<div class=\"form-group\">
 					<label>Contact</label>
 					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					</div>
 					
 					<button type=\"submit\" name=\"update\">Update</button>
 					");

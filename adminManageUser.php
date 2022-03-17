@@ -43,13 +43,12 @@
 	<table>
 	<tr>
 		<th>User ID</th>
-		<th>Name</th>
+		<th>Username</th>
 		<th>E-Mail</th>
 		<th>Password</th>
 		<th>Contact</th>
-		<th>Address</th>
 		<th>Registration Date</th>
-		<th>ADMIN</th>
+		<th>Role</th>
 		<th>Action</th>
 	</tr>
 <?php
@@ -58,15 +57,15 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<tr>
-				<td>".$row["userID"]."</td>
-				<td>".$row["name"]."</td>
+				<td>".$row["user_id"]."</td>
+				<td>".$row["username"]."</td>
 				<td>".$row["email"]."</td>
 				<td>".$row["password"]."</td>
+				<td>".$row["name"]."</td>
 				<td>".$row["contact"]."</td>
-				<td><div id=\"addr\">".$row["address"]."</div></td>
-				<td>".$row["regDate"]."</td>
-				<td>");if($row['ADMIN']==0){echo("No");}else{echo("Yes");}echo("</td>
-				<td><button name=\"edit\" value=".$row["userID"].">Edit</button> <button name=\"remove\" value=".$row["userID"].">Remove</button></td>
+				<td>".$row["registration_date"]."</td>
+				<td>".$row["role"].("</td>
+				<td><button name=\"edit\" value=".$row["username"].">Edit</button> <button name=\"remove\" value=".$row["username"].">Remove</button></td>
 			</tr>
 			");
 	}
