@@ -20,17 +20,17 @@ if(isset($_POST['update']))
 			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
 		}
 
-		$sql_u = "SELECT * FROM user WHERE user_id = '$UID'";
+		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
 			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE user_id='$UID'";
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE user_id='$UID'";
+				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE username='$UID'";
 			}
 			
 			if (mysqli_query($conn, $sql)) {

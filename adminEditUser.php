@@ -26,10 +26,10 @@
 		if (mysqli_num_rows($stmt_u) > 0) {
 			
 			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET name='$name', email='$email', password='$password', contact='$contact', address='$address', ADMIN='$user' WHERE userID='$UID'";
+				$sql = "UPDATE user SET name='$name', email='$email', password='$password', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', address='$address', ADMIN='$user' WHERE userID='$UID'";
+				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
 			}
 		
 			if (mysqli_query($conn, $sql)) {
