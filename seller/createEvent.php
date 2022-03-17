@@ -27,7 +27,7 @@
         $eDes = addslashes($_POST["eDesc"]); //decode using stripslashes
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = base64_encode($_POST["eTnC"]);//decode using html_entity_decode()
+        $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
