@@ -5,7 +5,7 @@
 	if($_SESSION['login'] == false || $_SESSION['role'] == "admin")
 	{
 		echo "<script>alert('Login as Admin account to access');
-			window.location.href='Main.php';</script>";
+			window.location.href='login.php';</script>";
     }
 ?>
 <?php
