@@ -3,22 +3,14 @@
 ?>
 
 <?php
-  if(isset( $_POST['name']))
-  $name = $_POST['name'];
-  if(isset( $_POST['email']))
-  $email = $_POST['email'];
-  if(isset( $_POST['message']))
-  $message = $_POST['message'];
-  if(isset( $_POST['subject']))
-  $subject = $_POST['subject'];
-
-
-
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
+ 
   $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
   header('Content-Type: application/json');
+  
   if ($name === '') {
     print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
     exit();
@@ -46,7 +38,7 @@
   $mailheader = "From: $email \r\n";
   mail($recipient, $subject, $content, $mailheader) or die("Error!");
   echo "Email sent!";
-
+}
 ?>
 
 
