@@ -196,7 +196,7 @@
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <script src="../js/Suneditor-WYSIWYG.js"></script>
     <script src="../js/createEventJS.js"></script>
-    <script src='../tinymce/tinymce.min.js'></script>
+    <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <script>
         tinymce.init({
         selector: '#eTncEditor'
