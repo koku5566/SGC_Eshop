@@ -151,7 +151,11 @@ function validateForm() {
   var subject =  document.getElementById('subject').value;
   var message =  document.getElementById('message').value;
   
-  var n = false, var e, var s, var m, var c
+  var n = false 
+  var e = false
+  var s = false
+  var m = false 
+  var c = false
   
   
   if (name.replace(/(^\s+|\s+$)/g, '') == "") {
