@@ -44,7 +44,7 @@
 					mysqli_stmt_store_result($stmt);
 					
 					if(mysqli_stmt_num_rows($stmt) == 1){
-						mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+						mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5,$z6,$z7);
 						mysqli_stmt_fetch($stmt);
 					}
 					
@@ -779,8 +779,8 @@
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h5 style = "font-size:1.4vw"><?php echo(isset($c2) && !empty ($c2))? $c2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></b></h6>
-										<h6 style = "font-size:0.9vw"><?php echo(isset($c6) && !empty ($c6))? $c6 : ''; ?></h6>										
+										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h6 style = "font-size:0.9vw"><?php echo(isset($z6) && !empty ($z6))? $z6 : ''; ?></h6>										
 										
 									</div><br>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
