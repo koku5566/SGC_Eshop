@@ -836,13 +836,16 @@
 										$CUtrim  = substr($c6, 0, 50);
 										$CUmsg = "$CUtrim.....";
 									}else{$CUmsg = $c6;}
-										echo"<tr>".
+										
+									echo"<tr>".
 										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
 										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
 										"<td class= 'tablespace'>".
-											"<p style = 'text-align: center'>Replied</p>".
+											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
+											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
+											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
-										"<tr>";
+										"<tr>";		
 								}
 								mysqli_stmt_close($stmt);
 							}
@@ -877,15 +880,14 @@
 										$CUtrim  = substr($c6, 0, 50);
 										$CUmsg = "$CUtrim.....";
 									}else{$CUmsg = $c6;}
+										
 										echo"<tr>".
 										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
 										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
 										"<td class= 'tablespace'>".
-											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
-											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
-											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
+											"<p style = 'text-align: center'>Replied</p>".
 										"</td>" .	
-										"<tr>";	
+										"<tr>";
 								}
 								mysqli_stmt_close($stmt);
 							}
