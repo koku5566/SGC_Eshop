@@ -738,8 +738,8 @@
 	
 				</div>
 		</div>
-		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-			<h1 class="h3 mb-0 text-gray-800">Help Center</h1>
+		<div class="d-sm-flex align-items-center justify-content-between mb-4" style = "margin-top: 15px;">
+			<h1 class="h3 mb-0 text-gray-800">Contact Us</h1>
 		</div>
 		<!--CONTACT US SECTION-->
 		<div class = "pp2">
