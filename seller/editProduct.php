@@ -1,5 +1,72 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    if(isset($_POST['add']) || isset($_POST['publish'])){ 
+
+        $publish = 1;
+        if(isset($_POST['add']))
+        {
+            $publish = 0;
+        }
+
+
+        // File upload configuration 
+        $targetDir = "img/product/"; 
+        $allowTypes = array('jpg','png','jpeg'); 
+         
+        $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
+
+        $sql_insert = "INSERT INTO `product`(`product_sku`, `product_name`, `product_description`, 
+        `product_brand`, `product_cover_video`, `product_cover_picture`, `product_pic_1`, `product_pic_2`, `product_pic_3`, 
+        `product_pic_4`, `product_pic_5`, `product_pic_6`, `product_pic_7`, `product_pic_8`, `product_weight`, 
+        `product_length`, `product_width`, `product_height`, `product_danger`, `product_self_collect`, 
+        `product_standard_delivery`, `product_preorder`, `product_variation`, `product_price`, `product_stock`, 
+        `product_sold`, `product_status`, `product_banned`, `category_id`, `shop_id`) 
+        VALUES ('".$_POST['sku']."','".$_POST['productName']."','".$_POST['description']."',
+        '".$_POST['brand']."','".$_POST['coverVideo']."',";
+        $fileNames = array_filter($_FILES['files']['name']); 
+
+        $imgInpCounter = 0;
+        if(!empty($fileNames)){ 
+            
+            foreach($_FILES['files']['name'] as $key=>$val){ 
+                // File upload path 
+                $fileName = basename($_FILES['files']['name'][$key]); 
+                $targetFilePath = $targetDir . $fileName; 
+                 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    // Upload file to server 
+                    if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
+                        // Image db insert sql 
+                        $sql_insert .= "'".$fileName."',";
+                        $imgInpCounter++;
+                    }
+                }
+            } 
+        }
+
+        while($imgInpCounter < 9)
+        {
+            $insertValuesSQL .= "'".$fileName."',";
+            $imgInpCounter++;
+        }
+
+        $sql_insert .= "'".$_POST['weight']."',
+        '".$_POST['length']."','".$_POST['width']."','".$_POST['height']."','".$_POST['danger']."','".$_POST['selfCollect']."',
+        '".$_POST['standardDelivery']."','".$_POST['preorder']."','".$_POST['variation']."','".$_POST['mainPrice']."','".$_POST['mainStock']."',
+        '".$_POST['mainSold']."','".$publish."','".$_POST['banned']."','".$_POST['categoryId']."','".$_POST['shopId']."')";
+
+        if(mysqli_query($conn, $sql_insert)){
+            $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
+            mysqli_query($conn, $sql_UpdateId);
+        }
+        else
+        {
+            echo("Error Insert Fail");
+        }
+    } 
 ?>
 
 <!-- Begin Page Content -->
@@ -37,61 +104,14 @@
                                                             <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="image-tools-add">
-                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                            <input accept="image/*" type="file" class="imgInp" />
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                     <p>Picture 1</p>
                                                 </div>
-                                                <div class="drag-item" draggable="true">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                        <div class="image-layer">
-                                                            
-                                                        </div>
-                                                        <div class="image-tools-delete hide">
-                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="image-tools-add">
-                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                            <input accept="image/*" type="file" class="imgInp" />
-                                                        </div>
-                                                    </div>
-                                                    <p>Picture 1</p>
-                                                </div>
-                                                <div class="drag-item" draggable="true">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                        <div class="image-layer">
-                                                            
-                                                        </div>
-                                                        <div class="image-tools-delete hide">
-                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="image-tools-add">
-                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                            <input accept="image/*" type="file" class="imgInp" />
-                                                        </div>
-                                                    </div>
-                                                    <p>Picture 1</p>
-                                                </div>
-                                                <div class="drag-item" draggable="true">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                        <div class="image-layer">
-                                                            
-                                                        </div>
-                                                        <div class="image-tools-delete hide">
-                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="image-tools-add">
-                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                            <input accept="image/*" type="file" class="imgInp" />
-                                                        </div>
-                                                    </div>
-                                                    <p>Picture 1</p>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -176,13 +196,12 @@
         width: 80px;
         height: 30px;
         background:grey;
-        opacity:0.5;
         position:absolute;
         margin-top: -30px;
     }
 
     .image-tools-delete-icon{
-        color: #ea1414;
+        color: white;
         justify-content: center;
         display: grid;
         margin-top: 5px;
@@ -206,6 +225,15 @@
         display: grid;
         margin-top: 30px;
         font-size: 20px;
+    }
+
+    .custom-file-upload{
+        width:100%;
+        height:100%;
+    }
+
+    .imgInp{
+        display:none;
     }
 
     .hide{
@@ -316,9 +344,9 @@
         img.addEventListener('change', function handleChange(event) {
             const [file] = img.files
             if (file) {
-                img.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                img.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                img.parentElement.classList.add("hide");
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                img.parentElement.parentElement.classList.add("hide");
             }
         });
     });

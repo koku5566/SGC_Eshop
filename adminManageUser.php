@@ -39,6 +39,7 @@
 		<th>Username</th>
 		<th>E-Mail</th>
 		<th>Password</th>
+		<th>Name</th>
 		<th>Contact</th>
 		<th>Registration Date</th>
 		<th>Role</th>
