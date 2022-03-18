@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 // $message = "PHP mail works fine";
  //$header = "FROM:" . $from;
  //mail($recipient, $subject, $content, $mailheader)
- if(mail($to, $subject, $message, $header), 'fsomeone@example.com'){
+ if(mail($to, $subject, $message, $header, 'fsomeone@example.com')){
 	  echo "<script>alert('Email sent!')</script>";
  }else{
 	 echo "<script>alert('Fail to sent!')</script>";
