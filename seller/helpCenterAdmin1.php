@@ -766,14 +766,43 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>						  
-						  <td>Mark</td>
-						  <td>Otto</td>
-						  <td>@mdo</td>
-						</tr>
-					  </tbody>
-					</table>	
-					<hr class = "linelai">
+							<?php
+							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
+								   FROM `contactUs` 
+								   WHERE disable_date IS NULL";
+							if($stmt = mysqli_prepare ($conn, $sql)){
+								mysqli_stmt_execute($stmt);
+								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+								
+								while(mysqli_stmt_fetch($stmt)){
+									
+									
+									
+									
+									echo"<tr>".
+										"<td>$c2</td>".
+										"<td><b>$c5</b> \n  $c6</td>".
+										if($c7 == 0){
+										"<td>".
+											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST'>" .
+											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
+											"<input type = 'submit' name = 'CUreply' value = 'Reply'></form>" .
+										"</td>" .	
+										}else{
+											"<td>Replied</td>" .										
+										}
+										"<tr>";
+								}
+								mysqli_stmt_close($stmt);
+							}
+							?>		               
+						 </tbody>
+						</table>			
+					 <hr class = "linelai">
+									  
+									
+										 
+						
 			  </div>
 			  <!--SECTION TWO-->
 			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
