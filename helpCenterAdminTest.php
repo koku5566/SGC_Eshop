@@ -124,7 +124,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 						<div class="row">
 							<div class="col-md-6">
 								<div class="md-form mb-0">
-									<label for="name" class="">Your name</label>
+									<label for="name">Your name</label>
 									<input type="text" id="name" name="CUname" class="form-control"  placeholder="Full Name*" required>
 									
 								</div>
@@ -132,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 							
 							<div class="col-md-6">
 								<div class="md-form mb-0">
-									<label for="email" class="">Your email</label>
+									<label for="email">Your email</label>
 									<input type="email" id="email" name="CUemail" class="form-control"  placeholder="Email*" required>
 									
 								</div>
@@ -144,7 +144,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 						<div class="row">
 							<div class="col-md-12">
 								<div class="md-form mb-0">
-									<label for="subject" class="">Campus</label>
+									<label for="subject" class="CUlabel">Campus</label>
 									<select class="form-control" id="CUcampus" name = "CUcampuslist" required>
 									  <option value = "" selected = 'selected'disabled>Campus*</option>
 									  <option value = "C-SJ">SEGI College Subang Jaya</option>
@@ -163,7 +163,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 						<div class="row">
 							<div class="col-md-12">
 								<div class="md-form mb-0">
-									<label for="subject" class="">Subject</label>
+									<label for="subject" class="CUlabel">Subject</label>
 									<input type="text" id="subject" name="CUsubject" class="form-control" placeholder="Subject*" required>
 								</div>
 							</div>
@@ -174,14 +174,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 						<div class="row">
 							<div class="col-md-12">
 								<div class="md-form">
-									<label for="message">Your message</label>
+									<label for="message" class="CUlabel">Your message</label>
 									<textarea type="text" id="message" name="CUmessage" rows="2" class="form-control md-textarea" placeholder="Message*" required></textarea>
 								</div>
 							</div>	
 						</div>		
 						<!--END of Grid row-->		
 
-						<input type = "submit" name = "CUsubmit" class="btn btn-primary"  value = "Submit" >
+						<input type = "submit" name = "CUsubmit" class="btn btn-primary"  value = "Submit" style = "margin-top: 15px;">
 					</form>
 
 					
@@ -215,6 +215,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 <style>
 .faker{
 	border: 1px solid black;
+}
+.CUlabel{
+	margin-top: 5px;
 }
 </style>
 <script>
