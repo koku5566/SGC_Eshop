@@ -46,8 +46,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 	 echo "<div class='alert alert-danger'>Email is required</div>";
   
 	} else{
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				
+		if (!filter_var($CUemail, FILTER_VALIDATE_EMAIL)) {
+				$check = false;
 				echo "<div class='alert alert-danger'>Email format is invalid</div>";
 			}	
 	}
