@@ -757,9 +757,9 @@
 					<table class="table table-borderless table-hover">
 					  <thead class = "table-secondary">
 						<tr>
-						  <th scope="col" class = "col">First</th>
+						  <th scope="col" class = "col-3">First</th>
 						  <th scope="col" class = "col-6">Last</th>
-						  <th scope="col" class = "col">Handle</th>
+						  <th scope="col" class = "col-3">Handle</th>
 						</tr>
 					  </thead>
 					  <tbody>
