@@ -24,10 +24,10 @@
         $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
         $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
         $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = htmlentities($_POST["eDesc"]);
+        $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = htmlentities($_POST["eTnC"]); //decode using html_entity_decode()
+        $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
@@ -46,12 +46,20 @@
         
         $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
-                mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"bssssssssbi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
                 //mysqli_stmt_send_long_data($stmt,6,$eDes);
-                //mysqli_stmt_send_long_data($stmt,9,$eTnc);
-                mysqli_stmt_execute($stmt);
-                
+                mysqli_stmt_send_long_data($stmt,9,$eTnc);
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         echo "<script>alert('Success!!!!!');</script>";
                     }
@@ -86,7 +94,7 @@
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Event Details</h2>
-                <h3 style="margin-top: 30px;">Event Title<input class="form-control" type="text" placeholder="Event Title" style="margin-top: 10px;" name="eventTitle"></h3>
+                <h3 style="margin-top: 30px;">Event Title<input class="form-control" type="text" required placeholder="Event Title" style="margin-top: 10px;" name="eventTitle"></h3>
                 <div>
                     <div class="row">
                         <div class="col-sm-2">
@@ -97,29 +105,26 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_From" id="eStartDate"></div>
+                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_From" id="eStartDate" required></div>
                         <div class="col-sm-2">
                             <h5 style="text-align: center;margin-top: 6px;">To</h5>
                         </div>
-                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_To" id="eEndDate"></div>
+                        <div class="col-sm-5"><input class="form-control" type="date" name="eDate_To" id="eEndDate" required></div>
                     </div>
                 </div>
                 <div>
                     <h3 style="margin-top: 30px;width: 100%;">Event Time</h3>
                     <div class="row">
-                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_From"></div>
+                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_From" required></div>
                         <div class="col-sm-2">
                             <h5 style="text-align: center;margin-top: 6px;">To</h5>
                         </div>
-                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_To"></div>
+                        <div class="col-sm-5"><input class="form-control" type="time" name="eTime_To" required></div>
                     </div>
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Description</h3>
-                    <div>
-                        <div id="toolbar_container" class="sun-editor"></div>
-                        <textarea class="form-control" id="editor" placeholder="Edit your description here to make your event looks more fun" name="eDesc"></textarea>
-                    </div>
+                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc"></textarea>
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Category</h3><input class="form-control" type="text" name="eCategory">
@@ -169,10 +174,7 @@
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
-                    <div>
-                        <div id="toolbar_container-1" class="sun-editor"></div>
-                        <textarea class="form-control" id="editor-1" placeholder="Insert placeholder text in sunEditorInit.js" name="eTnC"></textarea>
-                    </div>
+                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
                 </div>
             </section>
             
@@ -189,8 +191,16 @@
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
-    <script src="../js/Suneditor-WYSIWYG.js"></script>
     <script src="../js/createEventJS.js"></script>
+    <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+        selector: '#eTncEditor'
+        });
+        tinymce.init({
+        selector: '#eDesceditor'
+        });
+    </script>
 
 <?php
     require __DIR__ . '/footer.php'
