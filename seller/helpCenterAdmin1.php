@@ -776,16 +776,13 @@
 						<span class="closeM" id = "closeModalReply">&times;</span>
 							<div class="editQuestion">
 								
-								<!--ADD CATEGORY-->
-									
-									
+								<!--REPLY MESSAGE MODAL-->
 
-									
 									<div>
 										<h5 style = "font-size:1.4vw">Peanut Butter</h5>										
 										<h6 style = "font-size:1vw"><b>PeanutButterJellyJam@gmail.com</b></h6>
 										<h6 style = "font-size:0.9vw">Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
-									</div>
+									</div><br>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
 										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message"></textarea>
@@ -796,7 +793,7 @@
 										
 																				
 									</form>
-									
+								<!--REPLY MESSAGE MODAL-->
 									
 									
 								
