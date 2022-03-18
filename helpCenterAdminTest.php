@@ -4,56 +4,60 @@
 
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject'],$_POST['CUSubmit']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
- /**/
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $message = $_POST['message'];
-  $subject = $_POST['subject'];
-  
- // header('Content-Type: application/json');
-  
-  $to = $_POST['email'];
-  
-  if ($name === '') {
-   // print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
-    //exit();
-  }
-  if ($email === '') {
-    //print json_encode(array('message' => 'Email cannot be empty', 'code' => 0));
-   // exit();
-  } else {
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-     // print json_encode(array('message' => 'Email format invalid.', 'code' => 0));
-     // exit();
-    }
-  }
-  if ($subject === '') {
-   // print json_encode(array('message' => 'Subject cannot be empty', 'code' => 0));
-    //exit();
-  }
-  if ($message === '') {
-   // print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
-    //exit();
-  }
-  /*
-  $content="From: $name \n Email: $email \n Message: $message";
-  $recipient = "kitmincheong@gmail.com"; */
-  $header = "From: $email \r\n";
 
- $from = "Contact_Us_Mail@sgprototype2.com";
+  
+    //$email = $_POST['email'];
+ // $content="From: $name \n Email: $email \n Message: $message";
+  //$recipient = "kitmincheong@gmail.com"; 
  //$subject = "PHP Mail Sending Checking";
 // $message = "PHP mail works fine";
  //$header = "FROM:" . $from;
  //mail($recipient, $subject, $content, $mailheader)
+ 
+  /* THIS HOR UK IS THE EMAIL ^ jiu kaki see d
+ $name = $_POST['name'];
+  $message = $_POST['message'];
+  $subject = $_POST['subject'];
+  $to = $_POST['email'];
+
+ $header = "From: $email \r\n";
+ $from = "Contact_Us_Mail@sgprototype2.com";
+ 
  if(mail($to, $subject, $message, $header)){
 	  echo "<script>alert('Email sent!')</script>";
  }else{
 	 echo "<script>alert('Fail to sent!')</script>";
  }
+ */
+ 
+ 
  
   
-  /* For those whose mail are moving in spam try this mail($to,$Subject,$Message,$headers,'-fsomeone@example.com');
-someone@example.com don't miss that  -f TO ADD BEFORE*/
+  if ($name === '') {
+   // print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
+    
+  }
+  if ($email === '') {
+    //print json_encode(array('message' => 'Email cannot be empty', 'code' => 0));
+  
+  } else {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+     // print json_encode(array('message' => 'Email format invalid.', 'code' => 0));
+    
+    }
+  }
+  if ($subject === '') {
+   // print json_encode(array('message' => 'Subject cannot be empty', 'code' => 0));
+   
+  }
+  if ($message === '') {
+   // print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
+    
+  }
+  
+ 
+  
+ 
 }
 ?>
 
@@ -61,9 +65,9 @@ someone@example.com don't miss that  -f TO ADD BEFORE*/
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 		
-		
+	<!--START OF CONTACT US FORM-->	
 	<div  class = "faker"style ="width: 80%; margin: auto">
-      <!--Section: Contact v.2-->
+      
 		<section class="mb-4">
 
 			<!--Section heading-->
@@ -78,10 +82,8 @@ someone@example.com don't miss that  -f TO ADD BEFORE*/
 				<div class="col-md-9 mb-md-0 mb-5">
 					<form id="contact-form" name="contact-form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 
-						<!--Grid row-->
+						<!--Grid row of NAME/EMAIL-->
 						<div class="row">
-
-							<!--Grid column-->
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
@@ -89,9 +91,7 @@ someone@example.com don't miss that  -f TO ADD BEFORE*/
 									
 								</div>
 							</div>
-							<!--Grid column-->
-
-							<!--Grid column-->
+							
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
@@ -99,55 +99,54 @@ someone@example.com don't miss that  -f TO ADD BEFORE*/
 									
 								</div>
 							</div>
-							<!--Grid column-->
-
 						</div>
-						<!--Grid row-->
+						<!--END of Grid row-->	
 
-						<!--Grid row-->
+						<!--Grid row of SUBJECT-->
 						<div class="row">
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
 									<input type="text" id="subject" name="subject" class="form-control"  required>
-									
 								</div>
 							</div>
 						</div>
-						<!--Grid row-->
-
-						<!--Grid row-->
+						<!--END of Grid row-->		
+							
+						<!--Grid row for MESSAGE-->
 						<div class="row">
-
-							<!--Grid column-->
 							<div class="col-md-12">
-
 								<div class="md-form">
 									<label for="message">Your message</label>
 									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"  required></textarea>
-									
 								</div>
+							</div>	
+						</div>		
+						<!--END of Grid row-->		
 
-							</div>
-						</div>
-						<!--Grid row-->
 						<input type = "submit" name = "CUSubmit" class="btn btn-primary"  value = "Submit" >
 					</form>
 
-					<div class="text-center text-md-left">
-						<!--<a class="btn btn-primary" onclick="validateForm();">Send</a>-->
-					</div>
-					<div class="status"></div>
+					
 				</div>
-				
-
-				
-
 			</div>
+		</section>				
+								
+	</div>
+<!--END OF CONTACT US FORM-->	
+						
+							
+						
+						
+						
+				
 
-		</section>
-		</div>
-<!--Section: Contact v.2-->
+				
+
+			
+
+		
+		
 </div>
 <!-- /.container-fluid ----------------------------------------------------------------------------------------------->
 
