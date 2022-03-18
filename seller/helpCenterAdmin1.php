@@ -765,7 +765,7 @@
 						  <th scope="col" class = "col-3" style="text-align: center;">Status</th>
 						</tr>
 					  </thead>
-					  <tbody>
+					  
 							<?php
 							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
 								   FROM `contactUs` 
@@ -776,7 +776,8 @@
 								
 								while(mysqli_stmt_fetch($stmt)){
 		
-									echo"<tr>".
+									echo"<tbody>".
+										"<tr>".
 										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
 										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$c6</p></td>".
 										"<td class= 'tablespace'>".
@@ -785,12 +786,13 @@
 											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
 										"<tr>".
-										"<hr class='linelai'>";
+										"</tbody>".
+										"<hr class = 'linelai'>";
 								}
 								mysqli_stmt_close($stmt);
 							}
 							?>		               
-						 </tbody>
+						 
 						</table>			
 					 
 											
