@@ -91,6 +91,7 @@
 
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                    <h5>Product Images</h5>
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="drag-list">
