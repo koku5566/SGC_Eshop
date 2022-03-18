@@ -783,11 +783,11 @@
 			
 			
 		<table class="table table-borderless">
-		  <thead>
+		  <thead class = "table-secondary">
 			<tr>
-			  <th scope="col">First</th>
-			  <th scope="col">Last</th>
-			  <th scope="col">Handle</th>
+			  <th scope="col" class = "col">First</th>
+			  <th scope="col" class = "col-6">Last</th>
+			  <th scope="col" class = "col">Handle</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -804,8 +804,8 @@
 			  <td>@fat</td>
 			</tr>
 			<tr>
-			
-			  <td colspan="3">Larry the Bird</td>
+			  <td>Larry the Bird</td>
+			  <td>Larry the Bird</td>
 			  <td>@twitter</td>
 			</tr>
 		  </tbody>
