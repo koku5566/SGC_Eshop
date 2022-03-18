@@ -39,25 +39,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
  $check = true;
 	if (ltrim($CUname) === '') {
 	 $check = false;
-	 echo "<div class='alert alert-danger'>Name is required</div>";
+	 //echo "<div class='alert alert-danger'>Name is required</div>";
 	}
 	if (ltrim($CUemail) === '') {
 	 $check = false;
-	 echo "<div class='alert alert-danger'>Email is required</div>";
+	// echo "<div class='alert alert-danger'>Email is required</div>";
   
 	} else{
 		if (!filter_var($CUemail, FILTER_VALIDATE_EMAIL)) {
 				$check = false;
-				echo "<div class='alert alert-danger'>Email format is invalid</div>";
+				//echo "<div class='alert alert-danger'>Email format is invalid</div>";
 			}	
 	}
 	if (ltrim($CUsubject) === '') {
 	 $check = false;
-	 echo "<div class='alert alert-danger'>Subject is required</div>";
+	 //echo "<div class='alert alert-danger'>Subject is required</div>";
 	}
 	if (ltrim($CUmessage) === '') {
 	 $check = false;
-     echo "<div class='alert alert-danger'>Message is required</div>";
+     //echo "<div class='alert alert-danger'>Message is required</div>";
 	}
   
  
@@ -88,7 +88,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 			}
 			
 		}else{
-			echo "<div class='alert alert-danger'>Fail to sent Email, please try again later</div>";
+			echo "<div class='alert alert-danger'>Failure to sent, please make sure relavant input are properly typed</div>";
 		}
 			
   
