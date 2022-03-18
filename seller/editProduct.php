@@ -110,7 +110,151 @@
                                                             </label>
                                                         </div>
                                                     </div>
+                                                    <p>Cover Picture</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                     <p>Picture 1</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 2</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 3</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 4</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 5</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 6</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 7</p>
+                                                </div>
+                                                <div class="drag-item" draggable="true">
+                                                    <div class="image-container">
+                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                        <div class="image-layer">
+                                                            
+                                                        </div>
+                                                        <div class="image-tools-delete hide">
+                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="image-tools-add">
+                                                            <label class="custom-file-upload">
+                                                                <input accept="image/*" type="file" class="imgInp" />
+                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <p>Picture 8</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,13 +427,13 @@
     };
 
     DragNSort.prototype.onDragOver = function (_this, event) {
-    if (event.preventDefault) {
-    event.preventDefault();
-    }
+        if (event.preventDefault) {
+            event.preventDefault();
+        }
 
-    event.dataTransfer.dropEffect = 'move';
-
-    return false;
+        event.dataTransfer.dropEffect = 'move';
+        rearrangeLabel();
+        return false;
     };
 
     DragNSort.prototype.onDrop = function (_this, event) {
@@ -328,6 +472,48 @@
         dragEnterClass: 'drag-enter'
     });
     draggable.init();
+
+    function rearrangeLabel(){
+        var draggableItem = document.querySelectorAll('.drag-item');
+        var counter=1;
+        var text = "";
+        draggableItem.forEach(item => {
+
+            switch(counter)
+            {
+                case 1:
+                    text = "Cover Picture"
+                    break;
+                case 2:
+                    text = "Picture 1"
+                    break;
+                case 3:
+                    text = "Picture 2"
+                    break;
+                case 4:
+                    text = "Picture 3"
+                    break;
+                case 5:
+                    text = "Picture 4"
+                    break;
+                case 6:
+                    text = "Picture 5"
+                    break;
+                case 7:
+                    text = "Picture 6"
+                    break;
+                case 8:
+                    text = "Picture 7"
+                    break;
+                case 9:
+                    text = "Picture 8"
+                    break;
+            }
+
+            item.getElementsByTagName('p')[0].innerHTML = text;
+            counter++;
+        });
+    }
 
     const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
