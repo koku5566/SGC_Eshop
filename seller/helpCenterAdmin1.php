@@ -784,14 +784,15 @@
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
 											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
-										"<tr>";
+										"<tr>".
+										"<hr class='linelai'>";
 								}
 								mysqli_stmt_close($stmt);
 							}
 							?>		               
 						 </tbody>
 						</table>			
-					 <hr class = "linelai">
+					 
 											
 									  
 									
