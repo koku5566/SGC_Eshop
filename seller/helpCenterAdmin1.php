@@ -740,23 +740,28 @@
 		</div>
 		
 		<!--CONTACT US SECTION-->
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-		  <li class="nav-item">
-			<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-		  </li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-		  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-		  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-		  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+		<div class = "pp2">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+				<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">According to the Osiris myth, Horus was the son of Isis and Osiris, magically conceived after the murder of Osiris by his brother Seth. Horus was raised to avenge his father’s murder. One tradition holds that Horus lost his left eye fighting with Seth, but his eye was magically healed by the god Thoth. Because the right and left eyes of Horus were associated, respectively, with the sun and the moon, the loss and restoration of Horus’s left eye gave a mythical explanation for the phases of the moon.</div>
+			  
+			  
+			  
+			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
+			  
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Anubis was concerned with funerary practices and the care of the dead. He was usually represented as a jackal or as a man with the head of a jackal. The association of jackals with death and funerals likely arose because Egyptians would have observed jackals scavenging around cemeteries.</div>
+			</div>
 		</div>
-    
 
 
 
@@ -770,7 +775,9 @@
 
 
 <style>
-
+.pp2{
+	margin-top 15px;
+}
 h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
