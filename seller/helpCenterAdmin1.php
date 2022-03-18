@@ -753,40 +753,37 @@
 			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
+			  <!--SECTION ONE-->
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-					<table class="table table-borderless table-hover">
+					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
 					  <thead class = "table-secondary">
 						<tr>
-						  <th scope="col" class = "col-3">First</th>
-						  <th scope="col" class = "col-6">Last</th>
-						  <th scope="col" class = "col-3">Handle</th>
+						  <th scope="col" class = "col-3" style="text-align: center;">Name</th>
+						  <th scope="col" class = "col-6" style="text-align: center;">Message</th>
+						  <th scope="col" class = "col-3" style="text-align: center;">Status</th>
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>
-						  
+						<tr>						  
 						  <td>Mark</td>
 						  <td>Otto</td>
 						  <td>@mdo</td>
 						</tr>
-						<tr>
-						  
-						  <td>Jacob</td>
-						  <td>Thornton</td>
-						  <td>@fat</td>
-						</tr>
-						<tr>
-						  <td>Larry the Bird</td>
-						  <td>Larry the Bird</td>
-						  <td>@twitter</td>
+						 <hr class = "linelai">
+						<tr>						  
+						  <td>Mark</td>
+						  <td>Otto</td>
+						  <td>@mdo</td>
 						</tr>
 					  </tbody>
+					 
 					</table>	
 			  </div>
-			  
+			  <!--SECTION TWO-->
 			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
-			  
+			  <!--SECTION THREE-->
 			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab">Anubis was concerned with funerary practices and the care of the dead. He was usually represented as a jackal or as a man with the head of a jackal. The association of jackals with death and funerals likely arose because Egyptians would have observed jackals scavenging around cemeteries.</div>
+			  
 			</div>
 		</div>
 
@@ -856,6 +853,9 @@
 
 
 <style>
+.linelai{
+	border: 1px solid black;
+}
 .pp2{
 	margin-top 15px;
 }
