@@ -432,23 +432,23 @@
         }
 
         event.dataTransfer.dropEffect = 'move';
-        rearrangeLabel();
         return false;
     };
 
     DragNSort.prototype.onDrop = function (_this, event) {
         if (event.stopPropagation) {
-        event.stopPropagation();
-    }
+            event.stopPropagation();
+        }
 
-    if (_this.$activeItem !== this) {
-        _this.$activeItem.innerHTML = this.innerHTML;
-        this.innerHTML = event.dataTransfer.getData('text/html');
-    }
+        if (_this.$activeItem !== this) {
+            _this.$activeItem.innerHTML = this.innerHTML;
+            this.innerHTML = event.dataTransfer.getData('text/html');
+        }
 
-    _this.removeClasses();
+        _this.removeClasses();
+        rearrangeLabel();
 
-    return false;
+        return false;
     };
 
     DragNSort.prototype.bind = function () {
