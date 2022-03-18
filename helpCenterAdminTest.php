@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control"  required>
+									<input type="text" id="name" name="name" class="form-control"  placeholder="Full Name*" required>
 									
 								</div>
 							</div>
@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="email" id="email" name="email" class="form-control"  required>
+									<input type="email" id="email" name="email" class="form-control"  placeholder="Email*" required>
 									
 								</div>
 							</div>
@@ -108,6 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 								<div class="md-form mb-0">
 									<label for="subject" class="">Campus</label>
 									<select class="form-control" id="CUCollege" name = "CUCollegeList" required>
+									  <option value = "" disabled>Campus*</option>
 									  <option value = "C-SJ">SEGI College Subang Jaya</option>
 									  <option value = "C-KL">SEGI College Kuala Lumpur</option>
 									  <option value = "C-P">SEGI College Penang</option>
@@ -156,7 +157,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 <!--END OF CONTACT US FORM-->	
 						
 							
-						
+						<!-- Example split danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
 						
 						
 				
