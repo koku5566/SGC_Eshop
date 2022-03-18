@@ -1,7 +1,7 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 
-    if(isset($_POST['add']) || isset($_POST['publish']) ){ 
+    if(isset($_POST['add']) || isset($_POST['publish'])){ 
 
         $publish = 1;
         if(isset($_POST['add']))
@@ -66,10 +66,6 @@
         {
             echo("Error Insert Fail");
         }
-
-
-        
-
     } 
 ?>
 
