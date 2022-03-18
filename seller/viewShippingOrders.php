@@ -5,11 +5,64 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%; font-size:14px">
+<div class="container-fluid" style="width:100%; font-size:14px">
+
+<!-- Order Filter -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h5 class="m-0 font-weight-bold text-primary">Filter Order</h5>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <select class="form-select" name="searchBy" aria-label="SearchBy"
+                                    style="color:currentColor;">
+                                    <option selected value="id">Order ID</option>
+                                    <option value="name">Buyer Name</option>
+                                    <option value="product">Product</option>
+                                    <option value="trackingnumber">Tracking Number</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="keyword" placeholder="Search order">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Order Date</span>
+                            </div>
+                            <input type="text" class="form-control" name="daterange" value="01/01/2022 - 01/15/2022" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+
+                    </div>
+                    <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                        <button type="button" class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                        <button type="button" class="btn btn-outline-dark">Reset</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="card  shadow mb-4">
         <div class="card-body">
-
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+            
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -31,38 +84,9 @@
             </ul>
 
             <!-- Tab panes -->
-            <div class="tab-content">
+            <div class="tab-content mb-3">
                 <!--------------------------------All-------------------------------------->
-                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-                    <div class="row">
-                        <div class="date-filter col-6 mb-4" style="float:right;">
-                            <div class="row">
-                                <div class="col"><span style="white-space:nowrap; margin-right:10px;">Order Creation
-                                        Date: </span></div>
-                                <div class="col"><input type="text" class="form-control" name="daterange"
-                                        value="01/01/2022 - 01/15/2022" /></div>
-                            </div>
-
-                        </div>
-
-                        <div class="filter-search col-6">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option>Order ID</option>
-                                        <option>Buyer Name</option>
-                                        <option>Product</option>
-                                        <option>Tracking Number</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control input-text" placeholder="Search order"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append"> <button class="btn btn-outline-primary"
-                                        type="button"><i class="fa fa-search"></i></button> </div>
-                            </div>
-                        </div>
-                    </div>
-
+             
                     <div class="order-list-panel">
                         <div class="top-card card-header">
                             <div class="row">
@@ -116,7 +140,8 @@
 
         </div>
     </div>
-
+    </div>
+</div>
 
 </div>
 <!-- /.container-fluid -->
