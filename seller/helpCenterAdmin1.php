@@ -28,7 +28,33 @@
                 mysqli_stmt_close($stmt);
             
             }
-    }	
+    }
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){	
+	
+			$selectedPID = $_POST['CUid'];
+			echo ($selectedPID );
+            if($_POST['CUreply'] === "Reply"){
+				$sql = "SELECT cu_id, name, email, campus, subject, message, status 
+					    FROM `contactUs` 
+					    WHERE cu_id = ? && disable_date IS NULL";
+                                    
+				if($stmt = mysqli_prepare ($conn, $sql)){
+					mysqli_stmt_bind_param($stmt, "s", $selectedPID);	//HARLO IF THIS INT = i, STRING = s
+					mysqli_stmt_execute($stmt);
+					mysqli_stmt_store_result($stmt);
+					
+					if(mysqli_stmt_num_rows($stmt) == 1){
+						mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+						mysqli_stmt_fetch($stmt);
+					}
+					
+					mysqli_stmt_free_result($stmt);
+					mysqli_stmt_close($stmt);
+				
+				}
+			}
+            
+	}
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pcategorylist'], $_POST['pquestion'], $_POST['ptextarea']) && !empty($_POST['pcategorylist']) && !empty($_POST['pquestion']) && !empty($_POST['ptextarea']) && $_POST['uContent'] === 'Update'){	
     
         //echo "<script>alert('LETS FCKING GOooooooooooooooooooo')</script>";
