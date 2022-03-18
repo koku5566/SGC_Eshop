@@ -159,17 +159,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							
 						<!-- Example split danger button -->
 <div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
+  <input type="text" id="sohai" name="sohai" class="form-control" placeholder="sohai*" required>
   <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
-  </div>
+  <select class="form-control dropdown-menu" id="CUCollege" name = "CUCollegeList" required>
+	  <option value = "" class="dropdown-item" disabled>Jokes aside*</option>
+	  <option value = "C-SJ" class="dropdown-item">General Enquiry</option>
+	  <option value = "C-KL" class="dropdown-item">Bug Related</option>
+	  <option value = "C-P" class="dropdown-item">Payment Related</option>
+	  <option value = "C-S" class="dropdown-item">Account Related</option>
+  </select>		
 </div>
 						
 						
