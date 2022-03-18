@@ -20,17 +20,17 @@ if(isset($_POST['update']))
 			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
 		}
 
-		$sql_u = "SELECT * FROM user WHERE user_id = '$UID'";
+		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
 			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE user_id='$UID'";
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE user_id='$UID'";
+				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE username='$UID'";
 			}
 			
 			if (mysqli_query($conn, $sql)) {
@@ -53,7 +53,7 @@ if(isset($_POST['update']))
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<?php
 		$UID = $_SESSION["id"];
-		$sql = "SELECT * FROM user WHERE user_id = '$UID'";
+		$sql = "SELECT * FROM user WHERE username = '$UID'";
 
 		$res_data = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($res_data) > 0){
@@ -67,14 +67,20 @@ if(isset($_POST['update']))
 					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
 					</div>
 					
+					<div class=\"form-group\">
 					<label>Email Address</label>
 					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
-					
+					</div>
+
+					<div class=\"form-group\">
 					<label>Password</label>
 					<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
-					
+					</div>
+
+					<div class=\"form-group\">
 					<label>Contact</label>
 					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					</div>
 					
 					<button type=\"submit\" name=\"update\">Update</button>
 					");

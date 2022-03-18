@@ -13,11 +13,6 @@ function EventDayChecker()
     if(onedayCheck.checked)
     {
         endDate.value = startDate.value;
-        endDate.disabled = true;
-    }
-    else
-    {
-        endDate.disabled = false;
     }
 }
 
@@ -26,7 +21,6 @@ function updateEndIfOne()
     if(onedayCheck.checked)
     {
         endDate.value = startDate.value;
-        endDate.disabled = true;
     }
 }
 
@@ -44,11 +38,6 @@ function onlineLocation()
     if(onlineCheckBtn.checked)
     {
         locationOption.value = "Online";
-        locationOption.disabled = true;
-    }
-    else
-    {
-        locationOption.disabled = false;
     }
 }
 

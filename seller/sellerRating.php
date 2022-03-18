@@ -37,7 +37,7 @@ background-color: #EEEDEE;
 }
 
 .sellerProfilePic{
-  width: 65px;
+  width: 50px;
   height:40px;
 }
 

@@ -147,14 +147,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 											
 						while(mysqli_stmt_fetch($stmt)){		
 						    echo"<script>u.push('$c1')</script>";
-						   
-							echo "<div id='faq$c1' class='faq'>										  
+							
+							if(!empty($c6) && !empty($c7)){
+								echo "<div id='faq$c1' class='faq'>										  
 								 <div class='faq_text'>
 								 <h2>$c4</h2>
-								 <p>$c5</p>
+								 <p>$c5	<br>
+								 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss2'>	</p>
 							     </div>
 							     <span class='btnd' id='btn$c1'>+</span>
 					             </div>";		
+								
+							}else{
+								echo "<div id='faq$c1' class='faq'>										  
+								 <div class='faq_text'>
+								 <h2>$c4</h2>
+								 <p>$c5	</p>
+							     </div>
+							     <span class='btnd' id='btn$c1'>+</span>
+					             </div>";		
+							}
+													 
 							 $pp++;
 							}
 				
@@ -192,13 +205,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 						while(mysqli_stmt_fetch($stmt)){		
 						    echo"<script>u.push('$c1')</script>";
 						   
-							echo "<div id='faq$c1' class='faq'>										  
-								 <div class='faq_text'>
-								 <h2>$c4</h2>
-								 <p>$c5</p>
-							     </div>
-							     <span class='btnd' id='btn$c1'>+</span>
-					             </div>";		
+						   if(!empty($c6) && !empty($c7)){
+								echo "<div id='faq$c1' class='faq'>										  
+									 <div class='faq_text'>
+									 <h2>$c4</h2>
+									 <p>$c5 <br>
+									 <img src ='data: $c7;base64, " . base64_encode($c6)."' class='imgCss2'></p>								
+									 </div>
+									 <span class='btnd' id='btn$c1'>+</span>
+									 </div>";								 
+							     	
+						   }else{
+							   echo "<div id='faq$c1' class='faq'>										  
+									 <div class='faq_text'>
+									 <h2>$c4</h2>
+									 <p>$c5</p> 
+									 </div>
+									 <span class='btnd' id='btn$c1'>+</span>
+									 </div>";											 					
+						   }
+						   
+							
 							 $pp++;
 							}
 				
@@ -230,6 +257,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 			</div>
 	</main>
 <!--END OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->		
+
+<!--Contact Us-->
+
+
 	
 
 </div>
@@ -323,6 +354,13 @@ h1:after{
 	width: 100%;
 	max-width: 150px;  
 
+}
+.imgCss2{
+	height: 100px; 
+	width: 100%;
+	max-width: 100px; 
+	display: block;
+	margin: auto;
 }
 .catTag{
 	text-align: center;
