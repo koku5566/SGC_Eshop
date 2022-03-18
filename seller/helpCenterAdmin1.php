@@ -738,7 +738,9 @@
 	
 				</div>
 		</div>
-		
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Help Center</h1>
+		</div>
 		<!--CONTACT US SECTION-->
 		<div class = "pp2">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -855,7 +857,7 @@
     opacity: 0.5;
 }
 .pp2{
-	margin-top 15px;
+	margin-top: 15px;
 }
 h4.displayCategoryModal{
 	padding: 15px;
