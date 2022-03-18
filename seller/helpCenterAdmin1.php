@@ -769,14 +769,7 @@
 						  <td>Otto</td>
 						  <td>@mdo</td>
 						</tr>
-						 
-						<tr>						  
-						  <td>Mark</td>
-						  <td>Otto</td>
-						  <td>@mdo</td>
-						</tr>
 					  </tbody>
-					 
 					</table>	
 					<hr class = "linelai">
 			  </div>
@@ -855,7 +848,11 @@
 
 <style>
 .linelai{
-	border: 1px solid black;
+	border: 1px solid #858796;
+	background-color: #858796;
+    margin: 0 auto;
+    width: 95%;
+    opacity: 0.5;
 }
 .pp2{
 	margin-top 15px;
