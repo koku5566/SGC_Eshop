@@ -777,12 +777,12 @@
 								while(mysqli_stmt_fetch($stmt)){
 		
 									echo"<tr>".
-										"<td>$c2</td>".
-										"<td><b>$c5</b> \n  $c6</td>".
-										"<td>".
+										"<td class= 'tablespace'>$c2</td>".
+										"<td class= 'tablespace'><b>$c5</b> <br>$c6</td>".
+										"<td class= 'tablespace'>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST'>" .
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
-											"<input type = 'submit' name = 'CUreply' value = 'Reply'></form>" .
+											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
 										"<tr>";
 								}
@@ -871,6 +871,10 @@
 
 
 <style>
+.tablespace{
+	margin: 0 auto;
+	
+}
 .linelai{
 	border: 1px solid #858796;
 	background-color: #858796;
