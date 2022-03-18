@@ -767,6 +767,8 @@
 					  </thead>
 					  <tbody>
 							<?php
+								$pp = 1;
+							
 							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
 								   FROM `contactUs` 
 								   WHERE disable_date IS NULL";
@@ -775,9 +777,9 @@
 								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
 								
 								while(mysqli_stmt_fetch($stmt)){
-		
+									
 									echo"<tr>".
-										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
+										"<td class= 'tablespace'>$pp<div style = 'text-align: center'>$c2</div></td>".
 										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$c6</p></td>".
 										"<td class= 'tablespace'>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
@@ -785,6 +787,8 @@
 											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
 										"<tr>";
+										
+										$pp++;
 								}
 								mysqli_stmt_close($stmt);
 							}
