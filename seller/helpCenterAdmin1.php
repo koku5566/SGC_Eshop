@@ -779,7 +779,7 @@
 									if(strlen($c6) > 100){
 										$CUtrim  = substr($c6, 0, 50);
 										$CUmsg = "$CUtrim.....";
-									}else($CUmsg = $c6;)
+									}else{$CUmsg = $c6;}
 									
 									if($c7 == 0){
 										echo"<tr>".
