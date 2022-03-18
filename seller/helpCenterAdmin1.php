@@ -776,10 +776,15 @@
 								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
 								
 								while(mysqli_stmt_fetch($stmt)){
+									if(strlen($c6) > 100){
+										$CUtrim  = substr($c6, 0, 50);
+										$CUmsg = "$CUtrim.....";
+									}else($CUmsg = $c6;)
+									
 									if($c7 == 0){
 										echo"<tr>".
 										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
-										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$c6</p></td>".
+										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
 										"<td class= 'tablespace'>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
@@ -789,7 +794,7 @@
 									}else{
 										echo"<tr>".
 										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
-										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$c6</p></td>".
+										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
 										"<td class= 'tablespace'>".
 											"<p style = 'text-align: center'>Replied</p>".
 										"</td>" .	
