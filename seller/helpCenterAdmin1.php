@@ -769,7 +769,7 @@
 						  <td>Otto</td>
 						  <td>@mdo</td>
 						</tr>
-						 <hr class = "linelai">
+						 
 						<tr>						  
 						  <td>Mark</td>
 						  <td>Otto</td>
@@ -778,6 +778,7 @@
 					  </tbody>
 					 
 					</table>	
+					<hr class = "linelai">
 			  </div>
 			  <!--SECTION TWO-->
 			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
