@@ -775,22 +775,15 @@
 								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
 								
 								while(mysqli_stmt_fetch($stmt)){
-									
-									
-									
-									
+		
 									echo"<tr>".
 										"<td>$c2</td>".
 										"<td><b>$c5</b> \n  $c6</td>".
-										if($c7 == 0){
 										"<td>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST'>" .
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
 											"<input type = 'submit' name = 'CUreply' value = 'Reply'></form>" .
 										"</td>" .	
-										}else{
-											"<td>Replied</td>" .										
-										}
 										"<tr>";
 								}
 								mysqli_stmt_close($stmt);
