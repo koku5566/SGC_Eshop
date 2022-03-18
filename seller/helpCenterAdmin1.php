@@ -764,6 +764,70 @@
 	
 				</div>
 		</div>
+		
+		<!--END OF PP------------------------------------------||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||------------------->
+		
+		<!--STAR OF MODAL REPLY MESSAGE-->
+			
+			<div id="myModalReply" class="modal">
+					<!--THE MODAL CONTENT-->
+						<div class="modal-content" style = "height: 400px;">
+						<h4 class = "displayCategoryModal" >Add Category</h4>
+						<span class="closeM" id = "closeModalReply">&times;</span>
+							<div class="editQuestion">
+								
+								<!--ADD CATEGORY-->
+									<div id = "a_category">
+									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
+
+										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
+										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
+									
+										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'>
+												<option value="">-Select Category-</option>
+												<?php
+													$sql ="SELECT hcc_id, category
+														   FROM helpCenterCategory 								   
+														   WHERE disable_date IS NULL ";
+													if($stmt = mysqli_prepare ($conn, $sql)){
+														mysqli_stmt_execute($stmt);
+														mysqli_stmt_bind_result($stmt, $s1,$s2);
+														
+														while(mysqli_stmt_fetch($stmt)){
+																echo "<option value='$s1'>$s2</option>";
+															}
+														mysqli_stmt_close($stmt);
+													}
+												?>	
+											</select>
+											<br><br>		
+										
+										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
+										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
+
+										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
+										
+										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
+										
+										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete' disabled = 'disabled'>
+																				
+									</form>
+									
+									
+									
+								
+							</div>
+
+						</div>
+				</div>
+			</div>	
+						
+			<!--END OF MODAL REPLY MESSAGE-->
+		
+		
+		
+		
+		
 		<div class="d-sm-flex align-items-center justify-content-between mb-4" style = "margin-top: 15px;">
 			<h1 class="h3 mb-0 text-gray-800">Contact Us</h1>
 		</div>
@@ -815,7 +879,7 @@
 										"<td class= 'tablespace'>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
-											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
+											"<input type = 'submit' name = 'CUreply' id = 'CUbtnreply' value = 'Reply' class='btn btn-danger'></form>" .
 										"</td>" .	
 										"<tr>";
 									}else{
@@ -869,7 +933,7 @@
 										"<td class= 'tablespace'>".
 											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
 											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
-											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
+											"<input type = 'submit' name = 'CUreply' value = 'Reply' id = 'CUbtnreply' class='btn btn-danger'></form>" .
 										"</td>" .	
 										"<tr>";		
 								}
@@ -924,7 +988,7 @@
 			   </div>
 			</div>
 		</div>
-		<!--END OF -->
+		<!--END OF CONTACT US-->
 			
 			
 			
@@ -1208,6 +1272,19 @@ spanAddCat.onclick = function() {
   
 }
 
+//FOR ADD REPLY
+var modalReply = document.getElementById("myModalReply");
+var btnAddReply = document.getElementById("CUbtnreply");
+var spanReply = document.getElementsByClassName("closeM")[3];
+
+btnAddReply.onclick = function() {
+  modalReply.style.display = "block";
+}
+spanReply.onclick = function() {
+  modalReply.style.display = "none";
+  
+}
+
 /****************************************************************/
 
 window.onclick = function(event) {
@@ -1219,6 +1296,9 @@ window.onclick = function(event) {
   }
   else if (event.target == modalAddCat){
 	 modalAddCat.style.display = "none";
+  }
+  else if (event.target == modalReply){
+	 modalReply.style.display = "none";
   }
 	  
 }
