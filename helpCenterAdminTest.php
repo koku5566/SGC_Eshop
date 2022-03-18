@@ -88,7 +88,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 			}
 			
 		}else{
-			echo "<div class='alert alert-danger'>Failure to sent, please make sure relavant input are properly typed</div>";
+			echo "<div class='alert alert-danger'>Failure to sent, please check input and resent again</div>";
 		}
 			
   
