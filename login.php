@@ -2,7 +2,7 @@
 
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
-		header('location: index.php');
+        ?><script>window.location = '<?php echo($domain/index.php);?>';</script><?php
 		exit;
 	}
 
@@ -28,7 +28,7 @@
 					$_SESSION['id'] = $row["username"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					header("location: index.php");
+					?><script>window.location = '<?php echo($domain/index.php);?>';</script><?php
 				}
 			} else {
 				$Login = false;
