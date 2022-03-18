@@ -101,7 +101,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							</div>
 						</div>
 						<!--END of Grid row-->	
-
+						
+						<!--Grid row of College-->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="md-form mb-0">
+									<label for="subject" class="">Campus</label>
+									<select class="form-control" id="CUCollege" name = "CUCollegeList" required>
+									  <option value = "C-SJ">SEGI College Subang Jaya</option>
+									  <option value = "C-KL">SEGI College Kuala Lumpur</option>
+									  <option value = "C-P">SEGI College Penang</option>
+									  <option value = "C-S">SEGI College Sarawak</option>
+									  <option value = "C-KD">SEGI College Kota Damansara</option>
+									  <option value = "U-KD">SEGI University Kota Damansara</option>  
+									</select>		 
+								</div>
+							</div>
+						</div>
+						<!--END of Grid row-->									
+																
+								
+						
 						<!--Grid row of SUBJECT-->
 						<div class="row">
 							<div class="col-md-12">
