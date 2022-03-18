@@ -785,10 +785,10 @@
 									</div><br>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
-										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message"></textarea>
+										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
 
 
-										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid'>
+										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid' disabled>
 										
 										
 																				
@@ -810,6 +810,28 @@
 									
 									echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";	
 								}
+								
+									
+									
+																	
+								echo "<script>function myCUFunction(){
+									
+									  let msgreply = document.getElementById('CUmessagereply').value;
+									  
+									  
+									  let f = false;
+										
+										if (msgreply  === '') 
+										{f = false;}		
+										else			
+										{f = true;} 
+										
+										if(f == true)
+										{document.getElementById('CUreplyadminid').disabled = false;}	
+										else
+										{document.getElementById('CUreplyadminid').disabled = true;}
+										
+								}</script>";
 						?>
 			<!--END OF MODAL REPLY MESSAGE-->
 		
