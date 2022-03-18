@@ -821,7 +821,15 @@
 						</div>
 				</div>
 			</div>	
-						
+			
+						<?php
+								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){
+									
+									$CUid = $_POST['CUid'];
+									
+									echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";	
+								}
+						?>
 			<!--END OF MODAL REPLY MESSAGE-->
 		
 		
@@ -1274,12 +1282,10 @@ spanAddCat.onclick = function() {
 
 //FOR ADD REPLY
 var modalReply = document.getElementById("myModalReply");
-var btnAddReply = document.getElementById("CUbtnreply");
+//var btnAddReply = document.getElementById("CUbtnreply");
 var spanReply = document.getElementsByClassName("closeM")[3];
 
-btnAddReply.onclick = function() {
-  modalReply.style.display = "block";
-}
+
 spanReply.onclick = function() {
   modalReply.style.display = "none";
   
