@@ -770,7 +770,8 @@
 							
 							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
 								   FROM `contactUs` 
-								   WHERE disable_date IS NULL";
+								   WHERE disable_date IS NULL 
+                                   ORDER BY cu_id DESC";
 							if($stmt = mysqli_prepare ($conn, $sql)){
 								mysqli_stmt_execute($stmt);
 								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
@@ -807,21 +808,95 @@
 							?>		               
 						 </tbody>
 						</table>			
-					 <hr class = "linelai">
-											
-									  
-									
-										 
-						
+					 <hr class = "linelai">		
 			  </div>
 			  <!--SECTION TWO-->
-			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
+			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">
+					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
+					  <thead class = "table-secondary">
+						<tr>
+						  <th scope="col" class = "col-3" style="text-align: center;">Name</th>
+						  <th scope="col" class = "col-6" style="text-align: center;">Message</th>
+						  <th scope="col" class = "col-3" style="text-align: center;">Status</th>
+						</tr>
+					  </thead>
+					  <tbody>
+							<?php
+							
+							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
+								   FROM `contactUs` 
+								   WHERE status = 0 AND disable_date IS NULL 
+                                   ORDER BY cu_id DESC";
+							if($stmt = mysqli_prepare ($conn, $sql)){
+								mysqli_stmt_execute($stmt);
+								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+								
+								while(mysqli_stmt_fetch($stmt)){
+									if(strlen($c6) > 100){
+										$CUtrim  = substr($c6, 0, 50);
+										$CUmsg = "$CUtrim.....";
+									}else{$CUmsg = $c6;}
+										echo"<tr>".
+										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
+										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
+										"<td class= 'tablespace'>".
+											"<p style = 'text-align: center'>Replied</p>".
+										"</td>" .	
+										"<tr>";
+								}
+								mysqli_stmt_close($stmt);
+							}
+							?>		               
+						 </tbody>
+						</table>			
+					 <hr class = "linelai">
+			  </div>
 			  <!--SECTION THREE-->
-			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab">Anubis was concerned with funerary practices and the care of the dead. He was usually represented as a jackal or as a man with the head of a jackal. The association of jackals with death and funerals likely arose because Egyptians would have observed jackals scavenging around cemeteries.</div>
-			  
+			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab">
+					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
+					  <thead class = "table-secondary">
+						<tr>
+						  <th scope="col" class = "col-3" style="text-align: center;">Name</th>
+						  <th scope="col" class = "col-6" style="text-align: center;">Message</th>
+						  <th scope="col" class = "col-3" style="text-align: center;">Status</th>
+						</tr>
+					  </thead>
+					  <tbody>
+							<?php
+							
+							$sql ="SELECT cu_id, name, email, campus, subject, message, status 
+								   FROM `contactUs` 
+								   WHERE status = 1 AND disable_date IS NULL 
+                                   ORDER BY cu_id DESC";
+							if($stmt = mysqli_prepare ($conn, $sql)){
+								mysqli_stmt_execute($stmt);
+								mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+								
+								while(mysqli_stmt_fetch($stmt)){
+									if(strlen($c6) > 100){
+										$CUtrim  = substr($c6, 0, 50);
+										$CUmsg = "$CUtrim.....";
+									}else{$CUmsg = $c6;}
+										echo"<tr>".
+										"<td class= 'tablespace' style = 'text-align: center'>$c2</td>".
+										"<td class= 'tablespace'><p style = 'text-align: center'><b>$c5</b> <br>$CUmsg</p></td>".
+										"<td class= 'tablespace'>".
+											"<form action = '". $_SERVER['PHP_SELF']."'method = 'POST' style = 'display: flex;justify-content: center;'>" .
+											"<input type = 'hidden' name = 'CUid' value = '".$c1."'>" .
+											"<input type = 'submit' name = 'CUreply' value = 'Reply' class='btn btn-danger'></form>" .
+										"</td>" .	
+										"<tr>";	
+								}
+								mysqli_stmt_close($stmt);
+							}
+							?>		               
+						 </tbody>
+						</table>			
+					 <hr class = "linelai">
+			   </div>
 			</div>
 		</div>
-
+		<!--END OF -->
 			
 			
 			
