@@ -777,11 +777,11 @@
 							<div class="editQuestion">
 								
 								<!--REPLY MESSAGE MODAL-->
-
+									
 									<div>
-										<h5 style = "font-size:1.4vw">Peanut Butter</h5>										
-										<h6 style = "font-size:1vw"><b>PeanutButterJellyJam@gmail.com</b></h6>
-										<h6 style = "font-size:0.9vw">Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
+										<h5 style = "font-size:1.4vw"><?php echo(isset($c2) && !empty ($c2))? $c2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></b></h6>
+										<h6 style = "font-size:0.9vw"><?php echo(isset($c6) && !empty ($c6))? $c6 : ''; ?></h6>										
+										
 									</div><br>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
