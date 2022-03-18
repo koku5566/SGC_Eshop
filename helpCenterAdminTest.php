@@ -3,7 +3,7 @@
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject'],$_POST['CUSubmit']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemail'],$_POST['CUmessage'],$_POST['CUsubject'],$_POST['CUcampuslist'],$_POST['CUsubmit']) && !empty($_POST["CUname"]) && !empty($_POST["CUemail"]) && !empty($_POST["CUmessage"]) && !empty($_POST["CUsubject"]) && !empty($_POST["CUcampuslist"])){
 
   
     //$email = $_POST['email'];
@@ -31,29 +31,59 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
  */
  
  
+ $CUname = $_POST['CUname'];
+ $CUemail = $_POST['CUemail'];
+ $CUmessage = $_POST['CUmessage'];
+ $CUsubject = $_POST['CUsubject'];
+ $CUcampuslist = $_POST['CUcampuslist'];
+ $check = true;
+	if (ltrim($CUname) === '') {
+	 $check = false;
+	 echo "<div class='alert alert-danger'>Name is required</div>";
+	}
+	if (ltrim($CUemail) === '') {
+	 $check = false;
+	 echo "<div class='alert alert-danger'>Email is required</div>";
+  
+	} else{
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				
+				echo "<div class='alert alert-danger'>Email format is invalid</div>";
+			}	
+	}
+	if (ltrim($CUsubject) === '') {
+	 $check = false;
+	 echo "<div class='alert alert-danger'>Subject is required</div>";
+	}
+	if (ltrim($CUmessage) === '') {
+	 $check = false;
+     echo "<div class='alert alert-danger'>Message is required</div>";
+	}
+  
  
+ $sql = "INSERT INTO `contactUs`(`name`, `email`, `campus`, `subject`, `message`) VALUES (?,?,?,?,?)";
+ 
+		if($check == true){
+			if($stmt = mysqli_prepare($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, 'sssss', $CUname,$CUemail,$CUcampuslist,$CUsubject,$CUmessage); 	
+		
+				mysqli_stmt_execute($stmt);
+			
+				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+				{
+					 echo "<div class='alert alert-success'>Thank you, we will get back to you soon</div>";
+				}else{
+					echo "<div class='alert alert-danger'>Fail to Insert</div>";
+				}
+		
+				mysqli_stmt_close($stmt);
+			}
+			
+		}else{
+			echo "<div class='alert alert-danger'>Fail to sent Email</div>";
+		}
+			
   
-  if ($name === '') {
-   // print json_encode(array('message' => 'Name cannot be empty', 'code' => 0));
-    
-  }
-  if ($email === '') {
-    //print json_encode(array('message' => 'Email cannot be empty', 'code' => 0));
-  
-  } else {
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-     // print json_encode(array('message' => 'Email format invalid.', 'code' => 0));
-    
-    }
-  }
-  if ($subject === '') {
-   // print json_encode(array('message' => 'Subject cannot be empty', 'code' => 0));
-   
-  }
-  if ($message === '') {
-   // print json_encode(array('message' => 'Message cannot be empty', 'code' => 0));
-    
-  }
   
  
   
@@ -64,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
-		
+	
 	<!--START OF CONTACT US FORM-->	
 	<div  class = "faker"style ="width: 80%; margin: auto">
       
@@ -87,7 +117,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="name" class="">Your name</label>
-									<input type="text" id="name" name="name" class="form-control"  placeholder="Full Name*" required>
+									<input type="text" id="name" name="CUname" class="form-control"  placeholder="Full Name*" required>
 									
 								</div>
 							</div>
@@ -95,7 +125,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-6">
 								<div class="md-form mb-0">
 									<label for="email" class="">Your email</label>
-									<input type="email" id="email" name="email" class="form-control"  placeholder="Email*" required>
+									<input type="email" id="email" name="CUemail" class="form-control"  placeholder="Email*" required>
 									
 								</div>
 							</div>
@@ -107,8 +137,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Campus</label>
-									<select class="form-control" id="CUCollege" name = "CUCollegeList" required>
-									  <option value = "" disabled>Campus*</option>
+									<select class="form-control" id="CUcampus" name = "CUcampuslist" required>
+									  <option value = "" selected = 'selected'disabled>Campus*</option>
 									  <option value = "C-SJ">SEGI College Subang Jaya</option>
 									  <option value = "C-KL">SEGI College Kuala Lumpur</option>
 									  <option value = "C-P">SEGI College Penang</option>
@@ -120,15 +150,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							</div>
 						</div>
 						<!--END of Grid row-->									
-																
-								
-						
+
 						<!--Grid row of SUBJECT-->
 						<div class="row">
 							<div class="col-md-12">
 								<div class="md-form mb-0">
 									<label for="subject" class="">Subject</label>
-									<input type="text" id="subject" name="subject" class="form-control" placeholder="Subject*" required>
+									<input type="text" id="subject" name="CUsubject" class="form-control" placeholder="Subject*" required>
 								</div>
 							</div>
 						</div>
@@ -139,13 +167,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 							<div class="col-md-12">
 								<div class="md-form">
 									<label for="message">Your message</label>
-									<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" placeholder="Message*" required></textarea>
+									<textarea type="text" id="message" name="CUmessage" rows="2" class="form-control md-textarea" placeholder="Message*" required></textarea>
 								</div>
 							</div>	
 						</div>		
 						<!--END of Grid row-->		
 
-						<input type = "submit" name = "CUSubmit" class="btn btn-primary"  value = "Submit" >
+						<input type = "submit" name = "CUsubmit" class="btn btn-primary"  value = "Submit" >
 					</form>
 
 					
@@ -157,20 +185,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 <!--END OF CONTACT US FORM-->	
 						
 							
-						<!-- Example split danger button -->
-<div class="btn-group">
-  <input type="text" id="sohai" name="sohai" class="form-control" placeholder="sohai*" required>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <select class="form-control dropdown-menu" id="CUCollege" name = "CUCollegeList" required>
-	  <option value = "" class="dropdown-item" disabled>Jokes aside*</option>
-	  <option value = "C-SJ" class="dropdown-item">General Enquiry</option>
-	  <option value = "C-KL" class="dropdown-item">Bug Related</option>
-	  <option value = "C-P" class="dropdown-item">Payment Related</option>
-	  <option value = "C-S" class="dropdown-item">Account Related</option>
-  </select>		
-</div>
+						
+
 						
 						
 				
@@ -194,58 +210,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
 }
 </style>
 <script>
-/*
-function validateForm() {
-  var name =  document.getElementById('name').value;
-  var email =  document.getElementById('email').value;
-  var subject =  document.getElementById('subject').value;
-  var message =  document.getElementById('message').value;
-  
-  var n = false 
-  var e = false
-  var s = false
-  var m = false 
-  var c = false
-  
-  
-  if (name.replace(/(^\s+|\s+$)/g, '') == "") {
-	  document.querySelector('.status').innerHTML = "Name cannot be empty";
-      n = false;
-  }else{n = true}
-  
-  if (email.replace(/(^\s+|\s+$)/g, '') == "") {
-	  document.querySelector('.status').innerHTML = "Email cannot be empty";
-      e = false;
-  } else {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(!re.test(email)){
-          document.querySelector('.status').innerHTML = "Email format invalid";
-           e = false;
-      }else{e = true;}
-  }
-  
-  if (subject.replace(/(^\s+|\s+$)/g, '') == "") {
-      document.querySelector('.status').innerHTML = "Subject cannot be empty";
-      s = false;
-  }else{s = true;}
-  
-  if (message.replace(/(^\s+|\s+$)/g, '') == "") {
-      document.querySelector('.status').innerHTML = "Message cannot be empty";
-      m = false
-  }else{m = true;}
-  
-  
-  if(n == true && e == true && s == true && m == true && c == true){
-	  document.getElementById('CUSubmit').disabled = false;
-  }else{
-	  document.getElementById('CUSubmit').disabled = true;
-  }
-  
-  
-  
-}
-	
-*/
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
+});
 
 
 </script>
