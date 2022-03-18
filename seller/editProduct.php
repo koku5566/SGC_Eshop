@@ -228,6 +228,15 @@
         font-size: 20px;
     }
 
+    .custom-file-upload{
+        width:100%;
+        height:100%;
+    }
+
+    .imgInp{
+        display:none;
+    }
+
     .hide{
         display:none;
     }
@@ -336,9 +345,9 @@
         img.addEventListener('change', function handleChange(event) {
             const [file] = img.files
             if (file) {
-                img.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                img.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                img.parentElement.classList.add("hide");
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                img.parentElement.parentElement.classList.add("hide");
             }
         });
     });
