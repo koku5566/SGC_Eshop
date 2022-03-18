@@ -753,7 +753,36 @@
 			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">According to the Osiris myth, Horus was the son of Isis and Osiris, magically conceived after the murder of Osiris by his brother Seth. Horus was raised to avenge his father’s murder. One tradition holds that Horus lost his left eye fighting with Seth, but his eye was magically healed by the god Thoth. Because the right and left eyes of Horus were associated, respectively, with the sun and the moon, the loss and restoration of Horus’s left eye gave a mythical explanation for the phases of the moon.</div>
+			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+					<table class="table table-borderless table-hover">
+					  <thead class = "table-secondary">
+						<tr>
+						  <th scope="col" class = "col">First</th>
+						  <th scope="col" class = "col-6">Last</th>
+						  <th scope="col" class = "col">Handle</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  
+						  <td>Mark</td>
+						  <td>Otto</td>
+						  <td>@mdo</td>
+						</tr>
+						<tr>
+						  
+						  <td>Jacob</td>
+						  <td>Thornton</td>
+						  <td>@fat</td>
+						</tr>
+						<tr>
+						  <td>Larry the Bird</td>
+						  <td>Larry the Bird</td>
+						  <td>@twitter</td>
+						</tr>
+					  </tbody>
+					</table>	
+			  </div>
 			  
 			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">Seth’s appearance poses a problem for Egyptologists. He is often depicted as an animal or as a human with the head of an animal. But they can’t figure out what animal he’s supposed to be. He usually has a long snout and long ears that are squared at the tips. In his fully animal form, he has a thin doglike body and a straight tail with a tuft on the end. Many scholars now believe that no such animal ever existed and that the Seth animal is some sort of mythical composite.</div>
 			  
@@ -782,7 +811,7 @@
 			
 			
 			
-		<table class="table table-borderless">
+		<table class="table table-borderless table-hover">
 		  <thead class = "table-secondary">
 			<tr>
 			  <th scope="col" class = "col">First</th>
