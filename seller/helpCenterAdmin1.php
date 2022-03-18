@@ -657,7 +657,7 @@
 			<button id = "addquestionbtn" class="btn btn-success">ADD QUESTION</button>
 	
 			<!--The Space Between Category and Question-->
-				<div style = 'margin-top: 15px; max-height: 400px; overflow: auto;'>
+				<div style = 'margin-top: 15px; max-height: 700px; overflow: auto;'>
 			<!--Content for Question & Answer-->			   	
 						<?php
 				
@@ -756,7 +756,7 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 			  <!--SECTION ONE-->
-			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 700px;">
 					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
 					  <thead class = "table-secondary">
 						<tr>
@@ -809,54 +809,7 @@
 			
 			
 			
-		<div class="container">
-		  <div class="row">
-			<div class="col">
-			  1 of 3
-			</div>
-			<div class="col-6">
-			  2 of 3 (wider)
-			</div>
-			<div class="col">
-			  3 of 3
-			</div>
-		  </div>
-		</div>	
-			
-			
-			
-			
-			
-		<table class="table table-borderless table-hover">
-		  <thead class = "table-secondary">
-			<tr>
-			  <th scope="col" class = "col">First</th>
-			  <th scope="col" class = "col-6">Last</th>
-			  <th scope="col" class = "col">Handle</th>
-			</tr>
-		  </thead>
-		  <tbody>
-			<tr>
-			  
-			  <td>Mark</td>
-			  <td>Otto</td>
-			  <td>@mdo</td>
-			</tr>
-			<tr>
-			  
-			  <td>Jacob</td>
-			  <td>Thornton</td>
-			  <td>@fat</td>
-			</tr>
-			<tr>
-			  <td>Larry the Bird</td>
-			  <td>Larry the Bird</td>
-			  <td>@twitter</td>
-			</tr>
-		  </tbody>
-		</table>	
-			
-			
+		
 			
 			
 			
