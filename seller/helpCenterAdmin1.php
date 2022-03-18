@@ -778,38 +778,22 @@
 								
 								<!--ADD CATEGORY-->
 									<div id = "a_category">
-									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST' enctype = "multipart/form-data" >
-
-										<label for = 'acCatName' class = 'labelinput'>Category:</label>					
-										<input type = 'text' name ='acCategoryName' id ='acCatName' class = 'textinput' required>
 									
-										<select id="acCategoryDisplay" name="acCategorylist" style = "display: none" onchange = 'acCategoryListFunction()'>
-												<option value="">-Select Category-</option>
-												<?php
-													$sql ="SELECT hcc_id, category
-														   FROM helpCenterCategory 								   
-														   WHERE disable_date IS NULL ";
-													if($stmt = mysqli_prepare ($conn, $sql)){
-														mysqli_stmt_execute($stmt);
-														mysqli_stmt_bind_result($stmt, $s1,$s2);
-														
-														while(mysqli_stmt_fetch($stmt)){
-																echo "<option value='$s1'>$s2</option>";
-															}
-														mysqli_stmt_close($stmt);
-													}
-												?>	
-											</select>
-											<br><br>		
-										
-										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
 
-										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
+									
+									
+										<h4>Peanut Butter</h4>										
+										<h5>PeanutButterJellyJam@gmail.com</h5>
+										<h6>Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
+									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
-										<input type = 'submit' name ='acContent' value ='Add' style="float:right; margin-right: 20px" class="btn btn-success" id = 'acContentIDAdd'>
+										<textarea class="form-control" id="CUmessagereply"></textarea>
+
 										
-										<input type ='submit'name = 'acContent' value = 'Delete' style = "float:right; margin-right: 20px;display:none; " class= "btn btn-danger" id = 'acContentIDDelete' disabled = 'disabled'>
+										
+										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin-right: 20px" class="btn btn-success" id = 'CUreplyadminid'>
+										
+										
 																				
 									</form>
 									
