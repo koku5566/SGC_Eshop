@@ -218,13 +218,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 }
 </style>
 <script>
-/*
-$(".alert.alert-success").delay(2000).slideUp(200, function() {
+/**/
+$(".alert.alert-success").delay(3000).slideUp(200, function() {
     $(this).alert('close');
 });
-$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+$(".alert.alert-danger").delay(4000).slideUp(200, function() {
     $(this).alert('close');
 });
-*/
+
 
 </script>
