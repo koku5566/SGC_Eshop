@@ -291,7 +291,6 @@
     }
     .drag-list {
         margin: 10px auto;
-        border: 1px solid #ccc;
         flex-basis: 770px;
         display:flex;
     }
