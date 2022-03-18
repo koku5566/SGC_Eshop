@@ -761,7 +761,61 @@
 			</div>
 		</div>
 
-
+			
+			
+			
+		<div class="container">
+		  <div class="row">
+			<div class="col">
+			  1 of 3
+			</div>
+			<div class="col-6">
+			  2 of 3 (wider)
+			</div>
+			<div class="col">
+			  3 of 3
+			</div>
+		  </div>
+		</div>	
+			
+			
+			
+			
+			
+		<table class="table table-borderless">
+		  <thead>
+			<tr>
+			  <th scope="col">First</th>
+			  <th scope="col">Last</th>
+			  <th scope="col">Handle</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  
+			  <td>Mark</td>
+			  <td>Otto</td>
+			  <td>@mdo</td>
+			</tr>
+			<tr>
+			  
+			  <td>Jacob</td>
+			  <td>Thornton</td>
+			  <td>@fat</td>
+			</tr>
+			<tr>
+			
+			  <td colspan="3">Larry the Bird</td>
+			  <td>@twitter</td>
+			</tr>
+		  </tbody>
+		</table>	
+			
+			
+			
+			
+			
+			
 
 	
  </div>       
