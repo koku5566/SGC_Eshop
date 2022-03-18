@@ -4,12 +4,12 @@
 
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],$_POST['message'],$_POST['subject'],$_POST['CUSubmit']) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["message"]) && !empty($_POST["subject"])){
- /*
+ /**/
   $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
-  */
+  
  // header('Content-Type: application/json');
   
   $to = $_POST['email'];
@@ -37,13 +37,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'],$_POST['email'],
   }
   /*
   $content="From: $name \n Email: $email \n Message: $message";
-  $recipient = "kitmincheong@gmail.com";
-  $mailheader = "From: $email \r\n";
- */
+  $recipient = "kitmincheong@gmail.com"; */
+  $header = "From: $email \r\n";
+
  $from = "Contact_Us_Mail@sgprototype2.com";
- $subject = "PHP Mail Sending Checking";
- $message = "PHP mail works fine";
- $header = "FROM:" . $from;
+ //$subject = "PHP Mail Sending Checking";
+// $message = "PHP mail works fine";
+ //$header = "FROM:" . $from;
  //mail($recipient, $subject, $content, $mailheader)
  if(mail($to, $subject, $message, $header)){
 	  echo "<script>alert('Email sent!')</script>";
