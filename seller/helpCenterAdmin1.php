@@ -788,11 +788,11 @@
 									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
-										<textarea class="form-control" id="CUmessagereply"></textarea>
+										<textarea class="form-control" id="CUmessagereply" style = "height: 8em;"></textarea>
 
 										
 										
-										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin-right: 20px; height: 8em;" class="btn btn-success" id = 'CUreplyadminid'>
+										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin-right: 20px;" class="btn btn-success" id = 'CUreplyadminid'>
 										
 										
 																				
