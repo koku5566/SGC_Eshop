@@ -72,6 +72,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 				{
 					 echo "<div class='alert alert-success'>Thank you, we will get back to you soon</div>";
+					 $sql = "UPDATE contactUs AS a, (SELECT id from contactUs order by id desc LIMIT 1) AS b 
+									SET a.cu_id = concat('CU', b.id)
+									WHERE a.id = b.id;";
+							if($stmt = mysqli_prepare($conn, $sql)){
+                            mysqli_stmt_execute($stmt);
+                            if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                            {}
+                            else{}}	
 				}else{
 					echo "<div class='alert alert-danger'>Fail to Insert</div>";
 				}
@@ -210,12 +218,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 }
 </style>
 <script>
+/*
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
 $(".alert.alert-danger").delay(3000).slideUp(200, function() {
     $(this).alert('close');
 });
-
+*/
 
 </script>
