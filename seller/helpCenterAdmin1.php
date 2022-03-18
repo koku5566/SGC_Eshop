@@ -777,22 +777,21 @@
 							<div class="editQuestion">
 								
 								<!--ADD CATEGORY-->
-									<div id = "a_category">
+									
 									
 
 									
-									<div style= "width: 100%">
-										<h4>Peanut Butter</h4>										
-										<h5>PeanutButterJellyJam@gmail.com</h5>
-										<h6>Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
+									<div>
+										<h5 style = "font-size:2.45vw">Peanut Butter</h5>										
+										<h6 style = "font-size:0.8vw"><b>PeanutButterJellyJam@gmail.com</b></h6>
+										<h6 style = "font-size:0.8vw">Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
 									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
 										<textarea class="form-control" id="CUmessagereply" style = "height: 8em;"></textarea>
 
-										
-										
-										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin-right: 20px;" class="btn btn-success" id = 'CUreplyadminid'>
+
+										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid'>
 										
 										
 																				
@@ -801,7 +800,7 @@
 									
 									
 								
-							</div>
+							
 
 						</div>
 				</div>
