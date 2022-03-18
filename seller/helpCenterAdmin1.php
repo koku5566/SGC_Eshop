@@ -772,7 +772,7 @@
 			<div id="myModalReply" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content" style = "height: 400px;">
-						<h4 class = "displayCategoryModal" >Add Category</h4>
+						<h4 class = "displayCategoryModal" >Reply Message</h4>
 						<span class="closeM" id = "closeModalReply">&times;</span>
 							<div class="editQuestion">
 								
@@ -782,13 +782,13 @@
 
 									
 									<div>
-										<h5 style = "font-size:2.45vw">Peanut Butter</h5>										
-										<h6 style = "font-size:0.8vw"><b>PeanutButterJellyJam@gmail.com</b></h6>
-										<h6 style = "font-size:0.8vw">Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
+										<h5 style = "font-size:1.4vw">Peanut Butter</h5>										
+										<h6 style = "font-size:1vw"><b>PeanutButterJellyJam@gmail.com</b></h6>
+										<h6 style = "font-size:0.9vw">Yesterday i am a history, tommorow i am a mystery, today is a gift.</h6>
 									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
-										<textarea class="form-control" id="CUmessagereply" style = "height: 8em;"></textarea>
+										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message"></textarea>
 
 
 										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid'>
