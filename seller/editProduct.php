@@ -196,13 +196,12 @@
         width: 80px;
         height: 30px;
         background:grey;
-        opacity:0.5;
         position:absolute;
         margin-top: -30px;
     }
 
     .image-tools-delete-icon{
-        color: #ea1414;
+        color: white;
         justify-content: center;
         display: grid;
         margin-top: 5px;
