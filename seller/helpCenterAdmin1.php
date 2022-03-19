@@ -424,17 +424,18 @@
 		  //$recipient = "kitmincheong@gmail.com"; 
 		 //$subject = "PHP Mail Sending Checking";
 		// $message = "PHP mail works fine";
-		 //$header = "FROM:" . $from;
+		 
 		 //mail($recipient, $subject, $content, $mailheader)
 		
-			 
-	
+			echo "$z3 ||| $z4 ||| $z5"; 
+			$from = "Contact_Us_Mail@sgprototype2.com";
+			
 		  $to = $z3;
 		  $subject = $z4;
 		  $content = $z5;
-		  $header = "From: $z3 \r\n";
+		 $header = "FROM:" . $from;
 		 
-		 $from = "Contact_Us_Mail@sgprototype2.com";
+		 
 		 
 		 
 		 /**/
