@@ -413,11 +413,16 @@
 				
 				if(mysqli_stmt_num_rows($stmt) == 1){
 					mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5);
-					mysqli_stmt_fetch($stmt);
+					while(mysqli_Stmt_fetch($stmt)){
+							$to = $z3;
+						  $subject = $z4;
+						  $content = $z5;
+					}
 				}
 				mysqli_stmt_free_result($stmt);
 				mysqli_stmt_close($stmt);
 			}
+			
 			
 			//$email = $_POST['email'];
 		 // $content="From: $name \n Email: $email \n Message: $message";
@@ -430,9 +435,7 @@
 			echo "$z3 ||| $z4 ||| $z5"; 
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			
-		  $to = $z3;
-		  $subject = $z4;
-		  $content = $z5;
+		  
 		 $header = "FROM:" . $from;
 		 
 		 
