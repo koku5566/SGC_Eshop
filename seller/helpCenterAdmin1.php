@@ -397,6 +397,8 @@
 		
 		$CUmessagereply = $_POST['CUmessagereply'];
 		echo "<div class='alert alert-success'>$CUmessagereply</div>";
+		$selectedPID = $_POST['CUid2'];
+		echo "sohai $selectedPID";
 		
 			//$email = $_POST['email'];
 		 // $content="From: $name \n Email: $email \n Message: $message";
@@ -405,9 +407,9 @@
 		// $message = "PHP mail works fine";
 		 //$header = "FROM:" . $from;
 		 //mail($recipient, $subject, $content, $mailheader)
-		 isset ($_POST['CUid']){
-			 echo "sohai $z1"
-		 }
+		
+			 
+		
 		   
 		 $name = $_POST['name'];
 		  $message = $_POST['message'];
@@ -831,7 +833,7 @@
 										
 										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
 
-
+										<?php echo (isset($z1) && !empty ($z1))? "<input type = 'hidden' name = 'CUid2' value = '".$z1."'>" : ''; ?>
 										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid' disabled>
 										
 										
