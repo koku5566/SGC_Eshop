@@ -432,7 +432,7 @@
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			$to = $z3;
 			$subject = "Replying Enquiry from $z2";
-			$content = "Email - $z3 \n Subject - $z4 \n Message - $z5 \n\n\n\n\n Dear $z2, \n $CUmessagereply";
+			$content = "Email - $z3 \nSubject - $z4 \nMessage - $z5 \n\n\n\n\nDear $z2, \n $CUmessagereply";
 			
 		  //echo "$to ||| $subject ||| $content"; 
 		  
