@@ -90,10 +90,10 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
                                             <p class="p-title">Product Images</p>
                                         </div>
-                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                                     <div class="drag-list">
@@ -273,10 +273,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
                                             <p class="p-title">Product Name</p>
                                         </div>
-                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
                                             </div>
@@ -284,10 +284,10 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
                                             <p class="p-title">Product Description</p>
                                         </div>
-                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
                                             </div>
@@ -295,10 +295,10 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
                                             <p class="p-title">Product Brand</p>
                                         </div>
-                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <input type="text" class="form-control" name="productBrand">
                                             </div>
@@ -306,10 +306,10 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
                                             <p class="p-title">Main SKU</p>
                                         </div>
-                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <input type="text" class="form-control" name="productSKU">
                                             </div>
@@ -330,22 +330,39 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
+
                                     <div id="mainPricing">
                                         <div class="input-group mb-3">
                                             <button type="button" class="btn btn-outline-primary" id="btnAddVariation" style="width:100%">Add Variation</button>
                                         </div>
-                                        <h5>Price<h5>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">RM</span>
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Price</p>
                                             </div>
-                                            <input type="number" step=".01" min="0" value="0" class="form-control" name="productPrice" aria-label="productPrice">
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">RM</span>
+                                                </div>
+                                                <input type="number" step=".01" min="0" value="0" class="form-control" name="productPrice" aria-label="productPrice">
+                                            </div>
                                         </div>
-                                        <h5>Stock<h5>
-                                        <div class="input-group mb-3">
-                                            <input type="number"min="0" value="0" class="form-control" name="productStock" aria-label="productStock">
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Stock</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="number"min="0" value="0" class="form-control" name="productStock" aria-label="productStock">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    
+
+                                    
+                                    
 
                                     <div id="subPricing" class="hide">
                                         <div class="card mb-4">
@@ -354,24 +371,37 @@
                                             </div>
                                             <!-- Card Body -->
                                             <div class="card-body">
-                                                <h5>Variation Name<h5>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="variationName_1" aria-label="variationName_1">
-                                                </div>
-                                                <h5>Choices<h5>
-                                                <div id="divChoices_1" class="drag-list-choices">
-                                                    <div class="input-group mb-3 drag-item-choices">
-                                                        <input type="text" class="form-control" name="choices[]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                                        </div>
-                                                        <div class="input-group-append btnDeleteChoices">
-                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                        <p class="p-title">Variation Name</p>
+                                                    </div>
+                                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" name="variationName_1" aria-label="variationName_1">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="input-group mb-3">
-                                                    <button type="button" class="btn btn-outline-primary" id="btnAddChoices_1" style="width:100%">Add Choices</button>
+
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                        <p class="p-title">Choices</p>
+                                                    </div>
+                                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                        <div id="divChoices_1" class="drag-list-choices">
+                                                            <div class="input-group mb-3 drag-item-choices">
+                                                                <input type="text" class="form-control" name="choices[]">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                                                </div>
+                                                                <div class="input-group-append btnDeleteChoices">
+                                                                    <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <button type="button" class="btn btn-outline-primary" id="btnAddChoices_1" style="width:100%">Add Choices</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
