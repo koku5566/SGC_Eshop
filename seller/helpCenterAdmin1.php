@@ -413,7 +413,7 @@
 				
 				if(mysqli_stmt_num_rows($stmt) == 1){
 					mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5);
-					mysqli_Stmt_fetch($stmt));
+					mysqli_stmt_fetch($stmt);
 	
 				}
 				mysqli_stmt_free_result($stmt);
@@ -429,12 +429,12 @@
 		 
 		 //mail($recipient, $subject, $content, $mailheader)
 		
-			echo "$to ||| $subject ||| $content"; 
+			
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			$to = $z3;
 						  $subject = $z4;
 						  $content = $z5;
-		  
+		  echo "$to ||| $subject ||| $content"; 
 		 $header = "FROM:" . $from;
 		 
 		 
