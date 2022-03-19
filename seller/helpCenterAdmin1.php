@@ -404,7 +404,7 @@
 		
 			$sql = "SELECT cu_id, name, email, subject, message 
 					FROM `contactUs` 
-					WHERE disable_date IS NULL";
+					WHERE cu_id = ? AND disable_date IS NULL";
 		
 			if($stmt = mysqli_prepare ($conn, $sql)){
 				mysqli_stmt_bind_param($stmt, "i", $selectedPID);
