@@ -70,7 +70,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" style="width:80%;">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -389,11 +389,11 @@
                                                         <p class="p-title">Choices</p>
                                                     </div>
                                                     <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                        <div id="divChoices_1" class="drag-list-choices">
+                                                        <div id="divChoices_1" class="drag-list-choices" >
                                                             <div class="input-group mb-3 drag-item-choices">
                                                                 <input type="text" class="form-control" name="choices[]">
                                                                 <div class="input-group-append">
-                                                                    <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                                                    <span class="input-group-text "><i class="fa fa-arrows" draggable="true" aria-hidden="true"></i></span>
                                                                 </div>
                                                                 <div class="input-group-append btnDeleteChoices">
                                                                     <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
@@ -788,7 +788,10 @@
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
             item.addEventListener('click', function handleClick(event) {
-                item.parentElement.remove();
+                if(item.parentElement.parentElement.children.length > 1)
+                {
+                    item.parentElement.remove();
+                }
             });
         });
     });
