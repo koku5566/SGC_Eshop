@@ -398,6 +398,32 @@
 		$CUmessagereply = $_POST['CUmessagereply'];
 		echo "<div class='alert alert-success'>$CUmessagereply</div>";
 		
+			//$email = $_POST['email'];
+		 // $content="From: $name \n Email: $email \n Message: $message";
+		  //$recipient = "kitmincheong@gmail.com"; 
+		 //$subject = "PHP Mail Sending Checking";
+		// $message = "PHP mail works fine";
+		 //$header = "FROM:" . $from;
+		 //mail($recipient, $subject, $content, $mailheader)
+		 isset ($_POST['CUid']){
+			 echo "sohai $z1"
+		 }
+		   
+		 $name = $_POST['name'];
+		  $message = $_POST['message'];
+		  $subject = $_POST['subject'];
+		  $to = $_POST['email'];
+
+		 $header = "From: $email \r\n";
+		 $from = "Contact_Us_Mail@sgprototype2.com";
+		 /*
+		 if(mail($to, $subject, $message, $header)){
+			  echo "<script>alert('Email sent!')</script>";
+		 }else{
+			 echo "<script>alert('Fail to sent!')</script>";
+		 }*/
+		 
+		
 		
 	}
 ?>

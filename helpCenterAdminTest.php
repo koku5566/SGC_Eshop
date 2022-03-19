@@ -6,29 +6,6 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemail'],$_POST['CUmessage'],$_POST['CUsubject'],$_POST['CUcampuslist'],$_POST['CUsubmit']) && !empty($_POST["CUname"]) && !empty($_POST["CUemail"]) && !empty($_POST["CUmessage"]) && !empty($_POST["CUsubject"]) && !empty($_POST["CUcampuslist"])){
 
   
-    //$email = $_POST['email'];
- // $content="From: $name \n Email: $email \n Message: $message";
-  //$recipient = "kitmincheong@gmail.com"; 
- //$subject = "PHP Mail Sending Checking";
-// $message = "PHP mail works fine";
- //$header = "FROM:" . $from;
- //mail($recipient, $subject, $content, $mailheader)
- 
-  /* THIS HOR UK IS THE EMAIL ^ jiu kaki see d
- $name = $_POST['name'];
-  $message = $_POST['message'];
-  $subject = $_POST['subject'];
-  $to = $_POST['email'];
-
- $header = "From: $email \r\n";
- $from = "Contact_Us_Mail@sgprototype2.com";
- 
- if(mail($to, $subject, $message, $header)){
-	  echo "<script>alert('Email sent!')</script>";
- }else{
-	 echo "<script>alert('Fail to sent!')</script>";
- }
- */
  
  
  $CUname = $_POST['CUname'];
