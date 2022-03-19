@@ -422,36 +422,49 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <h5>Weight<h5>
-                                    <div class="input-group mb-3">
-                                        <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">kg</span>
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Weight</p>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">kg</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <h5>Package Size<h5>
+
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4">
-                                            <div class="input-group mb-3">
-                                                <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">cm</span>
-                                                </div>
-                                            </div>
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Package Size</p>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4">
-                                            <div class="input-group mb-3">
-                                                <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">cm</span>
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-4">
+                                                    <div class="input-group mb-3">
+                                                        <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">cm</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4">
-                                            <div class="input-group mb-3">
-                                                <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">cm</span>
+                                                <div class="col-xl-3 col-lg-4">
+                                                    <div class="input-group mb-3">
+                                                        <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">cm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-4">
+                                                    <div class="input-group mb-3">
+                                                        <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">cm</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
