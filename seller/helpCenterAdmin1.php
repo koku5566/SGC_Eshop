@@ -780,7 +780,18 @@
 									
 									<div>
 										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
-										<h6 style = "font-size:0.9vw"><?php echo(isset($z6) && !empty ($z6))? $z6 : ''; ?></h6>										
+										<h6 style = "font-size:0.9vw">
+										<?php if(isset($z6) && !empty($z6)){
+												if(strlen($z6) > 100){
+													$CUtrim  = substr($z6, 0, 50);
+													$CUmsg = "$CUtrim.....";
+													echo "$CUmsg";
+												}else{echo "$z6"}
+
+											}else{echo " ";}
+											
+										?>
+										</h6>										
 										
 									</div><br>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
