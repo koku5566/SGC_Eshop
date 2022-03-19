@@ -432,7 +432,7 @@
 		 
 		 //mail($recipient, $subject, $content, $mailheader)
 		
-			echo "$z3 ||| $z4 ||| $z5"; 
+			echo "$to ||| $subject ||| $content"; 
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			
 		  
