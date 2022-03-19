@@ -80,22 +80,20 @@
     </div>
 
 
-                   <!-- List All Product -->
+                   <!-- Basic Infomation -->
                     <div class="row">
-                        <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
                                 </div>
-
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <h5>Product Images</h5>
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="drag-list">
-                                                <div class="row">
+                                                <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
                                                     <div style="padding-bottom: .625rem;display:flex">
                                                         <div class="drag-item" draggable="true">
                                                             <div class="image-container">
@@ -270,15 +268,19 @@
                                     </div>
                                     <h5>Product Name<h5>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" aria-label="productName" maxlength="200">
+                                        <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
                                     </div>
                                     <h5>Product Description<h5>
                                     <div class="input-group mb-3">
-                                        <textarea class="form-control" name="productDescription" aria-label="With textarea" maxlength="3000"></textarea>
+                                        <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
                                     </div>
                                     <h5>Product Brand<h5>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="productBrand" aria-label="productBrand">
+                                        <input type="text" class="form-control" name="productBrand">
+                                    </div>
+                                    <h5>Main SKU<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="productSKU">
                                     </div>
 
                                 </div>
@@ -286,14 +288,13 @@
                         </div>
                     </div>
 
+                    <!--Sales Information -->
                     <div class="row">
-                        <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Sales Details</h5>
+                                    <h5 class="m-0 font-weight-bold text-primary">Sales Information</h5>
                                 </div>
-
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
@@ -350,6 +351,53 @@
                         </div>
                     </div>
 
+                    <!--Shipping -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Shipping</h5>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <h5>Weight<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">kg</span>
+                                        </div>
+                                    </div>
+                                    <h5>Package Size<h5>
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-4">
+                                            <div class="input-group mb-3">
+                                                <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4">
+                                            <div class="input-group mb-3">
+                                                <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4">
+                                            <div class="input-group mb-3">
+                                                <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 </div>
 <!-- /.container-fluid -->
 
