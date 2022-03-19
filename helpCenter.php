@@ -319,10 +319,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 <!--START OF CONTACT US FORM-->	
 	<div  class = "faker" style ="width: 80%; margin: auto">
       
-		<h1 id="faq">Contact Us</h1>
+		<h1 id="faq" style = "margin-top: 50px;">Contact Us</h1>
 		<section class="mb-4">
 			<!--Section description-->
-			<p class="text-center w-responsive mx-auto mb-5" style = "max-height: 80%;">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+			<p class="text-center w-responsive mx-auto mb-5" style = "max-width: 80%;">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
 				a matter of hours to help you.</p>
 
 			<div class="row justify-content-md-center">
