@@ -5,9 +5,7 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemail'],$_POST['CUmessage'],$_POST['CUsubject'],$_POST['CUcampuslist'],$_POST['CUsubmit']) && !empty($_POST["CUname"]) && !empty($_POST["CUemail"]) && !empty($_POST["CUmessage"]) && !empty($_POST["CUsubject"]) && !empty($_POST["CUcampuslist"])){
 
-  
- 
- 
+
  $CUname = $_POST['CUname'];
  $CUemail = $_POST['CUemail'];
  $CUmessage = $_POST['CUmessage'];
@@ -16,25 +14,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
  $check = true;
 	if (ltrim($CUname) === '') {
 	 $check = false;
-	 //echo "<div class='alert alert-danger'>Name is required</div>";
 	}
 	if (ltrim($CUemail) === '') {
 	 $check = false;
-	// echo "<div class='alert alert-danger'>Email is required</div>";
-  
 	} else{
 		if (!filter_var($CUemail, FILTER_VALIDATE_EMAIL)) {
 				$check = false;
-				//echo "<div class='alert alert-danger'>Email format is invalid</div>";
 			}	
 	}
 	if (ltrim($CUsubject) === '') {
 	 $check = false;
-	 //echo "<div class='alert alert-danger'>Subject is required</div>";
 	}
 	if (ltrim($CUmessage) === '') {
 	 $check = false;
-     //echo "<div class='alert alert-danger'>Message is required</div>";
 	}
   
  
@@ -66,12 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 			
 		}else{
 			echo "<div class='alert alert-danger'>Failure to sent, please check input and resent again</div>";
-		}
-			
-  
-  
- 
-  
+		}			 
  
 }
 ?>

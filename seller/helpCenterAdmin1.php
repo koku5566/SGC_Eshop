@@ -420,14 +420,6 @@
 			}
 			
 			
-			//$email = $_POST['email'];
-		 // $content="From: $name \n Email: $email \n Message: $message";
-		  //$recipient = "kitmincheong@gmail.com"; 
-		 //$subject = "PHP Mail Sending Checking";
-		// $message = "PHP mail works fine";
-		 
-		 //mail($recipient, $subject, $content, $mailheader)
-		
 			
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			$to = $z3;
@@ -466,10 +458,7 @@
 			 echo "<script>alert('Fail to sent!')</script>";
 		 }
 		 
-		 
-		 
-		
-		
+
 	}
 ?>
     <!-- Begin Page Content ------------------------------------------------------------------------------------------------------------------------------------->
