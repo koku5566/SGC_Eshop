@@ -341,7 +341,12 @@
                                                 <p class="p-title">Price</p>
                                             </div>
                                             <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <input type="number" min="0" value="0" class="form-control" name="productPrice">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">RM</span>
+                                                    </div>
+                                                    <input type="number"min="0" value="0" class="form-control" name="productPrice">
+                                                </div>
                                             </div>
                                         </div>
 
