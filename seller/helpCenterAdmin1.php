@@ -431,7 +431,7 @@
 	
 		  $to = $z3;
 		  $subject = $z4;
-		  $content = $z5
+		  $content = $z5;
 		  $header = "From: $z3 \r\n";
 		 
 		 $from = "Contact_Us_Mail@sgprototype2.com";
