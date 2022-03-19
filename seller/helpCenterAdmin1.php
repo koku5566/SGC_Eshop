@@ -396,10 +396,29 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
 		
 		$CUmessagereply = $_POST['CUmessagereply'];
-		echo "<div class='alert alert-success'>$CUmessagereply</div>";
+		//echo "<div class='alert alert-success'>$CUmessagereply</div>";
 		$selectedPID = $_POST['CUid2'];
-		echo "sohai $selectedPID";
+		//echo "sohai $selectedPID";
+		$status = 1;
+		//$today = date("Y-m-d");
 		
+			$sql = "SELECT cu_id, name, email, subject, message 
+					FROM `contactUs` 
+					WHERE disable_date IS NULL";
+		
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, "i", $selectedPID);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				
+				if(mysqli_stmt_num_rows($stmt) == 1){
+					mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5);
+					mysqli_stmt_fetch($stmt);
+				}
+				mysqli_stmt_free_result($stmt);
+				mysqli_stmt_close($stmt);
+			}
+			
 			//$email = $_POST['email'];
 		 // $content="From: $name \n Email: $email \n Message: $message";
 		  //$recipient = "kitmincheong@gmail.com"; 
@@ -409,21 +428,41 @@
 		 //mail($recipient, $subject, $content, $mailheader)
 		
 			 
-		
-		   
-		 $name = $_POST['name'];
-		  $message = $_POST['message'];
-		  $subject = $_POST['subject'];
-		  $to = $_POST['email'];
-
-		 $header = "From: $email \r\n";
+	
+		  $to = $z3;
+		  $subject = $z4;
+		  $content = $z5
+		  $header = "From: $z3 \r\n";
+		 
 		 $from = "Contact_Us_Mail@sgprototype2.com";
-		 /*
-		 if(mail($to, $subject, $message, $header)){
+		 
+		 
+		 /**/
+		 if(mail(mail($to, $subject, $content, $header))){
 			  echo "<script>alert('Email sent!')</script>";
+			  $sql = "UPDATE 
+					 `contactUs` SET status =?, r_message=? 
+			          WHERE cu_id =?";
+				if($stmt = mysqli_prepare($conn, $sql)){
+					mysqli_stmt_bind_param($stmt, 'iss', $status, $CUmessagereply, $selectedPID); 	//s=string , d=decimal value i=ID
+			
+					mysqli_stmt_execute($stmt);
+				
+					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+					{
+						echo "<script>alert('Update successfully');</script>";
+					}else{
+						echo "<script>alert('Fail to Update');</script>";
+					}
+			
+					mysqli_stmt_close($stmt);
+				}
+			  
 		 }else{
 			 echo "<script>alert('Fail to sent!')</script>";
-		 }*/
+		 }
+		 
+		 
 		 
 		
 		
