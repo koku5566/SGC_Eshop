@@ -272,26 +272,49 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h5>Product Images</h5>
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                            <h5>Product Name<h5>
+                                        </div>
+                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
+                                            </div>
+                                        </div>
+                                    </div>
                                     
-
-                                    <h5>Product Name<h5>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
-                                    </div>
-                                    <h5>Product Description<h5>
-                                    <div class="input-group mb-3">
-                                        <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
-                                    </div>
-                                    <h5>Product Brand<h5>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="productBrand">
-                                    </div>
-                                    <h5>Main SKU<h5>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="productSKU">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                            <h5>Product Description<h5>
+                                        </div>
+                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                            <h5>Product Brand<h5>
+                                        </div>
+                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="productBrand">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-2 col-sm-12">
+                                            <h5>Main SKU<h5>
+                                        </div>
+                                        <div class="col-xl-9 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="productSKU">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
