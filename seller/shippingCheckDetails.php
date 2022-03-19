@@ -11,51 +11,56 @@
 
         <div class="card-body">
             <div class="container m-3">
-            <div class="order-section mb-3">
-                <div class="row">
-                    <div class="col-2"><i class="fa fa-hashtag"></i></div>
-                    <div class="col">Order ID</div>
-                </div>
-                <div class="row pl-2">
-                211104M9WMPBS5
-                </div>
-            </div>
-            <div class="delivery-section mb-3">
-                <div class="row">
-                    <div class="col-2"><i class="fa fa-location-dot"></i></div>
-                    <div class="title">Delivery Address</div>
-                </div>
-                <div class="row pl-2">
-                    <div class="body">
-                        <div id="recipient-name">Hoe Chian Xin</div>
-                        <div id="recipient-address">123252, Hello sdjkn</div>
+                <div class="order-section mb-3">
+                    <div class="row">
+                        <div class="col-1"><i class="fa fa-hashtag"></i></div>
+                        <div class="col">Order ID</div>
+                    </div>
+                    <div class="row ">
+                        <div class="section-body">
+                            211104M9WMPBS5
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="logistic-section mb-3">
-                <div class="row">
-                    <div class="col-2"><i class="fa fa-truck"></i></div>
-                    <div class="title">Shipping Information</div>
+                <div class="delivery-section mb-3">
+                    <div class="row">
+                        <div class="col-1"><i class="fa fa-location-dot"></i></div>
+                        <div class="title">Delivery Address</div>
+                    </div>
+                    <div class="row">
+                        <div class="section-body">
+                            <div id="recipient-name">Hoe Chian Xin</div>
+                            <div id="recipient-address">123252, Hello sdjkn</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row pl-2">
-            <!--Shipping Progress table-->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Location</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Activity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
+                <div class="logistic-section mb-3">
+                    <div class="row">
+                        <div class="col-1"><i class="fa fa-truck"></i></div>
+                        <div class="title">Shipping Information</div>
+                    </div>
+                    <div class="row">
+                        <div class="section-body">
+                            <!--Shipping Progress table-->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Activity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
