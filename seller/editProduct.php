@@ -260,19 +260,48 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" >Category</span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Enter ..." aria-label="Category">
-                                            </div>
-                                        </div>
+                                    <h5>Product Name<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="productName" aria-label="productName">
                                     </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-primary">Search</button>
-                                        <button type="button" class="btn btn-outline-dark">Reset</button>
+                                    <h5>Product Description<h5>
+                                    <div class="input-group mb-3">
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                    <h5>Product Brand<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="productBrand" aria-label="productName">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!--Product List -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Sales Details</h5>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <h5>Add Variation<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="btn" aria-label="productName">
+                                    </div>
+                                    <h5>Price<h5>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">RM</span>
+                                        </div>
+                                        <input type="number" step=".01" min="0" value="0" class="form-control" placeholder="productPrice" aria-label="productPrice">
+                                    </div>
+                                    <h5>Stock<h5>
+                                    <div class="input-group mb-3">
+                                        <input type="number"min="0" value="0" class="form-control" placeholder="productStock" aria-label="productStock">
                                     </div>
 
                                 </div>
