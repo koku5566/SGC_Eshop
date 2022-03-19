@@ -3,7 +3,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%; font-size:14px">
+<div class="container-fluid" style="width:80%;">
     <!--Horizontal Order Tracking Status-->
     <div class="card mb-3">
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order
@@ -184,13 +184,10 @@
 <style>
     body {
         margin-top: 20px;
-        font-size: 18px;
+        font-size: 14px;
         margin-bottom: 20%;
     }
 
-    .table {
-        font-size: 18px;
-    }
 
     .steps .step {
         display: block;
