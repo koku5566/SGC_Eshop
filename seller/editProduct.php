@@ -641,7 +641,7 @@
     const btnAddVariation = document.getElementById('btnAddVariation');
 
     btnAddVariation.addEventListener('click', function handleClick(event) {
-        document.getElementById('subricing').classList.remove("hide");
+        document.getElementById('subPricing').classList.remove("hide");
         document.getElementById('mainPricing').classList.add("hide");
         document.getElementById('txtVariationType').value = "1";
     });
