@@ -1236,7 +1236,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	 border: 1px solid rgba(0 0 0 / .2);
+	 /*border: 1px solid rgba(0 0 0 / .2);*/
 	margin: auto;
 	height: 100%
 }
