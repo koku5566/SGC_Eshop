@@ -16,8 +16,9 @@
                         <div class="col-1"><i class="fa fa-hashtag"></i></div>
                         <div class="col">Order ID</div>
                     </div>
-                    <div class="row ">
-                        <div class="section-body">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col section-body">
                             211104M9WMPBS5
                         </div>
                     </div>
@@ -25,10 +26,11 @@
                 <div class="delivery-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
-                        <div class="title">Delivery Address</div>
+                        <div class=" col title">Delivery Address</div>
                     </div>
                     <div class="row">
-                        <div class="section-body">
+                        <div class="col-1"></div>
+                        <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
                             <div id="recipient-address">123252, Hello sdjkn</div>
                         </div>
@@ -37,10 +39,11 @@
                 <div class="logistic-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-truck"></i></div>
-                        <div class="title">Shipping Information</div>
+                        <div class="col title">Shipping Information</div>
                     </div>
                     <div class="row">
-                        <div class="section-body">
+                        <div class="col-1"></div>
+                        <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
                                 <thead>
