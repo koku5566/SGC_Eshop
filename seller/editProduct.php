@@ -796,6 +796,15 @@
         var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
         document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
 
+        // Instantiate Choices Drag
+        var draggableChoices = new DragNSort({
+            container: document.querySelector('.drag-list-choices'),
+            itemClass: 'drag-item-choices',
+            dragStartClass: 'drag-start',
+            dragEnterClass: 'drag-enter'
+        });
+        draggableChoices.init();
+
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
             item.addEventListener('click', function handleClick(event) {
