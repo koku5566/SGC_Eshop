@@ -91,7 +91,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-2 col-sm-12">
-                                            <h5>Product Images</h5>
+                                            <p class="p-title">Product Images</p>
                                         </div>
                                         <div class="col-xl-9 col-lg-10 col-sm-12">
                                             <div class="row">
@@ -274,7 +274,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-2 col-sm-12">
-                                            <h5>Product Name<h5>
+                                            <p class="p-title">Product Name</p>
                                         </div>
                                         <div class="col-xl-9 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
@@ -285,7 +285,7 @@
                                     
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-2 col-sm-12">
-                                            <h5>Product Description<h5>
+                                            <p class="p-title">Product Description</p>
                                         </div>
                                         <div class="col-xl-9 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
@@ -296,7 +296,7 @@
 
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-2 col-sm-12">
-                                            <h5>Product Brand<h5>
+                                            <p class="p-title">Product Brand</p>
                                         </div>
                                         <div class="col-xl-9 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
@@ -307,7 +307,7 @@
 
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-2 col-sm-12">
-                                            <h5>Main SKU<h5>
+                                            <p class="p-title">Main SKU</p>
                                         </div>
                                         <div class="col-xl-9 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
