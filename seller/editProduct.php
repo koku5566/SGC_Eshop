@@ -338,6 +338,17 @@
 
                                         <div class="row">
                                             <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Main SKU</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="productSKU">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
                                                 <p class="p-title">Price</p>
                                             </div>
                                             <div class="col-xl-10 col-lg-10 col-sm-12">
@@ -345,6 +356,17 @@
                                                     <span class="input-group-text">RM</span>
                                                 </div>
                                                 <input type="number" step=".01" min="0" value="0" class="form-control" name="productPrice" aria-label="productPrice">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Main SKU</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="productSKU">
+                                                </div>
                                             </div>
                                         </div>
 
