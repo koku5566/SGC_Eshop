@@ -393,6 +393,13 @@
 		}
 		
 	}
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
+		
+		$CUmessagereply = $_POST['CUmessagereply'];
+		echo "<div class='alert alert-success'>$CUmessagereply</div>";
+		
+		
+	}
 ?>
     <!-- Begin Page Content ------------------------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:100%;">
@@ -779,7 +786,8 @@
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5>
+										<h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
 										<h6 style = "font-size:0.9vw">
 										<?php if(isset($z6) && !empty($z6)){
 												if(strlen($z6) > 100){
@@ -789,11 +797,10 @@
 												}else{echo "$z6";}
 
 											}else{echo "";}
-											
 										?>
 										</h6>										
 										
-									</div><br>
+									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
 										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
