@@ -417,6 +417,7 @@
 							$to = $z3;
 						  $subject = $z4;
 						  $content = $z5;
+						  echo "$to ||| $subject ||| $content"; 
 					}
 				}
 				mysqli_stmt_free_result($stmt);
@@ -432,7 +433,7 @@
 		 
 		 //mail($recipient, $subject, $content, $mailheader)
 		
-			echo "$to ||| $subject ||| $content"; 
+			
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			
 		  
@@ -441,7 +442,7 @@
 		 
 		 
 		 
-		 /**/
+		 /*
 		 if(mail($to, $subject, $content, $header)){
 			  echo "<script>alert('Email sent!')</script>";
 			  $sql = "UPDATE 
@@ -465,7 +466,7 @@
 		 }else{
 			 echo "<script>alert('Fail to sent!')</script>";
 		 }
-		 
+		 */
 		 
 		 
 		
