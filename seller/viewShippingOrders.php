@@ -100,6 +100,7 @@
                             </div>
                         </div>
                         <div class="order-list-body pt-3">
+                        <div class="tab-pane active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             <!--Each Order Item-->
                             <div class="card">
                                 <div class="card-header">
@@ -126,6 +127,8 @@
                                 </div>
                             </div>
                             <!--End of Order Item-->
+
+                        </div>
                         </div>
                     </div>
 
