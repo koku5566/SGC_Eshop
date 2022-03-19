@@ -84,11 +84,11 @@
                                     <div class="order-list-panel">
                                         <div class="top-card card-header">
                                             <div class="row">
-                                                <div class="col-5">Product(s)</div>
-                                                <div class="col-1">Order Total</div>
-                                                <div class="col-2">Status</div>
-                                                <div class="col-2">All Channels</div>
-                                                <div class="col-2">Actions</div>
+                                                <div class="col-1">No.</div>
+                                                <div class="col-5">Product</div>
+                                                <div class="col-2">Unit Price</div>
+                                                <div class="col-1">Quantity</div>
+                                                <div class="col-3">Total Price</div>
                                             </div>
                                         </div>
                                     </div>
@@ -96,16 +96,14 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="row">
+                                                <div class="col-1">1.</div>
                                                 <div class="col-1"><img width="100%"
                                                         src="https://www.w3schools.com/images/w3schools_green.jpg"
                                                         alt="W3Schools.com"></div>
-                                                <div class="col-3">Wireless Earphone dfdfbdfbd</div>
+                                                <div class="col-4">Wireless Earphone dfdfbdfbd</div>
+                                                <div class="col-2">RM349.00</div>
                                                 <div class="col-1">X1</div>
-    
-                                                <div class="col-1">RM349.00</div>
-                                                <div class="col-2">Completed</div>
-                                                <div class="col-2">DHL eCommerce 2121113134</div>
-                                                <div class="col-2"><a href="#">Check details</a></div>
+                                                <div class="col-3 red-text" >RM349.00</div>
                                             </div>
                                         </div>
                                     </div>
@@ -189,6 +187,10 @@
 
 <style>
     .title {
+        font-weight: bold;
+    }
+    .red-text {
+        color: #A71337;
         font-weight: bold;
     }
 </style>
