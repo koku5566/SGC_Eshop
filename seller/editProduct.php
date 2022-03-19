@@ -333,7 +333,7 @@
 
                                     <div id="mainPricing">
                                         <div class="input-group mb-3">
-                                            <button type="button" class="btn btn-outline-primary" id="btnAddVariation" style="width:100%">Add Variation</button>
+                                            <button type="button" class="btn btn-outline-primary" id="btnAddVariation_1" style="width:100%">Enable Variation</button>
                                         </div>
 
                                         <div class="row">
@@ -379,7 +379,7 @@
                                                     </div>
                                                     <div class="col-xl-10 col-lg-10 col-sm-12">
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="variationName_1" aria-label="variationName_1">
+                                                            <input type="text" class="form-control" name="variationName[]">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -390,10 +390,10 @@
                                                     </div>
                                                     <div class="col-xl-10 col-lg-10 col-sm-12">
                                                         <div id="divChoices_1" class="drag-list-choices" >
-                                                            <div class="input-group mb-3 drag-item-choices">
+                                                            <div class="input-group mb-3 drag-item-choices" draggable="true">
                                                                 <input type="text" class="form-control" name="choices[]">
                                                                 <div class="input-group-append">
-                                                                    <span class="input-group-text "><i class="fa fa-arrows" draggable="true" aria-hidden="true"></i></span>
+                                                                    <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
                                                                 </div>
                                                                 <div class="input-group-append btnDeleteChoices">
                                                                     <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
@@ -406,6 +406,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <button type="button" class="btn btn-outline-primary" id="btnAddVariation_2" style="width:100%">Enable Variation 2</button>
                                         </div>
                                     </div>
                                     
@@ -444,7 +447,7 @@
                                         </div>
                                         <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="row">
-                                                <div class="col-xl-3 col-lg-4">
+                                                <div class="col-xl-4 col-lg-4">
                                                     <div class="input-group mb-3">
                                                         <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
                                                         <div class="input-group-append">
@@ -452,7 +455,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-4">
+                                                <div class="col-xl-4 col-lg-4">
                                                     <div class="input-group mb-3">
                                                         <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
                                                         <div class="input-group-append">
@@ -460,7 +463,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-4">
+                                                <div class="col-xl-4 col-lg-4">
                                                     <div class="input-group mb-3">
                                                         <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
                                                         <div class="input-group-append">
@@ -763,9 +766,17 @@
         });
     });
 
-    const btnAddVariation = document.getElementById('btnAddVariation');
+    const btnAddVariation_1 = document.getElementById('btnAddVariation_1');
 
-    btnAddVariation.addEventListener('click', function handleClick(event) {
+    btnAddVariation_1.addEventListener('click', function handleClick(event) {
+        document.getElementById('subPricing').classList.remove("hide");
+        document.getElementById('mainPricing').classList.add("hide");
+        document.getElementById('txtVariationType').value = "1";
+    });
+
+    const btnAddVariation_2 = document.getElementById('btnAddVariation_2');
+
+    btnAddVariation_2.addEventListener('click', function handleClick(event) {
         document.getElementById('subPricing').classList.remove("hide");
         document.getElementById('mainPricing').classList.add("hide");
         document.getElementById('txtVariationType').value = "1";
@@ -782,7 +793,24 @@
     const btnAddChoices_1 = document.getElementById('btnAddChoices_1');
 
     btnAddChoices_1.addEventListener('click', function handleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
+
+        const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
+        btnDeleteChoices.forEach(item => {
+            item.addEventListener('click', function handleClick(event) {
+                if(item.parentElement.parentElement.children.length > 1)
+                {
+                    item.parentElement.remove();
+                }
+            });
+        });
+    });
+
+    const btnAddChoices_2 = document.getElementById('btnAddChoices_2');
+
+    btnAddChoices_2.addEventListener('click', function handleClick(event) {
+        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
         document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
