@@ -414,7 +414,6 @@
 				if(mysqli_stmt_num_rows($stmt) == 1){
 					mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5);
 					mysqli_stmt_fetch($stmt);
-	
 				}
 				mysqli_stmt_free_result($stmt);
 				mysqli_stmt_close($stmt);
@@ -440,7 +439,7 @@
 		 
 		 
 		 
-		 /*
+		 /**/
 		 if(mail($to, $subject, $content, $header)){
 			  echo "<script>alert('Email sent!')</script>";
 			  $sql = "UPDATE 
@@ -464,7 +463,7 @@
 		 }else{
 			 echo "<script>alert('Fail to sent!')</script>";
 		 }
-		 */
+		 
 		 
 		 
 		
