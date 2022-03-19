@@ -130,7 +130,7 @@
 
                         </div>
                         </div>
-                    </div>
+                    
 
                     <!--------------------------------To ship--------------------------------------->
                     <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">...</div>
@@ -140,6 +140,7 @@
 
                     <!--------------------------------Completed--------------------------------------->
                     <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">...</div>
+                </div>
                 </div>
             </div>
         </div>
