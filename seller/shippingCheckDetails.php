@@ -14,11 +14,11 @@
                 <div class="order-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-hashtag"></i></div>
-                        <div class="col">Order ID</div>
+                        <div class="col title">Order ID</div>
                     </div>
                     <div class="row">
                         <div class="col-1"></div>
-                        <div class="col section-body">
+                        <div class="col section-body ">
                             211104M9WMPBS5
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 <div class="delivery-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
-                        <div class=" col title">Delivery Address</div>
+                        <div class=" col title ">Delivery Address</div>
                     </div>
                     <div class="row">
                         <div class="col-1"></div>
@@ -69,6 +69,119 @@
 
         </div>
     </div>
+
+    
+                   <!--  Payment Information -->
+                   <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Payment Information</h5>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="order-list-panel">
+                                        <div class="top-card card-header">
+                                            <div class="row">
+                                                <div class="col-5">Product(s)</div>
+                                                <div class="col-1">Order Total</div>
+                                                <div class="col-2">Status</div>
+                                                <div class="col-2">All Channels</div>
+                                                <div class="col-2">Actions</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col md-auto text-start"><span><strong>Username</strong></span>
+                                                </div>
+                                                <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                                                            Order
+                                                            ID:
+                                                            125353</strong></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-1"><img width="100%"
+                                                        src="https://www.w3schools.com/images/w3schools_green.jpg"
+                                                        alt="W3Schools.com"></div>
+                                                <div class="col-3">Wireless Earphone dfdfbdfbd</div>
+                                                <div class="col-1">X1</div>
+    
+                                                <div class="col-1">RM349.00</div>
+                                                <div class="col-2">Completed</div>
+                                                <div class="col-2">DHL eCommerce 2121113134</div>
+                                                <div class="col-2"><a href="#">Check details</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End of Order Item-->
+                                    <div class="row">
+                                        <!--Payment method & Status-->
+                                        <div class="col-8">
+                                            <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
+                                                <div class="w-100 text-start"><span class="text-medium p-2"><strong> Payment
+                                                            Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
+                                                        style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
+                                                        Card</span> </div>
+                                                <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span> <span
+                                                        class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
+                                                    Order</div>
+                                            </div>
+                                        </div>
+                                        <!--Ordered Item Price Amount Information-->
+                                        <div class="col-4">
+                                            <div class="row p-2">
+                                                <!-- Total Amount-->
+                                                <div class="col">
+                                                    Total:
+                                                </div>
+                                                <div class="col">
+                                                    RM715.00
+                                                </div>
+                                            </div>
+                                            <div class="row p-2">
+                                                <!--Discounts-->
+                                                <div class="col">
+                                                    Discounts:
+                                                </div>
+                                                <div class="col">
+                                                    -RM258.00
+                                                </div>
+                                            </div>
+                                            <div class="row p-2">
+                                                <!-- Delivery Fees-->
+                                                <div class="col">
+                                                    Delivery Fees:
+                                                </div>
+                                                <div class="col">
+                                                    RM8.60
+                                                </div>
+                                            </div>
+                                            <div class="row p-2">
+                                                <!-- Ordered Total-->
+                                                <div class="col">
+                                                    <h5>Ordered Total:</h5>
+                                                    <!--**to input quantity of items-->
+                                                </div>
+                                                <div class="col red-text">
+                                                    <h5><strong>RM465.60</strong></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
@@ -83,8 +196,9 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+
 <style>
-    .section-body{
-        margin-left:32px;
+    .title {
+        font-weight: bold;
     }
 </style>
