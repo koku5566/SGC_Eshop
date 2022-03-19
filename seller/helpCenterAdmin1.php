@@ -786,9 +786,9 @@
 													$CUtrim  = substr($z6, 0, 50);
 													$CUmsg = "$CUtrim.....";
 													echo "$CUmsg";
-												}else{echo "$z6"}
+												}else{echo "$z6";}
 
-											}else{echo " ";}
+											}else{echo "";}
 											
 										?>
 										</h6>										
