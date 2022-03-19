@@ -92,18 +92,8 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!--Start of order item-->
                                     <div class="card">
-                                        <div class="card-header">
-                                            <div class="row">
-                                                <div class="col md-auto text-start"><span><strong>Username</strong></span>
-                                                </div>
-                                                <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                            Order
-                                                            ID:
-                                                            125353</strong></span></div>
-                                            </div>
-                                        </div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-1"><img width="100%"
