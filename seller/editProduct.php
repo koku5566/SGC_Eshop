@@ -314,7 +314,7 @@
                                         </div>
                                     </div>
 
-                                    <div id="subPricing hide">
+                                    <div id="subPricing" class="hide">
                                         <div class="card mb-4">
                                             <div class="card-header py-3">
                                                 <h5 class="m-0 font-weight-bold text-primary">Variation 1</h5>
@@ -330,10 +330,10 @@
                                                     <div class="input-group mb-3 drag-item-choices">
                                                         <input type="text" class="form-control" name="choices[]">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text "><i class="fa fa-move" aria-hidden="true"></i></span>
+                                                            <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
                                                         </div>
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                            <span class="input-group-text"><i class="fa fa-trash btnDeleteChoice" aria-hidden="true"></i></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -649,8 +649,15 @@
     const btnAddChoices_1 = document.getElementById('btnAddChoices_1');
 
     btnAddChoices_1.addEventListener('click', function handleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-move\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        var str = "<div class=\"input-group mb-3 drag-item-choices\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-trash btnDeleteChoice\" aria-hidden=\"true\"></i></span></div></div>";
         document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
+
+        const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoice');
+        btnDeleteChoices.forEach(item => {
+            item.addEventListener('change', function handleChange(event) {
+                item.parentElement.remove();
+        });
+    });
     });
 
 
