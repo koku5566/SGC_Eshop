@@ -80,3 +80,8 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<style>
+    .section-body{
+        margin-left:32px;
+    }
+</style>
