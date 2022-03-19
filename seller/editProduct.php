@@ -96,7 +96,7 @@
                                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                             <div class="drag-list">
                                                 <div class="row">
-                                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;display:flex">
+                                                    <div style="padding-bottom: .625rem;display:flex">
                                                         <div class="drag-item" draggable="true">
                                                             <div class="image-container">
                                                                 <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
@@ -116,7 +116,7 @@
                                                             <p>Cover Picture</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;display:flex">
+                                                    <div style="padding-bottom: .625rem;display:flex">
                                                         <div class="drag-item" draggable="true">
                                                             <div class="image-container">
                                                                 <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
@@ -190,7 +190,7 @@
                                                             <p>Picture 4</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;display:flex">
+                                                    <div style="padding-bottom: .625rem;display:flex">
                                                         <div class="drag-item" draggable="true">
                                                             <div class="image-container">
                                                                 <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
