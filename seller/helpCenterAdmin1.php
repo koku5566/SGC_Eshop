@@ -407,7 +407,7 @@
 					WHERE cu_id = ? AND disable_date IS NULL";
 		
 			if($stmt = mysqli_prepare ($conn, $sql)){
-				mysqli_stmt_bind_param($stmt, "i", $selectedPID);
+				mysqli_stmt_bind_param($stmt, "s", $selectedPID);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
 				
@@ -417,7 +417,7 @@
 							$to = $z3;
 						  $subject = $z4;
 						  $content = $z5;
-						  echo "$to ||| $subject ||| $content"; 
+						  
 					}
 				}
 				mysqli_stmt_free_result($stmt);
@@ -433,7 +433,7 @@
 		 
 		 //mail($recipient, $subject, $content, $mailheader)
 		
-			
+			echo "$to ||| $subject ||| $content"; 
 			$from = "Contact_Us_Mail@sgprototype2.com";
 			
 		  
