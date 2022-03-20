@@ -470,7 +470,7 @@
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation" style="width:100%">Enable Variation 2</button>
+                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
                         </div>
                     </div>
@@ -907,7 +907,7 @@
                 document.getElementById('txtVariationType').value = "1";
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
-            else if(btnAddVariations.length < 2)
+            else if(btnAddVariations.length == 1)
             {
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
