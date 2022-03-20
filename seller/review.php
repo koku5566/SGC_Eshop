@@ -64,9 +64,7 @@ else
     </div>
     <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 
-<?php
-    require __DIR__ . '/footer.php'
-?>
+
 
 <style>
 </style>
@@ -96,3 +94,6 @@ $(document).ready(function(){
 	});
 });
 </script>
+<?php
+    require __DIR__ . '/footer.php'
+?>
