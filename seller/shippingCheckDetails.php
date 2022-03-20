@@ -28,7 +28,7 @@
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
                         <div class=" col title ">Delivery Address</div>
                     </div>
-                    <div class="row">
+                    <div clas s="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
@@ -70,104 +70,103 @@
         </div>
     </div>
 
-    
-                   <!--  Payment Information -->
-                   <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Payment Information</h5>
+
+    <!--  Payment Information -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">Payment Information</h5>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="order-list-panel">
+                        <div class="top-card card-header">
+                            <div class="row">
+                                <div class="col-1">No.</div>
+                                <div class="col-5">Product</div>
+                                <div class="col-2">Unit Price</div>
+                                <div class="col-1">Quantity</div>
+                                <div class="col-3">Total Price</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Start of order item-->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-1">1.</div>
+                                <div class="col-1"><img width="100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></div>
+                                <div class="col-4">Wireless Earphone dfdfbdfbd</div>
+                                <div class="col-2">RM349.00</div>
+                                <div class="col-1">X1</div>
+                                <div class="col-3 red-text">RM349.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of Order Item-->
+                    <div class="row">
+                        <!--Payment method & Status-->
+                        <div class="col-8">
+                            <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
+                                <div class="w-100 text-start"><span class="text-medium p-2"><strong> Payment
+                                            Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
+                                        style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
+                                        Card</span> </div>
+                                <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
+                                    <span class="iconify" data-icon="carbon:delivery"
+                                        style="color: black;"></span>Processing
+                                    Order</div>
+                            </div>
+                        </div>
+                        <!--Ordered Item Price Amount Information-->
+                        <div class="col-4">
+                            <div class="row p-2">
+                                <!-- Total Amount-->
+                                <div class="col">
+                                    Total:
                                 </div>
-
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="order-list-panel">
-                                        <div class="top-card card-header">
-                                            <div class="row">
-                                                <div class="col-1">No.</div>
-                                                <div class="col-5">Product</div>
-                                                <div class="col-2">Unit Price</div>
-                                                <div class="col-1">Quantity</div>
-                                                <div class="col-3">Total Price</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Start of order item-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-1">1.</div>
-                                                <div class="col-1"><img width="100%"
-                                                        src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                        alt="W3Schools.com"></div>
-                                                <div class="col-4">Wireless Earphone dfdfbdfbd</div>
-                                                <div class="col-2">RM349.00</div>
-                                                <div class="col-1">X1</div>
-                                                <div class="col-3 red-text" >RM349.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End of Order Item-->
-                                    <div class="row">
-                                        <!--Payment method & Status-->
-                                        <div class="col-8">
-                                            <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
-                                                <div class="w-100 text-start"><span class="text-medium p-2"><strong> Payment
-                                                            Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
-                                                        style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
-                                                        Card</span> </div>
-                                                <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span> <span
-                                                        class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
-                                                    Order</div>
-                                            </div>
-                                        </div>
-                                        <!--Ordered Item Price Amount Information-->
-                                        <div class="col-4">
-                                            <div class="row p-2">
-                                                <!-- Total Amount-->
-                                                <div class="col">
-                                                    Total:
-                                                </div>
-                                                <div class="col">
-                                                    RM715.00
-                                                </div>
-                                            </div>
-                                            <div class="row p-2">
-                                                <!--Discounts-->
-                                                <div class="col">
-                                                    Discounts:
-                                                </div>
-                                                <div class="col">
-                                                    -RM258.00
-                                                </div>
-                                            </div>
-                                            <div class="row p-2">
-                                                <!-- Delivery Fees-->
-                                                <div class="col">
-                                                    Delivery Fees:
-                                                </div>
-                                                <div class="col">
-                                                    RM8.60
-                                                </div>
-                                            </div>
-                                            <div class="row p-2">
-                                                <!-- Ordered Total-->
-                                                <div class="col">
-                                                    <h5>Ordered Total:</h5>
-                                                    <!--**to input quantity of items-->
-                                                </div>
-                                                <div class="col red-text">
-                                                    <h5><strong>RM465.60</strong></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                        
-
+                                <div class="col">
+                                    RM715.00
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <!--Discounts-->
+                                <div class="col">
+                                    Discounts:
+                                </div>
+                                <div class="col">
+                                    -RM258.00
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <!-- Delivery Fees-->
+                                <div class="col">
+                                    Delivery Fees:
+                                </div>
+                                <div class="col">
+                                    RM8.60
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <!-- Ordered Total-->
+                                <div class="col">
+                                    <h5>Ordered Total:</h5>
+                                    <!--**to input quantity of items-->
+                                </div>
+                                <div class="col red-text">
+                                    <h5><strong>RM465.60</strong></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
@@ -189,6 +188,7 @@
     .title {
         font-weight: bold;
     }
+
     .red-text {
         color: #A71337;
         font-weight: bold;

@@ -3,16 +3,14 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card mb-3">
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order
-                No
-                - </span><span class="text-medium">34VB5540K83</span></div>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-size-medium">34VB5540K83</span></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Shipped Via:</span>DHL</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Status:</span> Processing Order</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Expected Date:</span> SEP 09, 2017</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Shipped Via:</span>DHL</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Processing Order</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span> SEP 09, 2017</div>
         </div>
         <div class="card-body">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
@@ -43,12 +41,14 @@
             </div>
             <hr>
             <!--Delivery Details-->
-            <div class="row">
-                <strong>Delivery Details </strong>
-            </div>
-            <div class="row">
-                <div id="recepient-name">Yee YingYing</div>（+60）1117795416<br>
-                <div id="address">9-13-9， Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+            <div class="delivery-details pl-2">
+                <div class="row">
+                    <strong>Delivery Details </strong>
+                </div>
+                <div class="row">
+                    <div id="recepient-name">Yee YingYing</div>（+60）1117795416<br>
+                    <div id="address">9-13-9， Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                </div>
             </div>
             <hr>
             <!--Shipping Progress table-->
@@ -73,9 +73,9 @@
 
     <!--Order Details-->
     <div class="card">
-        <div class="card-header ">
+        <div class="card-header">
             <h5 class="card-title">
-                <div class="text-end text-secondary p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
@@ -121,11 +121,11 @@
                 <!--Payment method & Status-->
                 <div class="col-8">
                     <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
-                        <div class="w-100 text-start"><span class="text-medium p-2"><strong> Payment
+                        <div class="w-100 text-start"><span class="text-size-medium p-2"><strong> Payment
                                     Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
                                 style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
                                 Card</span> </div>
-                        <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span> <span
+                        <div class="w-100 text-start"><span class="text-size-medium"><strong>Status:</strong></span> <span
                                 class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
                             Order</div>
                     </div>
@@ -420,6 +420,9 @@
         font-weight: bold;
     }
 
+    .text-size-medium{
+        font-size:18px;
+    }
     .prev:hover {
         color: #D50000 !important
     }
