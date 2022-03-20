@@ -75,6 +75,10 @@
                                 aria-controls="toship" aria-selected="false">To Ship</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="topickup-tab" data-toggle="tab" href="#topickup" role="tab"
+                                aria-controls="topickup" aria-selected="false">To Pick Up</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab"
                                 aria-controls="shipping" aria-selected="false">Shipping</a>
                         </li>
@@ -124,7 +128,8 @@
                                             <div class="col-1">RM349.00</div>
                                             <div class="col-2">Completed</div>
                                             <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="#">Check details</a></div>
+                                            <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -132,9 +137,46 @@
 
                             </div>
                             <!--------------------------------To ship--------------------------------------->
-                            <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">...
-                            </div>
+                            <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
+                                <!--Pills tab--->
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill"
+                                            href="#pills-all" role="tab" aria-controls="pills-all"
+                                            aria-selected="true">All</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
+                                            href="#pills-to-process" role="tab" aria-controls="pills-to-process"
+                                            aria-selected="false">To Process</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
+                                            href="#pills-processed" role="tab" aria-controls="pills-processed"
+                                            aria-selected="false">Processed</a>
+                                    </li>
 
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <!--All to ship orders-->
+                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+                                        aria-labelledby="pills-all-tab">
+                                        ...
+                                    </div>
+
+                                    <!--to process to ship orders-->
+                                    <div class="tab-pane fade" id="pills-to-process" role="tabpanel"
+                                        aria-labelledby="pills-to-process-tab">
+                                        ...
+                                    </div>
+
+                                    <!-- processed to ship orders-->
+                                    <div class="tab-pane fade" id="pills-processed" role="tabpanel"
+                                        aria-labelledby="pills-processed-tab">
+                                        ...
+                                    </div>
+                                </div>
+                            </div>
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">...
                             </div>
