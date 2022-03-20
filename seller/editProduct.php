@@ -74,12 +74,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Product Details</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Update</a>
+                class="fas fa-download fa-sm text-white-50"></i>Update</a>
     </div>
-
-
                    <!-- Basic Infomation -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
@@ -278,7 +275,76 @@
                                         </div>
                                         <div class="col-xl-10 col-lg-10 col-sm-12">
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
+                                            <input type="text" pattern="{20,100}" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Main Category</p>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <select class="form-select" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" style="color:currentColor;width: 60%;;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;" required>
+                                                    <option value="">Please Select a Category</option>
+                                                        <?php
+                                                        //Main Category
+                                                        $sql = "SELECT * FROM mainCategory";
+                                                        $result = mysqli_query($conn, $sql);
+
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            while($row = mysqli_fetch_assoc($result)) {
+                                                                $categoryId = $row["main_category_id"];
+                                                                $categoryName = $row["main_category_name"];
+
+                                                                if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
+                                                                {
+                                                                    echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                                }
+                                                            }
+                                                        }
+                                                        ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Sub Category</p>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <select class="form-select" name="subCategoryId" aria-label="mainCategory" style="color:currentColor;width: 60%;;background-color: white;border: 1px solid;border-radius: 0 5px 5px 0;">
+                                                        <?php
+                                                            if(isset($_POST["mainCategoryId"]))
+                                                            {
+                                                                $maincategoryid = $_POST["mainCategoryId"];
+                                                                //Sub Category
+                                                                $sql = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
+                                                                $result = mysqli_query($conn, $sql);
+
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $categoryId = $row["sub_category_id"];
+                                                                        $categoryName = $row["sub_category_name"];
+        
+                                                                        if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
+                                                                        {
+                                                                            echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                        ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
