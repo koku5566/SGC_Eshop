@@ -876,15 +876,6 @@
                     initChoice();
                 }
                 
-                if(divVariations.length == 2)
-                {
-                    btnAddVariations.forEach(item => {
-                        item.remove();
-                    });
-                }
-
-                
-                
                 //Delete Variation
                 const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
                 btnDeleteVariations.forEach(item => {
