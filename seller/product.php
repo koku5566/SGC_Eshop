@@ -934,11 +934,21 @@
     }
 
     function deleteChoiceHandleClick(event) {
-        console.log(event);
-        if(event.target.parentElement.parentElement.children.length > 1)
+        if(event.target.parentElement.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
-            event.target.parentElement.remove();
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
+            {
+                event.target.parentElement.parentElement.parentElement.remove();
+            }
         }
+        else if(event.target.parentElement.parentElement.classList.contains("btnDeleteChoices"))
+        {
+            if(event.target.parentElement.parentElement.children.length > 1)
+            {
+                event.target.parentElement.parentElement.remove();
+            }
+        }
+        
     }
 
     
