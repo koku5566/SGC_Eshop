@@ -85,9 +85,9 @@
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
-                while($row = mysqli_fetch_assoc($result_1)) {
-                    $categoryId = $row["sub_category_id"];
-                    $categoryName = $row["sub_category_name"];
+                while($row_1 = mysqli_fetch_assoc($result_1)) {
+                    $categoryId = $row_1["sub_category_id"];
+                    $categoryName = $row_1["sub_category_name"];
 
                     array_push($categoryNameArray[$maincategoryid],$categoryName);
                     array_push($categoryIdArray[$maincategoryid],$categoryId);
