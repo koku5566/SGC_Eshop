@@ -895,12 +895,6 @@
         </div>
     `;
 
-    var addVariationButtonHTML = `
-        <div class="input-group mb-3">
-            <button type="button" class="btn btn-outline-primary" id="btnAddVariation" style="width:100%">Enable Variation 2</button>
-        </div>
-    `;
-
     btnAddVariations.forEach(item => {
         item.addEventListener('click', function handleClick(event) {
             var main = document.getElementById('mainPricing');
@@ -911,8 +905,7 @@
                 sub.classList.remove("hide");
                 main.classList.add("hide");
                 document.getElementById('txtVariationType').value = "1";
-                sub.innerHTML = VariationHTML;
-                sub.insertAdjacentHTML( 'beforeend', addVariationButtonHTML );
+                sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
             else if(btnAddVariations.length < 2)
             {
