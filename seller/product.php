@@ -878,7 +878,9 @@
                 
                 if(divVariations.length == 2)
                 {
-                    btnAddVariations.remove();
+                    btnAddVariations.forEach(item => {
+                        item.remove();
+                    });
                 }
 
                 
