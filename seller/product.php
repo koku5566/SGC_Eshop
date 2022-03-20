@@ -866,10 +866,14 @@
                     main.classList.add("hide");
                     document.getElementById('txtVariationType').value = "1";
                     sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+                    initVariation();
+                    initChoice();
                 }
                 else if(divVariations.length < 2)
                 {
                     sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+                    initVariation();
+                    initChoice();
                 }
                 
                 if(divVariations.length == 2)
@@ -877,8 +881,7 @@
                     btnAddVariations.remove();
                 }
 
-                initVariation();
-                initChoice();
+                
                 
                 //Delete Variation
                 const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
