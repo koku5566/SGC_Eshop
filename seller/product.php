@@ -936,17 +936,15 @@
     function deleteChoiceHandleClick(event) {
         if(event.target.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.parentElement.children.length > 1)
             {
-                console.log(event.target.parentElement.parentElement.parentElement.children);
                 event.target.parentElement.parentElement.parentElement.remove();
             }
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
-                console.log(event.target.parentElement.parentElement.children);
                 event.target.parentElement.parentElement.remove();
             }
         }
