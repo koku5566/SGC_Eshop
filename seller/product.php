@@ -890,7 +890,7 @@
 
     function deleteVariationHandleClick(event) {
         const divVariations = document.querySelectorAll('.variation');
-        
+
         if(divVariations.length == 2)
         {
             item.parentElement.parentElement.parentElement.remove();
@@ -915,6 +915,7 @@
     }
 
     function addChoiceHandleClick(event) {
+        console.log(event);
         var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
         item.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
         // Instantiate Choices Drag
