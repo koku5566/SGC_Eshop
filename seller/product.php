@@ -136,7 +136,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -156,7 +156,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -174,7 +174,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -192,7 +192,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -210,7 +210,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -230,7 +230,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -248,7 +248,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -266,7 +266,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -284,7 +284,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -298,6 +298,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
                                 <p class="p-title">Product Name</p>
@@ -394,9 +395,9 @@
                     <div class="card-body">
                         <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
-                        <div id="mainPricing">
+                        <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation_1" style="width:100%">Enable Variation</button>
+                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation</button>
                             </div>
 
                             <div class="row">
@@ -408,7 +409,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number"min="0" value="0" class="form-control" name="productPrice">
+                                        <input type="number" min="0" value="0" class="form-control" name="productPrice">
                                     </div>
                                 </div>
                             </div>
@@ -426,56 +427,53 @@
                         </div>
                         
 
-                        
-                        
-
-                        <div id="subPricing" class="hide">
-                            <div class="card mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Variation 1</h5>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Variation Name</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="variationName[]">
-                                            </div>
-                                        </div>
+                        <div id="subPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
+                            <div class="variation">
+                                <div class="card mb-4">
+                                    <div class="card-header py-3">
+                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i class="fa fa-times" aria-hidden="true"></i>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Choices</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div id="divChoices_1" class="drag-list-choices" >
-                                                <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                                    <input type="text" class="form-control" name="choices[]">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                                    </div>
-                                                    <div class="input-group-append btnDeleteChoices">
-                                                        <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Variation Name</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="variationName[][name]">
                                                 </div>
                                             </div>
-                                            <div class="input-group mb-3">
-                                                <button type="button" class="btn btn-outline-primary" id="btnAddChoices_1" style="width:100%">Add Choices</button>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Choices</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div id="divChoices_1" class="drag-list-choices" >
+                                                    <div class="input-group mb-3 drag-item-choices" draggable="true">
+                                                        <input type="text" class="form-control" name="variationName[][name][choices][]">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                                        </div>
+                                                        <div class="input-group-append btnDeleteChoices">
+                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <button type="button" class="btn btn-outline-primary btnAddChoices" style="width:100%">Add Choices</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation_2" style="width:100%">Enable Variation 2</button>
+                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
                         </div>
-                        
-
                     </div>
                 </div>
             </div>
@@ -666,6 +664,7 @@
         }
     }
 
+//#region Drag and Drop
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
@@ -826,6 +825,8 @@
         });
     }
 
+//#endregion
+
     const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
     deleteImg.forEach(img => {
@@ -848,22 +849,21 @@
         });
     });
 
-    const btnAddVariation_1 = document.getElementById('btnAddVariation_1');
+    const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+    btnAddVariations.forEach(item => {
+        item.addEventListener('click', function handleClick(event) {
+            if(document.getElementById('subPricing').classList.contains("hide"))
+            {
+                document.getElementById('subPricing').classList.remove("hide");
+                document.getElementById('mainPricing').classList.add("hide");
+                document.getElementById('txtVariationType').value = "1";
+            }
+            else if()
+            {
 
-    btnAddVariation_1.addEventListener('click', function handleClick(event) {
-        document.getElementById('subPricing').classList.remove("hide");
-        document.getElementById('mainPricing').classList.add("hide");
-        document.getElementById('txtVariationType').value = "1";
+            }
+        });
     });
-
-    const btnAddVariation_2 = document.getElementById('btnAddVariation_2');
-
-    btnAddVariation_2.addEventListener('click', function handleClick(event) {
-        document.getElementById('subPricing').classList.remove("hide");
-        document.getElementById('mainPricing').classList.add("hide");
-        document.getElementById('txtVariationType').value = "1";
-    });
-
 
     const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
     btnDeleteChoices.forEach(item => {
