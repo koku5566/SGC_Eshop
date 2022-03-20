@@ -304,7 +304,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" pattern="{20,100}" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -650,11 +650,17 @@
 <script>
 
     function makeSubmenu(value) {
-        if (value.length == 0) document.getElementById("categorySelect").innerHTML = "<option></option>";
+        console.log(value)
+        if (value.length == 0) 
+            document.getElementById("categorySelect").innerHTML = "<option></option>";
         else {
             var citiesOptions = "";
             var subCategoryId = <?php echo json_encode($categoryIdArray); ?>;
             var subcategoryName = <?php echo json_encode($categoryNameArray); ?>;
+
+            console.log(subCategoryId);
+            console.log(subcategoryName);
+
             for (categoryId in subCategoryId[value]) {
                 citiesOptions += "<option value=\""+ subCategoryId[value][categoryId] +"\" >" + subcategoryName[value][categoryId] + "</option>";
             }
