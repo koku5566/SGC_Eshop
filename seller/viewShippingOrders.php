@@ -103,7 +103,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="order-list-body pt-3">
                             <div class="tab-pane active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 <!--Each Order Item-->
                                 <div class="card">
@@ -156,7 +155,6 @@
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             yosis
                             </div>
-                        </div>
 
 
 
@@ -173,11 +171,6 @@
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
-
-    //tab panel transition function
-    $(function () {
-    $('#myTab li:last-child a').tab('show')
-  })
 
     //Date picker function
     $('input[name="dates"]').daterangepicker();
