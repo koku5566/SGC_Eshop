@@ -139,51 +139,22 @@
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                                 <!--Pills tab--->
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill"
-                                            href="#pills-all" role="tab" aria-controls="pills-all"
-                                            aria-selected="true">All</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
-                                            href="#pills-to-process" role="tab" aria-controls="pills-to-process"
-                                            aria-selected="false">To Process</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
-                                            href="#pills-processed" role="tab" aria-controls="pills-processed"
-                                            aria-selected="false">Processed</a>
-                                    </li>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <!--All to ship orders-->
-                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                                        aria-labelledby="pills-all-tab">
-                                        ...
-                                    </div>
-
-                                    <!--to process to ship orders-->
-                                    <div class="tab-pane fade" id="pills-to-process" role="tabpanel"
-                                        aria-labelledby="pills-to-process-tab">
-                                        ...
-                                    </div>
-
-                                    <!-- processed to ship orders-->
-                                    <div class="tab-pane fade" id="pills-processed" role="tabpanel"
-                                        aria-labelledby="pills-processed-tab">
-                                        ...
-                                    </div>
-                                </div>
                             </div>
+                            <!--------------------------------Pick Up--------------------------------------->
+                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
+                            yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
+                            </div>
+
                             <!--------------------------------Shipping--------------------------------------->
-                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">...
+                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            yopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapa
                             </div>
 
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                                ...
+                            yosis
                             </div>
                         </div>
 
