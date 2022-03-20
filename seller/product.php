@@ -867,9 +867,14 @@
                     document.getElementById('txtVariationType').value = "1";
                     sub.insertAdjacentHTML( 'beforeend', VariationHTML );
                 }
-                else if(divVariations.length == 1)
+                else if(divVariations.length < 2)
                 {
                     sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+                }
+                
+                if(divVariations.length == 2)
+                {
+                    btnAddVariations.remove();
                 }
 
                 initVariation();
