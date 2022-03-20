@@ -448,6 +448,15 @@ $('.logo-slider').slick({
 		infinite: true,
   responsive: [
     {
+      breakpoint: 1224,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: true
+      }
+    },
+	{
       breakpoint: 1024,
       settings: {
         slidesToShow: 3,
