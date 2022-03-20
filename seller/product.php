@@ -938,7 +938,7 @@
         {
             if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
-                console.log(event.target.parentElement.parentElement.parentElement.children.length);
+                console.log(event.target.parentElement.parentElement.parentElement.children);
                 event.target.parentElement.parentElement.parentElement.remove();
             }
         }
@@ -946,7 +946,7 @@
         {
             if(event.target.parentElement.parentElement.children.length > 1)
             {
-                console.log(event.target.parentElement.parentElement.children.length);
+                console.log(event.target.parentElement.parentElement.children);
                 event.target.parentElement.parentElement.remove();
             }
         }
