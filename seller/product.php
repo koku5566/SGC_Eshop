@@ -425,13 +425,12 @@
                                 </div>
                             </div>
                         </div>
-                        
 
-                        <div id="subPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
+                        <div id="subPricing" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
                             <div class="variation">
                                 <div class="card mb-4">
                                     <div class="card-header py-3">
-                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i class="fa fa-times" aria-hidden="true"></i>
+                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times" aria-hidden="true"></i>
                                     </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
@@ -850,20 +849,90 @@
     });
 
     const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+
+    var VariationHTML = `
+        <div class="variation">
+            <div class="card mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                            <p class="p-title">Variation Name</p>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="variationName[][name]">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                            <p class="p-title">Choices</p>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                            <div id="divChoices_1" class="drag-list-choices" >
+                                <div class="input-group mb-3 drag-item-choices" draggable="true">
+                                    <input type="text" class="form-control" name="variationName[][name][choices][]">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                    </div>
+                                    <div class="input-group-append btnDeleteChoices">
+                                        <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-primary btnAddChoices" style="width:100%">Add Choices</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
     btnAddVariations.forEach(item => {
         item.addEventListener('click', function handleClick(event) {
-            if(document.getElementById('subPricing').classList.contains("hide"))
-            {
-                document.getElementById('subPricing').classList.remove("hide");
-                document.getElementById('mainPricing').classList.add("hide");
-                document.getElementById('txtVariationType').value = "1";
-            }
-            else if()
-            {
+            var main = document.getElementById('mainPricing');
+            var sub = document.getElementById('subPricing');
 
+            if(sub.classList.contains("hide"))
+            {
+                sub.classList.remove("hide");
+                main.classList.add("hide");
+                document.getElementById('txtVariationType').value = "1";
+                sub.innerHTML = VariationHTML;
             }
+            else if(btnAddVariations.length < 2)
+            {
+                sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+            }
+
+            //Delete Variation
+            const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
+            btnAddVariations.forEach(item => {
+                item.addEventListener('click', function handleClick(event) {
+                    if(btnAddVariations.length == 2)
+                    {
+                        item.parentElement.parentElement.parentElement.remove();
+                    }
+                    else if(btnAddVariations.length == 1)
+                    {
+                        item.parentElement.parentElement.parentElement.remove();
+                        sub.classList.add("hide");
+                        main.classList.remove("hide");
+                        document.getElementById('txtVariationType').value = "0";
+                    }
+                });
+            });
         });
     });
+
+    
 
     const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
     btnDeleteChoices.forEach(item => {
