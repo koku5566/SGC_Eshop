@@ -30,6 +30,7 @@
 $(document).ready(function(){
 	$('#search_text').keyup(function(){
 		var txt = $(this).val();
+		consol.log($txt);
 		if(txt != '')
 		{
 			
