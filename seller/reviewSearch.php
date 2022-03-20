@@ -2,7 +2,7 @@
 $output = '';
 $sql = "SELECT cu_id, name, email, campus, subject, message, status 
 		FROM `contactUs` 
-		WHERE cu_id LIKE '%".$_POST["search"]."%'";
+		WHERE cu_id LIKE '%".$_POST["search_text"]."%'";
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0)
 {
