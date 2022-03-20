@@ -67,6 +67,34 @@
             echo("Error Insert Fail");
         }
     } 
+
+    $categoryNameArray = array();
+    $categoryIdArray = array();
+
+    //Main Category
+    $sql = "SELECT * FROM mainCategory";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $maincategoryid = $row["main_category_id"];
+            array_push($categoryNameArray,$maincategoryid);
+            array_push($categoryIdArray,$maincategoryid);
+
+            $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
+            $result_1 = mysqli_query($conn, $sql_1);
+
+            if (mysqli_num_rows($result_1) > 0) {
+                while($row = mysqli_fetch_assoc($result_1)) {
+                    $categoryId = $row["sub_category_id"];
+                    $categoryName = $row["sub_category_name"];
+
+                    array_push($categoryNameArray[$maincategoryid],$categoryName);
+                    array_push($categoryIdArray[$maincategoryid],$categoryId);
+                }
+            }
+        }
+    }                             
 ?>
 
 <!-- Begin Page Content -->
@@ -287,7 +315,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" onchange='this.form.submit()' name="mainCategoryId" aria-label="mainCategory" required>
+                                    <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
                                         <option value="">Please Select a Category</option>
                                             <?php
                                             //Main Category
@@ -299,14 +327,7 @@
                                                     $categoryId = $row["main_category_id"];
                                                     $categoryName = $row["main_category_name"];
 
-                                                    if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
-                                                    {
-                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
-                                                    }
-                                                    else
-                                                    {
-                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
-                                                    }
+                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
                                                 }
                                             }
                                             ?>
@@ -318,33 +339,8 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" name="subCategoryId" aria-label="mainCategory">
-                                            <?php
-                                                if(isset($_POST["mainCategoryId"]))
-                                                {
-                                                    $maincategoryid = $_POST["mainCategoryId"];
-                                                    //Sub Category
-                                                    $sql = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
-                                                    $result = mysqli_query($conn, $sql);
-
-                                                    if (mysqli_num_rows($result) > 0) {
-                                                        while($row = mysqli_fetch_assoc($result)) {
-                                                            $categoryId = $row["sub_category_id"];
-                                                            $categoryName = $row["sub_category_name"];
-
-                                                            if(isset($_POST["mainCategoryId"]) && $_POST["mainCategoryId"] == $categoryId )
-                                                            {
-                                                                echo("<option selected value=\"$categoryId\">$categoryName</option>");
-                                                            }
-                                                            else
-                                                            {
-                                                                echo("<option value=\"$categoryId\">$categoryName</option>");
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                
-                                            ?>
+                                    <select class="form-control" id="subCategory" name="subCategoryId">
+ 
                                     </select>
                                 </div>
                             </div>
@@ -652,6 +648,20 @@
 </style>
 
 <script>
+
+    function makeSubmenu(value) {
+        if (value.length == 0) document.getElementById("categorySelect").innerHTML = "<option></option>";
+        else {
+            var citiesOptions = "";
+            var subCategoryId = <?php echo json_encode($categoryIdArray); ?>;
+            var subcategoryName = <?php echo json_encode($categoryNameArray); ?>;
+            for (categoryId in subCategoryId[value]) {
+                citiesOptions += "<option value=\""+ subCategoryId[value][categoryId] +"\" >" + subcategoryName[value][categoryId] + "</option>";
+            }
+            document.getElementById("subCategory").innerHTML = citiesOptions;
+        }
+    }
+
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
