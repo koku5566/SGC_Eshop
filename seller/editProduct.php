@@ -67,6 +67,34 @@
             echo("Error Insert Fail");
         }
     } 
+
+    $subCategoryArray = array();
+
+    //Main Category
+    $sql = "SELECT * FROM mainCategory";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $maincategoryid = $row["main_category_id"];
+            
+            $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
+            $result_1 = mysqli_query($conn, $sql_1);
+
+            if (mysqli_num_rows($result_1) > 0) {
+                $tempArray = array();
+
+                while($row_1 = mysqli_fetch_assoc($result_1)) {
+                    $categoryId = $row_1["sub_category_id"];
+                    $categoryName = $row_1["sub_category_name"];
+
+                    array_push($tempArray,array($categoryId,$categoryName));
+                }
+                $tempCategoryArray = array($maincategoryid => $tempArray);
+            }
+            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
+        }
+    }                             
 ?>
 
 <!-- Begin Page Content -->
@@ -74,403 +102,435 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Product Details</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Update</a>
+                class="fas fa-download fa-sm text-white-50"></i>Update</a>
     </div>
-
-
-                   <!-- Basic Infomation -->
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Product Images</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                                                    <div class="drag-list">
-                                                        <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                                            <div style="padding-bottom: .625rem;display:flex">
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Cover Picture</p>
-                                                                </div>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <!-- Basic Infomation -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Product Images</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                        <div class="drag-list">
+                                            <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                                <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
                                                             </div>
-                                                            <div style="padding-bottom: .625rem;display:flex">
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 1</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 2</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 3</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 4</p>
-                                                                </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                                             </div>
-                                                            <div style="padding-bottom: .625rem;display:flex">
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 5</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 6</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 7</p>
-                                                                </div>
-                                                                <div class="drag-item" draggable="true">
-                                                                    <div class="image-container">
-                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                        <div class="image-layer">
-                                                                            
-                                                                        </div>
-                                                                        <div class="image-tools-delete hide">
-                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                        </div>
-                                                                        <div class="image-tools-add">
-                                                                            <label class="custom-file-upload">
-                                                                                <input accept="image/*" type="file" class="imgInp" />
-                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Picture 8</p>
-                                                                </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
                                                             </div>
                                                         </div>
+                                                        <p>Cover Picture</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Product Name</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="productName" placeholder="No more than 200 character" maxlength="200">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Product Description</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Product Brand</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="productBrand">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Main SKU</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="productSKU">
+                                                <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 1</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 2</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 3</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 4</p>
+                                                    </div>
+                                                </div>
+                                                <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 5</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 6</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 7</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 8</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Product Name</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!--Sales Information -->
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Main Category</p>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
+                                        <option value="">Please Select a Category</option>
+                                            <?php
+                                            //Main Category
+                                            $sql = "SELECT * FROM mainCategory";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    $categoryId = $row["main_category_id"];
+                                                    $categoryName = $row["main_category_name"];
+
+                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                }
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Sub Category</p>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <select class="form-control" id="subCategory" name="subCategoryId">
+ 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Product Description</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Product Brand</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="productBrand">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Main SKU</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="productSKU">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Sales Information -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Sales Information</h5>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
+
+                        <div id="mainPricing">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation_1" style="width:100%">Enable Variation</button>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Price</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">RM</span>
+                                        </div>
+                                        <input type="number"min="0" value="0" class="form-control" name="productPrice">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Stock</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="input-group mb-3">
+                                        <input type="number"min="0" value="0" class="form-control" name="productStock">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        
+                        
+
+                        <div id="subPricing" class="hide">
+                            <div class="card mb-4">
                                 <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Sales Information</h5>
+                                    <h5 class="m-0 font-weight-bold text-primary">Variation 1</h5>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Variation Name</p>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="variationName[]">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <div id="mainPricing">
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                                            <p class="p-title">Choices</p>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                                            <div id="divChoices_1" class="drag-list-choices" >
+                                                <div class="input-group mb-3 drag-item-choices" draggable="true">
+                                                    <input type="text" class="form-control" name="choices[]">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                                    </div>
+                                                    <div class="input-group-append btnDeleteChoices">
+                                                        <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <button type="button" class="btn btn-outline-primary" id="btnAddChoices_1" style="width:100%">Add Choices</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-primary" id="btnAddVariation_2" style="width:100%">Enable Variation 2</button>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Shipping -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Shipping</h5>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Weight</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Package Size</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <button type="button" class="btn btn-outline-primary" id="btnAddVariation_1" style="width:100%">Enable Variation</button>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Price</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">RM</span>
-                                                    </div>
-                                                    <input type="number"min="0" value="0" class="form-control" name="productPrice">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Stock</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="number"min="0" value="0" class="form-control" name="productStock">
-                                                </div>
+                                            <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">cm</span>
                                             </div>
                                         </div>
                                     </div>
-                                    
-
-                                    
-                                    
-
-                                    <div id="subPricing" class="hide">
-                                        <div class="card mb-4">
-                                            <div class="card-header py-3">
-                                                <h5 class="m-0 font-weight-bold text-primary">Variation 1</h5>
-                                            </div>
-                                            <!-- Card Body -->
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                        <p class="p-title">Variation Name</p>
-                                                    </div>
-                                                    <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="variationName[]">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                        <p class="p-title">Choices</p>
-                                                    </div>
-                                                    <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                        <div id="divChoices_1" class="drag-list-choices" >
-                                                            <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                                                <input type="text" class="form-control" name="choices[]">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                                                </div>
-                                                                <div class="input-group-append btnDeleteChoices">
-                                                                    <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-group mb-3">
-                                                            <button type="button" class="btn btn-outline-primary" id="btnAddChoices_1" style="width:100%">Add Choices</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <button type="button" class="btn btn-outline-primary" id="btnAddVariation_2" style="width:100%">Enable Variation 2</button>
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Shipping -->
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Shipping</h5>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Weight</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="input-group mb-3">
-                                                <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">kg</span>
-                                                </div>
+                                            <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">cm</span>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Package Size</p>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="row">
-                                                <div class="col-xl-4 col-lg-4">
-                                                    <div class="input-group mb-3">
-                                                        <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">cm</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-4">
-                                                    <div class="input-group mb-3">
-                                                        <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">cm</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-4">
-                                                    <div class="input-group mb-3">
-                                                        <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">cm</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="input-group mb-3">
+                                            <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">cm</span>
                                             </div>
                                         </div>
                                     </div>
@@ -478,6 +538,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 <!-- /.container-fluid -->
 
@@ -584,6 +648,24 @@
 </style>
 
 <script>
+
+    function makeSubmenu(value) {
+        console.log(value)
+        if (value.length == 0) 
+            document.getElementById("subCategory").innerHTML = "<option></option>";
+        else {
+            var subCategoryHTML = "";
+            var subCategory = <?php echo json_encode($subCategoryArray); ?>;
+
+            console.log(subCategory);
+
+            for (counter in subCategory[value]) {
+                subCategoryHTML += "<option value=\""+ subCategory[value][counter][0] +"\" >" + subCategory[value][counter][1] + "</option>";
+            }
+            document.getElementById("subCategory").innerHTML = subCategoryHTML;
+        }
+    }
+
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
