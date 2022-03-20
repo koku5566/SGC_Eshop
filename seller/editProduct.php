@@ -68,8 +68,7 @@
         }
     } 
 
-    $categoryNameArray = array();
-    $categoryIdArray = array();
+    $subCategoryArray = array();
 
     //Main Category
     $sql = "SELECT * FROM mainCategory";
@@ -78,21 +77,25 @@
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
             $maincategoryid = $row["main_category_id"];
-            array_push($categoryNameArray,$maincategoryid);
-            array_push($categoryIdArray,$maincategoryid);
+            
+           
 
             $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
+                $tempArrayId = array();
+                $tempArrayName = array();
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
                     $categoryId = $row_1["sub_category_id"];
                     $categoryName = $row_1["sub_category_name"];
 
-                    array_push($categoryNameArray[$maincategoryid],$categoryName);
-                    array_push($categoryIdArray[$maincategoryid],$categoryId);
+                    array_push($tempArrayId,$categoryId);
+                    array_push($tempArrayName,$categoryName);
                 }
+                $tempCategoryArray = array($maincategoryid => array($tempArrayId,$tempArrayName));
             }
+            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
         }
     }                             
 ?>
@@ -652,19 +655,17 @@
     function makeSubmenu(value) {
         console.log(value)
         if (value.length == 0) 
-            document.getElementById("categorySelect").innerHTML = "<option></option>";
+            document.getElementById("subCategory").innerHTML = "<option></option>";
         else {
-            var citiesOptions = "";
-            var subCategoryId = <?php echo json_encode($categoryIdArray); ?>;
-            var subcategoryName = <?php echo json_encode($categoryNameArray); ?>;
+            var subCategoryHTML = "";
+            var subCategory = <?php echo json_encode($subCategoryArray); ?>;
 
             console.log(subCategoryId);
-            console.log(subcategoryName);
 
-            for (categoryId in subCategoryId[value]) {
-                citiesOptions += "<option value=\""+ subCategoryId[value][categoryId] +"\" >" + subcategoryName[value][categoryId] + "</option>";
+            for (counter in subCategory[value]) {
+                subCategoryHTML += "<option value=\""+ subCategoryId[value][counter][0] +"\" >" + subcategoryName[value][counter][1] + "</option>";
             }
-            document.getElementById("subCategory").innerHTML = citiesOptions;
+            document.getElementById("subCategory").innerHTML = subCategoryHTML;
         }
     }
 
