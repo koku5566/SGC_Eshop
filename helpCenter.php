@@ -439,11 +439,13 @@ $('.logo-slider').slick({
 
 
 $('.logo-slider').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 5,
+		slidesToScroll:1,
+		dots:true,
+		arrows:true,
+		autoplay: true,
+		autoplaySpeed: 2000, 
+		infinite: true,
   responsive: [
     {
       breakpoint: 1024,
