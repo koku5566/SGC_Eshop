@@ -803,56 +803,54 @@
         });
     }
 
-    function initVariation()
-    {
-        const btnAddVariations = document.querySelectorAll('.btnAddVariation');
-        const divVariations = document.querySelectorAll('.variation');
-
-        var VariationHTML = `
-            <div class="variation">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Variation Name</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="variationName[][name]">
-                                </div>
+    var VariationHTML = `
+        <div class="variation">
+            <div class="card mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                            <p class="p-title">Variation Name</p>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="variationName[][name]">
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Choices</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="drag-list-choices" >
-                                    <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                        <input type="text" class="form-control" name="variationName[][name][choices][]">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="input-group-append btnDeleteChoices">
-                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                        </div>
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-sm-12">
+                            <p class="p-title">Choices</p>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                            <div class="drag-list-choices" >
+                                <div class="input-group mb-3 drag-item-choices" draggable="true">
+                                    <input type="text" class="form-control" name="variationName[][name][choices][]">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
+                                    </div>
+                                    <div class="input-group-append btnDeleteChoices">
+                                        <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
-                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+    `;
 
+    function initVariation()
+    {
+        const btnAddVariations = document.querySelectorAll('.btnAddVariation');
 
         btnAddVariations.forEach(item => {
             item.removeEventListener('click', addVariationHandleClick);
@@ -861,6 +859,8 @@
     }
 
     function addVariationHandleClick(event) {
+        const divVariations = document.querySelectorAll('.variation');
+
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
 
@@ -889,6 +889,8 @@
     }
 
     function deleteVariationHandleClick(event) {
+        const divVariations = document.querySelectorAll('.variation');
+        
         if(divVariations.length == 2)
         {
             item.parentElement.parentElement.parentElement.remove();
