@@ -37,6 +37,7 @@ if(mysqli_num_rows($result) > 0)
 			';
 	}
 	echo $output;
+	echo "<script>alert('no way')</script>";
 }
 else
 {
