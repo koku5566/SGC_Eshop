@@ -855,53 +855,51 @@
 
 
         btnAddVariations.forEach(item => {
-            item.addEventListener('click', function handleClick(event) {
-                console.log("nani");
-                var main = document.getElementById('mainPricing');
-                var sub = document.getElementById('subPricing');
-
-                if(sub.classList.contains("hide"))
-                {
-                    sub.classList.remove("hide");
-                    main.classList.add("hide");
-                    document.getElementById('txtVariationType').value = "1";
-                    sub.insertAdjacentHTML( 'beforeend', VariationHTML );
-                    initVariation();
-                    initChoice();
-                }
-                else if(divVariations.length < 2)
-                {
-                    sub.insertAdjacentHTML( 'beforeend', VariationHTML );
-                    initVariation();
-                    initChoice();
-                }
-                
-                if(divVariations.length == 2)
-                {
-                    btnAddVariations.remove();
-                }
-
-                
-                
-                //Delete Variation
-                const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
-                btnDeleteVariations.forEach(item => {
-                    item.addEventListener('click', function handleClick(event) {
-                        if(divVariations.length == 2)
-                        {
-                            item.parentElement.parentElement.parentElement.remove();
-                        }
-                        else if(divVariations.length == 1)
-                        {
-                            item.parentElement.parentElement.parentElement.remove();
-                            sub.classList.add("hide");
-                            main.classList.remove("hide");
-                            document.getElementById('txtVariationType').value = "0";
-                        }
-                    });
-                });
-            });
+            item.removeEventListener('click', addVariationHandleClick);
+            item.addEventListener('click', addVariationHandleClick);
         });
+    }
+
+    function addVariationHandleClick(event) {
+        var main = document.getElementById('mainPricing');
+        var sub = document.getElementById('subPricing');
+
+        if(sub.classList.contains("hide"))
+        {
+            sub.classList.remove("hide");
+            main.classList.add("hide");
+            document.getElementById('txtVariationType').value = "1";
+            sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+            initVariation();
+            initChoice();
+        }
+        else if(divVariations.length < 2)
+        {
+            sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+            initVariation();
+            initChoice();
+        }
+        
+        //Delete Variation
+        const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
+        btnDeleteVariations.forEach(item => {
+            item.removeEventListener('click',deleteVariationHandleClick);
+            item.addEventListener('click',deleteVariationHandleClick);
+        });
+    }
+
+    function deleteVariationHandleClick(event) {
+        if(divVariations.length == 2)
+        {
+            item.parentElement.parentElement.parentElement.remove();
+        }
+        else if(divVariations.length == 1)
+        {
+            item.parentElement.parentElement.parentElement.remove();
+            sub.classList.add("hide");
+            main.classList.remove("hide");
+            document.getElementById('txtVariationType').value = "0";
+        }
     }
 
     function initChoice()
@@ -909,29 +907,35 @@
         const btnAddChoices = document.querySelectorAll('.btnAddChoice');
 
         btnAddChoices.forEach(item => {
-            item.addEventListener('click', function handleClick(event) {
-                var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
-                item.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
-                // Instantiate Choices Drag
-                var draggableChoices = new DragNSort({
-                    container: document.querySelector('.drag-list-choices'),
-                    itemClass: 'drag-item-choices',
-                    dragStartClass: 'drag-start',
-                    dragEnterClass: 'drag-enter'
-                });
-                draggableChoices.init();
-
-                const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
-                btnDeleteChoices.forEach(item => {
-                    item.addEventListener('click', function handleClick(event) {
-                        if(item.parentElement.parentElement.children.length > 1)
-                        {
-                            item.parentElement.remove();
-                        }
-                    });
-                });
-            });
+            item.removeEventListener('click', addChoiceHandleClick);
+            item.addEventListener('click',addChoiceHandleClick);
         });
+    }
+
+    function addChoiceHandleClick(event) {
+        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        item.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
+        // Instantiate Choices Drag
+        var draggableChoices = new DragNSort({
+            container: document.querySelector('.drag-list-choices'),
+            itemClass: 'drag-item-choices',
+            dragStartClass: 'drag-start',
+            dragEnterClass: 'drag-enter'
+        });
+        draggableChoices.init();
+
+        const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
+        btnDeleteChoices.forEach(item => {
+            item.removeEventListener('click', deleteChoiceHandleClick);
+            item.addEventListener('click', deleteChoiceHandleClick);
+        });
+    }
+
+    function deleteChoiceHandleClick(event) {
+        if(item.parentElement.parentElement.children.length > 1)
+        {
+            item.parentElement.remove();
+        }
     }
 
     
