@@ -877,7 +877,7 @@
                 
                 //Delete Variation
                 const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
-                btnAddVariations.forEach(item => {
+                btnDeleteVariations.forEach(item => {
                     item.addEventListener('click', function handleClick(event) {
                         if(divVariations.length == 2)
                         {
