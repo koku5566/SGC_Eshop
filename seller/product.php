@@ -934,6 +934,7 @@
     }
 
     function deleteChoiceHandleClick(event) {
+        console.log(event.target);
         if(event.target.parentElement.parentElement.children.length > 1)
         {
             event.target.parentElement.remove();
