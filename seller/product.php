@@ -915,9 +915,8 @@
     }
 
     function addChoiceHandleClick(event) {
-        console.log(event);
         var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
-        item.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
+        event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
         // Instantiate Choices Drag
         var draggableChoices = new DragNSort({
             container: document.querySelector('.drag-list-choices'),
@@ -935,9 +934,9 @@
     }
 
     function deleteChoiceHandleClick(event) {
-        if(item.parentElement.parentElement.children.length > 1)
+        if(event.target.parentElement.parentElement.children.length > 1)
         {
-            item.parentElement.remove();
+            event.target.parentElement.remove();
         }
     }
 
