@@ -621,7 +621,6 @@
         }
     }
 
-//#region Drag and Drop
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
@@ -781,8 +780,6 @@
             });
         });
     }
-
-//#endregion
 
     const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
