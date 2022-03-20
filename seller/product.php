@@ -427,48 +427,6 @@
                         </div>
 
                         <div id="subPricing" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
-                            <div class="variation">
-                                <div class="card mb-4">
-                                    <div class="card-header py-3">
-                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times" aria-hidden="true"></i>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Variation Name</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="variationName[][name]">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Choices</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div id="divChoices_1" class="drag-list-choices" >
-                                                    <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                                        <input type="text" class="form-control" name="variationName[][name][choices][]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                                        </div>
-                                                        <div class="input-group-append btnDeleteChoices">
-                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <button type="button" class="btn btn-outline-primary btnAddChoices" style="width:100%">Add Choices</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
@@ -663,7 +621,6 @@
         }
     }
 
-//#region Drag and Drop
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
@@ -751,15 +708,6 @@
     });
     draggable.init();
 
-    // Instantiate Choices Drag
-    var draggableChoices = new DragNSort({
-        container: document.querySelector('.drag-list-choices'),
-        itemClass: 'drag-item-choices',
-        dragStartClass: 'drag-start',
-        dragEnterClass: 'drag-enter'
-    });
-    draggableChoices.init();
-
     function rearrangeLabel(){
         var draggableItem = document.querySelectorAll('.drag-item');
         var counter=1;
@@ -824,8 +772,6 @@
         });
     }
 
-//#endregion
-
     const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
     deleteImg.forEach(img => {
@@ -849,6 +795,7 @@
     });
 
     const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+    const divVariations = document.querySelectorAll('.variation');
 
     var VariationHTML = `
         <div class="variation">
@@ -897,6 +844,7 @@
 
     btnAddVariations.forEach(item => {
         item.addEventListener('click', function handleClick(event) {
+            console.log("nani");
             var main = document.getElementById('mainPricing');
             var sub = document.getElementById('subPricing');
 
@@ -907,20 +855,29 @@
                 document.getElementById('txtVariationType').value = "1";
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
-            else if(btnAddVariations.length == 1)
+            else if(divVariations.length == 1)
             {
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
+
+            // Instantiate Choices Drag
+            var draggableChoices = new DragNSort({
+                container: document.querySelector('.drag-list-choices'),
+                itemClass: 'drag-item-choices',
+                dragStartClass: 'drag-start',
+                dragEnterClass: 'drag-enter'
+            });
+            draggableChoices.init();
 
             //Delete Variation
             const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
             btnAddVariations.forEach(item => {
                 item.addEventListener('click', function handleClick(event) {
-                    if(btnAddVariations.length == 2)
+                    if(divVariations.length == 2)
                     {
                         item.parentElement.parentElement.parentElement.remove();
                     }
-                    else if(btnAddVariations.length == 1)
+                    else if(divVariations.length == 1)
                     {
                         item.parentElement.parentElement.parentElement.remove();
                         sub.classList.add("hide");
