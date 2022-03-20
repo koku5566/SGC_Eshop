@@ -78,22 +78,19 @@
         while($row = mysqli_fetch_assoc($result)) {
             $maincategoryid = $row["main_category_id"];
             
-           
-
             $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = '$maincategoryid'";
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
-                $tempArrayId = array();
-                $tempArrayName = array();
+                $tempArray = array();
+
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
                     $categoryId = $row_1["sub_category_id"];
                     $categoryName = $row_1["sub_category_name"];
 
-                    array_push($tempArrayId,$categoryId);
-                    array_push($tempArrayName,$categoryName);
+                    array_push($tempArray,array($categoryId,$categoryName));
                 }
-                $tempCategoryArray = array($maincategoryid => array($tempArrayId,$tempArrayName));
+                $tempCategoryArray = array($maincategoryid => $tempArray);
             }
             $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
         }
