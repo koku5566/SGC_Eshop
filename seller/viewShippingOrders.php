@@ -37,7 +37,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Order Date</span>
                                 </div>
-                                <input type="text" name="daterange" value="01/01/2022 - 01/15/2022" />
+                                <input type="text" name="daterange" class="form-control js-daterangepicker" value="01/01/2022 - 01/15/2022" />
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,10 @@
 
 <!-- /.container-fluid -->
 <!--Date Picker-->
-<script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
@@ -213,6 +216,3 @@
     });
 
 </script>
-<?php
-    require __DIR__ . '/footer.php'
-?>

@@ -408,16 +408,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 </div>
 <!-- /.container-fluid ------------------------------------------------------------------------------------------------>
 <script>
-$('.logo-slider').slick({
-		slidesToShow: 5,
-		slidesToScroll:1,
-		dots:true,
-		arrows:true,
-		autoplay: true,
-		autoplaySpeed: 2000, 
-		infinite: true
-	});
-
 	let ujson = JSON.stringify(u);
 	
 	let k = [];
@@ -434,7 +424,52 @@ $(".alert.alert-success").delay(3000).slideUp(200, function() {
 $(".alert.alert-danger").delay(4000).slideUp(200, function() {
     $(this).alert('close');
 });	
-	
+//SILCK CAROSUELLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
+/*
+$('.logo-slider').slick({
+		slidesToShow: 5,
+		slidesToScroll:1,
+		dots:true,
+		arrows:true,
+		autoplay: true,
+		autoplaySpeed: 2000, 
+		infinite: true
+	});	
+*/
+
+
+$('.logo-slider').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+
 	
 </script>
 <?php
