@@ -660,10 +660,10 @@
             var subCategoryHTML = "";
             var subCategory = <?php echo json_encode($subCategoryArray); ?>;
 
-            console.log(subCategoryId);
+            console.log(subCategory);
 
             for (counter in subCategory[value]) {
-                subCategoryHTML += "<option value=\""+ subCategoryId[value][counter][0] +"\" >" + subcategoryName[value][counter][1] + "</option>";
+                subCategoryHTML += "<option value=\""+ subCategory[value][counter][0] +"\" >" + subCategory[value][counter][1] + "</option>";
             }
             document.getElementById("subCategory").innerHTML = subCategoryHTML;
         }
