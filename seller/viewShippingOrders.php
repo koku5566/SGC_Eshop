@@ -37,8 +37,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Order Date</span>
                                 </div>
-                                <input type="text" class="form-control" name="daterange"
-                                    value="01/01/2022 - 01/15/2022" />
+                                <input type="text" name="daterange" value="01/01/2022 - 01/15/2022" />
                             </div>
                         </div>
                     </div>
@@ -205,8 +204,6 @@
 <script>
 
     //Date picker function
-    $('input[name="dates"]').daterangepicker();
-
     $(function () {
         $('input[name="daterange"]').daterangepicker({
             opens: 'left'
