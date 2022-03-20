@@ -807,6 +807,7 @@
     });
 
     const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+    const divVariations = document.querySelectorAll('.variation');
 
     var VariationHTML = `
         <div class="variation">
@@ -865,7 +866,7 @@
                 document.getElementById('txtVariationType').value = "1";
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
-            else if(btnAddVariations.length == 1)
+            else if(divVariations.length == 1)
             {
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
@@ -874,11 +875,11 @@
             const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
             btnAddVariations.forEach(item => {
                 item.addEventListener('click', function handleClick(event) {
-                    if(btnAddVariations.length == 2)
+                    if(divVariations.length == 2)
                     {
                         item.parentElement.parentElement.parentElement.remove();
                     }
-                    else if(btnAddVariations.length == 1)
+                    else if(divVariations.length == 1)
                     {
                         item.parentElement.parentElement.parentElement.remove();
                         sub.classList.add("hide");
