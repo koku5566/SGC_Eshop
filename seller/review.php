@@ -1,6 +1,9 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+<script src = "jquery.js"></script>
+<script src = "js/bootstrap.js"></script>
+<link href="css/bootstrap.css" rel= "stylesheet"/>
 <?php
 $output = '';
 $sql = "SELECT cu_id, name, email, campus, subject, message, status 
