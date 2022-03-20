@@ -821,7 +821,7 @@
                             <p class="p-title">Choices</p>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div id="divChoices_1" class="drag-list-choices" >
+                            <div class="drag-list-choices" >
                                 <div class="input-group mb-3 drag-item-choices" draggable="true">
                                     <input type="text" class="form-control" name="variationName[][name][choices][]">
                                     <div class="input-group-append">
@@ -833,7 +833,7 @@
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddChoices" style="width:100%">Add Choices</button>
+                                <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
                             </div>
                         </div>
                     </div>
@@ -860,15 +860,8 @@
                 sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             }
 
-            // Instantiate Choices Drag
-            var draggableChoices = new DragNSort({
-                container: document.querySelector('.drag-list-choices'),
-                itemClass: 'drag-item-choices',
-                dragStartClass: 'drag-start',
-                dragEnterClass: 'drag-enter'
-            });
-            draggableChoices.init();
-
+            initChoice();
+            
             //Delete Variation
             const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
             btnAddVariations.forEach(item => {
@@ -889,59 +882,39 @@
         });
     });
 
+    function initChoice()
+    {
+        const btnAddChoices = document.querySelectorAll('.btnAddChoice');
+
+        btnAddChoices.forEach(item => {
+            item.addEventListener('click', function handleClick(event) {
+                item.parentElement.remove();
+                var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+                item.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
+
+                // Instantiate Choices Drag
+                var draggableChoices = new DragNSort({
+                    container: document.querySelector('.drag-list-choices'),
+                    itemClass: 'drag-item-choices',
+                    dragStartClass: 'drag-start',
+                    dragEnterClass: 'drag-enter'
+                });
+                draggableChoices.init();
+
+                const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
+                btnDeleteChoices.forEach(item => {
+                    item.addEventListener('click', function handleClick(event) {
+                        if(item.parentElement.parentElement.children.length > 1)
+                        {
+                            item.parentElement.remove();
+                        }
+                    });
+                });
+            });
+        });
+    }
+
     
-
-    const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
-    btnDeleteChoices.forEach(item => {
-        item.addEventListener('click', function handleClick(event) {
-            item.parentElement.remove();
-        });
-    });
-
-    const btnAddChoices_1 = document.getElementById('btnAddChoices_1');
-
-    btnAddChoices_1.addEventListener('click', function handleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
-        document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
-
-        // Instantiate Choices Drag
-        var draggableChoices = new DragNSort({
-            container: document.querySelector('.drag-list-choices'),
-            itemClass: 'drag-item-choices',
-            dragStartClass: 'drag-start',
-            dragEnterClass: 'drag-enter'
-        });
-        draggableChoices.init();
-
-        const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
-        btnDeleteChoices.forEach(item => {
-            item.addEventListener('click', function handleClick(event) {
-                if(item.parentElement.parentElement.children.length > 1)
-                {
-                    item.parentElement.remove();
-                }
-            });
-        });
-    });
-
-    const btnAddChoices_2 = document.getElementById('btnAddChoices_2');
-
-    btnAddChoices_2.addEventListener('click', function handleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
-        document.getElementById('divChoices_1').insertAdjacentHTML( 'beforeend', str );
-
-        const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
-        btnDeleteChoices.forEach(item => {
-            item.addEventListener('click', function handleClick(event) {
-                if(item.parentElement.parentElement.children.length > 1)
-                {
-                    item.parentElement.remove();
-                }
-            });
-        });
-    });
-
-
 
 </script>
 
