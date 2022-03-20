@@ -471,7 +471,7 @@ $('.logo-slider').slick({
       }
     }
   ]
-
+});
 	
 </script>
 <?php
