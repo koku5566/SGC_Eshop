@@ -516,6 +516,7 @@ h1:after{
 	border-radius: 8px;
 	padding: 10px;
 	border: 2px solid #111;
+	max-width: 100%;
 }
 .logo-slider .slick-slide{
 	margin: 15px 20px; 
