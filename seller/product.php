@@ -934,6 +934,7 @@
     }
 
     function deleteChoiceHandleClick(event) {
+        console.log(event.target.parentElement.parentElement.parentElement);
         if(event.target.parentElement.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
             if(event.target.parentElement.parentElement.parentElement.children.length > 1)
