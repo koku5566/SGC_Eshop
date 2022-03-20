@@ -439,13 +439,24 @@ $('.logo-slider').slick({
 
 
 $('.logo-slider').slick({
-  dots: true,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 5,
+		slidesToScroll:1,
+		dots:true,
+		arrows:true,
+		autoplay: true,
+		autoplaySpeed: 2000, 
+		infinite: true,
   responsive: [
     {
+      breakpoint: 1224,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: true
+      }
+    },
+	{
       breakpoint: 1024,
       settings: {
         slidesToShow: 3,
@@ -455,21 +466,21 @@ $('.logo-slider').slick({
       }
     },
     {
-      breakpoint: 600,
+      breakpoint: 800,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2
       }
     },
     {
-      breakpoint: 480,
+      breakpoint: 600,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1
       }
     }
   ]
-
+});
 	
 </script>
 <?php
@@ -514,6 +525,7 @@ h1:after{
 	border-radius: 8px;
 	padding: 10px;
 	border: 2px solid #111;
+	max-width: 100%;
 }
 .logo-slider .slick-slide{
 	margin: 15px 20px; 
