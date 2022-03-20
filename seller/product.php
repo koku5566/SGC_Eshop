@@ -856,6 +856,7 @@
 
     btnAddVariations.forEach(item => {
         item.addEventListener('click', function handleClick(event) {
+            console.log("nani");
             var main = document.getElementById('mainPricing');
             var sub = document.getElementById('subPricing');
 
