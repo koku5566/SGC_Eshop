@@ -174,6 +174,10 @@
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
 
+    //tab panel transition function
+    $(function () {
+    $('#myTab li:last-child a').tab('show')
+  })
 
     //Date picker function
     $('input[name="dates"]').daterangepicker();
