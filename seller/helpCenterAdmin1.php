@@ -393,6 +393,73 @@
 		}
 		
 	}
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
+		
+		$CUmessagereply = $_POST['CUmessagereply'];
+		//echo "<div class='alert alert-success'>$CUmessagereply</div>";
+		$selectedPID = $_POST['CUid2'];
+		//echo "sohai $selectedPID";
+		$status = 1;
+		//$today = date("Y-m-d");
+		
+			$sql = "SELECT cu_id, name, email, subject, message 
+					FROM `contactUs` 
+					WHERE cu_id = ? AND disable_date IS NULL";
+		
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				
+				if(mysqli_stmt_num_rows($stmt) == 1){
+					mysqli_stmt_bind_result($stmt, $z1,$z2,$z3,$z4,$z5);
+					mysqli_stmt_fetch($stmt);
+				}
+				mysqli_stmt_free_result($stmt);
+				mysqli_stmt_close($stmt);
+			}
+			
+			
+			
+			$from = "Contact_Us_Mail@sgprototype2.com";
+			$to = $z3;
+			$subject = "Replying Enquiry from $z2";
+			$content = "Email - $z3 \nSubject - $z4 \nMessage - $z5 \n\n\n\n\nDear $z2, \n$CUmessagereply";
+			
+		  //echo "$to ||| $subject ||| $content"; 
+		  
+		 $header = "FROM:" . $from;
+		 
+		 
+		 
+		 
+		 /**/
+		 if(mail($to, $subject, $content, $header)){
+			  echo "<script>alert('Email sent!')</script>";
+			  $sql = "UPDATE 
+					 `contactUs` SET status =?, r_message=? 
+			          WHERE cu_id =?";
+				if($stmt = mysqli_prepare($conn, $sql)){
+					mysqli_stmt_bind_param($stmt, 'iss', $status, $CUmessagereply, $selectedPID); 	//s=string , d=decimal value i=ID
+			
+					mysqli_stmt_execute($stmt);
+				
+					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+					{
+						echo "<script>alert('Update successfully');</script>";
+					}else{
+						echo "<script>alert('Fail to Update');</script>";
+					}
+			
+					mysqli_stmt_close($stmt);
+				}
+			  
+		 }else{
+			 echo "<script>alert('Fail to sent!')</script>";
+		 }
+		 
+
+	}
 ?>
     <!-- Begin Page Content ------------------------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:100%;">
@@ -779,15 +846,26 @@
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5><h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
-										<h6 style = "font-size:0.9vw"><?php echo(isset($z6) && !empty ($z6))? $z6 : ''; ?></h6>										
+										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5>
+										<h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h6 style = "font-size:0.9vw">
+										<?php if(isset($z6) && !empty($z6)){
+												if(strlen($z6) > 100){
+													$CUtrim  = substr($z6, 0, 50);
+													$CUmsg = "$CUtrim.....";
+													echo "$CUmsg";
+												}else{echo "$z6";}
+
+											}else{echo "";}
+										?>
+										</h6>										
 										
-									</div><br>
+									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
 										
 										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
 
-
+										<?php echo (isset($z1) && !empty ($z1))? "<input type = 'hidden' name = 'CUid2' value = '".$z1."'>" : ''; ?>
 										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid' disabled>
 										
 										
@@ -1225,7 +1303,7 @@ h4.displayCategoryModal{
 .modal-content .editQuestion {
 	
 	width: 75%;
-	 border: 1px solid rgba(0 0 0 / .2);
+	 /*border: 1px solid rgba(0 0 0 / .2);*/
 	margin: auto;
 	height: 100%
 }
