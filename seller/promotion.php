@@ -7,13 +7,14 @@
         <h1 style="margin-top: 50px;">Promotion Banner</h1>
         <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
 
-        <!--<section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
+        <!-- View Section -->
+            <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                     <div>
-                        <h2>Terms and Conditions</h2>
-                        <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
+                        <h2>View</h2>
                     </div>
-                </section>-->
-
+                </section>
+                
+            <!-- Create Promotion -->
             <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                 
                 <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
