@@ -28,9 +28,6 @@
                             <div class="col-sm-2">
                                 <h3 style="margin-top: 30px;width: 100%;">Promotion Date</h3>
                             </div>
-                            <div class="col-sm-2">
-                                <div class="form-check" style="width: 100%;margin-top: 44px;"><input class="form-check-input" type="checkbox" id="oneDayEvent_check"><label class="form-check-label" for="formCheck-1"><strong>One-Day Event</strong></label></div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-5"><input class="form-control" type="date" name="eDate_From" id="eStartDate" required></div>
