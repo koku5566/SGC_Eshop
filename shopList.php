@@ -11,7 +11,7 @@
     position: absolute;
     z-index: 1;
     margin: 30px 50px;
-    padding: 30px 120px;
+    padding: 30px 150px;
     border-radius: 5px;
     background-color: #EEEDEE;
 }
