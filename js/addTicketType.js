@@ -1,31 +1,29 @@
-var TicketListTable = $('#ticketTypeList_tbl').DataTable({//call table id
+$("#ticketTypeList_tbl").on('click','.selectBtn',function(){
+    // get the current row
+    var currentRow=$(this).closest("tr"); 
+    
+    var tName=currentRow.find("td:eq(0)").text(); 
+    var tCapacity=currentRow.find("td:eq(1)").text(); 
+    var tSalesStart=currentRow.find("td:eq(2)").text(); 
+    var tSalesEnd=currentRow.find("td:eq(3)").text(); 
+    var tPrice=currentRow.find("td:eq(4)").text(); 
+    var tID=currentRow.find("td:eq(5)").text(); 
 
-    dom: 'Bfrtip',
-    order: [ 1, 'asc' ],
-    pagingType: "full_numbers",
-    retrieve: true,
-    lengthMenu:[
-       [6,-1],
-       [6,"All"]
-    ],
- 
-    columnDefs: [{
-       className: 'dt-control', //innertable icon
-       orderable: false,
-       targets: 0,
-       data: null,
-       defaultContent: ''
-    },
- 
-    {
-       targets: -1,
-       data: null,
-       defaultContent: '<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit" id="edit"><i class="fa fa-edit"></i></button>'
-    }],
- 
-    responsive: true,
-    language:{
-       search: "_INPUT_",
-       searchPlaceholder:"Search",
-    },
- });
+    var ticketName = document.getElementById("editTicketName");
+    var ticketID = document.getElementById("editTicketID");
+    var capacity = document.getElementById("editCapacity");
+    var price = document.getElementById("editPrice");
+    var salesStart = document.getElementById("editSalesStart");
+    var salesEnd = document.getElementById("editSalesEnd");
+    var updateTID = document.getElementById("ticketIDHide");
+
+    ticketName.value = tName;
+    ticketID.value = tID;
+    capacity.value = tCapacity;
+    price.value = tPrice;
+    salesStart.value = tSalesStart;
+    salesEnd.value = tSalesEnd;
+    updateTID.value = tID;
+
+
+});

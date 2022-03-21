@@ -133,25 +133,35 @@
                     <div class="modal-body">
                         <form>
                             <div style="margin-bottom: 20px;">
-                                <h5>Ticket Name</h5><input class="form-control" type="text" placeholder="Ticket Name">
+                                <h5>Ticket Name</h5><input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
+                                <input class="form-control" id="editTicketID" name="editTicketID" type="hidden" placeholder="Ticket Name">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Capacity</h5><input class="form-control" type="text" placeholder="Number of ticket can be sold">
+                                <h5>Capacity</h5><input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Price</h5><input class="form-control" type="text" placeholder="Price">
+                                <h5>Price</h5><input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
                             </div>
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-6">
-                                    <h5>Sales Start</h5><input class="form-control" id="startDate-1" type="date">
+                                    <h5>Sales Start</h5><input class="form-control" id="editSalesStart" name="editSalesStart" type="date">
                                 </div>
                                 <div class="col-6">
-                                    <h5>Sales End</h5><input class="form-control" id="endDate-1" type="date">
+                                    <h5>Sales End</h5><input class="form-control" id="editSalesEnd" name="editSalesEnd" type="date">
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" id="updateBtn" name = "updateTicket" style="background: rgb(163, 31, 55);">Update</button>
+                            </div>
                         </form>
+                        <div class="modal-footer">
+                            <form>
+                                <input class="form-control" id="ticketIDHide" name="ticketIDHide" type="hidden" placeholder="Ticket Name">
+                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "">Delete</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-footer"><button class="btn btn-secondary" type="button">Delete</button><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);">Submit</button></div>
+                    
                 </div>
             </div>
         </div>
@@ -175,32 +185,10 @@
                             <th>Sales Start</th>
                             <th>Sales End</th>
                             <th>Price</th>
+                            <th>Ticket ID</th>
                             <th>Update</th>
                         </tr>
                     </thead>
-                        <?php
-                            $sql = "SELECT * FROM `ticketType` WHERE `event_id` = {$_SESSION['eventID']}";
-                            $result = mysqli_query($conn, $sql);
-
-                            if (mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-
-                                    echo("
-                                        <script>
-                                        TicketListTable.row.add( [
-                                        \"".$row['ticket_name']."\",
-                                        \"".$row['capacity']."\",
-                                        \"".$row['sales_start']."\",
-                                        \"".$row['sales_end']."\",
-                                        \"".$row['price']."\"
-                                          ] ).draw( false );
-
-                                        </script>
-                                    ");
-                                }
-                            }
-
-                        ?>
                     <tbody>
                     <?php
                             $sql = "SELECT * FROM `ticketType` WHERE `event_id` = {$_SESSION['eventID']}";
@@ -216,7 +204,8 @@
                                         <td>".$row['sales_start']."</td>
                                         <td>".$row['sales_end']."</td>
                                         <td>".$row['price']."</td>
-                                        <td><button class=\"btn btn-light btn-sm\" type=\"button\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" id=".$row['ticketType_id']."><i class=\"fa fa-edit\"></i></button></td>
+                                        <td>".$row['ticketType_id']."</td>
+                                        <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editTicket_modal\" title=\"Edit\" id=".$row['ticketType_id']."><i class=\"fa fa-edit\"></i></button></td>
                                         </tr>
                                     ");
                                 }
@@ -239,7 +228,7 @@
     <!-- /.container-fluid -->
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- <script src="../js/addTicketType.js"></script> -->
+    <script src="../js/addTicketType.js"></script>
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <!-- <script>
         tinymce.init({
