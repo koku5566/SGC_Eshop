@@ -88,7 +88,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
-
+<style>
+.checked {
+  color: orange;
+}
+</style>
 
 
 <script>
