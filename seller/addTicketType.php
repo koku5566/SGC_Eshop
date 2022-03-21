@@ -12,7 +12,7 @@
     if($_SESSION['eventID'] == null)
     {
         echo "<script>
- 		window.location.href='/createEvent.php';</script>";
+ 		window.location.href='https://eshop.sgcprototype2.com/seller/createEvent.php';</script>";
     }
 ?>
 
