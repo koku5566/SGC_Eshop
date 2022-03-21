@@ -900,15 +900,15 @@
 
     function deleteVariationHandleClick(event) {
         const divVariations = document.querySelectorAll('.variation');
-
+        console.log(divVariations.length);
         if(divVariations.length == 2)
         {
-            console.log(1);
+            console.log('a');
             event.target.parentElement.parentElement.parentElement.remove();
         }
         else if(divVariations.length == 1)
         {
-            console.log(1);
+            console.log('b');
             event.target.parentElement.parentElement.parentElement.remove();
             sub.classList.add("hide");
             main.classList.remove("hide");
