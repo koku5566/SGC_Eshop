@@ -25,7 +25,22 @@
                     <h2>Promotion Details</h2>
                     <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
                     <h4 style="margin-top: 30px;width: 100%;">Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h4>
-                    <div>
+                        <div class="image-container">
+                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                    <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                        <div>
                         <div class="row">
                             <div class="col-sm-2">
                                 <h4 style="margin-top: 30px;width: 100%;">Date</h4>
