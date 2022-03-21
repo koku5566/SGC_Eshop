@@ -118,25 +118,6 @@
           <div class="carousel-item active">
             <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
               <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h1 class="mb-3">Learn Bootstrap 5 with MDB</h1>
-                  <h5 class="mb-4">Best & free guide of responsive web design</h5>
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://www.youtube.com/watch?v=c9B4TPnak1A"
-                    role="button"
-                    rel="nofollow"
-                    target="_blank"
-                    >Start tutorial</a
-                  >
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://mdbootstrap.com/docs/standard/"
-                    target="_blank"
-                    role="button"
-                    >Download MDB UI KIT</a
-                  >
-                </div>
               </div>
             </div>
           </div>
@@ -203,7 +184,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Facilis consequatur eligendi</strong></h4>
+          <h4 class="mb-5"><strong>best Sellers</strong></h4>
 
           <div class="row">
             <div class="col-lg-4 col-md-12 mb-4">
@@ -218,7 +199,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">Title</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -240,7 +221,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">Title</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -262,7 +243,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">Title</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
