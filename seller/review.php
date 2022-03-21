@@ -58,5 +58,5 @@ $(document).ready(function(){
 });
 </script>
 <?php
-   // require __DIR__ . '/footer.php'
+    require __DIR__ . '/footer.php'
 ?>
