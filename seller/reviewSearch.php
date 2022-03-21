@@ -1,6 +1,8 @@
-
 <?php
- require_once __DIR__ . '/mysqli_connect.php'
+    require __DIR__ . '/header.php'
+?>
+<?php
+
  
 $output = 'OUTPUT';
 if(isset($_POST["query"]))
