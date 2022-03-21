@@ -2,7 +2,7 @@
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 
 //SEARCH FUNCTION NUMBAR ONE
-/*
+/**/
 $output = '';
 
 if(isset($_POST["query"]))
@@ -73,9 +73,9 @@ else
 {
  echo 'Data Not Found';
 }
-*/
+
 //SEARCH FUNCTION NUMBAR ONE - Version 2 -------------------------------------------------------------------------------------------------
- /**/
+ /*
  $output = '';
 
 if(isset($_POST["query"]))
@@ -109,7 +109,7 @@ else
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8);
 		
-		if(mysqli_stmt_fetch($stmt) > 0){
+		if(mysqli_stmt_fetch($stmt) > 0){ //i think mistake this part but u use old oso ok
 			$output .= '
 						  <div class="table-responsive">
 						   <table class="table table bordered">
@@ -150,6 +150,6 @@ else
 		
 
 	}
-
+*/
 
 ?>
