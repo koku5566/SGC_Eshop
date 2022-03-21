@@ -19,7 +19,7 @@ if(isset($_POST["query"]))
 else
 {
  $query = "
-  SELECT cu_id, name, email, campus, subject, message, status FROM tbl_customer ORDER BY cu_id
+  SELECT cu_id, name, email, campus, subject, message, status FROM contactUs ORDER BY cu_id
  ";
 }
 $result = mysqli_query($conn, $query);
