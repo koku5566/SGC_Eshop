@@ -1,11 +1,15 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
+
+
 $output = '';
 $i = 1;
 if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $query = "
+  SELECT * 
+  FROM(
   SELECT cu_id, name, email, campus, subject, message, status
   FROM contactUs 
   WHERE cu_id LIKE '%".$search."%'
@@ -14,8 +18,8 @@ if(isset($_POST["query"]))
   OR campus LIKE '%".$search."%' 
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
-  OR status LIKE '%".$search."%'
-  AND disable_date IS NULL; ";
+  OR status LIKE '%".$search."%';)
+  WHERE disable_date IS NULL; ";
   
 }
 else

@@ -9,6 +9,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
 	
 	echo $_POST['uimage'];
+	
 }
 
 
