@@ -49,19 +49,19 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"bssssssssbi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
-                //mysqli_stmt_send_long_data($stmt,6,$eDes);
-                mysqli_stmt_send_long_data($stmt,9,$eTnc);
                 $bp = mysqli_stmt_execute($stmt);
                 if ( false===$bp ) {
                     die('Error with execute: ') . htmlspecialchars($stmt->error);
                 }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         echo "<script>alert('Success!!!!!');</script>";
+                        $_SESSION['eventID'] = 1; //need change
+                        header("Location:https://eshop.sgcprototype2.com/seller/addTicketType.php");
                     }
                     else{
                         $error = mysqli_stmt_error($stmt);
@@ -190,7 +190,6 @@
     <!-- /.container-fluid -->
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <script src="../js/createEventJS.js"></script>
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <script>
