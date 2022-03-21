@@ -72,3 +72,7 @@ $sql = "SELECT hcc_id, category, pic, pic_type
 
 */
 ?>
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
