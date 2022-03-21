@@ -22,7 +22,7 @@
 			
 			if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
-					echo "<script>alert('Login Successfully')</script>";
+					//echo "<script>alert('Login Successfull')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
@@ -120,7 +120,7 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{913746515960441}',
+      appId      : '913746515960441',
       cookie     : true,
       xfbml      : true,
       version    : '{api-version}'
