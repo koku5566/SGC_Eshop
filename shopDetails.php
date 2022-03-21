@@ -1,3 +1,7 @@
+<?php
+    require_once __DIR__ . '/header.php'
+?>
+
 <header>
       <style>
         /* Carousel styling */
@@ -383,3 +387,7 @@
       </div>
     </main>
     <!--Main layout-->
+
+    <?php
+    require __DIR__ . '/footer.php'
+?>
