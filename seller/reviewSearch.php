@@ -109,7 +109,7 @@ else
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8);
 		
-		if(mysqli_num_rows($stmt) > 0){
+		if(mysqli_stmt_fetch($stmt) > 0){
 			$output .= '
 						  <div class="table-responsive">
 						   <table class="table table bordered">
