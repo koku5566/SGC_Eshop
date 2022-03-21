@@ -10,7 +10,7 @@ if(isset($_POST["query"]))
  $query = "
   SELECT * 
   FROM(
-  SELECT cu_id, name, email, campus, subject, message, status
+  SELECT cu_id, name, email, campus, subject, message, status, disable_date
   FROM contactUs 
   WHERE cu_id LIKE '%".$search."%'
   OR name LIKE '%".$search."%' 
@@ -18,7 +18,7 @@ if(isset($_POST["query"]))
   OR campus LIKE '%".$search."%' 
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
-  OR status LIKE '%".$search."%';)
+  OR status LIKE '%".$search."%';)k
   WHERE disable_date IS NULL; ";
   
 }
