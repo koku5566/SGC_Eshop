@@ -57,16 +57,16 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="product.php?id=a">
+                                            <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
                                                         <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">SEGi space</p>
+                                                            <p class="card-text facility-name">SEGi space</p>
                                                         </div>
-                                                        <div class="Location">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
@@ -82,9 +82,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">Business Meeting Room</p>
+                                                            <p class="card-text facility-name">Business Meeting Room</p>
                                                         </div>
-                                                        <div class="Location">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
@@ -100,9 +100,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">Ed-Tech Arena</p>
+                                                            <p class="card-text facility-name">Ed-Tech Arena</p>
                                                         </div>
-                                                        <div class="Location">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
@@ -118,9 +118,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">Computer Lab</p>
+                                                            <p class="card-text facility-name">Computer Lab</p>
                                                         </div>
-                                                        <div class="Location">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
@@ -136,9 +136,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">Auditorium</p>
+                                                            <p class="card-text facility-name">Auditorium</p>
                                                         </div>
-                                                        <div class="Location">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
@@ -154,9 +154,9 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="Name">
-                                                            <p class="card-text product-name">Classroom</p>
+                                                            <p class="card-text facility-name">Classroom</p>
                                                         </div>
-                                                        <div class="perhour">
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         

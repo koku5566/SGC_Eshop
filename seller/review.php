@@ -5,7 +5,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />-->
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
+	
+	echo $_POST['uimage'];
+}
 
+
+?>
 
     <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
     <div class="container-fluid" style="width:100%;">
