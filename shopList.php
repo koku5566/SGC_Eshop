@@ -44,7 +44,7 @@
   height:15vh;
   z-index:3;
   position:relative;
-  border-radius:1.5rem;
+  border-radius:1rem;
 }
 
 .description{
