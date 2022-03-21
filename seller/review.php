@@ -50,15 +50,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</ul>
 			<div class="tab-content" id="myTabContent">
 			  <!--SECTION ONE-->
-			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 700px;">
+			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 						
 			  </div>
 			  <!--SECTION TWO-->
-			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">
+			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab" style ="max-height 2000px;">
 					
 			  </div>
 			  <!--SECTION THREE-->
-			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab">
+			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab" style ="max-height 2000px;">
 					
 			   </div>
 			</div>
