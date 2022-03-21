@@ -990,7 +990,7 @@
 					 <hr class = "linelai">		
 			  </div>
 			  <!--SECTION TWO-->
-			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab">
+			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab" style ="max-height 700px;">
 					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
 					  <thead class = "table-secondary">
 						<tr>
@@ -1034,7 +1034,7 @@
 					 <hr class = "linelai">
 			  </div>
 			  <!--SECTION THREE-->
-			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab">
+			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab" style ="max-height 700px;">
 					<table class="table table-borderless table-hover" style = "margin-top: 15px;">
 					  <thead class = "table-secondary">
 						<tr>
