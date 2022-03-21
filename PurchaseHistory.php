@@ -5,8 +5,8 @@
 
                
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+<!-- Begin Page Content -->
+<div class="container-fluid" style="width:80%">
                 <h1 style="width: 315px;margin-left: 460px;color: #c71526;">Purchase History</h1>
     <div style="padding-left: 20px;padding-top: 40px;">
         <div>
@@ -49,31 +49,12 @@
         <p style="font-size: 25px;margin-left: 948px;margin-top: -57px;">RM465.60</p>
     </div>
     <br />
-<br />
-<br />
-              
 
-
-
-
-   <!-- /.container-fluid -->
-
-
-<style>
-
-</style>
-
-              
-
-
-
-
+</div>  
    <!-- /.container-fluid -->
 
 <?php
     require __DIR__ . '/footer.php'
 ?>
 
-<style>
 
-</style>
