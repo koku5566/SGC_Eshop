@@ -882,6 +882,8 @@
             initChoice();
         }
 
+        divVariations = document.querySelectorAll('.variation');
+        
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
 
         btnAddVariations.forEach(item => {
