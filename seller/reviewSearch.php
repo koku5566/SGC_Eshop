@@ -9,7 +9,7 @@ if(isset($_POST["query"]))
   WHERE cu_id LIKE '%".$search."%'";
 
   
-echo "$search";
+echo $search;
 }
 else
 {
