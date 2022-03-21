@@ -18,7 +18,7 @@ if(isset($_POST["query"]))
   OR campus LIKE '%".$search."%' 
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
-  OR status LIKE '%".$search."%';)k
+  OR status LIKE '%".$search."%')k
   WHERE disable_date IS NULL; ";
   
 }
@@ -60,7 +60,7 @@ if(mysqli_num_rows($result) > 0)
 	<td>'.$row["message"].'</td>
     <td>'.$row["status"].'</td>
 	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimage" value="'.$i.'">	
+		<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
 		<input type="submit" name ="t1faker" value = "faker"></form></td>
    </tr>
   ';
