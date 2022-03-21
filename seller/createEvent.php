@@ -61,7 +61,6 @@
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         echo "<script>alert('Success!!!!!');</script>";
                         $_SESSION['eventID'] = 1; //need change
-                        header("Location:https://eshop.sgcprototype2.com/seller/addTicketType.php");
                     }
                     else{
                         $error = mysqli_stmt_error($stmt);
