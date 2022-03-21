@@ -23,13 +23,12 @@
                 
                 <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                     <h2>Promotion Details</h2>
-                    <h3 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h3>
-                    <h3></h3>
-                    <h2 style="margin-top: 30px;width: 100%;">Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h2>
+                    <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
+                    <h4 style="margin-top: 30px;width: 100%;">Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h4>
                     <div>
                         <div class="row">
                             <div class="col-sm-2">
-                                <h3 style="margin-top: 30px;width: 100%;">Date</h3>
+                                <h4 style="margin-top: 30px;width: 100%;">Date</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -39,7 +38,7 @@
                         </div>
                     </div>
                     <div>
-                        <h3 style="margin-top: 30px;width: 100%;">Time</h3>
+                        <h4 style="margin-top: 30px;width: 100%;">Time</h4>
                         <div class="row">
                             <div class="col-sm-5"><input class="form-control" type="time" name="pTime_From" required></div>
 
