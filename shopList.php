@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="container">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-xl-2 col-lg-2 col-sm-2">
       <div class="image-container shadow" style="">
-          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
+          <img class="" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
       </div>
       <div class="viewBtn">
         <button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button>
@@ -43,7 +43,8 @@
 .image-container{
   height:15vh;
   z-index:3;
-  position:relative
+  position:relative;
+  border-radius:1.5rem;
 }
 
 .description{
@@ -55,6 +56,7 @@
   padding: 30px 145px;
   border-radius: 5px;
   background-color: #EEEDEE;
+  width:100%;
 }
 
 .viewBtn{
