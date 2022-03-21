@@ -861,7 +861,7 @@
 
     function addVariationHandleClick(event) 
     {
-        const divVariations = document.querySelectorAll('.variation');
+        var divVariations = document.querySelectorAll('.variation');
 
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
@@ -883,7 +883,7 @@
         }
 
         divVariations = document.querySelectorAll('.variation');
-        
+
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
 
         btnAddVariations.forEach(item => {
