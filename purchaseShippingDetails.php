@@ -52,7 +52,7 @@
             </div>
             <hr>
             <!--Shipping Progress table-->
-            <table class="table">
+            <table class="table track-shipping">
                 <thead>
                     <tr>
                         <th scope="col">Location</th>
@@ -441,7 +441,9 @@
             border-bottom: 1px solid #F5F5F5;
             margin-bottom: 25px
         }
+    }
 
-
+    .track-shipping tr:first-child td {
+    color: green;
     }
 </style>
