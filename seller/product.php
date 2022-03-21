@@ -431,6 +431,10 @@
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
                         </div>
+
+                        <div id="priceList">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -847,6 +851,39 @@
             </div>
         </div>
     `;
+
+    function RefreshPriceTable()
+    {
+        var PriceTableHTML = `<table class="table table-hover">`;
+            //Header Row
+            PriceTableHTML += `<thead>`;
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<th scope="col">#</th>`;
+                PriceTableHTML += `<th scope="col">Price</th>`;
+                PriceTableHTML += `<th scope="col">Stock</th>`;
+                PriceTableHTML += `<th scope="col">SKU</th>`;
+                PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            //Body Content
+            PriceTableHTML += `<tbody>`;
+                //Row 2
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<th scope="row">2</th>`;
+                PriceTableHTML += `<td><input type="text" placeholder="2016"></td>`;
+                PriceTableHTML += `<td>123</td>`;
+                PriceTableHTML += `<td>123</td>`;
+                PriceTableHTML += `</tr>`;
+
+            PriceTableHTML += `</tbody>`;
+        PriceTableHTML += `</table>`;
+
+        var priceListTable = document.getElementById("priceList");
+        priceListTable.innerHTML = "";
+        priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
+    }
+
+    
 
     function initVariation()
     {
