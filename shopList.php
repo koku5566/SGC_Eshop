@@ -20,6 +20,7 @@
   z-index: 2;
   height: 100px;
   width: 100px;
+  background-color: maroon;
 }
 
 #viewBtn1{
@@ -50,6 +51,7 @@
   z-index: 2;
   height: 100px;
   width: 100px;
+  background-color: maroon;
 }
 
 #viewBtn2{
@@ -80,6 +82,7 @@
   z-index: 2;
   height: 100px;
   width: 100px;
+  background-color: maroon;
 }
 
 #viewBtn3{
