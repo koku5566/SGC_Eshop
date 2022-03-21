@@ -882,6 +882,19 @@
             initChoice();
         }
 
+        const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+
+        btnAddVariations.forEach(item => {
+            if(divVariations.length == 2)
+            {
+                item.parentElement.classList.add("hide");
+            }   
+            else if(divVariations.length == 1)
+            {
+                item.parentElement.classList.remove("hide");
+            }
+        });
+
         //Delete Variation
         const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
         btnDeleteVariations.forEach(item => {
