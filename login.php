@@ -28,7 +28,7 @@
 					$_SESSION['id'] = $row["username"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					?><script>window.location = '<?php echo($domain/index.php);?>';</script><?php
+					?><script>window.location = '<?php echo("$domain/index.php");?>';</script><?php
 				}
 			} else {
 				$Login = false;
