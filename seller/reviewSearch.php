@@ -3,7 +3,7 @@ $output = '';
 if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- $query = "
+ $sql = "
   SELECT cu_id, name, email, campus, subject, message, status
   FROM contactUs 
   WHERE cu_id LIKE '%".$search."%'
@@ -18,7 +18,7 @@ if(isset($_POST["query"]))
 }
 else
 {
- $query = "SELECT cu_id, name, email, campus, subject, message, status 
+ $sql = "SELECT cu_id, name, email, campus, subject, message, status 
 		   FROM contactUs 
 		   WHERE disable_date IS NULL
 		   ORDER BY cu_id;";
@@ -26,8 +26,8 @@ else
 
  echo "sohai gone d";
 }
-$result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) != 0)
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0)
 {
  $output .= '
   <div class="table-responsive">
