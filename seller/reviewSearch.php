@@ -9,7 +9,7 @@ if(isset($_POST["query"]))
   WHERE cu_id LIKE '%".$search."%'";
 
   
-echo "HAVENT GONE";
+echo "$search";
 }
 else
 {
