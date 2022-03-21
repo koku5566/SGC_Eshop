@@ -14,17 +14,17 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%'
+  AND disable_date IS NULL; ";
   
- ";
 }
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status 
-		   FROM contactUs 
-		   ORDER BY cu_id;
+		   FROM contactUs
+		   WHERE disable_date IS NULL
+		   ORDER BY cu_id;";
   
- ";
- echo "sohai gone d";
+ 
 }
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
@@ -40,6 +40,7 @@ if(mysqli_num_rows($result) > 0)
      <th>subject</th>
 	 <th>message</th>
      <th>status</th>
+	 <th>btn</th>
     </tr>
  ';
  while($row = mysqli_fetch_array($result))
@@ -53,6 +54,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["subject"].'</td>
 	<td>'.$row["message"].'</td>
     <td>'.$row["status"].'</td>
+	<td><button>sohai</button></td>
    </tr>
   ';
  }
