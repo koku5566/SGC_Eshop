@@ -8,6 +8,12 @@
 	// 	echo "<script>alert('Login to Continue');
 	// 		window.location.href='login.php';</script>";
     // }
+
+    if($_SESSION['eventID'] == null)
+    {
+        echo "<script>
+ 		window.location.href='seller/createEvent.php';</script>";
+    }
 ?>
 
 <?php
