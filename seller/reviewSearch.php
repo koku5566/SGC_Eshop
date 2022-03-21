@@ -2,6 +2,7 @@
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 
 //SEARCH FUNCTION NUMBAR ONE
+/*
 $output = '';
 
 if(isset($_POST["query"]))
@@ -72,9 +73,9 @@ else
 {
  echo 'Data Not Found';
 }
-
+*/
 //SEARCH FUNCTION NUMBAR ONE - Version 2 -------------------------------------------------------------------------------------------------
- /*
+ /**/
  $output = '';
 
 if(isset($_POST["query"]))
@@ -149,6 +150,6 @@ else
 		
 
 	}
-*/
+
 
 ?>
