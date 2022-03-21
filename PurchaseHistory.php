@@ -24,7 +24,7 @@
   <div style="height: 550px;border-style: solid;">
     <div class="row">
       <div class="col" style="width: 500px;">
-      <img src="segi kl.png" style="width:400px; margin-left:10px">
+      <img src="img/segi kl.png" style="width:400px; margin-left:10px">
       </div>
       <div class="col-xl-2">
         <p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/>
@@ -33,7 +33,7 @@
     <br/>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
+      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
+      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
