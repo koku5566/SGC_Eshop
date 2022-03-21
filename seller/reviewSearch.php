@@ -43,9 +43,11 @@ $result = mysqli_query($conn, $sql);
    </tr>
   ';
   $output .= "niama";
+  echo $output;
+   echo 'GOTGOTGOTOGOT';
  }
- echo $output;
- echo 'GOTGOTGOTOGOT';
+ 
+
 
 
 ?>
