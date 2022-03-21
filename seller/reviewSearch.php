@@ -1,6 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 $output = '';
+$i = 1;
 if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
@@ -54,9 +55,13 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["subject"].'</td>
 	<td>'.$row["message"].'</td>
     <td>'.$row["status"].'</td>
-	<td><button>sohai</button></td>
+	<td><form action ="'. $_SERVER["PHP_SELF"].'" method = "POST" class = "baka">
+		<input type="hidden" name="uimage" value="'.$i.'">	
+		<input type="submit" name ="t1faker" value = "faker"></form></td>
    </tr>
   ';
+  
+  $i++;
  }
  echo $output;
 }
@@ -64,5 +69,7 @@ else
 {
  echo 'Data Not Found';
 }
+
+
 
 ?>
