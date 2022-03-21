@@ -866,8 +866,6 @@
                 item.parentElement.classList.remove("hide");
             }
         });
-
-        
     }
 
     function addVariationHandleClick(event) {
@@ -905,10 +903,12 @@
 
         if(divVariations.length == 2)
         {
+            console.log(1);
             event.target.parentElement.parentElement.parentElement.remove();
         }
         else if(divVariations.length == 1)
         {
+            console.log(1);
             event.target.parentElement.parentElement.parentElement.remove();
             sub.classList.add("hide");
             main.classList.remove("hide");
