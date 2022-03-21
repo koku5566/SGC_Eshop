@@ -47,8 +47,6 @@
         <?php
             require __DIR__ . '/voucherRun.php'
         ?>
-
-        <!-- Shop -->
         
     </div>
     <!-- /.container-fluid -->
