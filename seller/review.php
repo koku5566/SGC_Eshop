@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		<div style "margin-top: 15px;">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
-				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">5<i class="bi bi-star"></i></a>
+				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">5<span class="fa fa-star checked"></span></a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link" id="reply-tab" data-toggle="tab" href="#reply" role="tab" aria-controls="reply" aria-selected="false">Reply</a>
