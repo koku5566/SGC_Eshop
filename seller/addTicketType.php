@@ -211,12 +211,12 @@
 
                                     echo("
                                        <tr>
-                                        <td>\"".$row['ticket_name']."\"</td>
-                                        <td>\"".$row['capacity']."\"</td>
-                                        <td>\"".$row['sales_start']."\"</td>
-                                        <td>\"".$row['sales_end']."\"</td>
-                                        <td>\"".$row['price']."\"</td>
-                                        <td><button class=\"btn btn-light btn-sm\" type=\"button\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
+                                        <td>".$row['ticket_name']."</td>
+                                        <td>".$row['capacity']."</td>
+                                        <td>".$row['sales_start']."</td>
+                                        <td>".$row['sales_end']."</td>
+                                        <td>".$row['price']."</td>
+                                        <td><button class=\"btn btn-light btn-sm\" type=\"button\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" id=".$row['ticketType_id']."><i class=\"fa fa-edit\"></i></button></td>
                                         </tr>
                                     ");
                                 }
