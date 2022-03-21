@@ -27,21 +27,8 @@ else
  echo "sohai gone d";
 }
 $result = mysqli_query($conn, $sql);
-if(mysqli_num_rows($result) > 0)
-{
- $output .= '
-  <div class="table-responsive">
-   <table class="table table bordered">
-    <tr>
-     <th> cu_id</th>
-     <th>name</th>
-     <th>email</th>
-     <th>campus</th>
-     <th>subject</th>
-	 <th>message</th>
-     <th>status</th>
-    </tr>
- ';
+
+ 
  while($row = mysqli_fetch_array($result))
  {
   $output .= '
@@ -58,10 +45,6 @@ if(mysqli_num_rows($result) > 0)
  }
  echo $output;
  echo 'GOTGOTGOTOGOT';
-}
-else
-{
- echo 'Data Not Found';
-}
+
 
 ?>
