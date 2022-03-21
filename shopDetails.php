@@ -219,6 +219,6 @@
     </main>
     <!--Main layout-->
 
-    <?php
+<?php
     require __DIR__ . '/footer.php'
 ?>

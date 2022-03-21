@@ -1,7 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
+<?php
+    require_once __DIR__ . '/header.php'
+?>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="container">
+  <div class="row row1">
+  <div class="list">
+    <div id="image1"><img src=""></div>
+    <div id="description1"><p class="descriptionContainer1"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
+    <div id="viewBtn1"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
+  </div>
+  </div>
+
+  <div class="row row2">
+  <div class="list">
+  <div id="image2"><img src=""></div>
+    <div id="description2"><p class="descriptionContainer2"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
+    <div id="viewBtn2"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
+  </div>
+  </div>
+  
+  <div class="row row3">
+  <div class="list">
+    <div id="image3"><img src=""></div>
+    <div id="description3"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></div>
+    <div id="viewBtn3"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
+  </div>
+  </div>
+</div>
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
 <style>
 .row1{
   position: relative; /*fix the position of the div in row1*/
@@ -96,38 +128,3 @@
   margin: 65px 80px;
 }
 </style>
-</head>
-<body>
-
-<div class="container">
-  <div class="row row1">
-  <div class="list">
-    <div id="image1"><img src=""></div>
-    <div id="description1"><p class="descriptionContainer1"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
-    <div id="viewBtn1"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
-  </div>
-  </div>
-
-  <div class="row row2">
-  <div class="list">
-  <div id="image2"><img src=""></div>
-    <div id="description2"><p class="descriptionContainer2"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
-    <div id="viewBtn2"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
-  </div>
-  </div>
-  
-  <div class="row row3">
-  <div class="list">
-    <div id="image3"><img src=""></div>
-    <div id="description3"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></div>
-    <div id="viewBtn3"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
-  </div>
-  </div>
-</div>
-
-<script>
-
-</script>
-
-</body>
-</html>
