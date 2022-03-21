@@ -905,7 +905,7 @@
 
     function deleteVariationHandleClick(event) 
     {
-        const divVariations = document.querySelectorAll('.variation');
+        var divVariations = document.querySelectorAll('.variation');
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
 
@@ -920,6 +920,8 @@
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
         }
+
+        divVariations = document.querySelectorAll('.variation');
 
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
 
