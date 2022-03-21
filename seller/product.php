@@ -859,11 +859,11 @@
 
             if(divVariations.length >= 2)
             {
-                item.parentElement.classlist.add("hide");
+                item.parentElement.classList.add("hide");
             }   
             else if(divVariations.length == 1)
             {
-                item.parentElement.classlist.remove("hide");
+                item.parentElement.classList.remove("hide");
             }
         });
 
