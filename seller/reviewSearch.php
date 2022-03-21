@@ -6,13 +6,8 @@ if(isset($_POST["query"]))
  $sql = "
   SELECT cu_id, name, email, campus, subject, message, status
   FROM contactUs 
-  WHERE cu_id LIKE '%".$search."%'
-  OR name LIKE '%".$search."%' 
-  OR email LIKE '%".$search."%' 
-  OR campus LIKE '%".$search."%' 
-  OR subject LIKE '%".$search."%'
-  OR message LIKE '%".$search."%'
-  OR status LIKE '%".$search."%' ";
+  WHERE cu_id LIKE '%".$search."%'";
+
   
 echo "HAVENT GONE";
 }
