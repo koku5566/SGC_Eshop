@@ -1,8 +1,6 @@
-<?php
-    require __DIR__ . '/header.php'
-?>
-<?php
 
+<?php
+ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
  
 $output = 'OUTPUT';
 if(isset($_POST["query"]))
@@ -73,6 +71,3 @@ $sql = "SELECT hcc_id, category, pic, pic_type
 */
 ?>
 
-<?php
-    require __DIR__ . '/footer.php'
-?>
