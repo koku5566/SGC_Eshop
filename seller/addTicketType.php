@@ -218,7 +218,7 @@
     <!-- /.container-fluid -->
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!-- <script src="../js/addTicketType.js"></script> -->
+    <script src="../js/addTicketType.js"></script>
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <!-- <script>
         tinymce.init({
