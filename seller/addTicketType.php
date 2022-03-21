@@ -202,6 +202,27 @@
 
                         ?>
                     <tbody>
+                    <?php
+                            $sql = "SELECT * FROM `ticketType` WHERE `event_id` = {$_SESSION['eventID']}";
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+
+                                    echo("
+                                       <tr>
+                                        <td>\"".$row['ticket_name']."\"</td>
+                                        <td>\"".$row['capacity']."\"</td>
+                                        <td>\"".$row['sales_start']."\"</td>
+                                        <td>\"".$row['sales_end']."\"</td>
+                                        <td>\"".$row['price']."\"</td>
+                                        <td><button class=\"btn btn-light btn-sm\" type=\"button\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
+                                        </tr>
+                                    ");
+                                }
+                            }
+
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -218,7 +239,7 @@
     <!-- /.container-fluid -->
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/addTicketType.js"></script>
+    <!-- <script src="../js/addTicketType.js"></script> -->
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <!-- <script>
         tinymce.init({
