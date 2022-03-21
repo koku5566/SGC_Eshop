@@ -1,5 +1,5 @@
 <?php
-$output = '';
+$output = 'OUTPUT';
 if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
@@ -31,22 +31,15 @@ $result = mysqli_query($conn, $sql);
  
  while($row = mysqli_fetch_array($result))
  {
-  $output .= '
-   <tr>
-    <td>'.$row["cu_id"].'</td>
-    <td>'.$row["name"].'</td>
-    <td>'.$row["email"].'</td>
-    <td>'.$row["campus"].'</td>
-    <td>'.$row["subject"].'</td>
-	<td>'.$row["message"].'</td>
-    <td>'.$row["status"].'</td>
-   </tr>
-  ';
+	 
+  $output .= '$row["cu_id"]';
+  
+  
   $output .= "niama";
-  echo $output;
-   echo 'GOTGOTGOTOGOT';
+  
  }
- 
+ echo $output;
+   echo 'GOTGOTGOTOGOT';
 
 ///////////////////////////////////////////////////////////
 /*
