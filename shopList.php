@@ -6,10 +6,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="list">
+    <div class="col-xl-2">
       <div class="image-container">
           <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
       </div>
+      <div class="viewBtn">
+        <button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button>
+      </div>
+    </div>
+    <div class="col-xl-10">
       <div class="description">
         <p class="descriptionContainer1">
           <i class="bi bi-people-fill"></i>
@@ -23,9 +28,6 @@
           Products 
           <span id="" style="color: red;">12</span>
         </p>
-      </div>
-      <div class="viewBtn">
-        <button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button>
       </div>
     </div>
   </div>
