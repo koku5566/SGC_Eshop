@@ -25,9 +25,12 @@
                     <h2>Promotion Details</h2>
                     <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
                     <h4 style="margin-top: 30px;width: 100%;">Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h4>
-                        <div class="image-container">
-                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                    <div class="image-layer">
+                    
+                    <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
                                                                 
                                                             </div>
                                                             <div class="image-tools-delete hide">
@@ -40,7 +43,11 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                        <div>
+                                                        <p>Cover Picture</p>
+                                                    </div>
+                                                </div>
+
+                    <div>
                         <div class="row">
                             <div class="col-sm-2">
                                 <h4 style="margin-top: 30px;width: 100%;">Date</h4>
