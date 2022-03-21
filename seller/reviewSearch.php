@@ -27,7 +27,7 @@ else
  echo "sohai gone d";
 }
 $result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) > 0)
+if(mysqli_num_rows($result) != 0)
 {
  $output .= '
   <div class="table-responsive">
