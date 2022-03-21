@@ -24,7 +24,7 @@
   <div style="height: 550px;border-style: solid;">
     <div class="row">
       <div class="col" style="width: 500px;">
-      <img src="segi kl.png" style="width:400px; margin-left:10px">
+      <img src="img/segi kl.png" style="width:400px; margin-left:10px">
       </div>
       <div class="col-xl-2">
         <p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/>
@@ -33,7 +33,7 @@
     <br/>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;">
+      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;">
+      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
@@ -67,7 +67,7 @@
             border: 2px solid black;">
       <div class="row">
       <div class="col" style="margin-top:20px">
-        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px">Order Status</button>
+        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" href="purchaseShippingDetails.php">Order Status</button>
         <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
         </div>
         <div class="col-2" style="margin-top:20px; font-size:20px">Total:
