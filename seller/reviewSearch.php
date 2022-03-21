@@ -1,4 +1,7 @@
+
 <?php
+ require_once __DIR__ . '/mysqli_connect.php'
+ 
 $output = 'OUTPUT';
 if(isset($_POST["query"]))
 {
@@ -34,7 +37,7 @@ $result = mysqli_query($conn, $sql);
   
  }
  echo $output;
-   echo 'GOTGOTGOTOGOT';
+   //echo 'GOTGOTGOTOGOT';
 
 ///////////////////////////////////////////////////////////
 /*
