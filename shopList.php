@@ -111,7 +111,7 @@
   <div class="row row2">
   <div class="list">
   <div id="image2"><img src=""></div>
-    <div id="description2"><p class="descriptionContainer2"><i class="bi bi-people-fill">Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
+    <div id="description2"><p class="descriptionContainer2"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></p></div>
     <div id="viewBtn2"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
   </div>
   </div>
@@ -119,7 +119,7 @@
   <div class="row row3">
   <div class="list">
     <div id="image3"><img src=""></div>
-    <div id="description3"><i class="bi bi-people-fill">Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></div>
+    <div id="description3"><i class="bi bi-people-fill"></i>Joined <span id="" style="color: red;">2021</span> <i class="far fa-rating"></i>Rating <span id="" style="color: red;">4.9 out of 5.0</span><br> <i class="far fa-rating"></i>Products <span id="" style="color: red;">12</span></div>
     <div id="viewBtn3"><button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button></div>
   </div>
   </div>
