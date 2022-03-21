@@ -38,7 +38,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Order Date</span>
                                 </div>
-                                <input type="text" name="daterange" value="01/01/2022 - 01/15/2022" />
+                                <input type="text" name="daterange" class="form-control js-daterangepicker" value="01/01/2022 - 01/15/2022" />
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,7 @@
                         <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
                             <button type="button" class="btn btn-outline-dark">Reset</button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -89,6 +90,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content mb-3">
                         <!--------------------------------All-------------------------------------->
+
                         <div class="order-list-panel">
                             <div class="top-card card-header">
                                 <div class="row">
@@ -156,7 +158,7 @@
                                     <!--All to ship orders-->
                                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
                                         aria-labelledby="pills-all-tab">
-                                        ello MP
+                                        ello 
                                     </div>
 
                                     <!--to process to ship orders-->
@@ -197,7 +199,10 @@
 
 <!-- /.container-fluid -->
 <!--Date Picker-->
-<script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
@@ -212,6 +217,3 @@
     });
 
 </script>
-<?php
-    require __DIR__ . '/footer.php'
-?>
