@@ -21,6 +21,7 @@ else
  $query = "
   SELECT cu_id, name, email, campus, subject, message, status FROM contactUs ORDER BY cu_id
  ";
+ echo "sohai gone d";
 }
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
