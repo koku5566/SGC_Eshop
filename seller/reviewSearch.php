@@ -42,6 +42,7 @@ $result = mysqli_query($conn, $sql);
     <td>'.$row["status"].'</td>
    </tr>
   ';
+  $output .= "niama";
  }
  echo $output;
  echo 'GOTGOTGOTOGOT';
