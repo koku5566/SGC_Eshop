@@ -66,6 +66,7 @@
                                                         <div class="Name">
                                                             <p class="card-text facility-name">SEGi space</p>
                                                         </div>
+                                                        <div class="priceperhour">
                                                            <span style="font-size: 10pt; color:grey;" >RM* Per Hour</span>
                                                         </div>
                                                         
