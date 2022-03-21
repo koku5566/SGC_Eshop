@@ -58,6 +58,13 @@
             aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro">SEGi</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
       <!-- Navbar -->
@@ -219,6 +226,6 @@
     </main>
     <!--Main layout-->
 
-<?php
+    <?php
     require __DIR__ . '/footer.php'
 ?>
