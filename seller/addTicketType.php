@@ -38,7 +38,7 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"sissdi",$tName,$tCapacity,$tPrice,$tSalesStart,$tsalesEnd,$eventID);
+                $bp = mysqli_stmt_bind_param($stmt,"sissdi",$tName,$tCapacity,$tSalesStart,$tsalesEnd,$tPrice,$eventID);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
