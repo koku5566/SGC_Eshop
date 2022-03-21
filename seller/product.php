@@ -856,19 +856,11 @@
         btnAddVariations.forEach(item => {
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
-
-            if(divVariations.length >= 2)
-            {
-                item.parentElement.classList.add("hide");
-            }   
-            else if(divVariations.length == 1)
-            {
-                item.parentElement.classList.remove("hide");
-            }
         });
     }
 
-    function addVariationHandleClick(event) {
+    function addVariationHandleClick(event) 
+    {
         const divVariations = document.querySelectorAll('.variation');
 
         var main = document.getElementById('mainPricing');
@@ -890,6 +882,19 @@
             initChoice();
         }
 
+        const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+
+        btnAddVariations.forEach(item => {
+            if(divVariations.length == 2)
+            {
+                item.parentElement.classList.add("hide");
+            }   
+            else if(divVariations.length == 1)
+            {
+                item.parentElement.classList.remove("hide");
+            }
+        });
+
         //Delete Variation
         const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
         btnDeleteVariations.forEach(item => {
@@ -898,22 +903,38 @@
         });
     }
 
-    function deleteVariationHandleClick(event) {
-        const divVariations = document.querySelectorAll('.variation');
-        console.log(divVariations.length);
+    function deleteVariationHandleClick(event) 
+    {
+        var divVariations = document.querySelectorAll('.variation');
+        var main = document.getElementById('mainPricing');
+        var sub = document.getElementById('subPricing');
+
         if(divVariations.length == 2)
         {
-            console.log('a');
             event.target.parentElement.parentElement.parentElement.remove();
         }
         else if(divVariations.length == 1)
         {
-            console.log('b');
             event.target.parentElement.parentElement.parentElement.remove();
             sub.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
         }
+
+        divVariations = document.querySelectorAll('.variation');
+
+        const btnAddVariations = document.querySelectorAll('.btnAddVariation');
+
+        btnAddVariations.forEach(item => {
+            if(divVariations.length == 2)
+            {
+                item.parentElement.classList.add("hide");
+            }   
+            else if(divVariations.length == 1)
+            {
+                item.parentElement.classList.remove("hide");
+            }
+        });
     }
 
     function initChoice()
