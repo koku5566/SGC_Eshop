@@ -35,7 +35,7 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"search.php",
+   url:"reviewSearch.php",
    method:"POST",
    data:{query:query},
    success:function(data)
