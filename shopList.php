@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-2 col-lg-2 col-sm-2">
-      <div class="image-container shadow" style="height:15vh;z-index:3;">
+      <div class="image-container shadow" style="">
           <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
       </div>
       <div class="viewBtn">
@@ -39,15 +39,18 @@
 ?>
 
 <style>
-.row1{
-  position: relative; /*fix the position of the div in row1*/
+
+.image-container{
+  height:15vh;
+  z-index:3;
+  position:relative
 }
 
 .description{
   margin-top: 2%;
   position: absolute;
   height: 15vh;
-  margin-left: 100px;
+  margin-left: -10%;
   z-index: 1;
   padding: 30px 145px;
   border-radius: 5px;
