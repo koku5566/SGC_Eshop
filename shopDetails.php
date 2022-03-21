@@ -49,6 +49,60 @@
         }
       </style>
 
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+        <div class="container-fluid">
+          <!-- Navbar brand -->
+          <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
+            <strong>MDB</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                  target="_blank">Learn Bootstrap 5</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex flex-row">
+              <!-- Icons -->
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                  target="_blank">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </li>
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
+
       <!-- Carousel wrapper -->
       <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
         <!-- Indicators -->
@@ -144,35 +198,6 @@
     <!--Main layout-->
     <main class="mt-5">
       <div class="container">
-        <!--Section: Content-->
-        <section>
-          <div class="row">
-            <div class="col-md-6 gx-5 mb-4">
-              <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-            </div>
-
-            <div class="col-md-6 gx-5 mb-4">
-              <h4><strong>Facilis consequatur eligendi</strong></h4>
-              <p class="text-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
-                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
-              </p>
-              <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
-              <p class="text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
-                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
-                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
-              </p>
-            </div>
-          </div>
-        </section>
-        <!--Section: Content-->
 
         <hr class="my-5" />
 
@@ -249,9 +274,7 @@
           </div>
         </section>
         <!--Section: Content-->
-
-        <hr class="my-5" />
-
+        
       </div>
     </main>
     <!--Main layout-->
