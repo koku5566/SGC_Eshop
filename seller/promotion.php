@@ -26,7 +26,11 @@
                     <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
                     <h4 style="margin-top: 30px;width: 100%;">Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage"></h4>
                     
-                    <div style="padding-bottom: .625rem;display:flex">
+                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                            <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                                <div style="padding-bottom: .625rem;display:flex">
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
                                                             <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
@@ -46,6 +50,10 @@
                                                         <p>Cover Picture</p>
                                                     </div>
                                                 </div>
+                                            </div>
+                                    </div>
+                                </div>
+                    </div> 
 
                     <div>
                         <div class="row">
