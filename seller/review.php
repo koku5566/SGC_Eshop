@@ -39,28 +39,49 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		<div style "margin-top: 15px;">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
-				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">5<span class="fa fa-star checked"></span></a>
+				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All<span class="fa fa-star checked"></span></a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link" id="reply-tab" data-toggle="tab" href="#reply" role="tab" aria-controls="reply" aria-selected="false">Reply</a>
+				<a class="nav-link" id="five-tab" data-toggle="tab" href="#five" role="tab" aria-controls="five" aria-selected="false">5<span class="fa fa-star checked"></span></a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link" id="replied-tab" data-toggle="tab" href="#replied" role="tab" aria-controls="replied" aria-selected="false">Replied</a>
+				<a class="nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="four" aria-selected="false">4<span class="fa fa-star checked"></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="false">3<span class="fa fa-star checked"></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">2<span class="fa fa-star checked"></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">1<span class="fa fa-star checked"></span></a>
 			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-			  <!--SECTION ONE-->
+			  <!--SECTION ALL-->
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
-						
+					<h1>ALL</h1>
 			  </div>
-			  <!--SECTION TWO-->
-			  <div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="reply-tab" style ="max-height 2000px;">
-					
+			  <!--SECTION FIVE-->
+			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
+					<h1>FIVE</h1>
+			  </div>
+			  <!--SECTION FOUR-->
+			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
+					<h1>FOUR</h1>
 			  </div>
 			  <!--SECTION THREE-->
-			  <div class="tab-pane fade" id="replied" role="tabpanel" aria-labelledby="replied-tab" style ="max-height 2000px;">
-					
-			   </div>
+			  <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab" style ="max-height 2000px;">
+					<h1>THREE</h1>
+			  </div>
+			  <!--SECTION TWO-->
+			  <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab" style ="max-height 2000px;">
+					<h1>TWO</h1>
+			  </div>
+			  <!--SECTION ONE-->
+			  <div class="tab-pane fade" id="one" role="tabpanel" aria-labelledby="one-tab" style ="max-height 2000px;">
+					<h1>ONE</h1>
+			  </div>
 			</div>
 		</div>
 		<!--END OF REVIEW/RATING-->
