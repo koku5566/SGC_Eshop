@@ -62,7 +62,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["status"].'</td>
 	<td><form action ="" method = "POST" class = "baka">
 		<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
-		<input type="submit" name ="t1faker" value = "faker"></form></td>
+		<input type="submit" name ="t1faker" value = "faker" class="alert alert-danger"></form></td>
    </tr>
   ';
   
@@ -151,5 +151,10 @@ else
 
 	}
 */
+
+
+//SEARCH FUNCTION NUMBAR TWO --------------------------------------------------------------------------------------------------
+
+
 
 ?>
