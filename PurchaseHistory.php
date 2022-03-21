@@ -33,7 +33,7 @@
     <br/>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;">
+      <img src="iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="row" style="font-size:20px; ">
       <div class="col">
-      <img src="iphone-grey.png" style="width:150px; height:150px;">
+      <img src="iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
       <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
       </div>
