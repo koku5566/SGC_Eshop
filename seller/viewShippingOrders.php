@@ -4,6 +4,62 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+<!--Pick Up Modal-->
+<div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pick Up Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--Shipping Progress table-->
+        <table class="table track-pickup">
+            <thead>
+                <tr>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--end of table-->
+        
+        <form>
+        <div class="form-group">
+          <label for="orderstatus">ORDER STATUS:</label>
+          <select id="orderstatus" class="form-control">
+          <option value="processing">Order is Processing</option>
+            <option value="ready">Ready To Pickup</option>
+            <option value="cancelled">Order is cancelled</option> 
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">NOTES:</label>
+            <textarea id="notes" name="notes" rows="3" cols="50">
+            </textarea>
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="update" class="btn btn-primary">Update</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
 
@@ -216,3 +272,8 @@
     });
 
 </script>
+<style>
+.track-pickup tr:first-child td {
+    color: green;
+}
+</style>
