@@ -45,7 +45,7 @@ else if(isset($_POST["query"]))
 else if (isset($_POST["query"]) && $_POST["dropdown"] != ""){
 	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
 	$search = mysqli_real_escape_string($conn, $_POST["query"]);
-	
+	echo "babi3";
 	$query = "
 		  SELECT * 
 		  FROM(
