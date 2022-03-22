@@ -353,7 +353,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
+                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +364,21 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productBrand">
+                                    <input type="text" class="form-control" name="productBrand" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Main Category</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                        <option value="1">Normal Product with Shipment</option>
+                                        <option value="2">Virtual Product without Shipment</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -393,7 +407,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? echo($_POST['variationType']); : "1"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
                         <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
                             <div class="input-group mb-3">
@@ -409,7 +423,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" min="0" value="0" class="form-control" name="productPrice">
+                                        <input type="number" min="0" value="0" class="form-control" name="productPrice" required>
                                     </div>
                                 </div>
                             </div>
@@ -420,7 +434,7 @@
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="input-group mb-3">
-                                        <input type="number"min="0" value="0" class="form-control" name="productStock">
+                                        <input type="number"min="0" value="0" class="form-control" name="productStock" required>
                                     </div>
                                 </div>
                             </div>
@@ -623,6 +637,10 @@
             }
             document.getElementById("subCategory").innerHTML = subCategoryHTML;
         }
+    }
+
+    function ToggleShippingDiv(value){
+
     }
 
     function DragNSort (config) {
@@ -831,7 +849,7 @@
                             <p class="p-title">Choices</p>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div class="drag-list-choices" >
+                            <div class="drag-list-choices">
                                 <div class="input-group mb-3 drag-item-choices" draggable="true">
                                     <input type="text" class="form-control" name="variationName[][name][choices][]">
                                     <div class="input-group-append">
@@ -870,7 +888,7 @@
                 //Row 2
                 PriceTableHTML += `<tr>`;
                 PriceTableHTML += `<th scope="row">2</th>`;
-                PriceTableHTML += `<td><input type="text" placeholder="2016"></td>`;
+                PriceTableHTML += `<td><input type="text" placeholder="2016" required></td>`;
                 PriceTableHTML += `<td>123</td>`;
                 PriceTableHTML += `<td>123</td>`;
                 PriceTableHTML += `</tr>`;
@@ -905,6 +923,12 @@
 
         if(sub.classList.contains("hide"))
         {
+            main.getElementsByTagName('input').forEach(item => {
+                item.required = false;
+            });
+            sub.getElementsByTagName('input').forEach(item => {
+                item.required = true;
+            });
             sub.classList.remove("hide");
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
@@ -958,6 +982,12 @@
             sub.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
+            main.getElementsByTagName('input').forEach(item => {
+                item.required = true;
+            });
+            sub.getElementsByTagName('input').forEach(item => {
+                item.required = false;
+            });
         }
 
         divVariations = document.querySelectorAll('.variation');
