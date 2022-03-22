@@ -201,7 +201,7 @@ $result = $stmt->get_result();
                                                     alt="W3Schools.com">
                                             </div> -->
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="<?php echo $row['product_cover_image']?>" alt="Card image cap">
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-3"><?php echo $row['product_name']?></div>
                                             <div class="col-1"><?php echo $row['quantity']?></div>
