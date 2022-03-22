@@ -153,7 +153,7 @@ $(document).ready(function(){
   }
  });
  $('#selectMe').change(function(){
-  var drop = $(this).text();
+  var drop = $(this).val();
   //$('#Crd option:selected').text();
   if(drop != '')
   {
