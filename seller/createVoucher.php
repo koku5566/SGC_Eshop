@@ -18,7 +18,7 @@
 
 
 <!-- Page Content -->
-<div class="container-fluid m-2" style="background-color: #FFFFFF; width:80%;">
+<div class="container m-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="mt-5 mb-4">Create Voucher</h2>
    <form method="post">
       <div class="container">
