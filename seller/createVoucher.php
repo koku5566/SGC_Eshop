@@ -105,7 +105,7 @@
             </div>
             <div class="form-row">
                <div class="form-group">
-                  <button type="button" class="btn btn-warning btn-lg" name="savevoucher" style="float:right;">SAVE</button>
+                  <button type="button" class="btn btn-warning d-flex justify-content-right" name="savevoucher">SAVE</button>
                </div>
             </div>
          </div>    
