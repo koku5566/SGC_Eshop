@@ -52,8 +52,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 </body>
 		 
 		 
-		 
-		 <!--REVIEW/RATING SECTION-->
+		 <!--Result-->
+		 <div id="result"></div>
+		 <!--REVIEW/RATING SECTION
 		<div style "margin-top: 15px;">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
@@ -76,28 +77,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-			  <!--SECTION ALL-->
+			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result"></div>
+					
 			  </div>
-			  <!--SECTION FIVE-->
+			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
 					<h1>FIVE</h1>
 			  </div>
-			  <!--SECTION FOUR-->
+			 
 			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
 					<h1>FOUR</h1>
 			  </div>
-			  <!--SECTION THREE-->
+			  
 			  <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab" style ="max-height 2000px;">
 					<h1>THREE</h1>
 			  </div>
-			  <!--SECTION TWO-->
+			
 			  <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab" style ="max-height 2000px;">
 					<h1>TWO</h1>
 			  </div>
-			  <!--SECTION ONE-->
+			
 			  <div class="tab-pane fade" id="one" role="tabpanel" aria-labelledby="one-tab" style ="max-height 2000px;">
 					<h1>ONE</h1>
 			  </div>
