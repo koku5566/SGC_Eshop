@@ -42,6 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
+		   <form action ="" method = "POST">
 		   <select class="form-control" id = "selectMe">
 			  <option value = "">Default select</option>
 			  <option value = "1">ONE</option>
@@ -57,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</select>
 			
 			<input type = "submit" id = "sss" class ="btn btn-info" value = "Hantar la babi">
+			</form>
 		  </div>
 		 </body>
 		 
