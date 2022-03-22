@@ -205,7 +205,8 @@ $('#search_text, #selectMe').on('change keyup', function(){
 	var drop = $(this).val();
 	if(drop != '' && search != ''){
 		load_data(search, drop);
-		alert('got');
+		alert(search);
+		alert(drop);
 	}else{
 		 load_data();
 		 alert('no hab');
