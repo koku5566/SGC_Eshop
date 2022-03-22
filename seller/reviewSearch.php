@@ -5,9 +5,28 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 /**/
 $output = '';
 
-if(isset($_POST["query"]))
+
+/**/
+if($_POST["dropdown"] != ""){
+	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
+	echo $drop;
+	$query = "
+		  SELECT * 
+		  FROM(
+		  SELECT cu_id, name, email, campus, subject, message, status, disable_date
+		  FROM contactUs 
+		  WHERE 
+		  status LIKE '%".$drop."%')u
+		  WHERE disable_date IS NULL; ";
+	echo "babi";
+}
+
+else if(isset($_POST["query"]))
 {
+	echo "babi2";
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
+ 
+ 
  $query = "
   SELECT * 
   FROM(
@@ -23,6 +42,7 @@ if(isset($_POST["query"]))
   WHERE disable_date IS NULL; ";
   
 }
+
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date

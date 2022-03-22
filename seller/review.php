@@ -29,7 +29,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
-		   
+		   <select class="form-control" id = "selectMe">
+			  <option value = "">Default select</option>
+			  <option value = "1">ONE</option>
+			  <option value = "0">ZERO</option>
+			 
+			</select>
 		  </div>
 		 </body>
 		 
@@ -122,14 +127,16 @@ $(document).ready(function(){
 
  load_data();
 
- function load_data(query)
+ function load_data(query, dropdown)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
-   data:{query:query},
+   data:{query:query,
+		 dropdown:dropdown},
    success:function(data)
    {
+	   //alert('success noob')
     $('#result').html(data);
    }
   });
@@ -138,13 +145,32 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search);
+   load_data(search, "");
   }
   else
   {
    load_data();
   }
  });
+ $('#selectMe').change(function(){
+  var drop = $(this).val();
+  //$('#Crd option:selected').text();
+  if(drop != '')
+  {
+   load_data("", drop);
+   
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ 
+ 
+ 
+ 
+ 
+ 
 });
 </script>
 <?php
