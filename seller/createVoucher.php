@@ -103,10 +103,14 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
-         </div>
+            <div class="form-row">
+               <div class="float-right">
+                  <button type="button" class="btn btn-warning" name="savevoucher">SAVE</button>
+               </div>
+            </div>
+         </div>    
       </div>
    </form>
-   <button type="button" class="btn btn-warning float-right mb-4" name="savevoucher">SAVE</button>
 </div>
 
 <!-- Add Product Modal -->
