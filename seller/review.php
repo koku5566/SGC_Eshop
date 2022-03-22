@@ -196,10 +196,8 @@ $(document).ready(function(){
   }
  });
 */
-$("#sss").click(function(){
-  //alert("The paragraph was clicked.");
-  
-  $('#search_text').keyup(function(){
+
+$('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
   {
@@ -224,6 +222,11 @@ $("#sss").click(function(){
    load_data();
   }
  });
+ 
+$("#sss").click(function(){
+  //alert("The paragraph was clicked.");
+  
+  
  
  
 	if(check1 == true && check2 == true)
