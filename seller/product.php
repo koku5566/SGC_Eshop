@@ -965,12 +965,18 @@
 
         if(sub.classList.contains("hide"))
         {
-            main.getElementsByTagName('input').forEach(item => {
+            mainPricingInput = main.getElementsByTagName('input');
+            for(var i = 0; i < mainPricingInput.length; i++)
+            {
                 item.required = false;
-            });
-            sub.getElementsByTagName('input').forEach(item => {
+            }
+
+            subPricingInput = sub.getElementsByTagName('input');
+            for(var i = 0; i < subPricingInput.length; i++)
+            {
                 item.required = true;
-            });
+            }
+
             sub.classList.remove("hide");
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
