@@ -64,8 +64,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 
 		 
 		 <!--Result-->
-		 <div id="result"></div>
-		 <!--REVIEW/RATING SECTION
+		 
+		 <!--REVIEW/RATING SECTION-->
 		<div style "margin-top: 15px;">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					
+					<div id="result"></div>
 			  </div>
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
@@ -169,7 +169,7 @@ $(document).ready(function(){
    }
   });
  }
-/*
+
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
@@ -195,11 +195,11 @@ $(document).ready(function(){
    load_data();
   }
  });
-*/
+
 
 
  
-
+/*
 $('#search_text, #selectMe').on('keyup change', function(){
 	var search = $(this).val();
 	var drop = $(this).val();
@@ -213,7 +213,7 @@ $('#search_text, #selectMe').on('keyup change', function(){
 	}
 	
 })
-
+*/
  /*
  if(check1){
 	 load_data(search, "");
