@@ -200,7 +200,7 @@ $(document).ready(function(){
 
  
 
-$('#search_text, #selectMe').on('change keyup', function(){
+$('#search_text, #selectMe').on('keyup change', function(){
 	var search = $(this).val();
 	var drop = $(this).val();
 	if(drop != '' && search != ''){
