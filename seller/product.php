@@ -1249,7 +1249,7 @@
     function addChoiceHandleClick(event) {
         var str =  `
         <div class="input-group mb-3">
-            <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
+            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice" name="variationName[][name][choices][]">
             <div class="input-group-append btnDeleteChoices">
                 <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
