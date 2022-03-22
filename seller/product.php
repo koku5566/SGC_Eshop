@@ -843,12 +843,20 @@
                         {
                             j++;
                         }
-                        console.log(j);
-                        console.log(imgInp[j]);
+                        if(j < 9)
+                        {
+                            console.log(j);
+                            console.log(imgInp[j]);
 
-                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
-                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        imgInp[j].parentElement.parentElement.classList.add("hide");
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                        }
+                        else
+                        {
+                            exit;
+                        }
+                        
                     }
                 }
                 else if(img.files && img.files[0])
