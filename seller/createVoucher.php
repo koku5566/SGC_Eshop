@@ -104,9 +104,9 @@
                </div>
             </div>
          </div>
-         <button type="button" class="btn btn-warning float-right mb-4" name="savevoucher">SAVE</button>
       </div>
    </form>
+   <button type="button" class="btn btn-warning float-right mb-4" name="savevoucher">SAVE</button>
 </div>
 
 <!-- Add Product Modal -->
