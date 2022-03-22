@@ -7,24 +7,14 @@
     //create database connection
     $conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
 
-    if(!$conn)
-    {
-        die("Connection Failed".mysqli_connect_error());
-    }
-    else
-    {
-        if(!isset($_SESSION)){
-            session_start();
-        }
-    }
-?>
-
-<?php
-
    $res = mysqli_query($conn, "SELECT v.*, t.* FROM voucher v, voucherType vt WHERE v.voucher_type_id=t.voucher_type_id");
 
    while($row=mysql_fetch_array($res))
    {
+      echo $row['voucher_type'];
+      echo $row['discount_amount'];
+      echo $row['voucher_startdate'];
+   }
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -40,8 +30,8 @@
    </div>
    <div class="card-body">
       <h6 class="card-title"><strong>SEGi Group of Colleges</strong></h6>
-      <h5 class="card-subtitle text-muted"><?php echo $row['voucher_type'];?><?php echo $row['discount_amount'];?> off</h5>
-      <small>Used : <?php echo $row['voucher_startdate'];?></small><br>
+      <h5 class="card-subtitle text-muted"> off</h5>
+      <small>Used : </small><br>
       <u>
          <a type="" class="" data-toggle="modal" data-target="#termsModal">
          T&C applied.
@@ -52,6 +42,3 @@
       <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
    </div>
 </div>
-<?php 
-}
-?>
