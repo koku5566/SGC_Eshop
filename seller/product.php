@@ -1134,8 +1134,8 @@
             var variationName = document.querySelectorAll('.variationName');
             for(var i = 0; i < variationName.length; i++)
             {
-                variationName[i].removeEventListener('click',RefreshPriceTable);
-                variationName[i].addEventListener('click',RefreshPriceTable);
+                variationName[i].removeEventListener('change',RefreshPriceTable);
+                variationName[i].addEventListener('change',RefreshPriceTable);
             }
 
             mainPricingInput = main.getElementsByTagName('input');
@@ -1262,8 +1262,8 @@
         var variationChoice = document.querySelectorAll('.variationChoice');
         for(var i = 0; i < variationChoice.length; i++)
         {
-            variationChoice[i].removeEventListener('click',RefreshPriceTable);
-            variationChoice[i].addEventListener('click',RefreshPriceTable);
+            variationChoice[i].removeEventListener('change',RefreshPriceTable);
+            variationChoice[i].addEventListener('change',RefreshPriceTable);
         }
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
