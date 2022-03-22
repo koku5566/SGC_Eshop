@@ -891,12 +891,9 @@
                             <p class="p-title">Choices</p>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div class="drag-list-choices">
-                                <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                    </div>
+                            <div>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="variationName[][name][choices][]">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -1073,16 +1070,15 @@
     }
 
     function addChoiceHandleClick(event) {
-        var str =  `<div class="input-group mb-3 drag-item-choices" draggable="true"><input type="text" class="form-control" onfocusout="saveValue(this)" name="choices[]"><div class="input-group-append"><span class="input-group-text"><i class="fa fa-arrows" aria-hidden="true"></i></span></div><div class="input-group-append btnDeleteChoices"><span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span></div></div>`;
+        var str =  `
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="variationName[][name][choices][]">
+            <div class="input-group-append btnDeleteChoices">
+                <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        `;
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
-        // Instantiate Choices Drag
-        var draggableChoices = new DragNSort({
-            container: document.querySelector('.drag-list-choices'),
-            itemClass: 'drag-item-choices',
-            dragStartClass: 'drag-start',
-            dragEnterClass: 'drag-enter'
-        });
-        draggableChoices.init();
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
@@ -1108,12 +1104,6 @@
         }
         
     }
-
-    function saveValue(event)
-    {
-        console.log(event);
-    }
-
     
 
 </script>
