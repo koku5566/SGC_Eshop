@@ -836,8 +836,9 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files
+                console.log(file);
                 if (file) {
-                    console.log(file.length);
+                    
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                     img.parentElement.parentElement.classList.add("hide");
