@@ -185,15 +185,15 @@ $(document).ready(function(){
  });
  
  
- if(check1 == true){
+ if(check1){
 	 load_data(search, "");
 	 alert('check1');
  }
- else if (check2 == true){
+ else if (check1){
 	 load_data("", drop);
 	  alert('check2');
  }
- else if (check1 == true && check2 == true){
+ else if (check1 && check2){
 	 load_data(search, drop);
 	  alert('check1&2');
  }
