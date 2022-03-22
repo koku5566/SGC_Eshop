@@ -962,7 +962,7 @@
         if(variationList.length == 2)
         {
             variationInpList1 = variationList[0].getElementsByTagName('input');
-            variationInpList2 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[1].getElementsByTagName('input');
 
             PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
             PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
@@ -1041,7 +1041,7 @@
         if(variationList.length == 2)
         {
             variationInpList1 = variationList[0].getElementsByTagName('input');
-            variationInpList2 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[1].getElementsByTagName('input');
 
             PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
             PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
@@ -1061,9 +1061,9 @@
                     PriceTableHTML += `<tr>`;
                     PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
                     PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
-                    PriceTableHTML += `<td scope="row"><input value=`+price+` type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
-                    PriceTableHTML += `<td scope="row"><input value=`+stock+`type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
-                    PriceTableHTML += `<td scope="row"><input value=`+sku+`type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+price+`" type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+stock+`" type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+sku+`"   type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                     PriceTableHTML += `</tr>`;
                 }
             }
