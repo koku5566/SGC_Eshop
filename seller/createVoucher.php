@@ -21,7 +21,7 @@
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="m-4">Create Voucher</h2>
    <form method="post">
-      <div class="container">
+      <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
                <div class="form-group col-md-12">
