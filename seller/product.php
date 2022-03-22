@@ -968,13 +968,13 @@
             mainPricingInput = main.getElementsByTagName('input');
             for(var i = 0; i < mainPricingInput.length; i++)
             {
-                item.required = false;
+                mainPricingInput[i].required = false;
             }
 
             subPricingInput = sub.getElementsByTagName('input');
             for(var i = 0; i < subPricingInput.length; i++)
             {
-                item.required = true;
+                subPricingInput[i].required = true;
             }
 
             sub.classList.remove("hide");
