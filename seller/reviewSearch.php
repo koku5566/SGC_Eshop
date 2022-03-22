@@ -7,7 +7,7 @@ $output = '';
 
 
 /**/
-if(isset($_POST["dropdown"])){
+if($_POST["dropdown"] != ""){
 	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
 	$query = "
 		  SELECT * 
@@ -15,7 +15,7 @@ if(isset($_POST["dropdown"])){
 		  SELECT cu_id, name, email, campus, subject, message, status, disable_date
 		  FROM contactUs 
 		  WHERE 
-		  status LIKE '%".$drop."%')l
+		  status LIKE '%".$drop."%')u
 		  WHERE disable_date IS NULL; ";
 	echo "babi";
 }
