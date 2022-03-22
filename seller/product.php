@@ -136,7 +136,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -156,7 +156,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -174,7 +174,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -192,7 +192,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -210,7 +210,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -230,7 +230,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -248,7 +248,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -266,7 +266,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -284,7 +284,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" />
+                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -353,7 +353,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000"></textarea>
+                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +364,21 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productBrand">
+                                    <input type="text" class="form-control" name="productBrand" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Main Category</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                        <option value="1">Normal Product with Shipment</option>
+                                        <option value="2">Virtual Product without Shipment</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -393,7 +407,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? $_POST['variationType'] : "0"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
                         <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
                             <div class="input-group mb-3">
@@ -409,7 +423,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" min="0" value="0" class="form-control" name="productPrice">
+                                        <input type="number" min="0" value="0" class="form-control" name="productPrice" required>
                                     </div>
                                 </div>
                             </div>
@@ -420,7 +434,7 @@
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="input-group mb-3">
-                                        <input type="number"min="0" value="0" class="form-control" name="productStock">
+                                        <input type="number"min="0" value="0" class="form-control" name="productStock" required>
                                     </div>
                                 </div>
                             </div>
@@ -441,7 +455,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row">
+        <div class="row" id="ShippingDiv">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -625,6 +639,30 @@
         }
     }
 
+    function ToggleShippingDiv(value){
+        var ShippingDiv = document.getElementById('ShippingDiv');
+        if(value == 1)
+        {
+            if(ShippingDiv.classList.contains("hide"))
+            {
+                ShippingDiv.getElementsByTagName('input').forEach(item => {
+                    item.required = true;
+                });
+                ShippingDiv.classList.remove("hide");
+            }
+        }
+        else if(value == 2)
+        {
+            if(!ShippingDiv.classList.contains("hide"))
+            {
+                ShippingDiv.getElementsByTagName('input').forEach(item => {
+                    item.required = false;
+                });
+                ShippingDiv.classList.add("hide");
+            }
+        }
+    }
+
     function DragNSort (config) {
         this.$activeItem = null;
         this.$container = config.container;
@@ -647,11 +685,11 @@
     };
 
     DragNSort.prototype.onDragStart = function (_this, event) {
-    _this.$activeItem = this;
+        _this.$activeItem = this;
 
-    this.classList.add(_this.dragStartClass);
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/html', this.innerHTML);
+        this.classList.add(_this.dragStartClass);
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/html', this.innerHTML);
     };
 
     DragNSort.prototype.onDragEnd = function (_this) {
@@ -797,8 +835,30 @@
         const imgInp = document.querySelectorAll('.imgInp');
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
-                const [file] = img.files
-                if (file) {
+                const [file] = img.files;
+
+                if (img.files && img.files[0] && img.files.length > 1) {
+                    for (var j = 0,i = 0; i < this.files.length; i++) {
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                        {
+                            j++;
+                        }
+
+                        if(j < 9)
+                        {
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                        }
+                        else
+                        {
+                            exit;
+                        }
+                        
+                    }
+                }
+                else if(img.files && img.files[0])
+                {
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                     img.parentElement.parentElement.classList.add("hide");
@@ -831,12 +891,9 @@
                             <p class="p-title">Choices</p>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div class="drag-list-choices" >
-                                <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                    <input type="text" class="form-control" name="variationName[][name][choices][]">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
-                                    </div>
+                            <div>
+                                <div class="input-group mb-3">
+                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -870,7 +927,7 @@
                 //Row 2
                 PriceTableHTML += `<tr>`;
                 PriceTableHTML += `<th scope="row">2</th>`;
-                PriceTableHTML += `<td><input type="text" placeholder="2016"></td>`;
+                PriceTableHTML += `<td><input type="text" placeholder="2016" required></td>`;
                 PriceTableHTML += `<td>123</td>`;
                 PriceTableHTML += `<td>123</td>`;
                 PriceTableHTML += `</tr>`;
@@ -882,8 +939,6 @@
         priceListTable.innerHTML = "";
         priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
     }
-
-    
 
     function initVariation()
     {
@@ -909,14 +964,36 @@
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+
+            mainPricingInput = main.getElementsByTagName('input');
+            for(var i = 0; i < mainPricingInput.length; i++)
+            {
+                mainPricingInput[i].required = false;
+            }
+
+            subPricingInput = sub.getElementsByTagName('input');
+            for(var i = 0; i < subPricingInput.length; i++)
+            {
+                subPricingInput[i].required = true;
+            }
+
             initVariation();
             initChoice();
         }
         else if(divVariations.length < 2)
         {
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+
+            subPricingInput = sub.getElementsByTagName('input');
+            for(var i = 0; i < subPricingInput.length; i++)
+            {
+                subPricingInput[i].required = true;
+            }
+
             initVariation();
             initChoice();
+
+            
         }
 
         divVariations = document.querySelectorAll('.variation');
@@ -958,6 +1035,12 @@
             sub.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
+
+            mainPricingInput = main.getElementsByTagName('input');
+            for(var i = 0; i < mainPricingInput.length; i++)
+            {
+                mainPricingInput[i].required = true;
+            }
         }
 
         divVariations = document.querySelectorAll('.variation');
@@ -987,16 +1070,15 @@
     }
 
     function addChoiceHandleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        var str =  `
+        <div class="input-group mb-3">
+            <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
+            <div class="input-group-append btnDeleteChoices">
+                <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        `;
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
-        // Instantiate Choices Drag
-        var draggableChoices = new DragNSort({
-            container: document.querySelector('.drag-list-choices'),
-            itemClass: 'drag-item-choices',
-            dragStartClass: 'drag-start',
-            dragEnterClass: 'drag-enter'
-        });
-        draggableChoices.init();
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
@@ -1021,6 +1103,11 @@
             }
         }
         
+    }
+
+    function saveValue(event)
+    {
+        console.log(event);
     }
 
     

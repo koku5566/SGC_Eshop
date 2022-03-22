@@ -2,9 +2,11 @@
     require __DIR__ . '/header.php'
 ?>
 
-
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
+<div class="column"><a class="btn btn-outline-secondary" href="#"><i class="icon-arrow-left"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>  Back</a></div>
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         <table class="table">
@@ -21,7 +23,7 @@
             </thead>
             <tbody>
                 <?php
-                    for ($i=0; $i < 2; $i++) { 
+                    for ($i=0; $i < 3; $i++) { 
                         $u = 43.30 + $i;
                         $j = number_format((float)$u, 2, '.', '');
                         echo "
@@ -45,7 +47,7 @@
                                     </select>
                                 </div>
                             </td>
-                            <td class='text-center text-lg text-medium' class='price' id='up[$i]'>RM <span>$j</span> <input id='number[$i]' type='hidden' value='$j'></td>
+                            <td class='text-center text-lg text-medium' class='price' id='up[$i]'>RM <span>$j</span> <input id='number[$i]' type='hidden' value='$j' readonly></td>
                             <td class='text-center'>
                                 <div class='count-input'>
                                     <span class = 'minus' id='min[$i]'>-</span>
@@ -53,7 +55,7 @@
                                     <span class = 'add' id='add[$i]'>+</span>
                                 </div>
                             </td>
-                            <td class='text-center text-lg text-medium' >RM <span id='tp[$i]'>$j</span></td>
+                            <td class='text-center text-lg text-medium' >RM <span id='tp[$i]'>$j</span><input id='sub[$i]' type='hidden' value='$j' readonly></td>
                             <td class='text-center'><button class='removeItem' type ='button'>X</button></td>
                         </tr>";
                     }
@@ -196,16 +198,20 @@
     </div>
     <div class="shopping-cart-footer">
         <div class="column">
-            <form class="coupon-form" method="post">
-                <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
-                <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-            </form>
+       
+                <!-- Select voucher Modal -->
+                
+                <?php
+                    //require __DIR__ . '/voucherModal.php'
+                ?>
+
+                <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
+                <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
         </div>
-        <div class="column text-lg">Subtotal: RM <span class="text-medium" id="subtotal">0</span></div>
     </div>
-    <div class="shopping-cart-footer">
-        <div class="column"><a class="btn btn-outline-secondary" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
-        <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div>
+    <div class="shopping-cart-footer" >
+        <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal" >0</span><a class="btn btn-checkout" href="#">Checkout</a></div>
+        <!-- <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> -->
     </div>
 </div>
                 <!-- /.container-fluid -->
@@ -289,7 +295,11 @@ select.form-control {
     -moz-appearance: none;
     appearance: none;
 }
-
+.btn-checkout
+{
+    color: #fff;
+    background-color: #A71337;
+}
 .removeItem
 {
     font-weight: 1000;
@@ -437,7 +447,7 @@ select.form-control {
 .shopping-cart .product-item .product-title>a:hover,
 .wishlist-table .product-item .product-title>a:hover,
 .order-table .product-item .product-title>a:hover {
-    color: #0da9ef
+    color: #0da9ef;
 }
 
 .shopping-cart .product-item .product-title small,
@@ -508,8 +518,11 @@ select.form-control {
 
 <script>
 
-        var subtotal = 0;
+    
+
+        var total = 0;
    
+        //count input + unitprice
         // testing set a id for each item count class name
         var count_input = document.getElementsByClassName('count-input')
             console.log(count_input)
@@ -517,6 +530,21 @@ select.form-control {
         var removeCartItemButtons = document.getElementsByClassName('removeItem')
             console.log(removeCartItemButtons)
 
+        // auto subtotal
+        calsubtotal();    
+
+    function calsubtotal()
+    {
+        total = 0;
+        var count_input2 = document.getElementsByClassName('count-input')
+        for (let index = 0; index < count_input2.length; index++) {
+           
+            total = total + Number(document.getElementById('sub['+index+']').value);
+        }
+
+        document.getElementById('subtotal').innerHTML = (Math.round((total + Number.EPSILON) * 100) / 100).toFixed(2);
+    }
+    //
 
         for (var i = 0; i < count_input.length; i++) {
              
@@ -530,44 +558,63 @@ select.form-control {
             var unitprice = document.getElementById('number['+i+']').value;
             console.log(unitprice);
             //catch total price id
-            var totalprice = document.getElementById('tp['+i+']');            
+            var totalprice = document.getElementById('sub['+i+']');
+            var textprice = document.getElementById('tp['+i+']');            
 
             const additembtnt = additembtn,
             minusitembtnt = minusitembtn,
             countitembtnt = countitembtn,
             unitpricef = unitprice,
-            totalpricef = totalprice;
+            totalpricef = totalprice,
+            textpricef = textprice;
 
             let n = 1;
             let uniprice = unitpricef;
             let toprice = uniprice;
 
             console.log(toprice);
-            
+
+           
                 additembtnt.addEventListener("click", ()=>{
+                    var subtotal = 0;
                     n++;
                     countitembtnt.innerHTML = n.toString();
 
-                    //display price
-                    toprice = n * unitpricef;
-                    subtotal = subtotal + toprice;
-                    totalpricef.innerHTML = toprice.toFixed(2);
+                    total = total - toprice;
 
-                    document.getElementById('subtotal').innerHTML = subtotal;
+                    //display price each item
+                    toprice = n * unitpricef;
+                    //subtotal = subtotal + toprice;
+                    totalpricef.value = (Math.round((toprice + Number.EPSILON) * 100) / 100).toFixed(2);
+                    textpricef.innerHTML = (Math.round((toprice + Number.EPSILON) * 100) / 100).toFixed(2);
+
+                    //cal final sub total
+                    total = total + toprice;
+
+                    document.getElementById('subtotal').innerHTML = (Math.round((total + Number.EPSILON) * 100) / 100).toFixed(2);
                 })
 
                 minusitembtnt.addEventListener("click", ()=>{
+                    var subtotal = 0;
                     if(n > 1)
                     {
                         n--;
                         countitembtnt.innerHTML = n.toString();
+                        
+                        total = total - toprice;
 
-                        //display price
+                        //display price each item
                         toprice = n * unitpricef;
-                        subtotal = subtotal - toprice;
-                        totalpricef.innerHTML = toprice.toFixed(2);
+                        //subtotal = subtotal - toprice;
+                        totalpricef.value = (Math.round((toprice + Number.EPSILON) * 100) / 100).toFixed(2);
+                        textpricef.innerHTML = (Math.round((toprice + Number.EPSILON) * 100) / 100).toFixed(2);
 
-                        document.getElementById('subtotal').innerHTML = subtotal.toFixed(2);
+
+                        //cal final sub total
+                        total = total + toprice;
+
+
+                        document.getElementById('subtotal').innerText = (Math.round((total + Number.EPSILON) * 100) / 100).toFixed(2);
                     }
                     
                 })
@@ -578,6 +625,9 @@ select.form-control {
             {
                 var buttonClicked = event.target
                 buttonClicked.parentElement.parentElement.remove()
+                //delete amount from row
+                calsubtotal();
+                document.getElementById('subtotal').innerHTML = subtotal.toFixed(2);
             })
             
             
