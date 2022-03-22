@@ -5,10 +5,15 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 /**/
 $output = '';
 
-if(isset($_POST["query"]))
+
+
+if($_POST["dropdown"] === "dropdownTwo"){
+	echo "babi";
+}
+else if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- 
+
  $query = "
   SELECT * 
   FROM(

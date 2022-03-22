@@ -127,12 +127,13 @@ $(document).ready(function(){
 
  load_data();
 
- function load_data(query)
+ function load_data(query, dropdown)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
-   data:{query:query},
+   data:{query:query,
+		 dropdown:dropdown},
    success:function(data)
    {
 	   alert('success noob')
@@ -144,7 +145,7 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search);
+   load_data(search, "searchOne");
   }
   else
   {
@@ -156,7 +157,7 @@ $(document).ready(function(){
   //$('#Crd option:selected').text();
   if(drop != '')
   {
-   load_data(drop);
+   load_data(drop, "dropdownTwo");
    
   }
   else
