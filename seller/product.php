@@ -470,7 +470,7 @@
                                         </div>
                                         <div class="col-xl-3 col-lg-3">
                                             <div class="input-group mb-3">
-                                                <button type="button" id="btnApplyToAll" class="btn btn-outline-primary" style="width:100%">Apply to All</button>
+                                                <button type="button" onclick="UpdatePriceTableAttribute()" class="btn btn-outline-primary" style="width:100%">Apply to All</button>
                                             </div>
                                         </div>
                                     </div>
@@ -654,18 +654,13 @@
 
 <script>
 
-    UpdatePriceTableAttribute();
-
     function UpdatePriceTableAttribute()
     {
-        document.getElementById("btnApplyToAll").addEventListener('click', function handleClick(event) {
-            Updateblallalsda();
-            var AttrPrice = document.getElementById("AttrPrice");
-            var AttrStock = document.getElementById("AttrStock");
-            var AttrSKU = document.getElementById("AttrSKU");
+        var AttrPrice = document.getElementById("AttrPrice");
+        var AttrStock = document.getElementById("AttrStock");
+        var AttrSKU = document.getElementById("AttrSKU");
 
-            RefreshPriceTableWithParameter(AttrPrice.value,AttrStock.value,AttrSKU.value);
-        });
+        RefreshPriceTableWithParameter(AttrPrice.value,AttrStock.value,AttrSKU.value);
     }
 
     function makeSubmenu(value) {
