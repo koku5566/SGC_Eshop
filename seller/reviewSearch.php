@@ -9,6 +9,7 @@ $output = '';
 /**/
 if($_POST["dropdown"] != ""){
 	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
+	echo $drop;
 	$query = "
 		  SELECT * 
 		  FROM(
