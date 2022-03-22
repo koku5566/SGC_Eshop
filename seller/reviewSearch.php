@@ -22,7 +22,7 @@ if($_POST["dropdown"] === "dropdownTwo"){
 */
 if(isset($_POST["query"]))
 {
-	echo "babi2"
+	echo "babi2";
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  $drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
  
