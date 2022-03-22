@@ -423,7 +423,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" min="0" value="0" class="form-control" name="productPrice" required>
+                                        <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productPrice" required>
                                     </div>
                                 </div>
                             </div>
@@ -446,8 +446,40 @@
                             </div>
                         </div>
 
-                        <div id="priceList">
+                        <div id="priceToAll" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Variation Info</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Price">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Stock">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="SKU">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <button type="button" id="btnApplyToAll" class="btn btn-outline-primary" style="width:100%">Apply to All</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div id="priceList">
+ 
                         </div>
                     </div>
                 </div>
@@ -469,7 +501,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
+                                    <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" required>
                                     <div class="input-group-append">
                                         <span class="input-group-text">kg</span>
                                     </div>
@@ -485,7 +517,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -493,7 +525,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -501,7 +533,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -621,6 +653,17 @@
 </style>
 
 <script>
+
+    UpdatePriceTableAttribute();
+
+    function UpdatePriceTableAttribute()
+    {
+        document.getElementById("btnApplyToAll").addEventListener('click', function handleClick(event) {
+        img.parentElement.previousElementSibling.previousElementSibling.src="";
+        img.parentElement.nextElementSibling.classList.remove("hide");
+        img.parentElement.classList.add("hide");
+    });
+    }
 
     function makeSubmenu(value) {
         console.log(value)
@@ -881,7 +924,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="variationName[][name]">
+                                <input type="text" class="form-control variationName" name="variation[name][]">
                             </div>
                         </div>
                     </div>
@@ -893,7 +936,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
+                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variation[name][choices][]">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -913,20 +956,69 @@
     {
         var PriceTableHTML = `<table class="table table-hover">`;
             //Header Row
-            PriceTableHTML += `<thead>`;
-                PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<th scope="col">#</th>`;
-                PriceTableHTML += `<th scope="col">Price</th>`;
-                PriceTableHTML += `<th scope="col">Stock</th>`;
-                PriceTableHTML += `<th scope="col">SKU</th>`;
-                PriceTableHTML += `</tr>`;
-            PriceTableHTML += `</thead>`;
+        PriceTableHTML += `<thead>`;
+        PriceTableHTML += `<tr>`;
+
+        var variationList = document.querySelectorAll('.variation');
+
+        if(variationList.length == 2)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[0].getElementsByTagName('input');
+
+            variation += `<th scope="col">` + variationInpList[0].value + `</th>`;
+        }
+        else if(variationList.length == 1)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+        }
+
+        variationList.forEach(variation => {
+            variationInpList = variation.getElementsByTagName('input');
+            
+        });
+
+
+        PriceTableHTML += `<th scope="col">Price</th>`;
+        PriceTableHTML += `<th scope="col">Stock</th>`;
+        PriceTableHTML += `<th scope="col">SKU</th>`;
+
+        PriceTableHTML += `</tr>`;
+        PriceTableHTML += `</thead>`;
+
+        //Body Content
+        PriceTableHTML += `<tbody>`;
+
+        
+
+        else if(variationList.length == 1)
+        {
+            variationList.forEach(variation => {
+                variationInpList = variation.getElementsByTagName('input');
+                for(var i = 1; i < variationInpList.length; i++)
+                {
+                    PriceTableHTML += `<tr>`;
+                    PriceTableHTML += `<td rowspan="3" scope="row">` + variationInpList[i].value + `</td>`;
+                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="text" class="form-control" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `</tr>`;
+                }
+            });
+        }
+
+        
+
+
+        
+
+        
 
             //Body Content
             PriceTableHTML += `<tbody>`;
                 //Row 2
                 PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<th scope="row">2</th>`;
+                PriceTableHTML += `<th rowspan="3" scope="row">Variation 1</th>`;
                 PriceTableHTML += `<td><input type="text" placeholder="2016" required></td>`;
                 PriceTableHTML += `<td>123</td>`;
                 PriceTableHTML += `<td>123</td>`;
@@ -1108,6 +1200,11 @@
     function saveValue(event)
     {
         console.log(event);
+    }
+
+    function OnlyNumberAllow(value)
+    {
+    	return value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
     }
 
     
