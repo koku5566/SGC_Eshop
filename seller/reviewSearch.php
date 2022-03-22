@@ -8,10 +8,20 @@ $output = '';
 
 
 if($_POST["dropdown"] === "dropdownTwo"){
+	$drop = mysqli_real_escape_string($conn, $_POST["dropdownTwo"]);
+	$query = "
+		  SELECT * 
+		  FROM(
+		  SELECT cu_id, name, email, campus, subject, message, status, disable_date
+		  FROM contactUs 
+		  WHERE 
+		  status LIKE '%".$drop."%')l
+		  WHERE disable_date IS NULL; ";
 	echo "babi";
 }
 else if(isset($_POST["query"]))
 {
+	echo "babi2"
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
 
  $query = "
@@ -29,6 +39,7 @@ else if(isset($_POST["query"]))
   WHERE disable_date IS NULL; ";
   
 }
+
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date

@@ -31,9 +31,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   <br />
 		   <select class="form-control" id = "selectMe">
 			  <option value = "">Default select</option>
-			  <option value = "Coffee_1">Coffee</option>
-			  <option value = "Me_2">Me</option>
-			  <option value = "Tea_3">Tea</option>
+			  <option value = "1">ONE</option>
+			  <option value = "0">ZERO</option>
+			 
 			</select>
 		  </div>
 		 </body>
@@ -136,7 +136,7 @@ $(document).ready(function(){
 		 dropdown:dropdown},
    success:function(data)
    {
-	   alert('success noob')
+	   //alert('success noob')
     $('#result').html(data);
    }
   });
