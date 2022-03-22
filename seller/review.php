@@ -151,7 +151,7 @@ $(document).ready(function(){
    load_data();
   }
  });
- $('#selectMe').onchange(function(){
+ $('#selectMe').change(function(){
   var drop = $(this).text();
   //$('#Crd option:selected').text();
   if(drop != '')
