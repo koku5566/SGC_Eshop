@@ -1043,8 +1043,8 @@
             variationInpList1 = variationList[0].getElementsByTagName('input');
             variationInpList2 = variationList[0].getElementsByTagName('input');
 
-            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
-            variation += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1125,10 +1125,13 @@
 
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
+        var priceTable = document.getElementById('priceToAll');
 
         if(sub.classList.contains("hide"))
         {
+
             sub.classList.remove("hide");
+            priceTable.classList.remove("hide");
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
@@ -1203,6 +1206,7 @@
         {
             event.target.parentElement.parentElement.parentElement.remove();
             sub.classList.add("hide");
+            priceTable.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
 
