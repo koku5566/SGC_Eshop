@@ -104,8 +104,8 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="form-group d-flex justify-content-right col-md-12">
-               <button type="button" class="btn btn-warning btn-lg" name="savevoucher">SAVE</button>
+               <div class="form-group col-md-12">
+                  <button type="button" class="btn d-flex justify-content-right btn-warning btn-lg" name="savevoucher">SAVE</button>
                </div>
             </div>
          </div>    
@@ -168,46 +168,47 @@
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 
 <script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
-<script type ="module">
+
+<script>
    var vouchertable = $('#vouchertable').DataTable( {
 
-retrieve: true,
-responsive: true,
-scrollCollapse: true,
-ordering: true,
-searching: true,
-paging: true,
+   retrieve: true,
+   responsive: true,
+   scrollCollapse: true,
+   ordering: true,
+   searching: true,
+   paging: true,
 
-columnDefs: [ {
-  targets:   0,
-  className: 'select-checkbox',
-},
-{
-   targets: -1,
-   data: null,
-   defaultContent:'<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-trash"></i></button>'
- }],
+   columnDefs: [ {
+   targets:   0,
+   className: 'select-checkbox',
+   },
+   {
+      targets: -1,
+      data: null,
+      defaultContent:'<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-trash"></i></button>'
+   }],
 
-lengthMenu:[
-[6,-1],
-[6,"All"]
-],
+   lengthMenu:[
+   [6,-1],
+   [6,"All"]
+   ],
 
-select: {
-  style:    'multi', //'multi' - select multiple checkbox
-  selector: 'td:first-child'
-},
+   select: {
+   style:    'multi', //'multi' - select multiple checkbox
+   selector: 'td:first-child'
+   },
 
-order: [[ 1, 'asc' ]]
+   order: [[ 1, 'asc' ]]
 
-} );
+   } );
 
-//-----------------------Delete Row-----------------------------//
-$('#vouchertable tbody').on( 'click', 'button', function () {
+   //-----------------------Delete Row-----------------------------//
+   $('#vouchertable tbody').on( 'click', 'button', function () {
 
-var row = vouchertable.row($(this).parents('tr'));
-row.remove().draw(false);
-})
+   var row = vouchertable.row($(this).parents('tr'));
+   row.remove().draw(false);
+   })
 </script>
 
 <?php
