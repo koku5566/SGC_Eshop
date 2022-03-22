@@ -214,7 +214,7 @@ $('#sss').click(function(){
 	}
 	else if(drop1 != '' && drop2 != '')
 	{
-		alert(drop1,drop2);
+		alert(drop1 + drop2);
 	}
 	else{
 		alert('BOTH NOTHING');
