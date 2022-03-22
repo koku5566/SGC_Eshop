@@ -104,7 +104,7 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="form-group justify-content-right col-md-12">
+               <div class="form-group d-flex justify-content-right col-md-12">
                <button type="button" class="btn btn-warning btn-lg" name="savevoucher">SAVE</button>
                </div>
             </div>
@@ -168,7 +168,47 @@
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 
 <script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
-<script type ="module" src="/js/createVoucher.js"></script>
+<script type ="module">
+   var vouchertable = $('#vouchertable').DataTable( {
+
+retrieve: true,
+responsive: true,
+scrollCollapse: true,
+ordering: true,
+searching: true,
+paging: true,
+
+columnDefs: [ {
+  targets:   0,
+  className: 'select-checkbox',
+},
+{
+   targets: -1,
+   data: null,
+   defaultContent:'<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-trash"></i></button>'
+ }],
+
+lengthMenu:[
+[6,-1],
+[6,"All"]
+],
+
+select: {
+  style:    'multi', //'multi' - select multiple checkbox
+  selector: 'td:first-child'
+},
+
+order: [[ 1, 'asc' ]]
+
+} );
+
+//-----------------------Delete Row-----------------------------//
+$('#vouchertable tbody').on( 'click', 'button', function () {
+
+var row = vouchertable.row($(this).parents('tr'));
+row.remove().draw(false);
+})
+</script>
 
 <?php
    require __DIR__ . '/footer.php'
