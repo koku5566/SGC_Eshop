@@ -6,9 +6,9 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 $output = '';
 
 
-/*
-if($_POST["dropdown"] === "dropdownTwo"){
-	
+/**/
+if(isset($_POST["dropdown"])){
+	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
 	$query = "
 		  SELECT * 
 		  FROM(
@@ -19,12 +19,12 @@ if($_POST["dropdown"] === "dropdownTwo"){
 		  WHERE disable_date IS NULL; ";
 	echo "babi";
 }
-*/
-if(isset($_POST["query"]))
+
+else if(isset($_POST["query"]))
 {
 	echo "babi2";
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- $drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
+ 
  
  $query = "
   SELECT * 
@@ -37,7 +37,7 @@ if(isset($_POST["query"]))
   OR campus LIKE '%".$search."%' 
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
-  OR status LIKE '%".$drop."%')k
+  OR status LIKE '%".$search."%')k
   WHERE disable_date IS NULL; ";
   
 }

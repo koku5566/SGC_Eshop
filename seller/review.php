@@ -145,7 +145,7 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search, "");
+   load_data(search);
   }
   else
   {
@@ -157,7 +157,7 @@ $(document).ready(function(){
   //$('#Crd option:selected').text();
   if(drop != '')
   {
-   load_data("", drop );
+   load_data(drop);
    
   }
   else
