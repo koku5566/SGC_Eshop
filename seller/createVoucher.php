@@ -73,7 +73,7 @@
             <div class="form-row">
                <div class="form-group col-md-12">
                <label for="">Voucher Details</label>
-               <textarea class="form-control" rows="10" placeholder="Creative Ideas, Creative DISCUSS.ION." required></textarea>
+               <textarea class="form-control" rows="10" placeholder="Please insert here" required></textarea>
                <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
             </div>
          </div>
@@ -103,8 +103,8 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
-            <div class="form-row" style="float: right;">
-               <div class="form-group col-md-12">
+            <div class="form-row">
+               <div class="form-group justify-content-right col-md-12">
                <button type="button" class="btn btn-warning btn-lg" name="savevoucher">SAVE</button>
                </div>
             </div>
