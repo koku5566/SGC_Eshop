@@ -194,7 +194,9 @@ $(document).ready(function(){
   }
  });
 
-
+$("sss").click(function(){
+  alert("The paragraph was clicked.");
+});
 
  /*
  if(check1){
