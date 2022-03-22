@@ -839,13 +839,11 @@
 
                 if (img.files && img.files[0] && img.files.length > 1) {
                     for (var j = 0,i = 0; i < this.files.length; i++) {
-                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "" && j < 9)
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.srcset != "" && j < 9)
                         {
                             j++;
-                            console.log(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src);
-                            console.log(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "");
                         }
-                        console.log("bbnn"+j);
+
                         if(j < 9)
                         {
                             console.log(j);
