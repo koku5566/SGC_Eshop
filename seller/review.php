@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			 
 			</select>
 			
-			<input type = "submit" id = "sss" class ="btn btn-info" value = "Hantar la babi">
+			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
 			</form>
 		  </div>
 		 </body>
