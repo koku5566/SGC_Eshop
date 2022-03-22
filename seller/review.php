@@ -139,7 +139,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <script>
 $(document).ready(function(){
 
- load_data();
+	var check1 = false;
+	var check2 = false;
+	
+	load_data();
 
  function load_data(query, dropdown)
  {
@@ -159,7 +162,8 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search, "");
+   //load_data(search, "");
+   check1 = true;
   }
   else
   {
@@ -171,14 +175,30 @@ $(document).ready(function(){
   //$('#Crd option:selected').text();
   if(drop != '')
   {
-   load_data("", drop);
-   
+   //load_data("", drop);
+   check2 = true;
   }
   else
   {
    load_data();
   }
  });
+ 
+ 
+ if(check1 == true){
+	 load_data(search, "");
+	 alert('check1');
+ }
+ else if (check2 == true){
+	 load_data("", drop);
+	  alert('check2');
+ }
+ else if (check1 == true && check2 == true){
+	 load_data(search, drop);
+	  alert('check1&2');
+ }
+ 
+ 
  
  
  
