@@ -835,8 +835,8 @@
         const imgInp = document.querySelectorAll('.imgInp');
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
-                const [file] = img.files
-                console.log(file);
+                const [file] = img.files;
+                console.log(img.files);
                 if (file) {
                     
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
