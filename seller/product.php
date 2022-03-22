@@ -407,7 +407,7 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? echo($_POST['variationType']); : "1"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? $_POST['variationType'] : "0"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
                         <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
                             <div class="input-group mb-3">
