@@ -169,7 +169,7 @@ $(document).ready(function(){
    }
   });
  }
-/**/
+/*
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
@@ -195,9 +195,43 @@ $(document).ready(function(){
    load_data();
   }
  });
-
+*/
 $("#sss").click(function(){
-  alert("The paragraph was clicked.");
+  //alert("The paragraph was clicked.");
+  
+  $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search, "");
+	check1 = true;
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ $('#selectMe').change(function(){
+  var drop = $(this).val();
+  //$('#Crd option:selected').text();
+  if(drop != '')
+  {
+   load_data("", drop);
+	check2 = true;
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ 
+ 
+	if(check1 == true && check2 == true)
+	{
+		load_data(search, drop);
+	}
+ 
+ 
 });
 
  /*
