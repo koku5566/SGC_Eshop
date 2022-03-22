@@ -1074,7 +1074,7 @@
         {
             variationInpList1 = variationList[0].getElementsByTagName('input');
 
-            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
 
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
@@ -1097,11 +1097,6 @@
             PriceTableHTML += `</tbody>`;
             PriceTableHTML += `</table>`;
         }
-
-        variationList.forEach(variation => {
-            variationInpList = variation.getElementsByTagName('input');
-            
-        });
 
         var priceListTable = document.getElementById("priceList");
         priceListTable.innerHTML = "";
