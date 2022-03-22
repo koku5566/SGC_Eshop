@@ -135,6 +135,7 @@ $(document).ready(function(){
    data:{query:query},
    success:function(data)
    {
+	   alert('success noob')
     $('#result').html(data);
    }
   });
@@ -151,10 +152,12 @@ $(document).ready(function(){
   }
  });
  $('#selectMe').onchange(function(){
-  var drop = $(this).val();
+  var drop = $(this).text();
+  //$('#Crd option:selected').text();
   if(drop != '')
   {
    load_data(drop);
+   
   }
   else
   {
