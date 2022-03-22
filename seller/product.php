@@ -1112,7 +1112,7 @@
     function saveValue(event)
     {
         console.log(event);
-        event.value = event.innerHTML;
+        event.value = event.innerText;
     }
 
     
