@@ -42,7 +42,25 @@ else if(isset($_POST["query"]))
   WHERE disable_date IS NULL; ";
   
 }
-
+else if (isset($_POST["query"]) && $_POST["dropdown"] != ""){
+	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
+	$search = mysqli_real_escape_string($conn, $_POST["query"]);
+	
+	$query = "
+		  SELECT * 
+		  FROM(
+		  SELECT cu_id, name, email, campus, subject, message, status, disable_date
+		  FROM contactUs 
+		  WHERE cu_id LIKE '%".$search."%'
+		  OR name LIKE '%".$search."%' 
+		  OR email LIKE '%".$search."%' 
+		  OR campus LIKE '%".$search."%' 
+		  OR subject LIKE '%".$search."%'
+		  OR message LIKE '%".$search."%'
+		  OR status LIKE '%".$drop."%')k
+		  WHERE disable_date IS NULL; ";
+	
+}
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
