@@ -184,11 +184,11 @@ $(document).ready(function(){
   }
  });
  
-$('#search_text, #selectMe').on('change keyup', function(){
+$('#search_text, #selectMe').on('keyup change', function(){
 	var search = $('#search_text').val();
 	 var drop = $('#selectMe').val();
 	 
-	 alert('pp3');
+	 
 	 
 	 if(drop != '')
 	 {
