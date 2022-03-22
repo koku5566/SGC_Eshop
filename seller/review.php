@@ -158,13 +158,13 @@ $(document).ready(function(){
    }
   });
  }
-/*
+/**/
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
   {
    load_data(search, "");
-	alert('pp1');
+	//alert('pp1');
   }
   else
   {
@@ -177,43 +177,15 @@ $(document).ready(function(){
   if(drop != '')
   {
    load_data("", drop);
- alert('pp2');
+ //alert('pp2');
   }
   else
   {
    load_data();
   }
  });
-*/
-$('#search_text, #selectMe').on('keyup change', function(){
-	var search = $('#search_text').val();
-	 var drop = $('#selectMe').val();
-	 
-	 
-	 
-	 if(drop != '')
-	 {
-		 load_data("", drop);
-		 alert('ppSmol1');
-	 }
-	 if(search != '')
-	 {
-		 load_data(search, "");
-		 alert('ppSmol2');
-	 }
-	 if(drop != '' && search != '')
-	 {
-		 load_data(search, drop);
-		 alert('ppSmol3');
-	 }
-	 else
-	 {
-		  load_data();
-		  alert('ppSmol4');
-	 }
-	 
-	
-});
+
+
 
  /*
  if(check1){
