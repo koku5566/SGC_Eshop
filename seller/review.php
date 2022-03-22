@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "0">ZERO</option>
 			 
 			</select>
-			<!--
+			<!---->
 			<select class="form-control" id = "selectMe2">
 			  <option value = "">Default select</option>
 			  <option value = "1">ONE</option>
@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			 
 			</select>
 			
-			<input type = "submit" id = "sss" class ="btn btn-info" value = "">-->
+			<input type = "submit" id = "sss" class ="btn btn-info" value = "Hantar la babi">
 		  </div>
 		 </body>
 		 
@@ -172,7 +172,7 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search, drop);
+   load_data(search, "");
 	//alert('pp1');
   }
   else
@@ -185,7 +185,7 @@ $(document).ready(function(){
   //$('#Crd option:selected').text();
   if(drop != '')
   {
-   load_data(search, drop);
+   load_data("", drop);
  //alert('pp2');
   }
   else
