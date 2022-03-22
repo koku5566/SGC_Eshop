@@ -18,8 +18,8 @@
 
 
 <!-- Page Content -->
-<div class="container" style="background-color: #FFFFFF; width:80%;">
-   <h2 class="">Create Voucher</h2>
+<div class="container p-2" style="background-color: #FFFFFF; width:80%;">
+   <h2 class="m-4">Create Voucher</h2>
    <form method="post">
       <div class="container">
          <h5 class="mt-2 mb-4">Basic Information</h5>
