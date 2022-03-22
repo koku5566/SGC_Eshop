@@ -12,8 +12,8 @@ myOrder.order_id,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
-order_details.quantity,
-order_details.price
+orderDetails.quantity,
+orderDetails.price
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
