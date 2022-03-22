@@ -4,6 +4,27 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+<?php
+
+/*QUERY FOR ORDER*/
+$sql = "SELECT
+myOrder.order_id,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+orderDetails.price
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN product ON orderDetails.product_id = product.id";
+
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
+?>
+
 <!--Pick Up Modal-->
 <div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -145,7 +166,6 @@
                     <!-- Tab panes -->
                     <div class="tab-content mb-3">
                         <!--------------------------------All-------------------------------------->
-
                         <div class="order-list-panel">
                             <div class="top-card card-header">
                                 <div class="row">
@@ -158,27 +178,35 @@
                             </div>
                         </div>
                             <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
-                                <!--Each Order Item-->
+                                
+                            <?php 
+                            while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col md-auto text-start"><span><strong>Username</strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                        Order
-                                                        ID:
-                                                        125353</strong></span></div>
+                                                Order
+                                                ID:
+                                                125353</strong></span></div>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-1"><img width="100%"
+                                            <!-- <div class="col-1"><img width="100%"
                                                     src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com"></div>
-                                            <div class="col-3">Wireless Earphone dfdfbdfbd</div>
-                                            <div class="col-1">X1</div>
+                                                    alt="W3Schools.com">
+                                            </div> -->
+                                            <div class="col-1 image-container">
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                            </div>
+                                            <div class="col-3"><?php echo $row['product_name']?></div>
+                                            <div class="col-1"><?php echo $row['quantity']?></div>
 
-                                            <div class="col-1">RM349.00</div>
+                                            <div class="col-1"><?php echo $row['product_price']?></div>
                                             <div class="col-2">Completed</div>
                                             <div class="col-2">DHL eCommerce 2121113134</div>
                                             <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
@@ -187,18 +215,19 @@
                                     </div>
                                 </div>
                                 <!--End of Order Item-->
-
+                                <?php 
+                                }?>
                                                                 
-                                <!--Each Order Item-->       
+                                <!--Pick Up Order Item-->       
                                  <div class="card">
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col md-auto text-start"><span><strong>Username</strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                        Order
-                                                        ID:
-                                                        125353</strong></span></div>
+                                                Order
+                                                ID:
+                                                125353</strong></span></div>
                                         </div>
                                     </div>
                                     <div class="card-body">
