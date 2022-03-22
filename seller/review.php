@@ -200,8 +200,15 @@ $(document).ready(function(){
 */
 //----------------------------------------------------------------------------------------------------
 
-
-
+$('#sss').click(function(){
+	var drop1  = $('#selectMe').val();
+	var drop2  = $('#selectMe2').val();
+	
+	
+	alert(drop1);
+	alert(drop2);
+	
+})
 
 
 
@@ -246,47 +253,7 @@ $('#search_text, #selectMe').on('keyup change', function(){
 });
 
 
-var search;
-var drop;
 
-$(window).load( function() {
-
-    $('#search_text').keyup(displayMatches);
-    $('#selectMe').change(displayMatches);
-
-});    
-
-function displayMatches() {
-
-    search = $('#search_text').val();
-	drop = $('#selectMe').val();
-	
-	
-	
-	if(search != '')
-	{
-		load_data(search, "");
-		alert(search);
-	}
-	else if(drop != '')
-	{
-		load_data("", drop);
-		alert(drop);
-	}
-	else if (search != '' && drop != '')
-	{
-		load_data(search, drop);
-		alert(search, drop);
-	}
-	else
-	{
-		load_data();
-		alert('nothingLe');
-	}
-
-   
-
-}   
 </script>
 <?php
     require __DIR__ . '/footer.php'
