@@ -8,13 +8,15 @@
  
  
 <?php
-
+/*
 if($_SESSION['login'] == false)
 	 {
-		echo "<script>alert('Login to Continue');
-	 		window.location.href='login.php';</script>";
+		echo "<script>
+				alert('Login to Continue');
+				window.location.href='helpCenterAdmin1.php';
+			  </script>";
     }
-
+*/
 ?>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
