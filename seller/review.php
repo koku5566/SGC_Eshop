@@ -189,7 +189,7 @@ $(document).ready(function(){
 	 load_data(search, "");
 	 alert('check1');
  }
- else if (check1){
+ else if (check2){
 	 load_data("", drop);
 	  alert('check2');
  }
