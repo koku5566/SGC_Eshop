@@ -836,7 +836,9 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-
+                console.log(img.files);
+                console.log(img.files[0]);
+                console.log(img.files.length);
                 if (img.files && img.files[0] && img.files.length > 1) {
                     for (var j = 0,i = 0; i < this.files.length; i++) {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "" && j < 9)
