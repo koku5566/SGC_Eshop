@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
-		   <div id="result"></div>
+		   
 		  </div>
 		 </body>
 		 
@@ -61,6 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <!--SECTION ALL-->
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
+					<div id="result"></div>
 			  </div>
 			  <!--SECTION FIVE-->
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
