@@ -158,6 +158,7 @@ $(document).ready(function(){
    }
   });
  }
+/*
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
@@ -183,7 +184,7 @@ $(document).ready(function(){
    load_data();
   }
  });
- 
+*/
 $('#search_text, #selectMe').on('keyup change', function(){
 	var search = $('#search_text').val();
 	 var drop = $('#selectMe').val();
