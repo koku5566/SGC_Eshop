@@ -209,15 +209,6 @@ $('#sss').click(function(){
 	var drop1  = $('#selectMe').val();
 	var drop2  = $('#selectMe2').val();
 	
-	if(drop1 == 'All')
-	{
-		alert('Select All - 1');
-	}
-	if(drop2 == 'All') 
-	{		
-		alert('Select All - 2');
-	}
-	
 	
 	
 	if(drop1 == 'All' && drop2 == 'All')
@@ -225,13 +216,16 @@ $('#sss').click(function(){
 		alert('Both All');
 	}
 	else if (drop1 != 'All' && drop2 == 'All'){
-		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('got no');
 	}
 	else if(drop1 == 'All' && drop2 != 'All'){
-		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('no got');
 	}
 	else if(drop1 != 'All' && drop2 != 'All'){
-		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('got got');
 	}
 	
 	
