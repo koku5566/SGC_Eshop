@@ -96,6 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
 					<h1>FIVE</h1>
+					<div id="result2"></div>
 			  </div>
 			 
 			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
@@ -169,7 +170,7 @@ $(document).ready(function(){
    }
   });
  }
-
+/*
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
@@ -196,7 +197,45 @@ $(document).ready(function(){
   }
  });
 
+*/
+//----------------------------------------------------------------------------------------------------
+var search;
+var drop;
 
+$(window).load( function() {
+
+    $('#search_text').keyup(displayMatches);
+    $('#selectMe').change(displayMatches);
+
+});    
+
+function displayMatches() {
+
+    search = $('#search_text').val();
+	drop = $('#selectMe').val();
+	
+	
+	
+	if(search != '')
+	{
+		load_data(search, "");
+	}
+	else if(drop != '')
+	{
+		load_data("", drop);
+	}
+	else if (search != '' && drop != '')
+	{
+		load_data(search, drop);
+	}
+	else
+	{
+		load_data();
+	}
+
+   
+
+}   
 
  
 /*
