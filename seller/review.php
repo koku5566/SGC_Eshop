@@ -29,7 +29,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
-		   
+		   <select class="form-control" id = "selectMe">
+			  <option value = "">Default select</option>
+			  <option value = "Coffee_1">Coffee</option>
+			  <option value = "Me_2">Me</option>
+			  <option value = "Tea_3">Tea</option>
+			</select>
 		  </div>
 		 </body>
 		 
@@ -145,6 +150,23 @@ $(document).ready(function(){
    load_data();
   }
  });
+ $('#selectMe').onchange(function(){
+  var drop = $(this).val();
+  if(drop != '')
+  {
+   load_data(drop);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ 
+ 
+ 
+ 
+ 
+ 
 });
 </script>
 <?php
