@@ -43,17 +43,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe">
-			  <option value = "">Default select</option>
+		   <select class="form-control" id = "selectMe" required>
+			  <option value = "" selected = 'selected' disabled>Default select</option>
 			  <option value = "1">ONE</option>
 			  <option value = "0">ZERO</option>
 			 
 			</select>
 			<!---->
 			<select class="form-control" id = "selectMe2">
-			  <option value = "">Default select</option>
-			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>
+			  <option value = "All">Campus*</option>
+			  <option value = "C-SJ">SEGI College Subang Jaya</option>
+			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
+			  <option value = "C-P">SEGI College Penang</option>
+			  <option value = "C-S">SEGI College Sarawak</option>
+			  <option value = "C-KD">SEGI College Kota Damansara</option>
+			  <option value = "U-KD">SEGI University Kota Damansara</option>  
 			 
 			</select>
 			
@@ -170,7 +174,7 @@ $(document).ready(function(){
    }
   });
  }
-/*
+
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
@@ -183,6 +187,7 @@ $(document).ready(function(){
    load_data();
   }
  });
+ /*
  $('#selectMe').change(function(){
   var drop = $(this).val();
   //$('#Crd option:selected').text();
@@ -219,7 +224,7 @@ $('#sss').click(function(){
 	
 	if(drop1 != '' && drop2 != '')
 	{
-		alert('D1 = ' + drop1 + 'D2 = '+ drop2);
+		alert('D1 = ' + drop1 + ' D2 = '+ drop2);
 	}
 	
 	
