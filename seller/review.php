@@ -195,12 +195,12 @@ $('#search_text, #selectMe').on('keyup change', function(){
 		 load_data("", drop);
 		 alert('ppSmol1');
 	 }
-	 else if(search != '')
+	 if(search != '')
 	 {
 		 load_data(search, "");
 		 alert('ppSmol2');
 	 }
-	 else if(drop != '' && search != '')
+	 if(drop != '' && search != '')
 	 {
 		 load_data(search, drop);
 		 alert('ppSmol3');
