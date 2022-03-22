@@ -43,8 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" required>
-			  <option value = "" selected = 'selected' disabled>Default select</option>
+		   <select class="form-control" id = "selectMe" >
+			  <option value = "All">Default select</option>
 			  <option value = "1">ONE</option>
 			  <option value = "0">ZERO</option>
 			 
@@ -209,22 +209,29 @@ $('#sss').click(function(){
 	var drop1  = $('#selectMe').val();
 	var drop2  = $('#selectMe2').val();
 	
-	if(drop1 != '')
+	if(drop1 == 'All')
 	{
-		alert(drop1);
+		alert('Select All - 1');
 	}
-	else if(drop2 != '') 
+	if(drop2 == 'All') 
 	{		
-		alert(drop2);
-	}
-	else{
-		alert('BOTH NOTHING');
+		alert('Select All - 2');
 	}
 	
 	
-	if(drop1 != '' && drop2 != '')
+	
+	if(drop1 == 'All' && drop2 == 'All')
 	{
-		alert('D1 = ' + drop1 + ' D2 = '+ drop2);
+		alert('Both All');
+	}
+	else if (drop1 != 'All' && drop2 == 'All'){
+		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+	}
+	else if(drop1 == 'All' && drop2 != 'All'){
+		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+	}
+	else if(drop1 != 'All' && drop2 != 'All'){
+		alert('Drop1-' + drop1 + ' Drop2-' + drop2);
 	}
 	
 	
