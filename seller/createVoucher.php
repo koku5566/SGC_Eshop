@@ -103,11 +103,7 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
-            <div class="form-row float-right">
-               <div class="form-group">
-                  <button type="button" class="btn btn-warning" name="savevoucher">SAVE</button>
-               </div>
-            </div>
+                  <button type="button" class="btn btn-warning float-right mb-4" name="savevoucher">SAVE</button>
          </div>    
       </div>
    </form>
