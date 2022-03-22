@@ -196,7 +196,7 @@ $(document).ready(function(){
   }
  });
 
-$("sss").click(function(){
+$("#sss").click(function(){
   alert("The paragraph was clicked.");
 });
 
