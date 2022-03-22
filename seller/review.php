@@ -204,9 +204,23 @@ $('#sss').click(function(){
 	var drop1  = $('#selectMe').val();
 	var drop2  = $('#selectMe2').val();
 	
+	if(drop1 != '')
+	{
+		alert(drop1);
+	}
+	else if(drop2 != '') 
+	{		
+		alert(drop2);
+	}
+	else if(drop1 != '' && drop2 != '')
+	{
+		alert(drop1,drop2);
+	}
+	else{
+		alert('BOTH NOTHING');
+	}
 	
-	alert(drop1);
-	alert(drop2);
+	
 	
 })
 
