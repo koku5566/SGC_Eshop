@@ -838,7 +838,7 @@
                 const [file] = img.files;
 
                 if (img.files && img.files[0] && img.files.length > 1) {
-                    for (var i,j = 0; i < this.files.length; i++) {
+                    for (var j = 0,i = 0; i < this.files.length; i++) {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "" && j < 9)
                         {
                             j++;
@@ -847,7 +847,6 @@
                         imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                         imgInp[j].parentElement.parentElement.classList.add("hide");
                     }
-                    
                 }
                 else if(img.files && img.files[0])
                 {
