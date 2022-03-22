@@ -934,7 +934,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variation[name][choices][]">
+                                    <input type="text" class="form-control variationChoice" name="variation[name][choices][]">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -964,8 +964,8 @@
             variationInpList1 = variationList[0].getElementsByTagName('input');
             variationInpList2 = variationList[0].getElementsByTagName('input');
 
-            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
-            variation += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -995,7 +995,7 @@
         {
             variationInpList1 = variationList[0].getElementsByTagName('input');
 
-            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
 
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
@@ -1131,6 +1131,13 @@
             document.getElementById('txtVariationType').value = "1";
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
 
+            var variationName = document.querySelectorAll('.variationName');
+            for(var i = 0; i < variationName.length; i++)
+            {
+                variationName[i].removeEventListener('click',RefreshPriceTable);
+                variationName[i].addEventListener('click',RefreshPriceTable);
+            }
+
             mainPricingInput = main.getElementsByTagName('input');
             for(var i = 0; i < mainPricingInput.length; i++)
             {
@@ -1251,6 +1258,13 @@
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
 
         RefreshPriceTable();
+
+        var variationChoice = document.querySelectorAll('.variationChoice');
+        for(var i = 0; i < variationChoice.length; i++)
+        {
+            variationChoice[i].removeEventListener('click',RefreshPriceTable);
+            variationChoice[i].addEventListener('click',RefreshPriceTable);
+        }
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
