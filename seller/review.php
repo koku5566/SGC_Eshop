@@ -197,46 +197,21 @@ $(document).ready(function(){
  });
 */
 
-$('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search, "");
-	check1 = true;
-  }
-  else
-  {
-   load_data();
-  }
- });
- $('#selectMe').change(function(){
-  var drop = $(this).val();
-  //$('#Crd option:selected').text();
-  if(drop != '')
-  {
-   load_data("", drop);
-	check2 = true;
-  }
-  else
-  {
-   load_data();
-  }
- });
+
  
-$("#sss").click(function(){
-  alert("The paragraph was clicked.");
-  
-  
- 
- 
-	if(check1 == true && check2 == true)
-	{
+
+$('#search_text, #selectMe').on('change keyup', function(){
+	var search = $(this).val();
+	var drop = $(this).val();
+	if(drop != '' && search != ''){
 		load_data(search, drop);
-		alert("The paragraph was clicked AND ACCEPT.");
+		alert('got');
+	}else{
+		 load_data();
+		 alert('no hab');
 	}
- 
- 
-});
+	
+})
 
  /*
  if(check1){
