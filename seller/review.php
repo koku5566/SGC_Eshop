@@ -162,8 +162,8 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   //load_data(search, "");
-   check1 = true;
+   load_data(search, "");
+
   }
   else
   {
@@ -175,8 +175,8 @@ $(document).ready(function(){
   //$('#Crd option:selected').text();
   if(drop != '')
   {
-   //load_data("", drop);
-   check2 = true;
+   load_data("", drop);
+ 
   }
   else
   {
@@ -184,7 +184,7 @@ $(document).ready(function(){
   }
  });
  
- 
+ /*
  if(check1){
 	 load_data(search, "");
 	 alert('check1');
@@ -197,7 +197,7 @@ $(document).ready(function(){
 	 load_data(search, drop);
 	  alert('check1&2');
  }
- 
+ */
  
  
  
