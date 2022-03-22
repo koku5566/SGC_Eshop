@@ -842,7 +842,8 @@
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "" && j < 9)
                         {
                             j++;
-                            console.log(j);
+                            console.log(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src);
+                            console.log(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src != "");
                         }
                         console.log("bbnn"+j);
                         if(j < 9)
