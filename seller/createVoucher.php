@@ -104,8 +104,8 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="form-group col-md-12">
-                  <button type="button" class="btn d-flex justify-content-right btn-warning btn-lg" name="savevoucher">SAVE</button>
+               <div class="form-group">
+                  <button type="button" class="btn btn-warning btn-lg" name="savevoucher" style="float:right;">SAVE</button>
                </div>
             </div>
          </div>    
