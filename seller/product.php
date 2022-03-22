@@ -455,17 +455,17 @@
                                     <div class="row">
                                         <div class="col-xl-3 col-lg-3">
                                             <div class="input-group mb-3">
-                                                <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Price">
+                                                <input type="number" id="AttrPrice" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Price">
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-lg-3">
                                             <div class="input-group mb-3">
-                                                <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Stock">
+                                                <input type="number" id="AttrStock" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Stock">
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-lg-3">
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="SKU">
+                                                <input type="text" id="AttrSKU" class="form-control" placeholder="SKU">
                                             </div>
                                         </div>
                                         <div class="col-xl-3 col-lg-3">
@@ -659,10 +659,13 @@
     function UpdatePriceTableAttribute()
     {
         document.getElementById("btnApplyToAll").addEventListener('click', function handleClick(event) {
-        img.parentElement.previousElementSibling.previousElementSibling.src="";
-        img.parentElement.nextElementSibling.classList.remove("hide");
-        img.parentElement.classList.add("hide");
-    });
+            Updateblallalsda();
+            var AttrPrice = document.getElementById("AttrPrice");
+            var AttrStock = document.getElementById("AttrStock");
+            var AttrSKU = document.getElementById("AttrSKU");
+
+            RefreshPriceTableWithParameter(AttrPrice.value,AttrStock.value,AttrSKU.value);
+        });
     }
 
     function makeSubmenu(value) {
@@ -955,7 +958,7 @@
     function RefreshPriceTable()
     {
         var PriceTableHTML = `<table class="table table-hover">`;
-            //Header Row
+        //Header Row
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
@@ -966,11 +969,59 @@
             variationInpList1 = variationList[0].getElementsByTagName('input');
             variationInpList2 = variationList[0].getElementsByTagName('input');
 
-            variation += `<th scope="col">` + variationInpList[0].value + `</th>`;
+            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            variation += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                for(var j = 1; j < variationInpList2.length; j++)
+                {
+                    PriceTableHTML += `<tr>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
+                    PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `</tr>`;
+                }
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
         }
         else if(variationList.length == 1)
         {
             variationInpList1 = variationList[0].getElementsByTagName('input');
+
+            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                PriceTableHTML += `</tr>`;
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
         }
 
         variationList.forEach(variation => {
@@ -978,54 +1029,84 @@
             
         });
 
+        var priceListTable = document.getElementById("priceList");
+        priceListTable.innerHTML = "";
+        priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
+    }
 
-        PriceTableHTML += `<th scope="col">Price</th>`;
-        PriceTableHTML += `<th scope="col">Stock</th>`;
-        PriceTableHTML += `<th scope="col">SKU</th>`;
+    function RefreshPriceTableWithParameter(price,stock,sku)
+    {
+        var PriceTableHTML = `<table class="table table-hover">`;
+        //Header Row
+        PriceTableHTML += `<thead>`;
+        PriceTableHTML += `<tr>`;
 
-        PriceTableHTML += `</tr>`;
-        PriceTableHTML += `</thead>`;
+        var variationList = document.querySelectorAll('.variation');
 
-        //Body Content
-        PriceTableHTML += `<tbody>`;
-
-        
-
-        else if(variationList.length == 1)
+        if(variationList.length == 2)
         {
-            variationList.forEach(variation => {
-                variationInpList = variation.getElementsByTagName('input');
-                for(var i = 1; i < variationInpList.length; i++)
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[0].getElementsByTagName('input');
+
+            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            variation += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                for(var j = 1; j < variationInpList2.length; j++)
                 {
                     PriceTableHTML += `<tr>`;
-                    PriceTableHTML += `<td rowspan="3" scope="row">` + variationInpList[i].value + `</td>`;
-                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="variationPrice[]" required></td>`;
-                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="variationStock[]" required></td>`;
-                    PriceTableHTML += `<td rowspan="3" scope="row"><input type="text" class="form-control" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
+                    PriceTableHTML += `<td scope="row"><input value=`+price+` type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value=`+stock+`type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value=`+sku+`type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                     PriceTableHTML += `</tr>`;
                 }
-            });
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
+        }
+        else if(variationList.length == 1)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+
+            variation += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                PriceTableHTML += `</tr>`;
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
         }
 
-        
-
-
-        
-
-        
-
-            //Body Content
-            PriceTableHTML += `<tbody>`;
-                //Row 2
-                PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<th rowspan="3" scope="row">Variation 1</th>`;
-                PriceTableHTML += `<td><input type="text" placeholder="2016" required></td>`;
-                PriceTableHTML += `<td>123</td>`;
-                PriceTableHTML += `<td>123</td>`;
-                PriceTableHTML += `</tr>`;
-
-            PriceTableHTML += `</tbody>`;
-        PriceTableHTML += `</table>`;
+        variationList.forEach(variation => {
+            variationInpList = variation.getElementsByTagName('input');
+            
+        });
 
         var priceListTable = document.getElementById("priceList");
         priceListTable.innerHTML = "";
@@ -1088,6 +1169,8 @@
             
         }
 
+        RefreshPriceTable();
+
         divVariations = document.querySelectorAll('.variation');
 
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
@@ -1135,6 +1218,7 @@
             }
         }
 
+        RefreshPriceTable();
         divVariations = document.querySelectorAll('.variation');
 
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
@@ -1172,6 +1256,8 @@
         `;
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
 
+        RefreshPriceTable();
+
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
             item.removeEventListener('click', deleteChoiceHandleClick);
@@ -1194,7 +1280,7 @@
                 event.target.parentElement.parentElement.remove();
             }
         }
-        
+        RefreshPriceTable();
     }
 
     function saveValue(event)
