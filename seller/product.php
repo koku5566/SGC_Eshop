@@ -423,7 +423,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" min="0" value="0" class="form-control" name="productPrice" required>
+                                        <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productPrice" required>
                                     </div>
                                 </div>
                             </div>
@@ -446,8 +446,40 @@
                             </div>
                         </div>
 
-                        <div id="priceList">
+                        <div id="priceToAll" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Variation Info</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="number" id="AttrPrice" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Price">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="number" id="AttrStock" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" placeholder="Stock">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="AttrSKU" class="form-control" placeholder="SKU">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3">
+                                            <div class="input-group mb-3">
+                                                <button type="button" onclick="UpdatePriceTableAttribute()" class="btn btn-outline-primary" style="width:100%">Apply to All</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div id="priceList">
+ 
                         </div>
                     </div>
                 </div>
@@ -469,7 +501,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="number" min="0" value="0" class="form-control" name="productWeight" required>
+                                    <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" required>
                                     <div class="input-group-append">
                                         <span class="input-group-text">kg</span>
                                     </div>
@@ -485,7 +517,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productLength"  placeholder="Length" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -493,7 +525,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productWidth"  placeholder="Width" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -501,7 +533,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" name="productHeight"  placeholder="Height" required>
+                                            <input type="number" oninput="this.value = OnlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -621,6 +653,15 @@
 </style>
 
 <script>
+
+    function UpdatePriceTableAttribute()
+    {
+        var AttrPrice = document.getElementById("AttrPrice");
+        var AttrStock = document.getElementById("AttrStock");
+        var AttrSKU = document.getElementById("AttrSKU");
+
+        RefreshPriceTableWithParameter(AttrPrice.value,AttrStock.value,AttrSKU.value);
+    }
 
     function makeSubmenu(value) {
         console.log(value)
@@ -881,7 +922,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="variationName[][name]">
+                                <input type="text" class="form-control variationName" name="variation[name][]">
                             </div>
                         </div>
                     </div>
@@ -893,7 +934,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
+                                    <input type="text" class="form-control variationChoice" name="variation[name][choices][]">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -912,28 +953,150 @@
     function RefreshPriceTable()
     {
         var PriceTableHTML = `<table class="table table-hover">`;
-            //Header Row
-            PriceTableHTML += `<thead>`;
-                PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<th scope="col">#</th>`;
-                PriceTableHTML += `<th scope="col">Price</th>`;
-                PriceTableHTML += `<th scope="col">Stock</th>`;
-                PriceTableHTML += `<th scope="col">SKU</th>`;
-                PriceTableHTML += `</tr>`;
+        //Header Row
+        PriceTableHTML += `<thead>`;
+        PriceTableHTML += `<tr>`;
+
+        var variationList = document.querySelectorAll('.variation');
+
+        if(variationList.length == 2)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[1].getElementsByTagName('input');
+
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
             PriceTableHTML += `</thead>`;
 
-            //Body Content
             PriceTableHTML += `<tbody>`;
-                //Row 2
-                PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<th scope="row">2</th>`;
-                PriceTableHTML += `<td><input type="text" placeholder="2016" required></td>`;
-                PriceTableHTML += `<td>123</td>`;
-                PriceTableHTML += `<td>123</td>`;
-                PriceTableHTML += `</tr>`;
 
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                for(var j = 1; j < variationInpList2.length; j++)
+                {
+                    PriceTableHTML += `<tr>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
+                    PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `</tr>`;
+                }
+            }
             PriceTableHTML += `</tbody>`;
-        PriceTableHTML += `</table>`;
+            PriceTableHTML += `</table>`;
+        }
+        else if(variationList.length == 1)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                PriceTableHTML += `</tr>`;
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
+        }
+
+        variationList.forEach(variation => {
+            variationInpList = variation.getElementsByTagName('input');
+            
+        });
+
+        var priceListTable = document.getElementById("priceList");
+        priceListTable.innerHTML = "";
+        priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
+    }
+
+    function RefreshPriceTableWithParameter(price,stock,sku)
+    {
+        var PriceTableHTML = `<table class="table table-hover">`;
+        //Header Row
+        PriceTableHTML += `<thead>`;
+        PriceTableHTML += `<tr>`;
+
+        var variationList = document.querySelectorAll('.variation');
+
+        if(variationList.length == 2)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList2 = variationList[1].getElementsByTagName('input');
+
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                for(var j = 1; j < variationInpList2.length; j++)
+                {
+                    PriceTableHTML += `<tr>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                    PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+price+`" type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+stock+`" type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="`+sku+`"   type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `</tr>`;
+                }
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
+        }
+        else if(variationList.length == 1)
+        {
+            variationInpList1 = variationList[0].getElementsByTagName('input');
+
+            PriceTableHTML += `<th scope="col">` + variationInpList1[0].value + `</th>`;
+
+            PriceTableHTML += `<th scope="col">Price</th>`;
+            PriceTableHTML += `<th scope="col">Stock</th>`;
+            PriceTableHTML += `<th scope="col">SKU</th>`;
+
+            PriceTableHTML += `</tr>`;
+            PriceTableHTML += `</thead>`;
+
+            PriceTableHTML += `<tbody>`;
+
+            for(var i = 1; i < variationInpList1.length; i++)
+            {
+                PriceTableHTML += `<tr>`;
+                PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                PriceTableHTML += `<td scope="row"><input type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                PriceTableHTML += `</tr>`;
+            }
+            PriceTableHTML += `</tbody>`;
+            PriceTableHTML += `</table>`;
+        }
 
         var priceListTable = document.getElementById("priceList");
         priceListTable.innerHTML = "";
@@ -957,13 +1120,23 @@
 
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
+        var priceTable = document.getElementById('priceToAll');
 
         if(sub.classList.contains("hide"))
         {
+
             sub.classList.remove("hide");
+            priceTable.classList.remove("hide");
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+
+            var variationName = document.querySelectorAll('.variationName');
+            for(var i = 0; i < variationName.length; i++)
+            {
+                variationName[i].removeEventListener('change',RefreshPriceTable);
+                variationName[i].addEventListener('change',RefreshPriceTable);
+            }
 
             mainPricingInput = main.getElementsByTagName('input');
             for(var i = 0; i < mainPricingInput.length; i++)
@@ -995,6 +1168,8 @@
 
             
         }
+
+        RefreshPriceTable();
 
         divVariations = document.querySelectorAll('.variation');
 
@@ -1033,6 +1208,7 @@
         {
             event.target.parentElement.parentElement.parentElement.remove();
             sub.classList.add("hide");
+            priceTable.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
 
@@ -1043,6 +1219,7 @@
             }
         }
 
+        RefreshPriceTable();
         divVariations = document.querySelectorAll('.variation');
 
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
@@ -1072,13 +1249,22 @@
     function addChoiceHandleClick(event) {
         var str =  `
         <div class="input-group mb-3">
-            <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
+            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice" name="variationName[][name][choices][]">
             <div class="input-group-append btnDeleteChoices">
                 <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
         </div>
         `;
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
+
+        RefreshPriceTable();
+
+        var variationChoice = document.querySelectorAll('.variationChoice');
+        for(var i = 0; i < variationChoice.length; i++)
+        {
+            variationChoice[i].removeEventListener('change',RefreshPriceTable);
+            variationChoice[i].addEventListener('change',RefreshPriceTable);
+        }
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
@@ -1102,12 +1288,17 @@
                 event.target.parentElement.parentElement.remove();
             }
         }
-        
+        RefreshPriceTable();
     }
 
     function saveValue(event)
     {
         console.log(event);
+    }
+
+    function OnlyNumberAllow(value)
+    {
+    	return value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
     }
 
     
