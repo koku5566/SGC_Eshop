@@ -455,7 +455,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row">
+        <div class="row" id="ShippingDiv">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -640,7 +640,27 @@
     }
 
     function ToggleShippingDiv(value){
-
+        var ShippingDiv = document.getElementById('ShippingDiv');
+        if(value == 1)
+        {
+            if(ShippingDiv.classList.contains("hide"))
+            {
+                ShippingDiv.getElementsByTagName('input').forEach(item => {
+                    item.required = true;
+                });
+                ShippingDiv.classList.remove("hide");
+            }
+        }
+        else if(value == 2)
+        {
+            if(!ShippingDiv.classList.contains("hide"))
+            {
+                ShippingDiv.getElementsByTagName('input').forEach(item => {
+                    item.required = false;
+                });
+                ShippingDiv.classList.add("hide");
+            }
+        }
     }
 
     function DragNSort (config) {
