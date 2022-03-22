@@ -232,6 +232,7 @@ $("#sss").click(function(){
 	if(check1 == true && check2 == true)
 	{
 		load_data(search, drop);
+		alert("The paragraph was clicked AND ACCEPT.");
 	}
  
  
