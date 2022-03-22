@@ -212,12 +212,14 @@ $('#sss').click(function(){
 	{		
 		alert(drop2);
 	}
-	else if(drop1 != '' && drop2 != '')
-	{
-		alert('D1 = ' + drop1 + 'D2 = '+ drop2);
-	}
 	else{
 		alert('BOTH NOTHING');
+	}
+	
+	
+	if(drop1 != '' && drop2 != '')
+	{
+		alert('D1 = ' + drop1 + 'D2 = '+ drop2);
 	}
 	
 	
