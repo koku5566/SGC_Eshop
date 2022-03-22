@@ -17,7 +17,7 @@ orderDetails.price
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.product_id";
+JOIN product ON orderDetails.product_id = product.id";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -204,9 +204,9 @@ $result = $stmt->get_result();
                                                 <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="<?php echo $row['product_cover_image']?>" alt="Card image cap">
                                             </div>
                                             <div class="col-3"><?php echo $row['product_name']?></div>
-                                            <div class="col-1"><?php echo $row['order_details.quantity']?></div>
+                                            <div class="col-1"><?php echo $row['quantity']?></div>
 
-                                            <div class="col-1"><?php echo $row['product.product_price']?></div>
+                                            <div class="col-1"><?php echo $row['product_price']?></div>
                                             <div class="col-2">Completed</div>
                                             <div class="col-2">DHL eCommerce 2121113134</div>
                                             <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
@@ -215,7 +215,8 @@ $result = $stmt->get_result();
                                     </div>
                                 </div>
                                 <!--End of Order Item-->
-                                <?php }?>
+                                <?php 
+                                }?>
                                                                 
                                 <!--Pick Up Order Item-->       
                                  <div class="card">
