@@ -199,6 +199,53 @@ $(document).ready(function(){
 
 */
 //----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+ 
+/*
+$('#search_text, #selectMe').on('keyup change', function(){
+	var search = $(this).val();
+	var drop = $(this).val();
+	if(drop != '' && search != ''){
+		load_data(search, drop);
+		alert(search);
+		alert(drop);
+	}else{
+		 load_data();
+		 alert('no hab');
+	}
+	
+})
+*/
+ /*
+ if(check1){
+	 load_data(search, "");
+	 alert('check1');
+ }
+ else if (check2){
+	 load_data("", drop);
+	  alert('check2');
+ }
+ else if (check1 && check2){
+	 load_data(search, drop);
+	  alert('check1&2');
+ }
+ */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+});
+
+
 var search;
 var drop;
 
@@ -240,45 +287,6 @@ function displayMatches() {
    
 
 }   
-
- 
-/*
-$('#search_text, #selectMe').on('keyup change', function(){
-	var search = $(this).val();
-	var drop = $(this).val();
-	if(drop != '' && search != ''){
-		load_data(search, drop);
-		alert(search);
-		alert(drop);
-	}else{
-		 load_data();
-		 alert('no hab');
-	}
-	
-})
-*/
- /*
- if(check1){
-	 load_data(search, "");
-	 alert('check1');
- }
- else if (check2){
-	 load_data("", drop);
-	  alert('check2');
- }
- else if (check1 && check2){
-	 load_data(search, drop);
-	  alert('check1&2');
- }
- */
- 
- 
- 
- 
- 
- 
- 
-});
 </script>
 <?php
     require __DIR__ . '/footer.php'
