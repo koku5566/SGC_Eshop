@@ -18,7 +18,7 @@
 
 
 <!-- Page Content -->
-<div class="container-fluid pt-6" style="background-color: #FFFFFF; width:80%;">
+<div class="container-fluid" style="background-color: #FFFFFF; width:80%;">
    <h2 class="mt-5 mb-4">Create Voucher</h2>
    <form method="post">
       <div class="container">
@@ -103,8 +103,10 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
-            <div class="footer mb-5" style="float: right;">
+            <div class="form-row">
+               <div class="form-group col-md-12" style="float: right;">
                <button type="button" class="btn btn-warning btn-lg" name="savevoucher">SAVE</button>
+               </div>
             </div>
          </div>    
       </div>
