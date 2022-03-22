@@ -965,6 +965,11 @@
 
         if(sub.classList.contains("hide"))
         {
+            sub.classList.remove("hide");
+            main.classList.add("hide");
+            document.getElementById('txtVariationType').value = "1";
+            sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+
             mainPricingInput = main.getElementsByTagName('input');
             for(var i = 0; i < mainPricingInput.length; i++)
             {
@@ -977,18 +982,23 @@
                 subPricingInput[i].required = true;
             }
 
-            sub.classList.remove("hide");
-            main.classList.add("hide");
-            document.getElementById('txtVariationType').value = "1";
-            sub.insertAdjacentHTML( 'beforeend', VariationHTML );
             initVariation();
             initChoice();
         }
         else if(divVariations.length < 2)
         {
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
+
+            subPricingInput = sub.getElementsByTagName('input');
+            for(var i = 0; i < subPricingInput.length; i++)
+            {
+                subPricingInput[i].required = true;
+            }
+
             initVariation();
             initChoice();
+
+            
         }
 
         divVariations = document.querySelectorAll('.variation');
@@ -1030,12 +1040,12 @@
             sub.classList.add("hide");
             main.classList.remove("hide");
             document.getElementById('txtVariationType').value = "0";
-            main.getElementsByTagName('input').forEach(item => {
-                item.required = true;
-            });
-            sub.getElementsByTagName('input').forEach(item => {
-                item.required = false;
-            });
+
+            mainPricingInput = main.getElementsByTagName('input');
+            for(var i = 0; i < mainPricingInput.length; i++)
+            {
+                mainPricingInput[i].required = true;
+            }
         }
 
         divVariations = document.querySelectorAll('.variation');
