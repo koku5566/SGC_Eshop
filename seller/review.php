@@ -219,18 +219,22 @@ function displayMatches() {
 	if(search != '')
 	{
 		load_data(search, "");
+		alert(search);
 	}
 	else if(drop != '')
 	{
 		load_data("", drop);
+		alert(drop);
 	}
 	else if (search != '' && drop != '')
 	{
 		load_data(search, drop);
+		alert(search, drop);
 	}
 	else
 	{
 		load_data();
+		alert('nothingLe');
 	}
 
    
