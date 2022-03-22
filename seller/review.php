@@ -224,7 +224,7 @@ $('#search_text').keyup(function(){
  });
  
 $("#sss").click(function(){
-  //alert("The paragraph was clicked.");
+  alert("The paragraph was clicked.");
   
   
  
