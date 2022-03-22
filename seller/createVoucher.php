@@ -104,8 +104,8 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="form-group">
-                  <button type="button" class="btn btn-warning float-right" name="savevoucher">SAVE</button>
+               <div class="form-group float-right">
+                  <button type="button" class="btn btn-warning" name="savevoucher">SAVE</button>
                </div>
             </div>
          </div>    
