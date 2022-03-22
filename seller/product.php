@@ -685,11 +685,11 @@
     };
 
     DragNSort.prototype.onDragStart = function (_this, event) {
-    _this.$activeItem = this;
+        _this.$activeItem = this;
 
-    this.classList.add(_this.dragStartClass);
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/html', this.innerHTML);
+        this.classList.add(_this.dragStartClass);
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/html', this.innerHTML);
     };
 
     DragNSort.prototype.onDragEnd = function (_this) {
@@ -893,7 +893,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="drag-list-choices">
                                 <div class="input-group mb-3 drag-item-choices" draggable="true">
-                                    <input type="text" class="form-control" name="variationName[][name][choices][]">
+                                    <input type="text" onfocusout="saveValue(this)" class="form-control" name="variationName[][name][choices][]">
                                     <div class="input-group-append">
                                         <span class="input-group-text "><i class="fa fa-arrows" aria-hidden="true"></i></span>
                                     </div>
@@ -942,8 +942,6 @@
         priceListTable.innerHTML = "";
         priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
     }
-
-    
 
     function initVariation()
     {
@@ -1075,7 +1073,7 @@
     }
 
     function addChoiceHandleClick(event) {
-        var str = "<div class=\"input-group mb-3 drag-item-choices\" draggable=\"true\"><input type=\"text\" class=\"form-control\" name=\"choices[]\"><div class=\"input-group-append\"><span class=\"input-group-text\"><i class=\"fa fa-arrows\" aria-hidden=\"true\"></i></span></div><div class=\"input-group-append btnDeleteChoices\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></div></div>";
+        var str =  `<div class="input-group mb-3 drag-item-choices" draggable="true"><input type="text" class="form-control" onfocusout="saveValue(this)" name="choices[]"><div class="input-group-append"><span class="input-group-text"><i class="fa fa-arrows" aria-hidden="true"></i></span></div><div class="input-group-append btnDeleteChoices"><span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span></div></div>`;
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
         // Instantiate Choices Drag
         var draggableChoices = new DragNSort({
@@ -1109,6 +1107,12 @@
             }
         }
         
+    }
+
+    function saveValue(event)
+    {
+        console.log(event);
+        event.target.value = event.innerHTML;
     }
 
     
