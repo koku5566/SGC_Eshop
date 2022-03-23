@@ -17,6 +17,9 @@ if($_SESSION['login'] == false)
 			  </script>";
     }
 */
+
+
+
 ?>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
@@ -43,15 +46,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		  </div>
 		 </body>
 		 
-		 <select class="form-control" id = "selectStar">
+		  <!--Seller-->
+		  <select class="form-control" id = "selectSeller">
 			  <option value = "All">All*</option>
 			  <option value = "5">5</option>
 			  <option value = "4">4</option>
 			  <option value = "3">3</option>
 			  <option value = "2">2</option>
 			  <option value = "1">1</option>
-			</select>
-		 <!--Result-->
+		</select>
+		 
+		 
+
+		 <!--Star-->
+		 <select class="form-control" id = "selectStar">
+			  <option value = "All">All*</option>
+			  <option value = "5">5<span class="fa fa-star checked"></span></option>
+			  <option value = "4">4<span class="fa fa-star checked"></span></option>
+			  <option value = "3">3<span class="fa fa-star checked"></span></option>
+			  <option value = "2">2<span class="fa fa-star checked"></span></option>
+			  <option value = "1">1<span class="fa fa-star checked"></span></option>
+		</select>
+		
+		
+		
+		<div id="result"></div>
 		 
 		 <!--REVIEW/RATING SECTION-->
 		<div style "margin-top: 15px;">
@@ -79,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result"></div>
+					
 					
 					
 					
