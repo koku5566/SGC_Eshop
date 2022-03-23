@@ -6,10 +6,12 @@ $output = '';
 
 
 
-if(isset($_POST["restriction"])){
+if(isset($_POST["restriction"]) && !empty($_POST["restriction"])){
 	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
 	
 	$rr = " && status = $restriction ";
+	
+	
 }else{
 	$rr = "";
 }
