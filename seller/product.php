@@ -79,13 +79,11 @@
         $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
         $sql_insert .= "product_weight, product_length, product_width, product_height, ";
         $sql_insert .= "product_virtual, product_self_collect, product_standard_delivery, ";
-        $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, "
-        $sql_insert .= "category_id, shop_id"
+        $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
+        $sql_insert .= "category_id, shop_id";
         $sql_insert .= ") ";
         $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
         $sql_insert .= "'$productVideo', ";
-
-        echo($sql_insert);
 
         $fileNames = array_filter($_FILES['files']['name']); 
         $imgInpCounter = 0;
@@ -108,8 +106,6 @@
             } 
         }
 
-        echo($sql_insert);
-
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
@@ -123,9 +119,6 @@
         $sql_insert .= "'0', '0'";
         $sql_insert .= ") ";
 
-
-        echo($sql_insert);
-        
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
             mysqli_query($conn, $sql_UpdateId);
