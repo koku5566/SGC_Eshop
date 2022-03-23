@@ -9,7 +9,9 @@ $output = '';
 if(isset($_POST["restriction"])){
 	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
 	
-	echo $restriction;
+	$rr = "&& status = $restriction";
+}else{
+	$rr = "";
 }
 
 
@@ -33,7 +35,7 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL; ";
+  WHERE disable_date IS NULL $rr; ";
   
 }
 
@@ -41,7 +43,7 @@ else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
 		   FROM contactUs
-		   WHERE disable_date IS NULL
+		   WHERE disable_date IS NULL $rr
 		   ORDER BY cu_id;";
 }
 
