@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php';
 
     echo(var_dump($_POST));
+    echo($_FILES['img']);
     if(isset($_POST['add']) || isset($_POST['publish'])){ 
 
         $publish = 1;
@@ -85,7 +86,7 @@
         $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
         $sql_insert .= "'$productVideo', ";
 
-        $fileNames = array_filter($_FILES['files']['name']); 
+        $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         if(!empty($fileNames)){ 
             foreach($_FILES['files']['name'] as $key=>$val){ 
