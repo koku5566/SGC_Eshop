@@ -6,7 +6,16 @@
                
 
 <?php
-
+include_once('mysqli_connect.php');
+$sql = "SELECT 
+product.product_name,
+product.product_cover_picture,
+product.product_qty,
+product.product_variation,
+product.product_price
+FROM product
+";
+$result = mysqli_query($sql);
 
 
 ?>
