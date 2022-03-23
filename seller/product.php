@@ -98,6 +98,7 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
+                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         echo("it works");
                         // Image db insert sql 
