@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			 
 			</select>
 			<!---->
-			<select class="form-control" id = "selectMe2">
+			<select class="form-control" id = "selectMe2" disabled>
 			  <option value = "All">Campus*</option>
 			  <option value = "C-SJ">SEGI College Subang Jaya</option>
 			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
@@ -160,13 +160,14 @@ $(document).ready(function(){
 	
 	load_data();
 
- function load_data(query, dropdown)
+ function load_data(query, dropdown, dropdown2)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
    data:{query:query,
-		 dropdown:dropdown},
+		 dropdown:dropdown,
+		 dropdown2:dropdown2},
    success:function(data)
    {
 	   //alert('success noob')
@@ -179,7 +180,7 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search, "");
+   load_data(search, "", "");
 	//alert('pp1');
   }
   else
@@ -213,19 +214,20 @@ $('#sss').click(function(){
 	
 	if(drop1 == 'All' && drop2 == 'All')
 	{
-		alert('Both All');
+		//alert('Both All');
+		load_data();
 	}
-	else if (drop1 != 'All' && drop2 == 'All'){
-		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
-		alert('got no');
+	else if (drop1 != 'All' && drop2 == 'All'){	
+		//alert('got no');
+		load_data("", drop1, "");
 	}
-	else if(drop1 == 'All' && drop2 != 'All'){
-		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
-		alert('no got');
+	else if(drop1 == 'All' && drop2 != 'All'){		
+		//alert('no got');
+		load_data("", "", drop2);
 	}
-	else if(drop1 != 'All' && drop2 != 'All'){
-		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
-		alert('got got');
+	else if(drop1 != 'All' && drop2 != 'All'){		
+		//alert('got got');
+		load_data("", drop1, drop2);
 	}
 	
 	
