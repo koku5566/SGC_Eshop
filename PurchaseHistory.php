@@ -73,7 +73,7 @@
             border: 2px solid black;">
       <div class="row">
       <div class="col" style="margin-top:20px">
-        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" href="purchaseShippingDetails.php">Order Status</button>
+        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
         <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
         </div>
         <div class="col-2" style="margin-top:20px; font-size:20px">Total:
