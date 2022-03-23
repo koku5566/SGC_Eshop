@@ -52,7 +52,21 @@
     <?php
     }?>
     </div>
-    
+    <div class="row" style="font-size:20px; ">
+      <div class="col">
+      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
+      </div>
+      <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
+      </div>
+      <div class="col" style="margin-top:10px;">Navy Blue
+      </div>
+      <div class="col" style="margin-top:10px">x1
+      </div>
+      <div class="col" style="margin-top:10px">RM349.00
+      </div>
+      <div class="col" style="margin-top:10px" id="price">RM349.00
+      </div>
+    </div>
     <br/>
     <br/>
     <div style="width: 1509px;height: 89px;margin-left: 0px;
