@@ -86,7 +86,6 @@
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
-        echo($targetDir);
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
@@ -108,7 +107,7 @@
                      $imgInpCounter++;
                      */
 
-                    move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath);
+                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
                     
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         // Image db insert sql 
