@@ -106,7 +106,7 @@
                      $sql_insert .= "'$coverImgContent', ";
                      $imgInpCounter++;
                      */
-
+                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         echo("Yay ");
                         $sql_insert .= "'$fileName', ";
