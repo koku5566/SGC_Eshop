@@ -33,8 +33,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 
 		<body>
 		  <div class="container">
-		   <br />
-		   <h2 align="center">Ajax Live Data Search using Jquery PHP MySql</h2><br />
 		   <div class="form-group">
 			<div class="input-group">
 			 <span class="input-group-addon">Search</span>
@@ -42,93 +40,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
-		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
-			  <option value = "All">Default select</option>
-			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>			 
-			</select>
-			
-			
-			<?php
-				echo ""
-			
-			
-			?>
-			<!---->
-			<select class="form-control" id = "selectMe2" disabled>
-			  <option value = "All">Campus*</option>
-			  <option value = "C-SJ">SEGI College Subang Jaya</option>
-			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-			  <option value = "C-P">SEGI College Penang</option>
-			  <option value = "C-S">SEGI College Sarawak</option>
-			  <option value = "C-KD">SEGI College Kota Damansara</option>
-			  <option value = "U-KD">SEGI University Kota Damansara</option>   
-			</select>
-			
-			
-			<div id = "smolpp"></div>
-			<?php
-				/*
-				echo "<script>var firstValue = document.getElementById('selectMe').value;
-					  var selectFirst;
-					  if(firstValue === 'All'){
-						 selectFirst = 'No';
-					 }
-					 else{
-						 selectFirst = firstValue;
-					}</script>";
-			  
-			  $ppsmol = echo "<script>selectFirst</script>";
-			  
-			  echo $ppsmol;*/
-				 
-			  
-			  /*
-					$sql ="SELECT cu_id,campus 
-						   FROM contactUs 								   
-						   WHERE disable_date IS NULL AND status = $selectFirst";
-					if($stmt = mysqli_prepare ($conn, $sql)){
-						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt, $c1,$c2);
-						
-						while(mysqli_stmt_fetch($stmt)){
-							echo "<option value='$c1'>$c2</option>";
-						}
-						mysqli_stmt_close($stmt);
-					}
-			  */
-			  
-			  ?>
-			<?php
-									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
-									
-								echo "<script>function ablemeFunction(){
-									
-									  let selectMe = document.getElementById('selectMe').value;
-								
-									  let f = false;
-										
-										if (selectMe === 'All') 
-										{f = false;}		
-										else			
-										{f = true;} 
-										
-										if(f == true)
-										{document.getElementById('selectMe2').disabled = false;}	
-										else
-										{document.getElementById('selectMe2').disabled = true;}
-										
-								}</script>";
-
-							?>
-			
-			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
-			</form>
 		  </div>
 		 </body>
 		 
-		 
+		 <select class="form-control" id = "selectStar">
+			  <option value = "All">All*</option>
+			  <option value = "5">5</option>
+			  <option value = "4">4</option>
+			  <option value = "3">3</option>
+			  <option value = "2">2</option>
+			  <option value = "1">1</option>
+			</select>
 		 <!--Result-->
 		 
 		 <!--REVIEW/RATING SECTION-->
@@ -157,59 +79,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result">
-					<?php
-						$output = '';
-					
-						$query ="SELECT cu_id, name, email, campus, subject, message, status, disable_date
-							   FROM contactUs
-							   WHERE disable_date IS NULL
-							   ORDER BY cu_id;";
-							   
-						$result = mysqli_query($conn, $query);
-						if(mysqli_num_rows($result) > 0)
-						{
-							echo "<script>NANI DA FCK</script>";
-						 $output .= '
-						  <div class="table-responsive">
-						   <table class="table table bordered">
-							<tr>
-							 <th> cu_id</th>
-							 <th>name</th>
-							 <th>email</th>
-							 <th>campus</th>
-							 <th>subject</th>
-							 <th>message</th>
-							 <th>status</th>
-							 <th>btn</th>
-							</tr>
-						 ';
-						 while($row = mysqli_fetch_array($result))
-						 {
-						  $output .= '
-						   <tr>
-							<td>'.$row["cu_id"].'</td>
-							<td>'.$row["name"].'</td>
-							<td>'.$row["email"].'</td>
-							<td>'.$row["campus"].'</td>
-							<td>'.$row["subject"].'</td>
-							<td>'.$row["message"].'</td>
-							<td>'.$row["status"].'</td>
-							<td><form action ="" method = "POST" class = "baka">
-								<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
-								<input type="submit" name ="t1faker" value = "faker" class="btn btn-primary"></form></td>
-						   </tr>
-						  ';
-						  
-						 }
-						 echo $output;
-						}
+					<div id="result"></div>
 					
 					
-					?>
 					
 					
-					</div>
+					
 			  </div>
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
@@ -274,34 +149,43 @@ $(document).ready(function(){
 	
 	load_data();
 
- function load_data(query, dropdown, dropdown2)
+ function load_data(query, restriction)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
    data:{query:query,
-		 dropdown:dropdown,
-		 dropdown2:dropdown2},
+		restriction:restriction},
    success:function(data)
    {
 	   //alert('success noob')
     $('#result').html(data);
+	
    }
   });
  }
 
  $('#search_text').keyup(function(){
   var search = $(this).val();
+  var restriction = $('#selectStar').val();
   if(search != '')
   {
-   load_data(search, "", "");
-	//alert('pp1');
+	 //alert('pp1');
+	 if(restriction == "All"){
+		 load_data(search,"");
+	 }else{
+		 load_data(search,restriction);
+		 //alert(restriction);
+	 }
   }
   else
   {
    load_data();
   }
  });
+ 
+ 
+ 
  /*
  $('#selectMe').change(function(){
   var drop = $(this).val();
@@ -319,7 +203,7 @@ $(document).ready(function(){
 
 */
 //----------------------------------------------------------------------------------------------------
-
+/*
 $('#sss').click(function(){
 	var drop1  = $('#selectMe').val();
 	var drop2  = $('#selectMe2').val();
@@ -347,7 +231,7 @@ $('#sss').click(function(){
 	
 	
 })
-
+*/
 
 
 
@@ -381,37 +265,9 @@ $('#search_text, #selectMe').on('keyup change', function(){
 	  alert('check1&2');
  }
  */
- function load_drop2(dropData)
- {
-  $.ajax({
-   url:"reviewSearch.php",
-   method:"POST",
-   data:{dropData:dropData},
-   success:function(data)
-   {
-	   //alert('success noob')
-    $('#smolpp').html(data);
-   }
-  });
- }
- 
- $('#selectMe').change(function(){
-  var drop = $(this).val();
-  //$('#Crd option:selected').text();
-  if(drop == 'All')
-  {
-   
-		alert('ppAll');
-  }
-  else
-  {
-	load_drop2(drop);
-	alert('pp');
-  }
- });
  
  
- 
+
  
 });
 
@@ -419,29 +275,6 @@ $('#search_text, #selectMe').on('keyup change', function(){
 </script>
 
 
-<script>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 <?php
     require __DIR__ . '/footer.php'
 ?>
