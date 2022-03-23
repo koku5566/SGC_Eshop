@@ -49,14 +49,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "0">ZERO</option>			 
 			</select>
 			
-			
-			<?php
-				
-			
-			
-			?>
+		
 			<!---->
-			<select class="form-control" id = "selectMe2" disabled>
+			<select class="form-control" id = "selectMe2">
 			  <option value = "All">Campus*</option>
 			  <option value = "C-SJ">SEGI College Subang Jaya</option>
 			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
@@ -64,54 +59,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-S">SEGI College Sarawak</option>
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
-			  <?php
-
-			  /**/
-					$sql ="SELECT cu_id,campus 
-						   FROM contactUs 								   
-						   WHERE disable_date IS NULL";
-					if($stmt = mysqli_prepare ($conn, $sql)){
-						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt, $c1,$c2);
-						
-						while(mysqli_stmt_fetch($stmt)){
-							echo "<option value='$c1'>$c2</option>";
-						}
-						mysqli_stmt_close($stmt);
-					}
-			  
-			  
-			  ?>
-			  
-			  
 			</select>
 			
-			
-			<div id = "smolpp"></div>
-			
-			<?php
-									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
-									
-								echo "<script>function ablemeFunction(){
-									
-									  let selectMe = document.getElementById('selectMe').value;
-								
-									  let f = false;
-										
-										if (selectMe === 'All') 
-										{f = false;}		
-										else			
-										{f = true;} 
-										
-										if(f == true)
-										{document.getElementById('selectMe2').disabled = false;}	
-										else
-										{document.getElementById('selectMe2').disabled = true;}
-										
-								}</script>";
 
-							?>
-			
 			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
 			</form>
 		  </div>
@@ -261,7 +211,7 @@ $(document).ready(function(){
 
 */
 //----------------------------------------------------------------------------------------------------
-
+/*
 $('#sss').click(function(){
 	var drop1  = $('#selectMe').val();
 	var drop2  = $('#selectMe2').val();
@@ -289,7 +239,7 @@ $('#sss').click(function(){
 	
 	
 })
-
+*/
 
 
 
@@ -323,37 +273,9 @@ $('#search_text, #selectMe').on('keyup change', function(){
 	  alert('check1&2');
  }
  */
- function load_drop2(dropData)
- {
-  $.ajax({
-   url:"reviewSearch.php",
-   method:"POST",
-   data:{dropData:dropData},
-   success:function(data)
-   {
-	   //alert('success noob')
-    $('#smolpp').html(data);
-   }
-  });
- }
- 
- $('#selectMe').change(function(){
-  var drop = $(this).val();
-  //$('#Crd option:selected').text();
-  if(drop == 'All')
-  {
-   
-		alert('ppAll');
-  }
-  else
-  {
-	load_drop2(drop);
-	alert('pp');
-  }
- });
  
  
- 
+
  
 });
 
@@ -361,29 +283,6 @@ $('#search_text, #selectMe').on('keyup change', function(){
 </script>
 
 
-<script>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 <?php
     require __DIR__ . '/footer.php'
 ?>
