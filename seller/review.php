@@ -35,6 +35,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <div class="container-fluid" style="width:100%;">
 
 		<body>
+		
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						<!--Seller-->
+						 <select class="form-control" id = "selectSeller">
+							  <option value = "All">All*</option>
+							  <option value = "5">Mak</option>
+							  <option value = "4">Kao</option>
+							  <option value = "3">Hijau</option>
+							  <option value = "2">Babi</option>
+							  <option value = "1">Hutan</option>
+					     </select>
+					</div>
+					<div class="col-xs-6">
+						<!--Star-->
+						 <select class="form-control" id = "selectStar">
+							  <option value = "All">All*</option>
+							  <option value = "5">5</option>
+							  <option value = "4">4</option>
+							  <option value = "3">3</option>
+							  <option value = "2">2</option>
+							  <option value = "1">1</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+		
+		
 		  <div class="container">
 		   <div class="form-group">
 			<div class="input-group">
@@ -44,29 +74,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		  </div>
+		  
+		  
 		 </body>
 		 
-		  <!--Seller-->
-		  <select class="form-control" id = "selectSeller">
-			  <option value = "All">All*</option>
-			  <option value = "5">5</option>
-			  <option value = "4">4</option>
-			  <option value = "3">3</option>
-			  <option value = "2">2</option>
-			  <option value = "1">1</option>
-		</select>
+		  
+		  
 		 
 		 
 
-		 <!--Star-->
-		 <select class="form-control" id = "selectStar">
-			  <option value = "All">All*</option>
-			  <option value = "5" class="fa fa-star checked">5<span ></span></option>
-			  <option value = "4">4<span class="fa fa-star checked"></span></option>
-			  <option value = "3">3<span class="fa fa-star checked"></span></option>
-			  <option value = "2">2<span class="fa fa-star checked"></span></option>
-			  <option value = "1">1<span class="fa fa-star checked"></span></option>
-		</select>
+		 
 		
 		
 		
