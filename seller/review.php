@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 <!--Star-->
 		 <select class="form-control" id = "selectStar">
 			  <option value = "All">All*</option>
-			  <option value = "5">5<span class="fa fa-star checked"></span></option>
+			  <option value = "5" class="fa fa-star checked">5<span ></span></option>
 			  <option value = "4">4<span class="fa fa-star checked"></span></option>
 			  <option value = "3">3<span class="fa fa-star checked"></span></option>
 			  <option value = "2">2<span class="fa fa-star checked"></span></option>
