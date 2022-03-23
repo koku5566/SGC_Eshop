@@ -90,11 +90,12 @@ if(mysqli_num_rows($result) > 0)
  }
  echo $output;
 }
+/*
 else
 {
  echo 'Data Not Found';
 }
-
+*/
 //SEARCH FUNCTION NUMBAR ONE - Version 2 -------------------------------------------------------------------------------------------------
  /*
  $output = '';
