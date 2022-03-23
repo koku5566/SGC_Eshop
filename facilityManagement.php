@@ -65,6 +65,10 @@
       </div>
    </form>
 </div>
+      
+    </div>
+  </div>
+</div>
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
