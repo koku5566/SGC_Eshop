@@ -2,7 +2,6 @@
     require __DIR__ . '/header.php';
 
     echo(var_dump($_POST));
-    echo(var_dump($_FILES['img']));
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
         $publish = 1;
@@ -89,16 +88,16 @@
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         if(!empty($fileNames)){ 
-            foreach($_FILES['files']['name'] as $key=>$val){ 
+            foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['files']['name'][$key]); 
+                $fileName = basename($_FILES['img']['name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
                  
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
-                    if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         // Image db insert sql 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
