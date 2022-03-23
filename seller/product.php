@@ -100,12 +100,14 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%;">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i>Update</a>
-    </div>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-plus fa-sm text-white-50"></i>Update</a>
+        </div>
+    
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
