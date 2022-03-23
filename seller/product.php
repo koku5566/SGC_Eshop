@@ -1,6 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
+    echo(var_dump($_POST));
     if(isset($_POST['add']) || isset($_POST['publish'])){ 
 
         $publish = 1;
@@ -130,7 +131,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%;">
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
