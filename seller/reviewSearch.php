@@ -35,7 +35,8 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL $rr ";
+  WHERE disable_date IS NULL $rr 
+  ORDER BY cu_id";
   
 }
 
