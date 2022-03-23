@@ -14,7 +14,8 @@ product.product_variation,
 product.product_price
 FROM product
 ";
-$result = mysqli_query($sql);
+
+$result = mysqli_query($conn, $sql);
 
 
 ?>
@@ -48,7 +49,7 @@ $result = mysqli_query($sql);
        
       <div class="row" style="font-size:20px; ">
         <?php
-            //while ($row = $result->fetch_assoc()) {
+            while ($row = mysqli_fetch_assoc($result)) {
         ?>
         
         <div class="col" style="width:150px; height:150px;object-fit:contain"><?php echo $row['product_cover_picture']?></div>
@@ -63,7 +64,7 @@ $result = mysqli_query($sql);
         </div>
 
         <?php
-            //}
+            }
         ?>
       </div>
       <div style="width: 1509px;height: 89px;margin-left: 0px;
