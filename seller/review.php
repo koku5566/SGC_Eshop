@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col">
 						<!--Seller-->
 						 <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 							  <option value = "1">Hutan</option>
 					     </select>
 					</div>
-					<div class="col-xs-6">
+					<div class="col">
 						<!--Star-->
 						 <select class="form-control" id = "selectStar">
 							  <option value = "All">All*</option>
