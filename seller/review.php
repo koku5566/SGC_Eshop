@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" >
+		   <select class="form-control" id = "selectMe" onchange  ="ablemeFunction()">
 			  <option value = "All">Default select</option>
 			  <option value = "1">ONE</option>
 			  <option value = "0">ZERO</option>
@@ -57,9 +57,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-P">SEGI College Penang</option>
 			  <option value = "C-S">SEGI College Sarawak</option>
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
-			  <option value = "U-KD">SEGI University Kota Damansara</option>  
-			 
+			  <option value = "U-KD">SEGI University Kota Damansara</option>   
 			</select>
+			
+			<?php
+									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
+									
+								echo "<script>function ablemeFunction(){
+									
+									  let selectMe = document.getElementById('selectMe').value;
+								
+									  let f = false;
+										
+										if (selectMe === 'All') 
+										{f = false;}		
+										else			
+										{f = true;} 
+										
+										if(f == true)
+										{document.getElementById('selectMe2').disabled = false;}	
+										else
+										{document.getElementById('selectMe2').disabled = true;}
+										
+								}</script>";
+
+							?>
 			
 			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
 			</form>
