@@ -4,6 +4,17 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 
 $output = '';
 
+
+
+if(isset($_POST["restriction"])){
+	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
+	
+	echo $restriction;
+}
+
+
+
+
 if(isset($_POST["query"]))
 {
 	echo "babi2";

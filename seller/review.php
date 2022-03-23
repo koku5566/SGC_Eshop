@@ -160,7 +160,7 @@ $(document).ready(function(){
    {
 	   //alert('success noob')
     $('#result').html(data);
-	$('#result2').html(data);
+	
    }
   });
  }
@@ -175,10 +175,8 @@ $(document).ready(function(){
 		 load_data(search,"");
 	 }else{
 		 load_data(search,restriction);
-		 alert(restriction);
+		 //alert(restriction);
 	 }
-	
-	
   }
   else
   {
