@@ -346,7 +346,7 @@ $('#search_text, #selectMe').on('keyup change', function(){
  $('#selectMe').change(function(){
   var drop = $(this).val();
   //$('#Crd option:selected').text();
-  if(drop != 'All')
+  if(drop == 'All')
   {
    
 		alert('ppAll');
