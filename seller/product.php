@@ -104,8 +104,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i>Update</a>
+            <button type="submit" class="btn btn-outline-primary" style="width:20%"><i class="fas fa-plus fa-sm"></i>Add New Product</button>
         </div>
     
         <!-- Basic Infomation -->
@@ -442,13 +441,13 @@
                             </div>
                         </div>
 
-                        <div id="subPricing" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                        <div id="subPricing" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
                         </div>
 
-                        <div id="priceToAll" class="<?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                        <div id="priceToAll" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
                             <div class="row">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Variation Info</p>
