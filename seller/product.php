@@ -86,9 +86,12 @@
         $sql_insert .= "'$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
+        echo(!empty($fileNames);
         $imgInpCounter = 0;
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
+                echo("Enter Foreach Loop");
+                echo($key);
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
