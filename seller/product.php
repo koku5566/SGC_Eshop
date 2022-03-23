@@ -110,7 +110,7 @@
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $insertValuesSQL .= "'', ";
+            $sql_insert .= "'', ";
             $imgInpCounter++;
         }
 
