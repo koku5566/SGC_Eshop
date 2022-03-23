@@ -22,69 +22,55 @@ $result = mysqli_query($conn, $sql);
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
-  <h1 style="width: 315px;margin-left: 460px;color: #c71526;">Purchase History</h1>
-  <div style="padding-left: 20px;padding-top: 40px;">
-    <div>
-        <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
-          <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>
+  <h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
+      <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
+        <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>
           Back
-        </button>
-        <br />
-        <br />
-        <br />
-    </div>
-  </div>
-  <div>
-    <div class="container" style="height: 550px;border-style: solid;">
-      <!--this is the show part-->
-      <div class="row">
-        <div class="col" style="width: 500px;">
-          <img src="img/segi kl.png" style="width:300px; margin-left:10px; object-fit:contain"  >
+      </button>
+    <div class="card">
+        <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-lg-4"><img src="segi kl.png" 
+                     style="width: 400px;height: 50px;object-fit:contain;"/></div>
+                    <div class="col-md-3 col-lg-1 "><i class="fa fa-home" style="width: 55.8625px;height: 68px;font-size: 50px;"></i></div>
+                    <div class="col-md-3 col-lg-1 offset-lg-0"><img src="received.png" style="width:150px; height:50px; object-fir:contain;"/></div>
+                    <div class="col-md-3 offset-lg-2"><p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/></div>
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                 <?php
+                   while ($row = mysqli_fetch_assoc($result)) {
+                 ?>
+                    <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain"><img /><?php echo $row['product_cover_picture']?></div>
+                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
+                    <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['product_qty']?></div>
+                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_variation']?></div>
+                    <div class="col">RM<?php echo $row['product_price']?></div>
+                    <?php
+                      }
+                     ?>
+                </div>
+            </div>
         </div>
-      </div>
-      <br/>
-       
-      <div class="row" style="font-size:20px; ">
-        <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-        
-        <div class="col" style="width:150px; height:150px;object-fit:contain"><?php echo $row['product_cover_picture']?></div>
-        <div class="col"  style="margin-top:10px;"><?php echo $row['product_name']?></div>
-        
-        <div class="col" style="margin-top:10px;"><?php echo $row['product_sku']?>
-        </div>
-        
-        <div class="col" style="margin-top:10px"><?php echo $row['product_variation']?>
-        </div>
-        <div class="col" style="margin-top:10px">RM<?php echo $row['product_price']?>
-        </div>
-
-        <?php
-            }
-        ?>
-      </div>
-      <div style="width: 1509px;height: 89px;margin-left: 0px;
-              border: 2px solid black;">
-        <div class="row">
-          <div class="col" style="margin-top:20px">
-            <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
-            <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
-          </div>
-          <br />
-          <br />
-          <br />                            
-          <br/>
-          <br/>
-          
-        </div>            
-      </div>
-    </div>
-  </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
+                  <a href="viewPurchasingOrders.php"></a>Order Status</button></div>
+                <div class="col-md-3 col-lg-2 offset-lg-1"><button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button></div>
+                <div class="col-md-3 col-lg-2 offset-lg-1">
+                    <p>Total</p>
+                </div>
+                <div class="col-md-3 offset-lg-1">
+                    <p>Paragraph</p>
+                </div>
              
+            </div>
+        </div>
+    </div> 
 </div>
   
   

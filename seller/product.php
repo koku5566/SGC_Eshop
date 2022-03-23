@@ -85,7 +85,8 @@
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         // File upload configuration 
-        $targetDir = "/img/product/"; 
+        $targetDir = __DIR__."/img/product/"; 
+        echo($targetDir);
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
@@ -97,21 +98,24 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
+
+                    /*
                     $coverIMG = $_FILES['img']['tmp_name'][$key];
                     $coverImgContent = addslashes(file_get_contents($coverIMG));
 
                      // Image db insert sql 
                      $sql_insert .= "'$coverImgContent', ";
                      $imgInpCounter++;
-                    /*
-                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
+                     */
+
+                    move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath);
+                    
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        echo("it works");
                         // Image db insert sql 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
-                    */
+                    
                 }
             } 
         }
@@ -128,8 +132,6 @@
         $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
         $sql_insert .= "'0', '0'";
         $sql_insert .= ") ";
-
-        echo($sql_insert);
 
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
