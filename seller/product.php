@@ -91,7 +91,7 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
+                $fileName = basename($_FILES['img']['tmp_name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -107,10 +107,8 @@
                      $imgInpCounter++;
                      */
 
-                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
-                    
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        // Image db insert sql 
+                        echo("Yay ");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
