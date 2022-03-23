@@ -2,7 +2,14 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-$sql = "SELECT * FROM product1";
+$sql = "SELECT 
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+product.product_sku
+
+FROM product";
 $result = $conn->query($sql);
 
 ?>
