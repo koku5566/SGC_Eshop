@@ -142,14 +142,12 @@ $(document).ready(function(){
 	
 	load_data();
 
- function load_data(query, dropdown, dropdown2)
+ function load_data(query)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
-   data:{query:query,
-		 dropdown:dropdown,
-		 dropdown2:dropdown2},
+   data:{query:query},
    success:function(data)
    {
 	   //alert('success noob')
@@ -163,7 +161,7 @@ $(document).ready(function(){
   var search = $(this).val();
   if(search != '')
   {
-   load_data(search, "", "");
+   load_data(search);
 	//alert('pp1');
   }
   else
