@@ -56,21 +56,14 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="float-right">
-                  <button type="button" class="btn btn-warning" name="savevoucher">Upload</button>
-                  <button type="button" class="btn btn-warning" name="savevoucher">Cancel</button>
+               <div class="float-left">
+                  <button type="button" class="btn btn-warning" name="upload">Upload</button>
+                  <button type="button" class="btn btn-warning" name="cancel">Cancel</button>
                </div>
             </div>
          </div>    
       </div>
    </form>
-</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- Datatable -->
