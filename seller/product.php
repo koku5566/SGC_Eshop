@@ -1209,6 +1209,13 @@
         }
 
         RefreshPriceTable();
+        
+        var variationName = document.querySelectorAll('.variationName');
+        for(var i = 0; i < variationName.length; i++)
+        {
+            variationName[i].removeEventListener('change',RefreshPriceTable);
+            variationName[i].addEventListener('change',RefreshPriceTable);
+        }
 
         divVariations = document.querySelectorAll('.variation');
 
@@ -1285,7 +1292,7 @@
             variationChoice[i].removeEventListener('change',RefreshPriceTable);
             variationChoice[i].addEventListener('change',RefreshPriceTable);
         }
-
+        
         btnAddChoices.forEach(item => {
             item.removeEventListener('click', addChoiceHandleClick);
             item.addEventListener('click',addChoiceHandleClick);
@@ -1304,7 +1311,14 @@
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
 
         RefreshPriceTable();
-        
+
+        var variationChoice = document.querySelectorAll('.variationChoice');
+        for(var i = 0; i < variationChoice.length; i++)
+        {
+            variationChoice[i].removeEventListener('change',RefreshPriceTable);
+            variationChoice[i].addEventListener('change',RefreshPriceTable);
+        }
+
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
             item.removeEventListener('click', deleteChoiceHandleClick);
