@@ -349,11 +349,12 @@ $('#search_text, #selectMe').on('keyup change', function(){
   if(drop != 'All')
   {
    
- //alert('pp2');
+		alert('ppAll');
   }
   else
   {
 	load_drop2(drop);
+	alert('pp');
   }
  });
  
