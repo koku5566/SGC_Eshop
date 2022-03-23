@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  */
 			  
 				  if(isset($_POST['selectMe'])){
-					  echo "<script>alert('amanda teh')</script>"
+					  echo "<script>alert('amanda teh')</script>";
 				  }
 			  
 			  /*
