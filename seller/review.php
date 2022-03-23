@@ -43,12 +43,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" onchange  ="ablemeFunction()">
+		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
 			  <option value = "All">Default select</option>
 			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>
-			 
+			  <option value = "0">ZERO</option>			 
 			</select>
+			
+			
+			<?php
+				echo ""
+			
+			
+			?>
 			<!---->
 			<select class="form-control" id = "selectMe2" disabled>
 			  <option value = "All">Campus*</option>
@@ -58,6 +64,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-S">SEGI College Sarawak</option>
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
+			<?php
+				/*
+				echo "<script>var firstValue = document.getElementById('selectMe').value;
+					  var selectFirst;
+					  if(firstValue === 'All'){
+						 selectFirst = 'No';
+					 }
+					 else{
+						 selectFirst = firstValue;
+					}</script>";
+			  */
+			  
+				  if(isset($_POST['selectMe'])){
+					  echo "<script>alert('amanda teh')</script>"
+				  }
+			  
+			  /*
+					$sql ="SELECT cu_id,campus 
+						   FROM contactUs 								   
+						   WHERE disable_date IS NULL AND status = $selectFirst";
+					if($stmt = mysqli_prepare ($conn, $sql)){
+						mysqli_stmt_execute($stmt);
+						mysqli_stmt_bind_result($stmt, $c1,$c2);
+						
+						while(mysqli_stmt_fetch($stmt)){
+							echo "<option value='$c1'>$c2</option>";
+						}
+						mysqli_stmt_close($stmt);
+					}
+			  */
+			  
+			  ?>
+			  
+			  
 			</select>
 			
 			<?php
@@ -297,6 +337,30 @@ $('#search_text, #selectMe').on('keyup change', function(){
  
  
 });
+
+
+</script>
+
+
+<script>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
