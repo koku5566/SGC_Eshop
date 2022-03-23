@@ -1,7 +1,11 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+<?php
+$sql = "SELECT * FROM product1";
+$result = $conn->query($sql);
 
+?>
 
                
 
