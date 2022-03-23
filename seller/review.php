@@ -43,12 +43,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		   </div>
 		   <br />
 		   <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" onchange  ="ablemeFunction()">
+		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
 			  <option value = "All">Default select</option>
 			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>
-			 
+			  <option value = "0">ZERO</option>			 
 			</select>
+			
+			
+			<?php
+				echo ""
+			
+			
+			?>
 			<!---->
 			<select class="form-control" id = "selectMe2" disabled>
 			  <option value = "All">Campus*</option>
@@ -60,6 +66,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
 			</select>
 			
+			
+			<div id = "smolpp"></div>
+			<?php
+				/*
+				echo "<script>var firstValue = document.getElementById('selectMe').value;
+					  var selectFirst;
+					  if(firstValue === 'All'){
+						 selectFirst = 'No';
+					 }
+					 else{
+						 selectFirst = firstValue;
+					}</script>";
+			  
+			  $ppsmol = echo "<script>selectFirst</script>";
+			  
+			  echo $ppsmol;*/
+				 
+			  
+			  /*
+					$sql ="SELECT cu_id,campus 
+						   FROM contactUs 								   
+						   WHERE disable_date IS NULL AND status = $selectFirst";
+					if($stmt = mysqli_prepare ($conn, $sql)){
+						mysqli_stmt_execute($stmt);
+						mysqli_stmt_bind_result($stmt, $c1,$c2);
+						
+						while(mysqli_stmt_fetch($stmt)){
+							echo "<option value='$c1'>$c2</option>";
+						}
+						mysqli_stmt_close($stmt);
+					}
+			  */
+			  
+			  ?>
 			<?php
 									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
 									
@@ -117,7 +157,59 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result"></div>
+					<div id="result">
+					<?php
+						$output = '';
+					
+						$query ="SELECT cu_id, name, email, campus, subject, message, status, disable_date
+							   FROM contactUs
+							   WHERE disable_date IS NULL
+							   ORDER BY cu_id;";
+							   
+						$result = mysqli_query($conn, $query);
+						if(mysqli_num_rows($result) > 0)
+						{
+							echo "<script>NANI DA FCK</script>";
+						 $output .= '
+						  <div class="table-responsive">
+						   <table class="table table bordered">
+							<tr>
+							 <th> cu_id</th>
+							 <th>name</th>
+							 <th>email</th>
+							 <th>campus</th>
+							 <th>subject</th>
+							 <th>message</th>
+							 <th>status</th>
+							 <th>btn</th>
+							</tr>
+						 ';
+						 while($row = mysqli_fetch_array($result))
+						 {
+						  $output .= '
+						   <tr>
+							<td>'.$row["cu_id"].'</td>
+							<td>'.$row["name"].'</td>
+							<td>'.$row["email"].'</td>
+							<td>'.$row["campus"].'</td>
+							<td>'.$row["subject"].'</td>
+							<td>'.$row["message"].'</td>
+							<td>'.$row["status"].'</td>
+							<td><form action ="" method = "POST" class = "baka">
+								<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
+								<input type="submit" name ="t1faker" value = "faker" class="btn btn-primary"></form></td>
+						   </tr>
+						  ';
+						  
+						 }
+						 echo $output;
+						}
+					
+					
+					?>
+					
+					
+					</div>
 			  </div>
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
@@ -289,14 +381,63 @@ $('#search_text, #selectMe').on('keyup change', function(){
 	  alert('check1&2');
  }
  */
+ function load_drop2(dropData)
+ {
+  $.ajax({
+   url:"reviewSearch.php",
+   method:"POST",
+   data:{dropData:dropData},
+   success:function(data)
+   {
+	   //alert('success noob')
+    $('#smolpp').html(data);
+   }
+  });
+ }
  
- 
- 
+ $('#selectMe').change(function(){
+  var drop = $(this).val();
+  //$('#Crd option:selected').text();
+  if(drop == 'All')
+  {
+   
+		alert('ppAll');
+  }
+  else
+  {
+	load_drop2(drop);
+	alert('pp');
+  }
+ });
  
  
  
  
 });
+
+
+</script>
+
+
+<script>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
