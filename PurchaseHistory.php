@@ -46,37 +46,7 @@ $result = mysqli_query($sql);
       </div>
       <br/>
        
-      <div class="row" style="font-size:20px; ">
-        <?php
-            while ($row = $result->fetch_assoc()) {
-        ?>
-        
-        <div class="col" style="width:150px; height:150px;object-fit:contain"><?php echo $row['product_cover_picture']?></div>
-        <div class="col"  style="margin-top:10px;"><?php echo $row['product_name']?></div>
-        
-        <div class="col" style="margin-top:10px;"><?php echo $row['product_sku']?>
-        </div>
-        
-        <div class="col" style="margin-top:10px"><?php echo $row['product_variation']?>
-        </div>
-        <div class="col" style="margin-top:10px">RM<?php echo $row['product_price']?>
-        </div>
-      </div>
-      <div style="width: 1509px;height: 89px;margin-left: 0px;
-              border: 2px solid black;">
-        <div class="row">
-          <div class="col" style="margin-top:20px">
-            <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
-            <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
-          </div>
-          <br />
-          <br />
-          <br />                            
-          <br/>
-          <br/>
-          
-        </div>            
-      </div>
+      
     </div>
   </div>
              
