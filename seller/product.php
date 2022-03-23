@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php';
 
     echo(var_dump($_POST));
-    if(isset($_POST['add']) || isset($_POST['publish'])){ 
+    if(isset($_POST['add']) && isset($_POST['publish'])){ 
 
         $publish = 1;
         if(isset($_POST['add']))
@@ -47,7 +47,7 @@
         $sql_insert .= `'$productVideo','$productName','$productDescription','$productBrand', `;
 
         $sql_insert .= `'$productWeight','$productLength','$productWidth','$productHeight',`;
-        $sql_insert .= `'$productType',''`;
+        $sql_insert .= `'$productType','','','','',`;
         $sql_insert .= `''`;
         $sql_insert .= `) `;
         
