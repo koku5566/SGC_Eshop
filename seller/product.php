@@ -85,7 +85,7 @@
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         // File upload configuration 
-        $targetDir = "/img/product/"; 
+        $targetDir = "../img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
@@ -131,8 +131,6 @@
         $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
         $sql_insert .= "'0', '0'";
         $sql_insert .= ") ";
-
-        echo($sql_insert);
 
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
