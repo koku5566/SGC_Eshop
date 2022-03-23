@@ -107,10 +107,9 @@
                      $imgInpCounter++;
                      */
 
-                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
-                    
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         // Image db insert sql 
+                        echo("come in alraedy");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
