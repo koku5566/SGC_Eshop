@@ -85,7 +85,7 @@
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         // File upload configuration 
-        $targetDir = __DIR__."/img/product/"; 
+        $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         echo($targetDir);
         $allowTypes = array('jpg','png','jpeg'); 
 
