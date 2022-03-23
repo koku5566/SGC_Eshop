@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
 			<?php
-				/*
+				/**/
 				echo "<script>var firstValue = document.getElementById('selectMe').value;
 					  var selectFirst;
 					  if(firstValue === 'All'){
@@ -74,11 +74,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 					 else{
 						 selectFirst = firstValue;
 					}</script>";
-			  */
 			  
-				  if(isset($_POST['selectMe'])){
-					  echo "<script>alert('amanda teh')</script>";
-				  }
+			  $ppsmol = echo "<script>selectFirst</script>";
+			  
+			  echo $ppsmol;
+				 
 			  
 			  /*
 					$sql ="SELECT cu_id,campus 
