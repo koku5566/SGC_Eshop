@@ -166,7 +166,7 @@ $(document).ready(function(){
    url:"reviewSearch.php",
    method:"POST",
    data:{query:query,
-		 dropdown:dropdown
+		 dropdown:dropdown,
 		 dropdown2:dropdown2},
    success:function(data)
    {
