@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php';
 
     echo(var_dump($_POST));
-    if(isset($_POST['add']) || isset($_POST['publish'])){ 
+    if(isset($_POST['add']) && isset($_POST['publish'])){ 
 
         $publish = 1;
         if(isset($_POST['add']))
@@ -17,46 +17,45 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $mainCategoryId = $_POST['mainCategoryId'];
-        $subCategoryId = $_POST['subCategoryId'];
         $productDescription = $_POST['productDescription'];
         $productBrand = $_POST['productBrand'];
+
         $productType = $_POST['productType'];
-        $productSKU = $_POST['productSKU'];
-
-        //Sales Details
-        //No Variation
-        $productPrice = $_POST['productPrice'];
-        $productStock = $_POST['productStock'];
-        //Got Variation
-        $variation1NameCol = $_POST['variation1NameCol[]'];
-        $variation2NameCol = $_POST['variation2NameCol[]'];
-        $variationPrice = $_POST['variationPrice[]'];
-        $variationStock = $_POST['variationStock[]'];
-        $variationSKU = $_POST['variationSKU[]'];
+        $variationType = $_POST['variationType'];
 
 
-        //Shipping
-        $productWeight = $_POST['productWeight'];
-        $productLength = $_POST['productLength'];
-        $productWidth = $_POST['productWidth'];
-        $productHeight = $_POST['productHeight'];
+        //Category
+        $mainCategoryId = $_POST['mainCategoryId'];
+        $subCategoryId = $_POST['subCategoryId'];
+        
+        $productVideo ="";
+        
+        //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
+
+        $sql_insert  = `INSERT INTO product (`;
+        $sql_insert .= `product_sku, product_name, product_description, product_brand, `;
+        $sql_insert .= `product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, `;
+        $sql_insert .= `product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, `;
+        $sql_insert .= `product_weight, product_length, product_width, product_height, `;
+        $sql_insert .= `product_virtual, product_self_collect, product_standard_delivery, product_preorder, `;
+        $sql_insert .= `product_variation, product_price, product_stock, product_sold, product_status, `
+        $sql_insert .= `category_id, shop_id`
+        $sql_insert .= `) `;
+        $sql_insert .= `VALUES('$productSKU','$productName','$productDescription','$productBrand', `;
+        $sql_insert .= `'$productVideo','$productName','$productDescription','$productBrand', `;
+
+        $sql_insert .= `'$productWeight','$productLength','$productWidth','$productHeight',`;
+        $sql_insert .= `'$productType','','','','',`;
+        $sql_insert .= `''`;
+        $sql_insert .= `) `;
+        
 
 
-        $sql_insert = "INSERT INTO `product`(`product_sku`, `product_name`, `product_description`, 
-        `product_brand`, `product_cover_video`, `product_cover_picture`, `product_pic_1`, `product_pic_2`, `product_pic_3`, 
-        `product_pic_4`, `product_pic_5`, `product_pic_6`, `product_pic_7`, `product_pic_8`, `product_weight`, 
-        `product_length`, `product_width`, `product_height`, `product_danger`, `product_self_collect`, 
-        `product_standard_delivery`, `product_preorder`, `product_variation`, `product_price`, `product_stock`, 
-        `product_sold`, `product_status`, `product_banned`, `category_id`, `shop_id`) 
-        VALUES ('".$_POST['sku']."','".$_POST['productName']."','".$_POST['description']."',
-        '".$_POST['brand']."','".$_POST['coverVideo']."',";
         $fileNames = array_filter($_FILES['files']['name']); 
-
         $imgInpCounter = 0;
         if(!empty($fileNames)){ 
-            
             foreach($_FILES['files']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['files']['name'][$key]); 
@@ -68,24 +67,21 @@
                     // Upload file to server 
                     if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                         // Image db insert sql 
-                        $sql_insert .= "'".$fileName."',";
+                        $sql_insert .= `'$fileName',`;
                         $imgInpCounter++;
                     }
                 }
             } 
         }
 
+        //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $insertValuesSQL .= "'".$fileName."',";
+            $insertValuesSQL .= `'',`;
             $imgInpCounter++;
         }
 
-        $sql_insert .= "'".$_POST['weight']."',
-        '".$_POST['length']."','".$_POST['width']."','".$_POST['height']."','".$_POST['danger']."','".$_POST['selfCollect']."',
-        '".$_POST['standardDelivery']."','".$_POST['preorder']."','".$_POST['variation']."','".$_POST['mainPrice']."','".$_POST['mainStock']."',
-        '".$_POST['mainSold']."','".$publish."','".$_POST['banned']."','".$_POST['categoryId']."','".$_POST['shopId']."')";
-
+        /*
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
             mysqli_query($conn, $sql_UpdateId);
@@ -93,6 +89,52 @@
         else
         {
             echo("Error Insert Fail");
+        }
+        */
+
+        //Got Variation
+        if($variationType == 1)
+        {
+            if(isset($_POST['variation1Name'],$_POST['variation2Name']))
+            {
+                $variation1Name = $_POST['variation1Name'];
+                $variation2Name = $_POST['variation2Name'];
+
+                $variation1NameCol = $_POST['variation1NameCol[]'];
+                $variation2NameCol = $_POST['variation2NameCol[]'];
+                $variationPrice = $_POST['variationPrice[]'];
+                $variationStock = $_POST['variationStock[]'];
+                $variationSKU = $_POST['variationSKU[]'];
+
+            }
+            else if(isset($_POST['variation1Name']))
+            {
+                $variation1Name = $_POST['variation1Name'];
+
+                $variation1NameCol = $_POST['variation1NameCol[]'];
+                $variationPrice = $_POST['variationPrice[]'];
+                $variationStock = $_POST['variationStock[]'];
+                $variationSKU = $_POST['variationSKU[]'];
+            }
+        }
+        //No Variation
+        else if($variationType == 0)
+        {
+            $productPrice = $_POST['productPrice'];
+            $productStock = $_POST['productStock'];
+        }
+
+        if($productType == 0)
+        {
+            //Shipping
+            $productWeight = $_POST['productWeight'];
+            $productLength = $_POST['productLength'];
+            $productWidth = $_POST['productWidth'];
+            $productHeight = $_POST['productHeight'];
+            $productSelfCollect = isset($_POST['letter']) ? $_POST['letter'] : 0;
+            $productStandardDelivery = isset($_POST['letter']) ? $_POST['letter'] : 0;
+
+
         }
     } 
 
@@ -570,6 +612,26 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Delivery Option</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Self Collection
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Standard Delivery
+                                    </label>
                                 </div>
                             </div>
                         </div>
