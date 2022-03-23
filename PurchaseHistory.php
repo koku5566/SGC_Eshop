@@ -84,19 +84,20 @@ $result = mysqli_query($sql);
              
 </div>
   
-
-  
-  
-</div>
   
    <!-- /.container-fluid -->
-   <script>
-   var dt = new Date();
-  document.getElementById("datetime").innerHTML = dt.toLocaleString();
-  </script> 
+
 
 <?php
     require __DIR__ . '/footer.php'
 ?>
+
+<style>
+</style>
+
+<script>
+  var dt = new Date();
+  document.getElementById("datetime").innerHTML = dt.toLocaleString();
+</script> 
 
 
