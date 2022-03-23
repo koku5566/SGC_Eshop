@@ -49,8 +49,6 @@ else
 		   FROM contactUs
 		   WHERE disable_date IS NULL
 		   ORDER BY cu_id;";
-  
- 
 }
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
