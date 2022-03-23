@@ -44,7 +44,7 @@
         $sql_insert .= `category_id, shop_id`
         $sql_insert .= `) `;
         $sql_insert .= `VALUES('$productSKU','$productName','$productDescription','$productBrand', `;
-        $sql_insert .= `'$productVideo','$productName','$productDescription','$productBrand'`;
+        $sql_insert .= `'$productVideo','$productName','$productDescription','$productBrand', `;
 
         $sql_insert .= `'$productWeight','$productLength','$productWidth','$productHeight',`;
         $sql_insert .= `'$productType',''`;
@@ -81,6 +81,7 @@
             $imgInpCounter++;
         }
 
+        /*
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
             mysqli_query($conn, $sql_UpdateId);
@@ -89,6 +90,7 @@
         {
             echo("Error Insert Fail");
         }
+        */
 
         //Got Variation
         if($variationType == 1)
