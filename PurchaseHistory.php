@@ -22,7 +22,11 @@ $result = mysqli_query($conn, $sql);
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
-<h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1><button class="btn btn-primary" type="button" style="color: var(--bs-primary);background: rgb(255,255,255);border-width: 0px;">Back</button>
+  <h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
+    <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
+      <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>
+          Back
+    </button>
     <div class="card">
         <div class="card-header">
             <div class="container">
