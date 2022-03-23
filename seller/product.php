@@ -91,7 +91,7 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['img']['tmp_name'][$key]); 
+                $fileName = basename($_FILES['img']['name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
