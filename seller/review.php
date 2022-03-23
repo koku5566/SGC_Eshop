@@ -33,8 +33,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 
 		<body>
 		  <div class="container">
-		   <br />
-		   <h2 align="center">Ajax Live Data Search using Jquery PHP MySql</h2><br />
 		   <div class="form-group">
 			<div class="input-group">
 			 <span class="input-group-addon">Search</span>
