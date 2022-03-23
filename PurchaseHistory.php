@@ -6,7 +6,6 @@
                
 
 <?php
-include_once('mysqli_connect.php');
 $sql = "SELECT 
 product.product_name,
 product.product_cover_picture,
