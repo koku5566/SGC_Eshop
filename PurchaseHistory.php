@@ -3,12 +3,11 @@
 ?>
 <?php
 $sql = "SELECT 
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-product.product_sku
-
+product_name,
+product_cover_picture,
+product_price,
+quantity,
+product_sku
 FROM product";
 $result = $conn->query($sql);
 
