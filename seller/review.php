@@ -154,6 +154,7 @@ $(document).ready(function(){
    {
 	   //alert('success noob')
     $('#result').html(data);
+	$('#result2').html(data);
    }
   });
  }
