@@ -157,7 +157,57 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result"></div>
+					<div id="result">
+					<?php
+						$output = '';
+					
+						$query ="SELECT cu_id, name, email, campus, subject, message, status, disable_date
+							   FROM contactUs
+							   WHERE disable_date IS NULL
+							   ORDER BY cu_id;";
+						$result = mysqli_query($conn, $query);
+						if(mysqli_num_rows($result) > 0)
+						{
+						 $output .= '
+						  <div class="table-responsive">
+						   <table class="table table bordered">
+							<tr>
+							 <th> cu_id</th>
+							 <th>name</th>
+							 <th>email</th>
+							 <th>campus</th>
+							 <th>subject</th>
+							 <th>message</th>
+							 <th>status</th>
+							 <th>btn</th>
+							</tr>
+						 ';
+						 while($row = mysqli_fetch_array($result))
+						 {
+						  $output .= '
+						   <tr>
+							<td>'.$row["cu_id"].'</td>
+							<td>'.$row["name"].'</td>
+							<td>'.$row["email"].'</td>
+							<td>'.$row["campus"].'</td>
+							<td>'.$row["subject"].'</td>
+							<td>'.$row["message"].'</td>
+							<td>'.$row["status"].'</td>
+							<td><form action ="" method = "POST" class = "baka">
+								<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
+								<input type="submit" name ="t1faker" value = "faker" class="btn btn-primary"></form></td>
+						   </tr>
+						  ';
+						  
+						 }
+						 echo $output;
+						}
+					
+					
+					?>
+					
+					
+					</div>
 			  </div>
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
