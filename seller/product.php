@@ -73,17 +73,17 @@
         
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
-        $sql_insert  = `INSERT INTO product (`;
-        $sql_insert .= `product_sku, product_name, product_description, product_brand, `;
-        $sql_insert .= `product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, `;
-        $sql_insert .= `product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, `;
-        $sql_insert .= `product_weight, product_length, product_width, product_height, `;
-        $sql_insert .= `product_virtual, product_self_collect, product_standard_delivery, `;
-        $sql_insert .= `product_variation, product_price, product_stock, product_sold, product_status, `
-        $sql_insert .= `category_id, shop_id`
-        $sql_insert .= `) `;
-        $sql_insert .= `VALUES('$productSKU','$productName','$productDescription','$productBrand', `;
-        $sql_insert .= `'$productVideo', `;
+        $sql_insert  = "INSERT INTO product (";
+        $sql_insert .= "product_sku, product_name, product_description, product_brand, ";
+        $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
+        $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
+        $sql_insert .= "product_weight, product_length, product_width, product_height, ";
+        $sql_insert .= "product_virtual, product_self_collect, product_standard_delivery, ";
+        $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, "
+        $sql_insert .= "category_id, shop_id"
+        $sql_insert .= ") ";
+        $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
+        $sql_insert .= "'$productVideo', ";
 
 
         $fileNames = array_filter($_FILES['files']['name']); 
@@ -100,7 +100,7 @@
                     // Upload file to server 
                     if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
                         // Image db insert sql 
-                        $sql_insert .= `'$fileName', `;
+                        $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
                 }
@@ -110,15 +110,15 @@
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $insertValuesSQL .= `'', `;
+            $insertValuesSQL .= "'', ";
             $imgInpCounter++;
         }
 
-        $sql_insert .= `'$productWeight','$productLength','$productWidth','$productHeight', `;
-        $sql_insert .= `'$productType','$productSelfCollect','$productStandardDelivery', `;
-        $sql_insert .= `'$variationType', '$productPrice', '$productStock', '0', 'I', `;
-        $sql_insert .= `'0', '0'`;
-        $sql_insert .= `) `;
+        $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
+        $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
+        $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
+        $sql_insert .= "'0', '0'";
+        $sql_insert .= ") ";
 
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
