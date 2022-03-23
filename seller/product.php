@@ -372,7 +372,7 @@
 
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Main Category</p>
+                                <p class="p-title">Product Type</p>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
@@ -683,13 +683,15 @@
 
     function ToggleShippingDiv(value){
         var ShippingDiv = document.getElementById('ShippingDiv');
+        var ShippingDivInp = ShippingDiv.getElementsByTagName('input');
         if(value == 1)
         {
             if(ShippingDiv.classList.contains("hide"))
             {
-                ShippingDiv.getElementsByTagName('input').forEach(item => {
-                    item.required = true;
-                });
+                for(var i = 0; i < ShippingDivInp.length; i++)
+                {
+                    ShippingDivInp[i].required = true;
+                }
                 ShippingDiv.classList.remove("hide");
             }
         }
@@ -697,9 +699,10 @@
         {
             if(!ShippingDiv.classList.contains("hide"))
             {
-                ShippingDiv.getElementsByTagName('input').forEach(item => {
-                    item.required = false;
-                });
+                for(var i = 0; i < ShippingDivInp.length; i++)
+                {
+                    ShippingDivInp[i].required = false;
+                }
                 ShippingDiv.classList.add("hide");
             }
         }
