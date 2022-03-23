@@ -43,7 +43,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		  </div>
 		 </body>
 		 
-		 
+		 <select class="form-control" id = "selectStar">
+			  <option value = "All">All*</option>
+			  <option value = "5">5</option>
+			  <option value = "4">4</option>
+			  <option value = "3">3</option>
+			  <option value = "2">2</option>
+			  <option value = "1">1</option>
+			</select>
 		 <!--Result-->
 		 
 		 <!--REVIEW/RATING SECTION-->
@@ -142,12 +149,13 @@ $(document).ready(function(){
 	
 	load_data();
 
- function load_data(query)
+ function load_data(query, restriction)
  {
   $.ajax({
    url:"reviewSearch.php",
    method:"POST",
-   data:{query:query},
+   data:{query:query,
+		restriction:restriction},
    success:function(data)
    {
 	   //alert('success noob')
@@ -159,16 +167,27 @@ $(document).ready(function(){
 
  $('#search_text').keyup(function(){
   var search = $(this).val();
+  var restriction = $('#selectStar').val();
   if(search != '')
   {
-   load_data(search);
-	//alert('pp1');
+	 //alert('pp1');
+	 if(restriction == "All"){
+		 load_data(search,"");
+	 }else{
+		 load_data(search,restriction);
+		 alert(restriction);
+	 }
+	
+	
   }
   else
   {
    load_data();
   }
  });
+ 
+ 
+ 
  /*
  $('#selectMe').change(function(){
   var drop = $(this).val();
