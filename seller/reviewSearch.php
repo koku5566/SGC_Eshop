@@ -44,7 +44,7 @@ if(isset($_POST["query"]))
   WHERE disable_date IS NULL; ";
   
 }
-/*
+
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
@@ -52,7 +52,7 @@ else
 		   WHERE disable_date IS NULL
 		   ORDER BY cu_id;";
 }
-*/
+
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
 {
@@ -90,12 +90,11 @@ if(mysqli_num_rows($result) > 0)
  }
  echo $output;
 }
-/*
 else
 {
  echo 'Data Not Found';
 }
-*/
+
 //SEARCH FUNCTION NUMBAR ONE - Version 2 -------------------------------------------------------------------------------------------------
  /*
  $output = '';
@@ -177,10 +176,10 @@ else
 
 //SEARCH FUNCTION NUMBAR TWO --------------------------------------------------------------------------------------------------
 
-
+/*
 if(isset($_POST["dropData"])){
 	echo "SMOLPPBOI";
 }
-
+*/
 
 ?>

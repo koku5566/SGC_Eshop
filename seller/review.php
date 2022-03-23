@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			
 			
 			<?php
-				echo ""
+				
 			
 			
 			?>
@@ -64,30 +64,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-S">SEGI College Sarawak</option>
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
-			</select>
-			
-			
-			<div id = "smolpp"></div>
-			<?php
-				/*
-				echo "<script>var firstValue = document.getElementById('selectMe').value;
-					  var selectFirst;
-					  if(firstValue === 'All'){
-						 selectFirst = 'No';
-					 }
-					 else{
-						 selectFirst = firstValue;
-					}</script>";
-			  
-			  $ppsmol = echo "<script>selectFirst</script>";
-			  
-			  echo $ppsmol;*/
-				 
-			  
-			  /*
+			  <?php
+
+			  /**/
 					$sql ="SELECT cu_id,campus 
 						   FROM contactUs 								   
-						   WHERE disable_date IS NULL AND status = $selectFirst";
+						   WHERE disable_date IS NULL";
 					if($stmt = mysqli_prepare ($conn, $sql)){
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_bind_result($stmt, $c1,$c2);
@@ -97,9 +79,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 						}
 						mysqli_stmt_close($stmt);
 					}
-			  */
+			  
 			  
 			  ?>
+			  
+			  
+			</select>
+			
+			
+			<div id = "smolpp"></div>
+			
 			<?php
 									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
 									
@@ -157,53 +146,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
-					<div id="result">
-					
-					<div class="table-responsive">
-						   <table class="table table bordered">
-							<tr>
-							 <th>cu_id</th>
-							 <th>name</th>
-							 <th>email</th>
-							 <th>campus</th>
-							 <th>subject</th>
-							 <th>message</th>
-							 <th>status</th>
-							 <th>btn</th>
-							</tr>
-					<?php
-						$output = '';
-					
-						$sql ="SELECT cu_id, name, email, campus, subject, message, status, disable_date
-							   FROM contactUs
-							   WHERE disable_date IS NULL
-							   ORDER BY cu_id;";
-							   
-						if($stmt = mysqli_prepare ($conn, $sql)){
-						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt, $c1,$c2);
-						
-						while(mysqli_stmt_fetch($stmt)){
-							echo '	<tr>
-									<td>'.$row["cu_id"].'</td>
-									<td>'.$row["name"].'</td>
-									<td>'.$row["email"].'</td>
-									<td>'.$row["campus"].'</td>
-									<td>'.$row["subject"].'</td>
-									<td>'.$row["message"].'</td>
-									<td>'.$row["status"].'</td>
-									<td><form action ="" method = "POST" class = "baka">
-										<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
-										<input type="submit" name ="t1faker" value = "faker" class="btn btn-primary"></form></td>
-								   </tr>';
-						}
-						mysqli_stmt_close($stmt);
-					}
-					
-					?>
+					<div id="result"></div>
 					
 					
-					</div>
+					
+					
+					
 			  </div>
 			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
