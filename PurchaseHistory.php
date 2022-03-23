@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $sql);
       <!--this is the show part-->
       <div class="row">
         <div class="col" style="width: 500px;">
-          <img src="img/segi kl.png" style="width:100px; margin-left:10px; object-fit:contain"  >
+          <img src="img/segi kl.png" style="width:300px; margin-left:10px; object-fit:contain"  >
         </div>
         <div class="col">
           <p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/>
