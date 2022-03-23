@@ -97,21 +97,24 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
+
+                    /*
                     $coverIMG = $_FILES['img']['tmp_name'][$key];
                     $coverImgContent = addslashes(file_get_contents($coverIMG));
 
                      // Image db insert sql 
                      $sql_insert .= "'$coverImgContent', ";
                      $imgInpCounter++;
-                    /*
-                    echo(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath));
+                     */
+
+                    move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath);
+                    
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        echo("it works");
                         // Image db insert sql 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
-                    */
+                    
                 }
             } 
         }
