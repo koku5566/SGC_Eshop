@@ -9,12 +9,40 @@
             $publish = 0;
         }
 
-
         // File upload configuration 
         $targetDir = "img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
          
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
+
+        //Basic Details
+        $productName = $_POST['productName'];
+        $mainCategoryId = $_POST['mainCategoryId'];
+        $subCategoryId = $_POST['subCategoryId'];
+        $productDescription = $_POST['productDescription'];
+        $productBrand = $_POST['productBrand'];
+        $productType = $_POST['productType'];
+        $productSKU = $_POST['productSKU'];
+
+        //Sales Details
+        //No Variation
+        $productPrice = $_POST['productPrice'];
+        $productStock = $_POST['productStock'];
+        //Got Variation
+        $variationName = $_POST['variation[name][]'];
+        $variationChoices = $_POST['variation[name][choices][]'];
+        
+        $productName = $_POST['variationPrice[]'];
+        $productName = $_POST['variationStock[]'];
+        $productName = $_POST['variationSKU[]'];
+
+
+        //Shipping
+        $productWeight = $_POST['productWeight'];
+        $productLength = $_POST['productLength'];
+        $productWidth = $_POST['productWidth'];
+        $productHeight = $_POST['productHeight'];
+
 
         $sql_insert = "INSERT INTO `product`(`product_sku`, `product_name`, `product_description`, 
         `product_brand`, `product_cover_video`, `product_cover_picture`, `product_pic_1`, `product_pic_2`, `product_pic_3`, 
@@ -68,6 +96,8 @@
         }
     } 
 
+
+
     $subCategoryArray = array();
 
     //Main Category
@@ -104,7 +134,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
         </div>
     
         <!-- Basic Infomation -->
@@ -377,8 +407,8 @@
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
-                                        <option value="1">Normal Product with Shipment</option>
-                                        <option value="2">Virtual Product without Shipment</option>
+                                        <option value="0">Normal Product with Shipment</option>
+                                        <option value="1">Virtual Product without Shipment</option>
                                     </select>
                                 </div>
                             </div>
@@ -684,7 +714,7 @@
     function ToggleShippingDiv(value){
         var ShippingDiv = document.getElementById('ShippingDiv');
         var ShippingDivInp = ShippingDiv.getElementsByTagName('input');
-        if(value == 1)
+        if(value == 0)
         {
             if(ShippingDiv.classList.contains("hide"))
             {
@@ -695,7 +725,7 @@
                 ShippingDiv.classList.remove("hide");
             }
         }
-        else if(value == 2)
+        else if(value == 1)
         {
             if(!ShippingDiv.classList.contains("hide"))
             {
