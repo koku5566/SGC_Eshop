@@ -32,19 +32,25 @@
     </div>
     <br/>
     <div class="row" style="font-size:20px; ">
-      <div class="col">
-      <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
+    <?php
+          while ($row = $result->fetch_assoc()) {
+      ?>
+      
+      <div class="col" style="width:150px; height:150px;object-fit:contain"><?php echo $row['product_cover_picture']?></div>
+      <div class="col"  style="margin-top:10px;"><?php echo $row['product_name']?></div>
+      <div class="col"  style="margin-top:10px;"><?php echo $row['product_qty']?></div>
+      <div class="col" style="margin-top:10px;"><?php echo $row['product_sku']?>
       </div>
-      <div class="col" style="margin-top:10px">3-in-1 Power Bank with Phone Stand Model: WI-SP510
+      
+      <div class="col" style="margin-top:10px"><?php echo $row['product_variation']?>
       </div>
-      <div class="col" style="margin-top:10px;">Navy Blue
+      <div class="col" style="margin-top:10px">RM<?php echo $row['product_price']?>
       </div>
-      <div class="col" style="margin-top:10px">x1
-      </div>
-      <div class="col" style="margin-top:10px">RM349.00
-      </div>
-      <div class="col" style="margin-top:10px">RM349.00
-      </div>
+    </div>
+    
+                                    
+    <?php
+    }?>
     </div>
     <div class="row" style="font-size:20px; ">
       <div class="col">
