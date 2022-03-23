@@ -1148,6 +1148,13 @@
         const btnAddVariations = document.querySelectorAll('.btnAddVariation');
         const divVariations = document.querySelectorAll('.variation');
 
+        var variationName = document.querySelectorAll('.variationName');
+        for(var i = 0; i < variationName.length; i++)
+        {
+            variationName[i].removeEventListener('change',RefreshPriceTable);
+            variationName[i].addEventListener('change',RefreshPriceTable);
+        }
+
         btnAddVariations.forEach(item => {
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
@@ -1169,13 +1176,6 @@
             main.classList.add("hide");
             document.getElementById('txtVariationType').value = "1";
             sub.insertAdjacentHTML( 'beforeend', VariationHTML );
-
-            var variationName = document.querySelectorAll('.variationName');
-            for(var i = 0; i < variationName.length; i++)
-            {
-                variationName[i].removeEventListener('change',RefreshPriceTable);
-                variationName[i].addEventListener('change',RefreshPriceTable);
-            }
 
             mainPricingInput = main.getElementsByTagName('input');
             for(var i = 0; i < mainPricingInput.length; i++)
@@ -1279,6 +1279,13 @@
     {
         const btnAddChoices = document.querySelectorAll('.btnAddChoice');
 
+        var variationChoice = document.querySelectorAll('.variationChoice');
+        for(var i = 0; i < variationChoice.length; i++)
+        {
+            variationChoice[i].removeEventListener('change',RefreshPriceTable);
+            variationChoice[i].addEventListener('change',RefreshPriceTable);
+        }
+
         btnAddChoices.forEach(item => {
             item.removeEventListener('click', addChoiceHandleClick);
             item.addEventListener('click',addChoiceHandleClick);
@@ -1297,14 +1304,7 @@
         event.target.parentElement.previousElementSibling.insertAdjacentHTML( 'beforeend', str );
 
         RefreshPriceTable();
-
-        var variationChoice = document.querySelectorAll('.variationChoice');
-        for(var i = 0; i < variationChoice.length; i++)
-        {
-            variationChoice[i].removeEventListener('change',RefreshPriceTable);
-            variationChoice[i].addEventListener('change',RefreshPriceTable);
-        }
-
+        
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
         btnDeleteChoices.forEach(item => {
             item.removeEventListener('click', deleteChoiceHandleClick);
