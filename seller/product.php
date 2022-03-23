@@ -104,7 +104,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" class="btn btn-outline-primary" style="width:20%"><i class="fas fa-plus fa-sm"></i>Add New Product</button>
+            <button type="submit" class="btn btn-outline-primary"></i>Add New Product</button>
         </div>
     
         <!-- Basic Infomation -->
