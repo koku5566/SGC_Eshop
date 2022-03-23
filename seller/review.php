@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 					<div class="col">
 						<!--Seller-->
 						 <select class="form-control" id = "selectSeller">
-							  <option value = "All">All*</option>
+							  <option value = "All">Seller Name*</option>
 							  <option value = "5">Mak</option>
 							  <option value = "4">Kao</option>
 							  <option value = "3">Hijau</option>
@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 				</div>
 			</div>
 			
-		
+			<br />
 		
 		  <div class="container">
 		   <div class="form-group">
@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		  
 		  
 		 </body>
-		 
+		 <br />
 		  
 		  
 		 
@@ -88,6 +88,47 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		
 		
 		<div id="result"></div>
+		
+		
+		<!--
+		 <form action ="" method = "POST">
+		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
+			  <option value = "All">Default select</option>
+			  <option value = "1">ONE</option>
+			  <option value = "0">ZERO</option>			 
+			</select>
+			
+		
+	
+			<select class="form-control" id = "selectMe2">
+			  <option value = "All">Campus*</option>
+			  <option value = "C-SJ">SEGI College Subang Jaya</option>
+			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
+			  <option value = "C-P">SEGI College Penang</option>
+			  <option value = "C-S">SEGI College Sarawak</option>
+			  <option value = "C-KD">SEGI College Kota Damansara</option>
+			  <option value = "U-KD">SEGI University Kota Damansara</option>   
+			</select>
+			
+
+			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
+			</form>
+		
+		
+		-->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		 
 		 <!--REVIEW/RATING SECTION-->
 		<div style "margin-top: 15px;">
