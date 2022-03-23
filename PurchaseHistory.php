@@ -1,17 +1,7 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
-<?php
-$sql = "SELECT 
-product_name,
-product_cover_picture,
-product_price,
-quantity,
-product_sku
-FROM product";
-$result = $conn->query($sql);
 
-?>
 
                
 
