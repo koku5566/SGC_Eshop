@@ -6,10 +6,14 @@ $output = '';
 
 
 
-if(isset($_POST["restriction"])){
+if(isset($_POST["restriction"]) && !empty($_POST["restriction"])){
 	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
 	
-	echo $restriction;
+	$rr = " && status = $restriction ";
+	
+	
+}else{
+	$rr = "";
 }
 
 
@@ -33,16 +37,18 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL; ";
-  
+  WHERE disable_date IS NULL $rr";
+  echo "RR value = $rr";
 }
 
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
 		   FROM contactUs
-		   WHERE disable_date IS NULL
+		   WHERE disable_date IS NULL $rr
 		   ORDER BY cu_id;";
+		   
+	echo "RR value = $rr";
 }
 
 $result = mysqli_query($conn, $query);
