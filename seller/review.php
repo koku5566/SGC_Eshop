@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			
 			<div id = "smolpp"></div>
 			<?php
-				/**/
+				/*
 				echo "<script>var firstValue = document.getElementById('selectMe').value;
 					  var selectFirst;
 					  if(firstValue === 'All'){
@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  
 			  $ppsmol = echo "<script>selectFirst</script>";
 			  
-			  echo $ppsmol;
+			  echo $ppsmol;*/
 				 
 			  
 			  /*
