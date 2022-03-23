@@ -184,7 +184,19 @@ $(document).ready(function(){
   }
  });
  
+ $('#selectStar').change(function(){
+  var restriction = $(this).val();
+  
+  if(restriction != 'All')
+  {
+   load_data("", restriction);
  
+  }
+  else
+  {
+   load_data();
+  }
+ });
  
  /*
  $('#selectMe').change(function(){
