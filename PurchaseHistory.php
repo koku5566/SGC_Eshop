@@ -48,8 +48,7 @@ $result = mysqli_query($sql);
        
       <div class="row" style="font-size:20px; ">
         <?php
-        echo("11");
-            while ($row = $result->fetch_assoc()) {
+            //while ($row = $result->fetch_assoc()) {
         ?>
         
         <div class="col" style="width:150px; height:150px;object-fit:contain"><?php echo $row['product_cover_picture']?></div>
@@ -64,7 +63,7 @@ $result = mysqli_query($sql);
         </div>
 
         <?php
-            }
+            //}
         ?>
       </div>
       <div style="width: 1509px;height: 89px;margin-left: 0px;
