@@ -86,7 +86,7 @@
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
         // File upload configuration 
-        $targetDir = "img/product/"; 
+        $targetDir = "/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
@@ -94,7 +94,6 @@
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
-                echo($targetFilePath);
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
