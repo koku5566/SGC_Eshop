@@ -38,19 +38,22 @@ $result = mysqli_query($conn, $sql);
         <div class="card-body">
             <div class="container">
                 <div class="row">
+                 <?php
+                   while ($row = mysqli_fetch_assoc($result)) {
+                 ?>
                     <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain"><img /><?php echo $row['product_cover_picture']?></div>
                     <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                     <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['product_qty']?></div>
                     <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_variation']?></div>
                     <div class="col">RM<?php echo $row['product_price']?></div>
+                    <?php
+                      }
+                     ?>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
-              <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-              ?>
                 <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
                   <a href="viewPurchasingOrders.php"></a>Order Status</button></div>
                 <div class="col-md-3 col-lg-2 offset-lg-1"><button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button></div>
@@ -60,9 +63,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="col-md-3 offset-lg-1">
                     <p>Paragraph</p>
                 </div>
-              <?php
-                }
-              ?>
+             
             </div>
         </div>
     </div> 
