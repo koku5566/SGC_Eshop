@@ -52,7 +52,7 @@
     <?php
     }?>
     </div>
-    <div class="row" style="font-size:20px; ">
+      <div class="row" style="font-size:20px; ">
       <div class="col">
       <img src="img/product/iphone-grey.png" style="width:150px; height:150px;object-fit:contain">
       </div>
@@ -70,7 +70,7 @@
     <br/>
     <br/>
     <div style="width: 1509px;height: 89px;margin-left: 0px;
-            border: 2px solid black;">
+            border: 1.5px solid black;">
       <div class="row">
       <div class="col" style="margin-top:20px">
         <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
