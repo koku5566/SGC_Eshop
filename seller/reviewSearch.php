@@ -6,7 +6,7 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 $output = '';
 
 
-/**/
+/*
 if($_POST["dropdown"] != ""){
 	$drop = mysqli_real_escape_string($conn, $_POST["dropdown"]);
 	echo $drop;
@@ -19,9 +19,9 @@ if($_POST["dropdown"] != ""){
 		  status LIKE '%".$drop."%')u
 		  WHERE disable_date IS NULL; ";
 	echo "babi";
-}
+}*/
 
-else if(isset($_POST["query"]))
+if(isset($_POST["query"]))
 {
 	echo "babi2";
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
