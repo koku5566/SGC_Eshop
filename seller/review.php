@@ -165,9 +165,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 							   FROM contactUs
 							   WHERE disable_date IS NULL
 							   ORDER BY cu_id;";
+							   
 						$result = mysqli_query($conn, $query);
 						if(mysqli_num_rows($result) > 0)
 						{
+							echo "<script>NANI DA FCK</script>";
 						 $output .= '
 						  <div class="table-responsive">
 						   <table class="table table bordered">
