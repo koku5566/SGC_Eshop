@@ -30,12 +30,11 @@
         $productPrice = $_POST['productPrice'];
         $productStock = $_POST['productStock'];
         //Got Variation
-        $variationName = $_POST['variation[name][]'];
-        $variationChoices = $_POST['variation[name][choices][]'];
-        
-        $productName = $_POST['variationPrice[]'];
-        $productName = $_POST['variationStock[]'];
-        $productName = $_POST['variationSKU[]'];
+        $variation1NameCol = $_POST['variation1NameCol[]'];
+        $variation2NameCol = $_POST['variation2NameCol[]'];
+        $variationPrice = $_POST['variationPrice[]'];
+        $variationStock = $_POST['variationStock[]'];
+        $variationSKU = $_POST['variationSKU[]'];
 
 
         //Shipping
@@ -957,7 +956,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control variationName" name="variation[name][]">
+                                <input type="text" class="form-control variationName">
                             </div>
                         </div>
                     </div>
@@ -969,7 +968,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control variationChoice" name="variation[name][choices][]">
+                                    <input type="text" class="form-control variationChoice">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -999,8 +998,8 @@
             variationInpList1 = variationList[0].getElementsByTagName('input');
             variationInpList2 = variationList[1].getElementsByTagName('input');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;">` + variationInpList1[0].value + `</th>`;
-            PriceTableHTML += `<th scope="col">` + variationInpList2[0].value + `</th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input value="` + variationInpList1[0].value + `" "text" class="form-control" name="variation1Name" disabled></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input value="` + variationInpList2[0].value + `" "text" class="form-control" name="variation2Name" disabled></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1015,8 +1014,8 @@
                 for(var j = 1; j < variationInpList2.length; j++)
                 {
                     PriceTableHTML += `<tr>`;
-                    PriceTableHTML += `<td scope="row">` + variationInpList1[i].value + `</td>`;
-                    PriceTableHTML += `<td scope="row">` + variationInpList2[j].value + `</td>`;
+                    PriceTableHTML += `<td scope="row"><input value="` + variationInpList1[i].value + `" class="form-control" name="variation1NameCol[]" disabled></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="` + variationInpList2[j].value + `" class="form-control" name="variation2NameCol[]" disabled></td>`;
                     PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
                     PriceTableHTML += `<td scope="row"><input  type="number" oninput="this.value = OnlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
                     PriceTableHTML += `<td scope="row"><input  type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
@@ -1287,7 +1286,7 @@
     function addChoiceHandleClick(event) {
         var str =  `
         <div class="input-group mb-3">
-            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice" name="variationName[][name][choices][]">
+            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice">
             <div class="input-group-append btnDeleteChoices">
                 <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
