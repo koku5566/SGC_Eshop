@@ -42,16 +42,32 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			</div>
 		   </div>
 		   <br />
-		   <select class="form-control" id = "selectMe">
-			  <option value = "">Default select</option>
+		   <form action ="" method = "POST">
+		   <select class="form-control" id = "selectMe" >
+			  <option value = "All">Default select</option>
 			  <option value = "1">ONE</option>
 			  <option value = "0">ZERO</option>
 			 
 			</select>
+			<!---->
+			<select class="form-control" id = "selectMe2">
+			  <option value = "All">Campus*</option>
+			  <option value = "C-SJ">SEGI College Subang Jaya</option>
+			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
+			  <option value = "C-P">SEGI College Penang</option>
+			  <option value = "C-S">SEGI College Sarawak</option>
+			  <option value = "C-KD">SEGI College Kota Damansara</option>
+			  <option value = "U-KD">SEGI University Kota Damansara</option>  
+			 
+			</select>
+			
+			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
+			</form>
 		  </div>
 		 </body>
 		 
 		 
+		 <!--Result-->
 		 
 		 <!--REVIEW/RATING SECTION-->
 		<div style "margin-top: 15px;">
@@ -76,28 +92,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-			  <!--SECTION ALL-->
+			  
 			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
 					<h1>ALL</h1>
 					<div id="result"></div>
 			  </div>
-			  <!--SECTION FIVE-->
+			 
 			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
 					<h1>FIVE</h1>
+					<div id="result2"></div>
 			  </div>
-			  <!--SECTION FOUR-->
+			 
 			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
 					<h1>FOUR</h1>
 			  </div>
-			  <!--SECTION THREE-->
+			  
 			  <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab" style ="max-height 2000px;">
 					<h1>THREE</h1>
 			  </div>
-			  <!--SECTION TWO-->
+			
 			  <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab" style ="max-height 2000px;">
 					<h1>TWO</h1>
 			  </div>
-			  <!--SECTION ONE-->
+			
 			  <div class="tab-pane fade" id="one" role="tabpanel" aria-labelledby="one-tab" style ="max-height 2000px;">
 					<h1>ONE</h1>
 			  </div>
@@ -138,7 +155,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <script>
 $(document).ready(function(){
 
- load_data();
+	var check1 = false;
+	var check2 = false;
+	
+	load_data();
 
  function load_data(query, dropdown)
  {
@@ -154,30 +174,98 @@ $(document).ready(function(){
    }
   });
  }
+
  $('#search_text').keyup(function(){
   var search = $(this).val();
   if(search != '')
   {
    load_data(search, "");
+	//alert('pp1');
   }
   else
   {
    load_data();
   }
  });
+ /*
  $('#selectMe').change(function(){
   var drop = $(this).val();
   //$('#Crd option:selected').text();
   if(drop != '')
   {
    load_data("", drop);
-   
+ //alert('pp2');
   }
   else
   {
    load_data();
   }
  });
+
+*/
+//----------------------------------------------------------------------------------------------------
+
+$('#sss').click(function(){
+	var drop1  = $('#selectMe').val();
+	var drop2  = $('#selectMe2').val();
+	
+	
+	
+	if(drop1 == 'All' && drop2 == 'All')
+	{
+		alert('Both All');
+	}
+	else if (drop1 != 'All' && drop2 == 'All'){
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('got no');
+	}
+	else if(drop1 == 'All' && drop2 != 'All'){
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('no got');
+	}
+	else if(drop1 != 'All' && drop2 != 'All'){
+		//alert('Drop1-' + drop1 + ' Drop2-' + drop2);
+		alert('got got');
+	}
+	
+	
+	
+})
+
+
+
+
+ 
+/*
+$('#search_text, #selectMe').on('keyup change', function(){
+	var search = $(this).val();
+	var drop = $(this).val();
+	if(drop != '' && search != ''){
+		load_data(search, drop);
+		alert(search);
+		alert(drop);
+	}else{
+		 load_data();
+		 alert('no hab');
+	}
+	
+})
+*/
+ /*
+ if(check1){
+	 load_data(search, "");
+	 alert('check1');
+ }
+ else if (check2){
+	 load_data("", drop);
+	  alert('check2');
+ }
+ else if (check1 && check2){
+	 load_data(search, drop);
+	  alert('check1&2');
+ }
+ */
+ 
  
  
  
@@ -185,6 +273,9 @@ $(document).ready(function(){
  
  
 });
+
+
+
 </script>
 <?php
     require __DIR__ . '/footer.php'
