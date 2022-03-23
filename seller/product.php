@@ -10,9 +10,7 @@
             $publish = 0;
         }
 
-        // File upload configuration 
-        $targetDir = "img/product/"; 
-        $allowTypes = array('jpg','png','jpeg'); 
+        
          
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
@@ -87,20 +85,22 @@
 
         $fileNames = array_filter($_FILES['img']['name']); 
         $imgInpCounter = 0;
+        // File upload configuration 
+        $targetDir = "img/product/"; 
+        $allowTypes = array('jpg','png','jpeg'); 
+
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
-                echo("Enter Foreach Loop");
-                echo($key);
-                echo($val);
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
                 $targetFilePath = $targetDir.$fileName; 
-                 
+                echo($targetFilePath);
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        echo("it works");
                         // Image db insert sql 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
