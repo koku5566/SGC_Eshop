@@ -64,6 +64,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  <option value = "C-S">SEGI College Sarawak</option>
 			  <option value = "C-KD">SEGI College Kota Damansara</option>
 			  <option value = "U-KD">SEGI University Kota Damansara</option>   
+			</select>
+			
+			
+			<div id = "smolpp"></div>
 			<?php
 				/**/
 				echo "<script>var firstValue = document.getElementById('selectMe').value;
@@ -96,10 +100,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 			  */
 			  
 			  ?>
-			  
-			  
-			</select>
-			
 			<?php
 									//TO LET BUTTON ENABLED IF THERE IS CHANGES MADE
 									
@@ -329,9 +329,33 @@ $('#search_text, #selectMe').on('keyup change', function(){
 	  alert('check1&2');
  }
  */
+ function load_drop2(dropData)
+ {
+  $.ajax({
+   url:"reviewSearch.php",
+   method:"POST",
+   data:{dropData:dropData},
+   success:function(data)
+   {
+	   //alert('success noob')
+    $('#smolpp').html(data);
+   }
+  });
+ }
  
- 
- 
+ $('#selectMe').change(function(){
+  var drop = $(this).val();
+  //$('#Crd option:selected').text();
+  if(drop != 'All')
+  {
+   
+ //alert('pp2');
+  }
+  else
+  {
+	load_drop2(drop);
+  }
+ });
  
  
  

@@ -5,6 +5,8 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 /**/
 $output = '';
 
+$outputDrop = '';
+
 
 /*
 if($_POST["dropdown"] != ""){
@@ -173,6 +175,10 @@ else
 
 //SEARCH FUNCTION NUMBAR TWO --------------------------------------------------------------------------------------------------
 
+
+if(isset($_POST["dropData"])){
+	echo "SMOLPPBOI";
+}
 
 
 ?>
