@@ -67,35 +67,33 @@ $result = mysqli_query($sql);
     <div style="width: 1509px;height: 89px;margin-left: 0px;
             border: 2px solid black;">
       <div class="row">
-      <div class="col" style="margin-top:20px">
-        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
-        <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
+        <div class="col" style="margin-top:20px">
+          <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:20px;" ><a href="purchaseShippingDetails.php">Order Status</a></button>
+          <button class="btn btn-primary" type="button" style="background: #1A2C42; margin-left:10px">Order Again</button>
         </div>
         <br />
         <br />
         <br />                            
-    <?php
-    }?>
-    
-    <br/>
-    <br/>
-    
-    </div>            
+        <br/>
+        <br/>
+        
+      </div>            
+    </div>
+
   </div>
-  
-</div>
              
 </div>
   
-  <script>
-   var dt = new Date();
-  document.getElementById("datetime").innerHTML = dt.toLocaleString();
-  </script> 
+
   
   
 </div>
   
    <!-- /.container-fluid -->
+   <script>
+   var dt = new Date();
+  document.getElementById("datetime").innerHTML = dt.toLocaleString();
+  </script> 
 
 <?php
     require __DIR__ . '/footer.php'
