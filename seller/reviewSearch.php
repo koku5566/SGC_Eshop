@@ -35,9 +35,8 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL $rr 
-  ORDER BY cu_id";
-  
+  WHERE disable_date IS NULL $rr";
+  echo "RR value = $rr";
 }
 
 else
@@ -46,6 +45,8 @@ else
 		   FROM contactUs
 		   WHERE disable_date IS NULL $rr
 		   ORDER BY cu_id;";
+		   
+	echo "RR value = $rr";
 }
 
 $result = mysqli_query($conn, $query);
