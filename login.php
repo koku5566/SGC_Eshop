@@ -87,6 +87,11 @@
                                         </div>
                                         
                                         <hr>
+                                        <div class="a" style="display: flex; align-items: center;">
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                        <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                        </div>
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365

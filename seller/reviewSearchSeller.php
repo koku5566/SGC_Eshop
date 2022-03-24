@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
-
+$seller = "S000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = '';
 
@@ -54,9 +54,9 @@ if(isset($_POST["query"]))
 			WHERE rr_id LIKE '%".$search."%'
 			OR product_id LIKE '%".$search."%' 
 			OR message LIKE '%".$search."%')k 
-			WHERE disable_date IS NULL $rr $rr2";
+			WHERE disable_date IS NULL && seller_id = '$seller' $rr $rr2";
   echo "Rating = $rr |";
-   echo "Seller = $rr2 ";
+   echo "Product = $rr2 ";
 }
 
 else
@@ -69,11 +69,11 @@ else
 	*/
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
-		   WHERE disable_date IS NULL $rr $rr2
+		   WHERE disable_date IS NULL && seller_id = '$seller' $rr $rr2
 		   ORDER BY rr_id;";
 		   
 	echo "Rating = $rr |";
-	echo "Seller = $rr2 ";
+	echo "Product = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
@@ -95,7 +95,7 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
-					<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
+					<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle">
 		</div>	
 	</td>	
 	<td>'.$row["rr_id"].'</td>											
@@ -103,8 +103,8 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["message"].'</td>
     <td>'.$row["rating"].'</td>
 	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimage" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="t1faker" value = "Delete" class="btn btn-primary"></form></td>
+		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
+		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-primary"></form></td>
    </tr>
   ';
   
