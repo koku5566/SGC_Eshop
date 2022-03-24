@@ -305,7 +305,7 @@ $('#search_text').keyup(function(){
    load_data();
   }
  });
-
+/*
  //Rating Star
  $('#selectStar').change(function(){
   var restriction = $(this).val();
@@ -336,8 +336,8 @@ $('#search_text').keyup(function(){
   }
  });
  
- 
-  /*
+ */
+  
  $('#selectStar #selectSeller').change(function(){
   var restriction = $('#selectStar').val();
   var restriction2 = $('#selectSeller').val();
@@ -353,7 +353,7 @@ $('#search_text').keyup(function(){
 
  
 });
-*/
+
 
 
 
