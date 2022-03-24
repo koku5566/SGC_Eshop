@@ -68,10 +68,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		
 		  <div class="container">
 		   <div class="form-group">
-			<div class="input-group">
-			 <span class="input-group-text">Search</span>
-			 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+			<div class="input-group-prepend">
+			<span class="input-group-text">Search</span>
 			</div>
+			 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+			
 		   </div>
 		   <br />
 		  </div>
