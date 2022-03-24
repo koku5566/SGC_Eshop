@@ -19,7 +19,7 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["rest
 if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
 	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
 	
-	$rr2 = " && campus = $restriction2 ";
+	$rr2 = " && campus = '$restriction2' ";
 }else{
 	$rr2 = "";
 }
