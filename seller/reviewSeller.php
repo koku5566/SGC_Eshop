@@ -52,12 +52,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 <div class="container-fluid" style="width:100%;">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
-		
 	</div>
-		<body>
-			<!--MODAL-->
-			
-			<div id="myModalReply" class="modal">
+	
+	
+	<!--MODAL-->
+	<div id="myModalReply" class="modal">
 					<!--THE MODAL CONTENT-->
 						<div class="modal-content" style = "height: 400px;">
 						<h4 class = "displayCategoryModal" >Reply Message</h4>
@@ -135,9 +134,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 			<!--END OF MODAL REPLY MESSAGE-->
 
 			<!--END OF MODAL-->
-			
-			
-			
+	
+	
+	
+	
+		<body>
 			<div class="container">
 				<div class="row">
 					<div class="col">
