@@ -305,6 +305,7 @@ $('#search_text').keyup(function(){
    load_data();
   }
  });
+ /*
  //Rating Star
  $('#selectStar').change(function(){
   var restriction = $(this).val();
@@ -334,7 +335,20 @@ $('#search_text').keyup(function(){
   }
  });
  
+ */
  
+ $('#selectStar #selectSeller').change(function(){
+  var restriction = $('#selectStar').val();
+  var restriction2 = $('#selectSeller').val();
+  
+  if(restriction == 'All' && restriction2 == 'All')
+  {
+   load_data();
+   
+  }else{
+	load_data("", restriction, restriction2);
+  
+  }
 
  
 });
