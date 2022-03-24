@@ -22,7 +22,7 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
 	
 	echo $_POST['uimage'];
 	
