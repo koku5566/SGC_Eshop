@@ -283,7 +283,7 @@ $(document).ready(function(){
   if(restriction2 != 'All')
   {
    load_data("", "",restriction2);
- 
+	alert(restriction2);
   }
   else
   {
@@ -291,85 +291,7 @@ $(document).ready(function(){
   }
  });
  
- /*
- $('#selectMe').change(function(){
-  var drop = $(this).val();
-  //$('#Crd option:selected').text();
-  if(drop != '')
-  {
-   load_data("", drop);
- //alert('pp2');
-  }
-  else
-  {
-   load_data();
-  }
- });
 
-*/
-//----------------------------------------------------------------------------------------------------
-/*
-$('#sss').click(function(){
-	var drop1  = $('#selectMe').val();
-	var drop2  = $('#selectMe2').val();
-	
-	
-	
-	if(drop1 == 'All' && drop2 == 'All')
-	{
-		//alert('Both All');
-		load_data();
-	}
-	else if (drop1 != 'All' && drop2 == 'All'){	
-		//alert('got no');
-		load_data("", drop1, "");
-	}
-	else if(drop1 == 'All' && drop2 != 'All'){		
-		//alert('no got');
-		load_data("", "", drop2);
-	}
-	else if(drop1 != 'All' && drop2 != 'All'){		
-		//alert('got got');
-		load_data("", drop1, drop2);
-	}
-	
-	
-	
-})
-*/
-
-
-
- 
-/*
-$('#search_text, #selectMe').on('keyup change', function(){
-	var search = $(this).val();
-	var drop = $(this).val();
-	if(drop != '' && search != ''){
-		load_data(search, drop);
-		alert(search);
-		alert(drop);
-	}else{
-		 load_data();
-		 alert('no hab');
-	}
-	
-})
-*/
- /*
- if(check1){
-	 load_data(search, "");
-	 alert('check1');
- }
- else if (check2){
-	 load_data("", drop);
-	  alert('check2');
- }
- else if (check1 && check2){
-	 load_data(search, drop);
-	  alert('check1&2');
- }
- */
  
  
 
