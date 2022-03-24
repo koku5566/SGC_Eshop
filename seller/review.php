@@ -22,12 +22,29 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
+	$selectedPID = $_POST['uimage'];
+	$today = date("Y-m-d");
+	//echo $_POST['uimage'];
 	
-	echo $_POST['uimage'];
+	$sql = "UPDATE reviewRating SET disable_date=? WHERE rr_id=?;";
+                                   
+                if($stmt = mysqli_prepare($conn, $sql)){
+                    mysqli_stmt_bind_param($stmt, 'ss', $today, $selectedPID); 	//s=string , d=decimal value i=ID
+            
+                    mysqli_stmt_execute($stmt);
+                
+                    if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                    {               
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
+                    }else{                        
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
+                    }
+                    mysqli_stmt_close($stmt);
+                }
+	
 	
 }
-
 
 ?>
 
@@ -35,7 +52,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <div class="container-fluid" style="width:100%;">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
-    </div>
+		
+	</div>
 		<body>
 		
 			<div class="container">
@@ -45,12 +63,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
-							  <option value = "C-SJ">SEGI College Subang Jaya</option>
-							  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-							  <option value = "C-P">SEGI College Penang</option>
-							  <option value = "C-S">SEGI College Sarawak</option>
-							  <option value = "C-KD">SEGI College Kota Damansara</option>
-							  <option value = "U-KD">SEGI University Kota Damansara</option>  
+							  <option value = "P000001">Product 1</option>
+							  <option value = "P000002">Product 2</option>
+							  <option value = "P000003">Product 3</option>							  
 						</select>
 					</div>
 					<div class="col">
@@ -93,6 +108,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <style>
 .checked {
   color: orange;
+}
+.jungle{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.bengi{
+	width: 75px;
+	height: 75px;
 }
 </style>
 
