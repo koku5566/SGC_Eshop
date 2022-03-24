@@ -192,6 +192,15 @@ $('#search_text').keyup(function(){
  
 
 });
+
+
+
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
+});
 </script>
 
 
