@@ -341,7 +341,7 @@ $('#search_text').keyup(function(){
 //FOR ADD REPLY
 var modalReply = document.getElementById("myModalReply");
 //var btnAddReply = document.getElementById("CUbtnreply");
-var spanReply = document.getElementsByClassName("closeM")[3];
+var spanReply = document.getElementsByClassName("closeM")[0];
 
 
 spanReply.onclick = function() {
