@@ -1268,7 +1268,7 @@
                 
                 if(variationName[i].parentElement.parentElement.querySelectorAll('.warning-message'))
                 {
-                    var errorMessageList = variationName[i].parentElement.parentElement.document.querySelectorAll('.warning-message');
+                    var errorMessageList = variationName[i].parentElement.parentElement.querySelectorAll('.warning-message');
                     for(var j = 0; j < errorMessageList.length; i++)
                     {
                         errorMessageList[j].remove();
