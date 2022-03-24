@@ -83,7 +83,7 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-	 <th>rr_id</th>
+	 <th colspan="2">rr_id</th>
      <th></th>
      <th>product_id</th>
      <th>message</th>
@@ -94,7 +94,7 @@ if(mysqli_num_rows($result) > 0)
  while($row = mysqli_fetch_array($result))
  {
   $output .= '
-   <tr>
+   <tr colspan="2">
     <td><div class = "bengi">
 					<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
 		</div>	
