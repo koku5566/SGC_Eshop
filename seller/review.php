@@ -305,14 +305,14 @@ $('#search_text').keyup(function(){
    load_data();
   }
  });
- /*
+
  //Rating Star
  $('#selectStar').change(function(){
   var restriction = $(this).val();
-  
+  var restriction2 = $('#selectSeller').val();
   if(restriction != 'All')
   {
-   load_data("", restriction, "");
+   load_data("", restriction, restriction2);
  
   }
   else
@@ -322,11 +322,12 @@ $('#search_text').keyup(function(){
  });
  //Seller
  $('#selectSeller').change(function(){
+  var restriction = $('#selectStar').val();
   var restriction2 = $(this).val();
   
   if(restriction2 != 'All')
   {
-   load_data("", "",restriction2);
+   load_data("", restriction,restriction2);
 	//alert(restriction2);
   }
   else
@@ -335,8 +336,8 @@ $('#search_text').keyup(function(){
   }
  });
  
- */
  
+  /*
  $('#selectStar #selectSeller').change(function(){
   var restriction = $('#selectStar').val();
   var restriction2 = $('#selectSeller').val();
@@ -352,7 +353,7 @@ $('#search_text').keyup(function(){
 
  
 });
-
+*/
 
 </script>
 
