@@ -1097,7 +1097,7 @@
         var variationList = document.querySelectorAll('.variation');
 
         var tableInp = document.querySelectorAll('.tbInp');
-        echo(var_dump(tableInp));
+        console.log(tableInp);
 
         if(variationList.length == 2)
         {
