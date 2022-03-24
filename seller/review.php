@@ -40,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 				<div class="row">
 					<div class="col">
 						<!--Seller-->
+						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">Seller Name*</option>
 							  <option value = "C-SJ">SEGI College Subang Jaya</option>
@@ -52,6 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 					</div>
 					<div class="col">
 						<!--Star-->
+						<label>Rating</label>
 						 <select class="form-control" id = "selectStar">
 							  <option value = "All">All*</option>
 							  <option value = "5">5</option>
