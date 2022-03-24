@@ -29,7 +29,7 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 
 if(isset($_POST["query"]))
 {
-	echo "babi2";
+	echo "Query|";
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  
  
@@ -46,8 +46,8 @@ if(isset($_POST["query"]))
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
   WHERE disable_date IS NULL $rr $rr2";
-  echo "RR value = $rr ";
-   echo "RR2 value = $rr2 ";
+  echo "RR = $rr |";
+   echo "RR2 = $rr2 ";
 }
 
 else
@@ -57,8 +57,8 @@ else
 		   WHERE disable_date IS NULL $rr $rr2
 		   ORDER BY cu_id;";
 		   
-	echo "RR value = $rr ";
-	echo "RR2 value = $rr2 ";
+	echo "RR = $rr |";
+	echo "RR2 = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
