@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		  <div class="container">
 		   <div class="form-group">
 			<div class="input-group">
-			 <span class="input-group-addon">Search</span>
+			 <span class="input-group-text">Search</span>
 			 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
 			</div>
 		   </div>
@@ -80,136 +80,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 </body>
 		 <br />
 		  
-		  
-		 
-		 
 
-		 
-		
-		
 		
 		<div id="result"></div>
-		
-		
-		<!--
-		 <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
-			  <option value = "All">Default select</option>
-			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>			 
-			</select>
-			
-		
-	
-			<select class="form-control" id = "selectMe2">
-			  <option value = "All">Campus*</option>
-			  <option value = "C-SJ">SEGI College Subang Jaya</option>
-			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-			  <option value = "C-P">SEGI College Penang</option>
-			  <option value = "C-S">SEGI College Sarawak</option>
-			  <option value = "C-KD">SEGI College Kota Damansara</option>
-			  <option value = "U-KD">SEGI University Kota Damansara</option>   
-			</select>
-			
-
-			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
-			</form>
-		
-		
-		-->
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		 
-		 <!--REVIEW/RATING SECTION-->
-		<div style "margin-top: 15px;">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-			  <li class="nav-item">
-				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="five-tab" data-toggle="tab" href="#five" role="tab" aria-controls="five" aria-selected="false">5<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="four" aria-selected="false">4<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="false">3<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">2<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">1<span class="fa fa-star checked"></span></a>
-			  </li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-			  
-			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
-					<h1>ALL</h1>
-					
-					
-					
-					
-					
-					
-			  </div>
-			 
-			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
-					<h1>FIVE</h1>
-					<div id="result2"></div>
-			  </div>
-			 
-			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
-					<h1>FOUR</h1>
-			  </div>
-			  
-			  <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab" style ="max-height 2000px;">
-					<h1>THREE</h1>
-			  </div>
-			
-			  <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab" style ="max-height 2000px;">
-					<h1>TWO</h1>
-			  </div>
-			
-			  <div class="tab-pane fade" id="one" role="tabpanel" aria-labelledby="one-tab" style ="max-height 2000px;">
-					<h1>ONE</h1>
-			  </div>
-			</div>
-		</div>
-		<!--END OF REVIEW/RATING-->
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+	 
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
@@ -243,55 +117,7 @@ $(document).ready(function(){
    }
   });
  }
-/*
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  var restriction = $('#selectStar').val();
-  if(search != '')
-  {
-	 //alert('pp1');
-	 if(restriction == "All"){
-		 load_data(search,"","");
-	 }else{
-		 load_data(search,restriction,"");
-		 //alert(restriction);
-	 }
-  }
-  else
-  {
-   load_data();
-  }
- });
- //Rating Star
- $('#selectStar').change(function(){
-  var restriction = $(this).val();
-  
-  if(restriction != 'All')
-  {
-   load_data("", restriction, "");
- 
-  }
-  else
-  {
-   load_data();
-  }
- });
- //Seller
- $('#selectSeller').change(function(){
-  var restriction2 = $(this).val();
-  
-  if(restriction2 != 'All')
-  {
-   load_data("", "",restriction2);
-	//alert(restriction2);
-  }
-  else
-  {
-   load_data();
-  }
- });
- */
- 
+
 $('#search_text').keyup(function(){
   var search = $(this).val();
   var restriction = $('#selectStar').val();
@@ -336,27 +162,6 @@ $('#search_text').keyup(function(){
   }
  });
  
-
-  /*
- $('#selectStar #selectSeller').change(function(){
-  var restriction = $('#selectStar').val();
-  var restriction2 = $('#selectSeller').val();
-  
-  if(restriction == 'All' && restriction2 == 'All')
-  {
-   load_data();
-   alert('allah')
-  }else{
-	load_data("", restriction, restriction2);
-	alert('jesus')
-  }
-
- 
-});
- */
-
-
-
 
 });
 </script>
