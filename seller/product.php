@@ -758,6 +758,10 @@
 
 <script>
 
+    var priceTableArray = [];
+    priceTableArray.push("");
+
+
     $('form').submit(function() {
 
         return hasDuplicates();
