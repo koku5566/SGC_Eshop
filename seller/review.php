@@ -35,6 +35,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <div class="container-fluid" style="width:100%;">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
+		
+		<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="img-thumbnail">
     </div>
 		<body>
 		
