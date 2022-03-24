@@ -754,6 +754,12 @@
     .warning, .warning:focus{
         border:1px red solid;
     }
+
+    .warning-message{
+        color:red;
+        font-weight:bold;
+    }
+
 </style>
 
 <script>
@@ -1238,8 +1244,8 @@
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
-            variationName[i].removeEventListener('input',addVariationHandleChange);
-            variationName[i].addEventListener('input',addVariationHandleChange);
+            variationName[i].removeEventListener('change',addVariationHandleChange);
+            variationName[i].addEventListener('change',addVariationHandleChange);
         }
 
         btnAddVariations.forEach(item => {
@@ -1251,26 +1257,41 @@
     function addVariationHandleChange(event) 
     {
         const valueList = [];
-        
+        const errorMessage = `<p class="warning-message">Variation Name is Redundant</p>`
+
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
             if(variationName[i].classList.contains('warning'))
             {
                 variationName[i].classList.remove('warning');
+                
+                if(variationName[i].parentElement.parentElement.document.querySelectorAll('.warning-message'))
+                {
+                    var errorMessageList = variationName[i].parentElement.parentElement.document.querySelectorAll('.warning-message');
+                    for(var j = 0; j < errorMessageList.length; i++)
+                    {
+                        errorMessageList[j].remove();
+                    }
+                }
+                
+                /*
                 event.target.removeAttribute("data-toggle");
                 event.target.removeAttribute("data-placement");
                 event.target.removeAttribute("title");
+                */
             }
             valueList.push(variationName[i].value);
         }
         if(hasDuplicates(valueList))
         {
             event.target.classList.add('warning');
-            event.target.focus();
+            event.target.parentElement.parentElement.insertAdjacentHTML( 'beforeend', errorMessage );
+            /*
             event.target.setAttribute("data-toggle", "tooltip");
             event.target.setAttribute("data-placement", "bottom");
             event.target.setAttribute("title", "Variation Name is redundant");
+            */
         }
         RefreshPriceTable();
     }
