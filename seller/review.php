@@ -295,6 +295,7 @@ $(document).ready(function(){
 $('#search_text').keyup(function(){
   var search = $(this).val();
   var restriction = $('#selectStar').val();
+   var restriction2 = $('#selectSeller').val();
   if(search != '')
   {
 	load_data(search,restriction,restriction2);	  
