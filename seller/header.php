@@ -51,9 +51,11 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION['isLogin']))
+    
+    //Login
+    if(!isset($_SESSION['login']))
     {
-        $_SESSION['isLogin'] = false;
+        $_SESSION['login'] = false;
     }
     if(!isset($_SESSION['name']))
     {
@@ -63,16 +65,10 @@
     {
         $_SESSION['id'] = "";
     }
-    if(!isset($_SESSION['admin']))
+    if(!isset($_SESSION['role']))
     {
-        $_SESSION['admin'] = 0;
+        $_SESSION['role'] = "";
     }
-
-    if($_SESSION['isLogin'] == true)
-	{
-	echo "<script>alert('Logout to continue');
-		window.location.href='Main.php';</script>";
-	}
 ?>
 
 
@@ -273,7 +269,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
