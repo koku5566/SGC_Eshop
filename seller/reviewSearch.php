@@ -46,8 +46,8 @@ if(isset($_POST["query"]))
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
   WHERE disable_date IS NULL $rr $rr2";
-  echo "RR = $rr |";
-   echo "RR2 = $rr2 ";
+  echo "Rating = $rr |";
+   echo "Seller = $rr2 ";
 }
 
 else
@@ -57,8 +57,8 @@ else
 		   WHERE disable_date IS NULL $rr $rr2
 		   ORDER BY cu_id;";
 		   
-	echo "RR = $rr |";
-	echo "RR2 = $rr2 ";
+	echo "Rating = $rr |";
+	echo "Seller = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
