@@ -317,7 +317,7 @@ $('#search_text').keyup(function(){
   }
   else
   {
-   load_data();
+   load_data("","", restriction2);
   }
  });
  //Seller
@@ -332,7 +332,7 @@ $('#search_text').keyup(function(){
   }
   else
   {
-   load_data();
+   load_data("",restriction, "");
   }
  });
  
