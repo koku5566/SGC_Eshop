@@ -22,36 +22,55 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
+	$selectedPID = $_POST['uimage'];
+	$today = date("Y-m-d");
+	//echo $_POST['uimage'];
 	
-	echo $_POST['uimage'];
+	$sql = "UPDATE reviewRating SET disable_date=? WHERE rr_id=?;";
+                                   
+                if($stmt = mysqli_prepare($conn, $sql)){
+                    mysqli_stmt_bind_param($stmt, 'ss', $today, $selectedPID); 	//s=string , d=decimal value i=ID
+            
+                    mysqli_stmt_execute($stmt);
+                
+                    if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                    {               
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
+                    }else{                        
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
+                    }
+                    mysqli_stmt_close($stmt);
+                }
+	
 	
 }
-
 
 ?>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:100%;">
-        <h1>SELLER REVIEW</h1>
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
+		
+	</div>
 		<body>
 		
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<!--Seller-->
+						<!--Seller || REPLACE WITH WORKABLE SELLER ID AND CHANGE review.Search CODE !!!!!!!!!!!!!!-->
+						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
-							  <option value = "All">Seller Name*</option>
-							  <option value = "C-SJ">SEGI College Subang Jaya</option>
-							  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-							  <option value = "C-P">SEGI College Penang</option>
-							  <option value = "C-S">SEGI College Sarawak</option>
-							  <option value = "C-KD">SEGI College Kota Damansara</option>
-							  <option value = "U-KD">SEGI University Kota Damansara</option>  
+							  <option value = "All">All*</option>
+							  <option value = "P000001">Product 1</option>
+							  <option value = "P000002">Product 2</option>
+							  <option value = "P000003">Product 3</option>							  
 						</select>
 					</div>
 					<div class="col">
 						<!--Star-->
+						<label>Rating</label>
 						 <select class="form-control" id = "selectStar">
 							  <option value = "All">All*</option>
 							  <option value = "5">5</option>
@@ -68,8 +87,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		
 		  <div class="container">
 		   <div class="form-group">
-			<div class="input-group">
-			 <span class="input-group-addon">Search</span>
+			<div class="input-group-prepend">
+			 <span class="input-group-text">Search</span>
 			 <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
 			</div>
 		   </div>
@@ -80,141 +99,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 		 </body>
 		 <br />
 		  
-		  
-		 
-		 
 
-		 
-		
-		
 		
 		<div id="result"></div>
-		
-		
-		<!--
-		 <form action ="" method = "POST">
-		   <select class="form-control" id = "selectMe" name = "selectMe" onchange  ="ablemeFunction()">
-			  <option value = "All">Default select</option>
-			  <option value = "1">ONE</option>
-			  <option value = "0">ZERO</option>			 
-			</select>
-			
-		
-	
-			<select class="form-control" id = "selectMe2">
-			  <option value = "All">Campus*</option>
-			  <option value = "C-SJ">SEGI College Subang Jaya</option>
-			  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-			  <option value = "C-P">SEGI College Penang</option>
-			  <option value = "C-S">SEGI College Sarawak</option>
-			  <option value = "C-KD">SEGI College Kota Damansara</option>
-			  <option value = "U-KD">SEGI University Kota Damansara</option>   
-			</select>
-			
-
-			<input type = "button" id = "sss" class ="btn btn-info" value = "Hantar la babi">
-			</form>
-		
-		
-		-->
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		 
-		 <!--REVIEW/RATING SECTION-->
-		<div style "margin-top: 15px;">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-			  <li class="nav-item">
-				<a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="five-tab" data-toggle="tab" href="#five" role="tab" aria-controls="five" aria-selected="false">5<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="four" aria-selected="false">4<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="false">3<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">2<span class="fa fa-star checked"></span></a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">1<span class="fa fa-star checked"></span></a>
-			  </li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-			  
-			  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" style ="max-height 2000px;">
-					<h1>ALL</h1>
-					
-					
-					
-					
-					
-					
-			  </div>
-			 
-			  <div class="tab-pane fade" id="five" role="tabpanel" aria-labelledby="five-tab" style ="max-height 2000px;">
-					<h1>FIVE</h1>
-					<div id="result2"></div>
-			  </div>
-			 
-			  <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="four-tab" style ="max-height 2000px;">
-					<h1>FOUR</h1>
-			  </div>
-			  
-			  <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab" style ="max-height 2000px;">
-					<h1>THREE</h1>
-			  </div>
-			
-			  <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab" style ="max-height 2000px;">
-					<h1>TWO</h1>
-			  </div>
-			
-			  <div class="tab-pane fade" id="one" role="tabpanel" aria-labelledby="one-tab" style ="max-height 2000px;">
-					<h1>ONE</h1>
-			  </div>
-			</div>
-		</div>
-		<!--END OF REVIEW/RATING-->
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+	 
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
 .checked {
   color: orange;
+}
+.jungle{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.bengi{
+	width: 75px;
+	height: 75px;
 }
 </style>
 
@@ -243,55 +145,7 @@ $(document).ready(function(){
    }
   });
  }
-/*
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  var restriction = $('#selectStar').val();
-  if(search != '')
-  {
-	 //alert('pp1');
-	 if(restriction == "All"){
-		 load_data(search,"","");
-	 }else{
-		 load_data(search,restriction,"");
-		 //alert(restriction);
-	 }
-  }
-  else
-  {
-   load_data();
-  }
- });
- //Rating Star
- $('#selectStar').change(function(){
-  var restriction = $(this).val();
-  
-  if(restriction != 'All')
-  {
-   load_data("", restriction, "");
- 
-  }
-  else
-  {
-   load_data();
-  }
- });
- //Seller
- $('#selectSeller').change(function(){
-  var restriction2 = $(this).val();
-  
-  if(restriction2 != 'All')
-  {
-   load_data("", "",restriction2);
-	//alert(restriction2);
-  }
-  else
-  {
-   load_data();
-  }
- });
- */
- 
+
 $('#search_text').keyup(function(){
   var search = $(this).val();
   var restriction = $('#selectStar').val();
@@ -337,27 +191,15 @@ $('#search_text').keyup(function(){
  });
  
 
-  /*
- $('#selectStar #selectSeller').change(function(){
-  var restriction = $('#selectStar').val();
-  var restriction2 = $('#selectSeller').val();
-  
-  if(restriction == 'All' && restriction2 == 'All')
-  {
-   load_data();
-   alert('allah')
-  }else{
-	load_data("", restriction, restriction2);
-	alert('jesus')
-  }
-
- 
 });
- */
 
 
 
-
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
 });
 </script>
 
