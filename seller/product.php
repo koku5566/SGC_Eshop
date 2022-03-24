@@ -1473,7 +1473,7 @@
                 if(hasDuplicates(doubleCheckValueList))
                 {
                     variationChoice[i].parentElement.insertAdjacentHTML( 'afterend', errorMessage );
-                    variationChoice[i].parentElement.nextElementSibling.classList.add('warning');
+                    variationChoice[i].parentElement.classList.add('warning');
                     break;
                 }
             }
