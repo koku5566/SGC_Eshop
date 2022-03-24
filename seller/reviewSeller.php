@@ -108,7 +108,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
 	</div>
-	
+	<div class="container">
+	  <span id="rateMe2"  class="empty-stars"></span>
+	  <span id="rateMe2"  class="empty-stars"></span>
+	</div>
 	
 	<!--MODAL-->
 	<div id="myModalReply" class="modal">
@@ -123,10 +126,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 									<div>
 										<h6 style = ""><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
 										<h6 style = ""><b><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></b></h6>
-										<div class="container">
-										  <span id="rateMe2"  class="empty-stars"></span>
-										  <span id="rateMe2"  class="empty-stars"></span>
-										</div>
+										
 										<h6 style = "font-size: 0.8rem">
 										<?php if(isset($c4) && !empty($c4)){
 												if(strlen($c4) > 100){
