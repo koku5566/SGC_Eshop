@@ -59,14 +59,23 @@
 				<p id=\"label\">User Category
 				<select id=\"user\" name=\"user\">
 				");
-				if($row['role'] == 0)
+				if($row['role'] == "USER")
 				{
-					echo("<option value=\"0\" selected=\"selected\">User</option>
-					<option value=\"1\">Admin</option>");
+					echo("<option value=\"USER\" selected=\"selected\">USER</option>
+					<option value=\"SELLER\">SELLER</option>
+					<option value=\"ADMIN\">ADMIN</option>");
 				}
-				else{
-					echo("<option value=\"0\">User</option>
-					<option value=\"1\" selected=\"selected\">Admin</option>");
+				else if($row['role'] == "SELLER")
+				{
+					echo("<option value=\"USER\">USER</option>
+					<option value=\"SELLER\" selected=\"selected\">SELLER</option>
+					<option value=\"ADMIN\">ADMIN</option>");
+				}
+				else if($row['role'] == "ADMIN")
+				{
+					echo("<option value=\"USER\">USER</option>
+					<option value=\"SELLER\">SELLER</option>
+					<option value=\"ADMIN\" selected=\"selected\">ADMIN</option>");
 				}
 				echo("
 				</select></p>
