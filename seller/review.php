@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<!--Seller-->
+						<!--Seller || REPLACE WITH WORKABLE SELLER ID AND CHANGE review.Search CODE !!!!!!!!!!!!!!-->
 						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
@@ -191,6 +191,15 @@ $('#search_text').keyup(function(){
  });
  
 
+});
+
+
+
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
 });
 </script>
 
