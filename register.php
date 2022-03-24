@@ -41,9 +41,9 @@ if(isset($_POST['signup']))
 	}
 ?>
 
-<div class="bg-gradient-primary">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;padding: 4rem 0;">
     <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
