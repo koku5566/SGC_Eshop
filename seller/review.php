@@ -227,7 +227,7 @@ $(document).ready(function(){
 	
 	load_data();
 
- function load_data(query, restriction)
+ function load_data(query, restriction, restriction2)
  {
   $.ajax({
    url:"reviewSearch.php",
