@@ -1257,12 +1257,19 @@
             if(variationName[i].classList.contains('warning'))
             {
                 variationName[i].classList.remove('warning');
+                event.target.removeAttribute("data-toggle");
+                event.target.removeAttribute("data-placement");
+                event.target.removeAttribute("title");
             }
             valueList.push(variationName[i].value);
         }
         if(hasDuplicates(valueList))
         {
             event.target.classList.add('warning');
+            event.target.focus();
+            event.target.setAttribute("data-toggle", "tooltip");
+            event.target.setAttribute("data-placement", "bottom");
+            event.target.setAttribute("title", "Variation Name is redundant");
         }
         RefreshPriceTable();
     }
