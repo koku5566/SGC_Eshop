@@ -111,7 +111,7 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                         <div class="sidebar-brand-icon">
