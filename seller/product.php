@@ -1436,6 +1436,40 @@
 
     function addChoiceHandleChange(event) {
 
+        const valueList = [];
+        const errorMessage = `<p class="warning-message">Choice Name is Redundant</p>`
+
+        var variationChoice = event.target.parentElement.parentElement.querySelectorAll('.variationChoice');
+        for(var i = 0; i < variationChoice.length; i++)
+        {
+            if(variationChoice[i].classList.contains('warning'))
+            {
+                variationChoice[i].classList.remove('warning');
+                
+                if(variationChoice[i].parentElement.nextElementSibling.classList.contains('warning-message'))
+                {
+                    var errorMessageList = variationChoice[i].parentElement.nextElementSibling;
+                    errorMessageList.remove();
+                }
+                
+                /*
+                event.target.removeAttribute("data-toggle");
+                event.target.removeAttribute("data-placement");
+                event.target.removeAttribute("title");
+                */
+            }
+            valueList.push(variationChoice[i].value);
+        }
+        if(hasDuplicates(valueList))
+        {
+            event.target.classList.add('warning');
+            event.target.parentElement.insertAdjacentHTML( 'afterend', errorMessage );
+            /*
+            event.target.setAttribute("data-toggle", "tooltip");
+            event.target.setAttribute("data-placement", "bottom");
+            event.target.setAttribute("title", "Variation Name is redundant");
+            */
+        }
         RefreshPriceTable();
     }
 
