@@ -767,7 +767,6 @@
     var priceTableArray = [];
     priceTableArray.push("");
 
-    
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         if(document.querySelectorAll('.variationChoice'))
@@ -1096,6 +1095,9 @@
         PriceTableHTML += `<tr>`;
 
         var variationList = document.querySelectorAll('.variation');
+
+        var tableInp = document.querySelectorAll('.tbInp');
+        echo(var_dump(tableInp));
 
         if(variationList.length == 2)
         {
