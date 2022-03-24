@@ -51,9 +51,11 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION['isLogin']))
+    
+    //Login
+    if(!isset($_SESSION['login']))
     {
-        $_SESSION['isLogin'] = false;
+        $_SESSION['login'] = false;
     }
     if(!isset($_SESSION['name']))
     {
@@ -63,16 +65,10 @@
     {
         $_SESSION['id'] = "";
     }
-    if(!isset($_SESSION['admin']))
+    if(!isset($_SESSION['role']))
     {
-        $_SESSION['admin'] = 0;
+        $_SESSION['role'] = "";
     }
-
-    if($_SESSION['isLogin'] == true)
-	{
-	echo "<script>alert('Logout to continue');
-		window.location.href='Main.php';</script>";
-	}
 ?>
 
 
