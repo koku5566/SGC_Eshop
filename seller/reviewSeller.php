@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:100%;">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
+        <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO  ADDD A T AND C 0/1 tmr</h1>
 	</div>
 	<div class="container">
 	  <i class="bi bi-star"></i>
