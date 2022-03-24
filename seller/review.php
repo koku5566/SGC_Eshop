@@ -23,11 +23,28 @@ if($_SESSION['login'] == false)
 ?>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
+	$selectedPID = $_POST['uimage'];
+	$today = date("Y-m-d");
+	//echo $_POST['uimage'];
 	
-	echo $_POST['uimage'];
+	$sql = "UPDATE reviewRating SET disable_date=? WHERE rr_id=?;";
+                                   
+                if($stmt = mysqli_prepare($conn, $sql)){
+                    mysqli_stmt_bind_param($stmt, 'ss', $today, $selectedPID); 	//s=string , d=decimal value i=ID
+            
+                    mysqli_stmt_execute($stmt);
+                
+                    if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                    {               
+						echo "<div class='alert alert-success'>Delete Successfully</div>";
+                    }else{                        
+						echo "<div class='alert alert-danger'>Fail to Delete</div>";
+                    }
+                    mysqli_stmt_close($stmt);
+                }
+	
 	
 }
-
 
 ?>
 
