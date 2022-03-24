@@ -57,31 +57,82 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 		<body>
 			<!--MODAL-->
 			
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-			  Launch demo modal
-			</button>
+			<div id="myModalReply" class="modal">
+					<!--THE MODAL CONTENT-->
+						<div class="modal-content" style = "height: 400px;">
+						<h4 class = "displayCategoryModal" >Reply Message</h4>
+						<span class="closeM" id = "closeModalReply">&times;</span>
+							<div class="editQuestion">
+								
+								<!--REPLY MESSAGE MODAL-->
+									
+									<div>
+										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5>
+										<h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h6 style = "font-size:0.9vw">
+										<?php if(isset($z6) && !empty($z6)){
+												if(strlen($z6) > 100){
+													$CUtrim  = substr($z6, 0, 50);
+													$CUmsg = "$CUtrim.....";
+													echo "$CUmsg";
+												}else{echo "$z6";}
 
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-				  </div>
-				  <div class="modal-body">
-					...
-				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				  </div>
+											}else{echo "";}
+										?>
+										</h6>										
+										
+									</div>
+									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
+										
+										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
+
+										<?php echo (isset($z1) && !empty ($z1))? "<input type = 'hidden' name = 'CUid2' value = '".$z1."'>" : ''; ?>
+										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid' disabled>
+										
+										
+																				
+									</form>
+								<!--REPLY MESSAGE MODAL-->
+									
+									
+								
+							
+
+						</div>
 				</div>
-			  </div>
-			</div>
+			</div>	
+			
+						<?php
+								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){
+									
+									$CUid = $_POST['CUid'];
+									
+									echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";	
+								}
+								
+									
+									
+																	
+								echo "<script>function myCUFunction(){
+									
+									  let msgreply = document.getElementById('CUmessagereply').value;
+									  
+									  
+									  let f = false;
+										
+										if (msgreply  === '') 
+										{f = false;}		
+										else			
+										{f = true;} 
+										
+										if(f == true)
+										{document.getElementById('CUreplyadminid').disabled = false;}	
+										else
+										{document.getElementById('CUreplyadminid').disabled = true;}
+										
+								}</script>";
+						?>
+			<!--END OF MODAL REPLY MESSAGE-->
 
 			<!--END OF MODAL-->
 			
