@@ -171,7 +171,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%;">
 
-    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
@@ -762,10 +762,10 @@
     priceTableArray.push("");
 
 
-    $('form').submit(function() {
-
-        return hasDuplicates();
-    });
+    document.getElementById('productForm').addEventListener('submit', function(evt){
+        evt.preventDefault();
+        console.log("i stop the submission");
+    })
 
     function hasDuplicates(array) {
         var valuesSoFar = Object.create(null);
