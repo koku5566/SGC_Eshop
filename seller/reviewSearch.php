@@ -54,7 +54,6 @@ if(isset($_POST["query"]))
 			WHERE rr_id LIKE '%".$search."%'
 			OR product_id LIKE '%".$search."%' 
 			OR message LIKE '%".$search."%' 
-			OR rating LIKE '%".$search."%'
 			WHERE disable_date IS NULL $rr $rr2";
   echo "Rating = $rr |";
    echo "Seller = $rr2 ";
