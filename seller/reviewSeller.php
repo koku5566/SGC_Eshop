@@ -103,9 +103,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 			</div>	
 			
 						<?php
-								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){
+								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_POST['uimg'])  ){
 									
-									$CUid = $_POST['CUid'];
+									$CUid = $_POST['uimg'];
 									
 									echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";	
 								}
