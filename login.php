@@ -45,7 +45,7 @@
 ?>
 
 <div class="bg-gradient-primary">
-    <div class="container">
+    <div class="container" style="margin-top: -1.5rem !important;">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
