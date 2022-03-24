@@ -767,12 +767,15 @@
     var priceTableArray = [];
     priceTableArray.push("");
 
-    /*
+    
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
-        console.log("i stop the submission");
+        if(document.querySelectorAll('.variationChoice'))
+        {
+            ;
+        }
     })
-    */
+    
 
     function hasDuplicates(array) {
         var valuesSoFar = Object.create(null);
@@ -1462,8 +1465,18 @@
         }
         if(hasDuplicates(valueList))
         {
-            event.target.classList.add('warning');
-            event.target.parentElement.insertAdjacentHTML( 'afterend', errorMessage );
+            var doubleCheckValueList = [];
+            var variationChoice = event.target.parentElement.parentElement.querySelectorAll('.variationChoice');
+            for(var i = 0; i < variationChoice.length; i++)
+            {
+                doubleCheckValueList.push(variationChoice[i].value);
+                if(hasDuplicates(doubleCheckValueList))
+                {
+                    variationChoice[i].parentElement.insertAdjacentHTML( 'afterend', errorMessage );
+                    variationChoice[i].parentElement.nextElementSibling.classList.add('warning');
+                    break;
+                }
+            }
             /*
             event.target.setAttribute("data-toggle", "tooltip");
             event.target.setAttribute("data-placement", "bottom");
