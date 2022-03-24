@@ -358,7 +358,7 @@ $('#search_text').keyup(function(){
 
 
 
-}
+});
 </script>
 
 
