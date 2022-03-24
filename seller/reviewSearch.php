@@ -94,7 +94,11 @@ if(mysqli_num_rows($result) > 0)
  {
   $output .= '
    <tr>
-    <td>'.$row["rr_id"].'</td>
+    <td>
+	<div class = "bengi">
+		<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
+	</div>
+	'.$row["rr_id"].'</td>
     <td>'.$row["product_id"].'</td>
     <td>'.$row["message"].'</td>
     <td>'.$row["rating"].'</td>
