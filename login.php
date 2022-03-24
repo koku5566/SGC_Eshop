@@ -87,10 +87,10 @@
                                         </div>
                                         
                                         <hr>
-                                        <div class="a" style="display: flex;">
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #dbdbdb; flex: 1;"></div>
-                                        <span class="_1ZEpVL">OR</span>
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #dbdbdb; flex: 1;"></div>
+                                        <div class="a" style="display: flex; align-items: center;">
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                        <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
                                         </div>
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
