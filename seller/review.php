@@ -35,9 +35,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <div class="container-fluid" style="width:100%;">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
-		
-		<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="img-thumbnail">
-    </div>
+		<div class = "bengi">
+		<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
+		</div>
+	</div>
 		<body>
 		
 			<div class="container">
@@ -92,6 +93,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 <style>
 .checked {
   color: orange;
+}
+.jungle{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.bengi{
+	width: 100px;
+	height: 100px;
 }
 </style>
 
