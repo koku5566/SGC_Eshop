@@ -9,7 +9,7 @@ $output = '';
 if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["restriction"] !== "All"){
 	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
 	
-	$rr = " && status = $restriction ";
+	$rr = " && rating = $restriction ";
 	
 	
 }else{
@@ -19,7 +19,7 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["rest
 if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
 	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
 	
-	$rr2 = " && campus = '$restriction2' ";
+	$rr2 = " && product_id = '$restriction2' ";
 }else{
 	$rr2 = "";
 }
@@ -32,7 +32,7 @@ if(isset($_POST["query"]))
 	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  echo "$search|";
- 
+ /*
  $query = "
   SELECT * 
   FROM(
@@ -46,16 +46,32 @@ if(isset($_POST["query"]))
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
   WHERE disable_date IS NULL $rr $rr2";
+  */
+  $query = "SELECT * 
+			FROM(
+			SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+			FROM reviewRating 
+			WHERE rr_id LIKE '%".$search."%'
+			OR product_id LIKE '%".$search."%' 
+			OR message LIKE '%".$search."%' 
+			OR rating LIKE '%".$search."%'
+			WHERE disable_date IS NULL $rr $rr2";
   echo "Rating = $rr |";
    echo "Seller = $rr2 ";
 }
 
 else
 {
+	/*
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
 		   FROM contactUs
 		   WHERE disable_date IS NULL $rr $rr2
 		   ORDER BY cu_id;";
+	*/
+ $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+		   FROM reviewRating 
+		   WHERE disable_date IS NULL $rr $rr2
+		   ORDER BY rr_id;";
 		   
 	echo "Rating = $rr |";
 	echo "Seller = $rr2 ";
@@ -68,30 +84,24 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-     <th> cu_id</th>
-     <th>name</th>
-     <th>email</th>
-     <th>campus</th>
-     <th>subject</th>
-	 <th>message</th>
-     <th>status</th>
-	 <th>btn</th>
+     <th>rr_id</th>
+     <th>product_id</th>
+     <th>message</th>
+     <th>rating</th>
+	 <th>Action</th>
     </tr>
  ';
  while($row = mysqli_fetch_array($result))
  {
   $output .= '
    <tr>
-    <td>'.$row["cu_id"].'</td>
-    <td>'.$row["name"].'</td>
-    <td>'.$row["email"].'</td>
-    <td>'.$row["campus"].'</td>
-    <td>'.$row["subject"].'</td>
-	<td>'.$row["message"].'</td>
-    <td>'.$row["status"].'</td>
+    <td>'.$row["rr_id"].'</td>
+    <td>'.$row["product_id"].'</td>
+    <td>'.$row["message"].'</td>
+    <td>'.$row["rating"].'</td>
 	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimage" value="'.$row["cu_id"].'">	
-		<input type="submit" name ="t1faker" value = "faker" class="btn btn-primary"></form></td>
+		<input type="hidden" name="uimage" value="'.$row["rr_id"].'">	
+		<input type="submit" name ="t1faker" value = "Delete" class="btn btn-primary"></form></td>
    </tr>
   ';
   
