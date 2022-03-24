@@ -95,7 +95,7 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
-					<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
+					<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle">
 		</div>	
 	</td>	
 	<td>'.$row["rr_id"].'</td>											
