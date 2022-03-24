@@ -95,10 +95,20 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
    <tr>
     <td>
-	<div class = "bengi">
-		<img src="https://dontgetserious.com/wp-content/uploads/2021/12/Ready-For-2022-Memes-5.jpg" class="jungle">
-	</div>
-	'.$row["rr_id"].'</td>
+		<div class="row">
+			<div class="col">
+				<div class = "bengi">
+					<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
+				</div>				
+			</div>
+			<div class="col">
+				'.$row["rr_id"].'				
+			</div>
+		
+		
+		</div>
+	</td>
+	
     <td>'.$row["product_id"].'</td>
     <td>'.$row["message"].'</td>
     <td>'.$row["rating"].'</td>
