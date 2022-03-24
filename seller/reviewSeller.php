@@ -109,8 +109,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
 	</div>
 	<div class="container">
-	  <span id="rateMe2"  class="empty-stars"></span>
-	  <span id="rateMe2"  class="empty-stars"></span>
+	  <span id="rateMe2"  class="empty-stars" style = "background-color: black"></span>
+	  <span id="rateMe2"  class="empty-stars" style = "background-color: black"></span>
 	</div>
 	
 	<!--MODAL-->
