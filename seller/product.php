@@ -750,9 +750,30 @@
         font-weight: bold;
         color: #858796;
     }
+
+    .warning{
+        border:1px red solid;
+    }
 </style>
 
 <script>
+
+    $('form').submit(function() {
+
+        return hasDuplicates();
+    });
+
+    function hasDuplicates(array) {
+        var valuesSoFar = Object.create(null);
+        for (var i = 0; i < array.length; ++i) {
+            var value = array[i];
+            if (value in valuesSoFar) {
+                return true;
+            }
+            valuesSoFar[value] = true;
+        }
+        return false;
+    }
 
     function UpdatePriceTableAttribute()
     {
@@ -1212,14 +1233,34 @@
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
-            variationName[i].removeEventListener('change',RefreshPriceTable);
-            variationName[i].addEventListener('change',RefreshPriceTable);
+            variationName[i].removeEventListener('change',addVariationHandleChange);
+            variationName[i].addEventListener('change',addVariationHandleChange);
         }
 
         btnAddVariations.forEach(item => {
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
         });
+    }
+
+    function addVariationHandleChange(event) 
+    {
+        const valueList = [];
+        
+        var variationName = document.querySelectorAll('.variationName');
+        for(var i = 0; i < variationName.length; i++)
+        {
+            if(variationName[i].classList.contains('warning'))
+            {
+                variationName[i].classList.remove('warning');
+            }
+            valueList.push(variationName[i].value);
+        }
+        if(hasDuplicates(valueList))
+        {
+            event.target.classList.add('warning');
+        }
+        RefreshPriceTable();
     }
 
     function addVariationHandleClick(event) 
@@ -1274,8 +1315,8 @@
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
-            variationName[i].removeEventListener('change',RefreshPriceTable);
-            variationName[i].addEventListener('change',RefreshPriceTable);
+            variationName[i].removeEventListener('change',addVariationHandleChange);
+            variationName[i].addEventListener('change',addVariationHandleChange);
         }
 
         divVariations = document.querySelectorAll('.variation');
@@ -1350,14 +1391,19 @@
         var variationChoice = document.querySelectorAll('.variationChoice');
         for(var i = 0; i < variationChoice.length; i++)
         {
-            variationChoice[i].removeEventListener('change',RefreshPriceTable);
-            variationChoice[i].addEventListener('change',RefreshPriceTable);
+            variationChoice[i].removeEventListener('change',addChoiceHandleChange);
+            variationChoice[i].addEventListener('change',addChoiceHandleChange);
         }
         
         btnAddChoices.forEach(item => {
             item.removeEventListener('click', addChoiceHandleClick);
             item.addEventListener('click',addChoiceHandleClick);
         });
+    }
+
+    function addChoiceHandleChange(event) {
+
+        RefreshPriceTable();
     }
 
     function addChoiceHandleClick(event) {
@@ -1376,8 +1422,8 @@
         var variationChoice = document.querySelectorAll('.variationChoice');
         for(var i = 0; i < variationChoice.length; i++)
         {
-            variationChoice[i].removeEventListener('change',RefreshPriceTable);
-            variationChoice[i].addEventListener('change',RefreshPriceTable);
+            variationChoice[i].removeEventListener('change',addChoiceHandleChange);
+            variationChoice[i].addEventListener('change',addChoiceHandleChange);
         }
 
         const btnDeleteChoices = document.querySelectorAll('.btnDeleteChoices');
