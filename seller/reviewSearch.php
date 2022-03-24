@@ -83,7 +83,8 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-     <th>rr_id</th>
+	 <th>rr_id</th>
+     <th></th>
      <th>product_id</th>
      <th>message</th>
      <th>rating</th>
@@ -94,21 +95,11 @@ if(mysqli_num_rows($result) > 0)
  {
   $output .= '
    <tr>
-    <td>
-		<div class="row">
-			<div class="col">
-				<div class = "bengi">
+    <td><div class = "bengi">
 					<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">
-				</div>				
-			</div>
-			<div class="col">
-				'.$row["rr_id"].'				
-			</div>
-		
-		
-		</div>
-	</td>
-	
+		</div>	
+	</td>	
+	<td>'.$row["rr_id"].'</td>											
     <td>'.$row["product_id"].'</td>
     <td>'.$row["message"].'</td>
     <td>'.$row["rating"].'</td>
