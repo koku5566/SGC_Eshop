@@ -84,7 +84,6 @@ if(mysqli_num_rows($result) > 0)
    <table class="table table bordered">
     <tr>
 	 <th colspan="2">rr_id</th>
-     <th></th>
      <th>product_id</th>
      <th>message</th>
      <th>rating</th>
