@@ -276,6 +276,26 @@ $('#search_text').keyup(function(){
 
 });
 
+//FOR ADD REPLY
+var modalReply = document.getElementById("myModalReply");
+//var btnAddReply = document.getElementById("CUbtnreply");
+var spanReply = document.getElementsByClassName("closeM")[3];
+
+
+spanReply.onclick = function() {
+  modalReply.style.display = "none";
+  
+}
+window.onclick = function(event) {
+  if (event.target == modalReply) {
+     modalReply.style.display = "none";
+  }
+	  
+}
+
+
+
+
 
 
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
