@@ -751,7 +751,7 @@
         color: #858796;
     }
 
-    .warning{
+    .warning, .warning:focus{
         border:1px red solid;
     }
 </style>
@@ -761,11 +761,12 @@
     var priceTableArray = [];
     priceTableArray.push("");
 
-
+    /*
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         console.log("i stop the submission");
     })
+    */
 
     function hasDuplicates(array) {
         var valuesSoFar = Object.create(null);
@@ -1237,8 +1238,8 @@
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
-            variationName[i].removeEventListener('blur',addVariationHandleChange);
-            variationName[i].addEventListener('blur',addVariationHandleChange);
+            variationName[i].removeEventListener('input',addVariationHandleChange);
+            variationName[i].addEventListener('input',addVariationHandleChange);
         }
 
         btnAddVariations.forEach(item => {
