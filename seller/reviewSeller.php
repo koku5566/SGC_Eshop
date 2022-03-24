@@ -22,10 +22,64 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_POST['uimg'])  ){	
+            
+            
+            $selectedPID = $_POST['uimg'];
+            //CHANGE SELLER ID HOR I TELL U SLAP KAO U
+            $sql = "SELECT rr_id, product_id, user_id, message, rating, seller_id, r_message 
+					FROM reviewRating
+					WHERE rr_id = ? && disable_date IS NULL && seller_id = 'S000001';";
+                                    
+            if($stmt = mysqli_prepare ($conn, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $selectedPID);	//HARLO IF THIS INT = i, STRING = s
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+                    mysqli_stmt_fetch($stmt);
+                }
+                
+                mysqli_stmt_free_result($stmt);
+                mysqli_stmt_close($stmt);
+            
+            }
+    }
+	
+	
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
+			$CUmessagereply = $_POST['CUmessagereply'];
+			$selectedPID = $_POST['CUid'];
+			$status = 1;
+
+			  $sql = "UPDATE 
+					  reviewRating SET status =?, r_message=? 
+			          WHERE rr_id =?";
+				if($stmt = mysqli_prepare($conn, $sql)){
+					mysqli_stmt_bind_param($stmt, 'iss', $status, $CUmessagereply, $selectedPID); 	//s=string , d=decimal value i=ID
+			
+					mysqli_stmt_execute($stmt);
+				
+					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+					{
+						echo "<div class='alert alert-success'>Update Successfully</div>";
+					}else{
+						echo "<div class='alert alert-danger'>Fail to Update</div>";
+					}
+			
+					mysqli_stmt_close($stmt);
+				}
+
+
+
+
+}	
+
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfaker']) && !empty($_POST['uimg']) && $_POST['sktfaker'] === 'Reply'){
 	$selectedPID = $_POST['uimg'];
 	$today = date("Y-m-d");
-	echo "<script>alert('SHOW ME DA WAE')</script>";
+	//echo "<script>alert('SHOW ME DA WAE')</script>";
 	/*
 	$sql = "UPDATE reviewRating SET disable_date=? WHERE rr_id=?;";
                                    
@@ -45,6 +99,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	
 	*/
 }
+
 
 ?>
 
@@ -66,15 +121,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h5 style = "font-size:1.4vw"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5>
-										<h6 style = "font-size:1vw"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h6 style = "font-size:1vw"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "font-size:1vw"><b><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></b></h6>
 										<h6 style = "font-size:0.9vw">
-										<?php if(isset($z6) && !empty($z6)){
-												if(strlen($z6) > 100){
-													$CUtrim  = substr($z6, 0, 50);
+										<?php if(isset($c4) && !empty($c4)){
+												if(strlen($c4) > 100){
+													$CUtrim  = substr($c4, 0, 50);
 													$CUmsg = "$CUtrim.....";
 													echo "$CUmsg";
-												}else{echo "$z6";}
+												}else{echo "$c4";}
 
 											}else{echo "";}
 										?>
@@ -85,7 +140,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 										
 										<textarea class="form-control" name = "CUmessagereply" id="CUmessagereply" style = "height: 8em;" placeholder="Message" onchange = "myCUFunction()"></textarea>
 
-										<?php echo (isset($z1) && !empty ($z1))? "<input type = 'hidden' name = 'CUid2' value = '".$z1."'>" : ''; ?>
+										<?php echo (isset($c1) && !empty ($c1))? "<input type = 'hidden' name = 'CUid' value = '".$c1."'>" : ''; ?>
 										<input type = 'submit' name ='CUreplyadmin' value ='Reply' style="float:right; margin: 5px 20px 0px 0px;" class="btn btn-success" id = 'CUreplyadminid' disabled>
 										
 										
