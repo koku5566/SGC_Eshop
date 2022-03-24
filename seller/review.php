@@ -40,14 +40,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 				<div class="row">
 					<div class="col">
 						<!--Seller-->
-						 <select class="form-control" id = "selectSeller">
+						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">Seller Name*</option>
-							  <option value = "5">Mak</option>
-							  <option value = "4">Kao</option>
-							  <option value = "3">Hijau</option>
-							  <option value = "2">Babi</option>
-							  <option value = "1">Hutan</option>
-					     </select>
+							  <option value = "C-SJ">SEGI College Subang Jaya</option>
+							  <option value = "C-KL">SEGI College Kuala Lumpur</option>
+							  <option value = "C-P">SEGI College Penang</option>
+							  <option value = "C-S">SEGI College Sarawak</option>
+							  <option value = "C-KD">SEGI College Kota Damansara</option>
+							  <option value = "U-KD">SEGI University Kota Damansara</option>  
+						</select>
 					</div>
 					<div class="col">
 						<!--Star-->
@@ -58,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 							  <option value = "3">3</option>
 							  <option value = "2">2</option>
 							  <option value = "1">1</option>
-						</select>
+						</select>		
 					</div>
 				</div>
 			</div>
@@ -232,7 +233,8 @@ $(document).ready(function(){
    url:"reviewSearch.php",
    method:"POST",
    data:{query:query,
-		restriction:restriction},
+		restriction:restriction,
+		restriction2:restriction2},
    success:function(data)
    {
 	   //alert('success noob')
@@ -260,13 +262,27 @@ $(document).ready(function(){
    load_data();
   }
  });
- 
+ //Rating Star
  $('#selectStar').change(function(){
   var restriction = $(this).val();
   
   if(restriction != 'All')
   {
-   load_data("", restriction);
+   load_data("", restriction, "");
+ 
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ //Seller
+ $('#selectSeller').change(function(){
+  var restriction2 = $(this).val();
+  
+  if(restriction2 != 'All')
+  {
+   load_data("", "",restriction2);
  
   }
   else
