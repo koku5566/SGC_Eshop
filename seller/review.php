@@ -251,9 +251,9 @@ $(document).ready(function(){
   {
 	 //alert('pp1');
 	 if(restriction == "All"){
-		 load_data(search,"");
+		 load_data(search,"","");
 	 }else{
-		 load_data(search,restriction);
+		 load_data(search,restriction,"");
 		 //alert(restriction);
 	 }
   }
