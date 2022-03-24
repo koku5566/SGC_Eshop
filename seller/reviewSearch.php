@@ -29,9 +29,9 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 
 if(isset($_POST["query"]))
 {
-	echo "Query|";
+	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- 
+ echo "$search|";
  
  $query = "
   SELECT * 
