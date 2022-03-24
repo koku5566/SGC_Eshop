@@ -121,7 +121,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h6 style = "font-size:1vw"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "font-size:1vmin"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
 										<h6 style = "font-size:1vw"><b><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></b></h6>
 										<h6 style = "font-size:0.9vw">
 										<?php if(isset($c4) && !empty($c4)){
