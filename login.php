@@ -45,7 +45,7 @@
 ?>
 
 <div class="bg-gradient-primary">
-    <div class="container">
+    <div class="container" style="margin-top: -1.5rem !important;">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
@@ -87,6 +87,11 @@
                                         </div>
                                         
                                         <hr>
+                                        <div class="a" style="display: flex;">
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #dbdbdb; flex: 1;"></div>
+                                        <span class="_1ZEpVL">OR</span>
+                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #dbdbdb; flex: 1;"></div>
+                                        </div>
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365

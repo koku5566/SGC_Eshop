@@ -12,6 +12,7 @@ if(isset($_POST['update']))
 	{
 		$UID = $_SESSION['id'];
 		$name = $_POST['name'];
+		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
 
@@ -27,10 +28,10 @@ if(isset($_POST['update']))
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
 			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', password='$password', contact='$contact' WHERE username='$UID'";
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', contact='$contact' WHERE username='$UID'";
+				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
 			}
 			
 			if (mysqli_query($conn, $sql)) {
@@ -69,7 +70,7 @@ if(isset($_POST['update']))
 					
 					<div class=\"form-group\">
 					<label>Email Address</label>
-					<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
+					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
 					</div>
 
 					<div class=\"form-group\">
