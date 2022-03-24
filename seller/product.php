@@ -1237,8 +1237,8 @@
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
         {
-            variationName[i].removeEventListener('change',addVariationHandleChange);
-            variationName[i].addEventListener('change',addVariationHandleChange);
+            variationName[i].removeEventListener('input',addVariationHandleChange);
+            variationName[i].addEventListener('input',addVariationHandleChange);
         }
 
         btnAddVariations.forEach(item => {
