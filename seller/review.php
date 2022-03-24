@@ -344,10 +344,10 @@ $('#search_text').keyup(function(){
   if(restriction == 'All' && restriction2 == 'All')
   {
    load_data();
-   
+   alert('allah')
   }else{
 	load_data("", restriction, restriction2);
-  
+	alert('jesus')
   }
 
  
