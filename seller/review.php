@@ -33,7 +33,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:100%;">
-
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
+    </div>
 		<body>
 		
 			<div class="container">
@@ -42,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 						<!--Seller-->
 						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
-							  <option value = "All">Seller Name*</option>
+							  <option value = "All">All*</option>
 							  <option value = "C-SJ">SEGI College Subang Jaya</option>
 							  <option value = "C-KL">SEGI College Kuala Lumpur</option>
 							  <option value = "C-P">SEGI College Penang</option>
