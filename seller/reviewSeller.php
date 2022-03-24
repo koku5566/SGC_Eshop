@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 				<div class="row">
 					<div class="col">
 						<!--Seller || REPLACE WITH WORKABLE SELLER ID AND CHANGE review.Search CODE !!!!!!!!!!!!!!-->
-						  <label>Seller</label>
+						  <label>Product</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
 							  <option value = "P000001">Product 1</option>
@@ -132,7 +132,7 @@ $(document).ready(function(){
  function load_data(query, restriction, restriction2)
  {
   $.ajax({
-   url:"reviewSearch.php",
+   url:"reviewSearchSeller.php",
    method:"POST",
    data:{query:query,
 		restriction:restriction,

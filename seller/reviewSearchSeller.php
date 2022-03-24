@@ -56,7 +56,7 @@ if(isset($_POST["query"]))
 			OR message LIKE '%".$search."%')k 
 			WHERE disable_date IS NULL $rr $rr2";
   echo "Rating = $rr |";
-   echo "Seller = $rr2 ";
+   echo "Product = $rr2 ";
 }
 
 else
@@ -73,7 +73,7 @@ else
 		   ORDER BY rr_id;";
 		   
 	echo "Rating = $rr |";
-	echo "Seller = $rr2 ";
+	echo "Product = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
@@ -103,8 +103,8 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["message"].'</td>
     <td>'.$row["rating"].'</td>
 	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimage" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="t1faker" value = "Delete" class="btn btn-primary"></form></td>
+		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
+		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-primary"></form></td>
    </tr>
   ';
   
