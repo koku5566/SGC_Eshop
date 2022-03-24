@@ -45,12 +45,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
-							  <option value = "C-SJ">SEGI College Subang Jaya</option>
-							  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-							  <option value = "C-P">SEGI College Penang</option>
-							  <option value = "C-S">SEGI College Sarawak</option>
-							  <option value = "C-KD">SEGI College Kota Damansara</option>
-							  <option value = "U-KD">SEGI University Kota Damansara</option>  
+							  <option value = "P000001">Product 1</option>
+							  <option value = "P000002">Product 2</option>
+							  <option value = "P000003">Product 3</option>							  
 						</select>
 					</div>
 					<div class="col">
