@@ -243,7 +243,7 @@ $(document).ready(function(){
    }
   });
  }
-
+/*
  $('#search_text').keyup(function(){
   var search = $(this).val();
   var restriction = $('#selectStar').val();
@@ -283,15 +283,55 @@ $(document).ready(function(){
   if(restriction2 != 'All')
   {
    load_data("", "",restriction2);
-	alert(restriction2);
+	//alert(restriction2);
   }
   else
   {
    load_data();
   }
  });
+ */
  
-
+$('#search_text').keyup(function(){
+  var search = $(this).val();
+  var restriction = $('#selectStar').val();
+  if(search != '')
+  {
+	load_data(search,restriction,restriction2);	  
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ //Rating Star
+ $('#selectStar').change(function(){
+  var restriction = $(this).val();
+  
+  if(restriction != 'All')
+  {
+   load_data("", restriction, "");
+ 
+  }
+  else
+  {
+   load_data();
+  }
+ });
+ //Seller
+ $('#selectSeller').change(function(){
+  var restriction2 = $(this).val();
+  
+  if(restriction2 != 'All')
+  {
+   load_data("", "",restriction2);
+	//alert(restriction2);
+  }
+  else
+  {
+   load_data();
+  }
+ });
  
  
 

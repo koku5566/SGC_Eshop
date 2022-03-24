@@ -6,7 +6,7 @@ $output = '';
 
 
 
-if(isset($_POST["restriction"]) && !empty($_POST["restriction"])){
+if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["restriction"] !== "All"){
 	$restriction = mysqli_real_escape_string($conn, $_POST["restriction"]);
 	
 	$rr = " && status = $restriction ";
@@ -14,6 +14,14 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"])){
 	
 }else{
 	$rr = "";
+}
+
+if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
+	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
+	
+	$rr2 = " && campus = $restriction2 ";
+}else{
+	$rr2 = "";
 }
 
 
@@ -37,18 +45,20 @@ if(isset($_POST["query"]))
   OR subject LIKE '%".$search."%'
   OR message LIKE '%".$search."%'
   OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL $rr";
-  echo "RR value = $rr";
+  WHERE disable_date IS NULL $rr $rr2";
+  echo "RR value = $rr ";
+   echo "RR2 value = $rr2 ";
 }
 
 else
 {
  $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
 		   FROM contactUs
-		   WHERE disable_date IS NULL $rr
+		   WHERE disable_date IS NULL $rr $rr2
 		   ORDER BY cu_id;";
 		   
-	echo "RR value = $rr";
+	echo "RR value = $rr ";
+	echo "RR2 value = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
