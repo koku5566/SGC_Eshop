@@ -98,8 +98,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_
 	object-fit: cover;
 }
 .bengi{
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 }
 </style>
 
