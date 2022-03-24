@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
-
+$seller = "S000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = '';
 
@@ -54,7 +54,7 @@ if(isset($_POST["query"]))
 			WHERE rr_id LIKE '%".$search."%'
 			OR product_id LIKE '%".$search."%' 
 			OR message LIKE '%".$search."%')k 
-			WHERE disable_date IS NULL $rr $rr2";
+			WHERE disable_date IS NULL && seller_id = '$seller' $rr $rr2";
   echo "Rating = $rr |";
    echo "Product = $rr2 ";
 }
@@ -69,7 +69,7 @@ else
 	*/
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
-		   WHERE disable_date IS NULL $rr $rr2
+		   WHERE disable_date IS NULL && seller_id = '$seller' $rr $rr2
 		   ORDER BY rr_id;";
 		   
 	echo "Rating = $rr |";

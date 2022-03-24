@@ -22,11 +22,11 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
-	$selectedPID = $_POST['uimage'];
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfaker']) && !empty($_POST['uimg']) && $_POST['sktfaker'] === 'Reply'){
+	$selectedPID = $_POST['uimg'];
 	$today = date("Y-m-d");
-	//echo $_POST['uimage'];
-	
+	echo "<script>alert('SHOW ME DA WAE')</script>";
+	/*
 	$sql = "UPDATE reviewRating SET disable_date=? WHERE rr_id=?;";
                                    
                 if($stmt = mysqli_prepare($conn, $sql)){
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
                     mysqli_stmt_close($stmt);
                 }
 	
-	
+	*/
 }
 
 ?>
