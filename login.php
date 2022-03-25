@@ -92,7 +92,7 @@
                                             <div class="or-line"></div>
                                         </div>
 
-                                        <div class="alt-login">
+                                        <div class="alt-login" style="display: flex;">
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
@@ -158,5 +158,14 @@
     width: 100%;
     background-color: rgba(0,0,0,.1);
     flex: 1;
+}
+
+.btn-microsoft {
+    color: #fff;
+    background-color: #0078d4;
+    border-color: #fff;
+}
+.btn-user{
+    border-radius: 0.3rem;
 }
 </style>
