@@ -101,9 +101,9 @@
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </div>
 
-                                        <div class="btn btn-facebook btn-user btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-                                            <!--<i class="fab fa-facebook-f fa-fw"></i>--> Facebook
-                                        </div>
+                                        <div class=" fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                                             Facebook
+                                        </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
                                         </div>
                                     </form>
 
@@ -209,5 +209,10 @@
     background-color: #0078d4;
     border-color: #fff;
     margin-top: 0.5rem;
+}
+.btn-microsoft:hover {
+    color: #fff;
+    background-color: #0078d4;
+    border-color: #e6e6e6;
 }
 </style>
