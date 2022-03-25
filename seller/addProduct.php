@@ -1121,6 +1121,12 @@
         var td_col_stock = document.querySelectorAll('.td-stock');
         var td_col_sku = document.querySelectorAll('.td-sku');
 
+        console.log(td_col_variation1);
+        console.log(td_col_variation2);
+        console.log(td_col_price);
+        console.log(td_col_stock);
+        console.log(td_col_sku);
+
         priceTableArray = [];
         var td = "";
         
