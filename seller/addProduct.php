@@ -780,7 +780,7 @@
         {
             ;
         }
-    })
+    });
     
 
     function hasDuplicates(array) {
@@ -805,7 +805,6 @@
     }
 
     function makeSubmenu(value) {
-        console.log(value)
         if (value.length == 0) 
             document.getElementById("subCategory").innerHTML = "<option></option>";
         else {
@@ -1094,7 +1093,13 @@
         </div>
     `;
 
-    function arrayRemove(arr, variation1, variation2) { 
+    function arrayRemoveVariation1(arr, variation1) { 
+        return arr.filter(function(ele){ 
+            return ele.variation1 != variation1;
+        });
+    }
+
+    function arrayRemoveVariation2(arr, variation1, variation2) { 
         return arr.filter(function(ele){ 
             return ele.variation1 != variation1 && ele.variation2 != variation2; 
         });
@@ -1116,8 +1121,6 @@
 
         }
     }
-
-    
 
     function refreshPriceTable()
     {
@@ -1159,7 +1162,7 @@
                         PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[j-1].sku + `" type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                         PriceTableHTML += `</tr>`;
 
-                        priceTableArray = arrayRemove(priceTableArray, priceTableArray[j-1].variation1, priceTableArray[j-1].variation2);
+                        priceTableArray = arrayRemoveVariation2(priceTableArray, priceTableArray[j-1].variation1, priceTableArray[j-1].variation2);
                     }
                     else
                     {
@@ -1192,14 +1195,14 @@
                 PriceTableHTML += `<tr>`;
                 PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control tbInp" name="variation1NameCol[]" readonly ></td>`;
 
-                if(priceTableArray[j-1].variation1 == variationInpList1[i].value && priceTableArray[j-1].variation2 == variationInpList2[j].value)
+                if(priceTableArray[i-1].variation1 == variationInpList1[i].value)
                 {
-                    PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="` + priceTableArray[j-1].price + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
-                    PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[j-1].stock + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
-                    PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[j-1].sku + `" type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="` + priceTableArray[i-1].price + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[i-1].stock + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
+                    PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[i-1].sku + `" type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                     PriceTableHTML += `</tr>`;
 
-                    priceTableArray = arrayRemove(priceTableArray, priceTableArray[j-1].variation1, priceTableArray[j-1].variation2);
+                    priceTableArray = arrayRemoveVariation1(priceTableArray, priceTableArray[i-1].variation1);
                 }
                 else{
                     PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
