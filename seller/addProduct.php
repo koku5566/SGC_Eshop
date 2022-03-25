@@ -1113,7 +1113,7 @@
         var td_col_stock = document.querySelectorAll('.td-stock');
         var td_col_sku = document.querySelectorAll('.td-sku');
         priceTableArray = [];
-        for(var i = 0; i < td_col_variation1.length; i++;)
+        for(var i = 0; i < td_col_variation1.length; i++)
         {
             var td = {variation1:td_col_variation1[i], variation2:td_col_variation2[i], price:td_col_price[i], stock:td_col_stock[i], sku:td_col_sku[i]};
 
@@ -1316,7 +1316,7 @@
     function addVariationHandleChange(event) 
     {
         const valueList = [];
-        const errorMessage = `<p class="warning-message">Variation Name is Redundant</p>`
+        const errorMessage = `<p class="warning-message">Variation Name is Redundant</p>`;
 
         var variationName = document.querySelectorAll('.variationName');
         for(var i = 0; i < variationName.length; i++)
@@ -1496,7 +1496,7 @@
     function addChoiceHandleChange(event) {
 
         const valueList = [];
-        const errorMessage = `<p class="warning-message">Choice Name is Redundant</p>`
+        const errorMessage = `<p class="warning-message">Choice Name is Redundant</p>`;
 
         var variationChoice = event.target.parentElement.parentElement.querySelectorAll('.variationChoice');
         for(var i = 0; i < variationChoice.length; i++)
@@ -1594,7 +1594,7 @@
 
     function onlyNumberAllow(value)
     {
-    	return value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
+    	return value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
     }
 
     
