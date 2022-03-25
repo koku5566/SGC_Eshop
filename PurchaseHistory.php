@@ -14,11 +14,11 @@ if(!$conn){
 }
 
 $result = mysqli_query($conn,"SELECT 
-product.product_name,
-product.product_qty,
-product.product_cover_picture,
-product.product_variation,
-product.product_price
+product_name,
+product_qty,
+product_cover_picture,
+product_variation,
+product_price
  FROM product");
 ?>
 
