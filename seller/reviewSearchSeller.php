@@ -108,7 +108,7 @@ if(mysqli_num_rows($result) > 0)
 	<td>'.$row["rr_id"].'</td>											
     <td>'.$row["product_id"].'</td>
     <td>
-	<div style="margin-bottom: 0.3em;">'.$starR.'</div>
+	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
 	'.$row["message"].'
 	</td>
 	<td><form action ="" method = "POST" class = "baka">
