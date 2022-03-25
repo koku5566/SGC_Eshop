@@ -44,8 +44,8 @@
 	}
 ?>
 
-<div class="bg-gradient-primary">
-    <div class="container" style="margin-top: -1.5rem !important;">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+    <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
@@ -56,7 +56,7 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-left">
-                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                        <div class="h1 text-gray-900 mb-4">Login</div>
                                     </div>
                                     
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
@@ -86,24 +86,25 @@
                                             <a class="small" href="forgetPassword.php">Forgot Password?</a>
                                         </div>
                                         
-                                        <hr>
-                                        <div class="a" style="display: flex; align-items: center;">
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
-                                        <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                        <div class="or-container">
+                                            <div class="or-line"></div>
+                                            <span style="padding: 0 1rem">OR</span>
+                                            <div class="or-line"></div>
                                         </div>
 
-                                        <a href="index.html" class="btn btn-microsoft btn-user btn-block">
+                                        <div class="alt-login" style="display: flex;">
+                                        <div class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
-                                        </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        </div>
+
+                                        <div class="btn btn-google btn-user btn-block" id="google-login-button">
                                             <i class="fab fa-google fa-fw"></i> Google
-                                        </a>
-                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Facebook
-                                        </a>
-                                        <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                        </div>
+
+                                        <div class=" fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                                             Facebook
+                                        </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
+                                        </div>
                                     </form>
 
                                     <hr>
@@ -120,6 +121,53 @@
         </div>
     </div>
 </div>
+
+<!--Google Login-->
+<div id="g-root"></div>
+<script async defer src="https://apis.google.com/js/platform.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+
+<!--Custom Google Login Button-->
+<script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('google-login-button'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('g-root').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          //alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  startApp();
+</script>
+
+<!--Get User Google Profile Informaton-->
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+</script>
+
+<!--Facebook Login-->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=913746515960441&autoLogAppEvents=1" nonce="eUmuyEF6"></script>
 <script>
@@ -130,9 +178,7 @@
       xfbml      : true,
       version    : '{api-version}'
     });
-      
     FB.AppEvents.logPageView();   
-      
   };
 
   (function(d, s, id){
@@ -145,3 +191,28 @@
 </script>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+.or-container{
+    display: flex;
+    align-items: center;
+}
+.or-line{
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    flex: 1;
+}
+
+.btn-microsoft {
+    color: #fff;
+    background-color: #0078d4;
+    border-color: #fff;
+    margin-top: 0.5rem;
+}
+.btn-microsoft:hover {
+    color: #fff;
+    background-color: #0078d4;
+    border-color: #e6e6e6;
+}
+</style>

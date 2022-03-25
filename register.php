@@ -41,17 +41,17 @@ if(isset($_POST['signup']))
 	}
 ?>
 
-<div class="bg-gradient-primary">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important; padding: 4rem 0;">
     <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-left">
-                                <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
-								Create Your SEGi Group of Colleges E-Shop Account
+                                <div class="h1 text-gray-900 mb-4">Sign Up</div>
+								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Account</div>
                             </div>
 
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">

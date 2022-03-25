@@ -83,7 +83,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-client_id" content="232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com">
 
     <title>SGC E-Shop</title>
 
@@ -113,7 +112,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                         <div class="sidebar-brand-icon">
                             <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
                         </div>
