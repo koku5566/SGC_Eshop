@@ -1149,8 +1149,8 @@
 
         if(variationList.length == 2)
         {
-            variationInpList1 = variationList[0].querySelectorAll('variationChoice');
-            variationInpList2 = variationList[1].querySelectorAll('variationChoice');
+            variationInpList1 = variationList[0].querySelectorAll('.variationChoice');
+            variationInpList2 = variationList[1].querySelectorAll('.variationChoice');
 
             PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="thInp" name="variation2Name" readonly ></th>`;
@@ -1201,7 +1201,7 @@
         }
         else if(variationList.length == 1)
         {
-            variationInpList1 = variationList[0].querySelectorAll('variationChoice');
+            variationInpList1 = variationList[0].querySelectorAll('.variationChoice');
 
             PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
