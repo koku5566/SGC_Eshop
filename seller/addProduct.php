@@ -819,8 +819,6 @@
             var subCategoryHTML = "";
             var subCategory = <?php echo json_encode($subCategoryArray); ?>;
 
-            console.log(subCategory);
-
             for (counter in subCategory[value]) {
                 subCategoryHTML += "<option value=\""+ subCategory[value][counter][0] +"\" >" + subCategory[value][counter][1] + "</option>";
             }
@@ -1154,8 +1152,8 @@
             variationInpList1 = variationList[0].querySelectorAll('variationChoice');
             variationInpList2 = variationList[1].querySelectorAll('variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="form-control thInp" name="variation2Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="thInp" name="variation2Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1175,7 +1173,6 @@
                    
                     var defaultHTML = true;
 
-                    console.log(priceTableArray);
                     for(var k = 0; k < priceTableArray.length; k++)
                     {
                         if(priceTableArray[k].variation1 == variationInpList1[i].value && priceTableArray[k].variation2 == variationInpList2[j].value)
@@ -1206,7 +1203,7 @@
         {
             variationInpList1 = variationList[0].querySelectorAll('variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1215,7 +1212,7 @@
             PriceTableHTML += `</thead>`;
 
             PriceTableHTML += `<tbody>`;
-
+            console.log(variationInpList1.length);
             for(var i = 0; i < variationInpList1.length; i++)
             {
                 PriceTableHTML += `<tr>`;
@@ -1234,6 +1231,7 @@
 
                         priceTableArray = arrayRemoveVariation1(priceTableArray, priceTableArray[k].variation1);
                         defaultHTML = false;
+                        break;
                     }
                 }
 
