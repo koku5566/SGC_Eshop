@@ -1121,6 +1121,12 @@
         var td_col_stock = document.querySelectorAll('.td-stock');
         var td_col_sku = document.querySelectorAll('.td-sku');
 
+        console.log(td_col_variation1);
+        console.log(td_col_variation2);
+        console.log(td_col_price);
+        console.log(td_col_stock);
+        console.log(td_col_sku);
+
         priceTableArray = [];
         var td = "";
         
@@ -1131,6 +1137,7 @@
                 td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             else if(td_col_price.length != 0){
+                console.log(td_col_price[i].value);
                 td = {variation1:td_col_variation1[i].value, variation2:"", price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             priceTableArray.push(td);
@@ -1146,7 +1153,7 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationNameList = document.querySelectorAll('.thInp');
+        var variationNameList = document.querySelectorAll('.variationName');
 
         if(variationNameList.length == 2)
         {
@@ -1259,7 +1266,7 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationNameList = document.querySelectorAll('.thInp');
+        var variationNameList = document.querySelectorAll('.variationName');
 
         if(variationNameList.length == 2)
         {
