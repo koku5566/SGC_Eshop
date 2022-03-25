@@ -151,11 +151,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											}else{echo "";}
 										?>
 										</h6>
-										<div class ="bengi" style = "disply: table;">
-										<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle" style = "disply: table-row;>
-										<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle" style = "disply: table-row;>
-										<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle" style = "disply: table-row;>
-										</div>										
+										<table class ="bengi" >
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
+											<tr>
+										</table>																			
+																					
 												
 										
 									</div>
