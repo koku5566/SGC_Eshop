@@ -847,7 +847,7 @@
 									
 									<div>
 										<h5 style = "font-size:1.5rem"><?php echo(isset($z2) && !empty ($z2))? $z2 : ''; ?></h5>
-										<h6 style = "font-size:0.95rem"><b><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></b></h6>
+										<h6 style = "font-size:0.95rem; font-weight: bold;"><?php echo(isset($z3) && !empty ($z3))? $z3 : ''; ?></h6>
 										<h6 style = "font-size:0.9rem">
 										<?php if(isset($z6) && !empty($z6)){
 												if(strlen($z6) > 100){
