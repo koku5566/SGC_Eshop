@@ -1137,7 +1137,7 @@
                 td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             else if(td_col_price.length != 0){
-                console.log(td_col_price[i].value);
+                console.log(i);
                 td = {variation1:td_col_variation1[i].value, variation2:"", price:"", stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             priceTableArray.push(td);
