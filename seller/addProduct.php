@@ -1124,6 +1124,8 @@
 
     function refreshPriceTable()
     {
+        updatePriceListArray();
+        
         var PriceTableHTML = `<table class="table table-hover">`;
         //Header Row
         PriceTableHTML += `<thead>`;
@@ -1233,8 +1235,6 @@
         var priceListTable = document.getElementById("priceList");
         priceListTable.innerHTML = "";
         priceListTable.insertAdjacentHTML( 'beforeend', PriceTableHTML );
-
-        updatePriceListArray();
     }
 
     function refreshPriceTableWithParameter(price,stock,sku)
