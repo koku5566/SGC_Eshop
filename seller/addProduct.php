@@ -1137,8 +1137,7 @@
                 td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             else if(td_col_price.length != 0){
-                console.log(i);
-                td = {variation1:td_col_variation1[i].value, variation2:"", price:"", stock:td_col_stock[i].value, sku:td_col_sku[i].value};
+                td = {variation1:td_col_variation1[i].value, variation2:"", price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
             }
             priceTableArray.push(td);
         }
@@ -1211,7 +1210,7 @@
         {
             variationInpList1 = document.querySelectorAll('.td-var1');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1304,7 +1303,7 @@
         {
             variationInpList1 = document.querySelectorAll('.td-var1');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
