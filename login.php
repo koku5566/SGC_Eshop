@@ -96,7 +96,7 @@
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block" id="google-loginBtn">
+                                        <div class="btn btn-google btn-user btn-block" id="google-loginBtn">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </a>
                                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
