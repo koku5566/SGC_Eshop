@@ -313,15 +313,14 @@
                         </li>
 
                         <?php else :?>
+                            <!--
                             <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
                             <div class="topbar-divider d-none d-sm-block"></div>
                             <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                            <div class="topbar-divider d-none d-sm-block"></div>
-                            <a class="nav-link" href="seller/sellerLogin.php">Seller Login <i class="fas fa-user"></i></a>
-
-
+                            -->
+                            
                             <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Up <i class="fas fa-user"></i></a>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up <i class="fas fa-user"></i></a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="register.php">
@@ -337,7 +336,7 @@
                             </li>
 
                             <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login <i class="fas fa-user"></i></a>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login <i class="fas fa-user"></i></a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="login.php">
