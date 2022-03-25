@@ -1146,7 +1146,7 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationNameList = document.querySelectorAll('.thInp');
+        var variationNameList = document.querySelectorAll('.variationName');
 
         if(variationNameList.length == 2)
         {
@@ -1259,7 +1259,7 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationNameList = document.querySelectorAll('.thInp');
+        var variationNameList = document.querySelectorAll('.variationName');
 
         if(variationNameList.length == 2)
         {
