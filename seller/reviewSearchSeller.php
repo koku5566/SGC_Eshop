@@ -101,9 +101,7 @@ if(mysqli_num_rows($result) > 0)
 	 }
   $output .= '
    <tr colspan="2">
-    <td><div class = "bengi">
-					<img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle">
-		</div>	
+    <td><div class = "bengi"><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></div>				
 	</td>	
 	<td>'.$row["rr_id"].'</td>											
     <td>'.$row["product_id"].'</td>
@@ -113,7 +111,7 @@ if(mysqli_num_rows($result) > 0)
 	</td>
 	<td><form action ="" method = "POST" class = "baka">
 		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-primary"></form></td>
+		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-danger"></form></td>
    </tr>
   ';
   
