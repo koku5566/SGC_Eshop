@@ -1440,8 +1440,6 @@
 
             initVariation();
             initChoice();
-
-            
         }
 
         refreshPriceTable();
@@ -1513,6 +1511,10 @@
                 item.parentElement.classList.add("hide");
             }   
             else if(divVariations.length == 1)
+            {
+                item.parentElement.classList.remove("hide");
+            }
+            else
             {
                 item.parentElement.classList.remove("hide");
             }
