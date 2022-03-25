@@ -359,5 +359,6 @@
                             </li>
                         <?php endif?>
                         </li>
+                    </ul>
                 </nav>
                 <!-- End of Topbar -->
