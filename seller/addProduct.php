@@ -796,11 +796,11 @@
         evt.preventDefault();
         if(document.querySelectorAll('.warning').length == 0)
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            document.getElementById("productForm").submit(); 
         }
         else
         {
-            document.getElementById("productForm").submit(); 
+            alert("Please Enter Distinct Product Variation and Choices");
         }
     });
     
