@@ -1115,7 +1115,7 @@
         priceTableArray = [];
         for(var i = 0; i < td_col_variation1.length; i++)
         {
-            var td = {variation1:td_col_variation1[i], variation2:td_col_variation2[i], price:td_col_price[i], stock:td_col_stock[i], sku:td_col_sku[i]};
+            var td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
 
             priceTableArray.push(td);
 
