@@ -98,7 +98,7 @@
                                         </a>
                                         <div class="btn btn-google btn-user btn-block" id="google-loginBtn">
                                             <i class="fab fa-google fa-fw"></i> Google
-                                        </a>
+                                        </div>
                                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
