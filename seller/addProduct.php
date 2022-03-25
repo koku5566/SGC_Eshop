@@ -1125,7 +1125,7 @@
     function refreshPriceTable()
     {
         updatePriceListArray();
-        
+
         var PriceTableHTML = `<table class="table table-hover">`;
         //Header Row
         PriceTableHTML += `<thead>`;
@@ -1159,6 +1159,7 @@
                    
                     var defaultHTML = true;
 
+                    console.log(priceTableArray);
                     for(var k = 0; k < priceTableArray.length; k++)
                     {
                         if(priceTableArray[k].variation1 == variationInpList1[i].value && priceTableArray[k].variation2 == variationInpList2[j].value)
