@@ -97,14 +97,13 @@
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </div>
 
-                                        <div class="btn btn-google btn-user btn-block" id="google-loginBtn">
+                                        <div class="btn btn-google btn-user btn-block" id="google-login-button">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </div>
 
-                                        <div class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Facebook
+                                        <div class="btn btn-facebook btn-user btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                                            <!--<i class="fab fa-facebook-f fa-fw"></i>--> Facebook
                                         </div>
-                                        <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                                         </div>
                                     </form>
 
@@ -140,7 +139,7 @@
         // Request scopes in addition to 'profile' and 'email'
         //scope: 'additional_scope'
       });
-      attachSignin(document.getElementById('google-loginBtn'));
+      attachSignin(document.getElementById('google-login-button'));
     });
   };
 
