@@ -96,7 +96,7 @@
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <a href="index.html" class="btn btn-google btn-user btn-block g-signin2" data-onsuccess="onSignIn">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </a>
                                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -150,8 +150,6 @@
 .or-container{
     display: flex;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 .or-line{
     height: 1px;
@@ -164,8 +162,6 @@
     color: #fff;
     background-color: #0078d4;
     border-color: #fff;
-}
-.btn-user{
-    border-radius: 0.3rem;
+    margin-top: 0.5rem;
 }
 </style>
