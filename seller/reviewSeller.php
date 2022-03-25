@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
             $sql = "SELECT rr_id, product_id, user_id, message, rating, seller_id, r_message 
 					FROM reviewRating
 					WHERE rr_id = ? && disable_date IS NULL && seller_id = 'S000001';";
-                                    
+		   
             if($stmt = mysqli_prepare ($conn, $sql)){
                 mysqli_stmt_bind_param($stmt, "s", $selectedPID);	//HARLO IF THIS INT = i, STRING = s
                 mysqli_stmt_execute($stmt);
