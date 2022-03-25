@@ -108,14 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
 	</div>
-	<div class="container">
-	  <i class="bi bi-star-fill"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	</div>
+	
 	
 	
 	<!--MODAL-->
