@@ -743,7 +743,7 @@
         display:none;
     }
 
-    .td-var1{
+    .td-var1, .td-var1:focus{
         border: none;
         padding: 0;
         margin: 0;
@@ -751,7 +751,7 @@
         color: #858796;
     }
 
-    .td-var2{
+    .td-var2, .td-var2:focus{
         border: none;
         padding: 0;
         margin: 0;
@@ -759,7 +759,7 @@
         color: #858796;
     }
 
-    .thInp{
+    .thInp, .thInp:focus{
         border: none;
         padding: 0;
         margin: 0;
