@@ -123,8 +123,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 									
 									<div>
 										<h6 style = "font-size: 1rem"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
-										<h6 style = "">
-											<div style="margin-bottom: 0.2em;">
+										<div style="margin-bottom: 0.1em;">
 											<?php 									
 											$starR = '';
 											if(isset($c5) && !empty ($c5)){
@@ -138,8 +137,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 												echo $starR;
 											}else{echo '';}																
 											?>
-											</div>
-										</h6>
+										</div>	
+										
 										
 										<h6 style = "font-size: 0.85rem">
 										<?php if(isset($c4) && !empty($c4)){
@@ -151,7 +150,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 
 											}else{echo "";}
 										?>
-										</h6>										
+										</h6>									
+												
 										
 									</div>
 									<form action ='<?php echo $_SERVER['PHP_SELF'];?>' method = 'POST'>				
