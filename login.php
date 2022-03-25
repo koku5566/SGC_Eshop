@@ -93,16 +93,17 @@
                                         </div>
 
                                         <div class="alt-login" style="display: flex;">
-                                        <a href="index.html" class="btn btn-microsoft btn-user btn-block">
+                                        <div class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
-                                        </a>
+                                        </div>
+
                                         <div class="btn btn-google btn-user btn-block" id="google-loginBtn">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </div>
-                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+
+                                        <div class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
-                                        </a>
+                                        </div>
                                         <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                                         </div>
                                     </form>
@@ -126,15 +127,8 @@
 <div id="g-root"></div>
 <script async defer src="https://apis.google.com/js/platform.js"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
-</script>
+
+<!--Custom Google Login Button-->
 <script>
   var googleUser = {};
   var startApp = function() {
@@ -157,10 +151,21 @@
           document.getElementById('g-root').innerText = "Signed in: " +
               googleUser.getBasicProfile().getName();
         }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
+          //alert(JSON.stringify(error, undefined, 2));
         });
   }
   startApp();
+</script>
+
+<!--Get User Google Profile Informaton-->
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
 </script>
 
 <!--Facebook Login-->
