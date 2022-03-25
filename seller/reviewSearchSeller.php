@@ -109,7 +109,7 @@ if(mysqli_num_rows($result) > 0)
 	<td>'.$row["rr_id"].'</td>											
     <td>'.$row["product_id"].'</td>
     <td>
-	<div class="container">'.$starR.'</div>
+	<div>'.$starR.'</div>
 	'.$row["message"].'
 	</td>
     <td>'.$row["rating"].'</td>
