@@ -113,7 +113,7 @@ if(mysqli_num_rows($result) > 0)
 	</td>
 	<td><form action ="" method = "POST" class = "baka">
 		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-primary"></form></td>
+		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-danger"></form></td>
    </tr>
   ';
   
