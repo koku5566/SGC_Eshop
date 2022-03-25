@@ -1481,6 +1481,7 @@
         var divVariations = document.querySelectorAll('.variation');
         var main = document.getElementById('mainPricing');
         var sub = document.getElementById('subPricing');
+        var priceTable = document.getElementById('priceToAll');
 
         if(divVariations.length == 2)
         {
