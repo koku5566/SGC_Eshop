@@ -743,7 +743,7 @@
         display:none;
     }
 
-    .tbInp{
+    .td-var1{
         border: none;
         padding: 0;
         margin: 0;
@@ -751,7 +751,15 @@
         color: #858796;
     }
 
-    .tbInp2{
+    .td-var2{
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+    }
+
+    .thInp{
         border: none;
         padding: 0;
         margin: 0;
@@ -1107,17 +1115,11 @@
 
     function updatePriceListArray()
     {
-        var td_col_variation1 = document.querySelectorAll('.tbInp');
-        var td_col_variation2 = document.querySelectorAll('.tbInp2');
+        var td_col_variation1 = document.querySelectorAll('.td-var1');
+        var td_col_variation2 = document.querySelectorAll('.td-var2');
         var td_col_price = document.querySelectorAll('.td-price');
         var td_col_stock = document.querySelectorAll('.td-stock');
         var td_col_sku = document.querySelectorAll('.td-sku');
-
-        console.log(td_col_variation1);
-        console.log(td_col_variation2);
-        console.log(td_col_price);
-        console.log(td_col_stock);
-        console.log(td_col_sku);
 
         priceTableArray = [];
         var td = "";
@@ -1130,9 +1132,6 @@
             }
             else if(td_col_price.length != 0){
                 td = {variation1:td_col_variation1[i].value, variation2:"", price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
-            }
-            else{
-                td = {variation1:"", variation2:"", price:"0", stock:"0", sku:""};
             }
             priceTableArray.push(td);
         }
@@ -1147,15 +1146,15 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationList = document.querySelectorAll('.variation');
+        var variationNameList = document.querySelectorAll('.thInp');
 
-        if(variationList.length == 2)
+        if(variationNameList.length == 2)
         {
-            variationInpList1 = variationList[0].getElementsByTagName('input');
-            variationInpList2 = variationList[1].getElementsByTagName('input');
+            variationInpList1 = document.querySelectorAll('.td-var1');
+            variationInpList2 = document.querySelectorAll('.td-var2');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control tbInp" name="variation1Name" readonly ></th>`;
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList2[0].value + `" class="form-control tbInp2" name="variation2Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="form-control thInp" name="variation2Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1165,17 +1164,16 @@
 
             PriceTableHTML += `<tbody>`;
 
-            for(var i = 1; i < variationInpList1.length; i++)
+            for(var i = 0; i < variationInpList1.length; i++)
             {
-                for(var j = 1; j < variationInpList2.length; j++)
+                for(var j = 0; j < variationInpList2.length; j++)
                 {
                     PriceTableHTML += `<tr>`;
-                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control tbInp" name="variation1NameCol[]" readonly ></td>`;
-                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList2[j].value + `" class="form-control tbInp2" name="variation2NameCol[]" readonly ></td>`;
+                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control td-var1" name="variation1NameCol[]" readonly ></td>`;
+                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList2[j].value + `" class="form-control td-var2" name="variation2NameCol[]" readonly ></td>`;
                    
                     var defaultHTML = true;
 
-                    console.log(priceTableArray);
                     for(var k = 0; k < priceTableArray.length; k++)
                     {
                         if(priceTableArray[k].variation1 == variationInpList1[i].value && priceTableArray[k].variation2 == variationInpList2[j].value)
@@ -1202,11 +1200,11 @@
             PriceTableHTML += `</tbody>`;
             PriceTableHTML += `</table>`;
         }
-        else if(variationList.length == 1)
+        else if(variationNameList.length == 1)
         {
-            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList1 = document.querySelectorAll('.td-var1');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control tbInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1216,10 +1214,10 @@
 
             PriceTableHTML += `<tbody>`;
 
-            for(var i = 1; i < variationInpList1.length; i++)
+            for(var i = 0; i < variationInpList1.length; i++)
             {
                 PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control tbInp" name="variation1NameCol[]" readonly ></td>`;
+                PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control td-var1" name="variation1NameCol[]" readonly ></td>`;
 
                 var defaultHTML = true;
 
@@ -1261,15 +1259,15 @@
         PriceTableHTML += `<thead>`;
         PriceTableHTML += `<tr>`;
 
-        var variationList = document.querySelectorAll('.variation');
+        var variationNameList = document.querySelectorAll('.thInp');
 
-        if(variationList.length == 2)
+        if(variationNameList.length == 2)
         {
-            variationInpList1 = variationList[0].getElementsByTagName('input');
-            variationInpList2 = variationList[1].getElementsByTagName('input');
+            variationInpList1 = document.querySelectorAll('.td-var1');
+            variationInpList2 = document.querySelectorAll('.td-var2');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control tbInp" name="variation1Name" readonly ></th>`;
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList2[0].value + `" class="form-control tbInp2" name="variation2Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="form-control thInp" name="variation2Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1279,13 +1277,13 @@
 
             PriceTableHTML += `<tbody>`;
 
-            for(var i = 1; i < variationInpList1.length; i++)
+            for(var i = 0; i < variationInpList1.length; i++)
             {
-                for(var j = 1; j < variationInpList2.length; j++)
+                for(var j = 0; j < variationInpList2.length; j++)
                 {
                     PriceTableHTML += `<tr>`;
-                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control tbInp" name="variation1NameCol[]" readonly ></td>`;
-                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList2[j].value + `" class="form-control tbInp2" name="variation2NameCol[]" readonly ></td>`;
+                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control td-var1" name="variation1NameCol[]" readonly ></td>`;
+                    PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList2[j].value + `" class="form-control td-var2" name="variation2NameCol[]" readonly ></td>`;
                     PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="`+price+`" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
                     PriceTableHTML += `<td scope="row"><input value="`+stock+`" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
                     PriceTableHTML += `<td scope="row"><input value="`+sku+`"   type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
@@ -1295,11 +1293,11 @@
             PriceTableHTML += `</tbody>`;
             PriceTableHTML += `</table>`;
         }
-        else if(variationList.length == 1)
+        else if(variationNameList.length == 1)
         {
-            variationInpList1 = variationList[0].getElementsByTagName('input');
+            variationInpList1 = document.querySelectorAll('.td-var1');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control tbInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1309,10 +1307,10 @@
 
             PriceTableHTML += `<tbody>`;
 
-            for(var i = 1; i < variationInpList1.length; i++)
+            for(var i = 0; i < variationInpList1.length; i++)
             {
                 PriceTableHTML += `<tr>`;
-                PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control tbInp" name="variation1NameCol[]" readonly ></td>`;
+                PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control td-var1" name="variation1NameCol[]" readonly ></td>`;
                 PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="`+price+`" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
                 PriceTableHTML += `<td scope="row"><input value="`+stock+`" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
                 PriceTableHTML += `<td scope="row"><input value="`+sku+`"   type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
