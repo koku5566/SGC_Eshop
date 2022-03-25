@@ -44,8 +44,8 @@
 	}
 ?>
 
-<div class="bg-gradient-primary">
-    <div class="container" style="margin-top: -1.5rem !important;">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+    <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
@@ -87,10 +87,10 @@
                                         </div>
                                         
                                         <hr>
-                                        <div class="a" style="display: flex; align-items: center;">
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
-                                        <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                        <div class="or-container">
+                                            <div class="or-line"></div>
+                                            <span style="padding: 0 1rem">OR</span>
+                                            <div class="or-line"></div>
                                         </div>
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=913746515960441&autoLogAppEvents=1" nonce="eUmuyEF6"></script>
 <script>
@@ -130,9 +131,7 @@
       xfbml      : true,
       version    : '{api-version}'
     });
-      
     FB.AppEvents.logPageView();   
-      
   };
 
   (function(d, s, id){
@@ -145,3 +144,16 @@
 </script>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+.or-container{
+    display: flex;
+    align-items: center;
+}
+.or-line{
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    flex: 1;
+}
+</style>
