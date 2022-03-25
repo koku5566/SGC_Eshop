@@ -51,7 +51,7 @@ if(isset($_POST['signup']))
                         <div class="p-5">
                             <div class="text-left">
                                 <div class="h1 text-gray-900 mb-4">Sign Up</div>
-								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Account</div>
+								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Seller Account</div>
                             </div>
 
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -86,17 +86,6 @@ if(isset($_POST['signup']))
                                 </div>
 
 								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">SIGN UP</button>
-
-                                <hr>
-								<a href="index.html" class="btn btn-microsoft btn-user btn-block">
-									<i class="fab fa-microsoft fa-fw"></i> Microsoft 365
-								</a>
-								<a href="index.html" class="btn btn-google btn-user btn-block">
-									<i class="fab fa-google fa-fw"></i> Google
-								</a>
-								<a href="index.html" class="btn btn-facebook btn-user btn-block">
-									<i class="fab fa-facebook-f fa-fw"></i> Facebook
-								</a>
                             </form>
 
                             <hr>
