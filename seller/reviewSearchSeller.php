@@ -3,7 +3,7 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 $seller = "S000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = '';
-$starR = '';
+
 
 
 if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["restriction"] !== "All"){
@@ -92,6 +92,7 @@ if(mysqli_num_rows($result) > 0)
  ';
  while($row = mysqli_fetch_array($result))
  {
+	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
 			 $starR .='<i class="bi bi-star-fill"></i> ';
