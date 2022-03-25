@@ -114,7 +114,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	<!--MODAL-->
 	<div id="myModalReply" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content" style = "height: 400px;">
+						<div class="modal-content" >
 						<h4 class = "displayCategoryModal" >Reply Message</h4>
 						<span class="closeM" id = "closeModalReply">&times;</span>
 							<div class="editQuestion">
