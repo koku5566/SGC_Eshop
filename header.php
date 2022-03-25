@@ -83,7 +83,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-client_id" content="232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com">
 
     <title>SGC E-Shop</title>
 
