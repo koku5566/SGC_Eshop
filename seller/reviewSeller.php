@@ -153,11 +153,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 										</h6>
 										<table>
 											<tr>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>																			
 																					
@@ -272,6 +272,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.imgReply{
+	width: 75%;
+	height: 75%;
+	object-fit: cover;
+}
 h4.displayCategoryModal{
 	padding: 15px;
     max-width: 80%;
