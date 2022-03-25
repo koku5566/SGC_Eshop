@@ -50,8 +50,8 @@ if(isset($_POST['signup']))
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-left">
-                                <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
-								Create Your SEGi Group of Colleges E-Shop Account
+                                <div class="h1 text-gray-900 mb-4">Sign Up</div>
+								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Account</div>
                             </div>
 
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">

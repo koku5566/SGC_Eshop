@@ -56,7 +56,7 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-left">
-                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                        <div class="h1 text-gray-900 mb-4">Login</div>
                                     </div>
                                     
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
@@ -86,17 +86,17 @@
                                             <a class="small" href="forgetPassword.php">Forgot Password?</a>
                                         </div>
                                         
-                                        <hr>
                                         <div class="or-container">
                                             <div class="or-line"></div>
                                             <span style="padding: 0 1rem">OR</span>
                                             <div class="or-line"></div>
                                         </div>
 
+                                        <div class="alt-login" style="display: flex;">
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <a href="index.html" class="btn btn-google btn-user btn-block" data-onsuccess="onSignIn">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </a>
                                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -104,6 +104,7 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Facebook
                                         </a>
                                         <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                        </div>
                                     </form>
 
                                     <hr>
@@ -155,5 +156,12 @@
     width: 100%;
     background-color: rgba(0,0,0,.1);
     flex: 1;
+}
+
+.btn-microsoft {
+    color: #fff;
+    background-color: #0078d4;
+    border-color: #fff;
+    margin-top: 0.5rem;
 }
 </style>
