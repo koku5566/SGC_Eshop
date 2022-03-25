@@ -110,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	</div>
 	<div class="container">
 	  <i class="bi bi-star-fill"></i>
-	  <i class="bi bi-star"></i>
+	  <i class="bi bi-star ss"></i>
 	  <i class="bi bi-star"></i>
 	  <i class="bi bi-star"></i>
 	  <i class="bi bi-star"></i>
@@ -254,7 +254,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
 .ss{
-	background: orange;
+	
+	-webkit-text-fill-color: orange
 }
 .checked {
   color: orange;
