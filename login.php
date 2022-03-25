@@ -44,8 +44,8 @@
 	}
 ?>
 
-<div class="bg-gradient-primary">
-    <div class="container" style="margin-top: -1.5rem !important;">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+    <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
@@ -88,9 +88,9 @@
                                         
                                         <hr>
                                         <div class="a" style="display: flex; align-items: center;">
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
-                                        <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
-                                        <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                            <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
+                                            <span class="_1ZEpVL" style="padding: 0 1rem">OR</span>
+                                            <div class="_3svg61" style="height: 1px; width: 100%; background-color: #a31f37; flex: 1;"></div>
                                         </div>
 
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
