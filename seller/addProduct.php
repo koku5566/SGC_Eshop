@@ -131,7 +131,7 @@
             mysqli_query($conn, $sql_UpdateId);
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/myProduct.php";
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
