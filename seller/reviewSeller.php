@@ -122,10 +122,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h6 style = ""><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
-										<h6 style = ""><b><?php echo(isset($c5) && !empty ($c5))? $c5 : ''; ?></b></h6>
+										<h6 style = "font-size: 0.9rem"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "">
+											<div style="margin-bottom: 0.2em;">
+											<?php 									
+											$starR = '';
+											if(isset($c5) && !empty ($c5)){
+												for($i=0; $i<5; $i++){
+													if($i < $c5){
+														$starR .='<i class="bi bi-star-fill"></i> ';
+													}else{
+													 $starR .='<i class="bi bi-star"></i> ';
+													}
+												}
+												echo $starR;
+											}else{echo '';}																
+											?>
+											</div>
+										</h6>
 										
-										<h6 style = "font-size: 0.8rem">
+										<h6 style = "font-size: 0.85rem">
 										<?php if(isset($c4) && !empty($c4)){
 												if(strlen($c4) > 100){
 													$CUtrim  = substr($c4, 0, 50);
@@ -246,8 +262,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+h4.displayCategoryModal{
+	padding: 15px;
+    max-width: 80%;
+    margin: auto;
+}
 .bi.bi-star-fill{
-	
 	-webkit-text-fill-color: orange
 }
 .checked {
