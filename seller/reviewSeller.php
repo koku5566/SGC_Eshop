@@ -151,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											}else{echo "";}
 										?>
 										</h6>
-										<table>
+										<table style = "margin-bottom: 0.3rem;">
 											<tr>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
