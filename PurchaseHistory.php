@@ -2,23 +2,29 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+$host = 'localhost';
+$username = 'sgcprot1_SGC_ESHOP';
+$password = 'bXrAcmvi,B#U';
+$databse = 'sgcprot1_SGC_ESHOP';
+//check connectiiion
+$conn=mysqli_connect($url,$username,$password,"crud");
+if(!$conn){
+ die('Could not Connect My Sql:' .mysql_error());
+}
+
+$result = mysqli_query($conn,"SELECT 
+product.product_name,
+product.product_qty,
+product.product_cover_picture,
+product.product_variation,
+product.product_price
+ FROM product");
+?>
 
                
 
-<?php
-$sql = "SELECT 
-product.product_name,
-product.product_cover_picture,
-product.product_qty,
-product.product_variation,
-product.product_price
-FROM product
-";
 
-$result = mysqli_query($conn, $sql);
-
-
-?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
