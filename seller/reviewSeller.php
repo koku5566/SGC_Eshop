@@ -52,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && 
 			$CUmessagereply = $_POST['CUmessagereply'];
 			$selectedPID = $_POST['CUid'];
 			$status = 1;
-
+			echo "$selectedPID | $CUmessagereply";
+/*
 			  $sql = "UPDATE 
 					  reviewRating SET status =?, r_message=? 
 			          WHERE rr_id =?";
@@ -71,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && 
 					mysqli_stmt_close($stmt);
 				}
 
-
+*/
 
 
 }	
