@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />-->
- 
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
  
 <?php
 /*
@@ -108,16 +108,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
 	</div>
-	<div class="container">
-	  <div class="bi bi-star"></div>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
-	</div>
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
- 
-</svg>
+	
+	
 	
 	<!--MODAL-->
 	<div id="myModalReply" class="modal">
@@ -254,6 +246,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.bi.bi-star-fill{
+	
+	-webkit-text-fill-color: orange
+}
 .checked {
   color: orange;
 }
