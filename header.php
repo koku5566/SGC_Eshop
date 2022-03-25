@@ -288,7 +288,8 @@
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="account.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
@@ -320,13 +321,9 @@
                         <?php else :?>
                             <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
                             <div class="topbar-divider d-none d-sm-block"></div>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="account.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    My Account
-                                </a>
-                                <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                            </div>
+                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <a class="nav-link" href="sellerLogin.php">Seller Login <i class="fas fa-user"></i></a>
                         <?php endif?>
                         </li>
                 </nav>
