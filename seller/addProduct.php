@@ -743,7 +743,7 @@
         display:none;
     }
 
-    .td-var1, .td-var1:focus{
+    .td-var1{
         border: none;
         padding: 0;
         margin: 0;
@@ -751,7 +751,7 @@
         color: #858796;
     }
 
-    .td-var2, .td-var2:focus{
+    .td-var2{
         border: none;
         padding: 0;
         margin: 0;
@@ -759,12 +759,22 @@
         color: #858796;
     }
 
-    .thInp, .thInp:focus{
+    .thInp{
         border: none;
         padding: 0;
         margin: 0;
         font-weight: bold;
         color: #858796;
+    }
+
+    .td-var1:focus,.td-var2:focus,.thInp:focus
+    {
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+        box-shadow: none;
     }
 
     .warning, .warning:focus{
