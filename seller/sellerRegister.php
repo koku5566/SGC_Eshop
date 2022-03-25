@@ -23,7 +23,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
-					VALUES ('$username','$email','$password','$username','$date','SELLER')";
+					VALUES ('$username','$email','$password','$username','$date','USER')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
@@ -41,17 +41,17 @@ if(isset($_POST['signup']))
 	}
 ?>
 
-<div class="bg-gradient-primary">
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important; padding: 4rem 0;">
     <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-left">
-                                <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
-								Create Your SEGi Group of Colleges E-Shop Seller Account
+                                <div class="h1 text-gray-900 mb-4">Sign Up</div>
+								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Account</div>
                             </div>
 
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -80,12 +80,23 @@ if(isset($_POST['signup']))
 
 								<div class="form-group">
 									<div class="custom-control custom-checkbox small">
-										<input type="checkbox" class="custom-control-input" id="customCheck">
-										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP"; I Agree to SEGi Group Colleges E-Shop's <a href="x.php">Terms of Use</a> and <a href="x.php">Privacy Policy</a></label>
+										<input required type="checkbox" class="custom-control-input" id="customCheck">
+										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP", I Agree to SEGi Group Colleges E-Shop's <a href="x.php">Terms of Use</a> and <a href="x.php">Privacy Policy</a></label>
 									</div>
                                 </div>
 
 								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">SIGN UP</button>
+
+                                <hr>
+								<a href="index.html" class="btn btn-microsoft btn-user btn-block">
+									<i class="fab fa-microsoft fa-fw"></i> Microsoft 365
+								</a>
+								<a href="index.html" class="btn btn-google btn-user btn-block">
+									<i class="fab fa-google fa-fw"></i> Google
+								</a>
+								<a href="index.html" class="btn btn-facebook btn-user btn-block">
+									<i class="fab fa-facebook-f fa-fw"></i> Facebook
+								</a>
                             </form>
 
                             <hr>

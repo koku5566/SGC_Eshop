@@ -317,7 +317,7 @@
                             <div class="topbar-divider d-none d-sm-block"></div>
                             <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
                             <div class="topbar-divider d-none d-sm-block"></div>
-                            <a class="nav-link" href="sellerLogin.php">Seller Login <i class="fas fa-user"></i></a>
+                            <a class="nav-link" href="seller/sellerLogin.php">Seller Login <i class="fas fa-user"></i></a>
                         <?php endif?>
                         </li>
                 </nav>
