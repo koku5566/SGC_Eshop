@@ -160,6 +160,7 @@
           alert(JSON.stringify(error, undefined, 2));
         });
   }
+  startApp();
 </script>
 
 <!--Facebook Login-->
