@@ -122,7 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h6 style = "font-size: 1rem"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
 										<div style="margin-bottom: 0.1em;">
 											<?php 									
 											$starR = '';
@@ -150,7 +150,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 
 											}else{echo "";}
 										?>
-										</h6>									
+										</h6>
+										<div>
+										
+										</div>										
 												
 										
 									</div>
