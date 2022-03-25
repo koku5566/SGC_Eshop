@@ -114,7 +114,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 	<!--MODAL-->
 	<div id="myModalReply" class="modal">
 					<!--THE MODAL CONTENT-->
-						<div class="modal-content" style = "height: 400px;">
+						<div class="modal-content" >
 						<h4 class = "displayCategoryModal" >Reply Message</h4>
 						<span class="closeM" id = "closeModalReply">&times;</span>
 							<div class="editQuestion">
@@ -151,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											}else{echo "";}
 										?>
 										</h6>
-										<table>
+										<table style = "margin-bottom: 0.3rem;">
 											<tr>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
