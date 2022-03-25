@@ -65,6 +65,16 @@
             $productSelfCollect = isset($_POST['chkSelfCollection']) ? 1 : 0;
             $productStandardDelivery = isset($_POST['chkStandardDelivery']) ? 1 : 0;
         }
+        else
+        {
+            $productWeight = 0;
+            $productLength = 0;
+            $productWidth = 0;
+            $productHeight = 0;
+            $productSelfCollect = 0;
+            $productStandardDelivery = 0;
+        }
+        
         
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
