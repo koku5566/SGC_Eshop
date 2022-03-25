@@ -1163,9 +1163,9 @@
 
             PriceTableHTML += `<tbody>`;
 
-            for(var i = 1; i < variationInpList1.length; i++)
+            for(var i = 0; i < variationInpList1.length; i++)
             {
-                for(var j = 1; j < variationInpList2.length; j++)
+                for(var j = 0; j < variationInpList2.length; j++)
                 {
                     PriceTableHTML += `<tr>`;
                     PriceTableHTML += `<td scope="row"><input style="background: transparent;" value="` + variationInpList1[i].value + `" class="form-control td-var1" name="variation1NameCol[]" readonly ></td>`;
@@ -1175,7 +1175,7 @@
 
                     for(var k = 0; k < priceTableArray.length; k++)
                     {
-                        if(priceTableArray[k].variation1 == variationInpList1[i].value && priceTableArray[k].variation2 == variationInpList2[j].value)
+                        if((priceTableArray[k].variation1 == variationInpList1[i].value && priceTableArray[k].variation2 == variationInpList2[j].value) || (k==i && priceTableArray.length == variationInpList1.length))
                         {
                             PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="` + priceTableArray[k].price + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
                             PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[k].stock + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
@@ -1184,6 +1184,7 @@
 
                             priceTableArray = arrayRemoveVariation2(priceTableArray, priceTableArray[k].variation1, priceTableArray[k].variation2);
                             defaultHTML = false;
+                            break;
                         }
                     }
                     
@@ -1222,7 +1223,7 @@
 
                 for(var k = 0; k < priceTableArray.length; k++)
                 {
-                    if(priceTableArray[k].variation1 == variationInpList1[i].value)
+                    if(priceTableArray[k].variation1 == variationInpList1[i].value || (k==i && priceTableArray.length == variationInpList1.length))
                     {
                         PriceTableHTML += `<td scope="row"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">RM</span></div><input value="` + priceTableArray[k].price + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-price" name="variationPrice[]" required></div></td>`;
                         PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[k].stock + `" type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control td-stock" name="variationStock[]" required></td>`;
