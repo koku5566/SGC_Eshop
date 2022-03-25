@@ -96,7 +96,7 @@
                                         <a href="index.html" class="btn btn-microsoft btn-user btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </a>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block" data-onsuccess="onSignIn">
+                                        <a href="index.html" class="btn btn-google btn-user btn-block" id="google-loginBtn">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </a>
                                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -122,6 +122,46 @@
     </div>
 </div>
 
+<!--Google Login-->
+<div id="g-root"></div>
+<script async defer src="https://apis.google.com/js/platform.js"></script>
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+</script>
+<script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('google-loginBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('g-root').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+</script>
+
+<!--Facebook Login-->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=913746515960441&autoLogAppEvents=1" nonce="eUmuyEF6"></script>
 <script>
