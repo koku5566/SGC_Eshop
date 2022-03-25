@@ -109,15 +109,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
         <h1 class="h3 mb-0 text-gray-800">Review Seller - APA JAY CHAO</h1>
 	</div>
 	<div class="container">
-	  <div class="bi bi-star"></div>
-	  <i class="bi bi-star"></i>
-	  <i class="bi bi-star"></i>
+	  <i class="bi bi-star ss"></i>
+	  <i class="bi bi-star ss"></i>
+	  <i class="bi bi-star ss"></i>
 	  <i class="bi bi-star"></i>
 	  <i class="bi bi-star"></i>
 	</div>
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
- 
-</svg>
+	
 	
 	<!--MODAL-->
 	<div id="myModalReply" class="modal">
@@ -254,6 +252,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.ss{
+	background: orange;
+}
 .checked {
   color: orange;
 }
