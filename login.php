@@ -125,6 +125,7 @@
 <!--Google Login-->
 <div id="g-root"></div>
 <script async defer src="https://apis.google.com/js/platform.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
 <script>
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
