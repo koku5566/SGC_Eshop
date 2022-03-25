@@ -131,11 +131,15 @@
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
             mysqli_query($conn, $sql_UpdateId);
-            echo("Error Insert Successfull");
+            echo '<script language="javascript">';
+            echo 'alert("Product Added Successful")';
+            echo '</script>';
         }
         else
         {
-            echo("Error Insert Fail");
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Add Product")';
+            echo '</script>';
         }
     } 
 
