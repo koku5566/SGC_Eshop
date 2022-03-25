@@ -1113,12 +1113,18 @@
         var td_col_stock = document.querySelectorAll('.td-stock');
         var td_col_sku = document.querySelectorAll('.td-sku');
         priceTableArray = [];
+        var td = "";
+        
         for(var i = 0; i < td_col_variation1.length; i++)
         {
-            var td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
-
+            if(td_col_variation2.length != 0)
+            {
+                td = {variation1:td_col_variation1[i].value, variation2:td_col_variation2[i].value, price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
+            }
+            else{
+                td = {variation1:td_col_variation1[i].value, variation2:"", price:td_col_price[i].value, stock:td_col_stock[i].value, sku:td_col_sku[i].value};
+            }
             priceTableArray.push(td);
-
         }
     }
 
