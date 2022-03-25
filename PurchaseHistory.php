@@ -12,14 +12,15 @@ $conn=mysqli_connect($url,$username,$password,"crud");
 if(!$conn){
  die('Could not Connect My Sql:' .mysql_error());
 }
-
-$result = mysqli_query($conn,"SELECT 
+$sql = "SELECT 
 product_name,
 product_qty,
 product_cover_picture,
 product_variation,
 product_price
- FROM product");
+ FROM product";
+
+$result = $conn->query($sql);
 ?>
 
                
