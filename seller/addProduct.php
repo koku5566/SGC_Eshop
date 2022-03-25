@@ -767,7 +767,7 @@
         color: #858796;
     }
 
-    .td-var1:focus,.td-var2:focus,.thInp:focus
+    .td-var1:focus,.td-var2:focus,.thInp:focus,.thInp:focus-visible
     {
         border: none;
         padding: 0;
@@ -1162,8 +1162,8 @@
             variationInpList1 = variationList[0].querySelectorAll('.variationChoice');
             variationInpList2 = variationList[1].querySelectorAll('.variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="thInp" name="variation2Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="thInp" name="variation2Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1192,7 +1192,7 @@
                             PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[k].sku + `" type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                             PriceTableHTML += `</tr>`;
 
-                            priceTableArray = arrayRemoveVariation2(priceTableArray, priceTableArray[k].variation1, priceTableArray[k].variation2);
+                            //priceTableArray = arrayRemoveVariation2(priceTableArray, priceTableArray[k].variation1, priceTableArray[k].variation2);
                             defaultHTML = false;
                             break;
                         }
@@ -1214,7 +1214,7 @@
         {
             variationInpList1 = variationList[0].querySelectorAll('.variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1240,7 +1240,7 @@
                         PriceTableHTML += `<td scope="row"><input value="` + priceTableArray[k].sku + `" type="text" class="form-control td-sku" name="variationSKU[]" required></td>`;
                         PriceTableHTML += `</tr>`;
 
-                        priceTableArray = arrayRemoveVariation1(priceTableArray, priceTableArray[k].variation1);
+                        //priceTableArray = arrayRemoveVariation1(priceTableArray, priceTableArray[k].variation1);
                         defaultHTML = false;
                         break;
                     }
@@ -1278,8 +1278,8 @@
             variationInpList1 = variationList[0].querySelectorAll('variationChoice');
             variationInpList2 = variationList[1].querySelectorAll('variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="form-control thInp" name="variation2Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control thInp" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[1].value + `" class="form-control thInp" name="variation2Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
@@ -1309,7 +1309,7 @@
         {
             variationInpList1 = variationList[0].querySelectorAll('variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationInpList1[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
