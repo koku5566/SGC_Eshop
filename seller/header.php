@@ -316,7 +316,7 @@
                                 </form>
                             </div>
                         </li>
-                        
+
                         <!--Login-->
                         <?php if ($_SESSION['login'] == true) :?>
                         <!-- Nav Item - Alerts -->
@@ -446,7 +446,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="account.php">
+                                <a class="dropdown-item" href="shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>
@@ -485,12 +485,12 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="register.php">
+                                <a class="dropdown-item" href="../register.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User
                                 </a>
 
-                                <a class="dropdown-item" href="seller/sellerRegister.php">
+                                <a class="dropdown-item" href="../seller/sellerRegister.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Seller
                                 </a>
@@ -503,17 +503,17 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="login.php">
+                                <a class="dropdown-item" href="../login.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User
                                 </a>
 
-                                <a class="dropdown-item" href="seller/sellerLogin.php">
+                                <a class="dropdown-item" href="../seller/sellerLogin.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Seller
                                 </a>
 
-                                <a class="dropdown-item" href="seller/sellerLogin.php">
+                                <a class="dropdown-item" href="../seller/sellerLogin.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Admin
                                 </a>
