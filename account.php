@@ -29,7 +29,7 @@ if(isset($_POST['update']))
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
-			if($_POST['password'] != "" || $_FILES['proPic']['tmp_name'] != ""){
+			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
 				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
@@ -62,7 +62,7 @@ if(isset($_POST['update']))
 		if (mysqli_num_rows($res_data) > 0){
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
-					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
+					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
 					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
 					<div class=\"form-group\">
