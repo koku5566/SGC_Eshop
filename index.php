@@ -52,9 +52,9 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
-                                                        <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
-                                                        ".$row['main_category_name']."
+                                                        <a href=\"{$domain_link}/category.php?id=".$row['category_name']."\" class=\"nav-link\">
+                                                        <img src=\"".$row['category_pic']."\" style=\"width:25px;margin-right:5px;\">
+                                                        ".$row['category_name']."
                                                         </a>
                                                         </li>
                                                         ");
