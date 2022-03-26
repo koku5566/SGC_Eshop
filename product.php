@@ -10,10 +10,10 @@
                         <?php 
                             $productId = $_GET['id'];
                             //Display Current Directory
-                            $sql_1 = "SELECT B.category_name AS mainCategory, B.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
+                            $sql_1 = "SELECT B.category_name AS mainCategory, A.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
                             LEFT JOIN  category AS B ON A.main_category = B.category_id
                             LEFT JOIN  category AS C ON A.sub_category = C.category_id
-                            WHERE combination_id = (SELECT category_id FROM `product` WHERE product_id = '$productId')
+                            WHERE combination_id = '(SELECT category_id FROM `product` WHERE product_id = '$productId')'
                             ";
                             $result = mysqli_query($conn, $sql);
 
