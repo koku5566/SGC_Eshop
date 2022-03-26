@@ -286,7 +286,7 @@
                                 <?php
                                 $UID = $_SESSION["id"];
                                 $sql = "SELECT * FROM user WHERE username = '$UID'";
-                                $proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+
 
                                 $res_data = mysqli_query($conn,$sql);
                                 if (mysqli_num_rows($res_data) > 0){
