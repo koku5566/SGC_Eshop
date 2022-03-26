@@ -94,16 +94,19 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Price</h6>
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <div class="input-group mb-3">
+                                                    <div class="col mb-3">
+                                                        <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-addon1">RM</span>
                                                             </div>
                                                             <input type="text" class="form-control" name="minPrice" placeholder="min">
                                                         </div>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="input-group mb-3">
+                                                    <div class="col mb-3">
+                                                        <p>-</p>
+                                                    </div>
+                                                    <div class="col mb-3">
+                                                        <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-addon1">RM</span>
                                                             </div>
