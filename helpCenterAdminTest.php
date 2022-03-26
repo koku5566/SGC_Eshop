@@ -5,7 +5,7 @@
 <?php
 
 ?>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
@@ -134,6 +134,11 @@
 ?>
 
 <style>
+.imgReply{
+	width: 75%;
+	height: 75%;
+	object-fit: cover;
+}
 .pp{
 	width: 100%;
 	border: 1px solid purple;
