@@ -24,7 +24,7 @@
                                     $subCategoryName = $row["subCategory"];
                                     
                                     //If no sub category, display as normal
-                                    echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$mainCategoryName}\">$mainCategoryName</a></li>";
+                                    echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$mainCategoryName}\">$mainCategoryName</a></li>");
                                     if($subYes == 1)
                                     {
                                         echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$subCategoryName}\">$subCategoryName</a></li>");
