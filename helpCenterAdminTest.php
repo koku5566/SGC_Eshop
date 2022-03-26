@@ -20,11 +20,11 @@
                                 <div class="card-body">
                                     <div class="row" style = "background-color: lightblue;">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card" style="background-color: red;">
+                                            
+                                                <div style="background-color: red;">
                                                     
                                                 </div>   
-                                            </a>
+                                            
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="penangfacility.php?id=a">
