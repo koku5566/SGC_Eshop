@@ -35,9 +35,14 @@
 	border: 1px solid purple;
 }
 .ppparent{
-	background-color: green; 
-	border: 1px solid black;
+	
 	display: flex;
+	flex-wrap: wrap;
+}
+.ppparent > div {
+	flex:50%;
+	box-shadow: 0 0 0 1px black;
+	margin-bottom: 10px
 }
 </style>
 <script>
