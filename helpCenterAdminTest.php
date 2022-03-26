@@ -51,6 +51,9 @@
                                     }
 									*/
                                     ?>
+									<div class="carousel-item active">
+                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                    </div> 
 									<div class="carousel-item">
                                             <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div> 
