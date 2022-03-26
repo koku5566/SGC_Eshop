@@ -7,8 +7,33 @@
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Product</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Assecories</li>
+                        <?php 
+                            $productId = $_GET['id'];
+                            //Display Current Directory
+                            $sql_1 = "SELECT B.category_name AS mainCategory, B.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
+                            LEFT JOIN  category AS B ON A.main_category = B.category_id
+                            LEFT JOIN  category AS C ON A.sub_category = C.category_id
+                            WHERE combination_id = (SELECT category_id FROM `product` WHERE product_id = '$productId')
+                            ";
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    $mainCategoryName = $row["mainCategory"];
+                                    $subYes = $row["sub_Yes"];
+                                    $subCategoryName = $row["subCategory"];
+                                    
+                                    //If no sub category, display as normal
+                                    echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$mainCategoryName}\">$mainCategoryName</a></li>";
+                                    if($subYes == 1)
+                                    {
+                                        echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$subCategoryName}\">$subCategoryName</a></li>");
+                                    }
+                                    
+                                    echo("<li class=\"breadcrumb-item active\"><a href=\"?Product={example}\">Product</a></li>");
+                                }
+                            }   
+                        ?>
                     </ol>
                 </nav>
 
