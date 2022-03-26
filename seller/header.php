@@ -518,7 +518,6 @@
                             </div>
                             </li>
                         <?php endif?>
-                        </li>
 
                     </ul>
 
