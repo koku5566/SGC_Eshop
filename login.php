@@ -66,6 +66,7 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Please Enter Your Email Address or Username">
                                         </div>
+                                        <div id="emailHelp">Enter proper email</div>
 
                                         <div class="form-group">
                                             <label>Password</label>

@@ -83,14 +83,14 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
-                                            <a class="small" href="forgetPassword.php">Forgot Password?</a>
+                                            <a class="small" href="../forgetPassword.php">Forgot Password?</a>
                                         </div>
                                     </form>
 
                                     <hr>
                                     
                                     <div class="text-left">
-                                        New to SGC E-Shop?<a href="register.php"> Sign Up </a>
+                                        New to SGC E-Shop?<a href="../seller/sellerRegister.php"> Sign Up </a>
                                     </div>
                                 </div>
                             </div>

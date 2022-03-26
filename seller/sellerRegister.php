@@ -24,6 +24,8 @@ if(isset($_POST['signup']))
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
 					VALUES ('$username','$email','$password','$username','$date','USER')";
+					$sql = "INSERT INTO shopProfile (shop_id, shop_name)
+					VALUES ('1','$username')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
@@ -90,7 +92,7 @@ if(isset($_POST['signup']))
 
                             <hr>
                             <div class="text-center">
-								Already Have an Account?<a href="login.php"> Login </a>
+								Already Have an Account?<a href="../seller/sellerLogin.php"> Login </a>
                             </div>
                         </div>
                     </div>
