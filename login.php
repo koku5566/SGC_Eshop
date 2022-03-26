@@ -63,14 +63,13 @@
                                         <div class="form-group">
                                             <label>Username/Email</label>
                                             <input required type="text" name="username" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Please Enter Your Email Address or Username">
+                                                id="inputEmail" placeholder="Please Enter Your Email Address or Username">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input required type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Please Enter Password">
+                                                id="inputPassword" placeholder="Please Enter Password">
                                         </div>
 
                                         <div class="form-group">

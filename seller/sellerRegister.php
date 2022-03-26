@@ -18,7 +18,7 @@ if(isset($_POST['signup']))
 				$stmt_u = mysqli_query($conn, $sql_u);
 
 				if (mysqli_num_rows($stmt_u) > 0) {	
-					echo("<script>alert('This User Already Exists');</script>");
+					echo("<script>alert('User Already Exists');</script>");
 				}
 				else
 				{
@@ -72,11 +72,11 @@ if(isset($_POST['signup']))
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 										<label>Password</label>
-										<input required type="password" name="password" class="form-control form-control-user" id="inputPassword" maxlength="50" pattern=".{8,}" placeholder="At least 8 characters long" title="Must be at least 8 characters long">
+										<input required type="password" name="password" class="form-control form-control-user" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
                                     </div>
                                     <div class="col-sm-6">
 										<label>Confirm Password</label>
-										<input required type="password" name="password1" class="form-control form-control-user" id="exampleRepeatPassword" maxlength="50">
+										<input required type="password" name="password1" class="form-control form-control-user" id="inputRepeatPassword" maxlength="50">
                                     </div>
                                 </div>
 
@@ -107,7 +107,7 @@ if(isset($_SESSION['AddUser']))
 	{
 		if($_SESSION['AddUser'] == true)
 		{
-			echo "<script>alert('Registered Successfully');</script>";
+			echo "<script>alert('Registered Successfull');</script>";
 		}
 		$_SESSION['AddUser'] = NULL;
 	}

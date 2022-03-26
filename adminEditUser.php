@@ -112,7 +112,6 @@
 				");
 		}
 	}
-	/*<input required type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" value=\"".$row["password"]."\"/>*/
 ?>
 </form>
 <?php
