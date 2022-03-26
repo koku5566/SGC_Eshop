@@ -10,6 +10,8 @@
 <?php
 if(isset($_POST['update']))
 	{
+		$_SESSION['Update'] = false;
+
 		$UID = $_SESSION['id'];
 		$name = $_POST['name'];
 		$email = $_POST['email'];
@@ -21,8 +23,6 @@ if(isset($_POST['update']))
 			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
 		}
 
-		$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
-		
 		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
