@@ -18,7 +18,7 @@
                     <div class="row">
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="row">
+                                    <div class="row" style = "background-color: lightblue;">
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
