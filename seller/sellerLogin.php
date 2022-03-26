@@ -83,34 +83,14 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
-                                            <a class="small" href="forgetPassword.php">Forgot Password?</a>
-                                        </div>
-                                        
-                                        <div class="or-container">
-                                            <div class="or-line"></div>
-                                            <span style="padding: 0 1rem">OR</span>
-                                            <div class="or-line"></div>
-                                        </div>
-
-                                        <div class="alt-login" style="display: flex;">
-                                        <div class="btn btn-microsoft btn-user btn-block">
-                                            <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
-                                        </div>
-
-                                        <div class="btn btn-google btn-user btn-block" id="google-login-button">
-                                            <i class="fab fa-google fa-fw"></i> Google
-                                        </div>
-
-                                        <div class="btn btn-facebook btn-user btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-                                             Facebook
-                                        </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
+                                            <a class="small" href="../forgetPassword.php">Forgot Password?</a>
                                         </div>
                                     </form>
 
                                     <hr>
                                     
                                     <div class="text-left">
-                                        New to SGC E-Shop?<a href="register.php"> Sign Up </a>
+                                        New to SGC E-Shop?<a href="../seller/sellerRegister.php"> Sign Up </a>
                                     </div>
                                 </div>
                             </div>
@@ -122,97 +102,4 @@
     </div>
 </div>
 
-<!--Google Login-->
-<div id="g-root"></div>
-<script async defer src="https://apis.google.com/js/platform.js"></script>
-<script src="https://apis.google.com/js/api:client.js"></script>
-
-<!--Custom Google Login Button-->
-<script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: '232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('google-login-button'));
-    });
-  };
-
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          document.getElementById('g-root').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
-          //alert(JSON.stringify(error, undefined, 2));
-        });
-  }
-  startApp();
-</script>
-
-<!--Get User Google Profile Informaton-->
-<script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
-</script>
-
-<!--Facebook Login-->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=913746515960441&autoLogAppEvents=1" nonce="eUmuyEF6"></script>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '913746515960441',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
-    FB.AppEvents.logPageView();   
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
 <?php require __DIR__ . '/footer.php' ?>
-
-<style>
-.or-container{
-    display: flex;
-    align-items: center;
-}
-.or-line{
-    height: 1px;
-    width: 100%;
-    background-color: rgba(0,0,0,.1);
-    flex: 1;
-}
-
-.btn-microsoft {
-    color: #fff;
-    background-color: #0078d4;
-    border-color: #fff;
-    margin-top: 0.5rem;
-}
-.btn-microsoft:hover {
-    color: #fff;
-    background-color: #0078d4;
-    border-color: #e6e6e6;
-}
-</style>
