@@ -22,14 +22,27 @@
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
                                             
                                                 <div style="background-color: red; height: 100%">
-                                                    WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????WHY R U SO HENSEM????
-													WHY R U SO HENSEM????WHY R U SO HENSEM????
+                                                    <h6 style = "font-size: 1rem; margin-bottom: 0.1rem;">Amanda Teh Sue Shun</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+										
+										
+										<h6 style = "font-size: 0.85rem">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+										</h6>
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
                                                 </div>   
                                             
                                         </div>
