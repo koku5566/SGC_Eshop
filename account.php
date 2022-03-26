@@ -70,7 +70,7 @@ if(isset($_POST['update']))
 					
 					<div class=\"form-group\">
 					<label>Email Address</label>
-					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" style=\"border: 1px solid #1d1e1e; background-color: lightgray;\" class=\"form-control form-control-user\"/>
+					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
 					</div>
 
 					<div class=\"form-group\">
@@ -80,7 +80,7 @@ if(isset($_POST['update']))
 
 					<div class=\"form-group\">
 					<label>Contact</label>
-					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"+0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"14\" placeholder=\"+0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
 					</div>
 					
 					<button type=\"submit\" name=\"update\">Update</button>
