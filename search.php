@@ -76,13 +76,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_GET['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_GET['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -99,12 +99,23 @@
                                                             <input type="text" class="form-control" name="minPrice" placeholder="RM MIN">
                                                         </div>
                                                     </div>
-                                                    <div class="col mb-3">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    <div class="col mb-3" style="max-width: 14px;padding: 0;">
+                                                        <i class="fa fa-minus" style="padding: 10px 0;" aria-hidden="true"></i>
                                                     </div>
                                                     <div class="col mb-3">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" name="maxPrice" placeholder="RM MAX">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="input-group">
+                                                            <button type="submit" class="btn btn-primary" style="width:100%">Apply Filter</button>
                                                         </div>
                                                     </div>
                                                 </div>
