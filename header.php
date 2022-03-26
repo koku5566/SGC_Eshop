@@ -313,13 +313,13 @@
                         </li>
 
                         <?php else :?>
-                            <!--
-                            <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                            <div class="topbar-divider d-none d-sm-block"></div>
-                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                            -->
+                        <!--
+                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                        -->
 
-                            <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -333,11 +333,11 @@
                                     Seller
                                 </a>
                             </div>
-                            </li>
+                        </li>
 
-                            <div class="topbar-divider d-none d-sm-block"></div>
+                        <div class="topbar-divider d-none d-sm-block"></div>
 
-                            <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -356,9 +356,8 @@
                                     Admin
                                 </a>
                             </div>
-                            </li>
-                        <?php endif?>
                         </li>
+                        <?php endif?>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
