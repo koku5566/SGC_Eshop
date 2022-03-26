@@ -80,7 +80,7 @@ if(isset($_POST['update']))
 
 					<div class=\"form-group\">
 					<label>Contact</label>
-					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{4}-[0-9]{7-8}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"+".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
 					</div>
 					
 					<button type=\"submit\" name=\"update\">Update</button>
