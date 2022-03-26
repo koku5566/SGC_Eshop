@@ -14,7 +14,7 @@
 
 <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -53,19 +53,19 @@
                                     }
 									*/
                                     ?>
-									<div class="carousel-item active atss">
+									<div class="carousel-item active">
                                             <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
-									<div class="carousel-item atss">
+									<div class="carousel-item">
                                             <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div> 
-									<div class="carousel-item atss>
+									<div class="carousel-item>
                                             <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div> 
-									<div class="carousel-item atss">
+									<div class="carousel-item">
                                             <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div>
-									<div class="carousel-item atss">
+									<div class="carousel-item">
                                             <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
                                     </div>									
                     
@@ -209,6 +209,7 @@
 <style>
 .atss{
 	max-width: 25rem;
+	max-height: 25rem;
 }
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange
