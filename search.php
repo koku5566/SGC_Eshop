@@ -96,21 +96,15 @@
                                                 <div class="row">
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">RM</span>
-                                                            </div>
-                                                            <input type="text" class="form-control" name="minPrice" placeholder="min">
+                                                            <input type="text" class="form-control" name="minPrice" placeholder="RM MIN">
                                                         </div>
                                                     </div>
                                                     <div class="col mb-3">
-                                                        <p>-</p>
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
                                                     </div>
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">RM</span>
-                                                            </div>
-                                                            <input type="text" class="form-control" name="maxPrice" placeholder="max">
+                                                            <input type="text" class="form-control" name="maxPrice" placeholder="RM MAX">
                                                         </div>
                                                     </div>
                                                 </div>
