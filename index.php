@@ -1,8 +1,6 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
-
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
@@ -22,7 +20,7 @@
                                                 while($row = mysqli_fetch_assoc($result)) {
                                                     $maincategoryid = $row["category_id"];
                                                     
-                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid'";
+                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
                                                     if (mysqli_num_rows($result_1) > 0) {
