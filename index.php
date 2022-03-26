@@ -14,45 +14,42 @@
                                     <ul class="main-menu">
                                         <!-- PHP Loop here - Category -->
                                         <?php
-                                            //Check for Main Category
-                                            $sql = "SELECT * FROM mainCategory";
+                                            //Main Category
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
                                             $result = mysqli_query($conn, $sql);
-                                
+
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
-
-                                                    $verifier = 0;
-                                                    //Check For Sub Category
-                                                    $sql_1 = "SELECT * FROM subCategory WHERE main_category_id = \"".$row['main_category_id']."\"";
+                                                    $maincategoryid = $row["category_id"];
+                                                    
+                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid'";
                                                     $result_1 = mysqli_query($conn, $sql_1);
-                                        
+
                                                     if (mysqli_num_rows($result_1) > 0) {
-                                                        $verifier = 1;
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"{$domain_link}/category.php?id=".$row['main_category_name']."\" class=\"nav-link\">
-                                                                <img src=\"".$row['main_category_pic']."\" style=\"width:25px;margin-right:5px;\">
-                                                                ".$row['main_category_name']."
+                                                                <a href=\"{$domain_link}/category.php?id=".$row['category_name']."\" class=\"nav-link\">
+                                                                <img src=\"".$row['category_pic']."\" style=\"width:25px;margin-right:5px;\">
+                                                                ".$row['category_name']."
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
 
                                                                 </a>
                                                                     <ul class=\"dropdown-menu\">
                                                         ");
-
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
+
                                                             echo("
-                                                                        <li class=\"menu-item\">
-                                                                            <a href=\"{$domain_link}/category.php?id=".$row_1['sub_category_name']."\" class=\"dropdown-item\">".$row_1['sub_category_name']."</a>
-                                                                        </li>
+                                                                <li class=\"menu-item\">
+                                                                    <a href=\"{$domain_link}/category.php?id=".$row_1['subCategoryName']."\" class=\"dropdown-item\">".$row_1['subCategoryName']."</a>
+                                                                </li>
                                                             ");
                                                         }
                                                         echo("
+                                                                    </ul>
                                                                 </li>
-                                                            </ul>
-                                                        ");
+                                                            ");
                                                     }
-
-                                                    if($verifier == 0)
+                                                    else
                                                     {
                                                         //If no sub category, display as normal
                                                         echo("
@@ -63,9 +60,9 @@
                                                         </a>
                                                         </li>
                                                         ");
-                                                    } 
+                                                    }
                                                 }
-                                            }
+                                            }   
                                         ?>
                                     </ul>
                                 </div>

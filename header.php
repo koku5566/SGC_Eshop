@@ -120,11 +120,10 @@
                     </a>
 
                     <!-- Topbar Search -->
-                    <form method="post" action="<?php echo htmlspecialchars("/search.php");?>" 
+                    <form method="get" action="<?php echo htmlspecialchars("/search.php");?>" 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input id="searchInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input id="searchInput" name="Search" type="text" class="form-control bg-light border-0 small" placeholder="Search for...">
                             <div class="input-group-append" id="searchButton">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
