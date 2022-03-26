@@ -3,24 +3,16 @@
 ?>
 
 <?php
-$host = 'localhost';
-$username = 'sgcprot1_SGC_ESHOP';
-$password = 'bXrAcmvi,B#U';
-$databse = 'sgcprot1_SGC_ESHOP';
-//check connectiiion
-$conn=mysqli_connect($url,$username,$password,"crud");
-if(!$conn){
- die('Could not Connect My Sql:' .mysql_error());
-}
 $sql = "SELECT 
-product_name,
-product_qty,
-product_cover_picture,
-product_variation,
-product_price
- FROM product";
+product.product_name,
+product.product_cover_picture,
+product.product_qty,
+product.product_variation,
+product.product_price
+FROM product
+";
 
-$result = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
 ?>
 
                
