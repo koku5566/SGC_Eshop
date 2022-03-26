@@ -62,7 +62,10 @@
                                     </div> 
 									<div class="carousel-item">
                                             <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
+                                    </div>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                    </div>									
                     
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
