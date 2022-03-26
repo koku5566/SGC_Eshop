@@ -21,7 +21,9 @@
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
+								
                                     <?php
+									/*
                                     $sql = "SELECT * FROM facilityPic";
                                     $result = mysqli_query($conn, $sql);
                                     $i = false;
@@ -47,8 +49,17 @@
                                             }
                                         }
                                     }
-
+									*/
                                     ?>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
                     
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
