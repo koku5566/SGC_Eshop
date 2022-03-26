@@ -19,7 +19,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row" style = "background-color: lightblue;">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink;">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
