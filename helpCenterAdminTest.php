@@ -134,6 +134,9 @@
 ?>
 
 <style>
+.bi.bi-star-fill{
+	-webkit-text-fill-color: orange
+}
 .imgReply{
 	width: 75%;
 	height: 75%;
