@@ -26,11 +26,8 @@
 		if (mysqli_num_rows($stmt_u) > 0) {
 			$sql = "UPDATE userAddress SET contact_name='$name', phone_number='$contact', address='$address', postal_code='$postal', area='$area', state='$state', country='$country' WHERE address_id='$UID'";
 
-			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact', role='$role' WHERE username='$UID'";
-			}
-			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
+			if($_POST['address'] != ""){
+				$sql = "UPDATE userAddress SET contact_name='$name', phone_number='$contact', address='$address', postal_code='$postal', area='$area', state='$state', country='$country' WHERE address_id='$UID'";
 			}
 		
 			if (mysqli_query($conn, $sql)) {
@@ -108,7 +105,7 @@ if(isset($_SESSION['Update']))
 		if($_SESSION['Update'] == true)
 		{
 			echo "<script>alert('Details Updated');
-			window.location.href='adminManageUser.php';</script>";
+			window.location.href='userprofile_address.php';</script>";
 		}
 		$_SESSION['Update'] = NULL;
 	}
