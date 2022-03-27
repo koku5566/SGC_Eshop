@@ -104,7 +104,7 @@
                                              Facebook
                                         </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
                                         <div id="spinner" class="btn btn-facebook btn-block fb-login-button">Loading<div
-    class="fb-login-button"
+    class="btn btn-facebook btn-block fb-login-button"
     data-max-rows="1"
     data-size="large"
     data-button-type="login_with"
