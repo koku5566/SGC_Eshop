@@ -72,7 +72,7 @@ if(isset($_POST['update']))
 					
 					<div class=\"form-group\">
 					<label>Email Address</label>
-					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
+					<input required type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
 					</div>
 
 					<div class=\"form-group\">

@@ -8,34 +8,40 @@
     }
 ?>
 <?php
-	if(isset($_POST['update']))
+if(isset($_POST['update']))
 	{
-		$UID = $_SESSION['ToEdit'];
+		$_SESSION['Update'] = false;
+
+		$role = $_POST['role'];
+		$UID = $_SESSION['id'];
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
-		$user = $_POST['user'];
+
+		if($_FILES['proPic']['tmp_name'] != "")
+		{
+			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+		}
 
 		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 
-		if (mysqli_num_rows($stmt_u) > 0) {
-			
-			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET name='$name', email='$email', password='$password', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
+		if (mysqli_num_rows($stmt_u) > 0) {	
+		
+			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
+				$sql = "UPDATE user SET role='$role', profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
+				$sql = "UPDATE user SET role='$role', name='$name', email='$email', contact='$contact' WHERE username='$UID'";
 			}
-		
+			
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
-			mysqli_close($conn);
 		}
 		else
 		{
@@ -56,8 +62,8 @@
 			echo("
 				<input name=\"product\" value=\"".$row["username"]."\" hidden/>
 				
-				<p id=\"label\">User Category
-				<select id=\"user\" name=\"user\">
+				<p id=\"label\">User Role
+				<select id=\"userRole\" name=\"role\">
 				");
 				if($row['role'] == "USER")
 				{
@@ -90,7 +96,7 @@
 					
 					<div class=\"form-group\">
 					<label>Email Address</label>
-					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
+					<input required type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
 					</div>
 
 					<div class=\"form-group\">
