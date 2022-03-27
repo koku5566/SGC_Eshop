@@ -106,7 +106,7 @@ if(isset($_SESSION['AddUser']))
 	{
 		if($_SESSION['AddUser'] == true)
 		{
-			echo "<script>alert('Registered Successfull');</script>";
+			echo "<script>alert('User Added');</script>";
 		}
 		$_SESSION['AddUser'] = NULL;
 	}
