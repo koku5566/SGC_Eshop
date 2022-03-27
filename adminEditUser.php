@@ -80,35 +80,30 @@
 				echo("
 				</select></p>
 
-				<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\">
-				<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
-				
-				<div class=\"form-group\">
-				<label>Username</label>
-				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["username"]."\" class=\"form-control form-control-user\"/>
-				</div>
+					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
+					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+					
+					<div class=\"form-group\">
+					<label>Name</label>
+					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
+					</div>
+					
+					<div class=\"form-group\">
+					<label>Email Address</label>
+					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
+					</div>
 
-				<div class=\"form-group\">
-				<label>Name</label>
-				<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control form-control-user\"/>
-				</div>
-				
-				<div class=\"form-group\">
-				<label>Email Address</label>
-				<input disabled type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"xxxxx@xxx.xxx\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
-				</div>
+					<div class=\"form-group\">
+					<label>Password</label>
+					<input type=\"password\" name=\"password\" pattern=\"(?=.*\d).{8,}\" maxlength=\"50\" title=\"Use 8 or more characters with a mix of letters and numbers\" class=\"form-control form-control-user\"/>
+					</div>
 
-				<div class=\"form-group\">
-				<label>Password</label>
-				<input type=\"password\" name=\"password\" pattern=\".{8,}\" maxlength=\"50\" title=\"Must be at least 8 characters long\" class=\"form-control form-control-user\"/>
-				</div>
-
-				<div class=\"form-group\">
-				<label>Contact</label>
-				<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{3}-[0-9]{7-8}\" maxlength=\"12\" placeholder=\"000-0000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
-				</div>
-
-				<button type=\"submit\" name=\"update\">Update</button>
+					<div class=\"form-group\">
+					<label>Contact</label>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control form-control-user\"/>
+					</div>
+					
+					<button type=\"submit\" name=\"update\">Update</button>
 				");
 		}
 	}

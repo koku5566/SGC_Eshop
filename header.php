@@ -70,6 +70,10 @@
     {
         $_SESSION['role'] = "";
     }
+    if(isset($_SESSION['DeleteUser']))
+	{
+		$_SESSION['DeleteUser'] = NULL;
+	}
 ?>
 
 
