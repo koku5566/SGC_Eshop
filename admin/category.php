@@ -1,5 +1,5 @@
 <?php
-    require dirname(__DIR__, 1) . 'seller/header.php';
+    require dirname(__DIR__, 1) . '/seller/header.php';
 
     if(isset($_POST['addMain']) || isset($_POST['addSub'])){
 
@@ -199,16 +199,6 @@
                                     </div>
                                 </div>
                                 <p>Category Picture</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Product Name</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="input-group mb-3">
-                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
-                                </div>
                             </div>
                         </div>
 
