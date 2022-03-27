@@ -14,7 +14,11 @@
 
 	
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001" class = "nami">
+  Launch demo modal
+</button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002" class = "nami">
   Launch demo modal
 </button>
 
@@ -29,73 +33,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="w3-display-middle" style="width:100%">
-                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                </ol>
-                                <div class="carousel-inner">
-								
-                                    <?php
-									/*
-                                    $sql = "SELECT * FROM facilityPic";
-                                    $result = mysqli_query($conn, $sql);
-                                    $i = false;
-                        
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            if ($i){
-
-                                            echo ("
-                                                <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                                </div>         
-                                            ");
-                                            }
-                                            else{
-                                                echo ("
-                                                <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                                </div>
-                                                            
-                                                ");
-                                                $i = true;
-                                            }
-                                        }
-                                    }
-									*/
-                                    ?>
-									<div class="carousel-item active">
-                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-                                    </div> 
-									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item>
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div>
-									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
-                                    </div>									
-                    
-                                </div>
-                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
+        ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -332,7 +270,46 @@
 }
 </style>
 <script>
+var nami1 = document.getElementsByClassName("nami")[0];
 
-
-
+nami1.onclick = function() {
+  alert(nami1.value);
+}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
