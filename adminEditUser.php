@@ -8,16 +8,14 @@
     }
 ?>
 <?php
-if(isset($_POST['update']))
+	if(isset($_POST['update']))
 	{
-		$_SESSION['Update'] = false;
-
-		$role = $_POST['role'];
-		$UID = $_SESSION['id'];
+		$UID = $_SESSION['ToEdit'];
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
+		$role = $_POST['role'];
 
 		if($_FILES['proPic']['tmp_name'] != "")
 		{
@@ -28,20 +26,21 @@ if(isset($_POST['update']))
 
 		$stmt_u = mysqli_query($conn, $sql_u);
 
-		if (mysqli_num_rows($stmt_u) > 0) {	
-		
+		if (mysqli_num_rows($stmt_u) > 0) {
+			
 			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
-				$sql = "UPDATE user SET role='$role', profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact', role='$role' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET role='$role', name='$name', email='$email', contact='$contact' WHERE username='$UID'";
+				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
 			}
-			
+		
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
+			mysqli_close($conn);
 		}
 		else
 		{
@@ -65,19 +64,19 @@ if(isset($_POST['update']))
 				<p id=\"label\">User Role
 				<select id=\"userRole\" name=\"role\">
 				");
-				if($row['role'] == "USER")
+				if($row["role"] == "USER")
 				{
 					echo("<option value=\"USER\" selected=\"selected\">USER</option>
 					<option value=\"SELLER\">SELLER</option>
 					<option value=\"ADMIN\">ADMIN</option>");
 				}
-				else if($row['role'] == "SELLER")
+				else if($row["role"] == "SELLER")
 				{
 					echo("<option value=\"USER\">USER</option>
 					<option value=\"SELLER\" selected=\"selected\">SELLER</option>
 					<option value=\"ADMIN\">ADMIN</option>");
 				}
-				else if($row['role'] == "ADMIN")
+				else if($row["role"] == "ADMIN")
 				{
 					echo("<option value=\"USER\">USER</option>
 					<option value=\"SELLER\">SELLER</option>
