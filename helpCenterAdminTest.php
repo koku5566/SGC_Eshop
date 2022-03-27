@@ -119,124 +119,53 @@
 <!------------------------------------------------------------------->	
 
  
-                    <!-- List All Product -->
-                    <div class="card-body">
-                                <div>
-                                    <h5 style ="text-align:center">CHOOSE A CAMPUS</h5>
-                                </div>
-                    <div class="row">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row" style = "background-color: lightblue;">
-										<!--REVIEW START BOX 1-->
-                                        <div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-                                            
-                                                <div style="background-color: red; height: 100%">
-													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
-													<div class = "namestar">
-														<h6 style = "font-size: 1rem; padding-top: 0.75rem;">Amanda Teh Sue Shun</h6>
-														<div style="margin-bottom: 0.1em;">													
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star"></i>
-															<i class="bi bi-star"></i>
-														</div>	
-													</div>
+				<!-- List All Product -->
+				<div class="card-body">
+					<div>
+						<h5 style ="text-align:center">Review</h5>
+					</div>
+						<div class="row">
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="row" style = "background-color: lightblue;">
+									<!--REVIEW START BOX 1 --------------->
+									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 										
+											<div style="height: 100%">
+												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+												<div class = "namestar">
+													<h6 style = "font-size: 1rem; padding-top: 0.75rem;">Amanda Teh Sue Shun</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+												</div>
+									
+									
+									<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+									</h6>
+									<table style = "margin-bottom: 0.3rem;">
+										<tr>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+										<tr>
+									</table>
+									<a style="float: right;">see more...</a>
+											</div>   
 										
-										<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
-										</h6>
-										<table style = "margin-bottom: 0.3rem;">
-											<tr>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<tr>
-										</table>
-                                                </div>   
-                                            
-                                        </div>
-										<!--REVIEW START BOX 2-->
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
-                                            
-                                                <div style="background-color: red; height: 100%">
-													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
-													<div class = "namestar">
-														<h6 style = "font-size: 1rem; padding-top: 0.75rem;">Cheong Kit Min</h6>
-														<div style="margin-bottom: 0.1em;">													
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star-fill"></i>
-															<i class="bi bi-star"></i>
-															<i class="bi bi-star"></i>
-														</div>	
-													</div>
-										
-										
-										<h6 style = "font-size: 0.85rem; max-height: 5rem; min-height: 5rem; overflow: hidden">Im pro jkjk
-										</h6>
-										<table style = "margin-bottom: 0.3rem;">
-											<tr>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<tr>
-										</table>
-                                                </div>   
-                                            
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">SARAWAK</p>
-                                                        </div>                                                                                                              
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
-                                                        </div>                                                                                                          
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-										<div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">SUBANG JAYA</p>
-                                                        </div>            
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    <br>
+									</div>
+									<!--REVIEW END BOX --------------->
+								</div>
+							</div>  
+						</div>
+					</div>
+				<br>
                    
                   
                    
@@ -273,7 +202,7 @@
 }
 .divpink{
 	padding-bottom: .625rem; 
-	background-color: pink; 
+	
 	padding-top: .625rem;
 }
 .namestar{
