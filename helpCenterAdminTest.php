@@ -160,7 +160,7 @@
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>
-											<a  class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
+											<a class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
