@@ -24,10 +24,11 @@
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {
-			$sql = "UPDATE userAddress SET contact_name='$name', phone_number='$contact', address='$address', postal_code='$postal', area='$area', state='$state', country='$country' WHERE address_id='$UID'";
-
 			if($_POST['address'] != ""){
 				$sql = "UPDATE userAddress SET contact_name='$name', phone_number='$contact', address='$address', postal_code='$postal', area='$area', state='$state', country='$country' WHERE address_id='$UID'";
+			}
+			else{
+				echo("<script>alert('Error');</script>");
 			}
 		
 			if (mysqli_query($conn, $sql)) {
