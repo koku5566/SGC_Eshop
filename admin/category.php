@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php';
+    require dirname(__DIR__, 1) . 'seller/header.php';
 
     if(isset($_POST['addMain']) || isset($_POST['addSub'])){
 
@@ -176,7 +176,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -198,7 +198,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <p>Cover Picture</p>
+                                <p>Category Picture</p>
                             </div>
                         </div>
                         <div class="row">
@@ -254,167 +254,19 @@
             </div>
         </div>
 
-        <!--Sales Information -->
+        <!--Category List -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Sales Information</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? $_POST['variationType'] : "0"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
-
-                        <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation</button>
-                            </div>
-
+                        <div id="categoryDiv">
                             <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Price</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">RM</span>
-                                        </div>
-                                        <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productPrice" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Stock</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="input-group mb-3">
-                                        <input type="number"min="0" value="0" class="form-control" name="productStock" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="subPricing" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
-                            </div>
-                        </div>
-
-                        <div id="priceToAll" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Variation Info</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-3">
-                                            <div class="input-group mb-3">
-                                                <input type="number" id="AttrPrice" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" placeholder="Price">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-3">
-                                            <div class="input-group mb-3">
-                                                <input type="number" id="AttrStock" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" placeholder="Stock">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-3">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="AttrSKU" class="form-control" placeholder="SKU">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-3">
-                                            <div class="input-group mb-3">
-                                                <button type="button" onclick="UpdatePriceTableAttribute()" class="btn btn-outline-primary" style="width:100%">Apply to All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="priceList">
- 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Shipping -->
-        <div class="row" id="ShippingDiv">
-            <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Shipping</h5>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Weight</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="input-group mb-3">
-                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" required>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">kg</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Package Size</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4">
-                                        <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4">
-                                        <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4">
-                                        <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Delivery Option</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Self Collection
-                                    </label>
-                                    </div>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Standard Delivery
-                                    </label>
+                                <div class="col">
+                                
                                 </div>
                             </div>
                         </div>
@@ -425,7 +277,7 @@
 
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Category</button>
         </div>
     </form>
 </div>
