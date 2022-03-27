@@ -134,8 +134,8 @@
                                                 <div style="background-color: red; height: 100%">
 													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 													<div class = "namestar">
-														<h6 style = "font-size: 1rem; padding-top: 0.5rem;">Amanda Teh Sue Shun</h6>
-														<div style="margin-bottom: 0.1em; position: absolute; bottom: 0;">													
+														<h6 style = "font-size: 1rem; padding-top: 0.75rem;">Amanda Teh Sue Shun</h6>
+														<div style="margin-bottom: 0.1em;">													
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
@@ -145,7 +145,7 @@
 													</div>
 										
 										
-										<h6 style = "font-size: 0.85rem">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+										<h6 style = "font-size: 0.85rem; max-height: 5rem; overflow: hidden">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
@@ -165,19 +165,19 @@
                                                 <div style="background-color: red; height: 100%">
 													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 													<div class = "namestar">
-														<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;">Tay Qing Yun</h6>
+														<h6 style = "font-size: 1rem; padding-top: 0.75rem;">Cheong Kit Min</h6>
 														<div style="margin-bottom: 0.1em;">													
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star"></i>
 															<i class="bi bi-star"></i>
-														</div>
-													</div>													
+														</div>	
+													</div>
 										
 										
-										<p style = "margin-top: 2em;">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
-										</p>
+										<h6 style = "font-size: 0.85rem; max-height: 5rem; overflow: hidden">Im pro jkjk
+										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
