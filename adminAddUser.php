@@ -82,13 +82,14 @@ if(isset($_POST['signup']))
 									<div class="custom-control custom-checkbox small">
 										<input required type="checkbox" class="custom-control-input" id="customCheck">
 										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP", I Agree to SEGi Group Colleges E-Shop's <a href="x.php">Terms of Use</a> and <a href="x.php">Privacy Policy</a></label>
-										<label>User Role</lable>
-										<select id="userRole" name="role">
-											<option value="USER" selected="selected">USER</option>
-											<option value="SELLER">SELLER</option>
-											<option value="ADMIN">ADMIN</option>
-										</select>
 									</div>
+									<hr>
+									<label>User Role</label>
+									<select id="userRole" name="role">
+										<option value="USER" selected="selected">USER</option>
+										<option value="SELLER">SELLER</option>
+										<option value="ADMIN">ADMIN</option>
+									</select>
                                 </div>
 
 								<button type="submit" class="btn btn-primary btn-block" name="signup">Add</button>
