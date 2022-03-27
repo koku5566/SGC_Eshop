@@ -4,7 +4,8 @@
 if(isset($_POST['addAddress']))
 	{
 		$_SESSION['AddAddress'] = false;
-		
+		$uid = $_SESSION['uid'];
+
 		$name = $_POST['name'];
 		$contact = $_POST['contact'];
 		$address = $_POST['address'];
@@ -22,8 +23,8 @@ if(isset($_POST['addAddress']))
 		}
 		else
 		{
-			$sql = "INSERT INTO userAddress (contact_name, phone_number, address, postal_code, area, state, country)
-			VALUES ('$name','$contact','$address','$postal','$area','$state','$country')";
+			$sql = "INSERT INTO userAddress (user_id, contact_name, phone_number, address, postal_code, area, state, country)
+			VALUES ('$uid','$name','$contact','$address','$postal','$area','$state','$country')";
 
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['AddAddress'] = true;
@@ -35,6 +36,8 @@ if(isset($_POST['addAddress']))
 	}
 ?>
 
+<div class="row">
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <div class="bg-gradient-primary" style="margin-top: -1.5rem !important; padding: 4rem 0;">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg">
@@ -91,6 +94,7 @@ if(isset($_POST['addAddress']))
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php

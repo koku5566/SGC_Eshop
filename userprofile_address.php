@@ -29,6 +29,8 @@
 	}
 ?>
 
+<div class="row">
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="DataDiv">
 <h1>My Address Book</h1>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
@@ -57,6 +59,8 @@
 	}
 ?>
 </form>
+</div>
+</div>
 
 <?php
 if(isset($_SESSION['DeleteAddress']))
@@ -68,6 +72,5 @@ if(isset($_SESSION['DeleteAddress']))
 		$_SESSION['DeleteAddress'] = NULL;
 	}
 ?>
-</div>
 
 <?php require __DIR__ . '/footer.php' ?>

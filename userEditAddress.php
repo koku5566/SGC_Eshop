@@ -45,6 +45,8 @@
 	}
 ?>
 
+<div class="row">
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="DataDiv">
 <h1>Address</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -98,6 +100,9 @@
 	}
 ?>
 </form>
+</div>
+</div>
+
 <?php
 if(isset($_SESSION['Update']))
 	{
@@ -109,6 +114,5 @@ if(isset($_SESSION['Update']))
 		$_SESSION['Update'] = NULL;
 	}
 ?>
-</div>
 
 <?php require __DIR__ . '/footer.php' ?>
