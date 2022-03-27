@@ -513,7 +513,7 @@
                                     Seller
                                 </a>
 
-                                <a class="dropdown-item" href="../seller/sellerLogin.php">
+                                <a class="dropdown-item" href="../adminLogin.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Admin
                                 </a>

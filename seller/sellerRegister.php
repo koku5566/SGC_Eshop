@@ -27,7 +27,7 @@ if(isset($_POST['signup']))
 
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
-						$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND user = 'user_id'";
+						$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
 
 						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
 					} else {
