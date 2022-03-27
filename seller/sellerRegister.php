@@ -24,8 +24,11 @@ if(isset($_POST['signup']))
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
 					VALUES ('$username','$email','$password','$username','$date','USER')";
+
+					$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND user = 'user_id'";
+
 					$sql = "INSERT INTO shopProfile (shop_id, shop_name)
-					VALUES ('1','$username')";
+					VALUES ('$userid','$username')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
