@@ -58,23 +58,23 @@ if(isset($_POST['signup']))
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 										<label>Email Address</label>
-										<input required type="email" name="email" class="form-control form-control-user" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="Enter Your Email Address"/>
+										<input required type="email" name="email" class="form-control" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="Enter Your Email Address"/>
                                     </div>
 									
                                     <div class="col-sm-6">
 										<label>Username</label>
-										<input required type="text" name="username" class="form-control form-control-user" id="inputUsername" maxlength="50" placeholder="Enter Your Username">
+										<input required type="text" name="username" class="form-control" id="inputUsername" maxlength="50" placeholder="Enter Your Username">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 										<label>Password</label>
-										<input required type="password" name="password" class="form-control form-control-user" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
+										<input required type="password" name="password" class="form-control" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
                                     </div>
                                     <div class="col-sm-6">
 										<label>Confirm Password</label>
-										<input required type="password" name="password1" class="form-control form-control-user" id="inputRepeatPassword" maxlength="50">
+										<input required type="password" name="password1" class="form-control" id="inputRepeatPassword" maxlength="50">
                                     </div>
                                 </div>
 
@@ -85,7 +85,7 @@ if(isset($_POST['signup']))
 									</div>
                                 </div>
 
-								<button type="submit" class="btn btn-primary btn-user btn-block" name="signup">SIGN UP</button>
+								<button type="submit" class="btn btn-primary btn-block" name="signup">SIGN UP</button>
 
 								<div class="or-container">
 									<div class="or-line"></div>
@@ -93,13 +93,13 @@ if(isset($_POST['signup']))
 									<div class="or-line"></div>
                                 </div>
 
-								<a href="index.html" class="btn btn-microsoft btn-user btn-block">
+								<a href="index.html" class="btn btn-microsoft btn-block">
 									<i class="fab fa-microsoft fa-fw"></i> Microsoft 365
 								</a>
-								<a href="index.html" class="btn btn-google btn-user btn-block">
+								<a href="index.html" class="btn btn-google btn-block">
 									<i class="fab fa-google fa-fw"></i> Google
 								</a>
-								<a href="index.html" class="btn btn-facebook btn-user btn-block">
+								<a href="index.html" class="btn btn-facebook btn-block">
 									<i class="fab fa-facebook-f fa-fw"></i> Facebook
 								</a>
                             </form>
