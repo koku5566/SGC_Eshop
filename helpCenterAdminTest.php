@@ -129,7 +129,7 @@
                                 <div class="card-body">
                                     <div class="row" style = "background-color: lightblue;">
 										<!--REVIEW START BOX 1-->
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
+                                        <div class="col-xl-3 col-lg-4 col-sm-6 divpink">
                                             
                                                 <div style="background-color: red; height: 100%">
 													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
@@ -145,7 +145,7 @@
 													</div>
 										
 										
-										<h6 style = "font-size: 0.85rem; max-height: 5rem; min-height: 5rem; overflow: hidden">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+										<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
@@ -264,6 +264,18 @@
 ?>
 
 <style>
+.divcontent{
+	font-size: 0.85rem; 
+	max-height: 5rem; 
+	min-height: 5rem; 
+	overflow: hidden; 
+	margin-top: 0.5 rem;
+}
+.divpink{
+	padding-bottom: .625rem; 
+	background-color: pink; 
+	padding-top: .625rem;
+}
 .namestar{
 	min-height: 6rem;
 	padding: auto;
