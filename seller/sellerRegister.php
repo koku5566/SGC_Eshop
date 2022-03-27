@@ -31,9 +31,13 @@ if(isset($_POST['signup']))
 
 						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";\
 						if (mysqli_query($conn, $sql)) {
-							echo "Successful";
+							echo "<script>alert('Registered Successfull');</script>";
 						}
-					} else {
+						else {
+							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+						}
+					} 
+					else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
 					mysqli_close($conn);
@@ -111,7 +115,7 @@ if(isset($_SESSION['AddUser']))
 	{
 		if($_SESSION['AddUser'] == true)
 		{
-			echo "<script>alert('Registered Successfull');</script>";
+			;
 		}
 		$_SESSION['AddUser'] = NULL;
 	}
