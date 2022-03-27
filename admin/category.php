@@ -208,23 +208,29 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="">Please Select a Category</option>
-                                            <?php
-                                            //Main Category
-                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
-                                            $result = mysqli_query($conn, $sql);
+                                    <h5>Category</h5>
+                                    <div class="list-group">
+                                        <?php
+                                        //Main Category
+                                        $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0'";
+                                        $result = mysqli_query($conn, $sql);
 
-                                            if (mysqli_num_rows($result) > 0) {
-                                                while($row = mysqli_fetch_assoc($result)) {
-                                                    $categoryId = $row["category_id"];
-                                                    $categoryName = $row["category_name"];
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $categoryId = $row["combination_id"];
+                                                $categoryName = $row["category_name"];
 
-                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                if($_POST['btnSelectCategory'] == $categoryId)
+                                                {
+                                                    echo("<button type=\"submit\" class=\"list-group-item list-group-item-action active\" name=\"btnSelectCategory\" value=\"$categoryId\" >$categoryName</button>");
+                                                }
+                                                else{
+                                                    echo("<button type=\"submit\" class=\"list-group-item list-group-item-action\" name=\"btnSelectCategory\" value=\"$categoryId\" >$categoryName</button>");
                                                 }
                                             }
-                                            ?>
-                                    </select>
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-sm-12">
