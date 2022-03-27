@@ -13,7 +13,7 @@
 		$_SESSION['DeleteUser'] = false;
 		$UID = $_POST['remove'];
 
-		$sql = "DELETE FROM user WHERE username = $UID";
+		$sql = "DELETE FROM user WHERE username = '$UID'";
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
