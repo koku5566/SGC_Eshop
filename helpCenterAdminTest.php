@@ -172,7 +172,7 @@
 													</div>	
 										
 										
-										<p style = "font-size: 0.85rem; margin: 1em;">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
+										<p style = "margin-top: 2em;">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
 										</p>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
@@ -263,7 +263,7 @@
 .reviewprofilepic{
 	display: block; 
 	float: left;
-	margin: 0.75em; 
+	margin: 0.75em 0.75em 0 0.75em; 
 	border-radius: 50%; 
 	width: 5rem; 
 	height: 5rem;
