@@ -29,8 +29,15 @@ if(isset($_POST['signup']))
 						$_SESSION['AddUser'] = true;
 						$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
 
-						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
-					} else {
+						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";\
+						if (mysqli_query($conn, $sql)) {
+							echo "<script>alert('Registered Successfull');</script>";
+						}
+						else {
+							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+						}
+					} 
+					else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
 					mysqli_close($conn);
@@ -108,7 +115,7 @@ if(isset($_SESSION['AddUser']))
 	{
 		if($_SESSION['AddUser'] == true)
 		{
-			echo "<script>alert('Registered Successfull');</script>";
+			;
 		}
 		$_SESSION['AddUser'] = NULL;
 	}
