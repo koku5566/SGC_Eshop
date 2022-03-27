@@ -34,7 +34,7 @@
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$UID = $_SESSION["id"];
+	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
