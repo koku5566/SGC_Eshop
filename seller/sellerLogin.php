@@ -62,14 +62,14 @@
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
                                         <div class="form-group">
                                             <label>Username/Email</label>
-                                            <input required type="text" name="username" class="form-control form-control-user"
+                                            <input required type="text" name="username" class="form-control"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Please Enter Your Email Address or Username">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input required type="password" name="password" class="form-control form-control-user"
+                                            <input required type="password" name="password" class="form-control"
                                                 id="exampleInputPassword" placeholder="Please Enter Password">
                                         </div>
 
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
+                                        <button type="submit" class="btn btn-primary btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
                                             <a class="small" href="../forgetPassword.php">Forgot Password?</a>

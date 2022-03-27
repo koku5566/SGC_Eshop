@@ -10,7 +10,41 @@
 
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">		
+<div class="container-fluid" style="width:80%">	
+
+	
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">
+  Modal 1
+</button>
+
+<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002">
+  Modal 2
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
@@ -210,6 +244,7 @@
 .atss{
 	max-width: 25rem;
 	max-height: 25rem;
+    margin: 0 auto;
 }
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange
@@ -235,7 +270,49 @@
 }
 </style>
 <script>
-
-
-
+var nami1 = document.getElementsByClassName("nami")[0];
+var nami2 = document.getElementsByClassName("nami")[1];
+nami1.onclick = function() {
+  console.log(nami1.value);
+}
+nami2.onclick = function() {
+  console.log(nami2.value);
+}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

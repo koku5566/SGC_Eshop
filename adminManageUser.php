@@ -59,7 +59,8 @@
 				<td>".$row["contact"]."</td>
 				<td>".$row["registration_date"]."</td>
 				<td>".$row["role"]."</td>
-				<td><button name=\"edit\" value=".$row["username"].">Edit</button> <button name=\"remove\" value=".$row["username"].">Remove</button></td>
+				<td><button name=\"edit\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Edit</button>
+				<button name=\"remove\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Remove</button></td>
 			</tr>
 			");
 	}

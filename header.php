@@ -308,7 +308,7 @@
 
                                 <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="admin.php">
+                                <a class="dropdown-item" href="adminManageUser.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     ADMIN PANEL
                                 </a>
