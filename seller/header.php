@@ -65,10 +65,18 @@
     {
         $_SESSION['id'] = "";
     }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
+    }
     if(!isset($_SESSION['role']))
     {
         $_SESSION['role'] = "";
     }
+    if(isset($_SESSION['DeleteUser']))
+	{
+		$_SESSION['DeleteUser'] = NULL;
+	}
 ?>
 
 
