@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<img src = "https://static.wikia.nocookie.net/leagueoflegends/images/9/9a/Rakan_OriginalSquare.png/revision/latest/smart/width/250/height/250?cb=20170404193836" style = "display: block; margin: 0 auto; border-radius: 50%; width: 10rem; height: 10rem;">
+<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" style = "display: block; margin: 0 auto; border-radius: 50%; width: 10rem; height: 10rem;">
   
   
 
