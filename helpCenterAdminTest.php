@@ -246,7 +246,9 @@
 <style>
 .reviewprofilepic{
 	display: block; 
-	margin: 0 auto; 
+	float: left;
+	
+	margin: 1rem; 
 	border-radius: 50%; 
 	width: 5rem; 
 	height: 5rem;
