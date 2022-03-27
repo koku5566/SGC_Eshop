@@ -130,11 +130,15 @@
 								<div class="row" style = "background-color: lightblue;">
 									<!--REVIEW START BOX 1 --------------->
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										
-											<div style="height: 100%">
+										<!--Content Start-->
+										<div style="height: 100%">
+												<?php
+												
+												
+												?>
 												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 												<div class = "namestar">
-													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Amanda Teh Sue Shun</h6>
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
 													<div style="margin-bottom: 0.1em;">													
 														<i class="bi bi-star-fill"></i>
 														<i class="bi bi-star-fill"></i>
@@ -145,20 +149,20 @@
 												</div>
 									
 									
-									<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
-									</h6>
-									<table style = "margin-bottom: 0.3rem;">
-										<tr>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-										<tr>
-									</table>
-									<a style="float: right;">see more...</a>
-											</div>   
-										
+										<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+										</h6>
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
+											<a style="float: right;" type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
+										</div>   
+										<!--Content End-->
 									</div>
 									<!--REVIEW END BOX --------------->
 									<!--REVIEW START BOX 1 --------------->
