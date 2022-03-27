@@ -48,7 +48,7 @@
 ?>
 
 <div id="DataDiv">
-<h1>User Profile</h1>
+<h1>Address</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
 	$UID = $_SESSION['ToEdit'];
