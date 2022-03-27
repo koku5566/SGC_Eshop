@@ -43,7 +43,9 @@
   </div>
 </div>
 
-<img src = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg" style = "border-radius: 50%; width: 20rem; height: 20rem;">
+<img src = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg" style = "display: block; margin: 0 auto; border-radius: 50%; width: 10rem; height: 10rem;">
+  
+  
 
 
 <!-- Slideshow -->
