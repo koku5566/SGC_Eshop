@@ -221,15 +221,9 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid" style="width:100%;">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
-        </div>
-    
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -689,6 +683,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Page Ending -->
+        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
         </div>
     </form>
 </div>
