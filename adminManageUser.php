@@ -13,7 +13,7 @@
 		$_SESSION['DeleteUser'] = false;
 		$UID = $_POST['remove'];
 
-		$sql = "DELETE FROM user WHERE user_id = $UID";
+		$sql = "DELETE FROM user WHERE username = $UID";
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
@@ -59,7 +59,7 @@
 				<td>".$row["contact"]."</td>
 				<td>".$row["registration_date"]."</td>
 				<td>".$row["role"]."</td>
-				<td><button name=\"edit\" value=".$row["user_id"].">Edit</button> <button name=\"remove\" value=".$row["user_id"].">Remove</button></td>
+				<td><button name=\"edit\" value=".$row["username"].">Edit</button> <button name=\"remove\" value=".$row["username"].">Remove</button></td>
 			</tr>
 			");
 	}
