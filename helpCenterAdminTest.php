@@ -14,11 +14,11 @@
 
 	
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001" class = "nami">
+<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">
   Modal 1
 </button>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002" class = "nami">
+<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002">
   Modal 2
 </button>
 
