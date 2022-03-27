@@ -22,23 +22,30 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
-					VALUES ('$username','$email','$password','$username','$date','SELLER')";
+					$sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
+					$result = mysqli_query($conn, $sql);
 
-					if (mysqli_query($conn, $sql)) {
-						$_SESSION['AddUser'] = true;
-						$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
+					if (mysqli_num_rows($result) > 0) {
+						while($row = mysqli_fetch_assoc($result)) {
+							$userid = $row["AUTO_INCREMENT"];
 
-						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
-						if (mysqli_query($conn, $sql)) {
-							echo "<script>alert('Registered Successfull');</script>";
+							$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
+							VALUES ('$username','$email','$password','$username','$date','SELLER')";
+							if (mysqli_query($conn, $sql)) {
+								$_SESSION['AddUser'] = true;
+
+								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
+								if (mysqli_query($conn, $sql)) {
+									echo "<script>alert('Registered Successfull');</script>";
+								}
+								else {
+									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+								}
+							} 
+							else {
+								echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+							}
 						}
-						else {
-							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-						}
-					} 
-					else {
-						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
 					mysqli_close($conn);
 				}
