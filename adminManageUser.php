@@ -33,17 +33,17 @@
 <h1>User</h1>
 <a href="adminAddUser.php"><button>Add User</button></a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-	<table>
+	<table class="table">
 	<tr>
-		<th>User ID</th>
-		<th>Username</th>
-		<th>E-Mail</th>
-		<th>Password</th>
-		<th>Name</th>
-		<th>Contact</th>
-		<th>Registration Date</th>
-		<th>Role</th>
-		<th>Action</th>
+		<th class="text-center">User ID</th>
+		<th class="text-center">Username</th>
+		<th class="text-center">E-Mail</th>
+		<th class="text-center">Password</th>
+		<th class="text-center">Name</th>
+		<th class="text-center">Contact</th>
+		<th class="text-center">Registration Date</th>
+		<th class="text-center">Role</th>
+		<th class="text-center"	>Action</th>
 	</tr>
 <?php
 	$sql = "SELECT * FROM user";
@@ -51,9 +51,9 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<tr>
-				<td>".$row["user_id"]."</td>
-				<td>".$row["username"]."</td>
-				<td>".$row["email"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["user_id"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["username"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["email"]."</td>
 				<td>".$row["password"]."</td>
 				<td>".$row["name"]."</td>
 				<td>".$row["contact"]."</td>
