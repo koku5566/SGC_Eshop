@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" style = "display: block; margin: 0 auto; border-radius: 50%; width: 10rem; height: 10rem;">
+
   
   
 
@@ -131,6 +131,7 @@
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
                                             
                                                 <div style="background-color: red; height: 100%">
+													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
                                                     <h6 style = "font-size: 1rem; margin-bottom: 0.1rem;">Amanda Teh Sue Shun</h6>
 													<div style="margin-bottom: 0.1em;">													
 														<i class="bi bi-star-fill"></i>
@@ -243,6 +244,13 @@
 ?>
 
 <style>
+.reviewprofilepic{
+	display: block; 
+	margin: 0 auto; 
+	border-radius: 50%; 
+	width: 5rem; 
+	height: 5rem;
+}
 .atss{
 	max-width: 25rem;
 	max-height: 25rem;
