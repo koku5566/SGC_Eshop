@@ -29,7 +29,10 @@ if(isset($_POST['signup']))
 						$_SESSION['AddUser'] = true;
 						$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
 
-						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
+						$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";\
+						if (mysqli_query($conn, $sql)) {
+							echo "Successful";
+						}
 					} else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
