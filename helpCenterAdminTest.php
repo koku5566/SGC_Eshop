@@ -172,8 +172,8 @@
 													</div>	
 										
 										
-										<h6 style = "font-size: 0.85rem">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
-										</h6>
+										<p style = "font-size: 0.85rem; margin: 1em;">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
+										</p>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
