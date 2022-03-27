@@ -34,9 +34,10 @@
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$addid = $_SESSION['id'];
+	$UID = $_SESSION["id"];
 	
-	$sql = "SELECT * FROM userAddress WHERE user_id ='$addid'";
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
+
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
