@@ -160,7 +160,7 @@
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>
-											<a style="float: right;" type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
+											<a style="float: right;"  class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
@@ -171,7 +171,7 @@
 											<div style="height: 100%">
 												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 												<div class = "namestar">
-													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Cheong Kit Min</h6>
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
 													<div style="margin-bottom: 0.1em;">													
 														<i class="bi bi-star-fill"></i>
 														<i class="bi bi-star-fill"></i>
@@ -230,6 +230,10 @@
 ?>
 
 <style>
+
+.hyperlink:hover{
+	cursor: pointer
+}
 .divcontent{
 	font-size: 0.85rem; 
 	max-height: 5rem; 
