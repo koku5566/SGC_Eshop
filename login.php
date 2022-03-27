@@ -103,6 +103,16 @@
                                         <div class="btn btn-facebook btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
                                              Facebook
                                         </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
+                                        <div id="spinner" class="btn btn-facebook btn-block fb-login-button">
+    Loading
+    <div
+    class="fb-login-button"
+    data-max-rows="1"
+    data-size="large"
+    data-button-type="continue_with"
+    data-use-continue-as="true"
+    ></div>
+</div>
                                         </div>
                                     </form>
 
@@ -187,6 +197,14 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+    var finished_rendering = function() {
+        console.log("finished rendering plugins");
+        var spinner = document.getElementById("spinner");
+        spinner.removeAttribute("style");
+        spinner.removeChild(spinner.childNodes[0]);
+    }
+FB.Event.subscribe('xfbml.render', finished_rendering);
 </script>
 
 <?php require __DIR__ . '/footer.php' ?>
