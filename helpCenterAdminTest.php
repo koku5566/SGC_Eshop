@@ -210,6 +210,7 @@
 .atss{
 	max-width: 25rem;
 	max-height: 25rem;
+    margin: 0 auto;
 }
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange
