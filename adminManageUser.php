@@ -59,8 +59,8 @@
 				<td class='text-center text-lg text-medium'>".$row["contact"]."</td>
 				<td class='text-center text-lg text-medium'>".$row["registration_date"]."</td>
 				<td class='text-center text-lg text-medium'>".$row["role"]."</td>
-				<td class='text-center text-lg text-medium' style='display:flex;'><button name=\"edit\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Edit</button>
-				<button name=\"remove\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Remove</button></td>
+				<td class='text-center text-lg text-medium' style='display:flex;'><button name=\"edit\" value=".$row["username"]." class=\"btn btn-primary\" style=\"margin-right: 0.5rem;\">Edit</button>
+				<button name=\"remove\" value=".$row["username"]." class=\"btn btn-primary\">Remove</button></td>
 			</tr>
 			");
 	}
