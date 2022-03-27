@@ -42,7 +42,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-			<a href=\"\" name=\"edit\" value=".$row["address_id"].">
+			<a href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
 				".$row["contact_name"]."
 				".$row["phone_number"]."
 				".$row["address"]."
@@ -50,7 +50,6 @@
 				".$row["area"]."
 				".$row["state"]."
 				".$row["country"]."
-				<button name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\" style=\"margin-right: 0.5rem;\">Edit</button>
 				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
 			</a>
 			</div>
