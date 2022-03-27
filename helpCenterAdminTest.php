@@ -15,11 +15,11 @@
 	
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001" class = "nami">
-  Launch demo modal
+  Modal 1
 </button>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002" class = "nami">
-  Launch demo modal
+  Modal 2
 </button>
 
 <!-- Modal -->
@@ -273,7 +273,7 @@
 var nami1 = document.getElementsByClassName("nami")[0];
 
 nami1.onclick = function() {
-  alert(nami1.value);
+  console.log(nami1.value);
 }
 </script>
 
