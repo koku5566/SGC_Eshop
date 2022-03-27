@@ -212,13 +212,13 @@
                                         <option value="">Please Select a Category</option>
                                             <?php
                                             //Main Category
-                                            $sql = "SELECT * FROM mainCategory";
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
-                                                    $categoryId = $row["main_category_id"];
-                                                    $categoryName = $row["main_category_name"];
+                                                    $categoryId = $row["category_id"];
+                                                    $categoryName = $row["category_name"];
 
                                                     echo("<option value=\"$categoryId\">$categoryName</option>");
                                                 }
