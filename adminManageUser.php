@@ -54,12 +54,12 @@
 				<td class='text-center text-lg text-medium'>".$row["user_id"]."</td>
 				<td class='text-center text-lg text-medium'>".$row["username"]."</td>
 				<td class='text-center text-lg text-medium'>".$row["email"]."</td>
-				<td>".$row["password"]."</td>
-				<td>".$row["name"]."</td>
-				<td>".$row["contact"]."</td>
-				<td>".$row["registration_date"]."</td>
-				<td>".$row["role"]."</td>
-				<td><button name=\"edit\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Edit</button>
+				<td class='text-center text-lg text-medium'>".$row["password"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["name"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["contact"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["registration_date"]."</td>
+				<td class='text-center text-lg text-medium'>".$row["role"]."</td>
+				<td class='text-center text-lg text-medium'><button name=\"edit\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Edit</button>
 				<button name=\"remove\" value=".$row["username"]." class=\"btn btn-primary btn-block\">Remove</button></td>
 			</tr>
 			");
