@@ -23,7 +23,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
-					VALUES ('$username','$email','$password','$username','$date','USER')";
+					VALUES ('$username','$email','$password','$username','$date','SELLER')";
 
 					$userid = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND user = 'user_id'";
 
