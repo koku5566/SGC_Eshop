@@ -221,7 +221,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" style="width:80%;">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
