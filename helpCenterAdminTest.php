@@ -271,9 +271,12 @@
 </style>
 <script>
 var nami1 = document.getElementsByClassName("nami")[0];
-
+var nami2 = document.getElementsByClassName("nami")[1];
 nami1.onclick = function() {
   console.log(nami1.value);
+}
+nami2.onclick = function() {
+  console.log(nami2.value);
 }
 </script>
 
