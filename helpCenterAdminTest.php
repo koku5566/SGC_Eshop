@@ -145,7 +145,7 @@
 													</div>
 										
 										
-										<h6 style = "font-size: 0.85rem; max-height: 5rem; overflow: hidden">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+										<h6 style = "font-size: 0.85rem; max-height: 5rem; min-height: 5rem; overflow: hidden">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
@@ -176,7 +176,7 @@
 													</div>
 										
 										
-										<h6 style = "font-size: 0.85rem; max-height: 5rem; overflow: hidden">Im pro jkjk
+										<h6 style = "font-size: 0.85rem; max-height: 5rem; min-height: 5rem; overflow: hidden">Im pro jkjk
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
