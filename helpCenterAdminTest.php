@@ -135,7 +135,7 @@
 													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 													<div class = "namestar">
 														<h6 style = "font-size: 1rem; padding-top: 0.5rem;">Amanda Teh Sue Shun</h6>
-														<div style="margin-bottom: 0.1em;">													
+														<div style="margin-bottom: 0.1em; position: absolute; bottom: 0;">													
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
 															<i class="bi bi-star-fill"></i>
@@ -267,6 +267,7 @@
 .namestar{
 	min-height: 6rem;
 	padding: auto;
+	position: relative;
 	
 }
 .reviewprofilepic{
