@@ -160,7 +160,10 @@
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>
-											<a class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
+										<form action = "$_SERVER['PHP_SELF']" method = 'POST'>
+											<input type = 'hidden' name = 'CUid' value = 'RR001'>
+											<input type = "submit"class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+										</form>
 										</div>   
 										<!--Content End-->
 									</div>
