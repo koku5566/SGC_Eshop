@@ -43,7 +43,7 @@
   </div>
 </div>
 
-
+<img src = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg" style = "border-radius: 50%; width: 20rem; height: 20rem;">
 
 
 <!-- Slideshow -->
@@ -278,6 +278,9 @@ nami1.onclick = function() {
 nami2.onclick = function() {
   console.log(nami2.value);
 }
+
+
+
 </script>
 
 
