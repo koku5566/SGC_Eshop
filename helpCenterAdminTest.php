@@ -265,7 +265,8 @@
 
 <style>
 .namestar{
-	min-height: 2rem;
+	min-height: 6rem;
+	padding: auto;
 	
 }
 .reviewprofilepic{
