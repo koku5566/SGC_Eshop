@@ -128,6 +128,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row" style = "background-color: lightblue;">
+										<!--REVIEW START BOX 1-->
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
                                             
                                                 <div style="background-color: red; height: 100%">
@@ -156,19 +157,34 @@
                                                 </div>   
                                             
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="penangfacility.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">PENANG</p>
-                                                        </div>                                                       
-                                                    </div>
+										<!--REVIEW START BOX 2-->
+                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem; background-color: pink; padding-top: .625rem;">
+                                            
+                                                <div style="background-color: red; height: 100%">
+													<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+                                                    <h6 style = "font-size: 1rem; margin-bottom: 0.1rem;">Tay Qing Yun</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+										
+										
+										<h6 style = "font-size: 0.85rem">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from t.
+										</h6>
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
                                                 </div>   
-                                            </a>
+                                            
                                         </div>
                                         <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
                                             <a data-sqe="link" href="#">
@@ -247,8 +263,7 @@
 .reviewprofilepic{
 	display: block; 
 	float: left;
-	
-	margin: 1rem; 
+	margin: 0.75em; 
 	border-radius: 50%; 
 	width: 5rem; 
 	height: 5rem;
