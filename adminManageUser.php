@@ -31,7 +31,7 @@
 
 <div id="DataDiv">
 <h1>User</h1>
-<a href="adminAddUser.php"><button>Add User</button></a>
+<a href="../adminAddUser.php" class="btn btn-primary btn-block">Add User</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<table class="table">
 	<tr>
