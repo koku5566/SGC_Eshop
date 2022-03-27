@@ -15,7 +15,12 @@
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$contact = $_POST['contact'];
-		$user = $_POST['user'];
+		$role = $_POST['role'];
+
+		if($_FILES['proPic']['tmp_name'] != "")
+		{
+			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+		}
 
 		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
@@ -23,11 +28,11 @@
 
 		if (mysqli_num_rows($stmt_u) > 0) {
 			
-			if($_POST['password'] != ""){
-				$sql = "UPDATE user SET name='$name', email='$email', password='$password', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
+			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
+				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact', role='$role' WHERE username='$UID'";
 			}
 			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', address='$address', ADMIN='$user' WHERE username='$UID'";
+				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
 			}
 		
 			if (mysqli_query($conn, $sql)) {
@@ -56,22 +61,22 @@
 			echo("
 				<input name=\"product\" value=\"".$row["username"]."\" hidden/>
 				
-				<p id=\"label\">User Category
-				<select id=\"user\" name=\"user\">
+				<p id=\"label\">User Role
+				<select id=\"userRole\" name=\"role\">
 				");
-				if($row['role'] == "USER")
+				if($row["role"] == "USER")
 				{
 					echo("<option value=\"USER\" selected=\"selected\">USER</option>
 					<option value=\"SELLER\">SELLER</option>
 					<option value=\"ADMIN\">ADMIN</option>");
 				}
-				else if($row['role'] == "SELLER")
+				else if($row["role"] == "SELLER")
 				{
 					echo("<option value=\"USER\">USER</option>
 					<option value=\"SELLER\" selected=\"selected\">SELLER</option>
 					<option value=\"ADMIN\">ADMIN</option>");
 				}
-				else if($row['role'] == "ADMIN")
+				else if($row["role"] == "ADMIN")
 				{
 					echo("<option value=\"USER\">USER</option>
 					<option value=\"SELLER\">SELLER</option>
@@ -90,7 +95,7 @@
 					
 					<div class=\"form-group\">
 					<label>Email Address</label>
-					<input type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
+					<input required type=\"email\" name=\"email\" maxlength=\"50\" placeholder=\"Enter Your Email Address\" value=\"".$row["email"]."\" class=\"form-control form-control-user\"/>
 					</div>
 
 					<div class=\"form-group\">
