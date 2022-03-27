@@ -13,7 +13,7 @@
 		$_SESSION['DeleteAddress'] = false;
 		$UID = $_POST['remove'];
 
-		$sql = "DELETE FROM user WHERE username = '$UID'";
+		$sql = "DELETE FROM userAddress WHERE address_id = '$UID'";
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteAddress'] = true;
@@ -25,7 +25,7 @@
 	if(isset($_POST['edit']))
 	{
 		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='adminEditUser.php';</script>");
+		echo("<script>window.location.href='userEditAddress.php';</script>");
 	}
 ?>
 
@@ -34,7 +34,9 @@
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$sql = "SELECT * FROM user";
+	$addid = $_SESSION['id'];
+	
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$addid'";
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
