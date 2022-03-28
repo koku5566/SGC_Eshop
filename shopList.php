@@ -17,14 +17,14 @@
     <div class="col-xl-10">
       <div class="description">
         <p class="descriptionContainer1">
-          <i class="bi bi-people-fill"></i>
+        <i class="fa-light fa-people-group"></i>
           Joined 
           <span id="" style="color: red;">2021</span> 
-          <i class="fa fa-rating"></i>
+          <i class="fa-regular fa-star"></i>
           Rating 
           <span id="" style="color: red;">4.9 out of 5.0</span>
           <br> 
-          <i class="fa fa-rating"></i>
+          <i class="fa-regular fa-hand-holding-box"></i>
           Products 
           <span id="" style="color: red;">12</span>
         </p>
@@ -44,14 +44,14 @@
     <div class="col-xl-10">
       <div class="description">
         <p class="descriptionContainer1">
-          <i class="bi bi-people-fill"></i>
+        <i class="fa-light fa-people-group"></i>
           Joined 
           <span id="" style="color: red;">2021</span> 
-          <i class="far fa-rating"></i>
+          <i class="fa-regular fa-star"></i>
           Rating 
           <span id="" style="color: red;">4.9 out of 5.0</span>
           <br> 
-          <i class="far fa-rating"></i>
+          <i class="fa-regular fa-hand-holding-box"></i>
           Products 
           <span id="" style="color: red;">12</span>
         </p>
@@ -71,14 +71,14 @@
     <div class="col-xl-10">
       <div class="description">
         <p class="descriptionContainer1">
-          <i class="bi bi-people-fill"></i>
+        <i class="fa-light fa-people-group"></i>
           Joined 
           <span id="" style="color: red;">2021</span> 
-          <i class="far fa-rating"></i>
+          <i class="fa-regular fa-star"></i>
           Rating 
           <span id="" style="color: red;">4.9 out of 5.0</span>
           <br> 
-          <i class="far fa-rating"></i>
+          <i class="fa-regular fa-hand-holding-box"></i>
           Products 
           <span id="" style="color: red;">12</span>
         </p>
