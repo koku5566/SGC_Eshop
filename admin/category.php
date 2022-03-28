@@ -228,11 +228,11 @@
                                             
                                         }
                                         echo("
-                                            <div>
-                                                <div class=\"input-group\">
-                                                    <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddCategory\" style=\"width:100%\">Add New Category</button>
-                                                </div>
+                                        <div>
+                                            <div class=\"input-group\">
+                                                <button type=\"button\" data-toggle=\"modal\" data-target=\"#addMainModel\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add New Category</button>
                                             </div>
+                                        </div>
                                         ");
                                     }
                                 ?>
@@ -268,7 +268,7 @@
                                             echo("
                                             <div>
                                                 <div class=\"input-group\">
-                                                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#addMainModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
                                         ");
