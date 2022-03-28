@@ -436,7 +436,7 @@
 
         <!-- Edit Category Modal - editCategoryModel -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <div class="modal fade" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" aria-hidden="true">
+            <div class="modal fade <?php echo(isset($_GET['edit']) ? $_GET['edit'] : "");?>" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -637,7 +637,6 @@
         if(<?php echo(isset($_GET['edit'])) ?> == 1)
         {
             $("#editCategoryModel").modal('show');
-		});
         }
     });
 
