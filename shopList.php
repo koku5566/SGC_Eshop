@@ -87,7 +87,7 @@
   </div>
   
   <div class="row">
-    <button class="text-right next">-></button>
+    <button class="text-right nextBtn">-></button>
   </div>
 </div>
 
@@ -128,7 +128,7 @@
   justify-content: center;
 } */
 
-.next{
+.nextBtn{
   border: grey;
   border-radius: 1px solid grey;
   float: right;
