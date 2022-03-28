@@ -238,11 +238,12 @@
                                                 
                                             <div class=\"AddInpCategoryDiv hide\">
                                                 <div class=\"input-group\">
-                                                    <input type=\"text\" name=\"mainCategory\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" >
+                                                    <input type=\"text\" name=\"mainCategoryInp\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" >
                                                     <div class=\"input-group-append\">
-                                                        <button type=\"submit\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add</button>
+                                                        <span onclick=\"hideAddInpCategoryDiv()\" style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                     </div>
                                                 </div>
+                                                <button type=\"submit\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add</button>
                                             </div>
                                         ");
                                     }
@@ -405,8 +406,14 @@
 
 <script>
 
-    var priceTableArray = [];
-
+    function hideAddInpCategoryDiv()
+    {
+        var AddCategoryButtonDiv = document.getElementById('AddButtonCategoryDiv');
+        var AddCategoryInpDiv = document.getElementById('AddInpCategoryDiv');
+        
+        AddCategoryButtonDiv.classList.remove("hide");
+        AddCategoryInpDiv.classList.add("hide");
+    }
     
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
