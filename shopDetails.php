@@ -30,8 +30,8 @@
     <div class="container">
 
       <section class="text-center">
-        <div class="ratingContainer d-flex align-items-center shadow rounded text-center">
-          SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span>
+        <div class="ratingContainer d-flex align-items-center shadow rounded">
+          <p class="text-center">SEGi College Penang | Joined<span style="color: red;">2021</span>   Rating<span style="color: red;">4.9 out of 5.0</span>   Products<span style="color: red;">12</span></p>
         </div>
       </section><br>
 
@@ -135,7 +135,7 @@
         padding: 15px;
         position: absolute;
         margin-top: -70px;
-        width: 85%;
+        width: 86%;
       }
 
       .voucherContainer{
