@@ -579,11 +579,16 @@
         height:100%;
         background-color:white;
         border-radius:0;
+        border:none;
     }
 
     .editIcon:hover{
         color: white;
         background-color:#a31f37;
+    }
+
+    .p-title{
+        color: #a31f37;
     }
 
     .image-container{
