@@ -56,7 +56,7 @@
                </div>
             </div>
             <div class="form-row">
-               <div class="float-left">
+               <div class="float-right">
                   <button type="button" class="btn btn-warning" name="upload">Upload</button>
                   <button type="button" class="btn btn-warning" name="cancel">Cancel</button>
                </div>
