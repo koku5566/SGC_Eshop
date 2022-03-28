@@ -194,19 +194,39 @@
                                             $categoryId = $row["combination_id"];
                                             $categoryName = $row["category_name"];
 
-                                            echo("
-                                                <div>
-                                                    <div class=\"input-group\">
-                                                        <input type=\"text\" value=\"$categoryName\" class=\"form-control variationChoice\" disabled>
-                                                        <div class=\"input-group-append\">
-                                                            <a href=\"?edit=$categoryId\"><span style=\"height:100%;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
-                                                        </div>
-                                                        <div class=\"input-group-append\">
-                                                            <a href=\"?delete=$categoryId\"><span style=\"height:100%;\" class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></a>
+                                            $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1'";
+                                            $result_1 = mysqli_query($conn, $sql_1);
+        
+                                            if (mysqli_num_rows($result_1) > 0) 
+                                            {
+                                                echo("
+                                                    <div>
+                                                        <div class=\"input-group\">
+                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
+                                                            <div class=\"input-group-append\">
+                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
+                                                            </div>
+                                                            <div class=\"input-group-append\">
+                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            ");
+                                                ");
+                                            }
+                                            else
+                                            {
+                                                echo("
+                                                    <div>
+                                                        <div class=\"input-group\">
+                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
+                                                            <div class=\"input-group-append\">
+                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ");
+                                            }
+                                            
                                         }
                                     }
                                 ?>
@@ -215,7 +235,34 @@
                             <!-- Sub Category -->
                             <div class="col-xl-3 col-lg-3 col-sm-6">
                                 <p class="p-title">Sub Category</p>
-                                
+                                <?php
+                                    //Sub Category
+                                    if(isset($_GET['toggle']))
+                                    {
+                                        $mainCategoryId = $_GET['toggle'];
+                                        $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = '$mainCategoryId' ORDER BY sub_category ASC";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $categoryId = $row["combination_id"];
+                                                $categoryName = $row["category_name"];
+
+                                                echo("
+                                                    <div>
+                                                        <div class=\"input-group\">
+                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                            <div class=\"input-group-append\">
+                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ");
+                                            }
+                                        }
+                                    }
+                                    
+                                ?>
                             </div>
                             <!-- Edit Category Form -->
                             <div class="col-xl-6 col-lg-6 col-sm-12">
