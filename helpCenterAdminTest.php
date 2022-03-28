@@ -208,8 +208,8 @@
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
 	<div class="row pickbox">
-	  <div class="col-4">col-4</div>
-	  <div class="col-8">col-8</div>
+	  <div class="col-4" style = "red">col-4</div>
+	  <div class="col-8" style = "green">col-8</div>
 	</div>
 
 
@@ -327,8 +327,12 @@
 
 <style>
 .pickbox{
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
 	background-color: rgba(86,61,124,.15);
     border: 1px solid rgba(86,61,124,.2);
+	align-content: center;
 }
 #pickpickrating{
     background-color: white;
