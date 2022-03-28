@@ -101,7 +101,7 @@
 }
 
 .description{
-  margin-top: 3%;
+  margin-top: 4%;
   position: absolute;
   height: 18vh;
   margin-left: -10%;
