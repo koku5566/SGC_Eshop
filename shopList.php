@@ -97,7 +97,7 @@
   height:20vh;
   z-index:3;
   position:relative;
-  border-radius:1rem;
+  border-radius:0.5rem;
 }
 
 .description{
@@ -105,6 +105,7 @@
   position: absolute;
   height: 20vh;
   margin-left: -10%;
+  margin-bottom: 10px;
   z-index: 1;
   padding: 30px 145px;
   border-radius: 5px;
