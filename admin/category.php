@@ -319,20 +319,10 @@
                                 </div>
                                 <p>Category Picture</p>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-sm-4">
-                                <div class="row">
-                                    <div class="col-xl-9 col-lg-9 col-sm-8">
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Category Name</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div class="input-group mb-3">
-                                                <input type="text" name="AddCategoryName" class="form-control" placeholder="Category Name ..." required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-9">
+                                <div class="form-group">
+                                    <label for="addCategoryName">Category Name</label>
+                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Category Name ...">
                                 </div>
                             </div>
                             
@@ -435,6 +425,32 @@
 </style>
 
 <script>
+function initImages()
+{
+    const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+    deleteImg.forEach(img => {
+        img.addEventListener('click', function handleClick(event) {
+            img.parentElement.previousElementSibling.previousElementSibling.src="";
+            img.parentElement.nextElementSibling.classList.remove("hide");
+            img.parentElement.classList.add("hide");
+        });
+    });
+
+    const imgInp = document.querySelectorAll('.imgInp');
+    imgInp.forEach(img => {
+        img.addEventListener('change', function handleChange(event) {
+            const [file] = img.files;
+
+            if(img.files && img.files[0])
+            {
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                img.parentElement.parentElement.classList.add("hide");
+            }
+        });
+    });
+}
 
 </script>
 
