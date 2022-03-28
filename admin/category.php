@@ -238,9 +238,9 @@
                                 <p class="p-title">Sub Category</p>
                                 <?php
                                     //Sub Category
-                                    if(isset($_GET['toggle']))
+                                    if(isset($_POST['toggle']))
                                     {
-                                        $mainCategoryId = $_GET['toggle'];
+                                        $mainCategoryId = $_POST['toggle'];
                                         $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY sub_category ASC";
                                         $result = mysqli_query($conn, $sql);
 
