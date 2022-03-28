@@ -222,7 +222,7 @@
 	  <div class="col-7" style = "background-color:green;">
 		  
 		  
-		  <div class="container">
+		  <div class="container" style = "margin-top: 2.5rem;">
 				<div class="row">
 					<div class="col">
 						  <select class="form-control" id = "selectRating">
@@ -370,7 +370,7 @@
 }
 #pickpickrating{
     background-color: white;
-	height: 10rem;
+	height: 100%;
 	width: 100%;
 }
 .modal-footer{
