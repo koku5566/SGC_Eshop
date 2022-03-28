@@ -53,7 +53,7 @@
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0ZXIlMjBib3R0bGV8ZW58MHx8MHx8&w=1000&q=80"
-                    class="img-fluid"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -75,7 +75,7 @@
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="https://assets.manufactum.de/p/065/065704/65704_02.jpg/bullet-pen.jpg?profile=opengraph_mf"
-                    class="img-fluid"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -97,7 +97,7 @@
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="https://i.pinimg.com/originals/34/35/f6/3435f67c167a5bf5123acce8becececd.jpg"
-                    class="img-fluid"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -145,6 +145,11 @@
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
+      }
+
+      .imgContainer
+      {
+        height: 50vh;
       }
     </style>
 
