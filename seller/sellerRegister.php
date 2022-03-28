@@ -36,7 +36,7 @@ if(isset($_POST['signup']))
 
 								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
 								if (mysqli_query($conn, $sql)) {
-									echo "<script>alert('Registered Successfull');</script>";
+									echo "<script>alert('Registered Successful');</script>";
 								}
 								else {
 									echo "Error: " . $sql . "<br>" . mysqli_error($conn);

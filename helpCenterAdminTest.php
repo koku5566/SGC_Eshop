@@ -52,7 +52,7 @@
 		
 			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
 			</h6>
-						<!--
+						<!---->
 						<div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
@@ -62,7 +62,7 @@
 									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                                 </ol>
-                                <div class="carousel-inner">
+                                <div class="carousel-inner tqy">
 								
                                     <?php
 									/*
@@ -119,45 +119,8 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                        </div>-->
-						<!---------------------------------------------------SOHAI-->
-							<div class="col-xl-10">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" alt="Third slide">
-                                    </div>
-									<div class="carousel-item">
-                                        <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" alt="fourth slide">
-                                    </div>
-									<div class="carousel-item">
-                                        <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" alt="fifth slide">
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
                         </div>
-						<!---------------------------------------------------SOHAI-->
+						
 		
 		
       </div>
@@ -246,20 +209,40 @@
 	<div class="row pickbox">
 	  <div class="col-5" style = "background-color:red;">
 		<div>
-			<h2>4.9</h2><h3> out of 5.0</h3>
-			<div style="margin-bottom: 0.1em;">													
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star"></i>
-				<i class="bi bi-star"></i>
+			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
+			<div style="margin-bottom: 0.1em; text-align: center;">													
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star tqy"></i>
+				<i class="bi bi-star tqy"></i>
 			</div>	
 		</div>	  
 	  </div>
 	  <div class="col-7" style = "background-color:green;">
-		  <h1 style="text-align:left;float:left;">Title</h1> 
-		  <h2 style="text-align:right;float:right;">Context</h2> 
-		  <hr style="clear:both;"/>
+		  
+		  
+		  <div class="container" style = "margin-top: 2.5rem;">
+				<div class="row">
+					<div class="col">
+						  <select class="form-control" id = "selectRating">
+							  <option value = "All">All* (107)</option>
+							  <option value = "P000005">5 Star</option>
+							  <option value = "P000004">4 Star</option>
+							  <option value = "P000003">3 Star</option>	
+							  <option value = "P000002">2 Star</option>
+							  <option value = "P000001">1 Star</option>			  
+						  </select>
+					</div>
+					<div class="col">						
+						 <select class="form-control" id = "selectStar">
+							  <option value = "All">With Comment & Media*</option>
+							  <option value = "1">With Comment Only</option>
+							  <option value = "2">With Media Only</option>							  
+						</select>		
+					</div>
+				</div>
+			</div>
 	  </div>
 	</div>
 
@@ -387,7 +370,7 @@
 }
 #pickpickrating{
     background-color: white;
-	height: 10rem;
+	height: 100%;
 	width: 100%;
 }
 .modal-footer{
@@ -429,6 +412,9 @@
 	border-radius: 50%; 
 	width: 5rem; 
 	height: 5rem;
+}
+.tqy{
+	font-size: 1.2rem;
 }
 .atss{
 	max-width: 25rem;
