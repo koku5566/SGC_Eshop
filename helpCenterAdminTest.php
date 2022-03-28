@@ -207,7 +207,10 @@
                         </div>-->
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
-
+	<div class="row pickbox">
+	  <div class="col-4">col-4</div>
+	  <div class="col-8">col-8</div>
+	</div>
 
 
 
@@ -323,10 +326,14 @@
 ?>
 
 <style>
+.pickbox{
+	background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
 #pickpickrating{
     background-color: white;
-	height: 4rem;
-	width: 12rem;
+	height: 10rem;
+	width: 100%;
 }
 .modal-footer{
 	border-top: none;
