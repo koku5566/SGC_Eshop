@@ -61,7 +61,7 @@
 	<input required type="password" name="password" class="form-control" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
 	
 	<p id="label">Confirm Password</p>
-	<input required type="password" name="password1" class="form-control" id="inputRepeatPassword" maxlength="50">
+	<input required type="password" name="password2" class="form-control" id="inputRepeatPassword" maxlength="50">
 	
 	<button type="submit" name="confirm">Confirm</button>
 </form>
