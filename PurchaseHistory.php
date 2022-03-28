@@ -65,7 +65,7 @@ $result_2 = $stmt_2->get_result();
                                             <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                                             <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
                                             <div class="col-md-3 col-lg-2 offset-lg-1">x<?php echo $row['prod_qty']?></div>
-                                            <div class="col">RM<?php echo $row['price']?></div>
+                                            <div class="col-md-3 col-lg-2 offset-lg-1" style="text-align:right;">RM<?php echo $row['price']?></div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
