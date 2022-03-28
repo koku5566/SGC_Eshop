@@ -2,7 +2,7 @@
     require_once __DIR__ . '/header.php'
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<div id="carouselExampleControls" class="carousel slide banner" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="https://img.myloview.com/murals/12-12-sales-promotion-banner-design-template-vector-400-277359348.jpg" class="d-block w-100" alt="...">
@@ -125,8 +125,8 @@
         background-color: grey;
         border: none;
         border-radius: 5px;
-        height: 10vh; /* should be remove after add in voucher */
-        width: 200vh; /* should be remove after add in voucher */
+        height: 15vh; /* should be remove after add in voucher */
+        width: 180vh; /* should be remove after add in voucher */
       }
     </style>
 
