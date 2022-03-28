@@ -220,9 +220,29 @@
 		</div>	  
 	  </div>
 	  <div class="col-7" style = "background-color:green;">
-		  <h1 style="text-align:left;float:left;">Title</h1> 
-		  <h2 style="text-align:right;float:right;">Context</h2> 
-		  <hr style="clear:both;"/>
+		  
+		  
+		  <div class="container">
+				<div class="row">
+					<div class="col">
+						  <select class="form-control" id = "selectRating">
+							  <option value = "All">All* (107)</option>
+							  <option value = "P000005">5 Star</option>
+							  <option value = "P000004">4 Star</option>
+							  <option value = "P000003">3 Star</option>	
+							  <option value = "P000002">2 Star</option>
+							  <option value = "P000001">1 Star</option>			  
+						  </select>
+					</div>
+					<div class="col">						
+						 <select class="form-control" id = "selectStar">
+							  <option value = "All">With Comment & Media*</option>
+							  <option value = "1">With Comment Only</option>
+							  <option value = "2">With Media Only</option>							  
+						</select>		
+					</div>
+				</div>
+			</div>
 	  </div>
 	</div>
 
