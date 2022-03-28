@@ -86,7 +86,6 @@ if(mysqli_num_rows($result) > 0)
 	 <th colspan="2">rr_id</th>
      <th>product_id</th>
      <th>message</th>
-     <th>rating</th>
 	 <th>Action</th>
     </tr>
  ';
