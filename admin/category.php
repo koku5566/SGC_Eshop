@@ -268,7 +268,7 @@
                                             echo("
                                             <div>
                                                 <div class=\"input-group\">
-                                                    <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#addMainModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
                                         ");
@@ -276,6 +276,7 @@
                                     }
                                     
                                 ?>
+     
                             </div>
                             <!-- Edit Category Form -->
                             <div class="col-xl-6 col-lg-6 col-sm-12">
@@ -288,27 +289,61 @@
             </div>
         </div>
 
-        <!--Category List -->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
+        <!-- Modal -->
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="modal fade" id="addMainModel" tabindex="-1" role="dialog" aria-labelledby="addMainModel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div id="categoryDiv">
-                            <div class="row">
-                                <div class="col">
-                                
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-4"></div>
+                            <div class="image-container">
+                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                <div class="image-layer">
+                                </div>
+                                <div class="image-tools-delete hide">
+                                    <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                </div>
+                                <div class="image-tools-add">
+                                    <label class="custom-file-upload">
+                                        <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                        <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <p>Category Picture</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-sm-8">
+                                <div class="row">
+                                    <div class="col-xl-2 col-lg-2 col-sm-12">
+                                        <p class="p-title">Category Name</p>
+                                    </div>
+                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                        <div class="input-group mb-3">
+                                        <input type="text" name="AddCategoryName" class="form-control" placeholder="Category Name ..." required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </form>
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
             <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Category</button>
