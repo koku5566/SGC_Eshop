@@ -104,9 +104,9 @@
   margin-top: 4%;
   position: absolute;
   height: 18vh;
-  margin-left: -10%;
+  margin-left: -20%;
   z-index: 1;
-  padding: 30px 145px;
+  padding: 30px 120px;
   border-radius: 5px;
   background-color: #EEEDEE;
   width:100%;
