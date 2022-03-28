@@ -210,7 +210,7 @@
 	  <div class="col-5" style = "background-color:red;">
 		<div>
 			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
-			<div style="margin-bottom: 0.1em;">													
+			<div style="margin-bottom: 0.1em; text-align: center;">													
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
