@@ -140,7 +140,7 @@
   
 
 
-<!-- Slideshow -->
+<!-- Slideshow 
                     <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
@@ -207,7 +207,7 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                        </div>
+                        </div>-->
 <!------------------------------------------------------------------->	
 
  
