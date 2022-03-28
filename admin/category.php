@@ -247,8 +247,8 @@
                                                         <div class=\"input-group\">
                                                             <a href=\"?toggle=$categoryId\" class=\"nav-link\">
                                                                 <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
-                                                                Clothing
-                                                                <i class=\"fa fa-angle-right\" style=\"float:right\" aria-hidden=\"true\"></i>
+                                                                $categoryName
+                                                                <i class=\"fa fa-angle-right\" style=\"float:right;margin-top:5px;\" aria-hidden=\"true\"></i>
                                                             </a>
                                                             <div class=\"input-group-append\">
                                                                 <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
@@ -264,7 +264,7 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -561,6 +561,16 @@
         color: #a31f37;
     }
 
+    .editIcon{
+        color: #a31f37;
+        border:1px solid #a31f37;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .editIcon:hover{
+        color: white;
+        background-color:#a31f37;
+    }
 
     .image-container{
         width: 80px;
