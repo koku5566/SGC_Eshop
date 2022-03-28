@@ -31,12 +31,12 @@
       <textarea class="form-control" id="customFile" rows="3"></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" class="imageContainer clearfix">
+      <div id="uploadContainer" class="clearfix">
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
+        <input class="form-control " type="file" id="uploadBtn" onchange="preview()" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
