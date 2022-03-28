@@ -248,7 +248,7 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $categoryId = $row["combination_id"];
                                                 $categoryName = $row["category_name"];
-                                                $toggle = "toggle=".$mainCategoryId."&"
+                                                $toggle = "toggle=".$mainCategoryId."&";
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
