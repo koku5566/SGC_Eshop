@@ -207,7 +207,21 @@
                         </div>-->
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
-
+	<div class="row pickbox">
+	  <div class="col-5" style = "background-color:red;">
+		<div>
+			<h2>4.9</h2><h3> out of 5.0</h3>
+			<div style="margin-bottom: 0.1em;">													
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star"></i>
+				<i class="bi bi-star"></i>
+			</div>	
+		</div>	  
+	  </div>
+	  <div class="col-7" style = "background-color:green;">col-8</div>
+	</div>
 
 
 
@@ -323,10 +337,18 @@
 ?>
 
 <style>
+.pickbox{
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+	align-content: center;
+}
 #pickpickrating{
     background-color: white;
-	height: 4rem;
-	width: 12rem;
+	height: 10rem;
+	width: 100%;
 }
 .modal-footer{
 	border-top: none;
