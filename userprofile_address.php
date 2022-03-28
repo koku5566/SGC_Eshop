@@ -29,12 +29,14 @@
 	}
 ?>
 
+<div class="row">
+<?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="DataDiv">
 <h1>My Address Book</h1>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$UID = $_SESSION["id"];
+	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
@@ -42,7 +44,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-			<a href=\"\" name=\"edit\" value=".$row["address_id"].">
+			<button href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\">
 				".$row["contact_name"]."
 				".$row["phone_number"]."
 				".$row["address"]."
@@ -50,14 +52,15 @@
 				".$row["area"]."
 				".$row["state"]."
 				".$row["country"]."
-				<button name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\" style=\"margin-right: 0.5rem;\">Edit</button>
 				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
-			</a>
+			</button>
 			</div>
 			");
 	}
 ?>
 </form>
+</div>
+</div>
 
 <?php
 if(isset($_SESSION['DeleteAddress']))
@@ -69,6 +72,5 @@ if(isset($_SESSION['DeleteAddress']))
 		$_SESSION['DeleteAddress'] = NULL;
 	}
 ?>
-</div>
 
 <?php require __DIR__ . '/footer.php' ?>
