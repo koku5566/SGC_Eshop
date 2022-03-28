@@ -27,10 +27,16 @@
     <!--Main Navigation-->
     <!--Main layout-->
     <main class="mt-5">
-      <div class="container">
+    <div class="container">
+
+      <section class="text-center">
+        <div class="ratingContainer d-flex align-items-center shadow rounded text-center">
+          SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span>
+        </div>
+      </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
           </div>
         </section>
@@ -121,7 +127,16 @@
         .carousel-item,
         .carousel-item.active {
           height: 80vh;
+          position: relative;
         }
+
+      .ratingContainer{
+        background-color: white;
+        padding: 15px;
+        position: absolute;
+        margin-top: -70px;
+        width: 85%;
+      }
 
       .voucherContainer{
         background-color: #f0f0f0;
