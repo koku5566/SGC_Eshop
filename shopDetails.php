@@ -28,7 +28,7 @@
     <div>
       <section class="text-center"><br>
         <h4 class="mb-5"><strong>Voucher</strong></h4>
-        <div class="voucherContainer d-flex justify-content-center">
+        <div class="voucherContainer d-flex align-items-center">
         </div>
       </section>
     </div>
@@ -130,6 +130,7 @@
         border-radius: 5px;
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
+        margin:; /* Better set align center */
       }
     </style>
 
