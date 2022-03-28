@@ -624,11 +624,12 @@
 
 <script>
 
-    if(<?php echo(isset($_GET['edit'])) ?> == 1)
-    {
-        $("#editCategoryModel").modal('show');
-    }
-
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['edit'])) ?> == 1)
+        {
+            $("#editCategoryModel").modal('show');
+        }
+    });
 
     initImages();
 
