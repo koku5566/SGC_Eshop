@@ -230,7 +230,7 @@
                                         echo("
                                         <div>
                                             <div class=\"input-group\">
-                                                <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#addMainModel\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add New Category</button>
+                                                <button type=\"button\" data-toggle=\"modal\" data-target=\"#addMainModel\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add New Category</button>
                                             </div>
                                         </div>
                                         ");
@@ -268,7 +268,7 @@
                                             echo("
                                             <div>
                                                 <div class=\"input-group\">
-                                                    <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
                                         ");
@@ -435,5 +435,5 @@
 </script>
 
 <?php
-    require __DIR__ . '/footer.php'
+    require dirname(__DIR__, 1) . '/seller/footer.php';
 ?>
