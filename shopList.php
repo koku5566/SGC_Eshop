@@ -129,7 +129,8 @@
 } */
 
 .nextBtn{
-  width: 50px;
-  margin: 0 10px 10px 0;
+  width: 40px;
+  margin: 0 20px 10px 0;
+  background-color: white;
 } 
 </style>
