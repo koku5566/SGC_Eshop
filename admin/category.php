@@ -436,12 +436,12 @@
 
         <!-- Edit Category Modal - editCategoryModel -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <div class="modal fade <?php echo(isset($_GET['edit']) ? $_GET['edit'] : "");?>" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal fade" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" >Edit Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close closeEditModel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -509,7 +509,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                         <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                     </div>
                     </div>
@@ -641,6 +641,14 @@
     });
 
     initImages();
+
+    const closeEditModel = document.querySelectorAll('.closeEditModel');
+
+    closeEditModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#editCategoryModel").modal('hide');
+        });
+    });
 
     function initImages()
     {
