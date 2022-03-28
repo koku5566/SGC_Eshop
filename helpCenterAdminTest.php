@@ -209,7 +209,7 @@
 	<div class="row pickbox">
 	  <div class="col-5" style = "background-color:red;">
 		<div>
-			<h2>4.9</h2><h3> out of 5.0</h3>
+			<p><strong>4.9</strong> out of 5.0</p>
 			<div style="margin-bottom: 0.1em;">													
 				<i class="bi bi-star-fill"></i>
 				<i class="bi bi-star-fill"></i>
