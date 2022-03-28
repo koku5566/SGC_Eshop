@@ -62,7 +62,7 @@ $result_2 = $stmt_2->get_result();
                 </div>
             </div>
         </div>
-        <div class="container" style="">
+        <div class="container" style="border: 1px solid; width:100%">
             <div class="row" >
                 <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
                   <a href="viewPurchasingOrders.php"></a>Order Status</button></div>
