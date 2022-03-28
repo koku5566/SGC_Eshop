@@ -27,8 +27,8 @@
     <!--Main Navigation-->
     <div>
       <section class="text-center">
-        <h4 class="mb-5"><strong>Voucher</strong></h4>
-        <div class="voucherContainer">
+        <h4 class="mb-5"><strong>Voucher</strong></h4><br>
+        <div class="voucherContainer d-flex justify-content-center">
         </div>
       </section>
     </div>
@@ -130,7 +130,6 @@
         border-radius: 5px;
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
-        text-align: center;
       }
     </style>
 
