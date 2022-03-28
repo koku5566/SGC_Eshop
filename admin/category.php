@@ -1,14 +1,18 @@
 <?php
     require dirname(__DIR__, 1) . '/seller/header.php';
 
-    if(isset($_POST['addMain']) || isset($_POST['addSub'])){
+    if(isset($_GET['edit']))
+    {
+        echo "<script language=\"javascript\">";
+        echo "$('#myModal').modal(options)";
+        echo "</script>";
+        
+    }
+    if(isset($_POST['addMain'])){
 
-        $addSub = isset($_POST['addSub']) ? 1 : 0;
-
-        $mainCategoryId = isset($_POST['addSub']) ? $_POST['addSub'] : $_POST['addMain'];
-        $subCategoryId = "";
-        $categoryName = $_POST['categoryName'];
+        $categoryName = $_POST['addCategoryName'];
         $categoryPic = "";
+        $categoryStatus= "1";
 
         $fileNames = array_filter($_FILES['img']['name']); 
 
@@ -31,45 +35,24 @@
             } 
         }
 
-        //Get The Combination ID
-        $sql_getID = "SELECT AUTO_INCREMENT ";
-        $sql_getID .="FROM information_schema.TABLES ";
-        $sql_getID .="WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' ";
-        $sql_getID .="AND TABLE_NAME = 'category' ";
-        $result = mysqli_query($conn, $sql_getID);
-
-        if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
-
-                if($addSub == 1)
-                {
-                    $subCategoryId = $row['AUTO_INCREMENT'];
-                }
-                else
-                {
-                    $mainCategoryId = $row['AUTO_INCREMENT'];
-                }
-                
-                $sql_insert  = "INSERT INTO category (";
-                $sql_insert .= "category_name, category_pic, category_status";
-                $sql_insert .= ") ";
-                $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
-                if(mysqli_query($conn, $sql_insert))
-                {
-                    $sql_insert_cc  = "INSERT INTO categoryCombination (";
-                    $sql_insert_cc .= "main_category, sub_category, sub_Yes";
-                    $sql_insert_cc .= ") ";
-                    $sql_insert_cc .= "VALUES ('$mainCategoryId','$subCategoryId','$addSub')";
-                    if(mysqli_query($conn, $sql_insert_cc))
-                    {
-                        //This is for redirect
-                        ?>
-                            <script type="text/javascript">
-                                window.location.href = window.location.origin + "/admin/category.php";
-                            </script>
-                        <?php
-                    }
-                }
+        $sql_insert  = "INSERT INTO category (";
+        $sql_insert .= "category_name, category_pic, category_status";
+        $sql_insert .= ") ";
+        $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
+        if(mysqli_query($conn, $sql_insert))
+        {
+            $sql_insert_cc  = "INSERT INTO categoryCombination (";
+            $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
+            $sql_insert_cc .= ") ";
+            $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0')";
+            if(mysqli_query($conn, $sql_insert_cc))
+            {
+                //This is for redirect
+                ?>
+                    <script type="text/javascript">
+                        window.location.href = window.location.origin + "/admin/category.php";
+                    </script>
+                <?php
             }
         }
         else
@@ -79,10 +62,70 @@
             echo '</script>';
         }
     } 
+    if(isset($_POST['addSub'])){
+
+        $addSub = 1;
+
+        $mainCategoryId = $_POST['mainCategoryId'];
+
+        $categoryName = $_POST['addSubCategoryName'];
+        $categoryPic = "";
+        $categoryStatus = "1";
+
+        $fileNames = array_filter($_FILES['img']['name']); 
+
+        // File upload configuration 
+        $targetDir = dirname(__DIR__, 1)."/img/category/"; 
+        $allowTypes = array('jpg','png','jpeg'); 
+
+        if(!empty($fileNames)){ 
+            foreach($_FILES['img']['name'] as $key=>$val){ 
+                // File upload path 
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $categoryPic = "$fileName";
+                    }
+                }
+            } 
+        }
+
+        $sql_insert  = "INSERT INTO category (";
+        $sql_insert .= "category_name, category_pic, category_status";
+        $sql_insert .= ") ";
+        $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
+        if(mysqli_query($conn, $sql_insert))
+        {
+            $sql_insert_cc  = "INSERT INTO categoryCombination (";
+            $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
+            $sql_insert_cc .= ") ";
+            $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'1')";
+            if(mysqli_query($conn, $sql_insert_cc))
+            {
+                //This is for redirect
+                ?>
+                    <script type="text/javascript">
+                        window.location.href = window.location.origin + "/admin/category.php";
+                    </script>
+                <?php
+            }
+        }
+        else
+        {
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Add Category")';
+            echo '</script>';
+        }
+      
+    } 
     else if(isset($_POST['editCategory']))
     {
-        $categoryId = $_POST['editCategory'];
-        $categoryName = "";
+        $categoryId = $_POST['editCategoryId'];
+        $categoryName = $_POST['editCategoryName'];
+        $categoryStatus= "1";
 
         $sql_update = "UPDATE category SET ";
         $sql_update .= "category_name = '$categoryName' ";
@@ -120,7 +163,7 @@
             <?php
         }
     }
-    else if(isset($_POST['deleteMain']) || isset($_POST['deleteSub']))
+    else if(isset($_POST['deleteCategory']))
     {
         $mainCategoryId = "";
         $mainCategoryId = "";
@@ -180,7 +223,7 @@
                     <div class="card-body">
                         <div class="row">
                             <!-- Main Category -->
-                            <div class="col-xl-3 col-lg-3 col-sm-6">
+                            <div class="col-xl-6 col-lg-6 col-sm-6">
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
@@ -188,6 +231,7 @@
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
+                                        echo("<div class=\"categoryList\">");
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $categoryId = $row["combination_id"];
                                             $mainCategoryId = $row["category_id"];
@@ -227,6 +271,7 @@
                                             }
                                             
                                         }
+                                        echo("</div>");
                                         echo("
                                         <div>
                                             <div class=\"input-group\">
@@ -239,7 +284,7 @@
                                 
                             </div>
                             <!-- Sub Category -->
-                            <div class="col-xl-3 col-lg-3 col-sm-6">
+                            <div class="col-xl-6 col-lg-6 col-sm-6">
                                 <p class="p-title">Sub Category</p>
                                 <?php
                                     //Sub Category
@@ -250,8 +295,9 @@
                                         $result = mysqli_query($conn, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
+                                            echo("<div class=\"categoryList\">");
                                             while($row = mysqli_fetch_assoc($result)) {
-                                                $categoryId = $row["combination_id"];
+                                                $categoryId = $row["category_id"];
                                                 $categoryName = $row["category_name"];
                                                 $toggle = "toggle=".$mainCategoryId."&";
                                                 echo("
@@ -265,6 +311,7 @@
                                                     </div>
                                                 ");
                                             }
+                                            echo("</div>");
                                             echo("
                                             <div>
                                                 <div class=\"input-group\">
@@ -278,24 +325,19 @@
                                 ?>
      
                             </div>
-                            <!-- Edit Category Form -->
-                            <div class="col-xl-6 col-lg-6 col-sm-12">
-                                <p class="p-title">Edit Category</p>
-                            </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Add Main Category Modal - addMainModel -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="modal fade" id="addMainModel" tabindex="-1" role="dialog" aria-labelledby="addMainModel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                        <h5 class="modal-title" >Add Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -317,22 +359,181 @@
                                         </label>
                                     </div>
                                 </div>
-                                <p>Picture</p>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-sm-9">
                                 <div class="form-group">
                                     <label for="addCategoryName">Category Name</label>
-                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name">
+                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name" required>
                                 </div>
                             </div>
                             
                         </div>
-                       
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addMain" class="btn btn-primary">Add</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Add Sub Category Modal - addSubModel -->
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="modal fade" id="addSubModel" tabindex="-1" role="dialog" aria-labelledby="addSubModel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Add Sub Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <div class="image-container">
+                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                    <div class="image-layer">
+                                    </div>
+                                    <div class="image-tools-delete hide">
+                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="image-tools-add">
+                                        <label class="custom-file-upload">
+                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-9">
+                                <div class="form-group">
+                                    <label for="CategoryName">Parent Category</label>
+                                    <?php
+                                    $cc_id = $_GET['toggle'];
+                                    $sql = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.combination_id = '$cc_id'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo("<div class=\"categoryList\">");
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $mainCategoryId = $row["category_id"];
+                                            $categoryName = $row["category_name"];
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"mainCategoryId\" id=\"mainCategoryId\" value=\"$mainCategoryId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"mainCategoryName\" id=\"mainCategoryName\" value=\"$categoryName\" disabled>");
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addCategoryName">Sub Category Name</label>
+                                    <input type="text" class="form-control" name="addSubCategoryName" id="addSubCategoryName" placeholder="Enter Category Name" required>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="AddSub" class="btn btn-primary">Add</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Edit Category Modal - editCategoryModel -->
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="modal fade" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Edit Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <div class="image-container">
+                                    <?php
+                                        $category_id = $_GET['edit'];
+                                        $sql = "SELECT category_pic FROM category WHERE category_id = '$category_id'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $picName = $row["category_pic"];
+
+                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/$picName\">");
+                                            }
+                                        }
+                                    ?>
+                                    
+                                    <div class="image-layer">
+                                    </div>
+                                    <div class="image-tools-delete hide">
+                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="image-tools-add">
+                                        <label class="custom-file-upload">
+                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-9">
+                                <div class="form-group">
+                                    <label for="editCategoryName">Category Name</label>
+                                    <?php
+                                    $category_id = $_GET['edit'];
+                                    $sql = "SELECT category_id,category_name FROM category WHERE category_id = '$category_id'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $mainCategoryId = $row["category_id"];
+                                            $categoryName = $row["category_name"];
+
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"editCategoryId\" id=\"editCategoryId\" value=\"$mainCategoryId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"editCategoryName\" id=\"editCategoryName\" value=\"$categoryName\" placeholder=\"Enter Category Name\" required>");
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+         <!-- Delete Category Modal - deleteCategoryModel -->
+         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="modal fade" id="deleteCategoryModel" tabindex="-1" role="dialog" aria-labelledby="deleteCategoryModel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Add Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Are you sure you want to delete the below category ?</h3>
+                        <p id="deleteCategoryId"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="deleteCategory" class="btn btn-primary">Delete</button>
                     </div>
                     </div>
                 </div>
@@ -420,6 +621,11 @@
     .warning-message{
         color:red;
         font-weight:bold;
+    }
+
+    .categoryList{
+        overflow:scroll;
+        height:20vh;
     }
 
 </style>
