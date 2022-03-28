@@ -106,7 +106,7 @@
   height: 15vh;
   margin-left: -10%;
   z-index: 1;
-  padding: 50px 145px;
+  padding: 50px 145px 50px 0;
   border-radius: 5px;
   background-color: #EEEDEE;
   width:100%;
