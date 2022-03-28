@@ -172,7 +172,7 @@
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 										
 											<div style="height: 100%">
-												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
 												<div class = "namestar">
 													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
 													<div style="margin-bottom: 0.1em;">													
