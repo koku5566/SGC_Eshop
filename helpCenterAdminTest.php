@@ -160,9 +160,9 @@
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>
-										<form action = "$_SERVER['PHP_SELF']" method = 'POST'>
+										<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit"class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										</form>
 										</div>   
 										<!--Content End-->
@@ -172,7 +172,7 @@
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 										
 											<div style="height: 100%">
-												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
 												<div class = "namestar">
 													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
 													<div style="margin-bottom: 0.1em;">													
@@ -185,7 +185,7 @@
 												</div>
 									
 									
-									<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+									<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
 									</h6>
 									<table style = "margin-bottom: 0.3rem;">
 										<tr>
@@ -240,7 +240,10 @@
 }
 .hyperlink{
 	float: right;
-	color: blue;
+	color: #858796;
+	border: none;
+	background-color: transparent;
+	
 }
 .divcontent{
 	font-size: 0.85rem; 

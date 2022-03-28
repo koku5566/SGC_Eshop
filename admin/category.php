@@ -169,8 +169,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%;">
-
-    <form id="categoryForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -230,20 +228,10 @@
                                             
                                         }
                                         echo("
-                                            <div class=\"AddButtonCategoryDiv\">
+                                            <div>
                                                 <div class=\"input-group\">
                                                     <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddCategory\" style=\"width:100%\">Add New Category</button>
                                                 </div>
-                                            </div>
-                                                
-                                            <div class=\"AddInpCategoryDiv hide\">
-                                                <div class=\"input-group\">
-                                                    <input type=\"text\" name=\"mainCategoryInp\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" >
-                                                    <div class=\"input-group-append\">
-                                                        <span onclick=\"hideAddInpCategoryDiv()\" style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
-                                                    </div>
-                                                </div>
-                                                <button type=\"submit\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add</button>
                                             </div>
                                         ");
                                     }
@@ -277,6 +265,13 @@
                                                     </div>
                                                 ");
                                             }
+                                            echo("
+                                            <div>
+                                                <div class=\"input-group\">
+                                                    <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                </div>
+                                            </div>
+                                        ");
                                         }
                                     }
                                     
@@ -318,7 +313,7 @@
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
             <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Category</button>
         </div>
-    </form>
+
 </div>
 <!-- /.container-fluid -->
 
