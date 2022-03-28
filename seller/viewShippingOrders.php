@@ -309,7 +309,7 @@ $result = $stmt->get_result();
                                                             <div class="col-lg-2">DHL ECOMMERCE</div>
                                                             <div class="col-lg-2">
                                                                 <!-- Button trigger modal -->
-                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left:10px">
+                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left:30px">
                                                                 Arrange Shipment
                                                                 </button>
                                                                 <form action="" method="post">
