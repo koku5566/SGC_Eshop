@@ -106,6 +106,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.bi.bi-star-fill{
+	-webkit-text-fill-color: orange
+}
 .checked {
   color: orange;
 }
