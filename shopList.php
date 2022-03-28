@@ -84,6 +84,9 @@
         </p>
       </div>
     </div>
+  </div>
+  
+  <div class="row">
     <button class="text-right">-></button>
   </div>
 </div>
@@ -93,7 +96,6 @@
 ?>
 
 <style>
-
 .image-container{
   height:20vh;
   z-index:3;
@@ -126,4 +128,8 @@
   justify-content: center;
 } */
 
+button{
+  border: none;
+  width: 20px;
+}
 </style>
