@@ -40,7 +40,7 @@
 		$returnPath = "-f" . $from2;
 		
 		if(@mail($to, $subject, $message, $headers, $returnPath)){
-			echo "<script>alert('Link to reset password has been sent to the email address')</script>";
+			echo "<script>alert('Link for reset password has been sent to the email address')</script>";
 		}
 	}
 ?>
