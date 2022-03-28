@@ -26,8 +26,8 @@ if(isset($_POST['signup']))
 					VALUES ('$username','$email','$password','$username','$date','USER')";
 				
 
-				$sql  = "INSERT INTO user (username, email, password, name, registration_date, role)
-				VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newuserID),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'),'0','0')";
+				//$sql  = "INSERT INTO user (username, email, password, name, registration_date, role)
+				//VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newuserID),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'),'0','0')";
 
 
 					if (mysqli_query($conn, $sql)) {
