@@ -1,13 +1,6 @@
 <?php
     require dirname(__DIR__, 1) . '/seller/header.php';
 
-    if(isset($_GET['edit']))
-    {
-        echo "<script language=\"javascript\">";
-        echo "$('#myModal').modal(options)";
-        echo "</script>";
-        
-    }
     if(isset($_POST['addMain'])){
 
         $categoryName = $_POST['addCategoryName'];
@@ -45,7 +38,6 @@
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0','0')";
-            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -251,7 +243,7 @@
                                                                 <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -264,7 +256,7 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -324,7 +316,6 @@
                                     }
                                     
                                 ?>
-     
                             </div>
                         </div>
                     </div>
@@ -417,7 +408,6 @@
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
-                                        echo("<div class=\"categoryList\">");
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
@@ -437,7 +427,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="AddSub" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addSub" class="btn btn-primary">Add</button>
                     </div>
                     </div>
                 </div>
@@ -446,12 +436,12 @@
 
         <!-- Edit Category Modal - editCategoryModel -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <div class="modal fade" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" aria-hidden="true">
+            <div class="modal fade" id="editCategoryModel" tabindex="-1" role="dialog" aria-labelledby="editCategoryModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" >Edit Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close closeEditModel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -466,10 +456,20 @@
 
                                         if (mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
-                                                $picName = $row["category_pic"];
+                                                
+                                                $picName = "";
 
-                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/$picName\">");
+                                                if($row["category_pic"] != "")
+                                                {
+                                                    $picName = "/img/product/".$row["category_pic"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
                                             }
+                                        }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\">");
                                         }
                                     ?>
                                     
@@ -509,7 +509,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                         <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                     </div>
                     </div>
@@ -632,7 +632,23 @@
 </style>
 
 <script>
+
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['edit'])) ?> == 1)
+        {
+            $("#editCategoryModel").modal('show');
+        }
+    });
+
     initImages();
+
+    const closeEditModel = document.querySelectorAll('.closeEditModel');
+
+    closeEditModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#editCategoryModel").modal('hide');
+        });
+    });
 
     function initImages()
     {
