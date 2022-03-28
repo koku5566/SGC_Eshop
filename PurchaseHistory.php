@@ -11,16 +11,21 @@ product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
 orderDetails.price,
-orderDetails.order_id
+orderDetails.order_id,
+orderDetails.order_id, 
+shopProfile.shop_name
 
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.id";
+JOIN product ON orderDetails.product_id = product.id
+INNER JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id";
 
 $stmt_2 = $conn->prepare($sql_2);
 $stmt_2->execute();
 $result_2 = $stmt_2->get_result();
+
+
 
 ?>
 
@@ -44,7 +49,7 @@ $result_2 = $stmt_2->get_result();
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row">
-                                            <div class="col md-auto text-start"><span><strong><?php echo $row['shop_id']?></strong></span>
+                                            <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
                                                 Order
