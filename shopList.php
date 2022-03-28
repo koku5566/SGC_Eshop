@@ -101,11 +101,10 @@
 }
 
 .description{
-  margin-top: 5%;
+  margin-top: 3%;
   position: absolute;
   height: 18vh;
   margin-left: -10%;
-  margin-bottom: 100px;
   z-index: 1;
   padding: 30px 145px;
   border-radius: 5px;
