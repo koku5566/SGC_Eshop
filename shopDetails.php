@@ -2,144 +2,28 @@
     require_once __DIR__ . '/header.php'
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<header>
-      <style>
-        /* Carousel styling */
-        #introCarousel,
-        .carousel-inner,
-        .carousel-item,
-        .carousel-item.active {
-          height: 100vh;
-        }
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://media.istockphoto.com/photos/motion-blur-the-truck-is-driving-at-high-speed-on-the-highway-red-sky-picture-id1303345112?b=1&k=20&m=1303345112&s=170667a&w=0&h=RspaiuFmfnaUlzHEw90lSONUGzxAcbeC9Dj_p8z_r6w=" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://shotkit.com/wp-content/uploads/2021/02/motion-blur.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzgN6t_eujbBGblBEoFAQHbOnyZg7Y_qVujG9IJMpSMKv0nE5nnpPPHsUG5ATM4mg_ZlE&usqp=CAU" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-        .carousel-item:nth-child(1) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
-        .carousel-item:nth-child(2) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
-        .carousel-item:nth-child(3) {
-          background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
-
-        /* Height for devices larger than 576px */
-        @media (min-width: 992px) {
-          #introCarousel {
-            margin-top: -58.59px;
-          }
-          #introCarousel,
-          .carousel-inner,
-          .carousel-item,
-          .carousel-item.active {
-            height: 50vh;
-          }
-        }
-
-        .navbar .nav-link {
-          color: #fff !important;
-        }
-      </style>
-
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
-        <div class="container-fluid">
-          <!-- Navbar brand -->
-          
-          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarExample01">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="#intro">SEGi</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- Navbar -->
-
-      <!-- Carousel wrapper -->
-      <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-          <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
-        </ol>
-
-        <!-- Inner -->
-        <div class="carousel-inner">
-          <!-- Single item -->
-          <div class="carousel-item active">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-              <div class="d-flex justify-content-center align-items-center h-100">
-              </div>
-            </div>
-          </div>
-
-          <!-- Single item -->
-          <div class="carousel-item">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h2>You can place here any content</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Single item -->
-          <div class="carousel-item">
-            <div
-              class="mask"
-              style="
-                background: linear-gradient(
-                  45deg,
-                  rgba(29, 236, 197, 0.7),
-                  rgba(91, 14, 214, 0.7) 100%
-                );
-              "
-            >
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
-                  <h2>And cover it with any mask</h2>
-                  <a
-                    class="btn btn-outline-light btn-lg m-2"
-                    href="https://mdbootstrap.com/docs/standard/content-styles/masks/"
-                    target="_blank"
-                    role="button"
-                    >Learn about masks</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Inner -->
-
-        <!-- Controls -->
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-      <!-- Carousel wrapper -->
-    </header>
     <!--Main Navigation-->
 
     <!--Main layout-->
