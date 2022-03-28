@@ -125,11 +125,12 @@
         }
 
       .voucherContainer{
-        background-color: grey;
+        background-color: #f0f0f0;
         border: none;
         border-radius: 5px;
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
+        text-align: center;
       }
     </style>
 
