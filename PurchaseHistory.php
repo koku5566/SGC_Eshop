@@ -37,9 +37,7 @@ $result_2 = $stmt_2->get_result();
         <div class="card-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-lg-4"><img src="segi kl.png" 
-                     style="width: 400px;height: 50px;object-fit:contain;"/></div>
-                    <div class="col-md-3 col-lg-1 "><i class="fa fa-home" style="width: 55.8625px;height: 68px;font-size: 50px;"></i></div>
+                    
                     <div class="col-md-3 col-lg-1 offset-lg-0"><img src="received.png" style="width:150px; height:50px; object-fir:contain;"/></div>
                     <div class="col-md-3 offset-lg-2"><p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/></div>
                 </div>
