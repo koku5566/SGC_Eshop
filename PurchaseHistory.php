@@ -5,12 +5,14 @@
 <?php
 $sql_2 = "SELECT
 myOrder.order_id,
+myOrder.prod_qty,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
 orderDetails.price,
 orderDetails.order_id
+
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
@@ -57,7 +59,7 @@ $result_2 = $stmt_2->get_result();
                                             </div>
                                             <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                                             <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
-                                            <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['price']?></div>
+                                            <div class="col-md-3 col-lg-2 offset-lg-1">x<?php echo $row['prod_qty']?></div>
                                             <div class="col">RM<?php echo $row['price']?></div>
                                         </div>
                                     </div>
