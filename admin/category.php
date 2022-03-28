@@ -205,10 +205,10 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <button name=\"toggle\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></button>
+                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                             <div class=\"input-group-append\">
-                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
+                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -221,7 +221,7 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
+                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -238,9 +238,9 @@
                                 <p class="p-title">Sub Category</p>
                                 <?php
                                     //Sub Category
-                                    if(isset($_POST['toggle']))
+                                    if(isset($_GET['toggle']))
                                     {
-                                        $mainCategoryId = $_POST['toggle'];
+                                        $mainCategoryId = $_GET['toggle'];
                                         $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY sub_category ASC";
                                         $result = mysqli_query($conn, $sql);
 
@@ -248,13 +248,13 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $categoryId = $row["combination_id"];
                                                 $categoryName = $row["category_name"];
-
+                                                $toggle = $mainCategoryId."&"
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
+                                                                <a href=\"?{$toggle}edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
