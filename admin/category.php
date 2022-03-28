@@ -436,7 +436,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="AddSub" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addSub" class="btn btn-primary">Add</button>
                     </div>
                     </div>
                 </div>
