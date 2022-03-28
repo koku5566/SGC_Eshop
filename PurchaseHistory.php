@@ -3,14 +3,18 @@
 ?>
 
 <?php
-$sql = "SELECT 
-product_name,
-product_cover_picture,
-product_qty,
-product_variation,
-product_price
-FROM product
-";
+$sql = "SELECT
+myOrder.order_id,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+orderDetails.price,
+orderDetails.order_id
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN product ON orderDetails.product_id = product.id";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -46,9 +50,9 @@ $result = mysqli_query($conn, $sql);
                  ?>
                     <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain"><img /><?php echo $row['product_cover_picture']?></div>
                     <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
-                    <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['product_qty']?></div>
-                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_variation']?></div>
-                    <div class="col">RM<?php echo $row['product_price']?></div>
+                    <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
+                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['price']?></div>
+                    <div class="col">RM<?php echo $row['price']?></div>
                     <?php
                       }
                      ?>

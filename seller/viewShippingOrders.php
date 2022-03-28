@@ -254,7 +254,7 @@ $result = $stmt->get_result();
                             <!--------------------------------To ship--------------------------------------->
                             <!--------------------------------------PHP----------------------------------------->
                                             <?php
-                                                $sql = "SELECT 
+                                                $sql_1 = "SELECT 
                                                 myOrder.order_id,
                                                 myOrder.tracking_status
                                                 product.product_name,
@@ -265,9 +265,9 @@ $result = $stmt->get_result();
                                                 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
                                                 JOIN product ON orderDetails.product_id = product.product_id";
 
-                                                $stmt = $conn-> prepare($sql);
-                                                $stmt->execute();
-                                                $res = $stmt->get_result();
+                                                $stmt_1 = $conn-> prepare($sql_1);
+                                                $stmt_1->execute();
+                                                $res = $stmt_1->get_result();
                                             ?>
                             <!------------------------------------END OF CODE---------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
