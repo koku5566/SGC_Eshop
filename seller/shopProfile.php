@@ -31,7 +31,7 @@
       <textarea class="form-control" id="customFile" rows="3"></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" class="clearfix">
+      <div id="uploadContainer" class="imageContainer clearfix">
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
