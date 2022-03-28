@@ -205,9 +205,16 @@
                                 </a>
                             </div>
                         </div>-->
-<!------------------------------------------------------------------->	
+<!--------------------------Rating PICK PICK---------------------------->	
+<div id = "pickpickrating">
 
- 
+
+
+
+</div>
+
+
+<!-------------------------------------------------------------------> 
 				<!-- List All Product -->
 				<div class="card-body">
 					<div>
@@ -316,6 +323,11 @@
 ?>
 
 <style>
+#pickpickrating{
+    background-color: white;
+	height: 4rem;
+	width: 12rem;
+}
 .modal-footer{
 	border-top: none;
 }
