@@ -467,6 +467,10 @@
                                                 echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
                                             }
                                         }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                        }
                                     ?>
                                     
                                     <div class="image-layer">
@@ -633,6 +637,7 @@
         if(<?php echo(isset($_GET['edit'])) ?> == 1)
         {
             $("#editCategoryModel").modal('show');
+		});
         }
     });
 
