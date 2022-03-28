@@ -3,7 +3,7 @@
 ?>
 
 <?php
-$sql = "SELECT
+$sql_2 = "SELECT
 myOrder.order_id,
 product.product_name,
 product.product_cover_picture,
@@ -16,7 +16,10 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id";
 
-$result = mysqli_query($conn, $sql);
+$stmt_2 = $conn->prepare($sql_2);
+$stmt_2->execute();
+$result_2 = $stmt_2->get_result();
+
 ?>
 
                
@@ -46,9 +49,11 @@ $result = mysqli_query($conn, $sql);
             <div class="container">
                 <div class="row">
                  <?php
-                   while ($row = mysqli_fetch_assoc($result)) {
+                   while ($row = mysqli_fetch_assoc($result_2)) {
                  ?>
-                    <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain"><img /><?php echo $row['product_cover_picture']?></div>
+                    <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain">
+                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />    
+                    </div>
                     <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                     <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
                     <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['price']?></div>
@@ -59,16 +64,17 @@ $result = mysqli_query($conn, $sql);
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
+        <div class="container" style="border: 1px solid; width:100%">
+            <div class="row" >
                 <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
                   <a href="viewPurchasingOrders.php"></a>Order Status</button></div>
-                <div class="col-md-3 col-lg-2 offset-lg-1"><button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button></div>
                 <div class="col-md-3 col-lg-2 offset-lg-1">
-                    <p>Total</p>
+                    <button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button></div>
+                <div class="col-md-3 col-lg-2 offset-lg-1">
+                    <p style = "margin-left:20px;">Total</p>
                 </div>
                 <div class="col-md-3 offset-lg-1">
-                    <p>Paragraph</p>
+                    <p>RM<?php echo $row['price']?></p>
                 </div>
              
             </div>
