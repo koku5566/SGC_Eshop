@@ -115,7 +115,7 @@
 .viewBtn{
   position: absolute;
   margin-top: -50px;
-  margin-left: 80%;
+  margin-left: 75%;
   z-index: 3;
 }
 
