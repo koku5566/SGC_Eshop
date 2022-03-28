@@ -1,13 +1,67 @@
 <?php
     require dirname(__DIR__, 1) . '/seller/header.php';
 
-    if(isset($_POST['addMain']) || isset($_POST['addSub'])){
+    if(isset($_POST['AddMain'])){
+
+        $categoryName = $_POST['addCategoryName'];
+        $categoryPic = "";
+        $categoryStatus= "1";
+
+        $fileNames = array_filter($_FILES['img']['name']); 
+
+        // File upload configuration 
+        $targetDir = dirname(__DIR__, 1)."/img/category/"; 
+        $allowTypes = array('jpg','png','jpeg'); 
+
+        if(!empty($fileNames)){ 
+            foreach($_FILES['img']['name'] as $key=>$val){ 
+                // File upload path 
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $categoryPic = "$fileName";
+                    }
+                }
+            } 
+        }
+
+        $sql_insert  = "INSERT INTO category (";
+        $sql_insert .= "category_name, category_pic, category_status";
+        $sql_insert .= ") ";
+        $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
+        if(mysqli_query($conn, $sql_insert))
+        {
+            $sql_insert_cc  = "INSERT INTO categoryCombination (";
+            $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
+            $sql_insert_cc .= ") ";
+            $sql_insert_cc .= "VALUES ((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination' ),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0')";
+            if(mysqli_query($conn, $sql_insert_cc))
+            {
+                //This is for redirect
+                ?>
+                    <script type="text/javascript">
+                        window.location.href = window.location.origin + "/admin/category.php";
+                    </script>
+                <?php
+            }
+        }
+        else
+        {
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Add Category")';
+            echo '</script>';
+        }
+    } 
+    if(isset($_POST['addSub'])){
 
         $addSub = isset($_POST['addSub']) ? 1 : 0;
 
-        $mainCategoryId = isset($_POST['addSub']) ? $_POST['addSub'] : $_POST['addMain'];
+        $mainCategoryId = isset($_POST['addSub']) ? $_POST['addSub'] : $_POST['addCategoryName'];
         $subCategoryId = "";
-        $categoryName = $_POST['categoryName'];
+        $categoryName = $_POST['addCategoryName'];
         $categoryPic = "";
 
         $fileNames = array_filter($_FILES['img']['name']); 
@@ -180,7 +234,7 @@
                     <div class="card-body">
                         <div class="row">
                             <!-- Main Category -->
-                            <div class="col-xl-3 col-lg-3 col-sm-6">
+                            <div class="col-xl-6 col-lg-6 col-sm-6">
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
@@ -188,6 +242,7 @@
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
+                                        echo("<div class=\"categoryList\">");
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $categoryId = $row["combination_id"];
                                             $mainCategoryId = $row["category_id"];
@@ -227,6 +282,7 @@
                                             }
                                             
                                         }
+                                        echo("</div>");
                                         echo("
                                         <div>
                                             <div class=\"input-group\">
@@ -239,7 +295,7 @@
                                 
                             </div>
                             <!-- Sub Category -->
-                            <div class="col-xl-3 col-lg-3 col-sm-6">
+                            <div class="col-xl-6 col-lg-6 col-sm-6">
                                 <p class="p-title">Sub Category</p>
                                 <?php
                                     //Sub Category
@@ -250,6 +306,7 @@
                                         $result = mysqli_query($conn, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
+                                            echo("<div class=\"categoryList\">");
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $categoryId = $row["combination_id"];
                                                 $categoryName = $row["category_name"];
@@ -265,6 +322,7 @@
                                                     </div>
                                                 ");
                                             }
+                                            echo("</div>");
                                             echo("
                                             <div>
                                                 <div class=\"input-group\">
@@ -278,12 +336,7 @@
                                 ?>
      
                             </div>
-                            <!-- Edit Category Form -->
-                            <div class="col-xl-6 col-lg-6 col-sm-12">
-                                <p class="p-title">Edit Category</p>
-                            </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -317,22 +370,19 @@
                                         </label>
                                     </div>
                                 </div>
-                                <p>Picture</p>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-sm-9">
                                 <div class="form-group">
                                     <label for="addCategoryName">Category Name</label>
-                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name">
+                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name" required>
                                 </div>
                             </div>
                             
                         </div>
-                       
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" name="AddMain" class="btn btn-primary">Add</button>
                     </div>
                     </div>
                 </div>
@@ -420,6 +470,11 @@
     .warning-message{
         color:red;
         font-weight:bold;
+    }
+
+    .categoryList{
+        overflow:scroll;
+        height:20vh;
     }
 
 </style>
