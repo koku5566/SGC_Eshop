@@ -26,8 +26,8 @@
 
     <!--Main Navigation-->
     <div>
-      <section class="text-center">
-        <h4 class="mb-5"><strong>Voucher</strong></h4><br>
+      <section class="text-center"><br>
+        <h4 class="mb-5"><strong>Voucher</strong></h4>
         <div class="voucherContainer d-flex justify-content-center">
         </div>
       </section>
