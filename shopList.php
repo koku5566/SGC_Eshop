@@ -20,11 +20,11 @@
           <i class="bi bi-people-fill"></i>
           Joined 
           <span id="" style="color: red;">2021</span> 
-          <i class="far fa-rating"></i>
+          <i class="fa fa-rating"></i>
           Rating 
           <span id="" style="color: red;">4.9 out of 5.0</span>
           <br> 
-          <i class="far fa-rating"></i>
+          <i class="fa fa-rating"></i>
           Products 
           <span id="" style="color: red;">12</span>
         </p>
@@ -106,7 +106,7 @@
   height: 15vh;
   margin-left: -10%;
   z-index: 1;
-  padding: 30px 145px;
+  padding: 50px 145px;
   border-radius: 5px;
   background-color: #EEEDEE;
   width:100%;
