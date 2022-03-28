@@ -425,32 +425,34 @@
 </style>
 
 <script>
-function initImages()
-{
-    const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+    initImages();
+    
+    function initImages()
+    {
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
-    deleteImg.forEach(img => {
-        img.addEventListener('click', function handleClick(event) {
-            img.parentElement.previousElementSibling.previousElementSibling.src="";
-            img.parentElement.nextElementSibling.classList.remove("hide");
-            img.parentElement.classList.add("hide");
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            });
         });
-    });
 
-    const imgInp = document.querySelectorAll('.imgInp');
-    imgInp.forEach(img => {
-        img.addEventListener('change', function handleChange(event) {
-            const [file] = img.files;
-            console.log(img.files);
-            if(img.files && img.files[0])
-            {
-                img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                img.parentElement.parentElement.classList.add("hide");
-            }
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files;
+                console.log(img.files);
+                if(img.files && img.files[0])
+                {
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                    img.parentElement.parentElement.classList.add("hide");
+                }
+            });
         });
-    });
-}
+    }
 
 </script>
 
