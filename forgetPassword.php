@@ -7,8 +7,8 @@
 		
 		$to = $email;
 		$subject = "SGC E-Shop Reset Password";
-		$from = "contact_us_mail@sgcprototype2.com";
-		$from2 = "contact_us_mail@sgcprototype2.com";
+		$from = "reset-password@eshop.sgcprototype2.com";
+		$from2 = "kyuremex310@gmail.com";
 		$fromName = "SGC E-Shop";
 
 		$headers =  "From: $fromName <$from> \r\n";
