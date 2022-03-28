@@ -3,14 +3,14 @@
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
-  <div class="carousel-inner banner">
+  <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="https://images.pexels.com/photos/3806753/pexels-photo-3806753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item banner">
+    <div class="carousel-item">
       <img src="https://images.pexels.com/photos/5926239/pexels-photo-5926239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item banner">
+    <div class="carousel-item">
       <img src="https://images.pexels.com/photos/5872348/pexels-photo-5872348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
     </div>
   </div>
@@ -117,9 +117,12 @@
     <!--Main layout-->
 
     <style>
-      .banner{
-        height: 200vh;
-      }
+      #carouselExampleControls,
+        .carousel-inner,
+        .carousel-item,
+        .carousel-item.active {
+          height: 100vh;
+        }
 
       .voucherContainer{
         background-color: grey;
