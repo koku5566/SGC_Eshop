@@ -32,7 +32,7 @@
         $sql_insert .= "category_name, category_pic, category_status";
         $sql_insert .= ") ";
         $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
-        if(mysqli_query($conn, $sql_insert))
+        if(mysqli_query($conn, $sql_insert));
         {
             $sql_insert_cc  = "INSERT INTO categoryCombination (";
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
