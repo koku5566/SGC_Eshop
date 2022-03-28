@@ -475,10 +475,10 @@
                                     
                                     <div class="image-layer">
                                     </div>
-                                    <div class="image-tools-delete hide">
+                                    <div class="image-tools-delete <?php echo($picName != "" ? "" : "hide");?>">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                     </div>
-                                    <div class="image-tools-add">
+                                    <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
                                             <input accept="image/*" name="img[]" type="file" class="imgInp"/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
