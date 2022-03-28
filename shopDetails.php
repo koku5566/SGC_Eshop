@@ -30,15 +30,13 @@
     <div class="container">
 
       <section class="text-center">
-        <div class="ratingContainer d-flex align-items-center shadow rounded">
-          <p>SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span></p>
+        <div class="ratingContainer shadow rounded">
+          <p class="text-center">SEGi College Penang | Joined<span style="color: red;">2021</span>   Rating<span style="color: red;">4.9 out of 5.0</span>   Products<span style="color: red;">12</span></p>
         </div>
-      </section>
-
-      <div class="container">
+      </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
           </div>
         </section>
@@ -54,7 +52,7 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
+                    src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0ZXIlMjBib3R0bGV8ZW58MHx8MHx8&w=1000&q=80"
                     class="img-fluid"
                   />
                   <a href="#!">
@@ -67,7 +65,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -76,7 +74,7 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/023.jpg"
+                    src="https://assets.manufactum.de/p/065/065704/65704_02.jpg/bullet-pen.jpg?profile=opengraph_mf"
                     class="img-fluid"
                   />
                   <a href="#!">
@@ -89,7 +87,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -98,7 +96,7 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
+                    src="https://i.pinimg.com/originals/34/35/f6/3435f67c167a5bf5123acce8becececd.jpg"
                     class="img-fluid"
                   />
                   <a href="#!">
@@ -111,7 +109,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -134,10 +132,10 @@
 
       .ratingContainer{
         background-color: white;
-        padding: 10px;
+        padding: 15px;
         position: absolute;
-        margin-top: -10px;
-        width: 80%;
+        margin-top: -70px;
+        width: 86%;
       }
 
       .voucherContainer{
