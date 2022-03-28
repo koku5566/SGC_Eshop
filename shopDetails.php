@@ -5,13 +5,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://media.istockphoto.com/photos/motion-blur-the-truck-is-driving-at-high-speed-on-the-highway-red-sky-picture-id1303345112?b=1&k=20&m=1303345112&s=170667a&w=0&h=RspaiuFmfnaUlzHEw90lSONUGzxAcbeC9Dj_p8z_r6w=" class="d-block w-100" alt="...">
+      <img src="https://img.myloview.com/murals/12-12-sales-promotion-banner-design-template-vector-400-277359348.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="https://shotkit.com/wp-content/uploads/2021/02/motion-blur.jpg" class="d-block w-100" alt="...">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/000/692/117/small/flash-sale-banner-promotion-with-lightning-bolt-on-red-background.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzgN6t_eujbBGblBEoFAQHbOnyZg7Y_qVujG9IJMpSMKv0nE5nnpPPHsUG5ATM4mg_ZlE&usqp=CAU" class="d-block w-100" alt="...">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/001/338/131/small/black-friday-bright-sale-banner-design-free-vector.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -25,7 +25,13 @@
 </div>
 
     <!--Main Navigation-->
-
+    <div>
+      <section class="text-center">
+        <h4 class="mb-5"><strong>Voucher</strong></h4>
+        <div class="voucherContainer">
+        </div>
+      </section>
+    </div>
     <!--Main layout-->
     <main class="mt-5">
       <div class="container">
@@ -109,6 +115,14 @@
       </div>
     </main>
     <!--Main layout-->
+
+    <style>
+      .voucherContainer{
+        background-color: grey;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
 
     <?php
     require __DIR__ . '/footer.php'
