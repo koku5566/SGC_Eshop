@@ -196,10 +196,13 @@
 
                                             echo("
                                                 <div>
-                                                    <div class=\"input-group mb-3\">
-                                                        <input type=\"text\" value=\"$categoryName\" class=\"form-control variationChoice\" disable>
-                                                        <div class=\"input-group-append btnDeleteChoices\">
-                                                            <a href=\"?id=$categoryId\"><span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></a>
+                                                    <div class=\"input-group\">
+                                                        <input type=\"text\" value=\"$categoryName\" class=\"form-control variationChoice\" disabled>
+                                                        <div class=\"input-group-append\">
+                                                            <a href=\"?edit=$categoryId\"><span style=\"height:100%;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                        </div>
+                                                        <div class=\"input-group-append\">
+                                                            <a href=\"?delete=$categoryId\"><span style=\"height:100%;\" class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,7 +218,7 @@
                                 
                             </div>
                             <!-- Edit Category Form -->
-                            <div class="col-xl-3 col-lg-3 col-sm-12">
+                            <div class="col-xl-6 col-lg-6 col-sm-12">
                                 <p class="p-title">Edit Category</p>
                             </div>
                         </div>
