@@ -209,13 +209,13 @@
 	<div class="row pickbox">
 	  <div class="col-5" style = "background-color:red;">
 		<div>
-			<p><strong>4.9</strong> out of 5.0</p>
+			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
 			<div style="margin-bottom: 0.1em;">													
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star-fill"></i>
-				<i class="bi bi-star"></i>
-				<i class="bi bi-star"></i>
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star-fill tqy"></i>
+				<i class="bi bi-star tqy"></i>
+				<i class="bi bi-star tqy"></i>
 			</div>	
 		</div>	  
 	  </div>
@@ -393,7 +393,9 @@
 	width: 5rem; 
 	height: 5rem;
 }
-
+.tqy{
+	font-size: 1.2rem;
+}
 .atss{
 	max-width: 25rem;
 	max-height: 25rem;
