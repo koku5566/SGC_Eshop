@@ -624,9 +624,9 @@
 
 <script>
 
-    if(<?php echo(isset($_GET['edit'])) ?>)
+    if(<?php echo(isset($_GET['edit'])) ?> == 1)
     {
-        $('#editCategoryModel').modal(options)
+        $('#editCategoryModel').modal('show');
     }
 
 
