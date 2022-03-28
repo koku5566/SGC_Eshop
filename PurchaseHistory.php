@@ -4,11 +4,11 @@
 
 <?php
 $sql = "SELECT 
-product.product_name,
-product.product_cover_picture,
-product.product_qty,
-product.product_variation,
-product.product_price
+product_name,
+product_cover_picture,
+product_qty,
+product_variation,
+product_price
 FROM product
 ";
 
