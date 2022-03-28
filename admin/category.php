@@ -1,13 +1,6 @@
 <?php
     require dirname(__DIR__, 1) . '/seller/header.php';
 
-    if(isset($_GET['edit']))
-    {
-        echo "<script language=\"javascript\">";
-        echo "$('#myModal').modal(options)";
-        echo "</script>";
-        
-    }
     if(isset($_POST['addMain'])){
 
         $categoryName = $_POST['addCategoryName'];
@@ -97,14 +90,12 @@
         $sql_insert .= "category_name, category_pic, category_status";
         $sql_insert .= ") ";
         $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert))
         {
             $sql_insert_cc  = "INSERT INTO categoryCombination (";
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),'$mainCategoryId',(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'1')";
-            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -632,6 +623,13 @@
 </style>
 
 <script>
+
+    if(<?php echo(isset($_GET['edit'])) ?>)
+    {
+        $('#editCategoryModel').modal(options)
+    }
+
+
     initImages();
 
     function initImages()
