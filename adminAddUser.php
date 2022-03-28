@@ -11,6 +11,7 @@ if(isset($_POST['signup']))
 			$password = md5($_POST['password']);
 			$password1 = md5($_POST['password1']);
 			$date = date("d/m/Y");
+			$role = $_POST['role'];
 
 			if($password==$password1){
 				$sql_u = "SELECT * FROM user WHERE username OR email = '$username' OR '$email'";
@@ -22,30 +23,13 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					$sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
-					$result = mysqli_query($conn, $sql);
-
-					if (mysqli_num_rows($result) > 0) {
-						while($row = mysqli_fetch_assoc($result)) {
-							$userid = $row["AUTO_INCREMENT"];
-
-							$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
-							VALUES ('$username','$email','$password','$username','$date','SELLER')";
-							if (mysqli_query($conn, $sql)) {
-								$_SESSION['AddUser'] = true;
-
-								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
-								if (mysqli_query($conn, $sql)) {
-									echo "<script>alert('Registered Successfull');</script>";
-								}
-								else {
-									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-								}
-							} 
-							else {
-								echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-							}
-						}
+					$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
+					VALUES ('$username','$email','$password','$username','$date','$role')";
+				
+					if (mysqli_query($conn, $sql)) {
+						$_SESSION['AddUser'] = true;
+					} else {
+						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
 					mysqli_close($conn);
 				}
@@ -67,8 +51,7 @@ if(isset($_POST['signup']))
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-left">
-                                <div class="h1 text-gray-900 mb-4">Sign Up</div>
-								<div class="h3 mb-4">Create Your SEGi Group of Colleges E-Shop Seller Account</div>
+                                <div class="h1 text-gray-900 mb-4">Add User</div>
                             </div>
 
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -100,15 +83,17 @@ if(isset($_POST['signup']))
 										<input required type="checkbox" class="custom-control-input" id="customCheck">
 										<label class="custom-control-label" for="customCheck">By Clicking "SIGN UP", I Agree to SEGi Group Colleges E-Shop's <a href="x.php">Terms of Use</a> and <a href="x.php">Privacy Policy</a></label>
 									</div>
+									<hr>
+									<label>User Role</label>
+									<select id="userRole" name="role">
+										<option value="USER" selected="selected">USER</option>
+										<option value="SELLER">SELLER</option>
+										<option value="ADMIN">ADMIN</option>
+									</select>
                                 </div>
 
-								<button type="submit" class="btn btn-primary btn-block" name="signup">SIGN UP</button>
+								<button type="submit" class="btn btn-primary btn-block" name="signup">Add</button>
                             </form>
-
-                            <hr>
-                            <div class="text-center">
-								Already Have an Account?<a href="../seller/sellerLogin.php"> Login </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +107,7 @@ if(isset($_SESSION['AddUser']))
 	{
 		if($_SESSION['AddUser'] == true)
 		{
-			echo("");
+			echo "<script>alert('User Added');</script>";
 		}
 		$_SESSION['AddUser'] = NULL;
 	}

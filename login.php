@@ -26,6 +26,7 @@
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
+                    $_SESSION['uid'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
@@ -62,15 +63,14 @@
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" background-image="/img/resource/login.png">
                                         <div class="form-group">
                                             <label>Username/Email</label>
-                                            <input required type="text" name="username" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Please Enter Your Email Address or Username">
+                                            <input required type="text" name="username" class="form-control"
+                                                id="inputEmail" placeholder="Please Enter Your Email Address or Username">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input required type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Please Enter Password">
+                                            <input required type="password" name="password" class="form-control"
+                                                id="inputPassword" placeholder="Please Enter Password">
                                         </div>
 
                                         <div class="form-group">
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">LOGIN</button>
+                                        <button type="submit" class="btn btn-primary btn-block" name="login">LOGIN</button>
 
                                         <div class="text-left">
                                             <a class="small" href="forgetPassword.php">Forgot Password?</a>
@@ -93,15 +93,15 @@
                                         </div>
 
                                         <div class="alt-login" style="display: flex;">
-                                        <div class="btn btn-microsoft btn-user btn-block">
+                                        <div class="btn btn-microsoft btn-block">
                                             <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
                                         </div>
 
-                                        <div class="btn btn-google btn-user btn-block" id="google-login-button">
+                                        <div class="btn btn-google btn-block" id="google-login-button">
                                             <i class="fab fa-google fa-fw"></i> Google
                                         </div>
 
-                                        <div class="btn btn-facebook btn-user btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                                        <div class="btn btn-facebook btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
                                              Facebook
                                         </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
                                         </div>

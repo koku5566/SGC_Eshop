@@ -66,6 +66,10 @@
     {
         $_SESSION['id'] = "";
     }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
+    }
     if(!isset($_SESSION['role']))
     {
         $_SESSION['role'] = "";
@@ -280,7 +284,20 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo($_SESSION['name']);?></span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <!--User Profile Picture-->
+                                <?php
+                                $UID = $_SESSION["id"];
+                                $sql = "SELECT profile_picture FROM user WHERE username = '$UID'";
+
+                                $res_data = mysqli_query($conn,$sql);
+                                if (mysqli_num_rows($res_data) > 0){
+                                    while($row = mysqli_fetch_array($res_data)){
+                                        echo("
+                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
+                                            ");
+                                        }
+                                    }
+                                ?>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -291,7 +308,7 @@
 
                                 <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="admin.php">
+                                <a class="dropdown-item" href="adminManageUser.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     ADMIN PANEL
                                 </a>
@@ -313,13 +330,13 @@
                         </li>
 
                         <?php else :?>
-                            <!--
-                            <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                            <div class="topbar-divider d-none d-sm-block"></div>
-                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                            -->
+                        <!--
+                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                        -->
 
-                            <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -333,32 +350,31 @@
                                     Seller
                                 </a>
                             </div>
-                            </li>
+                        </li>
 
-                            <div class="topbar-divider d-none d-sm-block"></div>
+                        <div class="topbar-divider d-none d-sm-block"></div>
 
-                            <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="login.php">
+                                <a class="dropdown-item" href="../login.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User
                                 </a>
 
-                                <a class="dropdown-item" href="seller/sellerLogin.php">
+                                <a class="dropdown-item" href="../seller/sellerLogin.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Seller
                                 </a>
 
-                                <a class="dropdown-item" href="seller/sellerLogin.php">
+                                <a class="dropdown-item" href="../adminLogin.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Admin
                                 </a>
                             </div>
-                            </li>
-                        <?php endif?>
                         </li>
+                        <?php endif?>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->

@@ -86,12 +86,20 @@ if(mysqli_num_rows($result) > 0)
 	 <th colspan="2">rr_id</th>
      <th>product_id</th>
      <th>message</th>
-     <th>rating</th>
 	 <th>Action</th>
     </tr>
  ';
  while($row = mysqli_fetch_array($result))
  {
+	 $starR = '';
+	 for($i=0; $i<5; $i++){
+		 if($i < $row["rating"]){
+			 $starR .='<i class="bi bi-star-fill"></i> ';
+		 }else{
+			 $starR .='<i class="bi bi-star"></i> ';
+		 }
+	 }
+	
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
@@ -100,8 +108,11 @@ if(mysqli_num_rows($result) > 0)
 	</td>	
 	<td>'.$row["rr_id"].'</td>											
     <td>'.$row["product_id"].'</td>
-    <td>'.$row["message"].'</td>
-    <td>'.$row["rating"].'</td>
+    <td>
+	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
+	'.$row["message"].'
+	</td>
+   
 	<td><form action ="" method = "POST" class = "baka">
 		<input type="hidden" name="uimage" value="'.$row["rr_id"].'">	
 		<input type="submit" name ="t1faker" value = "Delete" class="btn btn-primary"></form></td>

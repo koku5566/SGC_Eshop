@@ -3,169 +3,333 @@
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemail'],$_POST['CUmessage'],$_POST['CUsubject'],$_POST['CUcampuslist'],$_POST['CUsubmit']) && !empty($_POST["CUname"]) && !empty($_POST["CUemail"]) && !empty($_POST["CUmessage"]) && !empty($_POST["CUsubject"]) && !empty($_POST["CUcampuslist"])){
 
-
- $CUname = $_POST['CUname'];
- $CUemail = $_POST['CUemail'];
- $CUmessage = $_POST['CUmessage'];
- $CUsubject = $_POST['CUsubject'];
- $CUcampuslist = $_POST['CUcampuslist'];
- $check = true;
-	if (ltrim($CUname) === '') {
-	 $check = false;
-	}
-	if (ltrim($CUemail) === '') {
-	 $check = false;
-	} else{
-		if (!filter_var($CUemail, FILTER_VALIDATE_EMAIL)) {
-				$check = false;
-			}	
-	}
-	if (ltrim($CUsubject) === '') {
-	 $check = false;
-	}
-	if (ltrim($CUmessage) === '') {
-	 $check = false;
-	}
-  
- 
- $sql = "INSERT INTO `contactUs`(`name`, `email`, `campus`, `subject`, `message`) VALUES (?,?,?,?,?)";
- 
-		if($check == true){
-			if($stmt = mysqli_prepare($conn, $sql)){
-				mysqli_stmt_bind_param($stmt, 'sssss', $CUname,$CUemail,$CUcampuslist,$CUsubject,$CUmessage); 	
-		
-				mysqli_stmt_execute($stmt);
-			
-				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-				{
-					 echo "<div class='alert alert-success'>Thank you, we will get back to you soon</div>";
-					 $sql = "UPDATE contactUs AS a, (SELECT id from contactUs order by id desc LIMIT 1) AS b 
-									SET a.cu_id = concat('CU', b.id)
-									WHERE a.id = b.id;";
-							if($stmt = mysqli_prepare($conn, $sql)){
-                            mysqli_stmt_execute($stmt);
-                            if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
-                            {}
-                            else{}}	
-				}else{
-					echo "<div class='alert alert-danger'>Fail to Insert</div>";
-				}
-		
-				mysqli_stmt_close($stmt);
-			}
-			
-		}else{
-			echo "<div class='alert alert-danger'>Failure to sent, please check input and resent again</div>";
-		}			 
- 
-}
 ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">		
+<div class="container-fluid" style="width:80%">	
+
 	
-	<!--START OF CONTACT US FORM-->	
-	<div  class = "faker"style ="width: 80%; margin: auto">
-      
-		<section class="mb-4">
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
+  Modal 1
+</button>
 
-			<!--Section heading-->
-			<h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
-			<!--Section description-->
-			<p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-				a matter of hours to help you.</p>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
+  Modal 2
+</button>-->
 
-			<div class="row justify-content-md-center">
-
-				<!--Grid column-->
-				<div class="col-md-9 mb-md-0 mb-5">
-					<form id="contact-form" name="contact-form" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-
-						<!--Grid row of NAME/EMAIL-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="md-form mb-0">
-									<label for="name">Your name</label>
-									<input type="text" id="name" name="CUname" class="form-control"  placeholder="Full Name*" required>
-									
-								</div>
-							</div>
-							
-							<div class="col-md-6">
-								<div class="md-form mb-0">
-									<label for="email">Your email</label>
-									<input type="email" id="email" name="CUemail" class="form-control"  placeholder="Email*" required>
-									
-								</div>
-							</div>
-						</div>
-						<!--END of Grid row-->	
-						
-						<!--Grid row of College-->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="md-form mb-0">
-									<label for="subject" class="CUlabel">Campus</label>
-									<select class="form-control" id="CUcampus" name = "CUcampuslist" required>
-									  <option value = "" selected = 'selected'disabled>Campus*</option>
-									  <option value = "C-SJ">SEGI College Subang Jaya</option>
-									  <option value = "C-KL">SEGI College Kuala Lumpur</option>
-									  <option value = "C-P">SEGI College Penang</option>
-									  <option value = "C-S">SEGI College Sarawak</option>
-									  <option value = "C-KD">SEGI College Kota Damansara</option>
-									  <option value = "U-KD">SEGI University Kota Damansara</option>  
-									</select>		 
-								</div>
-							</div>
-						</div>
-						<!--END of Grid row-->									
-
-						<!--Grid row of SUBJECT-->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="md-form mb-0">
-									<label for="subject" class="CUlabel">Subject</label>
-									<input type="text" id="subject" name="CUsubject" class="form-control" placeholder="Subject*" required>
-								</div>
-							</div>
-						</div>
-						<!--END of Grid row-->		
-							
-						<!--Grid row for MESSAGE-->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="md-form">
-									<label for="message" class="CUlabel">Your message</label>
-									<textarea type="text" id="message" name="CUmessage" rows="2" class="form-control md-textarea" placeholder="Message*" required></textarea>
-								</div>
-							</div>	
-						</div>		
-						<!--END of Grid row-->		
-
-						<input type = "submit" name = "CUsubmit" class="btn btn-primary"  value = "Submit" style = "margin-top: 15px;">
-					</form>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+        
+      </div>
+	  <!--CONTENT START-->
+      <div class="modal-body">
+        <div style="height: 100%">
+					<?php
 					
-				</div>
-			</div>
-		</section>				
+					
+					?>
+					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+					<div class = "namestar">
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+						<div style="margin-bottom: 0.1em;">													
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star"></i>
+							<i class="bi bi-star"></i>
+						</div>	
+					</div>
+		
+		
+			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+			</h6>
+			<div class="w3-display-middle" style="width:100%">
+                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner">
 								
-	</div>
-<!--END OF CONTACT US FORM-->	
-						
-							
-						
+                                    <?php
+									/*
+                                    $sql = "SELECT * FROM facilityPic";
+                                    $result = mysqli_query($conn, $sql);
+                                    $i = false;
+                        
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
 
-						
-						
-				
-
-				
-
+                                            echo ("
+                                                <div class=\"carousel-item\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>         
+                                            ");
+                                            }
+                                            else{
+                                                echo ("
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
+                                            }
+                                        }
+                                    }
+									*/
+                                    ?>
+									<div class="carousel-item active">
+                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item>
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                    </div>									
+                    
+                                </div>
+                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
 			
+			
+		
+		
+		
+      </div>
+	  <!--CONTENT END-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+  
+
+
+<!-- Slideshow 
+                    <div class="w3-display-middle" style="width:100%">
+                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner">
+								
+                                    <?php
+									/*
+                                    $sql = "SELECT * FROM facilityPic";
+                                    $result = mysqli_query($conn, $sql);
+                                    $i = false;
+                        
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
+
+                                            echo ("
+                                                <div class=\"carousel-item\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>         
+                                            ");
+                                            }
+                                            else{
+                                                echo ("
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
+                                            }
+                                        }
+                                    }
+									*/
+                                    ?>
+									<div class="carousel-item active">
+                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item>
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                    </div>									
+                    
+                                </div>
+                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>-->
+<!--------------------------Rating PICK PICK---------------------------->	
+<div id = "pickpickrating">
+	<div class="row pickbox">
+	  <div class="col-5" style = "background-color:red;">
+		<div>
+			<h2>4.9</h2><h3> out of 5.0</h3>
+			<div style="margin-bottom: 0.1em;">													
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star"></i>
+				<i class="bi bi-star"></i>
+			</div>	
+		</div>	  
+	  </div>
+	  <div class="col-7" style = "background-color:green;">
+		  <h1 style="text-align:left;float:left;">Title</h1> 
+		  <h2 style="text-align:right;float:right;">Context</h2> 
+		  <hr style="clear:both;"/>
+	  </div>
+	</div>
+
+
+
+</div>
+
+
+<!-------------------------------------------------------------------> 
+				<!-- List All Product -->
+				<div class="card-body">
+					<div>
+						<h5 style ="text-align:center">Review</h5>
+					</div>
+						<div class="row">
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="row" style = "background-color: lightblue;">
+									<!--REVIEW START BOX 1 --------------->
+									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+										<!--Content Start-->
+										<div style="height: 100%">
+												<?php
+												
+												
+												?>
+												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+												<div class = "namestar">
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+												</div>
+									
+									
+										<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+										</h6>
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
+										
+										<!--
+											<input type = 'hidden' name = 'CUid' value = 'RR001'>
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+										-->
+										<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
+										</div>   
+										<!--Content End-->
+									</div>
+									<!--REVIEW END BOX --------------->
+									<!--REVIEW START BOX 1 --------------->
+									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+										
+											<div style="height: 100%">
+												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
+												<div class = "namestar">
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+												</div>
+									
+									
+									<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
+									</h6>
+									<table style = "margin-bottom: 0.3rem;">
+										<tr>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+										<tr>
+									</table>
+									<a style="float: right;">see more...</a>
+											</div>   
+										
+									</div>
+									<!--REVIEW END BOX --------------->
+								</div>
+							</div>  
+						</div>
+					</div>
+				<br>
+                   
+                  
+                   
+                <br>
+	
+	
+
+	
 
 		
 		
@@ -177,21 +341,134 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemai
 ?>
 
 <style>
-.faker{
-	border: 1px solid black;
+.pickbox{
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+	align-content: center;
 }
-.CUlabel{
-	margin-top: 5px;
+#pickpickrating{
+    background-color: white;
+	height: 10rem;
+	width: 100%;
+}
+.modal-footer{
+	border-top: none;
+}
+.hyperlink:hover{
+	cursor: pointer;
+	color: #A31F37;
+}
+.hyperlink{
+	float: right;
+	color: #858796;
+	border: none;
+	background-color: transparent;
+	
+}
+.divcontent{
+	font-size: 0.85rem; 
+	max-height: 5rem; 
+	min-height: 5rem; 
+	overflow: hidden; 
+	margin-top: 0.5 rem;
+}
+.divpink{
+	padding-bottom: .625rem; 
+	
+	padding-top: .625rem;
+}
+.namestar{
+	min-height: 6rem;
+	padding: auto;
+	position: relative;
+	
+}
+.reviewprofilepic{
+	display: block; 
+	float: left;
+	margin: 0.75em 0.75em 0 0.75em; 
+	border-radius: 50%; 
+	width: 5rem; 
+	height: 5rem;
+}
+.atss{
+	max-width: 25rem;
+	max-height: 25rem;
+    margin: 0 auto;
+}
+.bi.bi-star-fill{
+	-webkit-text-fill-color: orange
+}
+.imgReply{
+	width: 75%;
+	height: 75%;
+	object-fit: cover;
+}
+.pp{
+	width: 100%;
+	border: 1px solid purple;
+}
+.ppparent{
+	
+	display: flex;
+	flex-wrap: wrap;
+}
+.ppparent > div {
+	flex:50%;
+	box-shadow: 0 0 0 1px black;
+	margin-bottom: 10px
 }
 </style>
 <script>
-/**/
-$(".alert.alert-success").delay(3000).slideUp(200, function() {
-    $(this).alert('close');
-});
-$(".alert.alert-danger").delay(4000).slideUp(200, function() {
-    $(this).alert('close');
-});
+var nami1 = document.getElementsByClassName("nami")[0];
+var nami2 = document.getElementsByClassName("nami")[1];
+nami1.onclick = function() {
+  console.log(nami1.value);
+}
+nami2.onclick = function() {
+  console.log(nami2.value);
+}
+
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

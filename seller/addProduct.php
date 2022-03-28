@@ -224,12 +224,6 @@
 <div class="container-fluid" style="width:80%;">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
-        </div>
-    
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -444,13 +438,13 @@
                                         <option value="">Please Select a Category</option>
                                             <?php
                                             //Main Category
-                                            $sql = "SELECT * FROM mainCategory";
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
-                                                    $categoryId = $row["main_category_id"];
-                                                    $categoryName = $row["main_category_name"];
+                                                    $categoryId = $row["category_id"];
+                                                    $categoryName = $row["category_name"];
 
                                                     echo("<option value=\"$categoryId\">$categoryName</option>");
                                                 }
@@ -689,6 +683,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Page Ending -->
+        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
         </div>
     </form>
 </div>
