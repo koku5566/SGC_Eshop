@@ -86,7 +86,6 @@ if(mysqli_num_rows($result) > 0)
 	 <th colspan="2">rr_id</th>
      <th>product_id</th>
      <th>message</th>
-     <th>rating</th>
 	 <th>Action</th>
     </tr>
  ';
@@ -113,7 +112,7 @@ if(mysqli_num_rows($result) > 0)
 	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
 	'.$row["message"].'
 	</td>
-    <td>'.$row["rating"].'</td>
+   
 	<td><form action ="" method = "POST" class = "baka">
 		<input type="hidden" name="uimage" value="'.$row["rr_id"].'">	
 		<input type="submit" name ="t1faker" value = "Delete" class="btn btn-primary"></form></td>

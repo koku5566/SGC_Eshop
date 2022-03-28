@@ -169,8 +169,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%;">
-
-    <form id="categoryForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -230,21 +228,11 @@
                                             
                                         }
                                         echo("
-                                            <div class=\"AddButtonCategoryDiv\">
-                                                <div class=\"input-group\">
-                                                    <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddCategory\" style=\"width:100%\">Add New Category</button>
-                                                </div>
+                                        <div>
+                                            <div class=\"input-group\">
+                                                <button type=\"button\" data-toggle=\"modal\" data-target=\"#addMainModel\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add New Category</button>
                                             </div>
-                                                
-                                            <div class=\"AddInpCategoryDiv hide\">
-                                                <div class=\"input-group\">
-                                                    <input type=\"text\" name=\"mainCategoryInp\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" >
-                                                    <div class=\"input-group-append\">
-                                                        <span onclick=\"hideAddInpCategoryDiv()\" style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
-                                                    </div>
-                                                </div>
-                                                <button type=\"submit\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add</button>
-                                            </div>
+                                        </div>
                                         ");
                                     }
                                 ?>
@@ -277,10 +265,18 @@
                                                     </div>
                                                 ");
                                             }
+                                            echo("
+                                            <div>
+                                                <div class=\"input-group\">
+                                                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                </div>
+                                            </div>
+                                        ");
                                         }
                                     }
                                     
                                 ?>
+     
                             </div>
                             <!-- Edit Category Form -->
                             <div class="col-xl-6 col-lg-6 col-sm-12">
@@ -293,32 +289,56 @@
             </div>
         </div>
 
-        <!--Category List -->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
+        <!-- Modal -->
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="modal fade" id="addMainModel" tabindex="-1" role="dialog" aria-labelledby="addMainModel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div id="categoryDiv">
-                            <div class="row">
-                                <div class="col">
-                                
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <div class="image-container">
+                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                    <div class="image-layer">
+                                    </div>
+                                    <div class="image-tools-delete hide">
+                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="image-tools-add">
+                                        <label class="custom-file-upload">
+                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <p>Picture</p>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-9">
+                                <div class="form-group">
+                                    <label for="addCategoryName">Category Name</label>
+                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name">
                                 </div>
                             </div>
+                            
                         </div>
+                       
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
-        <!-- Page Ending -->
-        <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Category</button>
-        </div>
-    </form>
 </div>
 <!-- /.container-fluid -->
 
@@ -405,144 +425,36 @@
 </style>
 
 <script>
+    initImages();
 
-    function hideAddInpCategoryDiv()
+    function initImages()
     {
-        var AddCategoryButtonDiv = document.getElementById('AddButtonCategoryDiv');
-        var AddCategoryInpDiv = document.getElementById('AddInpCategoryDiv');
-        
-        AddCategoryButtonDiv.classList.remove("hide");
-        AddCategoryInpDiv.classList.add("hide");
-    }
-    
-    document.getElementById('productForm').addEventListener('submit', function(evt){
-        evt.preventDefault();
-        if(document.querySelectorAll('.warning').length == 0)
-        {
-            document.getElementById("productForm").submit(); 
-        }
-        else
-        {
-            alert("Please Enter Distinct Product Variation and Choices");
-        }
-    });
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
 
-    document.getElementById('btnAddCategory').addEventListener('click', function(evt){
-        var AddCategoryButtonDiv = document.getElementById('AddButtonCategoryDiv');
-        var AddCategoryInpDiv = document.getElementById('AddInpCategoryDiv');
-        if(AddCategoryInpDiv.classList.contains("hide"))
-        {
-            AddCategoryInpDiv.classList.remove("hide");
-            AddCategoryButtonDiv.classList.add("hide");
-        }
-    });
-    
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            });
+        });
 
-    function hasDuplicates(array) {
-        var valuesSoFar = Object.create(null);
-        for (var i = 0; i < array.length; ++i) {
-            var value = array[i];
-            if (value in valuesSoFar) {
-                return true;
-            }
-            valuesSoFar[value] = true;
-        }
-        return false;
-    }
-
-    function makeSubmenu(value) {
-        if (value.length == 0) 
-            document.getElementById("subCategory").innerHTML = "<option></option>";
-        else {
-            var subCategoryHTML = "";
-            var subCategory = <?php echo json_encode($subCategoryArray); ?>;
-
-            for (counter in subCategory[value]) {
-                subCategoryHTML += "<option value=\""+ subCategory[value][counter][0] +"\" >" + subCategory[value][counter][1] + "</option>";
-            }
-            document.getElementById("subCategory").innerHTML = subCategoryHTML;
-        }
-    }
-
-    function ToggleShippingDiv(value){
-        var ShippingDiv = document.getElementById('ShippingDiv');
-        var ShippingDivInp = ShippingDiv.getElementsByTagName('input');
-        if(value == 0)
-        {
-            if(ShippingDiv.classList.contains("hide"))
-            {
-                for(var i = 0; i < ShippingDivInp.length; i++)
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files;
+                if(img.files && img.files[0])
                 {
-                    ShippingDivInp[i].required = true;
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                    img.parentElement.parentElement.classList.add("hide");
                 }
-                ShippingDiv.classList.remove("hide");
-            }
-        }
-        else if(value == 1)
-        {
-            if(!ShippingDiv.classList.contains("hide"))
-            {
-                for(var i = 0; i < ShippingDivInp.length; i++)
-                {
-                    ShippingDivInp[i].required = false;
-                }
-                ShippingDiv.classList.add("hide");
-            }
-        }
+            });
+        });
     }
-
-    function DragNSort (config) {
-        this.$activeItem = null;
-        this.$container = config.container;
-        this.$items = this.$container.querySelectorAll('.' + config.itemClass);
-        this.dragStartClass = config.dragStartClass;
-        this.dragEnterClass = config.dragEnterClass;
-    }
-
-    var VariationHTML = `
-        <div class="variation">
-            <div class="card mb-4">
-                <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                            <p class="p-title">Variation Name</p>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control variationName">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-2 col-sm-12">
-                            <p class="p-title">Choices</p>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control ">
-                                    <div class="input-group-append btnDeleteChoices">
-                                        <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
 
 </script>
 
 <?php
-    require __DIR__ . '/footer.php'
+    require dirname(__DIR__, 1) . '/seller/footer.php';
 ?>
