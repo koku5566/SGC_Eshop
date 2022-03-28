@@ -205,10 +205,10 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
+                                                                <button name=\"toggle\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></button>
                                                             </div>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -221,7 +221,7 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,7 +254,7 @@
                                                         <div class=\"input-group\">
                                                             <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <button name=\"edit\" value=\"$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
