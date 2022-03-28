@@ -25,16 +25,15 @@
 </div>
 
     <!--Main Navigation-->
-    <div>
-      <section class="text-center"><br>
-        <h4 class="mb-5"><strong>Voucher</strong></h4>
-        <div class="voucherContainer d-flex align-items-center">
-        </div>
-      </section>
-    </div>
     <!--Main layout-->
     <main class="mt-5">
       <div class="container">
+
+        <section class="text-center"><br>
+          <h4 class="mb-5"><strong>Voucher</strong></h4>
+          <div class="voucherContainer d-flex align-items-center">
+          </div>
+        </section>
 
         <hr class="my-5" />
 
