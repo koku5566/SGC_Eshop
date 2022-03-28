@@ -13,24 +13,22 @@
 <div class="container-fluid" style="width:80%">	
 
 	
-<!-- Button trigger modal -->
+<!-- Button trigger modal 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
   Modal 1
 </button>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
   Modal 2
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+        
       </div>
 	  <!--CONTENT START-->
       <div class="modal-body">
@@ -130,7 +128,6 @@
 	  <!--CONTENT END-->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -306,15 +303,7 @@
                 <br>
 	
 	
-	<!--
-	<div class="d-flex flex-row ppparent">
-	  <div class="p-2 pp">Flex item 1</div>
-	  <div class="p-2 pp">Flex item 2</div>
-	  <div class="p-2 pp">Flex item 3</div>
-	  <div class="p-2 pp">Flex item 4</div>
-	  <div class="p-2 pp">Flex item 5</div>
-	</div>
-	-->
+
 	
 
 		
@@ -327,7 +316,9 @@
 ?>
 
 <style>
-
+.modal-footer{
+	border-top: none;
+}
 .hyperlink:hover{
 	cursor: pointer;
 	color: #A31F37;
