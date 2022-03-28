@@ -103,10 +103,10 @@
 .description{
   margin-top: 5%;
   position: absolute;
-  height: 15vh;
+  height: 20vh;
   margin-left: -10%;
   z-index: 1;
-  padding: 50px 145px 50px 0;
+  padding: 30px 145px;
   border-radius: 5px;
   background-color: #EEEDEE;
   width:100%;
