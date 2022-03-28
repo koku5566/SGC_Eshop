@@ -129,7 +129,6 @@
 } */
 
 .nextBtn{
-  border: grey;
   border-radius: 1px solid grey;
   float: right;
   width: 50px;
