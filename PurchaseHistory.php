@@ -61,6 +61,12 @@ $result_2 = $stmt_2->get_result();
                                             <div class="col">RM<?php echo $row['price']?></div>
                                         </div>
                                     </div>
+                                    <div class="card-footer">
+                                        <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
+                                         <a href="viewPurchasingOrders.php"></a>Order Status</button>
+                                        </div>
+                                        <button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button>
+                                    </div>
                                 </div>
                                 <!--End of Order Item-->
                                 <?php 
