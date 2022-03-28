@@ -13,68 +13,46 @@
 <div class="container-fluid" style="width:80%">	
 
 	
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
   Modal 1
 </button>
 
-<button type="button" class="btn btn-primary nami" data-toggle="modal" data-target="#exampleModalCenter" value= "RR002">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
   Modal 2
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Modal 3
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+        
       </div>
+	  <!--CONTENT START-->
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-<!-- Slideshow -->
-                    <div class="w3-display-middle" style="width:100%">
+        <div style="height: 100%">
+					<?php
+					
+					
+					?>
+					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+					<div class = "namestar">
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+						<div style="margin-bottom: 0.1em;">													
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star"></i>
+							<i class="bi bi-star"></i>
+						</div>	
+					</div>
+		
+		
+			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+			</h6>
+			<div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -141,9 +119,120 @@
                                 </a>
                             </div>
                         </div>
-<!------------------------------------------------------------------->	
+			
+			
+		
+		
+		
+      </div>
+	  <!--CONTENT END-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+  
 
- 
+
+<!-- Slideshow 
+                    <div class="w3-display-middle" style="width:100%">
+                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner">
+								
+                                    <?php
+									/*
+                                    $sql = "SELECT * FROM facilityPic";
+                                    $result = mysqli_query($conn, $sql);
+                                    $i = false;
+                        
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
+
+                                            echo ("
+                                                <div class=\"carousel-item\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>         
+                                            ");
+                                            }
+                                            else{
+                                                echo ("
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
+                                            }
+                                        }
+                                    }
+									*/
+                                    ?>
+									<div class="carousel-item active">
+                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item>
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                    </div>									
+                    
+                                </div>
+                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>-->
+<!--------------------------Rating PICK PICK---------------------------->	
+<div id = "pickpickrating">
+	<div class="row pickbox">
+	  <div class="col-5" style = "background-color:red;">
+		<div>
+			<h2>4.9</h2><h3> out of 5.0</h3>
+			<div style="margin-bottom: 0.1em;">													
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star-fill"></i>
+				<i class="bi bi-star"></i>
+				<i class="bi bi-star"></i>
+			</div>	
+		</div>	  
+	  </div>
+	  <div class="col-7" style = "background-color:green;">
+		  <h1 style="text-align:left;float:left;">Title</h1> 
+		  <h2 style="text-align:right;float:right;">Context</h2> 
+		  <hr style="clear:both;"/>
+	  </div>
+	</div>
+
+
+
+</div>
+
+
+<!-------------------------------------------------------------------> 
 				<!-- List All Product -->
 				<div class="card-body">
 					<div>
@@ -190,7 +279,7 @@
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
 											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										-->
-										<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "RR001">see more...</a>
+										<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
@@ -239,15 +328,7 @@
                 <br>
 	
 	
-	<!--
-	<div class="d-flex flex-row ppparent">
-	  <div class="p-2 pp">Flex item 1</div>
-	  <div class="p-2 pp">Flex item 2</div>
-	  <div class="p-2 pp">Flex item 3</div>
-	  <div class="p-2 pp">Flex item 4</div>
-	  <div class="p-2 pp">Flex item 5</div>
-	</div>
-	-->
+
 	
 
 		
@@ -260,7 +341,22 @@
 ?>
 
 <style>
-
+.pickbox{
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+	align-content: center;
+}
+#pickpickrating{
+    background-color: white;
+	height: 10rem;
+	width: 100%;
+}
+.modal-footer{
+	border-top: none;
+}
 .hyperlink:hover{
 	cursor: pointer;
 	color: #A31F37;
