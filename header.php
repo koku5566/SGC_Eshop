@@ -53,7 +53,7 @@
         session_start();
     }
 
-    //User
+    //Login
     if(!isset($_SESSION['login']))
     {
         $_SESSION['login'] = false;
@@ -65,6 +65,10 @@
     if(!isset($_SESSION['id']))
     {
         $_SESSION['id'] = "";
+    }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
     }
     if(!isset($_SESSION['role']))
     {
@@ -83,7 +87,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-client_id" content="232698708614-77t70ejn63rnaabr2mk1u9kp4q2o68on.apps.googleusercontent.com">
 
     <title>SGC E-Shop</title>
 
@@ -113,7 +116,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                         <div class="sidebar-brand-icon">
                             <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
                         </div>
@@ -121,11 +124,10 @@
                     </a>
 
                     <!-- Topbar Search -->
-                    <form method="post" action="<?php echo htmlspecialchars("/search.php");?>" 
+                    <form method="get" action="<?php echo htmlspecialchars("/search.php");?>" 
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input id="searchInput" name="search" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input id="searchInput" name="Search" type="text" class="form-control bg-light border-0 small" placeholder="Search for...">
                             <div class="input-group-append" id="searchButton">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
@@ -143,8 +145,7 @@
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
@@ -164,15 +165,13 @@
                         <?php if ($_SESSION['login'] == true) :?>
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -283,14 +282,25 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo($_SESSION['name']);?></span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <!--User Profile Picture-->
+                                <?php
+                                $UID = $_SESSION["id"];
+                                $sql = "SELECT profile_picture FROM user WHERE username = '$UID'";
+
+                                $res_data = mysqli_query($conn,$sql);
+                                if (mysqli_num_rows($res_data) > 0){
+                                    while($row = mysqli_fetch_array($res_data)){
+                                        echo("
+                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
+                                            ");
+                                        }
+                                    }
+                                ?>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="account.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
@@ -298,7 +308,7 @@
 
                                 <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="admin.php">
+                                <a class="dropdown-item" href="adminManageUser.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     ADMIN PANEL
                                 </a>
@@ -320,10 +330,51 @@
                         </li>
 
                         <?php else :?>
-                            <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                            <div class="topbar-divider d-none d-sm-block"></div>
-                            <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                        <?php endif?>
+                        <!--
+                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                        -->
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="register.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    User
+                                </a>
+
+                                <a class="dropdown-item" href="seller/sellerRegister.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Seller
+                                </a>
+                            </div>
                         </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../login.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    User
+                                </a>
+
+                                <a class="dropdown-item" href="../seller/sellerLogin.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Seller
+                                </a>
+
+                                <a class="dropdown-item" href="../adminLogin.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Admin
+                                </a>
+                            </div>
+                        </li>
+                        <?php endif?>
+                    </ul>
                 </nav>
                 <!-- End of Topbar -->

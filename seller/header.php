@@ -51,9 +51,11 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION['isLogin']))
+    
+    //Login
+    if(!isset($_SESSION['login']))
     {
-        $_SESSION['isLogin'] = false;
+        $_SESSION['login'] = false;
     }
     if(!isset($_SESSION['name']))
     {
@@ -63,16 +65,14 @@
     {
         $_SESSION['id'] = "";
     }
-    if(!isset($_SESSION['admin']))
+    if(!isset($_SESSION['uid']))
     {
-        $_SESSION['admin'] = 0;
+        $_SESSION['uid'] = "";
     }
-
-    if($_SESSION['isLogin'] == true)
-	{
-	echo "<script>alert('Logout to continue');
-		window.location.href='Main.php';</script>";
-	}
+    if(!isset($_SESSION['role']))
+    {
+        $_SESSION['role'] = "";
+    }
 ?>
 
 
@@ -225,7 +225,7 @@
                 <div id="collapseShop" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="login.html">Shop Rating</a>
-                        <a class="collapse-item" href="register.html">Shop Profile</a>
+                        <a class="collapse-item" href="../seller/shopProfile.php">Shop Profile</a>
                         <a class="collapse-item" href="forgot-password.html">Shop Decoration</a>
                         <a class="collapse-item" href="forgot-password.html">Shop Categories</a>
                         <a class="collapse-item" href="forgot-password.html">My Reports</a>
@@ -321,6 +321,8 @@
                             </div>
                         </li>
 
+                        <!--Login-->
+                        <?php if ($_SESSION['login'] == true) :?>
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -388,7 +390,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="../img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -400,7 +402,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="../img/undraw_profile_2.svg"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -412,7 +414,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="../img/undraw_profile_3.svg"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -442,27 +444,32 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo($_SESSION['name']);?></span>
+                                <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    My Account
                                 </a>
+
+                                <!--Admin Panel-->
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+                                <a class="dropdown-item" href="../admin.php">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    ADMIN PANEL
+                                </a>
+                                <?php endif?>
+
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "ADMIN") :?>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    My Purchase
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                                <?php endif?>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -471,9 +478,54 @@
                             </div>
                         </li>
 
+                        <?php else :?>
+                        <!--
+                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
+                        -->
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../register.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    User
+                                </a>
+
+                                <a class="dropdown-item" href="../seller/sellerRegister.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Seller
+                                </a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../login.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    User
+                                </a>
+
+                                <a class="dropdown-item" href="../seller/sellerLogin.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Seller
+                                </a>
+
+                                <a class="dropdown-item" href="../adminLogin.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Admin
+                                </a>
+                            </div>
+                        </li>
+                        <?php endif?>
+
                     </ul>
 
                 </nav>
                 <!-- End of Topbar -->
-
-           

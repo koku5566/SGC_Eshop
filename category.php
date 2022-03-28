@@ -162,11 +162,11 @@
                                                     <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
                                                 </div>
                                                 <div class="col">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Latest</option>
-                                                        <option value="1">Rating</option>
-                                                        <option value="2">Sold</option>
-                                                        <option value="3">Price</option>
+                                                    <select class="form-select" onchange='SortProductList(this.value)' aria-label="Default select example">
+                                                        <option value="Latest" selected>Latest</option>
+                                                        <option value="Rating">Rating</option>
+                                                        <option value="Sold">Sold</option>
+                                                        <option value="Price">Price</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -479,3 +479,16 @@
     }
 
 </style>
+
+<script>
+    function SortProductList(value) {
+        $.ajax({
+            type: "GET",
+            url: "category.php",
+            data: "SortBy =" + value,
+            success: function(result) {
+                ;
+            }
+        });
+    };
+</script>
