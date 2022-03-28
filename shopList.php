@@ -86,8 +86,8 @@
     </div>
   </div>
   
-  <div class="row">
-    <button class="text-right nextBtn">-></button>
+  <div class="float-end">
+    <button class="nextBtn">-></button>
   </div>
 </div>
 
@@ -129,10 +129,10 @@
 } */
 
 .nextBtn{
-  border: grey;
-  border-radius: 1px solid grey;
-  float: right;
+  border: 1px solid grey;
+  border-radius: 5rem;
   width: 50px;
   background-color: white;
+  margin: 0 0 10px 0;
 } 
 </style>
