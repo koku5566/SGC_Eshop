@@ -30,7 +30,7 @@
     <div class="container">
 
       <section class="text-center">
-        <div class="ratingContainer d-flex align-items-center shadow">
+        <div class="ratingContainer d-flex align-items-center shadow rounded">
           <p>SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span></p>
         </div>
       </section>
@@ -131,10 +131,14 @@
         .carousel-item,
         .carousel-item.active {
           height: 80vh;
+          position: relative;
         }
 
       .ratingContainer{
         background-color: white;
+        padding: 10px;
+        position: absolute;
+        margin-top: -10px;
       }
 
       .voucherContainer{
