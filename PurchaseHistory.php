@@ -60,7 +60,7 @@ $result_2 = $stmt_2->get_result();
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:60%;height:70%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                                             <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
