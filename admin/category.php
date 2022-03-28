@@ -317,12 +317,12 @@
                                         </label>
                                     </div>
                                 </div>
-                                <p>Category Picture</p>
+                                <p>Picture</p>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-sm-9">
                                 <div class="form-group">
                                     <label for="addCategoryName">Category Name</label>
-                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Category Name ...">
+                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name">
                                 </div>
                             </div>
                             
@@ -426,7 +426,7 @@
 
 <script>
     initImages();
-    
+
     function initImages()
     {
         const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
@@ -443,7 +443,6 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                console.log(img.files);
                 if(img.files && img.files[0])
                 {
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
