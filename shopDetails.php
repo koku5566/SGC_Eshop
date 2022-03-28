@@ -29,7 +29,7 @@
     <main class="mt-5">
       <div class="container">
 
-        <section class="text-center"><br>
+        <section class="text-center">
           <h4 class="mb-5"><strong>Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
           </div>
@@ -120,7 +120,7 @@
         .carousel-inner,
         .carousel-item,
         .carousel-item.active {
-          height: 100vh;
+          height: 80vh;
         }
 
       .voucherContainer{
