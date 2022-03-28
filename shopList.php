@@ -35,7 +35,7 @@
   <div class="row mb-5">
     <div class="col-xl-2 col-lg-2 col-sm-2">
       <div class="image-container shadow" style="">
-          <img class="" style="object-fit:contain;width:100%;height:100%" src="https://static.wikia.nocookie.net/closinglogogroup/images/3/35/Sony_black_background.jpg/revision/latest?cb=20150522013035" alt="Card image cap">
+          <img class="" style="object-fit:contain;width:100%;height:100%" src="https://gamingbolt.com/wp-content/uploads/2011/09/sony-logo.jpg" alt="Card image cap">
       </div>
       <div class="viewBtn">
         <button style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button>
