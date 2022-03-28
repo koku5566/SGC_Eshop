@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="container">
-  <form method="get" action="/shopDeails">
+  <form method="get" action="/shopDetails">
   <div class="row mb-5">
     <div class="col-xl-2 col-lg-2 col-sm-2">
       <div class="image-container shadow" style="">
