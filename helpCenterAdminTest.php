@@ -54,23 +54,75 @@
 		
 			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
 			</h6>
-			<table style = "margin-bottom: 0.3rem;">
-				<tr>
-					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-				<tr>
-			</table>
+			<div class="w3-display-middle" style="width:100%">
+                            <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner">
+								
+                                    <?php
+									/*
+                                    $sql = "SELECT * FROM facilityPic";
+                                    $result = mysqli_query($conn, $sql);
+                                    $i = false;
+                        
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
+
+                                            echo ("
+                                                <div class=\"carousel-item\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>         
+                                            ");
+                                            }
+                                            else{
+                                                echo ("
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
+                                            }
+                                        }
+                                    }
+									*/
+                                    ?>
+									<div class="carousel-item active">
+                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item>
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div> 
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                    </div>
+									<div class="carousel-item">
+                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                    </div>									
+                    
+                                </div>
+                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
 			
-			<!--
-				<input type = 'hidden' name = 'CUid' value = 'RR001'>
-				<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
-			-->
-			<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
-			</div>
-		
+			
 		
 		
 		
