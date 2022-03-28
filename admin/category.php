@@ -302,38 +302,42 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-sm-4"></div>
-                            <div class="image-container">
-                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                <div class="image-layer">
-                                </div>
-                                <div class="image-tools-delete hide">
-                                    <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                </div>
-                                <div class="image-tools-add">
-                                    <label class="custom-file-upload">
-                                        <input accept="image/*" name="img[]" type="file" class="imgInp"/>
-                                        <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                    </label>
-                                </div>
-                            </div>
-                            <p>Category Picture</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-9 col-lg-9 col-sm-8">
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-2 col-sm-12">
-                                        <p class="p-title">Category Name</p>
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <div class="image-container">
+                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                    <div class="image-layer">
                                     </div>
-                                    <div class="col-xl-10 col-lg-10 col-sm-12">
-                                        <div class="input-group mb-3">
-                                        <input type="text" name="AddCategoryName" class="form-control" placeholder="Category Name ..." required>
+                                    <div class="image-tools-delete hide">
+                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="image-tools-add">
+                                        <label class="custom-file-upload">
+                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <p>Category Picture</p>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <div class="row">
+                                    <div class="col-xl-9 col-lg-9 col-sm-8">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Category Name</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                <input type="text" name="AddCategoryName" class="form-control" placeholder="Category Name ..." required>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
-
+                       
                         
                     </div>
                     <div class="modal-footer">
