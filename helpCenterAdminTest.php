@@ -393,12 +393,8 @@
 	width: 5rem; 
 	height: 5rem;
 }
-.tqy{
-	margin: auto;
-}
+
 .atss{
-	width: 25rem;
-	height: 25rem;
 	max-width: 25rem;
 	max-height: 25rem;
     margin: 0 auto;
