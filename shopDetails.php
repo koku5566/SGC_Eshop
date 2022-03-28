@@ -27,6 +27,16 @@
     <!--Main Navigation-->
     <!--Main layout-->
     <main class="mt-5">
+    <div class="container">
+
+      <section class="text-center">
+        <div class="ratingContainer d-flex align-items-center shadow">
+          <p>SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span></p>
+        </div>
+      </section>
+
+      <hr class="my-5" />
+
       <div class="container">
 
         <section class="text-center">
@@ -122,6 +132,10 @@
         .carousel-item.active {
           height: 80vh;
         }
+
+      .ratingContainer{
+        background-color: white;
+      }
 
       .voucherContainer{
         background-color: #f0f0f0;
