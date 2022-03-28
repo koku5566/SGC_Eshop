@@ -220,7 +220,7 @@
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
-                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
+                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
@@ -229,19 +229,27 @@
                                             $categoryId = $row["combination_id"];
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
+                                            $picName = "";
+                                            if($row["category_pic"] != "")
+                                            {
+                                                $picName = "/img/category".$row["category_pic"];
+                                            }
+                                            
 
                                             $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1' AND A.main_category =  '$mainCategoryId' ORDER BY B.category_name ASC";
                                             $result_1 = mysqli_query($conn, $sql_1);
         
                                             if (mysqli_num_rows($result_1) > 0) 
                                             {
+                                                
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
-                                                            <div class=\"input-group-append\">
-                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
-                                                            </div>
+                                                            <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                            <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                            Clothing
+                                                            <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+                                                            </a>
                                                             <div class=\"input-group-append\">
                                                                 <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
