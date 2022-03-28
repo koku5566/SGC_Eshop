@@ -1,20 +1,18 @@
 <?php
-    define("HOST","localhost");
-    define("USERNAME","sgcprot1_SGC_ESHOP");
-    define("PASSWORD","bXrAcmvi,B#U");
-    define("DATABASE","sgcprot1_SGC_ESHOP");
+   require 'localDbConn.php';
 
-    //create database connection
-    $conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
+   $result = mysqli_query($conn,
+    "SELECT V.voucher_code, V.voucher_startdate
+     FROM voucher V
+     INNER JOIN vouchertype VT
+     ON V.voucher_type_id = VT.voucher_type_id ");	
 
-   $res = mysqli_query($conn, "SELECT v.*, t.* FROM voucher v, voucherType vt WHERE v.voucher_type_id=t.voucher_type_id");
+   while($row = mysqli_fetch_array($result)){
 
-   while($row=mysql_fetch_array($res))
-   {
-      echo $row['voucher_type'];
-      echo $row['discount_amount'];
-      echo $row['voucher_startdate'];
-   }
+      // $rows[] = $row;
+   // echo json_encode ($rows['voucher_code']);
+   // echo json_encode ($rows[0]);
+   
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -29,8 +27,8 @@
       <img class="m-4" src="../img/segilogo.png" id="voucherlogo">
    </div>
    <div class="card-body">
-      <h6 class="card-title"><strong>SEGi Group of Colleges</strong></h6>
-      <h5 class="card-subtitle text-muted"> off</h5>
+      <h6 class="card-title"><strong><?php echo $row['voucher_code']; ?></strong></h6>
+      <h5 class="card-subtitle text-muted"><?php ?>off</h5>
       <small>Used : </small><br>
       <u>
          <a type="" class="" data-toggle="modal" data-target="#termsModal">
@@ -42,3 +40,5 @@
       <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
    </div>
 </div>
+
+<?php } ?>
