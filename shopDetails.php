@@ -35,8 +35,6 @@
         </div>
       </section>
 
-      <hr class="my-5" />
-
       <div class="container">
 
         <section class="text-center">
@@ -139,6 +137,7 @@
         padding: 10px;
         position: absolute;
         margin-top: -10px;
+        width: 80%;
       }
 
       .voucherContainer{
