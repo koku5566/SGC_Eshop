@@ -135,6 +135,7 @@ for (var i = 0; i < count_input.length; i++) {
                 //cal final sub total
                 sjtotal = sjtotal + toprice_sj;
 
+
                 document.getElementById('subtotal_sj').innerText = (Math.round((sjtotal + Number.EPSILON) * 100) / 100).toFixed(2);
                 calling();
             }
