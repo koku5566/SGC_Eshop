@@ -86,7 +86,7 @@
     </div>
   </div>
   
-  <div class="row">
+  <div>
     <button class="text-right nextBtn">-></button>
   </div>
 </div>
