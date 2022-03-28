@@ -42,7 +42,7 @@ $result_2 = $stmt_2->get_result();
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
+                                            <div class="col md-auto text-start"><span><strong><?php echo $row['shop_id']?></strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
                                                 Order
@@ -53,7 +53,7 @@ $result_2 = $stmt_2->get_result();
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:60%;height:70%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
                                             <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
@@ -63,9 +63,9 @@ $result_2 = $stmt_2->get_result();
                                     </div>
                                     <div class="card-footer">
                                         <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
-                                         <a href="viewPurchasingOrders.php"></a>Order Status</button>
+                                         <a href="viewPurchasingOrders.php">Order Status</a></button>
                                         </div>
-                                        <div class="col-md-3 col-lg-2 offset-lg-1">
+                                        <div class="col-md-3 col-lg-2">
                                             <button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button>
                                         </div>
                                     </div>
