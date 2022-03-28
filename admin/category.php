@@ -45,7 +45,6 @@
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0','0')";
-            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -104,6 +103,7 @@
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),'$mainCategoryId',(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'1')";
+            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -228,7 +228,7 @@
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
-                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0'";
+                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
@@ -238,7 +238,7 @@
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
 
-                                            $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1' AND A.main_category =  '$mainCategoryId' ";
+                                            $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1' AND A.main_category =  '$mainCategoryId' ORDER BY B.category_name ASC";
                                             $result_1 = mysqli_query($conn, $sql_1);
         
                                             if (mysqli_num_rows($result_1) > 0) 
@@ -292,7 +292,7 @@
                                     if(isset($_GET['toggle']))
                                     {
                                         $mainCategoryId = $_GET['toggle'];
-                                        $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY sub_category ASC";
+                                        $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY B.category_name ASC";
                                         $result = mysqli_query($conn, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
@@ -417,7 +417,6 @@
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
-                                        echo("<div class=\"categoryList\">");
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
@@ -437,7 +436,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="AddSub" class="btn btn-primary">Add</button>
+                        <button type="submit" name="addSub" class="btn btn-primary">Add</button>
                     </div>
                     </div>
                 </div>
