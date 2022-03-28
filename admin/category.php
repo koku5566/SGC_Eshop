@@ -45,6 +45,7 @@
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0')";
+            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -625,7 +626,7 @@
 
     .categoryList{
         overflow:scroll;
-        height:20vh;
+        height:40vh;
     }
 
 </style>
