@@ -185,7 +185,7 @@
 												</div>
 									
 									
-									<h6 class = "divcontent">The first time i met u was back in 2016, that was the first time. Yup from the weekly meeting. Of course from then on i'm usually present on time of the meeting DEFENITELY not because of u.And OBVIOUSLY i'm listening to the meeting content rather than looking at you. THEN 2016 flag day i i i i i ... am defenitely NOT LOOKING at u whole day :). Ok thinking about it kinda cringe lmao.
+									<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
 									</h6>
 									<table style = "margin-bottom: 0.3rem;">
 										<tr>
