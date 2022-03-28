@@ -160,9 +160,9 @@
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 											<tr>
 										</table>
-										<form action = "$_SERVER['PHP_SELF']" method = 'POST'>
+										<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit"class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										</form>
 										</div>   
 										<!--Content End-->
@@ -240,7 +240,10 @@
 }
 .hyperlink{
 	float: right;
-	color: blue;
+	color: #858796;
+	border: none;
+	background-color: transparent;
+	
 }
 .divcontent{
 	font-size: 0.85rem; 
