@@ -129,7 +129,10 @@
 } */
 
 .next{
-  border: none;
-  width: 20px;
-}
+  border: grey;
+  border-radius: 1px solid grey;
+  float: right;
+  width: 50px;
+  background-color: white;
+} 
 </style>
