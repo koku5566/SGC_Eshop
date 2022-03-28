@@ -32,12 +32,13 @@
         $sql_insert .= "category_name, category_pic, category_status";
         $sql_insert .= ") ";
         $sql_insert .= "VALUES ('$categoryName','$categoryPic','$categoryStatus')";
-        if(mysqli_query($conn, $sql_insert))
+        if(mysqli_query($conn, $sql_insert));
         {
             $sql_insert_cc  = "INSERT INTO categoryCombination (";
             $sql_insert_cc .= "combination_id, main_category, sub_category, sub_Yes";
             $sql_insert_cc .= ") ";
             $sql_insert_cc .= "VALUES ((SELECT CONCAT('CC',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'categoryCombination'), 6, 0))) AS newCombinationId),(SELECT AUTO_INCREMENT-1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'category'),'0','0')";
+            echo($sql_insert_cc);
             if(mysqli_query($conn, $sql_insert_cc))
             {
                 //This is for redirect
@@ -475,10 +476,10 @@
                                     
                                     <div class="image-layer">
                                     </div>
-                                    <div class="image-tools-delete hide">
+                                    <div class="image-tools-delete <?php echo($picName != "") ? "" : "hide");?>">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                     </div>
-                                    <div class="image-tools-add">
+                                    <div class="image-tools-add <?php echo($picName != "") ? "hide" : "");?>">
                                         <label class="custom-file-upload">
                                             <input accept="image/*" name="img[]" type="file" class="imgInp"/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
