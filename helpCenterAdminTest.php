@@ -220,7 +220,11 @@
 			</div>	
 		</div>	  
 	  </div>
-	  <div class="col-7" style = "background-color:green;">col-8</div>
+	  <div class="col-7" style = "background-color:green;">
+		  <h1 style="text-align:left;float:left;">Title</h1> 
+		  <h2 style="text-align:right;float:right;">Context</h2> 
+		  <hr style="clear:both;"/>
+	  </div>
 	</div>
 
 
