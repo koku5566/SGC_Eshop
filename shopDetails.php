@@ -33,9 +33,7 @@
         <div class="ratingContainer d-flex align-items-center shadow rounded">
           <p>SEGi College Penang | Joined<span style="color: red;">2021</span> Rating<span style="color: red;">4.9 out of 5.0</span> Products<span style="color: red;">12</span></p>
         </div>
-      </section>
-
-      <div class="container">
+      </section><br>
 
         <section class="text-center">
           <h4 class="mb-5"><strong>Voucher</strong></h4>
