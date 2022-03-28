@@ -35,7 +35,7 @@
 				if (mysqli_query($conn, $sql)) {
 					$_SESSION['VerifyCorrect'] = false;
 					$_SESSION['VerifyCode'] = false;
-					echo "<script>alert('Password Reset Successfull');
+					echo "<script>alert('Password Reset Successful');
 					window.location.href='login.php';</script>";
 				} else {
 					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
