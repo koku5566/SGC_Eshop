@@ -17,7 +17,7 @@
     <div class="col-xl-10">
       <div class="description">
         <p class="descriptionContainer1">
-        <i class="fa-light fa-people-group"></i>
+          <font-awesome-icon icon="fa-light fa-people-group" />
           Joined 
           <span id="" style="color: red;">2021</span> 
           <i class="fa-regular fa-star"></i>
