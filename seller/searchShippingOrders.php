@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <?php
+$search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
+$query ="SELECT * FROM orders WHERE title LIKE '%$search%' OR author LIKE '%$search%' OR isbn LIKE '%$search%'";
 
 /*QUERY FOR ORDER*/
 $sql = "SELECT
@@ -23,8 +25,8 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 
-?>
 
+?>
 
 <!--Pick Up Modal-->
 <div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel" aria-hidden="true">
@@ -95,6 +97,7 @@ $result = $stmt->get_result();
 
                 <!-- Card Body -->
                 <div class="card-body">
+                    <form action="search_shipping.php" method="GET">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
                             <div class="input-group mb-3">
@@ -124,13 +127,14 @@ $result = $stmt->get_result();
 
                         </div>
                         <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary">Search</button>
                         </div>
                         <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
                             <button type="button" class="btn btn-outline-dark">Reset</button>
                         </div>
 
                     </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -202,12 +206,12 @@ $result = $stmt->get_result();
                                                     alt="W3Schools.com">
                                             </div> -->
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="category/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-3"><?php echo $row['product_name']?></div>
-                                            <div class="col-1"><?php echo $row['quantity']?></div>
+                                            <div class="col-1">x <?php echo $row['quantity']?></div>
 
-                                            <div class="col-1"><?php echo $row['product_price']?></div>
+                                            <div class="col-1">RM<?php echo $row['product_price']?>.00</div>
                                             <div class="col-2">Completed</div>
                                             <div class="col-2">DHL eCommerce 2121113134</div>
                                             <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
@@ -274,66 +278,12 @@ $result = $stmt->get_result();
                                     <!--All to ship orders-->
                                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
                                         aria-labelledby="pills-all-tab">
-                                        <div class="card-body" style="padding-left: 0px;">
-                                        <div class="card-body" style="padding-left: 0px;">
-                                            <div class="card" style="padding-right: 0px;">
-                                                <div class="card-header">
-                                                    <h5 class="mb-0">Buyer&#39;s Name</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="container" style="padding-right: 14px;padding-left: 0px;">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-lg-2" style="width:15%; height:15%; object-fit:contain"><?php echo $row['product_cover_picture']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_name']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_variation']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_price']?></div>
-                                                            <div class="col-lg-2">DHL ECOMMERCE</div>
-                                                            <div class="col-lg-2">
-                                                                <!-- Button trigger modal -->
-                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                                                Arrange Shipment
-                                                                </button>
-                                                                <form action="" method="post">
-                                                                    <!-- Modal -->
-                                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                                                    <h4 class="modal-title" id="myModalLabel">Sucessfully</h4>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="row justify-content-center">
-                                                                                        <div class="col-4">
-                                                                                                 DHL ECOMMERCE
-                                                                                        </div>
-                                                                                        <div class="col-4">
-                                                                                            <a>Tracking Number:</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="submit" class="btn btn-primary"><a href="">Okay</a></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </form>
-                                                                <!-----END HERE------------>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                         </div>
-                                     </div>
-                                </div>
+                                        ello MP
+                                    </div>
 
                                     <!--to process to ship orders-->
                                     <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
-                                         <!----end Here-->
+                                        ...
                                     </div>
 
                                     <!-- processed to ship orders-->
@@ -342,7 +292,6 @@ $result = $stmt->get_result();
                                     </div>
                                 </div>
 
-                                
                             </div>
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
