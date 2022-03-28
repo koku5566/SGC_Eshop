@@ -232,7 +232,7 @@
                                             $picName = "";
                                             if($row["category_pic"] != "")
                                             {
-                                                $picName = "/img/category".$row["category_pic"];
+                                                $picName = "/img/category/".$row["category_pic"];
                                             }
                                             
 
@@ -246,9 +246,9 @@
                                                     <div>
                                                         <div class=\"input-group\">
                                                             <a href=\"?toggle=$categoryId\" class=\"nav-link\">
-                                                            <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
-                                                            Clothing
-                                                            <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+                                                                <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                Clothing
+                                                                <i class=\"fa fa-angle-right\" style=\"float:right\" aria-hidden=\"true\"></i>
                                                             </a>
                                                             <div class=\"input-group-append\">
                                                                 <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
@@ -553,6 +553,15 @@
 <!-- /.container-fluid -->
 
 <style>
+    .nav-link{
+        flex: 1 1 auto;
+    }
+
+    .nav-link:hover{
+        color: #a31f37;
+    }
+
+
     .image-container{
         width: 80px;
         height: 80px;
