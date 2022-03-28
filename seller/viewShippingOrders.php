@@ -25,6 +25,24 @@ $result = $stmt->get_result();
 
 ?>
 
+<?php
+ $sql_1 = "SELECT 
+myOrder.order_id,
+myOrder.tracking_status
+product.product_name,
+product.product_qty,                                                
+product.product_cover_picture
+FROM 
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN product ON orderDetails.product_id = product.product_id";
+
+$stmt_1 = $conn-> prepare($sql_1);
+$stmt_1->execute();
+$res_1 = $stmt_1->get_result();
+?>
+                            
+
 
 
 <!--Pick Up Modal-->
@@ -252,24 +270,7 @@ $result = $stmt->get_result();
 
                             </div>
                             <!--------------------------------To ship--------------------------------------->
-                            <!--------------------------------------PHP----------------------------------------->
-                                            <?php
-                                                $sql_1 = "SELECT 
-                                                myOrder.order_id,
-                                                myOrder.tracking_status
-                                                product.product_name,
-                                                product.product_qty,
-                                                product.product_cover_picture
-                                                FROM 
-                                                myOrder
-                                                JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-                                                JOIN product ON orderDetails.product_id = product.product_id";
-
-                                                $stmt_1 = $conn-> prepare($sql_1);
-                                                $stmt_1->execute();
-                                                $res = $stmt_1->get_result();
-                                            ?>
-                            <!------------------------------------END OF CODE---------------------------------->
+                            
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                                 <!--Pills tab--->
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -293,6 +294,9 @@ $result = $stmt->get_result();
                                     <!--All to ship orders-->
                                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
                                         aria-labelledby="pills-all-tab">
+                                        <?php 
+                                            while ($row = $res_1->fetch_assoc()) {
+                                        ?>
                                         <div class="card-body" style="padding-left: 0px;">
                                         <div class="card-body" style="padding-left: 0px;">
                                             <div class="card" style="padding-right: 0px;">
@@ -347,6 +351,8 @@ $result = $stmt->get_result();
                                                 </div>
                                             </div>
                                          </div>
+                                         <?php 
+                                         }?>  
                                      </div>
                                 </div>
 
