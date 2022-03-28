@@ -203,7 +203,7 @@
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
+                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
                                                                 <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
@@ -219,7 +219,7 @@
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control variationChoice\" disabled>
+                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
                                                             <div class=\"input-group-append\">
                                                                 <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
@@ -229,6 +229,22 @@
                                             }
                                             
                                         }
+                                        echo("
+                                            <div class=\"AddButtonCategoryDiv\">
+                                                <div class=\"input-group\">
+                                                    <button type=\"button\" class=\"btn btn-outline-primary\" id=\"btnAddCategory\" style=\"width:100%\">Add New Category</button>
+                                                </div>
+                                            </div>
+                                                
+                                            <div class=\"AddInpCategoryDiv hide\">
+                                                <div class=\"input-group\">
+                                                    <input type=\"text\" name=\"mainCategory\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" >
+                                                    <div class=\"input-group-append\">
+                                                        <button type=\"submit\" class=\"btn btn-outline-primary\" style=\"width:100%\">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ");
                                     }
                                 ?>
                                 
@@ -306,36 +322,6 @@
 <!-- /.container-fluid -->
 
 <style>
-
-    @import "nib";
-
-    [draggable] {
-    user-select: none;
-    }
-    .drag-list {
-        margin: 10px auto;
-        flex-basis: 770px;
-        display:flex;
-    }
-    .drag-item {
-    transition: 0.25s;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 80px;
-    flex: 0 0 80px;
-    width: 80px;
-    max-width: 80px;
-    min-height: 80px;
-    max-height: 80px;
-    margin: 0 16px 40px 0;
-    }
-    .drag-start {
-    opacity: 0.8;
-    }
-    .drag-enter {
-    opacity: 0.5;
-    transform: scale(0.9);
-    }
-
     .image-container{
         width: 80px;
         height: 80px;
@@ -406,40 +392,6 @@
         display:none;
     }
 
-    .td-var1{
-        border: none;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        color: #858796;
-    }
-
-    .td-var2{
-        border: none;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        color: #858796;
-    }
-
-    .thInp{
-        border: none;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        color: #858796;
-    }
-
-    .td-var1:focus,.td-var2:focus,.thInp:focus,.thInp:focus-visible
-    {
-        border: none;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        color: #858796;
-        box-shadow: none;
-    }
-
     .warning, .warning:focus{
         border:1px red solid;
     }
@@ -465,6 +417,16 @@
         else
         {
             alert("Please Enter Distinct Product Variation and Choices");
+        }
+    });
+
+    document.getElementById('btnAddCategory').addEventListener('click', function(evt){
+        var AddCategoryButtonDiv = document.getElementById('AddButtonCategoryDiv');
+        var AddCategoryInpDiv = document.getElementById('AddInpCategoryDiv');
+        if(AddCategoryInpDiv.classList.contains("hide"))
+        {
+            AddCategoryInpDiv.classList.remove("hide");
+            AddCategoryButtonDiv.classList.add("hide");
         }
     });
     
@@ -556,7 +518,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control variationChoice">
+                                    <input type="text" class="form-control ">
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
