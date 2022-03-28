@@ -636,10 +636,7 @@
     window.addEventListener('load', function () {
         if(<?php echo(isset($_GET['edit'])) ?> == 1)
         {
-            //$("#editCategoryModel").modal();
-            $('#editCategoryModel').modal({
-    		backdrop: 'static',
-    		keyboard: false
+            $("#editCategoryModel").modal('show');
 		});
         }
     });
