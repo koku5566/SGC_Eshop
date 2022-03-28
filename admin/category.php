@@ -243,7 +243,7 @@
                                                                 <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -316,7 +316,6 @@
                                     }
                                     
                                 ?>
-     
                             </div>
                         </div>
                     </div>
@@ -457,9 +456,15 @@
 
                                         if (mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
-                                                $picName = $row["category_pic"];
+                                                
+                                                $picName = "";
 
-                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/$picName\">");
+                                                if($row["category_pic"] != "")
+                                                {
+                                                    $picName = "/img/product/".$row["category_pic"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
                                             }
                                         }
                                     ?>
