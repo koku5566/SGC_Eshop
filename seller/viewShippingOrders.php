@@ -26,6 +26,7 @@ $result = $stmt->get_result();
 ?>
 
 
+
 <!--Pick Up Modal-->
 <div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -251,6 +252,24 @@ $result = $stmt->get_result();
 
                             </div>
                             <!--------------------------------To ship--------------------------------------->
+                            <!--------------------------------------PHP----------------------------------------->
+                                            <?php
+                                                $sql = "SELECT 
+                                                myOrder.order_id,
+                                                myOrder.tracking_status
+                                                product.product_name,
+                                                product.product_qty,
+                                                product.product_cover_picture
+                                                FROM 
+                                                myOrder
+                                                JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+                                                JOIN product ON orderDetails.product_id = product.product_id";
+
+                                                $stmt = $conn-> prepare($sql);
+                                                $stmt->execute();
+                                                $res = $stmt->get_result();
+                                            ?>
+                            <!------------------------------------END OF CODE---------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                                 <!--Pills tab--->
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -290,7 +309,7 @@ $result = $stmt->get_result();
                                                             <div class="col-lg-2">DHL ECOMMERCE</div>
                                                             <div class="col-lg-2">
                                                                 <!-- Button trigger modal -->
-                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left:10px">
                                                                 Arrange Shipment
                                                                 </button>
                                                                 <form action="" method="post">
