@@ -87,7 +87,7 @@
   </div>
   
   <div class="float-end">
-    <button class="nextBtn border border-1 rounded-pill">-></button>
+    <button class="nextBtn border border-1 rounded-pill text-center">-></button>
   </div>
 </div>
 
@@ -129,7 +129,7 @@
 } */
 
 .nextBtn{
-  width: 40px;
+  width: 45px;
   margin: 0 20px 10px 0;
   background-color: white;
 } 
