@@ -32,9 +32,50 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+	  <!--CONTENT START-->
       <div class="modal-body">
-        FKNWLG awlgiblwa g aignawgaeg laoebgla g
+        <div style="height: 100%">
+					<?php
+					
+					
+					?>
+					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+					<div class = "namestar">
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+						<div style="margin-bottom: 0.1em;">													
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star-fill"></i>
+							<i class="bi bi-star"></i>
+							<i class="bi bi-star"></i>
+						</div>	
+					</div>
+		
+		
+			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+			</h6>
+			<table style = "margin-bottom: 0.3rem;">
+				<tr>
+					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+					<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+				<tr>
+			</table>
+			
+			<!--
+				<input type = 'hidden' name = 'CUid' value = 'RR001'>
+				<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+			-->
+			<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
+			</div>
+		
+		
+		
+		
       </div>
+	  <!--CONTENT END-->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
