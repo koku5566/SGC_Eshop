@@ -3,14 +3,14 @@
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
-  <div class="carousel-inner">
+  <div class="carousel-inner banner">
     <div class="carousel-item active">
       <img src="https://img.myloview.com/murals/12-12-sales-promotion-banner-design-template-vector-400-277359348.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item banner">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/000/692/117/small/flash-sale-banner-promotion-with-lightning-bolt-on-red-background.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item banner">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/001/338/131/small/black-friday-bright-sale-banner-design-free-vector.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
