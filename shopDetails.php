@@ -136,8 +136,8 @@
         background-color: white;
         padding: 10px;
         position: absolute;
-        margin-top: -10px;
-        width: 80%;
+        margin-top: -50px;
+        width: 100%;
       }
 
       .voucherContainer{
