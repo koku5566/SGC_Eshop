@@ -301,8 +301,8 @@
 	-webkit-text-fill-color: orange
 }
 .imgReply{
-	width: 75%;
-	height: 75%;
+	width: 2.3rem;
+	height: 2.3rem;
 	object-fit: cover;
 }
 .pp{
