@@ -13,14 +13,14 @@
 <div class="container-fluid" style="width:80%">	
 
 	
-<!-- Button trigger modal 
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
   Modal 1
 </button>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
   Modal 2
-</button>-->
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
