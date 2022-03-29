@@ -163,7 +163,7 @@
                         <h4 class="modal-title">Edit Ticket Type</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <div style="margin-bottom: 20px;">
                                 <h5>Ticket Name</h5><input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
                                 <input class="form-control" id="editTicketID" name="editTicketID" type="hidden" placeholder="Ticket Name">
@@ -187,7 +187,7 @@
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <form>
+                            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                                 <input class="form-control" id="ticketIDHide" name="ticketIDHide" type="hidden" placeholder="Ticket Name">
                                 <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "deleteBtn">Delete</button>
                             </form>
