@@ -70,8 +70,8 @@
     //--------------Delete Ticket------------------------
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["deleteBtn"])){
         $ticketID = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketIDHide"]));
-        echo "<script>console.log('can here');</script>";
-        $sql = "DELETE FROM `ticketType` WHERE  `ticketType`=?";
+        echo "<script>console.log('can here' + $ticketID);</script>";
+        $sql = "DELETE FROM `ticketType` WHERE  `ticketType_id`=?";
 
         if($stmt = mysqli_prepare($conn, $sql)){
             mysqli_stmt_bind_param($stmt, 'i',$ticketID); 
