@@ -25,80 +25,63 @@ $result = $stmt->get_result();
 
 ?>
 
-<?php
- $sql_1 = "SELECT 
-myOrder.order_id,
-myOrder.tracking_status
-product.product_name,
-product.product_qty,                                                
-product.product_cover_picture
-FROM 
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.product_id";
-
-$stmt_1 = $conn-> prepare($sql_1);
-$stmt_1->execute();
-$res_1 = $stmt_1->get_result();
-?>
-                            
-
 
 
 <!--Pick Up Modal-->
-<div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pick Up Information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!--Shipping Progress table-->
-        <table class="table track-pickup">
-            <thead>
-                <tr>
-                    <th scope="col">Location</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Activity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-            </tbody>
-        </table>
-        <!--end of table-->
-        
-        <form>
-        <div class="form-group">
-          <label for="orderstatus">ORDER STATUS:</label>
-          <select id="orderstatus" class="form-control">
-          <option value="processing">Order is Processing</option>
-            <option value="ready">Ready To Pickup</option>
-            <option value="cancelled">Order is cancelled</option> 
-          </select>
-        </div>
+<div class="modal fade" id="pickUpModal" tabindex="-1" role="dialog" aria-labelledby="pickUpModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pick Up Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Shipping Progress table-->
+                <table class="table track-pickup">
+                    <thead>
+                        <tr>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--end of table-->
 
-        <div class="form-group">
-            <label for="notes">NOTES:</label>
-            <textarea id="notes" name="notes" rows="3" cols="50">
+                <form>
+                    <div class="form-group">
+                        <label for="orderstatus">ORDER STATUS:</label>
+                        <select id="orderstatus" class="form-control">
+                            <option value="processing">Order is Processing</option>
+                            <option value="ready">Ready To Pickup</option>
+                            <option value="cancelled">Order is cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">NOTES:</label>
+                        <textarea id="notes" name="notes" rows="3" cols="50">
             </textarea>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="update" class="btn btn-primary">Update</button>
+            </div>
+            </form>
         </div>
-    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="update" class="btn btn-primary">Update</button>
-      </div>
-      </form>
     </div>
-  </div>
 </div>
 
 <!-- Begin Page Content -->
@@ -114,42 +97,45 @@ $res_1 = $stmt_1->get_result();
 
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <select class="form-select" name="searchBy" aria-label="SearchBy"
-                                        style="color:currentColor;">
-                                        <option selected value="id">Order ID</option>
-                                        <option value="name">Buyer Name</option>
-                                        <option value="product">Product</option>
-                                        <option value="trackingnumber">Tracking Number</option>
-                                    </select>
+                    <form action="searchShipping.php" method="GET" >
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select" name="searchBy" aria-label="SearchBy"
+                                            style="color:currentColor;">
+                                            <option selected value="id">Order ID</option>
+                                            <option value="name">Buyer Name</option>
+                                            <option value="product">Product</option>
+                                            <option value="trackingnumber">Tracking Number</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control" name="search_keyword" placeholder="Search order">
                                 </div>
-                                <input type="text" class="form-control" name="keyword" placeholder="Search order">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Order Date</span>
+                                    </div>
+                                    <input type="text" name="daterange" class="form-control js-daterangepicker"
+                                        value="01/01/2022 - 01/15/2022" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Order Date</span>
-                                </div>
-                                <input type="text" name="daterange" class="form-control js-daterangepicker" value="01/01/2022 - 01/15/2022" />
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="submit"name="submit_search" class="btn btn-primary">Search</button>
+                            </div>
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="button" class="btn btn-outline-dark">Reset</button>
+                            </div>
 
                         </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-primary">Search</button>
-                        </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-outline-dark">Reset</button>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -179,7 +165,8 @@ $res_1 = $stmt_1->get_result();
                                 aria-controls="shipping" aria-selected="false">Shipping</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
+                            <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab"
+                                aria-controls="completed" aria-selected="false">Completed</a>
                         </li>
                     </ul>
 
@@ -197,138 +184,182 @@ $res_1 = $stmt_1->get_result();
                                 </div>
                             </div>
                         </div>
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
-                                
+                        <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+
                             <?php 
                             while ($row = $result->fetch_assoc()) {
                             ?>
                             <!--Each Order Item-->
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                Order
-                                                ID:
-                                                125353</strong></span></div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong>Username</strong></span>
                                         </div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                                                    Order
+                                                    ID:
+                                                    125353</strong></span></div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <!-- <div class="col-1"><img width="100%"
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- <div class="col-1"><img width="100%"
                                                     src="https://www.w3schools.com/images/w3schools_green.jpg"
+                                                   
                                                     alt="W3Schools.com">
                                             </div> -->
-                                            <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
-                                            </div>
-                                            <div class="col-3"><?php echo $row['product_name']?></div>
-                                            <div class="col-1"><?php echo $row['quantity']?></div>
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $row['product_cover_picture']?>"
+                                                alt="<?php echo $row['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $row['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            <?php echo $row['quantity']?>
+                                        </div>
 
-                                            <div class="col-1"><?php echo $row['product_price']?></div>
-                                            <div class="col-2">Completed</div>
-                                            <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
-                                            </div>
+                                        <div class="col-1">
+                                            <?php echo $row['product_price']?>
+                                        </div>
+                                        <div class="col-2">Completed</div>
+                                        <div class="col-2">DHL eCommerce 2121113134</div>
+                                        <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
                                         </div>
                                     </div>
                                 </div>
-                                <!--End of Order Item-->
-                                <?php 
-                                }?>
-                                                                
-                                <!--Pick Up Order Item-->       
-                                 <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                Order
-                                                ID:
-                                                125353</strong></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com"></div>
-                                            <div class="col-3">Product Name yoo</div>
-                                            <div class="col-1">X1</div>
-
-                                            <div class="col-1">RM9.00</div>
-                                            <div class="col-2">Completed</div>
-                                            <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="#pickUpModal" data-toggle="modal" data-target="#pickUpModal">Update Pick Up</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End of Order Item-->
-
                             </div>
-                            <!--------------------------------To ship--------------------------------------->
-                            
-                            <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                                <!--Pills tab--->
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill"
-                                            href="#pills-all" role="tab" aria-controls="pills-all"
-                                            aria-selected="true">All</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
-                                            href="#pills-to-process" role="tab" aria-controls="pills-to-process"
-                                            aria-selected="false">To Process</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
-                                            href="#pills-processed" role="tab" aria-controls="pills-processed"
-                                            aria-selected="false">Processed</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <!--All to ship orders-->
-                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                                        aria-labelledby="pills-all-tab">
-                                        <?php 
-                                            while ($row = $res_1->fetch_assoc()) {
-                                        ?>
-                                        <div class="card-body" style="padding-left: 0px;">
+                            <!--End of Order Item-->
+                            <?php 
+                                }?>
+
+                            <!--Pick Up Order Item-->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong>Username</strong></span>
+                                        </div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                                                    Order
+                                                    ID:
+                                                    125353</strong></span></div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1"><img width="100%"
+                                                src="https://www.w3schools.com/images/w3schools_green.jpg"
+                                                alt="W3Schools.com"></div>
+                                        <div class="col-3">Product Name yoo</div>
+                                        <div class="col-1">X1</div>
+
+                                        <div class="col-1">RM9.00</div>
+                                        <div class="col-2">Completed</div>
+                                        <div class="col-2">DHL eCommerce 2121113134</div>
+                                        <div class="col-2"><a href="#pickUpModal" data-toggle="modal"
+                                                data-target="#pickUpModal">Update Pick Up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End of Order Item-->
+
+                        </div>
+                        <!--------------------------------To ship--------------------------------------->
+                        <!--------------------------------------PHP----------------------------------------->
+                        <?php
+                                                $sql_1 = "SELECT 
+                                                myOrder.order_id,
+                                                myOrder.tracking_status
+                                                product.product_name,
+                                                product.product_qty,
+                                                product.product_cover_picture
+                                                FROM 
+                                                myOrder
+                                                JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+                                                JOIN product ON orderDetails.product_id = product.product_id";
+
+                                                $stmt_1 = $conn-> prepare($sql_1);
+                                                $stmt_1->execute();
+                                                $res = $stmt_1->get_result();
+                                            ?>
+                        <!------------------------------------END OF CODE---------------------------------->
+                        <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
+                            <!--Pills tab--->
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all"
+                                        role="tab" aria-controls="pills-all" aria-selected="true">All</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
+                                        href="#pills-to-process" role="tab" aria-controls="pills-to-process"
+                                        aria-selected="false">To Process</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
+                                        href="#pills-processed" role="tab" aria-controls="pills-processed"
+                                        aria-selected="false">Processed</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <!--All to ship orders-->
+                                <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+                                    aria-labelledby="pills-all-tab">
+                                    <div class="card-body" style="padding-left: 0px;">
                                         <div class="card-body" style="padding-left: 0px;">
                                             <div class="card" style="padding-right: 0px;">
                                                 <div class="card-header">
                                                     <h5 class="mb-0">Buyer&#39;s Name</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="container" style="padding-right: 14px;padding-left: 0px;">
+                                                    <div class="container"
+                                                        style="padding-right: 14px;padding-left: 0px;">
                                                         <div class="row">
-                                                            <div class="col-md-3 col-lg-2" style="width:15%; height:15%; object-fit:contain"><?php echo $row['product_cover_picture']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_name']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_variation']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_price']?></div>
+                                                            <div class="col-md-3 col-lg-2"
+                                                                style="width:15%; height:15%; object-fit:contain">
+                                                                <?php echo $row['product_cover_picture']?>
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-2">
+                                                                <?php echo $row['product_name']?>
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-2">
+                                                                <?php echo $row['product_variation']?>
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-2">
+                                                                <?php echo $row['product_price']?>
+                                                            </div>
                                                             <div class="col-lg-2">DHL ECOMMERCE</div>
                                                             <div class="col-lg-2">
                                                                 <!-- Button trigger modal -->
-                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left:30px">
-                                                                Arrange Shipment
+                                                                <button class="btn btn-primary btn-lg"
+                                                                    data-toggle="modal" data-target="#myModal"
+                                                                    style="margin-left:30px">
+                                                                    Arrange Shipment
                                                                 </button>
                                                                 <form action="" method="post">
                                                                     <!-- Modal -->
-                                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal fade" id="myModal" tabindex="-1"
+                                                                        role="dialog" aria-labelledby="myModalLabel"
+                                                                        aria-hidden="true">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                                                    <h4 class="modal-title" id="myModalLabel">Sucessfully</h4>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal"><span
+                                                                                            aria-hidden="true">&times;</span><span
+                                                                                            class="sr-only">Close</span></button>
+                                                                                    <h4 class="modal-title"
+                                                                                        id="myModalLabel">Sucessfully
+                                                                                    </h4>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <div class="row justify-content-center">
+                                                                                    <div
+                                                                                        class="row justify-content-center">
                                                                                         <div class="col-4">
-                                                                                                 DHL ECOMMERCE
+                                                                                            DHL ECOMMERCE
                                                                                         </div>
                                                                                         <div class="col-4">
                                                                                             <a>Tracking Number:</a>
@@ -336,12 +367,16 @@ $res_1 = $stmt_1->get_result();
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="submit" class="btn btn-primary"><a href="">Okay</a></button>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-default"
+                                                                                        data-dismiss="modal">Close</button>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-primary"><a
+                                                                                            href="">Okay</a></button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                 </form>
                                                                 <!-----END HERE------------>
@@ -350,39 +385,39 @@ $res_1 = $stmt_1->get_result();
                                                     </div>
                                                 </div>
                                             </div>
-                                         </div>
-                                         <?php 
-                                         }?>  
-                                     </div>
-                                </div>
-
-                                    <!--to process to ship orders-->
-                                    <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
-                                         <!----end Here-->
-                                    </div>
-
-                                    <!-- processed to ship orders-->
-                                    <div class="tab-pane fade" id="pills-processed" role="tabpanel" aria-labelledby="pills-processed-tab">
-                                        ...
+                                        </div>
                                     </div>
                                 </div>
 
-                                
+                                <!--to process to ship orders-->
+                                <div class="tab-pane fade" id="pills-to-process" role="tabpanel"
+                                    aria-labelledby="pills-to-process-tab">
+                                    <!----end Here-->
+                                </div>
+
+                                <!-- processed to ship orders-->
+                                <div class="tab-pane fade" id="pills-processed" role="tabpanel"
+                                    aria-labelledby="pills-processed-tab">
+                                    ...
+                                </div>
                             </div>
-                            <!--------------------------------Pick Up--------------------------------------->
-                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
+
+
+                        </div>
+                        <!--------------------------------Pick Up--------------------------------------->
+                        <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
                             yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
-                            </div>
+                        </div>
 
-                            <!--------------------------------Shipping--------------------------------------->
-                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                        <!--------------------------------Shipping--------------------------------------->
+                        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             yopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapa
-                            </div>
+                        </div>
 
-                            <!--------------------------------Completed--------------------------------------->
-                            <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
+                        <!--------------------------------Completed--------------------------------------->
+                        <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             yosis
-                            </div>
+                        </div>
 
 
 
@@ -414,7 +449,7 @@ $res_1 = $stmt_1->get_result();
 
 </script>
 <style>
-.track-pickup tr:first-child td {
-    color: green;
-}
+    .track-pickup tr:first-child td {
+        color: green;
+    }
 </style>
