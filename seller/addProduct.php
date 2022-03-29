@@ -89,14 +89,14 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
+                /*
                 $fileName = basename($_FILES['img']['name'][$key]); 
                 $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                 $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                echo($fileType);
-                /*
+                
                 echo(in_array($fileType, $allowTypes));
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
