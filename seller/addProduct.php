@@ -214,6 +214,7 @@
                     array_push($tempArray,array($categoryId,$categoryName));
                 }
                 $tempCategoryArray = array($maincategoryid => $tempArray);
+                echo(var_dump($tempCategoryArray));          
             }
             else
             {
