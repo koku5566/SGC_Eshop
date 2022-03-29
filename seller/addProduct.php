@@ -215,6 +215,11 @@
                 }
                 $tempCategoryArray = array($maincategoryid => $tempArray);
             }
+            else
+            {
+                $tempArray = array();
+                $tempCategoryArray = array($maincategoryid => $tempArray);
+            }
             $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
         }
     }                             
