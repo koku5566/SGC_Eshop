@@ -372,11 +372,10 @@
 ?>
 
 <style>
-.sellresponse{
+#sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
 	border-radius: 4px; 
-
 }
 .pickbox{
 	width: 100%;
