@@ -89,25 +89,21 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                //$fileName = basename($_FILES['img']['name'][$key]); 
-                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
-                $fileName = md5($date->format('Y-m-d H:i:s:u'));
+                
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
-                echo($targetFilePath);
-                echo("<br>");
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                echo($fileType);
-                /*
+                
                 echo(in_array($fileType, $allowTypes));
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
                 }
-                */
             } 
         }
 
@@ -159,19 +155,7 @@
                     }
                 }
 
-                for($i = 0; $i < count($variation1NameCol); $i++)
-                {
-                    $sql_insertVar  = "INSERT INTO variation (";
-                    $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
-                    $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                    $sql_insertVar .= "product_sold, product_sku";
-                    $sql_insertVar .= ") ";
-                    $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
-                    $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-        
-                    mysqli_query($conn, $sql_insertVar);
-                }
+                
             }
             ?>
                 <script type="text/javascript">
