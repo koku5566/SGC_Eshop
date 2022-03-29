@@ -220,7 +220,7 @@
                 $tempArray = array();
                 $tempCategoryArray = array($maincategoryid => $tempArray);
             }
-            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
+            $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
     }                       
 ?>
