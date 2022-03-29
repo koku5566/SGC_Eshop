@@ -23,9 +23,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 
-?>
-
-<?php
+/* For To Ship  */
  $sql_1 = "SELECT 
 myOrder.order_id,
 myOrder.tracking_status
