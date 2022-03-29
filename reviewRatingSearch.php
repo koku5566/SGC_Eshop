@@ -51,28 +51,30 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="bi bi-star"></i> ';
 		 }
 	 }
-	 /*
-  $output .= '
-   <tr colspan="2">
-    <td><div class = "bengi"><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></div>				
-	</td>	
-	<td>'.$row["rr_id"].'</td>											
-    <td>'.$row["product_id"].'</td>
-    <td>
-	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
-	'.$row["message"].'
-	</td>
-	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-danger"></form></td>
-   </tr>
-  ';
-  */
+	 
+	 $profilePicR = '';
+	 if($row["profile_picture"] === null){
+		 $profilePicR .= '<img src = "https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6" class = "reviewprofilepic">';
+	 }else{
+		 $profilePicR .= '<img src = "https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg" class = "reviewprofilepic">';
+	 }
+	 
+	 
+	 $picR = '';
+	 for($i=0; $i<5; $i++){
+		 if($row["pic$i"] === null){
+			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
+		 }else{
+			 $picR .='<img src = "https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class = "reviewprofilepic">';
+		 }
+			 
+	 }
+	 
   
   $output .='<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 			<div style="height: 100%">
 			
-			<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+			'.$profilePicR.'
 			<div class = "namestar">
 				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["name"].'</h6>
 				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
@@ -84,11 +86,7 @@ if(mysqli_num_rows($result) > 0)
 											
 	<table style = "margin-bottom: 0.3rem;">
 		<tr>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+			'.$picR.'
 		<tr>
 	</table>
 	
