@@ -298,7 +298,6 @@ $res_1 = $stmt_1->get_result();
                                             while ($row = $res_1->fetch_assoc()) {
                                         ?>
                                         <div class="card-body" style="padding-left: 0px;">
-                                        <div class="card-body" style="padding-left: 0px;">
                                             <div class="card" style="padding-right: 0px;">
                                                 <div class="card-header">
                                                     <h5 class="mb-0">Buyer&#39;s Name</h5>
