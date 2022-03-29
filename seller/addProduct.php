@@ -1,8 +1,10 @@
 <?php
     require __DIR__ . '/header.php';
 
+    echo("why");
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
+       
         $publish = 1;
         if(isset($_POST['add']))
         {
