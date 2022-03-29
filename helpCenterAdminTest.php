@@ -227,7 +227,7 @@
 					<div class="col">
 						  <select class="form-control" id = "selectRating">
 							  <option value = "All">All* (107)</option>
-							  <option value = "P000005" data-icon="glyphicon-star">5 Star</option>
+							  <option value = "P000005">5 Star</option>
 							  <option value = "P000004">4 Star</option>
 							  <option value = "P000003">3 Star</option>	
 							  <option value = "P000002">2 Star</option>
@@ -284,6 +284,8 @@
 									
 										<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
 										</h6>
+										<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">Reply</a>
+										
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
@@ -298,7 +300,7 @@
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
 											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										-->
-										<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
+										<a  class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
