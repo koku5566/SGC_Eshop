@@ -440,7 +440,7 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="">Please Select a Category</option>
+                                        <option value="" selected>Please Select a Category</option>
                                             <?php
                                             //Main Category
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";

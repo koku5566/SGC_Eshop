@@ -1,5 +1,5 @@
 <?php
-    require dirname(__DIR__, 1) . '/seller/header.php';
+    require __DIR__ . '/header.php'
 
     if(isset($_POST['addMain'])){
 
@@ -725,5 +725,5 @@
 </script>
 
 <?php
-    require dirname(__DIR__, 1) . '/seller/footer.php';
+    require __DIR__ . '/footer.php'
 ?>
