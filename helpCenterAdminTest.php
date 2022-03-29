@@ -206,93 +206,7 @@
 							<!-- Card Body -->
 							<div class="card-body">
 								<div class="row" style = "background-color: lightblue;" id = "displaySearch">
-									<!--REVIEW START BOX 1 --------------->
-									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										<!--Content Start-->
-										<div style="height: 100%">
-												<?php
-												
-												
-												?>
-												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
-												<div class = "namestar">
-													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
-													<div style="margin-bottom: 0.1em;">													
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star"></i>
-														<i class="bi bi-star"></i>
-													</div>	
-												</div>
 									
-									
-										<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
-										</h6>
-																				
-										<table style = "margin-bottom: 0.3rem;">
-											<tr>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<tr>
-										</table>
-										
-										<!--
-											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
-										-->
-										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
-										</div>   
-										<!--Content End-->
-									</div>
-									<!--REVIEW END BOX --------------->
-									<!--REVIEW START BOX 2 --------------->
-									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										<!--Content Start-->
-										<div style="height: 100%">
-												<?php
-												
-												
-												?>
-												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
-
-												<div class = "namestar">
-													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
-													<div style="margin-bottom: 0.1em;">													
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star-fill"></i>
-														<i class="bi bi-star"></i>
-														<i class="bi bi-star"></i>
-													</div>	
-												</div>
-									
-									
-										<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
-										</h6>
-																				
-										<table style = "margin-bottom: 0.3rem;">
-											<tr>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<tr>
-										</table>
-										
-										<!--
-											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
-										-->
-										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</button>
-										</div>   
-										<!--Content End-->
-									</div>
-									<!--REVIEW 2 END--------------->
 								</div>
 							</div>  
 						</div>
@@ -566,8 +480,94 @@ $(document).ready(function(){
 
 
 
+<!----------------------------------------------------------------------------------------------------------------->
+<!--REVIEW START BOX 1 --------------->
+									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+										<!--Content Start-->
+										<div style="height: 100%">
+												<?php
+												
+												
+												?>
+												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+												<div class = "namestar">
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+												</div>
+									
+									
+										<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+										</h6>
+																				
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
+										
+										<!--
+											<input type = 'hidden' name = 'CUid' value = 'RR001'>
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+										-->
+										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
+										</div>   
+										<!--Content End-->
+									</div>
+									<!--REVIEW END BOX --------------->
+									<!--REVIEW START BOX 2 --------------->
+									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+										<!--Content Start-->
+										<div style="height: 100%">
+												<?php
+												
+												
+												?>
+												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
 
-
+												<div class = "namestar">
+													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
+													<div style="margin-bottom: 0.1em;">													
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star-fill"></i>
+														<i class="bi bi-star"></i>
+														<i class="bi bi-star"></i>
+													</div>	
+												</div>
+									
+									
+										<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
+										</h6>
+																				
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
+										
+										<!--
+											<input type = 'hidden' name = 'CUid' value = 'RR001'>
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+										-->
+										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</button>
+										</div>   
+										<!--Content End-->
+									</div>
+									<!--REVIEW 2 END--------------->
 
 
 
