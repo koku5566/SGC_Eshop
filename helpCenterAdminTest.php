@@ -55,7 +55,7 @@
 			
 			<div id = "sellresponse">
 				<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
-				<h6 style = "font-size: 0.8rem">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+				<h6 style = "font-size: 0.8rem">Seller talk u diam diam listen enuf. if not mak kau hijau.
 				</h6>		
 			</div>			
 					
@@ -242,16 +242,21 @@
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
 											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										-->
-										<a  class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
+										<a class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
 									<!--REVIEW END BOX --------------->
-									<!--REVIEW START BOX 1 --------------->
+									<!--REVIEW START BOX 2 --------------->
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										
-											<div style="height: 100%">
+										<!--Content Start-->
+										<div style="height: 100%">
+												<?php
+												
+												
+												?>
 												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
+
 												<div class = "namestar">
 													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Peanut Butter Jelly Jam</h6>
 													<div style="margin-bottom: 0.1em;">													
@@ -264,22 +269,28 @@
 												</div>
 									
 									
-									<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
-									</h6>
-									<table style = "margin-bottom: 0.3rem;">
-										<tr>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-											<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-										<tr>
-									</table>
-									<a style="float: right;">see more...</a>
-											</div>   
+										<h6 class = "divcontent">The land now known as the Shadow Isles was once a beautiful realm, but it was shattered by a magical cataclysm. Black Mist permanently shrouds the isles and the land itself is tainted, corrupted by malevolent sorcery. Living beings that stand upon the Shadow Isles slowly have their life-force leeched from them, which, in turn, draws the insatiable, predatory spirits of the dead. Those who perish within the Black Mist are condemned to haunt this melancholy land for eternity. Worse, the power of the Shadow Isles is waxing stronger with every passing year, allowing the shades of undeath to extend their range and reap souls all across Runeterra.
+										</h6>
+																				
+										<table style = "margin-bottom: 0.3rem;">
+											<tr>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+											<tr>
+										</table>
 										
+										<!--
+											<input type = 'hidden' name = 'CUid' value = 'RR001'>
+											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
+										-->
+										<a  class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</a>
+										</div>   
+										<!--Content End-->
 									</div>
-									<!--REVIEW END BOX --------------->
+									<!--REVIEW 2 END--------------->
 								</div>
 							</div>  
 						</div>
@@ -396,8 +407,112 @@
 <script>
 
 
+$('.hyperlink').onclick(function(){
+  var click = $(this).val();
+  
+  alert(click);
+ });
+
+/*
+$(document).ready(function(){
+
+	load_data();
+
+ function load_data(query, restriction, restriction2)
+ {
+  $.ajax({
+   url:"reviewSearchSeller.php",
+   method:"POST",
+   data:{query:query,
+		restriction:restriction,
+		restriction2:restriction2},
+   success:function(data)
+   {
+	   //alert('success noob')
+    $('#result').html(data);
+	
+   }
+  });
+ }
+
+$('#search_text').keyup(function(){
+  var search = $(this).val();
+  var restriction = $('#selectStar').val();
+   var restriction2 = $('#selectSeller').val();
+  if(search != '')
+  {
+	load_data(search,restriction,restriction2);	  
+  }
+  else
+  {
+   load_data();
+  }
+ });
+
+ //Rating Star
+ $('#selectStar').change(function(){
+  var restriction = $(this).val();
+  var restriction2 = $('#selectSeller').val();
+  if(restriction != 'All')
+  {
+   load_data("", restriction, restriction2);
+ 
+  }
+  else
+  {
+   load_data("","", restriction2);
+  }
+ });
+ //Seller
+ $('#selectSeller').change(function(){
+  var restriction = $('#selectStar').val();
+  var restriction2 = $(this).val();
+  
+  if(restriction2 != 'All')
+  {
+   load_data("", restriction,restriction2);
+	//alert(restriction2);
+  }
+  else
+  {
+   load_data("",restriction, "");
+  }
+ });
+ 
+
+});
+
+//FOR ADD REPLY
+var modalReply = document.getElementById("myModalReply");
+//var btnAddReply = document.getElementById("CUbtnreply");
+var spanReply = document.getElementsByClassName("closeM")[0];
 
 
+spanReply.onclick = function() {
+  modalReply.style.display = "none";
+  
+}
+window.onclick = function(event) {
+  if (event.target == modalReply) {
+     modalReply.style.display = "none";
+  }
+	  
+}
+
+
+
+
+
+
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+    $(this).alert('close');
+});
+$(".alert.alert-danger").delay(3000).slideUp(200, function() {
+    $(this).alert('close');
+});
+
+
+*/
 </script>
 
 
