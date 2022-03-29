@@ -846,7 +846,7 @@
 
     var priceTableArray = [];
 
-    
+    /*
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         if(document.querySelectorAll('.warning').length == 0)
@@ -858,6 +858,7 @@
             alert("Please Enter Distinct Product Variation and Choices");
         }
     });
+    */
     
 
     function hasDuplicates(array) {
