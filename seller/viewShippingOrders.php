@@ -354,8 +354,7 @@ $res_1 = $stmt_1->get_result();
                                          <?php 
                                          }?>  
                                      </div>
-                                </div>
-
+                                
                                     <!--to process to ship orders-->
                                     <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
                                          <!----end Here-->
