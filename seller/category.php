@@ -1,5 +1,5 @@
 <?php
-    require dirname(__DIR__, 1) . '/seller/header.php';
+    require __DIR__ . '/header.php';
 
     if(isset($_POST['addMain'])){
 
@@ -17,6 +17,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -43,7 +45,7 @@
                 //This is for redirect
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/admin/category.php";
+                        window.location.href = window.location.origin + "/seller/category.php";
                     </script>
                 <?php
             }
@@ -75,6 +77,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -101,7 +105,7 @@
                 //This is for redirect
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/admin/category.php";
+                        window.location.href = window.location.origin + "/seller/category.php";
                     </script>
                 <?php
             }
@@ -133,6 +137,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -151,7 +157,7 @@
             //This is for redirect
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/admin/category.php";
+                    window.location.href = window.location.origin + "/seller/category.php";
                 </script>
             <?php
         }
@@ -210,7 +216,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Manage Category List</h5>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -220,7 +226,7 @@
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
-                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
+                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
@@ -229,21 +235,29 @@
                                             $categoryId = $row["combination_id"];
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
+                                            $picName = "";
+                                            if($row["category_pic"] != "")
+                                            {
+                                                $picName = "/img/category/".$row["category_pic"];
+                                            }
+                                            
 
                                             $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1' AND A.main_category =  '$mainCategoryId' ORDER BY B.category_name ASC";
                                             $result_1 = mysqli_query($conn, $sql_1);
         
                                             if (mysqli_num_rows($result_1) > 0) 
                                             {
+                                                
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                            <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                $categoryName
+                                                                <i class=\"fa fa-angle-right\" style=\"float:right;margin-top:5px;\" aria-hidden=\"true\"></i>
+                                                            </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
-                                                            </div>
-                                                            <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,9 +268,12 @@
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                                <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                    $categoryName
+                                                                </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -284,7 +301,7 @@
                                     if(isset($_GET['toggle']))
                                     {
                                         $mainCategoryId = $_GET['toggle'];
-                                        $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY B.category_name ASC";
+                                        $sql = "SELECT B.category_id,B.category_name,B.category_pic, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY B.category_name ASC";
                                         $result = mysqli_query($conn, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
@@ -292,13 +309,22 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $categoryId = $row["category_id"];
                                                 $categoryName = $row["category_name"];
+                                                $picName = "";
+                                                if($row["category_pic"] != "")
+                                                {
+                                                    $picName = "/img/category/".$row["category_pic"];
+                                                }
+
                                                 $toggle = "toggle=".$mainCategoryId."&";
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                                <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                    $categoryName
+                                                                </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?{$toggle}edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?{$toggle}edit=$categoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -461,7 +487,7 @@
 
                                                 if($row["category_pic"] != "")
                                                 {
-                                                    $picName = "/img/product/".$row["category_pic"];
+                                                    $picName = "/img/category/".$row["category_pic"];
                                                 }
                                                 
                                                 echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
@@ -545,6 +571,32 @@
 <!-- /.container-fluid -->
 
 <style>
+    .nav-link{
+        flex: 1 1 auto;
+    }
+
+    .nav-link:hover{
+        color: #a31f37;
+    }
+
+    .editIcon{
+        color: #a31f37;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height:100%;
+        background-color:white;
+        border-radius:0;
+        border:none;
+    }
+
+    .editIcon:hover{
+        color: white;
+        background-color:#a31f37;
+    }
+
+    .p-title{
+        color: #a31f37;
+    }
+
     .image-container{
         width: 80px;
         height: 80px;
@@ -634,7 +686,7 @@
 <script>
 
     window.addEventListener('load', function () {
-        if(<?php echo(isset($_GET['edit'])) ?> == 1)
+        if(<?php echo(isset($_GET['edit']) ? "1" : "0") ?> == 1)
         {
             $("#editCategoryModel").modal('show');
         }
@@ -679,5 +731,5 @@
 </script>
 
 <?php
-    require dirname(__DIR__, 1) . '/seller/footer.php';
+    require __DIR__ . '/footer.php';
 ?>

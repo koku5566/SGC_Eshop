@@ -36,7 +36,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control " type="file" id="uploadBtn" onchange="preview()" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
@@ -98,17 +98,15 @@ div.absolute {
   margin-top: 20px;
 }
 
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
+.clearfix {
+  overflow: auto;
 }
 
-.buttonContainer{
+.buttonContainer {
   text-align:center;
 }
 
-.saveBtn{
+.saveBtn {
   background-color: #0C1236;
   color: white;
   border: none;

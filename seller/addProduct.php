@@ -1,17 +1,20 @@
 <?php
     require __DIR__ . '/header.php';
 
+    
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
+       
         $publish = 1;
         if(isset($_POST['add']))
         {
             $publish = 0;
         }
-         
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $shopId = "0"; // Temporary only, after that need link with session userid 
+
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
@@ -26,7 +29,7 @@
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
-        $subCategoryId = $_POST['subCategoryId'];
+        $subCategoryId = isset($_POST['subCategoryId']) ? $_POST['subCategoryId'] : 0;
         $categoryCombinationId = "";
         
         $productVideo ="";
@@ -39,32 +42,6 @@
             while($row = mysqli_fetch_assoc($result)) {
 
                 $categoryCombinationId = $row['combination_id'];
-            }
-        }
-
-        //Got Variation
-        if($variationType == 1)
-        {
-            if(isset($_POST['variation1Name'],$_POST['variation2Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-                $variation2Name = $_POST['variation2Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variation2NameCol = $_POST['variation2NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
-
-            }
-            else if(isset($_POST['variation1Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
             }
         }
 
@@ -92,7 +69,7 @@
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
-        $sql_insert .= "product_sku, product_name, product_description, product_brand, ";
+        $sql_insert .= "product_id, product_sku, product_name, product_description, product_brand, ";
         $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
         $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
         $sql_insert .= "product_weight, product_length, product_width, product_height, ";
@@ -100,7 +77,7 @@
         $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
         $sql_insert .= "category_id, shop_id";
         $sql_insert .= ") ";
-        $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
+        $sql_insert .= "VALUES ((SELECT CONCAT('P',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'product'), 6, 0))) AS newCombinationId),'$productSKU','$productName','$productDescription','$productBrand', ";
         $sql_insert .= "'$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
@@ -112,21 +89,14 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
+                
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
-                    // Upload file to server 
-
-                    /*
-                    $coverIMG = $_FILES['img']['tmp_name'][$key];
-                    $coverImgContent = addslashes(file_get_contents($coverIMG));
-
-                     // Image db insert sql 
-                     $sql_insert .= "'$coverImgContent', ";
-                     $imgInpCounter++;
-                     */
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
@@ -145,39 +115,61 @@
         $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
         $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
         $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
-        $sql_insert .= "'0', '0'";
+        $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
-            $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
-            mysqli_query($conn, $sql_UpdateId);
-
-            $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql_getID);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $productId = $row['product_id'];
-                }
-            }
-
-            for($i = 0; $i < count($variation1NameCol); $i++)
+            //Got Variation
+            if($variationType == 1)
             {
-                $sql_insertVar  = "INSERT INTO variation (";
-                $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
-                $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                $sql_insertVar .= "product_sold, product_sku";
-                $sql_insertVar .= ") ";
-                $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
-                $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-    
-                mysqli_query($conn, $sql_insertVar);
+                if(isset($_POST['variation1Name'],$_POST['variation2Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+                    $variation2Name = $_POST['variation2Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variation2NameCol = $_POST['variation2NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+
+                }
+                else if(isset($_POST['variation1Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+                }
+
+                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql_getID);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $productId = $row['product_id'];
+                    }
+                }
+
+                for($i = 0; $i < count($variation1NameCol); $i++)
+                {
+                    $sql_insertVar  = "INSERT INTO variation (";
+                    $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
+                    $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
+                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= ") ";
+                    $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
+                    $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
+                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+                    echo($sql_insertVar);
+                    //mysqli_query($conn, $sql_insertVar);
+                }
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -189,8 +181,6 @@
         }
     } 
 
-
-
     $subCategoryArray = array();
 
     //Main Category
@@ -201,23 +191,28 @@
         while($row = mysqli_fetch_assoc($result)) {
             $maincategoryid = $row["category_id"];
             
-            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid'";
+            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
                 $tempArray = array();
 
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
-                    $categoryId = $row_1["sub_category_id"];
-                    $categoryName = $row_1["sub_category_name"];
+                    $categoryId = $row_1["category_id"];
+                    $categoryName = $row_1["category_name"];
 
                     array_push($tempArray,array($categoryId,$categoryName));
                 }
+                $tempCategoryArray = array($maincategoryid => $tempArray);    
+            }
+            else
+            {
+                $tempArray = array();
                 $tempCategoryArray = array($maincategoryid => $tempArray);
             }
-            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
+            $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
-    }                             
+    }                       
 ?>
 
 <!-- Begin Page Content -->
@@ -423,7 +418,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -435,7 +430,7 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="">Please Select a Category</option>
+                                        <option value="" selected>Please Select a Category</option>
                                             <?php
                                             //Main Category
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
@@ -843,7 +838,7 @@
 
     var priceTableArray = [];
 
-    
+    /*
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         if(document.querySelectorAll('.warning').length == 0)
@@ -855,6 +850,7 @@
             alert("Please Enter Distinct Product Variation and Choices");
         }
     });
+    */
     
 
     function hasDuplicates(array) {

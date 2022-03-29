@@ -23,7 +23,23 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 
+/* For To Ship  */
+ $sql_1 = "SELECT 
+myOrder.order_id,
+myOrder.tracking_status
+product.product_name,
+product.product_qty,                                                
+product.product_cover_picture
+FROM 
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN product ON orderDetails.product_id = product.product_id";
+
+$stmt_1 = $conn-> prepare($sql_1);
+$stmt_1->execute();
+$res_1 = $stmt_1->get_result();
 ?>
+                            
 
 
 
@@ -185,7 +201,7 @@ $result = $stmt->get_result();
                             </div>
                         </div>
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
-
+                                
                             <?php 
                             while ($row = $result->fetch_assoc()) {
                             ?>
@@ -230,9 +246,8 @@ $result = $stmt->get_result();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--End of Order Item-->
-                            <?php 
+                             <!--End of Order Item-->
+                                <?php 
                                 }?>
 
                             <!--Pick Up Order Item-->
@@ -264,51 +279,34 @@ $result = $stmt->get_result();
                                     </div>
                                 </div>
                             </div>
-                            <!--End of Order Item-->
-
-                        </div>
-                        <!--------------------------------To ship--------------------------------------->
-                        <!--------------------------------------PHP----------------------------------------->
-                        <?php
-                                                $sql_1 = "SELECT 
-                                                myOrder.order_id,
-                                                myOrder.tracking_status
-                                                product.product_name,
-                                                product.product_qty,
-                                                product.product_cover_picture
-                                                FROM 
-                                                myOrder
-                                                JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-                                                JOIN product ON orderDetails.product_id = product.product_id";
-
-                                                $stmt_1 = $conn-> prepare($sql_1);
-                                                $stmt_1->execute();
-                                                $res = $stmt_1->get_result();
-                                            ?>
-                        <!------------------------------------END OF CODE---------------------------------->
-                        <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                            <!--Pills tab--->
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all"
-                                        role="tab" aria-controls="pills-all" aria-selected="true">All</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
-                                        href="#pills-to-process" role="tab" aria-controls="pills-to-process"
-                                        aria-selected="false">To Process</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
-                                        href="#pills-processed" role="tab" aria-controls="pills-processed"
-                                        aria-selected="false">Processed</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="pills-tabContent">
-                                <!--All to ship orders-->
-                                <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                                    aria-labelledby="pills-all-tab">
-                                    <div class="card-body" style="padding-left: 0px;">
+                            <!--------------------------------To ship--------------------------------------->
+                            
+                            <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
+                                <!--Pills tab--->
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill"
+                                            href="#pills-all" role="tab" aria-controls="pills-all"
+                                            aria-selected="true">All</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
+                                            href="#pills-to-process" role="tab" aria-controls="pills-to-process"
+                                            aria-selected="false">To Process</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
+                                            href="#pills-processed" role="tab" aria-controls="pills-processed"
+                                            aria-selected="false">Processed</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <!--All to ship orders-->
+                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+                                        aria-labelledby="pills-all-tab">
+                                        <?php 
+                                            while ($row = $res_1->fetch_assoc()) {
+                                        ?>
                                         <div class="card-body" style="padding-left: 0px;">
                                             <div class="card" style="padding-right: 0px;">
                                                 <div class="card-header">
@@ -385,7 +383,14 @@ $result = $stmt->get_result();
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                         </div>
+                                         <?php 
+                                         }?>  
+                                     </div>
+                                
+                                    <!--to process to ship orders-->
+                                    <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
+                                         <!----end Here-->
                                     </div>
                                 </div>
 
