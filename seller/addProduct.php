@@ -68,6 +68,9 @@
                 $variationSKU = $_POST['variationSKU[]'];
             }
         }
+        else{
+            $variation1NameCol = "";
+        }
 
         if($productType == 0)
         {
@@ -143,7 +146,6 @@
         $sql_insert .= "'0', '0'";
         $sql_insert .= ") ";
 
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
             $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
             mysqli_query($conn, $sql_UpdateId);
@@ -183,8 +185,6 @@
             echo '</script>';
         }
     } 
-
-
 
     $subCategoryArray = array();
 
