@@ -38,8 +38,8 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 		   WHERE disable_date IS NULL && status = 0 && seller_id = '$product' $rr $rr2
 		   ORDER BY rr_id;";
 		*/   
-	echo "Rating = $rr |";
-	echo "Product = $rr2 ";
+	//echo "Rating = $rr |";
+	//echo "Product = $rr2 ";
 
 
 $result = mysqli_query($conn, $query);
