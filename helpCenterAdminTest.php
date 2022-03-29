@@ -172,11 +172,11 @@
 					<div class="col">
 						  <select class="form-control" id = "selectStar">
 							  <option value = "All">All* (107)</option>
-							  <option value = "P000005">5 Star</option>
-							  <option value = "P000004">4 Star</option>
-							  <option value = "P000003">3 Star</option>	
-							  <option value = "P000002">2 Star</option>
-							  <option value = "P000001">1 Star</option>			  
+							  <option value = "5">5 Star</option>
+							  <option value = "4">4 Star</option>
+							  <option value = "3">3 Star</option>	
+							  <option value = "2">2 Star</option>
+							  <option value = "1">1 Star</option>			  
 						  </select>
 					</div>
 					<div class="col">						
