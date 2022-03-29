@@ -74,12 +74,12 @@ if(mysqli_num_rows($result) > 0)
 			
 			<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 			<div class = "namestar">
-				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["u.name"].'</h6>
+				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["name"].'</h6>
 				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
 			</div>
 
 
-	<h6 class = "divcontent">'.$row["rr.message"].'</h6>
+	<h6 class = "divcontent">'.$row["message"].'</h6>
 	
 											
 	<table style = "margin-bottom: 0.3rem;">
@@ -92,7 +92,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr.rr_id"].'">see more...</button>
+	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr_id"].'">see more...</button>
 	</div>   
 	
 </div>
