@@ -19,7 +19,7 @@
                 //$fileName = basename($_FILES['img']['name'][$key]); 
                 $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
                 $fileName = md5($date->format('Y-m-d H:i:s:u'));
-                $targetFilePath = $targetDir.$fileName; 
+                $targetFilePath = $targetDir.basename($fileName); 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
