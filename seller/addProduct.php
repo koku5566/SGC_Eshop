@@ -120,6 +120,7 @@
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
+                    echo("checking");
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         echo("gotca");
                         $sql_insert .= "'$fileName', ";
