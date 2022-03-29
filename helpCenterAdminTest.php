@@ -410,7 +410,7 @@
 $('.hyperlink').onclick(function(){
   var click = $(this).val();
   
-  alert(click);
+  console.log(click);
  });
 
 /*
