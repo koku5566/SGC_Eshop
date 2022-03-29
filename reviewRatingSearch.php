@@ -18,10 +18,16 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["rest
 
 if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
 	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
+	if($_POST["restriction2"] == "1"){
+		$rr2 = " && message IS NOT NULL && pic1 IS NULL && pic2 IS NULL && pic3 IS NULL && pic4 IS NULL && pic5 IS NULL";
+	}
+	if($_POST["restriction2"] == "2"){
+		$rr2 = " && message IS NULL && pic1 IS NOT NULL || pic2 IS NOT NULL || pic3 IS NOT NULL || pic4 IS NOT NULL || pic5 IS NOT NULL";
 	
+	}
 	//$rr2 = " && product_id = '$restriction2' ";
 	
-	$rr2 = "";
+	
 }else{
 	$rr2 = "";
 }
@@ -32,14 +38,9 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 		  WHERE rr.disable_date IS NULL && rr.product_id = '$product' $rr $rr2
 		  ORDER BY rr.rr_id";
 
-/*
- $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
-		   FROM reviewRating 
-		   WHERE disable_date IS NULL && status = 0 && seller_id = '$product' $rr $rr2
-		   ORDER BY rr_id;";
-		*/   
-	//echo "Rating = $rr |";
-	//echo "Product = $rr2 ";
+  
+	echo "Rating = $rr |";
+	echo "Product = $rr2 ";
 
 
 $result = mysqli_query($conn, $query);
@@ -56,54 +57,46 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="bi bi-star"></i> ';
 		 }
 	 }
-	 /*
-  $output .= '
-   <tr colspan="2">
-    <td><div class = "bengi"><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></div>				
-	</td>	
-	<td>'.$row["rr_id"].'</td>											
-    <td>'.$row["product_id"].'</td>
-    <td>
-	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
-	'.$row["message"].'
-	</td>
-	<td><form action ="" method = "POST" class = "baka">
-		<input type="hidden" name="uimg" value="'.$row["rr_id"].'">	
-		<input type="submit" name ="sktfaker" value = "Reply" class="btn btn-danger"></form></td>
-   </tr>
-  ';
-  */
+	 
+	 $profilePicR = '';
+	 if($row["profile_picture"] === null){
+		 $profilePicR .= '<img src = "https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6" class = "reviewprofilepic">';
+	 }else{
+		 $profilePicR .= '<img src = "https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg" class = "reviewprofilepic">';
+	 }
+	 
+	 
+	 $picR = '';
+	 for($i=1; $i<=5; $i++){
+		 if($row["pic$i"] === null){
+			 $picR .='';
+			 /*
+			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
+			 */
+		 }else{
+			 $picR .='<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>';
+		 }
+			 
+	 }
+	 
   
   $output .='<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 			<div style="height: 100%">
-			
-			<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+			'.$profilePicR.'
 			<div class = "namestar">
-				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
-				<div style="margin-bottom: 0.1em;">													
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star"></i>
-					<i class="bi bi-star"></i>
-				</div>	
+				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["name"].'</h6>
+				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
 			</div>
 
-
-	<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
-	</h6>
-											
+	<h6 class = "divcontent">'.$row["message"].'</h6>
+										
 	<table style = "margin-bottom: 0.3rem;">
 		<tr>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-			<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+			'.$picR.'
 		<tr>
 	</table>
 	
-	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
+	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr_id"].'">see more...</button>
 	</div>   
 	
 </div>

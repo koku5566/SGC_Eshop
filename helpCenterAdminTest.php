@@ -172,11 +172,11 @@
 					<div class="col">
 						  <select class="form-control" id = "selectStar">
 							  <option value = "All">All* (107)</option>
-							  <option value = "P000005">5 Star</option>
-							  <option value = "P000004">4 Star</option>
-							  <option value = "P000003">3 Star</option>	
-							  <option value = "P000002">2 Star</option>
-							  <option value = "P000001">1 Star</option>			  
+							  <option value = "5">5 Star</option>
+							  <option value = "4">4 Star</option>
+							  <option value = "3">3 Star</option>	
+							  <option value = "2">2 Star</option>
+							  <option value = "1">1 Star</option>			  
 						  </select>
 					</div>
 					<div class="col">						
@@ -301,8 +301,8 @@
 	-webkit-text-fill-color: orange
 }
 .imgReply{
-	width: 75%;
-	height: 75%;
+	width: 2.3rem;
+	height: 2.3rem;
 	object-fit: cover;
 }
 .pp{
@@ -367,30 +367,18 @@ $(document).ready(function(){
  $('#selectStar').change(function(){
   var restriction = $(this).val();
   var restriction2 = $('#selectCM').val();
-  if(restriction != 'All')
-  {
+  
    load_data_display(restriction, restriction2);
  
-  }
-  else
-  {
-   load_data_display("", restriction2);
-  }
  });
  
  $('#selectCM').change(function(){
   var restriction = $('#selectStar').val();
   var restriction2 = $(this).val();
   
-  if(restriction2 != 'All')
-  {
    load_data_display(restriction,restriction2);
-	//alert(restriction2);
-  }
-  else
-  {
-   load_data_display(restriction, "");
-  }
+	
+ 
  });
  
  
@@ -481,14 +469,11 @@ $(document).ready(function(){
 
 
 <!----------------------------------------------------------------------------------------------------------------->
-<!--REVIEW START BOX 1 --------------->
+<!--REVIEW START BOX 1 
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										<!--Content Start-->
+										
 										<div style="height: 100%">
-												<?php
 												
-												
-												?>
 												<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 												<div class = "namestar">
 													<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
@@ -515,23 +500,16 @@ $(document).ready(function(){
 											<tr>
 										</table>
 										
-										<!--
-											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
-										-->
+										
 										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
 										</div>   
-										<!--Content End-->
+										
 									</div>
-									<!--REVIEW END BOX --------------->
-									<!--REVIEW START BOX 2 --------------->
+									
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-										<!--Content Start-->
+										
 										<div style="height: 100%">
-												<?php
 												
-												
-												?>
 												<img src = "https://cdn1.dotesports.com/wp-content/uploads/2019/10/08064645/image-7.png" class = "reviewprofilepic">
 
 												<div class = "namestar">
@@ -559,15 +537,12 @@ $(document).ready(function(){
 											<tr>
 										</table>
 										
-										<!--
-											<input type = 'hidden' name = 'CUid' value = 'RR001'>
-											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
-										-->
+										
 										<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</button>
 										</div>   
-										<!--Content End-->
+										
 									</div>
-									<!--REVIEW 2 END--------------->
+								--------------->
 
 
 
