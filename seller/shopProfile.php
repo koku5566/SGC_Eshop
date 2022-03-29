@@ -102,6 +102,8 @@ div.absolute {
   content: "";
   clear: both;
   display: table;
+  width: 100px;
+  height: 100px;
 }
 
 .buttonContainer{
