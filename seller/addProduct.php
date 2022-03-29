@@ -1,14 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
+       
         $publish = 1;
         if(isset($_POST['add']))
         {
             $publish = 0;
         }
-         
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
@@ -26,7 +27,7 @@
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
-        $subCategoryId = $_POST['subCategoryId'];
+        $subCategoryId = isset($_POST['subCategoryId']) ? $_POST['subCategoryId'] : 0;
         $categoryCombinationId = "";
         
         $productVideo ="";
@@ -112,22 +113,16 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
+                //$fileName = basename($_FILES['img']['name'][$key]); 
+                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
+                $fileName = md5($date->format('Y-m-d H:i:s:u'));
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
-                    // Upload file to server 
-
-                    /*
-                    $coverIMG = $_FILES['img']['tmp_name'][$key];
-                    $coverImgContent = addslashes(file_get_contents($coverIMG));
-
-                     // Image db insert sql 
-                     $sql_insert .= "'$coverImgContent', ";
-                     $imgInpCounter++;
-                     */
+                    echo("checking");
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
@@ -177,7 +172,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -201,23 +196,28 @@
         while($row = mysqli_fetch_assoc($result)) {
             $maincategoryid = $row["category_id"];
             
-            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid'";
+            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
                 $tempArray = array();
 
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
-                    $categoryId = $row_1["sub_category_id"];
-                    $categoryName = $row_1["sub_category_name"];
+                    $categoryId = $row_1["category_id"];
+                    $categoryName = $row_1["category_name"];
 
                     array_push($tempArray,array($categoryId,$categoryName));
                 }
+                $tempCategoryArray = array($maincategoryid => $tempArray);    
+            }
+            else
+            {
+                $tempArray = array();
                 $tempCategoryArray = array($maincategoryid => $tempArray);
             }
-            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
+            $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
-    }                             
+    }                       
 ?>
 
 <!-- Begin Page Content -->
@@ -423,7 +423,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -435,7 +435,7 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="">Please Select a Category</option>
+                                        <option value="" selected>Please Select a Category</option>
                                             <?php
                                             //Main Category
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
@@ -843,7 +843,7 @@
 
     var priceTableArray = [];
 
-    
+    /*
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         if(document.querySelectorAll('.warning').length == 0)
@@ -855,6 +855,7 @@
             alert("Please Enter Distinct Product Variation and Choices");
         }
     });
+    */
     
 
     function hasDuplicates(array) {

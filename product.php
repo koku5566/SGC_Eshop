@@ -5,7 +5,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-                <nav aria-label="breadcrumb">
+                <nav aria-label="breadcrumb" hidden>
                     <ol class="breadcrumb">
                         <?php 
                             $productId = $_GET['id'];
