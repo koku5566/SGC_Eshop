@@ -43,8 +43,8 @@
                                                         ");
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
 
-                                                            $subCategoryId = $row["subCategoryId"];
-                                                            $subCategoryName = $row["subCategoryName"];
+                                                            $subCategoryId = $row_1["subCategoryId"];
+                                                            $subCategoryName = $row_1["subCategoryName"];
                                                             $subPicName = "";
                                                             echo("
                                                                 <li class=\"menu-item\">
