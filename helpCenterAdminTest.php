@@ -242,7 +242,7 @@
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
 											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										-->
-										<a class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
+										<a type = "button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
@@ -286,7 +286,7 @@
 											<input type = 'hidden' name = 'CUid' value = 'RR001'>
 											<input type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalCenter" value= "see more...">
 										-->
-										<a  class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</a>
+										<a type= "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">see more...</a>
 										</div>   
 										<!--Content End-->
 									</div>
