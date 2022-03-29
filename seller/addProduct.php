@@ -208,8 +208,8 @@
                 $tempArray = array();
 
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
-                    $categoryId = $row_1["sub_category_id"];
-                    $categoryName = $row_1["sub_category_name"];
+                    $categoryId = $row_1["category_id"];
+                    $categoryName = $row_1["category_name"];
 
                     array_push($tempArray,array($categoryId,$categoryName));
                 }

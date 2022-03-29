@@ -210,7 +210,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Manage Category List</h5>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
