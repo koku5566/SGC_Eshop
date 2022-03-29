@@ -19,16 +19,23 @@
                                             if (mysqli_num_rows($result) > 0) {
                                                 while($row = mysqli_fetch_assoc($result)) {
                                                     $maincategoryid = $row["category_id"];
-                                                    
+                                                    $categoryName = $row["category_name"];
+                                                    $picName = "";
+                                                    if($row["category_pic"] != "")
+                                                    {
+                                                        $picName = "/img/category/".$row["category_pic"];
+                                                    }
+
                                                     $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
                                                     if (mysqli_num_rows($result_1) > 0) {
+                                                        
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"{$domain_link}/category.php?id=".$row['category_name']."\" class=\"nav-link\">
-                                                                <img src=\"".$row['category_pic']."\" style=\"width:25px;margin-right:5px;\">
-                                                                ".$row['category_name']."
+                                                                <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                                <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                $categoryName
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
 
                                                                 </a>
@@ -36,9 +43,12 @@
                                                         ");
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
 
+                                                            $subCategoryId = $row["subCategoryId"];
+                                                            $subCategoryName = $row["subCategoryName"];
+                                                            $subPicName = "";
                                                             echo("
                                                                 <li class=\"menu-item\">
-                                                                    <a href=\"{$domain_link}/category.php?id=".$row_1['subCategoryName']."\" class=\"dropdown-item\">".$row_1['subCategoryName']."</a>
+                                                                    <a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
                                                                 </li>
                                                             ");
                                                         }
@@ -52,9 +62,9 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"{$domain_link}/category.php?id=".$row['category_name']."\" class=\"nav-link\">
-                                                        <img src=\"".$row['category_pic']."\" style=\"width:25px;margin-right:5px;\">
-                                                        ".$row['category_name']."
+                                                        <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                        <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                        $categoryName
                                                         </a>
                                                         </li>
                                                         ");
