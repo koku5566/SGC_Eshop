@@ -222,7 +222,7 @@
 	  <div class="col-7" style = "background-color:;">
 		  
 		  
-		  <div class="container" style = "margin-top: 2.5rem;">
+		  <div class="container" style = "margin-top: 2.2rem;">
 				<div class="row">
 					<div class="col">
 						  <select class="form-control" id = "selectRating">
@@ -255,7 +255,7 @@
 				<!-- List All Product -->
 				<div class="card-body">
 					<div>
-						<h5 style ="text-align:center">Review</h5>
+						<h2 style ="text-align:center">Review</h2>
 					</div>
 						<div class="row">
 							<!-- Card Body -->
