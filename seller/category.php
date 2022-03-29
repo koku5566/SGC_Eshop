@@ -47,7 +47,7 @@
                 //This is for redirect
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/seller/category.php";
+                        //window.location.href = window.location.origin + "/seller/category.php";
                     </script>
                 <?php
             }
