@@ -89,12 +89,10 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                //$fileName = basename($_FILES['img']['name'][$key]); 
-                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
-                $fileName = md5($date->format('Y-m-d H:i:s:u'));
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
-                echo($targetFilePath);
-                echo("<br>");
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 echo($fileType);
