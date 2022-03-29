@@ -120,10 +120,6 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
-
-                    $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
-                    $filename = md5($date->format('Y-m-d H:i:s:u')));
-
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
