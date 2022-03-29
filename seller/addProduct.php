@@ -222,7 +222,8 @@
             }
             $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
         }
-    }                             
+    }    
+    echo(var_dump($subCategoryArray));                        
 ?>
 
 <!-- Begin Page Content -->
