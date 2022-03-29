@@ -17,7 +17,8 @@
 ?>
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["addTicketSubmit"])){
+    //--------------Add new ticket type------------------------
+    if(isset($_POST["addTicketSubmit"])){
         $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketName"]));
         $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["capacity"]));
         $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["price"]));
@@ -64,6 +65,31 @@
                     mysqli_stmt_close($stmt);
             }
           }
+
+
+    //--------------Delete Ticket------------------------
+    if(isset($_POST["deleteBtn"])){
+        $ticketID = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketIDHide"]));
+
+        $sql = "DELETE FROM `ticketType` WHERE  `ticketType`=?";
+
+        if($stmt = mysqli_prepare($conn, $sql)){
+            mysqli_stmt_bind_param($stmt, 'i',$ticketID); 
+        
+            mysqli_stmt_execute($stmt);
+          
+            if(mysqli_stmt_affected_rows($stmt) == 1)	
+            {
+              echo "<script>alert('Delete successfully');</script>";
+            }
+            else
+            {
+              echo "<script>alert('Fail to Delete');</script>";
+            }
+        
+            mysqli_stmt_close($stmt);
+        }
+    }
 
 ?>
 
@@ -137,7 +163,7 @@
                         <h4 class="modal-title">Edit Ticket Type</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <div style="margin-bottom: 20px;">
                                 <h5>Ticket Name</h5><input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
                                 <input class="form-control" id="editTicketID" name="editTicketID" type="hidden" placeholder="Ticket Name">
@@ -161,9 +187,9 @@
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <form>
+                            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                                 <input class="form-control" id="ticketIDHide" name="ticketIDHide" type="hidden" placeholder="Ticket Name">
-                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "">Delete</button>
+                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "deleteBtn">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -205,12 +231,12 @@
 
                                     echo("
                                        <tr>
-                                        <td>\"".$row['ticket_name']."\"</td>
-                                        <td>\"".$row['capacity']."\"</td>
-                                        <td>\"".$row['sales_start']."\"</td>
-                                        <td>\"".$row['sales_end']."\"</td>
-                                        <td>\"".$row['price']."\"</td>
-                                        <td>\"".$row['ticketType_id']."\"</td>
+                                        <td>".$row['ticket_name']."</td>
+                                        <td>".$row['capacity']."</td>
+                                        <td>".$row['sales_start']."</td>
+                                        <td>".$row['sales_end']."</td>
+                                        <td>".$row['price']."</td>
+                                        <td>".$row['ticketType_id']."</td>
                                         <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editTicket_modal\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
                                         </tr>
                                     ");

@@ -13,6 +13,8 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $shopId = "0"; // Temporary only, after that need link with session userid 
+
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
@@ -43,32 +45,6 @@
             }
         }
 
-        //Got Variation
-        if($variationType == 1)
-        {
-            if(isset($_POST['variation1Name'],$_POST['variation2Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-                $variation2Name = $_POST['variation2Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variation2NameCol = $_POST['variation2NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
-
-            }
-            else if(isset($_POST['variation1Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
-            }
-        }
-
         if($productType == 0)
         {
             //Shipping
@@ -93,7 +69,7 @@
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
-        $sql_insert .= "product_sku, product_name, product_description, product_brand, ";
+        $sql_insert .= "product_id, product_sku, product_name, product_description, product_brand, ";
         $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
         $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
         $sql_insert .= "product_weight, product_length, product_width, product_height, ";
@@ -101,7 +77,7 @@
         $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
         $sql_insert .= "category_id, shop_id";
         $sql_insert .= ") ";
-        $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
+        $sql_insert .= "VALUES ((SELECT CONCAT('P',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'product'), 6, 0))) AS newCombinationId),'$productSKU','$productName','$productDescription','$productBrand', ";
         $sql_insert .= "'$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
@@ -117,16 +93,21 @@
                 $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
                 $fileName = md5($date->format('Y-m-d H:i:s:u'));
                 $targetFilePath = $targetDir.$fileName; 
+                echo($targetFilePath);
+                echo("<br>");
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                echo($fileType);
+                /*
+                echo(in_array($fileType, $allowTypes));
                 if(in_array($fileType, $allowTypes)){ 
-                    echo("checking");
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
                 }
+                */
             } 
         }
 
@@ -140,35 +121,57 @@
         $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
         $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
         $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
-        $sql_insert .= "'0', '0'";
+        $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
-            $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
-            mysqli_query($conn, $sql_UpdateId);
-
-            $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql_getID);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $productId = $row['product_id'];
-                }
-            }
-
-            for($i = 0; $i < count($variation1NameCol); $i++)
+            //Got Variation
+            if($variationType == 1)
             {
-                $sql_insertVar  = "INSERT INTO variation (";
-                $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
-                $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                $sql_insertVar .= "product_sold, product_sku";
-                $sql_insertVar .= ") ";
-                $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
-                $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-    
-                mysqli_query($conn, $sql_insertVar);
+                if(isset($_POST['variation1Name'],$_POST['variation2Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+                    $variation2Name = $_POST['variation2Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variation2NameCol = $_POST['variation2NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+
+                }
+                else if(isset($_POST['variation1Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+                }
+
+                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql_getID);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $productId = $row['product_id'];
+                    }
+                }
+
+                for($i = 0; $i < count($variation1NameCol); $i++)
+                {
+                    $sql_insertVar  = "INSERT INTO variation (";
+                    $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
+                    $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
+                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= ") ";
+                    $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
+                    $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
+                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+        
+                    mysqli_query($conn, $sql_insertVar);
+                }
             }
             ?>
                 <script type="text/javascript">
@@ -183,8 +186,6 @@
             echo '</script>';
         }
     } 
-
-
 
     $subCategoryArray = array();
 
