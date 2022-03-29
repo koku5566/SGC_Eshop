@@ -16,9 +16,10 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                //$fileName = basename($_FILES['img']['name'][$key]); 
-                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
-                $fileName = basename(md5($date->format('Y-m-d H:i:s:u')));
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
+                echo($fileName);
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -45,7 +46,7 @@
                 //This is for redirect
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/seller/category.php";
+                        //window.location.href = window.location.origin + "/seller/category.php";
                     </script>
                 <?php
             }
