@@ -1,14 +1,16 @@
 <?php
     require __DIR__ . '/header.php';
 
+    echo("why");
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
+       
         $publish = 1;
         if(isset($_POST['add']))
         {
             $publish = 0;
         }
-         
+        echo("in");
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
@@ -26,7 +28,7 @@
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
-        $subCategoryId = $_POST['subCategoryId'];
+        $subCategoryId = isset($_POST['subCategoryId']) ? $_POST['subCategoryId'] : 0;
         $categoryCombinationId = "";
         
         $productVideo ="";
@@ -40,6 +42,9 @@
 
                 $categoryCombinationId = $row['combination_id'];
             }
+        }
+        else {
+            echo("1");
         }
 
         //Got Variation
@@ -112,21 +117,14 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
+                //$fileName = basename($_FILES['img']['name'][$key]); 
+                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
+                $fileName = md5($date->format('Y-m-d H:i:s:u'));
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     // Upload file to server 
-
-                    /*
-                    $coverIMG = $_FILES['img']['tmp_name'][$key];
-                    $coverImgContent = addslashes(file_get_contents($coverIMG));
-
-                     // Image db insert sql 
-                     $sql_insert .= "'$coverImgContent', ";
-                     $imgInpCounter++;
-                     */
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
@@ -177,7 +175,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -428,7 +426,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" value="<?php echo(isset($_POST['productName']) ? $_POST['productName'] : "sad");?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -848,7 +846,7 @@
 
     var priceTableArray = [];
 
-    
+    /*
     document.getElementById('productForm').addEventListener('submit', function(evt){
         evt.preventDefault();
         if(document.querySelectorAll('.warning').length == 0)
@@ -860,6 +858,7 @@
             alert("Please Enter Distinct Product Variation and Choices");
         }
     });
+    */
     
 
     function hasDuplicates(array) {
