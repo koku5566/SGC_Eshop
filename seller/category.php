@@ -17,8 +17,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
-                echo($fileName);
-                $fileName = DateTime::createFromFormat('U.u', number_format(microtime(true), 6, '.', ''));
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 echo($fileName);
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
