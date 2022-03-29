@@ -100,12 +100,10 @@
                 echo(in_array($fileType, $allowTypes));
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
                 }
-                
             } 
         }
 
@@ -122,7 +120,55 @@
         $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
+        if(mysqli_query($conn, $sql_insert)){
+            //Got Variation
+            if($variationType == 1)
+            {
+                if(isset($_POST['variation1Name'],$_POST['variation2Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+                    $variation2Name = $_POST['variation2Name'];
 
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variation2NameCol = $_POST['variation2NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+
+                }
+                else if(isset($_POST['variation1Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol[]'];
+                    $variationPrice = $_POST['variationPrice[]'];
+                    $variationStock = $_POST['variationStock[]'];
+                    $variationSKU = $_POST['variationSKU[]'];
+                }
+
+                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql_getID);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $productId = $row['product_id'];
+                    }
+                }
+
+                
+            }
+            ?>
+                <script type="text/javascript">
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
+                </script>
+            <?php
+        }
+        else
+        {
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Add Product")';
+            echo '</script>';
+        }
     } 
 
     $subCategoryArray = array();
