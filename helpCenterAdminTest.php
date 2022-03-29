@@ -407,7 +407,7 @@
 <script>
 
 
-$('.hyperlink').onclick(function(){
+$('.hyperlink').click(function(){
   var click = $(this).val();
   
   console.log(click);
