@@ -32,12 +32,7 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 		  WHERE rr.disable_date IS NULL && rr.product_id = '$product' $rr $rr2
 		  ORDER BY rr.rr_id";
 
-/*
- $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
-		   FROM reviewRating 
-		   WHERE disable_date IS NULL && status = 0 && seller_id = '$product' $rr $rr2
-		   ORDER BY rr_id;";
-		*/   
+  
 	echo "Rating = $rr |";
 	echo "Product = $rr2 ";
 
@@ -79,19 +74,13 @@ if(mysqli_num_rows($result) > 0)
 			
 			<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 			<div class = "namestar">
-				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
-				<div style="margin-bottom: 0.1em;">													
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star"></i>
-					<i class="bi bi-star"></i>
-				</div>	
+				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["u.name"].'</h6>
+				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
 			</div>
 
 
-	<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
-	</h6>
+	<h6 class = "divcontent">'.$row["rr.message"].'</h6>
+	
 											
 	<table style = "margin-bottom: 0.3rem;">
 		<tr>
@@ -103,7 +92,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
+	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr.rr_id"].'">see more...</button>
 	</div>   
 	
 </div>
