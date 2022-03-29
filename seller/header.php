@@ -178,6 +178,7 @@
                         <a class="collapse-item" href="myProduct.php">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add New Product</a>
                         <a class="collapse-item" href="violationProduct.php">Product Violations</a>
+                        <a class="collapse-item" href="category.php">Category Management (Admin)</a>
                     </div>
                 </div>
             </li>
