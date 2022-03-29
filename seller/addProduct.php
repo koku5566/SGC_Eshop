@@ -213,8 +213,7 @@
 
                     array_push($tempArray,array($categoryId,$categoryName));
                 }
-                $tempCategoryArray = array($maincategoryid => $tempArray);
-                echo(var_dump($tempCategoryArray));          
+                $tempCategoryArray = array($maincategoryid => $tempArray);    
             }
             else
             {
@@ -223,8 +222,7 @@
             }
             $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
         }
-    }    
-    echo(var_dump($subCategoryArray));                        
+    }                       
 ?>
 
 <!-- Begin Page Content -->
