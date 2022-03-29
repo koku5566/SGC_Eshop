@@ -52,7 +52,18 @@
 		
 			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
 			</h6>
-			<a type = "submit" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">Reply</a>
+			<a  class="hyperlink" value= "S001">Reply</a>
+			
+			<div>
+				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">S001</h6>	
+				<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+				</h6>		
+			</div>			
+					
+		
+		
+				
+			
 						<!---->
 						<div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
