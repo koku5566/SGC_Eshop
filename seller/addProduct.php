@@ -201,23 +201,28 @@
         while($row = mysqli_fetch_assoc($result)) {
             $maincategoryid = $row["category_id"];
             
-            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid'";
+            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
             $result_1 = mysqli_query($conn, $sql_1);
 
             if (mysqli_num_rows($result_1) > 0) {
                 $tempArray = array();
 
                 while($row_1 = mysqli_fetch_assoc($result_1)) {
-                    $categoryId = $row_1["sub_category_id"];
-                    $categoryName = $row_1["sub_category_name"];
+                    $categoryId = $row_1["category_id"];
+                    $categoryName = $row_1["category_name"];
 
                     array_push($tempArray,array($categoryId,$categoryName));
                 }
+                $tempCategoryArray = array($maincategoryid => $tempArray);    
+            }
+            else
+            {
+                $tempArray = array();
                 $tempCategoryArray = array($maincategoryid => $tempArray);
             }
-            $subCategoryArray = array_merge($subCategoryArray,$tempCategoryArray);
+            $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
-    }                             
+    }                       
 ?>
 
 <!-- Begin Page Content -->
@@ -435,7 +440,7 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="">Please Select a Category</option>
+                                        <option value="" selected>Please Select a Category</option>
                                             <?php
                                             //Main Category
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";

@@ -23,9 +23,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 
-?>
-
-<?php
+/* For To Ship  */
  $sql_1 = "SELECT 
 myOrder.order_id,
 myOrder.tracking_status
@@ -197,7 +195,7 @@ $res_1 = $stmt_1->get_result();
                                 </div>
                             </div>
                         </div>
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 
                             while ($row = $result->fetch_assoc()) {
@@ -234,7 +232,7 @@ $res_1 = $stmt_1->get_result();
                                         </div>
                                     </div>
                                 </div>
-                                <!--End of Order Item-->
+                             <!--End of Order Item-->
                                 <?php 
                                 }?>
                                                                 
@@ -298,7 +296,6 @@ $res_1 = $stmt_1->get_result();
                                             while ($row = $res_1->fetch_assoc()) {
                                         ?>
                                         <div class="card-body" style="padding-left: 0px;">
-                                        <div class="card-body" style="padding-left: 0px;">
                                             <div class="card" style="padding-right: 0px;">
                                                 <div class="card-header">
                                                     <h5 class="mb-0">Buyer&#39;s Name</h5>
@@ -354,8 +351,7 @@ $res_1 = $stmt_1->get_result();
                                          <?php 
                                          }?>  
                                      </div>
-                                </div>
-
+                                
                                     <!--to process to ship orders-->
                                     <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
                                          <!----end Here-->
