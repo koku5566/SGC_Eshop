@@ -227,7 +227,7 @@
 					<div class="col">
 						  <select class="form-control" id = "selectRating">
 							  <option value = "All">All* (107)</option>
-							  <option value = "P000005">5 Star</option>
+							  <option value = "P000005" data-icon="glyphicon-star">5 Star</option>
 							  <option value = "P000004">4 Star</option>
 							  <option value = "P000003">3 Star</option>	
 							  <option value = "P000002">2 Star</option>
