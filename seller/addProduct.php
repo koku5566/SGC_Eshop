@@ -98,6 +98,7 @@
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 echo($fileType);
+                /*
                 echo(in_array($fileType, $allowTypes));
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
@@ -106,6 +107,7 @@
                         $imgInpCounter++;
                     }
                 }
+                */
             } 
         }
 
