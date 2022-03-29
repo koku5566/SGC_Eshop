@@ -6,7 +6,7 @@
 
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
@@ -394,14 +394,7 @@
 }
 </style>
 <script>
-var nami1 = document.getElementsByClassName("nami")[0];
-var nami2 = document.getElementsByClassName("nami")[1];
-nami1.onclick = function() {
-  console.log(nami1.value);
-}
-nami2.onclick = function() {
-  console.log(nami2.value);
-}
+
 
 
 
