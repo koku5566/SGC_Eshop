@@ -8,7 +8,7 @@
         {
             $publish = 0;
         }
-         
+        echo("in");
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
