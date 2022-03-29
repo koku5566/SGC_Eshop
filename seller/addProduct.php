@@ -26,7 +26,7 @@
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
-        $subCategoryId = $_POST['subCategoryId'];
+        $subCategoryId = isset($_POST['subCategoryId']) ? $_POST['subCategoryId'] : 0;
         $categoryCombinationId = "";
         
         $productVideo ="";
@@ -40,6 +40,9 @@
 
                 $categoryCombinationId = $row['combination_id'];
             }
+        }
+        else {
+            echo("1");
         }
 
         //Got Variation
