@@ -170,7 +170,7 @@
 		  <div class="container" style = "margin-top: 2.2rem;">
 				<div class="row">
 					<div class="col">
-						  <select class="form-control" id = "selectRating">
+						  <select class="form-control" id = "selectStar">
 							  <option value = "All">All* (107)</option>
 							  <option value = "P000005">5 Star</option>
 							  <option value = "P000004">4 Star</option>
@@ -180,7 +180,7 @@
 						  </select>
 					</div>
 					<div class="col">						
-						 <select class="form-control" id = "selectStar">
+						 <select class="form-control" id = "selectCM">
 							  <option value = "All">With Comment & Media*</option>
 							  <option value = "1">With Comment Only</option>
 							  <option value = "2">With Media Only</option>							  
@@ -205,7 +205,7 @@
 						<div class="row">
 							<!-- Card Body -->
 							<div class="card-body">
-								<div class="row" style = "background-color: lightblue;">
+								<div class="row" style = "background-color: lightblue;" id = "displaySearch">
 									<!--REVIEW START BOX 1 --------------->
 									<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
 										<!--Content Start-->
@@ -411,6 +411,7 @@
 $(document).ready(function(){
 
 	load_data();
+	load_data_display();
 
  function load_data(query)
  {
@@ -426,12 +427,56 @@ $(document).ready(function(){
    }
   });
  }
+ function load_data_display(restriction,restriction2)
+ {
+  $.ajax({
+   url:"reviewRatingSearch.php",
+   method:"POST",
+   data:{restriction:restriction,
+		 restriction2:restriction2},
+   success:function(data)
+   {
+	   //alert('success noob')
+    $('#displaySearch').html(data);
+	
+   }
+  });
+ }
 
  $('.hyperlink').click(function(){
   var click = $(this).val();
   
   load_data(click);
   
+ });
+ 
+ $('#selectStar').change(function(){
+  var restriction = $(this).val();
+  var restriction2 = $('#selectCM').val();
+  if(restriction != 'All')
+  {
+   load_data_display(restriction, restriction2);
+ 
+  }
+  else
+  {
+   load_data_display("", restriction2);
+  }
+ });
+ 
+ $('#selectCM').change(function(){
+  var restriction = $('#selectStar').val();
+  var restriction2 = $(this).val();
+  
+  if(restriction2 != 'All')
+  {
+   load_data_display(restriction,restriction2);
+	//alert(restriction2);
+  }
+  else
+  {
+   load_data_display(restriction, "");
+  }
  });
  
  

@@ -20,6 +20,8 @@ if(isset($_POST["query"]) && !empty ($_POST["query"]))
 			OR message LIKE '%".$modal."%')k 
 			WHERE disable_date IS NULL && status = 0 && seller_id = '$product' ";
   */
+  
+  $query = "";
 }
 
 else
