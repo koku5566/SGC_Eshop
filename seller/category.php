@@ -18,7 +18,7 @@
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
                 echo($fileName);
-                $fileName = $now = DateTime::createFromFormat('U.u', number_format(microtime(true), 6, '.', ''));
+                $fileName = DateTime::createFromFormat('U.u', number_format(microtime(true), 6, '.', ''));
                 echo($fileName);
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
