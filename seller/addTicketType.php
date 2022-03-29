@@ -17,6 +17,7 @@
 ?>
 
 <?php
+    //--------------Add new ticket type------------------------
     if(isset($_POST["addTicketSubmit"])){
         $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketName"]));
         $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["capacity"]));
@@ -64,6 +65,31 @@
                     mysqli_stmt_close($stmt);
             }
           }
+
+
+    //--------------Delete Ticket------------------------
+    if(isset($_POST["deleteBtn"])){
+        $ticketID = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketIDHide"]));
+
+        $sql = "DELETE FROM `ticketType` WHERE  `ticketType`=?";
+
+        if($stmt = mysqli_prepare($conn, $sql)){
+            mysqli_stmt_bind_param($stmt, 'i',$ticketID); 
+        
+            mysqli_stmt_execute($stmt);
+          
+            if(mysqli_stmt_affected_rows($stmt) == 1)	
+            {
+              echo "<script>alert('Delete successfully');</script>";
+            }
+            else
+            {
+              echo "<script>alert('Fail to Delete');</script>";
+            }
+        
+            mysqli_stmt_close($stmt);
+        }
+    }
 
 ?>
 
@@ -163,7 +189,7 @@
                         <div class="modal-footer">
                             <form>
                                 <input class="form-control" id="ticketIDHide" name="ticketIDHide" type="hidden" placeholder="Ticket Name">
-                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "">Delete</button>
+                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "deleteBtn">Delete</button>
                             </form>
                         </div>
                     </div>
