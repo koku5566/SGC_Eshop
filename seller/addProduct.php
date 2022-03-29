@@ -89,7 +89,7 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                //$fileName = basename($_FILES['img']['name'][$key]); 
+                $fileName = basename($_FILES['img']['name'][$key]); 
                 //$date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
                 //$fileName = md5($date->format('Y-m-d H:i:s:u'));
                 $targetFilePath = $targetDir.$fileName; 
