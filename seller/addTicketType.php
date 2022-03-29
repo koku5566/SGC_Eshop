@@ -70,7 +70,6 @@
     //--------------Delete Ticket------------------------
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["deleteBtn"])){
         $ticketID = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketIDHide"]));
-        echo "<script>console.log('can here' + $ticketID);</script>";
         $sql = "DELETE FROM `ticketType` WHERE  `ticketType_id`=?";
 
         if($stmt = mysqli_prepare($conn, $sql)){
@@ -89,6 +88,41 @@
         
             mysqli_stmt_close($stmt);
         }
+    }
+
+    //--------------Update Ticket------------------------
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["updateTicket"])){
+        $tID = mysqli_real_escape_string($conn, SanitizeString($_POST["editTicketID"]));
+        $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["editTicketName"]));
+        $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["editCapacity"]));
+        $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["editPrice"]));
+        $tSalesStart = mysqli_real_escape_string($conn, SanitizeString($_POST["editSalesStart"]));
+        $tsalesEnd = mysqli_real_escape_string($conn, SanitizeString($_POST["editSalesEnd"]));
+
+        $sql = "UPDATE `ticketType` SET `ticket_name`=?,`capacity`=?,`sales_start`=?,`sales_end`=?,`price`=? WHERE `ticketType_id` = ?";
+            if ($stmt = mysqli_prepare($conn,$sql)){
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"sissdi",$tName,$tCapacity,$tSalesStart,$tsalesEnd,$tPrice,$tID);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
+                    if(mysqli_stmt_affected_rows($stmt) == 1){
+                        echo "<script>alert('Success!!!!!');</script>";
+                        //Add $_SESSION['eventID'] = "";
+                        //Add Redirect to next page
+                    }
+                    else{
+                        $error = mysqli_stmt_error($stmt);
+                        echo "<script>alert($error);</script>";
+                    }		
+                    mysqli_stmt_close($stmt);
+            }
     }
 
 ?>
@@ -165,14 +199,17 @@
                     <div class="modal-body">
                         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <div style="margin-bottom: 20px;">
-                                <h5>Ticket Name</h5><input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
+                                <h5>Ticket Name</h5>
+                                <input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
                                 <input class="form-control" id="editTicketID" name="editTicketID" type="hidden" placeholder="Ticket Name">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Capacity</h5><input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
+                                <h5>Capacity</h5>
+                                <input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Price</h5><input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
+                                <h5>Price</h5>
+                                <input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
                             </div>
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-6">
