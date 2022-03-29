@@ -103,7 +103,7 @@
                 //This is for redirect
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/admin/category.php";
+                        window.location.href = window.location.origin + "/seller/category.php";
                     </script>
                 <?php
             }
@@ -153,7 +153,7 @@
             //This is for redirect
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/admin/category.php";
+                    window.location.href = window.location.origin + "/seller/category.php";
                 </script>
             <?php
         }
@@ -483,7 +483,7 @@
 
                                                 if($row["category_pic"] != "")
                                                 {
-                                                    $picName = "/img/product/".$row["category_pic"];
+                                                    $picName = "/img/category/".$row["category_pic"];
                                                 }
                                                 
                                                 echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
