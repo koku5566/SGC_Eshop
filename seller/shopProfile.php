@@ -98,15 +98,15 @@ div.absolute {
   margin-top: 20px;
 }
 
-.clearfix::after {
+.clearfix {
   overflow: auto;
 }
 
-.buttonContainer{
+.buttonContainer {
   text-align:center;
 }
 
-.saveBtn{
+.saveBtn {
   background-color: #0C1236;
   color: white;
   border: none;
