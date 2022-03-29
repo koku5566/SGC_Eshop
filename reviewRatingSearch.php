@@ -26,40 +26,21 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 	$rr2 = "";
 }
 
+ $query = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+		  FROM user u INNER JOIN  reviewRating rr 
+		  ON  u.userID = rr.user_id 
+		  WHERE rr.disable_date IS NULL && rr.product_id = '$product' $rr $rr2
+		  ORDER BY rr.rr_id";
 
-
-
-if(isset($_POST["restriction"]) || isset($_POST["restriction2"]))
-{
-	
-  $query = "SELECT * 
-			FROM(
-			SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
-			FROM reviewRating 
-			WHERE rr_id LIKE '%".$search."%'
-			OR product_id LIKE '%".$search."%' 
-			OR message LIKE '%".$search."%')k 
-			WHERE disable_date IS NULL && status = 0 && seller_id = '$seller' $rr $rr2";
-  echo "Rating = $rr |";
-   echo "Product = $rr2 ";
-}
-
-else
-{
-	/*
- $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
-		   FROM contactUs
-		   WHERE disable_date IS NULL $rr $rr2
-		   ORDER BY cu_id;";
-	*/
+/*
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
-		   WHERE disable_date IS NULL && status = 0 && seller_id = '$seller' $rr $rr2
+		   WHERE disable_date IS NULL && status = 0 && seller_id = '$product' $rr $rr2
 		   ORDER BY rr_id;";
-		   
+		*/   
 	echo "Rating = $rr |";
 	echo "Product = $rr2 ";
-}
+
 
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)
