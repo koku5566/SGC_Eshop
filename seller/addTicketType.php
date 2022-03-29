@@ -17,7 +17,7 @@
 ?>
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["addTicketSubmit"])){
+    if(isset($_POST["addTicketSubmit"])){
         $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketName"]));
         $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["capacity"]));
         $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["price"]));
@@ -214,17 +214,6 @@
                                         <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editTicket_modal\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
                                         </tr>
                                     ");
-                                    // echo("
-                                    //    <tr>
-                                    //     <td>\"".$row['ticket_name']."\"</td>
-                                    //     <td>\"".$row['capacity']."\"</td>
-                                    //     <td>\"".$row['sales_start']."\"</td>
-                                    //     <td>\"".$row['sales_end']."\"</td>
-                                    //     <td>\"".$row['price']."\"</td>
-                                    //     <td>\"".$row['ticketType_id']."\"</td>
-                                    //     <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editTicket_modal\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
-                                    //     </tr>
-                                    // ");
                                 }
                             }
 
