@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    echo("why");
+    
     if(isset($_POST['add']) || isset($_POST['publish'])){
 
        
@@ -10,7 +10,6 @@
         {
             $publish = 0;
         }
-        echo("in");
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
@@ -42,9 +41,6 @@
 
                 $categoryCombinationId = $row['combination_id'];
             }
-        }
-        else {
-            echo("1");
         }
 
         //Got Variation
@@ -115,6 +111,7 @@
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
+            echo(var_dump($_FILES['img']));
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 //$fileName = basename($_FILES['img']['name'][$key]); 
