@@ -207,7 +207,7 @@
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
 	<div class="row pickbox">
-	  <div class="col-5" style = "background-color:red;">
+	  <div class="col-5" style = "background-color:;">
 		<div>
 			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
 			<div style="margin-bottom: 0.1em; text-align: center;">													
@@ -219,7 +219,7 @@
 			</div>	
 		</div>	  
 	  </div>
-	  <div class="col-7" style = "background-color:green;">
+	  <div class="col-7" style = "background-color:;">
 		  
 		  
 		  <div class="container" style = "margin-top: 2.5rem;">
