@@ -32,6 +32,8 @@
       </div>
 	  <!--CONTENT START-->
       <div class="modal-body">
+		<!--DISPLAY HERE-->
+		<div id = "modalResult" style = "height: 100%"></div>
         <div style="height: 100%">
 					<?php
 					
@@ -405,114 +407,45 @@
 }
 </style>
 <script>
-
-
-$('.hyperlink').click(function(){
-  var click = $(this).val();
-  
-  console.log(click);
- });
-
-/*
+/**/
 $(document).ready(function(){
 
 	load_data();
 
- function load_data(query, restriction, restriction2)
+ function load_data(query)
  {
   $.ajax({
-   url:"reviewSearchSeller.php",
+   url:"reviewRatingModal.php",
    method:"POST",
-   data:{query:query,
-		restriction:restriction,
-		restriction2:restriction2},
+   data:{query:query},
    success:function(data)
    {
 	   //alert('success noob')
-    $('#result').html(data);
+    $('#modalResult').html(data);
 	
    }
   });
  }
 
-$('#search_text').keyup(function(){
-  var search = $(this).val();
-  var restriction = $('#selectStar').val();
-   var restriction2 = $('#selectSeller').val();
-  if(search != '')
-  {
-	load_data(search,restriction,restriction2);	  
-  }
-  else
-  {
-   load_data();
-  }
- });
-
- //Rating Star
- $('#selectStar').change(function(){
-  var restriction = $(this).val();
-  var restriction2 = $('#selectSeller').val();
-  if(restriction != 'All')
-  {
-   load_data("", restriction, restriction2);
- 
-  }
-  else
-  {
-   load_data("","", restriction2);
-  }
- });
- //Seller
- $('#selectSeller').change(function(){
-  var restriction = $('#selectStar').val();
-  var restriction2 = $(this).val();
+ $('.hyperlink').click(function(){
+  var click = $(this).val();
   
-  if(restriction2 != 'All')
-  {
-   load_data("", restriction,restriction2);
-	//alert(restriction2);
-  }
-  else
-  {
-   load_data("",restriction, "");
-  }
+  load_data(click);
+  
  });
+ 
  
 
 });
 
-//FOR ADD REPLY
-var modalReply = document.getElementById("myModalReply");
-//var btnAddReply = document.getElementById("CUbtnreply");
-var spanReply = document.getElementsByClassName("closeM")[0];
-
-
-spanReply.onclick = function() {
-  modalReply.style.display = "none";
-  
-}
-window.onclick = function(event) {
-  if (event.target == modalReply) {
-     modalReply.style.display = "none";
-  }
-	  
-}
 
 
 
 
 
 
-$(".alert.alert-success").delay(2000).slideUp(200, function() {
-    $(this).alert('close');
-});
-$(".alert.alert-danger").delay(3000).slideUp(200, function() {
-    $(this).alert('close');
-});
 
 
-*/
 </script>
 
 
