@@ -74,7 +74,8 @@ if(mysqli_num_rows($result) > 0)
   ';
   */
   
-  $output .='<div style="height: 100%">
+  $output .='<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+			<div style="height: 100%">
 			
 			<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 			<div class = "namestar">
@@ -105,6 +106,7 @@ if(mysqli_num_rows($result) > 0)
 	<button class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">see more...</button>
 	</div>   
 	
+</div>
 </div>';
   
  }
