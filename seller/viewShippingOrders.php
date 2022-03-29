@@ -294,65 +294,7 @@ $res_1 = $stmt_1->get_result();
                                     <!--All to ship orders-->
                                     <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
                                         aria-labelledby="pills-all-tab">
-                                        <?php 
-                                            while ($row = $res_1->fetch_assoc()) {
-                                        ?>
-                                        <div class="card-body" style="padding-left: 0px;">
-                                        <div class="card-body" style="padding-left: 0px;">
-                                            <div class="card" style="padding-right: 0px;">
-                                                <div class="card-header">
-                                                    <h5 class="mb-0">Buyer&#39;s Name</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="container" style="padding-right: 14px;padding-left: 0px;">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-lg-2" style="width:15%; height:15%; object-fit:contain"><?php echo $row['product_cover_picture']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_name']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_variation']?></div>
-                                                            <div class="col-md-3 col-lg-2"><?php echo $row['product_price']?></div>
-                                                            <div class="col-lg-2">DHL ECOMMERCE</div>
-                                                            <div class="col-lg-2">
-                                                                <!-- Button trigger modal -->
-                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left:30px">
-                                                                Arrange Shipment
-                                                                </button>
-                                                                <form action="" method="post">
-                                                                    <!-- Modal -->
-                                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                                                    <h4 class="modal-title" id="myModalLabel">Sucessfully</h4>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="row justify-content-center">
-                                                                                        <div class="col-4">
-                                                                                                 DHL ECOMMERCE
-                                                                                        </div>
-                                                                                        <div class="col-4">
-                                                                                            <a>Tracking Number:</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="submit" class="btn btn-primary"><a href="">Okay</a></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </form>
-                                                                <!-----END HERE------------>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                         </div>
-                                         <?php 
-                                         }?>  
+                                        ...  
                                      </div>
                                 
                                     <!--to process to ship orders-->
