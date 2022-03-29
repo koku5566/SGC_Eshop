@@ -111,7 +111,6 @@
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
-            echo(var_dump($_FILES['img']));
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 //$fileName = basename($_FILES['img']['name'][$key]); 
@@ -121,8 +120,8 @@
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
-                    // Upload file to server 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
