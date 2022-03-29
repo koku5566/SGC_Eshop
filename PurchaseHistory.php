@@ -37,9 +37,9 @@ $result_2 = $stmt_2->get_result();
 <div class="container-fluid" style="width:100%">
   <h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
       <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
-        <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>
-          Back
-      </button>
+        <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);">
+        <a href="index.php">Back</a></i>
+     </button>
         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 

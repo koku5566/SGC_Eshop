@@ -195,7 +195,7 @@ $res_1 = $stmt_1->get_result();
                                 </div>
                             </div>
                         </div>
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 
                             while ($row = $result->fetch_assoc()) {
@@ -232,7 +232,7 @@ $res_1 = $stmt_1->get_result();
                                         </div>
                                     </div>
                                 </div>
-                                <!--End of Order Item-->
+                             <!--End of Order Item-->
                                 <?php 
                                 }?>
                                                                 
