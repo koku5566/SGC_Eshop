@@ -133,24 +133,15 @@
                     $variationPrice = $_POST['variationPrice'];
                     $variationStock = $_POST['variationStock'];
                     $variationSKU = $_POST['variationSKU'];
-
-                    echo($variation1Name);
-                    echo($variation2Name);
-                    echo($variation1NameCol);
-                    echo($variation2NameCol);
-                    echo($variationPrice);
-                    echo($variationStock);
-                    echo($variationSKU);
-
                 }
                 else if(isset($_POST['variation1Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
 
-                    $variation1NameCol = $_POST['variation1NameCol[]'];
-                    $variationPrice = $_POST['variationPrice[]'];
-                    $variationStock = $_POST['variationStock[]'];
-                    $variationSKU = $_POST['variationSKU[]'];
+                    $variation1NameCol = $_POST['variation1NameCol'];
+                    $variationPrice = $_POST['variationPrice'];
+                    $variationStock = $_POST['variationStock'];
+                    $variationSKU = $_POST['variationSKU'];
                 }
 
                 $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
@@ -172,8 +163,8 @@
                     $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
                     $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
                     $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-                    echo($sql_insertVar);
-                    //mysqli_query($conn, $sql_insertVar);
+                    
+                    mysqli_query($conn, $sql_insertVar);
                 }
             }
             ?>
