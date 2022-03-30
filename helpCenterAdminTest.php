@@ -313,11 +313,11 @@ $(document).ready(function(){
 	{
 		$.ajax({
 		   url:"reviewRatingModal.php",
-		   method:"POST",
+		   method:"GET",
 		   data:{query:query},
 		   success:function(data)
 		   {
-			   alert('success noob')
+			   //alert('success noob')
 			$('#modalResult').html(data);
 			
 		   }
