@@ -313,7 +313,7 @@ $(document).ready(function(){
 	{
 		$.ajax({
 		   url:"reviewRatingModal.php",
-		   method:"GET",
+		   method:"POST",
 		   data:{query:query},
 		   success:function(data)
 		   {
