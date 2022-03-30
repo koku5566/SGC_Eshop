@@ -5,7 +5,7 @@ $product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HA
 $output = 'SHOW ME DA WAE';
 
 
-if(isset($_POST["query"]) && !empty ($_POST["query"]))
+if(isset($_POST["query"]))
 {
 
  $modal = mysqli_real_escape_string($conn, $_POST["query"]);
