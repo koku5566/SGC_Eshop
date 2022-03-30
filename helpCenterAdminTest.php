@@ -6,7 +6,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
 	echo "<script>
-			$('#exampleModalLong').aria-hidden = 'false'
+			$('#exampleModalLong').modal('show');
 		  
 		  
 		  
