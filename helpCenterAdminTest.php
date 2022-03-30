@@ -31,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 	
-<!-- Button trigger modal -->
+<!-- Button trigger modal 
 <button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
   Modal 1
 </button>
 
 <button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
   Modal 2
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 					<div class = "namestar">
-						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
 						<div style="margin-bottom: 0.1em;">													
 							<i class="bi bi-star-fill"></i>
 							<i class="bi bi-star-fill"></i>
@@ -321,11 +321,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 <?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 			$showmedawae = "#exampleModalLong";
-			//$pid = $_POST['pid'];
-			//echo "$pid";
-			//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
-			 //echo "<script>$('#exampleModalLong').modal('show');</script>";
-				//echo"<script>$('#exampleModalLong').modal('toggle')</script>";							 						
+								 						
 		}else{
 			$showmedawae = "";
 		}
