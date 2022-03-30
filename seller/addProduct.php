@@ -24,8 +24,8 @@
         $productType = $_POST['productType'];
         $variationType = $_POST['variationType'];
 
-        $productPrice = isset($_POST['productPrice']) ? $_POST['productPrice'] : 0;
-        $productStock = isset($_POST['productStock']) ? $_POST['productStock'] : 0;
+        $productPrice = $variationType == 0 ? $_POST['productPrice'] : 0;
+        $productStock = $variationType == 0 ? $_POST['productStock'] : 0;
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
