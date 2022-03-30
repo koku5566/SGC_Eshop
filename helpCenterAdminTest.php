@@ -290,7 +290,7 @@ $(document).ready(function(){
 
 	
 	load_data_display();
-
+	load_data();
  
  function load_data_display(restriction,restriction2)
  {
@@ -314,7 +314,7 @@ $(document).ready(function(){
 			   {
 				   //alert('success noob')
 				$('#modalResult').html(data);
-				load_data();
+				
 			   }
 			  });
 		  
