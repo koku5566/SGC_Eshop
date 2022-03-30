@@ -682,7 +682,8 @@
 
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add New Product</button>
         </div>
     </form>
 </div>
@@ -838,20 +839,16 @@
 
     var priceTableArray = [];
 
-    /*
-    document.getElementById('productForm').addEventListener('submit', function(evt){
-        evt.preventDefault();
+    function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            document.getElementById("productForm").submit(); 
+            document.getElementById("AddProduct").click();
         }
         else
         {
             alert("Please Enter Distinct Product Variation and Choices");
         }
-    });
-    */
-    
+    }
 
     function hasDuplicates(array) {
         var valuesSoFar = Object.create(null);
