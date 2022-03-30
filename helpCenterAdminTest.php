@@ -303,7 +303,7 @@ $(document).ready(function(){
    {
 	   //alert('success noob')
 		$('#displaySearch').html(data);
-		load_data();
+		
    },
    complete:function load_data(query) {
 			$.ajax({
@@ -314,7 +314,7 @@ $(document).ready(function(){
 			   {
 				   //alert('success noob')
 				$('#modalResult').html(data);
-				
+				load_data();
 			   }
 			  });
 		  
