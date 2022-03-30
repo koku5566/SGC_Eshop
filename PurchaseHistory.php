@@ -79,11 +79,6 @@ $result_2 = $stmt_2->get_result();
             }?>                             
         </div>
     </div>    
-
-    
-</div>
-  
-  
    <!-- /.container-fluid -->
 
 

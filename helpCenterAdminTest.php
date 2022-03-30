@@ -6,8 +6,8 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
 	echo "<script>
-			document.getElementById('exampleModalLong').style.display = 'block';
-		  
+		
+			$('#exampleModalLong').modal('show')
 		  
 		  
 		  </script>";
@@ -22,6 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">	
+
+    
+    
+  
+ 
+   
+
 
 	
 <!-- Button trigger modal -->
@@ -207,6 +214,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 ?>
 
 <style>
+
+      
+  
 #sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
