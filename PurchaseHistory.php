@@ -73,10 +73,10 @@ $result_2 = $stmt_2->get_result();
                      <a style="text-align=right;">RM<?php echo $row['price']?></a>
                 </div>
             </div>
-                                   
+            <?php
+             }?>                       
         </div>
-        <?php
-        }?>
+        
     </div>
    <!-- /.container-fluid -->
 
