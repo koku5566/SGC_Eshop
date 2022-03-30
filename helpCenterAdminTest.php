@@ -116,8 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											for($i=1; $i<=5; $i++){
 												$k = $i-1;
 												 if($row["pic$i"] === null){
-													 echo '';
-													 
+													 echo '';													 
 												 }else{													
 													echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
 												 }											 
@@ -125,8 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										}else{
 											echo '';
 										}
-										
-									
+
 									?>
 									<!--
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -137,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									-->
                                 </ol>
                                 <div class="carousel-inner tqy">							                                 
-									<div class="carousel-item active">
+									<div class="carousel-item ">
                                          <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
 									<div class="carousel-item">
