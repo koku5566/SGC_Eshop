@@ -7,7 +7,7 @@
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Auditoriium</a></li>
+                        <li class="breadcrumb-item"><a href="#">Auditorium</a></li>
                         <li class="breadcrumb-item active" aria-current="page">RM Per Hour</li>
                     </ol>
                 </nav>
@@ -39,7 +39,7 @@
                             <!-- Name -->
                             <div class="row">
                                 <div class="col">
-                                    <h1 style="color:#a31f37;"Auditorium</h1>
+                                    <h1 style="color:#a31f37;">Auditorium</h1>
                                     <hr>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                     <b></b>
                                 </div>
                                 <div class="col">
-                                    <b>300 Sold</b>
+                                    <b></b>
                                 </div>
                             </div>
                             <br>
@@ -83,7 +83,7 @@
                                     <a href="#" class="btn btn-primary">
                                         <span class="text">WhatsApp application</span>
                                     </a>
-                                </div>w
+                                </div>
                             </div>
                         </div>
                     </div>
