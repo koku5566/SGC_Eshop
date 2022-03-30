@@ -531,11 +531,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="row">
-                            <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
-                            <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
-                            <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
-                        </div>
+                        <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
+                        <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                     </div>
                     </div>
                 </div>
