@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					</div>
 		
 		
-			<h6 class = "divcontent"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
+			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
 			<div id = "sellresponse">
