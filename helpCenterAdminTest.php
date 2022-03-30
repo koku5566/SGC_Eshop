@@ -79,12 +79,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 					<div class = "namestar">
 						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
-						<div style="margin-bottom: 0.1em;">													
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star"></i>
-							<i class="bi bi-star"></i>
+						<div style="margin-bottom: 0.1em;">	
+							<?php
+								for($i=0; $i<5; $i++){
+									if(isset($c9) && !empty ($c9)){
+										if($i < $c9){
+											 echo '<i class="bi bi-star-fill"></i> ';
+										 }else{
+											 echo '<i class="bi bi-star"></i> ';
+										 }
+									}else{
+										echo '';
+									}								 
+							 }							
+							?>							
 						</div>	
 					</div>
 		
