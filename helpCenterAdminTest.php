@@ -35,10 +35,7 @@
 		<!--DISPLAY HERE-->
 		<div id = "modalResult" style = "height: 100%"></div>
         <div style="height: 100%">
-					<?php
 					
-					
-					?>
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 					<div class = "namestar">
 						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
@@ -61,10 +58,7 @@
 				</h6>		
 			</div>			
 					
-		
-		
-				
-			
+
 						<!---->
 						<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
@@ -75,51 +69,21 @@
 									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                                 </ol>
-                                <div class="carousel-inner tqy">
-								
-                                    <?php
-									/*
-                                    $sql = "SELECT * FROM facilityPic";
-                                    $result = mysqli_query($conn, $sql);
-                                    $i = false;
-                        
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            if ($i){
-
-                                            echo ("
-                                                <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                                </div>         
-                                            ");
-                                            }
-                                            else{
-                                                echo ("
-                                                <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                                </div>
-                                                            
-                                                ");
-                                                $i = true;
-                                            }
-                                        }
-                                    }
-									*/
-                                    ?>
+                                <div class="carousel-inner tqy">							                                 
 									<div class="carousel-item active">
-                                            <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+                                         <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
 									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div> 
 									<div class="carousel-item>
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div> 
 									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
                                     </div>
 									<div class="carousel-item">
-                                            <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
+                                         <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
                                     </div>									
                     
                                 </div>
