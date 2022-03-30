@@ -112,12 +112,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
 									<?php
-										if(isset($c1) && !empty ($c1)){											
-											for($i=1; $i<=5; $i++){
-												$k = $i-1;	
-												$j = $i+9;
-												 
-												 if(${"c" . $i+9} === null){
+										if(isset($c1) && !empty ($c1)){		
+											$checkPic = array();
+											$tt = 10;
+											  for ($counter = 0; $counter < 5; $counter++){		
+											    $tt = $counter + 10;
+											  $checkPic[] = '$c' . $tt;
+											 }
+											 
+											for($i=0; $i<5; $i++){
+												 if($checkPic[$i] === null){
 													 echo '';													 
 												 }else{	
 													if($i == 1){
@@ -145,11 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									
 										if(isset($c1) && !empty ($c1)){			
 											$checkPic = array();
-											for ($counter = 0; $counter < 5; $counter++){												
-												//$checkPic[] = "$c";
-												array_push($checkPic, '$c'.$counter+10);
-												echo $checkPic[$counter];
-											}
+											$tt = 10;
+											  for ($counter = 0; $counter < 5; $counter++){		
+											    $tt = $counter + 10;
+											  $checkPic[] = '$c' . $tt;
+											 }
 
 											for($i=0; $i<5; $i++){												
 												 if($checkPic[$i] === null){
