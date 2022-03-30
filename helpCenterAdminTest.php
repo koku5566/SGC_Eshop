@@ -288,7 +288,7 @@
 /**/
 $(document).ready(function(){
 
-	load_data();
+	
 	load_data_display();
 
  
@@ -303,6 +303,7 @@ $(document).ready(function(){
    {
 	   //alert('success noob')
 		$('#displaySearch').html(data);
+		load_data();
    },
    complete:function load_data(query) {
 			$.ajax({
