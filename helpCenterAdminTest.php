@@ -325,13 +325,7 @@ $(document).ready(function(){
  
  
 
- $('.hyperlink').click(function(){
-  var click = $(this).val();
-  console.log(click)
-  load_data(click);
-  
-  
- });
+
  
  $('#selectStar').change(function(){
   var restriction = $(this).val();
@@ -348,6 +342,14 @@ $(document).ready(function(){
    load_data_display(restriction,restriction2);
 	
  
+ });
+ 
+  $('.hyperlink').click(function(){
+  var click = $(this).val();
+  console.log(click)
+  load_data(click);
+  
+  
  });
  
  
