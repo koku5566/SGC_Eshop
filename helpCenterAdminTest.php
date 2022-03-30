@@ -114,11 +114,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 										if(isset($c1) && !empty ($c1)){											
 											for($i=1; $i<=5; $i++){
-												$k = $i-1;
-												 if($row["pic$i"] === null){
+												$k = $i-1;	
+												$j = $i+9;
+												 
+												 if(${"c" . $i+9} === null){
 													 echo '';													 
-												 }else{													
-													echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
+												 }else{	
+													if($i == 1){
+														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
+													}else{
+														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
+													}	
 												 }											 
 											 }
 										}else{
@@ -134,8 +140,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
 									-->
                                 </ol>
-                                <div class="carousel-inner tqy">							                                 
-									<div class="carousel-item ">
+                                <div class="carousel-inner tqy">
+									<?php
+									
+										if(isset($c1) && !empty ($c1)){			
+											$checkPic = array();
+											for ($counter = 0; $counter < 5; $counter++){												
+												//$checkPic[] = "$c";
+												array_push($checkPic, '$c'.$counter+10);
+												echo $checkPic[$counter];
+											}
+
+											for($i=0; $i<5; $i++){												
+												 if($checkPic[$i] === null){
+													 echo '';													 
+												 }else{	
+													//DISPLAY REAL PIC/VID
+													if($i == 1){
+														echo '<div class="carousel-item active">
+																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+															  </div> ';
+													}else{
+														echo '<div class="carousel-item">
+																	 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+															  </div>';
+													}	
+												 }											 
+											 }
+										}else{
+											echo '';
+										}
+									?>
+									<!--
+									<div class="carousel-item active">
                                          <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
 									<div class="carousel-item">
@@ -150,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<div class="carousel-item">
                                          <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
                                     </div>									
-                    
+									-->
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
