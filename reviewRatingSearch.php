@@ -98,7 +98,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
+	<form action = "helpCenterAdminTest.php" method = "POST">
 		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
 		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
 	</form>
