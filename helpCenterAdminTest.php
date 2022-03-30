@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										if(isset($c1) && !empty ($c1)){											
 											for($i=1; $i<=5; $i++){
 												$k = $i-1;												
-												 if($c . $i+9 === null){
+												 if($c."$i+9" === null){
 													 echo '';													 
 												 }else{	
 													if($i == 1){
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 										if(isset($c1) && !empty ($c1)){											
 											for($i=1; $i<=5; $i++){												
-												 if($c . $i+9 === null){
+												 if($c."$i+9" === null){
 													 echo '';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
