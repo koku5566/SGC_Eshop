@@ -97,7 +97,11 @@ if(mysqli_num_rows($result) > 0)
 			'.$picR.'
 		<tr>
 	</table>
-	<button type = "button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr_id"].'">see more...</button>
+	
+	<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
+		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
+		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink" data-toggle="modal" data-target="#exampleModalLong">
+	</form>
 	</div>   
 	
 </div>

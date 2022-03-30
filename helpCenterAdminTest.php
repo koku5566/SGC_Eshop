@@ -4,6 +4,8 @@
 
 <?php
 
+
+
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -288,10 +290,7 @@
 <script>
 /**/
 
-var pp = document.getElementsByClassName("hyperlink")
-pp.onclick = function() {
-  alert(pp.value);
-}
+
 
 $(document).ready(function(){
 
