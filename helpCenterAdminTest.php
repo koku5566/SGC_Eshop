@@ -23,6 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">	
 
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css>
+    <style>
+      .modal {
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        box-sizing:border-box;
+        width:600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modal">
+      <div class="header">
+        <h1>Header</h1>
+      </div>
+      <div class="content">
+        Nullam quis risus eget urna mollis ornare vel eu leo.
+      </div>
+    </div>
+  </body>
+</html>
+
+
 	
 <!-- Button trigger modal -->
 <button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
