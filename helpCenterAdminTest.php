@@ -5,12 +5,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
-	echo "<script>
+	//echo "<script>$('#exampleModalLong').modal('show')</script>";
 		
-			$('#exampleModalLong').modal('show')
+			
 		  
 		  
-		  </script>";
+		  
 
 }	
 
@@ -177,7 +177,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 </div>
-
+						<?php
+								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+									
+									$pid = $_POST['pid'];
+									echo "$pid";
+									//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";	
+								}
+								
+						?>
 
 <!-------------------------------------------------------------------> 
 				<!-- List All Product -->
