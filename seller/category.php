@@ -732,12 +732,20 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                console.log(img.files[0]);
+                var ext = img.files[0].name.split('.').pop();
+                var extArr = ["jpg", "jpeg", "png"];
                 if(img.files && img.files[0])
                 {
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                    img.parentElement.parentElement.classList.add("hide");
+                    if(extArr.includes(ext))
+                    {
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        img.parentElement.parentElement.classList.add("hide");
+                    }
+                    else{
+                        alert("This Image is not a valid format");
+                        img.value = "";
+                    }
                 }
             });
         });
