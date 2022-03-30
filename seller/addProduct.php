@@ -134,6 +134,14 @@
                     $variationStock = $_POST['variationStock[]'];
                     $variationSKU = $_POST['variationSKU[]'];
 
+                    echo($variation1Name);
+                    echo($variation2Name);
+                    echo($variation1NameCol);
+                    echo($variation2NameCol);
+                    echo($variationPrice);
+                    echo($variationStock);
+                    echo($variationSKU);
+
                 }
                 else if(isset($_POST['variation1Name']))
                 {
@@ -153,8 +161,7 @@
                         $productId = $row['product_id'];
                     }
                 }
-                echo("$productId");
-                echo("$variation1NameCol");
+
                 for($i = 0; $i < count($variation1NameCol); $i++)
                 {
                     $sql_insertVar  = "INSERT INTO variation (";
