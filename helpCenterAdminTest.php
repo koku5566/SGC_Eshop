@@ -318,9 +318,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </style>
 <script>
 /**/
- $(window).on('load', function() {
+
         $('#exampleModalLong').modal('show');
-    });
+   
 
 
 $(document).ready(function(){
