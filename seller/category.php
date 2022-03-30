@@ -164,48 +164,44 @@
     }
     else if(isset($_POST['deleteCategory']))
     {
-        $mainCategoryId = "";
-        $mainCategoryId = "";
-        //If delete Sub
-        if(isset($_POST['deleteSub'])) 
-        {
-            $categoryId = $_POST['deleteSub'];
-            $sql = "SELECT product_id FROM product WHERE category_id = '$categoryId'";
-        }
-        //If delete Main / Only if all the cateogry don have sub or any product can be delete
-        else if(isset($_POST['deleteMain']))
-        {
-            $categoryId = $_POST['deleteMain'];
-            $sql = "SELECT product_id FROM product WHERE category_id = '$categoryId'";
-        }
+        $categoryId = $_POST['deleteCategoryId'];
+        $categoryName = $_POST['deleteCategoryName'];
+
+        $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$categoryId' OR sub_category = '$categoryId'";
         $result = mysqli_query($conn, $sql);
+
+        $gotProduct = false;
         if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $cc_id = $row['combination_id'];
+
+                $sql_chkProduct = "SELECT product_id FROM product WHERE category_id = '$cc_id'";
+                $result_chkProduct = mysqli_query($conn, $sql_chkProduct);
+
+                if (mysqli_num_rows($result_chkProduct) > 0) {
+                    $gotProduct = true;
+                }
+            }
+        }
+
+        if($gotProduct == false)
+        {
+            $sql_delete = "DELETE FROM categoryCombination WHERE main_category = '$categoryId' OR sub_category = '$categoryId'";
+            mysqli_query($conn, $sql_delete);
+            
+            $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
+            mysqli_query($conn, $sql_delete);
+
             echo '<script language="javascript">';
-            echo 'alert("Fail to Delete Category, Because there are product in this category or its sub category")';
+            echo "alert(\"$categoryName has been deleted Successful\")";
             echo '</script>';
         }
         else
         {
-            $sql = "SELECT main_category,sub_category FROM categoryCombination WHERE combination_id = '$categoryId' ";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    if(isset($_POST['deleteSub'])) 
-                    {
-                        $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
-                        mysqli_query($conn, $sql_delete);
-                    }
-                    else if(isset($_POST['deleteMain']))
-                    {
-                        $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
-                        mysqli_query($conn, $sql_delete);
-                    }
-                }
-                $sql_delete = "DELETE FROM categoryCombination WHERE combination_id = '$categoryId'";
-                mysqli_query($conn, $sql_delete);
-            }
-        } 
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Delete Category, Because there are product in this category or its sub category")';
+            echo '</script>';
+        }
     }
 ?>
 
@@ -536,13 +532,9 @@
                     </div>
                     <div class="modal-footer">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-sm-4">
-                                <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-sm-8">
-                                <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
-                                <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
-                            </div>
+                            <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
+                            <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
+                            <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                         </div>
                     </div>
                     </div>
@@ -576,6 +568,9 @@
                             }
                         }
                         ?>
+                        <p>Caution</p>
+                        <p>Delete a main category will cause all sub category be also deleted !!!</p>
+                        <p>Only a category that are no product within it only able to delete</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
