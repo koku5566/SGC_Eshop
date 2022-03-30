@@ -292,7 +292,36 @@ $(document).ready(function(){
 	load_data_display();
 	load_data();
  
- 
+ function load_data_display(restriction,restriction2)
+ {
+  $.ajax({
+   url:"reviewRatingSearch.php",
+   method:"POST",
+   data:{restriction:restriction,
+		 restriction2:restriction2},
+   success:function(data)
+   {
+	   //alert('success noob')
+		$('#displaySearch').html(data);
+		
+   },
+   complete:function load_data(query) {
+			$.ajax({
+			   url:"reviewRatingModal.php",
+			   method:"POST",
+			   data:{query:query},
+			   success:function(data)
+			   {
+				   //alert('success noob')
+				$('#modalResult').html(data);
+				
+			   }
+			  });
+		  
+		}
+   
+  });
+ }
  
  
 
@@ -328,36 +357,7 @@ $(document).ready(function(){
 });
 
 
-function load_data_display(restriction,restriction2)
- {
-  $.ajax({
-   url:"reviewRatingSearch.php",
-   method:"POST",
-   data:{restriction:restriction,
-		 restriction2:restriction2},
-   success:function(data)
-   {
-	   //alert('success noob')
-		$('#displaySearch').html(data);
-		
-   },
-   complete:function load_data(query) {
-			$.ajax({
-			   url:"reviewRatingModal.php",
-			   method:"POST",
-			   data:{query:query},
-			   success:function(data)
-			   {
-				   //alert('success noob')
-				$('#modalResult').html(data);
-				
-			   }
-			  });
-		  
-		}
-   
-  });
- }
+
 
 
 
