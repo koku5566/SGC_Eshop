@@ -111,14 +111,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 						<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
+									<?php
+										if(isset($c1) && !empty ($c1)){											
+											for($i=1; $i<=5; $i++){
+												$k = $i-1;
+												 if($row["pic$i"] === null){
+													 echo '';													 
+												 }else{													
+													echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
+												 }											 
+											 }
+										}else{
+											echo '';
+										}
+
+									?>
+									<!--
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+									-->
                                 </ol>
                                 <div class="carousel-inner tqy">							                                 
-									<div class="carousel-item active">
+									<div class="carousel-item ">
                                          <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
 									<div class="carousel-item">
