@@ -128,11 +128,11 @@
                     $variation1Name = $_POST['variation1Name'];
                     $variation2Name = $_POST['variation2Name'];
 
-                    $variation1NameCol = $_POST['variation1NameCol[]'];
-                    $variation2NameCol = $_POST['variation2NameCol[]'];
-                    $variationPrice = $_POST['variationPrice[]'];
-                    $variationStock = $_POST['variationStock[]'];
-                    $variationSKU = $_POST['variationSKU[]'];
+                    $variation1NameCol = $_POST['variation1NameCol'];
+                    $variation2NameCol = $_POST['variation2NameCol'];
+                    $variationPrice = $_POST['variationPrice'];
+                    $variationStock = $_POST['variationStock'];
+                    $variationSKU = $_POST['variationSKU'];
 
                     echo($variation1Name);
                     echo($variation2Name);
