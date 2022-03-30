@@ -184,10 +184,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									echo "$pid";
 									//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
 									 //echo "<script>$('#exampleModalLong').modal('show');</script>";
-										//echo	"<script>$('#exampleModalLong').modal('toggle')</script>";							 
+										//echo	"<script>$('#exampleModalLong').modal('toggle')</script>";							 							
 									echo"<script>let myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {});
-												  myModal.show();</script>";
-								
+												  myModal.show();</script>";	
 								}
 								
 						?>
