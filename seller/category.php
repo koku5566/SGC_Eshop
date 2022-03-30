@@ -535,7 +535,6 @@
                         <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                         <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                     </div>
-                    </div>
                 </div>
             </div>
         </form>
