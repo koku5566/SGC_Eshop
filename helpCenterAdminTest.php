@@ -89,12 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					</div>
 		
 		
-			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+			<h6 class = "divcontent"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
 			<div id = "sellresponse">
 				<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
-				<h6 style = "font-size: 0.8rem">Seller talk u diam diam listen enuf. if not mak kau hijau.
+				<h6 style = "font-size: 0.8rem"><?php echo (isset($c17) && !empty ($c17))? $c17 : ''; ?>
 				</h6>		
 			</div>			
 					
