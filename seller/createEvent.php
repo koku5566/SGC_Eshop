@@ -59,8 +59,9 @@
                     die('Error with execute: ') . htmlspecialchars($stmt->error);
                 }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
-                        echo "<script>alert('Success!!!!!');</script>";
-                        $_SESSION['eventID'] = 1; //need change
+                        $prevID = mysqli_stmt_insert_id($stmt);
+                        echo "<script>alert('Success!!!!!' + $prevID);window.location.href='./addTicketType.php';</script>";
+                        $_SESSION['eventID'] = $prevID;
                     }
                     else{
                         $error = mysqli_stmt_error($stmt);

@@ -5,21 +5,78 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <?php
+$searchBy = $_GET['searchBy'];
 $search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
-$query ="SELECT * FROM orders WHERE title LIKE '%$search%' OR author LIKE '%$search%' OR isbn LIKE '%$search%'";
 
-/*QUERY FOR ORDER*/
-$sql = "SELECT
-myOrder.order_id,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-orderDetails.price
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.id";
+switch($searchBy){
+    case "id":
+        $sql ="SELECT
+        myOrder.order_id,
+        product.product_name,
+        product.product_cover_picture,
+        product.product_price,
+        orderDetails.quantity,
+        orderDetails.price,
+        user.username
+        FROM
+        myOrder
+        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+        JOIN user ON myOrder.user_id = user.user_id
+        JOIN product ON orderDetails.product_id = product.id WHERE myOrder.order_id LIKE '%$search%'";
+        break;
+    case "name":
+        $sql ="SELECT
+        myOrder.order_id,
+        product.product_name,
+        product.product_cover_picture,
+        product.product_price,
+        orderDetails.quantity,
+        orderDetails.price,
+        user.username
+        FROM
+        myOrder
+        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+        JOIN product ON orderDetails.product_id = product.id 
+        JOIN user ON myOrder.user_id = user.user_id
+        WHERE user.username LIKE '%$search%'";
+        break;
+    case "product":
+        $sql ="SELECT
+        myOrder.order_id,
+        product.product_name,
+        product.product_cover_picture,
+        product.product_price,
+        orderDetails.quantity,
+        orderDetails.price,
+        user.username
+        FROM
+        myOrder
+        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+        JOIN product ON orderDetails.product_id = product.id 
+        JOIN user ON myOrder.user_id = user.user_id
+        WHERE product.product_name LIKE '%$search%'";
+        break;
+    case "trackingnumber":
+        $sql ="SELECT
+        myOrder.order_id,
+        product.product_name,
+        product.product_cover_picture,
+        product.product_price,
+        orderDetails.quantity,
+        orderDetails.price,
+        user.username
+        FROM
+        myOrder
+        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+        JOIN product ON orderDetails.product_id = product.id 
+        JOIN user ON myOrder.user_id = user.user_id
+        JOIN shipment ON shipment.order_id = myOrder.order_id 
+        WHERE shipment.tracking_number LIKE '%$search%'";
+        break;
+    default:
+        echo "Please search again";
+}
+
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -185,7 +242,8 @@ $result = $stmt->get_result();
                             <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 
-                            while ($row = $result->fetch_assoc()) {
+                             if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
                             ?>
                             <!--Each Order Item-->
                                 <div class="card">
@@ -221,7 +279,10 @@ $result = $stmt->get_result();
                                 </div>
                                 <!--End of Order Item-->
                                 <?php 
-                                }?>
+                                }
+                            } else{
+                                echo "There are no result matching your search";
+                            }?>
                                                                 
                                 <!--Pick Up Order Item-->       
                                  <div class="card">

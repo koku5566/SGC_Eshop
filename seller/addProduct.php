@@ -13,6 +13,8 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $shopId = "0"; // Temporary only, after that need link with session userid 
+
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
@@ -22,8 +24,8 @@
         $productType = $_POST['productType'];
         $variationType = $_POST['variationType'];
 
-        $productPrice = isset($_POST['productPrice']) ? $_POST['productPrice'] : 0;
-        $productStock = isset($_POST['productStock']) ? $_POST['productStock'] : 0;
+        $productPrice = $variationType == 0 ? $_POST['productPrice'] : 0;
+        $productStock = $variationType == 0 ? $_POST['productStock'] : 0;
 
         //Category
         $mainCategoryId = $_POST['mainCategoryId'];
@@ -40,32 +42,6 @@
             while($row = mysqli_fetch_assoc($result)) {
 
                 $categoryCombinationId = $row['combination_id'];
-            }
-        }
-
-        //Got Variation
-        if($variationType == 1)
-        {
-            if(isset($_POST['variation1Name'],$_POST['variation2Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-                $variation2Name = $_POST['variation2Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variation2NameCol = $_POST['variation2NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
-
-            }
-            else if(isset($_POST['variation1Name']))
-            {
-                $variation1Name = $_POST['variation1Name'];
-
-                $variation1NameCol = $_POST['variation1NameCol[]'];
-                $variationPrice = $_POST['variationPrice[]'];
-                $variationStock = $_POST['variationStock[]'];
-                $variationSKU = $_POST['variationSKU[]'];
             }
         }
 
@@ -93,7 +69,7 @@
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
-        $sql_insert .= "product_sku, product_name, product_description, product_brand, ";
+        $sql_insert .= "product_id, product_sku, product_name, product_description, product_brand, ";
         $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
         $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
         $sql_insert .= "product_weight, product_length, product_width, product_height, ";
@@ -101,7 +77,7 @@
         $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
         $sql_insert .= "category_id, shop_id";
         $sql_insert .= ") ";
-        $sql_insert .= "VALUES ('$productSKU','$productName','$productDescription','$productBrand', ";
+        $sql_insert .= "VALUES ((SELECT CONCAT('P',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'product'), 6, 0))) AS newCombinationId),'$productSKU','$productName','$productDescription','$productBrand', ";
         $sql_insert .= "'$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
@@ -113,16 +89,15 @@
         if(!empty($fileNames)){ 
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
-                //$fileName = basename($_FILES['img']['name'][$key]); 
-                $date = DateTime::createFromFormat('U.u', microtime(TRUE)); 
-                $fileName = md5($date->format('Y-m-d H:i:s:u'));
+                
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
-                    echo("checking");
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        echo("gotca");
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
@@ -140,39 +115,61 @@
         $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
         $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
         $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
-        $sql_insert .= "'0', '0'";
+        $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
-            $sql_UpdateId = "UPDATE product AS A, (SELECT id FROM product ORDER BY id DESC LIMIT 1) AS B SET A.product_id=CONCAT('P',B.id) WHERE A.id = B.id";
-            mysqli_query($conn, $sql_UpdateId);
-
-            $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql_getID);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $productId = $row['product_id'];
-                }
-            }
-
-            for($i = 0; $i < count($variation1NameCol); $i++)
+            //Got Variation
+            if($variationType == 1)
             {
-                $sql_insertVar  = "INSERT INTO variation (";
-                $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
-                $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                $sql_insertVar .= "product_sold, product_sku";
-                $sql_insertVar .= ") ";
-                $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
-                $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-    
-                mysqli_query($conn, $sql_insertVar);
+                
+                if(isset($_POST['variation1Name'],$_POST['variation2Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+                    $variation2Name = $_POST['variation2Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol'];
+                    $variation2NameCol = $_POST['variation2NameCol'];
+                    $variationPrice = $_POST['variationPrice'];
+                    $variationStock = $_POST['variationStock'];
+                    $variationSKU = $_POST['variationSKU'];
+                }
+                else if(isset($_POST['variation1Name']))
+                {
+                    $variation1Name = $_POST['variation1Name'];
+
+                    $variation1NameCol = $_POST['variation1NameCol'];
+                    $variationPrice = $_POST['variationPrice'];
+                    $variationStock = $_POST['variationStock'];
+                    $variationSKU = $_POST['variationSKU'];
+                }
+
+                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql_getID);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $productId = $row['product_id'];
+                    }
+                }
+
+                for($i = 0; $i < count($variation1NameCol); $i++)
+                {
+                    $sql_insertVar  = "INSERT INTO variation (";
+                    $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
+                    $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
+                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= ") ";
+                    $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
+                    $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
+                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+
+                    mysqli_query($conn, $sql_insertVar);
+                }
             }
             ?>
                 <script type="text/javascript">
-                    //window.location.href = window.location.origin + "/seller/myProduct.php";
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -183,8 +180,6 @@
             echo '</script>';
         }
     } 
-
-
 
     $subCategoryArray = array();
 
@@ -254,7 +249,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -274,7 +269,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -292,7 +287,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -310,7 +305,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -328,7 +323,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -348,7 +343,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -366,7 +361,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -384,7 +379,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -402,7 +397,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -687,7 +682,8 @@
 
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="submit" name="add" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add New Product</button>
         </div>
     </form>
 </div>
@@ -843,20 +839,16 @@
 
     var priceTableArray = [];
 
-    /*
-    document.getElementById('productForm').addEventListener('submit', function(evt){
-        evt.preventDefault();
+    function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            document.getElementById("productForm").submit(); 
+            document.getElementById("AddProduct").click();
         }
         else
         {
             alert("Please Enter Distinct Product Variation and Choices");
         }
-    });
-    */
-    
+    }
 
     function hasDuplicates(array) {
         var valuesSoFar = Object.create(null);
@@ -1094,6 +1086,8 @@
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
 
+                var extArr = ["jpg", "jpeg", "png"];
+
                 if (img.files && img.files[0] && img.files.length > 1) {
                     for (var j = 0,i = 0; i < this.files.length; i++) {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
@@ -1101,7 +1095,8 @@
                             j++;
                         }
 
-                        if(j < 9)
+                        var ext = img.files[i].name.split('.').pop();
+                        if(j < 9 && extArr.includes(ext))
                         {
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
@@ -1109,16 +1104,25 @@
                         }
                         else
                         {
-                            exit;
+                            alert("This Image is not a valid format");
+                            img.value = "";
+                            break;
                         }
-                        
                     }
                 }
                 else if(img.files && img.files[0])
                 {
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                    img.parentElement.parentElement.classList.add("hide");
+                    var ext = img.files[0].name.split('.').pop();
+                    if(extArr.includes(ext))
+                    {
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        img.parentElement.parentElement.classList.add("hide");
+                    }
+                    else{
+                        alert("This Image is not a valid format");
+                        img.value = "";
+                    }
                 }
             });
         });
@@ -1138,7 +1142,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control variationName">
+                                <input type="text" class="form-control variationName ">
                             </div>
                         </div>
                     </div>
@@ -1150,7 +1154,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control variationChoice">
+                                    <input type="text" class="form-control variationChoice" required>
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -1647,7 +1651,7 @@
     function addChoiceHandleClick(event) {
         var str =  `
         <div class="input-group mb-3">
-            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice">
+            <input type="text" class="form-control variationChoice" required>
             <div class="input-group-append btnDeleteChoices">
                 <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
@@ -1672,26 +1676,36 @@
     }
 
     function deleteChoiceHandleClick(event) {
+        
         if(event.target.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
             if(event.target.parentElement.parentElement.parentElement.parentElement.children.length > 1)
             {
+                if(event.target.parentElement.parentElement.previousElementSibling.classList.contains("warning"))
+                {
+                    if(event.target.parentElement.parentElement.previousElementSibling.parentElement.nextElementSibling.classList.contains("warning-message"))
+                    {
+                        event.target.parentElement.parentElement.previousElementSibling.parentElement.nextElementSibling.remove();
+                    }
+                }
                 event.target.parentElement.parentElement.parentElement.remove();
             }
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.children.length > 1)
             {
+                if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
+                {
+                    if(event.target.parentElement.previousElementSibling.parentElement.nextElementSibling.classList.contains("warning-message"))
+                    {
+                        event.target.parentElement.previousElementSibling.parentElement.nextElementSibling.remove();
+                    }
+                }
                 event.target.parentElement.parentElement.remove();
             }
         }
         refreshPriceTable();
-    }
-
-    function saveValue(event)
-    {
-        console.log(event);
     }
 
     function onlyNumberAllow(value)

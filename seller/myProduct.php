@@ -1,5 +1,39 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $subCategoryArray = array();
+
+    //Main Category
+    $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $maincategoryid = $row["category_id"];
+            
+            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+            $result_1 = mysqli_query($conn, $sql_1);
+
+            if (mysqli_num_rows($result_1) > 0) {
+                $tempArray = array();
+
+                while($row_1 = mysqli_fetch_assoc($result_1)) {
+                    $categoryId = $row_1["category_id"];
+                    $categoryName = $row_1["category_name"];
+
+                    array_push($tempArray,array($categoryId,$categoryName));
+                }
+                $tempCategoryArray = array($maincategoryid => $tempArray);    
+            }
+            else
+            {
+                $tempArray = array();
+                $tempCategoryArray = array($maincategoryid => $tempArray);
+            }
+            $subCategoryArray = $subCategoryArray + $tempCategoryArray;
+        }
+    }      
+
 ?>
 
 <!-- Begin Page Content -->
@@ -20,7 +54,6 @@
                                 <div class="input-group-prepend">
                                     <select class="form-select" name="searchBy" aria-label="SearchBy" style="color:currentColor;border: 0.5px solid #d1d3e2; border-radius: 5px;">
                                         <option selected value="name">Product Name</option>
-                                        <option value="mainsku">Main Product SKU</option>
                                         <option value="sku">Product SKU</option>
                                     </select>
                                 </div>
@@ -34,7 +67,33 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Main Category</span>
                                 </div>
-                                <input type="text" id="inpMainCategory" class="form-control" name="category" placeholder="Enter ..." aria-label="Category">
+                                <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId">
+                                    <option value="All" selected>All</option>
+                                        <?php
+                                        //Main Category
+                                        $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $categoryId = $row["category_id"];
+                                                $categoryName = $row["category_name"];
+
+                                                echo("<option value=\"$categoryId\">$categoryName</option>");
+                                            }
+                                        }
+                                        ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Sub Category</span>
+                                </div>
+                                <select class="form-control" id="subCategory" name="subCategoryId">
+ 
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -43,7 +102,7 @@
                             
                         </div>
                         <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-primary">Search</button>
+                            <button type="submit" name="submitSearch" class="btn btn-primary">Search</button>
                         </div>
                         <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
                             <button type="button" onclick="clearSearch()" class="btn btn-outline-dark">Reset</button>
@@ -87,10 +146,17 @@
                                             <div class="col-xl-10 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
 
                                         <?php
-                                            if(isset($_POST['keyword']) || isset($_POST['category']))
+                                        
+                                            if(isset($_POST['submitSearch']))
                                             {
-                                                $keyword = "";
-                                                $category="";
+                                                ;
+                                            }
+
+                                            if(isset($_POST['keyword']) || isset($_POST['mainCategoryId']))
+                                            {
+                                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
+                                                $mainCategoryId = $_POST['mainCategoryId'] != "All" ? $_POST['mainCategoryId'] : "";
+                                                $subCategoryId = $_POST['subCategoryId'] != "All" ? $_POST['subCategoryId'] : "";
 
                                                 if(isset($_POST['searchBy']))
                                                 {
@@ -110,21 +176,12 @@
                                                     }
                                                 }
 
-                                                if(isset($_POST['keyword']) && isset($_POST['category']))
+                                                //If sub = null then just select from main category
+                                                $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$mainCategoryId'";
+
+                                                if(isset($_POST['keyword']) && isset($_POST['mainCategoryId']))
                                                 {
-                                                    $keyword = $_POST['keyword'];
-                                                    $category = $_POST['category'];
                                                     $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
-                                                }
-                                                else if(isset($_POST['keyword']))
-                                                {
-                                                    $keyword = $_POST['keyword'];
-                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%'";
-                                                }
-                                                else if(isset($_POST['category']))
-                                                {
-                                                    $category = $_POST['category'];
-                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";
                                                 }
 
                                                 $result = mysqli_query($conn, $sql);
@@ -1686,6 +1743,21 @@
     {
 
     }
+
+    function makeSubmenu(value) {
+        if (value.length == 0) 
+            document.getElementById("subCategory").innerHTML = "<option></option>";
+        else {
+            var subCategoryHTML = "<option value=\"All\">All</option>";
+            var subCategory = <?php echo json_encode($subCategoryArray); ?>;
+
+            for (counter in subCategory[value]) {
+                subCategoryHTML += "<option value=\""+ subCategory[value][counter][0] +"\" >" + subCategory[value][counter][1] + "</option>";
+            }
+            document.getElementById("subCategory").innerHTML = subCategoryHTML;
+        }
+    }
+
 
 </script>
 
