@@ -18,36 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css>
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">	
 
-<html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css>
-    <style>
-      .modal {
-        position:fixed;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        box-sizing:border-box;
-        width:600px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="modal">
+    
+    
+  
+ 
+    <div class="modalpps">
       <div class="header">
         <h1>Header</h1>
       </div>
       <div class="content">
         Nullam quis risus eget urna mollis ornare vel eu leo.
       </div>
-    </div>
-  </body>
-</html>
+   
 
 
 	
@@ -234,6 +221,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 ?>
 
 <style>
+
+      .modalpps {
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        box-sizing:border-box;
+        width:600px;
+      }
+  
 #sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
