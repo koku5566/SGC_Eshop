@@ -60,8 +60,8 @@
                 }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         $prevID = mysqli_stmt_insert_id($stmt);
-                        echo "<script>alert('Success!!!!!' + $prevID);</script>";
-                        $_SESSION['eventID'] = $prevID; //need change
+                        echo "<script>alert('Success!!!!!' + $prevID);window.location.href='./addTicketType.php';</script>";
+                        $_SESSION['eventID'] = $prevID;
                     }
                     else{
                         $error = mysqli_stmt_error($stmt);
