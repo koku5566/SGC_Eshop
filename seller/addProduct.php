@@ -122,7 +122,7 @@
             //Got Variation
             if($variationType == 1)
             {
-                echo("Got variation");
+                
                 if(isset($_POST['variation1Name'],$_POST['variation2Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
@@ -153,7 +153,8 @@
                         $productId = $row['product_id'];
                     }
                 }
-
+                echo("$productId");
+                echo("$variation1NameCol");
                 for($i = 0; $i < count($variation1NameCol); $i++)
                 {
                     $sql_insertVar  = "INSERT INTO variation (";
