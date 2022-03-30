@@ -129,6 +129,7 @@
                                             </a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
+                                        <a data-sqe="link" href="penangAuditorium.php?id=a">
                                             <a data-sqe="link" href="#">
                                                 <div class="card">
                                                     <div class="image-container">
