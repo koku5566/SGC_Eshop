@@ -249,7 +249,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -269,7 +269,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -287,7 +287,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -305,7 +305,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -323,7 +323,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -343,7 +343,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -361,7 +361,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -379,7 +379,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -397,7 +397,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept="image/*" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
