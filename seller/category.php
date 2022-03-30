@@ -134,12 +134,11 @@
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
-            echo("got file");
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
+                //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                //$fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
