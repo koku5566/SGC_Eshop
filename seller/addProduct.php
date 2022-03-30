@@ -122,6 +122,7 @@
             //Got Variation
             if($variationType == 1)
             {
+                echo("Got variation");
                 if(isset($_POST['variation1Name'],$_POST['variation2Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
