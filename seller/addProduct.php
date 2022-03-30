@@ -1086,6 +1086,8 @@
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
 
+                var extArr = ["jpg", "jpeg", "png"];
+
                 if (img.files && img.files[0] && img.files.length > 1) {
                     for (var j = 0,i = 0; i < this.files.length; i++) {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
@@ -1093,7 +1095,8 @@
                             j++;
                         }
 
-                        if(j < 9)
+                        var ext = img.files[i].name.split('.').pop();
+                        if(j < 9 && extArr.includes(ext))
                         {
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
@@ -1101,16 +1104,25 @@
                         }
                         else
                         {
-                            exit;
+                            alert("This Image is not a valid format");
+                            img.value = "";
+                            break;
                         }
-                        
                     }
                 }
                 else if(img.files && img.files[0])
                 {
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                    img.parentElement.parentElement.classList.add("hide");
+                    var ext = img.files[0].name.split('.').pop();
+                    if(extArr.includes(ext))
+                    {
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        img.parentElement.parentElement.classList.add("hide");
+                    }
+                    else{
+                        alert("This Image is not a valid format");
+                        img.value = "";
+                    }
                 }
             });
         });
