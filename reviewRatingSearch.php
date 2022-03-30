@@ -39,8 +39,8 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 		  ORDER BY rr.rr_id";
 
   
-	echo "Rating = $rr |";
-	echo "Product = $rr2 ";
+	//echo "Rating = $rr |";
+	//echo "Product = $rr2 ";
 
 
 $result = mysqli_query($conn, $query);
