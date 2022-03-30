@@ -163,7 +163,7 @@
                     $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
                     $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
                     $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
-                    
+
                     mysqli_query($conn, $sql_insertVar);
                 }
             }
@@ -1667,17 +1667,48 @@
     }
 
     function deleteChoiceHandleClick(event) {
+        if(variationChoice[i].classList.contains('warning'))
+        {
+            variationChoice[i].classList.remove('warning');
+            
+            if(variationChoice[i].parentElement.nextElementSibling.classList.contains('warning-message'))
+            {
+                var errorMessageList = variationChoice[i].parentElement.nextElementSibling;
+                errorMessageList.remove();
+            }
+            
+            /*
+            event.target.removeAttribute("data-toggle");
+            event.target.removeAttribute("data-placement");
+            event.target.removeAttribute("title");
+            */
+        }
+
         if(event.target.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
             if(event.target.parentElement.parentElement.parentElement.parentElement.children.length > 1)
             {
+                if(event.target.parentElement.parentElement.previousElementSibling.classList.contains("warning"))
+                {
+                    if(event.target.parentElement.parentElement.previousElementSibling.parentElement.nextElementSibling.classList.contains("warning-message"))
+                    {
+                        event.target.parentElement.parentElement.previousElementSibling.parentElement.nextElementSibling.remove();
+                    }
+                }
                 event.target.parentElement.parentElement.parentElement.remove();
             }
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.children.length > 1)
             {
+                if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
+                {
+                    if(event.target.parentElement.previousElementSibling.parentElement.nextElementSibling.classList.contains("warning-message"))
+                    {
+                        event.target.parentElement.previousElementSibling.parentElement.nextElementSibling.remove();
+                    }
+                }
                 event.target.parentElement.parentElement.remove();
             }
         }
