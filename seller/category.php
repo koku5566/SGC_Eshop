@@ -134,6 +134,7 @@
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
+            echo("got file");
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
@@ -157,7 +158,7 @@
             //This is for redirect
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/category.php";
+                    //window.location.href = window.location.origin + "/seller/category.php";
                 </script>
             <?php
         }
