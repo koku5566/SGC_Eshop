@@ -318,8 +318,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </style>
 <script>
 /**/
-
-        $('#exampleModalLong').modal('show');
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+			$showmedawae = "#exampleModalLong";
+			//$pid = $_POST['pid'];
+			//echo "$pid";
+			//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
+			 //echo "<script>$('#exampleModalLong').modal('show');</script>";
+				//echo"<script>$('#exampleModalLong').modal('toggle')</script>";							 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
    
 
 
