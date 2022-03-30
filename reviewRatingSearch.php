@@ -97,9 +97,7 @@ if(mysqli_num_rows($result) > 0)
 			'.$picR.'
 		<tr>
 	</table>
-	
-	
-	<button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
+	<button type = "button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "'.$row["rr_id"].'">see more...</button>
 	  Modal 1
 	</button>
 	</div>   
