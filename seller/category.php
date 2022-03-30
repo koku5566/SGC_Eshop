@@ -732,7 +732,7 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                console.log(img.files);
+                console.log(img.files[0][name]);
                 if(img.files && img.files[0])
                 {
                     img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
