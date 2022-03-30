@@ -12,6 +12,7 @@
                     </ol>
                 </nav>
 
+
                         <!-- Product Content -->
                         <div class="col-xl-4 col-md-6 mb-6">
                             <br>
@@ -38,26 +39,13 @@
                             <!-- Per Hour -->
                             <div class="row">
                                 <div class="col">
-                                    <span style="color:#a31f37;font-size:18pt">Per Hour</span>
+                                    <span style="color:#a31f37;font-size:10pt">Per Hour</span>
                                 </div>
                             </div>
-                            <!-- Variation -->
-                            <div class="row">
-                                <div class="variation">
-                                    <!-- Variation Loop here -->
-                                    <div class="row">
-                                        <ol class="list-inline">
-                                            <li class="list-inline-item variation-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="/img/product/iphone-green.png" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="/img/product/iphone-grey.png" class="img-fluid"> </a> </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
+
                         
                             <!-- Button -->
-                            
+                            <div class="row">
                                 <div class="col">
                                     <a href="#" class="btn btn-primary">
                                         <span class="text">WhatsApp application</span>
@@ -65,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                   
+                    </div>
 
 
                 <!-- /.container-fluid -->
