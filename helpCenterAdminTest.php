@@ -291,20 +291,6 @@ $(document).ready(function(){
 	load_data();
 	load_data_display();
 
- function load_data(query)
- {
-  $.ajax({
-   url:"reviewRatingModal.php",
-   method:"POST",
-   data:{query:query},
-   success:function(data)
-   {
-	   //alert('success noob')
-    $('#modalResult').html(data);
-	
-   }
-  });
- }
  function load_data_display(restriction,restriction2)
  {
   $.ajax({
@@ -316,6 +302,21 @@ $(document).ready(function(){
    {
 	   //alert('success noob')
     $('#displaySearch').html(data);
+	
+		 function load_data(query)
+		 {
+		  $.ajax({
+		   url:"reviewRatingModal.php",
+		   method:"POST",
+		   data:{query:query},
+		   success:function(data)
+		   {
+			   //alert('success noob')
+			$('#modalResult').html(data);
+			
+		   }
+		  });
+		 }
 	
    }
   });
