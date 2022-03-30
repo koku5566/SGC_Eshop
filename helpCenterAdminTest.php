@@ -3,10 +3,31 @@
 ?>
 
 <?php
+$product = "P000001";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
-	//echo "<script>$('#exampleModalLong').modal('show')</script>";
+	
+	$selectedPID = SanitizeString($_POST['pid']);
+		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+			    FROM user u INNER JOIN  reviewRating rr 
+			    ON  u.userID = rr.user_id 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    ORDER BY rr.rr_id";
 		
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			
+			if(mysqli_stmt_num_rows($stmt) == 1){
+				mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13,$c14,$c15,$c16,$c17);
+				mysqli_stmt_fetch($stmt);
+			}
+			
+			mysqli_stmt_free_result($stmt);
+			mysqli_stmt_close($stmt);
+		
+		}	
 			
 		  
 		  
