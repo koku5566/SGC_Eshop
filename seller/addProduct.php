@@ -1133,7 +1133,7 @@
                         </div>
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control variationName">
+                                <input type="text" class="form-control variationName ">
                             </div>
                         </div>
                     </div>
@@ -1145,7 +1145,7 @@
                         <div class="col-xl-10 col-lg-10 col-sm-12">
                             <div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control variationChoice">
+                                    <input type="text" class="form-control variationChoice" required>
                                     <div class="input-group-append btnDeleteChoices">
                                         <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                     </div>
@@ -1642,7 +1642,7 @@
     function addChoiceHandleClick(event) {
         var str =  `
         <div class="input-group mb-3">
-            <input type="text" onfocusout="saveValue(this)" class="form-control variationChoice">
+            <input type="text" class="form-control variationChoice" required>
             <div class="input-group-append btnDeleteChoices">
                 <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
             </div>
@@ -1667,23 +1667,7 @@
     }
 
     function deleteChoiceHandleClick(event) {
-        if(variationChoice[i].classList.contains('warning'))
-        {
-            variationChoice[i].classList.remove('warning');
-            
-            if(variationChoice[i].parentElement.nextElementSibling.classList.contains('warning-message'))
-            {
-                var errorMessageList = variationChoice[i].parentElement.nextElementSibling;
-                errorMessageList.remove();
-            }
-            
-            /*
-            event.target.removeAttribute("data-toggle");
-            event.target.removeAttribute("data-placement");
-            event.target.removeAttribute("title");
-            */
-        }
-
+        
         if(event.target.parentElement.parentElement.classList.contains("btnDeleteChoices"))
         {
             if(event.target.parentElement.parentElement.parentElement.parentElement.children.length > 1)
@@ -1713,11 +1697,6 @@
             }
         }
         refreshPriceTable();
-    }
-
-    function saveValue(event)
-    {
-        console.log(event);
     }
 
     function onlyNumberAllow(value)
