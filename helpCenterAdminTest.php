@@ -183,7 +183,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									$pid = $_POST['pid'];
 									echo "$pid";
 									//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
-									 echo "<script>$('#exampleModalLong').modal('show');</script>";									
+									 //echo "<script>$('#exampleModalLong').modal('show');</script>";
+										echo	"<script>$('#exampleModalLong').modal('toggle')</script>";							 
 								}
 								
 						?>
