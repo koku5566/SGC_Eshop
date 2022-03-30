@@ -142,9 +142,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 </ol>
                                 <div class="carousel-inner tqy">
 									<?php
-										if(isset($c1) && !empty ($c1)){											
-											for($i=1; $i<=5; $i++){												
-												 if(${"c" . $i+9} === null){
+									
+										if(isset($c1) && !empty ($c1)){			
+											$checkPic = array();
+											for ($counter = 0; $counter < 5; $counter++){												
+												//$checkPic[] = "$c";
+												array_push($checkPic, '$c'.$counter+10);
+											}
+
+											for($i=0; $i<5; $i++){												
+												 if($checkPic[$i] === null){
 													 echo '';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
