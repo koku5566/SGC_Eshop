@@ -51,15 +51,13 @@
                                 <div class="col">
                                     <b>Business Hour</b>
                                 </div>
-                                <div class="col">
-                                    <b>Description</b>
-                                </div>
+                                
                             </div>
                             <br>
-                            <!-- Per Hour -->
+                            
                             <div class="row">
-                                <div class="col">
-                                    <span style="color:#a31f37;font-size:10pt">Per Hour</span>
+                            <div class="col">
+                                    <b>Description</b>
                                 </div>
                             </div>
                         
