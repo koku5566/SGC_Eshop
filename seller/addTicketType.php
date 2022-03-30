@@ -286,7 +286,7 @@
             </div>
         </section>
         <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-            <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Next</button>
+            <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" id = "nextForm">Next</button>
         </div>
 
 
