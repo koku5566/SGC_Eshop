@@ -290,7 +290,7 @@
 
 var pp = document.getElementsByClassName("hyperlink")
 pp.onclick = function() {
-  console.log(pp.value);
+  alert(pp.value);
 }
 
 $(document).ready(function(){
