@@ -304,24 +304,26 @@ $(document).ready(function(){
 	   //alert('success noob')
 		$('#displaySearch').html(data);
 		
-   },
-   complete:function load_data(query) {
-			$.ajax({
-			   url:"reviewRatingModal.php",
-			   method:"POST",
-			   data:{query:query},
-			   success:function(data)
-			   {
-				   //alert('success noob')
-				$('#modalResult').html(data);
-				
-			   }
-			  });
-		  
-		}
+   }
    
   });
  }
+ 
+ function load_data(query) 
+	{
+		$.ajax({
+		   url:"reviewRatingModal.php",
+		   method:"POST",
+		   data:{query:query},
+		   success:function(data)
+		   {
+			   alert('success noob')
+			$('#modalResult').html(data);
+			
+		   }
+		  });
+		  
+	}
  
  
 
