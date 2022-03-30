@@ -3,9 +3,9 @@ $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1
 $product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = 'SHOW ME DA WAE';
-
-
-if(isset($_POST["query"]) && !empty ($_POST["query"]))
+$mod = mysqli_real_escape_string($conn, $_POST["query"]);
+ echo "$mod-SAPI";
+if(isset($_POST["query"]))
 {
 
  $modal = mysqli_real_escape_string($conn, $_POST["query"]);
