@@ -49,10 +49,10 @@
                                     <b>Address</b>
                                 </div>
                                 <div class="col">
-                                    <b></b>
+                                    <b>Business Hour</b>
                                 </div>
                                 <div class="col">
-                                    <b></b>
+                                    <b>Description</b>
                                 </div>
                             </div>
                             <br>
