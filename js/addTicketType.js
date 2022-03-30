@@ -27,3 +27,8 @@ $("#ticketTypeList_tbl").on('click','.selectBtn',function(){
 
 
 });
+
+var nextBtn = document.getElementById("nextForm");
+nextBtn.addEventListener('click', function(){
+    window.location.href='./createForm.php';
+});
