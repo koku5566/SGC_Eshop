@@ -32,8 +32,9 @@
       </div>
 	  <!--CONTENT START-->
       <div class="modal-body">
-		<!--DISPLAY HERE-->
+		<!--DISPLAY HERE
 		<div id = "modalResult" style = "height: 100%"></div>
+		-->
         <div style="height: 100%">
 					
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
@@ -286,6 +287,12 @@
 </style>
 <script>
 /**/
+
+var pp = document.getElementsByClassName("hyperlink")
+pp.onclick = function() {
+  console.log(pp.value);
+}
+
 $(document).ready(function(){
 
 	
@@ -348,7 +355,7 @@ $(document).ready(function(){
  
   $('.hyperlink').click(function(){
   var click = $(this).val();
-  console.log(click)
+  //console.log(click)
   load_data(click);
   
   
