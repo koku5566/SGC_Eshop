@@ -41,20 +41,16 @@ $result_2 = $stmt_2->get_result();
     <a href="index.php">Back</a></i>
     </button>
     <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
-                                
-        <?php 
-           while ($row = $result_2->fetch_assoc()) {
-        ?>
         <!--Each Order Item-->
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
+                    <div class="col md-auto text-start"><span><strong>Shop_Name</strong></span>
                     </div>
                     <div class="col md-auto text-end" style="text-align:right;"><span><strong>
                         Order
                          ID:
-                         <?php echo $row['order_id'] ?></strong></span></div>
+                        1</strong></span></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -62,10 +58,10 @@ $result_2 = $stmt_2->get_result();
                         <div class="col-1 image-container">
                             <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                         </div>
-                        <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
-                        <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['quantity']?></div>
-                        <div class="col-md-3 col-lg-2 offset-lg-1">x<?php echo $row['prod_qty']?></div>
-                        <div class="col-md-3 col-lg-2 offset-lg-1" style="text-align:right;">RM<?php echo $row['price']?></div>
+                        <div class="col-md-3 col-lg-2 offset-lg-1">Product_Name</div>
+                        <div class="col-md-3 col-lg-1 offset-lg-1">x 1</div>
+                        <div class="col-md-3 col-lg-2 offset-lg-1">Variant-Grey<?php echo $row['prod_qty']?></div>
+                        <div class="col-md-3 col-lg-2 offset-lg-1" style="text-align:right;">RM3000.00</div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -74,9 +70,7 @@ $result_2 = $stmt_2->get_result();
                      <a style="margin-left:50%;">Total</a>
                 </div>
             </div>
-                                
-            <?php 
-            }?>                             
+                                   
         </div>
     </div>    
    <!-- /.container-fluid -->
