@@ -54,12 +54,17 @@
                                 
                             </div>
                             <br>
+                            <br>
+                            <br>
+                            <br>
                             
                             <div class="row">
                             <div class="col">
                                     <b>Description</b>
                                 </div>
                             </div>
+                        <br>
+                        <br>
                         <br>
                         <br>
                         <br>
