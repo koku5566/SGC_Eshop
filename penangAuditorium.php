@@ -12,6 +12,26 @@
                     </ol>
                 </nav>
 
+                    <!-- Product Row -->
+                    <div class="row">
+                        <!-- Picture -->
+                        <div class="col-xl-8 col-md-6 mb-6">
+                            <div id="custCarousel" class="carousel slide" data-interval="false">
+                                <!-- slides -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"> <img src="/img/product/iphone-black.jpg" alt="Iphone"> </div>
+                                    <div class="carousel-item"> <img src="/img/product/iphone-gold.jpg" alt="Iphone"> </div>
+                                    <div class="carousel-item"> <img src="/img/product/iphone-green.png" alt="Iphone"> </div>
+                                    <div class="carousel-item"> <img src="/img/product/iphone-grey.png" alt="Iphone"> </div>
+                                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
+                                <ol class="carousel-indicators list-inline" style="height:130px;">
+                                    <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="/img/product/iphone-green.png" class="img-fluid"> </a> </li>
+                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="/img/product/iphone-grey.png" class="img-fluid"> </a> </li>
+                                </ol>
+                            </div>
+                        </div>
 
                         <!-- Product Content -->
                         <div class="col-xl-4 col-md-6 mb-6">
@@ -42,7 +62,6 @@
                                     <span style="color:#a31f37;font-size:10pt">Per Hour</span>
                                 </div>
                             </div>
-
                         
                             <!-- Button -->
                             <div class="row">
