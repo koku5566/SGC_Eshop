@@ -5,7 +5,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
-	echo "<script>alert('niama')</script>";
+	echo "<script>
+			document.getElementById('exampleModalLong').style.display = 'block';
+		  
+		  
+		  
+		  </script>";
 
 }	
 
