@@ -323,7 +323,7 @@ $(document).ready(function(){
 
  $('.hyperlink').click(function(){
   var click = $(this).val();
-  
+  console.log(click)
   load_data(click);
   
  });
