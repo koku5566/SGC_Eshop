@@ -535,8 +535,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-4">
+                                <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-8">
+                                <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
+                                <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
+                            </div>
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -549,18 +556,30 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" >Add Category</h5>
+                        <h5 class="modal-title" >Delete Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <h3>Are you sure you want to delete the below category ?</h3>
-                        <p id="deleteCategoryId"></p>
+                        <?php
+                        $category_id = $_GET['edit'];
+                        $sql = "SELECT category_name FROM category WHERE category_id = '$category_id'";
+                        $result = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $categoryName = $row["category_name"];
+                                echo("<input type=\"text\" value=\"$category_id\" class=\"form-control\" name=\"deleteCategoryId\" hidden>");
+                                echo("<input type=\"text\" value=\"$categoryName\" class=\"form-control\" name=\"deleteCategoryName\" readonly>");
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="deleteCategory" class="btn btn-primary">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="submit" name="deleteCategory" class="btn btn-warning">Yes</button>
                     </div>
                     </div>
                 </div>
