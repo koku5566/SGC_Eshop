@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												 if($checkPic[$i] === null){
 													 echo '';													 
 												 }else{	
-													if($i == 1){
+													if($i == 0){
 														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
 													}else{
 														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 													 echo '';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
-													if($i == 1){
+													if($i == 0){
 														echo '<div class="carousel-item active">
 																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
 															  </div> ';
