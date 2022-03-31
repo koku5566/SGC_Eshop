@@ -1708,10 +1708,11 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
+            <!--
+            <li class="page-item disabled previous-page">
             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
             </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li>
@@ -1720,8 +1721,9 @@
             <li class="page-item"><a class="page-link" href="#">7</a></li>
             <li class="page-item"><a class="page-link" href="#">8</a></li>
             <li class="page-item"><a class="page-link" href="#">9</a></li>
-            <li class="page-item">
+            <li class="page-item next-page">
             <a class="page-link" href="#">Next</a>
+            -->
             </li>
         </ul>
     </nav>
