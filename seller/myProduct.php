@@ -251,7 +251,7 @@
                                     </div>
 
                                     <!-- Product List -->
-                                    <div class="card-content" style="display: none">
+                                    <div class="card-content row" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
                                             if(isset($_POST['keyword']) || isset($_POST['category']))
@@ -550,16 +550,17 @@
                                             }
                                             
                                         ?>
-
+                                    </div>
+                                    <div class="row">
                                         <div class="pagination">
-                                        <!--<li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
-                                        <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-                                        <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
-                                        <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-                                        <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
-                                        <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
+                                            <!--<li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+                                            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                                            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+                                            <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+                                            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                                            <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+                                            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
                                         </div>
                                     </div>
                                 </div>
@@ -601,14 +602,6 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-    .card-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 30px;
-    }
 
     .previous-page, .next-page{
     cursor: pointer;
