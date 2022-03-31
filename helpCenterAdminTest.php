@@ -100,11 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
-			<div id = "sellresponse">
-				<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
-				<h6 style = "font-size: 0.8rem"><?php echo (isset($c17) && !empty ($c17))? $c17 : ''; ?>
-				</h6>		
-			</div>			
+			<?php
+				if(isset($c17) && !empty ($c17)){
+					echo '<div id = "sellresponse">
+							<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
+							<h6 style = "font-size: 0.8rem"> "'.$c17.'"</h6>
+						  </div>';		
+				}else{echo "";}		  
+			?>
+					
 					
 
 						<!---->
@@ -113,24 +117,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 <ol class="carousel-indicators">
 									<?php
 										if(isset($c1) && !empty ($c1)){		
-											$checkPic = array();
-											$tt = 10;
-											  for ($counter = 0; $counter < 5; $counter++){		
-											    $tt = $counter + 10;
-											  $checkPic[] = '$c' . $tt;
-											 }
-											 
-											for($i=0; $i<5; $i++){
-												 if($checkPic[$i] === null){
-													 echo '';													 
-												 }else{	
-													if($i == 0){
-														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
-													}else{
-														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
-													}	
-												 }											 
-											 }
+											
+											if($c10 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
+												
+											if($c11 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
+												
+											if($c12 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
+												
+											if($c13 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
+												
+											if($c14 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}											 
 										}else{
 											echo '';
 										}
@@ -148,32 +149,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 									
 										if(isset($c1) && !empty ($c1)){			
-											$checkPic = array();
-											$tt = 10;
-											  for ($counter = 0; $counter < 5; $counter++){		
-											    $tt = $counter + 10;
-											  $checkPic[] = '$c' . $tt;
-											 }
-
-											for($i=0; $i<5; $i++){												
-												 if($checkPic[$i] === null){
-													 echo '';													 
-												 }else{	
-													//DISPLAY REAL PIC/VID
-													if($i == 0){
-														echo '<div class="carousel-item active">
-																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-															  </div> ';
-													}else{
-														echo '<div class="carousel-item">
-																	 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-															  </div>';
-													}	
-												 }											 
-											 }
-										}else{
+											
+											if( $c10 === null){echo '';}
+												else{echo '<div class="carousel-item active">
+																<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+														  </div> ';} 													 
+												
+											if( $c11 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}
+											if( $c12 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}	
+											if( $c13 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}		
+											if( $c14 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}										
+													
+		
+				
+				
+		 								}else{
 											echo '';
-										}
+										}			 
+	
 									?>
 									<!--
 									<div class="carousel-item active">
@@ -224,12 +229,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	<div class="row pickbox">
 	  <div class="col-5" style = "background-color:;">
 		<div>
-			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
-			<div style="margin-bottom: 0.1em; text-align: center;">													
+			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
+			
+			<?php
+			
+			
+			$sql ="SELECT avg(rr.rating)
+			    FROM user u INNER JOIN  reviewRating rr 
+			    ON  u.userID = rr.user_id 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product'
+			    ORDER BY rr.rr_id";
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt, $x1);
+				
+				while(mysqli_stmt_fetch($stmt)){
+					$avgrat = round($x1, 1);
+					echo"$avgrat";
+				}
+				mysqli_stmt_close($stmt);
+			}
+			
+			?>
+			
+			
+			</strong> out of 5.0</p>
+			<div style="margin-bottom: 0.1em; text-align: center;">	
+
+			<?php
+			echo"$avgrat";
+			
+			?>
+			
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star tqy"></i>
+				<i class="bi bi-star-half tqy"></i>
 				<i class="bi bi-star tqy"></i>
 			</div>	
 		</div>	  
@@ -252,8 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					<div class="col">						
 						 <select class="form-control" id = "selectCM">
 							  <option value = "All">With Comment & Media*</option>
-							  <option value = "1">With Comment Only</option>
-							  <option value = "2">With Media Only</option>							  
+							  <option value = "1">With Comment Only</option>							  
 						</select>		
 					</div>
 				</div>
@@ -264,18 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 </div>
-						<?php
-								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
-									
-									$pid = $_POST['pid'];
-									echo "$pid";
-									//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
-									 //echo "<script>$('#exampleModalLong').modal('show');</script>";
-										echo"<script>$('#exampleModalLong').modal('toggle')</script>";							 						
-								}
-								
-						?>
-
+						
 <!-------------------------------------------------------------------> 
 				<!-- List All Product -->
 				<div class="card-body">
@@ -380,8 +403,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	max-height: 25rem;
     margin: 0 auto;
 }
+.bi-star-half{
+	-webkit-text-fill-color: orange;
+}
 .bi.bi-star-fill{
-	-webkit-text-fill-color: orange
+	-webkit-text-fill-color: orange;
 }
 .imgReply{
 	width: 2.3rem;

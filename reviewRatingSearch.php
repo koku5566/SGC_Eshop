@@ -21,10 +21,6 @@ if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["re
 	if($_POST["restriction2"] == "1"){
 		$rr2 = " && message IS NOT NULL && pic1 IS NULL && pic2 IS NULL && pic3 IS NULL && pic4 IS NULL && pic5 IS NULL";
 	}
-	if($_POST["restriction2"] == "2"){
-		$rr2 = " && message IS NULL && pic1 IS NOT NULL || pic2 IS NOT NULL || pic3 IS NOT NULL || pic4 IS NOT NULL || pic5 IS NOT NULL";
-	
-	}
 	//$rr2 = " && product_id = '$restriction2' ";
 	
 	

@@ -1,6 +1,17 @@
 #voucherlogo{
-   height: 100px !important;
-   width: 100px !important;
+   height: 100px;
+   width: 100px;
+   display: flex;
+   justify-content: center;
+   overflow: hidden
+}
+
+#voucherlogo img {
+   width: 100px
+}
+
+img {
+   width: 100px
 }
 
 #vouchercard{

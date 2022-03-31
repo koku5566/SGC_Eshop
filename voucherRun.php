@@ -1,3 +1,30 @@
+<?php
+   require 'localDbConn.php';
+
+   $sql = 
+    "SELECT 
+     voucher.voucher_id,
+     voucher.voucher_code,
+     voucher.voucher_startdate,
+     voucher.voucher_expired,
+     voucher.voucher_type,
+     voucher.voucher_details,
+     voucher.discount_amount,
+     user.shop_name,
+     user.shop_profile_image,
+     product.product_name
+
+     FROM voucher
+     INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+     INNER JOIN product ON productVoucher.product_id = product.product_id	
+     INNER JOIN user ON product.user_id = user.user_id";	
+
+   $getv = $conn->prepare($sql);
+   $getv->execute();
+   $result = $getv->get_result();
+   
+?>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
@@ -7,17 +34,18 @@
 
       <div class="container">
          <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+            <?php  while ($row = $result->fetch_assoc()) {?>
             <div class="col-md-2 m-2">
                <div class="card" id="vouchercard">
                   <div class="container">
-                     <img class="m-4" src="../img/segilogo.png" id="voucherlogo">
+                     <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                   </div>
                   <div class="card-body">
-                     <h6 class="card-title"><strong>SEGi Group of Colleges</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM1 off</h5>
-                     <small>Used : 30 FEB 2022</small><br>
+                     <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                      <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
+                        <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
                         T&C applied.
                         </a>
                      </u>
@@ -27,204 +55,46 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/segilogo.png" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>SEGi Group of Colleges</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM1 off</h5>
-                     <small>Used : 30 FEB 2022</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/sony.png" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>SONY Malaysia</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM188 off</h5>
-                     <small>Used : 08 AUG ~ 18 AUG</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/sony.png" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>SONY Malaysia</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM188 off</h5>
-                     <small>Used : 08 AUG ~ 18 AUG</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/ttracing.png" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>TTRacing Malaysia</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM10 off</h5>
-                     <small>Used : 30 SEP ~ 05 OCT</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/ttracing.png" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>TTRacing Malaysia</strong></h6>
-                     <h5 class="card-subtitle text-muted">RM10 off</h5>
-                     <small>Used : 30 SEP ~ 05 OCT</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/apple.jpg" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>Apple Authorised Reseller</strong></h6>
-                     <h5 class="card-subtitle text-muted">22% off</h5>
-                     <small>Used : 01 FEB ~ 29 FEB</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                     <img class="m-4" src="../img/apple.jpg" id="voucherlogo">
-                  </div>
-                  <div class="card-body">
-                     <h6 class="card-title"><strong>Apple Authorised Reseller</strong></h6>
-                     <h5 class="card-subtitle text-muted">22% off</h5>
-                     <small>Used : 01 FEB ~ 29 FEB</small><br>
-                     <u>
-                        <a type="" class="" data-toggle="modal" data-target="#termsModal">
-                        T&C applied.
-                        </a>
-                     </u>
-                  </div>
-                  <div class="card-footer">
-                     <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
-                  </div>
-               </div>
-            </div>
-            <!-- <div class="col-md-2 m-2">
-               <div class="card" id="vouchercard">
-                  <div class="container">
-                  </div>
-                  <div class="card-body">
-                     <h5 class="card-title">
-                        <strong>
-                        <u>
-                           <a type="" class="text-muted" data-toggle="modal" data-target="#termsModal">
-                           View More >
-                           </a>
-                        </u>
-                        </strong>
-                     </h5>
-                     <h6 class="card-subtitle text-muted">Link to promotion page</h6>
-                  </div>
-               </div>
-            </div> -->
-         </div>
-      </div>
 
+         <!-- Modal -->
 
-
-<!-- Modal -->
-<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="termsModalLongTitle">Terms and Conditions.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <div class="d-flex justify-content-center">
-            <div class="card m-2" id="termsvouchercard">
-               <div class="container">
-                  <img class="m-4" src="../img/apple.jpg" id="voucherlogo">
-               </div>
-               <div class="card-body">
-                  <h6 class="card-title"><strong>Apple Authorised Reseller</strong></h6>
-                  <h5 class="card-subtitle text-muted">22% off</h5>
-                  <small>Used : 01 FEB ~ 29 FEB</small><br>
+         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="termsModalLongTitle">Terms and Conditions.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="d-flex justify-content-center">
+                        <div class="card m-2" id="termsvouchercard">
+                           <div class="container">
+                              <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                           </div>
+                           <div class="card-body">
+                              <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                              <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                              <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="tnccontainer">
+                     <strong>Product</strong>
+                     <p><?php echo $row['product_name']; ?></p>
+                     <strong>More Details</strong>
+                     <p><?php echo $row['voucher_details']; ?></p>
+                     <strong>Usage Period</strong>
+                     <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
-      <div class="tnccontainer">
-         <strong>Product</strong>
-         <p>All products</p>
-         <strong>More Details</strong>
-         <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-         </p>
-         <strong>Usage Period</strong>
-         <p>12/07/2021 15:00:24 - 31/12/2021 23:59:59</p>
-      </div>
-    </div>
-  </div>
-</div>
 
+            <?php }?>
+
+            
+         </div>
+      </div>
