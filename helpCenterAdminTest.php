@@ -237,7 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			$sql ="SELECT avg(rr.rating)
 			    FROM user u INNER JOIN  reviewRating rr 
 			    ON  u.userID = rr.user_id 
-			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product'
 			    ORDER BY rr.rr_id";
 			if($stmt = mysqli_prepare ($conn, $sql)){
 				mysqli_stmt_execute($stmt);
