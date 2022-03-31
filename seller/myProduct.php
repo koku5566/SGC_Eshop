@@ -106,7 +106,7 @@
                                 <button type="submit" name="submitSearch" class="btn btn-primary">Search</button>
                             </div>
                             <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                                <button type="button" onclick="clearSearch()" class="btn btn-outline-dark">Reset</button>
+                                <button type="submit"  class="btn btn-outline-dark">Reset</button>
                             </div>
                             
                         </div>
