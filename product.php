@@ -1,5 +1,8 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+?>
+<?php
+    $_SESSION['productID'] = $_GET['id'];
 ?>
 
                 <!-- Begin Page Content -->
