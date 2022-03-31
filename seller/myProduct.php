@@ -142,6 +142,7 @@
                             <div class="tab-content" id="nav-tabContent">
                                     <!-- All Product Tab -->
                                 <div class="tab-pane active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+                                    
                                     <!-- Header Bar -->
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
@@ -250,6 +251,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- Pagination Loop Start From here -->
                                     <!-- Product List -->
                                     <div class="card-content row" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
@@ -563,6 +565,7 @@
                                             <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
                                         </div>
                                     </div>
+                                    <!-- Pagination Loop End From here -->
                                 </div>
                             </div>
                         </div>
@@ -600,6 +603,7 @@
     }
 </style>
 
+<!-- Pagination CSS here -->
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -621,6 +625,7 @@
     }        
 </style>
 
+<!-- Pagination Script Here -->
 <script type="text/javascript">
     function getPageList(totalPages, page, maxLength){
         function range(start, end){
