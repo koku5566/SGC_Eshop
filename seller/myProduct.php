@@ -1762,8 +1762,6 @@
         {
             return Array.from(Array(end - start + 1), (_,i) => i + start);
         }
-
-        var sideWidth
     }
 
     $(function(){
