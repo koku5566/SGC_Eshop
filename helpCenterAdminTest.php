@@ -229,7 +229,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	<div class="row pickbox">
 	  <div class="col-5" style = "background-color:;">
 		<div>
-			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">4.9</strong> out of 5.0</p>
+			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
+			4.9
+			<?php
+			
+			
+			$sql ="SELECT avg(rr.rating)
+			    FROM user u INNER JOIN  reviewRating rr 
+			    ON  u.userID = rr.user_id 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    ORDER BY rr.rr_id";
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt, $x1);
+				
+				while(mysqli_stmt_fetch($stmt)){
+					echo'x1';
+				}
+				mysqli_stmt_close($stmt);
+			}
+			
+			?>
+			
+			
+			</strong> out of 5.0</p>
 			<div style="margin-bottom: 0.1em; text-align: center;">													
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
