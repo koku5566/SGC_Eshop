@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											 }
 
 											for($i=0; $i<5; $i++){												
-												 if($checkPic[$i] === null){
+												 if(is_null($checkPic[$i])){
 													 echo 'aglablgknawgnawnglwanglnalgnlawgnawlgnlwangl';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
