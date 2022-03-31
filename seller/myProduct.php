@@ -611,9 +611,6 @@
     }
 
     .previous-page, .next-page{
-    background: #0AB1CE;
-    width: 80px;
-    border-radius: 45px;
     cursor: pointer;
     transition: 0.3s ease;
     }
@@ -627,9 +624,7 @@
     }
 
     .current-page, .dots{
-    background: #ccc;
     width: 45px;
-    border-radius: 50%;
     cursor: pointer;
     }
 
