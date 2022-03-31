@@ -11,7 +11,6 @@ product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
 orderDetails.price,
-orderDetails.order_id,
 shopProfile.shop_name
 
 FROM
@@ -39,27 +38,58 @@ $result_2 = $stmt_2->get_result();
     <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);">
     <a href="index.php">Back</a></i>
     </button>
-    <div class="card">
-    <div class="card-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">Shop__name</div>
-                <div class="col-md-6 col-lg-4 offset-lg-2">Purchased__Date</div>
-            </div>
+    <div class="tab-content mb-4">
+   
+        <div class="order-history-list-panel">
         </div>
-    </div>
-    <div class="card-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-lg-1">Product__Image</div>
-                <div class="col-md-3 col-lg-2">Product__Name</div>
-                <div class="col-md-3 col-lg-1 offset-lg-1">Product_Qty</div>
-                <div class="col-md-3 offset-lg-1">Product_Variant</div>
-                <div class="col-lg-2 offset-lg-1">Product_Price</div>
-            </div>
+        <div class="tab-panel">
+        <?php 
+        while ($row = $result_2->fetch_assoc()) {
+        ?>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col md-auto text-start"><span><strong><!--?php echo $row['shop_id']?--></strong></span>
+                        </div>
+                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                         OrderID:<!--?php echo $row['order_id']?--></strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                                        
+                        <div class="col-1 image-container">
+                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>">
+                        </div>
+                        <div class="col-3">
+                                Iphone 11 Pro Max
+                        </div>
+                        <div class="col-2">
+                             x 1
+                        </div>
+                        <div class="col md-auto text-start offset-md-1">
+                            Grey
+                        </div>
+                        <div class="col md-auto text-end">price</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <ul class="list-group list-group-horizontal" style="list-style-type:none;">
+                        <li class=""><button type="button" class="btn btn-primary">Order Status</button></li>
+                        <li style="padding-left:20px"><button type="button" class="btn btn-primary">Order Status</button></li>
+                        <li style="padding-left:60%">Total</li>
+                        <li style="padding-left:200px;">Pricessss</li>
+                    </ul>
+                       
+                </div>
+                <?php 
+                 }?>
+
+          </div>
         </div>
-    </div>
-</div>
+   
    <!-- /.container-fluid -->
 
 
