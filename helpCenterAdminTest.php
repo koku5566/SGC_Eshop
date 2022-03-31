@@ -257,8 +257,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			<div style="margin-bottom: 0.1em; text-align: center;">	
 
 			<?php
+			/*
 				$calavgrat = $avgrat;
-			    for($i = 0; $i<5; $i--){
+			    for($i = 0; $i<5; $i++){
 					if(is_int(round($calavgrat)) == 1){
 						echo '<i class="bi bi-star-fill tqy"></i>';
 						$calavgrat -= 1;
@@ -275,6 +276,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					
 					
 				}
+				*/
+				
+				$calavgrat = $avgrat;
+				$check = true;
+				  for($i = 0; $i<5; $i++){
+					if(round($calavgrat) && $check == true){
+					  echo '<i class="bi bi-star-fill tqy"></i>';
+					  $calavgrat -= 1;
+					}else{
+					   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+						echo '<i class="bi bi-star-half tqy"></i>';
+					  }
+					  else{
+						echo '<i class="bi bi-star tqy"></i>';
+					  }
+					  $check = false;
+					  $calavgrat -= 1;
+					}
+
+
+				  }
 			
 			?>
 			<!--
