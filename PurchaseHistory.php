@@ -50,10 +50,10 @@ $result_2 = $stmt_2->get_result();
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col md-auto text-start"><span><strong><!--?php echo $row['shop_id']?--></strong></span>
+                        <div class="col md-auto text-start"><span><strong><?php echo $row['shop_id']?></strong></span>
                         </div>
                         <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                         OrderID:<!--?php echo $row['order_id']?--></strong></span>
+                         OrderID:<?php echo $row['order_id']?></strong></span>
                         </div>
                     </div>
                 </div>
@@ -66,13 +66,13 @@ $result_2 = $stmt_2->get_result();
                         <div class="col-3">
                         <?php echo $row['product_name']?>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2">x
                         <?php echo $row['quantity']?>
                         </div>
                         <div class="col md-auto text-start offset-md-1">
                         <?php echo $row['product_variation']?>
                         </div>
-                        <div class="col md-auto text-end"><?php echo $row['product_price']?></div>
+                        <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
                         </div>
                     </div>
                 </div>
