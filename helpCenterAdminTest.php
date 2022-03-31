@@ -234,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star tqy"></i>
+				<i class="bi bi-star-half tqy"></i>
 				<i class="bi bi-star tqy"></i>
 			</div>	
 		</div>	  
