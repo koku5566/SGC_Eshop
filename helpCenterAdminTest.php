@@ -100,11 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
-			<div id = "sellresponse">
-				<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
-				<h6 style = "font-size: 0.8rem"><?php echo (isset($c17) && !empty ($c17))? $c17 : ''; ?>
-				</h6>		
-			</div>			
+			<?php
+				if(isset($c17) && !empty ($c17)){
+					echo '<div id = "sellresponse">
+							<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
+							<h6 style = "font-size: 0.8rem"> "'.$c17.'"</h6>
+						  </div>';		
+				}else{echo "";}		  
+			?>
+					
 					
 
 						<!---->
@@ -114,32 +118,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 										if(isset($c1) && !empty ($c1)){		
 											
-											 
-										
+											if($c10 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
 												
-	if($c10 === null){echo '';}
-		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
-	 	
-	if($c11 === null){echo '';}
-		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
-		
-	if($c12 === null){echo '';}
-		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
-		
-	if($c13 === null){echo '';}
-		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
-		
-	if($c14 === null){echo '';}
-		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}	
-		
-			
-			
-	 											 
-											
-
-
-
-											
+											if($c11 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
+												
+											if($c12 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
+												
+											if($c13 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
+												
+											if($c14 === null){echo '';}
+												else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}											 
 										}else{
 											echo '';
 										}
@@ -158,44 +150,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									
 										if(isset($c1) && !empty ($c1)){			
 											
-											
+											if( $c10 === null){echo '';}
+												else{echo '<div class="carousel-item active">
+																<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+														  </div> ';} 													 
+												
+											if( $c11 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}
+											if( $c12 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}	
+											if( $c13 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}		
+											if( $c14 === null){echo '';}
+												else{echo '<div class="carousel-item">
+																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+														  </div>';}										
 													
-		if( $c10 === null){echo '';}
-			else{echo '<div class="carousel-item active">
-							<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-					  </div> ';} 													 
-		 	
-		if( $c11 === null){echo '';}
-			else{echo '<div class="carousel-item">
-							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-					  </div>';}
-		if( $c12 === null){echo '';}
-			else{echo '<div class="carousel-item">
-							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-					  </div>';}	
-		if( $c13 === null){echo '';}
-			else{echo '<div class="carousel-item">
-							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-					  </div>';}		
-		if( $c14 === null){echo '';}
-			else{echo '<div class="carousel-item">
-							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-					  </div>';}	
+		
 				
 				
-		 											 
-											 
-											 
-											 
-											 
-											 
-											 
-											 
-											 
-											 
-										}else{
+		 								}else{
 											echo '';
-										}
+										}			 
+	
 									?>
 									<!--
 									<div class="carousel-item active">
