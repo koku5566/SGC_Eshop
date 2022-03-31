@@ -46,70 +46,72 @@
                     <h5 class="m-0 font-weight-bold text-primary">Filter Product</h5>
                 </div>
 
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <select class="form-select" name="searchBy" aria-label="SearchBy" style="color:currentColor;border: 0.5px solid #d1d3e2; border-radius: 5px;">
-                                        <option selected value="name">Product Name</option>
-                                        <option value="sku">Product SKU</option>
+                <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select" name="searchBy" aria-label="SearchBy" style="color:currentColor;border: 0.5px solid #d1d3e2; border-radius: 5px;">
+                                            <option selected value="name">Product Name</option>
+                                            <option value="sku">Product SKU</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" id="inpKeyword" class="form-control" name="keyword" placeholder="Enter ..." aria-label="SearchKeyword">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Main Category</span>
+                                    </div>
+                                    <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId">
+                                        <option value="All" selected>All</option>
+                                            <?php
+                                            //Main Category
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    $categoryId = $row["category_id"];
+                                                    $categoryName = $row["category_name"];
+
+                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                }
+                                            }
+                                            ?>
                                     </select>
                                 </div>
-                                <input type="text" id="inpKeyword" class="form-control" name="keyword" placeholder="Enter ..." aria-label="SearchKeyword">
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Main Category</span>
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Sub Category</span>
+                                    </div>
+                                    <select class="form-control" id="subCategory" name="subCategoryId">
+    
+                                    </select>
                                 </div>
-                                <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId">
-                                    <option value="All" selected>All</option>
-                                        <?php
-                                        //Main Category
-                                        $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                $categoryId = $row["category_id"];
-                                                $categoryName = $row["category_name"];
-
-                                                echo("<option value=\"$categoryId\">$categoryName</option>");
-                                            }
-                                        }
-                                        ?>
-                                </select>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Sub Category</span>
-                                </div>
-                                <select class="form-control" id="subCategory" name="subCategoryId">
- 
-                                </select>
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+                                
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="submit" name="submitSearch" class="btn btn-primary">Search</button>
+                            </div>
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="submit"  class="btn btn-outline-dark">Reset</button>
+                            </div>
                             
                         </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="submit" name="submitSearch" class="btn btn-primary">Search</button>
-                        </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" onclick="clearSearch()" class="btn btn-outline-dark">Reset</button>
-                        </div>
-                        
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -145,97 +147,106 @@
                                         <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;">
                                             <div class="col-xl-10 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
 
-                                        <?php
-                                        
-                                            if(isset($_POST['submitSearch']))
-                                            {
-                                                ;
-                                            }
-
-                                            if(isset($_POST['keyword']) || isset($_POST['mainCategoryId']))
-                                            {
-                                                $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
-                                                $mainCategoryId = $_POST['mainCategoryId'] != "All" ? $_POST['mainCategoryId'] : "";
-                                                $subCategoryId = $_POST['subCategoryId'] != "All" ? $_POST['subCategoryId'] : "";
-
-                                                if(isset($_POST['searchBy']))
-                                                {
-                                                    switch($_POST['searchBy'])
+                                                <?php
+                                                
+                                                    if(isset($_POST['submitSearch']))
                                                     {
-                                                        case "name":
-                                                            $searchBy = "product_name";
-                                                            break;
-                                                        case "mainsku":
-                                                            $searchBy = "product_sku";
-                                                            break;
-                                                        case "sku":
-                                                            $searchBy = "sub_product_id";
-                                                            break;
-                                                        default:
-                                                            $searchBy = "product_name";
-                                                    }
-                                                }
+                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
 
-                                                //If sub = null then just select from main category
-                                                $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$mainCategoryId'";
-
-                                                if(isset($_POST['keyword']) && isset($_POST['mainCategoryId']))
-                                                {
-                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
-                                                }
-
-                                                $result = mysqli_query($conn, $sql);
-                                    
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while($row = mysqli_fetch_assoc($result)) {
-                                                        $total = (int) $row["total_product"];
-                                                        $percent = $total/10;
-                                                        $uploadAvailable = 1000 - $total;
-                                                        echo("
-                                                            <h5>$total Products</h5>
-                                                        
-                                                            <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                                                            </div>
-                                                            <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                    
-                                                        ");
-                                                    }
-                                                }
-                                            }    
-                                            else
-                                                {
-                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
-                                                    $result = mysqli_query($conn, $sql);
-                                        
-                                                    if (mysqli_num_rows($result) > 0) {
-                                                        while($row = mysqli_fetch_assoc($result)) {
-                                                            $total = (int) $row["total_product"];
-                                                            $percent = $total/10;
-                                                            $uploadAvailable = 1000 - $total;
-                                                            echo("
-                                                                <h5>$total Products</h5>
-                                                            
-                                                                <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                    <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                                                                </div>
-                                                                <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                        
-                                                            ");
+                                                        if(isset($_POST['keyword']))
+                                                        {
+                                                            $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
+                                                            switch($_POST['searchBy'])
+                                                            {
+                                                                case "name":
+                                                                    $searchBy = "product_name";
+                                                                    break;
+                                                                case "mainsku":
+                                                                    $searchBy = "product_sku";
+                                                                    break;
+                                                                case "sku":
+                                                                    $searchBy = "sub_product_id";
+                                                                    break;
+                                                                default:
+                                                                    $searchBy = "product_name";
+                                                                    break;
+                                                            }
+                                                            $sql_count .= "WHERE $searchBy LIKE %$keyword% ";
                                                         }
+                                                        if(isset($_POST['mainCategoryId']))
+                                                        {
+                                                            $mainCategoryId = $_POST['mainCategoryId'] != "All" ? $_POST['mainCategoryId'] : "";
+                                                            $subCategoryId = $_POST['subCategoryId'] != "" ? $_POST['subCategoryId'] : "";
+    
+                                                            if($mainCategoryId != "All")
+                                                            {
+                                                                $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$mainCategoryId'";
+                                                                if($subCategoryId != "")
+                                                                {
+                                                                    $sql .= " sub_category = '$subCategoryId'";
+                                                                }
+    
+                                                                $result = mysqli_query($conn, $sql);
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    $sql_count .= "AND (";
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $cc_id = $row['combination_id'];
+                                                                        $sql_count .= "category_id = $cc_id OR";
+                                                                    }
+                                                                    $sql_count .= substr($sql_count,0,-2) . ")";
+                                                                }
+                                                            }
+                                                        }
+
+                                                        
+                                                        $result = mysqli_query($conn, $sql);
+                                                
+                                                            if (mysqli_num_rows($result) > 0) {
+                                                                while($row = mysqli_fetch_assoc($result)) {
+                                                                    $total = (int) $row["total_product"];
+                                                                    $percent = $total/10;
+                                                                    $uploadAvailable = 1000 - $total;
+                                                                    echo("
+                                                                        <h5>$total Products</h5>
+                                                                    
+                                                                        <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                            <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                        </div>
+                                                                        <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                                
+                                                                    ");
+                                                                }
+                                                            }
                                                     }
-                                                }                                                        
-                                        ?>
+                                                    else
+                                                    {
+                                                        $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
+                                                        $result = mysqli_query($conn, $sql);
+                                            
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            while($row = mysqli_fetch_assoc($result)) {
+                                                                $total = (int) $row["total_product"];
+                                                                $percent = $total/10;
+                                                                $uploadAvailable = 1000 - $total;
+                                                                echo("
+                                                                    <h5>$total Products</h5>
+                                                                
+                                                                    <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                    </div>
+                                                                    <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                            
+                                                                ");
+                                                            }
+                                                        }
+                                                    }                                                        
+                                                ?>
 
                                             </div>
-                                            
                                         </div>
 
-                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;text-align:end;">
+                                        <div class="col-xl-6 col-lg-6 col-sm-6" style="padding-bottom: .625rem;text-align:end;">
                                             <a href="addProduct.php" class="btn btn-primary">New Product</a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-3 col-sm-3" style="padding-bottom: .625rem;">
-                                            <a href="massUpload.php" class="btn btn-outline-primary">Mass Upload</a>
                                         </div>
                                     </div>
 
