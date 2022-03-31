@@ -624,18 +624,8 @@
     }
 
     .current-page, .dots{
-    width: 45px;
     cursor: pointer;
-    }
-
-    .pg-active{
-    background: #0AB1CE;
-    }
-
-    .pg-disable{
-    background: #ccc;
-    }
-        
+    }        
 </style>
 
 <script type="text/javascript">
@@ -681,12 +671,12 @@
     
         getPageList(totalPages, currentPage, paginationSize).forEach(item => {
             $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
-            .toggleClass("pg-active", item === currentPage).append($("<a>").addClass("page-link")
+            .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
             .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
         });
     
-        $(".previous-page").toggleClass("pg-disable", currentPage === 1);
-        $(".next-page").toggleClass("pg-disable", currentPage === totalPages);
+        $(".previous-page").toggleClass("disabled", currentPage === 1);
+        $(".next-page").toggleClass("disabled", currentPage === totalPages);
         return true;
         }
     
@@ -698,7 +688,7 @@
         $(".card-content").show();
         showPage(1);
     
-        $(document).on("click", ".pagination li.current-page:not(.pg-active)", function(){
+        $(document).on("click", ".pagination li.current-page:not(.active)", function(){
         return showPage(+$(this).text());
         });
     
