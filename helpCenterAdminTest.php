@@ -373,8 +373,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	max-height: 25rem;
     margin: 0 auto;
 }
+.bi-star-half{
+	-webkit-text-fill-color: orange;
+}
 .bi.bi-star-fill{
-	-webkit-text-fill-color: orange
+	-webkit-text-fill-color: orange;
 }
 .imgReply{
 	width: 2.3rem;
