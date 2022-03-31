@@ -11,7 +11,6 @@ product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
 orderDetails.price,
-orderDetails.order_id,
 shopProfile.shop_name
 
 FROM
@@ -44,6 +43,9 @@ $result_2 = $stmt_2->get_result();
         <div class="order-history-list-panel">
         </div>
         <div class="tab-panel">
+        <?php 
+        while ($row = $result_2->fetch_assoc()) {
+        ?>
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -82,9 +84,12 @@ $result_2 = $stmt_2->get_result();
                     </ul>
                        
                 </div>
+                <?php 
+                 }?>
+
           </div>
         </div>
-    </div>
+   
    <!-- /.container-fluid -->
 
 
