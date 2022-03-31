@@ -156,8 +156,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											  echo "$checkPic[$counter]";
 											 }
 
-											for($i=10; $i<15; $i++){												
-												 if('$c' . $counter === null){
+											for($i=10; $i<15; $i++){
+													$cc = '$c' . $counter; 
+												 if( $cc === null){
 													 echo 'aglablgknawgnawnglwanglnalgnlawgnawlgnlwangl';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
