@@ -1,7 +1,4 @@
 
-<?php
-   require __DIR__ . '/header.php'
-?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,17 +14,17 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 
-
+<link href="/css/voucher.css" rel="stylesheet" type="text/css">
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="m-4">Create Voucher</h2>
-   <form method="post">
+   <form action="createVoucherAction.php" method="post">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
                <div class="form-group col-md-12">
                   <label for="">Voucher Code</label>
-                  <input type="text" aria-label="First name" class="form-control" placeholder="Enter voucher code">
+                  <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code">
                </div>
             </div>
             <div class="form-row">
@@ -39,7 +36,7 @@
                            <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">Start</span>
                            </div>
-                           <input type="date" aria-label="start date" class="form-control">
+                           <input type="date" name="voucherStartdate" aria-label="start date" class="form-control">
                         </div>
                      </div>
                      <div class="col-md-6">
@@ -47,7 +44,7 @@
                            <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">End</span>
                            </div>
-                           <input type="date" aria-label="end date" class="form-control">
+                           <input type="date" name="voucherExpired" aria-label="end date" class="form-control">
                         </div>
                      </div>
                   </div>
@@ -57,24 +54,25 @@
                <div class="form-group col-md-8">
                   <label class="" for="">Voucer Discount Amount</label>
                   <div class="input-group col-mb-6">
-                     <input type="text" aria-label="discountAmount" class="form-control" for="inputGroupSelect02" placeholder="00.00">
+                     <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00">
                      <div class="input-group-append">
-                        <select class="custom-select" id="inputGroupSelect02">
-                           <option value="1">RM</option>
-                           <option value="1">%</option>
+                        <select name="voucherType" class="custom-select">
+                           <option value="">Please choose</option>
+                           <option value="ringgit">RM</option>
+                           <option value="%">%</option>
                         </select>
                      </div>
                   </div>
                </div>
                <div class="form-group col-md-4">
                   <label for="">Voucher Limit</label>
-                  <input type="text" class="form-control" placeholder="Voucher Redeem/Use limit">
+                  <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit">
                </div>
             </div>
             <div class="form-row">
                <div class="form-group col-md-12">
                <label for="">Voucher Details</label>
-               <textarea class="form-control" rows="10" placeholder="Please insert here" required></textarea>
+               <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required></textarea>
                <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
             </div>
          </div>
@@ -84,13 +82,13 @@
                <div class="form-group col-md-12">
                   <label for="">Voucher Display Setting</label>
                   <div class="form-check">
-                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                     <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios1" value="1" checked>
                      <label class="form-check-label" for="exampleRadios1">
                         Display on all pages.
                      </label>
                   </div>
                   <div class="form-check">
-                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                     <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios2" value="0">
                      <label class="form-check-label" for="exampleRadios2">
                         Do not display.
                      </label>
@@ -101,12 +99,29 @@
             <div class="form-row">
                <div class="form-group col-md-12">
                   <label for="">Applicable products</label>
-                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-12">
+                  <table class="table" id="createvouchertable">
+                     <thead>
+                        <tr>
+                           <th>Product Image</th>
+                           <th>Product Name</th>
+                           <th>Product SKU</th>
+                           <th>Price (RM)</th>
+                           <th></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
                </div>
             </div>
             <div class="form-row">
                <div class="float-right">
-                  <button type="button" class="btn btn-warning" name="savevoucher">SAVE</button>
+                  <button type="submit" name="submit" class="btn btn-warning">SAVE</button>
                </div>
             </div>
          </div>    
@@ -134,19 +149,40 @@
                             <th>Product Image</th>
                             <th>Product Name</th>
                             <th>Product SKU</th>
-                            <th>Variation</th>
-                            <th>Price</th>
-                            <th>Delete</th>
+                            <th>Price (RM)</th>
                         </tr>
                     </thead>
+                    
                     <tbody> 
+                     <?php 
+                        $sqlp = 
+                        "SELECT 
+                         user.shop_name,
+                         user.shop_profile_image,
+                         product.product_name,
+                         product.product_cover_picture,
+                         product.product_sku,
+                         product.product_price
+                    
+                         FROM user
+                         INNER JOIN product ON user.user_id = product.user_id";
+                    
+                    
+                       $getp = $conn->prepare($sqlp);
+                       $getp->execute();
+                       $res = $getp->get_result();
+
+                       while ($row = $res->fetch_assoc()) {
+                     ?>
+                     <tr>
                         <td></td>
-                        <td>Product Image</td>
-                        <td>Product Name</td>
-                        <td>Product SKU</td>
-                        <td>Variation</td>
-                        <td>Price</td>
-                        <td>Delete</td>
+                        <td id="voucherlogo"><img src="../img/<?php echo $row['product_cover_picture']; ?>"></td>
+                        <td><?php echo $row['product_name']; ?></td>
+                        <td><?php echo $row['product_sku']; ?></td>
+                        <td><?php echo $row['product_price']; ?></td>
+                     </tr>
+                    <?php 
+                     }?>
                     </tbody>
                </table>
             </div>
@@ -154,23 +190,37 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning">Save changes</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select">Select</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Datatable -->
-<script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script type ="module">
+   var createvouchertable = $('#createvouchertable').DataTable( {
 
-<!-- Select datatable JS-->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+   retrieve: true,
+   responsive: true,
+   scrollCollapse: true,
+   ordering: true,
+   searching: false,
+   paging: false,
 
-<script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
+   columnDefs: [{
+      targets: -1,
+      data: null,
+      defaultContent: '<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip"><i class="fa fa-trash"></i></button>'
+   }],
 
-<script>
+   select: {
+   style:    'multi', //'multi' - select multiple checkbox
+   selector: 'td:first-child'
+   },
+
+   order: [[ 1, 'asc' ]]
+
+   } );
+
    var vouchertable = $('#vouchertable').DataTable( {
 
    retrieve: true,
@@ -183,16 +233,11 @@
    columnDefs: [ {
    targets:   0,
    className: 'select-checkbox',
-   },
-   {
-      targets: -1,
-      data: null,
-      defaultContent:'<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-trash"></i></button>'
    }],
 
    lengthMenu:[
-   [6,-1],
-   [6,"All"]
+   [4,-1],
+   [4,"All"]
    ],
 
    select: {
@@ -205,13 +250,58 @@
    } );
 
    //-----------------------Delete Row-----------------------------//
-   $('#vouchertable tbody').on( 'click', 'button', function () {
+   $('#createvouchertable tbody').on( 'click', 'button', function () {
 
-   var row = vouchertable.row($(this).parents('tr'));
+   var row = createvouchertable.row($(this).parents('tr'));
    row.remove().draw(false);
+   
    })
+
+   //----------------------------Multiselect Function--------------------------------//
+
+   $('#vouchertable tbody').on( 'click', 'tr', function () {
+    
+     $(this).toggleClass('selected');
+   });
+
+     $('#select').click( function () {
+       var testdata = [];
+       testdata = vouchertable.rows('.selected').data()
+
+       for(var i = 0; i<testdata.length; i++)
+       {
+         var rowInsert = [];
+         for(var j = 0; j<testdata[i].length; j++)
+         {
+             rowInsert.push(testdata[i][j]);
+         }
+
+         createvouchertable.row.add( [
+          rowInsert[1],
+          rowInsert[2],
+          rowInsert[3],
+          rowInsert[4],
+          "",
+    
+         ] ).draw( false );
+
+       }
+         
+     });
+
+     $('#select').on( 'click',function () {
+      $("#selectproduct").modal("hide"); 
+    });
+
 </script>
 
-<?php
-   require __DIR__ . '/footer.php'
-?>
+<!-- Datatable -->
+<script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<!-- Select datatable JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
+<script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
+
