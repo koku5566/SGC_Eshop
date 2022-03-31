@@ -610,25 +610,6 @@
     margin: 30px;
     }
 
-    .pagination{
-    text-align: center;
-    margin: 30px 30px 60px;
-    user-select: none;
-    }
-
-    .pagination li{
-    display: inline-block;
-    margin: 5px;
-    box-shadow: 0 5px 25px rgb(1 1 1 / 10%);
-    }
-
-    .pagination li a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2em;
-    line-height: 45px;
-    }
-
     .previous-page, .next-page{
     background: #0AB1CE;
     width: 80px;
