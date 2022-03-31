@@ -206,7 +206,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid" style="width:80%;height: 80vh;">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
