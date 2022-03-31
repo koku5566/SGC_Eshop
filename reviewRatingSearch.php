@@ -1,7 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 $product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
-
+//$_SESSION['product_ID']
 $output = '';
 
 
@@ -94,7 +94,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<form action = "helpCenterAdminTest.php" method = "POST">
+	<form action = "product.php" method = "POST">
 		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
 		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
 	</form>
