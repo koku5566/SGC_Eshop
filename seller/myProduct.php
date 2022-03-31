@@ -253,7 +253,7 @@
 
                                     <!-- Pagination Loop Start From here -->
                                     <!-- Product List -->
-                                    <div class="card-content row" style="display: none">
+                                    <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
                                             if(isset($_POST['keyword']) || isset($_POST['category']))
@@ -553,7 +553,7 @@
                                             
                                         ?>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" style="justify-content: end;margin-right: 10px;">
                                         <div class="pagination">
                                             <!--<li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
                                             <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
@@ -653,7 +653,7 @@
     
     $(function(){
         var numberOfItems = $(".card-content .product-item").length;
-        var limitPerPage = 3; //How many card items visible per a page
+        var limitPerPage = 12; //How many card items visible per a page
         var totalPages = Math.ceil(numberOfItems / limitPerPage);
         var paginationSize = 7; //How many page elements visible in the pagination
         var currentPage;

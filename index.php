@@ -6,7 +6,7 @@
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
-                        <div class="col-xl-2 col-lg-2 col-0">
+                        <div class="col-xl-2 col-lg-12 col-12">
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
@@ -110,7 +110,7 @@
 
                     <br>
 
-                    <!-- List All Product -->
+                    <!-- List All Product - Demo Product  -->
                     <div class="row">
                         <!--Product List -->
                         <div class="col-xl-12 col-lg-12">
@@ -514,3 +514,100 @@
 
 
 </style>
+
+<!-- Pagination CSS here -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    .previous-page, .next-page{
+    cursor: pointer;
+    transition: 0.3s ease;
+    }
+
+    .previous-page:hover{
+    transform: translateX(-5px);
+    }
+
+    .next-page:hover{
+    transform: translateX(5px);
+    }
+
+    .current-page, .dots{
+    cursor: pointer;
+    }        
+</style>
+
+<!-- Pagination Script Here -->
+<script type="text/javascript">
+    function getPageList(totalPages, page, maxLength){
+        function range(start, end){
+        return Array.from(Array(end - start + 1), (_, i) => i + start);
+        }
+    
+        var sideWidth = maxLength < 9 ? 1 : 2;
+        var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+        var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+    
+        if(totalPages <= maxLength){
+        return range(1, totalPages);
+        }
+    
+        if(page <= maxLength - sideWidth - 1 - rightWidth){
+        return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+        }
+    
+        if(page >= totalPages - sideWidth - 1 - rightWidth){
+        return range(1, sideWidth).concat(0, range(totalPages- sideWidth - 1 - rightWidth - leftWidth, totalPages));
+        }
+    
+        return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+    }
+    
+    $(function(){
+        var numberOfItems = $(".card-content .product-item").length;
+        var limitPerPage = 12; //How many card items visible per a page
+        var totalPages = Math.ceil(numberOfItems / limitPerPage);
+        var paginationSize = 7; //How many page elements visible in the pagination
+        var currentPage;
+    
+        function showPage(whichPage){
+            if(whichPage < 1 || whichPage > totalPages) return false;
+        
+            currentPage = whichPage;
+        
+            $(".card-content .product-item").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+        
+            $(".pagination li").slice(1, -1).remove();
+        
+            getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+                .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
+            });
+        
+            $(".previous-page").toggleClass("disabled", currentPage === 1);
+            $(".next-page").toggleClass("disabled", currentPage === totalPages);
+            return true;
+            }
+        
+            $(".pagination").append(
+            $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+            $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+            );
+        
+            $(".card-content").show();
+            showPage(1);
+        
+            $(document).on("click", ".pagination li.current-page:not(.active)", function(){
+            return showPage(+$(this).text());
+            });
+        
+            $(".next-page").on("click", function(){
+            return showPage(currentPage + 1);
+            });
+        
+            $(".previous-page").on("click", function(){
+            return showPage(currentPage - 1);
+        });
+    });
+</script>
