@@ -149,31 +149,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 									
 										if(isset($c1) && !empty ($c1)){			
-											$checkPic = array();
-											$tt = 10;
-											  for ($counter = 0; $counter < 5; $counter++){		
-											    $tt = $counter + 10;
-											  $checkPic[] = '$c' . $tt;
-											  //echo "$checkPic[$counter]";
-											 }
-
-											for($i=10; $i<15; $i++){
-													$cc = '$c' . $i; 
-												 if( $cc === null){
-													 echo 'aglablgknawgnawnglwanglnalgnlawgnawlgnlwangl';													 
-												 }else{	
-													//DISPLAY REAL PIC/VID
-													if($i == 10){
-														echo '<div class="carousel-item active">
-																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-															  </div> ';
-													}else{
-														echo '<div class="carousel-item">
-																	 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-															  </div>';
-													}	
-												 }											 
-											 }
+											
+											
+													
+		if( $c10 === null){echo '';}
+			else{echo '<div class="carousel-item active">
+							<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+					  </div> ';} 													 
+		 	
+		if( $c11 === null){echo '';}
+			else{echo '<div class="carousel-item">
+							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+					  </div>';}
+		if( $c12 === null){echo '';}
+			else{echo '<div class="carousel-item">
+							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+					  </div>';}	
+		if( $c13 === null){echo '';}
+			else{echo '<div class="carousel-item">
+							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+					  </div>';}		
+		if( $c14 === null){echo '';}
+			else{echo '<div class="carousel-item">
+							 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+					  </div>';}	
+				
+				
+		 											 
+											 
+											 
+											 
+											 
+											 
+											 
+											 
+											 
+											 
 										}else{
 											echo '';
 										}
