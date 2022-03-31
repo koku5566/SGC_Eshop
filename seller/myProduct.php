@@ -1714,6 +1714,12 @@
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">6</a></li>
+            <li class="page-item"><a class="page-link" href="#">7</a></li>
+            <li class="page-item"><a class="page-link" href="#">8</a></li>
+            <li class="page-item"><a class="page-link" href="#">9</a></li>
             <li class="page-item">
             <a class="page-link" href="#">Next</a>
             </li>
@@ -1750,6 +1756,57 @@
 </style>
 
 <script>
+    function getPageList(totalPages, page, maxLength)
+    {
+        function range(start, end)
+        {
+            return Array.from(Array(end - start + 1), (_,i) => i + start);
+        }
+
+        var sideWidth
+    }
+
+    $(function(){
+        var numberOfItems = $(".card").length;
+        var limitPerPage = 2;
+        var totalPages = Math.cell(numberOfItems / limitPerPages);
+        var paginationSize = 7;
+        var currentPage;
+
+        function showPage(whichPage)
+        {
+            if(whichPage < 1 || whcihPage > totalPages) return false;
+
+            currentPage = whichPage;
+
+            $(".card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+
+            $(".pagination li").slice(1,-1).remove();
+
+            getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                .toggleClass("active", item === currentPage).append($("<a>")).addClass("page-link"
+                .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore("next-page");
+            });
+
+            $("previous-page").toggleClass("disable",currentPage === 1);
+            $("next-page").toggleClass("disable",currentPage === totalPages);
+            return true;
+        }
+
+        $(".pagination").append(
+            $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+            $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next")),
+        );
+
+        $(".card").show();
+        showPages(1);
+
+        $(document).on("click", ".pagination li.current-page:not(.active)", function(){
+            return showPage(+$(this).text());
+        });
+    });
+
     function clearSearch()
     {
 
