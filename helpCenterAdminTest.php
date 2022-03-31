@@ -4,6 +4,7 @@
 
 <?php
 $product = "P000001";
+//$_SESSION['product_ID']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
 	
@@ -29,10 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 		
 		}	
 			
-		  
-		  
-		  
-
 }	
 
 
@@ -95,8 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 							?>							
 						</div>	
 					</div>
-		
-		
 			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
@@ -109,8 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 				}else{echo "";}		  
 			?>
 					
-					
-
 						<!---->
 						<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
@@ -136,14 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											echo '';
 										}
 
-									?>
-									<!--
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-									-->
+									?>									
                                 </ol>
                                 <div class="carousel-inner tqy">
 									<?php
@@ -171,32 +157,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												else{echo '<div class="carousel-item">
 																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
 														  </div>';}										
-													
-		
-				
-				
+																		
 		 								}else{
 											echo '';
 										}			 
 	
 									?>
-									<!--
-									<div class="carousel-item active">
-                                         <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-                                    </div> 
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item>
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div>
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
-                                    </div>									
-									-->
+									
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -209,8 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                         </div>
 						<!---->
-		
-		
+
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
@@ -222,8 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </div>
   
   
-
-
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
 	<div class="row pickbox">
@@ -231,9 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 		<div>
 			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
 			
-			<?php
-			
-			
+			<?php			
 			$sql ="SELECT avg(rr.rating)
 			    FROM user u INNER JOIN  reviewRating rr 
 			    ON  u.userID = rr.user_id 
@@ -275,20 +237,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					}
 
 				  }
-			?>
-			<!--
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-half tqy"></i>
-				<i class="bi bi-star tqy"></i>
-			-->
+			?>			
 			</div>	
 		</div>	  
 	  </div>
-	  <div class="col-7" style = "background-color:;">
-		  
-		  
+	  <div class="col-7" style = "background-color:;">  
 		  <div class="container" style = "margin-top: 2.2rem;">
 				<div class="row">
 					<div class="col">
@@ -314,8 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 
-</div>
-						
+</div>				
 <!-------------------------------------------------------------------> 
 				<!-- List All Product -->
 				<div class="card-body">
@@ -331,10 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 							</div>  
 						</div>
 					</div>
-				<br>
-                   
-                  
-                   
+				<br>                                
                 <br>
 	
 	
@@ -352,8 +301,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 <style>
 
-      
-  
 #sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
@@ -500,10 +447,6 @@ $(document).ready(function(){
 		  
 	}
  
- 
-
-
- 
  $('#selectStar').change(function(){
   var restriction = $(this).val();
   var restriction2 = $('#selectCM').val();
@@ -532,14 +475,6 @@ $(document).ready(function(){
  
 
 });
-
-
-
-
-
-
-
-
 
 </script>
 
