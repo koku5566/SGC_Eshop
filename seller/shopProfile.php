@@ -31,12 +31,12 @@
       <textarea class="form-control" id="customFile" rows="3"></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" class="imageContainer">
+      <div id="uploadContainer" class="imageContainer clearfix">
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control " type="file" id="uploadBtn" onchange="preview()" rows="3" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
@@ -98,11 +98,15 @@ div.absolute {
   margin-top: 20px;
 }
 
-.buttonContainer{
+.clearfix {
+  overflow: auto;
+}
+
+.buttonContainer {
   text-align:center;
 }
 
-.saveBtn{
+.saveBtn {
   background-color: #0C1236;
   color: white;
   border: none;

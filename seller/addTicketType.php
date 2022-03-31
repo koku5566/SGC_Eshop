@@ -17,7 +17,8 @@
 ?>
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["addTicketSubmit"])){
+    //--------------Add new ticket type------------------------
+    if(isset($_POST["addTicketSubmit"])){
         $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketName"]));
         $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["capacity"]));
         $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["price"]));
@@ -64,6 +65,65 @@
                     mysqli_stmt_close($stmt);
             }
           }
+
+
+    //--------------Delete Ticket------------------------
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["deleteBtn"])){
+        $ticketID = mysqli_real_escape_string($conn, SanitizeString($_POST["ticketIDHide"]));
+        $sql = "DELETE FROM `ticketType` WHERE  `ticketType_id`=?";
+
+        if($stmt = mysqli_prepare($conn, $sql)){
+            mysqli_stmt_bind_param($stmt, 'i',$ticketID); 
+        
+            mysqli_stmt_execute($stmt);
+          
+            if(mysqli_stmt_affected_rows($stmt) == 1)	
+            {
+              echo "<script>alert('Delete successfully');</script>";
+            }
+            else
+            {
+              echo "<script>alert('Fail to Delete');</script>";
+            }
+        
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    //--------------Update Ticket------------------------
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["updateTicket"])){
+        $tID = mysqli_real_escape_string($conn, SanitizeString($_POST["editTicketID"]));
+        $tName = mysqli_real_escape_string($conn, SanitizeString($_POST["editTicketName"]));
+        $tCapacity = mysqli_real_escape_string($conn, SanitizeString($_POST["editCapacity"]));
+        $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["editPrice"]));
+        $tSalesStart = mysqli_real_escape_string($conn, SanitizeString($_POST["editSalesStart"]));
+        $tsalesEnd = mysqli_real_escape_string($conn, SanitizeString($_POST["editSalesEnd"]));
+
+        $sql = "UPDATE `ticketType` SET `ticket_name`=?,`capacity`=?,`sales_start`=?,`sales_end`=?,`price`=? WHERE `ticketType_id` = ?";
+            if ($stmt = mysqli_prepare($conn,$sql)){
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"sissdi",$tName,$tCapacity,$tSalesStart,$tsalesEnd,$tPrice,$tID);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
+                    if(mysqli_stmt_affected_rows($stmt) == 1){
+                        echo "<script>alert('Success!!!!!');</script>";
+                        //Add $_SESSION['eventID'] = "";
+                        //Add Redirect to next page
+                    }
+                    else{
+                        $error = mysqli_stmt_error($stmt);
+                        echo "<script>alert($error);</script>";
+                    }		
+                    mysqli_stmt_close($stmt);
+            }
+    }
 
 ?>
 
@@ -137,16 +197,19 @@
                         <h4 class="modal-title">Edit Ticket Type</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <div style="margin-bottom: 20px;">
-                                <h5>Ticket Name</h5><input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
+                                <h5>Ticket Name</h5>
+                                <input class="form-control" id="editTicketName" name="editTicketName" type="text" placeholder="Ticket Name">
                                 <input class="form-control" id="editTicketID" name="editTicketID" type="hidden" placeholder="Ticket Name">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Capacity</h5><input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
+                                <h5>Capacity</h5>
+                                <input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Price</h5><input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
+                                <h5>Price</h5>
+                                <input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
                             </div>
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-6">
@@ -161,9 +224,9 @@
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <form>
+                            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                                 <input class="form-control" id="ticketIDHide" name="ticketIDHide" type="hidden" placeholder="Ticket Name">
-                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "">Delete</button>
+                                <button class="btn btn-secondary" type="submit" id="deleteDataBtn" name = "deleteBtn">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -205,12 +268,12 @@
 
                                     echo("
                                        <tr>
-                                        <td>\"".$row['ticket_name']."\"</td>
-                                        <td>\"".$row['capacity']."\"</td>
-                                        <td>\"".$row['sales_start']."\"</td>
-                                        <td>\"".$row['sales_end']."\"</td>
-                                        <td>\"".$row['price']."\"</td>
-                                        <td>\"".$row['ticketType_id']."\"</td>
+                                        <td>".$row['ticket_name']."</td>
+                                        <td>".$row['capacity']."</td>
+                                        <td>".$row['sales_start']."</td>
+                                        <td>".$row['sales_end']."</td>
+                                        <td>".$row['price']."</td>
+                                        <td>".$row['ticketType_id']."</td>
                                         <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editTicket_modal\" title=\"Edit\" id=\"".$row['ticketType_id']."\"><i class=\"fa fa-edit\"></i></button></td>
                                         </tr>
                                     ");
@@ -223,7 +286,7 @@
             </div>
         </section>
         <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-            <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Next</button>
+            <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" id = "nextForm">Next</button>
         </div>
 
 

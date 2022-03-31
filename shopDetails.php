@@ -30,7 +30,7 @@
     <div class="container">
 
       <section class="text-center">
-        <div class="ratingContainer d-flex align-items-center shadow rounded">
+        <div class="ratingContainer shadow rounded">
           <p class="text-center">SEGi College Penang | Joined<span style="color: red;">2021</span>   Rating<span style="color: red;">4.9 out of 5.0</span>   Products<span style="color: red;">12</span></p>
         </div>
       </section><br>
@@ -52,8 +52,8 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
-                    class="img-fluid"
+                    src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0ZXIlMjBib3R0bGV8ZW58MHx8MHx8&w=1000&q=80"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -65,7 +65,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -74,8 +74,8 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/023.jpg"
-                    class="img-fluid"
+                    src="https://assets.manufactum.de/p/065/065704/65704_02.jpg/bullet-pen.jpg?profile=opengraph_mf"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -87,7 +87,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -96,8 +96,8 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                    class="img-fluid"
+                    src="https://i.pinimg.com/originals/34/35/f6/3435f67c167a5bf5123acce8becececd.jpg"
+                    class="imgContainer"
                   />
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -109,7 +109,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
+                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
@@ -145,6 +145,11 @@
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
+      }
+
+      .imgContainer
+      {
+        height: 50vh;
       }
     </style>
 

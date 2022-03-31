@@ -3,16 +3,29 @@
 ?>
 
 <?php
-$sql = "SELECT 
+$sql_2 = "SELECT
+myOrder.order_id,
+myOrder.prod_qty,
 product.product_name,
 product.product_cover_picture,
-product.product_qty,
+product.product_price,
 product.product_variation,
-product.product_price
-FROM product
-";
+orderDetails.quantity,
+orderDetails.price,
+shopProfile.shop_name
 
-$result = mysqli_query($conn, $sql);
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN product ON orderDetails.product_id = product.id
+JOIN shopProfile ON product.shop_id = shopProfile.shop_id";
+
+$stmt_2 = $conn->prepare($sql_2);
+$stmt_2->execute();
+$result_2 = $stmt_2->get_result();
+
+
+
 ?>
 
                
@@ -21,58 +34,62 @@ $result = mysqli_query($conn, $sql);
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
-  <h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
-      <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
-        <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);"></i>
-          Back
-      </button>
-    <div class="card">
-        <div class="card-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-lg-4"><img src="segi kl.png" 
-                     style="width: 400px;height: 50px;object-fit:contain;"/></div>
-                    <div class="col-md-3 col-lg-1 "><i class="fa fa-home" style="width: 55.8625px;height: 68px;font-size: 50px;"></i></div>
-                    <div class="col-md-3 col-lg-1 offset-lg-0"><img src="received.png" style="width:150px; height:50px; object-fir:contain;"/></div>
-                    <div class="col-md-3 offset-lg-2"><p style="text-aligh:centre;">Date & Time:<br/> <span id="datetime"></span></p><br/></div>
+<h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
+    <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
+    <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);">
+    <a href="index.php">Back</a></i>
+    </button>
+    <div class="tab-content mb-4">
+   
+        <div class="order-history-list-panel">
+        </div>
+        <div class="tab-panel">
+        <?php 
+        while ($row = $result_2->fetch_assoc()) {
+        ?>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col md-auto text-start"><span><strong><!--?php echo $row['shop_id']?--></strong></span>
+                        </div>
+                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                         OrderID:<!--?php echo $row['order_id']?--></strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                                        
+                        <div class="col-1 image-container">
+                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>">
+                        </div>
+                        <div class="col-3">
+                        <?php echo $row['product_name']?>
+                        </div>
+                        <div class="col-2">
+                        <?php echo $row['quantity']?>
+                        </div>
+                        <div class="col md-auto text-start offset-md-1">
+                        <?php echo $row['product_variation']?>
+                        </div>
+                        <div class="col md-auto text-end"><?php echo $row['product_price']?></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <ul class="list-group list-group-horizontal" style="list-style-type:none;">
+                        <li class=""><button type="button" class="btn btn-primary"><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
+                        <li style="padding-left:20px"><button type="button" class="btn btn-primary">Order Again</button></li>
+                        <li style="padding-left:60%">Total</li>
+                        <li style="padding-left:200px;">Pricessss</li>
+                    </ul>
+                       
                 </div>
             </div>
+            <?php 
+            }?>
         </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="row">
-                 <?php
-                   while ($row = mysqli_fetch_assoc($result)) {
-                 ?>
-                    <div class="col-md-3 col-lg-2" style="width:150px; height:150px;object-fit:contain"><img /><?php echo $row['product_cover_picture']?></div>
-                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_name']?></div>
-                    <div class="col-md-3 col-lg-1 offset-lg-1"><?php echo $row['product_qty']?></div>
-                    <div class="col-md-3 col-lg-2 offset-lg-1"><?php echo $row['product_variation']?></div>
-                    <div class="col">RM<?php echo $row['product_price']?></div>
-                    <?php
-                      }
-                     ?>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-lg-2"><button class="btn btn-primary" type="button" style="background: #1A2C42;">
-                  <a href="viewPurchasingOrders.php"></a>Order Status</button></div>
-                <div class="col-md-3 col-lg-2 offset-lg-1"><button class="btn btn-primary" type="button" style="background: #1A2C42;">Order Again</button></div>
-                <div class="col-md-3 col-lg-2 offset-lg-1">
-                    <p>Total</p>
-                </div>
-                <div class="col-md-3 offset-lg-1">
-                    <p>Paragraph</p>
-                </div>
-             
-            </div>
-        </div>
-    </div> 
-</div>
-  
-  
+   
    <!-- /.container-fluid -->
 
 
