@@ -113,25 +113,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 <ol class="carousel-indicators">
 									<?php
 										if(isset($c1) && !empty ($c1)){		
-											$checkPic = array();
-											$tt = 10;
-											  for ($counter = 0; $counter < 5; $counter++){		
-											    $tt = $counter + 10;
-											  $checkPic[] = '$c' . $tt;
-											 }
+											
 											 
-											for($i=10; $i<15; $i++){
-												$cc = '$c' . $i; 
-												 if($cc === null){
-													 echo '';													 
-												 }else{	
-													if($i == 10){
-														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
-													}else{
-														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
-													}	
-												 }											 
-											 }
+										
+												
+	if($c10 === null){echo '';}
+		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
+	 	
+	if($c11 === null){echo '';}
+		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
+		
+	if($c12 === null){echo '';}
+		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
+		
+	if($c13 === null){echo '';}
+		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
+		
+	if($c14 === null){echo '';}
+		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}	
+		
+			
+			
+	 											 
+											
+
+
+
+											
 										}else{
 											echo '';
 										}
