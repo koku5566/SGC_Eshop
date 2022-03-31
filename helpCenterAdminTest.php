@@ -254,7 +254,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			
 			
 			</strong> out of 5.0</p>
-			<div style="margin-bottom: 0.1em; text-align: center;">													
+			<div style="margin-bottom: 0.1em; text-align: center;">	
+
+			<?php
+			echo"$avgrat";
+			
+			?>
+			
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
 				<i class="bi bi-star-fill tqy"></i>
