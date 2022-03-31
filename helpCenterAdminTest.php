@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 				mysqli_stmt_bind_result($stmt, $x1);
 				
 				while(mysqli_stmt_fetch($stmt)){
-					echo"$x1";
+					echo"round($x1,1)";
 				}
 				mysqli_stmt_close($stmt);
 			}
