@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											  for ($counter = 0; $counter < 5; $counter++){		
 											    $tt = $counter + 10;
 											  $checkPic[] = '$c' . $tt;
-											  echo "$checkPic[$counter]";
+											  //echo "$checkPic[$counter]";
 											 }
 
 											for($i=10; $i<15; $i++){
