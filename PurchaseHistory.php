@@ -9,6 +9,7 @@ myOrder.prod_qty,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
+product.product_variation,
 orderDetails.quantity,
 orderDetails.price,
 shopProfile.shop_name
@@ -63,31 +64,30 @@ $result_2 = $stmt_2->get_result();
                             <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>">
                         </div>
                         <div class="col-3">
-                                Iphone 11 Pro Max
+                        <?php echo $row['product_name']?>
                         </div>
                         <div class="col-2">
-                             x 1
+                        <?php echo $row['quantity']?>
                         </div>
                         <div class="col md-auto text-start offset-md-1">
-                            Grey
+                        <?php echo $row['product_variation']?>
                         </div>
-                        <div class="col md-auto text-end">price</div>
+                        <div class="col md-auto text-end"><?php echo $row['product_price']?></div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <ul class="list-group list-group-horizontal" style="list-style-type:none;">
-                        <li class=""><button type="button" class="btn btn-primary">Order Status</button></li>
-                        <li style="padding-left:20px"><button type="button" class="btn btn-primary">Order Status</button></li>
+                        <li class=""><button type="button" class="btn btn-primary"><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
+                        <li style="padding-left:20px"><button type="button" class="btn btn-primary">Order Again</button></li>
                         <li style="padding-left:60%">Total</li>
                         <li style="padding-left:200px;">Pricessss</li>
                     </ul>
                        
                 </div>
-                <?php 
-                 }?>
-
-          </div>
+            </div>
+            <?php 
+            }?>
         </div>
    
    <!-- /.container-fluid -->
