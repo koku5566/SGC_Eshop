@@ -257,8 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					<div class="col">						
 						 <select class="form-control" id = "selectCM">
 							  <option value = "All">With Comment & Media*</option>
-							  <option value = "1">With Comment Only</option>
-							  <option value = "2">With Media Only</option>							  
+							  <option value = "1">With Comment Only</option>							  
 						</select>		
 					</div>
 				</div>
