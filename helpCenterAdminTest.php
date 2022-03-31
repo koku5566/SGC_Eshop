@@ -3,14 +3,35 @@
 ?>
 
 <?php
+$product = "P000001";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
-	echo "<script>
+	
+	$selectedPID = SanitizeString($_POST['pid']);
+		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+			    FROM user u INNER JOIN  reviewRating rr 
+			    ON  u.userID = rr.user_id 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    ORDER BY rr.rr_id";
 		
-			$('#exampleModalLong').modal('show')
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			
+			if(mysqli_stmt_num_rows($stmt) == 1){
+				mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13,$c14,$c15,$c16,$c17);
+				mysqli_stmt_fetch($stmt);
+			}
+			
+			mysqli_stmt_free_result($stmt);
+			mysqli_stmt_close($stmt);
+		
+		}	
+			
 		  
 		  
-		  </script>";
+		  
 
 }	
 
@@ -31,14 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 	
-<!-- Button trigger modal -->
+<!-- Button trigger modal 
 <button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR001">
   Modal 1
 </button>
 
 <button type="button" class="hyperlink" data-toggle="modal" data-target="#exampleModalLong" value= "RR002">
   Modal 2
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -57,23 +78,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 					
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
 					<div class = "namestar">
-						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">Rakan & Xayah</h6>
-						<div style="margin-bottom: 0.1em;">													
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star-fill"></i>
-							<i class="bi bi-star"></i>
-							<i class="bi bi-star"></i>
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
+						<div style="margin-bottom: 0.1em;">	
+							<?php
+								for($i=0; $i<5; $i++){
+									if(isset($c9) && !empty ($c9)){
+										if($i < $c9){
+											 echo '<i class="bi bi-star-fill"></i> ';
+										 }else{
+											 echo '<i class="bi bi-star"></i> ';
+										 }
+									}else{
+										echo '';
+									}								 
+							 }							
+							?>							
 						</div>	
 					</div>
 		
 		
-			<h6 class = "divcontent">Rakan and Xayah are Vastaya bird-people with different roles. Xayah the Rebel carries the blade in the relationship. She is an AD carry assassin that enables her to shoot sharp feather-like blades with deadly grace and precision. Rakan the Charmer goes to battle to support his lover.
+			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
 			<div id = "sellresponse">
 				<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
-				<h6 style = "font-size: 0.8rem">Seller talk u diam diam listen enuf. if not mak kau hijau.
+				<h6 style = "font-size: 0.8rem"><?php echo (isset($c17) && !empty ($c17))? $c17 : ''; ?>
 				</h6>		
 			</div>			
 					
@@ -82,13 +111,71 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 						<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
                                 <ol class="carousel-indicators">
+									<?php
+										if(isset($c1) && !empty ($c1)){		
+											$checkPic = array();
+											$tt = 10;
+											  for ($counter = 0; $counter < 5; $counter++){		
+											    $tt = $counter + 10;
+											  $checkPic[] = '$c' . $tt;
+											 }
+											 
+											for($i=0; $i<5; $i++){
+												 if($checkPic[$i] === null){
+													 echo '';													 
+												 }else{	
+													if($i == 0){
+														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
+													}else{
+														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
+													}	
+												 }											 
+											 }
+										}else{
+											echo '';
+										}
+
+									?>
+									<!--
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+									-->
                                 </ol>
-                                <div class="carousel-inner tqy">							                                 
+                                <div class="carousel-inner tqy">
+									<?php
+									
+										if(isset($c1) && !empty ($c1)){			
+											$checkPic = array();
+											$tt = 10;
+											  for ($counter = 0; $counter < 5; $counter++){		
+											    $tt = $counter + 10;
+											  $checkPic[] = '$c' . $tt;
+											 }
+
+											for($i=0; $i<5; $i++){												
+												 if($checkPic[$i] === null){
+													 echo '';													 
+												 }else{	
+													//DISPLAY REAL PIC/VID
+													if($i == 0){
+														echo '<div class="carousel-item active">
+																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+															  </div> ';
+													}else{
+														echo '<div class="carousel-item">
+																	 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+															  </div>';
+													}	
+												 }											 
+											 }
+										}else{
+											echo '';
+										}
+									?>
+									<!--
 									<div class="carousel-item active">
                                          <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
                                     </div> 
@@ -104,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<div class="carousel-item">
                                          <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
                                     </div>									
-                    
+									-->
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -177,7 +264,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 </div>
-
+						<?php
+								if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+									
+									$pid = $_POST['pid'];
+									echo "$pid";
+									//echo"<script>document.getElementById('myModalReply').style.display = 'block';</script>";
+									 //echo "<script>$('#exampleModalLong').modal('show');</script>";
+										echo"<script>$('#exampleModalLong').modal('toggle')</script>";							 						
+								}
+								
+						?>
 
 <!-------------------------------------------------------------------> 
 				<!-- List All Product -->
@@ -308,7 +405,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </style>
 <script>
 /**/
-
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+			$showmedawae = "#exampleModalLong";
+								 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
+   
 
 
 $(document).ready(function(){
