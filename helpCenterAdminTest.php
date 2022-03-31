@@ -259,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			<?php
 				$calavgrat = $avgrat;
 			    for($i = 0; $i<5; $i--){
-					if(round($calavgrat)){
+					if(is_int(round($calavgrat)) == 1){
 						echo '<i class="bi bi-star-fill tqy"></i>';
 						$calavgrat -= 1;
 					}else{
