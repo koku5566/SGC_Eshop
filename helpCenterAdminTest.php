@@ -120,11 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											  $checkPic[] = '$c' . $tt;
 											 }
 											 
-											for($i=0; $i<5; $i++){
-												 if($checkPic[$i] === null){
+											for($i=10; $i<15; $i++){
+												$cc = '$c' . $i; 
+												 if($cc === null){
 													 echo '';													 
 												 }else{	
-													if($i == 0){
+													if($i == 10){
 														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'" class="active"></li>';
 													}else{
 														echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$k.'"></li>';
@@ -157,12 +158,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											 }
 
 											for($i=10; $i<15; $i++){
-													$cc = '$c' . $counter; 
+													$cc = '$c' . $i; 
 												 if( $cc === null){
 													 echo 'aglablgknawgnawnglwanglnalgnlawgnawlgnlwangl';													 
 												 }else{	
 													//DISPLAY REAL PIC/VID
-													if($i == 0){
+													if($i == 10){
 														echo '<div class="carousel-item active">
 																	<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
 															  </div> ';
