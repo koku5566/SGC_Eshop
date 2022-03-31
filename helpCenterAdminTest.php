@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	  <div class="col-5" style = "background-color:;">
 		<div>
 			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
-			4.9
+			
 			<?php
 			
 			
@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 				mysqli_stmt_bind_result($stmt, $x1);
 				
 				while(mysqli_stmt_fetch($stmt)){
-					echo'x1';
+					echo"$x1";
 				}
 				mysqli_stmt_close($stmt);
 			}
