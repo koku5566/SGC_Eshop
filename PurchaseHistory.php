@@ -57,7 +57,7 @@ $result_2 = $stmt_2->get_result();
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <a href="" class="card-body"  >
                     <div class="row">
                                         
                         <div class="col-1 image-container">
@@ -75,7 +75,7 @@ $result_2 = $stmt_2->get_result();
                         <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="card-footer">
                     <ul class="list-group list-group-horizontal" style="list-style-type:none;">
                         <li class=""><button type="button" class="btn btn-primary"><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
