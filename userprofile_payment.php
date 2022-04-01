@@ -39,7 +39,7 @@
 <?php
 	$UID = $_SESSION["uid"];
 	
-	$sql = "SELECT * FROM userBankAccount AND userCard WHERE user_id ='$UID'";
+	$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
