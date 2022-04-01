@@ -36,6 +36,7 @@
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+<div class="h2">Bank</div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -55,7 +56,9 @@
 			</div>
 			");
 	}
-
+?>
+<div class="h2">Card</div>
+<?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql_1);
