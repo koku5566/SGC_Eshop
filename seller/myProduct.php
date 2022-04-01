@@ -401,11 +401,11 @@
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
 
-                                                                    if($row_1['product_status'] == 1)
+                                                                    if($row_1['product_status'] == "A")
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
                                                                     }
-                                                                    else
+                                                                    else if($row_1['product_status'] == "I")
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
