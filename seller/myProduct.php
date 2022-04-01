@@ -153,11 +153,11 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                             <nav id="myTab" class="nav nav-tabs" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
-                                <a class="nav-item nav-link" id="nav-published-tab" data-toggle="tab" href="#nav-published" role="tab" aria-controls="nav-published" aria-selected="false">Published</a>
-                                <a class="nav-item nav-link" id="nav-sold-tab" data-toggle="tab" href="#nav-sold" role="tab" aria-controls="nav-sold" aria-selected="false">Out of Stock</a>
-                                <a class="nav-item nav-link" id="nav-violation-tab" data-toggle="tab" href="#nav-violation" role="tab" aria-controls="nav-violation" aria-selected="false">Banned</a>
-                                <a class="nav-item nav-link" id="nav-unpublish-tab" data-toggle="tab" href="#nav-unpublish" role="tab" aria-controls="nav-unpublish" aria-selected="false">Unpublished</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "All" ? "active" : "" ?>" id="nav-all-tab" data-toggle="tab" href="?Panel=All" role="tab" aria-controls="nav-all" aria-selected="<?php $_GET['Panel'] == "All" ? "true" : "false" ?>">All</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Publish" ? "active" : "" ?>" id="nav-published-tab" data-toggle="tab" href="?Panel=Publish" role="tab" aria-controls="nav-published" aria-selected="<?php $_GET['Panel'] == "Publish" ? "true" : "false" ?>">Published</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "OutOfStock" ? "active" : "" ?>" id="nav-sold-tab" data-toggle="tab" href="?Panel=OutOfStock" role="tab" aria-controls="nav-sold" aria-selected="<?php $_GET['Panel'] == "OutOfStock" ? "true" : "false" ?>">Out of Stock</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Violation" ? "active" : "" ?>" id="nav-violation-tab" data-toggle="tab" href="?Panel=Violation" role="tab" aria-controls="nav-violation" aria-selected="<?php $_GET['Panel'] == "Violation" ? "true" : "false" ?>">Banned</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Unpublish" ? "active" : "" ?>" id="nav-unpublish-tab" data-toggle="tab" href="?Panel=Unpublish" role="tab" aria-controls="nav-unpublish" aria-selected="<?php $_GET['Panel'] == "Unpublish" ? "true" : "false" ?>">Unpublished</a>
                             </nav>
 
                             <br>
@@ -177,6 +177,7 @@
                                                     {
                                                         $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
 
+                                                        $WhereExist = false;
                                                         if(isset($_POST['keyword']))
                                                         {
                                                             $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
@@ -196,6 +197,7 @@
                                                                     break;
                                                             }
                                                             $sql_count .= "WHERE $searchBy LIKE %$keyword% ";
+                                                            $WhereExist = true;
                                                         }
                                                         if(isset($_POST['mainCategoryId']))
                                                         {
@@ -212,7 +214,14 @@
     
                                                                 $result = mysqli_query($conn, $sql);
                                                                 if (mysqli_num_rows($result) > 0) {
-                                                                    $sql_count .= "AND (";
+
+                                                                    if($WhereExist == true)
+                                                                    {
+                                                                        $sql_count .= "AND (";
+                                                                    }
+                                                                    else{
+                                                                        $sql_count .= "WHERE (";
+                                                                    }
                                                                     while($row = mysqli_fetch_assoc($result)) {
                                                                         $cc_id = $row['combination_id'];
                                                                         $sql_count .= "category_id = $cc_id OR";
@@ -222,29 +231,75 @@
                                                             }
                                                         }
 
+                                                        if(isset($_GET['Panel']))
+                                                        {
+                                                            if($WhereExist == false)
+                                                            {
+                                                                $sql .= " WHERE ";
+                                                            }
+                                                            else {
+                                                                $sql .= " AND ";
+                                                            }
+                                                            switch($_GET['Panel'])
+                                                            {
+                                                                case "Publish":
+                                                                    $sql .= " A.product_status = 'A'";
+                                                                    break;
+                                                                case "Unpublish":
+                                                                    $sql .= " A.product_status = 'I'";
+                                                                    break;
+                                                                case "Violation":
+                                                                    $sql .= " A.product_status = 'B'";
+                                                                    break;
+                                                                case "OutOfStock":
+                                                                    $sql .= " A.product_status = 'O'";
+                                                                    break;
+                                                            }
+                                                        }
+
                                                         
                                                         $result = mysqli_query($conn, $sql);
                                                 
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while($row = mysqli_fetch_assoc($result)) {
-                                                                    $total = (int) $row["total_product"];
-                                                                    $percent = $total/10;
-                                                                    $uploadAvailable = 1000 - $total;
-                                                                    echo("
-                                                                        <h5>$total Products</h5>
-                                                                    
-                                                                        <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                            <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                                                                        </div>
-                                                                        <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                                
-                                                                    ");
-                                                                }
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            while($row = mysqli_fetch_assoc($result)) {
+                                                                $total = (int) $row["total_product"];
+                                                                $percent = $total/10;
+                                                                $uploadAvailable = 1000 - $total;
+                                                                echo("
+                                                                    <h5>$total Products</h5>
+                                                                
+                                                                    <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                    </div>
+                                                                    <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                            
+                                                                ");
                                                             }
+                                                        }
                                                     }
                                                     else
                                                     {
                                                         $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
+
+                                                        if(isset($_GET['Panel']))
+                                                        {
+                                                            switch($_GET['Panel'])
+                                                            {
+                                                                case "Publish":
+                                                                    $sql .= " WHERE A.product_status = 'A'";
+                                                                    break;
+                                                                case "Unpublish":
+                                                                    $sql .= " WHERE A.product_status = 'I'";
+                                                                    break;
+                                                                case "Violation":
+                                                                    $sql .= " WHERE A.product_status = 'B'";
+                                                                    break;
+                                                                case "OutOfStock":
+                                                                    $sql .= " WHERE A.product_status = 'O'";
+                                                                    break;
+                                                            }
+                                                        }
+
                                                         $result = mysqli_query($conn, $sql);
                                             
                                                         if (mysqli_num_rows($result) > 0) {
@@ -320,14 +375,33 @@
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";
                                                     }
 
+                                                    if(isset($_GET['Panel']))
+                                                    {
+                                                        switch($_GET['Panel'])
+                                                        {
+                                                            case "Publish":
+                                                                $sql .= " AND A.product_status = 'A'";
+                                                                break;
+                                                            case "Unpublish":
+                                                                $sql .= " AND A.product_status = 'I'";
+                                                                break;
+                                                            case "Violation":
+                                                                $sql .= " AND A.product_status = 'B'";
+                                                                break;
+                                                            case "OutOfStock":
+                                                                $sql .= " AND A.product_status = 'O'";
+                                                                break;
+                                                        }
+                                                    }
+
                                                     $result = mysqli_query($conn, $sql);
-                                        
+
                                                     if (mysqli_num_rows($result) > 0) {
                                                         while($row = mysqli_fetch_assoc($result)) {
 
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
-                                                            $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
+                                                            $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
                                                             C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
@@ -432,6 +506,25 @@
                                                 {
                                                     $sql = "SELECT DISTINCT A.product_id FROM product AS A";
 
+                                                    if(isset($_GET['Panel']))
+                                                    {
+                                                        switch($_GET['Panel'])
+                                                        {
+                                                            case "Publish":
+                                                                $sql .= " WHERE A.product_status = 'A'";
+                                                                break;
+                                                            case "Unpublish":
+                                                                $sql .= " WHERE A.product_status = 'I'";
+                                                                break;
+                                                            case "Violation":
+                                                                $sql .= " WHERE A.product_status = 'B'";
+                                                                break;
+                                                            case "OutOfStock":
+                                                                $sql .= " WHERE A.product_status = 'O'";
+                                                                break;
+                                                        }
+                                                    }
+
                                                     $result = mysqli_query($conn, $sql);
                                         
                                                     if (mysqli_num_rows($result) > 0) {
@@ -439,7 +532,7 @@
 
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
-                                                            $sql_1 = "SELECT DISTINCT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
+                                                            $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
                                                             C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
@@ -587,6 +680,11 @@
     a:hover{
         text-decoration:none;
         color:#a31f37;
+    }
+
+    .Name,.Tag{
+        height: 50px;
+        overflow: hidden;
     }
 </style>
 
