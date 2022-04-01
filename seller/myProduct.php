@@ -454,7 +454,7 @@
                                                                 while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                                     
                                                                     echo("
-                                                                        <div class=\"col-xl-2 col-lg-3 col-sm-4 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                        <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                             <a data-sqe=\"link\" href=\"".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
@@ -464,9 +464,12 @@
                                                                                         <div class=\"Name\">
                                                                                             <p class=\"card-text product-name\">".$row_1['product_name']."</p>
                                                                                         </div>
+                                                                                        <div class=\"Tag\">
+                                                                                            <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                                        </div>
                                                                                         <div class=\"Price\">
                                                                     ");
-
+                                                                    //Pricing
                                                                     //If got variation
                                                                     if($row_1['product_variation'] == 1)
                                                                     {
@@ -482,30 +485,6 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
-
-                                                                                            <div class=\"row\">
-                                                                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                    <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                        ");
-                                                                        if($row_1['product_status'] == 1)
-                                                                        {
-                                                                            echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
-                                                                        }
-
-                                                                        echo("
-                                                                                                    
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>   
-                                                                                </a>
-                                                                            </div>
                                                                         ");
                                                                     }
                                                                     //If no variation
@@ -523,32 +502,35 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
-
-                                                                                            <div class=\"row\">
-                                                                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                                                    <button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"EditProduct\" value=\"".$row_1['product_id']."\" >Edit</button>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                        ");
-                                                                        if($row_1['product_status'] == 1)
-                                                                        {
-                                                                            echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
-                                                                        }
-
-                                                                        echo("
-                                                                                                    
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>   
-                                                                                </a>
-                                                                            </div>
                                                                         ");
                                                                     }
+
+                                                                    echo("
+                                                                        <div class=\"row\">
+                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" >Edit</a>
+                                                                        </div>
+                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                                    ");
+
+                                                                    if($row_1['product_status'] == "A")
+                                                                    {
+                                                                        echo("<button class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
+                                                                    }
+                                                                    else if($row_1['product_status'] == "I")
+                                                                    {
+                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
+                                                                    }
+
+                                                                    echo("
+                                                                                                
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>   
+                                                                            </a>
+                                                                        </div>
+                                                                    ");
                                                                 }
                                                             }
                                                         }
