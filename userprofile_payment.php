@@ -39,8 +39,8 @@
 <?php
 	$UID = $_SESSION["uid"];
 	
-	//$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON user_id ='$UID'";
-	$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON userBankAccount.user_id ='$UID' AND userCard.user_id ='$UID'";
+	$sql = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
+	//$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON userBankAccount.user_id ='$UID' AND userCard.user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
@@ -53,7 +53,14 @@
 				<button name=\"remove\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
 			</button>
 			</div>
+			");
+	}
 
+	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
+
+	$res_data = mysqli_query($conn,$sql_1);
+	while($row = mysqli_fetch_array($res_data)){
+		echo("
 			<div class=\"container\">
 			<button href=\"../userEditCard.php\" name=\"edit\" value=".$row["card_id"]." class=\"btn btn-primary\">
 				".$row["name"]."
