@@ -470,7 +470,7 @@
                                                                     echo("
                                                                     <div class=\"row\">
                                                                     <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" aria-hidden=\"true\">Edit</i></a>
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" aria-hidden=\"true\"></i>Edit</a>
                                                                     </div>
                                                                     <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
@@ -608,7 +608,7 @@
                                                                     echo("
                                                                         <div class=\"row\">
                                                                         <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" aria-hidden=\"true\">Edit</i></a>
+                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" aria-hidden=\"true\"></i>Edit</a>
                                                                         </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
