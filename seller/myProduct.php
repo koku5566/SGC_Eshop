@@ -417,7 +417,7 @@
                                                                     
                                                                     echo("
                                                                         <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                            <a data-sqe=\"link\" href=\"".$row_1['product_id']."\">
+                                                                            <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
@@ -470,7 +470,7 @@
                                                                     echo("
                                                                     <div class=\"row\">
                                                                     <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                                     </div>
                                                                     <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
@@ -555,7 +555,7 @@
                                                                     
                                                                     echo("
                                                                         <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                            <a data-sqe=\"link\" href=\"".$row_1['product_id']."\">
+                                                                            <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
@@ -608,7 +608,7 @@
                                                                     echo("
                                                                         <div class=\"row\">
                                                                         <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                                         </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");

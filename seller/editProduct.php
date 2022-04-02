@@ -2,14 +2,7 @@
     require __DIR__ . '/header.php';
 
     
-    if(isset($_POST['add']) || isset($_POST['publish'])){
-
-       
-        $publish = 1;
-        if(isset($_POST['add']))
-        {
-            $publish = 0;
-        }
+    if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
@@ -212,7 +205,11 @@
             }
             $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
-    }                       
+    }   
+    
+    $productId = $_GET['id'];
+
+    $sql = "SELECT * FROM product WHERE product_id = '$productId'"
 ?>
 
 <!-- Begin Page Content -->
