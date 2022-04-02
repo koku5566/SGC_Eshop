@@ -468,11 +468,11 @@
                                                                     }
 
                                                                     echo("
-                                                                        <div class=\"row\">
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
-                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" >Edit</a>
-                                                                        </div>
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
+                                                                    <div class=\"row\">
+                                                                    <div class=\"col-xl-12\" style=\"padding:0;\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" >Edit</a>
+                                                                    </div>
+                                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
 
                                                                     if($row_1['product_status'] == "A")
@@ -486,11 +486,11 @@
 
                                                                     echo("
                                                                     </div>
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
+                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                             <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
                                                                         </div>
                                                                     ");
-
+                                                                    
                                                                     echo("
                                                                                                 
                                                                                             
@@ -607,10 +607,10 @@
 
                                                                     echo("
                                                                         <div class=\"row\">
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
+                                                                        <div class=\"col-xl-12\" style=\"padding:0;\">
                                                                             <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?id=".$row_1['product_id']."\" >Edit</a>
                                                                         </div>
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
+                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                     ");
 
                                                                     if($row_1['product_status'] == "A")
@@ -624,7 +624,7 @@
 
                                                                     echo("
                                                                     </div>
-                                                                        <div class=\"col-xl-4\" style=\"padding:0;\">
+                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
                                                                             <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
                                                                         </div>
                                                                     ");
