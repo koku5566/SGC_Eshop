@@ -164,7 +164,7 @@
                                 }
                                 
                                 ?>
-                                <a class="nav-item nav-link <?php $_GET['Panel'] = "All" ? "active" : "" ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php $_GET['Panel'] = "All" ? "true" : "false" ?>">All</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] = "All" ? echo("active"); : "" ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php $_GET['Panel'] = "All" ? "true" : "false" ?>">All</a>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "Publish" ? "active" : "" ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php $_GET['Panel'] = "Publish" ? "true" : "false" ?>">Published</a>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "OutOfStock" ? "active" : "" ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php $_GET['Panel'] = "OutOfStock" ? "true" : "false" ?>">Out of Stock</a>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "Violation" ? "active" : "" ?>" id="nav-violation-tab" href="?Panel=Violation" aria-selected="<?php $_GET['Panel'] = "Violation" ? "true" : "false" ?>">Banned</a>
