@@ -158,6 +158,10 @@
                                 if($_GET['Panel'] == "All"){
                                     echo("sad");
                                 }
+                                else
+                                {
+                                    echo($_GET['Panel']);
+                                }
                                 
                                 ?>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "All" ? "active" : "" ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php $_GET['Panel'] = "All" ? "true" : "false" ?>">All</a>
