@@ -485,14 +485,15 @@
                                                                     }
 
                                                                     echo("
+                                                                    </div>
                                                                         <div class=\"col-xl-4\" style=\"padding:0;\">
                                                                             <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
                                                                         </div>
                                                                     ");
-                                                                    
+
                                                                     echo("
                                                                                                 
-                                                                                            </div>
+                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>   
@@ -622,6 +623,7 @@
                                                                     }
 
                                                                     echo("
+                                                                    </div>
                                                                         <div class=\"col-xl-4\" style=\"padding:0;\">
                                                                             <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
                                                                         </div>
@@ -629,7 +631,7 @@
 
                                                                     echo("
                                                                                                 
-                                                                                            </div>
+                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>   
