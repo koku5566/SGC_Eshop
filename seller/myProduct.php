@@ -153,11 +153,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                             <nav id="myTab" class="nav nav-tabs" role="tablist">
-                                <a class="nav-item nav-link <?php $_GET['Panel'] == "All" ? "active" : "" ?>" id="nav-all-tab" data-toggle="tab" href="?Panel=All" role="tab" aria-controls="nav-all" aria-selected="<?php $_GET['Panel'] == "All" ? "true" : "false" ?>">All</a>
-                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Publish" ? "active" : "" ?>" id="nav-published-tab" data-toggle="tab" href="?Panel=Publish" role="tab" aria-controls="nav-published" aria-selected="<?php $_GET['Panel'] == "Publish" ? "true" : "false" ?>">Published</a>
-                                <a class="nav-item nav-link <?php $_GET['Panel'] == "OutOfStock" ? "active" : "" ?>" id="nav-sold-tab" data-toggle="tab" href="?Panel=OutOfStock" role="tab" aria-controls="nav-sold" aria-selected="<?php $_GET['Panel'] == "OutOfStock" ? "true" : "false" ?>">Out of Stock</a>
-                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Violation" ? "active" : "" ?>" id="nav-violation-tab" data-toggle="tab" href="?Panel=Violation" role="tab" aria-controls="nav-violation" aria-selected="<?php $_GET['Panel'] == "Violation" ? "true" : "false" ?>">Banned</a>
-                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Unpublish" ? "active" : "" ?>" id="nav-unpublish-tab" data-toggle="tab" href="?Panel=Unpublish" role="tab" aria-controls="nav-unpublish" aria-selected="<?php $_GET['Panel'] == "Unpublish" ? "true" : "false" ?>">Unpublished</a>
+                                <?php echo($_GET['Panel']);?>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "All" ? "active" : "" ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php $_GET['Panel'] == "All" ? "true" : "false" ?>">All</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Publish" ? "active" : "" ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php $_GET['Panel'] == "Publish" ? "true" : "false" ?>">Published</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "OutOfStock" ? "active" : "" ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php $_GET['Panel'] == "OutOfStock" ? "true" : "false" ?>">Out of Stock</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Violation" ? "active" : "" ?>" id="nav-violation-tab" href="?Panel=Violation" aria-selected="<?php $_GET['Panel'] == "Violation" ? "true" : "false" ?>">Banned</a>
+                                <a class="nav-item nav-link <?php $_GET['Panel'] == "Unpublish" ? "active" : "" ?>" id="nav-unpublish-tab" href="?Panel=Unpublish" aria-selected="<?php $_GET['Panel'] == "Unpublish" ? "true" : "false" ?>">Unpublished</a>
                             </nav>
 
                             <br>
