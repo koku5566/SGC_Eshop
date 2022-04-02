@@ -153,7 +153,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                             <nav id="myTab" class="nav nav-tabs" role="tablist">
-                                <?php echo($_GET['Panel']);?>
+                                <?php if($_GET['Panel'] == "All"){echo("sad")};?>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "All" ? "active" : "" ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php $_GET['Panel'] = "All" ? "true" : "false" ?>">All</a>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "Publish" ? "active" : "" ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php $_GET['Panel'] = "Publish" ? "true" : "false" ?>">Published</a>
                                 <a class="nav-item nav-link <?php $_GET['Panel'] = "OutOfStock" ? "active" : "" ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php $_GET['Panel'] = "OutOfStock" ? "true" : "false" ?>">Out of Stock</a>
