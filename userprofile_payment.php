@@ -1,9 +1,9 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php	
-	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	if($_SESSION['login'] == false)
 	{
-		echo "<script>alert('Login as Admin account to access');
+		echo "<script>alert('Login to access');
 			window.location.href='login.php';</script>";
     }
 ?>
@@ -32,11 +32,11 @@
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="DataDiv">
-<h1>My Address Book</h1>
+<div class="h1">My Address Book</div>
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<div class="h2">Bank</div>
+<div class="h3">Bank</div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -57,7 +57,8 @@
 			");
 	}
 ?>
-<div class="h2">Card</div>
+
+<div class="h3">Card</div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 

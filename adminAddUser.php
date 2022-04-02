@@ -1,6 +1,13 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		echo "<script>alert('Login as Admin account to access');
+			window.location.href='login.php';</script>";
+    }
+?>
+<?php
 if(isset($_POST['signup']))
 	{
 		$_SESSION['AddUser'] = false;

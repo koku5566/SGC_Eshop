@@ -1,6 +1,13 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php
+	if($_SESSION['login'] == false)
+	{
+		echo "<script>alert('Login to Continue');
+			window.location.href='login.php';</script>";
+    }
+?>
+<?php
 if(isset($_POST['addAddress']))
 	{
 		$_SESSION['AddAddress'] = false;
