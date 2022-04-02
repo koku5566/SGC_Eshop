@@ -483,7 +483,7 @@
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
-                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden="true"></i></button>");
+                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>");
 
                                                                     echo("
                                                                                                 
@@ -615,7 +615,7 @@
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
-                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden="true"></i></button>");
+                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>");
 
                                                                     echo("
                                                                                                 
