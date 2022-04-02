@@ -157,7 +157,7 @@
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Publish" ? "active" : ""); ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php echo($_GET['Panel'] == "Publish" ? "true" : "false"); ?>">Published</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "OutOfStock" ? "active" : ""); ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php echo($_GET['Panel'] == "OutOfStock" ? "true" : "false"); ?>">Out of Stock</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Violation" ? "active" : ""); ?>" id="nav-violation-tab" href="?Panel=Violation" aria-selected="<?php echo($_GET['Panel'] == "Violation" ? "true" : "false"); ?>">Banned</a>
-                                <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Unpublish" ? "active" : ""); ?>" id="nav-unpublish-tab" href="?Panel=Unpublish" aria-selected="<?php echo($_GET['Panel'] == "Unpublish" ? "true" : "false"); ?>">Unpublished</a>
+                                <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Unpublish" ? "active" : ""); ?>" id="nav-unpublish-tab" href="?Panel=Unpublish" aria-selected="<?php echo($_GET['Panel'] == "Delisted" ? "true" : "false"); ?>">Unpublished</a>
                             </nav>
 
                             <br>
@@ -477,12 +477,13 @@
 
                                                                     if($row_1['product_status'] == "A")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
+                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Delist</button>");
                                                                     }
                                                                     else if($row_1['product_status'] == "I")
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
+                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden="true"></i></button>");
 
                                                                     echo("
                                                                                                 
@@ -608,12 +609,13 @@
 
                                                                     if($row_1['product_status'] == "A")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Unpublish</button>");
+                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Delist</button>");
                                                                     }
                                                                     else if($row_1['product_status'] == "I")
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
+                                                                    echo("<button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden="true"></i></button>");
 
                                                                     echo("
                                                                                                 
