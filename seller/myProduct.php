@@ -447,7 +447,7 @@
 
                                                                         echo("
                                                                                         </div>
-                                                                                            <div class=\"row\">
+                                                                                            <div class=\"row\" style=\"height: 40px;\">
                                                                                                 <div class=\"col-xl-6\">
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
@@ -464,7 +464,7 @@
 
                                                                         echo("
                                                                                         </div>
-                                                                                            <div class=\"row\">
+                                                                                            <div class=\"row\" style=\"height: 40px;\">
                                                                                                 <div class=\"col-xl-6\">
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
                                                                                                 </div>
@@ -592,7 +592,7 @@
                                                                         
                                                                         echo("
                                                                                         </div>
-                                                                                            <div class=\"row\">
+                                                                                            <div class=\"row\" style=\"height: 40px;\">
                                                                                                 <div class=\"col-xl-6\">
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
@@ -609,7 +609,7 @@
 
                                                                         echo("
                                                                                         </div>
-                                                                                            <div class=\"row\">
+                                                                                            <div class=\"row\" style=\"height: 40px;\">
                                                                                                 <div class=\"col-xl-6\">
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
                                                                                                 </div>
