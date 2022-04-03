@@ -702,7 +702,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWeight" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                     <div class="input-group-append">
                                         <span class="input-group-text">kg</span>
                                     </div>
@@ -718,7 +718,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_length == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -726,7 +726,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_width == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -734,7 +734,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -750,14 +750,14 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection" <?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>>
+                                    <label class="form-check-label" for="chkSelfCollection">
                                         Self Collection
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
+                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" <?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>>
+                                    <label class="form-check-label" for="chkStandardDelivery">
                                         Standard Delivery
                                     </label>
                                 </div>

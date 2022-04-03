@@ -662,17 +662,18 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection">
+                                    <label class="form-check-label" for="chkSelfCollection">
                                         Self Collection
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
+                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" checked>
+                                    <label class="form-check-label" for="chkStandardDelivery">
                                         Standard Delivery
                                     </label>
                                 </div>
+                                <small id="checkbox-err-msg"></small>
                             </div>
                         </div>
                     </div>
@@ -848,7 +849,15 @@
     function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            document.getElementById("AddProduct").click();
+            if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+            {
+                document.getElementById("AddProduct").click();
+            }
+            else
+            {
+                document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                document.getElementById("checkbox-err-msg").focus();
+            }
         }
         else
         {
