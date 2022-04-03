@@ -112,8 +112,8 @@
     <!-- /.container-fluid -->
 <style>
 .image-container{
-        width: 80px;
-        height: 80px;
+        width: 988px;
+        height: 344px;
         background-color: white;
     }
 
@@ -122,8 +122,8 @@
     }
 
     .image-layer{
-        width: 80px;
-        height: 80px;
+        width: 988px;
+        height: 34px;
         opacity:0.5;
         position:absolute;
         margin-top: -80px;
