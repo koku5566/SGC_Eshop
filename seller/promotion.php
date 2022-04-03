@@ -26,13 +26,16 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>".$row["promotion_period"]."</td></tr>";
+                                             .$row["promotion_title"]."</td><td>".$row["promotion_period"]."</td><td>";
                                          }
                                          echo"</table>";
                                      }
                                      else{
                                          echo"No Promotion.";
                                      }
+                                     echo"</td><td>
+                                     <button type=\"submit\" name=\"delete\" value=\"".$row['product_id']."\">Delete</button>
+                                     <button type=\"sumbit\" name=\"edit_btn\" value= \"".$row['product_id']."\">Edit</button></td></tr>;
                                 ?>
                             </tbody>
                             </table>
