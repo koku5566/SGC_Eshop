@@ -642,6 +642,72 @@
                         </div>
 
                         <div id="subPricing" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
+                        
+                            <?php 
+                            if($i_product_variation == 1) 
+                            {
+                                $sql_variation = "SELECT * FROM variation WHERE product_id = '$productId'";
+                                $result_variation = mysqli_query($conn, $sql_variation);
+                            
+                                if (mysqli_num_rows($result_variation) > 0) {
+
+                                    //Display the format
+                                    $variationDiv_innerHTML = "";
+                                    //3/4/2022
+
+                                    while($row_product = mysqli_fetch_assoc($result_variation)) {
+                                        $v_variation_1_name = $row_product['variation_1_name'];
+                                        $v_variation_1_choice = $row_product['variation_1_choice'];
+                                        $v_variation_2_name = $row_product['variation_2_name'];
+                                        $v_product_price = $row_product['product_price'];
+                                        $v_product_stock = $row_product['product_stock'] - $row_product['product_sold'];
+                                        $v_product_sku = $row_product['product_sku'];
+
+
+                                    }
+                                }   
+                            }
+                            ?>
+                            <div class="variation">
+                                <div class="card mb-4">
+                                    <div class="card-header py-3">
+                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Variation Name</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" value="" class="form-control variationName ">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Choices</p>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control variationChoice" required>
+                                                        <div class="input-group-append btnDeleteChoices">
+                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
@@ -718,7 +784,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_length == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -726,7 +792,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_width == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -734,7 +800,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -750,13 +816,13 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection" <?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>>
+                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection" <?php echo( $i_product_self_collect == 1 ? "checked" : "0"); ?>>
                                     <label class="form-check-label" for="chkSelfCollection">
                                         Self Collection
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" <?php echo( $i_product_height == 0 ? $i_product_weight : "0"); ?>>
+                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" <?php echo( $i_product_standard_delivery == 1 ? "checked" : "0"); ?>>
                                     <label class="form-check-label" for="chkStandardDelivery">
                                         Standard Delivery
                                     </label>
