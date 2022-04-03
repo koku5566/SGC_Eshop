@@ -126,7 +126,7 @@
         height: 200px;
         opacity:0.5;
         position:absolute;
-        margin-top: -200px;
+        margin-top: -80px;
     }
 
     .image-tools-delete:hover{
