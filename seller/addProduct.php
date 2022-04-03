@@ -786,6 +786,11 @@
         display:none;
     }
 
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+    }
+
     .hide{
         display:none;
     }
