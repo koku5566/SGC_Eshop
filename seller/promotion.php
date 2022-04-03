@@ -28,10 +28,7 @@
                                              echo"<tr><td>"
                                              .$row["promotion_title"]."</td><td>".$row["promotion_period"]."</td><td>";
                                          }
-                                         //echo"</table>";
-                                         echo"</td><td>
-                                     <button type=\"submit\" name=\"delete\" value=\"".$row['product_id']."\">Delete</button>
-                                     <button type=\"sumbit\" name=\"edit_btn\" value= \"".$row['product_id']."\">Edit</button></td></tr>";
+                                         echo"</table>";
                                      }
                                      else{
                                          echo"No Promotion.";
