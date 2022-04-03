@@ -157,7 +157,7 @@
         background:white;
         opacity:0.5;
         position:absolute;
-        margin-top: -80px;
+        margin-top: -344px;
         z-index:100;
     }
 
