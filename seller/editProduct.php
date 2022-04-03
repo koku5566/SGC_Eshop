@@ -641,7 +641,7 @@
                             </div>
                         </div>
 
-                        <div id="subPricing" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"; ?>">
+                        <div id="subPricing" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
