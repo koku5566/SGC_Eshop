@@ -111,9 +111,9 @@
     </div>
     <!-- /.container-fluid -->
 <style>
-.image-container{
-        width: 988px;
-        height: 344px;
+    .image-container{
+        width: 344px;
+        height: 200px;
         background-color: white;
     }
 
@@ -122,11 +122,11 @@
     }
 
     .image-layer{
-        width: 988px;
-        height: 34px;
+        width: 344px;
+        height: 200px;
         opacity:0.5;
         position:absolute;
-        margin-top: -80px;
+        margin-top: -200px;
     }
 
     .image-tools-delete:hover{
@@ -134,11 +134,12 @@
     }
 
     .image-tools-delete{
-        width: 80px;
-        height: 30px;
+        width: 344px;
+        height: 50px;
         background:grey;
         position:absolute;
-        margin-top: -30px;
+        margin-top: -50px;
+        opacity: 0.5;
     }
 
     .image-tools-delete-icon{
@@ -146,13 +147,13 @@
         justify-content: center;
         display: grid;
         margin-top: 5px;
-        font-size: 20px;
+        font-size: 40px;
     }
 
 
     .image-tools-add{
-        width: 80px;
-        height: 80px;
+        width: 344px;
+        height: 200px;
         background:white;
         opacity:0.5;
         position:absolute;
@@ -164,8 +165,8 @@
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 30px;
-        font-size: 20px;
+        margin-top: 80px;
+        font-size: 40px;
     }
 
     .custom-file-upload{
