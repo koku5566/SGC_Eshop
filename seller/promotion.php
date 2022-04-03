@@ -35,7 +35,7 @@
                                      }
                                      echo"</td><td>
                                      <button type=\"submit\" name=\"delete\" value=\"".$row['product_id']."\">Delete</button>
-                                     <button type=\"sumbit\" name=\"edit_btn\" value= \"".$row['product_id']."\">Edit</button></td></tr>;
+                                     <button type=\"sumbit\" name=\"edit_btn\" value= \"".$row['product_id']."\">Edit</button></td></tr>";
                                 ?>
                             </tbody>
                             </table>
