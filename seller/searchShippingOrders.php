@@ -6,6 +6,7 @@
 
 <?php
 $searchBy = $_GET['searchBy'];
+echo $searchBy;
 $search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
 
 switch($searchBy){
