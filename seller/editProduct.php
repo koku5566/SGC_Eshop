@@ -936,7 +936,15 @@
     function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            document.getElementById("AddProduct").click();
+            if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+            {
+                document.getElementById("AddProduct").click();
+            }
+            else
+            {
+                document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                document.getElementById("checkbox-err-msg").focus();
+            }
         }
         else
         {
