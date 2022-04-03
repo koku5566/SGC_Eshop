@@ -208,8 +208,58 @@
     }   
     
     $productId = $_GET['id'];
+    $shopId = $_SESSION['user_id'];
 
-    $sql = "SELECT * FROM product WHERE product_id = '$productId'"
+    $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+    $result_product = mysqli_query($conn, $sql_product);
+
+    if (mysqli_num_rows($result_product) > 0) {
+        while($row_product = mysqli_fetch_assoc($result_product)) {
+            $i_product_name = $row_product['product_name'];
+            $i_product_sku = $row_product['product_sku'];
+            $i_product_description = $row_product['product_description'];
+            $i_product_brand = $row_product['product_brand'];
+            $i_product_cover_video = $row_product['product_cover_video'];
+            $i_product_cover_picture = $row_product['product_cover_picture'];
+            $i_product_pic_1 = $row_product['product_pic_1'];
+            $i_product_pic_2 = $row_product['product_pic_2'];
+            $i_product_pic_3 = $row_product['product_pic_3'];
+            $i_product_pic_4 = $row_product['product_pic_4'];
+            $i_product_pic_5 = $row_product['product_pic_5'];
+            $i_product_pic_6 = $row_product['product_pic_6'];
+            $i_product_pic_7 = $row_product['product_pic_7'];
+            $i_product_pic_8 = $row_product['product_pic_8'];
+            $i_product_weight = $row_product['product_weight'];
+            $i_product_length = $row_product['product_length'];
+            $i_product_width = $row_product['product_width'];
+            $i_product_height = $row_product['product_height'];
+            $i_product_virtual = $row_product['product_virtual'];
+            $i_product_self_collect = $row_product['product_self_collect'];
+            $i_product_standard_delivery = $row_product['product_standard_delivery'];
+            $i_product_variation = $row_product['product_variation'];
+            $i_product_price = $row_product['product_price'];
+            $i_product_stock = $row_product['product_stock'];
+            $i_product_sold = $row_product['product_sold'];
+            $i_product_status = $row_product['product_status'];
+            $i_category_id = $row_product['category_id'];
+
+            if($i_product_self_collect == 1 && $i_product_standard_delivery == 1)
+            {
+                $i_product_type = 1;
+            }
+            else
+            {
+                $i_product_type = 0;
+            }
+        }
+    }   
+    else{
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/myProduct.php";
+            </script>
+        <?php
+    }
 ?>
 
 <!-- Begin Page Content -->
@@ -415,7 +465,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" value="" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="<?php echo($i_product_name); ?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -427,9 +477,19 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="" selected>Please Select a Category</option>
+                                        <option value="">Please Select a Category</option>
                                             <?php
+
                                             //Main Category
+                                            $sql_selectMainId = "SELECT main_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $result_selectMainId = mysqli_query($conn, $sql_selectMainId);
+
+                                            if (mysqli_num_rows($result_selectMainId) > 0) {
+                                                while($row_selectMainId = mysqli_fetch_assoc($result_selectMainId)) {
+                                                    $mainCategoryId = $row_selectMainId["main_category"];
+                                                }
+                                            }
+
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
                                             $result = mysqli_query($conn, $sql);
 
@@ -438,7 +498,14 @@
                                                     $categoryId = $row["category_id"];
                                                     $categoryName = $row["category_name"];
 
-                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    if($mainCategoryId == $categoryId)
+                                                    {
+                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    else
+                                                    {
+                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    }
                                                 }
                                             }
                                             ?>
@@ -451,7 +518,39 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="subCategory" name="subCategoryId">
- 
+                                        <?php
+                                            //Sub Category
+                                            $sql_selectSubId = "SELECT sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $result_selectSubId = mysqli_query($conn, $sql_selectSubId);
+
+                                            if (mysqli_num_rows($result_selectSubId) > 0) {
+                                                while($row_selectSubId = mysqli_fetch_assoc($result_selectSubId)) {
+                                                    $subCategoryId = $row_selectSubId["sub_category"];
+                                                }
+                                            }
+
+                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                            $result_1 = mysqli_query($conn, $sql_1);
+                                
+                                            if (mysqli_num_rows($result_1) > 0) {
+                                                $tempArray = array();
+                                
+                                                while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                    $categoryId = $row_1["category_id"];
+                                                    $categoryName = $row_1["category_name"];
+                                
+                                                    if($subCategoryId == $categoryId)
+                                                    {
+                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    else
+                                                    {
+                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    
+                                                }   
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -463,7 +562,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" value="<?php echo($i_product_description); ?>" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -474,7 +573,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productBrand" required>
+                                    <input type="text" class="form-control" value="<?php echo($i_product_brand); ?>" name="productBrand" required>
                                 </div>
                             </div>
                         </div>
@@ -486,8 +585,8 @@
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
-                                        <option value="0">Normal Product with Shipment</option>
-                                        <option value="1">Virtual Product without Shipment</option>
+                                        <option <?php echo($i_product_type == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
+                                        <option <?php echo($i_product_type == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
                                     </select>
                                 </div>
                             </div>
@@ -499,7 +598,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productSKU">
+                                    <input type="text" class="form-control"value="<?php echo($i_product_sku); ?>" name="productSKU">
                                 </div>
                             </div>
                         </div>
