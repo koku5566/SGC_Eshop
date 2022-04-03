@@ -877,6 +877,7 @@
     .img-thumbnail{
         min-height: 0;
         border: 1px solid #e3e3e3;
+        border-radius: 10px;
     }
 
     .hide{
