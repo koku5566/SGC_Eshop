@@ -435,7 +435,15 @@
                                                                     //If got variation
                                                                     if($row_1['product_variation'] == 1)
                                                                     {
-                                                                        echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+                                                                        if($row_1['min_price'] != $row_1['max_price'])
+                                                                        {
+                                                                            echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
+                                                                        }
+                                                                        
 
                                                                         echo("
                                                                                         </div>
@@ -573,8 +581,15 @@
                                                                     //If got variation
                                                                     if($row_1['product_variation'] == 1)
                                                                     {
-                                                                        echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
-
+                                                                        if($row_1['min_price'] != $row_1['max_price'])
+                                                                        {
+                                                                            echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
+                                                                        }
+                                                                        
                                                                         echo("
                                                                                         </div>
                                                                                             <div class=\"row\">

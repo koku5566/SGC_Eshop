@@ -243,15 +243,6 @@
             $i_product_sold = $row_product['product_sold'];
             $i_product_status = $row_product['product_status'];
             $i_category_id = $row_product['category_id'];
-
-            if($i_product_self_collect == 1 && $i_product_standard_delivery == 1)
-            {
-                $i_product_type = 1;
-            }
-            else
-            {
-                $i_product_type = 0;
-            }
         }
     }   
     else{
@@ -563,7 +554,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" value="<?php echo($i_product_description); ?>" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -586,8 +577,8 @@
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
-                                        <option <?php echo($i_product_type == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
-                                        <option <?php echo($i_product_type == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
+                                        <option <?php echo($i_product_virtual == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
+                                        <option <?php echo($i_product_virtual == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
                                     </select>
                                 </div>
                             </div>
@@ -617,9 +608,9 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? $_POST['variationType'] : "0"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                        <input type="text" value="<?php echo($i_product_variation); ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
-                        <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
+                        <div id="mainPricing" class="<?php echo($i_product_virtual == 1 ? "hide" : ""; ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation</button>
                             </div>
@@ -650,13 +641,13 @@
                             </div>
                         </div>
 
-                        <div id="subPricing" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                        <div id="subPricing" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"; ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
                             </div>
                         </div>
 
-                        <div id="priceToAll" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                        <div id="priceToAll" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"; ?>">
                             <div class="row">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Variation Info</p>
@@ -697,7 +688,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row" id="ShippingDiv">
+        <div class="row" id="ShippingDiv" class="<?php echo($i_product_virtual == 1 ? "hide" : ""; ?>">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -711,7 +702,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" required>
+                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" <?php echo($i_product_virtual == 1 ? "" : "required"; ?>>
                                     <div class="input-group-append">
                                         <span class="input-group-text">kg</span>
                                     </div>
@@ -727,7 +718,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"; ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -735,7 +726,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"; ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -743,7 +734,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"; ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
