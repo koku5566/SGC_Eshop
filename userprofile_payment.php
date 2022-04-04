@@ -22,10 +22,16 @@
 		}
 	}
 	
-	if(isset($_POST['edit']))
+	if(isset($_POST['editB']))
 	{
-		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='userEditAddress.php';</script>");
+		$_SESSION['ToEdit'] = $_POST['editB'];
+		echo("<script>window.location.href='userEditBank.php';</script>");
+	}
+
+	if(isset($_POST['editC']))
+	{
+		$_SESSION['ToEdit'] = $_POST['editC'];
+		echo("<script>window.location.href='userEditCard.php';</script>");
 	}
 ?>
 
@@ -47,7 +53,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"container\">
-			<button href=\"../userEditBank.php\" name=\"edit\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">
+			<button href=\"../userEditBank.php\" name=\"editB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">
 				".$row["bank_name"]."
 				".$row["bankAcc_name"]."
 				".$row["account_no"]."
@@ -66,7 +72,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"container\">
-			<button href=\"../userEditCard.php\" name=\"edit\" value=".$row["card_id"]." class=\"btn btn-primary\">
+			<button href=\"../userEditCard.php\" name=\"editC\" value=".$row["card_id"]." class=\"btn btn-primary\">
 				".$row["name"]."
 				".$row["card_number"]."
 				".$row["expiry_date"]."
