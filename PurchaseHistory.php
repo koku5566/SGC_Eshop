@@ -34,12 +34,12 @@ $result_2 = $stmt_2->get_result();
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
-<h1 style="color: var(--bs-red);text-align: center;">Purchase History</h1>
+<h1 style="color: red;text-align: center;">Purchase History</h1>
     <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
     <i class="fa fa-long-arrow-left" style="padding-right: 9px;color: var(--bs-blue);background: rgba(255,255,255,0);">
     <a href="index.php">Back</a></i>
     </button>
-    <div class="tab-content mb-4">
+<div class="tab-content mb-4" >
    
         <div class="order-history-list-panel">
         </div>
@@ -47,7 +47,7 @@ $result_2 = $stmt_2->get_result();
         <?php 
         while ($row = $result_2->fetch_assoc()) {
         ?>
-            <div class="card">
+            <div class="card" style="text-align: justify;width: 50%;margin-left: 25%;">
                 <div class="card-header">
                     <div class="row">
                         <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
@@ -57,7 +57,7 @@ $result_2 = $stmt_2->get_result();
                         </div>
                     </div>
                 </div>
-                <a href="" class="card-body"  >
+                <a href="viewOrder.php" class="card-body"  >
                     <div class="row">
                                         
                         <div class="col-1 image-container">
@@ -74,18 +74,21 @@ $result_2 = $stmt_2->get_result();
                         </div>
                         <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
                         </div>
-                    </div>
+                    
                 </a>
                 <div class="card-footer">
                     <ul class="list-group list-group-horizontal" style="list-style-type:none;">
-                        <li class=""><button type="button" class="btn btn-primary"><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
-                        <li style="padding-left:20px"><button type="button" class="btn btn-primary">Order Again</button></li>
+                        <li class="">
+                        <button type="button" class="btn btn-primary"><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
+                        <li style="padding-left:20px">
+                        <button type="button" class="btn btn-primary">Order Again</button></li>
                         <li style="padding-left:60%">Total</li>
-                        <li style="padding-left:200px;">Pricessss</li>
+                        <li style="padding-left:50px;">RM<?php echo $row['product_price']?></li>
                     </ul>
-                       
+                  </div>     
                 </div>
             </div>
+            <br>
             <?php 
             }?>
         </div>
