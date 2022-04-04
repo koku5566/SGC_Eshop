@@ -15,18 +15,18 @@
                             <thead>
                                 <tr>
                                 <th scope="col">Promotion Title</th>
-                                <th scope="col">Date/Time</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT promotion_title, promotion_period from promotion";
+                                    $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>".$row["promotion_period"]."</td><td>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td>";
                                          }
                                          echo"</table>";
                                      }
@@ -86,17 +86,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="pStartDate" required></div>
-
-                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="pEndDate" required></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 style="margin-top: 30px;width: 100%;">Time</h4>
-                        <div class="row">
-                            <div class="col-sm-5"><input class="form-control" type="time" name="pTime_From" required></div>
-
-                            <div class="col-sm-5"><input class="form-control" type="time" name="pTime_To" required></div>
+                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
+                            <div class="col-sm-2">
+                                <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                            </div>
+                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
                         </div>
                     </div>
                 </section>
@@ -104,8 +98,53 @@
                 
                 <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                     <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                    <button class="btn btn-outline-primary" type="submit" name="pCreate" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
+                    <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
+                <?php
+                if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
+                {
+                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
+                    //$image = $_POST['promotion_image']; 
+                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
+                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
+
+                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
+                    VALUES('$title','$dateStart','$dateEnd')";
+                    $result = mysqli_query($conn,$sql);
+                    
+                    // File upload configuration 
+                    //$targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    //$allowTypes = array('jpg','png','jpeg'); 
+
+                    //if(!empty($fileNames)){ 
+                        //foreach($_FILES['img']['name'] as $key=>$val){ 
+                            // File upload path 
+                            
+                            //$fileName = basename($_FILES['img']['name'][$key]); 
+                            //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            //$fileName = round(microtime(true) * 1000).".".$ext;
+                            //$targetFilePath = $targetDir.$fileName; 
+                            // Check whether file type is valid 
+                            //$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            //if(in_array($fileType, $allowTypes)){ 
+                                //if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                                  //  $sql_insert .= "'$fileName', ";
+                                   // $imgInpCounter++;
+                              //  }
+                           // }
+                        //} 
+                   // }
+
+                    if($result)
+                    {
+                        echo '<script>alert("Add promotion successfully!")</script>';
+                    }
+                    else
+                    {
+                        echo '<script>alert("Failed")</script>';
+                    }
+                }
+                ?>
             </form>
         </div>
     </div>

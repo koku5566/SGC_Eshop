@@ -6,9 +6,9 @@
 
 <?php
 $searchBy = $_GET['searchBy'];
+$keyword = $_GET['keyword'];
 echo $searchBy;
-$search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
-
+echo 'hello';
 switch($searchBy){
     case "id":
         $sql ="SELECT
@@ -23,7 +23,8 @@ switch($searchBy){
         myOrder
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN user ON myOrder.user_id = user.user_id
-        JOIN product ON orderDetails.product_id = product.id WHERE myOrder.order_id LIKE '%$search%'";
+        JOIN product ON orderDetails.product_id = product.id 
+        WHERE myOrder.order_id LIKE '%$keyword%'";
         break;
     case "name":
         $sql ="SELECT
@@ -39,7 +40,7 @@ switch($searchBy){
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
-        WHERE user.username LIKE '%$search%'";
+        WHERE user.username LIKE '%$keyword%'";
         break;
     case "product":
         $sql ="SELECT
@@ -55,7 +56,7 @@ switch($searchBy){
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
-        WHERE product.product_name LIKE '%$search%'";
+        WHERE product.product_name LIKE '%$keyword%'";
         break;
     case "trackingnumber":
         $sql ="SELECT
@@ -72,7 +73,7 @@ switch($searchBy){
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
         JOIN shipment ON shipment.order_id = myOrder.order_id 
-        WHERE shipment.tracking_number LIKE '%$search%'";
+        WHERE shipment.tracking_number LIKE '%$keyword%'";
         break;
     default:
         echo "Please search again";
@@ -155,7 +156,7 @@ $result = $stmt->get_result();
 
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="search_shipping.php" method="GET">
+                    <form action="searchShippingOrders.php" method="GET">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
                             <div class="input-group mb-3">
@@ -240,14 +241,15 @@ $result = $stmt->get_result();
                                 </div>
                             </div>
                         </div>
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                         <!--------------------------------All-------------------------------------->
+                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 
-                             if (mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
+                             if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
                             ?>
                             <!--Each Order Item-->
-                                <div class="card">
+                                <div class="card mt-2">
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col md-auto text-start"><span><strong>Username</strong></span>
@@ -260,12 +262,8 @@ $result = $stmt->get_result();
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <!-- <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com">
-                                            </div> -->
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="category/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-3"><?php echo $row['product_name']?></div>
                                             <div class="col-1">x <?php echo $row['quantity']?></div>
@@ -285,35 +283,7 @@ $result = $stmt->get_result();
                                 echo "There are no result matching your search";
                             }?>
                                                                 
-                                <!--Pick Up Order Item-->       
-                                 <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                Order
-                                                ID:
-                                                125353</strong></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com"></div>
-                                            <div class="col-3">Product Name yoo</div>
-                                            <div class="col-1">X1</div>
-
-                                            <div class="col-1">RM9.00</div>
-                                            <div class="col-2">Completed</div>
-                                            <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="#pickUpModal" data-toggle="modal" data-target="#pickUpModal">Update Pick Up</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End of Order Item-->
+                                
 
                             </div>
                             <!--------------------------------To ship--------------------------------------->

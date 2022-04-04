@@ -30,7 +30,7 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-xl-2 col-lg-2 col-sm-12">
+               <div class="form-group col-md-12">
                   <p class="p-title">Facility Name</p>
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="row">
-               <div class="col-xl-2 col-lg-2 col-sm-12">
+               <div class="form-group col-md-12">
                   <p class="p-title">Facility Description</p>
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
@@ -50,8 +50,8 @@
                   </div>
                </div>
             </div>
-            <div class="form-row">
-               <div class="col-xl-2 col-lg-2 col-sm-12">
+            <div class="row">
+               <div class="form-group col-md-12">
                   <p class="p-title">Facility Address</p>
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
@@ -61,13 +61,16 @@
                </div>
             </div>
 
-         <div class="form-row">
+            <div class="row">
                <div class="form-group col-md-12">
-                  <label for="">Hourly Rate</label>
-                  <input type="text" aria-label="Hourly rate" class="form-control">
+                  <p class="p-title">Stock</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-2">
+                     <input type="number"min="0" value="0" class="form-control" name="productStock" required>
+                  </div>
                </div>
             </div>
-         
             <div class="form-row">   
                <div class="form-group col-md-12">
                   <label for="">Facility Photo</label>  
@@ -75,14 +78,18 @@
                </div>               
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add</button>
-            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add</button>
-         </div>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add Facility</button>
+            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add Facility</button>
+            </div>
          </div>    
       </div>
    </form>
 </div>
       
+    </div>
+  </div>
+</div>
+
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
