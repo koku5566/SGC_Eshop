@@ -8,20 +8,32 @@
     }
 ?>
 <?php
-	if(isset($_POST['remove']))
+	if(isset($_POST['removeB']))
 	{
-		$_SESSION['DeletePayment'] = false;
-		$UID = $_POST['remove'];
+		$_SESSION['DeletePaymentB'] = false;
+		$UID = $_POST['removeB'];
 
 		$sql = "DELETE FROM userBankAccount WHERE bankAcc_id = '$UID'";
-		$sql = "DELETE FROM userCard WHERE card_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeletePayment'] = true;
+			$_SESSION['DeletePaymentB'] = true;
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
 	}
 	
+	if(isset($_POST['removeC']))
+	{
+		$_SESSION['DeletePaymentC'] = false;
+		$UID = $_POST['removeC'];
+
+		$sql = "DELETE FROM userCard WHERE card_id = '$UID'";
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['DeletePaymentC'] = true;
+		} else {
+			echo "Error: " . mysqli_error($conn);
+		}
+	}
+
 	if(isset($_POST['editB']))
 	{
 		$_SESSION['BToEdit'] = $_POST['editB'];
@@ -57,7 +69,7 @@
 				".$row["bank_name"]."
 				".$row["bankAcc_name"]."
 				".$row["account_no"]."
-				<button name=\"remove\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
+				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
 			</button>
 			</div>
 			");
@@ -76,7 +88,7 @@
 				".$row["name"]."
 				".$row["card_number"]."
 				".$row["expiry_date"]."
-				<button name=\"remove\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
+				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
 			</button>
 			</div>
 			");
@@ -87,13 +99,22 @@
 </div>
 
 <?php
-if(isset($_SESSION['DeletePayment']))
+if(isset($_SESSION['DeletePaymentB']))
 	{
-		if($_SESSION['DeletePayment'] == true)
+		if($_SESSION['DeletePaymentB'] == true)
 		{
-			echo "<script>alert('Payment Method Removed');</script>";
+			echo "<script>alert('Bank Account Removed');</script>";
 		}
-		$_SESSION['DeletePayment'] = NULL;
+		$_SESSION['DeletePaymentB'] = NULL;
+	}
+	
+if(isset($_SESSION['DeletePaymentC']))
+	{
+		if($_SESSION['DeletePaymentC'] == true)
+		{
+			echo "<script>alert('Card Removed');</script>";
+		}
+		$_SESSION['DeletePaymentC'] = NULL;
 	}
 ?>
 
