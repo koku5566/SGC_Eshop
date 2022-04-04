@@ -172,48 +172,13 @@ $result = $stmt->get_result();
                                 <?php 
                                 }?>
 
-                            </div>
+
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                                <!--Pills tab--->
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="pills-all-tab" data-toggle="pill"
-                                            href="#pills-all" role="tab" aria-controls="pills-all"
-                                            aria-selected="true">All</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-to-process-tab" data-toggle="pill"
-                                            href="#pills-to-process" role="tab" aria-controls="pills-to-process"
-                                            aria-selected="false">To Process</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="pills-processed-tab" data-toggle="pill"
-                                            href="#pills-processed" role="tab" aria-controls="pills-processed"
-                                            aria-selected="false">Processed</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <!--All to ship orders-->
-                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                                        aria-labelledby="pills-all-tab">
-                                        ello 
-                                    </div>
 
-                                    <!--to process to ship orders-->
-                                    <div class="tab-pane fade" id="pills-to-process" role="tabpanel"aria-labelledby="pills-to-process-tab">
-                                        ...
-                                    </div>
-
-                                    <!-- processed to ship orders-->
-                                    <div class="tab-pane fade" id="pills-processed" role="tabpanel" aria-labelledby="pills-processed-tab">
-                                        ...
-                                    </div>
-                                </div>
-
+                                Hi ahah
                             </div>
-                            
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
                             yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
@@ -231,7 +196,7 @@ $result = $stmt->get_result();
 
 
 
-                    
+                    </div>
                 </div>
             </div>
         </div>

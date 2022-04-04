@@ -6,7 +6,6 @@
 
 <?php
 $searchBy = $_GET['searchBy'];
-echo $searchBy;
 $search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
 
 switch($searchBy){
@@ -155,7 +154,7 @@ $result = $stmt->get_result();
 
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form action="search_shipping.php" method="GET">
+                    <form action="searchShippingOrders.php" method="GET">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
                             <div class="input-group mb-3">
@@ -240,11 +239,12 @@ $result = $stmt->get_result();
                                 </div>
                             </div>
                         </div>
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                         <!--------------------------------All-------------------------------------->
+                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                                 
                             <?php 
-                             if (mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
+                             if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
                             ?>
                             <!--Each Order Item-->
                                 <div class="card">
