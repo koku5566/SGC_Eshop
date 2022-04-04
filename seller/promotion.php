@@ -103,10 +103,10 @@
                 <?php
                 if(isset($_POST['create_btn']))
                 {
-                    $title = $_POST['promotiontitle'];
+                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
                     //$image = $_POST['promotion_image']; 
-                    $dateStart = $_POST['promotionDate'];
-                    $dateEnd = $_POST['promotionEndDate'];
+                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
+                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
 
                     $sql = "INSERT INTO promotion (promotion_title, promotion_Date, promotionEnd_Date) 
                     VALUES('$title','$dateStart','$dateEnd')";
