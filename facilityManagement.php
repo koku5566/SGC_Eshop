@@ -49,9 +49,19 @@
                </div>
             </div>
          
-            <div class="form-row">
-                <!-- Card Body -->
-                <div class="card-body">
+            <div class="form-row">   
+               <div class="form-group col-md-12">
+                  <label for="">Facility Photo</label>  
+                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+               </div>
+               <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
                                 <p class="p-title">Product Images</p>
@@ -235,12 +245,7 @@
                                 </div>
                             </div>
                         </div>
-               <div class="form-group col-md-12">
-                  <label for="">Facility Photo</label>
-                  
-                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
-               </div>
-               
+
             </div>
             <div class="form-row">
                <div class="float-right">
