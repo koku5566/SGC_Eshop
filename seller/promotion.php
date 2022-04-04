@@ -21,7 +21,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT promotion_title, promotion_Date, promotion_Time from promotion";
+                                    $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
