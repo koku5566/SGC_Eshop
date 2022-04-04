@@ -240,6 +240,6 @@ $result = $stmt->get_result();
         //generate tracking number
         function generate(){
         var x=document.getElementById("trackingNumber");
-        x.innerHTML=Math.floor((Math.random()*100000)+1);
+        x.innerHTML=Math.floor((Math.random()*1000000000)+1);
 }
     </script>
