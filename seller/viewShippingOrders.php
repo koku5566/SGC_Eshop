@@ -172,7 +172,7 @@ $result = $stmt->get_result();
                                 <?php 
                                 }?>
 
-
+                            </div>
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
@@ -213,6 +213,7 @@ $result = $stmt->get_result();
                                 </div>
 
                             </div>
+                            
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
                             yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
@@ -230,7 +231,7 @@ $result = $stmt->get_result();
 
 
 
-                    </div>
+                    
                 </div>
             </div>
         </div>

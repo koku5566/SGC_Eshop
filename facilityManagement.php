@@ -49,11 +49,12 @@
                </div>
             </div>
          
-            <div class="form-row">
+            <div class="form-row">   
                <div class="form-group col-md-12">
-                  <label for="">Facility Photo</label>
+                  <label for="">Facility Photo</label>  
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
+               
             </div>
             <div class="form-row">
                <div class="float-right">
@@ -69,6 +70,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
