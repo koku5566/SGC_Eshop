@@ -85,7 +85,7 @@ if(isset($_SESSION['Update']))
 		if($_SESSION['Update'] == true)
 		{
 			echo "<script>alert('Details Updated');
-			window.location.href='userprofile_address.php';</script>";
+			window.location.href='userprofile_payment.php';</script>";
 		}
 		$_SESSION['Update'] = NULL;
 	}
