@@ -33,7 +33,7 @@
                <div class="form-group col-md-12">
                   <p class="p-title">Facility Name</p>
                </div>
-               <div class="form-group col-md-12">
+               <div>
                   <div class="input-group mb-3">
                   <textarea class="form-control" name="title" maxlength="1000" required></textarea>
                   </div>
