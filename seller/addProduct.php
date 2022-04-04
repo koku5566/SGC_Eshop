@@ -1341,6 +1341,8 @@
 
     function refreshPriceTableWithParameter(price,stock,sku)
     {
+        updatePriceListArray();
+        
         var PriceTableHTML = `<table class="table table-hover">`;
         //Header Row
         PriceTableHTML += `<thead>`;
