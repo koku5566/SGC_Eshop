@@ -75,14 +75,18 @@
                </div>               
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add</button>
-            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add</button>
-         </div>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add New Product</button>
+            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add New Product</button>
+            </div>
          </div>    
       </div>
    </form>
 </div>
       
+    </div>
+  </div>
+</div>
+
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
