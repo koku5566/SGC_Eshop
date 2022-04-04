@@ -101,7 +101,7 @@
                     <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
                 <?php
-                if(isset($_POST['create_btn']))
+                if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
                     $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
                     //$image = $_POST['promotion_image']; 
