@@ -10,12 +10,12 @@
 <?php
 	if(isset($_POST['removeB']))
 	{
-		$_SESSION['DeletePayment'] = false;
+		$_SESSION['DeletePaymentB'] = false;
 		$UID = $_POST['removeB'];
 
 		$sql = "DELETE FROM userBankAccount WHERE bankAcc_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeletePayment'] = true;
+			$_SESSION['DeletePaymentB'] = true;
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -23,12 +23,12 @@
 	
 	if(isset($_POST['removeC']))
 	{
-		$_SESSION['DeletePayment'] = false;
+		$_SESSION['DeletePaymentC'] = false;
 		$UID = $_POST['removeC'];
 
 		$sql = "DELETE FROM userCard WHERE card_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeletePayment'] = true;
+			$_SESSION['DeletePaymentC'] = true;
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -99,13 +99,22 @@
 </div>
 
 <?php
-if(isset($_SESSION['DeletePayment']))
+if(isset($_SESSION['DeletePaymentB']))
 	{
-		if($_SESSION['DeletePayment'] == true)
+		if($_SESSION['DeletePaymentB'] == true)
 		{
-			echo "<script>alert('Payment Method Removed');</script>";
+			echo "<script>alert('Bank Account Removed');</script>";
 		}
-		$_SESSION['DeletePayment'] = NULL;
+		$_SESSION['DeletePaymentB'] = NULL;
+	}
+	
+if(isset($_SESSION['DeletePaymentC']))
+	{
+		if($_SESSION['DeletePaymentC'] == true)
+		{
+			echo "<script>alert('Card Removed');</script>";
+		}
+		$_SESSION['DeletePaymentC'] = NULL;
 	}
 ?>
 
