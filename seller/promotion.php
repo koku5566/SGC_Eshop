@@ -103,10 +103,10 @@
                 <?php
                 if(isset($_POST['create_btn']))
                 {
-                    $title = $_POST['promotion_title'];
+                    $title = $_POST['promotiontitle'];
                     //$image = $_POST['promotion_image']; 
-                    $dateStart = $_POST['promotion_Date'];
-                    $dateEnd = $_POST['promotionEnd_Date'];
+                    $dateStart = $_POST['promotionDate'];
+                    $dateEnd = $_POST['promotionEndDate'];
 
                     $sql = "INSERT INTO promotion (promotion_title, promotion_Date, promotionEnd_Date) 
                     VALUES('$title','$dateStart','$dateEnd')";
