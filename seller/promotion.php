@@ -136,7 +136,6 @@
                     if($result)
                     {
                         echo '<script>alert("Add promotion successfully!")</script>';
-                        echo("<script>window.location.href='iZon_iPhonePage.php';</script>");
                     }
                     else
                     {
