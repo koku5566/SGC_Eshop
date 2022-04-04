@@ -108,7 +108,7 @@
                     $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
 
-                    $sql = "INSERT INTO promotion (promotion_title, promotion_Date, promotionEnd_Date) 
+                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
                     VALUES('$title','$dateStart','$dateEnd')";
                     $result = mysqli_query($conn,$sql);
                     
