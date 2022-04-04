@@ -17,6 +17,7 @@
 ?>
 
 <?php
+    $_SESSION['eventID'] = 1;
     //--------------Add new form element------------------------
     if(isset($_POST["addFormElementSubmit"])){
         $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
@@ -286,7 +287,7 @@
                             </thead>
                             <tbody>
                             <?php
-                            $sql = "SELECT * FROM `registrationForm` WHERE `event_id` = {$_SESSION['eventID']}";
+                            $sql = "SELECT * FROM `formElement` WHERE `event_id` = {$_SESSION['eventID']}";
                             $result = mysqli_query($conn, $sql);
 
                             if (mysqli_num_rows($result) > 0) {
