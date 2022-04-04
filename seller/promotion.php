@@ -21,12 +21,12 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date, promotion_Time, promotionEnd_Time from promotion";
+                                    $sql = "SELECT promotion_title, promotion_Date, promotion_Time from promotion";
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."  ".$row["promotion_Time"]."<br>"."End:   ".$row["promotionEnd_Date"]."  ".$row["promotionEnd_Time"]."</td><td>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td>";
                                          }
                                          echo"</table>";
                                      }
@@ -91,14 +91,6 @@
                             <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="pEndDate" required></div>
                         </div>
                     </div>
-                    <div>
-                        <h4 style="margin-top: 30px;width: 100%;">Time</h4>
-                        <div class="row">
-                            <div class="col-sm-5"><input class="form-control" type="time" name="pTime_From" required></div>
-
-                            <div class="col-sm-5"><input class="form-control" type="time" name="pTime_To" required></div>
-                        </div>
-                    </div>
                 </section>
                 
                 
@@ -113,11 +105,9 @@
                     $image = $_POST['promotion_image']; 
                     $dateStart = $_POST['promotion_Date'];
                     $dateEnd = $_POST['promotionEnd_Date'];
-                    $timeStart = $_POST['promotion_Time'];
-                    $timeEnd = $_POST['promotionEnd_Time']; 
 
-                    $sql = "INSERT INTO promotion (promotion_title, promotion_image, promotion_Date, promotionEnd_Date, promotion_Time, promotionEnd_Time) 
-                    VALUES('$title','$image','$dataStart','$dateEnd', '$timeStart','$timeEnd')";
+                    $sql = "INSERT INTO promotion (promotion_title, promotion_image, promotion_Date, promotionEnd_Date) 
+                    VALUES('$title','$image','$dateStart','$dateEnd')";
                     $result = mysqli_query($conn,$sql);
 
                     // File upload configuration 
