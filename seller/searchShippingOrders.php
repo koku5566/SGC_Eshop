@@ -247,7 +247,7 @@ $result = $stmt->get_result();
                                 while($row = $result->fetch_assoc()) {
                             ?>
                             <!--Each Order Item-->
-                                <div class="card">
+                                <div class="card mt-2">
                                     <div class="card-header">
                                         <div class="row">
                                             <div class="col md-auto text-start"><span><strong>Username</strong></span>
@@ -260,12 +260,8 @@ $result = $stmt->get_result();
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <!-- <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com">
-                                            </div> -->
                                             <div class="col-1 image-container">
-                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="category/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" />
                                             </div>
                                             <div class="col-3"><?php echo $row['product_name']?></div>
                                             <div class="col-1">x <?php echo $row['quantity']?></div>
@@ -285,35 +281,7 @@ $result = $stmt->get_result();
                                 echo "There are no result matching your search";
                             }?>
                                                                 
-                                <!--Pick Up Order Item-->       
-                                 <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                Order
-                                                ID:
-                                                125353</strong></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                    alt="W3Schools.com"></div>
-                                            <div class="col-3">Product Name yoo</div>
-                                            <div class="col-1">X1</div>
-
-                                            <div class="col-1">RM9.00</div>
-                                            <div class="col-2">Completed</div>
-                                            <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="#pickUpModal" data-toggle="modal" data-target="#pickUpModal">Update Pick Up</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End of Order Item-->
+                                
 
                             </div>
                             <!--------------------------------To ship--------------------------------------->
