@@ -237,7 +237,7 @@
                 </div>
                 <div class="form-check"><input class="form-check-input" type="checkbox" id="requireCheck" name="requiredCheck"><label class="form-check-label" for="formCheck-4">Required Field</label></div>
                 <div class="row" style="margin-top: 10px;">
-                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,)" name="optionForList" id="optionInput"></div>
+                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,)" name="optionForList" id="optionInput" style="display:none;"></div>
                     <div class="col-2"><button class="btn btn-primary" type="submit">Add Field</button></div>
                 </div>
                 <div>
