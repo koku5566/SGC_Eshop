@@ -50,7 +50,7 @@ $result_2 = $stmt_2->get_result();
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col md-auto text-start"><span><strong><?php echo $row['shop_id']?></strong></span>
+                        <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
                         </div>
                         <div class="col md-auto text-end" style="text-align:right;"><span><strong>
                          OrderID:<?php echo $row['order_id']?></strong></span>
