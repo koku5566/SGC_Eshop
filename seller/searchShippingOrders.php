@@ -7,7 +7,7 @@
 <?php
 $searchBy = $_GET['searchBy'];
 $search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
-
+echo $searchBy;
 switch($searchBy){
     case "id":
         $sql ="SELECT
@@ -22,7 +22,8 @@ switch($searchBy){
         myOrder
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN user ON myOrder.user_id = user.user_id
-        JOIN product ON orderDetails.product_id = product.id WHERE myOrder.order_id LIKE '%$search%'";
+        JOIN product ON orderDetails.product_id = product.id 
+        WHERE myOrder.order_id LIKE '%$search%'";
         break;
     case "name":
         $sql ="SELECT
