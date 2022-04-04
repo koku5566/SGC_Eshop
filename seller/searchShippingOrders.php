@@ -7,8 +7,7 @@
 <?php
 $searchBy = $_GET['searchBy'];
 $keyword = $_GET['keyword'];
-echo $searchBy;
-echo 'hello';
+
 switch($searchBy){
     case "id":
         $sql ="SELECT
