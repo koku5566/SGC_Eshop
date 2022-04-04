@@ -22,7 +22,7 @@
         $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
         $fieldType = mysqli_real_escape_string($conn, SanitizeString($_POST["formElementSelect"]));
         $fieldOption = mysqli_real_escape_string($conn, SanitizeString($_POST["optionForList"]));
-        $checkRequire = mysqli_real_escape_string($conn, SanitizeString(isset($_POST['requiredCheck']) ? "required" : "optional"));
+        $checkRequire = mysqli_real_escape_string($conn, $_POST['requiredCheck'] ? "required" : "optional");
         $eventID = 1;//$_SESSION['event']
         
         $sql = "INSERT INTO `formElement`(`event_id`, `field_name`, `element_type`, `selection`, `required`) VALUES (?,?,?,?,?)";
