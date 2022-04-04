@@ -45,7 +45,7 @@
     <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
 
         <!-- Add New Form Element Modal -->
-        <div class="modal fade" role="dialog" tabindex="-1" id="formElement_modal">
+        <!-- <div class="modal fade" role="dialog" tabindex="-1" id="formElement_modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -105,7 +105,7 @@
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Done</button></div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Update Field Modal -->
         <div class="modal fade" role="dialog" tabindex="-1" id="updateField_modal">
@@ -237,7 +237,7 @@
                 </div>
                 <div class="form-check"><input class="form-check-input" type="checkbox" id="requireCheck" name="requiredCheck"><label class="form-check-label" for="formCheck-4">Required Field</label></div>
                 <div class="row" style="margin-top: 10px;">
-                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,)" name="optionForList" id="optionInput"></div>
+                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,)" name="optionForList" id="optionInput" style="display:none;"></div>
                     <div class="col-2"><button class="btn btn-primary" type="submit">Add Field</button></div>
                 </div>
                 <div>
