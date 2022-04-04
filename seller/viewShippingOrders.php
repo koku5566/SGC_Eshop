@@ -3,7 +3,6 @@
 ?>
 
 <?php
-
 /*QUERY FOR ORDER*/
 $sql = "SELECT
 myOrder.order_id,
@@ -21,8 +20,6 @@ JOIN product ON orderDetails.product_id = product.id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
-
-
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
@@ -134,7 +131,7 @@ $result = $stmt->get_result();
                             while ($row = $result->fetch_assoc()) {
                             ?>
                             <!--Each Order Item-->
-                            <div class="card">
+                            <div class="card mt-2">
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col md-auto text-start"><span><strong>Username</strong></span>
@@ -147,11 +144,6 @@ $result = $stmt->get_result();
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <!-- <div class="col-1"><img width="100%"
-                                                    src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                                   
-                                                    alt="W3Schools.com">
-                                            </div> -->
                                         <div class="col-1 image-container">
                                             <img class="card-img-top img-thumbnail"
                                                 style="object-fit:contain;width:100%;height:100%"
