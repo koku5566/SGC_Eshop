@@ -47,7 +47,7 @@
 <h1>Address</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$UID = $_SESSION['BsToEdit'];
+	$UID = $_SESSION['BToEdit'];
 	$sql = "SELECT * FROM userBankAccount WHERE bankAcc_id = '$UID'";
 	$res_data = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($res_data) > 0){
