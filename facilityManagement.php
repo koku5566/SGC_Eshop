@@ -50,9 +50,13 @@
             </div>
          
             <div class="form-row">
-               <div class="form-group col-md-12">
-                  <label for="">Facility Photo</label>
-                  <div class="col-xl-10 col-lg-10 col-sm-12">
+                <!-- Card Body -->
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Product Images</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                         <div class="drag-list">
@@ -231,6 +235,9 @@
                                 </div>
                             </div>
                         </div>
+               <div class="form-group col-md-12">
+                  <label for="">Facility Photo</label>
+                  
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
                
