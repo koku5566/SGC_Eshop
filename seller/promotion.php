@@ -87,7 +87,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-
+                            <div class="col-sm-2">
+                                <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                            </div>
                             <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
                         </div>
                     </div>
@@ -107,7 +109,7 @@
                     $dateEnd = $_POST['promotionEnd_Date'];
 
                     $sql = "INSERT INTO promotion (promotion_title, promotion_Date, promotionEnd_Date) 
-                    VALUES('$title','$image','$dateStart','$dateEnd')";
+                    VALUES('$title','$dateStart','$dateEnd')";
                     $result = mysqli_query($conn,$sql);
                     
                     // File upload configuration 
