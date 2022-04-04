@@ -6,8 +6,8 @@
 
 <?php
 $searchBy = $_GET['searchBy'];
-$search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
 echo $searchBy;
+echo 'hello';
 switch($searchBy){
     case "id":
         $sql ="SELECT
