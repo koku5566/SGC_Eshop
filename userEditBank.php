@@ -21,7 +21,7 @@
 
 		if (mysqli_num_rows($stmt_u) > 0) {
 			if($_POST['address'] != ""){
-				$sql = "UPDATE userBankAccount SET bank_name='$bankName', bankAcc_name='$name', account_no='$accountNo' WHERE address_id='$UID'";
+				$sql = "UPDATE userBankAccount SET bank_name='$bankName', bankAcc_name='$name', account_no='$accountNo' WHERE bankAcc_id='$UID'";
 			}
 			else{
 				echo("<script>alert('Error');</script>");
