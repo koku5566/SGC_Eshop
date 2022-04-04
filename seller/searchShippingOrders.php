@@ -6,8 +6,9 @@
 
 <?php
 $searchBy = $_GET['searchBy'];
-$search = mysqli_real_escape_string($conn, $_GET['search_keyword']);
-
+$keyword = $_GET['keyword'];
+echo $searchBy;
+echo 'hello';
 switch($searchBy){
     case "id":
         $sql ="SELECT
@@ -22,7 +23,8 @@ switch($searchBy){
         myOrder
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN user ON myOrder.user_id = user.user_id
-        JOIN product ON orderDetails.product_id = product.id WHERE myOrder.order_id LIKE '%$search%'";
+        JOIN product ON orderDetails.product_id = product.id 
+        WHERE myOrder.order_id LIKE '%$keyword%'";
         break;
     case "name":
         $sql ="SELECT
@@ -38,7 +40,7 @@ switch($searchBy){
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
-        WHERE user.username LIKE '%$search%'";
+        WHERE user.username LIKE '%$keyword%'";
         break;
     case "product":
         $sql ="SELECT
@@ -54,7 +56,7 @@ switch($searchBy){
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
-        WHERE product.product_name LIKE '%$search%'";
+        WHERE product.product_name LIKE '%$keyword%'";
         break;
     case "trackingnumber":
         $sql ="SELECT
@@ -71,7 +73,7 @@ switch($searchBy){
         JOIN product ON orderDetails.product_id = product.id 
         JOIN user ON myOrder.user_id = user.user_id
         JOIN shipment ON shipment.order_id = myOrder.order_id 
-        WHERE shipment.tracking_number LIKE '%$search%'";
+        WHERE shipment.tracking_number LIKE '%$keyword%'";
         break;
     default:
         echo "Please search again";

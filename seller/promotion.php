@@ -15,7 +15,7 @@
                             <thead>
                                 <tr>
                                 <th scope="col">Promotion Title</th>
-                                <th scope="col">Date/Time</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -87,7 +87,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-
+                            <div class="col-sm-2">
+                                <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                            </div>
                             <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
                         </div>
                     </div>
@@ -99,39 +101,39 @@
                     <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
                 <?php
-                if(isset($_POST['create_btn']))
+                if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
-                    $title = $_POST['promotion_title'];
-                    $image = $_POST['promotion_image']; 
-                    $dateStart = $_POST['promotion_Date'];
-                    $dateEnd = $_POST['promotionEnd_Date'];
+                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
+                    //$image = $_POST['promotion_image']; 
+                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
+                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
 
-                    $sql = "INSERT INTO promotion (promotion_title, promotion_image, promotion_Date, promotionEnd_Date) 
-                    VALUES('$title','$image','$dateStart','$dateEnd')";
+                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
+                    VALUES('$title','$dateStart','$dateEnd')";
                     $result = mysqli_query($conn,$sql);
-
+                    
                     // File upload configuration 
-                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    $allowTypes = array('jpg','png','jpeg'); 
+                    //$targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    //$allowTypes = array('jpg','png','jpeg'); 
 
-                    if(!empty($fileNames)){ 
-                        foreach($_FILES['img']['name'] as $key=>$val){ 
+                    //if(!empty($fileNames)){ 
+                        //foreach($_FILES['img']['name'] as $key=>$val){ 
                             // File upload path 
                             
-                            $fileName = basename($_FILES['img']['name'][$key]); 
-                            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                            $fileName = round(microtime(true) * 1000).".".$ext;
-                            $targetFilePath = $targetDir.$fileName; 
+                            //$fileName = basename($_FILES['img']['name'][$key]); 
+                            //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            //$fileName = round(microtime(true) * 1000).".".$ext;
+                            //$targetFilePath = $targetDir.$fileName; 
                             // Check whether file type is valid 
-                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                            if(in_array($fileType, $allowTypes)){ 
-                                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                                    $sql_insert .= "'$fileName', ";
-                                    $imgInpCounter++;
-                                }
-                            }
-                        } 
-                    }
+                            //$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            //if(in_array($fileType, $allowTypes)){ 
+                                //if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                                  //  $sql_insert .= "'$fileName', ";
+                                   // $imgInpCounter++;
+                              //  }
+                           // }
+                        //} 
+                   // }
 
                     if($result)
                     {
