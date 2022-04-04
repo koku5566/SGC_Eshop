@@ -74,6 +74,7 @@
         $sql_insert .= "'$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
+        $defaultFile = $_POST['imgDefault'];
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
@@ -94,6 +95,12 @@
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
                     }
+                }
+                else if($defaultFile[$key] != "")
+                {
+                    $fileName = $defaultFile[$key];
+                    $sql_insert .= "'$fileName', ";
+                    $imgInpCounter++;
                 }
             } 
         }
@@ -289,6 +296,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -309,6 +317,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -327,6 +336,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -345,6 +355,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -363,6 +374,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -383,6 +395,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -401,6 +414,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -419,6 +433,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -437,6 +452,7 @@
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
                                                                     <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <input name="imgDefault[]" type="text" hidden/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -1538,7 +1554,7 @@
         {
             variationInpList1 = variationList[0].querySelectorAll('.variationChoice');
 
-            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="form-control td-var1" name="variation1Name" readonly ></th>`;
+            PriceTableHTML += `<th scope="col" style="min-width: 50px;max-width: 100px;"><input style="background: transparent;" value="` + variationNameList[0].value + `" class="thInp" name="variation1Name" readonly ></th>`;
             PriceTableHTML += `<th scope="col">Price</th>`;
             PriceTableHTML += `<th scope="col">Stock</th>`;
             PriceTableHTML += `<th scope="col">SKU</th>`;
