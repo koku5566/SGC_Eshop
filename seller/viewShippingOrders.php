@@ -177,7 +177,7 @@ $result = $stmt->get_result();
                             
                         <!--------------------------------To ship--------------------------------------->
                         <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                        <?php 
+                            <?php 
                             while ($row = $result->fetch_assoc()) {
                             ?>
                             <div class="borrdy">
