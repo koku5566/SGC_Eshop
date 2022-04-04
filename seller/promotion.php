@@ -104,8 +104,56 @@
                 
                 <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                     <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                    <button class="btn btn-outline-primary" type="submit" name="pCreate" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
+                    <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
+                <?php
+                if(isset($_POST['create_btn']))
+                {
+                    $title = $_POST['promotion_title'];
+                    $image = $_POST['promotion_image']; 
+                    $dateStart = $_POST['promotion_Date'];
+                    $dateEnd = $_POST['promotionEnd_Date'];
+                    $timeStart = $_POST['promotion_Time'];
+                    $timeEnd = $_POST['promotionEnd_Time']; 
+
+                    $sql = "INSERT INTO promotion (promotion_title, promotion_image, promotion_Date, promotionEnd_Date, promotion_Time, promotionEnd_Time) 
+                    VALUES('$title','$image','$dataStart','$dateEnd', '$timeStart','$timeEnd')";
+                    $result = mysqli_query($conn,$sql);
+
+                    // File upload configuration 
+                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    $allowTypes = array('jpg','png','jpeg'); 
+
+                    if(!empty($fileNames)){ 
+                        foreach($_FILES['img']['name'] as $key=>$val){ 
+                            // File upload path 
+                            
+                            $fileName = basename($_FILES['img']['name'][$key]); 
+                            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            $fileName = round(microtime(true) * 1000).".".$ext;
+                            $targetFilePath = $targetDir.$fileName; 
+                            // Check whether file type is valid 
+                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            if(in_array($fileType, $allowTypes)){ 
+                                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                                    $sql_insert .= "'$fileName', ";
+                                    $imgInpCounter++;
+                                }
+                            }
+                        } 
+                    }
+
+                    if($result)
+                    {
+                        echo '<script>alert("Add promotion successfully!")</script>';
+                        echo("<script>window.location.href='iZon_iPhonePage.php';</script>");
+                    }
+                    else
+                    {
+                        echo '<script>alert("Failed")</script>';
+                    }
+                }
+                ?>
             </form>
         </div>
     </div>
