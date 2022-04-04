@@ -1,6 +1,7 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+
 <?php
 
 /*QUERY FOR ORDER*/
@@ -37,43 +38,46 @@ $result = $stmt->get_result();
 
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <select class="form-select" name="searchBy" aria-label="SearchBy"
-                                        style="color:currentColor;">
-                                        <option selected value="id">Order ID</option>
-                                        <option value="seller">Seller</option>
-                                        <option value="name">Buyer Name</option>
-                                        <option value="product">Product</option>
-                                        <option value="trackingnumber">Tracking Number</option>
-                                    </select>
+                    <form action="searchShippingOrders.php" method="GET">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select" name="searchBy" aria-label="SearchBy"
+                                            style="color:currentColor;">
+                                            <option selected value="id">Order ID</option>
+                                            <option value="seller">Seller</option>
+                                            <option value="name">Buyer Name</option>
+                                            <option value="product">Product</option>
+                                            <option value="trackingnumber">Tracking Number</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control" name="keyword" placeholder="Search order">
                                 </div>
-                                <input type="text" class="form-control" name="keyword" placeholder="Search order">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Order Date</span>
+                                    </div>
+                                    <input type="text" name="daterange" class="form-control js-daterangepicker"
+                                        value="01/01/2022 - 01/15/2022" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-sm-12" style="padding-bottom: .625rem;">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Order Date</span>
-                                </div>
-                                <input type="text" name="daterange" class="form-control js-daterangepicker" value="01/01/2022 - 01/15/2022" />
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-8 col-sm-4" style="padding-bottom: .625rem;">
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
+                                <button type="button" class="btn btn-outline-dark">Reset</button>
+                            </div>
 
                         </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-primary">Search</button>
-                        </div>
-                        <div class="col-xl-1 col-lg-2 col-sm-4" style="padding-bottom: .625rem;">
-                            <button type="button" class="btn btn-outline-dark">Reset</button>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -103,13 +107,14 @@ $result = $stmt->get_result();
                                 aria-controls="shipping" aria-selected="false">Shipping</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
+                            <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab"
+                                aria-controls="completed" aria-selected="false">Completed</a>
                         </li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content mb-3">
-                       
+
 
                         <div class="order-list-panel">
                             <div class="top-card card-header">
@@ -122,8 +127,8 @@ $result = $stmt->get_result();
                                 </div>
                             </div>
                         </div>
-                         <!--------------------------------All-------------------------------------->
-                            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <!--------------------------------All-------------------------------------->
+                        <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             <?php 
                             while ($row = $result->fetch_assoc()) {
                             ?>
@@ -156,11 +161,13 @@ $result = $stmt->get_result();
                                             <?php echo $row['product_name']?>
                                         </div>
                                         <div class="col-1">
-                                            x <?php echo $row['quantity']?>
+                                            x
+                                            <?php echo $row['quantity']?>
                                         </div>
 
                                         <div class="col-1">
-                                            RM<?php echo $row['product_price']?>.00
+                                            RM
+                                            <?php echo $row['product_price']?>.00
                                         </div>
                                         <div class="col-2">Completed</div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
@@ -168,7 +175,7 @@ $result = $stmt->get_result();
                                         </div>
                                     </div>
                                 </div>
-                             <!--End of Order Item-->
+                                <!--End of Order Item-->
                                 <?php 
                                 }?>
 
@@ -181,45 +188,45 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
-                            yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
+                                yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
                             </div>
 
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                            yopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapa
+                                yopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapa
                             </div>
 
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                            yosis
+                                yosis
                             </div>
 
 
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- /.container-fluid -->
-<!--Date Picker-->
+    <!-- /.container-fluid -->
+    <!--Date Picker-->
 
-<?php
+    <?php
     require __DIR__ . '/footer.php'
 ?>
-<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
 
-    //Date picker function
-    $(function () {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function (start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        //Date picker function
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
         });
-    });
 
-</script>
+    </script>
