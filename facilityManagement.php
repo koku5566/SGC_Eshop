@@ -66,7 +66,7 @@
                   <p class="p-title">Stock</p>
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                      <input type="number"min="0" value="0" class="form-control" name="productStock" required>
                   </div>
                </div>
