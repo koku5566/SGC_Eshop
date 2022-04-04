@@ -17,7 +17,39 @@
 ?>
 
 <?php
-    
+    //--------------Add new form element------------------------
+    if(isset($_POST["addFormElementSubmit"])){
+        $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
+        $fieldType = mysqli_real_escape_string($conn, SanitizeString($_POST["formElementSelect"]));
+        $fieldOption = mysqli_real_escape_string($conn, SanitizeString($_POST["optionForList"]));
+        $checkRequire = mysqli_real_escape_string($conn, SanitizeString(isset($_POST['requiredCheck']) ? "required" : "optional"));
+        $eventID = 1;//$_SESSION['event']
+        
+        $sql = "INSERT INTO `formElement`(`event_id`, `field_name`, `element_type`, `selection`, `required`) VALUES (?,?,?,?,?)";
+            if ($stmt = mysqli_prepare($conn,$sql)){
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"issss",$eventID,$fieldName,$fieldType,$fieldOption,$checkRequire);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
+                    if(mysqli_stmt_affected_rows($stmt) == 1){
+                        echo "<script>alert('Success!!!!!');</script>";
+                        //Add $_SESSION['eventID'] = "";
+                        //Add Redirect to next page
+                    }
+                    else{
+                        $error = mysqli_stmt_error($stmt);
+                        echo "<script>alert($error);</script>";
+                    }		
+                    mysqli_stmt_close($stmt);
+            }
+          }
 ?>
 
 <title>Create Form</title>
@@ -108,7 +140,7 @@
         </div> -->
 
         <!-- Update Field Modal -->
-        <div class="modal fade" role="dialog" tabindex="-1" id="updateField_modal">
+        <!-- <div class="modal fade" role="dialog" tabindex="-1" id="updateField_modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -139,10 +171,10 @@
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="updateFieldBtn">Update</button></div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Edit Form Element Modal -->
-        <div class="modal fade" role="dialog" tabindex="-1" id="editFormElement_modal">
+        <!-- <div class="modal fade" role="dialog" tabindex="-1" id="editFormElement_modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -212,7 +244,7 @@
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Done</button></div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <form>
@@ -226,7 +258,7 @@
                 </div>
                 <div class="row">
                     <div class="col-6"><input class="form-control" type="text" placeholder="Field Name" name="fieldName"></div>
-                    <div class="col-6"><select class="form-select" id="formElementSelection">
+                    <div class="col-6"><select class="form-select" id="formElementSelection" name="formElementSelect">
                             <option value="text" selected="">text</option>
                             <option value="date">date</option>
                             <option value="tel">Phone Number</option>
@@ -237,8 +269,8 @@
                 </div>
                 <div class="form-check"><input class="form-check-input" type="checkbox" id="requireCheck" name="requiredCheck"><label class="form-check-label" for="formCheck-4">Required Field</label></div>
                 <div class="row" style="margin-top: 10px;">
-                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,)" name="optionForList" id="optionInput" style="display:none;"></div>
-                    <div class="col-2"><button class="btn btn-primary" type="submit">Add Field</button></div>
+                    <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,) )" name="optionForList" id="optionInput" style="display:none;"></div>
+                    <div class="col-2"><button class="btn btn-primary" type="submit" name="addFormElementSubmit">Add Field</button></div>
                 </div>
                 <div>
                     <div class="table-responsive">
