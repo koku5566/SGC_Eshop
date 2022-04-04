@@ -26,7 +26,7 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."  ".$row["promotion_Time"]."<br>"."End: ".$row["promotionEnd_Date"]."  ".$row["promotionEnd_Time"]."</td><td>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."  ".$row["promotion_Time"]."<br>"."End:   ".$row["promotionEnd_Date"]."  ".$row["promotionEnd_Time"]."</td><td>";
                                          }
                                          echo"</table>";
                                      }
