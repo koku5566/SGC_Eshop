@@ -295,9 +295,11 @@
 
                                     echo("
                                        <tr>
-                                        <td>".$row['form_id']."</td>
-                                        <td>".$row['form_name']."</td>
-                                        <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editFormElement_modal\" title=\"Edit\" id=\"".$row['form_id']."\"><i class=\"fa fa-edit\"></i></button></td>
+                                        <td>".$row['field_name']."</td>
+                                        <td>".$row['element_type']."</td>
+                                        <td>".$row['required']."</td>
+                                        <td>".$row['selection']."</td>
+                                        <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editFormElement_modal\" title=\"Delete\" id=\"".$row['form_id']."\"><i class=\"fa fa-trash\"></i></button></td>
                                         </tr>
                                     ");
                                 }
