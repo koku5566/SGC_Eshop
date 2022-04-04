@@ -24,13 +24,13 @@
 	
 	if(isset($_POST['editB']))
 	{
-		$_SESSION['ToEdit'] = $_POST['editB'];
+		$_SESSION['BToEdit'] = $_POST['editB'];
 		echo("<script>window.location.href='userEditBank.php';</script>");
 	}
 
 	if(isset($_POST['editC']))
 	{
-		$_SESSION['ToEdit'] = $_POST['editC'];
+		$_SESSION['CToEdit'] = $_POST['editC'];
 		echo("<script>window.location.href='userEditCard.php';</script>");
 	}
 ?>

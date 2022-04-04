@@ -10,7 +10,7 @@
 <?php
 	if(isset($_POST['update']))
 	{
-		$UID = $_SESSION['ToEdit'];
+		$UID = $_SESSION['BToEdit'];
 		$bankName = $_POST['bankName'];
 		$name = $_POST['name'];
 		$accountNo = $_POST['accountNo'];
@@ -47,7 +47,7 @@
 <h1>Address</h1>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <?php
-	$UID = $_SESSION['ToEdit'];
+	$UID = $_SESSION['BsToEdit'];
 	$sql = "SELECT * FROM userBankAccount WHERE bankAcc_id = '$UID'";
 	$res_data = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($res_data) > 0){
