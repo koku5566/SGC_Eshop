@@ -13,8 +13,8 @@
 		$_SESSION['DeletePayment'] = false;
 		$UID = $_POST['remove'];
 
-		$sql = "DELETE FROM userAddress WHERE address_id = '$UID'";
-
+		$sql = "DELETE FROM userBankAccount WHERE bankAcc_id = '$UID'";
+		$sql = "DELETE FROM userCard WHERE card_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeletePayment'] = true;
 		} else {
