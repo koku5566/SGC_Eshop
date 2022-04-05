@@ -59,7 +59,7 @@
     }
     else if(isset($_POST['DeleteProduct']))
     {
-        $productId = $_POST['DeleteProduct'];
+        $productId = $_POST['DeleteProductID'];
         $sql_delete = "DELETE FROM product WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql_delete))
         {
