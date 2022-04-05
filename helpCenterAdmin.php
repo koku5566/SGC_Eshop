@@ -500,7 +500,7 @@
 									
 									
 										
-											  if(s1 == "")
+											  if(s1 == "d")
 											{
 												console.log("NOT")
 												
