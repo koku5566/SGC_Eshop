@@ -15,7 +15,16 @@
 		$ss6 = $_FILES['img']['name'][5];
 		//$ss1 = "amanda teh";
 		
-		echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 || SINGLEDOG || $ss6</div>";
+		for($i = 0; i<5; i++){
+			if(isset ($FILES['img']['name'][$i])){
+			echo "<div class='alert alert-success'>GOT</div>";
+			}else{
+				echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		
+		
+		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 || SINGLEDOG || $ss6</div>";
 		
 		
 	}
@@ -350,7 +359,7 @@
 
 
     initImages();
-    initVariation();
+    //initVariation();
 
 
     function rearrangeLabel(){
@@ -498,9 +507,9 @@
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
-*/
+
 $(".alert.alert-danger").delay(3000).slideUp(200, function() {
     $(this).alert('close');
 });
-
+*/
 </script>
