@@ -499,7 +499,7 @@
 									
 									
 									
-										s1.onchange = function() {
+										document.getElementById("view1").onchange = function() {
 											if(s1 == "")
 											{
 												console.log("NOT")
