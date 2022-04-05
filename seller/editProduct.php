@@ -460,7 +460,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' id="productType" name="productType" required>
                                         <option <?php echo($i_product_virtual == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
                                         <option <?php echo($i_product_virtual == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
                                     </select>
@@ -677,7 +677,7 @@
                             
                         </div>
 
-                        <div id="priceToAll" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
+                        <div id="priceToAll" class="mb-3 <?php echo($i_product_variation == 1 ? "" : "hide"); ?>">
                             <div class="row">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Variation Info</p>
@@ -768,7 +768,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row" id="ShippingDiv" class="<?php echo($i_product_virtual == 1 ? "hide" : ""); ?>">
+        <div class="row <?php echo($i_product_virtual == 1 ? "hide" : ""); ?>" id="ShippingDiv">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -1018,14 +1018,20 @@
     function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+            if(document.getElementById("productType").value == "0")
             {
+                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                {
+                    document.getElementById("EditProduct").click();
+                }
+                else
+                {
+                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                    document.getElementById("checkbox-err-msg").focus();
+                }
+            } 
+            else{
                 document.getElementById("EditProduct").click();
-            }
-            else
-            {
-                document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                document.getElementById("checkbox-err-msg").focus();
             }
         }
         else
@@ -1038,7 +1044,7 @@
         var valuesSoFar = Object.create(null);
         for (var i = 0; i < array.length; ++i) {
             var value = array[i];
-            if (value in valuesSoFar) {
+            if (value in valuesSoFar && value != "") {
                 return true;
             }
             valuesSoFar[value] = true;

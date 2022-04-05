@@ -729,7 +729,7 @@
                                                 $picName = "/img/product/".$row["product_cover_picture"];
                                             }
                                             
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
                                         }
                                     }
                                     else
@@ -760,6 +760,8 @@
                                     }
                                 }
                                 ?>
+                                <p style="color:#ce0000;">Caution</p>
+                                <p style="color:#ce0000;">Once deleted, the product will not able to restore</p>
                             </div>
                         </div>
                     </div>
