@@ -57,6 +57,21 @@
             echo '</script>';
         }
     }
+    else if(isset($_POST['DeleteProduct']))
+    {
+        $productId = $_POST['DeleteProduct'];
+        $sql_delete = "DELETE FROM product WHERE product_id = '$productId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
+            if(mysqli_query($conn, $sql_deleteVar))
+            {
+                echo '<script language="javascript">';
+                echo 'alert("Product Deleted Successful")';
+                echo '</script>';
+            }
+        }
+    }
 ?>
 
 <!-- Begin Page Content -->
@@ -494,7 +509,7 @@
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                            <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
                                                                         </div>
                                                                     ");
                                                                     
@@ -638,7 +653,7 @@
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                            <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
+                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
                                                                         </div>
                                                                     ");
 
@@ -682,6 +697,80 @@
         </div>
     </div>
 </div>
+
+     <!-- Delete Product Modal - deleteProductModel -->
+     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal fade" id="deleteProductModel" tabindex="-1" role="dialog" aria-labelledby="deleteProductModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Delete Product</h5>
+                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-sm-4">
+                            <div class="image-container">
+                                <?php
+                                    $productId = $_GET['delete'];
+                                    $sql = "SELECT product_cover_picture FROM product WHERE product_id = '$productId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            
+                                            $picture = $row["product_cover_picture"];
+                                            $picName = "";
+
+                                            if($row["product_cover_picture"] != "")
+                                            {
+                                                $picName = "/img/product/".$row["product_cover_picture"];
+                                            }
+                                            
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                    }
+                                ?>
+                                
+                                <div class="image-layer">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-sm-9">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <?php
+                                $productId = $_GET['delete'];
+                                $sql = "SELECT product_id.product_name FROM product WHERE product_id = '$productId'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        $productId = $row["product_id"];
+                                        $productName = $row["product_name"];
+
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeleteProductID\" value=\"$productId\" hidden>");
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeleteProductName\" value=\"$productName\" readonly>");
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                    <button type="submit" name="DeleteProduct" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
 <!-- /.container-fluid -->
 
 <style>
@@ -813,6 +902,21 @@
 </script>
 
 <script>
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['delete']) ? "1" : "0") ?> == 1)
+        {
+            $("#deleteProductModel").modal('show');
+        }
+    });
+
+    const closeDeleteModel = document.querySelectorAll('.closeDeleteModel');
+
+    closeDeleteModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#deleteProductModel").modal('hide');
+        });
+    });
+
     function clearSearch()
     {
 

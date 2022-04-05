@@ -854,6 +854,8 @@
             <button type="submit" id="EditProduct" name="edit" class="btn btn-outline-primary" hidden></i>Save Changes</button>
         </div>
     </form>
+
+
 </div>
 <!-- /.container-fluid -->
 
