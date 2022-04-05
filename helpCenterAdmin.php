@@ -71,7 +71,26 @@
                                     <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                         <div class="drag-list">
                                             <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                                
+                                                <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Cover Picture</p>
+                                                    </div>
+                                                </div>
                                                 <div style="padding-bottom: .625rem;display:flex">
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
