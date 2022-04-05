@@ -120,13 +120,10 @@
         $sql_update = "category_id = '$categoryCombinationId' ";
         $sql_update = "WHERE product_id = '$productId' ";
 
-
-        //Havent do
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
             {
-                
                 if(isset($_POST['variation1Name'],$_POST['variation2Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
@@ -148,14 +145,8 @@
                     $variationSKU = $_POST['variationSKU'];
                 }
 
-                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-                $result = mysqli_query($conn, $sql_getID);
-
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        $productId = $row['product_id'];
-                    }
-                }
+                $sql_deleteVar = "DELETE FROM product WHERE product_id = '$productId'";
+                mysqli_query($conn, $sql_deleteVar);
 
                 for($i = 0; $i < count($variation1NameCol); $i++)
                 {
@@ -180,7 +171,7 @@
         else
         {
             echo '<script language="javascript">';
-            echo 'alert("Fail to Add Product")';
+            echo 'alert("Fail to Save Product")';
             echo '</script>';
         }
     } 
