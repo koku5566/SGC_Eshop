@@ -5,7 +5,14 @@
 
 
 <?php
-	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+		
+		$ss1 = $_FILES['img']['name'][0];
+		$ss2 = $_FILES['img']['name'][1];
+		
+		echo "$ss1 || $ss2";
+		
+	}
    
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -259,7 +266,7 @@
 			</form>
 			
 			------->
-			
+			<form method="post" enctype="multipart/form-data" action ="<?php echo $_SERVER['PHP_SELF'];?>">
 			<div style="padding-bottom: .625rem;display:flex">
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
@@ -363,8 +370,9 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-		<button class = "btn btn-primary">Submit</button>
+		<button class = "btn btn-primary" name = "rrsub">Submit</button>
       </div>
+	  </form>
     </div>
   </div>
 </div>
