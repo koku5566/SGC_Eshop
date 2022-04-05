@@ -460,7 +460,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' id="productType" name="productType" required>
                                         <option <?php echo($i_product_virtual == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
                                         <option <?php echo($i_product_virtual == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
                                     </select>
@@ -1018,15 +1018,18 @@
     function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+            if(document.getElementById("productType").value == "0")
             {
-                document.getElementById("EditProduct").click();
-            }
-            else
-            {
-                document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                document.getElementById("checkbox-err-msg").focus();
-            }
+                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                {
+                    document.getElementById("EditProduct").click();
+                }
+                else
+                {
+                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                    document.getElementById("checkbox-err-msg").focus();
+                }
+            } 
         }
         else
         {
