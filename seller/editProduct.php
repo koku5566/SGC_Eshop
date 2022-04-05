@@ -677,7 +677,7 @@
                             
                         </div>
 
-                        <div id="priceToAll" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
+                        <div id="priceToAll" class="mb-3 <?php echo($i_product_variation == 1 ? "" : "hide"); ?>">
                             <div class="row">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Variation Info</p>
@@ -767,7 +767,6 @@
             </div>
         </div>
 
-        <?php echo("This is a seperation"); echo($i_product_virtual);?>
         <!--Shipping -->
         <div class="row" id="ShippingDiv" class="<?php echo($i_product_virtual == 1 ? "hide" : ""); ?>">
             <div class="col-xl-12 col-lg-12">
