@@ -29,35 +29,12 @@
 			}
 		}
 		
-		echo '<script>
-					var s1 = document.getElementById("view1").getAttribute("src");
-					var s2 = document.getElementById("view2").getAttribute("src");
-					var s3 = document.getElementById("view3").getAttribute("src");
-					var s4 = document.getElementById("view4").getAttribute("src");
-					var s5 = document.getElementById("view5").getAttribute("src");
-					
-					if(s1 == "")
-					{
-						console.log("NOT")
-						
-						
-					}else{												
-						console.log("GOT")
-						
-					}
-			  </script>';
 		
-		// $pp1 = false 
-		 //$pp1 = true 			
-						
 						
 									
-									
-											
-										
-											
+																						
 		
-		if($pp1 == true){
+		if($_SESSION['imag1'] == true){
 		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
 	}else{
 		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
@@ -232,26 +209,7 @@
 					<?php
 						if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
 						
-							echo '<script>
-									var s1 = document.getElementsByClassName("img-thumbnail")[0];
-									var s2 = document.getElementsByClassName("img-thumbnail")[1];
-									var s3 = document.getElementsByClassName("img-thumbnail")[2];
-									var s4 = document.getElementsByClassName("img-thumbnail")[3];
-									var s5 = document.getElementsByClassName("img-thumbnail")[4];
-									
-									for(let i = 1; i <= 5; i++){
-										if(s[i].value != "")
-										{
-											console.log("")
-										}
-									}
-									
 							
-							
-							
-							
-								</script>';
-
 
 						
 						}
@@ -526,7 +484,21 @@
         });
     }
 /*******************************************************************************************************************************************/
-									
+					var s1 = document.getElementById("view1").getAttribute("src");
+					var s2 = document.getElementById("view2").getAttribute("src");
+					var s3 = document.getElementById("view3").getAttribute("src");
+					var s4 = document.getElementById("view4").getAttribute("src");
+					var s5 = document.getElementById("view5").getAttribute("src");
+					
+					if(s1 == "")
+					{
+						console.log("NOT")
+						<?php $_SESSION['imag1'] = false;?>
+						
+					}else{												
+						console.log("GOT")
+						<?php $_SESSION['imag1'] = true;?>
+					}					
 									
 										
 											  
