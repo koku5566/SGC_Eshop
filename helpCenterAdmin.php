@@ -16,7 +16,7 @@
 		//$ss1 = "amanda teh";
 		
 		for($i = 0; i<5; i++){
-			if(isset ($FILES['img']['name'][$i])){
+			if(isset ($_FILES['img']['name'][$i])){
 			echo "<div class='alert alert-success'>GOT</div>";
 			}else{
 				echo "<div class='alert alert-danger'>NOT</div>";
