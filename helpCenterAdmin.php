@@ -63,9 +63,7 @@
 				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">
 				<div class="card-body">
                         <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Product Images</p>
-                            </div>
+                           
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
