@@ -26,7 +26,7 @@
                 <div class="delivery-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
-                        <div class=" col title ">Delivery Address</div>
+                        <div class="col title ">Delivery Address</div>
                     </div>
                     <div class="row">
                         <div class="col-1"></div>

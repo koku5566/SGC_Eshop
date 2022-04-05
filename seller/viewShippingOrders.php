@@ -131,48 +131,8 @@ $result = $stmt->get_result();
                         <!--------------------------------All-------------------------------------->
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             
-                            <?php 
-                            
+                            <?php                       
                             while ($row = $result->fetch_assoc()) {
-                            if($row['delivery_method'] == 'self-collection')
-                            {
-                                $orderStatus =='Pick Up';
-                            }
-                            else
-                            {
-                                if($row['order_status'] != 'completed') //If order is still not completed 
-                                {
-                                    $orderStatus = $row['order_status'];
-                                    $statusSql = "SELECT myOrder.id, shipment.tracking_number, shipment.tracking_status FROM myOrder LEFT JOIN shipment ON order_id.shipment = myOrder.id ";
-                                    $stmt = $conn->prepare($statusSql);
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    $num_of_rows = $result->num_rows;
-    
-                                    if($num_of_rows <=0 ) //if order does not have shipment record yet
-                                    {
-                                        $statusSql = 'Order Received';
-                                    }
-                                    else //shipment exist 
-                                    {
-                                        $orderStatus =='Processing';
-                                        // while ($status = $result->fetch_assoc()) { //fix **TO FIND OUT PROCESSING OR DELIVERING**
-                                            
-                                        // }
-                                    }
-                                }
-                                else{
-                                    $orderStatus = 'Completed';
-                                }
-    
-                            }
-
-
-
-
-                            
-                            
-
                             ?>
                             <!--Each Order Item-->
                             <div class="card mt-2">
@@ -205,25 +165,7 @@ $result = $stmt->get_result();
                                         <div class="col-2"><?php echo $orderStatus ?></div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
                                         <div class="col-2">
-                                            <?php 
-                                            if($orderStatus == 'Pick Up')
-                                            {
-                                                echo '<a href="shippingCheckDetails.php">Check details</a>';
-                                            }
-                                            else if($orderStatus == 'Order Received')
-                                            {
-                                                echo '<a href="shippingCheckDetails.php">Check details</a>';
-                                            }
-                                            else if($orderStatus == 'Completed')
-                                            {
-                                                echo '<a href="shippingCheckDetails.php">Check details</a>';
-                                            }
-                                            else{
-                                                echo '<a href="shippingCheckDetails.php">Check details</a>';
-                                            }
-                                            ?>
-                                        
-                                        
+                                        <a href="shippingCheckDetails.php">Check details</a>
                                         </div>
                                     </div>
                                 </div>
