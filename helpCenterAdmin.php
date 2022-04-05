@@ -60,6 +60,7 @@
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
+				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">
 				<div class="card-body">
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
