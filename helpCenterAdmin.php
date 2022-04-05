@@ -491,7 +491,7 @@
         });
     }
 /*******************************************************************************************************************************************/
-									var s1 = document.getElementById("view1").src;
+									var s1 = document.getElementById("view1").src.value;
 									var s2 = document.getElementById("view2").src;
 									var s3 = document.getElementById("view3").src;
 									var s4 = document.getElementById("view4").src;
@@ -500,7 +500,7 @@
 									
 									
 										
-											  if(s1 == "d")
+											  if(s1 == "")
 											{
 												console.log("NOT")
 												
