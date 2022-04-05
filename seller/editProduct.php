@@ -61,11 +61,11 @@
         
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
         $sql_update = "UPDATE product SET ";
-        $sql_update = "product_sku = '$productSKU', ";
-        $sql_update = "product_name = '$productName', ";
-        $sql_update = "product_description = '$productDescription', ";
-        $sql_update = "product_brand = '$productBrand', ";
-        $sql_update = "product_cover_video = '$productVideo', ";
+        $sql_update .= "product_sku = '$productSKU', ";
+        $sql_update .= "product_name = '$productName', ";
+        $sql_update .= "product_description = '$productDescription', ";
+        $sql_update .= "product_brand = '$productBrand', ";
+        $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
         $defaultFile = $_POST['imgDefault'];
@@ -87,14 +87,14 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_update = "".$pictureOrder[$key]." = '$fileName', ";
+                        $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                         $imgInpCounter++;
                     }
                 }
                 else if($defaultFile[$key] != "") //Get the default picture name
                 {
                     $fileName = $defaultFile[$key];
-                    $sql_update = "".$pictureOrder[$key]." = '$fileName', ";
+                    $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
             } 
@@ -103,22 +103,22 @@
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $sql_update = "".$pictureOrder[$imgInpCounter]." = '', ";
+            $sql_update .= "".$pictureOrder[$imgInpCounter]." = '', ";
             $imgInpCounter++;
         }
 
-        $sql_update = "product_weight = '$productWeight', ";
-        $sql_update = "product_length = '$productLength', ";
-        $sql_update = "product_width = '$productWidth', ";
-        $sql_update = "product_height = '$productHeight', ";
-        $sql_update = "product_virtual = '$productType', ";
-        $sql_update = "product_self_collect = '$productSelfCollect', ";
-        $sql_update = "product_standard_delivery = '$productStandardDelivery', ";
-        $sql_update = "product_variation = '$variationType', ";
-        $sql_update = "product_price = '$productPrice', ";
-        $sql_update = "product_stock = '$productStock', ";
-        $sql_update = "category_id = '$categoryCombinationId' ";
-        $sql_update = "WHERE product_id = '$productId' ";
+        $sql_update .= "product_weight = '$productWeight', ";
+        $sql_update .= "product_length = '$productLength', ";
+        $sql_update .= "product_width = '$productWidth', ";
+        $sql_update .= "product_height = '$productHeight', ";
+        $sql_update .= "product_virtual = '$productType', ";
+        $sql_update .= "product_self_collect = '$productSelfCollect', ";
+        $sql_update .= "product_standard_delivery = '$productStandardDelivery', ";
+        $sql_update .= "product_variation = '$variationType', ";
+        $sql_update .= "product_price = '$productPrice', ";
+        $sql_update .= "product_stock = '$productStock', ";
+        $sql_update .= "category_id = '$categoryCombinationId' ";
+        $sql_update .= "WHERE product_id = '$productId' ";
 
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
