@@ -13,18 +13,18 @@
 		$ss4 = $_FILES['img']['name'][3];
 		$ss5 = $_FILES['img']['name'][4];
 		$ss6 = $_FILES['img']['name'][5];
-		//$ss1 = "amanda teh";
+		
 		
 		for($i = 0; $i<5; $i++){
-			if(isset ($_FILES['img']['name'][$i] !== "" )){
-			echo "<div class='alert alert-success'>GOT</div>";
+			if(isset ($_FILES['img']['name'][$i])){
+				echo "<div class='alert alert-success'>GOT</div>";
 			}else{
 				echo "<div class='alert alert-danger'>NOT</div>";
 			}
 		}
 		
 		
-		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 || SINGLEDOG || $ss6</div>";
+		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
 		
 		
 	}
