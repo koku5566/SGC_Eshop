@@ -50,7 +50,7 @@
 					<i class="bi bi-star tqy"></i>
 					</div>
 			
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..."></textarea>
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
 					
 						
