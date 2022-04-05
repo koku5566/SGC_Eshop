@@ -768,7 +768,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row" id="ShippingDiv" class="<?php echo($i_product_virtual == 1 ? "hide" : ""); ?>">
+        <div class="row <?php echo($i_product_virtual == 1 ? "hide" : ""); ?>" id="ShippingDiv">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
