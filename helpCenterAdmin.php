@@ -33,21 +33,21 @@
 		<div id = "modalResult" style = "height: 100%"></div>
 		-->
         <div style="height: 100%">
-					
+				<!--CONCAT at 90 -->
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
 						<h6>Model: WISP510</h6>
 						<h3>RM 349.00</h3>									
 					</div>
 					
 					
-					<div style="margin-bottom: 0.1em;">
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star"></i>
+					<div style="margin-bottom: 0.1em; text-align: center;">
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star tqy"></i>
 					</div>
 			<textarea placeholder = "Enter Message..."></textarea>		
 			
@@ -80,6 +80,9 @@
 ?>
 
 <style>
+.tqy{
+	font-size: 1.2rem;
+}
 .productpic{
 	display: block; 
 	float: left;
@@ -97,7 +100,7 @@
 	margin-top: 0.5 rem;
 }
 .namestar{
-	min-height: 6rem;
+	min-height: 7.5rem;
 	padding: auto;
 	position: relative;
 	
