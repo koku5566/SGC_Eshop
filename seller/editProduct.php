@@ -308,7 +308,7 @@
                                                                         <div class=\"image-layer\">
                                                                             
                                                                         </div>
-                                                                        <div class=\"image-tools-delete\">
+                                                                        <div class=\"image-tools-delete hide\">
                                                                             <i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
                                                                         </div>
                                                                         <div class=\"image-tools-add $add\">
