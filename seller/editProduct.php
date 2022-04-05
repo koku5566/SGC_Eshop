@@ -170,6 +170,7 @@
         }
         else
         {
+            echo($sql_update);
             echo '<script language="javascript">';
             echo 'alert("Fail to Save Product")';
             echo '</script>';
