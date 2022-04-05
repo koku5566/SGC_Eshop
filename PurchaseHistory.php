@@ -19,7 +19,11 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id";
-$result = $conn->query($sql);
+
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
 
 
 ?>
