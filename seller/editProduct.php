@@ -610,6 +610,7 @@
                                     </div>
                                     ");
 
+                                    echo($v_variation_2_name);
                                     if($v_variation_2_name = "")
                                     {
                                         echo("
