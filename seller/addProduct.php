@@ -486,7 +486,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' id="productType" name="productType" required>
                                         <option value="0">Normal Product with Shipment</option>
                                         <option value="1">Virtual Product without Shipment</option>
                                     </select>
