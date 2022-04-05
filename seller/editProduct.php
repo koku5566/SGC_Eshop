@@ -176,6 +176,53 @@
             echo '</script>';
         }
     } 
+    else
+    {
+        $productId = $_GET['id'];
+        $_SESSION['productId'] = $_GET['id'];
+        //$shopId = $_SESSION['user_id'];
+
+        $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
+        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+        $result_product = mysqli_query($conn, $sql_product);
+
+        if (mysqli_num_rows($result_product) > 0) {
+            while($row_product = mysqli_fetch_assoc($result_product)) {
+                $i_product_name = $row_product['product_name'];
+                $i_product_sku = $row_product['product_sku'];
+                $i_product_description = $row_product['product_description'];
+                $i_product_brand = $row_product['product_brand'];
+                $i_product_cover_video = $row_product['product_cover_video'];
+                $i_product_pic = array($row_product['product_cover_picture']);
+                array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
+                array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
+                array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
+                array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
+
+
+                $i_product_weight = $row_product['product_weight'];
+                $i_product_length = $row_product['product_length'];
+                $i_product_width = $row_product['product_width'];
+                $i_product_height = $row_product['product_height'];
+                $i_product_virtual = $row_product['product_virtual'];
+                $i_product_self_collect = $row_product['product_self_collect'];
+                $i_product_standard_delivery = $row_product['product_standard_delivery'];
+                $i_product_variation = $row_product['product_variation'];
+                $i_product_price = $row_product['product_price'];
+                $i_product_stock = $row_product['product_stock'];
+                $i_product_sold = $row_product['product_sold'];
+                $i_product_status = $row_product['product_status'];
+                $i_category_id = $row_product['category_id'];
+            }
+        }   
+        else{
+            ?>
+                <script type="text/javascript">
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                </script>
+            <?php
+        }
+    }
 
     $subCategoryArray = array();
 
@@ -209,51 +256,7 @@
             $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
     }   
-    
-    $productId = $_GET['id'];
-    $_SESSION['productId'] = $_GET['id'];
-    //$shopId = $_SESSION['user_id'];
 
-    $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
-    //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
-    $result_product = mysqli_query($conn, $sql_product);
-
-    if (mysqli_num_rows($result_product) > 0) {
-        while($row_product = mysqli_fetch_assoc($result_product)) {
-            $i_product_name = $row_product['product_name'];
-            $i_product_sku = $row_product['product_sku'];
-            $i_product_description = $row_product['product_description'];
-            $i_product_brand = $row_product['product_brand'];
-            $i_product_cover_video = $row_product['product_cover_video'];
-            $i_product_pic = array($row_product['product_cover_picture']);
-            array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
-            array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
-            array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
-            array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
-
-
-            $i_product_weight = $row_product['product_weight'];
-            $i_product_length = $row_product['product_length'];
-            $i_product_width = $row_product['product_width'];
-            $i_product_height = $row_product['product_height'];
-            $i_product_virtual = $row_product['product_virtual'];
-            $i_product_self_collect = $row_product['product_self_collect'];
-            $i_product_standard_delivery = $row_product['product_standard_delivery'];
-            $i_product_variation = $row_product['product_variation'];
-            $i_product_price = $row_product['product_price'];
-            $i_product_stock = $row_product['product_stock'];
-            $i_product_sold = $row_product['product_sold'];
-            $i_product_status = $row_product['product_status'];
-            $i_category_id = $row_product['category_id'];
-        }
-    }   
-    else{
-        ?>
-            <script type="text/javascript">
-                window.location.href = window.location.origin + "/seller/myProduct.php";
-            </script>
-        <?php
-    }
 ?>
 
 <!-- Begin Page Content -->
