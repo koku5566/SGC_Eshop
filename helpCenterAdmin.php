@@ -4,7 +4,73 @@
 
 
 
+<?php
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+		
+		$ss1 = $_FILES['img']['name'][0];
+		$ss2 = $_FILES['img']['name'][1];
+		$ss3 = $_FILES['img']['name'][2];
+		$ss4 = $_FILES['img']['name'][3];
+		$ss5 = $_FILES['img']['name'][4];
+		$ss6 = $_FILES['img']['name'][5];
+		
+		//$img1 = echo "<script>document.getElementById('view1').src</script>";
+		
+		
+		//echo $img1;
+		
+		
+		
+		for($i = 0; $i<5; $i++){
+			if($_FILES['img']['name'][$i] !== ""){
+				echo "<div class='alert alert-success'>GOT</div>";
+			}else{
+				echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		
+		echo '<script>
+					var s1 = document.getElementById("view1").getAttribute("src");
+					var s2 = document.getElementById("view2").getAttribute("src");
+					var s3 = document.getElementById("view3").getAttribute("src");
+					var s4 = document.getElementById("view4").getAttribute("src");
+					var s5 = document.getElementById("view5").getAttribute("src");
+					
+					if(s1 == "")
+					{
+						console.log("NOT")
+						
+						
+					}else{												
+						console.log("GOT")
+						
+					}
+			  </script>';
+		
+		// $pp1 = false 
+		 //$pp1 = true 			
+						
+						
+									
+									
+											
+										
+											
+		
+		if($pp1 == true){
+		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
+	}else{
+		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
+	}
 
+		
+		
+		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
+		
+		
+	}
+   
+?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
@@ -460,27 +526,7 @@
         });
     }
 /*******************************************************************************************************************************************/
-									var s1 = document.getElementById("view1").getAttribute("src");
-									var s2 = document.getElementById("view2").src;
-									var s3 = document.getElementById("view3").src;
-									var s4 = document.getElementById("view4").src;
-									var s5 = document.getElementById("view5").src;
 									
-									
-											
-										
-											if(s1 == "")
-											{
-												console.log("NOT")
-												<?php $pp1 = false 
-												
-												
-												?>
-												
-											}else{												
-												console.log("GOT")
-												<?php $pp1 = true ?>
-											}
 									
 										
 											  
@@ -498,43 +544,3 @@ $(".alert.alert-danger").delay(3000).slideUp(200, function() {
 });
 */
 </script>
-
-<?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
-		
-		$ss1 = $_FILES['img']['name'][0];
-		$ss2 = $_FILES['img']['name'][1];
-		$ss3 = $_FILES['img']['name'][2];
-		$ss4 = $_FILES['img']['name'][3];
-		$ss5 = $_FILES['img']['name'][4];
-		$ss6 = $_FILES['img']['name'][5];
-		
-		//$img1 = echo "<script>document.getElementById('view1').src</script>";
-		
-		
-		//echo $img1;
-		
-		
-		
-		for($i = 0; $i<5; $i++){
-			if($_FILES['img']['name'][$i] !== ""){
-				echo "<div class='alert alert-success'>GOT</div>";
-			}else{
-				echo "<div class='alert alert-danger'>NOT</div>";
-			}
-		}
-		
-		if($pp1 == true){
-		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
-	}else{
-		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
-	}
-
-		
-		
-		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
-		
-		
-	}
-   
-?>
