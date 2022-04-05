@@ -79,7 +79,7 @@
                                                 <div style="padding-bottom: .625rem;display:flex">
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view1">
                                                             <div class="image-layer">
                                                                 
                                                             </div>
@@ -97,7 +97,7 @@
                                                     </div>
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view2">
                                                             <div class="image-layer">
                                                                 
                                                             </div>
@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view3">
                                                             <div class="image-layer">
                                                                 
                                                             </div>
@@ -133,7 +133,7 @@
                                                     </div>
                                                     <div class="drag-item" draggable="true">
                                                         <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view4">
                                                             <div class="image-layer">
                                                                 
                                                             </div>
@@ -151,7 +151,7 @@
                                                     </div>
 													<div class="drag-item" draggable="true">
                                                         <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view5">
                                                             <div class="image-layer">
                                                                 
                                                             </div>
@@ -476,17 +476,21 @@
         });
     }
 /*******************************************************************************************************************************************/
-									var s1 = document.getElementsByClassName("img-thumbnail")[0];
-									var s2 = document.getElementsByClassName("img-thumbnail")[1];
-									var s3 = document.getElementsByClassName("img-thumbnail")[2];
-									var s4 = document.getElementsByClassName("img-thumbnail")[3];
-									var s5 = document.getElementsByClassName("img-thumbnail")[4];
+									var s1 = document.getElementById("view1").src;
+									var s2 = document.getElementById("view2").src;
+									var s3 = document.getElementById("view3").src;
+									var s4 = document.getElementById("view4").src;
+									var s5 = document.getElementById("view5").src;
+									
 									
 									for(let i = 1; i <= 5; i++){
-										if(s1.value != "")
-										{
-											console.log("s[i] - GOT")
-										}else{console.log("s[i] - NOT")}
+										s1.onchange = function() {
+											  if(s1.value != "")
+											{
+												console.log("s[i] - GOT")
+											}else{console.log("s[i] - NOT")}
+										}
+										
 									}
 
 	
