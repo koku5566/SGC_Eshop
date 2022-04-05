@@ -496,7 +496,7 @@
                     <div class="card-body">
                         <input type="text" value="<?php echo($i_product_variation); ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
-                        <div id="mainPricing" class="<?php echo($i_product_virtual == 1 ? "hide" : ""); ?>">
+                        <div id="mainPricing" class="<?php echo($i_product_variation == 1 ? "hide" : ""); ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation</button>
                             </div>
@@ -510,7 +510,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productPrice" required>
+                                        <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="<?php echo($i_product_price); ?>" class="form-control" name="productPrice" <?php echo($i_product_variation == 1 ? "" : "required"); ?>>
                                     </div>
                                 </div>
                             </div>
@@ -521,13 +521,13 @@
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="input-group mb-3">
-                                        <input type="number"min="0" value="0" class="form-control" name="productStock" required>
+                                        <input type="number"min="0" value="<?php echo($i_product_stock); ?>" class="form-control" name="productStock" <?php echo($i_product_variation == 1 ? "" : "required"); ?>>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="subPricing" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
+                        <div id="subPricing" class="mb-3 <?php echo($i_product_variation == 1 ? "" : "hide"); ?>">
                         
                             <?php 
                             if($i_product_variation == 1) 
@@ -536,67 +536,147 @@
                                 $result_variation = mysqli_query($conn, $sql_variation);
                             
                                 if (mysqli_num_rows($result_variation) > 0) {
-
-                                    //Display the format
-                                    $variationDiv_innerHTML = "";
-                                    //3/4/2022
+                                    $v_variation_1_name = "":
+                                    $v_variation_1_choice = array();
+                                    $v_variation_2_name = "":
+                                    $v_variation_2_choice = array();
+                                    $v_product_price = array();
+                                    $v_product_stock = array();
+                                    $v_product_sku = array();
 
                                     while($row_product = mysqli_fetch_assoc($result_variation)) {
                                         $v_variation_1_name = $row_product['variation_1_name'];
-                                        $v_variation_1_choice = $row_product['variation_1_choice'];
-                                        $v_variation_2_name = $row_product['variation_2_name'];
-                                        $v_product_price = $row_product['product_price'];
-                                        $v_product_stock = $row_product['product_stock'] - $row_product['product_sold'];
-                                        $v_product_sku = $row_product['product_sku'];
+                                        array_push($v_variation_1_choice,$row_product['variation_1_choice']);
+                                        if($row_product['variation_2_name'] != "")
+                                        {
+                                            $v_variation_2_name = $row_product['variation_2_name'];
+                                            array_push($v_variation_1_choice,$row_product['variation_2_choice']);
+                                        }
+                                        array_push($v_product_price,$row_product['product_price']);
+                                        array_push($v_product_stock,$row_product['product_stock'] - $row_product['product_sold']);
+                                        array_push($v_product_sku,$row_product['product_sku']);
+                                    }
 
+                                    echo("
+                                    
+                                    <div class=\"variation\">
+                                        <div class=\"card mb-4\">
+                                            <div class=\"card-header py-3\">
+                                                <h5 class=\"m-0 font-weight-bold text-primary\">Variation</h5><i style=\"float:right; margin-top:-20px\" class=\"fa fa-times btnDeleteVariation\" aria-hidden=\"true\"></i>
+                                            </div>
+                                            <!-- Card Body -->
+                                            <div class=\"card-body\">
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Variation Name</p>
+                                                    </div>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div class=\"input-group mb-3\">
+                                                            <input type=\"text\" value=\"$v_variation_1_name\" class=\"form-control variationName \">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Choices</p>
+                                                    </div>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div>
+                                    ");
+                                    $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
+                                    for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
+                                    {
+                                        echo("
+                                                            <div class=\"input-group mb-3\">
+                                                                <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                <div class=\"input-group-append btnDeleteChoices\">
+                                                                    <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
+                                                                </div>
+                                                            </div>
+                                        ");
+                                    }
+                                    
+                                    echo("
+                                                            
+                                                        </div>
+                                                        <div class=\"input-group mb-3\">
+                                                            <button type=\"button\" class=\"btn btn-outline-primary btnAddChoice\" style=\"width:100%\">Add Choices</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ");
+
+                                    if($v_variation_2_name = "")
+                                    {
+                                        echo("
+                                            <div class=\"input-group mb-3\">
+                                                <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                            </div>
+                                        ");
+                                    }
+                                    else
+                                    {
+                                        echo("
+                                    
+                                            <div class=\"variation\">
+                                                <div class=\"card mb-4\">
+                                                    <div class=\"card-header py-3\">
+                                                        <h5 class=\"m-0 font-weight-bold text-primary\">Variation</h5><i style=\"float:right; margin-top:-20px\" class=\"fa fa-times btnDeleteVariation\" aria-hidden=\"true\"></i>
+                                                    </div>
+                                                    <!-- Card Body -->
+                                                    <div class=\"card-body\">
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Variation Name</p>
+                                                            </div>
+                                                            <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                <div class=\"input-group mb-3\">
+                                                                    <input type=\"text\" value=\"$v_variation_2_name\" class=\"form-control variationName \">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Choices</p>
+                                                            </div>
+                                                            <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                <div>
+                                            ");
+                                            $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
+                                            for($i = 0; $i < count($v_variation2ChoicesOnly); $i++)
+                                            {
+                                                echo("
+                                                                    <div class=\"input-group mb-3\">
+                                                                        <input type=\"text\" value=\"".$v_variation2ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                        <div class=\"input-group-append btnDeleteChoices\">
+                                                                            <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                ");
+                                            }
+                                            
+                                            echo("
+                                                                    
+                                                                </div>
+                                                                <div class=\"input-group mb-3\">
+                                                                    <button type=\"button\" class=\"btn btn-outline-primary btnAddChoice\" style=\"width:100%\">Add Choices</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ");
                                     }
                                 }   
                             }
                             ?>
-                            <div class="variation">
-                                <div class="card mb-4">
-                                    <div class="card-header py-3">
-                                        <h5 class="m-0 font-weight-bold text-primary">Variation</h5><i style="float:right; margin-top:-20px" class="fa fa-times btnDeleteVariation" aria-hidden="true"></i>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Variation Name</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" value="" class="form-control variationName ">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Choices</p>
-                                            </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                <div>
-                                                    <div class="input-group mb-3">
-                                                        <input type="text" class="form-control variationChoice" required>
-                                                        <div class="input-group-append btnDeleteChoices">
-                                                            <span class="input-group-text"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <button type="button" class="btn btn-outline-primary btnAddChoice" style="width:100%">Add Choices</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
-                            </div>
+                            
                         </div>
 
                         <div id="priceToAll" class="mb-3 <?php echo($i_product_virtual == 1 ? "" : "hide"); ?>">
@@ -632,7 +712,57 @@
                         </div>
 
                         <div id="priceList">
- 
+                            <?php 
+                                if($i_product_variation == 1) 
+                                {
+                                    echo("<table class=\"table table-hover\">");
+                                    echo("
+                                    
+                                        <thead>
+                                            <tr>
+                                                <th scope=\"col\" style=\"min-width: 50px;max-width: 100px;\"><input style=\"background: transparent;\" value=\"$v_variation_1_name\" class=\"thInp\" name=\"variation1Name\" readonly=\"\"></th>
+                                    ");
+                                    if($v_variation_2_name != "")
+                                    {
+                                        echo(   "<th scope=\"col\" style=\"min-width: 50px;max-width: 100px;\"><input style=\"background: transparent;\" value=\"$v_variation_2_name\" class=\"thInp\" name=\"variation2Name\" readonly=\"\"></th>");
+                                    }
+                                    
+                                    echo("
+                                                <th scope=\"col\">Price</th>
+                                                <th scope=\"col\">Stock</th>
+                                                <th scope=\"col\">SKU</th>
+                                            </tr>
+                                        </thead>
+                                    ");
+                                    echo("<tbody>");
+
+                                    for($i = 0; $i < count($v_variation_1_choice); $i++)
+                                    {
+                                        echo("
+                                            <tr>
+                                                <td scope=\"row\"><input style=\"background: transparent;\" value=\"".$v_variation_1_choice[$i]."\" class=\"form-control td-var1\" name=\"variation1NameCol[]\" readonly=\"\"></td>
+                                        ");
+                                        if($v_variation_2_name != "")
+                                        {
+                                            echo("<td scope=\"row\"><input style=\"background: transparent;\" value=\"".$v_variation_2_choice[$i]."\" class=\"form-control td-var2\" name=\"variation2NameCol[]\" readonly=\"\"></td>");
+                                        }
+                                        echo("
+                                                <td scope=\"row\">
+                                                    <div class=\"input-group\">
+                                                    <div class=\"input-group-prepend\"><span class=\"input-group-text\">RM</span></div>
+                                                    <input value=\"".$v_product_price[$i]."\" type=\"number\" oninput=\"this.value = onlyNumberAllow(this.value)\" min=\"0\" class=\"form-control td-price\" name=\"variationPrice[]\" required=\"\">
+                                                    </div>
+                                                </td>
+                                                <td scope=\"row\"><input value=\"".$v_product_stock[$i]."\" type=\"number\" oninput=\"this.value = onlyNumberAllow(this.value)\" min=\"0\" class=\"form-control td-stock\" name=\"variationStock[]\" required=\"\"></td>
+                                                <td scope=\"row\"><input value=\"".$v_product_sku[$i]."\" type=\"text\" class=\"form-control td-sku\" name=\"variationSKU[]\" required=\"\"></td>
+                                            </tr>
+                                        ");
+                                    }
+                                    
+                                    echo("</tbody>");
+                                    echo("</table>");
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -670,7 +800,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_length : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -678,7 +808,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_width : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -686,7 +816,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_height : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
