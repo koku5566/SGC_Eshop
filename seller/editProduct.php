@@ -153,11 +153,11 @@
                     $sql_insertVar  = "INSERT INTO variation (";
                     $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
                     $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= "product_sku";
                     $sql_insertVar .= ") ";
                     $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
                     $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+                    $sql_insertVar .= "'".$variationSKU[$i]."')";
 
                     mysqli_query($conn, $sql_insertVar);
                 }
