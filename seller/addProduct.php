@@ -86,24 +86,22 @@
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_insert .= "'$fileName', ";
-                        $imgInpCounter++;
-                    }
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                    $sql_insert .= "'$fileName', ";
+                    $imgInpCounter++;
                 }
-            } 
-        }
+            }
+        } 
 
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
