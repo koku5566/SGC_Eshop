@@ -86,24 +86,22 @@
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_insert .= "'$fileName', ";
-                        $imgInpCounter++;
-                    }
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                    $sql_insert .= "'$fileName', ";
+                    $imgInpCounter++;
                 }
-            } 
-        }
+            }
+        } 
 
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
@@ -158,11 +156,11 @@
                     $sql_insertVar  = "INSERT INTO variation (";
                     $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
                     $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= "product_sku";
                     $sql_insertVar .= ") ";
                     $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
                     $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+                    $sql_insertVar .= "'".$variationSKU[$i]."')";
 
                     mysqli_query($conn, $sql_insertVar);
                 }
@@ -488,7 +486,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' name="productType" required>
+                                    <select class="form-control" onchange='ToggleShippingDiv(this.value)' id="productType" name="productType" required>
                                         <option value="0">Normal Product with Shipment</option>
                                         <option value="1">Virtual Product without Shipment</option>
                                     </select>
@@ -849,14 +847,20 @@
     function submitForm(){
         if(document.querySelectorAll('.warning').length == 0)
         {
-            if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+            if(document.getElementById("productType").value == "0")
             {
-                document.getElementById("AddProduct").click();
+                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                {
+                    document.getElementById("AddProduct").click();
+                }
+                else
+                {
+                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                    document.getElementById("checkbox-err-msg").focus();
+                }
             }
-            else
-            {
-                document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                document.getElementById("checkbox-err-msg").focus();
+            else{
+                document.getElementById("AddProduct").click();
             }
         }
         else
@@ -869,7 +873,7 @@
         var valuesSoFar = Object.create(null);
         for (var i = 0; i < array.length; ++i) {
             var value = array[i];
-            if (value in valuesSoFar) {
+            if (value in valuesSoFar && value != "") {
                 return true;
             }
             valuesSoFar[value] = true;
@@ -909,7 +913,7 @@
             {
                 for(var i = 0; i < ShippingDivInp.length; i++)
                 {
-                    ShippingDivInp[i].required = true;
+                    ShippingDivInp[i].required = false;
                 }
                 ShippingDiv.classList.remove("hide");
             }
