@@ -14,6 +14,12 @@
 		$ss5 = $_FILES['img']['name'][4];
 		$ss6 = $_FILES['img']['name'][5];
 		
+		$img1 = echo "<script>document.getElementById('view1').src</script>";
+		
+		
+		echo $img1;
+		
+		
 		
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
