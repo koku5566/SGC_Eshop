@@ -128,6 +128,7 @@
         $sql_update .= "category_name = '$categoryName' ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
+        $defaultFile = $_POST['imgDefault'];
 
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
@@ -146,6 +147,15 @@
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         $sql_update .= ", category_pic = '$fileName' ";
                     }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
+                    $sql_update .= ", category_pic = '$fileName' ";
+                }
+                else
+                {
+                    $sql_update .= ", category_pic = '' ";
                 }
             } 
         }
@@ -479,6 +489,7 @@
                                         if (mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 
+                                                $picture = $row["category_pic"];
                                                 $picName = "";
 
                                                 if($row["category_pic"] != "")
@@ -497,12 +508,13 @@
                                     
                                     <div class="image-layer">
                                     </div>
-                                    <div class="image-tools-delete <?php echo($picName != "" ? "" : "hide");?>">
+                                    <div class="image-tools-delete hide">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
                                             <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
+                                            <input name="imgDefault[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>

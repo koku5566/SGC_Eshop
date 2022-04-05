@@ -57,6 +57,21 @@
             echo '</script>';
         }
     }
+    else if(isset($_POST['DeleteProduct']))
+    {
+        $productId = $_POST['DeleteProductID'];
+        $sql_delete = "DELETE FROM product WHERE product_id = '$productId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
+            if(mysqli_query($conn, $sql_deleteVar))
+            {
+                echo '<script language="javascript">';
+                echo 'alert("Product Deleted Successful")';
+                echo '</script>';
+            }
+        }
+    }
 ?>
 
 <!-- Begin Page Content -->
@@ -402,11 +417,10 @@
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
                                                             $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
-                                                            C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
+                                                            C.max_price,D.min_price,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                            LEFT JOIN (SELECT product_id, SUM(product_sold) AS total_sold FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS E ON A.product_id = E.product_id
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
                                                             WHERE A.product_id = '$id' 
                                                             LIMIT 1";
@@ -452,7 +466,7 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
                                                                                                 <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
                                                                         ");
@@ -495,7 +509,7 @@
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                            <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
                                                                         </div>
                                                                     ");
                                                                     
@@ -548,11 +562,10 @@
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
                                                             $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                            C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
+                                                            C.max_price,D.min_price,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                            LEFT JOIN (SELECT product_id, SUM(product_sold) AS total_sold FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS E ON A.product_id = E.product_id
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
                                                             WHERE A.product_id = '$id' 
                                                             LIMIT 1";
@@ -597,7 +610,7 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
                                                                                                 <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
                                                                         ");
@@ -640,7 +653,7 @@
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                            <button class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" name=\"DeleteProduct\" value=\"".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></button>
+                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
                                                                         </div>
                                                                     ");
 
@@ -684,6 +697,82 @@
         </div>
     </div>
 </div>
+
+     <!-- Delete Product Modal - deleteProductModel -->
+     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal fade" id="deleteProductModel" tabindex="-1" role="dialog" aria-labelledby="deleteProductModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Delete Product</h5>
+                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-sm-4">
+                            <div class="image-container">
+                                <?php
+                                    $productId = $_GET['delete'];
+                                    $sql = "SELECT product_cover_picture FROM product WHERE product_id = '$productId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            
+                                            $picture = $row["product_cover_picture"];
+                                            $picName = "";
+
+                                            if($row["product_cover_picture"] != "")
+                                            {
+                                                $picName = "/img/product/".$row["product_cover_picture"];
+                                            }
+                                            
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                    }
+                                ?>
+                                
+                                <div class="image-layer">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-sm-9">
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <?php
+                                $productId = $_GET['delete'];
+                                $sql = "SELECT product_id,product_name FROM product WHERE product_id = '$productId'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        $productId = $row["product_id"];
+                                        $productName = $row["product_name"];
+
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeleteProductID\" value=\"$productId\" hidden>");
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeleteProductName\" value=\"$productName\" readonly>");
+                                    }
+                                }
+                                ?>
+                                <p style="color:#ce0000;">Caution</p>
+                                <p style="color:#ce0000;">Once deleted, the product will not able to restore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                    <button type="submit" name="DeleteProduct"  class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
 <!-- /.container-fluid -->
 
 <style>
@@ -815,6 +904,21 @@
 </script>
 
 <script>
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['delete']) ? "1" : "0") ?> == 1)
+        {
+            $("#deleteProductModel").modal('show');
+        }
+    });
+
+    const closeDeleteModel = document.querySelectorAll('.closeDeleteModel');
+
+    closeDeleteModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#deleteProductModel").modal('hide');
+        });
+    });
+
     function clearSearch()
     {
 
