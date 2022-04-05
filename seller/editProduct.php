@@ -767,6 +767,7 @@
             </div>
         </div>
 
+        <?php echo("This is a seperation"); echo($i_product_virtual);?>
         <!--Shipping -->
         <div class="row" id="ShippingDiv" class="<?php echo($i_product_virtual == 1 ? "hide" : ""); ?>">
             <div class="col-xl-12 col-lg-12">
