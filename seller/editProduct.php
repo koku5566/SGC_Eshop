@@ -1038,7 +1038,7 @@
         var valuesSoFar = Object.create(null);
         for (var i = 0; i < array.length; ++i) {
             var value = array[i];
-            if (value in valuesSoFar) {
+            if (value in valuesSoFar && value != "") {
                 return true;
             }
             valuesSoFar[value] = true;
