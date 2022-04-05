@@ -12,9 +12,10 @@
 		$ss3 = $_FILES['img']['name'][2];
 		$ss4 = $_FILES['img']['name'][3];
 		$ss5 = $_FILES['img']['name'][4];
+		$ss6 = $_FILES['img']['name'][5];
 		//$ss1 = "amanda teh";
 		
-		echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||</div>";
+		echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 || SINGLEDOG || $ss6</div>";
 		
 		
 	}
