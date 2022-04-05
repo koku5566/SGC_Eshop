@@ -29,12 +29,13 @@
 			}
 		}
 		
-		
 		if($pp1 == true){
-			echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
-		}else{
-			echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
-		}
+		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
+	}else{
+		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
+	}
+
+		
 		
 		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
 		
@@ -509,7 +510,10 @@
 											if(s1 == "")
 											{
 												console.log("NOT")
-												<?php $pp1 = false ?>
+												<?php $pp1 = false 
+												
+												
+												?>
 												
 											}else{												
 												console.log("GOT")
