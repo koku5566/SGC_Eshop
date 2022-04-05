@@ -483,15 +483,15 @@
 									var s5 = document.getElementById("view5").src;
 									
 									
-									for(let i = 1; i <= 5; i++){
+									
 										s1.onchange = function() {
-											  if(s1.value != "")
+											  if(s1 != "")
 											{
-												console.log("s[i] - GOT")
-											}else{console.log("s[i] - NOT")}
+												console.log("GOT")
+											}else{console.log("NOT")}
 										}
 										
-									}
+									
 
 	
 /*
