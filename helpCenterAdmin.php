@@ -14,10 +14,10 @@
 		$ss5 = $_FILES['img']['name'][4];
 		$ss6 = $_FILES['img']['name'][5];
 		
-		$img1 = echo "<script>document.getElementById('view1').src</script>";
+		//$img1 = echo "<script>document.getElementById('view1').src</script>";
 		
 		
-		echo $img1;
+		//echo $img1;
 		
 		
 		
@@ -499,12 +499,12 @@
 									
 									
 									
-										s1.onchange = function() {
+										
 											  if(s1 != "")
 											{
 												console.log("GOT")
 											}else{console.log("NOT")}
-										}
+									
 										
 									
 
