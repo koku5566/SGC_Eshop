@@ -483,7 +483,7 @@
 									var s5 = document.getElementsByClassName("img-thumbnail")[4];
 									
 									for(let i = 1; i <= 5; i++){
-										if(s[i].value != "")
+										if(s1.value != "")
 										{
 											console.log("s[i] - GOT")
 										}else{console.log("s[i] - NOT")}
