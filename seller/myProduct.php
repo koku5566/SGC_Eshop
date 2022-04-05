@@ -747,7 +747,7 @@
                                 <label>Product Name</label>
                                 <?php
                                 $productId = $_GET['delete'];
-                                $sql = "SELECT product_id.product_name FROM product WHERE product_id = '$productId'";
+                                $sql = "SELECT product_id,product_name FROM product WHERE product_id = '$productId'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
@@ -766,7 +766,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeleteProduct" class="btn btn-danger">Delete</button>
+                    <button type="submit" name="DeleteProduct"  class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
