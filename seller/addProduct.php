@@ -858,7 +858,10 @@
                     document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
                     document.getElementById("checkbox-err-msg").focus();
                 }
-            } 
+            }
+            else{
+                document.getElementById("AddProduct").click();
+            }
         }
         else
         {

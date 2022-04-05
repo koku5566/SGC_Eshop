@@ -1030,6 +1030,9 @@
                     document.getElementById("checkbox-err-msg").focus();
                 }
             } 
+            else{
+                document.getElementById("EditProduct").click();
+            }
         }
         else
         {
