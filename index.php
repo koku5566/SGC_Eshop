@@ -124,104 +124,99 @@
                                     <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-   
-                                            else
-                                            {
-                                                $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
 
-                                                $result = mysqli_query($conn, $sql);
-                                    
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while($row = mysqli_fetch_assoc($result)) {
+                                            $result = mysqli_query($conn, $sql);
 
-                                                        //Fetch each product information
-                                                        $id = $row['product_id'];
-                                                        $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                        C.max_price,D.min_price,F.total_stock FROM `product` AS A 
-                                                        LEFT JOIN variation AS B ON A.product_id = B.product_id 
-                                                        LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
-                                                        LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                        LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-                                                        WHERE A.product_id = '$id' 
-                                                        LIMIT 1";
-                                                        $result_1 = mysqli_query($conn, $sql_1);
-                                            
-                                                        if (mysqli_num_rows($result_1) > 0) {
-                                                            while($row_1 = mysqli_fetch_assoc($result_1)) {
-                                                                
-                                                                echo("
-                                                                    <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                        <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
-                                                                            <div class=\"card\">
-                                                                                <div class=\"image-container\">
-                                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    //Fetch each product information
+                                                    $id = $row['product_id'];
+                                                    $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
+                                                    C.max_price,D.min_price,F.total_stock FROM `product` AS A 
+                                                    LEFT JOIN variation AS B ON A.product_id = B.product_id 
+                                                    LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+                                                    LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+                                                    LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+                                                    WHERE A.product_id = '$id' 
+                                                    LIMIT 1";
+                                                    $result_1 = mysqli_query($conn, $sql_1);
+
+                                                    if (mysqli_num_rows($result_1) > 0) {
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            
+                                                            echo("
+                                                                <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                    <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
+                                                                        <div class=\"card\">
+                                                                            <div class=\"image-container\">
+                                                                                <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
+                                                                            </div>
+                                                                            <div class=\"card-body\">
+                                                                                <div class=\"Name\">
+                                                                                    <p class=\"card-text product-name\">".$row_1['product_name']."</p>
                                                                                 </div>
-                                                                                <div class=\"card-body\">
-                                                                                    <div class=\"Name\">
-                                                                                        <p class=\"card-text product-name\">".$row_1['product_name']."</p>
-                                                                                    </div>
-                                                                                    <div class=\"Tag\">
-                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
-                                                                                    </div>
-                                                                                    <div class=\"Price\">
-                                                                ");
-                                                                //Pricing
-                                                                //If got variation
-                                                                if($row_1['product_variation'] == 1)
+                                                                                <div class=\"Tag\">
+                                                                                    <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                                </div>
+                                                                                <div class=\"Price\">
+                                                            ");
+                                                            //Pricing
+                                                            //If got variation
+                                                            if($row_1['product_variation'] == 1)
+                                                            {
+                                                                if($row_1['min_price'] != $row_1['max_price'])
                                                                 {
-                                                                    if($row_1['min_price'] != $row_1['max_price'])
-                                                                    {
-                                                                        echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
-                                                                    }
-                                                                    
-                                                                    echo("
-                                                                                    </div>
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
-                                                                                            <div class=\"col-xl-6\">
-                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
-                                                                                            </div>
-                                                                                            <div class=\"col-xl-6\">
-                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                    ");
+                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
                                                                 }
-                                                                //If no variation
                                                                 else
                                                                 {
-                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
-
-                                                                    echo("
-                                                                                    </div>
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
-                                                                                            <div class=\"col-xl-6\">
-                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
-                                                                                            </div>
-                                                                                            <div class=\"col-xl-6\">
-                                                                                                <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                    ");
+                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
                                                                 }
-
+                                                                
                                                                 echo("
-                                                                                            
-                                                                                        
                                                                                 </div>
-                                                                            </div>   
-                                                                        </a>
-                                                                    </div>
+                                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"col-xl-6\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
+                                                                                        </div>
+                                                                                        <div class=\"col-xl-6\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+                                                                                        </div>
+                                                                                    </div>
                                                                 ");
                                                             }
+                                                            //If no variation
+                                                            else
+                                                            {
+                                                                echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
+
+                                                                echo("
+                                                                                </div>
+                                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"col-xl-6\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
+                                                                                        </div>
+                                                                                        <div class=\"col-xl-6\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                ");
+                                                            }
+
+                                                            echo("
+                                                                                        
+                                                                                    
+                                                                            </div>
+                                                                        </div>   
+                                                                    </a>
+                                                                </div>
+                                                            ");
                                                         }
                                                     }
                                                 }
                                             }
-                                            
                                         ?>
                                     </div>
                                 </div>
@@ -230,7 +225,6 @@
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-
 <?php
     require __DIR__ . '/footer.php'
 ?>
