@@ -181,7 +181,7 @@ $result = $stmt->get_result();
                                         <div class="col md-auto text-start"><span><strong><?php echo $row['username'];?></strong></span></div></div>
                                         <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $row['order_id']; ?> </strong></span></div>
                                     </div>
-                                </div>
+                                
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-1 image-container">
@@ -227,6 +227,7 @@ $result = $stmt->get_result();
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                                 <!--End of Order Item-->
                                 <?php 
                                 }?>

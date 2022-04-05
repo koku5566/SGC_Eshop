@@ -28,7 +28,7 @@
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
                         <div class=" col title ">Delivery Address</div>
                     </div>
-                    <div clas s="row">
+                    <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
