@@ -8,7 +8,7 @@
         //Basic Details
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
-        $productId = "";
+        $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         $productDescription = $_POST['productDescription'];
@@ -60,18 +60,12 @@
         
         
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
-
-        $sql_insert  = "INSERT INTO product (";
-        $sql_insert .= "product_id, product_sku, product_name, product_description, product_brand, ";
-        $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
-        $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
-        $sql_insert .= "product_weight, product_length, product_width, product_height, ";
-        $sql_insert .= "product_virtual, product_self_collect, product_standard_delivery, ";
-        $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
-        $sql_insert .= "category_id, shop_id";
-        $sql_insert .= ") ";
-        $sql_insert .= "VALUES ((SELECT CONCAT('P',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'product'), 6, 0))) AS newCombinationId),'$productSKU','$productName','$productDescription','$productBrand', ";
-        $sql_insert .= "'$productVideo', ";
+        $sql_update = "UPDATE product SET ";
+        $sql_update .= "product_sku = '$productSKU', ";
+        $sql_update .= "product_name = '$productName', ";
+        $sql_update .= "product_description = '$productDescription', ";
+        $sql_update .= "product_brand = '$productBrand', ";
+        $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
         $defaultFile = $_POST['imgDefault'];
@@ -80,49 +74,54 @@
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_insert .= "'$fileName', ";
-                        $imgInpCounter++;
-                    }
-                }
-                else if($defaultFile[$key] != "") //Get the default picture name
-                {
-                    $fileName = $defaultFile[$key];
-                    $sql_insert .= "'$fileName', ";
+        $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
+
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                    $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
-            } 
-        }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $fileName = $defaultFile[$key];
+                $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                $imgInpCounter++;
+            }
+        } 
 
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $sql_insert .= "'', ";
+            $sql_update .= "".$pictureOrder[$imgInpCounter]." = '', ";
             $imgInpCounter++;
         }
 
-        $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
-        $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
-        $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
-        $sql_insert .= "'$categoryCombinationId', '$shopId'";
-        $sql_insert .= ") ";
+        $sql_update .= "product_weight = '$productWeight', ";
+        $sql_update .= "product_length = '$productLength', ";
+        $sql_update .= "product_width = '$productWidth', ";
+        $sql_update .= "product_height = '$productHeight', ";
+        $sql_update .= "product_virtual = '$productType', ";
+        $sql_update .= "product_self_collect = '$productSelfCollect', ";
+        $sql_update .= "product_standard_delivery = '$productStandardDelivery', ";
+        $sql_update .= "product_variation = '$variationType', ";
+        $sql_update .= "product_price = '$productPrice', ";
+        $sql_update .= "product_stock = '$productStock', ";
+        $sql_update .= "category_id = '$categoryCombinationId' ";
+        $sql_update .= "WHERE product_id = '$productId' ";
 
-        if(mysqli_query($conn, $sql_insert)){
+        if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
             {
-                
                 if(isset($_POST['variation1Name'],$_POST['variation2Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
@@ -144,25 +143,19 @@
                     $variationSKU = $_POST['variationSKU'];
                 }
 
-                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-                $result = mysqli_query($conn, $sql_getID);
-
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        $productId = $row['product_id'];
-                    }
-                }
+                $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
+                mysqli_query($conn, $sql_deleteVar);
 
                 for($i = 0; $i < count($variation1NameCol); $i++)
                 {
                     $sql_insertVar  = "INSERT INTO variation (";
                     $sql_insertVar .= "product_id, variation_1_name, variation_1_choice, variation_1_pic, ";
                     $sql_insertVar .= "variation_2_name, variation_2_choice, product_price, product_stock, ";
-                    $sql_insertVar .= "product_sold, product_sku";
+                    $sql_insertVar .= "product_sku";
                     $sql_insertVar .= ") ";
                     $sql_insertVar .= "VALUES ('$productId','".$variation1Name."','".$variation1NameCol[$i]."','', ";
                     $sql_insertVar .= "'".$variation2Name."', '".$variation2NameCol[$i]."', '".$variationPrice[$i]."', '".$variationStock[$i]."', ";
-                    $sql_insertVar .= "'0', '".$variationSKU[$i]."')";
+                    $sql_insertVar .= "'".$variationSKU[$i]."')";
 
                     mysqli_query($conn, $sql_insertVar);
                 }
@@ -175,11 +168,59 @@
         }
         else
         {
+            echo($sql_update);
             echo '<script language="javascript">';
-            echo 'alert("Fail to Add Product")';
+            echo 'alert("Fail to Save Product")';
             echo '</script>';
         }
     } 
+    else
+    {
+        $productId = $_GET['id'];
+        $_SESSION['productId'] = $_GET['id'];
+        //$shopId = $_SESSION['user_id'];
+
+        $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
+        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+        $result_product = mysqli_query($conn, $sql_product);
+
+        if (mysqli_num_rows($result_product) > 0) {
+            while($row_product = mysqli_fetch_assoc($result_product)) {
+                $i_product_name = $row_product['product_name'];
+                $i_product_sku = $row_product['product_sku'];
+                $i_product_description = $row_product['product_description'];
+                $i_product_brand = $row_product['product_brand'];
+                $i_product_cover_video = $row_product['product_cover_video'];
+                $i_product_pic = array($row_product['product_cover_picture']);
+                array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
+                array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
+                array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
+                array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
+
+
+                $i_product_weight = $row_product['product_weight'];
+                $i_product_length = $row_product['product_length'];
+                $i_product_width = $row_product['product_width'];
+                $i_product_height = $row_product['product_height'];
+                $i_product_virtual = $row_product['product_virtual'];
+                $i_product_self_collect = $row_product['product_self_collect'];
+                $i_product_standard_delivery = $row_product['product_standard_delivery'];
+                $i_product_variation = $row_product['product_variation'];
+                $i_product_price = $row_product['product_price'];
+                $i_product_stock = $row_product['product_stock'];
+                $i_product_sold = $row_product['product_sold'];
+                $i_product_status = $row_product['product_status'];
+                $i_category_id = $row_product['category_id'];
+            }
+        }   
+        else{
+            ?>
+                <script type="text/javascript">
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                </script>
+            <?php
+        }
+    }
 
     $subCategoryArray = array();
 
@@ -213,50 +254,7 @@
             $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
     }   
-    
-    $productId = $_GET['id'];
-    //$shopId = $_SESSION['user_id'];
 
-    $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
-    //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
-    $result_product = mysqli_query($conn, $sql_product);
-
-    if (mysqli_num_rows($result_product) > 0) {
-        while($row_product = mysqli_fetch_assoc($result_product)) {
-            $i_product_name = $row_product['product_name'];
-            $i_product_sku = $row_product['product_sku'];
-            $i_product_description = $row_product['product_description'];
-            $i_product_brand = $row_product['product_brand'];
-            $i_product_cover_video = $row_product['product_cover_video'];
-            $i_product_pic = array($row_product['product_cover_picture']);
-            array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
-            array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
-            array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
-            array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
-
-
-            $i_product_weight = $row_product['product_weight'];
-            $i_product_length = $row_product['product_length'];
-            $i_product_width = $row_product['product_width'];
-            $i_product_height = $row_product['product_height'];
-            $i_product_virtual = $row_product['product_virtual'];
-            $i_product_self_collect = $row_product['product_self_collect'];
-            $i_product_standard_delivery = $row_product['product_standard_delivery'];
-            $i_product_variation = $row_product['product_variation'];
-            $i_product_price = $row_product['product_price'];
-            $i_product_stock = $row_product['product_stock'];
-            $i_product_sold = $row_product['product_sold'];
-            $i_product_status = $row_product['product_status'];
-            $i_category_id = $row_product['category_id'];
-        }
-    }   
-    else{
-        ?>
-            <script type="text/javascript">
-                window.location.href = window.location.origin + "/seller/myProduct.php";
-            </script>
-        <?php
-    }
 ?>
 
 <!-- Begin Page Content -->
@@ -852,8 +850,8 @@
 
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add New Product</button>
-            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add New Product</button>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Save Changes</button>
+            <button type="submit" id="EditProduct" name="edit" class="btn btn-outline-primary" hidden></i>Save Changes</button>
         </div>
     </form>
 </div>
@@ -1020,7 +1018,7 @@
         {
             if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
             {
-                document.getElementById("AddProduct").click();
+                document.getElementById("EditProduct").click();
             }
             else
             {
@@ -1187,6 +1185,7 @@
 
     initImages();
     initVariation();
+    initChoice();
 
 
     function rearrangeLabel(){

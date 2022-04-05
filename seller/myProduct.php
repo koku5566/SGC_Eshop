@@ -402,11 +402,10 @@
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
                                                             $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
-                                                            C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
+                                                            C.max_price,D.min_price,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                            LEFT JOIN (SELECT product_id, SUM(product_sold) AS total_sold FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS E ON A.product_id = E.product_id
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
                                                             WHERE A.product_id = '$id' 
                                                             LIMIT 1";
@@ -452,7 +451,7 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
                                                                                                 <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
                                                                         ");
@@ -548,11 +547,10 @@
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
                                                             $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                            C.max_price,D.min_price,E.total_sold,F.total_stock FROM `product` AS A 
+                                                            C.max_price,D.min_price,F.total_stock FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                            LEFT JOIN (SELECT product_id, SUM(product_sold) AS total_sold FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS E ON A.product_id = E.product_id
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
                                                             WHERE A.product_id = '$id' 
                                                             LIMIT 1";
@@ -597,7 +595,7 @@
                                                                                                     <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
                                                                                                 </div>
                                                                                                 <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['total_sold']."</p>
+                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                                 </div>
                                                                                             </div>
                                                                         ");
