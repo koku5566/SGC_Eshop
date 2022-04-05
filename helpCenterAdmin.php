@@ -301,6 +301,156 @@
 	
 }
 </style>
+
+<style>
+@import "nib";
+
+    [draggable] {
+    user-select: none;
+    }
+    .drag-list {
+        margin: 10px auto;
+        flex-basis: 770px;
+        display:flex;
+    }
+    .drag-item {
+    transition: 0.25s;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 80px;
+    flex: 0 0 80px;
+    width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    margin: 0 16px 40px 0;
+    }
+    .drag-start {
+    opacity: 0.8;
+    }
+    .drag-enter {
+    opacity: 0.5;
+    transform: scale(0.9);
+    }
+
+    .image-container{
+        width: 80px;
+        height: 80px;
+        background-color: white;
+    }
+
+    .image-layer:hover ~ .image-tools-delete{
+        display:block;
+    }
+
+    .image-layer{
+        width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+    }
+
+    .image-tools-delete:hover{
+        display:block;
+    }
+
+    .image-tools-delete{
+        width: 80px;
+        height: 30px;
+        background:grey;
+        position:absolute;
+        margin-top: -30px;
+    }
+
+    .image-tools-delete-icon{
+        color: white;
+        justify-content: center;
+        display: grid;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+
+    .image-tools-add{
+        width: 80px;
+        height: 80px;
+        background:white;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+        z-index:100;
+    }
+
+    .image-tools-add-icon{
+        color: black;
+        justify-content: center;
+        display: grid;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .custom-file-upload{
+        width:100%;
+        height:100%;
+    }
+
+    .imgInp{
+        display:none;
+    }
+
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+
+    .hide{
+        display:none;
+    }
+
+    .td-var1{
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+    }
+
+    .td-var2{
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+    }
+
+    .thInp{
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+    }
+
+    .td-var1:focus,.td-var2:focus,.thInp:focus,.thInp:focus-visible
+    {
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: #858796;
+        box-shadow: none;
+    }
+
+    .warning, .warning:focus{
+        border:1px red solid;
+    }
+
+    .warning-message{
+        color:red;
+        font-weight:bold;
+    }
+</style>
 <script>
 
 	
