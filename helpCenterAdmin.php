@@ -42,7 +42,7 @@
 					</div>
 					
 					
-					<div style="margin-bottom: 0.1em; text-align: center;margin-top: 1.5rem;">
+					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star-fill tqy"></i>
