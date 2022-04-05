@@ -7,10 +7,10 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
 		
-		$ss1 = $_FILES['img']['name'][0];
-		
-		
-		echo "$ss1 || sohai";
+		//$ss1 = $_FILES['img']['name'][0];
+		$ss1 = "amanda teh";
+		echo "<div class='alert alert-success'>$ss1 || sohai</div>";
+		//echo "$ss1 || sohai";
 		
 	}
    
@@ -437,10 +437,11 @@
         });
     }
 	
-
+/*
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
+*/
 $(".alert.alert-danger").delay(3000).slideUp(200, function() {
     $(this).alert('close');
 });
