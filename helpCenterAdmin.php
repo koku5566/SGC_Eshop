@@ -491,7 +491,7 @@
         });
     }
 /*******************************************************************************************************************************************/
-									var s1 = document.getElementById("view1").src.value;
+									var s1 = document.getElementById("view1").getAttribute("src");
 									var s2 = document.getElementById("view2").src;
 									var s3 = document.getElementById("view3").src;
 									var s4 = document.getElementById("view4").src;
@@ -504,8 +504,7 @@
 											{
 												console.log("NOT")
 												
-											}else{
-												
+											}else{												
 												console.log("GOT")
 											}
 									
