@@ -8,9 +8,13 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
 		
 		$ss1 = $_FILES['img']['name'][0];
+		$ss2 = $_FILES['img']['name'][1];
+		$ss3 = $_FILES['img']['name'][2];
+		$ss4 = $_FILES['img']['name'][3];
+		$ss5 = $_FILES['img']['name'][4];
 		//$ss1 = "amanda teh";
 		
-		echo "<div class='alert alert-success'>$ss1 || sohai</div>";
+		echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||</div>";
 		
 		
 	}
