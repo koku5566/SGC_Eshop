@@ -24,7 +24,8 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        
+        <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 	  <!--CONTENT START-->
       <div class="modal-body">
@@ -35,12 +36,12 @@
 					
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
 						<h6>Model: WISP510</h6>
-						<h2>RM 349.00</h2>									
+						<h3>RM 349.00</h3>									
 					</div>
 					
-					<h5>Please Rate our Product</h5>
+					
 					<div style="margin-bottom: 0.1em;">
 					<i class="bi bi-star-fill"></i>
 					<i class="bi bi-star-fill"></i>
@@ -82,10 +83,10 @@
 .productpic{
 	display: block; 
 	float: left;
-	margin: 0.75em 0.75em 0 0.75em; 
-	border-radius: 50%; 
-	width: 5rem; 
-	height: 5rem;
+	margin: 0.75em 1em 0 1em; 
+	border-radius: 8%; 
+	width: 6.5rem; 
+	height: 6.5rem;
 }
 
 .divcontent{
