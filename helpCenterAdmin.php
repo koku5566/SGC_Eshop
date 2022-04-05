@@ -180,7 +180,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-		<button class = "btn btn-primary" name = "rrsub">Submit</button>
+		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
 	  </form>
     </div>
