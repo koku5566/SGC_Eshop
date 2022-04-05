@@ -500,10 +500,14 @@
 									
 									
 										
-											  if(s1 != "")
+											  if(s1 == "")
 											{
+												console.log("NOT")
+												
+											}else{
+												
 												console.log("GOT")
-											}else{console.log("NOT")}
+											}
 									
 										
 									
