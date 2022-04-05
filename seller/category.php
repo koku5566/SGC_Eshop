@@ -739,6 +739,7 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.nextElementSibling.firstChild.firstChild.value="";
                 img.parentElement.classList.add("hide");
             });
         });
