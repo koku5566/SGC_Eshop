@@ -42,15 +42,15 @@
 					</div>
 					
 					
-					<div style="margin-bottom: 0.1em; text-align: center;">
+					<div style="margin-bottom: 0.1em; text-align: center;margin-top: 1.5rem;">
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star-fill tqy"></i>
 					<i class="bi bi-star tqy"></i>
 					</div>
-			<textarea placeholder = "Enter Message..."></textarea>		
 			
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..."></textarea>
 			
 					
 						
@@ -81,7 +81,8 @@
 
 <style>
 .tqy{
-	font-size: 1.2rem;
+	font-size:1.32rem;
+	margin: 0 0.22rem;
 }
 .productpic{
 	display: block; 
