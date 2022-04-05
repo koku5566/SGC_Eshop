@@ -8,7 +8,8 @@
 	
    
 ?>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
@@ -31,9 +32,9 @@
 		-->
         <div style="height: 100%">
 					
-					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
-						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
+						<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'im goroot'; ?></h6>
 						<div style="margin-bottom: 0.1em;">	
 							<?php
 								for($i=0; $i<5; $i++){
@@ -159,7 +160,14 @@
 ?>
 
 <style>
-
+.productpic{
+	display: block; 
+	float: left;
+	margin: 0.75em 0.75em 0 0.75em; 
+	border-radius: 50%; 
+	width: 5rem; 
+	height: 5rem;
+}
 
 </style>
 <script>
