@@ -321,7 +321,7 @@
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                                    <p>."$pictureText[$i]".</p>
+                                                                    <p>".$pictureText[$i]."</p>
                                                                 </div>
                                                             ");
 
