@@ -499,8 +499,8 @@
 									
 									
 									
-										
-											  if(s1 == "")
+										s1.onchange = function() {
+											if(s1 == "")
 											{
 												console.log("NOT")
 												
@@ -508,6 +508,8 @@
 												console.log("GOT")
 											}
 									
+										}
+											  
 										
 									
 
