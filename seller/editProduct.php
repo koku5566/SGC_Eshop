@@ -536,9 +536,9 @@
                                 $result_variation = mysqli_query($conn, $sql_variation);
                             
                                 if (mysqli_num_rows($result_variation) > 0) {
-                                    $v_variation_1_name = "":
+                                    $v_variation_1_name = "";
                                     $v_variation_1_choice = array();
-                                    $v_variation_2_name = "":
+                                    $v_variation_2_name = "";
                                     $v_variation_2_choice = array();
                                     $v_product_price = array();
                                     $v_product_stock = array();
@@ -610,7 +610,7 @@
                                     </div>
                                     ");
 
-                                    if($v_variation_2_name = "")
+                                    if($v_variation_2_name == "")
                                     {
                                         echo("
                                             <div class=\"input-group mb-3\">
