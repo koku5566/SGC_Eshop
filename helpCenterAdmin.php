@@ -22,7 +22,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Product Review</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -58,8 +58,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		<button>Submit</button>
+		<button class = "btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
@@ -80,6 +79,9 @@
 ?>
 
 <style>
+.bi.bi-star-fill{
+	-webkit-text-fill-color: orange;
+}
 .tqy{
 	font-size:1.32rem;
 	margin: 0 0.22rem;
