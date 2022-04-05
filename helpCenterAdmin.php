@@ -606,10 +606,9 @@
 	position: relative;
 	
 }
-
 .image-container{
-        width: 344px;
-        height: 200px;
+        width: 80px;
+        height: 80px;
         background-color: white;
     }
 
@@ -618,11 +617,11 @@
     }
 
     .image-layer{
-        width: 344px;
-        height: 200px;
+        width: 80px;
+        height: 80px;
         opacity:0.5;
         position:absolute;
-        margin-top: -200px;
+        margin-top: -80px;
     }
 
     .image-tools-delete:hover{
@@ -630,12 +629,11 @@
     }
 
     .image-tools-delete{
-        width: 344px;
-        height: 50px;
+        width: 80px;
+        height: 30px;
         background:grey;
         position:absolute;
-        margin-top: -50px;
-        opacity: 0.5;
+        margin-top: -30px;
     }
 
     .image-tools-delete-icon{
@@ -643,17 +641,17 @@
         justify-content: center;
         display: grid;
         margin-top: 5px;
-        font-size: 40px;
+        font-size: 20px;
     }
 
 
     .image-tools-add{
-        width: 344px;
-        height: 200px;
+        width: 80px;
+        height: 80px;
         background:white;
         opacity:0.5;
         position:absolute;
-        margin-top: -200px;
+        margin-top: -80px;
         z-index:100;
     }
 
@@ -661,8 +659,8 @@
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 80px;
-        font-size: 40px;
+        margin-top: 30px;
+        font-size: 20px;
     }
 
     .custom-file-upload{
@@ -673,6 +671,13 @@
     .imgInp{
         display:none;
     }
+
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+
     .hide{
         display:none;
     }
