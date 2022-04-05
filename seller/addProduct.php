@@ -913,7 +913,7 @@
             {
                 for(var i = 0; i < ShippingDivInp.length; i++)
                 {
-                    ShippingDivInp[i].required = true;
+                    ShippingDivInp[i].required = false;
                 }
                 ShippingDiv.classList.remove("hide");
             }
