@@ -300,9 +300,7 @@
 	position: relative;
 	
 }
-</style>
 
-<style>
 @import "nib";
 
     [draggable] {
@@ -452,7 +450,141 @@
     }
 </style>
 <script>
+// Instantiate Picture Drag
+    var draggable = new DragNSort({
+        container: document.querySelector('.drag-list'),
+        itemClass: 'drag-item',
+        dragStartClass: 'drag-start',
+        dragEnterClass: 'drag-enter'
+    });
+    draggable.init();
 
+    initImages();
+    initVariation();
+
+
+    function rearrangeLabel(){
+        var draggableItem = document.querySelectorAll('.drag-item');
+        var counter=1;
+        var text = "";
+        draggableItem.forEach(item => {
+
+            switch(counter)
+            {
+                case 1:
+                    text = "Cover Picture"
+                    break;
+                case 2:
+                    text = "Picture 1"
+                    break;
+                case 3:
+                    text = "Picture 2"
+                    break;
+                case 4:
+                    text = "Picture 3"
+                    break;
+                case 5:
+                    text = "Picture 4"
+                    break;
+                case 6:
+                    text = "Picture 5"
+                    break;
+                case 7:
+                    text = "Picture 6"
+                    break;
+                case 8:
+                    text = "Picture 7"
+                    break;
+                case 9:
+                    text = "Picture 8"
+                    break;
+            }
+
+            item.getElementsByTagName('p')[0].innerHTML = text;
+            counter++;
+        });
+
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            });
+        });
+
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files
+                if (file) {
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                    img.parentElement.parentElement.classList.add("hide");
+                }
+            });
+        });
+    }
+
+    function initImages()
+    {
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            });
+        });
+
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files;
+
+                var extArr = ["jpg", "jpeg", "png"];
+
+                if (img.files && img.files[0] && img.files.length > 1) {
+                    for (var j = 0,i = 0; i < this.files.length; i++) {
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                        {
+                            j++;
+                        }
+
+                        var ext = img.files[i].name.split('.').pop();
+                        if(j < 9 && extArr.includes(ext))
+                        {
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                        }
+                        else
+                        {
+                            alert("This Image is not a valid format");
+                            img.value = "";
+                            break;
+                        }
+                    }
+                }
+                else if(img.files && img.files[0])
+                {
+                    var ext = img.files[0].name.split('.').pop();
+                    if(extArr.includes(ext))
+                    {
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        img.parentElement.parentElement.classList.add("hide");
+                    }
+                    else{
+                        alert("This Image is not a valid format");
+                        img.value = "";
+                    }
+                }
+            });
+        });
+    }
 	
 
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
