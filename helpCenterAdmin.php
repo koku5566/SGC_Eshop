@@ -176,6 +176,39 @@
                             </div>
                         </div>
 					</div>
+					
+					
+					
+					<?php
+						if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+						
+							echo '<script>
+									var s1 = document.getElementsByClassName("img-thumbnail")[0];
+									var s2 = document.getElementsByClassName("img-thumbnail")[1];
+									var s3 = document.getElementsByClassName("img-thumbnail")[2];
+									var s4 = document.getElementsByClassName("img-thumbnail")[3];
+									var s5 = document.getElementsByClassName("img-thumbnail")[4];
+									
+									for(let i = 1; i <= 5; i++){
+										if(s[i].value != "")
+										{
+											console.log("")
+										}
+									}
+									
+							
+							
+							
+							
+								</script>';
+
+
+						
+						}
+					
+					
+					
+					?>
 			
 			
 			
@@ -442,6 +475,20 @@
             });
         });
     }
+/*******************************************************************************************************************************************/
+									var s1 = document.getElementsByClassName("img-thumbnail")[0];
+									var s2 = document.getElementsByClassName("img-thumbnail")[1];
+									var s3 = document.getElementsByClassName("img-thumbnail")[2];
+									var s4 = document.getElementsByClassName("img-thumbnail")[3];
+									var s5 = document.getElementsByClassName("img-thumbnail")[4];
+									
+									for(let i = 1; i <= 5; i++){
+										if(s[i].value != "")
+										{
+											console.log("s[i] - GOT")
+										}else{console.log("s[i] - NOT")}
+									}
+
 	
 /*
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
