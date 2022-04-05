@@ -145,7 +145,7 @@
                     $variationSKU = $_POST['variationSKU'];
                 }
 
-                $sql_deleteVar = "DELETE FROM product WHERE product_id = '$productId'";
+                $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
                 mysqli_query($conn, $sql_deleteVar);
 
                 for($i = 0; $i < count($variation1NameCol); $i++)
