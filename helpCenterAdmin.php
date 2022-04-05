@@ -53,7 +53,7 @@
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
 			<!----------------------------------------------------------------------------------------------------------------------------->
-			
+			<form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 				<div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
                                 <p class="p-title">Product Images</p>
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-			
+			</form>
 			
 			
 			
