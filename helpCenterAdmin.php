@@ -46,13 +46,13 @@
 				//echo "<div class='alert alert-danger'>NOT</div>";
 			}
 		}
-		for($k = 0; $k<5; $i++){
-			if($gotpic[$k] == "" || empty($gotpic[$k])){				
+		for($k = 0; $k< 5 - count($gotpic); $i++){
+				
 				array_push($gotpic, '');
-			}
+			
 		}
 		
-		for($j = 0; $j < count($gotpic); $j++){
+		for($j = 0; $j <5; $j++){
 			echo "<div class='alert alert-success'>$gotpic[$j]</div>";
 			
 		}
