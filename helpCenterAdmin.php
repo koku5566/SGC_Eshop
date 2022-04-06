@@ -295,7 +295,7 @@
     position: relative;
     width: 1em;
     font-size: 2.2rem;
-    color: red;
+    color: #A31F37;
     cursor: pointer
 	font-weight: bold;
 }
