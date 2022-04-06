@@ -193,7 +193,7 @@
                                                                 echo("<div class=\"Rating\">");
 
                                                                 $calavgrat = $row_1['rating'];
-                                                                if($calavgrat != "")
+                                                                if($calavgrat == "")
                                                                 {
                                                                     echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
                                                                 }
@@ -246,7 +246,7 @@
                                                                 echo("<div class=\"Rating\">");
 
                                                                 $calavgrat = $row_1['rating'];
-                                                                if($calavgrat != "")
+                                                                if($calavgrat == "")
                                                                 {
                                                                     echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
                                                                 }
