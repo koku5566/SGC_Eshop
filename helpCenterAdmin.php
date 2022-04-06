@@ -31,7 +31,8 @@
 			}
 		}
 		
-		
+		$pp = $_POST['rating'];
+		echo "U RATED THIS AMOUNT  - $pp";
 						
 									
 																						
@@ -58,25 +59,9 @@
 <div class="container-fluid" style="width:80%">		
 
 <!------------------------------------------------------------------------------------------------>
-<?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rating'], $_POST['lj']) && !empty($_POST['rating']) && !empty($_POST['lj']) && $_POST['lj'] === 'addd' ){
 
-	
-	$pp = $_POST['rating'];
-	echo "cb - $pp";
-}
-?>
-<h1>Star rating </h1>
-	<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
-<div class="rating"> 
-	<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> 
-	<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-	<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> 
-	<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
-	<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-</div>
-<input type = "submit" value= "addd" name = "lj">
-	</form>
+
+
 <!------------------------------------------------------------------------------------------------>
 
 
@@ -120,11 +105,22 @@
 					<i class="fa fa-star tqy rrting" id = "rr4"></i>
 					<i class="fa fa-star tqy rrting" id = "rr5"></i>
 					</div>
+					
+				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">	
+					<div class="rating"> 
+						<input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label> 
+						<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+						<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> 
+						<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
+						<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+					</div>
+					
+					
 			
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
-				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">
+				
 				<div class="card-body">
                         <div class="row">
                            
