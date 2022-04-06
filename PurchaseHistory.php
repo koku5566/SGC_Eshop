@@ -96,6 +96,7 @@ $result_2 = $stmt_2->get_result();
             <?php 
             }?>
     </div>
+</div>
    
    <!-- /.container-fluid -->
 
