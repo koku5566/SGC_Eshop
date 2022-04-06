@@ -68,7 +68,7 @@
 																						
 		$sql = "INSERT INTO `product`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
-				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$gotpic[0],$$gotpic[1],$$gotpic[2],$$gotpic[3],$$gotpic[4]); 	//s=string , d=decimal value, i=integer
+				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$gotpic[0],$gotpic[1],$gotpic[2],$gotpic[3],$gotpic[4]); 	//s=string , d=decimal value, i=integer
 		
 				mysqli_stmt_execute($stmt);
 			
