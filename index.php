@@ -180,12 +180,18 @@
                                                                 echo("</div>");
                                                                 //End of Price Division
 
+                                                                
+
                                                                 //Start Stock Division
                                                                 echo("     
                                                                                 <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
                                                                                         <div class=\"col-xl-6\">
                                                                 "):
+                                                                
+                                                                //Start Rating Division
+                                                                echo("<div class=\"Rating\">");
+
                                                                 $calavgrat = $row_1['rating'];
                                                                 $check = true;
                                                                 for($i = 0; $i<5; $i++){
@@ -203,6 +209,9 @@
                                                                     $calavgrat -= 1;
                                                                     }
                                                                 }
+                                                                echo("</div>");
+                                                                //End of Rating Division
+
                                                                 echo("  
                                                                                         </div>
                                                                                         <div class=\"col-xl-6\">
