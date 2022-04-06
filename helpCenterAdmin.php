@@ -52,8 +52,10 @@
 				array_push($gotpic, '');
 		}
 		for($j = 0; $j <5; $j++){
-			echo "<div class='alert alert-success'>$gotpic[$j]</div>";
-			echo "<div class='alert alert-danger'>$tempNamepic[$j]</div>";
+			echo "<div class='alert alert-success'>$gotpic[$j]</div>";			
+		}
+		for($t = 0; $t <count($tempNamepic); $t++){
+			echo "<div class='alert alert-danger'>$tempNamepic[$t]</div>";			
 		}
 		
 		
