@@ -5,9 +5,11 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['rating']) && $_POST['rrsub'] === 'Submit'){
 		
-		
+		if (isset($_POST['commentsec'])){
+			$commentsec = 
+		}
 		
 		$ss1 = $_FILES['img']['name'][0];
 		$ss2 = $_FILES['img']['name'][1];
@@ -117,7 +119,7 @@
 					
 					
 			
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
+			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
 				
