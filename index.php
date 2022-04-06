@@ -186,7 +186,7 @@
                                                                 echo("     
                                                                                 <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
-                                                                                        <div class=\"col-xl-6\">
+                                                                                        <div class=\"col-xl-7\">
                                                                 ");
 
                                                                 //Start Rating Division
@@ -214,7 +214,7 @@
 
                                                                 echo("  
                                                                                         </div>
-                                                                                        <div class=\"col-xl-6\">
+                                                                                        <div class=\"col-xl-5\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                         </div>
                                                                                     </div>
@@ -233,7 +233,7 @@
                                                                 echo("     
                                                                                 <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
-                                                                                        <div class=\"col-xl-6\">
+                                                                                        <div class=\"col-xl-7\">
                                                                 ");
 
                                                                 //Start Rating Division
@@ -261,7 +261,7 @@
 
                                                                 echo("  
                                                                                         </div>
-                                                                                        <div class=\"col-xl-6\">
+                                                                                        <div class=\"col-xl-5\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                         </div>
                                                                                     </div>
