@@ -6,7 +6,7 @@
 ?>
 <?php
 //Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
-$product = "P000001";
+$product = $_SESSION['productID'];
 //$_SESSION['product_ID']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
