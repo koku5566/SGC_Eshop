@@ -35,14 +35,14 @@
 						
 									
 																						
-		
+		/*
 		if($_SESSION['imag1'] == true){
 		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
 	}else{
 		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
 	}
 
-		
+		*/
 		
 		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
 		
@@ -435,6 +435,7 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+				img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
