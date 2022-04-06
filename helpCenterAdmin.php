@@ -57,13 +57,12 @@
 <div class="container-fluid" style="width:80%">		
 
 
-
-<div class="container">
-  <span id="rateMe1"></span>
-</div>
-<!-- rating.js file -->
-<script src="js/addons/rating.js"></script>
-
+<template>
+  <div>
+    <b-form-rating v-model="value"></b-form-rating>
+    <p class="mt-2">Value: {{ value }}</p>
+  </div>
+</template>
 
 
 
@@ -515,7 +514,13 @@
 */
 	// Rating Initialization
 
-  $('#rateMe1').mdbRate();
+   export default {
+    data() {
+      return {
+        value: null
+      }
+    }
+  }
 
 										
 											  
