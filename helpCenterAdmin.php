@@ -254,6 +254,9 @@
 .fa-star:hover{
 	color: pink;
 }
+.fa-star{
+	color: none;
+}
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange;
 }
