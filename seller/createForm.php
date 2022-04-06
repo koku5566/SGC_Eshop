@@ -50,7 +50,31 @@
                     }		
                     mysqli_stmt_close($stmt);
             }
-          }
+    }
+
+
+    //--------------delete form element from table-------------------------------
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["deleteForm"])){
+        $formElementID = mysqli_real_escape_string($conn, SanitizeString($_POST["deleteFormID"]));
+        $sql = "DELETE FROM `formElement` WHERE  `form_element_id`=?";
+
+        if($stmt = mysqli_prepare($conn, $sql)){
+            mysqli_stmt_bind_param($stmt, 'i',$formElementID); 
+        
+            mysqli_stmt_execute($stmt);
+          
+            if(mysqli_stmt_affected_rows($stmt) == 1)	
+            {
+              echo "<script>alert('Delete successfully');</script>";
+            }
+            else
+            {
+              echo "<script>alert('Fail to Delete');</script>";
+            }
+        
+            mysqli_stmt_close($stmt);
+        }
+    }
 ?>
 
 <title>Create Form</title>
@@ -273,6 +297,7 @@
                     <div class="col-10"><input class="form-control" type="text" placeholder="Option (Separate selection with comma (,) )" name="optionForList" id="optionInput" style="display:none;"></div>
                     <div class="col-2"><button class="btn btn-primary" type="submit" name="addFormElementSubmit">Add Field</button></div>
                 </div>
+            </form>
                 <div>
                     <div class="table-responsive">
                         <table class="table">
@@ -295,11 +320,14 @@
 
                                     echo("
                                        <tr>
+                                        <form action = \"<?php echo ".$_SERVER['PHP_SELF'].";?>\" method = \"POST\" enctype=\"multipart/form-data\">
                                         <td>".$row['field_name']."</td>
                                         <td>".$row['element_type']."</td>
                                         <td>".$row['required']."</td>
                                         <td>".$row['selection']."</td>
-                                        <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#editFormElement_modal\" title=\"Delete\" id=\"".$row['form_id']."\"><i class=\"fa fa-trash\"></i></button></td>
+                                        <input type=\"hidden\" value=\"".$row['form_element_id']."\" name=\"deleteFormID\"></input>
+                                        <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"submit\" title=\"Delete\" id=\"".$row['form_element_id']."\" name=\"deleteForm\"><i class=\"fa fa-trash\"></i></button></td>
+                                        </form>
                                         </tr>
                                     ");
                                 }
@@ -313,9 +341,9 @@
             </section>
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                 <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Submit</button></div>
+                <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Complete</button></div>
             </div>
-        </form>
+        
     </div>
 
 <!-- Below template -->
