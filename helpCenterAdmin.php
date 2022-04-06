@@ -83,13 +83,13 @@
 						<h3>RM 349.00</h3>									
 					</div>
 					
-					
+					<!-- bi bi-star-fill-->
 					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star tqy"></i>
+					<i class="bi bi-star tqy rrting" id = "rr1"></i>
+					<i class="bi bi-star tqy rrting" id = "rr2"></i>
+					<i class="bi bi-star tqy rrting" id = "rr3"></i>
+					<i class="bi bi-star tqy rrting" id = "rr4"></i>
+					<i class="bi bi-star tqy rrting" id = "rr5"></i>
 					</div>
 			
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
@@ -251,6 +251,9 @@
 ?>
 
 <style>
+.rrting:hover{
+	
+}
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange;
 }
@@ -487,22 +490,10 @@
         });
     }
 /*******************************************************************************************************************************************/
-					var s1 = document.getElementById("view1").getAttribute("src");
-					var s2 = document.getElementById("view2").getAttribute("src");
-					var s3 = document.getElementById("view3").getAttribute("src");
-					var s4 = document.getElementById("view4").getAttribute("src");
-					var s5 = document.getElementById("view5").getAttribute("src");
-					
-					if(s1 == "")
-					{
-						console.log("NOT")
-						<?php $_SESSION['imag1'] = false;?>
-						
-					}else{												
-						console.log("GOT")
-						<?php $_SESSION['imag1'] = true;?>
-					}					
-									
+										
+	$(".rrting").on("mouseover", function () {
+		$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
+	});								
 										
 											  
 										
