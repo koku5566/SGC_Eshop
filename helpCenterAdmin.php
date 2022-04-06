@@ -9,15 +9,15 @@
 		
 		
 		$commentsec = isset($_POST['commentsec']) ? $_POST['commentsec'] : '';
-		
-		
+		$ratingsec = $_POST['rating'];
+		/*
 		$ss1 = $_FILES['img']['name'][0];
 		$ss2 = $_FILES['img']['name'][1];
 		$ss3 = $_FILES['img']['name'][2];
 		$ss4 = $_FILES['img']['name'][3];
 		$ss5 = $_FILES['img']['name'][4];
 		$ss6 = $_FILES['img']['name'][5];
-		
+		*/
 		//$img1 = echo "<script>document.getElementById('view1').src</script>";
 		
 		
@@ -38,29 +38,28 @@
 		
 		
 		$gotpic = [];
+		$tempNamepic = [];
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
 				//echo "<div class='alert alert-success'>GOT</div>";
 				array_push($gotpic, $_FILES['img']['name'][$i]);
+				array_push($tempNamepic, $_FILES['img']['tmp_name'][$i]);
 			}else{
 				//echo "<div class='alert alert-danger'>NOT</div>";
 			}
 		}
 		for($k = 0; $k< 5 - count($gotpic); $i++){
-				
 				array_push($gotpic, '');
-			
 		}
-		
 		for($j = 0; $j <5; $j++){
 			echo "<div class='alert alert-success'>$gotpic[$j]</div>";
-			
+			echo "<div class='alert alert-danger'>$tempNamepic[$j]</div>";
 		}
 		
 		
 		
-		$pp = $_POST['rating'];
-		echo "RATING  - $pp";
+		
+		echo "RATING  - $ratingsec <br>";
 		echo "COMMENT  - $commentsec";					
 									
 																						
