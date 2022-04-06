@@ -320,7 +320,7 @@
 
                                     echo("
                                        <tr>
-                                        <form action = \"<?php echo ".$_SERVER['PHP_SELF'].";?>\" method = \"POST\" enctype=\"multipart/form-data\">
+                                        <form action = <?php echo ".$_SERVER['PHP_SELF'].";?> method = \"POST\" enctype=\"multipart/form-data\">
                                         <td>".$row['field_name']."</td>
                                         <td>".$row['element_type']."</td>
                                         <td>".$row['required']."</td>
