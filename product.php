@@ -6,9 +6,9 @@
 ?>
 <?php
 //Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
-//$product = $_SESSION['productID'];
+//$product = $_SESSION['productID'];	//Maverick if u want to change the ratting uncomment this then
 
-$product = "P000001";
+$product = "P000001";	//Comment this out jiu can le
 //$_SESSION['product_ID']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	$selectedPID = SanitizeString($_POST['pid']);
