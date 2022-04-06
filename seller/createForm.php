@@ -311,6 +311,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <?php
                             $sql = "SELECT * FROM `formElement` WHERE `event_id` = {$_SESSION['eventID']}";
                             $result = mysqli_query($conn, $sql);
@@ -320,20 +321,19 @@
 
                                     echo("
                                        <tr>
-                                        <form action = \"<?php echo ".$_SERVER['PHP_SELF'].";?>\" method = \"POST\" enctype=\"multipart/form-data\">
                                         <td>".$row['field_name']."</td>
                                         <td>".$row['element_type']."</td>
                                         <td>".$row['required']."</td>
                                         <td>".$row['selection']."</td>
                                         <input type=\"hidden\" value=\"".$row['form_element_id']."\" name=\"deleteFormID\"></input>
                                         <td><button class=\"btn btn-light btn-sm selectBtn\" type=\"submit\" title=\"Delete\" id=\"".$row['form_element_id']."\" name=\"deleteForm\"><i class=\"fa fa-trash\"></i></button></td>
-                                        </form>
                                         </tr>
                                     ");
                                 }
                             }
 
                         ?>
+                        </form>
                             </tbody>
                         </table>
                     </div>
