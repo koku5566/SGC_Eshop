@@ -165,7 +165,7 @@ $result = $stmt->get_result();
                                         <div class="col-2"><?php echo $orderStatus ?></div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?orderid=<?php echo $row['order_id'];?>">Check details</a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
                                         </div>
                                     </div>
                                 </div>
