@@ -134,12 +134,13 @@
                                                     //Fetch each product information
                                                     $id = $row['product_id'];
                                                     $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                    C.max_price,D.min_price,F.total_stock FROM `product` AS A 
+                                                    C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
                                                     LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                     LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                     LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
                                                     LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-                                                    WHERE A.product_id = '$id' 
+                                                    LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+                                                    WHERE A.product_id = '$id'  as
                                                     LIMIT 1";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
@@ -162,6 +163,8 @@
                                                                                 </div>
                                                                                 <div class=\"Price\">
                                                             ");
+
+                                                            
                                                             //Pricing
                                                             //If got variation
                                                             if($row_1['product_variation'] == 1)
@@ -174,9 +177,36 @@
                                                                 {
                                                                     echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
                                                                 }
+                                                                echo("</div>");
+                                                                //End of Price Division
+
+                                                                //Start Rating Division
+                                                                echo("<div class=\"Rating\">");
+
+                                                                $calavgrat = $row_1['rating'];
+                                                                $check = true;
+                                                                for($i = 0; $i<5; $i++){
+                                                                    if(round($calavgrat) && $check == true){
+                                                                    echo "<i class=\"fa fa-star\"></i>";
+                                                                    $calavgrat -= 1;
+                                                                    }else{
+                                                                    if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                        echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                    }
+                                                                    else{
+                                                                        echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                    }
+                                                                    $check = false;
+                                                                    $calavgrat -= 1;
+                                                                    }
+                                                                }
                                                                 
-                                                                echo("
-                                                                                </div>
+                                                                echo("</div>");
+                                                                //End of Rating Division
+
+                                                                //Start Stock Division
+                                                                echo("     
+                                                                                <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
                                                                                         <div class=\"col-xl-6\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
@@ -185,15 +215,20 @@
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                         </div>
                                                                                     </div>
+                                                                                </div>
                                                                 ");
+                                                                //End of Stock Division
                                                             }
                                                             //If no variation
                                                             else
                                                             {
                                                                 echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
+                                                                echo("</div>");
+                                                                //End of Price Division
 
+                                                                //Start Stock Division
                                                                 echo("
-                                                                                </div>
+                                                                                <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
                                                                                         <div class=\"col-xl-6\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
@@ -202,8 +237,20 @@
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
                                                                                         </div>
                                                                                     </div>
+                                                                                </div>
                                                                 ");
+                                                                //End of Stock Division
                                                             }
+
+                                                            //Start of Location Division
+                                                            //$location = $row_1['location'];
+                                                            $location = "Subang Jaya";
+                                                            echo("
+                                                                <div class=\"Location\">
+                                                                    <span style=\"font-size: 10pt; color:grey;\" >$location</span>
+                                                                </div>
+                                                            ");
+                                                            //End of Location Division
 
                                                             echo("
                                                                                         
