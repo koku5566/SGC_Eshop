@@ -64,11 +64,20 @@
 		
 		//echo "RATING  - $ratingsec <br>";
 		//echo "COMMENT  - $commentsec";					
-									
+			
+			$pc1 = $gotpic[0];
+			$pc2 = $gotpic[1];
+			$pc3 = $gotpic[2];
+			$pc4 = $gotpic[3];
+			$pc5 = $gotpic[4];
+
+
+
+			
 																						
 		$sql = "INSERT INTO `product`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
-				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$gotpic[0],$gotpic[1],$gotpic[2],$gotpic[3],$gotpic[4]); 	//s=string , d=decimal value, i=integer
+				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$pc1,$pc2,$pc3,$pc4,$pc5); 	//s=string , d=decimal value, i=integer
 		
 				mysqli_stmt_execute($stmt);
 			
