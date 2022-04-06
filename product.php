@@ -371,14 +371,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										$check = true;
 										  for($i = 0; $i<5; $i++){
 											if(round($calavgrat) && $check == true){
-											  echo '<i class="bi bi-star-fill tqy"></i>';
+											  echo '<i class="fa fa-star tqy"></i>';
 											  $calavgrat -= 1;
 											}else{
 											   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-												echo '<i class="bi bi-star-half tqy"></i>';
+												echo '<i class="fa fa-star-half-o tqy"></i>';
 											  }
 											  else{
-												echo '<i class="bi bi-star tqy"></i>';
+												echo '<i class="fa fa-star ratingStar tqy"></i>';
 											  }
 											  $check = false;
 											  $calavgrat -= 1;
@@ -510,6 +510,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	}
 	.tqy{
 		font-size: 1.2rem;
+		color: #A31F37
 	}
 	.atss{
 		max-width: 25rem;
