@@ -297,6 +297,7 @@
     font-size: 2.2rem;
     color: red;
     cursor: pointer
+	font-weight: bold;
 }
 
 .rating>label::before {
