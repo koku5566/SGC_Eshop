@@ -161,6 +161,7 @@
 
                                             //Check for Main Category
                                             $sql = "SELECT * FROM product WHERE product_name LIKE '%$SearchBy%' product_status = 'A' ";
+                                            echo($sql);
                                             $result = mysqli_query($conn, $sql);
                                 
                                             if (mysqli_num_rows($result) > 0) {
