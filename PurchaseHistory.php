@@ -2,8 +2,27 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-$sql = "SELECT
+<?php 
+define("HOST","localhost");
+define("USERNAME","sgcprot1_SGC_ESHOP");
+define("PASSWORD","bXrAcmvi,B#U");
+define("DATABASE","sgcprot1_SGC_ESHOP");
+
+//create database connection
+$conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
+
+if(!$conn)
+{
+    die("Connection Failed".mysqli_connect_error());
+}
+else
+{
+    if(!isset($_SESSION)){
+        session_start();
+    }
+}
+
+$sql_2 = "SELECT
 myOrder.order_id,
 myOrder.prod_qty,
 product.product_name,
@@ -19,11 +38,9 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id";
-
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-
+$stmt_2 = $conn->prepare($sql_2);
+$stmt_2->execute();
+$result_2 = $stmt_2->get_result();
 
 
 ?>
@@ -45,7 +62,7 @@ $result = $stmt->get_result();
         </div>
         <div class="tab-panel">
         <?php 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result_2->fetch_assoc()) {
         ?>
             <div class="card" style="text-align: justify;width: 60%;margin-left: 20%;">
                 <div class="card-header">
