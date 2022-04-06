@@ -229,9 +229,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 														for($i=0; $i<5; $i++){
 															if(isset($c9) && !empty ($c9)){
 																if($i < $c9){
-																	 echo '<i class="fa fa-star"></i> ';
+																	 echo '<i class="fa fa-star tqy"></i> ';
 																 }else{
-																	 echo '<i class="fa fa-star ratingStar"></i> ';
+																	 echo '<i class="fa fa-star ratingStar tqy"></i> ';
 																 }
 															}else{
 																echo '';
@@ -371,14 +371,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										$check = true;
 										  for($i = 0; $i<5; $i++){
 											if(round($calavgrat) && $check == true){
-											  echo '<i class="fa fa-star tqy"></i>';
+											  echo '<i class="fa fa-star tqy" sytle = "font-size: 1.2rem;"></i>';
 											  $calavgrat -= 1;
 											}else{
 											   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-												echo '<i class="fa fa-star-half-o tqy"></i>';
+												echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
 											  }
 											  else{
-												echo '<i class="fa fa-star ratingStar tqy"></i>';
+												echo '<i class="fa fa-star ratingStar tqy" sytle = "font-size: 1.2rem;"></i>';
 											  }
 											  $check = false;
 											  $calavgrat -= 1;
@@ -509,7 +509,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 		height: 5rem;
 	}
 	.tqy{
-		font-size: 1.2rem;
 		color: #A31F37
 	}
 	.atss{
