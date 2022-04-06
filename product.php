@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 </div>
                             </div>
                             <!-- Button -->
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col">
                                     <a href="#" class="btn btn-primary">
                                         <span class="text">Add To Cart</span>
@@ -172,15 +172,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div class="row">
                                 <div class="col-xl-6 col-md-6">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <img class="img-thumbnail" src="data:image/jpeg;base64,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">
                                         </div>
-                                        <div class="col-9 sidebar-brand-text" style="font-size:2rem;">Offical Apple Store</div>
+                                        <div class="col-8 sidebar-brand-text mt-4" style="font-size:2rem;">Offical Apple Store</div>
                                     </div>
 
 
                                 </div>
-                                <div class="col-xl-4 col-md-4">
+                                <div class="col-xl-4 col-md-4 mt-4">
                                     <div class="row">
                                         <div class="col list-parent"> 
                                             <i class="fa fa-star"></i>
@@ -197,40 +197,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                     </div>
                                 </div>
                                 <div class="col-xl-2 col-md-2" style="text-align:center;">
-                                    <a href="#" class="btn btn-primary" style="margin-top: 20%;">
+                                    <a href="#" class="btn btn-primary mt-4">
                                         <span class="text">View Shop</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-					<div class="row mb-5">
-						<div class="col-xl-2 col-lg-2 col-sm-2">
-							<div class="image-container shadow" style="">
-								<img class="" style="object-fit:contain;width:100%;height:100%" src="data:image/png;base64,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" alt="Card image cap">
-							</div>
-							<div class="viewBtn">
-								<button type="submit" style="background-color: #1A2C42; color: white; border: none; padding: 5px 10px;">View</button>
-							</div>
-							<div class="col-xl-10">
-								<div class="row">
-									<div class="col list-parent"> 
-										<i class="fa fa-star"></i>
-										<span>4.5</span>
-									</div>
-									<div class="col list-parent"> 
-										<i class="fa fa-gift"></i>
-										<span>120</span>
-									</div>
-									<div class="col list-parent"> 
-										<i class="fa fa-calendar"></i>
-										<span>2021</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
                     <!--CHEONG KIT MIN - Review & Rating Section-------------------------------------------------------------------------------->
 						<!-- Modal -->
