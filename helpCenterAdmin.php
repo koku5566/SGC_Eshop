@@ -85,11 +85,11 @@
 					
 					<!-- bi bi-star-fill-->
 					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
-					<i class="bi bi-star tqy rrting" id = "rr1"></i>
-					<i class="bi bi-star tqy rrting" id = "rr2"></i>
-					<i class="bi bi-star tqy rrting" id = "rr3"></i>
-					<i class="bi bi-star tqy rrting" id = "rr4"></i>
-					<i class="bi bi-star tqy rrting" id = "rr5"></i>
+					<i class="fa fa-star tqy rrting" id = "rr1"></i>
+					<i class="fa fa-star tqy rrting" id = "rr2"></i>
+					<i class="fa fa-star tqy rrting" id = "rr3"></i>
+					<i class="fa fa-star tqy rrting" id = "rr4"></i>
+					<i class="fa fa-star tqy rrting" id = "rr5"></i>
 					</div>
 			
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
@@ -492,7 +492,7 @@
 /*******************************************************************************************************************************************/
 										
 	$(".rrting").on("mouseover", function () {
-		$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
+		//$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
 	});								
 										
 											  
