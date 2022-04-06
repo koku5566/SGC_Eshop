@@ -24,7 +24,7 @@
 		//echo $img1;
 		
 		
-		
+		/*
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
 				echo "<div class='alert alert-success'>GOT</div>";
@@ -32,6 +32,26 @@
 				echo "<div class='alert alert-danger'>NOT</div>";
 			}
 		}
+		
+		*/
+		
+		
+		
+		$gotpic = [];
+		for($i = 0; $i<5; $i++){
+			if($_FILES['img']['name'][$i] !== ""){
+				echo "<div class='alert alert-success'>GOT</div>";
+				array_push($gotpic, $_FILES['img']['name'][$i]);
+			}else{
+				echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		
+		for($j = 0; $j < count($gotpic); $j++){
+			echo "<div class='alert alert-success'>$gotpic[$j]</div>";
+		}
+		
+		
 		
 		$pp = $_POST['rating'];
 		echo "RATING  - $pp";
