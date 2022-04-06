@@ -153,15 +153,95 @@
                                         <div class="row">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
+                                            /*
                                             $SearchBy = $_GET['Search'];
                                             $SortBy = $_GET['SortBy'];
                                             $Rating = $_GET['Rating'];
-                                            $Price = $_GET['Price'];
-                                            $ShippingOption = $_GET['ShippingOption'];
+                                            $minPrice = $_GET['minPrice'];
+                                            $maxPrice = $_GET['maxPrice'];
+                                            $StandardDelivery = $_GET['chkStandardDelivery'];
+                                            $SelfCollection = $_GET['chkSelfCollection'];
+                                            */
 
                                             //Check for Main Category
-                                            $sql = "SELECT * FROM product WHERE product_name LIKE '%$SearchBy%' AND product_status = 'A' ";
-                                            echo($sql);
+                                            $sql = "SELECT A.product_id, R.rating FROM product AS A 
+                                            LEFT JOIN (SELECT DISTINCT(product_id), rating FROM reviewRating t1 WHERE rating = (SELECT MIN(rating) FROM reviewRating WHERE product_id = t1.product_id)) AS R ON A.product_id = R.product_id 
+                                            WHERE A.product_status = 'A' ";
+
+                                            $id = $row['product_id'];
+                                            $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
+                                            C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
+                                            LEFT JOIN variation AS B ON A.product_id = B.product_id 
+                                            LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+                                            LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+                                            LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+                                            LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+                                            WHERE A.product_id = '$id'
+                                            LIMIT 1";
+
+                                            if(isset($_GET['Search']))
+                                            {
+                                                $SearchBy = $_GET['Search'];
+                                                $sql .= "AND product_name LIKE '%$SearchBy%' ";
+                                            }
+
+                                            if(isset($_GET['chkStandardDelivery']))
+                                            {
+                                                $sql .= "AND product_standard_delivery = '1' ";
+                                            }
+
+                                            if(isset($_GET['chkSelfCollection']))
+                                            {
+                                                $sql .= "AND product_self_collect = '1' ";
+                                            }
+
+                                            if(isset($_GET['Rating']))
+                                            {
+                                                $sql .= "AND rating >= $Rating ";
+                                            }
+
+                                            if(isset($_GET['minPrice'],$_GET['maxPrice']))
+                                            {
+                                                $minPrice = $_GET['minPrice'];
+                                                $maxPrice = $_GET['maxPrice'];
+                                                $sql .= "AND (product_price >= $minPrice AND product_price <= $maxPrice) ";
+                                            }
+                                            else if(isset($_GET['maxPrice']))
+                                            {
+                                                $maxPrice = $_GET['maxPrice'];
+                                                $sql .= "AND (product_price <= $maxPrice) ";
+                                            }
+                                            else if(isset($_GET['minPrice']))
+                                            {
+                                                $maxPrice = $_GET['minPrice'];
+                                                $sql .= "AND (product_price >= $minPrice) ";
+                                            }
+
+                                            if(isset($_GET['SortBy']))
+                                            {
+                                                $SortBy = $_GET['SortBy'];
+                                                $key = "";
+                                                switch($SortBy)
+                                                {
+                                                    case "Latest" :
+                                                        $sql .= " ORDER BY product_id DESC";
+                                                        break;
+                                                    case "Rating" :
+                                                        $sql .= " ORDER BY product_id ACS";
+                                                        break;
+                                                    case "Sold" :
+                                                        $sql .= " ORDER BY product_sold ASC";
+                                                        break;
+                                                    case "Price" :
+                                                        $sql .= " ORDER BY product_price ASC";
+                                                        break;
+                                                    default:
+                                                        
+                                                        break;
+                                                }
+                                                
+                                            }
+
                                             $result = mysqli_query($conn, $sql);
                                 
                                             if (mysqli_num_rows($result) > 0) {
