@@ -56,6 +56,21 @@
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 
+
+
+<div class="container">
+  <span id="rateMe1"></span>
+</div>
+<!-- rating.js file -->
+<script src="js/addons/rating.js"></script>
+
+
+
+
+
+
+
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Launch demo modal
 </button>
@@ -497,8 +512,11 @@
 	$(".rrting").on("mouseover", function () {
 		$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
 	});	
-
-*/	
+*/
+	// Rating Initialization
+$(document).ready(function() {
+  $('#rateMe1').mdbRate();
+});
 										
 											  
 										
