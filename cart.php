@@ -156,7 +156,7 @@
                    FROM `cart`
                    JOIN `product`
                    ON product.product_id = cart.product_ID
-                   WHERE product.product_id = 'P000042'";
+                   WHERE product.product_id = 'P000057'";
        
                 $querySJ = mysqli_query($conn, $sql);
                    $i=0;
