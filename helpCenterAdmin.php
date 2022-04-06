@@ -84,9 +84,11 @@
 				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 				{
 					echo "<script>alert('Insert successfully');</script>";
+					/*
 					for($r = 0; $r< count($tempNamepic), $r++){
 						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 					}
+					*/
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
 							SET a.rr_id = concat('RR', b.id)
 							WHERE a.id = b.id;";
