@@ -251,8 +251,8 @@
 ?>
 
 <style>
-.rrting:hover{
-	
+.fa-star:hover{
+	color: pink;
 }
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange;
@@ -490,10 +490,12 @@
         });
     }
 /*******************************************************************************************************************************************/
-										
+		/*								
 	$(".rrting").on("mouseover", function () {
-		//$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
-	});								
+		$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
+	});	
+
+*/	
 										
 											  
 										
