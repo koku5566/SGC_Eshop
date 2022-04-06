@@ -187,8 +187,8 @@
                                                                                 <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
                                                                                         <div class=\"col-xl-6\">
-                                                                "):
-                                                                
+                                                                ");
+
                                                                 //Start Rating Division
                                                                 echo("<div class=\"Rating\">");
 
@@ -230,11 +230,36 @@
                                                                 //End of Price Division
 
                                                                 //Start Stock Division
-                                                                echo("
+                                                                echo("     
                                                                                 <div class=\"Stock\">
                                                                                     <div class=\"row\" style=\"height: 40px;\">
                                                                                         <div class=\"col-xl-6\">
-                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
+                                                                ");
+
+                                                                //Start Rating Division
+                                                                echo("<div class=\"Rating\">");
+
+                                                                $calavgrat = $row_1['rating'];
+                                                                $check = true;
+                                                                for($i = 0; $i<5; $i++){
+                                                                    if(round($calavgrat) && $check == true){
+                                                                    echo "<i class=\"fa fa-star\"></i>";
+                                                                    $calavgrat -= 1;
+                                                                    }else{
+                                                                    if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                        echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                    }
+                                                                    else{
+                                                                        echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                    }
+                                                                    $check = false;
+                                                                    $calavgrat -= 1;
+                                                                    }
+                                                                }
+                                                                echo("</div>");
+                                                                //End of Rating Division
+
+                                                                echo("  
                                                                                         </div>
                                                                                         <div class=\"col-xl-6\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
