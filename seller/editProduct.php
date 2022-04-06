@@ -673,6 +673,14 @@
                                     }
                                 }   
                             }
+                            else
+                            {
+                                echo("
+                                    <div class=\"input-group mb-3\">
+                                        <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                    </div>
+                                ");
+                            }
                             ?>
                             
                         </div>
