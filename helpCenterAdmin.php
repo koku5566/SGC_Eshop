@@ -5,7 +5,49 @@
 
 
 <?php
-	
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+		
+		
+		
+		$ss1 = $_FILES['img']['name'][0];
+		$ss2 = $_FILES['img']['name'][1];
+		$ss3 = $_FILES['img']['name'][2];
+		$ss4 = $_FILES['img']['name'][3];
+		$ss5 = $_FILES['img']['name'][4];
+		$ss6 = $_FILES['img']['name'][5];
+		
+		//$img1 = echo "<script>document.getElementById('view1').src</script>";
+		
+		
+		//echo $img1;
+		
+		
+		
+		for($i = 0; $i<5; $i++){
+			if($_FILES['img']['name'][$i] !== ""){
+				echo "<div class='alert alert-success'>GOT</div>";
+			}else{
+				echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		
+		
+						
+									
+																						
+		/*
+		if($_SESSION['imag1'] == true){
+		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
+	}else{
+		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
+	}
+
+		*/
+		
+		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
+		
+		
+	}
    
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -22,7 +64,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Product Review</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -33,40 +75,169 @@
 		<div id = "modalResult" style = "height: 100%"></div>
 		-->
         <div style="height: 100%">
-					
+				<!--CONCAT at 90 -->
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
 						<h6>Model: WISP510</h6>
 						<h3>RM 349.00</h3>									
 					</div>
 					
 					
-					<div style="margin-bottom: 0.1em;">
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star-fill"></i>
-					<i class="bi bi-star"></i>
+					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star-fill tqy"></i>
+					<i class="bi bi-star tqy"></i>
 					</div>
-			<textarea placeholder = "Enter Message..."></textarea>		
 			
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
 			
+			<!---------------------------------------------------------------------------------------------------------------------->
+				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">
+				<div class="card-body">
+                        <div class="row">
+                           
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                        <div class="drag-list">
+                                            <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                                
+                                                <div style="padding-bottom: .625rem;display:flex">
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view1">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 1</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view2">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 2</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view3">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 3</p>
+                                                    </div>
+                                                    <div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view4">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 4</p>
+                                                    </div>
+													<div class="drag-item" draggable="true">
+                                                        <div class="image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" id = "view5">
+                                                            <div class="image-layer">
+                                                                
+                                                            </div>
+                                                            <div class="image-tools-delete hide">
+                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                            </div>
+                                                            <div class="image-tools-add">
+                                                                <label class="custom-file-upload">
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
+                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>Picture 5</p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
 					
+					
+					
+					<?php
+						if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+						
+							
+
+						
+						}
+					
+					
+					
+					?>
+			
+			
+			
+			<!----------------------------------------------------------------------------------------------------------------------------->	
+			
 						
 
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		<button>Submit</button>
+		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
+	  </form>
     </div>
   </div>
 </div>
 </div>
 
-       <h2>JUST SOME SPACE</h2>
+       <h2>JUST SOME SPACE nani da fck</h2>
        <h2>JUST SOME SPACE</h2> 
        <h2>JUST SOME SPACE</h2>                              
        <h2>JUST SOME SPACE</h2> 
@@ -80,6 +251,13 @@
 ?>
 
 <style>
+.bi.bi-star-fill{
+	-webkit-text-fill-color: orange;
+}
+.tqy{
+	font-size:1.32rem;
+	margin: 0 0.22rem;
+}
 .productpic{
 	display: block; 
 	float: left;
@@ -97,21 +275,247 @@
 	margin-top: 0.5 rem;
 }
 .namestar{
-	min-height: 6rem;
+	min-height: 7.5rem;
 	padding: auto;
 	position: relative;
 	
 }
+.image-container{
+        width: 80px;
+        height: 80px;
+        background-color: white;
+    }
+
+    .image-layer:hover ~ .image-tools-delete{
+        display:block;
+    }
+
+    .image-layer{
+        width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+    }
+
+    .image-tools-delete:hover{
+        display:block;
+    }
+
+    .image-tools-delete{
+        width: 80px;
+        height: 30px;
+        background:grey;
+        position:absolute;
+        margin-top: -30px;
+    }
+
+    .image-tools-delete-icon{
+        color: white;
+        justify-content: center;
+        display: grid;
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+
+    .image-tools-add{
+        width: 80px;
+        height: 80px;
+        background:white;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
+        z-index:100;
+    }
+
+    .image-tools-add-icon{
+        color: black;
+        justify-content: center;
+        display: grid;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .custom-file-upload{
+        width:100%;
+        height:100%;
+    }
+
+    .imgInp{
+        display:none;
+    }
+
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+
+    .hide{
+        display:none;
+    }
 </style>
 <script>
 
-	
 
+    initImages();
+    //initVariation();
+
+
+    function rearrangeLabel(){
+        var draggableItem = document.querySelectorAll('.drag-item');
+        var counter=1;
+        var text = "";
+        draggableItem.forEach(item => {
+
+            switch(counter)
+            {
+                case 1:
+                    text = "Cover Picture"
+                    break;
+                case 2:
+                    text = "Picture 1"
+                    break;
+                case 3:
+                    text = "Picture 2"
+                    break;
+                case 4:
+                    text = "Picture 3"
+                    break;
+                case 5:
+                    text = "Picture 4"
+                    break;
+                case 6:
+                    text = "Picture 5"
+                    break;
+                case 7:
+                    text = "Picture 6"
+                    break;
+                case 8:
+                    text = "Picture 7"
+                    break;
+                case 9:
+                    text = "Picture 8"
+                    break;
+            }
+
+            item.getElementsByTagName('p')[0].innerHTML = text;
+            counter++;
+        });
+
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.classList.add("hide");
+            });
+        });
+
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files
+                if (file) {
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                    img.parentElement.parentElement.classList.add("hide");
+                }
+            });
+        });
+    }
+
+    function initImages()
+    {
+        const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+        deleteImg.forEach(img => {
+            img.addEventListener('click', function handleClick(event) {
+                img.parentElement.previousElementSibling.previousElementSibling.src="";
+                img.parentElement.nextElementSibling.classList.remove("hide");
+				img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.classList.add("hide");
+            });
+        });
+
+        const imgInp = document.querySelectorAll('.imgInp');
+        imgInp.forEach(img => {
+            img.addEventListener('change', function handleChange(event) {
+                const [file] = img.files;
+
+                var extArr = ["jpg", "jpeg", "png"];
+
+                if (img.files && img.files[0] && img.files.length > 1) {
+                    for (var j = 0,i = 0; i < this.files.length; i++) {
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                        {
+                            j++;
+                        }
+
+                        var ext = img.files[i].name.split('.').pop();
+                        if(j < 9 && extArr.includes(ext))
+                        {
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                        }
+                        else
+                        {
+                            alert("This Image is not a valid format");
+                            img.value = "";
+                            break;
+                        }
+                    }
+                }
+                else if(img.files && img.files[0])
+                {
+                    var ext = img.files[0].name.split('.').pop();
+                    if(extArr.includes(ext))
+                    {
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        img.parentElement.parentElement.classList.add("hide");
+                    }
+                    else{
+                        alert("This Image is not a valid format");
+                        img.value = "";
+                    }
+                }
+            });
+        });
+    }
+/*******************************************************************************************************************************************/
+					var s1 = document.getElementById("view1").getAttribute("src");
+					var s2 = document.getElementById("view2").getAttribute("src");
+					var s3 = document.getElementById("view3").getAttribute("src");
+					var s4 = document.getElementById("view4").getAttribute("src");
+					var s5 = document.getElementById("view5").getAttribute("src");
+					
+					if(s1 == "")
+					{
+						console.log("NOT")
+						<?php $_SESSION['imag1'] = false;?>
+						
+					}else{												
+						console.log("GOT")
+						<?php $_SESSION['imag1'] = true;?>
+					}					
+									
+										
+											  
+										
+									
+
+	
+/*
 $(".alert.alert-success").delay(2000).slideUp(200, function() {
     $(this).alert('close');
 });
+
 $(".alert.alert-danger").delay(3000).slideUp(200, function() {
     $(this).alert('close');
 });
-
+*/
 </script>
