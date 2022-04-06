@@ -52,50 +52,31 @@
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 
 <!------------------------------------------------------------------------------------------------>
+<?php
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['diu']) && $_POST['diu'] === 'ADD'){
+	$sohai = $_POST['sohai'];
+	
+	echo "MY NAME IS $sohai";
+	}
+?>
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="star-rating">
-        <span class="fa fa-star-o" data-rating="1"></span>
-        <span class="fa fa-star-o" data-rating="2"></span>
-        <span class="fa fa-star-o" data-rating="3"></span>
-        <span class="fa fa-star-o" data-rating="4"></span>
-        <span class="fa fa-star-o" data-rating="5"></span>
-        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-      </div>
+    <div class="row lead">
+        <p>Also you can give a default rating by adding attribute data-rating</p>
+		<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
+		<input type = "hidden" id = "cb" name = "sohai" value = "1">
+        <div id="stars-existing" class="starrr" data-rating='1' ></div>
+        You gave a rating of <span id="count-existing">1</span> star(s)
+		<input type ="submit" name = "diu" value = "ADD">
+		</form>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="star-rating">
-        <span class="fa fa-star-o" data-rating="1"></span>
-        <span class="fa fa-star-o" data-rating="2"></span>
-        <span class="fa fa-star-o" data-rating="3"></span>
-        <span class="fa fa-star-o" data-rating="4"></span>
-        <span class="fa fa-star-o" data-rating="5"></span>
-        <input type="hidden" name="whatever2" class="rating-value" value="1.9">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="star-rating">
-        <span class="fa fa-star-o" data-rating="1"></span>
-        <span class="fa fa-star-o" data-rating="2"></span>
-        <span class="fa fa-star-o" data-rating="3"></span>
-        <span class="fa fa-star-o" data-rating="4"></span>
-        <span class="fa fa-star-o" data-rating="5"></span>
-        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
-      </div>
-    </div>
-  </div>
 </div>
-
 <!------------------------------------------------------------------------------------------------>
 
 
@@ -300,13 +281,11 @@
 
 <style>
 
-.star-rating {
-  line-height:32px;
-  font-size:1.25em;
+.glyphicon{
+	color: purple;
+	font-size: 2.2rem;
+	margin: 0 1.5rem;
 }
-
-.star-rating .fa-star{color: yellow;}
-
 
 
 
@@ -552,33 +531,119 @@
         });
     }
 /*******************************************************************************************************************************************/
-		/*								
-	$(".rrting").on("mouseover", function () {
-		$(".rrting").toggleClass('bi bi-star bi bi-star-fill');
-	});	
-*/
-	// Rating Initialization
+	// Starrr plugin !!!!
+var __slice = [].slice;
 
-   var $star_rating = $('.star-rating .fa');
+(function($, window) {
+  var Starrr;
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
-    } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
+  Starrr = (function() {
+    Starrr.prototype.defaults = {
+      rating: void 0,
+      numStars: 5,
+      change: function(e, value) {}
+    };
+
+    function Starrr($el, options) {
+      var i, _, _ref,
+        _this = this;
+
+      this.options = $.extend({}, this.defaults, options);
+      this.$el = $el;
+      _ref = this.defaults;
+      for (i in _ref) {
+        _ = _ref[i];
+        if (this.$el.data(i) != null) {
+          this.options[i] = this.$el.data(i);
+        }
+      }
+      this.createStars();
+      this.syncRating();
+      this.$el.on('mouseover.starrr', 'span', function(e) {
+        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('mouseout.starrr', function() {
+        return _this.syncRating();
+      });
+      this.$el.on('click.starrr', 'span', function(e) {
+        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('starrr:change', this.options.change);
+    }
+
+    Starrr.prototype.createStars = function() {
+      var _i, _ref, _results;
+
+      _results = [];
+      for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
+      }
+      return _results;
+    };
+
+    Starrr.prototype.setRating = function(rating) {
+      if (this.options.rating === rating) {
+        rating = void 0;
+      }
+      this.options.rating = rating;
+      this.syncRating();
+      return this.$el.trigger('starrr:change', rating);
+    };
+
+    Starrr.prototype.syncRating = function(rating) {
+      var i, _i, _j, _ref;
+
+      rating || (rating = this.options.rating);
+      if (rating) {
+        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+        }
+      }
+      if (rating && rating < 5) {
+        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+        }
+      }
+      if (!rating) {
+        return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+      }
+    };
+
+    return Starrr;
+
+  })();
+  return $.fn.extend({
+    starrr: function() {
+      var args, option;
+
+      option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      return this.each(function() {
+        var data;
+
+        data = $(this).data('star-rating');
+        if (!data) {
+          $(this).data('star-rating', (data = new Starrr($(this), option)));
+        }
+        if (typeof option === 'string') {
+          return data[option].apply(data, args);
+        }
+      });
     }
   });
-};
+})(window.jQuery, window);
 
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
+$(function() {
+  return $(".starrr").starrr();
 });
 
-SetRatingStar();
-$(document).ready(function() {
-
+$( document ).ready(function() {
+      
+  
+  
+  $('#stars-existing').on('starrr:change', function(e, value2){
+    $('#count-existing').html(value2);
+	$('#cb').attr("value", value2);
+  });
 });
 
 										
