@@ -193,20 +193,26 @@
                                                                 echo("<div class=\"Rating\">");
 
                                                                 $calavgrat = $row_1['rating'];
-                                                                $check = true;
-                                                                for($i = 0; $i<5; $i++){
-                                                                    if(round($calavgrat) && $check == true){
-                                                                    echo "<i class=\"fa fa-star\"></i>";
-                                                                    $calavgrat -= 1;
-                                                                    }else{
-                                                                    if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-                                                                        echo "<i class=\"fa fa-star-half-alt\"></i>";
-                                                                    }
-                                                                    else{
-                                                                        echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
-                                                                    }
-                                                                    $check = false;
-                                                                    $calavgrat -= 1;
+                                                                if($calavgrat != "")
+                                                                {
+                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+                                                                }
+                                                                else{
+                                                                    $check = true;
+                                                                    for($i = 0; $i<5; $i++){
+                                                                        if(round($calavgrat) && $check == true){
+                                                                        echo "<i class=\"fa fa-star\"></i>";
+                                                                        $calavgrat -= 1;
+                                                                        }else{
+                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                        }
+                                                                        else{
+                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                        }
+                                                                        $check = false;
+                                                                        $calavgrat -= 1;
+                                                                        }
                                                                     }
                                                                 }
                                                                 echo("</div>");
@@ -240,20 +246,26 @@
                                                                 echo("<div class=\"Rating\">");
 
                                                                 $calavgrat = $row_1['rating'];
-                                                                $check = true;
-                                                                for($i = 0; $i<5; $i++){
-                                                                    if(round($calavgrat) && $check == true){
-                                                                    echo "<i class=\"fa fa-star\"></i>";
-                                                                    $calavgrat -= 1;
-                                                                    }else{
-                                                                    if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-                                                                        echo "<i class=\"fa fa-star-half-alt\"></i>";
-                                                                    }
-                                                                    else{
-                                                                        echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
-                                                                    }
-                                                                    $check = false;
-                                                                    $calavgrat -= 1;
+                                                                if($calavgrat != "")
+                                                                {
+                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+                                                                }
+                                                                else{
+                                                                    $check = true;
+                                                                    for($i = 0; $i<5; $i++){
+                                                                        if(round($calavgrat) && $check == true){
+                                                                        echo "<i class=\"fa fa-star\"></i>";
+                                                                        $calavgrat -= 1;
+                                                                        }else{
+                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                        }
+                                                                        else{
+                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                        }
+                                                                        $check = false;
+                                                                        $calavgrat -= 1;
+                                                                        }
                                                                     }
                                                                 }
                                                                 echo("</div>");
