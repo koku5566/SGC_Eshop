@@ -224,37 +224,4 @@ $result = $stmt->get_result();
         });
 
     </script>
-    <!----------------------ARRANGE SHIPMENT MODAL---------------------------->
-  <div id="modal-1" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog" role="document">
-        <form action="processed.php" method="POST">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Tracking Number Generated</h4>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                </button>
-            </div>
-            <div class="modal-body" style="text-align:center;">
-                <label ><strong>DHL ECOMMERCE</strong></label>
-                <br>
-                
-                <label><strong>TRACKING NUMBER:</strong></label>
-                <div id="trackingNumber" name="tracking_status" ></div>
-            </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="button" name="saved">Save</button>
-            </div>
-        </div>
-    </form>
-    </div>
-</div>
-  
-  
-  <!-----------------------END OF ARRANGE MODAL ---------------------------------->
-
-<script>
-function generate(){
-    var x=document.getElementById("trackingNumber");
-    x.innerHTML=Math.floor((Math.random()*2100000000)+1);
-}
-</script>
+   
