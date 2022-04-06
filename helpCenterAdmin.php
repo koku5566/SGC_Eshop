@@ -40,15 +40,21 @@
 		$gotpic = [];
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
-				echo "<div class='alert alert-success'>GOT</div>";
+				//echo "<div class='alert alert-success'>GOT</div>";
 				array_push($gotpic, $_FILES['img']['name'][$i]);
 			}else{
-				echo "<div class='alert alert-danger'>NOT</div>";
+				//echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		for($k = 0; $k<5; $i++){
+			if($gotpic[$k] == "" || empty($gotpic[$k])){				
+				array_push($gotpic, '');
 			}
 		}
 		
 		for($j = 0; $j < count($gotpic); $j++){
 			echo "<div class='alert alert-success'>$gotpic[$j]</div>";
+			
 		}
 		
 		
