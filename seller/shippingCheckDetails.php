@@ -14,7 +14,7 @@
     orderDetails.quantity,
     orderDetails.price,
     user.username,
-    userAddress.address,
+    userAddress.address
     FROM
     myOrder
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
@@ -33,7 +33,6 @@
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
 while ($row = $result->fetch_assoc()) {
-}
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -96,7 +95,7 @@ while ($row = $result->fetch_assoc()) {
 
         </div>
     </div>
-
+<?php } ?>
 
     <!--  Payment Information -->
     <div class="row">
