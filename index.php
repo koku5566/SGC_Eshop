@@ -120,255 +120,191 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="product.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="#">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="Name">
-                                                            <p class="card-text product-name">IPhone 10 Pro Max</p>
-                                                        </div>
-                                                        <div class="Tag">
-                                                            <span style="border: 1px dashed red; font-size:10pt;">Student 10% discount</span>
-                                                        </div>
-                                                        <div class="Price">
-                                                            <b><span style="font-size:16pt;">RM 4800<span></b>
-                                                        </div>
-                                                        <div class="Rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-alt"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                            <i class="fa fa-star" style="font-weight:normal;"></i>
-                                                        </div>
-                                                        <div class="Location">
-                                                           <span style="font-size: 10pt; color:grey;" >Subang Jaya</span>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
+                                    <!-- Product List -->
+                                    <div class="card-content row mb-3" style="display: none">
+                                        <!--PHP Loop Product List by Search Result-->
+                                        <?php
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
+
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+
+                                                    //Fetch each product information
+                                                    $id = $row['product_id'];
+                                                    $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
+                                                    C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
+                                                    LEFT JOIN variation AS B ON A.product_id = B.product_id 
+                                                    LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+                                                    LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+                                                    LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+                                                    LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+                                                    WHERE A.product_id = '$id'
+                                                    LIMIT 1";
+                                                    $result_1 = mysqli_query($conn, $sql_1);
+
+                                                    if (mysqli_num_rows($result_1) > 0) {
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            
+                                                            echo("
+                                                                <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                    <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
+                                                                        <div class=\"card\">
+                                                                            <div class=\"image-container\">
+                                                                                <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
+                                                                            </div>
+                                                                            <div class=\"card-body\">
+                                                                                <div class=\"Name\">
+                                                                                    <p class=\"card-text product-name\">".$row_1['product_name']."</p>
+                                                                                </div>
+                                                                                <div class=\"Tag\">
+                                                                                    <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+                                                                                </div>
+                                                                                <div class=\"Price\">
+                                                            ");
+
+                                                            
+                                                            //Pricing
+                                                            //If got variation
+                                                            if($row_1['product_variation'] == 1)
+                                                            {
+                                                                if($row_1['min_price'] != $row_1['max_price'])
+                                                                {
+                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
+                                                                }
+                                                                echo("</div>");
+                                                                //End of Price Division
+
+                                                                
+
+                                                                //Start Stock Division
+                                                                echo("     
+                                                                                <div class=\"Stock\">
+                                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"col-xl-7\">
+                                                                ");
+
+                                                                //Start Rating Division
+                                                                echo("<div class=\"Rating\">");
+
+                                                                $calavgrat = $row_1['rating'];
+                                                                if($calavgrat == "")
+                                                                {
+                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+                                                                }
+                                                                else{
+                                                                    $check = true;
+                                                                    for($i = 0; $i<5; $i++){
+                                                                        if(round($calavgrat) && $check == true){
+                                                                        echo "<i class=\"fa fa-star\"></i>";
+                                                                        $calavgrat -= 1;
+                                                                        }else{
+                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                        }
+                                                                        else{
+                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                        }
+                                                                        $check = false;
+                                                                        $calavgrat -= 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                echo("</div>");
+                                                                //End of Rating Division
+
+                                                                echo("  
+                                                                                        </div>
+                                                                                        <div class=\"col-xl-5\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                ");
+                                                                //End of Stock Division
+                                                            }
+                                                            //If no variation
+                                                            else
+                                                            {
+                                                                echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
+                                                                echo("</div>");
+                                                                //End of Price Division
+
+                                                                //Start Stock Division
+                                                                echo("     
+                                                                                <div class=\"Stock\">
+                                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"col-xl-7\">
+                                                                ");
+
+                                                                //Start Rating Division
+                                                                echo("<div class=\"Rating\">");
+
+                                                                $calavgrat = $row_1['rating'];
+                                                                if($calavgrat == "")
+                                                                {
+                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+                                                                }
+                                                                else{
+                                                                    $check = true;
+                                                                    for($i = 0; $i<5; $i++){
+                                                                        if(round($calavgrat) && $check == true){
+                                                                        echo "<i class=\"fa fa-star\"></i>";
+                                                                        $calavgrat -= 1;
+                                                                        }else{
+                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
+                                                                        }
+                                                                        else{
+                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+                                                                        }
+                                                                        $check = false;
+                                                                        $calavgrat -= 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                echo("</div>");
+                                                                //End of Rating Division
+
+                                                                echo("  
+                                                                                        </div>
+                                                                                        <div class=\"col-xl-5\">
+                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                ");
+                                                                //End of Stock Division
+                                                            }
+
+                                                            //Start of Location Division
+                                                            //$location = $row_1['location'];
+                                                            $location = "Subang Jaya";
+                                                            echo("
+                                                                <div class=\"Location\">
+                                                                    <span style=\"font-size: 10pt; color:grey;\" >$location</span>
+                                                                </div>
+                                                            ");
+                                                            //End of Location Division
+
+                                                            echo("
+                                                                                        
+                                                                                    
+                                                                            </div>
+                                                                        </div>   
+                                                                    </a>
+                                                                </div>
+                                                            ");
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -376,7 +312,6 @@
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-
 <?php
     require __DIR__ . '/footer.php'
 ?>
@@ -611,3 +546,4 @@
         });
     });
 </script>
+

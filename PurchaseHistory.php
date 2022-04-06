@@ -2,10 +2,11 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-$sql = "SELECT
+<?php 
+
+
+$sql_2 = "SELECT
 myOrder.order_id,
-myOrder.prod_qty,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
@@ -19,7 +20,9 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id";
-$result = $conn->query($sql);
+$stmt_2 = $conn->prepare($sql_2);
+$stmt_2->execute();
+$result_2 = $stmt_2->get_result();
 
 
 ?>
@@ -41,7 +44,7 @@ $result = $conn->query($sql);
         </div>
         <div class="tab-panel">
         <?php 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result_2->fetch_assoc()) {
         ?>
             <div class="card" style="text-align: justify;width: 60%;margin-left: 20%;">
                 <div class="card-header">
@@ -93,6 +96,7 @@ $result = $conn->query($sql);
             <?php 
             }?>
     </div>
+</div>
    
    <!-- /.container-fluid -->
 

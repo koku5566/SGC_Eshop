@@ -1,14 +1,39 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $orderid = $_GET['order_id'];
+
+    $sql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    product.product_name,
+    product.product_cover_picture,
+    product.product_price,
+    orderDetails.quantity,
+    orderDetails.price,
+    user.username
+    FROM
+    myOrder
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN product ON orderDetails.product_id = product.id
+    WHERE myOrder.order_id = $orderid";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
-
+<?php                       
+while ($row = $result->fetch_assoc()) {
+}
+?>
     <div class="card shadow mb-4">
-
         <div class="card-body">
             <div class="container m-3">
                 <div class="order-section mb-3">
@@ -26,9 +51,9 @@
                 <div class="delivery-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
-                        <div class=" col title ">Delivery Address</div>
+                        <div class="col title ">Delivery Address</div>
                     </div>
-                    <div clas s="row">
+                    <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
