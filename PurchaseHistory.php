@@ -20,9 +20,9 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id";
 
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt1 = $conn->prepare($sql);
+$stmt1->execute();
+$result1 = $stmt1->get_result();
 
 
 
@@ -45,7 +45,7 @@ $result = $stmt->get_result();
         </div>
         <div class="tab-panel">
         <?php 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result1->fetch_assoc()) {
         ?>
             <div class="card" style="text-align: justify;width: 60%;margin-left: 20%;">
                 <div class="card-header">
