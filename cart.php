@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
-    include __DIR__.'../mysqli_connect.php'; 
+    //include __DIR__.'../mysqli_connect.php'; 
 
 
     $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_cover_picture AS P_pic 
