@@ -7,7 +7,8 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['rating']) && $_POST['rrsub'] === 'Submit'){
 		
-		
+		$product_id = "P000001"; //change into btn click $_POST
+		$user_id = "U000005";	//change into S_SESSION [user id]
 		$commentsec = isset($_POST['commentsec']) ? $_POST['commentsec'] : '';
 		$ratingsec = $_POST['rating'];
 		/*
@@ -35,6 +36,9 @@
 		
 		*/
 		
+		if (!file_exists("img/rating/")){
+				mkdir("img/rating");	//make directory
+		}
 		
 		
 		$gotpic = [];
@@ -42,7 +46,7 @@
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
 				//echo "<div class='alert alert-success'>GOT</div>";
-				array_push($gotpic, "atss/qty/" . $_FILES['img']['name'][$i]);
+				array_push($gotpic, "img/rating/" . $_FILES['img']['name'][$i]);
 				array_push($tempNamepic, $_FILES['img']['tmp_name'][$i]);
 			}else{
 				//echo "<div class='alert alert-danger'>NOT</div>";
@@ -58,23 +62,38 @@
 			echo "<div class='alert alert-danger'>$tempNamepic[$t]</div>";			
 		}
 		
-		
-		
-		
-		echo "RATING  - $ratingsec <br>";
-		echo "COMMENT  - $commentsec";					
+		//echo "RATING  - $ratingsec <br>";
+		//echo "COMMENT  - $commentsec";					
 									
 																						
-		/*
-		if($_SESSION['imag1'] == true){
-		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
-	}else{
-		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
-	}
-
-		*/
+		$sql = "INSERT INTO `product`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?)";
+			if($stmt = mysqli_prepare($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$gotpic[0],$$gotpic[1],$$gotpic[2],$$gotpic[3],$$gotpic[4]); 	//s=string , d=decimal value, i=integer
 		
-		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
+				mysqli_stmt_execute($stmt);
+			
+				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+				{
+					echo "<script>alert('Insert successfully');</script>";
+					for($r = 0; $r< count($tempNamepic), $r++){
+						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+					}
+					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
+							SET a.rr_id = concat('RR', b.id)
+							WHERE a.id = b.id;";
+							if($stmt = mysqli_prepare($conn, $sql)){
+                            mysqli_stmt_execute($stmt);
+                            if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                            {}
+                            else{}}	
+                            //END  
+					
+				}else{
+					echo "<script>alert('Fail to Insert');</script>";
+				}
+		
+				mysqli_stmt_close($stmt);
+			}
 		
 		
 	}
