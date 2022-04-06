@@ -27,11 +27,6 @@ $result_2 = $stmt_2->get_result();
 
 ?>
 
-               
-
-
-
-<!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%">
 <h1 style="color: red;text-align: center;">Purchase History</h1>
     <button class="btn btn-primary" type="button" style="width: 89.5px;padding-left: 0px;margin-left: 0px;background: rgba(13,110,253,0);color: var(--bs-blue);border-style: none;border-color: var(--bs-body-bg);text-decoration: underline;">
@@ -52,7 +47,7 @@ $result_2 = $stmt_2->get_result();
                         <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
                         </div>
                         <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                         OrderID:<?php echo $row['order_id']?></strong></span>
+                         OrderID:7</strong></span>
                         </div>
                     </div>
                 </div>
@@ -62,16 +57,16 @@ $result_2 = $stmt_2->get_result();
                         <div class="col-1 image-container">
                             <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>">
                         </div>
-                        <div class="col-3">
-                        <?php echo $row['product_name']?>
+                        <div class="col-3">Iphone 11 Pro Max & Free Gift
+                        
                         </div>
-                        <div class="col-2">x
-                        <?php echo $row['quantity']?>
+                        <div class="col-2">x1
+                        
                         </div>
                         <div class="col md-auto text-start offset-md-1">
-                        <?php echo $row['product_variation']?>
+                        Type 1
                         </div>
-                        <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
+                        <div class="col md-auto text-end">RM4000.00</div>
                         </div>
                     
                 </a>
@@ -97,19 +92,26 @@ $result_2 = $stmt_2->get_result();
             }?>
     </div>
    
-   <!-- /.container-fluid -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php
     require __DIR__ . '/footer.php'
 ?>
-
-<style>
-</style>
-
-<script>
-  var dt = new Date();
-  document.getElementById("datetime").innerHTML = dt.toLocaleString();
-</script> 
-
-
