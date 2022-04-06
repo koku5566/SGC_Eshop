@@ -41,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">	
 
-    
+    <i class="fa fa-star"></i>
+	<i class="fa fa-star-half-o"></i>
+	<i class="fa fa-star ratingStar"></i>
     
   
  

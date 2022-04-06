@@ -673,6 +673,14 @@
                                     }
                                 }   
                             }
+                            else
+                            {
+                                echo("
+                                    <div class=\"input-group mb-3\">
+                                        <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                    </div>
+                                ");
+                            }
                             ?>
                             
                         </div>
@@ -1084,7 +1092,7 @@
             {
                 for(var i = 0; i < ShippingDivInp.length; i++)
                 {
-                    ShippingDivInp[i].required = true;
+                    ShippingDivInp[i].required = false;
                 }
                 ShippingDiv.classList.remove("hide");
             }
@@ -1268,6 +1276,8 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });

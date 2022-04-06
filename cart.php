@@ -1,5 +1,23 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+    //include __DIR__.'../mysqli_connect.php'; 
+
+
+    $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_cover_picture AS P_pic 
+            FROM `cart`
+            JOIN `product`
+            ON product.product_id = cart.product_ID ";
+
+        $queryKL = mysqli_query($conn, $sql);
+
+        // while ($row = mysqli_fetch_array($query)) {
+        //     //echo $row['cart_ID'], $row['user_ID'];
+        //     echo "<label>Product Name: <span>".$row['P_name']."</span></label><br>
+        //     <label>Product Price: <span>".$row['P_price']."</span></label><br>
+        //     <label>Product Quantity: <span>".$row['P_quantity']."</span></label><br>
+        //     <label>Product Quantity: <span>".$row['P_variation']."</span></label><br>
+        //     <label>Product Quantity: <span>".$row['P_pic']."</span></label>";
+        // }
 ?>
 
 <!-- Begin Page Content -->
@@ -11,28 +29,27 @@
     <div class="table-responsive shopping-cart">
         <table class="table">
             <thead>
-            <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong> | SEGI COLLEGE KUALA LUMPUR</strong</span>
+            <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span>
                 <tr>
                     <th>Product Name</th>
                     <th class="text-center">Variations</th>
                     <th class="text-center">Unit Price</th>
                     <th class="text-center">Quantity</th>
                     <th class="text-center">Total Price</th>
-                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    for ($i=0; $i < 3; $i++) { 
-                        $u = 43.30 + $i;
-                        $j = number_format((float)$u, 2, '.', '');
+                    $i=0;
+                    while ($rowKL = mysqli_fetch_array($queryKL)) {
                         echo "
                         <tr>
                             <td>
                                 <div class='product-item'>
                                     <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
                                     <div class='product-info'>
-                                        <h4 class='product-title'><a href='#'>Sony Headphone WH-1000XM4</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                        <h4 class='product-title'><a href='#'>".$rowKL['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
                                     </div>
                                 </div>
                             </td>
@@ -47,28 +64,46 @@
                                     </select>
                                 </div>
                             </td>
-                            <td class='text-center text-lg text-medium' class='price' id='upkl[$i]'>RM <span>$j</span> <input id='numberkl[$i]' type='hidden' value='$j' readonly></td>
+                            <td class='text-center text-lg text-medium' class='price' id='upkl[$i]'>RM <span>".$rowKL['P_price']."</span> <input id='numberkl[$i]' type='hidden' value='".$rowKL['P_price']."' readonly></td>
                             <td class='text-center'>
                                 <div class='count-input-kl'>
                                     <span class = 'minus' id='minkl[$i]'>-</span>
-                                    <span class = 'num' id='numkl[$i]'>1</span>
+                                    <span class = 'num' id='numkl[$i]'>".$rowKL['P_quantity']."</span>
                                     <span class = 'add' id='addkl[$i]'>+</span>
                                 </div>
                             </td>
-                            <td class='text-center text-lg text-medium' >RM <span id='tpkl[$i]'>$j</span><input class='sub_kl' id='subkl[$i]' type='hidden' value='$j' readonly></td>
+                            <td class='text-center text-lg text-medium' >RM <span id='tpkl[$i]'>".$rowKL['P_price']."</span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$rowKL['P_price']."' readonly></td>
                             <td class='text-center'><button class='removeItem_kl' type ='button'>X</button></td>
                         </tr>";
+                        $i++;
                     }
                 ?>
             </tbody>
         </table>
-                <div class="shopping-cart-footer" >
-                <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
-                </div>
+            <!-- <div class="shopping-cart-footer">
+                <div class="column">
+                    <form class="coupon-form" method="post"> -->
+                        <!-- Select voucher Modal -->
+                        
+                        <?php
+                           // require __DIR__ .'/voucherModal.php'
+                        ?>
+                    <!-- </form> -->
+                        <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
+                        <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
+                <!-- </div>
+            </div> -->
+
+            <div class="shopping-cart-discount-footer" >
+            <div class="column text-lg" >Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
+            </div>
+            <div class="shopping-cart-footer" >
+            <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+            </div>
         <!-- <table class="table">
             <tbody>
                 <tr> 
-                <th colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"> | SEGI COLLEGE PENANG</th> 
+                <th colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE PENANG</strong></th> 
                 </tr> 
                 <tr>
                     <td>
@@ -113,51 +148,53 @@
         <table class="table">
             <tbody>
                 <tr> 
-                <th colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong> | SEGI COLLEGE SUBANG JAYA</strong></th> 
-                    <!-- <th>Product Name</th>
-                    <th class="text-center">Variations</th>
-                    <th class="text-center">Unit Price</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Total Price</th>
-                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th> -->
-                </tr> 
+                <th colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE SUBANG JAYA</strong></th> 
+                <!-- <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>  -->
+                </tr>
                 <?php
-                  for ($i=0; $i < 2; $i++) { 
-                    $u = 43.30 + $i;
-                    $j = number_format((float)$u, 2, '.', '');
-                    echo "
-                    <tr>
-                        <td>
-                            <div class='product-item'>
-                                <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                <div class='product-info'>
-                                    <h4 class='product-title'><a href='#'>Sony Headphone WH-1000XM4</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class='text-center'>
-                            <div class='variation-input'>
-                                <select class='form-control-variation'>
-                                    <option>RED</option>
-                                    <option>YELLOW</option>
-                                    <option>GREEN</option>
-                                    <option>BLACK</option>
-                                    <option>WHITE</option> 
-                                </select>
-                            </div>
-                        </td>
-                        <td class='text-center text-lg text-medium' class='price' id='upsj[$i]'>RM <span>$j</span> <input id='numbersj[$i]' type='hidden' value='$j' readonly></td>
-                        <td class='text-center'>
-                            <div class='count-input-sj'>
-                                <span class = 'minus' id='minsj[$i]'>-</span>
-                                <span class = 'num' id='numsj[$i]'>1</span>
-                                <span class = 'add' id='addsj[$i]'>+</span>
-                            </div>
-                        </td>
-                        <td class='text-center text-lg text-medium' >RM <span id='tpsj[$i]'>$j</span><input class='sub_sj' id='subsj[$i]' type='hidden' value='$j' readonly></td>
-                        <td class='text-center'><button class='removeItem_sj' type ='button'>X</button></td>
-                    </tr>";
-                    }
+                   $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_cover_picture AS P_pic 
+                   FROM `cart`
+                   JOIN `product`
+                   ON product.product_id = cart.product_ID
+                   WHERE product.product_id = 'P000057'";
+       
+                $querySJ = mysqli_query($conn, $sql);
+                   $i=0;
+                   while ($rowSJ = mysqli_fetch_array($querySJ)) {
+                       echo "
+                       <tr>
+                           <td>
+                               <div class='product-item'>
+                                   <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                   <div class='product-info'>
+                                       <h4 class='product-title'><a href='#'>".$rowSJ['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                   </div>
+                               </div>
+                           </td>
+                           <td class='text-center'>
+                               <div class='variation-input'>
+                                   <select class='form-control-variation'>
+                                       <option>RED</option>
+                                       <option>YELLOW</option>
+                                       <option>GREEN</option>
+                                       <option>BLACK</option>
+                                       <option>WHITE</option> 
+                                   </select>
+                               </div>
+                           </td>
+                           <td class='text-center text-lg text-medium' class='price' id='upsj[$i]'>RM <span>".$rowSJ['P_price']."</span> <input id='numbersj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
+                           <td class='text-center'>
+                               <div class='count-input-sj'>
+                                   <span class = 'minus' id='minsj[$i]'>-</span>
+                                   <span class = 'num' id='numsj[$i]'>".$rowSJ['P_quantity']."</span>
+                                   <span class = 'add' id='addsj[$i]'>+</span>
+                               </div>
+                           </td>
+                           <td class='text-center text-lg text-medium' >RM <span id='tpsj[$i]'>".$rowSJ['P_price']."</span><input class='sub_sj' id='subsj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
+                           <td class='text-center'><button class='removeItem_sj' type ='button'>X</button></td>
+                       </tr>";
+                       $i++;
+                   }
                 ?>
             </tbody>
         </table>
@@ -206,6 +243,11 @@ select.form-control {
     height: 50px;
     width: 50%;
     background-color: #374250;
+}
+.branch
+{
+    color: black;
+    font-weight: bold;
 }
 .count-input-pg
 {
@@ -520,17 +562,52 @@ select.form-control {
         display: none !important
     }
 }
-
-.shopping-cart-footer {
+.shopping-cart-discount-footer {
     display: table;
     width: 100%;
     padding: 10px 0;
     border-top: 1px solid #e1e7ec
 }
 
-.shopping-cart-footer>.column {
+.shopping-cart-discount-footer>.column {
     display: table-cell;
     padding: 5px 0;
+    vertical-align: middle
+}
+
+.shopping-cart-discount-footer>.column:last-child {
+    text-align: right
+}
+
+.shopping-cart-discount-footer>.column:last-child .btn {
+    margin-right: 0;
+    margin-left: 15px
+}
+
+@media (max-width: 768px) {
+    .shopping-cart-discount-footer>.column {
+        display: block;
+        width: 100%
+    }
+    .shopping-cart-discount-footer>.column:last-child {
+        text-align: center
+    }
+    .shopping-cart-discount-footer>.column .btn {
+        width: 100%;
+        margin: 12px 0 !important
+    }
+}
+
+.shopping-cart-footer {
+    display: table;
+    width: 100%;
+    padding: inherit;
+    /* border-top: 1px solid #e1e7ec */
+}
+
+.shopping-cart-footer>.column {
+    display: table-cell;
+    padding: inherit;
     vertical-align: middle
 }
 
@@ -569,8 +646,8 @@ select.form-control {
 }
 </style>
 
-<script src="cart_subangJ.js"></script>
 <script src="cart_kualaL.js"></script>
+<script src="cart_subangJ.js"></script>
 
 <script>
 
