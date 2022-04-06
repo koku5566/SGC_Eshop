@@ -7,9 +7,9 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['rating']) && $_POST['rrsub'] === 'Submit'){
 		
-		if (isset($_POST['commentsec'])){
-			$commentsec = 
-		}
+		
+		$commentsec = isset($_POST['commentsec']) ? $_POST['commentsec'] : '';
+		
 		
 		$ss1 = $_FILES['img']['name'][0];
 		$ss2 = $_FILES['img']['name'][1];
@@ -34,8 +34,8 @@
 		}
 		
 		$pp = $_POST['rating'];
-		echo "U RATED THIS AMOUNT  - $pp";
-						
+		echo "RATING  - $pp";
+		echo "COMMENT  - $commentsec";					
 									
 																						
 		/*
