@@ -42,7 +42,7 @@
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
 				//echo "<div class='alert alert-success'>GOT</div>";
-				array_push($gotpic, $_FILES['img']['name'][$i]);
+				array_push($gotpic, "atss/qty/" . $_FILES['img']['name'][$i]);
 				array_push($tempNamepic, $_FILES['img']['tmp_name'][$i]);
 			}else{
 				//echo "<div class='alert alert-danger'>NOT</div>";
