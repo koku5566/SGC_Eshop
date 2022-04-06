@@ -97,7 +97,7 @@
 						<h3>RM 349.00</h3>									
 					</div>
 					
-					<!-- bi bi-star-fill 	21.13-->
+					<!-- bi bi-star-fill 	21.13
 					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
 					<i class="fa fa-star tqy rrting" id = "rr1"></i>
 					<i class="fa fa-star tqy rrting" id = "rr2"></i>
@@ -105,7 +105,7 @@
 					<i class="fa fa-star tqy rrting" id = "rr4"></i>
 					<i class="fa fa-star tqy rrting" id = "rr5"></i>
 					</div>
-					
+					-->
 				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">	
 					<div class="rating"> 
 						<input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label> 
