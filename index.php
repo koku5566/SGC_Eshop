@@ -180,9 +180,12 @@
                                                                 echo("</div>");
                                                                 //End of Price Division
 
-                                                                //Start Rating Division
-                                                                echo("<div class=\"Rating\">");
-
+                                                                //Start Stock Division
+                                                                echo("     
+                                                                                <div class=\"Stock\">
+                                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"col-xl-6\">
+                                                                "):
                                                                 $calavgrat = $row_1['rating'];
                                                                 $check = true;
                                                                 for($i = 0; $i<5; $i++){
@@ -200,16 +203,7 @@
                                                                     $calavgrat -= 1;
                                                                     }
                                                                 }
-                                                                
-                                                                echo("</div>");
-                                                                //End of Rating Division
-
-                                                                //Start Stock Division
-                                                                echo("     
-                                                                                <div class=\"Stock\">
-                                                                                    <div class=\"row\" style=\"height: 40px;\">
-                                                                                        <div class=\"col-xl-6\">
-                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
+                                                                echo("  
                                                                                         </div>
                                                                                         <div class=\"col-xl-6\">
                                                                                             <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
