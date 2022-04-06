@@ -160,7 +160,7 @@
                                             $ShippingOption = $_GET['ShippingOption'];
 
                                             //Check for Main Category
-                                            $sql = "SELECT * FROM product WHERE product_name LIKE '%$SearchBy%' product_status = 'A' ";
+                                            $sql = "SELECT * FROM product WHERE product_name LIKE '%$SearchBy%' AND product_status = 'A' ";
                                             echo($sql);
                                             $result = mysqli_query($conn, $sql);
                                 
