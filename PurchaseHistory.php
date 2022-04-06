@@ -7,7 +7,7 @@
 
 $sql_2 = "SELECT
 myOrder.order_id,
-myOrder.prod_qty,
+
 product.product_name,
 product.product_cover_picture,
 product.product_price,
