@@ -178,7 +178,22 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                                TEST TESTTEST
+                            <?php 
+                            while ($row = $result->fetch_assoc()) {
+                            ?>
+                                <div class="body">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><img src=" https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1644969385433" style="width:100%; height:100%;object-fit:contain"/></div>
+                                        <div class="col md-auto text-start "><?php echo $row['product_name']?></div>
+                                        <div class="col md-auto text-center offset-md-3">RM <?php echo $row['price']?>.00</div>
+                                        <div class="col-2"><?php echo $row['order_id']?></div>
+                                        <div class="col-2" style="color:red;"><?php echo $row['tracking_status']?></div>
+                                        <div class="col-2"><button onclick="generate()"><a href="#" data-bs-target="#modal-1" data-bs-toggle="modal">Arrange Shipment</a></button>
+                                        </div>
+                                    </div>
+                                    <?php 
+                                                    }?>
+                                </div>
                             </div>
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
@@ -224,3 +239,37 @@ $result = $stmt->get_result();
         });
 
     </script>
+    <!----------------------ARRANGE SHIPMENT MODAL---------------------------->
+  <div id="modal-1" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <form action="processed.php" method="POST">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tracking Number Generated</h4>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <label ><strong>DHL ECOMMERCE</strong></label>
+                <br>
+                
+                <label><strong>TRACKING NUMBER:</strong></label>
+                <div id="trackingNumber" name="tracking_status" ></div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="button" name="saved">Save</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+  
+  
+  <!-----------------------END OF ARRANGE MODAL ---------------------------------->
+
+<script>
+function generate(){
+    var x=document.getElementById("trackingNumber");
+    x.innerHTML=Math.floor((Math.random()*2100000000)+1);
+}
+</script>
