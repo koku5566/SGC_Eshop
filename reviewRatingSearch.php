@@ -48,9 +48,9 @@ if(mysqli_num_rows($result) > 0)
 	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
-			 $starR .='<i class="bi bi-star-fill"></i> ';
+			 $starR .='<i class="fa fa-star"></i> ';
 		 }else{
-			 $starR .='<i class="bi bi-star"></i> ';
+			 $starR .='<i class="fa fa-star ratingStar"></i> ';
 		 }
 	 }
 	 

@@ -229,9 +229,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 														for($i=0; $i<5; $i++){
 															if(isset($c9) && !empty ($c9)){
 																if($i < $c9){
-																	 echo '<i class="bi bi-star-fill"></i> ';
+																	 echo '<i class="fa fa-star"></i> ';
 																 }else{
-																	 echo '<i class="bi bi-star"></i> ';
+																	 echo '<i class="fa fa-star ratingStar"></i> ';
 																 }
 															}else{
 																echo '';
