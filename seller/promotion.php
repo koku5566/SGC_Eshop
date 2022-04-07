@@ -141,15 +141,11 @@
                                 */
 
                                 //Upload the file into the temp dir
-                                if(move_uploaded_file($tmpFilePath, $newFilePath)) 
+                                if(move_uploaded_file($tmpFilePath, $newFilePath))
                                 {
                                     echo '<script>alert("5")</script>';
                                     //get file name
                                     $fileName = $_FILES['img']['name'][$i];
-                                    //$sqlGetLatestIdeaID = "SELECT promotion FROM idea_table ORDER BY idea_id DESC LIMIT 1";
-                                    //$executeQuery = mysqli_query($db, $sqlGetLatestIdeaID);
-                                    //$getIDRow = mysqli_fetch_assoc($executeQuery);
-                                    //$getID = $getIDRow['idea_id'];
                                     $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
                                     VALUES('$title','$fileName','$dateStart','$dateEnd')";
                                     echo '<script>alert("6")</script>';
