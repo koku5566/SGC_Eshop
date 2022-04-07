@@ -26,7 +26,7 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td><button class='edit_btn' type='submit' name='edit'></button></td></tr>";
                                          }
                                          echo"</table>";
                                      }
@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp">
+                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp">
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -103,51 +103,67 @@
                 <?php
                 if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
-                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
+                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
                     //$image = $_POST['promotion_image']; 
-                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
-                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
-
-                    $stmt_u = mysqli_query($conn, $sql_u);
-
-				if (mysqli_num_rows($stmt_u) > 0) {
-                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
-                    VALUES('$title','$dateStart','$dateEnd')";
-                    $result = mysqli_query($conn,$sql);
+                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
-                    // File upload configuration 
-                    //$targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    //$allowTypes = array('jpg','png','jpeg'); 
+                    //File upload configuration 
+                    //$targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
+                    $targetDir = "./img/promotion/"; 
+                    $fileNames = array_filter($_FILES['img']['name']);
+                    $allowTypes = array('jpg','png','jpeg');
+                    $total = count($_FILES["img"]["name"]); 
+                    if(!empty($fileNames))
+                    { 
+                        for($i=0 ; $i < $total ; $i++)
+                        {
+                            //File upload path 
+                            $tmpFilePath = $_FILES['img']['tmp_name'][$i];
 
-                    //if(!empty($fileNames)){ 
-                        //foreach($_FILES['img']['name'] as $key=>$val){ 
-                            // File upload path 
-                            
-                            //$fileName = basename($_FILES['img']['name'][$key]); 
-                            //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                            //$fileName = round(microtime(true) * 1000).".".$ext;
-                            //$targetFilePath = $targetDir.$fileName; 
-                            // Check whether file type is valid 
-                            //$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                            //if(in_array($fileType, $allowTypes)){ 
-                                //if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                                  //  $sql_insert .= "'$fileName', ";
-                                   // $imgInpCounter++;
-                              //  }
-                           // }
-                        //} 
-                   // }
+                            //make sure file is not null
+                            if ($tmpFilePath != "")
+                            {
+                                //Setup new file path
+                                $newFilePath = $targetDir . $_FILES['img']['name'][$i];
+                                echo '<script>alert(" ' . $targetDir . '")</script>';
+                                echo '<script>alert(" ' . $tmpFilePath . '")</script>';
+                                echo '<script>alert(" ' . $newFilePath . '")</script>';
+                                /*
+                                $fileType = strtolower(pathinfo($newFilePath,PATHINFO_EXTENSION));
+                                $fileValidation = in_array($fileType,$allowTypes);
+                                
+                                //check file type
+                                if(!$fileValidation)
+                                {
+                                    echo '<script>alert("Invalid File Type!")</script>';
+                                }
+                                */
 
-                    if($result)
-                    {
-                        echo '<script>alert("Add promotion successfully!")</script>';
-                    }
-                    else
-                    {
-                        echo '<script>alert("Failed")</script>';
+                                //Upload the file into the temp dir
+                                if(move_uploaded_file($tmpFilePath, $newFilePath))
+                                {
+                                    echo '<script>alert("5")</script>';
+                                    //get file name
+                                    $fileName = $_FILES['img']['name'][$i];
+                                    $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                    VALUES('$title','$fileName','$dateStart','$dateEnd')";
+                                    echo '<script>alert("6")</script>';
+                                    $result = mysqli_query($conn,$sql);
+
+                                    if($result)
+                                    {
+                                        echo '<script>alert("Add promotion successfully!")</script>';
+                                    }
+                                    else
+                                    {
+                                        echo '<script>alert("Failed")</script>';
+                                    }
+                                }
+                            } 
+                        }
                     }
                 }
-            }
                 ?>
             </form>
         </div>
@@ -263,6 +279,9 @@
         });
     }
 </script>
+
+<script src="../js/checkFileType.js"></script>
+
 <?php
     require __DIR__ . '/footer.php'
 ?>

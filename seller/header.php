@@ -144,7 +144,7 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">My Shipment</a>
+                        <a class="collapse-item" href="seller/ViewShippingOrder.html">My Shipment</a>
                         <a class="collapse-item" href="register.html">Mass Ship</a>
                         <a class="collapse-item" href="forgot-password.html">Shipping Setting</a>
                     </div>
@@ -176,7 +176,7 @@
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="myProduct.php">My Product</a>
+                        <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add New Product</a>
                         <a class="collapse-item" href="violationProduct.php">Product Violations</a>
                         <a class="collapse-item" href="category.php">Category Management (Admin)</a>

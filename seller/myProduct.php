@@ -1,6 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if(isset($_GET['Panel']))
+    {
+        $_SESSION['Panel'] = $_GET['Panel'];
+    }
+
     $subCategoryArray = array();
 
     //Main Category
@@ -41,9 +46,13 @@
         $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Publish Successful")';
-            echo '</script>';
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Publish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['UnpublishProduct']))
@@ -52,9 +61,13 @@
         $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Unpublish Successful")';
-            echo '</script>';
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Unpublish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['DeleteProduct']))
@@ -66,9 +79,13 @@
             $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
             if(mysqli_query($conn, $sql_deleteVar))
             {
-                echo '<script language="javascript">';
-                echo 'alert("Product Deleted Successful")';
-                echo '</script>';
+                $Panel = $_SESSION['Panel'];
+                ?>
+                    <script type="text/javascript">
+                        alert("Product Deleted Successful");
+                        window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    </script>
+                <?php
             }
         }
     }

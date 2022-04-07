@@ -12,7 +12,7 @@ product.product_name,
 product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 user.username
 FROM
 myOrder
@@ -153,7 +153,7 @@ $result = $stmt->get_result();
                                         <div class="col-3"><?php echo $row['product_name']?></div>
                                         <div class="col-1">x<?php echo $row['quantity']?></div>
                                         <div class="col-1">RM<?php echo $row['product_price']?>.00</div>
-                                        <div class="col-2"><?php echo $orderStatus ?></div>
+                                        <div class="col-2">Completed</div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
                                         <div class="col-2">
                                         <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
