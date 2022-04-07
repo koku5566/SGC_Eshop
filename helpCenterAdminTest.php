@@ -227,24 +227,24 @@ else
 											
 											if( $c10 === null){echo '';}
 												else{echo '<div class="carousel-item active">
-																<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+																<img class="d-block w-100" src="'.$c10.'" >
 														  </div> ';} 													 
 												
 											if( $c11 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c11.'" >
 														  </div>';}
 											if( $c12 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c12.'" >
 														  </div>';}	
 											if( $c13 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c13.'" >
 														  </div>';}		
 											if( $c14 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c14.'" >
 														  </div>';}										
 																		
 		 								}else{
