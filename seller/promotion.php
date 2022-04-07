@@ -124,22 +124,14 @@
                             {
                                 //Setup new file path
                                 $newFilePath = $targetDir . $_FILES['img']['name'][$i];
-                                //Output >>>> targetdir = /home/sgcprot1/repositories/SGC_Eshop/img/promotion/
-                                echo '<script>alert(" ' . $targetDir . '")</script>';
-                                //Output >>>> tmpFile= /tmp/phpgvdP5E
-                                echo '<script>alert(" ' . $tmpFilePath . '")</script>';
-                                //Output >>>> newfilepath =  /home/sgcprot1/repositories/SGC_Eshop/img/promotion/ToyStory.jpeg
-                                echo '<script>alert(" ' . $newFilePath . '")</script>';
 
                                 //Upload the file into the temp dir
                                 if(move_uploaded_file($tmpFilePath, $newFilePath))
                                 {
-                                    echo '<script>alert("5")</script>';
                                     //get file name
                                     $fileName = $_FILES['img']['name'][$i];
                                     $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
                                     VALUES('$title','$fileName','$dateStart','$dateEnd')";
-                                    echo '<script>alert("6")</script>';
                                     $result = mysqli_query($conn,$sql);
 
                                     if($result)
