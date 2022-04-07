@@ -52,8 +52,8 @@
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
-      </div>
+      <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      </div>-->
       <div class="profile-pic">
         <label class="-label" for="file">
           <span class="glyphicon glyphicon-camera"></span>
@@ -146,16 +146,18 @@ div.absolute {
 .profile-pic img {
   position: absolute;
   object-fit: cover;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
+  top: 45%;
+  left: 55%;
 }
 .profile-pic .-label {
   cursor: pointer;
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
 }
 .profile-pic:hover .-label {
   display: flex;
