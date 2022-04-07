@@ -5,11 +5,11 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['rating']) && $_POST['rrsub'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
 		
 		$product_id = "P000001"; //change into btn click $_POST
 		$user_id = "U000005";	//change into S_SESSION [user id]
-		$commentsec = isset($_POST['commentsec']) ? $_POST['commentsec'] : '';
+		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
 		/*
 		$ss1 = $_FILES['img']['name'][0];
@@ -66,13 +66,14 @@
 		
 		//echo "RATING  - $ratingsec <br>";
 		//echo "COMMENT  - $commentsec";					
-			
+			/*
 			$pc1 = $gotpic[0];
 			$pc2 = $gotpic[1];
 			$pc3 = $gotpic[2];
 			$pc4 = $gotpic[3];
 			$pc5 = $gotpic[4];
-
+			
+			
 			echo "<div class='alert alert-success'>$pc1</div>";		
 			echo "<div class='alert alert-success'>$pc2</div>";	
 			echo "<div class='alert alert-success'>$pc3</div>";	
@@ -84,7 +85,13 @@
 			echo "<div class='alert alert-success'>$user_id</div>";
 			echo "<div class='alert alert-success'>$commentsec</div>";
 			echo "<div class='alert alert-success'>$ratingsec</div>";
+			*/
 			
+			$pc1 = "a";
+			$pc2 = "b";
+			$pc3 = "c";
+			$pc4 = "d";
+			$pc5 = "e";
 																						
 		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
