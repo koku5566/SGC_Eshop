@@ -1,6 +1,45 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+<?php
+    //Save into session
+    if(isset($_GET['mainCategory']))
+    {
+        $_SESSION['mainCategory'] = $_GET['mainCategory'];
+    }
+    if(isset($_GET['subCategory']))
+    {
+        $_SESSION['subCategory'] = $_GET['subCategory'];
+    }
+    if(isset($_GET['Search']))
+    {
+        $_SESSION['Search'] = $_GET['Search'];
+    }
+    if(isset($_GET['chkStandardDelivery']))
+    {
+        $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+    }
+    if(isset($_GET['chkSelfCollection']))
+    {
+        $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+    }
+    if(isset($_GET['Rating']))
+    {
+        $_SESSION['Rating'] = $_GET['Rating'];
+    }
+    if(isset($_GET['minPrice']))
+    {
+        $_SESSION['minPrice'] = $_GET['minPrice'];
+    }
+    if(isset($_GET['maxPrice']))
+    {
+        $_SESSION['maxPrice'] = $_GET['maxPrice'];
+    }
+    if(isset($_GET['SortBy']))
+    {
+        $_SESSION['SortBy'] = $_GET['SortBy'];
+    }
+?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
@@ -19,35 +58,35 @@
                                                 <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
                                                 <div class="form-check" id="rating_bar">
                                                     <?php
-                                                        if(isset($_GET['rating']))
+                                                        if(isset($_SESSION['Rating']))
                                                         {
-                                                            $rating = (int) $_GET['rating'];
+                                                            $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
                                                             if($rating >= 1)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 2)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 3)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 4)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 5)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                         
                                                             while(count($ratingArray) < 5) {
                                                                 $counter = count($ratingArray) + 1;
-                                                                array_push($ratingArray,"<a href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a href=\"?Rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             } 
 
                                                             
@@ -58,11 +97,11 @@
                                                         else
                                                         {
                                                             echo("
-                                                                <a href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             ");
                                                         }
 
@@ -180,59 +219,55 @@
                                                 WHERE A.product_id = '$id'
                                                 LIMIT 1";
 
-                                                if(isset($_GET['mainCategory']))
+                                                //Set to sql
+                                                if(isset($_SESSION['mainCategory']))
                                                 {
-                                                    $mainCategory = $_GET['mainCategory'];
+                                                    $mainCategory = $_SESSION['mainCategory'];
                                                     $sql .= "AND main_category = '$mainCategory' ";
                                                 }
 
-                                                if(isset($_GET['subCategory']))
+                                                if(isset($_SESSION['subCategory']))
                                                 {
-                                                    $subCategory = $_GET['subCategory'];
+                                                    $subCategory = $_SESSION['subCategory'];
                                                     $sql .= "AND sub_category = '$subCategory' ";
                                                 }
 
-                                                if(isset($_GET['Search']))
+                                                if(isset($_SESSION['Search']))
                                                 {
-                                                    $SearchBy = $_GET['Search'];
+                                                    $SearchBy = $_SESSION['Search'];
                                                     $sql .= "AND product_name LIKE '%$SearchBy%' ";
                                                 }
 
-                                                if(isset($_GET['chkStandardDelivery']))
+                                                if(isset($_SESSION['chkStandardDelivery']))
                                                 {
                                                     $sql .= "AND product_standard_delivery = '1' ";
                                                 }
 
-                                                if(isset($_GET['chkSelfCollection']))
+                                                if(isset($_SESSION['chkSelfCollection']))
                                                 {
                                                     $sql .= "AND product_self_collect = '1' ";
                                                 }
 
-                                                if(isset($_GET['Rating']))
+                                                if(isset($_SESSION['Rating']))
                                                 {
                                                     $sql .= "AND rating >= $Rating ";
                                                 }
 
-                                                if(isset($_GET['minPrice'],$_GET['maxPrice']))
+                                                if(isset($_SESSION['maxPrice']))
                                                 {
-                                                    $minPrice = $_GET['minPrice'];
-                                                    $maxPrice = $_GET['maxPrice'];
-                                                    $sql .= "AND (product_price >= $minPrice AND product_price <= $maxPrice) ";
-                                                }
-                                                else if(isset($_GET['maxPrice']))
-                                                {
-                                                    $maxPrice = $_GET['maxPrice'];
-                                                    $sql .= "AND (product_price <= $maxPrice) ";
-                                                }
-                                                else if(isset($_GET['minPrice']))
-                                                {
-                                                    $maxPrice = $_GET['minPrice'];
-                                                    $sql .= "AND (product_price >= $minPrice) ";
+                                                    $maxPrice = $_SESSION['maxPrice'];
+                                                    $sql .= "AND product_price <= $maxPrice ";
                                                 }
 
-                                                if(isset($_GET['SortBy']))
+                                                if(isset($_SESSION['minPrice']))
                                                 {
-                                                    $SortBy = $_GET['SortBy'];
+                                                    $maxPrice = $_SESSION['minPrice'];
+                                                    $sql .= "AND product_price >= $minPrice ";
+                                                }
+
+                                                if(isset($_SESSION['SortBy']))
+                                                {
+                                                    $SortBy = $_SESSION['SortBy'];
                                                     $key = "";
                                                     switch($SortBy)
                                                     {
@@ -249,7 +284,6 @@
                                                             $sql .= " ORDER BY product_price ASC";
                                                             break;
                                                         default:
-                                                            
                                                             break;
                                                     }
                                                     
