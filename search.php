@@ -14,7 +14,7 @@
         unset($_SESSION["maxPrice"]);
         unset($_SESSION["SortBy"]);
     }
-    else if(isset($_GET['ApplyFilter']))
+    else
     {
         //Save into session
         if(isset($_GET['mainCategory']))
