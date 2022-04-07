@@ -151,7 +151,7 @@ div.absolute {
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
-  top: 10%;
+  top: -10%;
   left: 80%;
 }
 .profile-pic .-label {
@@ -159,7 +159,7 @@ div.absolute {
   cursor: pointer;
   height: 70px;
   width: 70px;
-  top: 10%;
+  top: -10%;
   left: 80%;
 }
 .profile-pic:hover .-label {
