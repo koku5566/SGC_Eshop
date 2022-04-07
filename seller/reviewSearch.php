@@ -71,7 +71,18 @@ else
 		   FROM reviewRating 
 		   WHERE disable_date IS NULL $rr $rr2
 		   ORDER BY rr_id;";
-		   
+
+	//FUTURE NEED CHANGES ^ SQL TO SOMETHING LIKE THIS BUT NEED SHOP DB TO HAVE S000001 format first
+	/*
+	$query = "SELECT p.product_id, p.product_name, p.product_cover_picture, rr.* 
+				FROM product p INNER JOIN (
+				SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+				FROM reviewRating 
+				WHERE disable_date IS NULL
+				ORDER BY rr_id) rr
+				ON p.product_id = rr.product_id";
+				*/
+				
 	echo "Rating = $rr |";
 	echo "Seller = $rr2 ";
 }
