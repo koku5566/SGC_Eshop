@@ -2,7 +2,23 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
+<!-- Icon -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ 
+<!-- Begin Page Content -->
+<div class="container-fluid" style="width:80%">            
+  <div class="container ratingContainer">
+    <div class="row">
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
+    </div>
+    <div class="row descriptionContainer">
+      <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
+    </div>
+    <div class="row reviewContainer">
+      <h4><b>User Review</b></h4>
+      <p><span id="">
+
+      <?php
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
@@ -21,21 +37,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<!-- Icon -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
- 
-<!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%">            
-  <div class="container ratingContainer">
-    <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
-    </div>
-    <div class="row descriptionContainer">
-      <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
-    </div>
-    <div class="row reviewContainer">
-      <h4><b>User Review</b></h4>
-      <p><span id=""></span></p>
+      </span></p>
     </div>
   </div>
 </div>

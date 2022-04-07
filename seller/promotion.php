@@ -26,7 +26,17 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td><button class='edit_btn' type='submit' name='edit'></button></td></tr>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  "
+                                             .$row["promotion_Date"]."<br>"."End:   "
+                                             .$row["promotionEnd_Date"]."</td>
+                                             <td>
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                </div>
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                </div>
+                                             </td></tr>";
                                          }
                                          echo"</table>";
                                      }
@@ -137,7 +147,7 @@
                                     if($result)
                                     {
                                         echo '<script>alert("Add promotion successfully!")</script>';
-                                        header('Location: '.$_SERVER['PHP_SELF']);
+                                        // header('Location: '.$_SERVER['PHP_SELF']); (refresh function)
                                     }
                                     else
                                     {

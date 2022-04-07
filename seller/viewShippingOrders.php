@@ -24,6 +24,28 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
+<?php
+$sql_3 = "SELECT 
+myOrder.order_id, 
+myOrder.order_status, 
+product.product_name, 
+product.product_cover_picture, 
+product.product_price, 
+product.product_variation, 
+orderDetails.quantity, 
+orderDetails.price, 
+shopProfile.shop_name 
+FROM myOrder 
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id 
+JOIN product ON orderDetails.product_id = product.id 
+JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE orderDetails.order_id='1' ";
+
+$stmt_3 = $conn->prepare($sql_3);
+$stmt_3->execute();
+$result_3 = $stmt_3->get_result();
+?>
+
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
@@ -169,7 +191,35 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                            
+                            <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="ship" role="tabpanel" aria-labelledby="ship-tab">
+                                    <?php                       
+                                    while ($row = $result_3->fetch_assoc()) {
+                                    ?>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col md-auto text-start"><img src=" https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1644969385433" style="width:100%; height:100%;object-fit:contain"/>
+                                            </div>
+                                            <div class="col md-auto text-start "><?php echo $row['product_name']?>
+                                                
+                                            </div>
+                                            <div class="col md-auto text-center offset-md-3">RM <?php echo $row['price']?>.00
+                                            </div>
+                                            <div class="col-2"><?php echo $row['order_id']?>
+                                                
+                                            </div>
+                                            <div class="col-2" style="color:red;"><?php echo $row['order_status']?>
+                                                
+                                            </div>
+                                            <div class="col-2">
+                                                <button onclick="generate()"><a href="#" data-bs-target="#modal-1" data-bs-toggle="modal">Arrange Shipment</a>    </button>
+                                            </div>
+                                        </div>
+                                    <?php 
+                                    }?>
+                                    </div>
+                                    </div>
+                                
                             </div>
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
