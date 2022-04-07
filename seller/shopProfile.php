@@ -47,11 +47,10 @@
     <div class="row">
       <div>
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <div class="relative bg-image" style="background-image: url('https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg');"> <!--src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg-->
+      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
-      </div>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>-->
@@ -123,14 +122,13 @@ div.absolute {
   margin-top: 10px;
 }
 
-.sellerPic{
+/*.sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
   top: 45%;
   left: 55%;
-  
-}
+}*/
 
 .profile-pic {
   color: transparent;
@@ -151,7 +149,6 @@ div.absolute {
   height: 70px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  z-index: 0;
 }
 .profile-pic .-label {
   position: absolute;
