@@ -5,7 +5,7 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['wreview'],$_POST['rid']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['wreview'],$_POST['rid']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
 		echo "<script>alert($_POST['rid'])</script>";	
 		
@@ -173,15 +173,15 @@
 <?php
 		$sql ="SELECT product_id 
 			   FROM `reviewRating`
-			   WHERE product_id = 'P000001' 
-			   LIMIT 1 DESC";
+			   WHERE product_id = 'P000001'
+			   LIMIT 1";
 		if($stmt = mysqli_prepare ($conn, $sql)){
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $c1);
 			
 			while(mysqli_stmt_fetch($stmt)){
 				echo'
-					<form action = "'. $_SERVER['PHP_SELF'].'"method = "POST">
+					<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
 					<input type = "hidden" name = "rid" value = "'.$c1.'">
 					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
 
