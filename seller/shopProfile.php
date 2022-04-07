@@ -155,6 +155,7 @@ div.absolute {
   left: 80%;
 }
 .profile-pic .-label {
+  position: absolute;
   cursor: pointer;
   height: 70px;
   width: 70px;
