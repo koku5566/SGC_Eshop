@@ -367,7 +367,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
@@ -420,7 +420,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
