@@ -72,7 +72,7 @@ $result_2 = $stmt_2->get_result();
                         <div class="col md-auto text-start offset-md-1">
                         <?php echo $row['product_variation']?>
                         </div>
-                        <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
+                        <div class="col md-auto text-end offset-md-3">RM<?php echo $row['product_price']?></div>
                     </div>
                     
                 </a>
