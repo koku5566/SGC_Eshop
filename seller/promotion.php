@@ -113,21 +113,21 @@
                     $fileNames = array_filter($_FILES['img']['name']);
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
-                    echo '<script>alert("1")</script>';
                     if(!empty($fileNames))
                     { 
-                        echo '<script>alert("2")</script>';
                         for($i=0 ; $i < $total ; $i++)
                         {
                             //File upload path 
                             $tmpFilePath = $_FILES['img']['tmp_name'][$i];
-                            echo '<script>alert("3")</script>';
+
                             //make sure file is not null
                             if ($tmpFilePath != "")
                             {
                                 //Setup new file path
                                 $newFilePath = $targetDir . $_FILES['img']['name'][$i];
                                 echo '<script>alert("4")</script>';
+                                echo '<script>alert(" ' . $tmpFilePath . '")</script>';
+                                echo '<script>alert(" ' . $newFilePath . '")</script>';
                                 /*
                                 $fileType = strtolower(pathinfo($newFilePath,PATHINFO_EXTENSION));
                                 $fileValidation = in_array($fileType,$allowTypes);
