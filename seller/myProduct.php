@@ -1,6 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if(isset($_GET['Panel']))
+    {
+        $_SESSION['Panel'] = $_GET['Panel'];
+    }
+
     $subCategoryArray = array();
 
     //Main Category
@@ -41,7 +46,7 @@
         $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            $Panel = $_GET['Panel'];
+            $Panel = $_SESSION['Panel'];
             ?>
                 <script type="text/javascript">
                     alert("Publish Successful");
