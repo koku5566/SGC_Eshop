@@ -6,13 +6,15 @@
     if(isset($_POST['submit'])){
       //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
         echo"hello";
-        $coverPhoto = $_POST['coverPhoto'];
-        $profileImage = $_POST['profileImage'];
+        //$coverPhoto = $_POST['coverPhoto'];
+        //$profileImage = $_POST['profileImage'];
         $name = $_POST['name'];
         $description = $_POST['description'];
-        $imageVideo = $_POST['imageVideo'];
+        //$imageVideo = $_POST['imageVideo'];
 
-        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+        //$query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+        $query = "INSERT INTO shopProfile (shop_name, shop_description) /*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
+        VALUES ('$name', '$description')"; /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
 
         $run = mysqli_query($conn,$query);
 
