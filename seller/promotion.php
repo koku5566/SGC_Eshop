@@ -26,7 +26,13 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td><button class='edit_btn' type='submit' name='edit'></button></td></tr>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  "
+                                             .$row["promotion_Date"]."<br>"."End:   "
+                                             .$row["promotionEnd_Date"]."</td><td><button class='edit_btn' type='submit' name='edit'></button>
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
+                                                </div>
+                                             </td></tr>";
                                          }
                                          echo"</table>";
                                      }
