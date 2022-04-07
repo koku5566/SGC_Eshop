@@ -111,7 +111,7 @@
 					/**/
 					for($r = 0; $r< count($tempNamepic); $r++){
 						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
-						echo "<div class='alert alert-success'>$r</div>";	
+						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
 					}
 					
 					
