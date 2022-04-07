@@ -54,6 +54,14 @@
       </div>
       <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
+      <div class="profile-pic">
+        <label class="-label" for="file">
+          <span class="glyphicon glyphicon-camera"></span>
+          <span>Change Image</span>
+        </label>
+        <input id="file" type="file" onchange="loadFile(event)"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200" />
+      </div>
     </div>
     
     <div class="row">
@@ -182,4 +190,11 @@ $(function() {
 function imageIsLoaded(e) {
   $('.imageContainer').append('<img src=' + e.target.result + '>');
 };
+
+/* Profile image review */
+var loadFile = function (event) {
+var image = document.getElementById("profilePic");
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
 </script>
