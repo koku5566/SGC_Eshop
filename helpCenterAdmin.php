@@ -8,7 +8,7 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
 		$selectedPID = $_POST['rid'];
-		echo "<script>alert('$selectedPID')</script>";	
+		//echo "<script>alert('$selectedPID')</script>";	
 		
 		
 	}
@@ -218,9 +218,10 @@
 				<!--CONCAT at 90 -->
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
-						<h6><?php echo (isset($c4) && !empty ($c4))? $c4 : 'Model: WISP510'; ?></h6>
-						<h3><?php echo (isset($c4) && !empty ($c4))? $c4 : 'RM 349.00'; ?></h3>									
+						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c1) && !empty ($c1))? $c1 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
+						<h6><?php echo (isset($c1) && !empty ($c1))? $c1 : 'Model: WISP510'; ?></h6>
+						<h3><?php echo (isset($c1) && !empty ($c1))? $c1 : 'RM 349.00'; ?></h3>									
 					</div>
 					
 					<!-- bi bi-star-fill 	21.13
@@ -243,7 +244,7 @@
 					
 					
 			
-			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
+			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Write a Review..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
 				
@@ -380,7 +381,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?>">
+		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($c1) && !empty ($c1))? $c1 : ''; ?>">
 		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
 	  </form>
@@ -556,7 +557,16 @@
     }
 </style>
 <script>
-
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid']) && !empty($_POST['rid'])  ){
+			$showmedawae = "#exampleModalLong";
+								 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
 
     initImages();
     //initVariation();
