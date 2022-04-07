@@ -5,7 +5,17 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['wreview'],$_POST['rid']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Submit'){
+		
+		echo "<script>alert($_POST['rid'])</script>";	
+		
+		
+	}
+
+
+
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
 		
 		$product_id = "P000001"; //change into btn click $_POST
 		$user_id = "U000005";	//change into S_SESSION [user id]
@@ -160,14 +170,34 @@
 <!------------------------------------------------------------------------------------------------>
 
 
+<?php
+		$sql ="SELECT product_id 
+			   FROM `reviewRating`
+			   WHERE product_id = 'P000001' 
+			   LIMIT 1 DESC";
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $c1);
+			
+			while(mysqli_stmt_fetch($stmt)){
+				echo'
+					<form action = "'. $_SERVER['PHP_SELF'].'"method = "POST">
+					<input type = "hidden" name = "rid" value = "'.$c1.'">
+					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
+
+			}
+			mysqli_stmt_close($stmt);
+		}
 
 
 
+?>
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
+
+<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
+	<input type="submit" class="btn btn-primary" value = "Launch demo modal" data-toggle="modal" data-target="#exampleModalLong">
+</form>
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -188,8 +218,8 @@
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
 						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
-						<h6>Model: WISP510</h6>
-						<h3>RM 349.00</h3>									
+						<h6><?php echo (isset($c4) && !empty ($c4))? $c4 : 'Model: WISP510'; ?></h6>
+						<h3><?php echo (isset($c4) && !empty ($c4))? $c4 : 'RM 349.00'; ?></h3>									
 					</div>
 					
 					<!-- bi bi-star-fill 	21.13
@@ -349,6 +379,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
+		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?>">
 		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
 	  </form>
