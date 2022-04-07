@@ -47,10 +47,11 @@
     <div class="row">
       <div>
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" style="background-image: url('https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg');"> <!--src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg-->
+      <div class="relative bg-image" style="background-image: url('https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg');"> <!--src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg-->
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
+      </div>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>-->
