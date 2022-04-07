@@ -108,9 +108,6 @@
                     $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
 
-                    $stmt_u = mysqli_query($conn, $sql_u);
-
-				if (mysqli_num_rows($stmt_u) > 0) {
                     $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
                     VALUES('$title','$dateStart','$dateEnd')";
                     $result = mysqli_query($conn,$sql);
@@ -147,7 +144,6 @@
                         echo '<script>alert("Failed")</script>';
                     }
                 }
-            }
                 ?>
             </form>
         </div>
