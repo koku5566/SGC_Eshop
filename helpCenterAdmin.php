@@ -79,6 +79,12 @@
 			echo "<div class='alert alert-success'>$pc4</div>";	
 			echo "<div class='alert alert-success'>$pc5</div>";	
 			
+			
+			echo "<div class='alert alert-success'>$product_id</div>";
+			echo "<div class='alert alert-success'>$user_id</div>";
+			echo "<div class='alert alert-success'>$commentsec</div>";
+			echo "<div class='alert alert-success'>$ratingsec</div>";
+			
 																						
 		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
