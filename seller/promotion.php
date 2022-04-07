@@ -137,6 +137,7 @@
                                     if($result)
                                     {
                                         echo '<script>alert("Add promotion successfully!")</script>';
+                                        header("Refresh:0");
                                     }
                                     else
                                     {
