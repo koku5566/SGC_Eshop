@@ -145,6 +145,7 @@ div.absolute {
 }
 .profile-pic img {
   position: absolute;
+  justify-content: center;
   object-fit: cover;
   width: 70px;
   height: 70px;
@@ -156,6 +157,7 @@ div.absolute {
 }
 .profile-pic .-label {
   position: absolute;
+  justify-content: center;
   cursor: pointer;
   height: 70px;
   width: 70px;
