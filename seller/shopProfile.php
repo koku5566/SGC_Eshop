@@ -17,14 +17,19 @@
         //$query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
          /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
 
-        $run = mysqli_query($conn,$query);
-
-        if($run){
+        //$run = mysqli_query($conn,$query);
+        if (mysqli_query($conn, $query)) {
           echo "Form Submitted Successfully" ;
+        } else {
+          echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
-        else{
-          echo "Form not submitted";
-        }
+        mysqli_close($conn);
+        //if($run){
+        //  echo "Form Submitted Successfully" ;
+        //}
+        //else{
+        //  echo "Form not submitted";
+        //}
 
       //}
       //else{
