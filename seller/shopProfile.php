@@ -60,7 +60,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" onchange="loadFile(event)"/>
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200" />
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/><br><br>
       </div>
     </div>
     
@@ -149,12 +149,14 @@ div.absolute {
   height: 70px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
+  right: 150px;
 }
 .profile-pic .-label {
   position: absolute;
   cursor: pointer;
   height: 70px;
   width: 70px;
+  right: 150px;
 }
 .profile-pic:hover .-label {
   display: flex;
