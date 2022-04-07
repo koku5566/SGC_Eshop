@@ -55,12 +55,14 @@
 		for($k = 0; $k< 5 - count($gotpic); $i++){
 				array_push($gotpic, '');
 		}
+		/*
 		for($j = 0; $j <5; $j++){
 			echo "<div class='alert alert-success'>$gotpic[$j]</div>";			
 		}
 		for($t = 0; $t <count($tempNamepic); $t++){
 			echo "<div class='alert alert-danger'>$tempNamepic[$t]</div>";			
 		}
+		*/
 		
 		//echo "RATING  - $ratingsec <br>";
 		//echo "COMMENT  - $commentsec";					
@@ -71,8 +73,17 @@
 			$pc4 = $gotpic[3];
 			$pc5 = $gotpic[4];
 
-
-
+			echo "<div class='alert alert-success'>$pc1</div>";		
+			echo "<div class='alert alert-success'>$pc2</div>";	
+			echo "<div class='alert alert-success'>$pc3</div>";	
+			echo "<div class='alert alert-success'>$pc4</div>";	
+			echo "<div class='alert alert-success'>$pc5</div>";	
+			
+			
+			echo "<div class='alert alert-success'>$product_id</div>";
+			echo "<div class='alert alert-success'>$user_id</div>";
+			echo "<div class='alert alert-success'>$commentsec</div>";
+			echo "<div class='alert alert-success'>$ratingsec</div>";
 			
 																						
 		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -86,10 +97,11 @@
 					echo "<script>alert('Insert successfully');</script>";
 					/**/
 					
-					
+					/*
 					for($r = 0; $r< count($tempNamepic); $r++){
 						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 					}
+					
 					
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
 							SET a.rr_id = concat('RR', b.id)
@@ -100,7 +112,7 @@
                             {}
                             else{}}	
                             //END  
-					
+					*/
 				}else{
 					echo "<script>alert('Fail to Insert');</script>";
 				}
