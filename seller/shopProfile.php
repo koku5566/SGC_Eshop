@@ -47,7 +47,7 @@
     <div class="row">
       <div>
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
+      <img class="relative bg-image img-fluid" style="background-image: url('https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg');"> <!--src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg-->
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
@@ -145,24 +145,18 @@ div.absolute {
 }
 .profile-pic img {
   position: absolute;
-  justify-content: center;
   object-fit: cover;
   width: 70px;
   height: 70px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
-  top: -10%;
-  left: 80%;
 }
 .profile-pic .-label {
   position: absolute;
-  justify-content: center;
   cursor: pointer;
   height: 70px;
   width: 70px;
-  top: -10%;
-  left: 80%;
 }
 .profile-pic:hover .-label {
   display: flex;
