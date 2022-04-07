@@ -13,8 +13,8 @@
         echo $name, $description;
         //$imageVideo = $_POST['imageVideo'];
 
-        //$query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
-        $query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
+        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('','','$name','$description','')";
+        //$query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
          /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
 
         $run = mysqli_query($conn,$query);
