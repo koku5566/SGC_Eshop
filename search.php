@@ -155,6 +155,7 @@
                                                     <div class="col">
                                                         <div class="input-group">
                                                             <button type="submit" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" class="btn btn-secondary" style="width:100%">Clear Filter</button>
                                                         </div>
                                                     </div>
                                                 </div>
