@@ -149,7 +149,7 @@ div.absolute {
   height: 65px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  left: 200px;
+  left: 280px;
 }
 .profile-pic .-label {
   position: absolute;
