@@ -174,7 +174,7 @@
                                                                 <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
                                                             </div>
                                                             <div class="col-xl-6 col-sm-12">
-                                                                <button type="submit" name="ClearFilter" class="btn btn-secondary col-xl-6 col-sm-12" style="width:100%">Clear Filter</button>
+                                                                <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
                                                             </div>
                                                         </div>
                                                     </div>
