@@ -30,11 +30,11 @@
                                              .$row["promotion_Date"]."<br>"."End:   "
                                              .$row["promotionEnd_Date"]."</td>
                                              <td>
-                                             <div class=\"col-xl-12\" style=\"padding:0;\">
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
                                                 <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                 </div>
                                              <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
+                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                 </div>
                                              </td></tr>";
                                          }
