@@ -2,43 +2,59 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-    //Save into session
-    if(isset($_GET['mainCategory']))
+    if(isset($_GET['ClearFilter']))
     {
-        $_SESSION['mainCategory'] = $_GET['mainCategory'];
+        unset($_SESSION["mainCategory"]);
+        unset($_SESSION["subCategory"]);
+        unset($_SESSION["Search"]);
+        unset($_SESSION["chkStandardDelivery"]);
+        unset($_SESSION["chkSelfCollection"]);
+        unset($_SESSION["Rating"]);
+        unset($_SESSION["minPrice"]);
+        unset($_SESSION["maxPrice"]);
+        unset($_SESSION["SortBy"]);
     }
-    if(isset($_GET['subCategory']))
+    else if(isset($_GET['ApplyFilter']))
     {
-        $_SESSION['subCategory'] = $_GET['subCategory'];
+        //Save into session
+        if(isset($_GET['mainCategory']))
+        {
+            $_SESSION['mainCategory'] = $_GET['mainCategory'];
+        }
+        if(isset($_GET['subCategory']))
+        {
+            $_SESSION['subCategory'] = $_GET['subCategory'];
+        }
+        if(isset($_GET['Search']))
+        {
+            $_SESSION['Search'] = $_GET['Search'];
+        }
+        if(isset($_GET['chkStandardDelivery']))
+        {
+            $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+        }
+        if(isset($_GET['chkSelfCollection']))
+        {
+            $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+        }
+        if(isset($_GET['Rating']))
+        {
+            $_SESSION['Rating'] = $_GET['Rating'];
+        }
+        if(isset($_GET['minPrice']))
+        {
+            $_SESSION['minPrice'] = $_GET['minPrice'];
+        }
+        if(isset($_GET['maxPrice']))
+        {
+            $_SESSION['maxPrice'] = $_GET['maxPrice'];
+        }
+        if(isset($_GET['SortBy']))
+        {
+            $_SESSION['SortBy'] = $_GET['SortBy'];
+        }
     }
-    if(isset($_GET['Search']))
-    {
-        $_SESSION['Search'] = $_GET['Search'];
-    }
-    if(isset($_GET['chkStandardDelivery']))
-    {
-        $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
-    }
-    if(isset($_GET['chkSelfCollection']))
-    {
-        $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
-    }
-    if(isset($_GET['Rating']))
-    {
-        $_SESSION['Rating'] = $_GET['Rating'];
-    }
-    if(isset($_GET['minPrice']))
-    {
-        $_SESSION['minPrice'] = $_GET['minPrice'];
-    }
-    if(isset($_GET['maxPrice']))
-    {
-        $_SESSION['maxPrice'] = $_GET['maxPrice'];
-    }
-    if(isset($_GET['SortBy']))
-    {
-        $_SESSION['SortBy'] = $_GET['SortBy'];
-    }
+    
 ?>
 
                 <!-- Begin Page Content -->
@@ -60,6 +76,8 @@
                                                     <?php
                                                         if(isset($_SESSION['Rating']))
                                                         {
+                                                            echo("display rating");
+                                                            echo($rating);
                                                             $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
@@ -115,13 +133,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_GET['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_SESSION['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_GET['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_SESSION['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -135,7 +153,7 @@
                                                 <div class="row">
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="minPrice" value="<?php echo($_GET['minPrice']); ?>" placeholder="RM MIN">
+                                                            <input type="text" class="form-control" name="minPrice" value="<?php echo($_SESSION['minPrice']); ?>" placeholder="RM MIN">
                                                         </div>
                                                     </div>
                                                     <div class="col mb-3" style="max-width: 14px;padding: 0;">
@@ -143,7 +161,7 @@
                                                     </div>
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="maxPrice" value="<?php echo($_GET['maxPrice']); ?>" placeholder="RM MAX">
+                                                            <input type="text" class="form-control" name="maxPrice" value="<?php echo($_SESSION['maxPrice']); ?>" placeholder="RM MAX">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -154,7 +172,8 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="input-group">
-                                                            <button type="submit" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,10 +197,10 @@
                                                     </div>
                                                     <div class="col">
                                                         <select class="form-select" name="SortBy" onchange="this.form.submit()">
-                                                            <option value="Latest" <?php $_GET['SortBy'] == "Latest" ? "selected" : ""; ?>>Latest</option>
-                                                            <option value="Rating" <?php $_GET['SortBy'] == "Rating" ? "selected" : ""; ?>>Rating</option>
-                                                            <option value="Sold" <?php $_GET['SortBy'] == "Sold" ? "selected" : ""; ?>>Sold</option>
-                                                            <option value="Price" <?php $_GET['SortBy'] == "Price" ? "selected" : ""; ?>>Price</option>
+                                                            <option value="Latest" <?php $_SESSION['SortBy'] == "Latest" ? "selected" : ""; ?>>Latest</option>
+                                                            <option value="Rating" <?php $_SESSION['SortBy'] == "Rating" ? "selected" : ""; ?>>Rating</option>
+                                                            <option value="Sold" <?php $_SESSION['SortBy'] == "Sold" ? "selected" : ""; ?>>Sold</option>
+                                                            <option value="Price" <?php $_SESSION['SortBy'] == "Price" ? "selected" : ""; ?>>Price</option>
                                                         </select>
                                                     </div>
                                                 </div>
