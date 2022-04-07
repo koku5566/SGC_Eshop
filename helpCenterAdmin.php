@@ -8,7 +8,7 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
 		$selectedPID = $_POST['rid'];
-		echo "<script>alert('$selectedPID')</script>";	
+		//echo "<script>alert('$selectedPID')</script>";	
 		
 		
 	}
@@ -556,7 +556,16 @@
     }
 </style>
 <script>
-
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid']) && !empty($_POST['rid'])  ){
+			$showmedawae = "#exampleModalLong";
+								 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
 
     initImages();
     //initVariation();
