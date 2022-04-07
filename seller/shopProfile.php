@@ -146,18 +146,20 @@ div.absolute {
 .profile-pic img {
   position: absolute;
   object-fit: cover;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
-  top: 45%;
-  left: 55%;
+  top: 40%;
+  left: 80%;
 }
 .profile-pic .-label {
   cursor: pointer;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
+  top: 40%;
+  left: 80%;
 }
 .profile-pic:hover .-label {
   display: flex;
