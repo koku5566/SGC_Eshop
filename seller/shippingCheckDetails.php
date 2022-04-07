@@ -126,7 +126,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-1"><?php echo $i++;?>.</div>
+                                <div class="col-1"><?php echo ++$i;?>.</div>
                                 <div class="col-1"><img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" /></div>
                                 <div class="col-4"><?php echo $row['product_name']?></div>
                                 <div class="col-2">RM<?php echo $row['product_price']?>.00</div>
