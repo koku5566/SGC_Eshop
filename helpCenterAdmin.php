@@ -238,7 +238,7 @@
 		-->
         <div style="height: 100%">
 				<!--CONCAT at 90 -->
-					<img src = "<?php echo (isset($j5) && !empty ($j5))? $j5 : 'https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg'; ?>" class = "productpic">
+					<img src = "<?php echo (isset($j5) && !empty ($j5))? 'img/product/'.$j5 : 'https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg'; ?>" class = "productpic">
 					<div class = "namestar">
 						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
 						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'WI-SP510 Wireless Headphone blablabla - RMB PRODUCT NAME'; ?></h5>
