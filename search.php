@@ -169,9 +169,9 @@
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="input-group">
-                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
-                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                        <div class="row">
+                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary col-xl-6 col-sm-12" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary col-xl-6 col-sm-12" style="width:100%">Clear Filter</button>
                                                         </div>
                                                     </div>
                                                 </div>
