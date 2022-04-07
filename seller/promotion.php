@@ -108,7 +108,7 @@
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
                     //File upload configuration 
-                    $targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
+                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
                     $fileNames = array_filter($_FILES['img']['name']);
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
