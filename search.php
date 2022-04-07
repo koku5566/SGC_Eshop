@@ -166,6 +166,7 @@
                                                 //Check for Main Category
                                                 $sql = "SELECT A.product_id, R.rating FROM product AS A 
                                                 LEFT JOIN (SELECT DISTINCT(product_id), rating FROM reviewRating t1 WHERE rating = (SELECT MIN(rating) FROM reviewRating WHERE product_id = t1.product_id)) AS R ON A.product_id = R.product_id 
+                                                LEFT JOIN categoryCombination AS C ON A.category_id = C.combination_id 
                                                 WHERE A.product_status = 'A' ";
 
                                                 $id = $row['product_id'];
@@ -178,6 +179,18 @@
                                                 LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
                                                 WHERE A.product_id = '$id'
                                                 LIMIT 1";
+
+                                                if(isset($_GET['mainCategory']))
+                                                {
+                                                    $mainCategory = $_GET['mainCategory'];
+                                                    $sql .= "AND main_category = '$mainCategory' ";
+                                                }
+
+                                                if(isset($_GET['subCategory']))
+                                                {
+                                                    $subCategory = $_GET['subCategory'];
+                                                    $sql .= "AND sub_category = '$subCategory' ";
+                                                }
 
                                                 if(isset($_GET['Search']))
                                                 {
