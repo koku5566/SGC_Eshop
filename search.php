@@ -187,10 +187,10 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
-                                            <div class="col-xl-2 col-lg-2">
+                                            <div class="col-xl-2 col-lg-3">
                                                 <h5 class="m-0 font-weight-bold text-primary">Products</h5>
                                             </div>
-                                            <div class="col-xl-10 col-lg-10">
+                                            <div class="col-xl-10 col-lg-9">
                                                 <div class="row" style="float:right;">
                                                     <div class="col" style="display:contents;">
                                                         <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
@@ -367,7 +367,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
@@ -420,7 +420,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 

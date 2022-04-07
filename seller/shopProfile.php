@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="saveBtn">Save</button>
+      <button type="submit" class="saveBtn" name="submit">Save</button>
     </div> 
     <input type="submit" class="btn" name="submit" value="save">
     </form>
