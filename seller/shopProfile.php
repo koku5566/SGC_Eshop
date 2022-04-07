@@ -4,7 +4,7 @@
 
 <?php
     if(isset($_POST['submit'])){
-      if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
         echo"hello";
         $coverPhoto = $_POST['coverPhoto'];
         $profileImage = $_POST['profileImage'];
@@ -23,10 +23,10 @@
           echo "Form not submitted";
         }
 
-      }
-      else{
-        echo "all fields required";
-      }
+      //}
+      //else{
+      //  echo "all fields required";
+      //}
     }
 
     //if(isset($_POST['submit'])){
