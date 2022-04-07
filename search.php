@@ -14,7 +14,7 @@
         unset($_SESSION["maxPrice"]);
         unset($_SESSION["SortBy"]);
     }
-    else if(isset($_GET['ApplyFilter']))
+    else
     {
         //Save into session
         if(isset($_GET['mainCategory']))
@@ -197,10 +197,10 @@
                                                     </div>
                                                     <div class="col">
                                                         <select class="form-select" name="SortBy" onchange="this.form.submit()">
-                                                            <option value="Latest" <?php $_SESSION['SortBy'] == "Latest" ? "selected" : ""; ?>>Latest</option>
-                                                            <option value="Rating" <?php $_SESSION['SortBy'] == "Rating" ? "selected" : ""; ?>>Rating</option>
-                                                            <option value="Sold" <?php $_SESSION['SortBy'] == "Sold" ? "selected" : ""; ?>>Sold</option>
-                                                            <option value="Price" <?php $_SESSION['SortBy'] == "Price" ? "selected" : ""; ?>>Price</option>
+                                                            <option value="Latest" <?php echo($_SESSION['SortBy'] == "Latest" ? "selected" : ""); ?>>Latest</option>
+                                                            <option value="Rating" <?php echo($_SESSION['SortBy'] == "Rating" ? "selected" : ""); ?>>Rating</option>
+                                                            <option value="Sold" <?php echo($_SESSION['SortBy'] == "Sold" ? "selected" : ""); ?>>Sold</option>
+                                                            <option value="Price" <?php echo($_SESSION['SortBy'] == "Price" ? "selected" : ""); ?>>Price</option>
                                                         </select>
                                                     </div>
                                                 </div>
