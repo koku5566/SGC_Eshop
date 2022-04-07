@@ -37,7 +37,7 @@
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
 		
-		$product_id = "P000001"; //change into btn click $_POST
+		$product_id = $_POST['reviewid']; //change into btn click $_POST
 		$user_id = "U000005";	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
