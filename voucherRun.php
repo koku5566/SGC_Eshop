@@ -19,9 +19,9 @@
      INNER JOIN product ON productVoucher.product_id = product.product_id	
      INNER JOIN user ON product.user_id = user.user_id";	
 
-   $getv = $conn->prepare($sql);
-   $getv->execute();
-   $result = $getv->get_result();
+   $stmt = $conn->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->get_result();
    
 ?>
 
