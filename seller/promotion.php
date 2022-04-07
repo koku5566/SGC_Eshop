@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp">
+                                                            <input accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" type="file" class="imgInp">
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -108,41 +108,63 @@
                     $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
-                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
-                    VALUES('$title','$dateStart','$dateEnd')";
-                    echo '<script>alert("hihi 2")</script>';
-                    $result = mysqli_query($conn,$sql);
-                    
-                    // File upload configuration 
-                    //$targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    //$allowTypes = array('jpg','png','jpeg'); 
+                    //File upload configuration 
+                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    $fileNames = array_filter($_FILES['img']['name']);
+                    $allowTypes = array('jpg','png','jpeg');
+                    $total = count($_FILES["img"]["name"]); 
+                    echo '<script>alert("1")</script>';
+                    if(!empty($fileNames))
+                    { 
+                        echo '<script>alert("2")</script>';
+                        for($i=0 ; $i < $total ; $i++)
+                        {
+                            //File upload path 
+                            $tmpFilePath = $_FILES['img']['tmp_name'][$i];
+                            echo '<script>alert("3")</script>';
+                            //make sure file is not null
+                            if ($tmpFilePath != "")
+                            {
+                                //Setup new file path
+                                $newFilePath = $targetDir . $_FILES['img']['name'][$i];
+                                echo '<script>alert("4")</script>';
+                                /*
+                                $fileType = strtolower(pathinfo($newFilePath,PATHINFO_EXTENSION));
+                                $fileValidation = in_array($fileType,$allowTypes);
+                                
+                                //check file type
+                                if(!$fileValidation)
+                                {
+                                    echo '<script>alert("Invalid File Type!")</script>';
+                                }
+                                */
 
-                    //if(!empty($fileNames)){ 
-                        //foreach($_FILES['img']['name'] as $key=>$val){ 
-                            // File upload path 
-                            
-                            //$fileName = basename($_FILES['img']['name'][$key]); 
-                            //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                            //$fileName = round(microtime(true) * 1000).".".$ext;
-                            //$targetFilePath = $targetDir.$fileName; 
-                            // Check whether file type is valid 
-                            //$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                            //if(in_array($fileType, $allowTypes)){ 
-                                //if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                                  //  $sql_insert .= "'$fileName', ";
-                                   // $imgInpCounter++;
-                              //  }
-                           // }
-                        //} 
-                   // }
+                                //Upload the file into the temp dir
+                                if(move_uploaded_file($tmpFilePath, $newFilePath)) 
+                                {
+                                    echo '<script>alert("5")</script>';
+                                    //get file name
+                                    $fileName = $_FILES['img']['name'][$i];
+                                    //$sqlGetLatestIdeaID = "SELECT promotion FROM idea_table ORDER BY idea_id DESC LIMIT 1";
+                                    //$executeQuery = mysqli_query($db, $sqlGetLatestIdeaID);
+                                    //$getIDRow = mysqli_fetch_assoc($executeQuery);
+                                    //$getID = $getIDRow['idea_id'];
+                                    $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                    VALUES('$title','$fileName','$dateStart','$dateEnd')";
+                                    echo '<script>alert("6")</script>';
+                                    $result = mysqli_query($conn,$sql);
 
-                    if($result)
-                    {
-                        echo '<script>alert("Add promotion successfully!")</script>';
-                    }
-                    else
-                    {
-                        echo '<script>alert("Failed")</script>';
+                                    if($result)
+                                    {
+                                        echo '<script>alert("Add promotion successfully!")</script>';
+                                    }
+                                    else
+                                    {
+                                        echo '<script>alert("Failed")</script>';
+                                    }
+                                }
+                            } 
+                        }
                     }
                 }
                 ?>
@@ -260,6 +282,9 @@
         });
     }
 </script>
+
+<script src="../js/checkFileType.js"></script>
+
 <?php
     require __DIR__ . '/footer.php'
 ?>
