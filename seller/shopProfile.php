@@ -52,11 +52,12 @@
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
       <div class="profile-pic">
         <label class="-label" for="file">
           <span class="glyphicon glyphicon-camera"></span>
+          <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" onchange="loadFile(event)"/>
         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200" />
@@ -136,7 +137,7 @@ div.absolute {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
   transition: all 0.3s ease;
 }
 .profile-pic input {
@@ -145,16 +146,16 @@ div.absolute {
 .profile-pic img {
   position: absolute;
   object-fit: cover;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
 }
 .profile-pic .-label {
   cursor: pointer;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 }
 .profile-pic:hover .-label {
   display: flex;
