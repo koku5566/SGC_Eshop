@@ -84,7 +84,7 @@ if(mysqli_num_rows($result) > 0)
 	 
 	 $picR = '';
 	 for($i=1; $i<=5; $i++){
-		 if($row["pic$i"] === null){
+		 if($row["pic$i"] === null && $row["pic$i"] === ''){
 			 $picR .='';
 			 /*
 			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
