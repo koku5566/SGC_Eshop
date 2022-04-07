@@ -2,7 +2,8 @@
     require __DIR__ . '/header.php';
 
     $orderid = $_GET['order_id'];
-
+    
+    echo $orderid;
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
@@ -12,7 +13,8 @@
     product.product_price,
     orderDetails.quantity,
     orderDetails.price,
-    user.username
+    user.username,
+    userAddress.address
     FROM
     myOrder
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
@@ -31,7 +33,6 @@
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
 while ($row = $result->fetch_assoc()) {
-}
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -44,7 +45,7 @@ while ($row = $result->fetch_assoc()) {
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            211104M9WMPBS5
+                            <?php echo $row['order_id']?>
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@ while ($row = $result->fetch_assoc()) {
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
-                            <div id="recipient-address">123252, Hello sdjkn</div>
+                            <div id="recipient-address"><?php echo $row['address']?></div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +95,7 @@ while ($row = $result->fetch_assoc()) {
 
         </div>
     </div>
-
+<?php } ?>
 
     <!--  Payment Information -->
     <div class="row">

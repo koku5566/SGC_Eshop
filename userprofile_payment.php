@@ -50,7 +50,7 @@
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
 <div id="DataDiv">
-<div class="h1">My Payment Method</div>
+<div class="h1">My Payment Option</div>
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -75,7 +75,7 @@
 			");
 	}
 ?>
-
+<hr>
 <div class="h3">Card</div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
