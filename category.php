@@ -1,6 +1,98 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+<?php
+    if(isset($_GET['ClearFilter']))
+    {
+        unset($_SESSION["mainCategory"]);
+        unset($_SESSION["subCategory"]);
+        unset($_SESSION["Search"]);
+        unset($_SESSION["chkStandardDelivery"]);
+        unset($_SESSION["chkSelfCollection"]);
+        unset($_SESSION["Rating"]);
+        unset($_SESSION["minPrice"]);
+        unset($_SESSION["maxPrice"]);
+        unset($_SESSION["SortBy"]);
+    }
+    else
+    {
+        if(isset($_GET['ApplyFilter']))
+        {
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            else
+            {
+                unset($_SESSION["chkStandardDelivery"]);
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            else
+            {
+                unset($_SESSION["chkSelfCollection"]);
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            else
+            {
+                unset($_SESSION["minPrice"]);
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            else
+            {
+                unset($_SESSION["maxPrice"]);
+            }
+        }
+        else{
+            //Save into session
+            if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
+            {
+                $_SESSION['mainCategory'] = $_GET['mainCategory'];
+            }
+            if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
+            {
+                $_SESSION['subCategory'] = $_GET['subCategory'];
+            }
+            if(isset($_GET['Search']) && $_GET['Search'] != "")
+            {
+                $_SESSION['Search'] = $_GET['Search'];
+            }
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            if(isset($_GET['Rating']) && $_GET['Rating'] != "")
+            {
+                $_SESSION['Rating'] = $_GET['Rating'];
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            if(isset($_GET['SortBy'])  && $_GET['SortBy'] != "")
+            {
+                $_SESSION['SortBy'] = $_GET['SortBy'];
+            }
+        }
+    }
+    
+?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
@@ -16,46 +108,111 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
-                                                <div class="form-check">
-                                                    <button class="form-check-input"></button>
+                                                <h6 class="m-0 font-weight-bold text-primary mb-3"><i class="fa fa-list" aria-hidden="true"></i>All Category</h6>
+                                                <div class="browse-menus">
+                                                    <div class="browse-menu active">
+                                                        <ul class="main-menu">
+                                                            <!-- PHP Loop here - Category -->
+                                                            <?php
+                                                                //Main Category
+                                                                $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                                                $result = mysqli_query($conn, $sql);
+
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $maincategoryid = $row["category_id"];
+                                                                        $categoryName = $row["category_name"];
+                                                                        $picName = "";
+                                                                        if($row["category_pic"] != "")
+                                                                        {
+                                                                            $picName = "/img/category/".$row["category_pic"];
+                                                                        }
+
+                                                                        $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                                                        $result_1 = mysqli_query($conn, $sql_1);
+
+                                                                        if (mysqli_num_rows($result_1) > 0) {
+                                                                            
+                                                                            echo("
+                                                                                <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
+                                                                                    <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                                    $categoryName
+                                                                                    <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+
+                                                                                    </a>
+                                                                                        <ul class=\"dropdown-menu\">
+                                                                            ");
+                                                                            while($row_1 = mysqli_fetch_assoc($result_1)) {
+
+                                                                                $subCategoryId = $row_1["subCategoryId"];
+                                                                                $subCategoryName = $row_1["subCategoryName"];
+                                                                                $subPicName = "";
+                                                                                echo("
+                                                                                    <li class=\"menu-item\">
+                                                                                        <a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
+                                                                                    </li>
+                                                                                ");
+                                                                            }
+                                                                            echo("
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                ");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            //If no sub category, display as normal
+                                                                            echo("
+                                                                            <li class=\"menu-item\" style=\"display: list-item;\">
+                                                                            <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                                            <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                            $categoryName
+                                                                            </a>
+                                                                            </li>
+                                                                            ");
+                                                                        }
+                                                                    }
+                                                                }   
+                                                            ?>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="m-0 font-weight-bold text-primary mb-3"><i class="fa fa-list" aria-hidden="true"></i>All Category</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
                                                 <div class="form-check" id="rating_bar">
                                                     <?php
-                                                        if(isset($_GET['rating']))
+                                                        if(isset($_SESSION['Rating']))
                                                         {
-                                                            $rating = (int) $_GET['rating'];
+                                                            $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
                                                             if($rating >= 1)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 2)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 3)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 4)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                             if($rating >= 5)
                                                             {
-                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a class=\"fillStar\" href=\"?Rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             }
                                                         
                                                             while(count($ratingArray) < 5) {
                                                                 $counter = count($ratingArray) + 1;
-                                                                array_push($ratingArray,"<a href=\"?rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
+                                                                array_push($ratingArray,"<a href=\"?Rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             } 
 
                                                             
@@ -66,11 +223,11 @@
                                                         else
                                                         {
                                                             echo("
-                                                                <a href=\"?rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
-                                                                <a href=\"?rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=5\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=4\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=3\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=2\"><span class=\"fa fa-star ratingStar\"></span></a>
+                                                                <a href=\"?Rating=1\"><span class=\"fa fa-star ratingStar\"></span></a>
                                                             ");
                                                         }
 
@@ -84,13 +241,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_GET['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo(isset($_SESSION['chkStandardDelivery']) ? "checked" : ""); ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_GET['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php  echo(isset($_SESSION['chkSelfCollection']) ? "checked" : ""); ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -104,7 +261,7 @@
                                                 <div class="row">
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="minPrice" placeholder="RM MIN">
+                                                            <input type="text" class="form-control" name="minPrice" value="<?php echo($_SESSION['minPrice']); ?>" placeholder="RM MIN">
                                                         </div>
                                                     </div>
                                                     <div class="col mb-3" style="max-width: 14px;padding: 0;">
@@ -112,7 +269,7 @@
                                                     </div>
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="maxPrice" placeholder="RM MAX">
+                                                            <input type="text" class="form-control" name="maxPrice" value="<?php echo($_SESSION['maxPrice']); ?>" placeholder="RM MAX">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,8 +279,13 @@
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="input-group">
-                                                            <button type="submit" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            </div>
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,20 +299,20 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
-                                            <div class="col-xl-2 col-lg-2">
+                                            <div class="col-xl-2 col-lg-3">
                                                 <h5 class="m-0 font-weight-bold text-primary">Products</h5>
                                             </div>
-                                            <div class="col-xl-10 col-lg-10">
+                                            <div class="col-xl-10 col-lg-9">
                                                 <div class="row" style="float:right;">
                                                     <div class="col" style="display:contents;">
                                                         <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
                                                     </div>
                                                     <div class="col">
                                                         <select class="form-select" name="SortBy" onchange="this.form.submit()">
-                                                            <option value="Latest" <?php $_GET['SortBy'] == "Latest" ? "selected" : ""; ?>>Latest</option>
-                                                            <option value="Rating" <?php $_GET['SortBy'] == "Rating" ? "selected" : ""; ?>>Rating</option>
-                                                            <option value="Sold" <?php $_GET['SortBy'] == "Sold" ? "selected" : ""; ?>>Sold</option>
-                                                            <option value="Price" <?php $_GET['SortBy'] == "Price" ? "selected" : ""; ?>>Price</option>
+                                                            <option value="Latest" <?php echo($_SESSION['SortBy'] == "Latest" ? "selected" : ""); ?>>Latest</option>
+                                                            <option value="Rating" <?php echo($_SESSION['SortBy'] == "Rating" ? "selected" : ""); ?>>Rating</option>
+                                                            <option value="Sold" <?php echo($_SESSION['SortBy'] == "Sold" ? "selected" : ""); ?>>Sold</option>
+                                                            <option value="Price" <?php echo($_SESSION['SortBy'] == "Price" ? "selected" : ""); ?>>Price</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -188,59 +350,56 @@
                                                 WHERE A.product_id = '$id'
                                                 LIMIT 1";
 
-                                                if(isset($_GET['mainCategory']))
+                                                //Set to sql
+                                                if(isset($_SESSION['mainCategory']))
                                                 {
-                                                    $mainCategory = $_GET['mainCategory'];
+                                                    $mainCategory = $_SESSION['mainCategory'];
                                                     $sql .= "AND main_category = '$mainCategory' ";
                                                 }
 
-                                                if(isset($_GET['subCategory']))
+                                                if(isset($_SESSION['subCategory']))
                                                 {
-                                                    $subCategory = $_GET['subCategory'];
+                                                    $subCategory = $_SESSION['subCategory'];
                                                     $sql .= "AND sub_category = '$subCategory' ";
                                                 }
 
-                                                if(isset($_GET['Search']))
+                                                if(isset($_SESSION['Search']))
                                                 {
-                                                    $SearchBy = $_GET['Search'];
+                                                    $SearchBy = $_SESSION['Search'];
                                                     $sql .= "AND product_name LIKE '%$SearchBy%' ";
                                                 }
 
-                                                if(isset($_GET['chkStandardDelivery']))
+                                                if(isset($_SESSION['chkStandardDelivery']))
                                                 {
                                                     $sql .= "AND product_standard_delivery = '1' ";
                                                 }
 
-                                                if(isset($_GET['chkSelfCollection']))
+                                                if(isset($_SESSION['chkSelfCollection']))
                                                 {
                                                     $sql .= "AND product_self_collect = '1' ";
                                                 }
 
-                                                if(isset($_GET['Rating']))
+                                                if(isset($_SESSION['Rating']))
                                                 {
+                                                    $Rating = $_SESSION['Rating'];
                                                     $sql .= "AND rating >= $Rating ";
                                                 }
 
-                                                if(isset($_GET['minPrice'],$_GET['maxPrice']))
+                                                if(isset($_SESSION['maxPrice']))
                                                 {
-                                                    $minPrice = $_GET['minPrice'];
-                                                    $maxPrice = $_GET['maxPrice'];
-                                                    $sql .= "AND (product_price >= $minPrice AND product_price <= $maxPrice) ";
-                                                }
-                                                else if(isset($_GET['maxPrice']))
-                                                {
-                                                    $maxPrice = $_GET['maxPrice'];
-                                                    $sql .= "AND (product_price <= $maxPrice) ";
-                                                }
-                                                else if(isset($_GET['minPrice']))
-                                                {
-                                                    $maxPrice = $_GET['minPrice'];
-                                                    $sql .= "AND (product_price >= $minPrice) ";
+                                                    $maxPrice = $_SESSION['maxPrice'];
+                                                    $sql .= "AND product_price <= $maxPrice ";
                                                 }
 
-                                                if(isset($_GET['SortBy']))
+                                                if(isset($_SESSION['minPrice']))
                                                 {
-                                                    $SortBy = $_GET['SortBy'];
+                                                    $minPrice = $_SESSION['minPrice'];
+                                                    $sql .= "AND product_price >= $minPrice ";
+                                                }
+
+                                                if(isset($_SESSION['SortBy']))
+                                                {
+                                                    $SortBy = $_SESSION['SortBy'];
                                                     $key = "";
                                                     switch($SortBy)
                                                     {
@@ -248,7 +407,7 @@
                                                             $sql .= " ORDER BY product_id DESC";
                                                             break;
                                                         case "Rating" :
-                                                            $sql .= " ORDER BY product_id ACS";
+                                                            $sql .= " ORDER BY product_id ASC";
                                                             break;
                                                         case "Sold" :
                                                             $sql .= " ORDER BY product_sold ASC";
@@ -257,12 +416,10 @@
                                                             $sql .= " ORDER BY product_price ASC";
                                                             break;
                                                         default:
-                                                            
                                                             break;
                                                     }
                                                     
                                                 }
-
                                                 $result = mysqli_query($conn, $sql);
                                     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -322,7 +479,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
@@ -375,7 +532,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
