@@ -232,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 																if($i < $c9){
 																	 echo '<i class="fa fa-star tqy"></i> ';
 																 }else{
-																	 echo '<i class="fa fa-star ratingStar" style = "color: transparent"></i> ';
+																	 echo '<i class="fa fa-star ratingStar" style = "color: transparent;"></i> ';
 																 }
 															}else{
 																echo '';
