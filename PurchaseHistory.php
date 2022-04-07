@@ -12,7 +12,7 @@ product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name
 
 FROM
