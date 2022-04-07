@@ -163,7 +163,6 @@
                                                                                 </div>
                                                                                 <div class=\"Price\">
                                                             ");
-
                                                             
                                                             //Pricing
                                                             //If got variation
