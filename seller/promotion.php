@@ -109,7 +109,7 @@
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
                     //File upload configuration 
-                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    $targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
                     $fileNames = array_filter($_FILES['img']['name']);
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
@@ -124,7 +124,7 @@
                             if ($tmpFilePath != "")
                             {
                                 //Setup new file path
-                                $newFilePath = $targetDir . $_FILES['img']['name'][$i];
+                                $newFilePath = "./img/promotion/" . $_FILES['img']['name'][$i];
                                 echo '<script>alert(" ' . $targetDir . '")</script>';
                                 echo '<script>alert(" ' . $tmpFilePath . '")</script>';
                                 echo '<script>alert(" ' . $newFilePath . '")</script>';
