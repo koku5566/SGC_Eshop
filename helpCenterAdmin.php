@@ -121,7 +121,7 @@
 								$tempT = $tempNamepic[$r];
 								//move_uploaded_file($tempT, $filepathname);
 								//echo "<script>alert('$filepathname');</script>";
-								$move = $filepathname
+								$move = $filepathname;
 								if (move_uploaded_file($tempT, $filepathname)) {
 									echo "<div class='alert alert-success'>Uploaded</div>";		
 								} else {
