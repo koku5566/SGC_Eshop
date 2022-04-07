@@ -14,44 +14,81 @@
         unset($_SESSION["maxPrice"]);
         unset($_SESSION["SortBy"]);
     }
-    else if(isset($_GET['ApplyFilter']))
+    else
     {
-        //Save into session
-        if(isset($_GET['mainCategory']))
+        if(isset($_GET['ApplyFilter']))
         {
-            $_SESSION['mainCategory'] = $_GET['mainCategory'];
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            else
+            {
+                unset($_SESSION["chkStandardDelivery"]);
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            else
+            {
+                unset($_SESSION["chkSelfCollection"]);
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            else
+            {
+                unset($_SESSION["minPrice"]);
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            else
+            {
+                unset($_SESSION["maxPrice"]);
+            }
         }
-        if(isset($_GET['subCategory']))
-        {
-            $_SESSION['subCategory'] = $_GET['subCategory'];
-        }
-        if(isset($_GET['Search']))
-        {
-            $_SESSION['Search'] = $_GET['Search'];
-        }
-        if(isset($_GET['chkStandardDelivery']))
-        {
-            $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
-        }
-        if(isset($_GET['chkSelfCollection']))
-        {
-            $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
-        }
-        if(isset($_GET['Rating']))
-        {
-            $_SESSION['Rating'] = $_GET['Rating'];
-        }
-        if(isset($_GET['minPrice']))
-        {
-            $_SESSION['minPrice'] = $_GET['minPrice'];
-        }
-        if(isset($_GET['maxPrice']))
-        {
-            $_SESSION['maxPrice'] = $_GET['maxPrice'];
-        }
-        if(isset($_GET['SortBy']))
-        {
-            $_SESSION['SortBy'] = $_GET['SortBy'];
+        else{
+            //Save into session
+            if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
+            {
+                $_SESSION['mainCategory'] = $_GET['mainCategory'];
+            }
+            if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
+            {
+                $_SESSION['subCategory'] = $_GET['subCategory'];
+            }
+            if(isset($_GET['Search']) && $_GET['Search'] != "")
+            {
+                $_SESSION['Search'] = $_GET['Search'];
+            }
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            if(isset($_GET['Rating']) && $_GET['Rating'] != "")
+            {
+                $_SESSION['Rating'] = $_GET['Rating'];
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            if(isset($_GET['SortBy'])  && $_GET['SortBy'] != "")
+            {
+                $_SESSION['SortBy'] = $_GET['SortBy'];
+            }
         }
     }
     
@@ -76,8 +113,6 @@
                                                     <?php
                                                         if(isset($_SESSION['Rating']))
                                                         {
-                                                            echo("display rating");
-                                                            echo($rating);
                                                             $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
@@ -133,13 +168,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_SESSION['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo(isset($_SESSION['chkStandardDelivery']) ? "checked" : ""); ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_SESSION['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php  echo(isset($_SESSION['chkSelfCollection']) ? "checked" : ""); ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -171,9 +206,13 @@
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="input-group">
-                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
-                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            </div>
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,20 +226,20 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
-                                            <div class="col-xl-2 col-lg-2">
+                                            <div class="col-xl-2 col-lg-3">
                                                 <h5 class="m-0 font-weight-bold text-primary">Products</h5>
                                             </div>
-                                            <div class="col-xl-10 col-lg-10">
+                                            <div class="col-xl-10 col-lg-9">
                                                 <div class="row" style="float:right;">
                                                     <div class="col" style="display:contents;">
                                                         <h5 class="m-0 font-weight-bold text-primary">Sort By</h5>
                                                     </div>
                                                     <div class="col">
                                                         <select class="form-select" name="SortBy" onchange="this.form.submit()">
-                                                            <option value="Latest" <?php $_SESSION['SortBy'] == "Latest" ? "selected" : ""; ?>>Latest</option>
-                                                            <option value="Rating" <?php $_SESSION['SortBy'] == "Rating" ? "selected" : ""; ?>>Rating</option>
-                                                            <option value="Sold" <?php $_SESSION['SortBy'] == "Sold" ? "selected" : ""; ?>>Sold</option>
-                                                            <option value="Price" <?php $_SESSION['SortBy'] == "Price" ? "selected" : ""; ?>>Price</option>
+                                                            <option value="Latest" <?php echo($_SESSION['SortBy'] == "Latest" ? "selected" : ""); ?>>Latest</option>
+                                                            <option value="Rating" <?php echo($_SESSION['SortBy'] == "Rating" ? "selected" : ""); ?>>Rating</option>
+                                                            <option value="Sold" <?php echo($_SESSION['SortBy'] == "Sold" ? "selected" : ""); ?>>Sold</option>
+                                                            <option value="Price" <?php echo($_SESSION['SortBy'] == "Price" ? "selected" : ""); ?>>Price</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -269,6 +308,7 @@
 
                                                 if(isset($_SESSION['Rating']))
                                                 {
+                                                    $Rating = $_SESSION['Rating'];
                                                     $sql .= "AND rating >= $Rating ";
                                                 }
 
@@ -280,7 +320,7 @@
 
                                                 if(isset($_SESSION['minPrice']))
                                                 {
-                                                    $maxPrice = $_SESSION['minPrice'];
+                                                    $minPrice = $_SESSION['minPrice'];
                                                     $sql .= "AND product_price >= $minPrice ";
                                                 }
 
@@ -294,7 +334,7 @@
                                                             $sql .= " ORDER BY product_id DESC";
                                                             break;
                                                         case "Rating" :
-                                                            $sql .= " ORDER BY product_id ACS";
+                                                            $sql .= " ORDER BY product_id ASC";
                                                             break;
                                                         case "Sold" :
                                                             $sql .= " ORDER BY product_sold ASC";
@@ -307,7 +347,6 @@
                                                     }
                                                     
                                                 }
-
                                                 $result = mysqli_query($conn, $sql);
                                     
                                                 if (mysqli_num_rows($result) > 0) {
@@ -367,7 +406,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
@@ -420,7 +459,7 @@
                                                                     //Start Stock Division
                                                                     echo("     
                                                                                     <div class=\"Stock\">
-                                                                                        <div class=\"row\" style=\"height: 40px;\">
+                                                                                        <div class=\"row\" style=\"min-height: 40px;\">
                                                                                             <div class=\"col-xl-7\">
                                                                     ");
 
@@ -553,6 +592,132 @@
         padding: 0 10px;
     }
 
+</style>
+
+<!-- Category List CSS here -->
+<style>
+    /* Category Menu */
+    .browse-menus {
+        position:relative;
+        z-index:1;
+    }
+
+    .browse-menus .browse-menu{
+        width: 100%;
+        height:auto;
+        z-index:0;
+        background-color:#ffffff;
+    }
+
+    .browse-menu ul.main-menu{
+        border: 1px solid var(--bs-gray-light);
+    }
+
+    .browse-menu .main-menu li{
+        border-bottom: 1px solid #e1e1e1;
+        position: relative;
+        list-style: none;
+    }
+
+    .browse-menu .main-menu li a{
+        padding: 0 18px;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        line-height:50px;
+    }
+
+    .browse-menu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        border-bottom-width: 4px;
+        border-style: solid;
+        border-color: var(--bs-primary);
+        position: absolute;
+        z-index: 99;
+        width: 220px;
+        background-color:white;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-top-color: currentcolor;
+        border-top-style: none;
+        border-right-color: currentcolor;
+        border-right-style: none;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-left-color: currentcolor;
+        border-left-style: none;
+        border-radius: 0;
+        -moz-box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
+        box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.075);
+        font-size: 1rem;
+        text-align: left;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children > a > i:before{
+        position: absolute;
+        top: 0;
+        right: 8px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        color: inherit;
+        font-size: 16px;
+        -webkit-transition: var(--bs-transition);
+        transition: var(--bs-transition);
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children >  a > i:before{
+        right: 23px;
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children:hover >  a > i:before,
+    .browse-menu .main-menu > li.menu-item-has-children.focus >  a > i:before{
+        right: 20px;
+        color: var(--bs-primary);
+    }
+
+    .browse-menu .main-menu .menu-item:hover > .dropdown-menu,
+    .browse-menu .main-menu .menu-item.focus > .dropdown-menu{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+
+    .browse-menu .main-menu > li.menu-item-has-children > a {
+        padding-right: 30px;
+    }
+
+    .dropdown-item{
+        color:#a31f37;
+    }
+
+    .dropdown-item:focus, .dropdown-item:hover {
+        color:#a31f37;
+        text-decoration: none;
+        background-color: #eaecf4;
+    }
+
+    ul.main-menu {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: block;
+    }
 </style>
 
 <!-- Pagination CSS here -->
