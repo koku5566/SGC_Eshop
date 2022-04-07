@@ -137,9 +137,7 @@
                                     if($result)
                                     {
                                         echo '<script>alert("Add promotion successfully!")</script>';
-                                        header('Location: '.$_SERVER['PHP_SELF']);
-                                        echo '<script>alert("test!")</script>';
-
+                                        // header('Location: '.$_SERVER['PHP_SELF']); (refresh function)
                                     }
                                     else
                                     {
