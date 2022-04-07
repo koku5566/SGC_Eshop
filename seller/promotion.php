@@ -125,7 +125,7 @@
                             {
                                 //Setup new file path
                                 $newFilePath = $targetDir . $_FILES['img']['name'][$i];
-                                echo '<script>alert("4")</script>';
+                                echo '<script>alert(" ' . $targetDir . '")</script>';
                                 echo '<script>alert(" ' . $tmpFilePath . '")</script>';
                                 echo '<script>alert(" ' . $newFilePath . '")</script>';
                                 /*
