@@ -16,42 +16,79 @@
     }
     else
     {
-        //Save into session
-        if(isset($_GET['mainCategory']))
+        if(isset($_GET['ApplyFilter']))
         {
-            $_SESSION['mainCategory'] = $_GET['mainCategory'];
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            else
+            {
+                unset($_SESSION["chkStandardDelivery"]);
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            else
+            {
+                unset($_SESSION["chkSelfCollection"]);
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            else
+            {
+                unset($_SESSION["minPrice"]);
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            else
+            {
+                unset($_SESSION["maxPrice"]);
+            }
         }
-        if(isset($_GET['subCategory']))
-        {
-            $_SESSION['subCategory'] = $_GET['subCategory'];
-        }
-        if(isset($_GET['Search']))
-        {
-            $_SESSION['Search'] = $_GET['Search'];
-        }
-        if(isset($_GET['chkStandardDelivery']))
-        {
-            $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
-        }
-        if(isset($_GET['chkSelfCollection']))
-        {
-            $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
-        }
-        if(isset($_GET['Rating']))
-        {
-            $_SESSION['Rating'] = $_GET['Rating'];
-        }
-        if(isset($_GET['minPrice']))
-        {
-            $_SESSION['minPrice'] = $_GET['minPrice'];
-        }
-        if(isset($_GET['maxPrice']))
-        {
-            $_SESSION['maxPrice'] = $_GET['maxPrice'];
-        }
-        if(isset($_GET['SortBy']))
-        {
-            $_SESSION['SortBy'] = $_GET['SortBy'];
+        else{
+            //Save into session
+            if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
+            {
+                $_SESSION['mainCategory'] = $_GET['mainCategory'];
+            }
+            if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
+            {
+                $_SESSION['subCategory'] = $_GET['subCategory'];
+            }
+            if(isset($_GET['Search']) && $_GET['Search'] != "")
+            {
+                $_SESSION['Search'] = $_GET['Search'];
+            }
+            if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
+            {
+                $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+            }
+            if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
+            {
+                $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+            }
+            if(isset($_GET['Rating']) && $_GET['Rating'] != "")
+            {
+                $_SESSION['Rating'] = $_GET['Rating'];
+            }
+            if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
+            {
+                $_SESSION['minPrice'] = $_GET['minPrice'];
+            }
+            if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
+            {
+                $_SESSION['maxPrice'] = $_GET['maxPrice'];
+            }
+            if(isset($_GET['SortBy'])  && $_GET['SortBy'] != "")
+            {
+                $_SESSION['SortBy'] = $_GET['SortBy'];
+            }
         }
     }
     
@@ -76,8 +113,6 @@
                                                     <?php
                                                         if(isset($_SESSION['Rating']))
                                                         {
-                                                            echo("display rating");
-                                                            echo($rating);
                                                             $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
@@ -133,13 +168,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_SESSION['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo(isset($_SESSION['chkStandardDelivery']) ? "checked" : ""); ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_SESSION['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php  echo(isset($_SESSION['chkSelfCollection']) ? "checked" : ""); ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -171,9 +206,13 @@
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="input-group">
-                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
-                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            </div>
+                                                            <div class="col-xl-6 col-sm-12">
+                                                                <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -269,6 +308,7 @@
 
                                                 if(isset($_SESSION['Rating']))
                                                 {
+                                                    $Rating = $_SESSION['Rating'];
                                                     $sql .= "AND rating >= $Rating ";
                                                 }
 
@@ -280,7 +320,7 @@
 
                                                 if(isset($_SESSION['minPrice']))
                                                 {
-                                                    $maxPrice = $_SESSION['minPrice'];
+                                                    $minPrice = $_SESSION['minPrice'];
                                                     $sql .= "AND product_price >= $minPrice ";
                                                 }
 
@@ -294,7 +334,7 @@
                                                             $sql .= " ORDER BY product_id DESC";
                                                             break;
                                                         case "Rating" :
-                                                            $sql .= " ORDER BY product_id ACS";
+                                                            $sql .= " ORDER BY product_id ASC";
                                                             break;
                                                         case "Sold" :
                                                             $sql .= " ORDER BY product_sold ASC";
