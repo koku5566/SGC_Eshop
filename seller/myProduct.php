@@ -41,10 +41,13 @@
         $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Publish Successful")';
-            echo '</script>';
-            location.reload(); 
+            $Panel = $_GET['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Publish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['UnpublishProduct']))
@@ -56,7 +59,6 @@
             echo '<script language="javascript">';
             echo 'alert("Unpublish Successful")';
             echo '</script>';
-            location.reload(); 
         }
     }
     else if(isset($_POST['DeleteProduct']))
@@ -71,7 +73,6 @@
                 echo '<script language="javascript">';
                 echo 'alert("Product Deleted Successful")';
                 echo '</script>';
-                location.reload(); 
             }
         }
     }
