@@ -218,6 +218,7 @@
 				<!--CONCAT at 90 -->
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
+						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
 						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c1) && !empty ($c1))? $c1 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
 						<h6><?php echo (isset($c1) && !empty ($c1))? $c1 : 'Model: WISP510'; ?></h6>
 						<h3><?php echo (isset($c1) && !empty ($c1))? $c1 : 'RM 349.00'; ?></h3>									
@@ -243,7 +244,7 @@
 					
 					
 			
-			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
+			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Write a Review..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
 				
