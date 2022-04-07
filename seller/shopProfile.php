@@ -2,6 +2,57 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php echo"helloll";
+    if(isset($_POST['submit'])){
+      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+        echo"hello";
+        //$coverPhoto = $_POST['coverPhoto'];
+        //$profileImage = $_POST['profileImage'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        //$imageVideo = $_POST['imageVideo'];
+
+        //$query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+        $query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
+         /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
+
+        $run = mysqli_query($conn,$query);
+
+        if($run){
+          echo "Form Submitted Successfully" ;
+        }
+        else{
+          echo "Form not submitted";
+        }
+
+      //}
+      //else{
+      //  echo "all fields required";
+      //}
+    }
+
+    //if(isset($_POST['submit'])){
+    //  //$coverPhoto = $_POST['coverPhoto'];
+    //  //$profileImage = $_POST['profileImage'];
+    //  $name = $_POST['name'];
+    //  $description = $_POST['description'];
+    //  //$imageVideo = $_POST['imageVideo'];
+//
+//
+    //echo"hello";
+    //$sql = "INSERT INTO shopProfile (shop_name, shop_description) /*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
+    //VALUES ('$name', '$description')"; /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
+    //
+    //if ($conn->query($sql) === TRUE) {
+    //  echo "New record created successfully";
+    //} else {
+    //  echo "Error: " . $sql . "<br>" . $conn->error;
+    //}
+    //
+    //$conn->close();
+    //}
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -14,21 +65,23 @@
   <div class="container profileContainer">
     <div class="row">
       <div>
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
       <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
       <div class="absolute">
-        <input type="file" id="actual-btn" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>
     </div>
+    
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" id="customFile" />
+      <input type="text" class="form-control" name="name"/>
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control" id="customFile" rows="3"></textarea>
+      <textarea class="form-control"  rows="3" name="description"></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
@@ -36,12 +89,14 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
-      <button class="saveBtn">Save</button>
+      <button type="submit" class="saveBtn">Save</button>
     </div> 
+    <button type="submit">Save</button>
+    </form>
   </div>
 </div>
 <!-- /.container-fluid -->
