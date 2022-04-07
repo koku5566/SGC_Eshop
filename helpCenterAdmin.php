@@ -125,9 +125,6 @@
 					}
 					/**/
 					
-					
-					
-					
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
 							SET a.rr_id = concat('RR', b.id)
 							WHERE a.id = b.id;";
