@@ -108,11 +108,27 @@
 					echo "<script>alert('Insert successfully');</script>";
 					/**/
 					
-					/**/
+					/*
 					for($r = 0; $r< count($tempNamepic); $r++){
 						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
 					}
+					*/
+					for($r = 0; $r< 5); $r++){
+						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+						if(!empty($tempNamepic[$r])){
+								$filepathname = $gotpic[$r];
+								$tempT = $tempNamepic[$r];
+								move_uploaded_file($tempT, $filepathname);
+								//echo "<script>alert('$filepathname');</script>";
+							}
+							
+						
+						
+					}
+					
+					
+					
 					
 					
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
