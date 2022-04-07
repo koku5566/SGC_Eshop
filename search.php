@@ -2,43 +2,59 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-    //Save into session
-    if(isset($_GET['mainCategory']))
+    if(isset($_GET['ClearFilter']))
     {
-        $_SESSION['mainCategory'] = $_GET['mainCategory'];
+        unset($_SESSION["mainCategory"]);
+        unset($_SESSION["subCategory"]);
+        unset($_SESSION["Search"]);
+        unset($_SESSION["chkStandardDelivery"]);
+        unset($_SESSION["chkSelfCollection"]);
+        unset($_SESSION["Rating"]);
+        unset($_SESSION["minPrice"]);
+        unset($_SESSION["maxPrice"]);
+        unset($_SESSION["SortBy"]);
     }
-    if(isset($_GET['subCategory']))
+    else if(isset($_GET['ApplyFilter']))
     {
-        $_SESSION['subCategory'] = $_GET['subCategory'];
+        //Save into session
+        if(isset($_GET['mainCategory']))
+        {
+            $_SESSION['mainCategory'] = $_GET['mainCategory'];
+        }
+        if(isset($_GET['subCategory']))
+        {
+            $_SESSION['subCategory'] = $_GET['subCategory'];
+        }
+        if(isset($_GET['Search']))
+        {
+            $_SESSION['Search'] = $_GET['Search'];
+        }
+        if(isset($_GET['chkStandardDelivery']))
+        {
+            $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
+        }
+        if(isset($_GET['chkSelfCollection']))
+        {
+            $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
+        }
+        if(isset($_GET['Rating']))
+        {
+            $_SESSION['Rating'] = $_GET['Rating'];
+        }
+        if(isset($_GET['minPrice']))
+        {
+            $_SESSION['minPrice'] = $_GET['minPrice'];
+        }
+        if(isset($_GET['maxPrice']))
+        {
+            $_SESSION['maxPrice'] = $_GET['maxPrice'];
+        }
+        if(isset($_GET['SortBy']))
+        {
+            $_SESSION['SortBy'] = $_GET['SortBy'];
+        }
     }
-    if(isset($_GET['Search']))
-    {
-        $_SESSION['Search'] = $_GET['Search'];
-    }
-    if(isset($_GET['chkStandardDelivery']))
-    {
-        $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
-    }
-    if(isset($_GET['chkSelfCollection']))
-    {
-        $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
-    }
-    if(isset($_GET['Rating']))
-    {
-        $_SESSION['Rating'] = $_GET['Rating'];
-    }
-    if(isset($_GET['minPrice']))
-    {
-        $_SESSION['minPrice'] = $_GET['minPrice'];
-    }
-    if(isset($_GET['maxPrice']))
-    {
-        $_SESSION['maxPrice'] = $_GET['maxPrice'];
-    }
-    if(isset($_GET['SortBy']))
-    {
-        $_SESSION['SortBy'] = $_GET['SortBy'];
-    }
+    
 ?>
 
                 <!-- Begin Page Content -->
@@ -154,7 +170,8 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="input-group">
-                                                            <button type="submit" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" name="ApplyFilter" class="btn btn-primary" style="width:100%">Apply Filter</button>
+                                                            <button type="submit" name="ClearFilter" class="btn btn-secondary" style="width:100%">Clear Filter</button>
                                                         </div>
                                                     </div>
                                                 </div>
