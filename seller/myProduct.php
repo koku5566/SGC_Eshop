@@ -44,7 +44,6 @@
             echo '<script language="javascript">';
             echo 'alert("Publish Successful")';
             echo '</script>';
-            location.reload(); 
         }
     }
     else if(isset($_POST['UnpublishProduct']))
@@ -56,7 +55,6 @@
             echo '<script language="javascript">';
             echo 'alert("Unpublish Successful")';
             echo '</script>';
-            location.reload(); 
         }
     }
     else if(isset($_POST['DeleteProduct']))
@@ -71,7 +69,6 @@
                 echo '<script language="javascript">';
                 echo 'alert("Product Deleted Successful")';
                 echo '</script>';
-                location.reload(); 
             }
         }
     }
