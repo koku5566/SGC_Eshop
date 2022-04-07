@@ -41,9 +41,13 @@
         $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Publish Successful")';
-            echo '</script>';
+            $Panel = $_GET['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Publish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php $Panel?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['UnpublishProduct']))
