@@ -2,18 +2,16 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php echo"helloll";
+<?php
     if(isset($_POST['submit'])){
       //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
-        echo"hello";
         //$coverPhoto = $_POST['coverPhoto'];
         //$profileImage = $_POST['profileImage'];
         $name = $_POST['name'];
         $description = $_POST['description'];
-        echo $name, $description;
-        //$imageVideo = $_POST['imageVideo'];
+        $imageVideo = $_POST['imageVideo'];
 
-        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('','','$name','$description','')";
+        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('','','$name','$description','$imageVideo')";
         //$query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
          /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
 
@@ -99,7 +97,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="saveBtn">Save</button>
+      <button type="submit" class="saveBtn" name="submit">Save</button>
     </div> 
     <input type="submit" class="btn" name="submit" value="save">
     </form>
