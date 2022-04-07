@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" type="file" class="imgInp">
+                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp">
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -109,7 +109,8 @@
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
                     //File upload configuration 
-                    $targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
+                    //$targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
+                    $targetDir = "./img/promotion/"; 
                     $fileNames = array_filter($_FILES['img']['name']);
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
@@ -124,7 +125,7 @@
                             if ($tmpFilePath != "")
                             {
                                 //Setup new file path
-                                $newFilePath = "./img/promotion/" . $_FILES['img']['name'][$i];
+                                $newFilePath = $targetDir . $_FILES['img']['name'][$i];
                                 echo '<script>alert(" ' . $targetDir . '")</script>';
                                 echo '<script>alert(" ' . $tmpFilePath . '")</script>';
                                 echo '<script>alert(" ' . $newFilePath . '")</script>';
