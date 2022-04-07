@@ -12,7 +12,7 @@ product.product_name,
 product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 user.username
 FROM
 myOrder
