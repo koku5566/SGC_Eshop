@@ -5,9 +5,10 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['wreview'],$_POST['rid']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
-		echo "<script>alert($_POST['rid'])</script>";	
+		$selectedPID = $_POST['rid'];
+		echo "<script>alert('$selectedPID')</script>";	
 		
 		
 	}
