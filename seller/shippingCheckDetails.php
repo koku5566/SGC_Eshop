@@ -3,7 +3,6 @@
 
     $orderid = $_GET['order_id'];
     
-    echo $orderid;
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
