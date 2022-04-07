@@ -5,11 +5,11 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['rating']) && $_POST['rrsub'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
 		
 		$product_id = "P000001"; //change into btn click $_POST
 		$user_id = "U000005";	//change into S_SESSION [user id]
-		$commentsec = isset($_POST['commentsec']) ? $_POST['commentsec'] : '';
+		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
 		/*
 		$ss1 = $_FILES['img']['name'][0];
@@ -35,6 +35,10 @@
 		}
 		
 		*/
+		
+		if (!file_exists("img/")){
+				mkdir("img");	//make directory
+		}
 		
 		if (!file_exists("img/rating/")){
 				mkdir("img/rating");	//make directory
@@ -72,7 +76,8 @@
 			$pc3 = $gotpic[2];
 			$pc4 = $gotpic[3];
 			$pc5 = $gotpic[4];
-
+			
+			/*
 			echo "<div class='alert alert-success'>$pc1</div>";		
 			echo "<div class='alert alert-success'>$pc2</div>";	
 			echo "<div class='alert alert-success'>$pc3</div>";	
@@ -85,8 +90,14 @@
 			echo "<div class='alert alert-success'>$commentsec</div>";
 			echo "<div class='alert alert-success'>$ratingsec</div>";
 			
-																						
-		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,` pic2`,` pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
+			
+			$pc1 = "a";
+			$pc2 = "b";
+			$pc3 = "c";
+			$pc4 = "d";
+			$pc5 = "e";
+			*/																			
+		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,`pic2`,`pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
 				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$pc1,$pc2,$pc3,$pc4,$pc5); 	//s=string , d=decimal value, i=integer
 		
@@ -100,7 +111,24 @@
 					/*
 					for($r = 0; $r< count($tempNamepic); $r++){
 						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
 					}
+					*/
+					for($r = 0; $r< 5; $r++){
+						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+						if(!empty($tempNamepic[$r])){
+								$filepathname = $gotpic[$r];
+								$tempT = $tempNamepic[$r];
+								move_uploaded_file($tempT, $filepathname);
+								//echo "<script>alert('$filepathname');</script>";
+							}
+							
+						
+						
+					}
+					
+					
+					
 					
 					
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
@@ -112,7 +140,7 @@
                             {}
                             else{}}	
                             //END  
-					*/
+					
 				}else{
 					echo "<script>alert('Fail to Insert');</script>";
 				}

@@ -12,7 +12,7 @@ product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name
 
 FROM
@@ -42,10 +42,11 @@ $result_2 = $stmt_2->get_result();
    
         <div class="order-history-list-panel">
         </div>
-        <div class="tab-panel">
         <?php 
         while ($row = $result_2->fetch_assoc()) {
         ?>
+        <div class="tab-panel">
+        
             <div class="card" style="text-align: justify;width: 60%;margin-left: 20%;">
                 <div class="card-header">
                     <div class="row">
@@ -71,32 +72,33 @@ $result_2 = $stmt_2->get_result();
                         <div class="col md-auto text-start offset-md-1">
                         <?php echo $row['product_variation']?>
                         </div>
-                        <div class="col md-auto text-end">RM<?php echo $row['product_price']?></div>
-                        </div>
+                        <div class="col md-auto text-end offset-md-3">RM<?php echo $row['product_price']?></div>
+                    </div>
                     
                 </a>
-                <div class="card-footer">
-                    <ul class="list-group list-group-horizontal" style="list-style-type:none;">
+               <div class="card-footer">
+                    <ul class="list-group list-group-horizontal" style="list-style-type:none; ">
                         <li class="">
                         <button type="button" class="btn btn-primary" ><a hrfe="purchaseShippingDetails.php">Order Status</a></button></li>
 
-                        <li style="padding-left: 20px;">
-                        <button type="button" class="btn btn-primary">Order Again</button></li>
+                        <li style="padding-left: 30px;">
+                        <button type="button" class="btn btn-primary" >Order Again</button></li>
 
                         <li style="padding-left: 20px;">
-                        <button type="button" class="btn btn-primary"><a hrfe="">Rating</a></button></li>
+                        <button type="button" class="btn btn-primary" ><a hrfe="">Rating</a></button></li>
 
                         <li style="padding-left:200px">Total</li>
-                        <li style="padding-left:30%;">RM<?php echo $row['product_price']?></li>
+                        <li style="padding-left:25%;">RM</li>
                     </ul>
-                  </div>     
+            </div>  
                 </div>
             </div>
             <br>
             <?php 
             }?>
+        </div>
     </div>
-</div>
+
    
    <!-- /.container-fluid -->
 
