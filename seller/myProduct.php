@@ -45,7 +45,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Publish Successful");
-                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php $Panel?>";
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
