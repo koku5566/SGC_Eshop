@@ -103,16 +103,15 @@
                 <?php
                 if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
+                    echo '<script>alert("hihi")</script>';
                     $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
                     //$image = $_POST['promotion_image']; 
                     $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
 
-                    $stmt_u = mysqli_query($conn, $sql_u);
-
-				if (mysqli_num_rows($stmt_u) > 0) {
                     $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
                     VALUES('$title','$dateStart','$dateEnd')";
+                    echo '<script>alert("hihi 2")</script>';
                     $result = mysqli_query($conn,$sql);
                     
                     // File upload configuration 
@@ -147,7 +146,6 @@
                         echo '<script>alert("Failed")</script>';
                     }
                 }
-            }
                 ?>
             </form>
         </div>
