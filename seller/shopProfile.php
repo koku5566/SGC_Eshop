@@ -145,17 +145,17 @@ div.absolute {
 .profile-pic img {
   position: absolute;
   object-fit: cover;
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  left: 150px;
+  left: 200px;
 }
 .profile-pic .-label {
   position: absolute;
   cursor: pointer;
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 65px;
   right: 150px;
 }
 .profile-pic:hover .-label {
