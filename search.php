@@ -76,8 +76,6 @@
                                                     <?php
                                                         if(isset($_SESSION['Rating']))
                                                         {
-                                                            echo("display rating");
-                                                            echo($rating);
                                                             $rating = (int) $_SESSION['Rating'];
                                                             $ratingArray = array();
 
@@ -133,13 +131,13 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php isset($_SESSION['chkStandardDelivery']) ? "checked" : ""; ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo($_SESSION['chkStandardDelivery'] == "Latest" ? "checked" : ""); ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php isset($_SESSION['chkSelfCollection']) ? "checked" : ""; ?> id="term2">
+                                                    <input class="form-check-input" type="checkbox" name="chkSelfCollection"  <?php  echo(isset($_SESSION['chkSelfCollection']) ? "checked" : ""); ?> id="term2">
                                                     <label class="form-check-label" for="term2">
                                                         Self Collection
                                                     </label>
@@ -295,7 +293,7 @@
                                                             $sql .= " ORDER BY product_id DESC";
                                                             break;
                                                         case "Rating" :
-                                                            $sql .= " ORDER BY product_id ACS";
+                                                            $sql .= " ORDER BY product_id ASC";
                                                             break;
                                                         case "Sold" :
                                                             $sql .= " ORDER BY product_sold ASC";
