@@ -91,7 +91,7 @@ if(mysqli_num_rows($result) > 0)
 			 */
 		 }else{
 			 //DISPLAY REAL PICTURE/VIDEO THEY POST
-			 $picR .='<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>';
+			 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
 		 }
 			 
 	 }
