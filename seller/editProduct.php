@@ -2,20 +2,13 @@
     require __DIR__ . '/header.php';
 
     
-    if(isset($_POST['add']) || isset($_POST['publish'])){
-
-       
-        $publish = 1;
-        if(isset($_POST['add']))
-        {
-            $publish = 0;
-        }
+    if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
-        $productId = "";
+        $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         $productDescription = $_POST['productDescription'];
@@ -67,28 +60,24 @@
         
         
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
-
-        $sql_insert  = "INSERT INTO product (";
-        $sql_insert .= "product_id, product_sku, product_name, product_description, product_brand, ";
-        $sql_insert .= "product_cover_video, product_cover_picture, product_pic_1, product_pic_2, product_pic_3, ";
-        $sql_insert .= "product_pic_4, product_pic_5, product_pic_6, product_pic_7, product_pic_8, ";
-        $sql_insert .= "product_weight, product_length, product_width, product_height, ";
-        $sql_insert .= "product_virtual, product_self_collect, product_standard_delivery, ";
-        $sql_insert .= "product_variation, product_price, product_stock, product_sold, product_status, ";
-        $sql_insert .= "category_id, shop_id";
-        $sql_insert .= ") ";
-        $sql_insert .= "VALUES ((SELECT CONCAT('P',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'product'), 6, 0))) AS newCombinationId),'$productSKU','$productName','$productDescription','$productBrand', ";
-        $sql_insert .= "'$productVideo', ";
+        $sql_update = "UPDATE product SET ";
+        $sql_update .= "product_sku = '$productSKU', ";
+        $sql_update .= "product_name = '$productName', ";
+        $sql_update .= "product_description = '$productDescription', ";
+        $sql_update .= "product_brand = '$productBrand', ";
+        $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
+        $defaultFile = $_POST['imgDefault'];
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
+        $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
+
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            
             $fileName = basename($_FILES['img']['name'][$key]); 
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
             $fileName = round(microtime(true) * 1000).".".$ext;
@@ -97,30 +86,42 @@
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
             if(in_array($fileType, $allowTypes)){ 
                 if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                    $sql_insert .= "'$fileName', ";
+                    $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $fileName = $defaultFile[$key];
+                $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                $imgInpCounter++;
             }
         } 
 
         //Enter empty for picture col that did not use
         while($imgInpCounter < 9)
         {
-            $sql_insert .= "'', ";
+            $sql_update .= "".$pictureOrder[$imgInpCounter]." = '', ";
             $imgInpCounter++;
         }
 
-        $sql_insert .= "'$productWeight','$productLength','$productWidth','$productHeight', ";
-        $sql_insert .= "'$productType','$productSelfCollect','$productStandardDelivery', ";
-        $sql_insert .= "'$variationType', '$productPrice', '$productStock', '0', 'I', ";
-        $sql_insert .= "'$categoryCombinationId', '$shopId'";
-        $sql_insert .= ") ";
+        $sql_update .= "product_weight = '$productWeight', ";
+        $sql_update .= "product_length = '$productLength', ";
+        $sql_update .= "product_width = '$productWidth', ";
+        $sql_update .= "product_height = '$productHeight', ";
+        $sql_update .= "product_virtual = '$productType', ";
+        $sql_update .= "product_self_collect = '$productSelfCollect', ";
+        $sql_update .= "product_standard_delivery = '$productStandardDelivery', ";
+        $sql_update .= "product_variation = '$variationType', ";
+        $sql_update .= "product_price = '$productPrice', ";
+        $sql_update .= "product_stock = '$productStock', ";
+        $sql_update .= "category_id = '$categoryCombinationId' ";
+        $sql_update .= "WHERE product_id = '$productId' ";
 
-        if(mysqli_query($conn, $sql_insert)){
+        if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
             {
-                
                 if(isset($_POST['variation1Name'],$_POST['variation2Name']))
                 {
                     $variation1Name = $_POST['variation1Name'];
@@ -142,14 +143,8 @@
                     $variationSKU = $_POST['variationSKU'];
                 }
 
-                $sql_getID = "SELECT product_id FROM product ORDER BY id DESC LIMIT 1";
-                $result = mysqli_query($conn, $sql_getID);
-
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        $productId = $row['product_id'];
-                    }
-                }
+                $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
+                mysqli_query($conn, $sql_deleteVar);
 
                 for($i = 0; $i < count($variation1NameCol); $i++)
                 {
@@ -173,11 +168,59 @@
         }
         else
         {
+            echo($sql_update);
             echo '<script language="javascript">';
-            echo 'alert("Fail to Add Product")';
+            echo 'alert("Fail to Save Product")';
             echo '</script>';
         }
     } 
+    else
+    {
+        $productId = $_GET['id'];
+        $_SESSION['productId'] = $_GET['id'];
+        //$shopId = $_SESSION['user_id'];
+
+        $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
+        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+        $result_product = mysqli_query($conn, $sql_product);
+
+        if (mysqli_num_rows($result_product) > 0) {
+            while($row_product = mysqli_fetch_assoc($result_product)) {
+                $i_product_name = $row_product['product_name'];
+                $i_product_sku = $row_product['product_sku'];
+                $i_product_description = $row_product['product_description'];
+                $i_product_brand = $row_product['product_brand'];
+                $i_product_cover_video = $row_product['product_cover_video'];
+                $i_product_pic = array($row_product['product_cover_picture']);
+                array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
+                array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
+                array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
+                array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
+
+
+                $i_product_weight = $row_product['product_weight'];
+                $i_product_length = $row_product['product_length'];
+                $i_product_width = $row_product['product_width'];
+                $i_product_height = $row_product['product_height'];
+                $i_product_virtual = $row_product['product_virtual'];
+                $i_product_self_collect = $row_product['product_self_collect'];
+                $i_product_standard_delivery = $row_product['product_standard_delivery'];
+                $i_product_variation = $row_product['product_variation'];
+                $i_product_price = $row_product['product_price'];
+                $i_product_stock = $row_product['product_stock'];
+                $i_product_sold = $row_product['product_sold'];
+                $i_product_status = $row_product['product_status'];
+                $i_category_id = $row_product['category_id'];
+            }
+        }   
+        else{
+            ?>
+                <script type="text/javascript">
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                </script>
+            <?php
+        }
+    }
 
     $subCategoryArray = array();
 
@@ -210,7 +253,8 @@
             }
             $subCategoryArray = $subCategoryArray + $tempCategoryArray;
         }
-    }                       
+    }   
+
 ?>
 
 <!-- Begin Page Content -->
@@ -235,174 +279,55 @@
                                     <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
                                         <div class="drag-list">
                                             <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                                <div style="padding-bottom: .625rem;display:flex">
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Cover Picture</p>
-                                                    </div>
-                                                </div>
-                                                <div style="padding-bottom: .625rem;display:flex">
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 1</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 2</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 3</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 4</p>
-                                                    </div>
-                                                </div>
-                                                <div style="padding-bottom: .625rem;display:flex">
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 5</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 6</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 7</p>
-                                                    </div>
-                                                    <div class="drag-item" draggable="true">
-                                                        <div class="image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                            <div class="image-layer">
-                                                                
-                                                            </div>
-                                                            <div class="image-tools-delete hide">
-                                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="image-tools-add">
-                                                                <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>Picture 8</p>
-                                                    </div>
-                                                </div>
+                                                <?php  
+                                                    $pictureText = array("Cover Picture","Picture 1","Picture 2","Picture 3","Picture 4","Picture 5","Picture 6","Picture 7","Picture 8");
+                                                    
+                                                    for($i = 0; $i < count($i_product_pic); $i++)
+                                                    {
+                                                        if($i == 0 || $i == 1 || $i == 5)
+                                                        {
+                                                            echo("<div style=\"padding-bottom: .625rem;display:flex\">");
+                                                        }
+
+                                                        if($i_product_pic[$i] != "")
+                                                        {
+                                                            $picName = "/img/product/".$i_product_pic[$i];
+                                                            $add = "hide";
+                                                        }
+                                                        else{
+                                                            $picName = "";
+                                                            $add = "";
+                                                        }
+
+                                                        echo("
+                                                                <div class=\"drag-item\" draggable=\"true\">
+                                                                    <div class=\"image-container\">
+                                                                        <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">
+                                                                        <div class=\"image-layer\">
+                                                                            
+                                                                        </div>
+                                                                        <div class=\"image-tools-delete hide\">
+                                                                            <i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+                                                                        </div>
+                                                                        <div class=\"image-tools-add $add\">
+                                                                            <label class=\"custom-file-upload\">
+                                                                                <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
+                                                                                <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                                                <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>".$pictureText[$i]."</p>
+                                                                </div>
+                                                            ");
+
+                                                        if($i == 0 || $i == 4 || $i == 8)
+                                                        {
+                                                            echo("</div>");
+                                                        }
+                                                    }
+
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -416,7 +341,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                <input type="text" value="" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
+                                <input type="text" value="<?php echo($i_product_name); ?>" class="form-control" name="productName" placeholder="Enter ..." aria-label="SearchKeyword" required>
                                 </div>
                             </div>
                         </div>
@@ -428,9 +353,19 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="mainCategory" onchange='makeSubmenu(this.value)' name="mainCategoryId" required>
-                                        <option value="" selected>Please Select a Category</option>
+                                        <option value="">Please Select a Category</option>
                                             <?php
+
                                             //Main Category
+                                            $sql_selectMainId = "SELECT main_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $result_selectMainId = mysqli_query($conn, $sql_selectMainId);
+
+                                            if (mysqli_num_rows($result_selectMainId) > 0) {
+                                                while($row_selectMainId = mysqli_fetch_assoc($result_selectMainId)) {
+                                                    $mainCategoryId = $row_selectMainId["main_category"];
+                                                }
+                                            }
+
                                             $sql = "SELECT DISTINCT(B.category_id),B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
                                             $result = mysqli_query($conn, $sql);
 
@@ -439,7 +374,14 @@
                                                     $categoryId = $row["category_id"];
                                                     $categoryName = $row["category_name"];
 
-                                                    echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    if($mainCategoryId == $categoryId)
+                                                    {
+                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    else
+                                                    {
+                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    }
                                                 }
                                             }
                                             ?>
@@ -452,7 +394,39 @@
                             <div class="col-xl-4 col-lg-4 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="subCategory" name="subCategoryId">
- 
+                                        <?php
+                                            //Sub Category
+                                            $sql_selectSubId = "SELECT sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $result_selectSubId = mysqli_query($conn, $sql_selectSubId);
+
+                                            if (mysqli_num_rows($result_selectSubId) > 0) {
+                                                while($row_selectSubId = mysqli_fetch_assoc($result_selectSubId)) {
+                                                    $subCategoryId = $row_selectSubId["sub_category"];
+                                                }
+                                            }
+
+                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                            $result_1 = mysqli_query($conn, $sql_1);
+                                
+                                            if (mysqli_num_rows($result_1) > 0) {
+                                                $tempArray = array();
+                                
+                                                while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                    $categoryId = $row_1["category_id"];
+                                                    $categoryName = $row_1["category_name"];
+                                
+                                                    if($subCategoryId == $categoryId)
+                                                    {
+                                                        echo("<option selected value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    else
+                                                    {
+                                                        echo("<option value=\"$categoryId\">$categoryName</option>");
+                                                    }
+                                                    
+                                                }   
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -464,7 +438,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -475,7 +449,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productBrand" required>
+                                    <input type="text" class="form-control" value="<?php echo($i_product_brand); ?>" name="productBrand" required>
                                 </div>
                             </div>
                         </div>
@@ -487,8 +461,8 @@
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
                                     <select class="form-control" onchange='ToggleShippingDiv(this.value)' id="productType" name="productType" required>
-                                        <option value="0">Normal Product with Shipment</option>
-                                        <option value="1">Virtual Product without Shipment</option>
+                                        <option <?php echo($i_product_virtual == 0 ? "selected" : ""); ?> value="0">Normal Product with Shipment</option>
+                                        <option <?php echo($i_product_virtual == 1 ? "selected" : ""); ?> value="1">Virtual Product without Shipment</option>
                                     </select>
                                 </div>
                             </div>
@@ -500,7 +474,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="productSKU">
+                                    <input type="text" class="form-control"value="<?php echo($i_product_sku); ?>" name="productSKU">
                                 </div>
                             </div>
                         </div>
@@ -518,9 +492,9 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <input type="text" value="<?php print (isset($_POST['variationType'])) ? $_POST['variationType'] : "0"; ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
+                        <input type="text" value="<?php echo($i_product_variation); ?>" name="variationType" id="txtVariationType" class="form-control" hidden> 
 
-                        <div id="mainPricing" class="<?php print ($_POST['variationType'] == "1") ? "hide" : ""; ?>">
+                        <div id="mainPricing" class="<?php echo($i_product_variation == 1 ? "hide" : ""); ?>">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation</button>
                             </div>
@@ -534,7 +508,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">RM</span>
                                         </div>
-                                        <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productPrice" required>
+                                        <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="<?php echo($i_product_price); ?>" class="form-control" name="productPrice" <?php echo($i_product_variation == 1 ? "" : "required"); ?>>
                                     </div>
                                 </div>
                             </div>
@@ -545,19 +519,173 @@
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="input-group mb-3">
-                                        <input type="number"min="0" value="0" class="form-control" name="productStock" required>
+                                        <input type="number"min="0" value="<?php echo($i_product_stock); ?>" class="form-control" name="productStock" <?php echo($i_product_variation == 1 ? "" : "required"); ?>>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="subPricing" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-outline-primary btnAddVariation" style="width:100%">Enable Variation 2</button>
-                            </div>
+                        <div id="subPricing" class="mb-3 <?php echo($i_product_variation == 1 ? "" : "hide"); ?>">
+                        
+                            <?php 
+                            if($i_product_variation == 1) 
+                            {
+                                $sql_variation = "SELECT * FROM variation WHERE product_id = '$productId'";
+                                $result_variation = mysqli_query($conn, $sql_variation);
+                            
+                                if (mysqli_num_rows($result_variation) > 0) {
+                                    $v_variation_1_name = "";
+                                    $v_variation_1_choice = array();
+                                    $v_variation_2_name = "";
+                                    $v_variation_2_choice = array();
+                                    $v_product_price = array();
+                                    $v_product_stock = array();
+                                    $v_product_sku = array();
+
+                                    while($row_product = mysqli_fetch_assoc($result_variation)) {
+                                        $v_variation_1_name = $row_product['variation_1_name'];
+                                        array_push($v_variation_1_choice,$row_product['variation_1_choice']);
+                                        if($row_product['variation_2_name'] != "")
+                                        {
+                                            $v_variation_2_name = $row_product['variation_2_name'];
+                                            array_push($v_variation_1_choice,$row_product['variation_2_choice']);
+                                        }
+                                        array_push($v_product_price,$row_product['product_price']);
+                                        array_push($v_product_stock,$row_product['product_stock'] - $row_product['product_sold']);
+                                        array_push($v_product_sku,$row_product['product_sku']);
+                                    }
+
+                                    echo("
+                                    
+                                    <div class=\"variation\">
+                                        <div class=\"card mb-4\">
+                                            <div class=\"card-header py-3\">
+                                                <h5 class=\"m-0 font-weight-bold text-primary\">Variation</h5><i style=\"float:right; margin-top:-20px\" class=\"fa fa-times btnDeleteVariation\" aria-hidden=\"true\"></i>
+                                            </div>
+                                            <!-- Card Body -->
+                                            <div class=\"card-body\">
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Variation Name</p>
+                                                    </div>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div class=\"input-group mb-3\">
+                                                            <input type=\"text\" value=\"$v_variation_1_name\" class=\"form-control variationName \">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Choices</p>
+                                                    </div>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div>
+                                    ");
+                                    $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
+                                    for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
+                                    {
+                                        echo("
+                                                            <div class=\"input-group mb-3\">
+                                                                <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                <div class=\"input-group-append btnDeleteChoices\">
+                                                                    <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
+                                                                </div>
+                                                            </div>
+                                        ");
+                                    }
+                                    
+                                    echo("
+                                                            
+                                                        </div>
+                                                        <div class=\"input-group mb-3\">
+                                                            <button type=\"button\" class=\"btn btn-outline-primary btnAddChoice\" style=\"width:100%\">Add Choices</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ");
+
+                                    if($v_variation_2_name == "")
+                                    {
+                                        echo("
+                                            <div class=\"input-group mb-3\">
+                                                <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                            </div>
+                                        ");
+                                    }
+                                    else
+                                    {
+                                        echo("
+                                    
+                                            <div class=\"variation\">
+                                                <div class=\"card mb-4\">
+                                                    <div class=\"card-header py-3\">
+                                                        <h5 class=\"m-0 font-weight-bold text-primary\">Variation</h5><i style=\"float:right; margin-top:-20px\" class=\"fa fa-times btnDeleteVariation\" aria-hidden=\"true\"></i>
+                                                    </div>
+                                                    <!-- Card Body -->
+                                                    <div class=\"card-body\">
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Variation Name</p>
+                                                            </div>
+                                                            <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                <div class=\"input-group mb-3\">
+                                                                    <input type=\"text\" value=\"$v_variation_2_name\" class=\"form-control variationName \">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Choices</p>
+                                                            </div>
+                                                            <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                <div>
+                                            ");
+                                            $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
+                                            for($i = 0; $i < count($v_variation2ChoicesOnly); $i++)
+                                            {
+                                                echo("
+                                                                    <div class=\"input-group mb-3\">
+                                                                        <input type=\"text\" value=\"".$v_variation2ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                        <div class=\"input-group-append btnDeleteChoices\">
+                                                                            <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                ");
+                                            }
+                                            
+                                            echo("
+                                                                    
+                                                                </div>
+                                                                <div class=\"input-group mb-3\">
+                                                                    <button type=\"button\" class=\"btn btn-outline-primary btnAddChoice\" style=\"width:100%\">Add Choices</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ");
+                                    }
+                                }   
+                            }
+                            else
+                            {
+                                echo("
+                                    <div class=\"input-group mb-3\">
+                                        <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                    </div>
+                                ");
+                            }
+                            ?>
+                            
                         </div>
 
-                        <div id="priceToAll" class="mb-3 <?php print ($_POST['variationType'] == "1") ? "" : "hide"; ?>">
+                        <div id="priceToAll" class="mb-3 <?php echo($i_product_variation == 1 ? "" : "hide"); ?>">
                             <div class="row">
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Variation Info</p>
@@ -590,7 +718,57 @@
                         </div>
 
                         <div id="priceList">
- 
+                            <?php 
+                                if($i_product_variation == 1) 
+                                {
+                                    echo("<table class=\"table table-hover\">");
+                                    echo("
+                                    
+                                        <thead>
+                                            <tr>
+                                                <th scope=\"col\" style=\"min-width: 50px;max-width: 100px;\"><input style=\"background: transparent;\" value=\"$v_variation_1_name\" class=\"thInp\" name=\"variation1Name\" readonly=\"\"></th>
+                                    ");
+                                    if($v_variation_2_name != "")
+                                    {
+                                        echo(   "<th scope=\"col\" style=\"min-width: 50px;max-width: 100px;\"><input style=\"background: transparent;\" value=\"$v_variation_2_name\" class=\"thInp\" name=\"variation2Name\" readonly=\"\"></th>");
+                                    }
+                                    
+                                    echo("
+                                                <th scope=\"col\">Price</th>
+                                                <th scope=\"col\">Stock</th>
+                                                <th scope=\"col\">SKU</th>
+                                            </tr>
+                                        </thead>
+                                    ");
+                                    echo("<tbody>");
+
+                                    for($i = 0; $i < count($v_variation_1_choice); $i++)
+                                    {
+                                        echo("
+                                            <tr>
+                                                <td scope=\"row\"><input style=\"background: transparent;\" value=\"".$v_variation_1_choice[$i]."\" class=\"form-control td-var1\" name=\"variation1NameCol[]\" readonly=\"\"></td>
+                                        ");
+                                        if($v_variation_2_name != "")
+                                        {
+                                            echo("<td scope=\"row\"><input style=\"background: transparent;\" value=\"".$v_variation_2_choice[$i]."\" class=\"form-control td-var2\" name=\"variation2NameCol[]\" readonly=\"\"></td>");
+                                        }
+                                        echo("
+                                                <td scope=\"row\">
+                                                    <div class=\"input-group\">
+                                                    <div class=\"input-group-prepend\"><span class=\"input-group-text\">RM</span></div>
+                                                    <input value=\"".$v_product_price[$i]."\" type=\"number\" oninput=\"this.value = onlyNumberAllow(this.value)\" min=\"0\" class=\"form-control td-price\" name=\"variationPrice[]\" required=\"\">
+                                                    </div>
+                                                </td>
+                                                <td scope=\"row\"><input value=\"".$v_product_stock[$i]."\" type=\"number\" oninput=\"this.value = onlyNumberAllow(this.value)\" min=\"0\" class=\"form-control td-stock\" name=\"variationStock[]\" required=\"\"></td>
+                                                <td scope=\"row\"><input value=\"".$v_product_sku[$i]."\" type=\"text\" class=\"form-control td-sku\" name=\"variationSKU[]\" required=\"\"></td>
+                                            </tr>
+                                        ");
+                                    }
+                                    
+                                    echo("</tbody>");
+                                    echo("</table>");
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -598,7 +776,7 @@
         </div>
 
         <!--Shipping -->
-        <div class="row" id="ShippingDiv">
+        <div class="row <?php echo($i_product_virtual == 1 ? "hide" : ""); ?>" id="ShippingDiv">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -612,7 +790,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="0" class="form-control" name="productWeight" required>
+                                    <input type="number" oninput="this.value = onlyNumberAllow(this.value)" min="0" value="<?php echo( $i_product_virtual == 0 ? $i_product_weight : "0"); ?>" class="form-control" name="productWeight" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                     <div class="input-group-append">
                                         <span class="input-group-text">kg</span>
                                     </div>
@@ -628,7 +806,7 @@
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productLength"  placeholder="Length" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_length : "0"); ?>" class="form-control" name="productLength"  placeholder="Length" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -636,7 +814,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productWidth"  placeholder="Width" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_width : "0"); ?>" class="form-control" name="productWidth"  placeholder="Width" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -644,7 +822,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="input-group mb-3">
-                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" class="form-control" name="productHeight"  placeholder="Height" required>
+                                            <input type="number" oninput="this.value = onlyNumberAllow(this.value)" value="<?php echo( $i_product_virtual == 0 ? $i_product_height : "0"); ?>" class="form-control" name="productHeight"  placeholder="Height" <?php echo($i_product_virtual == 1 ? "" : "required"); ?>>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">cm</span>
                                             </div>
@@ -660,18 +838,17 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection">
+                                    <input class="form-check-input" type="checkbox" value="SelfCollection" name="chkSelfCollection"  id="chkSelfCollection" <?php echo( $i_product_self_collect == 1 ? "checked" : "0"); ?>>
                                     <label class="form-check-label" for="chkSelfCollection">
                                         Self Collection
                                     </label>
                                     </div>
                                     <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" checked>
+                                    <input class="form-check-input" type="checkbox" value="StandardDelivery" name="chkStandardDelivery" id="chkStandardDelivery" <?php echo( $i_product_standard_delivery == 1 ? "checked" : "0"); ?>>
                                     <label class="form-check-label" for="chkStandardDelivery">
                                         Standard Delivery
                                     </label>
                                 </div>
-                                <small id="checkbox-err-msg"></small>
                             </div>
                         </div>
                     </div>
@@ -681,10 +858,12 @@
 
         <!-- Page Ending -->
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add New Product</button>
-            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add New Product</button>
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Save Changes</button>
+            <button type="submit" id="EditProduct" name="edit" class="btn btn-outline-primary" hidden></i>Save Changes</button>
         </div>
     </form>
+
+
 </div>
 <!-- /.container-fluid -->
 
@@ -851,16 +1030,16 @@
             {
                 if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
                 {
-                    document.getElementById("AddProduct").click();
+                    document.getElementById("EditProduct").click();
                 }
                 else
                 {
                     document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
                     document.getElementById("checkbox-err-msg").focus();
                 }
-            }
+            } 
             else{
-                document.getElementById("AddProduct").click();
+                document.getElementById("EditProduct").click();
             }
         }
         else
@@ -1022,6 +1201,7 @@
 
     initImages();
     initVariation();
+    initChoice();
 
 
     function rearrangeLabel(){
@@ -1097,6 +1277,7 @@
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
                 img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -1346,8 +1527,6 @@
 
     function refreshPriceTableWithParameter(price,stock,sku)
     {
-        //updatePriceListArray();
-
         var PriceTableHTML = `<table class="table table-hover">`;
         //Header Row
         PriceTableHTML += `<thead>`;

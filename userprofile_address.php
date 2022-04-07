@@ -1,9 +1,9 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php	
-	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	if($_SESSION['login'] == false)
 	{
-		echo "<script>alert('Login as Admin account to access');
+		echo "<script>alert('Login to access');
 			window.location.href='login.php';</script>";
     }
 ?>

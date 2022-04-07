@@ -2,6 +2,38 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+    if(isset($_POST['submit'])){
+      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+        $coverPhoto = $_POST['coverPhoto'];
+        $profileImage = $_POST['profileImage'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $imageVideo = $_POST['imageVideo'];
+
+        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+
+        //$run = mysqli_query($conn,$query);
+        if (mysqli_query($conn, $query)) {
+          echo "Form Submitted Successfully" ;
+        } else {
+          echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        //if($run){
+        //  echo "Form Submitted Successfully" ;
+        //}
+        //else{
+        //  echo "Form not submitted";
+        //}
+
+      //}
+      //else{
+      //  echo "all fields required";
+      //}
+    }
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -14,21 +46,31 @@
   <div class="container profileContainer">
     <div class="row">
       <div>
-      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
-        <input type="file" id="actual-btn" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      </div>-->
+      <div class="profile-pic">
+        <label class="-label" for="file">
+          <span class="glyphicon glyphicon-camera"></span>
+          <span>Change<br>Image</span>
+        </label>
+        <input id="file" type="file" name="profileImage" onchange="loadFile(event)"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
       </div>
     </div>
+    
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" id="customFile" />
+      <input type="text" class="form-control" name="name"/>
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control" id="customFile" rows="3"></textarea>
+      <textarea class="form-control"  rows="3" name="description"></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
@@ -36,12 +78,13 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
-      <button class="saveBtn">Save</button>
+      <button type="submit" class="saveBtn" name="submit">Save</button>
     </div> 
+    </form>
   </div>
 </div>
 <!-- /.container-fluid -->
@@ -79,14 +122,56 @@ div.absolute {
   margin-top: 10px;
 }
 
-.sellerPic{
+/*.sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
   top: 45%;
   left: 55%;
-  
+}*/
+
+.profile-pic {
+  color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transition: all 0.3s ease;
 }
+.profile-pic input {
+  display: none;
+}
+.profile-pic img {
+  position: absolute;
+  object-fit: cover;
+  width: 65px;
+  height: 65px;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  left: 320px;
+}
+.profile-pic .-label {
+  position: absolute;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  left: 320px;
+}
+.profile-pic:hover .-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  color: #fafafa;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 100px;
+  margin-bottom: 0;
+}
+.profile-pic span {
+  display: inline-flex;
+  }
 
 #uploadContainer {
   width: 30%;
@@ -147,4 +232,11 @@ $(function() {
 function imageIsLoaded(e) {
   $('.imageContainer').append('<img src=' + e.target.result + '>');
 };
+
+/* Profile image review */
+var loadFile = function (event) {
+var image = document.getElementById("profilePic");
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
 </script>

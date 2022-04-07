@@ -4,6 +4,7 @@
 
 <?php
 $product = "P000001";
+//$_SESSION['product_ID']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	
 	
@@ -29,10 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 		
 		}	
 			
-		  
-		  
-		  
-
 }	
 
 
@@ -44,9 +41,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">	
 
+    <i class="fa fa-star"></i>
+	<i class="fa fa-star-half-o"></i>
+	<i class="fa fa-star ratingStar"></i>
     
-    
+  <?php
   
+	$query = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+		  FROM user u INNER JOIN  reviewRating rr 
+		  ON  u.userID = rr.user_id 
+		  WHERE rr.disable_date IS NULL && rr.product_id = 'P000001'
+		  ORDER BY rr.rr_id";
+
+  
+	//echo "Rating = $rr |";
+	//echo "Product = $rr2 ";
+
+
+$result = mysqli_query($conn, $query);
+if(mysqli_num_rows($result) > 0)
+{
+ 
+ while($row = mysqli_fetch_array($result))
+ {
+	 $starR = '';
+	 for($i=0; $i<5; $i++){
+		 if($i < $row["rating"]){
+			 $starR .='<i class="fa fa-star tqy"></i> ';
+		 }else{
+			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
+		 }
+	 }
+	 
+	 $profilePicR = '';
+	 if($row["profile_picture"] === null){
+		 $profilePicR .= '<img src = "https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6" class = "reviewprofilepic">';
+	 }else{
+		 //DISPLAY PROFILE PIC NO LE JIU DEFAULT ^^
+		 $profilePicR .= '<img src = "https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg" class = "reviewprofilepic">';
+	 }
+	 
+	 
+	 $picR = '';
+	 for($i=1; $i<=5; $i++){
+		 if($row["pic$i"] === null || $row["pic$i"] == ''){
+			 $picR .='';
+			 /*
+			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
+			 */
+		 }else{
+			 //DISPLAY REAL PICTURE/VIDEO THEY POST
+			 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
+		 }
+			 
+	 }
+	 
+  
+  $output .='<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
+			<div style="height: 100%">
+			'.$profilePicR.'
+			<div class = "namestar">
+				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["name"].'</h6>
+				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
+			</div>
+
+	<h6 class = "divcontent">'.$row["message"].'</h6>
+										
+	<table style = "margin-bottom: 0.3rem;">
+		<tr>
+			'.$picR.'
+		<tr>
+	</table>
+	
+	<form action = "product.php" method = "POST">
+		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
+		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
+	</form>
+	</div>   
+	
+</div>
+</div>';
+  
+ }
+ echo $output;
+}
+else
+{
+ echo 'Data Not Found';
+}
+  
+  
+  
+  ?>
  
    
 
@@ -95,8 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 							?>							
 						</div>	
 					</div>
-		
-		
 			<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
 			</h6>		
 			
@@ -109,8 +193,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 				}else{echo "";}		  
 			?>
 					
-					
-
 						<!---->
 						<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
                             <div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
@@ -136,14 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											echo '';
 										}
 
-									?>
-									<!--
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-									-->
+									?>									
                                 </ol>
                                 <div class="carousel-inner tqy">
 									<?php
@@ -152,51 +227,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											
 											if( $c10 === null){echo '';}
 												else{echo '<div class="carousel-item active">
-																<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+																<img class="d-block w-100" src="'.$c10.'" >
 														  </div> ';} 													 
 												
 											if( $c11 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c11.'" >
 														  </div>';}
 											if( $c12 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c12.'" >
 														  </div>';}	
 											if( $c13 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c13.'" >
 														  </div>';}		
 											if( $c14 === null){echo '';}
 												else{echo '<div class="carousel-item">
-																 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																 <img class="d-block w-100" src="'.$c14.'" >
 														  </div>';}										
-													
-		
-				
-				
+																		
 		 								}else{
 											echo '';
 										}			 
 	
 									?>
-									<!--
-									<div class="carousel-item active">
-                                         <img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
-                                    </div> 
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item>
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div> 
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
-                                    </div>
-									<div class="carousel-item">
-                                         <img class="d-block w-100" src="https://images.newindianexpress.com/uploads/user/imagelibrary/2021/9/11/w1200X800/Memes_to.jpg" >
-                                    </div>									
-									-->
+									
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -209,8 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                         </div>
 						<!---->
-		
-		
+
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
@@ -222,8 +277,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </div>
   
   
-
-
 <!--------------------------Rating PICK PICK---------------------------->	
 <div id = "pickpickrating">
 	<div class="row pickbox">
@@ -231,9 +284,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 		<div>
 			<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
 			
-			<?php
-			
-			
+			<?php			
 			$sql ="SELECT avg(rr.rating)
 			    FROM user u INNER JOIN  reviewRating rr 
 			    ON  u.userID = rr.user_id 
@@ -254,18 +305,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			
 			
 			</strong> out of 5.0</p>
-			<div style="margin-bottom: 0.1em; text-align: center;">													
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-fill tqy"></i>
-				<i class="bi bi-star-half tqy"></i>
-				<i class="bi bi-star tqy"></i>
+			<div style="margin-bottom: 0.1em; text-align: center;">	
+
+			<?php
+				$calavgrat = $avgrat;
+				$check = true;
+				  for($i = 0; $i<5; $i++){
+					if(round($calavgrat) && $check == true){
+					  echo '<i class="bi bi-star-fill tqy"></i>';
+					  $calavgrat -= 1;
+					}else{
+					   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+						echo '<i class="bi bi-star-half tqy"></i>';
+					  }
+					  else{
+						echo '<i class="bi bi-star tqy"></i>';
+					  }
+					  $check = false;
+					  $calavgrat -= 1;
+					}
+
+				  }
+			?>			
 			</div>	
 		</div>	  
 	  </div>
-	  <div class="col-7" style = "background-color:;">
-		  
-		  
+	  <div class="col-7" style = "background-color:;">  
 		  <div class="container" style = "margin-top: 2.2rem;">
 				<div class="row">
 					<div class="col">
@@ -291,8 +356,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 
-</div>
-						
+</div>				
 <!-------------------------------------------------------------------> 
 				<!-- List All Product -->
 				<div class="card-body">
@@ -308,10 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 							</div>  
 						</div>
 					</div>
-				<br>
-                   
-                  
-                   
+				<br>                                
                 <br>
 	
 	
@@ -329,8 +390,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 <style>
 
-      
-  
 #sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
@@ -477,10 +536,6 @@ $(document).ready(function(){
 		  
 	}
  
- 
-
-
- 
  $('#selectStar').change(function(){
   var restriction = $(this).val();
   var restriction2 = $('#selectCM').val();
@@ -509,14 +564,6 @@ $(document).ready(function(){
  
 
 });
-
-
-
-
-
-
-
-
 
 </script>
 

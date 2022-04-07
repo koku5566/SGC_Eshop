@@ -91,6 +91,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -109,7 +110,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
                 <div class="sidebar-brand-icon">
                     <img src="../img/segilogo.png" style="width:50px;height:50px;" alt="">
                 </div>
@@ -121,7 +122,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -143,7 +144,7 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">My Shipment</a>
+                        <a class="collapse-item" href="seller/ViewShippingOrder.html">My Shipment</a>
                         <a class="collapse-item" href="register.html">Mass Ship</a>
                         <a class="collapse-item" href="forgot-password.html">Shipping Setting</a>
                     </div>
@@ -175,7 +176,7 @@
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="myProduct.php">My Product</a>
+                        <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add New Product</a>
                         <a class="collapse-item" href="violationProduct.php">Product Violations</a>
                         <a class="collapse-item" href="category.php">Category Management (Admin)</a>

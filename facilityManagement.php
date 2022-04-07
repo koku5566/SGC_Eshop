@@ -29,37 +29,57 @@
                   <input type="text" aria-label="First name" class="form-control">
                </div>
             </div>
-            <div class="form-row">
+            <div class="row">
                <div class="form-group col-md-12">
-                  <label for="">*Facility Name</label>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <p class="p-title">Facility Name</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-3">
+                  <textarea class="form-control" name="title" maxlength="1000" required></textarea>
+                  </div>
                </div>
             </div>
-        
-            <div class="form-row">
+
+            <div class="row">
                <div class="form-group col-md-12">
-               <label for="">*Facility Description</label>
-               <textarea class="form-control" rows="10" required></textarea>
-            </div>
-         </div>
-         <div class="form-row">
-               <div class="form-group col-md-12">
-                  <label for="">Hourly Rate</label>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <p class="p-title">Facility Description</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-3">
+                  <textarea class="form-control" name="picDescription" maxlength="3000" required></textarea>
+                  </div>
                </div>
             </div>
-         
-            <div class="form-row">
+            <div class="row">
                <div class="form-group col-md-12">
-                  <label for="">Facility Photo</label>
+                  <p class="p-title">Facility Address</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-3">
+                  <textarea class="form-control" name="address" maxlength="1000" required></textarea>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="form-group col-md-12">
+                  <p class="p-title">Stock</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-2">
+                     <input type="number"min="0" value="0" class="form-control" name="productStock" required>
+                  </div>
+               </div>
+            </div>
+            <div class="form-row">   
+               <div class="form-group col-md-12">
+                  <label for="">Facility Photo</label>  
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-5" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
-               </div>
+               </div>               
             </div>
-            <div class="form-row">
-               <div class="float-right">
-                  <button type="button" class="btn btn-warning" name="upload">Upload</button>
-                  <button type="button" class="btn btn-warning" name="cancel">Cancel</button>
-               </div>
+            <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+            <button type="button"  onclick="submitForm()" class="btn btn-outline-primary"></i>Add Facility</button>
+            <button type="submit" id="AddProduct" name="add" class="btn btn-outline-primary" hidden></i>Add Facility</button>
             </div>
          </div>    
       </div>
@@ -69,6 +89,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>

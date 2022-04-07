@@ -1,6 +1,46 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 ?>
+<?php
+    $_SESSION['productID'] = $_GET['id'];
+?>
+<?php
+//Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
+//$product = $_SESSION['productID'];	//Maverick if u want to change the ratting uncomment this then
+
+$product = "P000001";	//Comment this out jiu can le
+//$_SESSION['product_ID']
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+	$selectedPID = SanitizeString($_POST['pid']);
+		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+			    FROM user u INNER JOIN  reviewRating rr 
+			    ON  u.userID = rr.user_id 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    ORDER BY rr.rr_id";
+		
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			
+			if(mysqli_stmt_num_rows($stmt) == 1){
+				mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13,$c14,$c15,$c16,$c17);
+				mysqli_stmt_fetch($stmt);
+			}
+			
+			mysqli_stmt_free_result($stmt);
+			mysqli_stmt_close($stmt);
+		
+		}	
+			
+}	
+//Cheong Kit Min - End of Review & Rating PHP ----------------------------------------------------------------------------------
+
+?>
+<!--Cheong Kit Min - Review & Rating PHP ---------------------------------------------------------------------------------->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--Cheong Kit Min - End of Review & Rating PHP ---------------------------------------------------------------------------------->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
@@ -36,7 +76,6 @@
                         ?>
                     </ol>
                 </nav>
-
                     <!-- Product Row -->
                     <div class="row">
                         <!-- Picture -->
@@ -119,7 +158,7 @@
                                 </div>
                             </div>
                             <!-- Button -->
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col">
                                     <a href="#" class="btn btn-primary">
                                         <span class="text">Add To Cart</span>
@@ -133,17 +172,15 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-xl-6 col-md-6">
+                                <div class="col-xl-6 col-md-12">
                                     <div class="row">
-                                        <div class="col-3">
-                                            <img class="img-thumbnail" src="data:image/jpeg;base64,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">
+                                        <div class="col-xl-3 col-md-4">
+                                            <img class="img-thumbnail" style="min-height:10px; width: inherit;" src="data:image/jpeg;base64,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">
                                         </div>
-                                        <div class="col-9 sidebar-brand-text" style="font-size:2rem;">Offical Apple Store</div>
+                                        <div class="col-xl-9 col-md-8 sidebar-brand-text" style="font-size: 1.5rem;font-weight: bold;">Offical Apple Store</div>
                                     </div>
-
-
                                 </div>
-                                <div class="col-xl-4 col-md-4">
+                                <div class="col-xl-4 col-md-8">
                                     <div class="row">
                                         <div class="col list-parent"> 
                                             <i class="fa fa-star"></i>
@@ -159,15 +196,244 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-2" style="text-align:center;">
-                                    <a href="#" class="btn btn-primary" style="margin-top: 20%;">
+                                <div class="col-xl-2 col-md-4" style="text-align:center;">
+                                    <a href="#" class="btn btn-primary" style="width:inherit;">
                                         <span class="text">View Shop</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!--CHEONG KIT MIN - Review & Rating Section-------------------------------------------------------------------------------->
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">User Review</h5>
+								
+							  </div>
+							  <!--CONTENT START-->
+							  <div class="modal-body">
+								<!--DISPLAY HERE
+								<div id = "modalResult" style = "height: 100%"></div>
+								-->
+								<div style="height: 100%">
+											
+											<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+											<div class = "namestar">
+												<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
+												<div style="margin-bottom: 0.1em;">	
+													<?php
+														for($i=0; $i<5; $i++){
+															if(isset($c9) && !empty ($c9)){
+																if($i < $c9){
+																	 echo '<i class="fa fa-star tqy"></i> ';
+																 }else{
+																	 echo '<i class="fa fa-star ratingStar tqy"></i> ';
+																 }
+															}else{
+																echo '';
+															}								 
+													 	}							
+													?>							
+												</div>	
+											</div>
+									<h6 class = "divcontent" style = "max-height: none;"><?php echo (isset($c8) && !empty ($c8))? $c8 : ''; ?>
+									</h6>		
+									
+									<?php
+										if(isset($c17) && !empty ($c17)){
+											echo '<div id = "sellresponse">
+													<h6 style=" font-size: 0.9rem;margin-bottom: 0px; color: #0000ff;">Seller Response:</h6>	
+													<h6 style = "font-size: 0.8rem"> "'.$c17.'"</h6>
+												  </div>';		
+										}else{echo "";}		  
+									?>
+											
+												<!---->
+												<div class="w3-display-middle" style="width:100%; margin-top: 0.5rem;">
+													<div id="carouselExampleIndicators" class="carousel slide atss" data-ride="carousel" >
+														<ol class="carousel-indicators">
+															<?php
+																if(isset($c1) && !empty ($c1)){		
+																	
+																	if($c10 === null || $c10 == ''){echo '';}
+																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
+																		
+																	if($c11 === null || $c11 == ''){echo '';}
+																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
+																		
+																	if($c12 === null || $c12 == ''){echo '';}
+																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
+																		
+																	if($c13 === null || $c13 == ''){echo '';}
+																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
+																		
+																	if($c14 === null || $c14 == ''){echo '';}
+																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}											 
+																}else{
+																	echo '';
+																}
+
+															?>									
+														</ol>
+														<div class="carousel-inner tqy">
+															<?php
+															
+																if(isset($c1) && !empty ($c1)){			
+																	
+																if( $c10 === null || $c10 == ''){echo '';}
+																		else{echo '<div class="carousel-item active">
+																						<img class="d-block w-100" src="'.$c10.'" >
+																				  </div> ';} 													 
+																		
+																	if( $c11 === null || $c11 == ''){echo '';}
+																		else{echo '<div class="carousel-item">
+																						 <img class="d-block w-100" src="'.$c11.'" >
+																				  </div>';}
+																	if( $c12 === null || $c12 == ''){echo '';}
+																		else{echo '<div class="carousel-item">
+																						 <img class="d-block w-100" src="'.$c12.'" >
+																				  </div>';}	
+																	if( $c13 === null || $c13 == ''){echo '';}
+																		else{echo '<div class="carousel-item">
+																						 <img class="d-block w-100" src="'.$c13.'" >
+																				  </div>';}		
+																	if( $c14 === null || $c14 == ''){echo '';}
+																		else{echo '<div class="carousel-item">
+																						 <img class="d-block w-100" src="'.$c14.'" >
+																				  </div>';}										
+																								
+																}else{
+																	echo '';
+																}			 
+							
+															?>
+															
+														</div>
+														<a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+															<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+															<span class="sr-only">Previous</span>
+														</a>
+														<a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
+															<span class="carousel-control-next-icon" aria-hidden="true"></span>
+															<span class="sr-only">Next</span>
+														</a>
+													</div>
+												</div>
+												<!---->
+
+							  </div>
+							  <!--CONTENT END-->
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						</div>
+						  
+						  
+						<!--------------------------Rating PICK PICK---------------------------->	
+						<div id = "pickpickrating">
+							<div class="row pickbox">
+							  <div class="col-5" style = "background-color:;">
+								<div>
+									<p style = "font-size: 2rem; text-align: center; margin-bottom: 0;"><strong style = "font-size: 3.5rem; font-weight: 600;">
+									
+									<?php			
+									$sql ="SELECT avg(rr.rating)
+										FROM user u INNER JOIN  reviewRating rr 
+										ON  u.userID = rr.user_id 
+										WHERE rr.disable_date IS NULL && rr.product_id = '$product'
+										ORDER BY rr.rr_id";
+									if($stmt = mysqli_prepare ($conn, $sql)){
+										mysqli_stmt_execute($stmt);
+										mysqli_stmt_bind_result($stmt, $x1);
+										
+										while(mysqli_stmt_fetch($stmt)){
+											$avgrat = round($x1, 1);
+											echo"$avgrat";
+										}
+										mysqli_stmt_close($stmt);
+									}
+									
+									?>
+									
+									
+									</strong> out of 5.0</p>
+									<div style="margin-bottom: 0.1em; text-align: center;">	
+
+									<?php
+										$calavgrat = $avgrat;
+										$check = true;
+										  for($i = 0; $i<5; $i++){
+											if(round($calavgrat) && $check == true){
+											  echo '<i class="fa fa-star tqy" sytle = "font-size: 1.2rem;"></i>';
+											  $calavgrat -= 1;
+											}else{
+											   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+												echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
+											  }
+											  else{
+												echo '<i class="fa fa-star ratingStar tqy" sytle = "font-size: 1.2rem;"></i>';
+											  }
+											  $check = false;
+											  $calavgrat -= 1;
+											}
+
+										  }
+									?>			
+									</div>	
+								</div>	  
+							  </div>
+							  <div class="col-7" style = "background-color:;">  
+								  <div class="container" style = "margin-top: 2.2rem;">
+										<div class="row">
+											<div class="col">
+												  <select class="form-control" id = "selectStar">
+													  <option value = "All">All* (107)</option>
+													  <option value = "5">5 Star</option>
+													  <option value = "4">4 Star</option>
+													  <option value = "3">3 Star</option>	
+													  <option value = "2">2 Star</option>
+													  <option value = "1">1 Star</option>			  
+												  </select>
+											</div>
+											<div class="col">						
+												 <select class="form-control" id = "selectCM">
+													  <option value = "All">With Comment & Media*</option>
+													  <option value = "1">With Comment Only</option>							  
+												</select>		
+											</div>
+										</div>
+									</div>
+							  </div>
+							</div>
+
+
+
+						</div>				
+						<!-------------------------------------------------------------------> 
+										<!-- List All Product -->
+										<div class="card-body">
+											<div>
+												<h2 style ="text-align:center">Review</h2>
+											</div>
+												<div class="row">
+													<!-- Card Body -->
+													<div class="card-body">
+														<div class="row" style = "background-color: lightblue;" id = "displaySearch">
+															
+														</div>
+													</div>  
+												</div>
+											</div>
+										<br>                                
+										<br>
+					<!--CHEONG KIT MIN - End of Review & Rating Section------------------------------------------------------------------------->
                     <!-- Product Row -->
                     <div class="row">
                         <div class="col">
@@ -183,6 +449,99 @@
 ?>
 
 <style>
+	/*Cheong Kit Min - Review & Rating ************************************/
+	#sellresponse{
+	background-color: #DCDCDC; 
+	padding: 0.2rem; 
+	border-radius: 4px; 
+	}
+	.pickbox{
+		width: 100%;
+		margin: 0 auto;
+		height: 100%;
+		background-color: rgba(86,61,124,.15);
+		border: 1px solid rgba(86,61,124,.2);
+		align-content: center;
+	}
+	#pickpickrating{
+		background-color: white;
+		height: 100%;
+		width: 100%;
+	}
+	.modal-footer{
+		border-top: none;
+	}
+	.hyperlink:hover{
+		cursor: pointer;
+		color: #A31F37;
+	}
+	.hyperlink{
+		float: right;
+		color: #858796;
+		border: none;
+		background-color: transparent;
+		
+	}
+	.divcontent{
+		font-size: 0.85rem; 
+		max-height: 5rem; 
+		min-height: 5rem; 
+		overflow: hidden; 
+		margin-top: 0.5 rem;
+	}
+	.divpink{
+		padding-bottom: .625rem; 
+		
+		padding-top: .625rem;
+	}
+	.namestar{
+		min-height: 6rem;
+		padding: auto;
+		position: relative;
+		
+	}
+	.reviewprofilepic{
+		display: block; 
+		float: left;
+		margin: 0.75em 0.75em 0 0.75em; 
+		border-radius: 50%; 
+		width: 5rem; 
+		height: 5rem;
+	}
+	.tqy{
+		color: #A31F37
+	}
+	.atss{
+		max-width: 25rem;
+		max-height: 25rem;
+		margin: 0 auto;
+	}
+	.bi-star-half{
+		-webkit-text-fill-color: orange;
+	}
+	.bi.bi-star-fill{
+		-webkit-text-fill-color: orange;
+	}
+	.imgReply{
+		width: 2.3rem;
+		height: 2.3rem;
+		object-fit: cover;
+	}
+	.pp{
+		width: 100%;
+		border: 1px solid purple;
+	}
+	.ppparent{
+		
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.ppparent > div {
+		flex:50%;
+		box-shadow: 0 0 0 1px black;
+		margin-bottom: 10px
+	}
+	/*Cheong Kit Min - End of Review & Rating ****************/
     .image-container{
         width:100%;
         height: 40vh;
@@ -265,3 +624,87 @@
 
 
 </style>
+<script>
+/*Cheong Kit Min - Review & Rating ******************************************************************************/
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+			$showmedawae = "#exampleModalLong";
+								 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
+   
+
+
+$(document).ready(function(){
+
+	
+	load_data_display();
+	load_data();
+ 
+ function load_data_display(restriction,restriction2)
+ {
+  $.ajax({
+   url:"reviewRatingSearch.php",
+   method:"POST",
+   data:{restriction:restriction,
+		 restriction2:restriction2},
+   success:function(data)
+   {
+	   //alert('success noob')
+		$('#displaySearch').html(data);
+		
+   }
+   
+  });
+ }
+ 
+ function load_data(query) 
+	{
+		$.ajax({
+		   url:"reviewRatingModal.php",
+		   method:"POST",
+		   data:{query:query},
+		   success:function(data)
+		   {
+			   //alert('success noob')
+			$('#modalResult').html(data);
+			
+		   }
+		  });
+		  
+	}
+ 
+ $('#selectStar').change(function(){
+  var restriction = $(this).val();
+  var restriction2 = $('#selectCM').val();
+  
+   load_data_display(restriction, restriction2);
+ 
+ });
+ 
+ $('#selectCM').change(function(){
+  var restriction = $('#selectStar').val();
+  var restriction2 = $(this).val();
+  
+   load_data_display(restriction,restriction2);
+	
+ 
+ });
+ 
+  $('.hyperlink').click(function(){
+  var click = $(this).val();
+  //console.log(click)
+  load_data(click);
+  
+  
+ });
+ 
+ 
+
+});
+/*Cheong Kit Min - End of Review & Rating ******************************************************************************/
+</script>

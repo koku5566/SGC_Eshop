@@ -1,14 +1,40 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $orderid = $_GET['order_id'];
+    
+    $sql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    product.product_name,
+    product.product_cover_picture,
+    product.product_price,
+    orderDetails.quantity,
+    orderDetails.amount,
+    user.username,
+    userAddress.address
+    FROM
+    myOrder
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN product ON orderDetails.product_id = product.id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    WHERE myOrder.order_id = '$orderid';";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
+<?php                       
 
+?>
     <div class="card shadow mb-4">
-
         <div class="card-body">
             <div class="container m-3">
                 <div class="order-section mb-3">
@@ -19,20 +45,20 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            211104M9WMPBS5
+                            <?php echo $row['order_id']?>
                         </div>
                     </div>
                 </div>
                 <div class="delivery-section mb-3">
                     <div class="row">
                         <div class="col-1"><i class="fa fa-location-dot"></i></div>
-                        <div class=" col title ">Delivery Address</div>
+                        <div class="col title ">Delivery Address</div>
                     </div>
-                    <div clas s="row">
+                    <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
-                            <div id="recipient-address">123252, Hello sdjkn</div>
+                            <div id="recipient-address"><?php echo $row['address']?></div>
                         </div>
                     </div>
                 </div>
@@ -92,20 +118,24 @@
                             </div>
                         </div>
                     </div>
+                    <?php
+                    $i=0;
+                    while ($row = $result->fetch_assoc()) {?>
                     <!--Start of order item-->
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-1">1.</div>
-                                <div class="col-1"><img width="100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></div>
-                                <div class="col-4">Wireless Earphone dfdfbdfbd</div>
-                                <div class="col-2">RM349.00</div>
-                                <div class="col-1">X1</div>
-                                <div class="col-3 red-text">RM349.00</div>
+                                <div class="col-1"><?php echo ++$i;?>.</div>
+                                <div class="col-1"><img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" /></div>
+                                <div class="col-4"><?php echo $row['product_name']?></div>
+                                <div class="col-2">RM<?php echo $row['product_price']?>.00</div>
+                                <div class="col-1">X<?php echo $row['quantity']?></div>
+                                <div class="col-3 red-text">RM<?php echo $row['amount']?>.00</div>
                             </div>
                         </div>
                     </div>
                     <!--End of Order Item-->
+                    <?php } ?>
                     <div class="row">
                         <!--Payment method & Status-->
                         <div class="col-8">

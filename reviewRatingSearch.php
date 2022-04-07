@@ -1,7 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 $product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
-
+//$_SESSION['product_ID']
 $output = '';
 
 
@@ -48,9 +48,9 @@ if(mysqli_num_rows($result) > 0)
 	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
-			 $starR .='<i class="bi bi-star-fill"></i> ';
+			 $starR .='<i class="fa fa-star tqy"></i> ';
 		 }else{
-			 $starR .='<i class="bi bi-star"></i> ';
+			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
 		 }
 	 }
 	 
@@ -65,14 +65,14 @@ if(mysqli_num_rows($result) > 0)
 	 
 	 $picR = '';
 	 for($i=1; $i<=5; $i++){
-		 if($row["pic$i"] === null){
+		 if($row["pic$i"] === null || $row["pic$i"] == ''){
 			 $picR .='';
 			 /*
 			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
 			 */
 		 }else{
 			 //DISPLAY REAL PICTURE/VIDEO THEY POST
-			 $picR .='<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>';
+			 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
 		 }
 			 
 	 }
@@ -94,7 +94,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<form action = "helpCenterAdminTest.php" method = "POST">
+	<form action = "product.php" method = "POST">
 		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
 		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
 	</form>
