@@ -119,18 +119,19 @@
 						if(!empty($tempNamepic[$r])){
 								$filepathname = $gotpic[$r];
 								$tempT = $tempNamepic[$r];
-								move_uploaded_file($tempT, $filepathname);
-								echo "<script>alert('$filepathname');</script>";
+								//move_uploaded_file($tempT, $filepathname);
+								//echo "<script>alert('$filepathname');</script>";
+								$move = $filepathname
+								if (move_uploaded_file($tempNamepic[$r], $move . $gotpic[$r])) {
+									echo "<div class='alert alert-success'>Uploaded</div>";		
+								} else {
+								   echo "<div class='alert alert-success'>Fail to upload la</div>";
+								}
 							}
 					}
-					/*
-					$move = "path_where_you_want_to_save_the_file."
-					if (move_uploaded_file($_FILES['file']['tmp_name'], $move . $_FILES["file"]['name'])) {
-						echo "Uploaded";
-					} else {
-					   echo "File was not uploaded";
-					}
-					*/
+					/**/
+					
+					
 					
 					
 					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
