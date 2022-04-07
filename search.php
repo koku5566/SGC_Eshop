@@ -96,7 +96,7 @@
                                                 <div class="row">
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="minPrice" placeholder="RM MIN">
+                                                            <input type="text" class="form-control" name="minPrice" value="<?php echo($_GET['minPrice']); ?>" placeholder="RM MIN">
                                                         </div>
                                                     </div>
                                                     <div class="col mb-3" style="max-width: 14px;padding: 0;">
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="col mb-3">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="maxPrice" placeholder="RM MAX">
+                                                            <input type="text" class="form-control" name="maxPrice" value="<?php echo($_GET['maxPrice']); ?>" placeholder="RM MAX">
                                                         </div>
                                                     </div>
                                                 </div>
