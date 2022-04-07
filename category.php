@@ -24,7 +24,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary mb-3"><i class="fa fa-list" aria-hidden="true"></i>All Category</h6>
                                                 <div class="form-check" id="rating_bar">
                                                     <?php
                                                         if(isset($_GET['rating']))
