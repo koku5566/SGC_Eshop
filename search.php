@@ -280,7 +280,7 @@
 
                                                 if(isset($_SESSION['minPrice']))
                                                 {
-                                                    $maxPrice = $_SESSION['minPrice'];
+                                                    $minPrice = $_SESSION['minPrice'];
                                                     $sql .= "AND product_price >= $minPrice ";
                                                 }
 
