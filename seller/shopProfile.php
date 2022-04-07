@@ -10,6 +10,7 @@
         //$profileImage = $_POST['profileImage'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        echo $name, $description;
         //$imageVideo = $_POST['imageVideo'];
 
         //$query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
