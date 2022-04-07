@@ -269,6 +269,7 @@
 
                                                 if(isset($_SESSION['Rating']))
                                                 {
+                                                    $Rating = $_SESSION['Rating'];
                                                     $sql .= "AND rating >= $Rating ";
                                                 }
 
