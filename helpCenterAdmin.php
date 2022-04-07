@@ -11,7 +11,7 @@
 		//echo "<script>alert('$selectedPID')</script>";	
 		//$selectedPID = SanitizeString($_POST['pid']);
 		
-		$sql = "SELECT product_id, product_name, product_brand, product_price
+		$sql = "SELECT product_id, product_name, product_brand, product_price, product_cover_picture
 				FROM `product`
 				WHERE product_id = ?";
 		
@@ -21,7 +21,7 @@
 			mysqli_stmt_store_result($stmt);
 			
 			if(mysqli_stmt_num_rows($stmt) == 1){
-				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4);
+				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4,$j5);
 				mysqli_stmt_fetch($stmt);
 			}
 			
@@ -238,12 +238,12 @@
 		-->
         <div style="height: 100%">
 				<!--CONCAT at 90 -->
-					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
+					<img src = "<?php echo (isset($j5) && !empty ($j5))? $j5 : 'https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg'; ?>" class = "productpic">
 					<div class = "namestar">
 						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
 						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'WI-SP510 Wireless Headphone blablabla - RMB PRODUCT NAME'; ?></h5>
 						<h6><?php echo (isset($j3) && !empty ($j3))? $j3 : 'Model: WISP510 - RMB MODEL/BRAND'; ?></h6>
-						<h3><?php echo (isset($j4) && !empty ($j4))? $j4 : 'RM 349.00 - RMB PRICE'; ?></h3>									
+						<h3><?php echo (isset($j4) && !empty ($j4))? 'RM '.$j4 : 'RM 349.00 - RMB PRICE'; ?></h3>									
 					</div>
 					
 					<!-- bi bi-star-fill 	21.13
