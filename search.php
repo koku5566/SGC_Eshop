@@ -131,7 +131,7 @@
                                             <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary">Shipping Option</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo($_SESSION['chkStandardDelivery'] == "Latest" ? "checked" : ""); ?> id="term1">
+                                                    <input class="form-check-input" type="checkbox" name="chkStandardDelivery" <?php echo(isset($_SESSION['chkStandardDelivery']) ? "checked" : ""); ?> id="term1">
                                                     <label class="form-check-label" for="term1">
                                                         Standard Delivery
                                                     </label>
