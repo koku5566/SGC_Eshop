@@ -108,71 +108,32 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="m-0 font-weight-bold text-primary mb-3"><i class="fa fa-list" aria-hidden="true"></i>All Category</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary mb-3">All Category</h6>
                                                 <div class="browse-menus">
                                                     <div class="browse-menu active">
                                                         <ul class="main-menu">
                                                             <!-- PHP Loop here - Category -->
                                                             <?php
-                                                                //Main Category
-                                                                $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
-                                                                $result = mysqli_query($conn, $sql);
+                                                                //Just List all sub category
+                                                                $maincategoryid = $_SESSION['mainCategory'];
 
-                                                                if (mysqli_num_rows($result) > 0) {
-                                                                    while($row = mysqli_fetch_assoc($result)) {
-                                                                        $maincategoryid = $row["category_id"];
-                                                                        $categoryName = $row["category_name"];
-                                                                        $picName = "";
-                                                                        if($row["category_pic"] != "")
-                                                                        {
-                                                                            $picName = "/img/category/".$row["category_pic"];
-                                                                        }
+                                                                $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                                                $result_1 = mysqli_query($conn, $sql_1);
 
-                                                                        $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
-                                                                        $result_1 = mysqli_query($conn, $sql_1);
+                                                                if (mysqli_num_rows($result_1) > 0) {
+                                                                    
+                                                                    while($row_1 = mysqli_fetch_assoc($result_1)) {
 
-                                                                        if (mysqli_num_rows($result_1) > 0) {
-                                                                            
-                                                                            echo("
-                                                                                <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                                    <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
-                                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
-                                                                                    $categoryName
-                                                                                    <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
-
-                                                                                    </a>
-                                                                                        <ul class=\"dropdown-menu\">
-                                                                            ");
-                                                                            while($row_1 = mysqli_fetch_assoc($result_1)) {
-
-                                                                                $subCategoryId = $row_1["subCategoryId"];
-                                                                                $subCategoryName = $row_1["subCategoryName"];
-                                                                                $subPicName = "";
-                                                                                echo("
-                                                                                    <li class=\"menu-item\">
-                                                                                        <a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
-                                                                                    </li>
-                                                                                ");
-                                                                            }
-                                                                            echo("
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                ");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            //If no sub category, display as normal
-                                                                            echo("
-                                                                            <li class=\"menu-item\" style=\"display: list-item;\">
-                                                                            <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
-                                                                            <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
-                                                                            $categoryName
-                                                                            </a>
+                                                                        $subCategoryId = $row_1["subCategoryId"];
+                                                                        $subCategoryName = $row_1["subCategoryName"];
+                                                                        $subPicName = "";
+                                                                        echo("
+                                                                            <li class=\"menu-item\">
+                                                                                <a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
                                                                             </li>
-                                                                            ");
-                                                                        }
+                                                                        ");
                                                                     }
-                                                                }   
+                                                                } 
                                                             ?>
                                                         </ul>
                                                     </div>
