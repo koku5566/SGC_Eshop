@@ -17,39 +17,39 @@
     else
     {
         //Save into session
-        if(isset($_GET['mainCategory']))
+        if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
         {
             $_SESSION['mainCategory'] = $_GET['mainCategory'];
         }
-        if(isset($_GET['subCategory']))
+        if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
         {
             $_SESSION['subCategory'] = $_GET['subCategory'];
         }
-        if(isset($_GET['Search']))
+        if(isset($_GET['Search']) && $_GET['Search'] != "")
         {
             $_SESSION['Search'] = $_GET['Search'];
         }
-        if(isset($_GET['chkStandardDelivery']))
+        if(isset($_GET['chkStandardDelivery']) && $_GET['chkStandardDelivery'] != "")
         {
             $_SESSION['chkStandardDelivery'] = $_GET['chkStandardDelivery'];
         }
-        if(isset($_GET['chkSelfCollection']))
+        if(isset($_GET['chkSelfCollection']) && $_GET['chkSelfCollection'] != "")
         {
             $_SESSION['chkSelfCollection'] = $_GET['chkSelfCollection'];
         }
-        if(isset($_GET['Rating']))
+        if(isset($_GET['Rating']) && $_GET['Rating'] != "")
         {
             $_SESSION['Rating'] = $_GET['Rating'];
         }
-        if(isset($_GET['minPrice']))
+        if(isset($_GET['minPrice']) && $_GET['minPrice'] != "")
         {
             $_SESSION['minPrice'] = $_GET['minPrice'];
         }
-        if(isset($_GET['maxPrice']))
+        if(isset($_GET['maxPrice']) && $_GET['maxPrice'] != "")
         {
             $_SESSION['maxPrice'] = $_GET['maxPrice'];
         }
-        if(isset($_GET['SortBy']))
+        if(isset($_GET['SortBy'])  && $_GET['SortBy'] != "")
         {
             $_SESSION['SortBy'] = $_GET['SortBy'];
         }
