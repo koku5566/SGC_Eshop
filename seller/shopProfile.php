@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
+<?php echo"helloll";
     if(isset($_POST['submit'])){
       //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
         echo"hello";
@@ -13,8 +13,8 @@
         //$imageVideo = $_POST['imageVideo'];
 
         //$query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
-        $query = "INSERT INTO shopProfile (shop_name, shop_description) /*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
-        VALUES ('$name', '$description')"; /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
+        $query = "INSERT INTO shopProfile (shop_name, shop_description) VALUES ('$name', '$description')";/*(shop_profile_cover, shop_profile_image, shop_name, shop_description, shop_media)*/
+         /* ($coverPhoto, '$profileImage', '$name', '$description' , '$imageVideo') */
 
         $run = mysqli_query($conn,$query);
 
@@ -77,11 +77,11 @@
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" id="customFile" name="name"/>
+      <input type="text" class="form-control" name="name"/>
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control" id="customFile" rows="3" name="description"></textarea>
+      <textarea class="form-control"  rows="3" name="description"></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
