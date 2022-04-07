@@ -150,18 +150,9 @@ $result = $stmt->get_result();
                                                 src="/img/product/<?php echo $row['product_cover_picture']?>"
                                                 alt="<?php echo $row['product_name']?>" />
                                         </div>
-                                        <div class="col-3">
-                                            <?php echo $row['product_name']?>
-                                        </div>
-                                        <div class="col-1">
-                                            x
-                                            <?php echo $row['quantity']?>
-                                        </div>
-
-                                        <div class="col-1">
-                                            RM
-                                            <?php echo $row['product_price']?>.00
-                                        </div>
+                                        <div class="col-3"><?php echo $row['product_name']?></div>
+                                        <div class="col-1">x<?php echo $row['quantity']?></div>
+                                        <div class="col-1">RM<?php echo $row['product_price']?>.00</div>
                                         <div class="col-2"><?php echo $orderStatus ?></div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
                                         <div class="col-2">
