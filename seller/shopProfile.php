@@ -57,7 +57,6 @@
       <div class="profile-pic">
         <label class="-label" for="file">
           <span class="glyphicon glyphicon-camera"></span>
-          <span>Change Image</span>
         </label>
         <input id="file" type="file" onchange="loadFile(event)"/>
         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200" />
@@ -146,16 +145,16 @@ div.absolute {
 .profile-pic img {
   position: absolute;
   object-fit: cover;
-  width: 135px;
-  height: 135px;
+  width: 100px;
+  height: 100px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
 }
 .profile-pic .-label {
   cursor: pointer;
-  height: 135px;
-  width: 135px;
+  height: 100px;
+  width: 100px;
 }
 .profile-pic:hover .-label {
   display: flex;
