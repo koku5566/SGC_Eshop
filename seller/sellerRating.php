@@ -16,7 +16,28 @@
     </div>
     <div class="row reviewContainer">
       <h4><b>User Review</b></h4>
-      <p><span id=""></span></p>
+      <p><span id="">
+
+      <?php
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT product_id, user_id, message, rating, pic1 FROM reviewRating";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "Product id: " . $row["product_id"]. " User id: " . $row["user_id"]. " " . $row["message"]. "Rating: " . $row["rating"]. " " . $row["pic1"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
+      </span></p>
     </div>
   </div>
 </div>

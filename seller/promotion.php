@@ -104,13 +104,11 @@
                 if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
                     $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
-                    //$image = $_POST['promotion_image']; 
                     $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
                     //File upload configuration 
-                    //$targetDir = dirname(__DIR__, 1)."./img/promotion/"; 
-                    $targetDir = "./img/promotion/"; 
+                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
                     $fileNames = array_filter($_FILES['img']['name']);
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
@@ -126,34 +124,20 @@
                             {
                                 //Setup new file path
                                 $newFilePath = $targetDir . $_FILES['img']['name'][$i];
-                                echo '<script>alert(" ' . $targetDir . '")</script>';
-                                echo '<script>alert(" ' . $tmpFilePath . '")</script>';
-                                echo '<script>alert(" ' . $newFilePath . '")</script>';
-                                /*
-                                $fileType = strtolower(pathinfo($newFilePath,PATHINFO_EXTENSION));
-                                $fileValidation = in_array($fileType,$allowTypes);
-                                
-                                //check file type
-                                if(!$fileValidation)
-                                {
-                                    echo '<script>alert("Invalid File Type!")</script>';
-                                }
-                                */
 
                                 //Upload the file into the temp dir
                                 if(move_uploaded_file($tmpFilePath, $newFilePath))
                                 {
-                                    echo '<script>alert("5")</script>';
                                     //get file name
                                     $fileName = $_FILES['img']['name'][$i];
                                     $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
                                     VALUES('$title','$fileName','$dateStart','$dateEnd')";
-                                    echo '<script>alert("6")</script>';
                                     $result = mysqli_query($conn,$sql);
 
                                     if($result)
                                     {
                                         echo '<script>alert("Add promotion successfully!")</script>';
+                                        header('Location: '.$_SERVER['PHP_SELF']);
                                     }
                                     else
                                     {

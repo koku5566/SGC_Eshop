@@ -259,19 +259,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 															<?php
 																if(isset($c1) && !empty ($c1)){		
 																	
-																	if($c10 === null){echo '';}
+																	if($c10 === null || $c10 == ''){echo '';}
 																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';} 													 
 																		
-																	if($c11 === null){echo '';}
+																	if($c11 === null || $c11 == ''){echo '';}
 																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';}	
 																		
-																	if($c12 === null){echo '';}
+																	if($c12 === null || $c12 == ''){echo '';}
 																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';}	
 																		
-																	if($c13 === null){echo '';}
+																	if($c13 === null || $c13 == ''){echo '';}
 																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>';}	
 																		
-																	if($c14 === null){echo '';}
+																	if($c14 === null || $c14 == ''){echo '';}
 																		else{echo '<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>';}											 
 																}else{
 																	echo '';
@@ -284,26 +284,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 															
 																if(isset($c1) && !empty ($c1)){			
 																	
-																	if( $c10 === null){echo '';}
+																if( $c10 === null || $c10 == ''){echo '';}
 																		else{echo '<div class="carousel-item active">
-																						<img class="d-block w-100" src="https://media.juiceonline.com/2021/09/good-meme.jpg" >
+																						<img class="d-block w-100" src="'.$c10.'" >
 																				  </div> ';} 													 
 																		
-																	if( $c11 === null){echo '';}
+																	if( $c11 === null || $c11 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																						 <img class="d-block w-100" src="'.$c11.'" >
 																				  </div>';}
-																	if( $c12 === null){echo '';}
+																	if( $c12 === null || $c12 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																						 <img class="d-block w-100" src="'.$c12.'" >
 																				  </div>';}	
-																	if( $c13 === null){echo '';}
+																	if( $c13 === null || $c13 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																						 <img class="d-block w-100" src="'.$c13.'" >
 																				  </div>';}		
-																	if( $c14 === null){echo '';}
+																	if( $c14 === null || $c14 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" >
+																						 <img class="d-block w-100" src="'.$c14.'" >
 																				  </div>';}										
 																								
 																}else{
