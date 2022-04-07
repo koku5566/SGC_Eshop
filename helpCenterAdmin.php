@@ -114,7 +114,7 @@
 						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
 					}
 					*/
-					for($r = 0; $r< 5); $r++){
+					for($r = 0; $r< 5; $r++){
 						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 						if(!empty($tempNamepic[$r])){
 								$filepathname = $gotpic[$r];
