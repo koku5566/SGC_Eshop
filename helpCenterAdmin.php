@@ -9,7 +9,26 @@
 		
 		$selectedPID = $_POST['rid'];
 		//echo "<script>alert('$selectedPID')</script>";	
+		//$selectedPID = SanitizeString($_POST['pid']);
 		
+		$sql = "SELECT product_id, product_name, product_brand, product_price
+				FROM `product`
+				WHERE product_id = ?";
+		
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			
+			if(mysqli_stmt_num_rows($stmt) == 1){
+				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4);
+				mysqli_stmt_fetch($stmt);
+			}
+			
+			mysqli_stmt_free_result($stmt);
+			mysqli_stmt_close($stmt);
+		
+		}
 		
 	}
 
@@ -183,8 +202,11 @@
 			while(mysqli_stmt_fetch($stmt)){
 				echo'
 					<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
-					<input type = "hidden" name = "rid" value = "'.$c1.'">
+					<input type = "hidden" name = "rid" value = "P000057">
 					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
+					
+					
+					//<input type = "hidden" name = "rid" value = "'.$c1.'">
 
 			}
 			mysqli_stmt_close($stmt);
@@ -219,9 +241,9 @@
 					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
 					<div class = "namestar">
 						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c1) && !empty ($c1))? $c1 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
-						<h6><?php echo (isset($c1) && !empty ($c1))? $c1 : 'Model: WISP510'; ?></h6>
-						<h3><?php echo (isset($c1) && !empty ($c1))? $c1 : 'RM 349.00'; ?></h3>									
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'WI-SP510 Wireless Headphone blablabla - RMB PRODUCT NAME'; ?></h5>
+						<h6><?php echo (isset($j3) && !empty ($j3))? $j3 : 'Model: WISP510 - RMB MODEL/BRAND'; ?></h6>
+						<h3><?php echo (isset($j4) && !empty ($j4))? $j4 : 'RM 349.00 - RMB PRICE'; ?></h3>									
 					</div>
 					
 					<!-- bi bi-star-fill 	21.13
@@ -381,7 +403,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
-		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($c1) && !empty ($c1))? $c1 : ''; ?>">
+		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($j1) && !empty ($j1))? $j1 : 'RMB-ID LAI'; ?>">
 		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
 	  </form>
