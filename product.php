@@ -377,7 +377,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											  $calavgrat -= 1;
 											}else{
 											   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-												echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
+												//echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
+												echo '<i class="fas fa-star-half-alt"></i>';
 											  }
 											  else{
 												echo '<i class="fa fa-star ratingStar tqy" sytle = "font-size: 1.2rem;"></i>';
