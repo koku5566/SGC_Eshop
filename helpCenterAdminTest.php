@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
   <i class="fa fa-star-half-o" aria-hidden="true"></i>
   <i class="fa fa-star-half-o" aria-hidden="true"></i>
   <i class="fa fa-star-half-o tqy" aria-hidden="true"></i>
-   <i class="fa fa-star ratingStar tqy"></i>
-
+   <i class="fa fa-star ratingStar tqy" style = "color: red;"></i>
+<i class="fa fa-star ratingStar tqy"
 
 	
 <!-- Button trigger modal 
