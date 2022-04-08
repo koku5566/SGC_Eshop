@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/mysqli_connect.php'
+    require_once __DIR__ . '/mysqli_connect.php';
 
     //Fetch each product information
     $sql_product = $_POST['query'];
