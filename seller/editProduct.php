@@ -583,10 +583,12 @@
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                         <div>
                                     ");
-                                    echo(var_dump($v_variation_1_choice));
+                                    
                                     $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
+                                    echo(var_dump($v_variation1ChoicesOnly));
                                     for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
                                     {
+                                        echo($v_variation1ChoicesOnly[$i]);
                                         echo("
                                                             <div class=\"input-group mb-3\">
                                                                 <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
