@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
                                 <ol class="carousel-indicators list-inline" style="height:60px;">
 									<?php
-										$j = 1;
+										$j = 0;
 										for($i = 0; $i < count($i_product_pic); $i++)
 										{
 											if($i_product_pic[$i] != "")
@@ -154,11 +154,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												$picName = "/img/product/".$i_product_pic[$i];
 												if($i == 0)
 												{
-													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												else
 												{
-													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-1\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												$j++;
 											}
