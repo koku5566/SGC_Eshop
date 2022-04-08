@@ -764,6 +764,11 @@
 		max-width: 50px;
 		max-height: 50px;
 	}
+
+	.var-active{
+		background-color:#a31f37;
+		color:white;
+	}
 </style>
 
 <script>
@@ -874,7 +879,7 @@
 				{
 					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var VariationChoice = selectedVariation[0].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['product_id']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
 				}
 				else if(selectedVariation.length == 2)
 				{
@@ -882,7 +887,7 @@
 					var VariationChoice = selectedVariation[0].textContent;
 					var Variation2Name = selectedVariation[1].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var Variation2Choice = selectedVariation[1].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['product_id']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
 				}
 				console.log(query);
 				//getData(query);
