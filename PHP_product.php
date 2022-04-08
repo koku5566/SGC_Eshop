@@ -5,6 +5,8 @@
 <?php
     if(isset($_POST['query']))
     {
+        echo json_encode("i received");
+        /*
         //Fetch each product information
         $sql_product = $_POST['query'];
         $result_product = mysqli_query($conn, $sql_product);
@@ -18,5 +20,6 @@
         else{
             echo json_encode("");
         }
+        */
     }
 ?>

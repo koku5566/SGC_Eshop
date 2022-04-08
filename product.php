@@ -887,7 +887,8 @@
 					var Variation2Choice = selectedVariation[1].textContent;
 					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
 				}
-				getData(query);
+				//getData(query);
+				testajax("nice");
             });
         });
 
@@ -920,10 +921,28 @@
 					var Variation2Choice = selectedVariation[1].textContent;
 					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
 				}
-				getData(query);
+				//getData(query);
+				testajax("nice");
             });
         });
     }
+
+	function testajax(query) 
+	{
+		$.ajax({
+			url:"PHP_product.php",
+			method:"POST",
+			data:{query:query},
+			dataType: 'JSON',
+			success: function(response){
+				alert(response);
+			},
+			error: function(err) {
+				//$('#login_message').html(err.responseText);
+				alert(err.responseText);
+			}
+		});
+	}
 
 	function getData(query) 
 	{
