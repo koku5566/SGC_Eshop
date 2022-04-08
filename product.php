@@ -852,6 +852,8 @@
 </script>
 
 <script>
+	initVariationButton();
+	
 	function initVariationButton()
     {
         const Variation1 = document.querySelectorAll('.btnVariation1');
