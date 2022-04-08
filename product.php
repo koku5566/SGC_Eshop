@@ -188,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                     <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rated"); ?></b>
                                 </div>
                                 <div class="col">
-                                    <b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?> Sold</b>
+                                    <b><?php echo($i_product_sold); ?> Sold</b>
                                 </div>
                             </div>
                             <br>
