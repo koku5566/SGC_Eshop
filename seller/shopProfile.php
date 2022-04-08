@@ -47,12 +47,20 @@
     <div class="row">
       <div>
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg">
+      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
-      <div class="sellerPicContainer rounded mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
+      </div>-->
+      <div class="profile-pic">
+        <label class="-label" for="file">
+          <span class="glyphicon glyphicon-camera"></span>
+          <span>Change<br>Image</span>
+        </label>
+        <input id="file" type="file" name="profileImage" onchange="loadFile(event)"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
       </div>
     </div>
     
@@ -76,7 +84,6 @@
     <div class="text-center">
       <button type="submit" class="saveBtn" name="submit">Save</button>
     </div> 
-    <input type="submit" class="btn" name="submit" value="save">
     </form>
   </div>
 </div>
@@ -115,14 +122,56 @@ div.absolute {
   margin-top: 10px;
 }
 
-.sellerPic{
+/*.sellerPic{
   position: absolute;
   width: 50px;
   height: 50px;
   top: 45%;
   left: 55%;
-  
+}*/
+
+.profile-pic {
+  color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transition: all 0.3s ease;
 }
+.profile-pic input {
+  display: none;
+}
+.profile-pic img {
+  position: absolute;
+  object-fit: cover;
+  width: 65px;
+  height: 65px;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  left: 320px;
+}
+.profile-pic .-label {
+  position: absolute;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  left: 320px;
+}
+.profile-pic:hover .-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  color: #fafafa;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 100px;
+  margin-bottom: 0;
+}
+.profile-pic span {
+  display: inline-flex;
+  }
 
 #uploadContainer {
   width: 30%;
@@ -183,4 +232,11 @@ $(function() {
 function imageIsLoaded(e) {
   $('.imageContainer').append('<img src=' + e.target.result + '>');
 };
+
+/* Profile image review */
+var loadFile = function (event) {
+var image = document.getElementById("profilePic");
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
 </script>

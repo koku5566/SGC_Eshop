@@ -1,4 +1,6 @@
-
+<?php
+   require '../localDbConn.php';
+?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,8 +19,20 @@
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
+<?php 
+     if(isset($_SESSION['status']))
+     {
+         ?>
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+         <?php
+         unset($_SESSION['status']);
+     }
+ ?>
    <h2 class="m-4">Create Voucher</h2>
-   <form action="createVoucherAction.php" method="post">
+   <form name="form" action="createVoucherAction.php" method="post">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -98,26 +112,29 @@
             </div>
             <div class="form-row">
                <div class="form-group col-md-12">
-                  <label for="">Applicable products</label>
-                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
-               </div>
-            </div>
-            <div class="form-row">
-               <div class="form-group col-md-12">
                   <table class="table" id="createvouchertable">
                      <thead>
                         <tr>
                            <th>Product Image</th>
                            <th>Product Name</th>
+                           <th>Product ID</th> <!-- data-visible="false" -->
                            <th>Product SKU</th>
                            <th>Price (RM)</th>
                            <th></th>
                         </tr>
                      </thead>
                      <tbody>
+                        
                      </tbody>
                   </table>
                </div>
+               <div class="form-group col-md-12">
+                  <label for="">Applicable products</label>
+                  <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+               </div>
+            </div>
+            <div class="form-row" id="productraw">
+               
             </div>
             <div class="form-row">
                <div class="float-right">
@@ -148,6 +165,7 @@
                             <th></th>
                             <th>Product Image</th>
                             <th>Product Name</th>
+                            <th>Product ID</th> <!-- data-visible="false" -->
                             <th>Product SKU</th>
                             <th>Price (RM)</th>
                         </tr>
@@ -161,6 +179,7 @@
                          user.shop_profile_image,
                          product.product_name,
                          product.product_cover_picture,
+                         product.product_id,
                          product.product_sku,
                          product.product_price
                     
@@ -168,9 +187,9 @@
                          INNER JOIN product ON user.user_id = product.user_id";
                     
                     
-                       $getp = $conn->prepare($sqlp);
-                       $getp->execute();
-                       $res = $getp->get_result();
+                       $stmt = $conn->prepare($sqlp);
+                       $stmt->execute();
+                       $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
                      ?>
@@ -178,6 +197,7 @@
                         <td></td>
                         <td id="voucherlogo"><img src="../img/<?php echo $row['product_cover_picture']; ?>"></td>
                         <td><?php echo $row['product_name']; ?></td>
+                        <td><?php echo $row['product_id']; ?></td>
                         <td><?php echo $row['product_sku']; ?></td>
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
@@ -250,40 +270,58 @@
    } );
 
    //-----------------------Delete Row-----------------------------//
+   
    $('#createvouchertable tbody').on( 'click', 'button', function () {
 
    var row = createvouchertable.row($(this).parents('tr'));
    row.remove().draw(false);
    
-   })
+   });
 
    //----------------------------Multiselect Function--------------------------------//
+
 
    $('#vouchertable tbody').on( 'click', 'tr', function () {
     
      $(this).toggleClass('selected');
+
    });
 
+
      $('#select').click( function () {
+
        var testdata = [];
-       testdata = vouchertable.rows('.selected').data()
+       testdata = vouchertable.rows('.selected').data();
 
        for(var i = 0; i<testdata.length; i++)
        {
-         var rowInsert = [];
+          
+
+         const rowInsert = [];
+         
          for(var j = 0; j<testdata[i].length; j++)
          {
              rowInsert.push(testdata[i][j]);
          }
 
-         createvouchertable.row.add( [
+         let pid = $('#productList').val();
+
+         let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
+
+         console.log(rowInsert[3]);
+
+         $('#productraw').append(productid);
+
+         createvouchertable.row.add([
           rowInsert[1],
           rowInsert[2],
           rowInsert[3],
           rowInsert[4],
+          rowInsert[5],
           "",
     
          ] ).draw( false );
+
 
        }
          
@@ -291,7 +329,7 @@
 
      $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
-    });
+     });
 
 </script>
 

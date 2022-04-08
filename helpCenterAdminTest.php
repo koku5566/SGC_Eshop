@@ -45,97 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	<i class="fa fa-star-half-o"></i>
 	<i class="fa fa-star ratingStar"></i>
     
-  <?php
+  <i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>
   
-	$query = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
-		  FROM user u INNER JOIN  reviewRating rr 
-		  ON  u.userID = rr.user_id 
-		  WHERE rr.disable_date IS NULL && rr.product_id = 'P000001'
-		  ORDER BY rr.rr_id";
-
-  
-	//echo "Rating = $rr |";
-	//echo "Product = $rr2 ";
-
-
-$result = mysqli_query($conn, $query);
-if(mysqli_num_rows($result) > 0)
-{
- 
- while($row = mysqli_fetch_array($result))
- {
-	 $starR = '';
-	 for($i=0; $i<5; $i++){
-		 if($i < $row["rating"]){
-			 $starR .='<i class="fa fa-star tqy"></i> ';
-		 }else{
-			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
-		 }
-	 }
-	 
-	 $profilePicR = '';
-	 if($row["profile_picture"] === null){
-		 $profilePicR .= '<img src = "https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6" class = "reviewprofilepic">';
-	 }else{
-		 //DISPLAY PROFILE PIC NO LE JIU DEFAULT ^^
-		 $profilePicR .= '<img src = "https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg" class = "reviewprofilepic">';
-	 }
-	 
-	 
-	 $picR = '';
-	 for($i=1; $i<=5; $i++){
-		 if($row["pic$i"] === null || $row["pic$i"] == ''){
-			 $picR .='';
-			 /*
-			 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
-			 */
-		 }else{
-			 //DISPLAY REAL PICTURE/VIDEO THEY POST
-			 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
-		 }
-			 
-	 }
-	 
-  
-  $output .='<div class="col-xl-3 col-lg-4 col-sm-6 divpink">
-			<div style="height: 100%">
-			'.$profilePicR.'
-			<div class = "namestar">
-				<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;">'.$row["name"].'</h6>
-				<div style="margin-bottom: 0.1em;">'.$starR.'</div>																			
-			</div>
-
-	<h6 class = "divcontent">'.$row["message"].'</h6>
-										
-	<table style = "margin-bottom: 0.3rem;">
-		<tr>
-			'.$picR.'
-		<tr>
-	</table>
-	
-	<form action = "product.php" method = "POST">
-		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
-		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
-	</form>
-	</div>   
-	
-</div>
-</div>';
-  
- }
- echo $output;
-}
-else
-{
- echo 'Data Not Found';
-}
-  
-  
-  
-  ?>
- 
-   
-
+  <i class="fa fa-star-half-o" aria-hidden="true"></i>
+  <i class="fa fa-star-half-o" aria-hidden="true"></i>
+  <i class="fa fa-star-half-o tqy" aria-hidden="true"></i>
+   <i class="fa fa-star ratingStar tqy" style = "color: red;"></i>
+<i class="fa fa-star ratingStar tqy">
 
 	
 <!-- Button trigger modal 

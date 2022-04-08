@@ -40,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 <!--Cheong Kit Min - Review & Rating PHP ---------------------------------------------------------------------------------->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!--Cheong Kit Min - End of Review & Rating PHP ---------------------------------------------------------------------------------->
 
                 <!-- Begin Page Content -->
@@ -231,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 																if($i < $c9){
 																	 echo '<i class="fa fa-star tqy"></i> ';
 																 }else{
-																	 echo '<i class="fa fa-star ratingStar tqy"></i> ';
+																	 echo '<i class="fa fa-star ratingStar" style = "color: transparent;"></i> ';
 																 }
 															}else{
 																echo '';
@@ -375,7 +377,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											  $calavgrat -= 1;
 											}else{
 											   if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-												echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
+												//echo '<i class="fa fa-star-half-o tqy" sytle = "font-size: 1.2rem;"></i>';
+												echo '<i class="fas fa-star-half-alt tqy"></i>';
 											  }
 											  else{
 												echo '<i class="fa fa-star ratingStar tqy" sytle = "font-size: 1.2rem;"></i>';
