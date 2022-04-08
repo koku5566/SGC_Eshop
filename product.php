@@ -154,11 +154,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												$picName = "/img/product/".$i_product_pic[$i];
 												if($i == 0)
 												{
-													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												else
 												{
-													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												$j++;
 											}
@@ -202,27 +202,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div class="row">
                                 <div class="variation">
                                     <!-- Variation Loop here -->
-                                    <div class="row">
-                                        <ol class="list-inline">
+                                    <div class="row" style="margin-left:0;">
+                                        <ol class="list-inline" style="padding:10px">
 											<?php
 												$j = 1;
-												for($i = 0; $i < count($i_product_pic); $i++)
+												if($i_product_variation == 1)
 												{
-													if($i_product_pic[$i] != "")
+													for($i = 0; $i < count($i_product_pic); $i++)
 													{
-														$picName = "/img/product/".$i_product_pic[$i];
 														if($i == 0)
 														{
-															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
 														}
 														else
 														{
-															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
 														}
 														$j++;
 													}
 												}
-
 											?>
                                         </ol>
                                     </div>
