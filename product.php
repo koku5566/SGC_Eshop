@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                             <!-- Quantity -->
                             <div class="row">
-                                <div class="col">
+                                <div class="col-xl-6 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         <button class="quantity-selector-btn" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
@@ -239,10 +239,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                         </div>
                                     </div>
                                 </div>
+								<div class="col-xl-6 col-sm-12" id="stockAvailable">
+									<?php
+										if($i_product_variation == 0)
+										{
+											echo("<span style=\"color:#a31f37;font-size:14pt;\">$i_product_stock piece available</span>")
+										}
+									?>
+									<b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
+								</div>
                             </div>
-							<div class="row" id="stockAvailable">
-								<b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
-							</div>
+							
                             <!-- Button -->
                             <div class="row mb-5">
                                 <div class="col">
