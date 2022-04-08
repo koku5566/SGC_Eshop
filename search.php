@@ -592,6 +592,11 @@
         padding: 0 10px;
     }
 
+    .dropdown-item:focus, .dropdown-item:hover {
+        color: #a31f37;
+        text-decoration: none;
+    }
+
 </style>
 
 <!-- Category List CSS here -->
