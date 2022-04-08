@@ -122,51 +122,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                     <div class="row">
                         <!-- Picture -->
                         <div class="col-xl-8 col-md-6 mb-6">
-                            <div id="custCarousel" class="carousel slide" data-interval="false">
-                                <!-- slides -->
-                                <div class="carousel-inner">
-									<?php
-										for($i = 0; $i < count($i_product_pic); $i++)
-										{
-											if($i_product_pic[$i] != "")
-											{
-												$picName = "/img/product/".$i_product_pic[$i];
-												if($i == 0)
-												{
-													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
-												}
-												else
-												{
-													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
-												}
-											}
-										}
-
-									?>
-                                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
-                                <ol class="carousel-indicators list-inline" style="height:130px;">
-									<?php
-										$j = 1;
-										for($i = 0; $i < count($i_product_pic); $i++)
-										{
-											if($i_product_pic[$i] != "")
-											{
-												$picName = "/img/product/".$i_product_pic[$i];
-												if($i == 0)
-												{
-													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
-												}
-												else
-												{
-													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
-												}
-												$j++;
-											}
-										}
-
-									?>
-                                </ol>
-                            </div>
+							<div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+								<!-- slides -->
+								<div class="carousel-inner">
+									<div class="carousel-item active"> <img src="https://i.imgur.com/weXVL8M.jpg" alt="Hills"> </div>
+									<div class="carousel-item"> <img src="https://i.imgur.com/Rpxx6wU.jpg" alt="Hills"> </div>
+									<div class="carousel-item"> <img src="https://i.imgur.com/83fandJ.jpg" alt="Hills"> </div>
+									<div class="carousel-item"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" alt="Hills"> </div>
+								</div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
+								<ol class="carousel-indicators list-inline">
+									<li class="list-inline-item active"> <a id="carousel-selector-1" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> </a> </li>
+									<li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> </a> </li>
+									<li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" class="img-fluid"> </a> </li>
+									<li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" class="img-fluid"> </a> </li>
+								</ol>
+							</div>
                         </div>
 
                         <!-- Product Content -->
@@ -202,27 +172,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div class="row">
                                 <div class="variation">
                                     <!-- Variation Loop here -->
-                                    <div class="row">
-                                        <ol class="list-inline">
+                                    <div class="row" style="margin-left:0;">
+                                        <ol class="list-inline" style="padding:10px">
 											<?php
 												$j = 1;
-												for($i = 0; $i < count($i_product_pic); $i++)
+												if($i_product_variation == 1)
 												{
-													if($i_product_pic[$i] != "")
+													for($i = 0; $i < count($i_product_pic); $i++)
 													{
-														$picName = "/img/product/".$i_product_pic[$i];
 														if($i == 0)
 														{
-															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
 														}
 														else
 														{
-															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
 														}
 														$j++;
 													}
 												}
-
 											?>
                                         </ol>
                                     </div>
