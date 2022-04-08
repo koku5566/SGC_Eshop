@@ -583,7 +583,7 @@
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                         <div>
                                     ");
-                                    echo($v_variation_1_choice);
+                                    echo(var_dump($v_variation_1_choice));
                                     $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
                                     for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
                                     {
