@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/mysqli_connect.php';
+    $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
 ?>
 
 <?php
