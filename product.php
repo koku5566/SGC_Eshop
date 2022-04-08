@@ -789,19 +789,18 @@
 	
 	function load_data_display(restriction,restriction2)
 	{
-	$.ajax({
-	url:"reviewRatingSearch.php",
-	method:"POST",
-	data:{restriction:restriction,
+		$.ajax({
+		url:"reviewRatingSearch.php",
+		method:"POST",
+		data:{restriction:restriction,
 			restriction2:restriction2},
-	success:function(data)
-	{
-		//alert('success noob')
-			$('#displaySearch').html(data);
-			
-	}
-	
-	});
+			success:function(data)
+			{
+				//alert('success noob')
+				$('#displaySearch').html(data);
+					
+			}
+		});
 	}
 	
 	function load_data(query) 
@@ -885,8 +884,8 @@
 					var Variation2Choice = selectedVariation[1].textContent;
 					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['product_id']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
 				}
-
-				getData(query);
+				console.log(query);
+				//getData(query);
             });
         });
     }

@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__ . '/mysqli_connect.php';
+?>
 
+<?php
     if(isset($_POST['query']))
     {
         //Fetch each product information
