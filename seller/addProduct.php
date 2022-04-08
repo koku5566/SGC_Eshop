@@ -1141,7 +1141,7 @@
                             j++;
                         }
 
-                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
                         imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                         imgInp[j].parentElement.parentElement.classList.add("hide");
                     }
