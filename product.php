@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 									?>
                                 </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
-                                <ol class="carousel-indicators list-inline" style="height:60px;">
+                                <ol class="carousel-indicators list-inline" style="height:130px;">
 									<?php
 										$j = 1;
 										for($i = 0; $i < count($i_product_pic); $i++)
@@ -154,11 +154,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												$picName = "/img/product/".$i_product_pic[$i];
 												if($i == 0)
 												{
-													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												else
 												{
-													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												$j++;
 											}
@@ -202,25 +202,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div class="row">
                                 <div class="variation">
                                     <!-- Variation Loop here -->
-                                    <div class="row" style="margin-left:0;">
-                                        <ol class="list-inline" style="padding:10px">
+                                    <div class="row">
+                                        <ol class="list-inline">
 											<?php
 												$j = 1;
-												if($i_product_variation == 1)
+												for($i = 0; $i < count($i_product_pic); $i++)
 												{
-													for($i = 0; $i < count($i_product_pic); $i++)
+													if($i_product_pic[$i] != "")
 													{
+														$picName = "/img/product/".$i_product_pic[$i];
 														if($i == 0)
 														{
-															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
+															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 														}
 														else
 														{
-															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
+															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 														}
 														$j++;
 													}
 												}
+
 											?>
                                         </ol>
                                     </div>
@@ -253,100 +255,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                         </div>
                     </div>
-
-					<div class="ecommerce-gallery vertical" data-mdb-zoom-effect="true">
-						<div class="row">
-							<div class="col-4 col-sm-3">
-							<div class="multi-carousel vertical" data-mdb-items="3">
-								<div class="multi-carousel-inner">
-								<div class="multi-carousel-item active">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/1.webp"
-									data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Slides/1.webp" alt="Table Full of Spices"
-									class="active w-100" />
-								</div>
-								<div class="multi-carousel-item">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/2.webp"
-									data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Slides/2.webp" alt="Winter Landscape"
-									class="w-100" />
-								</div>
-								<div class="multi-carousel-item">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/3.webp"
-									data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Slides/3.webp"
-									alt="View of the City in the Mountains" class="w-100" />
-								</div>
-								<div class="multi-carousel-item">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/Thumbnails/Slides/4.webp"
-									data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Slides/4.webp" alt="Place Royale Bruxelles"
-									class="w-100" />
-								</div>
-								</div>
-								<button class="carousel-control-prev" tabindex="0" type="button" data-mdb-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								</button>
-								<button class="carousel-control-next" tabindex="0" type="button" data-mdb-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								</button>
-							</div>
-							</div>
-							<div class="col-8 col-sm-9">
-							<div class="lightbox">
-								<img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/1.webp" alt="Gallery image 1"
-								class="ecommerce-gallery-main-img active w-100" />
-							</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Carousel wrapper -->
-					<div id="carouselMDExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-					<!-- Slides -->
-					<div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-						<div class="carousel-item active">
-						<img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(88).webp" class="d-block w-100" alt="..." />
-						</div>
-						<div class="carousel-item">
-						<img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(121).webp" class="d-block w-100"
-							alt="..." />
-						</div>
-						<div class="carousel-item">
-						<img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(31).webp" class="d-block w-100" alt="..." />
-						</div>
-					</div>
-					<!-- Slides -->
-
-					<!-- Controls -->
-					<button class="carousel-control-prev" type="button" data-mdb-target="#carouselMDExample"
-						data-mdb-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-mdb-target="#carouselMDExample"
-						data-mdb-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-					<!-- Controls -->
-
-					<!-- Thumbnails -->
-					<div class="carousel-indicators" style="margin-bottom: -20px;">
-						<button type="button" data-mdb-target="#carouselMDExample" data-mdb-slide-to="0" class="active"
-						aria-current="true" aria-label="Slide 1" style="width: 100px;">
-						<img class="d-block w-100 shadow-1-strong rounded"
-							src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(88).webp" class="img-fluid" />
-						</button>
-						<button type="button" data-mdb-target="#carouselMDExample" data-mdb-slide-to="1" aria-label="Slide 2"
-						style="width: 100px;">
-						<img class="d-block w-100 shadow-1-strong rounded"
-							src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(121).webp" class="img-fluid" />
-						</button>
-						<button type="button" data-mdb-target="#carouselMDExample" data-mdb-slide-to="2" aria-label="Slide 3"
-						style="width: 100px;">
-						<img class="d-block w-100 shadow-1-strong rounded"
-							src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(31).webp" class="img-fluid" />
-						</button>
-					</div>
-					<!-- Thumbnails -->
-					</div>
 
                     <!-- Shop Profile -->
                     <div class="card shadow mb-4">
