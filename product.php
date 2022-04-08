@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 										if($i_product_variation == 0)
 										{
-											echo("<span style=\"color:#a31f37;font-size:14pt;\">$i_product_stock piece available</span>")
+											echo("<span style=\"color:#a31f37;font-size:14pt;\">$i_product_stock piece available</span>");
 										}
 									?>
 									<b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
