@@ -215,7 +215,7 @@
 										}
 									}
 
-									$sql_var2 = "SELECT DISTINCT(variation_2_choice), variation_2_name, product_stock FROM variation WHERE product_id = '$i_product_id'";
+									$sql_var2 = "SELECT DISTINCT(variation_2_choice), variation_2_name, product_stock FROM variation WHERE product_id = '$i_product_id' AND variation_2_name != '' ";
 									$result_var2 = mysqli_query($conn, $sql_var2);
 
 									//If got 2 variation
@@ -245,7 +245,6 @@
 												</div>
 											</div>
 										");
-										echo("sdfghjklhgfdssdfghjkl");
 										echo("
 											<div class=\"row mb-3\">
 												<div class=\"col-lg-3\">
