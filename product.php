@@ -222,7 +222,7 @@
 												");
 												foreach ($variation1Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary btnVariation\" style=\"margin-right:10px;\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$value</button>");
 												}
 												echo("	
 														</div>
@@ -254,7 +254,7 @@
 												");
 												foreach ($variation2Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary btnVariation\" style=\"margin-right:10px;\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation2\" style=\"margin-right:10px;\">$value</button>");
 												}
 												echo("	
 														</div>
@@ -860,11 +860,45 @@
 
 	function initVariationButton()
     {
-        const Variation1 = document.querySelectorAll('.btnVariation');
+        const Variation1 = document.querySelectorAll('.btnVariation1');
 
         Variation1.forEach(btn => {
             btn.addEventListener('click', function handleClick(event) {
 				Variation1.forEach(btn => {
+					if(btn.classList.contains('var-active'))
+					{
+						btn.classList.remove("var-active");
+					}
+				});
+				btn.classList.add("var-active");
+				
+				var query = "";
+
+				const selectedVariation = document.querySelectorAll('.var-active');
+				if(selectedVariation.length == 1)
+				{
+					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var VariationChoice = selectedVariation[0].textContent;
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
+				}
+				else if(selectedVariation.length == 2)
+				{
+					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var VariationChoice = selectedVariation[0].textContent;
+					var Variation2Name = selectedVariation[1].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var Variation2Choice = selectedVariation[1].textContent;
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
+				}
+				console.log(query);
+				//getData(query);
+            });
+        });
+
+		const Variation2 = document.querySelectorAll('.btnVariation2');
+
+        Variation2.forEach(btn => {
+            btn.addEventListener('click', function handleClick(event) {
+				Variation2.forEach(btn => {
 					if(btn.classList.contains('var-active'))
 					{
 						btn.classList.remove("var-active");
