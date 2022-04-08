@@ -871,13 +871,14 @@
 				btn.classList.add("var-active");
 				
 				var query = "";
+				var productId = "<?php echo($_SESSION['productID']); ?>";
 
 				const selectedVariation = document.querySelectorAll('.var-active');
 				if(selectedVariation.length == 1)
 				{
 					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var VariationChoice = selectedVariation[0].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
+					getVaration1(productId,VariationName,VariationChoice);
 				}
 				else if(selectedVariation.length == 2)
 				{
@@ -885,10 +886,9 @@
 					var VariationChoice = selectedVariation[0].textContent;
 					var Variation2Name = selectedVariation[1].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var Variation2Choice = selectedVariation[1].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
+					
+					getVaration2(productId,VariationName,VariationChoice,Variation2Name,Variation2Choice);
 				}
-				//getData(query);
-				testajax("nice");
             });
         });
 
@@ -905,13 +905,14 @@
 				btn.classList.add("var-active");
 				
 				var query = "";
+				var productId = "<?php echo($_SESSION['productID']); ?>";
 
 				const selectedVariation = document.querySelectorAll('.var-active');
 				if(selectedVariation.length == 1)
 				{
 					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var VariationChoice = selectedVariation[0].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
+					getVaration1(productId,VariationName,VariationChoice);
 				}
 				else if(selectedVariation.length == 2)
 				{
@@ -919,23 +920,48 @@
 					var VariationChoice = selectedVariation[0].textContent;
 					var Variation2Name = selectedVariation[1].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
 					var Variation2Choice = selectedVariation[1].textContent;
-					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
+					
+					getVaration2(productId,VariationName,VariationChoice,Variation2Name,Variation2Choice);
 				}
-				//getData(query);
-				testajax("nice");
             });
         });
     }
 
-	function testajax(query) 
+	function getVaration1(productId,VariationName,VariationChoice) 
 	{
 		$.ajax({
 			url:"PHP_product.php",
 			method:"POST",
-			data:{query:query},
+			data:{
+				type:1,
+				productId:productId,
+				VariationName:VariationName,
+				VariationChoice:VariationChoice
+			},
 			dataType: 'JSON',
 			success: function(response){
-				alert(response);
+				console.log(response);
+				var len = response.length;
+				for(var i=0; i<len; i++){
+					var price = response[i].price;
+					var stock = response[i].stock;
+
+					var priceHTML = `
+					<div class="col">
+						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
+					</div>
+					`;
+					
+					$("#PriceDiv").empty();
+					$("#PriceDiv").append(priceHTML);
+
+					var stockHTML = `
+					<span style="color:#a31f37;font-size:10pt;">` + stock + ` piece available</span>
+					`;
+					
+					$("#stockAvailable").empty();
+					$("#stockAvailable").append(stockHTML);
+				}
 			},
 			error: function(err) {
 				//$('#login_message').html(err.responseText);
@@ -944,15 +970,22 @@
 		});
 	}
 
-	function getData(query) 
+	function getVaration2(productId,VariationName,VariationChoice,Variation2Name,Variation2Choice) 
 	{
 		$.ajax({
 			url:"PHP_product.php",
 			method:"POST",
-			data:{query:query},
+			data:{
+				type:2,
+				productId:productId,
+				VariationName:VariationName,
+				VariationChoice:VariationChoice,
+				Variation2Name:Variation2Name,
+				Variation2Choice:Variation2Choice
+			},
 			dataType: 'JSON',
 			success: function(response){
-				alert(response);
+				console.log(response);
 				var len = response.length;
 				for(var i=0; i<len; i++){
 					var price = response[i].price;
