@@ -1314,6 +1314,7 @@
                 else if(img.files && img.files[0])
                 {
                     var ext = img.files[0].name.split('.').pop();
+                    var j = 0;
                     if(extArr.includes(ext))
                     {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
