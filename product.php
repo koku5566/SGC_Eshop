@@ -199,7 +199,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 </div>
                             </div>
                             <!-- Variation -->
-                            <div class="row">
 							<?php
 								if($i_product_variation == 1)
 								{
@@ -213,17 +212,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											array_push($variation1Choice,$row_var['variation_1_choice']);
 										}
 										echo("
-											<div class=\"variation\">
-												<h1>$variation1Name</h1>
-												<div class=\"row\" style=\"margin-left:0;\">
-													<ol class=\"list-inline\" style=\"padding:10px\">
-											");
-											foreach ($variation1Choice as $value)
-											{
-												echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
-											}
-											echo("	
-													</ol>
+											<div class=\"row\">
+												<div class=\"variation\">
+													<h4 style=\"color:#a31f37;\">$variation1Name</h4>
+													<div class=\"row\" style=\"margin-left:0;\">
+														<ol class=\"list-inline\" style=\"padding:10px\">
+												");
+												foreach ($variation1Choice as $value)
+												{
+													echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+												}
+												echo("	
+														</ol>
+													</div>
 												</div>
 											</div>
 										");
@@ -241,17 +242,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											array_push($variation2Choice,$row_var2['variation_2_choice']);
 										}
 										echo("
-											<div class=\"variation\">
-												<h1>$variation2Name</h1>
-												<div class=\"row\" style=\"margin-left:0;\">
-													<ol class=\"list-inline\" style=\"padding:10px\">
-											");
-											foreach ($variation2Choice as $value)
-											{
-												echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
-											}
-											echo("	
-													</ol>
+											<div class=\"row\">
+												<div class=\"variation\">
+													<h4 style=\"color:#a31f37;\">$variation2Name</h4>
+													<div class=\"row\" style=\"margin-left:0;\">
+														<ol class=\"list-inline\" style=\"padding:10px\">
+												");
+												foreach ($variation2Choice as $value)
+												{
+													echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+												}
+												echo("	
+														</ol>
+													</div>
 												</div>
 											</div>
 										");
@@ -260,8 +263,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 								$sql_var2 = "SELECT DISTINCT(variation_2_choice) FROM `variation` WHERE variation_2_name != '' AND product_id = '$i_product_id'";
 							?>
-                                
-                            </div>
                             <!-- Quantity -->
                             <div class="row">
                                 <div class="col-xl-6 col-sm-12">
