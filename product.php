@@ -212,13 +212,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											array_push($variation1Choice,$row_var['variation_1_choice']);
 										}
 										echo("
-											<div class=\"row\">
+											<div class=\"row mb-3\">
 												<div class=\"col-lg-3\">
 													<b style=\"color:#a31f37;\">$variation1Name</b>
 												</div>
 												<div class=\"col-lg-9\">
 													<div class=\"row\"\>
-														<div class=\"col\">
+														<div class=\"col\" style=\"margin-right:10px;\">
 												");
 												foreach ($variation1Choice as $value)
 												{
@@ -244,20 +244,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 											array_push($variation2Choice,$row_var2['variation_2_choice']);
 										}
 										echo("
-											<div class=\"row\">
+											<div class=\"row mb-3\">
 												<div class=\"col-lg-3\">
 													<b style=\"color:#a31f37;\">$variation2Name</b>
 												</div>
 												<div class=\"col-lg-9\">
-													<div class=\"row\" style=\"margin-left:0;\">
-														<ol class=\"list-inline\" style=\"padding:10px\">
+													<div class=\"row\"\>
+														<div class=\"col\" style=\"margin-right:10px;\">
 												");
 												foreach ($variation2Choice as $value)
 												{
-													echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+													echo("<button class=\"btn btn-outline-primary\">$value</button>");
 												}
 												echo("	
-														</ol>
+														</div>
 													</div>
 												</div>
 											</div>
