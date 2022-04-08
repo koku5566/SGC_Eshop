@@ -279,16 +279,15 @@
 														<div class=\"col\">
 												");
 												$v_variation1ChoicesOnly = array_unique(array_combine($variation1Choice, $variation1Stock));
-												echo(var_dump($v_variation1ChoicesOnly));
 												foreach ($v_variation1ChoicesOnly as $choice => $stock)
 												{
 													if($stock == 0 || $stock == "0")
 													{
-														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\" disabled>$value</button>");
+														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\" disabled>$choice</button>");
 													}
 													else
 													{
-														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$value</button>");
+														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$choice</button>");
 													}
 												}
 												echo("	
