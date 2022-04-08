@@ -25,26 +25,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
-<?php
-$sql_3 = "SELECT 
-myOrder.order_id, 
-myOrder.order_status, 
-product.product_name, 
-product.product_cover_picture, 
-product.product_price, 
-product.product_variation, 
-orderDetails.quantity, 
-orderDetails.price, 
-shopProfile.shop_name 
-FROM myOrder 
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id 
-JOIN product ON orderDetails.product_id = product.id 
-JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE orderDetails.order_id='1' ";
-
-$stmt_3 = $conn->prepare($sql_3);
-$stmt_3->execute();
-$result_3 = $stmt_3->get_result();
-?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
