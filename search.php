@@ -95,7 +95,7 @@
 ?>
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+                <div class="container-fluid" id="mainContainer">
                     <form id="filterForm" method="get" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <!-- Filter and Product List -->
                         <div class="row">
@@ -591,6 +591,8 @@
     .form-check-label{
         padding: 0 10px;
     }
+
+
 
 </style>
 

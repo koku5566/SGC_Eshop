@@ -184,3 +184,13 @@ button, input, optgroup, select, textarea {
   line-height: inherit;
 }
   
+#mainContainer{
+  width:100%;
+}
+
+@media only screen and (min-width: 600px) {
+  #mainContainer{
+    width:80%;
+  }
+}
+
