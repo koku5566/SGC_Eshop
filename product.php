@@ -241,10 +241,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                         </div>
                                     </div>
                                 </div>
-                                <div class="stockAvailable">
-                                    <b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
-                                </div>
                             </div>
+							<div class="row" id="stockAvailable">
+								<b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
+							</div>
                             <!-- Button -->
                             <div class="row mb-5">
                                 <div class="col">
@@ -713,6 +713,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 
 
 </style>
+
+<style>
+	.img-fluid {
+		max-width: 50px;
+		max-height: 50px;
+	}
+</style>
+
 <script>
 /*Cheong Kit Min - Review & Rating ******************************************************************************/
 <?php
