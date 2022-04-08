@@ -126,18 +126,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                 <!-- slides -->
                                 <div class="carousel-inner">
 									<?php
-										if()
+										for($i = 0; $i < count($i_product_pic); $i++)
+										{
+											if($i_product_pic[$i] != "")
+											{
+												$picName = "/img/product/".$i_product_pic[$i];
+												if($i == 0)
+												{
+													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
+												}
+												else
+												{
+													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
+												}
+											}
+										}
+
 									?>
-                                    <div class="carousel-item active"> <img src="/img/product/iphone-black.jpg" alt="Iphone"> </div>
-                                    <div class="carousel-item"> <img src="/img/product/iphone-gold.jpg" alt="Iphone"> </div>
-                                    <div class="carousel-item"> <img src="/img/product/iphone-green.png" alt="Iphone"> </div>
-                                    <div class="carousel-item"> <img src="/img/product/iphone-grey.png" alt="Iphone"> </div>
                                 </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
                                 <ol class="carousel-indicators list-inline" style="height:130px;">
-                                    <li class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                    <li class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="/img/product/iphone-green.png" class="img-fluid"> </a> </li>
-                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="/img/product/iphone-grey.png" class="img-fluid"> </a> </li>
+									<?php
+										$j = 1;
+										for($i = 0; $i < count($i_product_pic); $i++)
+										{
+											if($i_product_pic[$i] != "")
+											{
+												$picName = "/img/product/".$i_product_pic[$i];
+												if($i == 0)
+												{
+													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+												}
+												else
+												{
+													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+												}
+												$j++;
+											}
+										}
+
+									?>
                                 </ol>
                             </div>
                         </div>
@@ -148,27 +175,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <!-- Name -->
                             <div class="row">
                                 <div class="col">
-                                    <h1 style="color:#a31f37;">IPhone 10 Pro Max</h1>
+                                    <h1 style="color:#a31f37;"><?php echo($i_product_name) ?></h1>
                                     <hr>
                                 </div>
                             </div>
                             <!-- Rating/Rating Number/Sold -->
                             <div class="row">
                                 <div class="col">
-                                    <b>4.9 Rating</b>
+                                    <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rating"); ?></b>
                                 </div>
                                 <div class="col">
-                                    <b>200 Rated</b>
+                                    <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rated"); ?></b>
                                 </div>
                                 <div class="col">
-                                    <b>300 Sold</b>
+                                    <b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?> Sold</b>
                                 </div>
                             </div>
                             <br>
                             <!-- Price -->
                             <div class="row">
                                 <div class="col">
-                                    <span style="color:#a31f37;font-size:18pt">RM 3500 - RM 4800</span>
+                                    <span style="color:#a31f37;font-size:18pt"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
                                 </div>
                             </div>
                             <!-- Variation -->
@@ -177,10 +204,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                     <!-- Variation Loop here -->
                                     <div class="row">
                                         <ol class="list-inline">
-                                            <li class="list-inline-item variation-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="/img/product/iphone-black.jpg" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="/img/product/iphone-green.png" class="img-fluid"> </a> </li>
-                                            <li class="list-inline-item variation-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="/img/product/iphone-grey.png" class="img-fluid"> </a> </li>
+											<?php
+												$j = 1;
+												for($i = 0; $i < count($i_product_pic); $i++)
+												{
+													if($i_product_pic[$i] != "")
+													{
+														$picName = "/img/product/".$i_product_pic[$i];
+														if($i == 0)
+														{
+															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+														}
+														else
+														{
+															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"1\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+														}
+														$j++;
+													}
+												}
+
+											?>
                                         </ol>
                                     </div>
                                 </div>
@@ -198,8 +241,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                                         </div>
                                     </div>
                                 </div>
-                                <div class="10 Stock Avaiable">
-                                    
+                                <div class="stockAvailable">
+                                    <b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
                                 </div>
                             </div>
                             <!-- Button -->
