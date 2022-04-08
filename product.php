@@ -222,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												");
 												foreach ($variation1Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary\" style=\"margin-right:10px;>$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;>$value</button>");
 												}
 												echo("	
 														</div>
@@ -254,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												");
 												foreach ($variation2Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary\" style=\"margin-right:10px;>$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation2\" style=\"margin-right:10px;>$value</button>");
 												}
 												echo("	
 														</div>
