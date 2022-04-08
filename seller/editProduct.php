@@ -585,20 +585,17 @@
                                     ");
                                     
                                     $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
-                                    echo(var_dump($v_variation1ChoicesOnly));
-                                    for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
-                                    {
-                                        echo($v_variation1ChoicesOnly[$i]);
+                                    foreach ($v_variation1ChoicesOnly as $value) {
                                         echo("
                                                             <div class=\"input-group mb-3\">
-                                                                <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                 <div class=\"input-group-append btnDeleteChoices\">
                                                                     <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                 </div>
                                                             </div>
                                         ");
                                     }
-                                    
+
                                     echo("
                                                             
                                                         </div>
@@ -650,18 +647,17 @@
                                                                 <div>
                                             ");
                                             $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
-                                            for($i = 0; $i < count($v_variation2ChoicesOnly); $i++)
-                                            {
+                                            foreach ($v_variation1ChoicesOnly as $value) {
                                                 echo("
                                                                     <div class=\"input-group mb-3\">
-                                                                        <input type=\"text\" value=\"".$v_variation2ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                        <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                         <div class=\"input-group-append btnDeleteChoices\">
                                                                             <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                         </div>
                                                                     </div>
                                                 ");
                                             }
-                                            
+
                                             echo("
                                                                     
                                                                 </div>
