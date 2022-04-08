@@ -185,12 +185,12 @@ button, input, optgroup, select, textarea {
 }
   
 #mainContainer{
-  width:80%;
+  width:100%;
 }
 
 @media only screen and (min-width: 600px) {
   #mainContainer{
-    width:100%;
+    width:80%;
   }
 }
 
