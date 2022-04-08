@@ -218,11 +218,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												</div>
 												<div class=\"col-lg-9\">
 													<div class=\"row\"\>
-														<div class=\"col\" style=\"margin-right:10px;\">
+														<div class=\"col\"\">
 												");
 												foreach ($variation1Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary\" style=\"margin-right:10px;>$value</button>");
 												}
 												echo("	
 														</div>
@@ -250,11 +250,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 												</div>
 												<div class=\"col-lg-9\">
 													<div class=\"row\"\>
-														<div class=\"col\" style=\"margin-right:10px;\">
+														<div class=\"col\">
 												");
 												foreach ($variation2Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary\" style=\"margin-right:10px;>$value</button>");
 												}
 												echo("	
 														</div>
