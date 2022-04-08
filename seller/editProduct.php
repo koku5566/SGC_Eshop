@@ -549,7 +549,7 @@
                                         if($row_product['variation_2_name'] != "")
                                         {
                                             $v_variation_2_name = $row_product['variation_2_name'];
-                                            array_push($v_variation_1_choice,$row_product['variation_2_choice']);
+                                            array_push($v_variation_2_choice,$row_product['variation_2_choice']);
                                         }
                                         array_push($v_product_price,$row_product['product_price']);
                                         array_push($v_product_stock,$row_product['product_stock'] - $row_product['product_sold']);

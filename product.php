@@ -940,7 +940,6 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				console.log(response);
 				var len = response.length;
 				for(var i=0; i<len; i++){
 					var price = response[i].price;
@@ -985,7 +984,6 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				console.log(response);
 				var len = response.length;
 				for(var i=0; i<len; i++){
 					var price = response[i].price;
