@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                     <!-- Product Row -->
                     <div class="row">
                         <!-- Picture -->
-                        <div class="col-xl-8 col-md-6 mb-6">
+                        <div class="col-xl-5 col-md-6 mb-6">
 							<div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <!-- slides -->
                                 <div class="carousel-inner">
@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                         </div>
 
                         <!-- Product Content -->
-                        <div class="col-xl-4 col-md-6 mb-6">
+                        <div class="col-xl-7 col-md-6 mb-6">
                             <br>
                             <!-- Name -->
                             <div class="row">
@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <!-- Price -->
                             <div class="row">
                                 <div class="col">
-                                    <span style="color:#a31f37;font-size:18pt"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
+                                    <span style="color:#a31f37;font-size:18pt;font-weight: bold;"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
                                 </div>
                             </div>
                             <!-- Variation -->
@@ -213,8 +213,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										}
 										echo("
 											<div class=\"row\">
-												<div class=\"variation\">
+												<div class=\"col-lg-3\">
 													<h4 style=\"color:#a31f37;\">$variation1Name</h4>
+												</div>
+												<div class=\"col-lg-9\">
 													<div class=\"row\" style=\"margin-left:0;\">
 														<ol class=\"list-inline\" style=\"padding:10px\">
 												");
@@ -243,8 +245,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										}
 										echo("
 											<div class=\"row\">
-												<div class=\"variation\">
+												<div class=\"col-lg-3\">
 													<h4 style=\"color:#a31f37;\">$variation2Name</h4>
+												</div>
+												<div class=\"col-lg-9\">
 													<div class=\"row\" style=\"margin-left:0;\">
 														<ol class=\"list-inline\" style=\"padding:10px\">
 												");
