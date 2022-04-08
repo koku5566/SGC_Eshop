@@ -1316,9 +1316,14 @@
                     var ext = img.files[0].name.split('.').pop();
                     if(extArr.includes(ext))
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                        {
+                            j++;
+                        }
+
+                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        imgInp[j].parentElement.parentElement.classList.add("hide");
                     }
                     else{
                         alert("This Image is not a valid format");

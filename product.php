@@ -5,17 +5,58 @@
     $_SESSION['productID'] = $_GET['id'];
 ?>
 <?php
-//Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
-//$product = $_SESSION['productID'];	//Maverick if u want to change the ratting uncomment this then
+	//Fetch each product information
+	$id = $_SESSION['productID'];
+	$sql_product = "SELECT A.product_id, A.product_name, A.product_description, A.product_brand, A.product_cover_video,
+	A.product_cover_picture, A.product_pic_1, A.product_pic_2, A.product_pic_3, A.product_pic_4, 
+	A.product_pic_5, A.product_pic_6, A.product_pic_7, A.product_pic_8, A.product_virtual, 
+	A.product_variation,A.product_price,A.product_stock,A.product_sold, A.category_id, A.shop_id, 
+	C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
+	LEFT JOIN variation AS B ON A.product_id = B.product_id 
+	LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+	LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+	LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+	LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+	WHERE A.product_id = '$id'
+	LIMIT 1";
+	$result_product = mysqli_query($conn, $sql_product);
 
-$product = "P000001";	//Comment this out jiu can le
-//$_SESSION['product_ID']
+	if (mysqli_num_rows($result_product) > 0) {
+		while($row_product = mysqli_fetch_assoc($result_product)) {
+			$i_product_id = $row_product['product_id'];
+			$i_product_name = $row_product['product_name'];
+			$i_product_description = $row_product['product_description'];
+			$i_product_brand = $row_product['product_brand'];
+			$i_product_cover_video = $row_product['product_cover_video'];
+			$i_product_pic = array($row_product['product_cover_picture']);
+			array_push($i_product_pic,$row_product['product_pic_1'],$row_product['product_pic_2']);
+			array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
+			array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
+			array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
+
+			$i_product_virtual = $row_product['product_virtual'];
+			$i_product_variation = $row_product['product_variation'];
+			$i_product_price = $row_product['product_price'];
+			$i_product_stock = $row_product['product_stock'];
+			$i_product_sold = $row_product['product_sold'];
+			$i_category_id = $row_product['category_id'];
+			$i_shop_id = $row_product['shop_id'];
+
+			$i_max_price = $row_product['max_price'];
+			$i_min_price = $row_product['min_price'];
+			$i_total_stock = $row_product['total_stock'];
+			$i_rating = $row_product['rating'];
+		}
+	}
+?>
+<?php
+//Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	$selectedPID = SanitizeString($_POST['pid']);
 		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
 			    FROM user u INNER JOIN  reviewRating rr 
 			    ON  u.userID = rr.user_id 
-			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
+			    WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id' && rr.rr_id = ? 
 			    ORDER BY rr.rr_id";
 		
 		if($stmt = mysqli_prepare ($conn, $sql)){
@@ -30,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			
 			mysqli_stmt_free_result($stmt);
 			mysqli_stmt_close($stmt);
-		
 		}	
 			
 }	
@@ -50,12 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                 <nav aria-label="breadcrumb" hidden>
                     <ol class="breadcrumb">
                         <?php 
-                            $productId = $_GET['id'];
+                            $productId = $_SESSION['productID'];
                             //Display Current Directory
                             $sql = "SELECT B.category_name AS mainCategory, A.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
                             LEFT JOIN  category AS B ON A.main_category = B.category_id
                             LEFT JOIN  category AS C ON A.sub_category = C.category_id
-                            WHERE combination_id = (SELECT category_id FROM `product` WHERE product_id = '$productId')
+                            WHERE combination_id = '$i_category_id'
                             ";
                             $result = mysqli_query($conn, $sql);
 
@@ -85,6 +125,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             <div id="custCarousel" class="carousel slide" data-interval="false">
                                 <!-- slides -->
                                 <div class="carousel-inner">
+									<?php
+										if()
+									?>
                                     <div class="carousel-item active"> <img src="/img/product/iphone-black.jpg" alt="Iphone"> </div>
                                     <div class="carousel-item"> <img src="/img/product/iphone-gold.jpg" alt="Iphone"> </div>
                                     <div class="carousel-item"> <img src="/img/product/iphone-green.png" alt="Iphone"> </div>
