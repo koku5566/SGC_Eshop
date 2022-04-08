@@ -1024,7 +1024,6 @@
     initImages();
     initVariation();
 
-
     function rearrangeLabel(){
         var draggableItem = document.querySelectorAll('.drag-item');
         var counter=1;

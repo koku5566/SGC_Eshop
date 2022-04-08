@@ -1,5 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
+	require __DIR__ .'/PHP_product.php';
 ?>
 <?php
     $_SESSION['productID'] = $_GET['id'];
@@ -50,32 +51,31 @@
 	}
 ?>
 <?php
-//Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
-	$selectedPID = SanitizeString($_POST['pid']);
-		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
-			    FROM user u INNER JOIN  reviewRating rr 
-			    ON  u.userID = rr.user_id 
-			    WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id' && rr.rr_id = ? 
-			    ORDER BY rr.rr_id";
-		
-		if($stmt = mysqli_prepare ($conn, $sql)){
-			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
-			mysqli_stmt_execute($stmt);
-			mysqli_stmt_store_result($stmt);
+	//Cheong Kit Min - Review & Rating PHP ----------------------------------------------------------------------------------
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+		$selectedPID = SanitizeString($_POST['pid']);
+			$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
+					FROM user u INNER JOIN  reviewRating rr 
+					ON  u.userID = rr.user_id 
+					WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id' && rr.rr_id = ? 
+					ORDER BY rr.rr_id";
 			
-			if(mysqli_stmt_num_rows($stmt) == 1){
-				mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13,$c14,$c15,$c16,$c17);
-				mysqli_stmt_fetch($stmt);
-			}
-			
-			mysqli_stmt_free_result($stmt);
-			mysqli_stmt_close($stmt);
-		}	
-			
-}	
-//Cheong Kit Min - End of Review & Rating PHP ----------------------------------------------------------------------------------
-
+			if($stmt = mysqli_prepare ($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				
+				if(mysqli_stmt_num_rows($stmt) == 1){
+					mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13,$c14,$c15,$c16,$c17);
+					mysqli_stmt_fetch($stmt);
+				}
+				
+				mysqli_stmt_free_result($stmt);
+				mysqli_stmt_close($stmt);
+			}	
+				
+	}	
+	//Cheong Kit Min - End of Review & Rating PHP ----------------------------------------------------------------------------------
 ?>
 <!--Cheong Kit Min - Review & Rating PHP ---------------------------------------------------------------------------------->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                             <br>
                             <!-- Price -->
-                            <div class="row mb-4">
+                            <div class="row mb-4" id="PriceDiv">
                                 <div class="col">
                                     <span style="color:#a31f37;font-size:18pt;font-weight: bold;"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
                                 </div>
@@ -767,86 +767,160 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 </style>
 
 <script>
-/*Cheong Kit Min - Review & Rating ******************************************************************************/
-<?php
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
-			$showmedawae = "#exampleModalLong";
-								 						
-		}else{
-			$showmedawae = "";
-		}
-		
-?>
-        $('<?php echo $showmedawae; ?>').modal('show');
-   
-
-
-$(document).ready(function(){
-
+	/*Cheong Kit Min - Review & Rating ******************************************************************************/
+	<?php
+			if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
+				$showmedawae = "#exampleModalLong";
+															
+			}else{
+				$showmedawae = "";
+			}
+			
+	?>
+	$('<?php echo $showmedawae; ?>').modal('show');
 	
-	load_data_display();
-	load_data();
- 
- function load_data_display(restriction,restriction2)
- {
-  $.ajax({
-   url:"reviewRatingSearch.php",
-   method:"POST",
-   data:{restriction:restriction,
-		 restriction2:restriction2},
-   success:function(data)
-   {
-	   //alert('success noob')
-		$('#displaySearch').html(data);
+
+
+	$(document).ready(function(){
+
 		
-   }
-   
-  });
- }
- 
- function load_data(query) 
+		load_data_display();
+		load_data();
+	
+	function load_data_display(restriction,restriction2)
+	{
+	$.ajax({
+	url:"reviewRatingSearch.php",
+	method:"POST",
+	data:{restriction:restriction,
+			restriction2:restriction2},
+	success:function(data)
+	{
+		//alert('success noob')
+			$('#displaySearch').html(data);
+			
+	}
+	
+	});
+	}
+	
+	function load_data(query) 
+		{
+			$.ajax({
+			url:"reviewRatingModal.php",
+			method:"POST",
+			data:{query:query},
+			success:function(data)
+			{
+				//alert('success noob')
+				$('#modalResult').html(data);
+				
+			}
+			});
+			
+		}
+	
+	$('#selectStar').change(function(){
+	var restriction = $(this).val();
+	var restriction2 = $('#selectCM').val();
+	
+	load_data_display(restriction, restriction2);
+	
+	});
+	
+	$('#selectCM').change(function(){
+	var restriction = $('#selectStar').val();
+	var restriction2 = $(this).val();
+	
+	load_data_display(restriction,restriction2);
+		
+	
+	});
+	
+	$('.hyperlink').click(function(){
+	var click = $(this).val();
+	//console.log(click)
+	load_data(click);
+	
+	
+	});
+	
+	
+
+	});
+	/*Cheong Kit Min - End of Review & Rating ******************************************************************************/
+</script>
+
+<script>
+	function initVariationButton()
+    {
+        const Variation1 = document.querySelectorAll('.btnVariation1');
+
+        Variation1.forEach(btn => {
+            btn.addEventListener('click', function handleClick(event) {
+				Variation1.forEach(btn => {
+					if(btn.classList.contains('var-active'))
+					{
+						btn.classList.remove("var-active");
+					}
+				});
+				btn.classList.add("var-active");
+				
+				var query = "";
+
+				const selectedVariation = document.querySelectorAll('.var-active');
+				if(selectedVariation.length == 1)
+				{
+					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var VariationChoice = selectedVariation[0].textContent;
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['product_id']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "'";
+				}
+				else if(selectedVariation.length == 2)
+				{
+					var VariationName = selectedVariation[0].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var VariationChoice = selectedVariation[0].textContent;
+					var Variation2Name = selectedVariation[1].parentElement.parentElement.parentElement.previousElementSibling.children[0].textContent;
+					var Variation2Choice = selectedVariation[1].textContent;
+					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['product_id']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
+				}
+
+				getData(query);
+            });
+        });
+    }
+
+	function getData(query) 
 	{
 		$.ajax({
-		   url:"reviewRatingModal.php",
-		   method:"POST",
-		   data:{query:query},
-		   success:function(data)
-		   {
-			   //alert('success noob')
-			$('#modalResult').html(data);
-			
-		   }
-		  });
-		  
-	}
- 
- $('#selectStar').change(function(){
-  var restriction = $(this).val();
-  var restriction2 = $('#selectCM').val();
-  
-   load_data_display(restriction, restriction2);
- 
- });
- 
- $('#selectCM').change(function(){
-  var restriction = $('#selectStar').val();
-  var restriction2 = $(this).val();
-  
-   load_data_display(restriction,restriction2);
-	
- 
- });
- 
-  $('.hyperlink').click(function(){
-  var click = $(this).val();
-  //console.log(click)
-  load_data(click);
-  
-  
- });
- 
- 
+			url:"PHP_product.php",
+			method:"POST",
+			data:{query:query},
+			dataType: 'JSON',
+			success: function(response){
+				alert(response);
+				var len = response.length;
+				for(var i=0; i<len; i++){
+					var price = response[i].price;
+					var stock = response[i].stock;
 
-});
-/*Cheong Kit Min - End of Review & Rating ******************************************************************************/
+					var priceHTML = `
+					<div class="col">
+						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
+					</div>
+					`;
+					
+					$("#PriceDiv").empty();
+					$("#PriceDiv").append(priceHTML);
+
+					var stockHTML = `
+					<span style="color:#a31f37;font-size:10pt;">` + stock + ` piece available</span>
+					`;
+					
+					$("#stockAvailable").empty();
+					$("#stockAvailable").append(stockHTML);
+				}
+
+			}
+		});
+	}
 </script>
