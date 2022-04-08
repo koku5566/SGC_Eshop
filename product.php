@@ -222,7 +222,7 @@
 												");
 												foreach ($variation1Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation\" style=\"margin-right:10px;\">$value</button>");
 												}
 												echo("	
 														</div>
@@ -254,7 +254,7 @@
 												");
 												foreach ($variation2Choice as $value)
 												{
-													echo("<button class=\"btn btn-outline-primary btnVariation2\" style=\"margin-right:10px;\">$value</button>");
+													echo("<button class=\"btn btn-outline-primary btnVariation\" style=\"margin-right:10px;\">$value</button>");
 												}
 												echo("	
 														</div>
@@ -853,10 +853,10 @@
 
 <script>
 	initVariationButton();
-	
+
 	function initVariationButton()
     {
-        const Variation1 = document.querySelectorAll('.btnVariation1');
+        const Variation1 = document.querySelectorAll('.btnVariation');
 
         Variation1.forEach(btn => {
             btn.addEventListener('click', function handleClick(event) {
@@ -921,7 +921,6 @@
 					$("#stockAvailable").empty();
 					$("#stockAvailable").append(stockHTML);
 				}
-
 			}
 		});
 	}
