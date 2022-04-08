@@ -92,7 +92,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
     <!-- Product Filter -->
     <div class="row">
         <div class="col-xl-12 col-lg-12">
