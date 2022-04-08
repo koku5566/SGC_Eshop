@@ -6,6 +6,7 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $_SESSION['userid'] = "14";
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
