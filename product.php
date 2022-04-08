@@ -234,7 +234,8 @@
 													<div class=\"row\"\>
 														<div class=\"col\">
 												");
-												foreach ($variation1Choice as $value)
+												$v_variation1ChoicesOnly = array_unique($variation1Choice);
+												foreach ($v_variation1ChoicesOnly as $value)
 												{
 													echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$value</button>");
 												}
@@ -254,7 +255,8 @@
 													<div class=\"row\"\>
 														<div class=\"col\">
 												");
-												foreach ($variation2Choice as $value)
+												$v_variation2ChoicesOnly = array_unique($variation2Choice);
+												foreach ($v_variation2ChoicesOnly as $value)
 												{
 													echo("<button class=\"btn btn-outline-primary btnVariation2\" style=\"margin-right:10px;\">$value</button>");
 												}
@@ -277,8 +279,9 @@
 													<div class=\"row\"\>
 														<div class=\"col\">
 												");
-												
-												foreach (array_combine($variation1Choice, $variation1Stock) as $choice => $stock)
+												$v_variation1ChoicesOnly = array_unique(array_combine($variation1Choice, $variation1Stock));
+												echo(var_dump($v_variation1ChoicesOnly));
+												foreach ($v_variation1ChoicesOnly as $choice => $stock)
 												{
 													if($stock == 0 || $stock == "0")
 													{
