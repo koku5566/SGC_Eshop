@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                             <br>
                             <!-- Price -->
-                            <div class="row">
+                            <div class="row mb-4">
                                 <div class="col">
                                     <span style="color:#a31f37;font-size:18pt;font-weight: bold;"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
                                 </div>
@@ -214,18 +214,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										echo("
 											<div class=\"row\">
 												<div class=\"col-lg-3\">
-													<h4 style=\"color:#a31f37;\">$variation1Name</h4>
+													<b style=\"color:#a31f37;\">$variation1Name</b>
 												</div>
 												<div class=\"col-lg-9\">
-													<div class=\"row\" style=\"margin-left:0;\">
-														<ol class=\"list-inline\" style=\"padding:10px\">
+													<div class=\"row\"\>
+														<div class=\"col\">
 												");
 												foreach ($variation1Choice as $value)
 												{
-													echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+													echo("<button class=\"btn btn-outline-primary\">$value</button>");
 												}
 												echo("	
-														</ol>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -246,7 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 										echo("
 											<div class=\"row\">
 												<div class=\"col-lg-3\">
-													<h4 style=\"color:#a31f37;\">$variation2Name</h4>
+													<b style=\"color:#a31f37;\">$variation2Name</b>
 												</div>
 												<div class=\"col-lg-9\">
 													<div class=\"row\" style=\"margin-left:0;\">
