@@ -647,7 +647,7 @@
                                                                 <div>
                                             ");
                                             $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
-                                            foreach ($v_variation1ChoicesOnly as $value) {
+                                            foreach ($v_variation2ChoicesOnly as $value) {
                                                 echo("
                                                                     <div class=\"input-group mb-3\">
                                                                         <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
