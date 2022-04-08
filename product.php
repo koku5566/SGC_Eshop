@@ -200,42 +200,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
                             </div>
                             <!-- Variation -->
                             <div class="row">
-                                <div class="variation">
-                                    <!-- Variation Loop here -->
-                                    <div class="row" style="margin-left:0;">
-                                        <ol class="list-inline" style="padding:10px">
-											<?php
-												$j = 1;
-												if($i_product_variation == 1)
-												{
-													for($i = 0; $i < count($i_product_pic); $i++)
-													{
-														if($i == 0)
-														{
-															echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
-														}
-														else
-														{
-															echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-$j\" data-slide-to=\"$j\" data-target=\"#custCarousel\">".$VariationChoice[j]."</a> </li>");
-														}
-														$j++;
-													}
-												}
-											?>
-                                        </ol>
-                                    </div>
-                                </div>
+							<?php
+								if($i_product_variation == 1)
+								{
+									$sql_var = "SELECT DISTINCT(variation_1_choice), variation_1_name FROM variation WHERE product_id = '$i_product_id'";
+									$result_var = mysqli_query($conn, $sql_var);
+
+									if (mysqli_num_rows($result_var) > 0) {
+										$variation1Choice = array();
+										while($row_var = mysqli_fetch_assoc($result_var)) {
+											$variation1Name = $row_var['variation_1_name'];
+											array_push($variation1Choice,$row_var['variation_1_choice']);
+										}
+										echo("
+											<div class=\"variation\">
+												<h1>$variation1Name</h1>
+												<div class=\"row\" style=\"margin-left:0;\">
+													<ol class=\"list-inline\" style=\"padding:10px\">
+											");
+											foreach ($variation1Choice as $value)
+											{
+												echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+											}
+											echo("	
+													</ol>
+												</div>
+											</div>
+										");
+									}
+
+									
+
+									$sql_var2 = "SELECT DISTINCT(variation_2_choice), variation_2_name FROM variation WHERE product_id = '$i_product_id'";
+									$result_var2 = mysqli_query($conn, $sql_var2);
+
+									if (mysqli_num_rows($result_var2) > 0) {
+										$variation2Choice = array();
+										while($row_var2 = mysqli_fetch_assoc($result_var2)) {
+											$variation2Name = $row_var2['variation_2_name'];
+											array_push($variation2Choice,$row_var2['variation_2_choice']);
+										}
+										echo("
+											<div class=\"variation\">
+												<h1>$variation2Name</h1>
+												<div class=\"row\" style=\"margin-left:0;\">
+													<ol class=\"list-inline\" style=\"padding:10px\">
+											");
+											foreach ($variation2Choice as $value)
+											{
+												echo("<li class=\"list-inline-item\"><a>$value</a> </li>");
+											}
+											echo("	
+													</ol>
+												</div>
+											</div>
+										");
+									}
+								}
+
+								$sql_var2 = "SELECT DISTINCT(variation_2_choice) FROM `variation` WHERE variation_2_name != '' AND product_id = '$i_product_id'";
+							?>
+                                
                             </div>
                             <!-- Quantity -->
                             <div class="row">
                                 <div class="col-xl-6 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
                                         <input min="1" name="quantity[]" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
-                                        <button class="quantity-selector-btn" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -243,10 +279,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 									<?php
 										if($i_product_variation == 0)
 										{
-											echo("<span style=\"color:#a31f37;font-size:14pt;\">$i_product_stock piece available</span>");
+											echo("<span style=\"color:#a31f37;font-size:10pt;\">$i_product_stock piece available</span>");
 										}
 									?>
-									<b><?php echo($i_product_variation == 0 ? $i_product_stock :  $i_total_stock); ?></b>
 								</div>
                             </div>
 							
