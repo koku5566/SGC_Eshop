@@ -300,8 +300,6 @@
 										");
 									}
 								}
-
-								$sql_var2 = "SELECT DISTINCT(variation_2_choice) FROM `variation` WHERE variation_2_name != '' AND product_id = '$i_product_id'";
 							?>
                             <!-- Quantity -->
                             <div class="row">
