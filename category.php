@@ -135,7 +135,7 @@
                                                                         {
                                                                             echo("<i class=\"fa fa-caret-right\" style=\"padding: .3rem 0 0px;font-size: larger;color:#a31f37;\"></i>");
                                                                         }
-                                                                        echo("<a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
+                                                                        echo("<a href=\"{$domain_link}/category.php?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
                                                                         echo("</li>");
                                                                         
                                                                     }
@@ -635,6 +635,7 @@
     .dropdown-item:focus, .dropdown-item:hover {
         color: #a31f37;
         text-decoration: none;
+        background-color: transparent;
     }
 
 </style>
