@@ -889,8 +889,7 @@
 					var Variation2Choice = selectedVariation[1].textContent;
 					query = "SELECT * FROM variation WHERE product_id = '<?php echo($_SESSION['productID']); ?>' AND variation_1_name = '" + VariationName + "' AND variation_1_choice = '" + VariationChoice + "' AND variation_2_name = '" + Variation2Name + "' AND variation_2_choice = '" + Variation2Choice + "'";
 				}
-				console.log(query);
-				//getData(query);
+				getData(query);
             });
         });
 
