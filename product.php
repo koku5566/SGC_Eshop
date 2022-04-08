@@ -787,8 +787,6 @@
 
 
 	$(document).ready(function(){
-
-		
 		load_data_display();
 		load_data();
 	
@@ -957,6 +955,10 @@
 					$("#stockAvailable").empty();
 					$("#stockAvailable").append(stockHTML);
 				}
+			},
+			error: function(err) {
+				//$('#login_message').html(err.responseText);
+				alert(err.responseText);
 			}
 		});
 	}
