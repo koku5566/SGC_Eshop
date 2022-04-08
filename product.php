@@ -202,14 +202,28 @@
 							<?php
 								if($i_product_variation == 1)
 								{
-									$sql_var = "SELECT DISTINCT(variation_1_choice), variation_1_name FROM variation WHERE product_id = '$i_product_id'";
+									$sql_var = "SELECT DISTINCT(variation_1_choice), variation_1_name, product_stock FROM variation WHERE product_id = '$i_product_id'";
 									$result_var = mysqli_query($conn, $sql_var);
 
 									if (mysqli_num_rows($result_var) > 0) {
 										$variation1Choice = array();
+										$variation1Stock = array();
 										while($row_var = mysqli_fetch_assoc($result_var)) {
 											$variation1Name = $row_var['variation_1_name'];
 											array_push($variation1Choice,$row_var['variation_1_choice']);
+											array_push($variation1Stock,$row_var['product_stock']);
+										}
+									}
+
+									$sql_var2 = "SELECT DISTINCT(variation_2_choice), variation_2_name, product_stock FROM variation WHERE product_id = '$i_product_id'";
+									$result_var2 = mysqli_query($conn, $sql_var2);
+
+									//If got 2 variation
+									if (mysqli_num_rows($result_var2) > 0) {
+										$variation2Choice = array();
+										while($row_var2 = mysqli_fetch_assoc($result_var2)) {
+											$variation2Name = $row_var2['variation_2_name'];
+											array_push($variation2Choice,$row_var2['variation_2_choice']);
 										}
 										echo("
 											<div class=\"row mb-3\">
@@ -230,19 +244,7 @@
 												</div>
 											</div>
 										");
-									}
 
-									
-
-									$sql_var2 = "SELECT DISTINCT(variation_2_choice), variation_2_name FROM variation WHERE product_id = '$i_product_id'";
-									$result_var2 = mysqli_query($conn, $sql_var2);
-
-									if (mysqli_num_rows($result_var2) > 0) {
-										$variation2Choice = array();
-										while($row_var2 = mysqli_fetch_assoc($result_var2)) {
-											$variation2Name = $row_var2['variation_2_name'];
-											array_push($variation2Choice,$row_var2['variation_2_choice']);
-										}
 										echo("
 											<div class=\"row mb-3\">
 												<div class=\"col-lg-3\">
@@ -255,6 +257,37 @@
 												foreach ($variation2Choice as $value)
 												{
 													echo("<button class=\"btn btn-outline-primary btnVariation2\" style=\"margin-right:10px;\">$value</button>");
+												}
+												echo("	
+														</div>
+													</div>
+												</div>
+											</div>
+										");
+									}
+									//If only have 1 variation
+									else
+									{
+										echo("
+											<div class=\"row mb-3\">
+												<div class=\"col-lg-3\">
+													<b style=\"color:#a31f37;\">$variation1Name</b>
+												</div>
+												<div class=\"col-lg-9\">
+													<div class=\"row\"\>
+														<div class=\"col\">
+												");
+												
+												foreach (array_combine($variation1Choice, $variation1Stock) as $choice => $stock)
+												{
+													if($stock == 0 || $stock == "0")
+													{
+														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\" disabled>$value</button>");
+													}
+													else
+													{
+														echo("<button class=\"btn btn-outline-primary btnVariation1\" style=\"margin-right:10px;\">$value</button>");
+													}
 												}
 												echo("	
 														</div>
