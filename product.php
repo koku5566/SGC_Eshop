@@ -1091,7 +1091,7 @@
 
 	function initAddToCartButton()
     {
-        document.getElementById('btnAddToCart');.addEventListener('click', function handleClick(event) {
+        document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
 			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
 				addToCart();
