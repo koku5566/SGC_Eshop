@@ -128,7 +128,7 @@
                                                                         $subCategoryName = $row_1["subCategoryName"];
                                                                         $subPicName = "";
 
-                                                                        
+                                                                        /*
                                                                         echo("<li class=\"menu-item\"style=\"display:flex;\">");
                                                                         //Make it Active
                                                                         if(isset($_SESSION['subCategory']) && $_SESSION['subCategory'] == $subCategoryId)
@@ -141,7 +141,7 @@
                                                                         )
                                                                         
                                                                         echo("</li>");
-                                                                        
+                                                                        */
                                                                     }
                                                                 } 
                                                             ?>
