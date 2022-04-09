@@ -573,8 +573,10 @@
                                                 else
                                                 {
                                                 ?>
-                                                    <img src="/img/resource/not-found.png"/>
-                                                    <h5>No Result Found</h5>
+                                                    <div class="row">
+                                                        <img src="/img/resource/not-found.png" style="width:200px; height:200px;"/>
+                                                        <h5>No Result Found</h5>
+                                                    </div>
                                                 <?php  
                                                 }
                                             ?>
