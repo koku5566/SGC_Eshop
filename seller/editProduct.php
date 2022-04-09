@@ -12,7 +12,7 @@
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
+        $productDescription = htmlentities($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -439,7 +439,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo(html_entity_decode($i_product_description)); ?></textarea>
                                 </div>
                             </div>
                         </div>

@@ -403,7 +403,7 @@
 					<!-- Product Description -->
                     <div class="row mb-3" style="background-color:white;">
                         <div class="col">
-							
+							<?php echo(html_entity_decode($i_product_description)); ?>
                         </div>
                     </div>
 
