@@ -11,7 +11,7 @@
     <!-- Above template -->
     <div class="row">
         <?php
-            $sql = "SELECT * FROM `event` WHERE `event_id` = 1";
+            $sql = "SELECT * FROM `event` WHERE `event_id` = 30";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
