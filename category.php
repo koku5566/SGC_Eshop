@@ -137,7 +137,7 @@
                                                                             echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\" style=\"padding-left: 0.9rem;\">$subCategoryName</a>");
                                                                         }
                                                                         else(
-                                                                            echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
+                                                                            echo("<a href=\"?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
                                                                         )
                                                                         
                                                                         echo("</li>");
@@ -145,6 +145,7 @@
                                                                     }
                                                                 } 
                                                             ?>
+                                                            
                                                         </ul>
                                                     </div>
                                                 </div>
