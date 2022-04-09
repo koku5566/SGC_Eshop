@@ -6,6 +6,7 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $_SESSION['userid'] = "14";
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
@@ -438,7 +439,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -548,7 +549,7 @@
                                         if($row_product['variation_2_name'] != "")
                                         {
                                             $v_variation_2_name = $row_product['variation_2_name'];
-                                            array_push($v_variation_1_choice,$row_product['variation_2_choice']);
+                                            array_push($v_variation_2_choice,$row_product['variation_2_choice']);
                                         }
                                         array_push($v_product_price,$row_product['product_price']);
                                         array_push($v_product_stock,$row_product['product_stock'] - $row_product['product_sold']);
@@ -582,19 +583,19 @@
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                         <div>
                                     ");
+                                    
                                     $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
-                                    for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
-                                    {
+                                    foreach ($v_variation1ChoicesOnly as $value) {
                                         echo("
                                                             <div class=\"input-group mb-3\">
-                                                                <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                 <div class=\"input-group-append btnDeleteChoices\">
                                                                     <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                 </div>
                                                             </div>
                                         ");
                                     }
-                                    
+
                                     echo("
                                                             
                                                         </div>
@@ -646,18 +647,17 @@
                                                                 <div>
                                             ");
                                             $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
-                                            for($i = 0; $i < count($v_variation2ChoicesOnly); $i++)
-                                            {
+                                            foreach ($v_variation2ChoicesOnly as $value) {
                                                 echo("
                                                                     <div class=\"input-group mb-3\">
-                                                                        <input type=\"text\" value=\"".$v_variation2ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                        <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                         <div class=\"input-group-append btnDeleteChoices\">
                                                                             <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                         </div>
                                                                     </div>
                                                 ");
                                             }
-                                            
+
                                             echo("
                                                                     
                                                                 </div>
@@ -1922,6 +1922,14 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+    selector: '#productDescription'
+    });
 </script>
 
 <?php

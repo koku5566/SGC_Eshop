@@ -12,6 +12,7 @@
         }
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
+        $_SESSION['userid'] = "14";
         //Basic Details
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
@@ -464,7 +465,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1022,7 +1023,6 @@
 
     initImages();
     initVariation();
-
 
     function rearrangeLabel(){
         var draggableItem = document.querySelectorAll('.drag-item');
@@ -1743,6 +1743,14 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+    selector: '#productDescription'
+    });
 </script>
 
 <?php
