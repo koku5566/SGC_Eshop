@@ -173,7 +173,7 @@
 												$picName = "/img/product/".$i_product_pic[$i];
 												if($i == 0)
 												{
-													echo("<li class=\"list-inline-item active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+													echo("<li class=\"list-inline-item firstThumbnail active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
 												}
 												else
 												{
@@ -865,6 +865,16 @@
 		border-radius: 10px;
 		background: rgba(9, 9, 9, 0.6);
 		z-index: 99;
+	}
+
+	.firstThumbnail{
+		margin-left:200px;
+	}
+
+	@media only screen and (min-width: 600px) {
+		.firstThumbnail{
+			margin-left:0;
+		}
 	}
 </style>
 
