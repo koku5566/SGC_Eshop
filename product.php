@@ -868,12 +868,12 @@
 	}
 
 	.firstThumbnail{
-		margin-left:200px;
+		margin-left: 100px !important;
 	}
 
 	@media only screen and (min-width: 600px) {
 		.firstThumbnail{
-			margin-left:0;
+			margin-left:0 !important;;
 		}
 	}
 </style>
