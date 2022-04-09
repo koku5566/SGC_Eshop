@@ -88,7 +88,7 @@
                   
                   $sql = "SELECT product_name, product_description, product_brand, rating, product_cover_picture FROM product";
                   $result = $conn->query($sql);
-                  echo "error";
+                  echo "product_name";
                   if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
