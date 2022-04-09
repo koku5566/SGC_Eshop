@@ -334,7 +334,7 @@
                             <!-- Button -->
                             <div class="row mb-5" style="margin-top: 100px;">
                                 <div class="col">
-									<button class="btn btn-primary" style="width:100%;">Add To Cart</button>
+									<button id="btnAddToCart" class="btn btn-primary" style="width:100%;">Add To Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -1091,7 +1091,8 @@
         document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
 			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
-				addToCart();
+
+				//addToCart();
 			}
 			else
 			{
