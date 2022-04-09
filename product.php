@@ -93,7 +93,7 @@
 							<?php 
 								$productId = $_SESSION['productID'];
 								//Display Current Directory
-								$sql = "SELECT B.category_name AS mainCategory, A.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
+								$sql = "SELECT B.category_id AS mainCategoryId, B.category_name AS mainCategory, A.sub_Yes, C.category_id AS subCategoryId, C.category_name AS subCategory FROM `categoryCombination` AS A 
 								LEFT JOIN  category AS B ON A.main_category = B.category_id
 								LEFT JOIN  category AS C ON A.sub_category = C.category_id
 								WHERE combination_id = '$i_category_id'
@@ -102,15 +102,17 @@
 
 								if (mysqli_num_rows($result) > 0) {
 									while($row = mysqli_fetch_assoc($result)) {
+										$mainCategoryId = $row["mainCategoryId"];
 										$mainCategoryName = $row["mainCategory"];
 										$subYes = $row["sub_Yes"];
+										$subCategoryId = $row["subCategoryId"];
 										$subCategoryName = $row["subCategory"];
 										
 										//If no sub category, display as normal
-										echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryName}\">$mainCategoryName</a></li>");
+										echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}\">$mainCategoryName</a></li>");
 										if($subYes == 1)
 										{
-											echo("<li class=\"breadcrumb-item\"><a href=\"category.php?subCategory={$subCategoryName}\">$subCategoryName</a></li>");
+											echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}&subCategory={$subCategoryId}\">$subCategoryName</a></li>");
 										}
 										
 										echo("<li class=\"breadcrumb-item active\"><a href=\"#\">Product</a></li>");
