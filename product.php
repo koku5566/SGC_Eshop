@@ -158,8 +158,12 @@
 										}
 
 									?>
-                                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
-                                <ol class="carousel-indicators list-inline" style="height:60px;">
+                                </div> 
+								<!-- Left right --> 
+								<a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
+								<a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+								<!-- Thumbnails -->
+                                <ol class="carousel-indicators list-inline" style="height:60px;margin-left:0;margin-right:0;overflow:auto;">
 									<?php
 										$j = 0;
 										for($i = 0; $i < count($i_product_pic); $i++)
