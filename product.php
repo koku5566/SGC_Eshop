@@ -642,6 +642,12 @@
 
                 </div>
                 <!-- /.container-fluid -->
+<div class="SuccessMsg">
+	<img src="/img/resource/check.png"/>
+	<p>Item has been added to your shopping cart</p>
+</div>
+
+
 
 <?php
     require __DIR__ . '/footer.php'
@@ -833,6 +839,10 @@
 	.var-active{
 		background-color:#a31f37;
 		color:white;
+	}
+
+	.SuccessMsg{
+		position:absolute;
 	}
 </style>
 
@@ -1121,7 +1131,17 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				alert(response);
+				document.getElementById('');
+				var MessageManager = {
+					show: function(content) {
+						$('#message-container').html(content);
+						setTimeout(function(){
+							$('#message-container').html('');
+						}, 5000);
+					}
+				};
+
+				MessageManager.show('<h1>Testing</h1>');
 			},
 			error: function(err) {
 				alert(err.responseText);
