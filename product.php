@@ -642,9 +642,12 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
 <div class="SuccessMsg">
-	<img src="/img/resource/check.png"/>
-	<p>Item has been added to your shopping cart</p>
+	<div class="SuccessMsg-content">
+		<img src="/img/resource/check.png" style="width: 80px;"/>
+		<p>Item has been added to your shopping cart</p>
+	</div>
 </div>
 
 
@@ -842,7 +845,13 @@
 	}
 
 	.SuccessMsg{
-		position:absolute;
+		position: fixed;
+		top: 45%;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 	}
 </style>
 
