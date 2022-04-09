@@ -48,9 +48,20 @@
     }
     else if(isset($_POST['addToCart']))
     {
+        /*
         $_SESSION['userId'];
         $_SESSION['shopId'];
         $_SESSION['productID'];
         $_SESSION['variationId'];
+        */
+
+        if(true)
+        {
+            echo json_encode(true);
+        }
+        else
+        {
+            echo json_encode(false);
+        }
     }
 ?>

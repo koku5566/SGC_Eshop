@@ -1088,17 +1088,13 @@
 
 	function initAddToCartButton()
     {
-		console.log("in function");
         document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
-			console.log("in function 2");
 			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
-				console.log("condition 1");
-				//addToCart();
+				addToCart();
 			}
 			else
 			{
-				console.log("in function 3");
 				if(!document.getElementById("VariationErrorMsg"))
 				{
 					var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;">Please select product variation to continue</p>`;
@@ -1118,7 +1114,7 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				//Add to cart successful show something 
+				alert(response);
 			},
 			error: function(err) {
 				alert(err.responseText);
