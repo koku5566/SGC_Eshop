@@ -1096,7 +1096,7 @@
 			}
 			else
 			{
-				if(!document.getElementById("VariationErrorMsg"))
+				if(!!document.getElementById("VariationErrorMsg"))
 				{
 					var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;display:none;">Please select product variation to continue</p>`;
 					document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
