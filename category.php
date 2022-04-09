@@ -570,7 +570,13 @@
                                                         }
                                                     }
                                                 }
-                                                
+                                                else
+                                                {
+                                                ?>
+                                                    <img src="/img/resource/not-found.png"/>
+                                                    <h5>No Result Found</h5>
+                                                <?php  
+                                                }
                                             ?>
                                         </div>
                                         <div class="row" style="justify-content: end;margin-right: 10px;">
