@@ -1088,7 +1088,9 @@
 
 	function initAddToCartButton()
     {
+		console.log("in function");
         document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
+			console.log("in function 2");
 			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
 				console.log("condition 1");
@@ -1096,7 +1098,8 @@
 			}
 			else
 			{
-				if(!!document.getElementById("VariationErrorMsg"))
+				console.log("in function 3");
+				if(!document.getElementById("VariationErrorMsg"))
 				{
 					var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;display:none;">Please select product variation to continue</p>`;
 					document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
