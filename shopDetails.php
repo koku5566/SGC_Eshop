@@ -56,7 +56,12 @@
         <!--Section: Content-->
         <section class="text-center">
           <h4 class="mb-5"><strong>best Sellers</strong></h4>
-
+          <div>
+            <?php
+              if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+            ?>
           <div class="row">
             <!--<div class="col-lg-4 col-md-12 mb-4">
               <div class="card">
@@ -79,12 +84,7 @@
               </div>
             </div>-->
 
-              <?php
-              if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-            ?>
-            <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -129,6 +129,7 @@
                 </div>
               </div>
             </div>-->
+          </div>
           </div>
         </section>
         <!--Section: Content-->
