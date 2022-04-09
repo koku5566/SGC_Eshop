@@ -2,7 +2,7 @@
 
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
-        ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+        ?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
 	}
 
