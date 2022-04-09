@@ -643,13 +643,20 @@
                 </div>
                 <!-- /.container-fluid -->
 
-<div id="SuccessMsg" hidden>
-	<div class="SuccessMsg-content">
-		<img src="/img/resource/check.png" style="width: 80px;"/>
-		<p style="color: white;">Item has been added to your shopping cart</p>
+<div class="modal fade" id="MsgModel" tabindex="-1" role="dialog" aria-labelledby="MsgModel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<img src="/img/resource/check.png" style="width: 80px;"/>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<p style="color: white;">Item has been added to your shopping cart</p>
+			</div>
+		</div>
 	</div>
 </div>
-
 
 
 <?php
@@ -1145,13 +1152,12 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				document.getElementById("SuccessMsg").hidden = false;
-				setTimeout(function() {document.getElementById("SuccessMsg").hidden = true}, 3000);
+				$("#MsgModel").modal('show');
+				setTimeout(function() {$("#MsgModel").modal('hide');}, 3000);
 			},
 			error: function(err) {
 				alert(err.responseText);
 			}
 		});
 	}
-
 </script>
