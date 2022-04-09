@@ -93,7 +93,7 @@
 <!--Cheong Kit Min - End of Review & Rating PHP ---------------------------------------------------------------------------------->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+                <div class="container-fluid" id="mainContainer">
 
 					<!-- Breadcumb navigation -->
 					<div class="row" style="display: block;">
