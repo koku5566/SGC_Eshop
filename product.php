@@ -109,13 +109,14 @@
 										$subCategoryName = $row["subCategory"];
 										
 										//If no sub category, display as normal
+										echo("<li class=\"breadcrumb-item\"><a href=\"index.php\">Home</a></li>");
 										echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}\">$mainCategoryName</a></li>");
 										if($subYes == 1)
 										{
 											echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}&subCategory={$subCategoryId}\">$subCategoryName</a></li>");
 										}
 										
-										echo("<li class=\"breadcrumb-item active\"><a href=\"#\">Product</a></li>");
+										echo("<li class=\"breadcrumb-item active\"><a disabled>$i_product_name</a></li>");
 									}
 								}   
 							?>
