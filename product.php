@@ -1084,7 +1084,7 @@
 		});
 	}
 
-	//initAddToCartButton();
+	initAddToCartButton();
 
 	function initAddToCartButton()
     {
