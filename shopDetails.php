@@ -80,7 +80,7 @@
             </div>-->
 
             <div class="col-lg-4 col-md-6 mb-4">
-            <?php
+              <?php
               if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
@@ -97,7 +97,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row["product_name"]. "<br>" " " . $row["product_description"]. "<br>" " " . $row["product_brand"]. "<br>";
+                      echo "<br>" . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
                     }
                   } else {
                     echo "error";
