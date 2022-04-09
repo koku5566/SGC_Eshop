@@ -133,11 +133,13 @@
                                                                         //Make it Active
                                                                         if(isset($_SESSION['subCategory']) && $_SESSION['subCategory'] == $subCategoryId)
                                                                         {
-                                                                            echo("<i class=\"fa fa-caret-right\" style=\"padding: .3rem 0 0px;font-size: larger;color:#a31f37;\"></i>");
-                                                                            echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\" style=\"padding-left: 0.9rem;\">$subCategoryName</a>");
+                                                                            echo("yay");
+                                                                            //echo("<i class=\"fa fa-caret-right\" style=\"padding: .3rem 0 0px;font-size: larger;color:#a31f37;\"></i>");
+                                                                            //echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\" style=\"padding-left: 0.9rem;\">$subCategoryName</a>");
                                                                         }
                                                                         else(
-                                                                            echo("<a href=\"?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
+                                                                            echo("sad");
+                                                                            //echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
                                                                         )
                                                                         
                                                                         echo("</li>");
