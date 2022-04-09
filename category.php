@@ -56,6 +56,7 @@
             if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
             {
                 $_SESSION['mainCategory'] = $_GET['mainCategory'];
+                unset($_SESSION["subCategory"]);
             }
             if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
             {
