@@ -92,17 +92,13 @@
                   if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                      echo " " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. " " . $row["rating"]. " " . $row["product_cover_picture"]. "<br>";
+                      echo "Product Name : " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. " " . $row["rating"]. " " . $row["product_cover_picture"]. "<br>";
                     }
                   } else {
                     echo "0 results";
                   }
                   $conn->close();
                   ?>
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">
-                    Description of this product.<br><span>RM</span><br><span>*****</span>
-                  </p>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
