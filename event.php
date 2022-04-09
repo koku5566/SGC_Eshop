@@ -10,16 +10,29 @@
     <div class="container-fluid" style="width:80%">
     <!-- Above template -->
     <div class="row">
-        <div class="col-sm-3" style="margin-top: 20px;margin-bottom: 20px;">
-            <div class="card">
-                <div class="card-body"><img src="assets/img/event%20cover.png" style="width: 100%;">
-                    <h3 class="card-title" style="margin-top: 10px;">Start your E-Commerce with Shopee!</h3>
-                    <h1 style="color: rgb(163, 31, 55);font-size: 20px;">Online</h1>
-                    <h5 style="font-size: 20px;margin-bottom: 6px;margin-top: 19px;">Date: 6th October 2021</h5>
-                    <h4 style="font-size: 20px;">Organizer: SEGi Group of Colleges</h4><button class="btn btn-primary float-end" type="button" style="margin-top: 5px;background: rgb(163, 31, 55);padding-right: 25px;padding-left: 25px;">Free</button>
-                </div>
-            </div>
-        </div>
+        <?php
+            $sql = "SELECT * FROM `event`";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+
+                    echo("
+                    <div class=\"col-sm-3\" style=\"margin-top: 20px;margin-bottom: 20px;\">
+                        <div class=\"card\">
+                            <div class=\"card-body\"><img src=\"assets/img/event%20cover.png\" style=\"width: 100%;\">
+                                <h3 class=\"card-title\" style=\"margin-top: 10px;\">Start your E-Commerce with Shopee!</h3>
+                                <h1 style=\"color: rgb(163, 31, 55);font-size: 20px;\">Online</h1>
+                                <h5 style=\"font-size: 20px;margin-bottom: 6px;margin-top: 19px;\">Date: 6th October 2021</h5>
+                                <h4 style=\"font-size: 20px;\">Organizer: SEGi Group of Colleges</h4><button class=\"btn btn-primary float-end\" type=\"button\" style=\"margin-top: 5px;background: rgb(163, 31, 55);padding-right: 25px;padding-left: 25px;\">Free</button>
+                            </div>
+                        </div>
+                    </div>
+                    ");
+                }
+            }
+        ?>
+        
     </div>
     <!-- Below Template -->
     </div>
