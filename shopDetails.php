@@ -1,6 +1,16 @@
 <?php
     require_once __DIR__ . '/header.php'
 ?>
+
+<?php
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    
+    $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $result = $conn->query($sql);
+?>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -82,13 +92,6 @@
                 </div>
                 <div class="card-body">
                   <?php
-                  if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                  }
-                  
-                  $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
-                  $result = $conn->query($sql);
-                  
                   if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
