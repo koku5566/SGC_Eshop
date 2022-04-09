@@ -573,7 +573,7 @@
                                                 else
                                                 {
                                                 ?>
-                                                    <div class="row" style="display:block;">
+                                                    <div class="row" style="display:block;width:100%;text-align:center;">
                                                         <img src="/img/resource/not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
                                                         <h5>No Result Found</h5>
                                                     </div>
