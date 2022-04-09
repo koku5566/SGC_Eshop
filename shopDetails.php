@@ -60,10 +60,9 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
+                  <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
@@ -82,10 +81,9 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
+                  <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
@@ -104,10 +102,9 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
+                  <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
