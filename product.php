@@ -646,7 +646,7 @@
 
 <div class="modal fade" id="MsgModel" tabindex="-1" role="dialog" aria-labelledby="MsgModel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div id="SuccessMsg" hidden>
+		<div id="SuccessMsg">
 			<div class="SuccessMsg-content">
 				<img src="/img/resource/check.png" style="width: 80px;"/>
 				<p style="color: white;">Item has been added to your shopping cart</p>
@@ -1150,7 +1150,7 @@
 			dataType: 'JSON',
 			success: function(response){
 				$("#MsgModel").modal('show');
-				//setTimeout(function() {$("#MsgModel").modal('hide');}, 3000);
+				setTimeout(function() {$("#MsgModel").modal('hide');}, 3000);
 			},
 			error: function(err) {
 				alert(err.responseText);
