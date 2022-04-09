@@ -82,6 +82,11 @@
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <?php
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                ?>
                   <img
                     src="/img/product/<?php echo $row['product_cover_picture']?>"
                     class="imgContainer"
@@ -92,9 +97,6 @@
                 </div>
                 <div class="card-body">
                   <?php
-                  if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
                       echo "Product Name : " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. "<br>";
                     }
                   } else {
