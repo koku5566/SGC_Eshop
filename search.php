@@ -4,8 +4,6 @@
 <?php
     if(isset($_GET['ClearFilter']))
     {
-        unset($_SESSION["mainCategory"]);
-        unset($_SESSION["subCategory"]);
         unset($_SESSION["Search"]);
         unset($_SESSION["chkStandardDelivery"]);
         unset($_SESSION["chkSelfCollection"]);
@@ -53,14 +51,6 @@
         }
         else{
             //Save into session
-            if(isset($_GET['mainCategory']) && $_GET['mainCategory'] != "")
-            {
-                $_SESSION['mainCategory'] = $_GET['mainCategory'];
-            }
-            if(isset($_GET['subCategory']) && $_GET['subCategory'] != "")
-            {
-                $_SESSION['subCategory'] = $_GET['subCategory'];
-            }
             if(isset($_GET['Search']) && $_GET['Search'] != "")
             {
                 $_SESSION['Search'] = $_GET['Search'];
@@ -95,7 +85,7 @@
 ?>
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+                <div class="container-fluid" id="mainContainer">
                     <form id="filterForm" method="get" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <!-- Filter and Product List -->
                         <div class="row">
@@ -278,17 +268,6 @@
                                                 LIMIT 1";
 
                                                 //Set to sql
-                                                if(isset($_SESSION['mainCategory']))
-                                                {
-                                                    $mainCategory = $_SESSION['mainCategory'];
-                                                    $sql .= "AND main_category = '$mainCategory' ";
-                                                }
-
-                                                if(isset($_SESSION['subCategory']))
-                                                {
-                                                    $subCategory = $_SESSION['subCategory'];
-                                                    $sql .= "AND sub_category = '$subCategory' ";
-                                                }
 
                                                 if(isset($_SESSION['Search']))
                                                 {
@@ -591,6 +570,8 @@
     .form-check-label{
         padding: 0 10px;
     }
+
+
 
 </style>
 

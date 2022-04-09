@@ -12,6 +12,7 @@
         }
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
+        $_SESSION['userid'] = "14";
         //Basic Details
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
@@ -214,7 +215,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid" id="mainContainer">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
@@ -1023,7 +1024,6 @@
     initImages();
     initVariation();
 
-
     function rearrangeLabel(){
         var draggableItem = document.querySelectorAll('.drag-item');
         var counter=1;
@@ -1118,7 +1118,7 @@
                         var ext = img.files[i].name.split('.').pop();
                         if(j < 9 && extArr.includes(ext))
                         {
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
                         }
@@ -1133,11 +1133,17 @@
                 else if(img.files && img.files[0])
                 {
                     var ext = img.files[0].name.split('.').pop();
+                    var j = 0;
                     if(extArr.includes(ext))
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                        {
+                            j++;
+                        }
+
+                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                        imgInp[j].parentElement.parentElement.classList.add("hide");
                     }
                     else{
                         alert("This Image is not a valid format");

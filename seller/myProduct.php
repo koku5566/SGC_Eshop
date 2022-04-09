@@ -92,7 +92,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
     <!-- Product Filter -->
     <div class="row">
         <div class="col-xl-12 col-lg-12">
@@ -367,7 +367,7 @@
                                         <div class="card-content row mb-3" style="display: none">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
-                                                if(isset($_POST['keyword']) || isset($_POST['category']))
+                                                if($_POST['keyword'] != "" || $_POST['category'] != "")
                                                 {
                                                     $keyword = "";
                                                     $category="";
@@ -390,18 +390,18 @@
                                                         }
                                                     }
 
-                                                    if(isset($_POST['keyword']) && isset($_POST['category']))
+                                                    if($_POST['keyword'] != "" && $_POST['category'] != "")
                                                     {
                                                         $keyword = $_POST['keyword'];
                                                         $category = $_POST['category'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
                                                     }
-                                                    else if(isset($_POST['keyword']))
+                                                    else if($_POST['keyword'] != "")
                                                     {
                                                         $keyword = $_POST['keyword'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%'";
                                                     }
-                                                    else if(isset($_POST['category']))
+                                                    else if($_POST['category'] != "")
                                                     {
                                                         $category = $_POST['category'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";

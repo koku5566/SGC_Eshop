@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+                <div class="container-fluid" id="mainContainer">
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
