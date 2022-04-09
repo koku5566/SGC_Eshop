@@ -125,7 +125,7 @@
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Description</h3>
-                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc" required></textarea>
+                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc"></textarea>
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Category</h3><input class="form-control" type="text" name="eCategory">
@@ -175,7 +175,7 @@
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
-                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC" required></textarea>
+                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
                 </div>
             </section>
             
