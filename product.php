@@ -308,7 +308,7 @@
 								}
 							?>
                             <!-- Quantity -->
-                            <div class="row">
+                            <div class="row" id="QuantityDiv">
                                 <div class="col-xl-6 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -330,7 +330,6 @@
 									?>
 									<p></p>
 								</div>
-								<p>Please select product variation to continue</p>
                             </div>
 							
                             <!-- Button -->
@@ -1026,6 +1025,10 @@
 					$("#stockAvailable").empty();
 					$("#stockAvailable").append(stockHTML);
 				}
+				if(!!document.getElementById("VariationErrorMsg"))
+				{
+					document.getElementById("VariationErrorMsg").remove();
+				}
 			},
 			error: function(err) {
 				//$('#login_message').html(err.responseText);
@@ -1071,6 +1074,11 @@
 					$("#stockAvailable").empty();
 					$("#stockAvailable").append(stockHTML);
 				}
+
+				if(!!document.getElementById("VariationErrorMsg"))
+				{
+					document.getElementById("VariationErrorMsg").remove();
+				}
 			},
 			error: function(err) {
 				//$('#login_message').html(err.responseText);
@@ -1084,13 +1092,17 @@
 	function initAddToCartButton()
     {
         document.getElementById('btnAddToCart');.addEventListener('click', function handleClick(event) {
-			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount"))
+			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
 				addToCart();
 			}
 			else
 			{
-
+				if(!document.getElementById("VariationErrorMsg"))
+				{
+					var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;display:none;">Please select product variation to continue</p>`;
+					document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
+				}
 			}
 		});
     }
