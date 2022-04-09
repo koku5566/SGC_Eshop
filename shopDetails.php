@@ -58,7 +58,7 @@
           <h4 class="mb-5"><strong>best Sellers</strong></h4>
 
           <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
+            <!--<div class="col-lg-4 col-md-12 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -74,10 +74,10 @@
                   <p class="card-text">
                     Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
-                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
+                  <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
-            </div>
+            </div>-->
 
             <?php
               if ($result->num_rows > 0) {
@@ -110,7 +110,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
+            <!--<div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -126,10 +126,10 @@
                   <p class="card-text">
                     Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
-                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
+                  <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
         </section>
         <!--Section: Content-->
