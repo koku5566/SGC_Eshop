@@ -18,7 +18,7 @@
         //{
             $coverIMG = $_FILES['coverImage']['tmp_name'];
             $imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($coverIMG));
+            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['tmp_name']));
         //}
         $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
         $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));

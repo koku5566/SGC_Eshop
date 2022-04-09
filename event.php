@@ -20,7 +20,7 @@
                     echo("
                     <div class=\"col-sm-3\" style=\"margin-top: 20px;margin-bottom: 20px;\">
                         <div class=\"card\">
-                            <div class=\"card-body\"><img src=\"data:image/jpeg;base64,".base64_encode($row['cover_image'])."\"/>
+                            <div class=\"card-body\"><img src=\"data:".stripslashes($row['cover_image_type']).";base64,".base64_encode($row['cover_image'])."\"/>
                                 <h3 class=\"card-title\" style=\"margin-top: 10px;\">Start your E-Commerce with Shopee!</h3>
                                 <h1 style=\"color: rgb(163, 31, 55);font-size: 20px;\">Online</h1>
                                 <h5 style=\"font-size: 20px;margin-bottom: 6px;margin-top: 19px;\">Date: 6th October 2021</h5>
