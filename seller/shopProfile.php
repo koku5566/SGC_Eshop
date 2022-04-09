@@ -20,17 +20,6 @@
           echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
-        //if($run){
-        //  echo "Form Submitted Successfully" ;
-        //}
-        //else{
-        //  echo "Form not submitted";
-        //}
-
-      //}
-      //else{
-      //  echo "all fields required";
-      //}
     }
 ?>
 
