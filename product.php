@@ -87,37 +87,39 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <?php 
-                            $productId = $_SESSION['productID'];
-                            //Display Current Directory
-                            $sql = "SELECT B.category_name AS mainCategory, A.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
-                            LEFT JOIN  category AS B ON A.main_category = B.category_id
-                            LEFT JOIN  category AS C ON A.sub_category = C.category_id
-                            WHERE combination_id = '$i_category_id'
-                            ";
-                            $result = mysqli_query($conn, $sql);
+				<div class="row">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<?php 
+								$productId = $_SESSION['productID'];
+								//Display Current Directory
+								$sql = "SELECT B.category_name AS mainCategory, A.sub_Yes, C.category_name AS subCategory FROM `categoryCombination` AS A 
+								LEFT JOIN  category AS B ON A.main_category = B.category_id
+								LEFT JOIN  category AS C ON A.sub_category = C.category_id
+								WHERE combination_id = '$i_category_id'
+								";
+								$result = mysqli_query($conn, $sql);
 
-                            if (mysqli_num_rows($result) > 0) {
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    $mainCategoryName = $row["mainCategory"];
-                                    $subYes = $row["sub_Yes"];
-                                    $subCategoryName = $row["subCategory"];
-                                    
-                                    //If no sub category, display as normal
-                                    echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$mainCategoryName}\">$mainCategoryName</a></li>");
-                                    if($subYes == 1)
-                                    {
-                                        echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$subCategoryName}\">$subCategoryName</a></li>");
-                                    }
-                                    
-                                    echo("<li class=\"breadcrumb-item active\"><a href=\"?Product={example}\">Product</a></li>");
-                                }
-                            }   
-                        ?>
-                    </ol>
-                </nav>
+								if (mysqli_num_rows($result) > 0) {
+									while($row = mysqli_fetch_assoc($result)) {
+										$mainCategoryName = $row["mainCategory"];
+										$subYes = $row["sub_Yes"];
+										$subCategoryName = $row["subCategory"];
+										
+										//If no sub category, display as normal
+										echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$mainCategoryName}\">$mainCategoryName</a></li>");
+										if($subYes == 1)
+										{
+											echo("<li class=\"breadcrumb-item\"><a href=\"?Category={$subCategoryName}\">$subCategoryName</a></li>");
+										}
+										
+										echo("<li class=\"breadcrumb-item active\"><a href=\"?Product={example}\">Product</a></li>");
+									}
+								}   
+							?>
+						</ol>
+					</nav>
+				</div>
                     <!-- Product Row -->
                     <div class="row mb-3" style="background-color:white;">
                         <!-- Picture -->
