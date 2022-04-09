@@ -42,6 +42,7 @@
 			$i_product_sold = $row_product['product_sold'];
 			$i_category_id = $row_product['category_id'];
 			$i_shop_id = $row_product['shop_id'];
+			$_SESSION['shopId'] = $i_shop_id;
 
 			$i_max_price = $row_product['max_price'];
 			$i_min_price = $row_product['min_price'];
@@ -323,10 +324,13 @@
 									<?php
 										if($i_product_variation == 0)
 										{
-											echo("<span style=\"color:#a31f37;font-size:10pt;\">$i_product_stock piece available</span>");
+											echo("<span id=\"stockAmount\" style=\"color:#a31f37;font-size:10pt;\">$i_product_stock</span>");
+											echo("<span id=\"stockAmount\" style=\"color:#a31f37;font-size:10pt;\"> piece available</span>");
 										}
 									?>
+									<p></p>
 								</div>
+								<p>Please select product variation to continue</p>
                             </div>
 							
                             <!-- Button -->
@@ -1015,7 +1019,8 @@
 					$("#PriceDiv").append(priceHTML);
 
 					var stockHTML = `
-					<span style="color:#a31f37;font-size:10pt;">` + stock + ` piece available</span>
+					<span id="stockAmount" style="color:#a31f37;font-size:10pt;">` + stock + `</span>
+					<span style="color:#a31f37;font-size:10pt;">piece available</span>
 					`;
 					
 					$("#stockAvailable").empty();
@@ -1049,8 +1054,6 @@
 					var price = response[i].price;
 					var stock = response[i].stock;
 
-					<?php $_SESSION['variationId'] = ?>stock;
-					
 					var priceHTML = `
 					<div class="col">
 						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
@@ -1061,7 +1064,8 @@
 					$("#PriceDiv").append(priceHTML);
 
 					var stockHTML = `
-					<span style="color:#a31f37;font-size:10pt;">` + stock + ` piece available</span>
+					<span id="stockAmount" style="color:#a31f37;font-size:10pt;">` + stock + `</span>
+					<span style="color:#a31f37;font-size:10pt;">piece available</span>
 					`;
 					
 					$("#stockAvailable").empty();
@@ -1080,19 +1084,24 @@
 	function initAddToCartButton()
     {
         document.getElementById('btnAddToCart');.addEventListener('click', function handleClick(event) {
-			addToCart();
+			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount"))
+			{
+				addToCart();
+			}
+			else
+			{
+
+			}
 		});
     }
 
-	function addToCart(productId,variationId) 
+	function addToCart(productId) 
 	{
 		$.ajax({
 			url:"PHP_product.php",
 			method:"POST",
 			data:{
 				addToCart:true,
-				productId:productId,
-				variationId:variationId
 			},
 			dataType: 'JSON',
 			success: function(response){
