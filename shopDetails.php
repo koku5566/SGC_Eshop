@@ -81,6 +81,24 @@
                   </a>
                 </div>
                 <div class="card-body">
+                  <?php
+                  if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  }
+                  
+                  $sql = "SELECT product_name, product_description, product_brand, rating, product_cover_picture FROM product";
+                  $result = $conn->query($sql);
+                  
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      echo " " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. " " . $row["rating"]. " " . $row["product_cover_picture"]. "<br>";
+                    }
+                  } else {
+                    echo "0 results";
+                  }
+                  $conn->close();
+                  ?>
                   <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
                     Description of this product.<br><span>RM</span><br><span>*****</span>
