@@ -88,14 +88,14 @@
                   
                   $sql = "SELECT product_name, product_description, product_brand, rating, product_cover_picture FROM product";
                   $result = $conn->query($sql);
-                  
+                  echo "error";
                   if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                       echo "Product Name : " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. " " . $row["rating"]. " " . $row["product_cover_picture"]. "<br>";
                     }
                   } else {
-                    echo "0 results";
+                    echo "error";
                   }
                   $conn->close();
                   ?>
