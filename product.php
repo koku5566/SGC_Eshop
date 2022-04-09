@@ -325,19 +325,16 @@
 										if($i_product_variation == 0)
 										{
 											echo("<span id=\"stockAmount\" style=\"color:#a31f37;font-size:10pt;\">$i_product_stock</span>");
-											echo("<span id=\"stockAmount\" style=\"color:#a31f37;font-size:10pt;\"> piece available</span>");
+											echo("<span style=\"color:#a31f37;font-size:10pt;\"> piece available</span>");
 										}
 									?>
-									<p></p>
 								</div>
                             </div>
 							
                             <!-- Button -->
                             <div class="row mb-5" style="margin-top: 100px;">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary" id="btnAddToCart" style="width:100%;">
-                                        <span class="text">Add To Cart</span>
-                                    </a>
+									<button class="btn btn-primary" style="width:100%;">Add To Cart</button>
                                 </div>
                             </div>
                         </div>
