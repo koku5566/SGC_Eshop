@@ -83,7 +83,7 @@
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://assets.manufactum.de/p/065/065704/65704_02.jpg/bullet-pen.jpg?profile=opengraph_mf"
+                    src="/img/product/<?php echo $row['product_cover_picture']?>"
                     class="imgContainer"
                   />
                   <a href="#!">
@@ -95,7 +95,7 @@
                   if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                      echo "Product Name : " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. " " . $row["product_cover_picture"]. "<br>";
+                      echo "Product Name : " . $row["product_name"]. " " . $row["product_description"]. " " . $row["product_brand"]. "<br>";
                     }
                   } else {
                     echo "error";
