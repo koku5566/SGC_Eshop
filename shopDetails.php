@@ -79,7 +79,8 @@
               </div>
             </div>-->
 
-            <div class="col-lg-4 col-md-6 mb-4">
+            
+            <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
               <?php
               if ($result->num_rows > 0) {
                 // output data of each row
