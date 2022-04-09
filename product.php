@@ -87,42 +87,44 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
 
-				<div class="row" style="display: block;">
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb">
-							<?php 
-								$productId = $_SESSION['productID'];
-								//Display Current Directory
-								$sql = "SELECT B.category_id AS mainCategoryId, B.category_name AS mainCategory, A.sub_Yes, C.category_id AS subCategoryId, C.category_name AS subCategory FROM `categoryCombination` AS A 
-								LEFT JOIN  category AS B ON A.main_category = B.category_id
-								LEFT JOIN  category AS C ON A.sub_category = C.category_id
-								WHERE combination_id = '$i_category_id'
-								";
-								$result = mysqli_query($conn, $sql);
+					<!-- Breadcumb navigation -->
+					<div class="row" style="display: block;">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<?php 
+									$productId = $_SESSION['productID'];
+									//Display Current Directory
+									$sql = "SELECT B.category_id AS mainCategoryId, B.category_name AS mainCategory, A.sub_Yes, C.category_id AS subCategoryId, C.category_name AS subCategory FROM `categoryCombination` AS A 
+									LEFT JOIN  category AS B ON A.main_category = B.category_id
+									LEFT JOIN  category AS C ON A.sub_category = C.category_id
+									WHERE combination_id = '$i_category_id'
+									";
+									$result = mysqli_query($conn, $sql);
 
-								if (mysqli_num_rows($result) > 0) {
-									while($row = mysqli_fetch_assoc($result)) {
-										$mainCategoryId = $row["mainCategoryId"];
-										$mainCategoryName = $row["mainCategory"];
-										$subYes = $row["sub_Yes"];
-										$subCategoryId = $row["subCategoryId"];
-										$subCategoryName = $row["subCategory"];
-										
-										//If no sub category, display as normal
-										echo("<li class=\"breadcrumb-item\"><a href=\"index.php\">Home</a></li>");
-										echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}\">$mainCategoryName</a></li>");
-										if($subYes == 1)
-										{
-											echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}&subCategory={$subCategoryId}\">$subCategoryName</a></li>");
+									if (mysqli_num_rows($result) > 0) {
+										while($row = mysqli_fetch_assoc($result)) {
+											$mainCategoryId = $row["mainCategoryId"];
+											$mainCategoryName = $row["mainCategory"];
+											$subYes = $row["sub_Yes"];
+											$subCategoryId = $row["subCategoryId"];
+											$subCategoryName = $row["subCategory"];
+											
+											//If no sub category, display as normal
+											echo("<li class=\"breadcrumb-item\"><a href=\"index.php\">Home</a></li>");
+											echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}\">$mainCategoryName</a></li>");
+											if($subYes == 1)
+											{
+												echo("<li class=\"breadcrumb-item\"><a href=\"category.php?mainCategory={$mainCategoryId}&subCategory={$subCategoryId}\">$subCategoryName</a></li>");
+											}
+											
+											echo("<li class=\"breadcrumb-item active\"><a disabled>$i_product_name</a></li>");
 										}
-										
-										echo("<li class=\"breadcrumb-item active\"><a disabled>$i_product_name</a></li>");
-									}
-								}   
-							?>
-						</ol>
-					</nav>
-				</div>
+									}   
+								?>
+							</ol>
+						</nav>
+					</div>
+
                     <!-- Product Row -->
                     <div class="row mb-3" style="background-color:white;">
                         <!-- Picture -->
@@ -330,7 +332,7 @@
                             <!-- Button -->
                             <div class="row mb-5" style="margin-top: 100px;">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary" style="width:100%;">
+                                    <a href="#" class="btn btn-primary" id="btnAddToCart" style="width:100%;">
                                         <span class="text">Add To Cart</span>
                                     </a>
                                 </div>
@@ -1068,4 +1070,57 @@
 			}
 		});
 	}
+
+	//initAddToCartButton();
+
+	function initAddToCartButton()
+    {
+        document.getElementById('btnAddToCart');.addEventListener('click', function handleClick(event) {
+			addToCart();
+		});
+    }
+
+	function addToCart(productId,VariationName,VariationChoice) 
+	{
+		$.ajax({
+			url:"PHP_product.php",
+			method:"POST",
+			data:{
+				type:1,
+				productId:productId,
+				VariationName:VariationName,
+				VariationChoice:VariationChoice
+			},
+			dataType: 'JSON',
+			success: function(response){
+				var len = response.length;
+				for(var i=0; i<len; i++){
+					var price = response[i].price;
+					var stock = response[i].stock;
+
+					var priceHTML = `
+					<div class="col">
+						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
+					</div>
+					`;
+					
+					$("#PriceDiv").empty();
+					$("#PriceDiv").append(priceHTML);
+
+					var stockHTML = `
+					<span style="color:#a31f37;font-size:10pt;">` + stock + `</span>
+					<span style="color:#a31f37;font-size:10pt;">piece available</span>
+					`;
+					
+					$("#stockAvailable").empty();
+					$("#stockAvailable").append(stockHTML);
+				}
+			},
+			error: function(err) {
+				//$('#login_message').html(err.responseText);
+				alert(err.responseText);
+			}
+		});
+	}
+
 </script>
