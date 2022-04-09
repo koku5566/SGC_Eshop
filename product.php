@@ -645,8 +645,8 @@
 
 <div id="SuccessMsg" hidden>
 	<div class="SuccessMsg-content">
-		<img src="/img/resource/check.png" style="width: 80px;color: white;"/>
-		<p>Item has been added to your shopping cart</p>
+		<img src="/img/resource/check.png" style="width: 80px;"/>
+		<p style="color: white;">Item has been added to your shopping cart</p>
 	</div>
 </div>
 
