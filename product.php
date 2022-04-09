@@ -1150,7 +1150,7 @@
 			dataType: 'JSON',
 			success: function(response){
 				$("#MsgModel").modal('show');
-				setTimeout(function() {$("#MsgModel").modal('hide');}, 3000);
+				setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
 			},
 			error: function(err) {
 				alert(err.responseText);
