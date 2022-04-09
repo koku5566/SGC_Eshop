@@ -1091,7 +1091,7 @@
         document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
 			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 			{
-
+				console.log("condition 1");
 				//addToCart();
 			}
 			else
