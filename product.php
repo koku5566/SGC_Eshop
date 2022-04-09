@@ -643,9 +643,9 @@
                 </div>
                 <!-- /.container-fluid -->
 
-<div class="SuccessMsg">
+<div id="SuccessMsg" hidden>
 	<div class="SuccessMsg-content">
-		<img src="/img/resource/check.png" style="width: 80px;"/>
+		<img src="/img/resource/check.png" style="width: 80px;color: white;"/>
 		<p>Item has been added to your shopping cart</p>
 	</div>
 </div>
@@ -844,7 +844,7 @@
 		color:white;
 	}
 
-	.SuccessMsg{
+	#SuccessMsg{
 		position: fixed;
 		top: 45%;
 		left: 0;
@@ -852,6 +852,11 @@
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
+		width: 400px;
+		padding: 20px 0;
+		border-radius: 10px;
+		background: rgba(9, 9, 9, 0.6);
+		z-index: 99;
 	}
 </style>
 
@@ -1140,17 +1145,8 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				document.getElementById('');
-				var MessageManager = {
-					show: function(content) {
-						$('#message-container').html(content);
-						setTimeout(function(){
-							$('#message-container').html('');
-						}, 5000);
-					}
-				};
-
-				MessageManager.show('<h1>Testing</h1>');
+				document.getElementById("SuccessMsg").hidden = false;
+				setTimeout(function() {document.getElementById("SuccessMsg").hidden = true}, 3000);
 			},
 			error: function(err) {
 				alert(err.responseText);
