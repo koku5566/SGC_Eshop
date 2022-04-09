@@ -439,7 +439,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1922,6 +1922,14 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+    selector: '#productDescription'
+    });
 </script>
 
 <?php
