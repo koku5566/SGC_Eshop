@@ -62,7 +62,7 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                        <a href=\"category.php?mainCategory=$maincategoryid\" class=\"nav-link\">
                                                         <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
                                                         $categoryName
                                                         </a>
