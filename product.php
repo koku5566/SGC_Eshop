@@ -1003,6 +1003,8 @@
 					var price = response[i].price;
 					var stock = response[i].stock;
 
+					
+
 					var priceHTML = `
 					<div class="col">
 						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
@@ -1047,6 +1049,8 @@
 					var price = response[i].price;
 					var stock = response[i].stock;
 
+					<?php $_SESSION['variationId'] = ?>stock;
+					
 					var priceHTML = `
 					<div class="col">
 						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
@@ -1080,44 +1084,21 @@
 		});
     }
 
-	function addToCart(productId,VariationName,VariationChoice) 
+	function addToCart(productId,variationId) 
 	{
 		$.ajax({
 			url:"PHP_product.php",
 			method:"POST",
 			data:{
-				type:1,
+				addToCart:true,
 				productId:productId,
-				VariationName:VariationName,
-				VariationChoice:VariationChoice
+				variationId:variationId
 			},
 			dataType: 'JSON',
 			success: function(response){
-				var len = response.length;
-				for(var i=0; i<len; i++){
-					var price = response[i].price;
-					var stock = response[i].stock;
-
-					var priceHTML = `
-					<div class="col">
-						<span style="color:#a31f37;font-size:18pt;font-weight: bold;">RM ` + price + `</span>
-					</div>
-					`;
-					
-					$("#PriceDiv").empty();
-					$("#PriceDiv").append(priceHTML);
-
-					var stockHTML = `
-					<span style="color:#a31f37;font-size:10pt;">` + stock + `</span>
-					<span style="color:#a31f37;font-size:10pt;">piece available</span>
-					`;
-					
-					$("#stockAvailable").empty();
-					$("#stockAvailable").append(stockHTML);
-				}
+				//Add to cart successful show something 
 			},
 			error: function(err) {
-				//$('#login_message').html(err.responseText);
 				alert(err.responseText);
 			}
 		});

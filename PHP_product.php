@@ -15,7 +15,7 @@
 
         if (mysqli_num_rows($result_product) == 1) {
             while($row_product = mysqli_fetch_assoc($result_product)) {
-                $return_arr[] = array("price" => $row_product['product_price'],"stock" => $row_product['product_stock']);
+                $return_arr[] = array("id" => $row_product['variation_id'],"price" => $row_product['product_price'],"stock" => $row_product['product_stock']);
             }
             echo json_encode($return_arr);
         }
@@ -43,5 +43,10 @@
         else{
             echo json_encode("");
         }
+    }
+    else if(isset($_POST['addToCart']))
+    {
+        $productId = $_POST['productId'];
+        $variationId = $_POST['variationId'];
     }
 ?>
