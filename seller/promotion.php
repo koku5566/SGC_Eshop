@@ -145,8 +145,9 @@
                                 {
                                     //get file name
                                     $fileName = $_FILES['img']['name'][$i];
-                                    $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
-                                    VALUES('$title','$fileName','$dateStart','$dateEnd')";
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                    VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                    
                                     $result = mysqli_query($conn,$sql);
 
                                     if($result)
