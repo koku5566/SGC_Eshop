@@ -18,7 +18,7 @@
         //{
             $coverIMG = $_FILES['coverImage']['tmp_name'];
             $imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['tmp_name']));
+            $coverImgContent = addslashes(file_get_contents($coverIMG));
         //}
         $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
         $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
@@ -51,7 +51,6 @@
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
                 $bp = mysqli_stmt_bind_param($stmt,"bssssssssssi",$coverImgContent, $imageProperties['mime'], $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
-                mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
