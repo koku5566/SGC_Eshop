@@ -1,16 +1,14 @@
+<?php
+    require __DIR__ . '/header.php'
+?>
+    <link rel="stylesheet" type="text/css" href="css\payment.css">
+    <div class="container-fluid" style="width:80%">
+
 <?php 
 include_once 'db_connection.php'; 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PayPal Test</title>
-    <link rel="stylesheet" type="text/css" href="payment.css">
-</head>
-<body class="App">
+
+<div class="payment">
   <h1>Checkout</h1>
   <?php
   $result = mysqli_query($db_conn,"SELECT * FROM user where name='jordan'");
@@ -20,7 +18,6 @@ include_once 'db_connection.php';
   <h3><?php echo $row['address']," ",$row['postal_code']," ",$row['area']," ",$row['state']," ",$row['country'];?></h3>
   <?php } ?> 
 
-    <div class="sample username">
   <div class="wrapper">
     <?php 
 		  $results = mysqli_query($db_conn,"SELECT * FROM products where status=1");
@@ -49,5 +46,7 @@ include_once 'db_connection.php';
 	    </div>
     <?php } ?>
   </div>
-</body>
-</html>
+  </div> 
+  <?php
+    require __DIR__ . '/footer.php'
+?>
