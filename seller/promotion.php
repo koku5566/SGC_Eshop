@@ -165,8 +165,8 @@
     <!-- /.container-fluid -->
 <style>
     .image-container{
-        width: 344px;
-        height: 200px;
+        width: 368px; 
+        height: 207px; 
         background-color: white;
     }
 
@@ -175,8 +175,8 @@
     }
 
     .image-layer{
-        width: 344px;
-        height: 200px;
+        width: 368px;
+        height: 207px;
         opacity:0.5;
         position:absolute;
         margin-top: -200px;
@@ -187,7 +187,7 @@
     }
 
     .image-tools-delete{
-        width: 344px;
+        width: 368px;
         height: 50px;
         background:grey;
         position:absolute;
@@ -205,8 +205,8 @@
 
 
     .image-tools-add{
-        width: 344px;
-        height: 200px;
+        width: 368px;
+        height: 207px;
         background:white;
         opacity:0.5;
         position:absolute;
