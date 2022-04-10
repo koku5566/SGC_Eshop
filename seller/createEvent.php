@@ -16,6 +16,7 @@
         //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
         //if($checkImage !== false)
         //{
+
             $coverIMG = array_filter($_FILES['coverImage']['tmp_name']);
             $targetDir = dirname(__DIR__, 1)."/img/event/"; 
             $allowTypes = array('jpg','png','jpeg'); 
@@ -26,6 +27,7 @@
 
             if(!empty($coverIMG)){ 
                 foreach($_FILES['coverImage']['tmp_name'] as $key=>$val){ 
+                    echo(var_dump($_FILES['coverImage']));
                     // File upload path 
                     $fileName = basename($_FILES['coverImage']['tmp_name'][$key]); 
                     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
