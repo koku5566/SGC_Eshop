@@ -4,7 +4,7 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width: 80%;">
-        <h1 style="margin-top: 50px;">Promotion Banner</h1>
+        <h1 style="margin-top: 50px;">Create Promotion Banner</h1>
         <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
 
         <!-- View Section -->
