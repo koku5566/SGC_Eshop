@@ -180,9 +180,10 @@
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
         //$shopId = $_SESSION['user_id'];
+        $shopId = "14";
 
-        $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
-        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
+        $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
         $result_product = mysqli_query($conn, $sql_product);
 
         if (mysqli_num_rows($result_product) > 0) {
