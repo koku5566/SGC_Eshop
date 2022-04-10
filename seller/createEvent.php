@@ -16,9 +16,29 @@
         //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
         //if($checkImage !== false)
         //{
-            $coverIMG = $_FILES['coverImage']['tmp_name'];
+            $coverIMG = array_filter($_FILES['coverImage']['tmp_name']);
+            $targetDir = dirname(__DIR__, 1)."/img/event/"; 
+            $allowTypes = array('jpg','png','jpeg'); 
+
             $imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($coverIMG));
+            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['tmp_name']));
+
+            if(!empty($coverIMG)){ 
+                foreach($_FILES['coverImage']['tmp_name'] as $key=>$val){ 
+                    // File upload path 
+                    $fileName = basename($_FILES['img']['name'][$key]); 
+                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $fileName = round(microtime(true) * 1000).".".$ext;
+                    $targetFilePath = $targetDir.$fileName; 
+                    // Check whether file type is valid 
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                    if(in_array($fileType, $allowTypes)){ 
+                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
+                            $categoryPic = "$fileName";
+                        }
+                    }
+                } 
+            }
         //}
         $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
         $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
@@ -50,7 +70,7 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"bssssssssssi",$coverImgContent, $imageProperties['mime'], $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                $bp = mysqli_stmt_bind_param($stmt,"sssssssssssi",$categoryPic, $imageProperties['mime'], $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
@@ -89,7 +109,7 @@
         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage" required></h2>
+                <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required></h2>
             </section>
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
