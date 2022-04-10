@@ -113,6 +113,8 @@
                     <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
                     <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
+
+
                 <?php
                 if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
@@ -150,7 +152,11 @@
                                     if($result)
                                     {
                                         echo '<script>alert("Add promotion successfully!")</script>';
-                                        // header('Location: '.$_SERVER['PHP_SELF']); (refresh function)
+                                        ?>
+                                            <script type="text/javascript">
+                                                window.location.href = window.location.origin + "/seller/promotion.php";
+                                            </script>
+                                        <?php
                                     }
                                     else
                                     {
