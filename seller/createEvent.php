@@ -36,6 +36,7 @@
                     if(in_array($fileType, $allowTypes)){ 
                         if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
                             $categoryPic = "$fileName";
+                            echo "<script>alert('cancan');</script>";
                         }
                     }
                 } 
