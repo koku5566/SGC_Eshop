@@ -86,6 +86,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9.</small>
+                            </div>
                         </div>
                     </div> 
 
