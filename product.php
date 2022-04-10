@@ -1188,12 +1188,12 @@
 			var stockAvailable = document.getElementById("stockAmount");
 			if(stockAvailable < quantity)
 			{
-				quantity.value = stockAvailable;
+				document.getElementById('txtQuantity').value = stockAvailable;
 			}
 		}
 		else
 		{
-			quantity.value = "0";
+			document.getElementById('txtQuantity').value
 		}
 	});
 
@@ -1207,7 +1207,7 @@
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepUp();
 			}
 			else{
-				quantity = stockAvailable;
+				document.getElementById('txtQuantity').value = stockAvailable;
 			}
 		}
 		else
@@ -1226,12 +1226,12 @@
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepDown();
 			}
 			else{
-				quantity = "0";
+				document.getElementById('txtQuantity').value = "0";
 			}
 		}
 		else
 		{
-			quantity.value = "0";
+			document.getElementById('txtQuantity').value = "0";
 		}
 	});
 
