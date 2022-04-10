@@ -265,10 +265,10 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                    <div class="card-header py-3" style="display:flex;">
                         <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
-                        <a href="<?php echo("../visualEffect.php?id=$productId") ?>" target="_blank" rel="noopener noreferrer" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">
-                            <i class="fas fa-eye fa-sm text-white-50"></i>
+                        <a style="right: 2%;position: absolute;" href="<?php echo("../visualEffect.php?id=$productId") ?>" target="_blank" rel="noopener noreferrer" class="d-none d-sm-inline-block btn btn-sm">
+                            <i class="fas fa-eye fa-sm"></i>
                              Visual Effect
                         </a>
                     </div>
