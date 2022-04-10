@@ -16,7 +16,7 @@
 
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                    $picLocation = "/img/category/".$row["cover_image"];
+                    $picLocation = "/img/event/".$row["cover_image"];
                     echo("
                     <div class=\"col-sm-3\" style=\"margin-top: 20px;margin-bottom: 20px;\">
                         <div class=\"card\">
@@ -32,7 +32,6 @@
                 }
             }
         ?>
-        
     </div>
     <!-- Below Template -->
     </div>
