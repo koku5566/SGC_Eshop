@@ -19,8 +19,8 @@
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
-        //$productDescription = htmlentities($_POST["productDescription"]);
+        //$productDescription = $_POST['productDescription'];
+        $productDescription = htmlentities($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -1749,11 +1749,27 @@
 <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
 
 <script>
-    /*
     tinymce.init({
-    selector: '#productDescription'
+
+        selector: '#productDescription',
+
+        plugins: [
+
+        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+
+        'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+
+        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+
+        ],
+
+        toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+
+        'alignleft aligncenter alignright alignjustify | ' +
+
+        'removeformat | a11ycheck code table help'
+
     });
-    */
 </script>
 
 <?php
