@@ -11,3 +11,7 @@
 .tox.tox-tinymce {
     width: 100%;
 }
+
+.tox-menubar {
+  display: none !important;
+}
