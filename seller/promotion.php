@@ -125,6 +125,7 @@
                     //File upload configuration 
                     $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
                     $fileNames = array_filter($_FILES['img']['name']);
+                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                     $fileName = round(microtime(true) * 1000).".".$ext;
                     $allowTypes = array('jpg','png','jpeg');
                     $total = count($_FILES["img"]["name"]); 
