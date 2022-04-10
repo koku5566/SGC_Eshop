@@ -323,11 +323,11 @@
                                 <div class="col-xl-6 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                        <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown(); RefreshValue(this);" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown();" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input min="1" name="quantity[]" value="1" type="number" class="form-control quantity-input">
+                                        <input min="1" name="quantity[]" id="txtQuantity" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
-                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp(); RefreshValue(this);" class="plus" name = "ChangeQuantity\" type = "button"><i class="fa fa-plus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp();" class="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -1179,4 +1179,21 @@
 			}
 		});
 	}
+
+	document.getElementById('txtQuantity').addEventListener('change', function handleChange(event) {
+		var quantity = document.getElementById('txtQuantity');
+		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
+		{
+			var stockAvailable = document.getElementById("stockAmount");
+			if(stockAvailable < quantity)
+			{
+				quantity.value = stockAvailable;
+			}
+		}
+		else
+		{
+			quantity.value = "0";
+		}
+	});
+
 </script>
