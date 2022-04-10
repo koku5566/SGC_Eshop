@@ -53,7 +53,7 @@
                     }
                     else
                     {
-                        $buttonPrice = $minPrice . " - " . $maxPrice;
+                        $buttonPrice = "RM ".$minPrice . " - RM " . $maxPrice;
                     }
                     
                     echo("
