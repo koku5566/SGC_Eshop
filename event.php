@@ -11,7 +11,7 @@
     <!-- Above template -->
     <div class="row">
         <?php
-            $sql = "SELECT * FROM `event` WHERE `event_id` = 38";
+            $sql = "SELECT * FROM `event`";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
@@ -20,7 +20,7 @@
                     echo("
                     <div class=\"col-sm-3\" style=\"margin-top: 20px;margin-bottom: 20px;\">
                         <div class=\"card\">
-                            <div class=\"card-body\"><img src=\"$picLocation\" />
+                            <div class=\"card-body\"><img src=\"$picLocation\" style=\"width:100%;\" />
                                 <h3 class=\"card-title\" style=\"margin-top: 10px;\">Start your E-Commerce with Shopee!</h3>
                                 <h1 style=\"color: rgb(163, 31, 55);font-size: 20px;\">Online</h1>
                                 <h5 style=\"font-size: 20px;margin-bottom: 6px;margin-top: 19px;\">Date: 6th October 2021</h5>

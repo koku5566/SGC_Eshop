@@ -17,13 +17,13 @@
         //if($checkImage !== false)
         //{
 
-            $coverIMG = array_filter($_FILES['coverImage']['tmp_name']);
+            $coverIMG = array_filter($_FILES['coverImage']['name']);
             $targetDir = dirname(__DIR__, 1)."/img/event/"; 
             $allowTypes = array('jpg','png','jpeg'); 
             $categoryPic = "";
 
             //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['tmp_name']));
+            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
 
             if(!empty($coverIMG)){ 
                 foreach($_FILES['coverImage']['name'] as $key=>$val){ 
@@ -35,7 +35,7 @@
                     // Check whether file type is valid 
                     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                     if(in_array($fileType, $allowTypes)){ 
-                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
+                        if(move_uploaded_file($_FILES["coverImage"]["name"][$key], $targetFilePath)){ 
                             $categoryPic = "$fileName";
                         }
                     }
