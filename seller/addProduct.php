@@ -20,7 +20,7 @@
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         //$productDescription = $_POST['productDescription'];
-        $productDescription = htmlentities($_POST["productDescription"]);
+        $productDescription = htmlspecialchars($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
