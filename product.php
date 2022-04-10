@@ -402,7 +402,7 @@
 
 					<!-- Product Description -->
                     <div class="row mb-3" style="background-color:white;">
-                        <div class="col">
+                        <div class="productDescriptionDiv">
 							<?php 
 							echo(html_entity_decode($i_product_description)); 
 							//echo($i_product_description); 
@@ -878,6 +878,11 @@
 		.firstThumbnail{
 			margin-left:0 !important;;
 		}
+	}
+
+	.productDescriptionDiv{
+		width:100%;
+		padding:20px;
 	}
 </style>
 
