@@ -27,7 +27,7 @@
             if(!empty($coverIMG)){ 
                 foreach($_FILES['coverImage']['tmp_name'] as $key=>$val){ 
                     // File upload path 
-                    $fileName = basename($_FILES['img']['name'][$key]); 
+                    $fileName = basename($_FILES['coverImage']['tmp_name'][$key]); 
                     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                     $fileName = round(microtime(true) * 1000).".".$ext;
                     $targetFilePath = $targetDir.$fileName; 
