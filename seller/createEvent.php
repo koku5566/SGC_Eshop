@@ -37,7 +37,7 @@
                     // Check whether file type is valid 
                     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                     if(in_array($fileType, $allowTypes)){ 
-                        if(move_uploaded_file($_FILES["coverImage"]["name"][$key], $targetFilePath)){ 
+                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
                             $categoryPic = "$fileName";
                         }
                     }
