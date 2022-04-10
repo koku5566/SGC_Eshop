@@ -1207,12 +1207,12 @@
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepUp();
 			}
 			else{
-				quantity.value = stockAvailable;
+				quantity = stockAvailable;
 			}
 		}
 		else
 		{
-			quantity.value = "0";
+			quantity = "0";
 		}
 	});
 
@@ -1226,7 +1226,7 @@
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepDown();
 			}
 			else{
-				quantity.value = "0";
+				quantity = "0";
 			}
 		}
 		else
