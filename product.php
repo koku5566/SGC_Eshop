@@ -1198,10 +1198,10 @@
 	});
 
 	document.getElementById('plus').addEventListener('click', function handleClick(event) {
-		var quantity = document.getElementById('txtQuantity');
+		var quantity = document.getElementById('txtQuantity').value;
 		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 		{
-			var stockAvailable = document.getElementById("stockAmount");
+			var stockAvailable = document.getElementById("stockAmount").value;
 			if(stockAvailable > quantity)
 			{
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepUp();
@@ -1217,10 +1217,10 @@
 	});
 
 	document.getElementById('minus').addEventListener('click', function handleClick(event) {
-		var quantity = document.getElementById('txtQuantity');
+		var quantity = document.getElementById('txtQuantity').value;
 		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 		{
-			var stockAvailable = document.getElementById("stockAmount");
+			var stockAvailable = document.getElementById("stockAmount").value;
 			if(quantity > 1)
 			{
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepDown();
