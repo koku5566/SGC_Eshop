@@ -323,11 +323,11 @@
                                 <div class="col-xl-6 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                        <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown();" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" id="minus" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
                                         <input min="1" name="quantity[]" id="txtQuantity" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
-                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp();" class="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp();" id="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -1184,10 +1184,49 @@
 		var quantity = document.getElementById('txtQuantity');
 		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 		{
+			this.parentNode.parentNode.querySelector('input[type=number]').stepDown()
 			var stockAvailable = document.getElementById("stockAmount");
 			if(stockAvailable < quantity)
 			{
 				quantity.value = stockAvailable;
+			}
+		}
+		else
+		{
+			quantity.value = "0";
+		}
+	});
+
+	document.getElementById('plus').addEventListener('click', function handleClick(event) {
+		var quantity = document.getElementById('txtQuantity');
+		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
+		{
+			var stockAvailable = document.getElementById("stockAmount");
+			if(stockAvailable > quantity)
+			{
+				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepUp();
+			}
+			else{
+				quantity.value = stockAvailable;
+			}
+		}
+		else
+		{
+			quantity.value = "0";
+		}
+	});
+
+	document.getElementById('minus').addEventListener('click', function handleClick(event) {
+		var quantity = document.getElementById('txtQuantity');
+		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
+		{
+			var stockAvailable = document.getElementById("stockAmount");
+			if(quantity > 1)
+			{
+				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepDown();
+			}
+			else{
+				quantity.value = "0";
 			}
 		}
 		else
