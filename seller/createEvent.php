@@ -27,12 +27,12 @@
 
             if(!empty($coverIMG)){ 
                 foreach($_FILES['coverImage']['tmp_name'] as $key=>$val){ 
-                    echo(var_dump($_FILES['coverImage']));
                     // File upload path 
                     $fileName = basename($_FILES['coverImage']['tmp_name'][$key]); 
                     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                     $fileName = round(microtime(true) * 1000).".".$ext;
                     $targetFilePath = $targetDir.$fileName; 
+                    echo($targetFilePath);
                     // Check whether file type is valid 
                     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                     if(in_array($fileType, $allowTypes)){ 
