@@ -66,8 +66,7 @@
             $productSelfCollect = 0;
             $productStandardDelivery = 0;
         }
-        
-        
+
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
