@@ -1202,7 +1202,7 @@
 		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 		{
 			var stockAvailable = document.getElementById("stockAmount").innerText;
-			if(stockAvailable > quantity)
+			if(parseInt(stockAvailable) > parseInt(quantity))
 			{
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepUp();
 			}
@@ -1221,7 +1221,7 @@
 		if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
 		{
 			var stockAvailable = document.getElementById("stockAmount").innerText;
-			if(quantity > 1)
+			if(parseInt(quantity) > 1)
 			{
 				document.getElementById('plus').parentNode.parentNode.querySelector('input[type=number]').stepDown();
 			}
