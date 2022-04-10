@@ -199,7 +199,6 @@
                 array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
                 array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
 
-
                 $i_product_weight = $row_product['product_weight'];
                 $i_product_length = $row_product['product_length'];
                 $i_product_width = $row_product['product_width'];
