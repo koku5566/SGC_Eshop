@@ -47,7 +47,7 @@
 
                         }
                     }
-                    if($minPrice == 0 && $maxPrice == 0)
+                    if($maxPrice == 0)
                     {
                         $buttonPrice = "Free";
                     }
