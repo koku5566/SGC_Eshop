@@ -123,30 +123,19 @@
                     $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
                     //File upload configuration 
+                    $fileNames = array_filter($_FILES['img']['name']); 
                     $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    $fileNames = array_filter($_FILES['img']['name']);
+                    $allowTypes = array('jpg','png','jpeg');
+
+                    $fileName = basename($_FILES['img']['name'][0]); 
                     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                     $fileName = round(microtime(true) * 1000).".".$ext;
-                    $allowTypes = array('jpg','png','jpeg');
-                    $total = count($_FILES["img"]["name"]); 
-                    if(!empty($fileNames))
-                    { 
-                        for($i=0 ; $i < $total ; $i++)
-                        {
-                            //File upload path 
-                            $tmpFilePath = $_FILES['img']['tmp_name'][$i];
-
-                            //make sure file is not null
-                            if ($tmpFilePath != "")
-                            {
-                                //Setup new file path
-                                $newFilePath = $targetDir . $fileName;
-
-                                //Upload the file into the temp dir
-                                if(move_uploaded_file($tmpFilePath, $newFilePath))
-                                {
-                                    //get file name
-                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                    $targetFilePath = $targetDir.$fileName; 
+                    // Check whether file type is valid 
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                    if(in_array($fileType, $allowTypes)){ 
+                        if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                            $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
                                     VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
                                     
                                     $result = mysqli_query($conn,$sql);
@@ -164,8 +153,6 @@
                                     {
                                         echo '<script>alert("Failed")</script>';
                                     }
-                                }
-                            } 
                         }
                     }
                 }
