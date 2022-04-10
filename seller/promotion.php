@@ -76,7 +76,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp">
+                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div>
-                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9.</small>
+                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                         </div>
                     </div> 
@@ -145,8 +145,9 @@
                                 {
                                     //get file name
                                     $fileName = $_FILES['img']['name'][$i];
-                                    $sql = "INSERT INTO `promotion` (`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
-                                    VALUES('$title','$fileName','$dateStart','$dateEnd')";
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                    VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                    
                                     $result = mysqli_query($conn,$sql);
 
                                     if($result)
@@ -255,6 +256,7 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
                 img.parentElement.classList.add("hide");
             });
         });

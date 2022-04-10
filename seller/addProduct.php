@@ -1721,7 +1721,7 @@
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
                 if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
                 {
