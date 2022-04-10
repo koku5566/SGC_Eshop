@@ -19,7 +19,8 @@
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = htmlentities($_POST["productDescription"]);
+        $productDescription = $_POST['productDescription'];
+        //$productDescription = htmlentities($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -1748,9 +1749,11 @@
 <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
 
 <script>
+    /*
     tinymce.init({
     selector: '#productDescription'
     });
+    */
 </script>
 
 <?php
