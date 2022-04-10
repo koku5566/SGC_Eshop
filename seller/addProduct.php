@@ -1753,7 +1753,7 @@
 
         selector: '#productDescription',
 
-        toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | removeformat'
+        toolbar: 'undo redo | formatpainter casechange blocks | bold italic | removeformat'
 
     });
 </script>

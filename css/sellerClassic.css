@@ -2,8 +2,12 @@
     width:100%;
   }
   
-  @media only screen and (min-width: 600px) {
-    #mainContainer{
-      width:80%;
-    }
+@media only screen and (min-width: 600px) {
+  #mainContainer{
+    width:80%;
   }
+}
+
+.tox.tox-tinymce {
+    width: 100%;
+}

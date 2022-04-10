@@ -194,3 +194,6 @@ button, input, optgroup, select, textarea {
   }
 }
 
+.tox.tox-tinymce {
+  width: 100%;
+}
