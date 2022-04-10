@@ -327,7 +327,7 @@
                                         </div>
                                         <input min="1" name="quantity[]" id="txtQuantity" value="1" type="number" class="form-control quantity-input">
                                         <div class="input-group-append">
-                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp();" id="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
+                                        <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" id="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
