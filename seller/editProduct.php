@@ -260,7 +260,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid" id="mainContainer">
-
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
         <div class="row">
@@ -268,6 +267,10 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">
+                            <i class="fas fa-eye fa-sm text-white-50"></i>
+                             Visual Effect
+                        </a>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
