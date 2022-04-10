@@ -19,8 +19,9 @@
             $coverIMG = array_filter($_FILES['coverImage']['tmp_name']);
             $targetDir = dirname(__DIR__, 1)."/img/event/"; 
             $allowTypes = array('jpg','png','jpeg'); 
+            $categoryPic = "";
 
-            $imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
+            //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
             $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['tmp_name']));
 
             if(!empty($coverIMG)){ 
@@ -65,12 +66,12 @@
         //   mysqli_stmt_close($stmt);
         // }
         
-        $sql = "INSERT INTO `event`(`cover_image`, `cover_image_type`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"sssssssssssi",$categoryPic, $imageProperties['mime'], $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
