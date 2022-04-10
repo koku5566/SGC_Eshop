@@ -76,7 +76,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp">
+                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div>
-                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9.</small>
+                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                         </div>
                     </div> 
