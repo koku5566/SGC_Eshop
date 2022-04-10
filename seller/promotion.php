@@ -15,8 +15,8 @@
                             <thead>
                                 <tr>
                                 <th scope="col">Promotion Title</th>
-                                <th scope="col" class="text-center">Date</th>
-                                <th scope="col" class="text-center">Action</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,7 +29,7 @@
                                              .$row["promotion_title"]."</td><td>"."Start:  "
                                              .$row["promotion_Date"]."<br>"."End:   "
                                              .$row["promotionEnd_Date"]."</td>
-                                             <td class=\"text-center\">
+                                             <td>
                                              <div class=\"col-xl-6\" style=\"padding:0;\">
                                                 <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                 </div>
