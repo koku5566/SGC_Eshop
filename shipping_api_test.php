@@ -114,6 +114,7 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 }
+echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode,, $sState, $sPhone
 
 //if get is not null then
 $domain = "https://demo.connect.easyparcel.my/?ac=";
