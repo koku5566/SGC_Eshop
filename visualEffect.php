@@ -341,13 +341,7 @@
 									?>
 								</div>
                             </div>
-							
-                            <!-- Button -->
-                            <div class="row mb-5" style="margin-top: 100px;">
-                                <div class="col">
-									<button id="btnAddToCart" class="btn btn-primary" style="width:100%;">Add To Cart</button>
-                                </div>
-                            </div>
+						
                         </div>
                     </div>
 
@@ -1136,45 +1130,6 @@
 			},
 			error: function(err) {
 				//$('#login_message').html(err.responseText);
-				alert(err.responseText);
-			}
-		});
-	}
-
-	initAddToCartButton();
-
-	function initAddToCartButton()
-    {
-        document.getElementById('btnAddToCart').addEventListener('click', function handleClick(event) {
-			if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
-			{
-				addToCart();
-			}
-			else
-			{
-				if(!document.getElementById("VariationErrorMsg"))
-				{
-					var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;">Please select product variation to continue</p>`;
-					document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
-				}
-			}
-		});
-    }
-
-	function addToCart(productId) 
-	{
-		$.ajax({
-			url:"PHP_product.php",
-			method:"POST",
-			data:{
-				addToCart:true,
-			},
-			dataType: 'JSON',
-			success: function(response){
-				$("#MsgModel").modal('show');
-				setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
-			},
-			error: function(err) {
 				alert(err.responseText);
 			}
 		});
