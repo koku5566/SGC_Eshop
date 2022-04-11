@@ -55,8 +55,6 @@ try {
 } catch (Exception $e) {
     throw new Exception('Unable to create link for payment');
 }
-
-<script>window.location.href = "'location:' . $payment->getApprovalLink()";</script>
-//header('location:' . $payment->getApprovalLink());
+header('location:' . $payment->getApprovalLink());
 exit(1);
 
