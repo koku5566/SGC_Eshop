@@ -20,8 +20,8 @@ $paypalConfig = [
 // Database settings. Change these for your database configuration.
 $dbConfig = [
     'host' => 'localhost',
-    'username' => 'sgcprot1_SGC_ESHOP',
-    'password' => 'bXrAcmvi,B#U',
+    'username' => 'root',
+    'password' => '',
     'name' => 'sgcprot1_SGC_ESHOP'
 ];
 
