@@ -18,7 +18,7 @@
  <!--  <div class="wrapper">
     <?php 
 		  $results = mysqli_query($conn,"SELECT * FROM product where product_status='A'");
-		  $row = $result->fetch_assoc()) {
+		  while($row = mysqli_fetch_array($results)){
     ?>
 	    <div class="col__box">
 	      <h5><?php echo $row['name']; ?></h5>
