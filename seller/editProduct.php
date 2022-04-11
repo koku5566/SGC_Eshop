@@ -1291,49 +1291,52 @@
                 const [file] = img.files;
                 var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++) {
+                {
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
+                    {
+                        imageValid = false;
+                    }
+                }
 
-                if (img.files && img.files[0] && img.files.length > 1) {
-                    for (var j = 0,i = 0; i < this.files.length; i++) {
-                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                        {
-                            j++;
+                if(imageValid)
+                {
+                    if (img.files && img.files[0] && img.files.length > 1) {
+                        for (var j = 0,i = 0; i < this.files.length; i++) {
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+                            if(j < 9)
+                            {
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                                imgInp[j].parentElement.parentElement.classList.add("hide");
+                            }
                         }
-
-                        var ext = img.files[i].name.split('.').pop();
-                        if(j < 9 && extArr.includes(ext) && img.files[i].size < maxsize)
+                    }
+                    else if(img.files && img.files[0])
+                    {
+                        var j = 0;
+                        if(img.files[0].size < maxsize)
                         {
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
                         }
-                        else
-                        {
-                            alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
-                            img.value = "";
-                            break;
-                        }
                     }
                 }
-                else if(img.files && img.files[0])
+                else
                 {
-                    var ext = img.files[0].name.split('.').pop();
-                    var j = 0;
-                    if(extArr.includes(ext)  && img.files[0].size < maxsize)
-                    {
-                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                        {
-                            j++;
-                        }
-
-                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
-                        imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        imgInp[j].parentElement.parentElement.classList.add("hide");
-                    }
-                    else
-                    {
-                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
-                        img.value = "";
-                    }
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
