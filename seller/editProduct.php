@@ -1624,6 +1624,12 @@
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
         });
+
+        const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
+        btnDeleteVariations.forEach(item => {
+            item.removeEventListener('click',deleteVariationHandleClick);
+            item.addEventListener('click',deleteVariationHandleClick);
+        });
     }
 
     function addVariationHandleChange(event) 
