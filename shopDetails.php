@@ -57,26 +57,6 @@
         <section class="text-center">
           <h4 class="mb-5"><strong>best Sellers</strong></h4>
           <div class="row">
-            <!--<div class="col-lg-4 col-md-12 mb-4">
-              <div class="card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <img
-                    src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0ZXIlMjBib3R0bGV8ZW58MHx8MHx8&w=1000&q=80"
-                    class="imgContainer"
-                  />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">
-                    Description of this product.<br><span>RM</span><br><span>*****</span>
-                  </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
-                </div>
-              </div>
-            </div>-->
             <?php
               if ($result->num_rows > 0) {
                 // output data of each row
@@ -110,28 +90,6 @@
           $conn->close();
 
             ?>
-
-            <!--<div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <img
-                    src="https://i.pinimg.com/originals/34/35/f6/3435f67c167a5bf5123acce8becececd.jpg"
-                    class="imgContainer"
-                  />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">
-                    Description of this product.<br><span>RM</span><br><span>*****</span>
-                  </p>
-                  <a href="#!" class="btn btn-primary">Button</a>
-                </div>
-              </div>
-            </div>-->
-          </div>
           </div>
         </section>
         <!--Section: Content-->
