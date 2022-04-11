@@ -1,5 +1,5 @@
 <?php 
-
+ require __DIR__ . '/header.php';
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
@@ -16,24 +16,10 @@ $customerUID = 3; //TO GET *
 
 
   foreach($checkoutProduct as $product => $quantity){
-    $sqlinfo = " SELECT product_length, product_width, product_height, product_weight FROM product WHERE id = '$product'";
-    $stmt = $conn->prepare($sqlinfo);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-
-    //to calculate parcel size of including all products
-    array_push($productlength, $row['product_length']);
-    array_push($productwidth, $row['product_width']);
-
-    $productheight += $row['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
-    
-    }
+    echo $product, $quantity;
   }
-  $maximumlength = max($productlength);
-  $maximumwidth = max($productwidth);
-  
-  echo $productheight, $maximumlength, $maximumwidth;
+
+
 
 
 $sql2 ="SELECT
@@ -93,5 +79,6 @@ $sState = $row['state'];
 
 echo $sPhone,$sContactName, $sFullAddress, $sPostalCode, $sState;
 
+require __DIR__ . '/footer.php'
 ?>
 
