@@ -11,7 +11,7 @@
   $result = mysqli_query($conn,"SELECT * FROM user where name='test'");
   while($row = mysqli_fetch_array($result)){
   ?>
-  <h3><?php echo $row['name'];?></h3>
+  <h3>User: <?php echo $row['name'];?></h3>
   <?php } ?> 
 
 
