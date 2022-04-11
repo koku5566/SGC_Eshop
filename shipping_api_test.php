@@ -5,7 +5,7 @@
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
   
-  $cartsql = "SELECT * FROM cart WHERE 'user_ID' = '$customerID'";
+  $cartsql = "SELECT * FROM cart WHERE user_ID = '$customerID'";
   $stmt = $conn->prepare($cartsql);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -19,8 +19,8 @@ $customerUID = 3; //TO GET * from session
 
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
-
-    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
+     echo $product, $productQty;
+    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_ID = '$product'";
     $stmt = $conn->prepare($sqlinfo);
     $stmt->execute();
     $result = $stmt->get_result();
