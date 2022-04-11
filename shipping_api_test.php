@@ -5,7 +5,7 @@
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
   
-  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
+  $cartsql = "SELECT product_ID, quantity FROM cart WHERE 'user_ID' = '$customerUID'";
   $stmt = $conn->prepare($cartsql);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -19,6 +19,7 @@ $customerUID = 3; //TO GET * from session
 
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
+    echo 'cannot meh';
     echo $product, $productQty;
 
     //get product info
