@@ -25,6 +25,7 @@ $customerUID = 3; //TO GET * from session
     $productlength =[];
     $productwidth = [];
     $productheight = 0;
+    $productweight =0;
   
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $result = $conn->query($cartsql);
