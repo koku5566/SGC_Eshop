@@ -84,7 +84,7 @@ $cPostalCode = $row['postal_code'];
 $cState = $row['state'];
 }
   }
-
+echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
 //===========To get seller shipping information==================
 $sellersql ="SELECT
 id.user,
@@ -114,7 +114,7 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 }
-echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode,, $sState, $sPhone
+echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
 
 //if get is not null then
 $domain = "https://demo.connect.easyparcel.my/?ac=";
