@@ -15,7 +15,7 @@
   <?php } ?> 
 
 
- <!--  <div class="wrapper">
+   <div class="wrapper">
     <?php 
 		  $results = mysqli_query($conn,"SELECT * FROM product where product_status='A'");
 		  while($row = mysqli_fetch_array($results)){
@@ -43,7 +43,7 @@
 	    </div>
     <?php } ?>
   </div>
-  </div>  -->
+  </div> 
 
   <?php
     require __DIR__ . '/footer.php'
