@@ -1,9 +1,25 @@
 <?php 
+ require __DIR__ . '/header.php';
 
-
-//get seller id -> retrieve seller shipping option from 
+//get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET *
+
+  $checkoutProduct = array ( //productid, quantity
+    array(000034,2),
+    array(000035,2)
+  );
+
+  $productlength =[];
+  $productwidth = [];
+  $productheight = 0;
+
+
+  foreach($checkoutProduct as $product => $quantity){
+    echo $product, $quantity;
+  }
+
+
 
 
 $sql2 ="SELECT
@@ -61,62 +77,8 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 
-//if get is not null then
+echo $sPhone,$sContactName, $sFullAddress, $sPostalCode, $sState;
 
-$domain = "https://demo.connect.easyparcel.my/?ac=";
-
-$action = "MPRateCheckingBulk";
-$postparam = array(
-'authentication'	=> 'LoFwGSDIZ4',
-'api'	=> 'EP-1ksAmVhmY',
-'bulk'	=> array(
-array(
-'pick_code'	=> '10050',
-'pick_state'	=> 'png',
-'pick_country'	=> 'MY',
-'send_code'	=> '11950',
-'send_state'	=> 'png',
-'send_country'	=> 'MY',
-'weight'	=> '5',
-'width'	=> '0',
-'length'	=> '0',
-'height'	=> '0',
-'date_coll'	=> '2022-4-10',
-),
-array(
-'pick_code'	=> '14300',
-'pick_state'	=> 'png',
-'pick_country'	=> 'MY',
-'send_code'	=> '81100',
-'send_state'	=> 'jhr',
-'send_country'	=> 'MY',
-'weight'	=> '10',
-'width'	=> '5',
-'length'	=> '15',
-'height'	=> '5',
-'date_coll'	=> '2017-11-10',
-),
-),
-'exclude_fields'	=> array(
-'rates.*.pickup_point',
-),
-);
-
-$url = $domain.$action;
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postparam));
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-ob_start(); 
-$return = curl_exec($ch);
-ob_end_clean();
-curl_close($ch);
-
-$json = json_decode($return);
-echo "<pre>"; print_r($json); echo "</pre>";
-
+require __DIR__ . '/footer.php'
 ?>
 
