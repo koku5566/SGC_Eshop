@@ -1292,7 +1292,7 @@
                 var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
                 var imageValid = true;
-                for (var a = 0; a < this.files.length; a++) {
+                for (var a = 0; a < this.files.length; a++)
                 {
                     var ext = img.files[a].name.split('.').pop();
                     if(img.files[a].size >= maxsize || !extArr.includes(ext))
