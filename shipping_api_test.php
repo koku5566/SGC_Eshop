@@ -1,9 +1,38 @@
 <?php 
 
 
-//get seller id -> retrieve seller shipping option from 
+//get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET *
+
+$checkoutProduct = array ( //productid, quantity
+    array(000034,2),
+    array(000035,2),
+  );
+
+  $productlength =[];
+  $productwidth = [];
+  $productheight = 0;
+
+
+  foreach($checkoutProduct as $product => $quantity){
+    $sqlinfo = " SELECT product_length, product_width, product_height, product_weight FROM product WHERE id = '$product'";
+    $stmt = $conn->prepare($sqlinfo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+
+    //to calculate parcel size of including all products
+    array_push($productlength, $row['product_length']);
+    array_push($productwidth, $row['product_width']);
+
+    $productheight += $row['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
+    }
+  }
+  $maximumlength = max($productlength);
+  $maximumwidth = max($productwidth);
+  
+  echo $productheight, $maximumlength, $maximumwidth;
 
 
 $sql2 ="SELECT
@@ -70,32 +99,22 @@ $postparam = array(
 'authentication'	=> 'LoFwGSDIZ4',
 'api'	=> 'EP-1ksAmVhmY',
 'bulk'	=> array(
+
+    //l0oop arraay product
 array(
-'pick_code'	=> '10050',
-'pick_state'	=> 'png',
+'pick_code'	=> $sPostalCode,//10050
+'pick_state'	=> $sState,//'png',
 'pick_country'	=> 'MY',
-'send_code'	=> '11950',
-'send_state'	=> 'png',
+'send_code'	=> $cPostalCode,//'11950',
+'send_state'	=> $cState,//'png',
 'send_country'	=> 'MY',
-'weight'	=> '5',
-'width'	=> '0',
-'length'	=> '0',
-'height'	=> '0',
-'date_coll'	=> '2022-4-10',
+'weight'	=> '5', //passed from checkout (get product id)
+'width'	=> $maximumwidth,
+'length'	=> $maximumlength,
+'height'	=> $productheight,
+'date_coll'	=> date("Y-m-d"),
 ),
-array(
-'pick_code'	=> '14300',
-'pick_state'	=> 'png',
-'pick_country'	=> 'MY',
-'send_code'	=> '81100',
-'send_state'	=> 'jhr',
-'send_country'	=> 'MY',
-'weight'	=> '10',
-'width'	=> '5',
-'length'	=> '15',
-'height'	=> '5',
-'date_coll'	=> '2017-11-10',
-),
+
 ),
 'exclude_fields'	=> array(
 'rates.*.pickup_point',
