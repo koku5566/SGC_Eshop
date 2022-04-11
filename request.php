@@ -5,6 +5,7 @@ use PayPal\api\Payer;
 use PayPal\api\Payment;
 use PayPal\api\RedirectUrls;
 use PayPal\api\Transaction;
+use PayPal\api\TransactionBase;
 use PayPal\api\ItemList; 
 
 require __DIR__. '/config.php';
@@ -55,6 +56,10 @@ try {
 } catch (Exception $e) {
     throw new Exception('Unable to create link for payment');
 }
-header('location:' . $payment->getApprovalLink());
+
+ echo '<script type="text/javascript">';
+        echo 'window.location.href="'. $payment->getApprovalLink().'";';
+        echo '</script>';
+//header('location:' . $payment->getApprovalLink());
 exit(1);
 
