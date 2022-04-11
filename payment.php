@@ -23,7 +23,7 @@
 	    <div class="col__box">
 	      <h5><?php echo $row['product_name']; ?></h5>
         <h6>Price: <span> $<?php echo $row['product_price']; ?> </span> </h6>
-        <form class="paypal" action="request.php" method="post" id="paypal_form">
+        <form class="paypal" action="/request.php" method="post" id="paypal_form">
           <input type="hidden" name="item_number" value="<?php echo $row['product_id']; ?>" >
           <input type="hidden" name="item_name" value="<?php echo $row['product_name']; ?>" >
           <input type="hidden" name="amount" value="<?php echo $row['product_price']; ?>" >
