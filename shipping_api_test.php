@@ -26,12 +26,13 @@ $customerUID = 3; //TO GET * from session
     $productwidth = [];
     $productheight = 0;
 
-  $cartsql = "SELECT product_ID, quantity FROM cart WHERE 'user_ID' = '$customerUID'";
-  $stmt = $conn->prepare($cartsql);
-  $stmt->execute();
-  $result = $stmt->get_result();
+  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
+  $result = $conn->query($cartsql);
 
-  while ($row = $result->fetch_assoc()) {
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
     echo 'cannot meh';
@@ -54,6 +55,7 @@ $customerUID = 3; //TO GET * from session
 
     }
   }
+}
   $maximumlength = max($productlength);
   $maximumwidth = max($productwidth);
   
