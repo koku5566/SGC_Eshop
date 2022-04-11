@@ -85,7 +85,8 @@ if(isset($_SESSION['AddBank']))
 	{
 		if($_SESSION['AddBank'] == true)
 		{
-			echo "<script>alert('Bank Account Added');</script>";
+			echo "<script>alert('Bank Account Added');
+			window.location.href='../userprofile_payment.php';</script>";
 		}
 		$_SESSION['AddBank'] = NULL;
 	}

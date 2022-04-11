@@ -62,7 +62,7 @@ if(isset($_POST['addCard']))
 
 								<div class="form-group">
 								<label>Expiry Date (MM/YY)</label>
-								<input required type="text" name="expDate" maxlength="6" class="form-control"/>
+								<input required type="text" name="expDate" maxlength="5" class="form-control"/>
 								</div>
 								
 								<div class="form-group">
@@ -91,7 +91,8 @@ if(isset($_SESSION['AddCard']))
 	{
 		if($_SESSION['AddCard'] == true)
 		{
-			echo "<script>alert('Card Added');</script>";
+			echo "<script>alert('Card Added');
+			window.location.href='../userprofile_payment.php';</script>";
 		}
 		$_SESSION['AddCard'] = NULL;
 	}
