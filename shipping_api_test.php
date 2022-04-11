@@ -1,25 +1,55 @@
 <?php 
- require __DIR__ . '/header.php';
+
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
-$customerUID = 3; //TO GET *
+$customerUID = 3; //TO GET * from session
 
-  $checkoutProduct = array ( //productid, quantity
-    array(000034,2),
-    array(000035,2)
-  );
+  // $checkoutProduct = array ( //productid, quantity
+  //   array(000034,2),
+  //   array(000035,2)
+  // );
+  
+  $cartsql = "SELECT * FROM cart WHERE user_ID = '$customerID'";
+  $stmt = $conn->prepare($cartsql);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
+
+  //Under the same seller
   $productlength =[];
   $productwidth = [];
   $productheight = 0;
 
+  while ($row = $result->fetch_assoc()) {
 
-  foreach($checkoutProduct as $product => $quantity){
-    echo $product, $quantity;
+    $product = $row['product_ID'];
+    $productQty = $row['quantity'];
+
+    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE id = '$product'";
+    $stmt = $conn->prepare($sqlinfo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+
+    //to calculate parcel size of including all products
+    array_push($productlength, $row['product_length']);
+    array_push($productwidth, $row['product_width']);
+
+    $productheight += $row['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
+
+   
+
+    }
   }
+  $maximumlength = max($productlength);
+  $maximumwidth = max($productwidth);
+  
+  echo $productheight, $maximumlength, $maximumwidth;
+  //===========To get product weight, height, and width of the product==================
 
 
+ 
 
 
 $sql2 ="SELECT
@@ -77,8 +107,52 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 
-echo $sPhone,$sContactName, $sFullAddress, $sPostalCode, $sState;
+//if get is not null then
 
-require __DIR__ . '/footer.php'
+$domain = "https://demo.connect.easyparcel.my/?ac=";
+
+$action = "MPRateCheckingBulk";
+$postparam = array(
+'authentication'	=> 'LoFwGSDIZ4',
+'api'	=> 'EP-1ksAmVhmY',
+'bulk'	=> array(
+
+    //l0oop arraay product
+array(
+'pick_code'	=> $sPostalCode,//10050
+'pick_state'	=> $sState,//'png',
+'pick_country'	=> 'MY',
+'send_code'	=> $cPostalCode,//'11950',
+'send_state'	=> $cState,//'png',
+'send_country'	=> 'MY',
+'weight'	=> '5', //passed from checkout (get product id)
+'width'	=> $maximumwidth,
+'length'	=> $maximumlength,
+'height'	=> $productheight,
+'date_coll'	=> date("Y-m-d"),
+),
+
+),
+'exclude_fields'	=> array(
+'rates.*.pickup_point',
+),
+);
+
+$url = $domain.$action;
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postparam));
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+ob_start(); 
+$return = curl_exec($ch);
+ob_end_clean();
+curl_close($ch);
+
+$json = json_decode($return);
+echo "<pre>"; print_r($json); echo "</pre>";
+
 ?>
 
