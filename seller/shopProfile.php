@@ -47,6 +47,22 @@ $imageVideo = $row["imageVideo"];
 $conn->close();
 ?>
 
+<?php
+if ($conn->connect_error){
+	die("Connection failed: ". $conn->connect_error);
+}
+
+$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+
+if ($conn->query($sql) === TRUE) {
+	echo "Records updated: ".$name."-".$description;
+} else {
+	echo "Error: ".$sql."<br>".$conn->error;
+}
+
+$conn->close();
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
