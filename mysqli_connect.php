@@ -1,7 +1,7 @@
 <?php
     define("HOST","localhost");
     define("USERNAME","sgcprot1_SGC_ESHOP");
-    define("PASSWORD","bXrAcmvi,B#U");
+    define("PASSWORD","7}uU6E6yU*yN");
     define("DATABASE","sgcprot1_SGC_ESHOP");
 
     //create database connection
