@@ -1,5 +1,5 @@
 <?php 
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
@@ -106,6 +106,6 @@ $sFullAddress = $row['address'];
 $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
-require __DIR__ . '/footer.php'
+    require __DIR__ . '/footer.php';
 ?>
 
