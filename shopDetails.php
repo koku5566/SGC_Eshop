@@ -96,7 +96,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo "<br>" . $row["product_name"]. "<br>" . $row["product_description"]. "" . $row["product_brand"]. "<br>";
+                      echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
                     }
                   } else {
                     echo "error";
