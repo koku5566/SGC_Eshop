@@ -161,7 +161,6 @@
                     mysqli_query($conn, $sql_insertVar);
                 }
             }
-
         }
         else
         {
