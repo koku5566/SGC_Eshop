@@ -4,24 +4,21 @@
     <link rel="stylesheet" type="text/css" href="css\payment.css">
     <div class="container-fluid" style="width:80%">
 
-<?php 
-include_once 'db_connection.php'; 
-?>
 
 <div class="payment">
-  <h1>Checkout</h1>
+  <h1>Payment</h1>
   <?php
-  $result = mysqli_query($db_conn,"SELECT * FROM user where name='jordan'");
+  $result = mysqli_query($conn,"SELECT * FROM user where name='test'");
   while($row = mysqli_fetch_array($result)){
   ?>
   <h3><?php echo $row['name'];?></h3>
-  <h3><?php echo $row['address']," ",$row['postal_code']," ",$row['area']," ",$row['state']," ",$row['country'];?></h3>
   <?php } ?> 
 
-  <div class="wrapper">
+
+ <!--  <div class="wrapper">
     <?php 
-		  $results = mysqli_query($db_conn,"SELECT * FROM products where status=1");
-		  while($row = mysqli_fetch_array($results)){
+		  $results = mysqli_query($conn,"SELECT * FROM product where product_status='A'");
+		  $row = $result->fetch_assoc()) {
     ?>
 	    <div class="col__box">
 	      <h5><?php echo $row['name']; ?></h5>
@@ -46,7 +43,8 @@ include_once 'db_connection.php';
 	    </div>
     <?php } ?>
   </div>
-  </div> 
+  </div>  -->
+
   <?php
     require __DIR__ . '/footer.php'
 ?>
