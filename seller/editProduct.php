@@ -1289,7 +1289,7 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
 
                 if (img.files && img.files[0] && img.files.length > 1) {
@@ -1300,15 +1300,15 @@
                         }
 
                         var ext = img.files[i].name.split('.').pop();
-                        if(j < 9 && extArr.includes(ext))
+                        if(j < 9 && extArr.includes(ext) && img.files[i].size < maxsize)
                         {
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
                         }
                         else
                         {
-                            alert("This Image is not a valid format");
+                            alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
                             img.value = "";
                             break;
                         }
@@ -1318,7 +1318,7 @@
                 {
                     var ext = img.files[0].name.split('.').pop();
                     var j = 0;
-                    if(extArr.includes(ext))
+                    if(extArr.includes(ext)  && img.files[0].size < maxsize)
                     {
                         while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
                         {
@@ -1329,8 +1329,9 @@
                         imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                         imgInp[j].parentElement.parentElement.classList.add("hide");
                     }
-                    else{
-                        alert("This Image is not a valid format");
+                    else
+                    {
+                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
                         img.value = "";
                     }
                 }
@@ -1623,6 +1624,12 @@
         btnAddVariations.forEach(item => {
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
+        });
+
+        const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
+        btnDeleteVariations.forEach(item => {
+            item.removeEventListener('click',deleteVariationHandleClick);
+            item.addEventListener('click',deleteVariationHandleClick);
         });
     }
 
