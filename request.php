@@ -1,10 +1,17 @@
 <?php
-use PayPal\Api\Amount;
+/* use PayPal\Api\Amount;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-use PayPal\Api\ItemList;
+use PayPal\Api\ItemList; */
+
+use paypal\api\Amount;
+use paypal\api\Payer;
+use paypal\api\Payment;
+use paypal\api\RedirectUrls;
+use paypal\api\Transaction;
+use paypal\api\ItemList;
 
 require '/config.php';
 
