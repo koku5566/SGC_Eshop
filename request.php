@@ -7,6 +7,7 @@ use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
 require __DIR__. '/config.php';
+require __DIR__ . '/header.php';
 
 if (empty($_POST['item_number'])) {
     throw new Exception('This script should not be called directly, expected post data');
