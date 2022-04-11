@@ -1,10 +1,10 @@
-<?php
+<!-- <?php
 use PayPal\api\Amount;
 use PayPal\api\Payer;
 use PayPal\api\Payment;
 use PayPal\api\RedirectUrls;
 use PayPal\api\Transaction;
-use PayPal\api\ItemList; 
+use PayPal\api\ItemList;  -->
 
 require __DIR__. '/config.php';
 
