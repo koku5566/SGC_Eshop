@@ -6,12 +6,13 @@
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
+        $_SESSION['userid'] = "14";
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
+        $productDescription = htmlspecialchars($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -80,7 +81,7 @@
             // File upload path 
             $fileName = basename($_FILES['img']['name'][$key]); 
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round(microtime(true) * 1000).".".$ext;
+            $fileName = round((microtime(true) * 1000) + 1).".".$ext;
             $targetFilePath = $targetDir.$fileName; 
             // Check whether file type is valid 
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -179,9 +180,10 @@
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
         //$shopId = $_SESSION['user_id'];
+        $shopId = "14";
 
-        $sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
-        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
+        //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
+        $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
         $result_product = mysqli_query($conn, $sql_product);
 
         if (mysqli_num_rows($result_product) > 0) {
@@ -196,7 +198,6 @@
                 array_push($i_product_pic,$row_product['product_pic_3'],$row_product['product_pic_4']);
                 array_push($i_product_pic,$row_product['product_pic_5'],$row_product['product_pic_6']);
                 array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
-
 
                 $i_product_weight = $row_product['product_weight'];
                 $i_product_length = $row_product['product_length'];
@@ -258,15 +259,18 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
-
+<div class="container-fluid" id="mainContainer">
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                    <div class="card-header py-3" style="display:flex;">
                         <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                        <a style="right: 2%;position: absolute;" href="<?php echo("../visualEffect.php?id=$productId") ?>" target="_blank" rel="noopener noreferrer" class="d-none d-sm-inline-block btn btn-sm">
+                            <i class="fas fa-eye fa-sm"></i>
+                             Visual Effect
+                        </a>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -438,7 +442,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required><?php echo($i_product_description); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo(html_entity_decode($i_product_description)); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -548,7 +552,7 @@
                                         if($row_product['variation_2_name'] != "")
                                         {
                                             $v_variation_2_name = $row_product['variation_2_name'];
-                                            array_push($v_variation_1_choice,$row_product['variation_2_choice']);
+                                            array_push($v_variation_2_choice,$row_product['variation_2_choice']);
                                         }
                                         array_push($v_product_price,$row_product['product_price']);
                                         array_push($v_product_stock,$row_product['product_stock'] - $row_product['product_sold']);
@@ -582,19 +586,19 @@
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                         <div>
                                     ");
+                                    
                                     $v_variation1ChoicesOnly = array_unique($v_variation_1_choice);
-                                    for($i = 0; $i < count($v_variation1ChoicesOnly); $i++)
-                                    {
+                                    foreach ($v_variation1ChoicesOnly as $value) {
                                         echo("
                                                             <div class=\"input-group mb-3\">
-                                                                <input type=\"text\" value=\"".$v_variation1ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                 <div class=\"input-group-append btnDeleteChoices\">
                                                                     <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                 </div>
                                                             </div>
                                         ");
                                     }
-                                    
+
                                     echo("
                                                             
                                                         </div>
@@ -646,18 +650,17 @@
                                                                 <div>
                                             ");
                                             $v_variation2ChoicesOnly = array_unique($v_variation_2_choice);
-                                            for($i = 0; $i < count($v_variation2ChoicesOnly); $i++)
-                                            {
+                                            foreach ($v_variation2ChoicesOnly as $value) {
                                                 echo("
                                                                     <div class=\"input-group mb-3\">
-                                                                        <input type=\"text\" value=\"".$v_variation2ChoicesOnly[$i]."\" class=\"form-control variationChoice\" required>
+                                                                        <input type=\"text\" value=\"$value\" class=\"form-control variationChoice\" required>
                                                                         <div class=\"input-group-append btnDeleteChoices\">
                                                                             <span class=\"input-group-text\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span>
                                                                         </div>
                                                                     </div>
                                                 ");
                                             }
-                                            
+
                                             echo("
                                                                     
                                                                 </div>
@@ -672,6 +675,14 @@
                                         ");
                                     }
                                 }   
+                            }
+                            else
+                            {
+                                echo("
+                                    <div class=\"input-group mb-3\">
+                                        <button type=\"button\" class=\"btn btn-outline-primary btnAddVariation\" style=\"width:100%\">Enable Variation 2</button>
+                                    </div>
+                                ");
                             }
                             ?>
                             
@@ -1278,44 +1289,54 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++)
+                {
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
+                    {
+                        imageValid = false;
+                    }
+                }
 
-                if (img.files && img.files[0] && img.files.length > 1) {
-                    for (var j = 0,i = 0; i < this.files.length; i++) {
-                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                        {
-                            j++;
+                if(imageValid)
+                {
+                    if (img.files && img.files[0] && img.files.length > 1) {
+                        for (var j = 0,i = 0; i < this.files.length; i++) {
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+                            if(j < 9)
+                            {
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                                imgInp[j].parentElement.parentElement.classList.add("hide");
+                            }
                         }
-
-                        var ext = img.files[i].name.split('.').pop();
-                        if(j < 9 && extArr.includes(ext))
+                    }
+                    else if(img.files && img.files[0])
+                    {
+                        var j = 0;
+                        if(img.files[0].size < maxsize)
                         {
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
                         }
-                        else
-                        {
-                            alert("This Image is not a valid format");
-                            img.value = "";
-                            break;
-                        }
                     }
                 }
-                else if(img.files && img.files[0])
+                else
                 {
-                    var ext = img.files[0].name.split('.').pop();
-                    if(extArr.includes(ext))
-                    {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
-                    }
-                    else{
-                        alert("This Image is not a valid format");
-                        img.value = "";
-                    }
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
@@ -1607,6 +1628,12 @@
             item.removeEventListener('click', addVariationHandleClick);
             item.addEventListener('click', addVariationHandleClick);
         });
+
+        const btnDeleteVariations = document.querySelectorAll('.btnDeleteVariation');
+        btnDeleteVariations.forEach(item => {
+            item.removeEventListener('click',deleteVariationHandleClick);
+            item.addEventListener('click',deleteVariationHandleClick);
+        });
     }
 
     function addVariationHandleChange(event) 
@@ -1886,7 +1913,7 @@
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
                 if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
                 {
@@ -1908,6 +1935,18 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+
+        selector: '#productDescription',
+
+        toolbar: 'undo redo | formatpainter casechange blocks | bold italic | removeformat'
+
+    });
 </script>
 
 <?php

@@ -1,6 +1,16 @@
 <?php
     require_once __DIR__ . '/header.php'
 ?>
+
+<?php
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    
+    $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $result = $conn->query($sql);
+?>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -46,9 +56,8 @@
         <!--Section: Content-->
         <section class="text-center">
           <h4 class="mb-5"><strong>best Sellers</strong></h4>
-
           <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
+            <!--<div class="col-lg-4 col-md-12 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -60,21 +69,25 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
+                  <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
-                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
+                  <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
-            </div>
+            </div>-->
 
             <div class="col-lg-4 col-md-6 mb-4">
+            <?php
+              if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+            ?>
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="https://assets.manufactum.de/p/065/065704/65704_02.jpg/bullet-pen.jpg?profile=opengraph_mf"
+                    src="/img/product/<?php echo $row['product_cover_picture']?>"
                     class="imgContainer"
                   />
                   <a href="#!">
@@ -82,17 +95,20 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
+                  <?php
+                      echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
+                    }
+                  } else {
+                    echo "error";
+                  }
+                  $conn->close();
+                  ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
+            <!--<div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -104,15 +120,15 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Title</h5>
+                  <h5 class="card-title">Product Name</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    Description of this product.<br><span>RM</span><br><span>*****</span>
                   </p>
-                  <!--<a href="#!" class="btn btn-primary">Button</a>-->
+                  <a href="#!" class="btn btn-primary">Button</a>
                 </div>
               </div>
-            </div>
+            </div>-->
+          </div>
           </div>
         </section>
         <!--Section: Content-->

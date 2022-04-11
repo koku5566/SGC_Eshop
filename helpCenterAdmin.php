@@ -5,24 +5,57 @@
 
 
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
+		$selectedPID = $_POST['rid'];
+		//echo "<script>alert('$selectedPID')</script>";	
+		//$selectedPID = SanitizeString($_POST['pid']);
 		
+		$sql = "SELECT product_id, product_name, product_brand, product_price, product_cover_picture
+				FROM `product`
+				WHERE product_id = ?";
 		
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $selectedPID);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			
+			if(mysqli_stmt_num_rows($stmt) == 1){
+				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4,$j5);
+				mysqli_stmt_fetch($stmt);
+			}
+			
+			mysqli_stmt_free_result($stmt);
+			mysqli_stmt_close($stmt);
+		
+		}
+		
+	}
+
+
+
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
+		
+		$product_id = $_POST['reviewid']; //change into btn click $_POST
+		$user_id = "U000005";	//change into S_SESSION [user id]
+		$commentsec = $_POST['commentsec'];
+		$ratingsec = $_POST['rating'];
+		/*
 		$ss1 = $_FILES['img']['name'][0];
 		$ss2 = $_FILES['img']['name'][1];
 		$ss3 = $_FILES['img']['name'][2];
 		$ss4 = $_FILES['img']['name'][3];
 		$ss5 = $_FILES['img']['name'][4];
 		$ss6 = $_FILES['img']['name'][5];
-		
+		*/
 		//$img1 = echo "<script>document.getElementById('view1').src</script>";
 		
 		
 		//echo $img1;
 		
 		
-		
+		/*
 		for($i = 0; $i<5; $i++){
 			if($_FILES['img']['name'][$i] !== ""){
 				echo "<div class='alert alert-success'>GOT</div>";
@@ -31,20 +64,113 @@
 			}
 		}
 		
-		
-						
-									
-																						
-		/*
-		if($_SESSION['imag1'] == true){
-		echo "<div class='alert alert-success'>$ss1 - GOT GOT GOT</div>";
-	}else{
-		echo "<div class='alert alert-danger'>$ss1 - NO NO NO</div>";
-	}
-
 		*/
 		
-		//echo "<div class='alert alert-success'>$ss1 ||$ss2 ||$ss3 ||$ss4 ||$ss5 ||  || $ss6</div>";
+		if (!file_exists("img/")){
+				mkdir("img");	//make directory
+		}
+		
+		if (!file_exists("img/rating/")){
+				mkdir("img/rating");	//make directory
+		}
+		
+		
+		$gotpic = [];
+		$tempNamepic = [];
+		for($i = 0; $i<5; $i++){
+			if($_FILES['img']['name'][$i] !== ""){
+				//echo "<div class='alert alert-success'>GOT</div>";
+				array_push($gotpic, "img/rating/" . $_FILES['img']['name'][$i]);
+				array_push($tempNamepic, $_FILES['img']['tmp_name'][$i]);
+			}else{
+				//echo "<div class='alert alert-danger'>NOT</div>";
+			}
+		}
+		for($k = 0; $k< 5 - count($gotpic); $i++){
+				array_push($gotpic, '');
+		}
+		/*
+		for($j = 0; $j <5; $j++){
+			echo "<div class='alert alert-success'>$gotpic[$j]</div>";			
+		}
+		for($t = 0; $t <count($tempNamepic); $t++){
+			echo "<div class='alert alert-danger'>$tempNamepic[$t]</div>";			
+		}
+		*/
+		
+		//echo "RATING  - $ratingsec <br>";
+		//echo "COMMENT  - $commentsec";					
+			
+			$pc1 = $gotpic[0];
+			$pc2 = $gotpic[1];
+			$pc3 = $gotpic[2];
+			$pc4 = $gotpic[3];
+			$pc5 = $gotpic[4];
+			
+			/*
+			echo "<div class='alert alert-success'>$pc1</div>";		
+			echo "<div class='alert alert-success'>$pc2</div>";	
+			echo "<div class='alert alert-success'>$pc3</div>";	
+			echo "<div class='alert alert-success'>$pc4</div>";	
+			echo "<div class='alert alert-success'>$pc5</div>";	
+			
+			
+			echo "<div class='alert alert-success'>$product_id</div>";
+			echo "<div class='alert alert-success'>$user_id</div>";
+			echo "<div class='alert alert-success'>$commentsec</div>";
+			echo "<div class='alert alert-success'>$ratingsec</div>";
+			
+			
+			$pc1 = "a";
+			$pc2 = "b";
+			$pc3 = "c";
+			$pc4 = "d";
+			$pc5 = "e";
+			*/																			
+		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,`pic2`,`pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
+			if($stmt = mysqli_prepare($conn, $sql)){
+				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$pc1,$pc2,$pc3,$pc4,$pc5); 	//s=string , d=decimal value, i=integer
+		
+				mysqli_stmt_execute($stmt);
+			
+				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+				{
+					echo "<script>alert('Insert successfully');</script>";
+					/**/
+					
+					/*
+					for($r = 0; $r< count($tempNamepic); $r++){
+						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
+					}
+					*/
+					for($r = 0; $r< 5; $r++){
+						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
+						if(!empty($tempNamepic[$r])){
+								$filepathname = $gotpic[$r];
+								$tempT = $tempNamepic[$r];
+								move_uploaded_file($tempT, $filepathname);
+								//echo "<script>alert('$filepathname');</script>";							
+							}
+					}
+					/**/
+					
+					$sql = "UPDATE reviewRating AS a, (SELECT id from reviewRating order by id desc LIMIT 1) AS b 
+							SET a.rr_id = concat('RR', b.id)
+							WHERE a.id = b.id;";
+							if($stmt = mysqli_prepare($conn, $sql)){
+                            mysqli_stmt_execute($stmt);
+                            if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+                            {}
+                            else{}}	
+                            //END  
+					
+				}else{
+					echo "<script>alert('Fail to Insert');</script>";
+				}
+		
+				mysqli_stmt_close($stmt);
+			}
 		
 		
 	}
@@ -53,12 +179,48 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+
 <!-- Begin Page Content --------------------------------------------------------------------------------------------->
 <div class="container-fluid" style="width:80%">		
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
+<!------------------------------------------------------------------------------------------------>
+
+
+
+<!------------------------------------------------------------------------------------------------>
+
+
+<?php
+		$sql ="SELECT product_id 
+			   FROM `reviewRating`
+			   WHERE product_id = 'P000001'
+			   LIMIT 1";
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $c1);
+			
+			while(mysqli_stmt_fetch($stmt)){
+				echo'
+					<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
+					<input type = "hidden" name = "rid" value = "P000057">
+					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
+					
+					
+					//<input type = "hidden" name = "rid" value = "'.$c1.'">
+
+			}
+			mysqli_stmt_close($stmt);
+		}
+
+
+
+?>
+
+
+
+<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
+	<input type="submit" class="btn btn-primary" value = "Launch demo modal" data-toggle="modal" data-target="#exampleModalLong">
+</form>
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -76,26 +238,38 @@
 		-->
         <div style="height: 100%">
 				<!--CONCAT at 90 -->
-					<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "productpic">
+					<img src = "<?php echo (isset($j5) && !empty ($j5))? 'img/product/'.$j5 : 'https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg'; ?>" class = "productpic">
 					<div class = "namestar">
-						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($c4) && !empty ($c4))? $c4 : 'WI-SP510 Wireless Headphone blablabla'; ?></h5>
-						<h6>Model: WISP510</h6>
-						<h3>RM 349.00</h3>									
+						<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
+						<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'WI-SP510 Wireless Headphone blablabla - RMB PRODUCT NAME'; ?></h5>
+						<h6><?php echo (isset($j3) && !empty ($j3))? $j3 : 'Model: WISP510 - RMB MODEL/BRAND'; ?></h6>
+						<h3><?php echo (isset($j4) && !empty ($j4))? 'RM '.$j4 : 'RM 349.00 - RMB PRICE'; ?></h3>									
 					</div>
 					
-					
+					<!-- bi bi-star-fill 	21.13
 					<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star-fill tqy"></i>
-					<i class="bi bi-star tqy"></i>
+					<i class="fa fa-star tqy rrting" id = "rr1"></i>
+					<i class="fa fa-star tqy rrting" id = "rr2"></i>
+					<i class="fa fa-star tqy rrting" id = "rr3"></i>
+					<i class="fa fa-star tqy rrting" id = "rr4"></i>
+					<i class="fa fa-star tqy rrting" id = "rr5"></i>
 					</div>
+					-->
+				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">	
+					<div class="rating"> 
+						<input type="radio" name="rating" value="5" id="5" checked required><label for="5">☆</label> 
+						<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+						<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> 
+						<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
+						<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+					</div>
+					
+					
 			
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder = "Enter Message..." style = "8rem;"></textarea>
+			<textarea class="form-control" id="exampleFormControlTextarea1" name = "commentsec"rows="3" placeholder = "Write a Review..." style = "8rem;"></textarea>
 			
 			<!---------------------------------------------------------------------------------------------------------------------->
-				<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">
+				
 				<div class="card-body">
                         <div class="row">
                            
@@ -229,6 +403,7 @@
       </div>
 	  <!--CONTENT END-->
       <div class="modal-footer">
+		<input type = "hidden" name = "reviewid" value = "<?php echo (isset($j1) && !empty ($j1))? $j1 : 'RMB-ID LAI'; ?>">
 		<input type = "submit" class = "btn btn-primary" name = "rrsub" value = "Submit">
       </div>
 	  </form>
@@ -251,6 +426,53 @@
 ?>
 
 <style>
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 2.2rem;
+    color: #A31F37;
+    cursor: pointer
+	font-weight: bold;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+
+
+.fa-star:hover{
+	color: pink;
+}
+.fa-star{
+	color: none;
+}
 .bi.bi-star-fill{
 	-webkit-text-fill-color: orange;
 }
@@ -357,7 +579,16 @@
     }
 </style>
 <script>
-
+<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid']) && !empty($_POST['rid'])  ){
+			$showmedawae = "#exampleModalLong";
+								 						
+		}else{
+			$showmedawae = "";
+		}
+		
+?>
+        $('<?php echo $showmedawae; ?>').modal('show');
 
     initImages();
     //initVariation();
@@ -487,22 +718,8 @@
         });
     }
 /*******************************************************************************************************************************************/
-					var s1 = document.getElementById("view1").getAttribute("src");
-					var s2 = document.getElementById("view2").getAttribute("src");
-					var s3 = document.getElementById("view3").getAttribute("src");
-					var s4 = document.getElementById("view4").getAttribute("src");
-					var s5 = document.getElementById("view5").getAttribute("src");
-					
-					if(s1 == "")
-					{
-						console.log("NOT")
-						<?php $_SESSION['imag1'] = false;?>
-						
-					}else{												
-						console.log("GOT")
-						<?php $_SESSION['imag1'] = true;?>
-					}					
-									
+	
+
 										
 											  
 										

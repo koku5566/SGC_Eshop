@@ -12,13 +12,15 @@
         }
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
+        $_SESSION['userid'] = "14";
         //Basic Details
         $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
+        //$productDescription = $_POST['productDescription'];
+        $productDescription = htmlspecialchars($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -64,8 +66,7 @@
             $productSelfCollect = 0;
             $productStandardDelivery = 0;
         }
-        
-        
+
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
@@ -214,7 +215,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid" id="mainContainer">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Basic Infomation -->
@@ -464,7 +465,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1023,7 +1024,6 @@
     initImages();
     initVariation();
 
-
     function rearrangeLabel(){
         var draggableItem = document.querySelectorAll('.drag-item');
         var counter=1;
@@ -1097,6 +1097,7 @@
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
                 img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -1105,44 +1106,54 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++)
+                {
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
+                    {
+                        imageValid = false;
+                    }
+                }
 
-                if (img.files && img.files[0] && img.files.length > 1) {
-                    for (var j = 0,i = 0; i < this.files.length; i++) {
-                        while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                        {
-                            j++;
+                if(imageValid)
+                {
+                    if (img.files && img.files[0] && img.files.length > 1) {
+                        for (var j = 0,i = 0; i < this.files.length; i++) {
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+                            if(j < 9)
+                            {
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                                imgInp[j].parentElement.parentElement.classList.add("hide");
+                            }
                         }
-
-                        var ext = img.files[i].name.split('.').pop();
-                        if(j < 9 && extArr.includes(ext))
+                    }
+                    else if(img.files && img.files[0])
+                    {
+                        var j = 0;
+                        if(img.files[0].size < maxsize)
                         {
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i])
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
                         }
-                        else
-                        {
-                            alert("This Image is not a valid format");
-                            img.value = "";
-                            break;
-                        }
                     }
                 }
-                else if(img.files && img.files[0])
+                else
                 {
-                    var ext = img.files[0].name.split('.').pop();
-                    if(extArr.includes(ext))
-                    {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
-                    }
-                    else{
-                        alert("This Image is not a valid format");
-                        img.value = "";
-                    }
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
@@ -1715,7 +1726,7 @@
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
                 if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
                 {
@@ -1737,6 +1748,18 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+
+        selector: '#productDescription',
+
+        toolbar: 'undo redo | casechange blocks | bold italic | removeformat'
+
+    });
 </script>
 
 <?php

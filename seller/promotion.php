@@ -4,7 +4,7 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width: 80%;">
-        <h1 style="margin-top: 50px;">Promotion Banner</h1>
+        <h1 style="margin-top: 50px;">Create Promotion Banner</h1>
         <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
 
         <!-- View Section -->
@@ -26,7 +26,17 @@
                                     if($result-> num_rows > 0){
                                          while($row = $result->fetch_assoc()){
                                              echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  ".$row["promotion_Date"]."<br>"."End:   ".$row["promotionEnd_Date"]."</td><td>";
+                                             .$row["promotion_title"]."</td><td>"."Start:  "
+                                             .$row["promotion_Date"]."<br>"."End:   "
+                                             .$row["promotionEnd_Date"]."</td>
+                                             <td>
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                </div>
+                                             <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                </div>
+                                             </td></tr>";
                                          }
                                          echo"</table>";
                                      }
@@ -66,7 +76,7 @@
                                                     </div>
                                                     <div class="image-tools-add">
                                                         <label class="custom-file-upload">
-                                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp">
+                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
                                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                         </label>
                                                     </div>
@@ -75,6 +85,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div>
+                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                         </div>
                     </div> 
@@ -100,48 +113,47 @@
                     <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
                     <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
                 </div>
+
+
                 <?php
                 if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                 {
-                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotiontitle']));
-                    //$image = $_POST['promotion_image']; 
-                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionDate']));
-                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['promotionEndDate']));
-
-                    $sql = "INSERT INTO `promotion` (`promotion_title`, `promotion_Date`, `promotionEnd_Date`) 
-                    VALUES('$title','$dateStart','$dateEnd')";
-                    $result = mysqli_query($conn,$sql);
+                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
+                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                     
-                    // File upload configuration 
-                    //$targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    //$allowTypes = array('jpg','png','jpeg'); 
+                    //File upload configuration 
+                    $fileNames = array_filter($_FILES['img']['name']); 
+                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                    $allowTypes = array('jpg','png','jpeg');
 
-                    //if(!empty($fileNames)){ 
-                        //foreach($_FILES['img']['name'] as $key=>$val){ 
-                            // File upload path 
-                            
-                            //$fileName = basename($_FILES['img']['name'][$key]); 
-                            //$ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                            //$fileName = round(microtime(true) * 1000).".".$ext;
-                            //$targetFilePath = $targetDir.$fileName; 
-                            // Check whether file type is valid 
-                            //$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                            //if(in_array($fileType, $allowTypes)){ 
-                                //if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                                  //  $sql_insert .= "'$fileName', ";
-                                   // $imgInpCounter++;
-                              //  }
-                           // }
-                        //} 
-                   // }
+                    $fileName = basename($_FILES['img']['name'][0]); 
+                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $fileName = round(microtime(true) * 1000).".".$ext;
+                    $targetFilePath = $targetDir.$fileName; 
+                    // Check whether file type is valid 
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                    if(in_array($fileType, $allowTypes)){ 
+                        if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                            $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                    VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                    
+                                    $result = mysqli_query($conn,$sql);
 
-                    if($result)
-                    {
-                        echo '<script>alert("Add promotion successfully!")</script>';
-                    }
-                    else
-                    {
-                        echo '<script>alert("Failed")</script>';
+                                    if($result)
+                                    {
+                                        echo '<script>alert("Add promotion successfully!")</script>';
+                                        ?>
+                                            <script type="text/javascript">
+                                                window.location.href = window.location.origin + "/seller/promotion.php";
+                                            </script>
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        echo '<script>alert("Failed")</script>';
+                                    }
+                        }
                     }
                 }
                 ?>
@@ -151,8 +163,8 @@
     <!-- /.container-fluid -->
 <style>
     .image-container{
-        width: 344px;
-        height: 200px;
+        width: 368px; 
+        height: 207px; 
         background-color: white;
     }
 
@@ -161,8 +173,8 @@
     }
 
     .image-layer{
-        width: 344px;
-        height: 200px;
+        width: 368px;
+        height: 207px;
         opacity:0.5;
         position:absolute;
         margin-top: -200px;
@@ -173,7 +185,7 @@
     }
 
     .image-tools-delete{
-        width: 344px;
+        width: 368px;
         height: 50px;
         background:grey;
         position:absolute;
@@ -191,8 +203,8 @@
 
 
     .image-tools-add{
-        width: 344px;
-        height: 200px;
+        width: 368px;
+        height: 207px;
         background:white;
         opacity:0.5;
         position:absolute;
@@ -232,6 +244,7 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -259,6 +272,9 @@
         });
     }
 </script>
+
+<script src="../js/checkFileType.js"></script>
+
 <?php
     require __DIR__ . '/footer.php'
 ?>

@@ -1,6 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if(isset($_GET['Panel']))
+    {
+        $_SESSION['Panel'] = $_GET['Panel'];
+    }
+
     $subCategoryArray = array();
 
     //Main Category
@@ -41,9 +46,13 @@
         $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Publish Successful")';
-            echo '</script>';
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Publish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['UnpublishProduct']))
@@ -52,9 +61,13 @@
         $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$categoryId'";
         if(mysqli_query($conn, $sql))
         {
-            echo '<script language="javascript">';
-            echo 'alert("Unpublish Successful")';
-            echo '</script>';
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Unpublish Successful");
+                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
         }
     }
     else if(isset($_POST['DeleteProduct']))
@@ -66,16 +79,20 @@
             $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
             if(mysqli_query($conn, $sql_deleteVar))
             {
-                echo '<script language="javascript">';
-                echo 'alert("Product Deleted Successful")';
-                echo '</script>';
+                $Panel = $_SESSION['Panel'];
+                ?>
+                    <script type="text/javascript">
+                        alert("Product Deleted Successful");
+                        window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    </script>
+                <?php
             }
         }
     }
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
     <!-- Product Filter -->
     <div class="row">
         <div class="col-xl-12 col-lg-12">
@@ -190,89 +207,9 @@
                                                 
                                                     if(isset($_POST['submitSearch']))
                                                     {
-                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
-
-                                                        $WhereExist = false;
-                                                        if(isset($_POST['keyword']))
-                                                        {
-                                                            $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
-                                                            switch($_POST['searchBy'])
-                                                            {
-                                                                case "name":
-                                                                    $searchBy = "product_name";
-                                                                    break;
-                                                                case "mainsku":
-                                                                    $searchBy = "product_sku";
-                                                                    break;
-                                                                case "sku":
-                                                                    $searchBy = "sub_product_id";
-                                                                    break;
-                                                                default:
-                                                                    $searchBy = "product_name";
-                                                                    break;
-                                                            }
-                                                            $sql_count .= "WHERE $searchBy LIKE %$keyword% ";
-                                                            $WhereExist = true;
-                                                        }
-                                                        if(isset($_POST['mainCategoryId']))
-                                                        {
-                                                            $mainCategoryId = $_POST['mainCategoryId'] != "All" ? $_POST['mainCategoryId'] : "";
-                                                            $subCategoryId = $_POST['subCategoryId'] != "" ? $_POST['subCategoryId'] : "";
-    
-                                                            if($mainCategoryId != "All")
-                                                            {
-                                                                $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$mainCategoryId'";
-                                                                if($subCategoryId != "")
-                                                                {
-                                                                    $sql .= " sub_category = '$subCategoryId'";
-                                                                }
-    
-                                                                $result = mysqli_query($conn, $sql);
-                                                                if (mysqli_num_rows($result) > 0) {
-
-                                                                    if($WhereExist == true)
-                                                                    {
-                                                                        $sql_count .= "AND (";
-                                                                    }
-                                                                    else{
-                                                                        $sql_count .= "WHERE (";
-                                                                    }
-                                                                    while($row = mysqli_fetch_assoc($result)) {
-                                                                        $cc_id = $row['combination_id'];
-                                                                        $sql_count .= "category_id = $cc_id OR";
-                                                                    }
-                                                                    $sql_count .= substr($sql_count,0,-2) . ")";
-                                                                }
-                                                            }
-                                                        }
-
-                                                        if(isset($_GET['Panel']))
-                                                        {
-                                                            if($WhereExist == false)
-                                                            {
-                                                                $sql .= " WHERE ";
-                                                            }
-                                                            else {
-                                                                $sql .= " AND ";
-                                                            }
-                                                            switch($_GET['Panel'])
-                                                            {
-                                                                case "Publish":
-                                                                    $sql .= " A.product_status = 'A'";
-                                                                    break;
-                                                                case "Unpublish":
-                                                                    $sql .= " A.product_status = 'I'";
-                                                                    break;
-                                                                case "Violation":
-                                                                    $sql .= " A.product_status = 'B'";
-                                                                    break;
-                                                                case "OutOfStock":
-                                                                    $sql .= " A.product_status = 'O'";
-                                                                    break;
-                                                            }
-                                                        }
-
-                                                        
+                                                        //$shopId = $_SESSION['shopId'];
+                                                        $shopId = "14";
+                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
                                                         $result = mysqli_query($conn, $sql);
                                                 
                                                         if (mysqli_num_rows($result) > 0) {
@@ -350,7 +287,7 @@
                                         <div class="card-content row mb-3" style="display: none">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
-                                                if(isset($_POST['keyword']) || isset($_POST['category']))
+                                                if($_POST['keyword'] != "" || $_POST['category'] != "")
                                                 {
                                                     $keyword = "";
                                                     $category="";
@@ -373,18 +310,18 @@
                                                         }
                                                     }
 
-                                                    if(isset($_POST['keyword']) && isset($_POST['category']))
+                                                    if($_POST['keyword'] != "" && $_POST['category'] != "")
                                                     {
                                                         $keyword = $_POST['keyword'];
                                                         $category = $_POST['category'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%' AND category_id = '$category' ";
                                                     }
-                                                    else if(isset($_POST['keyword']))
+                                                    else if($_POST['keyword'] != "")
                                                     {
                                                         $keyword = $_POST['keyword'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN variation AS B ON A.product_id = B.product_id LEFT JOIN category AS C ON A.category_id = C.category_id WHERE $searchBy LIKE '%$keyword%'";
                                                     }
-                                                    else if(isset($_POST['category']))
+                                                    else if($_POST['category'] != "")
                                                     {
                                                         $category = $_POST['category'];
                                                         $sql = "SELECT DISTINCT A.product_id FROM product AS A LEFT JOIN category AS C ON A.category_id = C.category_id WHERE category_id = '$category' ";

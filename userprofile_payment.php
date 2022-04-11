@@ -33,24 +33,12 @@
 			echo "Error: " . mysqli_error($conn);
 		}
 	}
-
-	if(isset($_POST['editB']))
-	{
-		$_SESSION['BToEdit'] = $_POST['editB'];
-		echo("<script>window.location.href='userEditBank.php';</script>");
-	}
-
-	if(isset($_POST['editC']))
-	{
-		$_SESSION['CToEdit'] = $_POST['editC'];
-		echo("<script>window.location.href='userEditCard.php';</script>");
-	}
 ?>
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div id="DataDiv">
-<div class="h1">My Payment Method</div>
+<div class="col-xl-9">
+<div class="h1">My Payment Option</div>
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -64,18 +52,18 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\">
-			<button href=\"../userEditBank.php\" name=\"editB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">
-				".$row["bank_name"]."
-				".$row["bankAcc_name"]."
-				".$row["account_no"]."
-				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
+			<div class=\"container\" value=".$row["bankAcc_id"].">
+				<div class=\"btn btn-primary\">
+					".$row["bank_name"]."
+					".$row["bankAcc_name"]."
+					".$row["account_no"]."
+					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
+				</div>
 			</div>
 			");
 	}
 ?>
-
+<hr>
 <div class="h3">Card</div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
@@ -84,12 +72,12 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"container\">
-			<button href=\"../userEditCard.php\" name=\"editC\" value=".$row["card_id"]." class=\"btn btn-primary\">
-				".$row["name"]."
-				".$row["card_number"]."
-				".$row["expiry_date"]."
-				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
+				<div class=\"btn btn-primary\" value=".$row["card_id"].">
+					".$row["name"]."
+					".$row["card_number"]."
+					".$row["expiry_date"]."
+					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
+				</div>
 			</div>
 			");
 	}

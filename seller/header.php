@@ -98,6 +98,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sellerClassic.css" rel="stylesheet">
 
 </head>
 
@@ -144,9 +145,9 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">My Shipment</a>
-                        <a class="collapse-item" href="register.html">Mass Ship</a>
-                        <a class="collapse-item" href="forgot-password.html">Shipping Setting</a>
+                        <a class="collapse-item" href="seller/ViewShippingOrder.php">My Shipment</a>
+                        <a class="collapse-item" href="register.php">Mass Ship</a>
+                        <a class="collapse-item" href="forgot-password.php">Shipping Setting</a>
                     </div>
                 </div>
             </li>
@@ -176,7 +177,7 @@
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="myProduct.php">My Product</a>
+                        <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add New Product</a>
                         <a class="collapse-item" href="violationProduct.php">Product Violations</a>
                         <a class="collapse-item" href="category.php">Category Management (Admin)</a>
@@ -452,7 +453,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="shopProfile.php">
+                                <a class="dropdown-item" href="../seller/shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>

@@ -5,6 +5,7 @@ var updateFormElement = document.getElementById("updateFormElementSelection");
 var updateOptionInput = document.getElementById("updateOptionInput");
 var formElement = document.getElementById("formElementSelection");
 var optionInput = document.getElementById("optionInput");
+var completeBtn = document.getElementById("completeBtn");
 
 formElement.addEventListener('click', enableOption);
 editFormElement.addEventListener('click', enableOption);
@@ -21,3 +22,7 @@ function enableOption()
         optionInput.style.display = 'none';
     }
 }
+
+completeBtn.addEventListener('click', function(){
+    window.location.href='./createForm.php';
+})

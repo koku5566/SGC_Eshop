@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
+                <div class="container-fluid" id="mainContainer">
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
@@ -33,7 +33,7 @@
                                                         
                                                         echo("
                                                             <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
-                                                                <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                                <a href=\"category.php?mainCategory=$maincategoryid\" class=\"nav-link\">
                                                                 <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
                                                                 $categoryName
                                                                 <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
@@ -48,7 +48,7 @@
                                                             $subPicName = "";
                                                             echo("
                                                                 <li class=\"menu-item\">
-                                                                    <a href=\"{$domain_link}/category.php?id=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
+                                                                    <a href=\"category.php?mainCategory=$maincategoryid&subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>
                                                                 </li>
                                                             ");
                                                         }
@@ -62,7 +62,7 @@
                                                         //If no sub category, display as normal
                                                         echo("
                                                         <li class=\"menu-item\" style=\"display: list-item;\">
-                                                        <a href=\"{$domain_link}/category.php?id=$maincategoryid\" class=\"nav-link\">
+                                                        <a href=\"category.php?mainCategory=$maincategoryid\" class=\"nav-link\">
                                                         <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
                                                         $categoryName
                                                         </a>
@@ -87,7 +87,7 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="First slide">
+                                        <img class="d-block w-100" src="https://images.unsplash.com/photo-1603408639326-fad10b8fbc1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZyUyMHdheXxlbnwwfHwwfHw%3D&w=1000&q=80 alt="First slide">
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
@@ -163,7 +163,6 @@
                                                                                 </div>
                                                                                 <div class=\"Price\">
                                                             ");
-
                                                             
                                                             //Pricing
                                                             //If got variation

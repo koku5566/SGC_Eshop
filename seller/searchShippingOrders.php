@@ -16,7 +16,7 @@ switch($searchBy){
         product.product_cover_picture,
         product.product_price,
         orderDetails.quantity,
-        orderDetails.price,
+        orderDetails.amount,
         user.username
         FROM
         myOrder
@@ -32,7 +32,7 @@ switch($searchBy){
         product.product_cover_picture,
         product.product_price,
         orderDetails.quantity,
-        orderDetails.price,
+        orderDetails.amount,
         user.username
         FROM
         myOrder
@@ -48,7 +48,7 @@ switch($searchBy){
         product.product_cover_picture,
         product.product_price,
         orderDetails.quantity,
-        orderDetails.price,
+        orderDetails.amount,
         user.username
         FROM
         myOrder
@@ -64,7 +64,7 @@ switch($searchBy){
         product.product_cover_picture,
         product.product_price,
         orderDetails.quantity,
-        orderDetails.price,
+        orderDetails.amount,
         user.username
         FROM
         myOrder
@@ -251,12 +251,9 @@ $result = $stmt->get_result();
                                 <div class="card mt-2">
                                     <div class="card-header">
                                         <div class="row">
-                                            <div class="col md-auto text-start"><span><strong>Username</strong></span>
+                                            <div class="col md-auto text-start"><span><strong><?php echo $row['username'];?></strong></span>
                                             </div>
-                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                                Order
-                                                ID:
-                                                125353</strong></span></div>
+                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $row['order_id']; ?></strong></span></div>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -270,7 +267,7 @@ $result = $stmt->get_result();
                                             <div class="col-1">RM<?php echo $row['product_price']?>.00</div>
                                             <div class="col-2">Completed</div>
                                             <div class="col-2">DHL eCommerce 2121113134</div>
-                                            <div class="col-2"><a href="shippingCheckDetails.php">Check details</a>
+                                            <div class="col-2"><a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +275,8 @@ $result = $stmt->get_result();
                                 <!--End of Order Item-->
                                 <?php 
                                 }
-                            } else{
+                            } 
+                            else{
                                 echo "There are no result matching your search";
                             }?>
                                                                 
