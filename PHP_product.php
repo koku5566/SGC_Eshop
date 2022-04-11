@@ -49,6 +49,7 @@
     else if(isset($_POST['addToCart']))
     {
         /*
+        $_POST['quantity'];
         $_SESSION['userId'];
         $_SESSION['shopId'];
         $_SESSION['productID'];

@@ -207,89 +207,9 @@
                                                 
                                                     if(isset($_POST['submitSearch']))
                                                     {
-                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
-
-                                                        $WhereExist = false;
-                                                        if(isset($_POST['keyword']))
-                                                        {
-                                                            $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
-                                                            switch($_POST['searchBy'])
-                                                            {
-                                                                case "name":
-                                                                    $searchBy = "product_name";
-                                                                    break;
-                                                                case "mainsku":
-                                                                    $searchBy = "product_sku";
-                                                                    break;
-                                                                case "sku":
-                                                                    $searchBy = "sub_product_id";
-                                                                    break;
-                                                                default:
-                                                                    $searchBy = "product_name";
-                                                                    break;
-                                                            }
-                                                            $sql_count .= "WHERE $searchBy LIKE %$keyword% ";
-                                                            $WhereExist = true;
-                                                        }
-                                                        if(isset($_POST['mainCategoryId']))
-                                                        {
-                                                            $mainCategoryId = $_POST['mainCategoryId'] != "All" ? $_POST['mainCategoryId'] : "";
-                                                            $subCategoryId = $_POST['subCategoryId'] != "" ? $_POST['subCategoryId'] : "";
-    
-                                                            if($mainCategoryId != "All")
-                                                            {
-                                                                $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$mainCategoryId'";
-                                                                if($subCategoryId != "")
-                                                                {
-                                                                    $sql .= " sub_category = '$subCategoryId'";
-                                                                }
-    
-                                                                $result = mysqli_query($conn, $sql);
-                                                                if (mysqli_num_rows($result) > 0) {
-
-                                                                    if($WhereExist == true)
-                                                                    {
-                                                                        $sql_count .= "AND (";
-                                                                    }
-                                                                    else{
-                                                                        $sql_count .= "WHERE (";
-                                                                    }
-                                                                    while($row = mysqli_fetch_assoc($result)) {
-                                                                        $cc_id = $row['combination_id'];
-                                                                        $sql_count .= "category_id = $cc_id OR";
-                                                                    }
-                                                                    $sql_count .= substr($sql_count,0,-2) . ")";
-                                                                }
-                                                            }
-                                                        }
-
-                                                        if(isset($_GET['Panel']))
-                                                        {
-                                                            if($WhereExist == false)
-                                                            {
-                                                                $sql .= " WHERE ";
-                                                            }
-                                                            else {
-                                                                $sql .= " AND ";
-                                                            }
-                                                            switch($_GET['Panel'])
-                                                            {
-                                                                case "Publish":
-                                                                    $sql .= " A.product_status = 'A'";
-                                                                    break;
-                                                                case "Unpublish":
-                                                                    $sql .= " A.product_status = 'I'";
-                                                                    break;
-                                                                case "Violation":
-                                                                    $sql .= " A.product_status = 'B'";
-                                                                    break;
-                                                                case "OutOfStock":
-                                                                    $sql .= " A.product_status = 'O'";
-                                                                    break;
-                                                            }
-                                                        }
-
-                                                        
+                                                        //$shopId = $_SESSION['shopId'];
+                                                        $shopId = "14";
+                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
                                                         $result = mysqli_query($conn, $sql);
                                                 
                                                         if (mysqli_num_rows($result) > 0) {
