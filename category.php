@@ -4,8 +4,6 @@
 <?php
     if(isset($_GET['ClearFilter']))
     {
-        unset($_SESSION["mainCategory"]);
-        unset($_SESSION["subCategory"]);
         unset($_SESSION["Search"]);
         unset($_SESSION["chkStandardDelivery"]);
         unset($_SESSION["chkSelfCollection"]);
