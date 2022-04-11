@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-$sql_2 = "SELECT
+$sql_cancel = "SELECT
 myOrder.order_id,
 myOrder.order_status,
 product.product_name,
@@ -11,18 +11,20 @@ product.product_price,
 product.product_variation,
 orderDetails.quantity,
 orderDetails.price,
-shopProfile.shop_name
+shopProfile.shop_name,
+cancellation.cancellation_id
 
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
-JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-
+JOIN shopProfile ON product.shop_id = shopProfile.shop_id   
+JOIN cancellation ON myOrder.cancellation_id = cancellation.cancellation_id
+WHERE myOrder.order_id = ?
 ";
-$stmt_2 = $conn->prepare($sql_2);
-$stmt_2->execute();
-$orders = $stmt_2->get_result();
+$stmt_cancel = $conn->prepare($sql_cancel);
+$stmt_cancel->execute();
+$cancelOrders = $stmt_cancel->get_result();
 
 
 ?>
@@ -38,9 +40,10 @@ $orders = $stmt_2->get_result();
                             <hr class="mx-auto">
                         </div>
                         <!--CANCELLATION START HERE-->
+                        <?php while($row = $cancelOrders ->fetch_assoc()){ ?>
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Heading</h5>
+                                <h5 class="mb-0"><?php echo $row['shop_name']?></h5>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -56,18 +59,18 @@ $orders = $stmt_2->get_result();
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Cell 1</td>
-                                                <td>Cell 2</td>
-                                                <td>Text</td>
-                                                <td>Text</td>
-                                                <td>Text</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Cell 3</td>
-                                                <td>Cell 4</td>
-                                                <td>Text</td>
-                                                <td>Text</td>
-                                                <td>Text</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -110,13 +113,10 @@ $orders = $stmt_2->get_result();
                                 <button type="submit" class="btn btn-primary " style="" name="save_cancellation">Confirm</button>
                             </div>
                             </form>
-                        </div>
+                        </div> <?php }?>
 
+                 </div>
 
-
-
-
-                </div>
                 <!-- /.container-fluid -->
 
 <?php

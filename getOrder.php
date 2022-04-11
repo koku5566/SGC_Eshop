@@ -79,7 +79,7 @@ $orders = $stmt_2->get_result();
                                             <tbody>
                                                 
                                                 <tr class="clickable "
-                                                          onclick="location.href='orderDetails.php'" style="cursor:pointer;">
+                                                          onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row?>">
                                                     <td><?php echo $row['product_cover_picture']?></td>
                                                     <td><?php echo $row['product_name']?></td>
                                                     <td><?php echo $row['product_variation']?></td>
