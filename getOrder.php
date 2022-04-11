@@ -3,20 +3,6 @@
 
 ?>
 <?php
-//session_start();
-//include('mysqli_connect.php');
-//get orders
-//if(isset($_SESSION['login'])){
-
-//$user_id = $_SESSION['user_id'];
-//$stmt_2 = $conn->prepare("SELECT myOrder.order_id, product.product_name, product.product_cover_picture, product.product_price, product.product_variation, orderDetails.quantity, orderDetails.amount, shopProfile.shop_name FROM myOrder JOIN orderDetails ON myOrder.order_id = orderDetails.order_id JOIN product ON orderDetails.product_id = product.id JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE user_id = ?");
-//$stmt_2 = $conn->prepare("SELECT * from myOrder WHERE user_id = ?");
-//$stmt_2->bind_param('i', $user_id);
-//$stmt_2->execute();
-
-//$orders = $stmt_2->get_result();
-
-//}
 $sql_2 = "SELECT
 myOrder.order_id,
 myOrder.order_status,
@@ -25,7 +11,7 @@ product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name
 
 FROM
