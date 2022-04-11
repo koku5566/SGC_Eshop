@@ -37,8 +37,7 @@ $customerUID = 3; //TO GET * from session
 
    //===========To get product weight, height, and width of the product==================
     $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
-    $stmt = $conn->prepare($sqlinfo);
-    $stmt->execute();
+    $result = $conn->query($sqlinfo);
     $result = $stmt->get_result();
     while ($prod = $result->fetch_assoc()) {
 
