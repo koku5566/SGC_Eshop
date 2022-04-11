@@ -51,7 +51,7 @@ if(isset($_POST['update']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-	<div id="account">
+	<div class="col-xl-9">
 	<h1>My Profile</h1>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 	<?php

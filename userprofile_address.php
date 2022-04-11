@@ -31,7 +31,7 @@
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div id="DataDiv">
+<div class="col-xl-9">
 <h1>My Address Book</h1>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
