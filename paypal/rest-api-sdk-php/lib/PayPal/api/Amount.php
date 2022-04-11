@@ -1,10 +1,10 @@
 <?php
 
-namespace paypal\Api;
+namespace PayPal\Api;
 
-use paypal\Common\PayPalModel;
-use paypal\Converter\FormatConverter;
-use paypal\Validation\NumericValidator;
+use PayPal\Common\PayPalModel;
+use PayPal\Converter\FormatConverter;
+use PayPal\Validation\NumericValidator;
 
 /**
  * Class Amount
