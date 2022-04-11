@@ -81,7 +81,7 @@
             // File upload path 
             $fileName = basename($_FILES['img']['name'][$key]); 
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round(microtime(true) * 1000).".".$ext;
+            $fileName = round((microtime(true) * 1000) + 1).".".$ext;
             $targetFilePath = $targetDir.$fileName; 
             // Check whether file type is valid 
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
