@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="assets/css/CheckOutPage-V10.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Select datatable CSS-->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+
+<!-- Select datatable JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 
     <h1>Event Dashboard</h1>
     <div class="card">
@@ -53,6 +61,22 @@
                 </div>
                 <div class="col-2"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Export CSV</button></div>
             </div>
+            <div class="row" style="margin-top:20px">
+                <div class="col-12">
+                <table id="participantTable">
+                        <thead>
+                            <tr>
+                                <th>test</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>test</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -62,6 +86,7 @@
 </div>
 <!-- /.container-fluid -->
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/eventDetails.js"></script>
 
 <?php
     require __DIR__ . '/footer.php'

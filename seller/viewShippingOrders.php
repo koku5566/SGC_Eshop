@@ -12,18 +12,21 @@ product.product_name,
 product.product_cover_picture,
 product.product_price,
 orderDetails.quantity,
-orderDetails.amount,
-user.username
+user.username,
+orderDetails.amount
+
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.id";
+JOIN product ON orderDetails.product_id = product.id
+";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -152,10 +155,19 @@ $result = $stmt->get_result();
                                                 src="/img/product/<?php echo $row['product_cover_picture']?>"
                                                 alt="<?php echo $row['product_name']?>" />
                                         </div>
-                                        <div class="col-3"><?php echo $row['product_name']?></div>
-                                        <div class="col-1">x<?php echo $row['quantity']?></div>
-                                        <div class="col-1">RM<?php echo $row['product_price']?>.00</div>
-                                        <div class="col-2">Completed</div>
+                                        <div class="col-3">
+                                            <?php echo $row['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $row['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $row['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce 2121113134</div>
                                         <div class="col-2">
                                         <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
@@ -171,40 +183,9 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                            AIYA WHY X BLH?
-                            <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="    toship-tab">
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="ship" role="tabpanel" aria-labelledby="ship-tab">
-                                    <?php                       
-                                    while ($row = $result_3->fetch_assoc()) {
-                                    ?>
-                                    <div class="body">
-                                        <div class="row">
-                                            <div class="col md-auto text-start"><img src=" https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1644969385433" style="width:100%; height:100%;object-fit:contain"/>
-                                            </div>
-                                            <div class="col md-auto text-start " name="product_name"><?php echo $row['product_name']?>
-                                                
-                                            </div>
-                                            <div class="col md-auto text-center offset-md-3" name="price">RM <?php echo $row['price']?>.00
-                                            </div>
-                                            <div class="col-2" name="order_id"><?php echo $row['order_id']?>
-                                                
-                                            </div>
-                                            <div class="col-2" style="color:red;" name="order_status"><?php echo $row['order_status']?>
-                                                
-                                            </div>
-                                            <div class="col-2">
-                                                <button onclick="generate()"><a href="#" data-bs-target="#modal-1" data-bs-toggle="modal">Arrange Shipment</a>    </button>
-                                            </div>
-                                        </div>
-                                    <?php 
-                                    }?>
-                                    </div>
-                                    </div>
-                                </div>
+
                             </div>
-                                
-                            </div>
+
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
                                 yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
