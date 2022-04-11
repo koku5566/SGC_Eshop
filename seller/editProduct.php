@@ -1333,7 +1333,6 @@
                     {
                         alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
                         img.value = "";
-                        break;
                     }
                 }
             });
