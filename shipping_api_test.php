@@ -30,15 +30,12 @@ $customerUID = 3; //TO GET * from session
   $result = $conn->query($cartsql);
 
   if ($result->num_rows > 0) {
-    // output data of each row
     while($row = $result->fetch_assoc()) {
 
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
-    echo 'cannot meh';
-    echo $product, $productQty;
 
-    //get product info
+   //===========To get product weight, height, and width of the product==================
     $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
     $stmt = $conn->prepare($sqlinfo);
     $stmt->execute();
@@ -51,22 +48,16 @@ $customerUID = 3; //TO GET * from session
 
     $productheight += $prod['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
 
-   
-
     }
   }
 }
   $maximumlength = max($productlength);
   $maximumwidth = max($productwidth);
   
-  echo ' oi';
   echo $productheight, $maximumlength, $maximumwidth;
-  //===========To get product weight, height, and width of the product==================
 
 
- 
-
-
+   //===========To get customer shipping information==================
 $sql2 ="SELECT
 id.user,
 contact_name.userAddress,
@@ -81,19 +72,20 @@ user
 JOIN userAddress ON user.id = userAddress.user_id
 WHERE
 user.id = $customerUID";
+  $result = $conn->query($sql2);
 
-$stmt = $conn->prepare($sql2);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
 $cPhone = $row['phone_number'];
 $cContactName  = $row['contact_name'];
 $cFullAddress = $row['address'];
 $cPostalCode = $row['postal_code'];
 $cState = $row['state'];
 }
+  }
 
-
+//===========To get seller shipping information==================
 $sql ="SELECT
 id.user,
 contact_name.userAddress,
@@ -109,11 +101,11 @@ JOIN userAddress ON user.id = userAddress.user_id
 WHERE
 user.id = $sellerUID";
 
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
+$result = $conn->query($cartsql);
 
-while ($row = $result->fetch_assoc()) {
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
 
 $sPhone = $row['phone_number'];
 $sContactName  = $row['contact_name'];
@@ -121,6 +113,50 @@ $sFullAddress = $row['address'];
 $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
+}
 
+//if get is not null then
+$domain = "https://demo.connect.easyparcel.my/?ac=";
+
+$action = "MPRateCheckingBulk";
+$postparam = array(
+'authentication'	=> 'LoFwGSDIZ4',
+'api'	=> 'EP-1ksAmVhmY',
+'bulk'	=> array(
+array(
+'pick_code'	=> $sPhone,//'10050',
+'pick_state'	=>$sState,//'png',
+'pick_country'	=> 'MY',
+'send_code'	=> $cPostalCode, //'11950',
+'send_state'	=> $cState,//'png',
+'send_country'	=> 'MY',
+'weight'	=> '5',
+'width'	=>$maximumwidth,// '0',
+'length'	=> $maximumlength,// '0',
+'height'	=>$productheight,//'0',
+'date_coll'	=> date("Y-m-d"), //'2022-4-10',
+),
+
+),
+'exclude_fields'	=> array(
+'rates.*.pickup_point',
+),
+);
+
+$url = $domain.$action;
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postparam));
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+ob_start(); 
+$return = curl_exec($ch);
+ob_end_clean();
+curl_close($ch);
+
+$json = json_decode($return);
+echo "<pre>"; print_r($json); echo "</pre>";
 ?>
 
