@@ -1,7 +1,7 @@
 <?php
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
-
+require __DIR__ . '/header.php';
 require __DIR__. '/autoload.php';
 
 // For test payments we want to enable the sandbox mode. If you want to put live
