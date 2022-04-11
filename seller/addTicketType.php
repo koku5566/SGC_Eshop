@@ -24,7 +24,7 @@
         $tPrice = mysqli_real_escape_string($conn, SanitizeString($_POST["price"]));
         $tSalesStart = mysqli_real_escape_string($conn, SanitizeString($_POST["salesStart"]));
         $tsalesEnd = mysqli_real_escape_string($conn, SanitizeString($_POST["salesEnd"]));
-        $eventID = 1;//$_SESSION['event']
+        $eventID = $_SESSION['eventID'];
 
         // $check = "SELECT * FROM `event`";
         // if($stmt = mysqli_prepare ($conn, $check)){

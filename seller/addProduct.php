@@ -19,7 +19,8 @@
         $productId = "";
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
+        //$productDescription = $_POST['productDescription'];
+        $productDescription = htmlspecialchars($_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -65,8 +66,7 @@
             $productSelfCollect = 0;
             $productStandardDelivery = 0;
         }
-        
-        
+
         //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
 
         $sql_insert  = "INSERT INTO product (";
@@ -465,7 +465,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1721,7 +1721,7 @@
         }
         else if(event.target.parentElement.classList.contains("btnDeleteChoices"))
         {
-            if(event.target.parentElement.parentElement.children.length > 1)
+            if(event.target.parentElement.parentElement.parentElement.children.length > 1)
             {
                 if(event.target.parentElement.previousElementSibling.classList.contains("warning"))
                 {
@@ -1743,6 +1743,18 @@
 
     
 
+</script>
+
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+
+<script>
+    tinymce.init({
+
+        selector: '#productDescription',
+
+        toolbar: 'undo redo | casechange blocks | bold italic | removeformat'
+
+    });
 </script>
 
 <?php

@@ -16,8 +16,33 @@
         //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
         //if($checkImage !== false)
         //{
-            $coverIMG = $_FILES['coverImage']['tmp_name'];
-            $coverImgContent = addslashes(file_get_contents($coverIMG));
+
+            $coverIMG = array_filter($_FILES['coverImage']['name']);
+            $targetDir = dirname(__DIR__, 1)."/img/event/"; 
+            $allowTypes = array('jpg','png','jpeg'); 
+            $categoryPic = "";
+
+            //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
+            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
+
+            if(!empty($coverIMG)){ 
+                foreach($_FILES['coverImage']['name'] as $key=>$val){ 
+                    // File upload path 
+                    echo(var_dump($_FILES['coverImage']));
+                    $fileName = basename($_FILES['coverImage']['name'][$key]); 
+                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $fileName = round(microtime(true) * 1000).".".$ext;
+                    $targetFilePath = $targetDir.$fileName; 
+                    echo($targetFilePath);
+                    // Check whether file type is valid 
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                    if(in_array($fileType, $allowTypes)){ 
+                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
+                            $categoryPic = "$fileName";
+                        }
+                    }
+                } 
+            }
         //}
         $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
         $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
@@ -49,8 +74,7 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"bsssssssssi",$coverImgContent,$eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
-                mysqli_stmt_send_long_data($stmt,0,$coverImgContent);
+                $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
@@ -89,7 +113,7 @@
         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage" required></h2>
+                <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required></h2>
             </section>
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
@@ -124,7 +148,7 @@
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Description</h3>
-                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc" required></textarea>
+                    <textarea class="form-control" id="eDesceditor" placeholder="Edit your description here..." name="eDesc"></textarea>
                 </div>
                 <div style="margin-top: 30px;">
                     <h3>Category</h3><input class="form-control" type="text" name="eCategory">
@@ -174,7 +198,7 @@
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
-                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC" required></textarea>
+                    <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
                 </div>
             </section>
             

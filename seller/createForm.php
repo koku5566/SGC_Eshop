@@ -341,7 +341,7 @@
             </section>
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                 <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);">Complete</button></div>
+                <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" id="completeBtn">Complete</button></div>
             </div>
         
     </div>
