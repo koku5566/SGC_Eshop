@@ -45,8 +45,8 @@ $customerUID = 3; //TO GET * from session
     array_push($productlength, $prod['product_length']);
     array_push($productwidth, $prod['product_width']);
 
-    $productheight += $prod['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
-    $productweight += $prod['product_weight'] * $quantity;
+    $productheight += $prod['product_height'] * $productQty; // Sum (Height (cm) x Quantity)
+    $productweight += $prod['product_weight'] * $productQty;
 
     }
   }
@@ -55,6 +55,7 @@ $customerUID = 3; //TO GET * from session
   $maximumwidth = max($productwidth);
   
   echo $productheight, $maximumlength, $maximumwidth;
+  echo $productweight;
 
 
 //===========To get customer shipping information==================
