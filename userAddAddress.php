@@ -45,7 +45,7 @@ if(isset($_POST['addAddress']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div class="bg-gradient-primary" style="margin-top: -1.5rem !important; padding: 4rem 0;">
+<div class="bg-gradient-primary col-xl-9" style="margin-top: -1.5rem !important; padding: 4rem 0;">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
