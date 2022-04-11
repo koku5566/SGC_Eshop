@@ -66,7 +66,7 @@
                                             <h4 class=\"card-title\">".$row['event_name']."</h4>
                                             <h6 class=\"text-muted card-subtitle mb-2\">".$row['status']."</h6>
                                             <h5>Date: ".$row['event_date']." - ".$row['eventEnd_date']."</h5>
-                                            <h5>Price: $buttonPrice</h5><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button>
+                                            <h5>Price: $buttonPrice</h5><a href=\"eventDetails.php?id=".$row['event_id']."\"><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button></a>
                                         </div>
                                     </div>
                                 ");
@@ -120,7 +120,7 @@
                                             <h4 class=\"card-title\">".$row['event_name']."</h4>
                                             <h6 class=\"text-muted card-subtitle mb-2\">".$row['status']."</h6>
                                             <h5>Date: ".$row['event_date']." - ".$row['eventEnd_date']."</h5>
-                                            <h5>Price: $buttonPrice</h5><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button>
+                                            <h5>Price: $buttonPrice</h5><a href=\"eventDetails.php?id=".$row['event_id']."\"><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button></a>
                                         </div>
                                     </div>
                                 ");
@@ -173,7 +173,7 @@
                                             <h4 class=\"card-title\">".$row['event_name']."</h4>
                                             <h6 class=\"text-muted card-subtitle mb-2\">".$row['status']."</h6>
                                             <h5>Date: ".$row['event_date']." - ".$row['eventEnd_date']."</h5>
-                                            <h5>Price: $buttonPrice</h5><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button>
+                                            <h5>Price: $buttonPrice</h5><a href=\"eventDetails.php?id=".$row['event_id']."\"><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button></a>
                                         </div>
                                     </div>
                                 ");

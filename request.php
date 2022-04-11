@@ -1,11 +1,12 @@
-<?php
-use PayPal\Api\Amount;
-use PayPal\Api\Payer;
-use PayPal\Api\Payment;
-use PayPal\Api\RedirectUrls;
-use PayPal\Api\Transaction;
-use PayPal\Api\ItemList; 
 
+<?php/*
+use PayPal\api\Amount;
+use PayPal\api\Payer;
+use PayPal\api\Payment;
+use PayPal\api\RedirectUrls;
+use PayPal\api\Transaction;
+use PayPal\api\ItemList; 
+*/
 require __DIR__. '/config.php';
 
 if (empty($_POST['item_number'])) {
