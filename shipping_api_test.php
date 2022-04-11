@@ -4,17 +4,11 @@
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
-
-  // $checkoutProduct = array ( //productid, quantity
-  //   array(000034,2),
-  //   array(000035,2)
-  // );
   
-  $cartsql = "SELECT * FROM cart WHERE 'user_ID = '$customerID'";
+  $cartsql = "SELECT * FROM cart WHERE 'user_ID' = '$customerID'";
   $stmt = $conn->prepare($cartsql);
   $stmt->execute();
   $result = $stmt->get_result();
-
 
   //Under the same seller
   $productlength =[];
@@ -26,7 +20,7 @@ $customerUID = 3; //TO GET * from session
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
 
-    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE id = '$product'";
+    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
     $stmt = $conn->prepare($sqlinfo);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -45,6 +39,7 @@ $customerUID = 3; //TO GET * from session
   $maximumlength = max($productlength);
   $maximumwidth = max($productwidth);
   
+  echo ' oi';
   echo $productheight, $maximumlength, $maximumwidth;
   //===========To get product weight, height, and width of the product==================
 
