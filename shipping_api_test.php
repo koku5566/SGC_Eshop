@@ -1,25 +1,50 @@
 <?php 
- require __DIR__ . '/header.php';
+    require_once __DIR__ . '/mysqli_connect.php';
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
-$customerUID = 3; //TO GET *
+$customerUID = 3; //TO GET * from session
+  
+  $cartsql = "SELECT * FROM cart WHERE user_ID = '$customerID'";
+  $stmt = $conn->prepare($cartsql);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-  $checkoutProduct = array ( //productid, quantity
-    array(000034,2),
-    array(000035,2)
-  );
-
+  //Under the same seller
   $productlength =[];
   $productwidth = [];
   $productheight = 0;
 
+  while ($row = $result->fetch_assoc()) {
 
-  foreach($checkoutProduct as $product => $quantity){
-    echo $product, $quantity;
+    $product = $row['product_ID'];
+    $productQty = $row['quantity'];
+     echo $product, $productQty;
+    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_ID = '$product'";
+    $stmt = $conn->prepare($sqlinfo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+
+    //to calculate parcel size of including all products
+    array_push($productlength, $row['product_length']);
+    array_push($productwidth, $row['product_width']);
+
+    $productheight += $row['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
+
+   
+
+    }
   }
+  $maximumlength = max($productlength);
+  $maximumwidth = max($productwidth);
+  
+  echo ' oi';
+  echo $productheight, $maximumlength, $maximumwidth;
+  //===========To get product weight, height, and width of the product==================
 
 
+ 
 
 
 $sql2 ="SELECT
@@ -77,8 +102,5 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 
-echo $sPhone,$sContactName, $sFullAddress, $sPostalCode, $sState;
-
-require __DIR__ . '/footer.php'
 ?>
 
