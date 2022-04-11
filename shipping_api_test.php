@@ -58,7 +58,7 @@ $customerUID = 3; //TO GET * from session
 
 
    //===========To get customer shipping information==================
-$sql2 ="SELECT
+$customersql ="SELECT
 id.user,
 contact_name.userAddress,
 phone_number.userAddress,
@@ -72,7 +72,7 @@ user
 JOIN userAddress ON user.id = userAddress.user_id
 WHERE
 user.id = $customerUID";
-  $result = $conn->query($sql2);
+  $result = $conn->query($customersql);
 
   if ($result->num_rows > 0) {
     // output data of each row
@@ -86,7 +86,7 @@ $cState = $row['state'];
   }
 
 //===========To get seller shipping information==================
-$sql ="SELECT
+$sellersql ="SELECT
 id.user,
 contact_name.userAddress,
 phone_number.userAddress,
@@ -101,7 +101,7 @@ JOIN userAddress ON user.id = userAddress.user_id
 WHERE
 user.id = $sellerUID";
 
-$result = $conn->query($cartsql);
+$result = $conn->query($sellersql);
 
 if ($result->num_rows > 0) {
   // output data of each row
