@@ -58,19 +58,19 @@ $customerUID = 3; //TO GET * from session
 
 //===========To get customer shipping information==================
 $customersql ="SELECT
-id.user,
-contact_name.userAddress,
-phone_number.userAddress,
-address.userAddress,
-postal_code.userAddress,
-area.userAddress,
-state.userAddress,
-country.userAddress
+user.user_id,
+userAddress.contact_name,
+userAddress.phone_number,
+userAddress.address,
+userAddress.postal_code,
+userAddress.area,
+userAddress.state,
+userAddress.country
 FROM
 user
-JOIN userAddress ON user.id = userAddress.user_id
+JOIN userAddress ON user.user_id = userAddress.user_id
 WHERE
-user.id = $customerUID";
+user.user_id = $customerUID";
   $result = $conn->query($customersql);
 
   if ($result->num_rows > 0) {
@@ -88,19 +88,19 @@ echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
 
 //===========To get seller shipping information==================
 $sellersql ="SELECT
-id.user,
-contact_name.userAddress,
-phone_number.userAddress,
-address.userAddress,
-postal_code.userAddress,
-area.userAddress,
-state.userAddress,
-country.userAddress
+user.user_id,
+userAddress.contact_name,
+userAddress.phone_number,
+userAddress.address,
+userAddress.postal_code,
+userAddress.area,
+userAddress.state,
+userAddress.country
 FROM
 user
-JOIN userAddress ON user.id = userAddress.user_id
+JOIN userAddress ON user.user_id = userAddress.user_id
 WHERE
-user.id = $sellerUID";
+user.user_id = $sellerUID";
 
 $result = $conn->query($sellersql);
 
