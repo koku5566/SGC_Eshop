@@ -161,6 +161,11 @@
                     mysqli_query($conn, $sql_insertVar);
                 }
             }
+            ?>
+                <script type="text/javascript">
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                </script>
+            <?php
         }
         else
         {
