@@ -33,18 +33,6 @@
 			echo "Error: " . mysqli_error($conn);
 		}
 	}
-
-	if(isset($_POST['editB']))
-	{
-		$_SESSION['BToEdit'] = $_POST['editB'];
-		echo("<script>window.location.href='userEditBank.php';</script>");
-	}
-
-	if(isset($_POST['editC']))
-	{
-		$_SESSION['CToEdit'] = $_POST['editC'];
-		echo("<script>window.location.href='userEditCard.php';</script>");
-	}
 ?>
 
 <div class="row">
@@ -64,13 +52,13 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\">
-			<button href=\"../userEditBank.php\" name=\"editB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">
-				".$row["bank_name"]."
-				".$row["bankAcc_name"]."
-				".$row["account_no"]."
-				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
+			<div class=\"container\" value=".$row["bankAcc_id"].">
+				<div class=\"btn btn-primary\">
+					".$row["bank_name"]."
+					".$row["bankAcc_name"]."
+					".$row["account_no"]."
+					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
+				</div>
 			</div>
 			");
 	}
@@ -84,12 +72,12 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"container\">
-			<button href=\"../userEditCard.php\" name=\"editC\" value=".$row["card_id"]." class=\"btn btn-primary\">
-				".$row["name"]."
-				".$row["card_number"]."
-				".$row["expiry_date"]."
-				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
+				<div class=\"btn btn-primary\" value=".$row["card_id"].">
+					".$row["name"]."
+					".$row["card_number"]."
+					".$row["expiry_date"]."
+					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
+				</div>
 			</div>
 			");
 	}
