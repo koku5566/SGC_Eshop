@@ -58,7 +58,12 @@
             <div class="row">
                 <div class="col-10">
                     <h4>Participants List (DataTable)</h4>
-                    <table id="participantTable">
+                </div>
+                <div class="col-2"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Export CSV</button></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                <table id="participantTable">
                         <thead>
                             <tr>
                                 <th>test</th>
@@ -71,7 +76,6 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-2"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Export CSV</button></div>
             </div>
         </div>
     </div>
