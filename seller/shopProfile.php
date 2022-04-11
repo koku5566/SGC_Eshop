@@ -3,24 +3,64 @@
 ?>
 
 <?php
-    if(isset($_POST['submit'])){
-      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
-        $coverPhoto = $_POST['coverPhoto'];
-        $profileImage = $_POST['profileImage'];
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $imageVideo = $_POST['imageVideo'];
+//    if(isset($_POST['submit'])){
+//      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+//        $coverPhoto = $_POST['coverPhoto'];
+//        $profileImage = $_POST['profileImage'];
+//        $name = $_POST['name'];
+//        $description = $_POST['description'];
+//        $imageVideo = $_POST['imageVideo'];
+//
+//        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+//
+//        //$run = mysqli_query($conn,$query);
+//        if (mysqli_query($conn, $query)) {
+//          echo "Form Submitted Successfully" ;
+//        } else {
+//          echo "Error: " . $query . "<br>" . mysqli_error($conn);
+//        }
+//        mysqli_close($conn);
+//    }
+?>
+<?php
+if($conn->connect_error){
+	die("Connection failed ".$conn->connect_error);
+}
 
-        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+$sql = "select * from students where student_id='$student_id'";
 
-        //$run = mysqli_query($conn,$query);
-        if (mysqli_query($conn, $query)) {
-          echo "Form Submitted Successfully" ;
-        } else {
-          echo "Error: " . $query . "<br>" . mysqli_error($conn);
-        }
-        mysqli_close($conn);
-    }
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0){
+
+$row = $result->fetch_assoc();
+
+$coverPhoto = $row["coverPhoto"];
+$profileImage = $row["profileImage"];
+$name = $row["name"];
+$description = $row["description"];
+$imageVideo = $row["imageVideo"];
+
+} else {
+	echo "Not Found";
+}
+$conn->close();
+?>
+
+<?php
+if ($conn->connect_error){
+	die("Connection failed: ". $conn->connect_error);
+}
+
+$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+
+if ($conn->query($sql) === TRUE) {
+	echo "Records updated: ".$name."-".$description;
+} else {
+	echo "Error: ".$sql."<br>".$conn->error;
+}
+
+$conn->close();
 ?>
 
 <!-- Icon -->
@@ -38,7 +78,7 @@
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
       <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" value='$coverPhoto' hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -48,18 +88,18 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage" onchange="loadFile(event)"/>
+        <input id="file" type="file" name="profileImage" value='$profileImage' onchange="loadFile(event)"/>
         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
       </div>
     </div>
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name"/>
+      <input type="text" class="form-control" name="name" value='$name'/>
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control"  rows="3" name="description"></textarea>
+      <textarea class="form-control"  rows="3" name="description" value='$description'></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
@@ -67,7 +107,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value='$imageVideo' onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
