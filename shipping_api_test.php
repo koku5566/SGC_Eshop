@@ -5,7 +5,7 @@
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
   
-  $cartsql = "SELECT * FROM cart WHERE user_ID = '$customerID'";
+  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $stmt = $conn->prepare($cartsql);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -19,18 +19,20 @@ $customerUID = 3; //TO GET * from session
 
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
-     echo $product, $productQty;
-    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_ID = '$product'";
+    echo $product, $productQty;
+
+    //get product info
+    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
     $stmt = $conn->prepare($sqlinfo);
     $stmt->execute();
     $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
+    while ($prod = $result->fetch_assoc()) {
 
     //to calculate parcel size of including all products
-    array_push($productlength, $row['product_length']);
-    array_push($productwidth, $row['product_width']);
+    array_push($productlength, $prod['product_length']);
+    array_push($productwidth, $prod['product_width']);
 
-    $productheight += $row['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
+    $productheight += $prod['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
 
    
 
