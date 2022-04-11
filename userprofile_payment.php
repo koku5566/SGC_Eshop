@@ -37,7 +37,7 @@
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div id="DataDiv">
+<div class="col-xl-9">
 <div class="h1">My Payment Option</div>
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
