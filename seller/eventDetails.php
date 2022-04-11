@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-2"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Export CSV</button></div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top:20px">
                 <div class="col-12">
                 <table id="participantTable">
                         <thead>
