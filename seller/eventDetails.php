@@ -20,7 +20,7 @@
         <div class="card-body">
             <div class="row">
             <?php
-                        $sql = "SELECT * FROM `event` INNER JOIN `ticketType` on `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = ".$_SESSION['eventIDView']."";
+                        $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventIDView']."";
                         $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)) {
