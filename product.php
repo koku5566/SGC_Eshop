@@ -1163,11 +1163,13 @@
 
 	function addToCart(productId) 
 	{
+		var qty = document.getElementById('txtQuantity').value;
 		$.ajax({
 			url:"PHP_product.php",
 			method:"POST",
 			data:{
 				addToCart:true,
+				quantity:qty
 			},
 			dataType: 'JSON',
 			success: function(response){
@@ -1193,7 +1195,7 @@
 		}
 		else
 		{
-			document.getElementById('txtQuantity').value
+			document.getElementById('txtQuantity').value;
 		}
 	});
 
