@@ -1,6 +1,6 @@
 <?php
-use PayPal\Api\Payment;
-use PayPal\Api\PaymentExecution;
+use paypal\Api\Payment;
+use paypal\Api\PaymentExecution;
 
 require '/config.php';
 

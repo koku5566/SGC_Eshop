@@ -1,6 +1,6 @@
 <?php
-use PayPal\Rest\ApiContext;
-use PayPal\Auth\OAuthTokenCredential;
+use paypal\Rest\ApiContext;
+use paypal\Auth\OAuthTokenCredential;
 
 require '/autoload.php';
 
