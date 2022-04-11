@@ -36,10 +36,10 @@
                                 echo("
                                 <div class=\"col-4\"><img src=\"$picLocation\" id=\"eventPhoto\" style=\"width: 100%;\" name=\"eventPhoto\"></div>
                                 <div class=\"col-8\">
-                                    <h4 name=\"eventName\">".$row['event_name']."</h4>
-                                    <h6>Event Status: ".$row['status']."</h6>
-                                    <h6>Location: ".$row['location']."</h6>
-                                    <h6>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h6><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
+                                    <h3 name=\"eventName\">".$row['event_name']."</h3>
+                                    <h5>Event Status: ".$row['status']."</h5>
+                                    <h5>Location: ".$row['location']."</h5>
+                                    <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
                                 </div>
                                 ");
                                 }
