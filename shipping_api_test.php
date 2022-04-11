@@ -1,22 +1,20 @@
 <?php 
-    require_once __DIR__ . '/mysqli_connect.php';
+    require '/mysqli_connect.php';
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
-  
+    //Under the same seller
+    $productlength =[];
+    $productwidth = [];
+    $productheight = 0;
+
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE 'user_ID' = '$customerUID'";
   $stmt = $conn->prepare($cartsql);
   $stmt->execute();
   $result = $stmt->get_result();
 
-  //Under the same seller
-  $productlength =[];
-  $productwidth = [];
-  $productheight = 0;
-
   while ($row = $result->fetch_assoc()) {
-
     $product = $row['product_ID'];
     $productQty = $row['quantity'];
     echo 'cannot meh';
