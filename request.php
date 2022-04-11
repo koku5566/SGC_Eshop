@@ -4,9 +4,9 @@ use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-use PayPal\Api\ItemList;
+use PayPal\Api\ItemList; 
 
-require 'config.php';
+require __DIR__. '/config.php';
 
 if (empty($_POST['item_number'])) {
     throw new Exception('This script should not be called directly, expected post data');

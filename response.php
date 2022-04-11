@@ -2,7 +2,7 @@
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 
-require 'config.php';
+require __DIR__. '/config.php';
 
 if (empty($_GET['paymentId']) || empty($_GET['PayerID'])) {
     throw new Exception('The response is missing the paymentId and PayerID');
@@ -36,11 +36,11 @@ try {
         if (addPayment($data) !== false && $data['payment_status'] === 'approved') {
             // Payment successfully added, redirect to the payment complete page.
 			$inserids =$db->insert_id;
-            header("location:http://localhost/paypaltest/PaypalSuccess.php?payid=$inserids");
+            header("location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids");
             exit(1);
         } else {
             // Payment failed
-			header("location:http://localhost/paypaltest/PaypalFailed.php");
+			header("location:https://eshop.sgcprototype2.com/payment-cancelled.html");
              exit(1);
         }
 

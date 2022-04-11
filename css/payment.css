@@ -19,12 +19,7 @@
   margin: 0;
   font-size: 34px;
 }
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 37px 0;
-}
+
 .col__box{
   background-color: #ffffff;
   padding: 47px;
