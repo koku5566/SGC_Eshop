@@ -25,7 +25,7 @@ $customerUID = 3; //TO GET * from session
     $productlength =[];
     $productwidth = [];
     $productheight = 0;
-
+  
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $result = $conn->query($cartsql);
 
@@ -46,6 +46,7 @@ $customerUID = 3; //TO GET * from session
     array_push($productwidth, $prod['product_width']);
 
     $productheight += $prod['product_height'] * $quantity; // Sum (Height (cm) x Quantity)
+    $productweight += $prod['product_weight'] * $quantity;
 
     }
   }
@@ -56,7 +57,7 @@ $customerUID = 3; //TO GET * from session
   echo $productheight, $maximumlength, $maximumwidth;
 
 
-   //===========To get customer shipping information==================
+//===========To get customer shipping information==================
 $customersql ="SELECT
 id.user,
 contact_name.userAddress,
@@ -84,6 +85,8 @@ $cState = $row['state'];
 }
   }
 echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
+
+
 //===========To get seller shipping information==================
 $sellersql ="SELECT
 id.user,
@@ -130,7 +133,7 @@ array(
 'send_code'	=> $cPostalCode, //'11950',
 'send_state'	=> $cState,//'png',
 'send_country'	=> 'MY',
-'weight'	=> '5',
+'weight'	=> $productweight,
 'width'	=>$maximumwidth,// '0',
 'length'	=> $maximumlength,// '0',
 'height'	=>$productheight,//'0',
