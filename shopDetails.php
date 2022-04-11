@@ -77,13 +77,13 @@
                 </div>
               </div>
             </div>-->
-
-            <div class="col-lg-4 col-md-6 mb-4">
             <?php
               if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
             ?>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -97,16 +97,19 @@
                 <div class="card-body">
                   <?php
                       echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
-                    }
-                  } else {
-                    echo "error";
-                  }
-                  $conn->close();
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
+            <?php
+            }
+          } else {
+            echo "error";
+          }
+          $conn->close();
+
+            ?>
 
             <!--<div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
