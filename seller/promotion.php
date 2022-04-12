@@ -14,9 +14,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">View</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="row">
                                     <table class="table table-hover">
                                         <thead>
