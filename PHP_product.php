@@ -65,11 +65,7 @@
                             VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
 
 
-            echo($quatity);
-            echo($userId);
-            echo($shopId);
-            echo($product_id);
-            echo($variationId);
+        echo($sql_insert_cart);
 
         if(mysqli_query($conn, $sql_insert_cart))
         {
