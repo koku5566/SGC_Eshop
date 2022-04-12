@@ -1,6 +1,7 @@
 <?php
 
 namespace PayPal\Api;
+use PayPal\Api;
 
 /**
  * Class Transaction
