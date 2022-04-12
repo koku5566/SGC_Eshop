@@ -66,13 +66,18 @@
                                     <h5 class="m-0 font-weight-bold text-primary">Promotion Details</h5>
                                 </div>
                                 <div class="card-body">
+                                    <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-xl-2 col-lg-2 col-sm-12">
-                                            <p class="p-title">Title</p>
+                                            <p class="p-title">Promotion Title</p>
                                         </div>
-                                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                                    
-                                        <p class="p-title">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></p>
+                                        <div class="col-xl-10 col-lg-10 col-sm-12">
+                                            <div class="input-group mb-3">
+                                                <input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <p class="p-title">Cover Image</p>
                                             <div class="row">
                                                 <div class="col-xl-10 col-lg-10 col-sm-12">
