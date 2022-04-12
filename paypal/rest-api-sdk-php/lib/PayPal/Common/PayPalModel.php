@@ -1,8 +1,9 @@
 <?php
 
 namespace PayPal\Common;
+namespace PayPal\api;
 use PayPal\Validation\JsonValidator;
-use PayPal\api\Item;
+
 
 /**
  * Generic Model class that all API domain classes extend
