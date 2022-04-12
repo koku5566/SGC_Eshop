@@ -84,7 +84,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="row">
                                         <div class="col-xl-6 col-lg-6">
                                             <div class="input-group mb-6">
                                                 <div class="input-group-prepend">
