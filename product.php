@@ -4,6 +4,7 @@
 ?>
 <?php
     $_SESSION['productID'] = $_GET['id'];
+	$_SESSION["userId"] = "U000018";
 ?>
 <?php
 	//Fetch each product information
