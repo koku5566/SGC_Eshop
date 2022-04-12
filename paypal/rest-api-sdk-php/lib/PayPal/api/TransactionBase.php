@@ -1,7 +1,6 @@
 <?php
 
 namespace PayPal\Api;
-use PayPal\api\CartBase;
 
 /**
  * Class TransactionBase

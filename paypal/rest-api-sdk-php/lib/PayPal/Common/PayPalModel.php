@@ -2,7 +2,6 @@
 
 namespace PayPal\Common;
 
-namespace PayPal\api;//
 use PayPal\Validation\JsonValidator;
 
 
