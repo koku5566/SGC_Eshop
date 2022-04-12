@@ -10,7 +10,7 @@ namespace PayPal\Api;
  * @package PayPal\Api
  *
  */
-class Transaction
+class Transaction extends TransactionBase
 {
     /**
      * Additional transactions for complex payment scenarios.
