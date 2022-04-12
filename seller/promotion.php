@@ -8,7 +8,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Current Promotion</h5>
                     </div>
                     <!-- View Section -->
                     <div class="card-body">
@@ -120,20 +120,23 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-                                                    <div class="col-sm-2">
-                                                        <h5 style="text-align: center;margin-top: 6px;">To</h5>
-                                                    </div>
-                                                <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
+                                                        <div class="col-sm-2">
+                                                            <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                                                        </div>
+                                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- Page Ending -->         
                                 <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
                                     <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
                                 </div>
-                                
+
                                         <?php
                                             if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                                             {
