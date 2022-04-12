@@ -113,7 +113,6 @@
                                                 </div>
                                         </div> 
 
-                                        <div>
                                             <div class="row">
                                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                                     <p class="p-title">Date</p>
@@ -128,7 +127,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
 
