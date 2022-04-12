@@ -1,6 +1,7 @@
 <?php
 
-//namespace PayPal\Api;
+namespace PayPal\Api;
+require 'paypal\rest-api-sdk-php\lib\PayPal\api\TransactionBase.php';
 
 /**
  * Class Transaction
