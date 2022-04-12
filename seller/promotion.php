@@ -118,14 +118,14 @@
                                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                                     <p class="p-title">Date</p>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-                                                        <div class="col-sm-2">
-                                                            <h5 style="text-align: center;margin-top: 6px;">To</h5>
-                                                        </div>
-                                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                                <div class="row">
+                                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                        <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
+                                                            <div class="col-sm-2">
+                                                                <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                                                            </div>
+                                                        <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
