@@ -6,7 +6,7 @@ use PayPal\Rest\ApiContext;
 use PayPal\Rest\IResource;
 use PayPal\Transport\PayPalRestCall;
 
-use PayPal\Common\PayPalModel;//
+use PayPal\common\PayPalModel;//
 
 /**
  * Class PayPalResourceModel
