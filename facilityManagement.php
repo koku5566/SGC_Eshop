@@ -32,15 +32,14 @@
          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
          $fileName = round(microtime(true) * 1000).".".$ext;
          $targetFilePath = $targetDir.$fileName; 
-
          // Check whether file type is valid 
          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
          if(in_array($fileType, $allowTypes)){ 
-             if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                 echo($fileName);
-                 $sql_insert .= "'$fileName', ";
-                 $imgInpCounter++;
-             }
+            if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+               echo($fileName);
+               $sql_insert .= "'$fileName', ";
+               $imgInpCounter++;
+            }
          }
      } 
 
