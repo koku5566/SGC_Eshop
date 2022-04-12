@@ -1179,8 +1179,6 @@
 					$("#MsgModel").modal('show');
 					setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
 				}
-				
-				
 			},
 			error: function(err) {
 				alert(err.responseText);

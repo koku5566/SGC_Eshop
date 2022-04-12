@@ -67,11 +67,11 @@
         if(mysqli_query($conn, $sql_insert_cart))
         {
             
-            echo json_encode(true);
+            echo json_encode("true");
         }
         else
         {
-            echo json_encode(false);
+            echo json_encode("false");
         }
     }
 ?>
