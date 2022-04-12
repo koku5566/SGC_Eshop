@@ -3,161 +3,173 @@
 ?>
 
     <!-- Begin Page Content -->
-    <div class="container-fluid" style="width: 80%;">
-        <h1 style="margin-top: 50px;">Create Promotion Banner</h1>
-        <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
-
-        <!-- View Section -->
-            <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                    <div>
-                        <h2>View</h2>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                <th scope="col">Promotion Title</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
-                                    $result = $conn->query($sql); 
-                                    if($result-> num_rows > 0){
-                                         while($row = $result->fetch_assoc()){
-                                             echo"<tr><td>"
-                                             .$row["promotion_title"]."</td><td>"."Start:  "
-                                             .$row["promotion_Date"]."<br>"."End:   "
-                                             .$row["promotionEnd_Date"]."</td>
-                                             <td>
-                                             <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                </div>
-                                             <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                </div>
-                                             </td></tr>";
-                                         }
-                                         echo"</table>";
-                                     }
-                                     else{
-                                         echo"No Promotion.";
-                                     }
-                                ?>
-                            </tbody>
-                            </table>
+    <div class="container-fluid" id="mainContainer">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Basic Information</h5>
                     </div>
-                </section>
-
-            <!-- Create Promotion -->
-            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                <!--
-                <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                    
-                </section>-->
-                
-                <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                    <h2>Promotion Details</h2>
-                    <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
-                    <h4 style="margin-top: 30px;width: 100%;">Cover Image</h4>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                                    <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                        <div style="padding-bottom: .625rem;display:flex">
-                                            <div class="imageDiv">
-                                                <div class="image-container">
-                                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                    <div class="image-layer">
-                                                    </div>
-                                                    <div class="image-tools-delete hide">
-                                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                    </div>
-                                                    <div class="image-tools-add">
-                                                        <label class="custom-file-upload">
-                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
-                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <!-- View Section -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">View</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Promotion Title</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                            $result = $conn->query($sql); 
+                                            if($result-> num_rows > 0){
+                                                while($row = $result->fetch_assoc()){
+                                                    echo"<tr><td>"
+                                                    .$row["promotion_title"]."</td><td>"."Start:  "
+                                                    .$row["promotion_Date"]."<br>"."End:   "
+                                                    .$row["promotionEnd_Date"]."</td>
+                                                    <td>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                        </div>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                        </div>
+                                                    </td></tr>";
+                                                }
+                                                echo"</table>";
+                                            }
+                                            else{
+                                                echo"No Promotion.";
+                                            }
+                                        ?>
+                                    </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div>
-                                <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
-                            </div>
-                        </div>
-                    </div> 
+                        </section>
 
-                    <div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <h4 style="margin-top: 30px;width: 100%;">Date</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-                            <div class="col-sm-2">
-                                <h5 style="text-align: center;margin-top: 6px;">To</h5>
-                            </div>
-                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
-                        </div>
-                    </div>
-                </section>
-                
-                
-                <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-                    <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                    <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
-                </div>
-
-
-                <?php
-                if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
-                {
-                    $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
-                    $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
-                    $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
-                    
-                    //File upload configuration 
-                    $fileNames = array_filter($_FILES['img']['name']); 
-                    $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                    $allowTypes = array('jpg','png','jpeg');
-
-                    $fileName = basename($_FILES['img']['name'][0]); 
-                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                    $fileName = round(microtime(true) * 1000).".".$ext;
-                    $targetFilePath = $targetDir.$fileName; 
-                    // Check whether file type is valid 
-                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                    if(in_array($fileType, $allowTypes)){ 
-                        if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                            $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
-                                    VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                    <!-- Create Promotion -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h5 class="m-0 font-weight-bold text-primary">Promotion Details</h5>
+                                </div>
+                                    <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                                     
-                                    $result = mysqli_query($conn,$sql);
+                                    <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
+                                        <h2>Promotion Details</h2>
+                                        <h4 style="margin-top: 30px;">Title<input class="form-control" type="text" required placeholder="Promotion Title" style="margin-top: 10px;" name="promotion_Title"></h4>
+                                        <h4 style="margin-top: 30px;width: 100%;">Cover Image</h4>
+                                        <div class="row">
+                                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                                        <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                                            <div style="padding-bottom: .625rem;display:flex">
+                                                                <div class="imageDiv">
+                                                                    <div class="image-container">
+                                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                                        <div class="image-layer">
+                                                                        </div>
+                                                                        <div class="image-tools-delete hide">
+                                                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                                        </div>
+                                                                        <div class="image-tools-add">
+                                                                            <label class="custom-file-upload">
+                                                                                <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
+                                                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    <div>
+                                        <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
+                                    </div>
+                                </div>
+                            </div> 
 
-                                    if($result)
-                                    {
-                                        echo '<script>alert("Add promotion successfully!")</script>';
-                                        ?>
-                                            <script type="text/javascript">
-                                                window.location.href = window.location.origin + "/seller/promotion.php";
-                                            </script>
-                                        <?php
-                                    }
-                                    else
-                                    {
-                                        echo '<script>alert("Failed")</script>';
-                                    }
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4 style="margin-top: 30px;width: 100%;">Date</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
+                                    <div class="col-sm-2">
+                                        <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                                    </div>
+                                    <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        
+                        <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
+                            <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
+                            <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
+                        </div>
+
+
+                        <?php
+                        if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
+                        {
+                            $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
+                            $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                            $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
+                            
+                            //File upload configuration 
+                            $fileNames = array_filter($_FILES['img']['name']); 
+                            $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                            $allowTypes = array('jpg','png','jpeg');
+
+                            $fileName = basename($_FILES['img']['name'][0]); 
+                            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            $fileName = round(microtime(true) * 1000).".".$ext;
+                            $targetFilePath = $targetDir.$fileName; 
+                            // Check whether file type is valid 
+                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            if(in_array($fileType, $allowTypes)){ 
+                                if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                            
+                                            $result = mysqli_query($conn,$sql);
+
+                                            if($result)
+                                            {
+                                                echo '<script>alert("Add promotion successfully!")</script>';
+                                                ?>
+                                                    <script type="text/javascript">
+                                                        window.location.href = window.location.origin + "/seller/promotion.php";
+                                                    </script>
+                                                <?php
+                                            }
+                                            else
+                                            {
+                                                echo '<script>alert("Failed")</script>';
+                                            }
+                                }
+                            }
                         }
-                    }
-                }
-                ?>
-            </form>
+                        ?>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.container-fluid -->
