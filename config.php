@@ -10,8 +10,8 @@ $enableSandbox = true;
 // PayPal settings. Change these to your account details and the relevant URLs
 // for your site.
 $paypalConfig = [
-    'client_id' => 'AXwUvCxvA69PZNIw8yROCF9avXuWCThOctoMyva-gTq4HZ4fvr23JQEv-B-e5XAoyqlAO33O4o1-jg0V',
-    'client_secret' => 'EPNDx2VJTNtxPcL_mU16_eVR4EVHo3AwpjiIThwsyBEbDZV6XRknodG6qkRoE9G6dBJoGo6dA5zmriLa',
+    'client_id' => 'AfVucqlI4wppM3dgw64w50OfTjj3rajP_qfFaDKoqTP7QXOgYI5UcuEWsogFS1xL4EEdo3zHlcsKAJxs',
+    'client_secret' => 'EHXBKEv-_c5nqL1Wyj4LAaCAA-Sam3mFCK1XQv6555_AktOE5Ksge_SYZhikgWPWr929bmn8lN01Dui4',
     'return_url' => 'https://eshop.sgcprototype2.com/PaypalSuccess.php',
     'cancel_url' => 'https://eshop.sgcprototype2.com/payment-cancelled.html'
 ];
