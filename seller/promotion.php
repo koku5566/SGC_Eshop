@@ -113,29 +113,27 @@
                                                 </div>
                                         </div> 
 
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                                <p class="p-title">Date</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
-                                                <div class="col-sm-2">
-                                                    <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                    <p class="p-title">Date</p>
                                                 </div>
-                                            <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-5"><input class="form-control" type="date" name="pDate_From" id="promotion_Date" required></div>
+                                                    <div class="col-sm-2">
+                                                        <h5 style="text-align: center;margin-top: 6px;">To</h5>
+                                                    </div>
+                                                <div class="col-sm-5"><input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                            </div>
-                        
-                                <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-                                    <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                                    <button class="btn btn-outline-primary" type="submit" name="create_btn" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
+                                <!-- Page Ending -->         
+                                <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+                                    <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
                                 </div>
-
-
+                                
                                         <?php
                                             if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                                             {
