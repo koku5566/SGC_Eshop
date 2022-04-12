@@ -22,6 +22,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 
     <h1>Event Dashboard</h1>
     <div class="card">
@@ -36,10 +41,10 @@
                                 echo("
                                 <div class=\"col-4\"><img src=\"$picLocation\" id=\"eventPhoto\" style=\"width: 100%;\" name=\"eventPhoto\"></div>
                                 <div class=\"col-8\">
-                                    <h4 name=\"eventName\">".$row['event_name']."</h4>
-                                    <h6>Event Status: ".$row['status']."</h6>
-                                    <h6>Location: ".$row['location']."</h6>
-                                    <h6>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h6><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
+                                    <h3 name=\"eventName\">".$row['event_name']."</h3>
+                                    <h5>Event Status: ".$row['status']."</h5>
+                                    <h5>Location: ".$row['location']."</h5>
+                                    <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
                                 </div>
                                 ");
                                 }
