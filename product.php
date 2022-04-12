@@ -1173,6 +1173,7 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
+				alert(response);
 				$("#MsgModel").modal('show');
 				setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
 			},

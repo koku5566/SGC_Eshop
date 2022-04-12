@@ -48,13 +48,13 @@
     }
     else if(isset($_POST['addToCart']))
     {
-        /*
-        $_POST['quantity'];
-        $_SESSION['userId'];
-        $_SESSION['shopId'];
-        $_SESSION['productID'];
-        $_SESSION['variationId'];
-        */
+        
+        //$_POST['quantity'];
+        echo($_SESSION['userId']);
+        echo($_SESSION['shopId']);
+        echo($_SESSION['productID']);
+        echo($_SESSION['variationId']);
+        
 
         if(true)
         {
