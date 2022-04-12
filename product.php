@@ -1174,7 +1174,6 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				alert(response);
 				if(response == "true")
 				{
 					$("#MsgModel").modal('show');
