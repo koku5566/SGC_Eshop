@@ -55,6 +55,11 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
                     <!-- Create Promotion -->
                     <div class="row">
