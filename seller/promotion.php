@@ -115,8 +115,8 @@
 
                                     <div>
                                         <div class="row">
-                                            <div class="col-sm-2">
-                                                <h4 style="margin-top: 30px;width: 100%;">Date</h4>
+                                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                                <p class="p-title">Date</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -128,6 +128,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                            </div>
                         
                                 <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                                     <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
