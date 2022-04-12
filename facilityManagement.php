@@ -32,6 +32,7 @@
          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
          $fileName = round(microtime(true) * 1000).".".$ext;
          $targetFilePath = $targetDir.$fileName; 
+         echo($targetFilePath);
          // Check whether file type is valid 
          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
          if(in_array($fileType, $allowTypes)){ 
@@ -55,9 +56,10 @@
      if(mysqli_query($conn, $sql_insert)){
          ?>
              <script type="text/javascript">
-                 window.location.href = window.location.origin + "/seller/myProduct.php";
+                 //window.location.href = window.location.origin + "/seller/myProduct.php";
              </script>
          <?php
+         echo("can use");
      }
      else
      {
@@ -97,7 +99,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" name="name" maxlength="1000" required>
+                  <input type ="text" class="form-control" name="title" maxlength="1000" required>
                   </div>
                </div>
             </div>
