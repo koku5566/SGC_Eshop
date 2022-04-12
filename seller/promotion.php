@@ -84,8 +84,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-5 col-lg-5">
+                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                        <div class="col-xl-6 col-lg-6">
                                             <div class="input-group mb-6">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">Start</span>
@@ -93,7 +93,7 @@
                                                 <input class="form-control" type="date" name="pDate_From" id="promotion_Date" required>
                                             </div>
                                         </div>
-                                        <div class="col-xl-5 col-lg-5">
+                                        <div class="col-xl-6 col-lg-6">
                                             <div class="input-group mb-6">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">End</span>
