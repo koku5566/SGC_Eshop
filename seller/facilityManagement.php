@@ -16,7 +16,7 @@
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
       $imgInpCounter = 0;
-      $targetDir = dirname(__DIR__)."/img/facility/"; 
+      $targetDir = dirname(__DIR__,1)."/img/facility/"; 
       echo($targetDir);
       $allowTypes = array('jpg','png','jpeg'); 
 
