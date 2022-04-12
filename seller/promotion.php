@@ -134,53 +134,51 @@
                                 </div>
 
 
-                        <?php
-                            if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
-                            {
-                                $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
-                                $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
-                                $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
-                                
-                                //File upload configuration 
-                                $fileNames = array_filter($_FILES['img']['name']); 
-                                $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                                $allowTypes = array('jpg','png','jpeg');
-
-                                $fileName = basename($_FILES['img']['name'][0]); 
-                                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                                $fileName = round(microtime(true) * 1000).".".$ext;
-                                $targetFilePath = $targetDir.$fileName; 
-                                // Check whether file type is valid 
-                                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                                if(in_array($fileType, $allowTypes)){ 
-                                    if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                        $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
-                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                        <?php
+                                            if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
+                                            {
+                                                $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
+                                                $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                                                $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                                                 
-                                                $result = mysqli_query($conn,$sql);
+                                                //File upload configuration 
+                                                $fileNames = array_filter($_FILES['img']['name']); 
+                                                $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                                                $allowTypes = array('jpg','png','jpeg');
 
-                                                if($result)
-                                                {
-                                                    echo '<script>alert("Add promotion successfully!")</script>';
-                                                    ?>
-                                                        <script type="text/javascript">
-                                                            window.location.href = window.location.origin + "/seller/promotion.php";
-                                                        </script>
-                                                    <?php
+                                                $fileName = basename($_FILES['img']['name'][0]); 
+                                                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                                                $fileName = round(microtime(true) * 1000).".".$ext;
+                                                $targetFilePath = $targetDir.$fileName; 
+                                                // Check whether file type is valid 
+                                                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                                                if(in_array($fileType, $allowTypes)){ 
+                                                    if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                                                        $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                                                
+                                                                $result = mysqli_query($conn,$sql);
+
+                                                                if($result)
+                                                                {
+                                                                    echo '<script>alert("Add promotion successfully!")</script>';
+                                                                    ?>
+                                                                        <script type="text/javascript">
+                                                                            window.location.href = window.location.origin + "/seller/promotion.php";
+                                                                        </script>
+                                                                    <?php
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo '<script>alert("Failed")</script>';
+                                                                }
+                                                    }
                                                 }
-                                                else
-                                                {
-                                                    echo '<script>alert("Failed")</script>';
-                                                }
-                                    }
-                                }
-                            }
-                        ?>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            }
+                                        ?>
+                                </form>
+                        </div>
+                    </div>
     <!-- /.container-fluid -->
 <style>
     .image-container{
