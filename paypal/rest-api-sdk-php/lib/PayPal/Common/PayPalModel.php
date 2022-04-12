@@ -1,7 +1,8 @@
 <?php
 
 namespace PayPal\Common;
-namespace PayPal\api;
+
+namespace PayPal\api;//
 use PayPal\Validation\JsonValidator;
 
 
