@@ -65,13 +65,15 @@
                             VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
 
 
-        if(mysqli_query($conn, $sql_insert_cart))
-        {
             echo($quatity);
             echo($userId);
             echo($shopId);
             echo($product_id);
             echo($variationId);
+
+        if(mysqli_query($conn, $sql_insert_cart))
+        {
+            
             echo json_encode(true);
         }
         else
