@@ -113,33 +113,33 @@
                                 </div>
                         </div> 
 
-                            <div class="row" style="margin-top: 10px">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Date</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-10 col-lg-10 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Start</span>
-                                                    </div>
-                                                    <input class="form-control" type="date" name="pDate_From" id="promotion_Date" required>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Date</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">Start</span>
                                                 </div>
+                                                <input class="form-control" type="date" name="pDate_From" id="promotion_Date" required>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">End</span>
-                                                    </div>
-                                                    <input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">End</span>
                                                 </div>
+                                                <input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
 
