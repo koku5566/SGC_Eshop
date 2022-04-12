@@ -86,7 +86,7 @@
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6">
-                                            <div class="input-group mb-6">
+                                            <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">Start</span>
                                                 </div>
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
-                                            <div class="input-group mb-6">
+                                            <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">End</span>
                                                 </div>
