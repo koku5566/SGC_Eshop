@@ -16,7 +16,7 @@
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
       $imgInpCounter = 0;
-      $targetDir = dirname(__DIR__)."/img/facility/"; 
+      $targetDir = "/img/facility/"; 
       $allowTypes = array('jpg','png','jpeg'); 
 
       $sql_insert  = "INSERT INTO facilityPic (";
