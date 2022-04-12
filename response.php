@@ -36,6 +36,7 @@ try {
         if (addPayment($data) !== false && $data['payment_status'] === 'approved') {
             // Payment successfully added, redirect to the payment complete page.
 			$inserids =$db->insert_id;
+            //<script>window.location.href = "location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids";</script>
             header("location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids");
             exit(1);
         } else {

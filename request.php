@@ -55,9 +55,9 @@ try {
     throw new Exception('Unable to create link for payment');
 }
 
-echo '<script type="text/javascript">';
+/* echo '<script type="text/javascript">';
 echo 'window.location.href="'. $payment->getApprovalLink().'";';
-echo '</script>';
-//header('location:' . $payment->getApprovalLink());
+echo '</script>'; */
+header('location:' . $payment->getApprovalLink());
 exit(1);
 
