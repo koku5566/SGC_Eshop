@@ -67,6 +67,11 @@
 
         if(mysqli_query($conn, $sql_insert_cart))
         {
+            echo($quatity);
+            echo($userId);
+            echo($shopId);
+            echo($product_id);
+            echo($variationId);
             echo json_encode(true);
         }
         else
