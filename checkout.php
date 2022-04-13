@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
+<!-- Shipping Courier Option Modal -->
+<div class="modal fade" id="courieroptionModal" tabindex="-1" role="dialog" aria-labelledby="courieroptionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="courieroptionModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="container-fluid" style="width:80%">
 <body style="background: #f5f2f2;">
@@ -62,12 +82,32 @@
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: var(--bs-pink);width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-top: 10px;">Shipping Option</label></div>
-            </div>
-            <div class="col">
-                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Standard Delivery</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Pick-up&nbsp;</label></div>
+            <div class="shipping-option" >
+                <div class="row">
+                    <div class="col"><label class="col-form-label" style="margin-top: 10px;">Shipping Option</label></div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
+                            <label class="form-check-label" for="standarddelivery">
+                                Standard Delivery
+                             </label>
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Choose</button>
+
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shipping-option" id="pickup" >
+                            <label class="form-check-label" for="pickup">
+                                Pick-up
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
             <div>
                 <div class="row">
