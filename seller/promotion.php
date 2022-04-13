@@ -253,7 +253,7 @@
                                     }
                                 ?>
                                 
-                                <div class="image-layer" style="width: 80px;height: 80px;opacity:0.5;position:absolute; margin-top: -80px;">
+                                <div class="image-layer2">
                                 </div>
                             </div>
                         </div>
@@ -359,6 +359,14 @@
     }
     .hide{
         display:none;
+    }
+    
+    .image-layer2{
+        width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;
     }
 </style>
 
