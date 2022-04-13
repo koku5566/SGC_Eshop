@@ -44,10 +44,10 @@ a:hover{
   font-weight: var(--fa-style,900);
 }
 
-#rating_bar a:hover > a{
-  font-weight: inherit;
+#rating_bar :hover > a{
+  font-weight: var(--fa-style,900);
 }
-#rating_bar a:hover~a{
+#rating_bar > a:hover~a{
   font-weight: var(--fa-style,900);
 }
 
