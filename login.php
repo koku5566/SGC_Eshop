@@ -161,12 +161,38 @@
         var id_token = googleUser.getAuthResponse().id_token;
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'https://eshop.sgcprototype2.com/login.php');
+        xhr.open('POST', 'https://eshop.sgcprototype2.com/googleLogin.php');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function() {
         console.log('Signed in as: ' + xhr.responseText);
         };
         xhr.send('idtoken=' + id_token);
+
+        $.ajax({
+			url:"https://oauth2.googleapis.com/tokeninfo",
+			method:"GET",
+			data:{
+				id_token:id_token,
+			},
+			dataType: 'JSON',
+			success: function(response){
+                var len = response.length;
+				for(var i=0; i<len; i++){
+					var email = response[i].email;
+					var email_verified = response[i].email_verified;
+                    var name = response[i].name;
+
+                    if(email_verified == "true")
+                    {
+
+                    }
+				}
+			},
+			error: function(err) {
+				//$('#login_message').html(err.responseText);
+				alert(err.responseText);
+			}
+		});
 
         var profile = googleUser.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
