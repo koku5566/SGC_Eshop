@@ -18,6 +18,16 @@
       }
   }
 
+//get seller id -> retrieve seller shipping option from db
+$sellerUID = 11; //*TO GET*
+$customerUID = 3; //TO GET * from session
+
+  //Under the same seller
+  $productlength =[];
+  $productwidth = [];
+  $productheight = 0;
+  $productweight =0;
+  
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $result = $conn->query($cartsql);
 
@@ -41,16 +51,6 @@
 
     }
   }
-//get seller id -> retrieve seller shipping option from db
-$sellerUID = 11; //*TO GET*
-$customerUID = 3; //TO GET * from session
-
-  //Under the same seller
-  $productlength =[];
-  $productwidth = [];
-  $productheight = 0;
-  $productweight =0;
-  
 }
   $maximumlength = max($productlength);
   $maximumwidth = max($productwidth);
@@ -166,22 +166,7 @@ $json = json_decode($return);
 
 
 
-// (for $i= 0; i<count($result))
-//   $price =  print_r($json -> result[0]->rates[0]->shipment_price);
-//   $logo = print_r($json -> result[0]->rates[0]->courier_logo);
-//   $name = print_r($json -> result[0]->rates[0]->courier_name);
-//   $delivery = print_r($json -> result[0]->rates[0]->delivery);
-// }
-
-  // for ($i = 0; $i<=5; $i++)
-  // {
-  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->shipment_price); echo"</pre>";
-  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_logo); echo"</pre>";
-  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";
-  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
-  // }
-
-echo "<pre>"; print_r($json -> result[0]->rates[0]->rate_id); echo "</pre>";
+echo "<pre>"; print_r($json); echo "</pre>";
 
 ?>
 
