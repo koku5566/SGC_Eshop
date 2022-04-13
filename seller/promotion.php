@@ -1,7 +1,27 @@
 <?php
     require __DIR__ . '/header.php'
 
-    
+    if(isset($_GET['Panel']))
+    {
+        $_SESSION['Panel'] = $_GET['Panel'];
+    }
+
+    //Product Status in DB - Delete
+    if(isset($_POST['DeletePromotion']))
+    {
+        $promotionId = $_POST['DeletePromorionID'];
+        $sql_delete = "DELETE FROM promotion WHERE promotion_id = '$promotionId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Deleted Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php?Panel=<?php echo($Panel)?>";
+                </script>
+            <?php
+        }
+    }
 ?>
 
     <!-- Begin Page Content -->
@@ -266,7 +286,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeleteProduct"  class="btn btn-danger">Delete</button>
+                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
