@@ -275,6 +275,7 @@
                                     }
                                 }
                                 ?>
+                                <br>
                                 <p style="color:#ce0000;">Caution</p>
                                 <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
                             </div>
