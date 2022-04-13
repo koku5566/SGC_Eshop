@@ -46,13 +46,7 @@
                                             echo"</tbody>";
                                         }
                                         else{
-                                            echo"
-                                                <div class=\"row\">
-                                                    <div class=\"col-xl-12 col-lg-12 col-sm-12\">
-                                                        <div class=\"text-center\"><p>No Promotion.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>";
+                                            echo"<div class=\"text-center\"><p>No Promotion.</p></div>";
                                         }
                                     ?>
                                 </div>
