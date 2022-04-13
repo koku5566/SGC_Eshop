@@ -16,37 +16,37 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
                                     <?php
-                                            $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
-                                            $result = $conn->query($sql); 
-                                            if($result-> num_rows > 0){
-                                                echo"<table class=\"table table-hover\">
-                                                <thead>
-                                                    <tr>
-                                                    <th scope=\"col\">Promotion Title</th>
-                                                    <th scope=\"col\">Date</th>
-                                                    <th scope=\"col\">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody> ";
-                                                while($row = $result->fetch_assoc()){
-                                                    echo"<tr><td>"
-                                                    .$row["promotion_title"]."</td><td>"."Start:  "
-                                                    .$row["promotion_Date"]."<br>"."End:   "
-                                                    .$row["promotionEnd_Date"]."</td>
-                                                    <td>
-                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                        </div>
-                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                        </div>
-                                                    </td></tr>";
-                                                    echo"</tbody></table>";
-                                                }
+                                        $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                        $result = $conn->query($sql); 
+                                        if($result-> num_rows > 0){
+                                            echo"<table class=\"table table-hover\">
+                                            <thead>
+                                                <tr>
+                                                <th scope=\"col\">Promotion Title</th>
+                                                <th scope=\"col\">Date</th>
+                                                <th scope=\"col\">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody> ";
+                                            while($row = $result->fetch_assoc()){
+                                                echo"<tr><td>"
+                                                .$row["promotion_title"]."</td><td>"."Start:  "
+                                                .$row["promotion_Date"]."<br>"."End:   "
+                                                .$row["promotionEnd_Date"]."</td>
+                                                <td>
+                                                <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                    </div>
+                                                <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                    </div>
+                                                </td></tr>";
                                             }
-                                            else{
-                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
-                                            }
+                                            echo"</tbody></table>";
+                                        }
+                                        else{
+                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion. yEs</p></div>";
+                                        }
                                     ?>
                                 </div>
                             </div>
@@ -194,9 +194,9 @@
         </div>
     </div>
 
-    <!-- Delete Product Modal - deleteProductModel -->
+    <!-- Delete Promotion Modal - deletePromotionModel -->
     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="deleteProductModel" tabindex="-1" role="dialog" aria-labelledby="deleteProductModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
+        <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -210,8 +210,8 @@
                         <div class="col-xl-3 col-lg-3 col-sm-4">
                             <div class="image-container">
                                 <?php
-                                    $productId = $_GET['delete'];
-                                    $sql = "SELECT promotion_image FROM promotion WHERE promotion_id = '$promotionId'";
+                                    $promotionId = $_GET['delete'];
+                                    $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
@@ -243,15 +243,15 @@
                                 <label>Promotion Title</label>
                                 <?php
                                 $promotionId = $_GET['delete'];
-                                $sql = "SELECT promotion_id, promotion_title FROM promotion WHERE promotion_id = '$promotionId'";
+                                $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        $promotionId = $row["promotion_id"];
+                                        $promotionId = $row["promotionID"];
                                         $promotionTitle = $row["promotion_title"];
 
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromorionID\" value=\"$promotionId\" hidden>");
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
                                     }
                                 }
@@ -264,11 +264,31 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeleteProduct"  class="btn btn-danger">Delete</button>
+                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
     </form>
+    <?php
+    //Promotion Status in DB - Delete
+    if(isset($_POST['DeletePromotion']))
+    {
+        $promotionId = $_POST['DeletePromotionID'];
+        $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Deleted Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
+    ?>
 <!-- /.container-fluid -->
 
 <style>
@@ -386,7 +406,7 @@
     window.addEventListener('load', function () {
         if(<?php echo(isset($_GET['delete']) ? "1" : "0") ?> == 1)
         {
-            $("#deleteProductModel").modal('show');
+            $("#deletePromotionModel").modal('show');
         }
     });
 
@@ -394,7 +414,7 @@
 
     closeDeleteModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
-            $("#deleteProductModel").modal('hide');
+            $("#deletePromotionModel").modal('hide');
         });
     });
 </script>
