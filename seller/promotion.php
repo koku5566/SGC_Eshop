@@ -291,11 +291,7 @@
 <!-- /.container-fluid -->
 
 <style>
-    .image-container-2{
-        width: 80px;
-        height: 80px;
-        background-color: white;
-    }
+    
 
     .image-container{
         width: 368px; 
