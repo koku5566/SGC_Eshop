@@ -147,52 +147,128 @@
                         <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
                     </div>
 
-                        <?php
-                            if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
-                            {
-                                $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
-                                $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
-                                $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
-                                
-                                //File upload configuration 
-                                $fileNames = array_filter($_FILES['img']['name']); 
-                                $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                                $allowTypes = array('jpg','png','jpeg');
+                    <?php
+                        if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
+                        {
+                            $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
+                            $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                            $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
+                            
+                            //File upload configuration 
+                            $fileNames = array_filter($_FILES['img']['name']); 
+                            $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                            $allowTypes = array('jpg','png','jpeg');
 
-                                $fileName = basename($_FILES['img']['name'][0]); 
-                                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                                $fileName = round(microtime(true) * 1000).".".$ext;
-                                $targetFilePath = $targetDir.$fileName; 
-                                // Check whether file type is valid 
-                                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                                if(in_array($fileType, $allowTypes)){ 
-                                    if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                        $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
-                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
-                                                
-                                                $result = mysqli_query($conn,$sql);
+                            $fileName = basename($_FILES['img']['name'][0]); 
+                            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            $fileName = round(microtime(true) * 1000).".".$ext;
+                            $targetFilePath = $targetDir.$fileName; 
+                            // Check whether file type is valid 
+                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            if(in_array($fileType, $allowTypes)){ 
+                                if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`) 
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                            
+                                            $result = mysqli_query($conn,$sql);
 
-                                                if($result)
-                                                {
-                                                    echo '<script>alert("Add promotion successfully!")</script>';
-                                                    ?>
-                                                        <script type="text/javascript">
-                                                            window.location.href = window.location.origin + "/seller/promotion.php";
-                                                        </script>
-                                                    <?php
-                                                }
-                                                else
-                                                {
-                                                    echo '<script>alert("Failed")</script>';
-                                                }
-                                    }
+                                            if($result)
+                                            {
+                                                echo '<script>alert("Add promotion successfully!")</script>';
+                                                ?>
+                                                    <script type="text/javascript">
+                                                        window.location.href = window.location.origin + "/seller/promotion.php";
+                                                    </script>
+                                                <?php
+                                            }
+                                            else
+                                            {
+                                                echo '<script>alert("Failed")</script>';
+                                            }
                                 }
                             }
-                        ?>
+                        }
+                    ?>
                 </form>
             </div>
         </div>
     </div>
+
+    <!-- Delete Product Modal - deleteProductModel -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <div class="modal fade" id="deleteProductModel" tabindex="-1" role="dialog" aria-labelledby="deleteProductModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" >Delete Promotion</h5>
+                                <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-sm-4">
+                                        <div class="image-container">
+                                            <?php
+                                                $productId = $_GET['delete'];
+                                                $sql = "SELECT promotion_image FROM promotion WHERE promotion_id = '$promotionId'";
+                                                $result = mysqli_query($conn, $sql);
+
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                        
+                                                        $picture = $row["promotion_image"];
+                                                        $picName = "";
+
+                                                        if($row["promotion_image"] != "")
+                                                        {
+                                                            $picName = "/img/promotion/".$row["promotion_image"];
+                                                        }
+                                                        
+                                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                                }
+                                            ?>
+                                            
+                                            <div class="image-layer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-sm-9">
+                                        <div class="form-group">
+                                            <label>Promotion Title</label>
+                                            <?php
+                                            $promotionId = $_GET['delete'];
+                                            $sql = "SELECT promotion_id, promotion_title FROM promotion WHERE promotion_id = '$promotionId'";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    $promotionId = $row["promotion_id"];
+                                                    $promotionTitle = $row["promotion_title"];
+
+                                                    echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromorionID\" value=\"$promotionId\" hidden>");
+                                                    echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                                }
+                                            }
+                                            ?>
+                                            <p style="color:#ce0000;">Caution</p>
+                                            <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                                <button type="submit" name="DeleteProduct"  class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 <!-- /.container-fluid -->
 
 <style>
@@ -306,6 +382,21 @@
             });
         });
     }
+
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['delete']) ? "1" : "0") ?> == 1)
+        {
+            $("#deleteProductModel").modal('show');
+        }
+    });
+
+    const closeDeleteModel = document.querySelectorAll('.closeDeleteModel');
+
+    closeDeleteModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#deleteProductModel").modal('hide');
+        });
+    });
 </script>
 
 <script src="../js/checkFileType.js"></script>
