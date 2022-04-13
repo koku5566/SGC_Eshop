@@ -60,8 +60,8 @@
                                                     <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                     </div>
                                                 </td></tr>";
-                                                echo"</tbody></table>";
                                             }
+                                            echo"</tbody></table>";
                                         }
                                         else{
                                             echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
@@ -291,8 +291,6 @@
 <!-- /.container-fluid -->
 
 <style>
-    
-
     .image-container{
         width: 368px; 
         height: 207px; 
