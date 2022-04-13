@@ -10,7 +10,7 @@ product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name,
 cancellation.cancellation_id
 
@@ -20,7 +20,7 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id   
 JOIN cancellation ON myOrder.cancellation_id = cancellation.cancellation_id
-WHERE myOrder.order_id = ?
+
 ";
 $stmt_cancel = $conn->prepare($sql_cancel);
 $stmt_cancel->execute();
