@@ -243,6 +243,7 @@
                                 <label>Promotion Title</label>
                                 <?php
                                 $promotionId = $_GET['delete'];
+                                echo '<script>alert(" ' . $promotionId . '")</script>';
                                 $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
                                 $result = mysqli_query($conn, $sql);
 
@@ -250,7 +251,7 @@
                                     while($row = mysqli_fetch_assoc($result)) {
                                         $promotionId = $row["promotionID"];
                                         $promotionTitle = $row["promotion_title"];
-                                        echo '<script>alert(" ' . $productId . '")</script>';
+                                        echo '<script>alert(" ' . $promotionId . '")</script>';
 
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
@@ -275,7 +276,7 @@
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
-        echo '<script>alert(" ' . $productId . '")</script>';
+        echo '<script>alert(" ' . $promotionId . '")</script>';
         $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
