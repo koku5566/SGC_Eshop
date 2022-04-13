@@ -66,11 +66,11 @@ $orders = $stmt_2->get_result();
                                                 
                                                 <tr class="clickable "
                                                           onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row?>">
-                                                    <td><?php echo $row['product_cover_picture']?></td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?>/><td>
                                                     <td><?php echo $row['product_name']?></td>
                                                     <td><?php echo $row['product_variation']?></td>
                                                     <td><?php echo $row['quantity']?></td>
-                                                    <td><?php echo $row['product_price']?></td>
+                                                    <td><?php echo $row['amount']?></td>
                                                 </tr>
                                             
                                             </tbody>
@@ -85,7 +85,7 @@ $orders = $stmt_2->get_result();
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Ratings</button>
                                              <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:18%;" ><?php echo $row['price']?></span>
+                                             <span style="margin-left:18%;" ><?php echo $row['amount']?></span>
                                             </tr>
                                         </thead>
                                     </table>
