@@ -1,27 +1,5 @@
 <?php
     require __DIR__ . '/header.php'
-
-    if(isset($_GET['Panel']))
-    {
-        $_SESSION['Panel'] = $_GET['Panel'];
-    }
-
-    //Product Status in DB - Delete
-    if(isset($_POST['DeletePromotion']))
-    {
-        $promotionId = $_POST['DeletePromorionID'];
-        $sql_delete = "DELETE FROM promotion WHERE promotion_id = '$promotionId'";
-        if(mysqli_query($conn, $sql_delete))
-        {
-            $Panel = $_SESSION['Panel'];
-            ?>
-                <script type="text/javascript">
-                    alert("Promotion Deleted Successful");
-                    window.location.href = window.location.origin + "/seller/promotion.php?Panel=<?php echo($Panel)?>";
-                </script>
-            <?php
-        }
-    }
 ?>
 
     <!-- Begin Page Content -->
@@ -291,6 +269,26 @@
             </div>
         </div>
     </form>
+    <?php
+    //Product Status in DB - Delete
+    if(isset($_POST['DeletePromotion']))
+    {
+        $promotionId = $_POST['DeletePromorionID'];
+        $sql_delete = "DELETE FROM promotion WHERE promotion_id = '$promotionId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Deleted Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
+    ?>
 <!-- /.container-fluid -->
 
 <style>
