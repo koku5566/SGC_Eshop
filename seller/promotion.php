@@ -257,7 +257,11 @@
                                     }
                                 ?>
                                 
-                                <div class="image-layer">
+                                <div class="image-layer" style="width: 80px;
+        height: 80px;
+        opacity:0.5;
+        position:absolute;
+        margin-top: -80px;">
                                 </div>
                             </div>
                         </div>
