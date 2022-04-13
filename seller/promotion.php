@@ -250,6 +250,7 @@
                                     while($row = mysqli_fetch_assoc($result)) {
                                         $promotionId = $row["promotionID"];
                                         $promotionTitle = $row["promotion_title"];
+                                        echo '<script>alert(" ' . $productId . '")</script>';
 
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
