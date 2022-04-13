@@ -41,8 +41,8 @@
                                                     <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                     </div>
                                                 </td></tr>";
+                                                echo"</tbody></table>";
                                             }
-                                            echo"</tbody></table>";
                                         }
                                         else{
                                             echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
@@ -199,32 +199,78 @@
         <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Delete Promotion</h5>
-                        <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="text-muted m-2 text-center">
-                                    <p style="color:#ce0000;">Caution</p>
-                                    <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                <div class="modal-header">
+                    <h5 class="modal-title" >Delete Promotion</h5>
+                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-sm-4">
+                            <div class="image-container">
+                                <?php
+                                    $promotionId = $_GET['delete'];
+                                    $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            
+                                            $picture = $row["promotion_image"];
+                                            $picName = "";
+
+                                            if($row["promotion_image"] != "")
+                                            {
+                                                $picName = "/img/promotion/".$row["promotion_image"];
+                                            }
+                                            
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                    }
+                                ?>
+                                
+                                <div class="image-layer">
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-9 col-lg-9 col-sm-9">
+                            <div class="form-group">
+                                <label>Promotion Title</label>
+                                <?php
+                                $promotionId = $_GET['delete'];
+                                $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        $promotionId = $row["promotionID"];
+                                        $promotionTitle = $row["promotion_title"];
+
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                    }
+                                }
+                                ?>
+                                <p style="color:#ce0000;">Caution</p>
+                                <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>
     </form>
     <?php
-    //Promotion Delete
+    //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
