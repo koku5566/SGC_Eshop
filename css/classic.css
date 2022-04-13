@@ -45,27 +45,23 @@ a:hover{
 }
 
 */
-.ab{
-  width:10px;
-}
+
 #rating_bar {
   width:100px;
   height:100px;
-  margin: 4px 175px !important;
   display:inline-block;
   display:inline;
 }
 #rating_bar > a span {
-  color: #a31f34;
-  cursor: pointer;
-  font-size: 1.2rem;
+cursor: pointer;
+font-size: 1.2rem;
 }
 #rating_bar:hover > a {
-  font-weight: none;
+  font-weight: var(--fa-style,900);
 }
 
 #rating_bar > a:hover ~ a {
-  font-weight: var(--fa-style,900);
+  font-weight: inherit;
 }
 /*
 ////
