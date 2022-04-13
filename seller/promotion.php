@@ -194,7 +194,7 @@
         </div>
     </div>
 
-    <!-- Delete Product Modal - deletePromotionModel -->
+    <!-- Delete Promotion Modal - deletePromotionModel -->
     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -210,7 +210,7 @@
                         <div class="col-xl-3 col-lg-3 col-sm-4">
                             <div class="image-container">
                                 <?php
-                                    $productId = $_GET['delete'];
+                                    $promotionId = $_GET['delete'];
                                     $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
@@ -270,7 +270,7 @@
         </div>
     </form>
     <?php
-    //Product Status in DB - Delete
+    //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromorionID'];
