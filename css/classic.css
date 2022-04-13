@@ -19,11 +19,16 @@ a:hover{
   font-weight: 600;
 }
 
+/*
 #rating_bar {
   width: 100px;
   height: 100px;
   display: inline-block;
   display: inline;
+}
+
+#rating_bar > a {
+  color: #c7c5c5;
 }
 
 #rating_bar a span{
@@ -32,16 +37,40 @@ a:hover{
   font-size: 1.2rem;
 }
 
+#rating_bar :hover > a{
+  font-weight: var(--fa-style,900);
+}
+#rating_bar > a:hover~a{
+  font-weight: var(--fa-style,900);
+}
+
+*/
+
+#rating_bar {
+  width:100px;
+  height:100px;
+  display:inline-block;
+  display:inline;
+}
+#rating_bar > a span {
+cursor: pointer;
+font-size: 1.2rem;
+}
+#rating_bar:hover > a {
+  font-weight: var(--fa-style,900);
+}
+
+#rating_bar > a:hover ~ a {
+  font-weight: var(--fa-style,0);
+}
+/*
+////
+*/
 .ratingStar{
   font-weight: inherit;
 }
 
 .fillStar{
-  font-weight: var(--fa-style,900);
-}
-
-#rating_bar a:hover,
-#rating_bar a:hover~a{
   font-weight: var(--fa-style,900);
 }
 
