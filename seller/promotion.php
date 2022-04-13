@@ -25,8 +25,8 @@
     {
         $promotionId = $_POST['EditPromotionID'];
         $promotion_title = $_POST['EditPromotionTitle'];
-        $promotion_Date = $_POST['EditPromotionDate'];
-        $promotionEnd_Date = $_POST['EditPromotionEndDate'];
+        $promotion_Date = date('Y-m-d', strtotime($_POST['EditPromotionDate']));
+        $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
 
         $sql_edit = "UPDATE promotion SET promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
         
