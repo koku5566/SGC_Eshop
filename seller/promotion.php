@@ -41,13 +41,14 @@
                                                         <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                         </div>
                                                     </td></tr>";
+                                                    
                                                 }
                                             }
                                             else{
                                                 echo"<div class=\"text-center\"><p>No Promotion.</p></div>";
                                             }
                                             
-                                        echo"</tbody>";
+                                        echo"</tbody></table>";
                                     ?>
                                 </div>
                             </div>
