@@ -43,7 +43,7 @@
                                                 </td></tr>";
                                             }
                                             echo"</table>";
-                                            echo"</tbodu>";
+                                            echo"</tbody>";
                                         }
                                         else{
                                             echo"
@@ -55,8 +55,6 @@
                                                         </div>
                                                     </div>
                                                 </div>";
-                                                echo"</table>";
-                                            echo"</tbodu>";
                                         }
                                     ?>
                                 </div>
