@@ -47,7 +47,7 @@
                                                 echo"<div class=\"text-center\"><p>No Promotion.</p></div>";
                                             }
                                             
-                                        echo"</tbody></table>";
+                                        echo"</tbody>";
                                     ?>
                                 </div>
                             </div>
