@@ -149,6 +149,7 @@
         function(googleUser) {
           document.getElementById('g-root').innerText = "Signed in: " +
               googleUser.getBasicProfile().getName();
+              function onSignIn(googleUser);
         }, function(error) {
           //alert(JSON.stringify(error, undefined, 2));
         });
