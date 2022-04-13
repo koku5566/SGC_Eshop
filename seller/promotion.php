@@ -16,19 +16,20 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
                                     <?php
+                                        echo"<table class=\"table table-hover\">
+                                        <thead>
+                                            <tr>
+                                            <th scope=\"col\">Promotion Title</th>
+                                            <th scope=\"col\">Date</th>
+                                            <th scope=\"col\">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> ";
                                         $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             while($row = $result->fetch_assoc()){
-                                                echo"<table class=\"table table-hover\">
-                                                <thead>
-                                                    <tr>
-                                                    <th scope=\"col\">Promotion Title</th>
-                                                    <th scope=\"col\">Date</th>
-                                                    <th scope=\"col\">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody> "."<tr><td>"
+                                                echo"<tr><td>"
                                                 .$row["promotion_title"]."</td><td>"."Start:  "
                                                 .$row["promotion_Date"]."<br>"."End:   "
                                                 .$row["promotionEnd_Date"]."</td>
