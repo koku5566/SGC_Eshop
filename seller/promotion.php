@@ -106,36 +106,37 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Cover Image</p>
                                 </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                                                    <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                                        <div style="padding-bottom: .625rem;display:flex">
-                                                            <div class="imageDiv">
-                                                                <div class="image-container">
-                                                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                    <div class="image-layer">
-                                                                    </div>
-                                                                    <div class="image-tools-delete hide">
-                                                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <div class="image-tools-add">
-                                                                        <label class="custom-file-upload">
-                                                                            <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
-                                                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                        </label>
-                                                                    </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
+                                                <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                                    <div style="padding-bottom: .625rem;display:flex">
+                                                        <div class="imageDiv">
+                                                            <div class="image-container">
+                                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                                <div class="image-layer">
+                                                                </div>
+                                                                <div class="image-tools-delete hide">
+                                                                    <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="image-tools-add">
+                                                                    <label class="custom-file-upload">
+                                                                        <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
+                                                                        <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                            <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small></div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
+                                </div>
                             </div> 
 
                             
