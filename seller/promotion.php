@@ -134,7 +134,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                            </div> 
+                              <div class="auto">                      
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Date</p>
                                 </div>
                                 <div class="row">
@@ -142,7 +144,7 @@
                                         <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                     </div>
                                 </div>
-                            </div> 
+                                        </div>
                     </div>
 
                     <!-- Page Ending -->         
