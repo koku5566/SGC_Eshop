@@ -200,7 +200,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" >Delete Promotion</h5>
+                        <h5 class="modal-title">Delete Promotion</h5>
                         <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -208,10 +208,10 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="form-group">
-                                <label>Promotion Title</label>
-                                
-                                <p style="color:#ce0000;">Caution</p>
-                                <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                                <div class="text-muted m-2 text-center">
+                                    <p style="color:#ce0000;">Caution</p>
+                                    <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                                </div>
                             </div>
                         </div>
                     </div>
