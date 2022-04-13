@@ -25,29 +25,29 @@
                                             </tr>
                                         </thead>
                                         <tbody> ";
-                                        $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
-                                        $result = $conn->query($sql); 
-                                        if($result-> num_rows > 0){
-                                            while($row = $result->fetch_assoc()){
-                                                echo"<tr><td>"
-                                                .$row["promotion_title"]."</td><td>"."Start:  "
-                                                .$row["promotion_Date"]."<br>"."End:   "
-                                                .$row["promotionEnd_Date"]."</td>
-                                                <td>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                    </div>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                    </div>
-                                                </td></tr>";
+                                            $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                            $result = $conn->query($sql); 
+                                            if($result-> num_rows > 0){
+                                                while($row = $result->fetch_assoc()){
+                                                    echo"<tr><td>"
+                                                    .$row["promotion_title"]."</td><td>"."Start:  "
+                                                    .$row["promotion_Date"]."<br>"."End:   "
+                                                    .$row["promotionEnd_Date"]."</td>
+                                                    <td>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                        </div>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                        </div>
+                                                    </td></tr>";
+                                                }
                                             }
-                                            echo"</table>";
-                                            echo"</tbody>";
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\"><p>No Promotion.</p></div>";
-                                        }
+                                            else{
+                                                echo"<div class=\"text-center\"><p>No Promotion.</p></div>";
+                                            }
+                                            
+                                        echo"</tbody></table>";
                                     ?>
                                 </div>
                             </div>
