@@ -28,7 +28,7 @@
         $promotion_Date = $_POST['EditPromotionDate'];
         $promotionEnd_Date = $_POST['EditPromotionEndDate'];
 
-        $sql_edit = "UPDATE promotion SET promotion_title=$promotion_title, promotion_Date=$promotion_Date, promotionEnd_Date=$promotionEnd_Date WHERE promotionID = '$promotionId'";
+        $sql_edit = "UPDATE promotion SET promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
         
         if(mysqli_query($conn, $sql_edit))
         {
