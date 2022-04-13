@@ -376,8 +376,8 @@
 
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionDate\" value=\"$promotionDate\">");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\">");
+                                            echo("<input type=\"date\" class=\"form-control\" name=\"EditPromotionDate\" value=\"$promotionDate\">");
+                                            echo("<input type=\"date\" class=\"form-control\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\">");
                                         }
                                     }
                                     ?>
