@@ -274,6 +274,7 @@
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
+        echo $promotionId;
         $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
