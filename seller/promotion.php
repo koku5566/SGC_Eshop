@@ -61,7 +61,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Promotion Details</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Create New Promotion</h5>
                     </div>
                     <div class="card-body">
                         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
@@ -132,8 +132,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
+                                        
                                     </div>
+                                    <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                 </div>
                             </div>
                     </div>
