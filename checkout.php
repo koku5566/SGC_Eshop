@@ -176,7 +176,7 @@ $json = json_decode($return);
             <input class="form-check-input" type="radio" name="courierselection" id="<?php print_r($json -> result[0]->rates[$i]->rate_id)?>" checked>
             </div>
             <div class="col">
-                <img class="card-img-top img-thumbnail"style="object-fit:contain;width:100%;height:100%"src="<?php echo print_r($json -> result[0]->rates[$i]->courier_logo); ?>"  alt="<?php print_r($json -> result[0]->rates[$i]->courier_name)?>" />
+                <img class="card-img-top img-thumbnail"style="object-fit:contain;width:100%;height:100%" src="<?php echo $json -> result[0]->rates[$i]->courier_logo; ?>"  alt="<?php print_r($json -> result[0]->rates[$i]->courier_name)?>" />
                 <label class="form-check-label" for="<?php print_r($json -> result[0]->rates[$i]->rate_id)?>">
                 <div class="row">
                     <div class="col-3">
