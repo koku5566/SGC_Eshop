@@ -34,12 +34,14 @@ $orders = $stmt_2->get_result();
                     <!---GET ORDER----->
                     <h1 style="text-align:center; color: red ;">PURCHASE HISTORY</h1>
                     <a href="index.php" style="font-size:20px;">BACK</a>
+                  
                     <section id="orders" class="order container my-5 py-3 ">
                         <div class="container mt-2">
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
                         <?php while($row = $orders ->fetch_assoc()){ ?>
+                        
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">

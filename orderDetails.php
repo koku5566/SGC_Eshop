@@ -32,29 +32,7 @@ $OrderDetails = $stmt_Odetail->get_result();
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
-                    <!--ORDER DETAILS-->
-                    <div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <p>hello. testing here</p>
                 </div>
                 <!-- /.container-fluid -->
 
