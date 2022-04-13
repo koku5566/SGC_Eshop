@@ -5,14 +5,13 @@
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
-        echo '<script>alert(" ' . $promotionId . '")</script>';
         $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
             ?>
                 <script type="text/javascript">
                     alert("Promotion Deleted Successful");
-                    //window.location.href = window.location.origin + "/seller/promotion.php";
+                    window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
         }
