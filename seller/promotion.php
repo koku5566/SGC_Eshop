@@ -264,7 +264,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
+                    <button type="submit" name="DeletePromotion"  class="btn btn-danger" value="1">Delete</button>
                 </div>
             </div>
         </div>
