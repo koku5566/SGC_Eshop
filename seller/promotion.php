@@ -227,7 +227,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 col-sm-4">
-                            <div class="image-container">
+                            <div class="image-container-2">
                                 <?php
                                     $promotionId = $_GET['delete'];
                                     $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
@@ -291,6 +291,12 @@
 <!-- /.container-fluid -->
 
 <style>
+    .image-container-2{
+        width: 80px;
+        height: 80px;
+        background-color: white;
+    }
+
     .image-container{
         width: 368px; 
         height: 207px; 
@@ -359,13 +365,6 @@
     }
     .hide{
         display:none;
-    }
-    .image-layer-2{
-        width: 80px;
-        height: 80px;
-        opacity:0.5;
-        position:absolute;
-        margin-top: -80px;
     }
 </style>
 
