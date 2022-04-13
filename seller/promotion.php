@@ -376,7 +376,7 @@
 
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
-                                            echo("<label>Date:\</label>");
+                                            echo("<label>Date:</label>");
                                             echo("<input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionDate\" value=\"$promotionDate\">");
                                             echo("<input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\">");
                                         }
