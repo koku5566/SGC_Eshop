@@ -46,7 +46,13 @@
                                             echo"</tbodu>";
                                         }
                                         else{
-                                            echo"No Promotion.";
+                                            echo"<div class=\"card-body\">
+                                            <div class=\"row\">
+                                                <div class=\"col-xl-12 col-lg-12 col-sm-12\">
+                                                    <div class=\"text-center\"><p>No Promotion.</p>
+                                                    </div>
+                                                </div>
+                                            </div>"
                                         }
                                     ?>
                                 </div>
