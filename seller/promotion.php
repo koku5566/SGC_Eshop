@@ -8,7 +8,6 @@
         $sql_delete = "DELETE FROM promotion WHERE promotion_id = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
-            $Panel = $_SESSION['Panel'];
             ?>
                 <script type="text/javascript">
                     alert("Promotion Deleted Successful");
