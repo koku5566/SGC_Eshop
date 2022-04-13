@@ -216,6 +216,65 @@
                                     </div>
                                 </div>
                             </div>
+                             <!--Shop List -->
+                             <div class="col-xl-9 col-lg-9">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-3">
+                                                <h5 class="m-0 font-weight-bold text-primary">Shop List</h5>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-9">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-content row mb-3" style="display: none">
+                                            <!--PHP Loop Product List by Search Result-->
+                                            <?php
+                                                if(isset($_SESSION['Search']))
+                                                {
+                                                    $SearchBy = $_SESSION['Search'];
+                                                    $sql = "SELECT * FROM shopProfile WHERE shopName = '$SearchBy'";
+
+                                                    $result = mysqli_query($conn, $sql);
+                                    
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            //Show the shop list value
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <div class="row" style="display:block;width:100%;text-align:center;">
+                                                        <img src="/img/resource/not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <h5>No Shop Found</h5>
+                                                    </div>
+                                                <?php  
+                                                }
+
+                                                
+                                                
+                                            ?>
+                                        </div>
+                                        <div class="row" style="justify-content: end;margin-right: 10px;">
+                                            <div class="pagination">
+                                                <!--<li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+                                                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+                                                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+                                                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!--Product List -->
                             <div class="col-xl-9 col-lg-9">
                                 <div class="card shadow mb-4">
@@ -245,16 +304,6 @@
                                         <div class="card-content row mb-3" style="display: none">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
-                                                /*
-                                                $SearchBy = $_GET['Search'];
-                                                $SortBy = $_GET['SortBy'];
-                                                $Rating = $_GET['Rating'];
-                                                $minPrice = $_GET['minPrice'];
-                                                $maxPrice = $_GET['maxPrice'];
-                                                $StandardDelivery = $_GET['chkStandardDelivery'];
-                                                $SelfCollection = $_GET['chkSelfCollection'];
-                                                */
-
                                                 //Check for Main Category
                                                 $sql = "SELECT A.product_id, R.rating FROM product AS A 
                                                 LEFT JOIN (SELECT DISTINCT(product_id), rating FROM reviewRating t1 WHERE rating = (SELECT MIN(rating) FROM reviewRating WHERE product_id = t1.product_id)) AS R ON A.product_id = R.product_id 
@@ -277,7 +326,7 @@
                                                 if(isset($_SESSION['Search']))
                                                 {
                                                     $SearchBy = $_SESSION['Search'];
-                                                    $sql .= "AND product_name LIKE '%$SearchBy%' ";
+                                                    $sql .= "AND (product_name LIKE '%$SearchBy%') ";
                                                 }
 
                                                 if(isset($_SESSION['chkStandardDelivery']))
@@ -508,6 +557,15 @@
                                                             }
                                                         }
                                                     }
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <div class="row" style="display:block;width:100%;text-align:center;">
+                                                        <img src="/img/resource/not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <h5>No Result Found</h5>
+                                                    </div>
+                                                <?php  
                                                 }
                                                 
                                             ?>
