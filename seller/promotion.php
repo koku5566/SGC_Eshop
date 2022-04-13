@@ -199,46 +199,14 @@
         <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Delete Promotion</h5>
-                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-sm-4">
-                            <div class="image-container">
-                                <?php
-                                    $promotionId = $_GET['delete'];
-                                    $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            
-                                            $picture = $row["promotion_image"];
-                                            $picName = "";
-
-                                            if($row["promotion_image"] != "")
-                                            {
-                                                $picName = "/img/promotion/".$row["promotion_image"];
-                                            }
-                                            
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
-                                    }
-                                ?>
-                                
-                                <div class="image-layer">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-9 col-sm-9">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Delete Promotion</h5>
+                        <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
                             <div class="form-group">
                                 <label>Promotion Title</label>
                                 
@@ -247,10 +215,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
