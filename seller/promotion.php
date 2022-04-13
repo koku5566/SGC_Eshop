@@ -16,7 +16,7 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
@@ -35,17 +35,17 @@
                                                 .$row["promotionEnd_Date"]."</td>
                                                 <td>
                                                 <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                     </div>
                                                 <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                     </div>
                                                 </td></tr>";
+                                                echo"</tbody></table>";
                                             }
-                                            echo"</tbody></table>";
                                         }
                                         else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion. yEs</p></div>";
+                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
                                         }
                                     ?>
                                 </div>
@@ -274,6 +274,7 @@
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
+        echo '<script>alert(" ' . $productId . '")</script>';
         $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
