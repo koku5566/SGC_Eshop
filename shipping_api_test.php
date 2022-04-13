@@ -164,8 +164,7 @@ curl_close($ch);
 $json = json_decode($return);
 //echo "<pre>"; print_r($json); echo "</pre>";
 
-//select courier option from seller shop profile 
-$courieroption = 'Pos Laju';
+
 
 // (for $i= 0; i<count($result))
 //   $price =  print_r($json -> result[0]->rates[0]->shipment_price);
@@ -182,7 +181,7 @@ $courieroption = 'Pos Laju';
        echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
   }
 
-//echo "<pre>"; print_r($json -> result[0]->rates[0]->rate_id); echo "</pre>";
+echo "<pre>"; print_r($json -> result[0]->rates[0]->rate_id); echo "</pre>";
 
 ?>
 
