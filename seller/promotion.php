@@ -45,7 +45,7 @@
                                                 }
                                             }
                                             else{
-                                                echo"<p class=\"text-center\">No Promotion.</p>";
+                                                echo"<p class=\"p-title\">No Promotion.</p>";
                                             }
                                     ?>
                                 </div>
