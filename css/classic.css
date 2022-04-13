@@ -61,7 +61,7 @@ font-size: 1.2rem;
 }
 
 #rating_bar > a:hover ~ a {
-  font-weight: inherit;
+  font-weight: var(--fa-style,0);
 }
 /*
 ////
