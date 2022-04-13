@@ -55,6 +55,7 @@
                                                         </div>
                                                     </div>
                                                 </div>";
+                                                echo"</table>";
                                         }
                                     ?>
                                 </div>
