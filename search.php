@@ -132,10 +132,15 @@
                                                                 array_push($ratingArray,"<a href=\"?Rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             } 
 
-                                                            
+                                                            foreach ($ratingArray as $value) {
+                                                                echo("{$value}");
+                                                            }
+
+                                                            /*
                                                             foreach (array_reverse($ratingArray) as $value) {
                                                                 echo("{$value}");
                                                             }
+                                                            */
                                                         }
                                                         else
                                                         {
