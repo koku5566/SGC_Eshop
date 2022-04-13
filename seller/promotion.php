@@ -15,41 +15,39 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">Promotion Title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
-                                                $result = $conn->query($sql); 
-                                                if($result-> num_rows > 0){
-                                                    while($row = $result->fetch_assoc()){
-                                                        echo"<tr><td>"
-                                                        .$row["promotion_title"]."</td><td>"."Start:  "
-                                                        .$row["promotion_Date"]."<br>"."End:   "
-                                                        .$row["promotionEnd_Date"]."</td>
-                                                        <td>
-                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                            </div>
-                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                            </div>
-                                                        </td></tr>";
-                                                    }
-                                                    echo"</table>";
+                                    <?php
+                                            $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                            $result = $conn->query($sql); 
+                                            if($result-> num_rows > 0){
+                                                echo"<table class=\"table table-hover\">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope=\"col\">Promotion Title</th>
+                                                    <th scope=\"col\">Date</th>
+                                                    <th scope=\"col\">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody> ";
+                                                while($row = $result->fetch_assoc()){
+                                                    echo"<tr><td>"
+                                                    .$row["promotion_title"]."</td><td>"."Start:  "
+                                                    .$row["promotion_Date"]."<br>"."End:   "
+                                                    .$row["promotionEnd_Date"]."</td>
+                                                    <td>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row_1['promotion_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                        </div>
+                                                    <div class=\"col-xl-6\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['promotion_id']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                        </div>
+                                                    </td></tr>";
+                                                    echo"</tbody></table>";
                                                 }
-                                                else{
-                                                    echo"No Promotion.";
-                                                }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                            }
+                                            else{
+                                                echo"<div class=\"text-center\"><p class=\"p-title\">No Promotion.</p></div>";
+                                            }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -58,31 +56,30 @@
             </div>
         </div>
 
-    <!-- Create Promotion -->
-    <div class="row">
-        <div class="col-xl-12 col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-primary">Promotion Details</h5>
-                </div>
-                <div class="card-body">
-                    <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Promotion Title</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="input-group mb-3">
-                                    <input class="form-control" type="text" required placeholder="Enter ..." name="promotion_Title" required>
+        <!-- Create Promotion -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Promotion Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Promotion Title</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" type="text" required placeholder="Enter ..." name="promotion_Title" required>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Date</p>
-                            </div>
-                            <div class="row">
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Date</p>
+                                </div>
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6">
@@ -104,12 +101,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Cover Image</p>
-                            </div>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Cover Image</p>
+                                </div>
                                 <div class="row">
                                     <div class="col-xl-10 col-lg-10 col-sm-12">
                                         <div class="row">
@@ -136,19 +132,28 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                            <div class="row">
+                                    <div class="col-xl-2 col-lg-2 col-sm-12">
+                                        <p class="p-title"> </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10 col-sm-12">
                                         <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                     </div>
                                 </div>
-                        </div> 
-
-                        
+                            
+                        </div>
                     </div>
-                </div>
 
-                <!-- Page Ending -->         
-                <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-                    <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
-                </div>
+                    <!-- Page Ending -->         
+                    <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+                        <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
+                    </div>
 
                         <?php
                             if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))

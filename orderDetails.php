@@ -32,8 +32,7 @@ $OrderDetails = $stmt_Odetail->get_result();
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
-                    <!--ORDER DETAILS-->
-                        
+                    <p>hello. testing here</p>
                 </div>
                 <!-- /.container-fluid -->
 
