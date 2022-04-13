@@ -134,9 +134,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12" style="flex=auto">
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-10 col-sm-12" style="flex=auto">
                                         <small class="text-muted m-2">This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                     </div>
+                                </div>
                             </div> 
                     </div>
 
