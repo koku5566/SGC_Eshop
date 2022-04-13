@@ -46,7 +46,7 @@
                                             echo"</tbody>";
                                         }
                                         else{
-                                            echo"
+                                            echo"<tbody>
                                                 <div class=\"card-body\">
                                                     <div class=\"row\">
                                                         <div class=\"col-xl-12 col-lg-12 col-sm-12\">
@@ -55,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                 </div>";
-                                                echo"</table>";
+                                                echo"</tbody>";
                                         }
                                     ?>
                                 </div>
