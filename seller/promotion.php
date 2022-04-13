@@ -45,7 +45,7 @@
                                             echo"</tbody></table>";
                                         }
                                         else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion. yEs</p></div>";
+                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
                                         }
                                     ?>
                                 </div>
@@ -241,21 +241,7 @@
                         <div class="col-xl-9 col-lg-9 col-sm-9">
                             <div class="form-group">
                                 <label>Promotion Title</label>
-                                <?php
-                                $promotionId = $_GET['delete'];
-                                $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
-                                $result = mysqli_query($conn, $sql);
-
-                                if (mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        $promotionId = $row["promotionID"];
-                                        $promotionTitle = $row["promotion_title"];
-
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
-                                    }
-                                }
-                                ?>
+                                
                                 <p style="color:#ce0000;">Caution</p>
                                 <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
                             </div>
@@ -270,7 +256,7 @@
         </div>
     </form>
     <?php
-    //Promotion Status in DB - Delete
+    //Promotion Delete
     if(isset($_POST['DeletePromotion']))
     {
         $promotionId = $_POST['DeletePromotionID'];
