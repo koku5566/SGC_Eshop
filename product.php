@@ -4,6 +4,7 @@
 ?>
 <?php
     $_SESSION['productID'] = $_GET['id'];
+	$_SESSION["userId"] = "U000018";
 ?>
 <?php
 	//Fetch each product information
@@ -1173,8 +1174,11 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				$("#MsgModel").modal('show');
-				setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
+				if(response == "true")
+				{
+					$("#MsgModel").modal('show');
+					setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
+				}
 			},
 			error: function(err) {
 				alert(err.responseText);

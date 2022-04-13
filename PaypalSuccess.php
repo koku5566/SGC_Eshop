@@ -1,16 +1,10 @@
-<?php 
-include_once 'db_connection.php'; 
+
+<?php
+    require __DIR__ . '/header.php'
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PayPal REST API Example</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css\payment.css">
 </head>
-<body class="App">
+<div class="payment">
   <h1>Your Payment has been Successful</h1>
   <div class="wrapper">
   <?php 
@@ -29,5 +23,8 @@ include_once 'db_connection.php';
       <p>Product Name: <?php echo $row['product_name']; ?></p>
     </div>
   </div>
-</body>
-</html>
+</div>  
+
+  <?php
+    require __DIR__ . '/footer.php'
+?>
