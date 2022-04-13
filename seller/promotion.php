@@ -316,12 +316,12 @@
 
     <!-- Edit Promotion Modal - editPromotionModel -->
     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
+        <div class="modal fade" id="editPromotionModel" tabindex="-1" role="dialog" aria-labelledby="editPromotionModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" >Edit Promotion</h5>
-                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close closeEditModel" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -385,7 +385,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                     <button type="submit" name="EditPromotion"  class="btn btn-danger" value="1">Edit</button>
                 </div>
             </div>
@@ -518,6 +518,21 @@
     closeDeleteModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
             $("#deletePromotionModel").modal('hide');
+        });
+    });
+
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['edit']) ? "1" : "0") ?> == 1)
+        {
+            $("#editPromotionModel").modal('show');
+        }
+    });
+
+    const closeEditModel = document.querySelectorAll('.closeEditModel');
+
+    closeEditModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#editPromotionModel").modal('hide');
         });
     });
 </script>
