@@ -26,6 +26,10 @@ a:hover{
   display: inline;
 }
 
+#rating_bar > a {
+  color: #c7c5c5;
+}
+
 #rating_bar a span{
   color: #a31f34;
   cursor: pointer;
@@ -40,7 +44,9 @@ a:hover{
   font-weight: var(--fa-style,900);
 }
 
-#rating_bar a:hover,
+#rating_bar a:hover > a{
+  font-weight: inherit;
+}
 #rating_bar a:hover~a{
   font-weight: var(--fa-style,900);
 }
