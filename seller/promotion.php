@@ -251,7 +251,7 @@
                                         $promotionId = $row["promotionID"];
                                         $promotionTitle = $row["promotion_title"];
 
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromorionID\" value=\"$promotionId\" hidden>");
+                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                         echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
                                     }
                                 }
@@ -273,7 +273,7 @@
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
     {
-        $promotionId = $_POST['DeletePromorionID'];
+        $promotionId = $_POST['DeletePromotionID'];
         $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_delete))
         {
