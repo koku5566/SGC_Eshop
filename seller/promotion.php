@@ -16,7 +16,7 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
