@@ -1,5 +1,22 @@
 <?php
     require __DIR__ . '/header.php'
+
+    //Product Status in DB - Delete
+    if(isset($_POST['DeleteProduct']))
+    {
+        $promotionId = $_POST['DeletePromorionID'];
+        $sql_delete = "DELETE FROM promotion WHERE promotion_id = '$promotionId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            $Panel = $_SESSION['Panel'];
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Deleted Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+    }
 ?>
 
     <!-- Begin Page Content -->
