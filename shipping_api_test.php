@@ -173,13 +173,13 @@ $json = json_decode($return);
 //   $delivery = print_r($json -> result[0]->rates[0]->delivery);
 // }
 
-  for ($i = 0; $i<=5; $i++)
-  {
-       echo "<pre>";print_r($json -> result[0]->rates[$i]->shipment_price); echo"</pre>";
-       echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_logo); echo"</pre>";
-       echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";
-       echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
-  }
+  // for ($i = 0; $i<=5; $i++)
+  // {
+  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->shipment_price); echo"</pre>";
+  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_logo); echo"</pre>";
+  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";
+  //      echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
+  // }
 
 echo "<pre>"; print_r($json -> result[0]->rates[0]->rate_id); echo "</pre>";
 
