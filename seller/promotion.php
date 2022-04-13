@@ -46,16 +46,13 @@
                                             echo"</tbody>";
                                         }
                                         else{
-                                            echo"<tbody>
-                                                <div class=\"card-body\">
-                                                    <div class=\"row\">
-                                                        <div class=\"col-xl-12 col-lg-12 col-sm-12\">
-                                                            <div class=\"text-center\"><p>No Promotion.</p>
-                                                            </div>
+                                            echo"
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-12 col-lg-12 col-sm-12\">
+                                                        <div class=\"text-center\"><p>No Promotion.</p>
                                                         </div>
                                                     </div>
                                                 </div>";
-                                                echo"</tbody>";
                                         }
                                     ?>
                                 </div>
