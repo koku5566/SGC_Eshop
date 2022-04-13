@@ -226,7 +226,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-sm-4">
+                        <div class="text-canter" style="flex:auto">
                             <div class="image-container-2">
                                 <?php
                                     $promotionId = $_GET['delete'];
@@ -257,7 +257,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9 col-sm-9">
+                        <div class="text-center" style="flex:auto">
                             <div class="form-group">
                                 <label>Promotion Title</label>
                                 <?php
