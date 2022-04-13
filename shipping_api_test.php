@@ -172,8 +172,7 @@ $json = json_decode($return);
       echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";
       echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
  }
- 
-echo "<pre>"; print_r($json); echo "</pre>";
+
 
 ?>
 
