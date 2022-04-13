@@ -360,7 +360,7 @@
     .hide{
         display:none;
     }
-    
+
     .image-layer2{
         width: 80px;
         height: 80px;
