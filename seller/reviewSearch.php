@@ -104,17 +104,17 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="bi bi-star"></i> ';
 		 }
 	 }
-	 $picR = 'img/product/';
+	 $picR = '';
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
-		 $picR .= ".$row['product_cover_picture']";
+		 $picR .= '<img src="'img/product/'.'.$row["product_cover_picture"].'" class="jungle">';
 	 }else{
-		 $picR .= 'https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg';
+		 $picR .= '<img src="https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg" class="jungle">';
 	 }
 	
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
-					<img src="'.$picR.'" class="jungle">
+					'.$picR.'
 		</div>	
 	</td>	
 	<td>'.$row["product_name"].'</td>											
