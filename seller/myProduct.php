@@ -379,7 +379,7 @@
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
                                                                     ");
-                                                                    if($row_1['product_status'] == "B")
+                                                                    if($row_1['product_status'] == "A")
                                                                     {
                                                                         echo("
                                                                             <div style=\"position: absolute;width: 100%;height: 40%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
