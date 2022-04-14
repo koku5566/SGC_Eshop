@@ -28,8 +28,6 @@
         $promotion_Date = date('Y-m-d', strtotime($_POST['EditPromotionDate']));
         $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
         $promotion_image = "";
-
-        $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
         
         $fileNames = array_filter($_FILES['img']['name']); 
         $defaultFile = $_POST['imgDefault'];
@@ -49,22 +47,20 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_edit .= ", promotion_image = '$fileName' ";
+                        $promotion_image = $fileName;
                     }
                 }
                 else if($defaultFile[$key] != "") //Get the default picture name
                 {
-                    $fileName = $defaultFile[$key];
-                    $sql_edit .= ", promotion_image = '$fileName' ";
+                    $promotion_image = $defaultFile[$key];
                 }
                 else
                 {
-                    $sql_edit .= ", promotion_image = '' ";
+                    $promotion_image = "";
                 }
             } 
         }
-
-        $sql_edit .= " WHERE promotionID = $promotionId ";
+        $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
 
         if(mysqli_query($conn, $sql_edit))
         {
@@ -185,35 +181,28 @@
                                 <div class="col-xl-2 col-lg-2 col-sm-12">
                                     <p class="p-title">Cover Image</p>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-10 col-lg-10 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                                                <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                                    <div style="padding-bottom: .625rem;display:flex">
-                                                        <div class="imageDiv">
-                                                            <div class="image-container">
-                                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                                                <div class="image-layer">
-                                                                </div>
-                                                                <div class="image-tools-delete hide">
-                                                                    <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="image-tools-add">
-                                                                    <label class="custom-file-upload">
-                                                                        <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
-                                                                        <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                            
+                                <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                                    <div style="padding-bottom: .625rem;display:flex">
+                                        <div class="imageDiv">
+                                            <div class="image-container">
+                                                <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                                <div class="image-layer">
+                                                </div>
+                                                <div class="image-tools-delete hide">
+                                                    <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="image-tools-add">
+                                                    <label class="custom-file-upload">
+                                                        <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
+                                                        <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
+
                                 <div class="text-muted m-2 text-center" style="flex:auto">
                                     <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                 </div>
@@ -365,7 +354,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="image-container-2">
+                                <div class="image-container">
                                     <?php
                                         $promotionId = $_GET['edit'];
                                         $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
@@ -388,10 +377,29 @@
                                         else
                                         {
                                             echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                            echo("
+                                                        <div class=\"image-container\">
+                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">
+                                                            <div class=\"image-layer\">
+                                                                
+                                                            </div>
+                                                            <div class=\"image-tools-delete hide\">
+                                                                <i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+                                                            </div>
+                                                            <div class=\"image-tools-add $add\">
+                                                                <label class=\"custom-file-upload\">
+                                                                    <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
+                                                                    <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                                    <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <p>".$pictureText[$i]."</p>
+                                                ");
                                         }
                                     ?>
                                     
-                                    <div class="image-layer-2">
+                                    <div class="image-layer">
                                     </div>
                                     <div class="image-tools-delete hide">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
@@ -444,9 +452,27 @@
 <!-- /.container-fluid -->
 
 <style>
+  .editIcon{
+        color: #a31f37;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height:100%;
+        background-color:white;
+        border-radius:0;
+        border:none;
+    }
+
+    .editIcon:hover{
+        color: white;
+        background-color:#a31f37;
+    }
+
+    .p-title{
+        color: #a31f37;
+    }
+
     .image-container{
-        width: 368px; 
-        height: 207px; 
+        width: 100%;
+        height: 200px;
         background-color: white;
     }
 
@@ -455,10 +481,10 @@
     }
 
     .image-layer{
-        width: 368px;
-        height: 207px;
-        opacity:0.5;
-        position:absolute;
+        width: 95%;
+        height: 200px;
+        opacity: 0.5;
+        position: absolute;
         margin-top: -200px;
     }
 
@@ -467,12 +493,11 @@
     }
 
     .image-tools-delete{
-        width: 368px;
-        height: 50px;
-        background:grey;
-        position:absolute;
-        margin-top: -50px;
-        opacity: 0.5;
+        width: 95%;
+        height: 30px;
+        background: grey;
+        position: absolute;
+        margin-top: -30px;
     }
 
     .image-tools-delete-icon{
@@ -480,25 +505,26 @@
         justify-content: center;
         display: grid;
         margin-top: 5px;
-        font-size: 40px;
+        font-size: 20px;
     }
 
+
     .image-tools-add{
-        width: 368px;
-        height: 207px;
-        background:white;
-        opacity:0.5;
-        position:absolute;
+        width: 95%;
+        height: 200px;
+        background: white;
+        opacity: 0.5;
+        position: absolute;
         margin-top: -200px;
-        z-index:100;
+        z-index: 100;
     }
 
     .image-tools-add-icon{
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 80px;
-        font-size: 40px;
+        margin-top: 75px;
+        font-size: 50px;
     }
 
     .custom-file-upload{
@@ -509,6 +535,13 @@
     .imgInp{
         display:none;
     }
+
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+    
     .hide{
         display:none;
     }
@@ -527,6 +560,7 @@
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
                 img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -546,7 +580,7 @@
                         img.parentElement.parentElement.classList.add("hide");
                     }
                     else{
-                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                        alert("This Image is not a valid format");
                         img.value = "";
                     }
                 }
