@@ -65,7 +65,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Edited Successful");
-                    //window.location.href = window.location.origin + "/seller/promotion.php";
+                    window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
         }
