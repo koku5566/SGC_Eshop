@@ -193,7 +193,7 @@
 <?php
 		$sql ="SELECT product_id 
 			   FROM `reviewRating`
-			   WHERE product_id = 'P000001'
+			   WHERE product_id = 'P000057'
 			   LIMIT 1";
 		if($stmt = mysqli_prepare ($conn, $sql)){
 			mysqli_stmt_execute($stmt);

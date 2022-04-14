@@ -583,11 +583,6 @@
                         var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
-
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
                             imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                             imgInp[j].parentElement.parentElement.classList.add("hide");
