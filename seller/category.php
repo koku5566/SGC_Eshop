@@ -134,31 +134,29 @@
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_update .= ", category_pic = '$fileName' ";
-                    }
-                }
-                else if($defaultFile[$key] != "") //Get the default picture name
-                {
-                    $fileName = $defaultFile[$key];
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                     $sql_update .= ", category_pic = '$fileName' ";
                 }
-                else
-                {
-                    $sql_update .= ", category_pic = '' ";
-                }
-            } 
-        }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $fileName = $defaultFile[$key];
+                $sql_update .= ", category_pic = '$fileName' ";
+            }
+            else
+            {
+                $sql_update .= ", category_pic = '' ";
+            }
+        } 
 
         $sql_update .= " WHERE category_id = $categoryId ";
 
@@ -763,33 +761,13 @@
 
                 if(imageValid)
                 {
-                    if (img.files && img.files[0] && img.files.length > 1) {
-                        for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
-                            if(j < 9)
-                            {
-                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
-                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                                imgInp[j].parentElement.parentElement.classList.add("hide");
-                            }
-                        }
-                    }
-                    else if(img.files && img.files[0])
+                    if(img.files && img.files[0])
                     {
-                        var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
-
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
                         }
                     }
                 }
