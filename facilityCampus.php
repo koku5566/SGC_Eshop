@@ -89,6 +89,7 @@
                                         
                                             if (mysqli_num_rows($result_facility) > 0) {
                                                 while($row_facility = mysqli_fetch_assoc($result_facility)) {
+                                                    $facilityId = $row_facility['facility_id'];
                                                     $title = $row_facility['title'];
                                                     $priceperhour = $row_facility['price_per_hour'];
                                                     $description = $row_facility['pic_description'];
@@ -98,7 +99,7 @@
 
                                                     echo("
                                                     <div class=\"col-xl-4 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
-                                                        <a data-sqe=\"link\" href=\"facilityDetail.php?facilityId=$id\">
+                                                        <a data-sqe=\"link\" href=\"facilityDetail.php?facilityId=$facilityId\">
                                                             <div class=\"card\">
                                                                 <div class=\"image-container\">
                                                                     <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picCover\" alt=\"$title\">
