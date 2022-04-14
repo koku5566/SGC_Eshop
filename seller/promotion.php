@@ -377,25 +377,6 @@
                                         else
                                         {
                                             echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\">");
-                                            echo("
-                                                        <div class=\"image-container\">
-                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">
-                                                            <div class=\"image-layer\">
-                                                                
-                                                            </div>
-                                                            <div class=\"image-tools-delete hide\">
-                                                                <i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
-                                                            </div>
-                                                            <div class=\"image-tools-add $add\">
-                                                                <label class=\"custom-file-upload\">
-                                                                    <input accept=\".png,.jpeg,.jpg\" name=\"imgEdit[]\" type=\"file\" class=\"imgInp\" multiple/>
-                                                                    <input name=\"imgDefaultEdit[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
-                                                                    <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <p>".$pictureText[$i]."</p>
-                                                ");
                                         }
                                     ?>
                                     
@@ -406,8 +387,8 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
-                                            <input name="imgDefault[]" type="text" value="<?php echo($picture) ?>" hidden/>
+                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp"/>
+                                            <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
