@@ -104,10 +104,16 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="bi bi-star"></i> ';
 		 }
 	 }
-	 $picR = "img/product/";
+	 $picR = 'img/product/';
+	 $srcR = '';
+	 $picDisplay = '';
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
-		 $picR .= $row["product_cover_picture"];
-		 echo '<img src = "'.$picR.'">';
+		  $srcR .= $row["product_cover_picture"];
+		  $picR .= $srcR;
+		 //$picR .= "'.$row["product_cover_picture"].'";
+		 $picDisplay .= '<img src="'.$picR.'" class="jungle">';
+		 echo $picDisplay . "<br>"; 
+	
 		 
 	 }else{
 		 $picR .= 'https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg';
