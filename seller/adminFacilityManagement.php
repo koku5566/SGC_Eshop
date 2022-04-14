@@ -46,7 +46,7 @@
         <tr>
          <td>
             <div class="d-flex align-items-center">
-              <img src="/img/facility/<?php $facility["pic_cover"]?>" class="" alt="" name="" style="width: 45px; height: 45px"/>
+              <img src="/img/facility/<?php echo $facility["pic_cover"]?>" class="" alt="" name="" style="width: 45px; height: 45px"/>
               <div class="ms-3">
                 <p class="fw-bold mb-1" ><?php echo $facility["title"]?></p>
 
