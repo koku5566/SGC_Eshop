@@ -105,11 +105,11 @@ if(mysqli_num_rows($result) > 0)
 		 }
 	 }
 	 $picR = "../img/product/";
-	 $srcR = "";
+	// $srcR = "";
 	 $picDisplay = "";
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
-		  $srcR .= $row["product_cover_picture"];
-		  $picR .= $srcR;
+		  $picR .= $row["product_cover_picture"];
+		  //$picR .= $srcR;
 		 //$picR .= "'.$row["product_cover_picture"].'";
 		 $picDisplay .= '<img src="'.$picR.'" class="jungle">';
 		 echo $picDisplay . "<br>"; 
