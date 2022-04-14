@@ -512,16 +512,18 @@
                     }
                 }
                 if(imageValid){
-                    if(img.files && img.files[0] && img.files.length > 1)
+                    if(img.files && img.files[0])
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
-                    }
-                    else if(img.files && img.files[0]){
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        if(extArr.includes(ext))
+                        {
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
+                        }
+                        else{
+                            alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                            img.value = "";
+                        }
                     }
                 }
                 else
