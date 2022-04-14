@@ -33,7 +33,7 @@
         $defaultFile = $_POST['imgDefaultEdit'];
 
         // File upload configuration 
-        $targetDir = dirname(__DIR__, 1)."/img/category/"; 
+        $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         foreach($_FILES['imgEdit']['name'] as $key=>$val){ 
@@ -42,13 +42,11 @@
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
             $fileName = round(microtime(true) * 1000).".".$ext;
             $targetFilePath = $targetDir.$fileName; 
-            echo($fileName);
             // Check whether file type is valid 
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
             if(in_array($fileType, $allowTypes)){ 
                 if(move_uploaded_file($_FILES["imgEdit"]["tmp_name"][$key], $targetFilePath)){ 
                     $promotion_image = $fileName;
-                    echo("Upload success".$promotion_image);
                 }
             }
             else if($defaultFile[$key] != "") //Get the default picture name
