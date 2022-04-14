@@ -428,7 +428,7 @@
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
                                                             LEFT JOIN shopProfile AS G ON A.shop_id = G.shop_id
-                                                            WHERE A.product_id = '$id' 
+                                                            WHERE A.product_id = '$id' AND (A.product_status = 'A' OR  A.product_status = 'B')
                                                             LIMIT 1";
                                                             $result_1 = mysqli_query($conn, $sql_1);
                                                 
