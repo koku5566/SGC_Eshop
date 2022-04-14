@@ -98,7 +98,7 @@
 
                                                     echo("
                                                     <div class=\"col-xl-4 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
-                                                        <a data-sqe=\"link\" href=\"facilityDetails.php?facilityId=$id\">
+                                                        <a data-sqe=\"link\" href=\"facilityDetail.php?facilityId=$id\">
                                                             <div class=\"card\">
                                                                 <div class=\"image-container\">
                                                                     <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picCover\" alt=\"$title\">
