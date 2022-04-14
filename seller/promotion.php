@@ -410,7 +410,7 @@
                                         }
                                     ?>
                                     
-                                    <div class="image-layer-2">
+                                    <div class="image-layer">
                                     </div>
                                     <div class="image-tools-delete hide">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
