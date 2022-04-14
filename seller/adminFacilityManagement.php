@@ -37,13 +37,14 @@
           <th>Actions</th>
         </tr>
       </thead>
+      
+      <tbody>
       <?php
       $getPic= "SELECT * FROM facilityPic";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
       foreach($showCategory as $facility): 
       ?>
-      <tbody>
         <tr>
          <td>
             <div class="d-flex align-items-center">
@@ -66,9 +67,9 @@
           </td>
           <td></td>
         </tr>
-        
+        <?php endforeach ?> 
       </tbody>
-      <?php endforeach ?>
+      
     </table>
     
   </div>
