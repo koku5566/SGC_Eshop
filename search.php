@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                              <!--Shop List -->
-                             <div class="col-xl-9 col-lg-9">
+                             <div class="col-xl-9 col-lg-9" id="shopDivision">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
@@ -236,13 +236,37 @@
                                                 if(isset($_SESSION['Search']))
                                                 {
                                                     $SearchBy = $_SESSION['Search'];
-                                                    $sql = "SELECT * FROM shopProfile WHERE shopName = '$SearchBy'";
+                                                    $sql = "SELECT * FROM shopProfile WHERE shopName LIKE '%$SearchBy%' LIMIT 4";
 
                                                     $result = mysqli_query($conn, $sql);
                                     
                                                     if (mysqli_num_rows($result) > 0) {
                                                         while($row = mysqli_fetch_assoc($result)) {
-                                                            //Show the shop list value
+
+                                                            $id = $row['shop_id'];
+                                                            $name = $row['shop_name'];
+                                                            $imgblob = $row['shop_profile_image'];
+
+                                                            echo("
+                                                            
+                                                            <div class=\"col-xl-3 col-lg-4 col-sm-6 shop-item\" style=\"padding-bottom: 0.625rem;\">
+                                                                <a data-sqe=\"link\" href=\"shopDetails.php?id=$id\">
+                                                                    <div class=\"card\">
+                                                                        <div class=\"image-container\">
+                                                                            <img src="data:image/png;base64,'.base64_encode($blob).'"/>
+                                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image/png;base64,'.base64_encode($imgblob).'" alt=\"$name\">
+                                                                        </div>
+                                                                        <div class=\"card-body\">
+                                                                            <div class=\"Name\">
+                                                                            <p class=\"card-text product-name\">$name</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            
+                                                            ");
+                                                            
                                                         }
                                                     }
                                                 }
@@ -255,22 +279,7 @@
                                                     </div>
                                                 <?php  
                                                 }
-
-                                                
-                                                
                                             ?>
-                                        </div>
-                                        <div class="row" style="justify-content: end;margin-right: 10px;">
-                                            <div class="pagination">
-                                                <!--<li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
-                                                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-                                                <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
-                                                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
-                                                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>-->
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
