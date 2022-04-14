@@ -102,7 +102,7 @@
                                                         <a data-sqe=\"link\" href=\"facilityDetail.php?facilityId=$facilityId\">
                                                             <div class=\"card\">
                                                                 <div class=\"image-container\">
-                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picCover\" alt=\"$title\">
+                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/facility/$picCover\" alt=\"$title\">
                                                                 </div>
                                                                 <div class=\"card-body\">
                                                                     <div class=\"Name\">
