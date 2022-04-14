@@ -160,7 +160,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">Start</span>
                                                 </div>
-                                                <input class="form-control" type="date" name="pDate_From" id="promotion_Date" required>
+                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" name="pDate_From" id="promotion_Date" required>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
@@ -168,7 +168,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">End</span>
                                                 </div>
-                                                <input class="form-control" type="date" name="pDate_To" id="promotionEnd_Date" required>
+                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" name="pDate_To" id="promotionEnd_Date" required>
                                             </div>
                                         </div>
                                     </div>
@@ -410,8 +410,8 @@
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
                                             echo("<br><label>Date</label>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"<?php echo date(\"Y-m-d\"); ?>\" name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"<?php echo date(\"Y-m-d\"); ?>\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
                                         }
                                     }
                                     ?>
