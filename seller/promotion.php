@@ -226,6 +226,7 @@
                         <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
                     </div>
 
+                    <!-- Create Function -->
                     <?php
                         if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                         {
@@ -399,7 +400,7 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp"/>
+                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp" required/>
                                             <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
