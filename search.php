@@ -237,7 +237,7 @@
                                                 if(isset($_SESSION['Search']))
                                                 {
                                                     $SearchBy = $_SESSION['Search'];
-                                                    $sql = "SELECT * FROM shopProfile WHERE shopName LIKE '%$SearchBy%' LIMIT 4";
+                                                    $sql = "SELECT * FROM shopProfile WHERE shop_name LIKE '%$SearchBy%' LIMIT 4";
 
                                                     $result = mysqli_query($conn, $sql);
                                     
@@ -266,8 +266,16 @@
                                                             </div>
                                                             
                                                             ");
-                                                            
+                                                            ?>
+                                                                <div class="row" style="display:block;width:100%;text-align:center;">
+                                                                    <img src="/img/resource/shop-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                                    <h5>No Shop Found</h5>
+                                                                </div>
+                                                            <?php  
                                                         }
+                                                    }
+                                                    else{
+
                                                     }
                                                 }
                                                 else
