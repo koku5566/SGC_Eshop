@@ -205,17 +205,17 @@
                             <div class="text-muted m-2 text-center" style="flex:auto">
                                 <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-sm-12">
-                                <p class="p-title">Banner display at:</p>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-sm-12">
-                                <div class="input-group mb-3">
-                                    <select class="form-control" id="status" name="status" required>
-                                        <option name="sellerPage" value="0">Seller Page</option>
-                                        <option name="homePage" value="1">Home Page</option>
-                                    </select>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Banner display at:</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-sm-12">
+                                    <div class="input-group mb-3">
+                                        <select class="form-control" id="status" name="status" required>
+                                            <option name="sellerPage" value="0">Seller Page</option>
+                                            <option name="homePage" value="1">Home Page</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
