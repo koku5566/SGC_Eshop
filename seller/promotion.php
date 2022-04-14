@@ -33,7 +33,7 @@
         $defaultFile = $_POST['imgDefaultEdit'];
 
         // File upload configuration 
-        $targetDir = dirname(__DIR__, 1)."/img/category/"; 
+        $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
