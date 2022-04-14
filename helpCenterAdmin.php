@@ -204,8 +204,10 @@
 					<form action = "'. $_SERVER['PHP_SELF'].'" method = "POST">
 					<input type = "hidden" name = "rid" value = "P000057">
 					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
-					
-					
+					 
+					 $picR = "img/product/";
+					  $picR .= repair-tools.png;
+					echo '<img src = "'.$picR.'">';
 					//<input type = "hidden" name = "rid" value = "'.$c1.'">
 
 			}
