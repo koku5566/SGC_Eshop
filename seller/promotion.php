@@ -36,30 +36,30 @@
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['imgEdit']['name'] as $key=>$val){ 
-                // File upload path 
-                $fileName = basename($_FILES['imgEdit']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["imgEdit"]["tmp_name"][$key], $targetFilePath)){ 
-                        $promotion_image = $fileName;
-                    }
+        foreach($_FILES['imgEdit']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['imgEdit']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            echo($fileName);
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["imgEdit"]["tmp_name"][$key], $targetFilePath)){ 
+                    $promotion_image = $fileName;
+                    echo("Upload success".$promotion_image);
                 }
-                else if($defaultFile[$key] != "") //Get the default picture name
-                {
-                    $promotion_image = $defaultFile[$key];
-                }
-                else
-                {
-                    $promotion_image = "";
-                }
-            } 
-        }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $promotion_image = $defaultFile[$key];
+            }
+            else
+            {
+                $promotion_image = "";
+            }
+        } 
         $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
 
         if(mysqli_query($conn, $sql_edit))
@@ -67,7 +67,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Edited Successful");
-                    window.location.href = window.location.origin + "/seller/promotion.php";
+                    //window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
         }
