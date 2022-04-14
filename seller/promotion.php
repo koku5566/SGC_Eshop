@@ -294,7 +294,7 @@
                                             $promotionId = $row["promotionID"];
                                             $promotionTitle = $row["promotion_title"];
 
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
                                         }
                                     }
@@ -374,7 +374,7 @@
                                             $promotionDate = $row["promotion_Date"];
                                             $promotionEnd_Date = $row["promotionEnd_Date"];
 
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
                                             echo("<br><label>Date</label>");
                                             echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
