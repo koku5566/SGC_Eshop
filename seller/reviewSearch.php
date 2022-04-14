@@ -58,15 +58,17 @@ if(isset($_POST["query"]))
 			WHERE disable_date IS NULL $rr $rr2";
 	*/		
 	
-	$query = "SELECT p.product_name, p.product_cover_picture,rr.* 
+	$query = "SELECT * 
+			  FROM 
+			  (SELECT p.product_name, p.product_cover_picture,rr.* 
 			  FROM product p INNER JOIN 
 			  (SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
-			  FROM reviewRating
-			  WHERE rr_id LIKE '%".$search."%'
-			  OR product_id LIKE '%".$search."%' 
-			  OR message LIKE '%".$search."%') rr
+			  FROM reviewRating) rr
 			  ON p.product_id = rr.product_id
-			  WHERE rr.disable_date IS NULL $rr $rr2";
+			  WHERE p.product_name LIKE '%".$search."%'
+			  OR rr.product_id LIKE '%".$search."%' 
+			  OR rr.message LIKE '%".$search."%') k
+			  WHERE k.disable_date IS NULL $rr $rr2";
 			  
   echo "Rating = $rr |";
    echo "Seller = $rr2 ";
