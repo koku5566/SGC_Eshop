@@ -6,6 +6,8 @@
         $_SESSION['Panel'] = $_GET['Panel'];
     }
 
+    $_SESSION['userId'] = "14";
+
     $subCategoryArray = array();
 
     //Main Category
@@ -207,8 +209,7 @@
                                                 
                                                     if(isset($_POST['submitSearch']))
                                                     {
-                                                        //$shopId = $_SESSION['shopId'];
-                                                        $shopId = "14";
+                                                        $shopId = $_SESSION['userId'];
                                                         $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
                                                         $result = mysqli_query($conn, $sql);
                                                 
@@ -345,6 +346,8 @@
                                                                 break;
                                                         }
                                                     }
+                                                    $shopId = $_SESSION['userId'];
+                                                    $sql .= " AND A.shop_id = '$shopId'";
 
                                                     $result = mysqli_query($conn, $sql);
 
@@ -470,7 +473,8 @@
                                                 }
                                                 else
                                                 {
-                                                    $sql = "SELECT DISTINCT A.product_id FROM product AS A";
+                                                    $shopId = $_SESSION['userId'];
+                                                    $sql = "SELECT DISTINCT A.product_id FROM product AS A WHERE A.shop_id = '$shopId'";
 
                                                     if(isset($_GET['Panel']))
                                                     {

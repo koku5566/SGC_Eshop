@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if(isset($_GET['AdminPanel']))
+    if(isset($_GET['Panel']))
     {
         $_SESSION['AdminPanel'] = $_GET['AdminPanel'];
     }
@@ -44,32 +44,32 @@
     }      
 
     //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
-    if(isset($_POST['PublishProduct']))
+    if(isset($_POST['BanProduct']))
     {
-        $categoryId = $_POST['PublishProduct'];
-        $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
+        $productId = $_POST['BanProduct'];
+        $sql = "UPDATE `product` SET product_status= 'B' WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql))
         {
             $Panel = $_SESSION['AdminPanel'];
             ?>
                 <script type="text/javascript">
-                    alert("Publish Successful");
-                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    alert("Ban Successful");
+                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
     }
-    else if(isset($_POST['UnpublishProduct']))
+    else if(isset($_POST['UnbanProduct']))
     {
-        $categoryId = $_POST['UnpublishProduct'];
-        $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$categoryId'";
+        $productId = $_POST['UnbanProduct'];
+        $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql))
         {
             $Panel = $_SESSION['AdminPanel'];
             ?>
                 <script type="text/javascript">
-                    alert("Unpublish Successful");
-                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    alert("Approve Successful");
+                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
@@ -266,6 +266,9 @@
                                                         }
                                                     }
 
+                                                    $shopId = $_SESSION['userId'];
+                                                    $sql .= " AND A.shop_id = '$shopId'";
+
                                                     $result = mysqli_query($conn, $sql);
 
                                                     if (mysqli_num_rows($result) > 0) {
@@ -433,7 +436,6 @@
                                                                     
                                                                     echo("
                                                                         <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                            <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
@@ -500,19 +502,12 @@
 
                                                                     if($row_1['product_status'] == "A")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Delist</button>");
+                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"BanProduct\" value=\"".$row_1['product_id']."\" >Ban</button>");
                                                                     }
-                                                                    else if($row_1['product_status'] == "I")
+                                                                    else if($row_1['product_status'] == "B")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
+                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"UnbanProduct\" value=\"".$row_1['product_id']."\" >Approve</button>");
                                                                     }
-
-                                                                    echo("
-                                                                    </div>
-                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
-                                                                        </div>
-                                                                    ");
 
                                                                     echo("
                                                                                                 
@@ -520,7 +515,6 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>   
-                                                                            </a>
                                                                         </div>
                                                                     ");
                                                                 }
