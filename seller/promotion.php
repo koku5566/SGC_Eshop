@@ -328,7 +328,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="text-canter" style="flex:auto">
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="image-container-2">
                                     <?php
                                         $promotionId = $_GET['edit'];
@@ -446,7 +446,6 @@
         margin-top: 5px;
         font-size: 40px;
     }
-
 
     .image-tools-add{
         width: 368px;
