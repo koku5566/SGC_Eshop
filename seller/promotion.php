@@ -29,24 +29,24 @@
         $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
         $promotion_image = "";
         
-        $fileNames = array_filter($_FILES['img']['name']); 
-        $defaultFile = $_POST['imgDefault'];
+        $fileNames = array_filter($_FILES['imgEdit']['name']); 
+        $defaultFile = $_POST['imgDefaultEdit'];
 
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
+            foreach($_FILES['imgEdit']['name'] as $key=>$val){ 
                 // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
+                $fileName = basename($_FILES['imgEdit']['name'][$key]); 
                 $ext = pathinfo($fileName, PATHINFO_EXTENSION);
                 $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                    if(move_uploaded_file($_FILES["imgEdit"]["tmp_name"][$key], $targetFilePath)){ 
                         $promotion_image = $fileName;
                     }
                 }
@@ -388,8 +388,8 @@
                                                             </div>
                                                             <div class=\"image-tools-add $add\">
                                                                 <label class=\"custom-file-upload\">
-                                                                    <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
-                                                                    <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                                    <input accept=\".png,.jpeg,.jpg\" name=\"imgEdit[]\" type=\"file\" class=\"imgInp\" multiple/>
+                                                                    <input name=\"imgDefaultEdit[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
                                                                     <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
                                                                 </label>
                                                             </div>
