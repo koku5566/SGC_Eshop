@@ -481,16 +481,16 @@
                                                         switch($_GET['Panel'])
                                                         {
                                                             case "Publish":
-                                                                $sql .= " WHERE A.product_status = 'A'";
+                                                                $sql .= " AND A.product_status = 'A'";
                                                                 break;
                                                             case "Unpublish":
-                                                                $sql .= " WHERE A.product_status = 'I'";
+                                                                $sql .= " AND A.product_status = 'I'";
                                                                 break;
                                                             case "Violation":
-                                                                $sql .= " WHERE A.product_status = 'B'";
+                                                                $sql .= " AND A.product_status = 'B'";
                                                                 break;
                                                             case "OutOfStock":
-                                                                $sql .= " WHERE A.product_status = 'O'";
+                                                                $sql .= " AND A.product_status = 'O'";
                                                                 break;
                                                         }
                                                     }
