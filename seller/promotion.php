@@ -281,27 +281,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center" style="flex:auto">
-                                <div class="form-group">
-                                    <label>Promotion Title</label>
-                                    <?php
-                                    $promotionId = $_GET['delete'];
-                                    $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
-                                    $result = mysqli_query($conn, $sql);
+                            <div class="row">
+                                <div class="text-center" style="flex:auto">
+                                    <div class="form-group">
+                                        <label>Promotion Title</label>
+                                        <?php
+                                        $promotionId = $_GET['delete'];
+                                        $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
 
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            $promotionId = $row["promotionID"];
-                                            $promotionTitle = $row["promotion_title"];
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $promotionId = $row["promotionID"];
+                                                $promotionTitle = $row["promotion_title"];
 
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                                echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
+                                                echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                            }
                                         }
-                                    }
-                                    ?>
-                                    <br>
-                                    <p style="color:#ce0000;">Caution</p>
-                                    <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                                        ?>
+                                        <br>
+                                        <p style="color:#ce0000;">Caution</p>
+                                        <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
