@@ -26,6 +26,15 @@
   <div class="shadow-4 rounded-5 overflow-hidden">
     <h2>Facilities</h2>
     <br>
+    <?php
+      $getPic= "SELECT * FROM facilityPic";
+      $getCategory = mysqli_query($db, $getPic);
+      $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
+
+      return $showCategory;
+    foreach($showCategory as $facility): 
+    ?>
+
     <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
@@ -40,70 +49,29 @@
         <tr>
          <td>
             <div class="d-flex align-items-center">
-              <img src="" class="rounded-circle" alt=""style="width: 45px; height: 45px"/>
+              <img src="" class="" alt="" name="" style="width: 45px; height: 45px"/>
               <div class="ms-3">
-                <p class="fw-bold mb-1">name</p>
+                <p class="fw-bold mb-1" ><?php echo $facility["title"]?></p>
 
               </div>
             </div>
           </td>
           <td>
-            <p class="fw-bold mb-1">xxx</p>
+            <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
           </td>
           <td></td>
           <td>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Edit</button>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <img src="" class="rounded-circle" alt=""style="width: 45px; height: 45px"/>
-              <div class="ms-3">
-                <p class="fw-bold mb-1">name</p>
-
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">xxx</p>
-
-          </td>
-          <td>
+            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
+            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Delete</button>
           </td>
           <td></td>
-          <td>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Edit</button>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" data-mdb-ripple-color="dark">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <img src="" class="rounded-circle" alt=""style="width: 45px; height: 45px"/>
-              <div class="ms-3">
-                <p class="fw-bold mb-1">name</p>
-
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="fw-normal mb-1">xxx</p>
-          </td>
-          <td>
-          </td>
-          <td>
-          </td>
-          <td>
-            <button type="button" class="btn btn-link btn-rounded btn-sm" data-mdb-ripple-color="dark">Edit</button>
-            <button type="button" class="btn btn-link btn-rounded btn-sm" data-mdb-ripple-color="dark">Delete</button>
-          </td>
         </tr>
       </tbody>
     </table>
+    <?php endforeach
+    ?>
   </div>
 </div>
 
