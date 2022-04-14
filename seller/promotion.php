@@ -179,7 +179,7 @@
                                     </div>
                                 </div>
                                 <div class="text-muted m-2 text-center" style="flex:auto">
-                                    <small>The image only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
+                                    <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                                 </div>
                             </div>
                         </div>
@@ -346,12 +346,12 @@
                                                     $picName = "/img/promotion/".$row["promotion_image"];
                                                 }
                                                 
-                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                                echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
                                             }
                                         }
                                         else
                                         {
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                            echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\">");
                                         }
                                     ?>
                                     
