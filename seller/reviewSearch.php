@@ -114,7 +114,7 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
-					<img src=\"'.$picR.'\" class="jungle">
+					<img src="'.$picR.'" class="jungle">
 		</div>	
 	</td>	
 	<td>'.$row["product_name"].'</td>											
