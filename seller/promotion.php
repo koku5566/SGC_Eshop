@@ -564,23 +564,15 @@
 
                 if(imageValid)
                 {
-                    const imgInp = document.querySelectorAll('.imgInp');
-                    imgInp.forEach(img => {
-                        img.addEventListener('change', function handleChange(event) {
-                            const [file] = img.files;
-                            var ext = img.files[0].name.split('.').pop();
-                            var extArr = ["jpg", "jpeg", "png"];
-                            if(img.files && img.files[0])
-                            {
-                                if(extArr.includes(ext))
-                                {
-                                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                                    img.parentElement.parentElement.classList.add("hide");
-                                }
-                            }
-                        });
-                    });
+                    if(img.files && img.files[0])
+                    {
+                        if(img.files[0].size < maxsize)
+                        {
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
+                        }
+                    }
                 }
                 else
                 {
