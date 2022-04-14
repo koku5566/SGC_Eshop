@@ -30,8 +30,6 @@
       $getPic= "SELECT * FROM facilityPic";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
-
-      return $showCategory;
     foreach($showCategory as $facility): 
     ?>
 
