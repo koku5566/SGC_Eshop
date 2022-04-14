@@ -12,62 +12,34 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                        <a data-sqe="link" href="subangjayaFacility.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">SUBANG JAYA</p>
-                                                        </div>            
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                            <a data-sqe="link" href="penangfacility.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">PENANG</p>
-                                                        </div>                                                       
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                        <a data-sqe="link" href="sarawakfacility.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">SARAWAK</p>
-                                                        </div>                                                                                                              
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: .625rem;">
-                                        <a data-sqe="link" href="kualalumpurfacility.php?id=a">
-                                                <div class="card">
-                                                    <div class="image-container">
-                                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-se-white-select-2020?wid=834&hei=1000&fmt=jpeg&qlt=95&.v=1586574259457" alt="Card image cap">
-                                                    </div>
-                                                    <div class="card-body-text">
-                                                        <div class="Name">
-                                                            <p class="card-text campus-name">KUALA LUMPUR</p>
-                                                        </div>                                                                                                          
-                                                    </div>
-                                                </div>   
-                                            </a>
-                                        </div>
+                                        <?php
+                                        $sql = "SELECT DISTINCT(shop_id), shop_name, shop_profile_cover FROM shopProfile AS A LEFT JOIN user AS B ON A.shop_id = B.user_id WHERE B.role = 'ADMIN';  ";
+
+                                        $result = mysqli_query($conn, $sql);
+ 
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                echo ("
+                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
+                                                        <a data-sqe=\"link\" href=\"subangjayaFacility.php?id=a\">
+                                                            <div class=\"card\">
+                                                                <div class=\"image-container\">
+                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row['shop_profile_cover']."\" alt=\"Card image cap\">
+                                                                </div>
+                                                                <div class=\"card-body-text\">
+                                                                    <div class=\"Name\">
+                                                                        <p class=\"card-text campus-name\">".$row['shop_name']."</p>
+                                                                    </div>            
+                                                                </div>
+                                                            </div>   
+                                                        </a>
+                                                    </div>         
+                                                ");
+                                            }
+                                        }
+
+                                        ?>
+                                        
                                     </div>
                                 </div>  
                             </div>
@@ -86,7 +58,8 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <?php
-                                    $sql = "SELECT * FROM facilityPic";
+                                    $sql = "SELECT * FROM facilityPic LIMIT 3";
+
                                     $result = mysqli_query($conn, $sql);
                                     $i = false;
                         
@@ -94,16 +67,16 @@
                                         while($row = mysqli_fetch_assoc($result)) {
                                             if ($i){
 
-                                            echo ("
-                                                <div class=\"carousel-item\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
-                                                </div>         
-                                            ");
+                                                echo ("
+                                                    <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                    </div>         
+                                                ");
                                             }
                                             else{
                                                 echo ("
                                                 <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_Facility"]."\" alt=\"".$row["title"]."\">
+                                                <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
                                                 </div>
                                                             
                                                 ");
