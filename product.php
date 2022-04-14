@@ -204,7 +204,7 @@
                             <!-- Rating/Rating Number/Sold -->
                             <div class="row">
                                 <div class="col">
-                                    <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rating"); ?></b>
+                                    <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Star"); ?></b>
                                 </div>
                                 <div class="col">
                                     <b><?php echo($i_ratingRated == "" ? "No Rating Yet" :  $i_ratingRated." Rated"); ?></b>
