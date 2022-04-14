@@ -26,13 +26,7 @@
   <div class="shadow-4 rounded-5 overflow-hidden">
     <h2>Facilities</h2>
     <br>
-    <?php
-      $getPic= "SELECT * FROM facilityPic";
-      $getCategory = mysqli_query($conn, $getPic);
-      $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
-    foreach($showCategory as $facility): 
-    ?>
-
+   
     <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
@@ -43,6 +37,13 @@
           <th>Actions</th>
         </tr>
       </thead>
+      <?php
+      $getPic= "SELECT * FROM facilityPic";
+      $getCategory = mysqli_query($conn, $getPic);
+      $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
+      foreach($showCategory as $facility): 
+      ?>
+
       <tbody>
         <tr>
          <td>
