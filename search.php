@@ -275,7 +275,7 @@
                                                 {
                                                 ?>
                                                     <div class="row" style="display:block;width:100%;text-align:center;">
-                                                        <img src="/img/resource/not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <img src="/img/resource/shop-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
                                                         <h5>No Shop Found</h5>
                                                     </div>
                                                 <?php  
@@ -570,7 +570,7 @@
                                                 {
                                                 ?>
                                                     <div class="row" style="display:block;width:100%;text-align:center;">
-                                                        <img src="/img/resource/not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <img src="/img/resource/product-found.png" style="width:200px; height:200px;opacity:0.3;"/>
                                                         <h5>No Result Found</h5>
                                                     </div>
                                                 <?php  
