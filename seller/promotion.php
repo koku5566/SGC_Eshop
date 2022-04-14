@@ -21,7 +21,7 @@
     }
 
     //Promotion Status in DB - Edit
-    if(isset($_POST['EditPromotion']))
+    else if(isset($_POST['EditPromotion']))
     {
         $promotionId = $_POST['EditPromotionID'];
         $promotion_title = $_POST['EditPromotionTitle'];
