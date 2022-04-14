@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 									mysqli_stmt_bind_result($stmt, $k1, $k2);
 									
 									while(mysqli_stmt_fetch($stmt)){
-										echo '<option value = "$k1">$k2</option>';
+										echo "<option value = '$k1'>$k2</option>";
 									}
 									mysqli_stmt_close($stmt);									
 								}							  							  
