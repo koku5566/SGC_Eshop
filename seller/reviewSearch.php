@@ -19,12 +19,12 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["rest
 if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
 	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
 	
-	$rr2 = " && product_id = '$restriction2' ";
+	$rr2 = " && seller_id = '$restriction2' ";
 }else{
 	$rr2 = "";
 }
 
-
+//ABOVE ^^ NEED CHANGE FROM product_id to shop_id $rr2
 
 
 if(isset($_POST["query"]))
@@ -61,27 +61,21 @@ if(isset($_POST["query"]))
 
 else
 {
-	/*
- $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
-		   FROM contactUs
-		   WHERE disable_date IS NULL $rr $rr2
-		   ORDER BY cu_id;";
-	*/
+/*	
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
 		   WHERE disable_date IS NULL $rr $rr2
-		   ORDER BY rr_id;";
+		   ORDER BY rr_id;";*/
 
 	//FUTURE NEED CHANGES ^ SQL TO SOMETHING LIKE THIS BUT NEED SHOP DB TO HAVE S000001 format first
-	/*
-	$query = "SELECT p.product_id, p.product_name, p.product_cover_picture, rr.* 
-				FROM product p INNER JOIN (
-				SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
-				FROM reviewRating 
-				WHERE disable_date IS NULL
-				ORDER BY rr_id) rr
-				ON p.product_id = rr.product_id";
-				*/
+	
+	  $query = "SELECT p.product_name, p.product_cover_picture,rr.* 
+				FROM product p INNER JOIN 
+				(SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+				FROM reviewRating) rr
+				ON p.product_id = rr.product_id
+				WHERE rr.disable_date IS NULL $rr $rr2";
+				
 				
 	echo "Rating = $rr |";
 	echo "Seller = $rr2 ";
@@ -94,9 +88,9 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-	 <th colspan="2">rr_id</th>
-     <th>product_id</th>
-     <th>message</th>
+	 <th colspan="2">Product Name</th>
+     <th>Product Id</th>
+     <th>Message</th>
 	 <th>Action</th>
     </tr>
  ';
