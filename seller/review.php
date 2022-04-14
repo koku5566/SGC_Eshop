@@ -63,9 +63,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 						  <label>Seller</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
+							  <?php
+							    $sql ="SELECT shop_id, shop_name
+									   FROM shopProfile";
+								if($stmt = mysqli_prepare ($conn, $sql)){
+									mysqli_stmt_execute($stmt);
+									mysqli_stmt_bind_result($stmt, $k1, $k2);
+									
+									while(mysqli_stmt_fetch($stmt)){
+										echo '<option value = "$k1">$k2</option>';
+									}
+									mysqli_stmt_close($stmt);									
+								}							  							  
+							  ?>
+							  <!--
 							  <option value = "P000001">Product 1</option>
 							  <option value = "P000002">Product 2</option>
-							  <option value = "P000003">Product 3</option>							  
+							  <option value = "P000003">Product 3</option>		
+							-->
 						</select>
 					</div>
 					<div class="col">
