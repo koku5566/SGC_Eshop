@@ -763,33 +763,13 @@
 
                 if(imageValid)
                 {
-                    if (img.files && img.files[0] && img.files.length > 1) {
-                        for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
-                            if(j < 9)
-                            {
-                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
-                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                                imgInp[j].parentElement.parentElement.classList.add("hide");
-                            }
-                        }
-                    }
-                    else if(img.files && img.files[0])
+                    if(img.files && img.files[0])
                     {
-                        var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
-
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
-                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
                         }
                     }
                 }
