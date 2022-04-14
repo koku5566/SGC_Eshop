@@ -28,8 +28,6 @@
         $promotion_Date = date('Y-m-d', strtotime($_POST['EditPromotionDate']));
         $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
         $promotion_image = "";
-
-        $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
         
         $fileNames = array_filter($_FILES['img']['name']); 
         $defaultFile = $_POST['imgDefault'];
@@ -49,22 +47,20 @@
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                 if(in_array($fileType, $allowTypes)){ 
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_edit .= ", promotion_image = '$fileName' ";
+                        $promotion_image = $fileName;
                     }
                 }
                 else if($defaultFile[$key] != "") //Get the default picture name
                 {
-                    $fileName = $defaultFile[$key];
-                    $sql_edit .= ", promotion_image = '$fileName' ";
+                    $promotion_image = $defaultFile[$key];
                 }
                 else
                 {
-                    $sql_edit .= ", promotion_image = '' ";
+                    $promotion_image = "";
                 }
             } 
         }
-
-        $sql_edit .= " WHERE promotionID = $promotionId ";
+        $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
 
         if(mysqli_query($conn, $sql_edit))
         {
@@ -482,8 +478,8 @@
     }
 
     .image-container{
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        height: 200px;
         background-color: white;
     }
 
@@ -492,11 +488,11 @@
     }
 
     .image-layer{
-        width: 80px;
-        height: 80px;
-        opacity:0.5;
-        position:absolute;
-        margin-top: -80px;
+        width: 95%;
+        height: 200px;
+        opacity: 0.5;
+        position: absolute;
+        margin-top: -200px;
     }
 
     .image-tools-delete:hover{
@@ -504,10 +500,10 @@
     }
 
     .image-tools-delete{
-        width: 80px;
+        width: 95%;
         height: 30px;
-        background:grey;
-        position:absolute;
+        background: grey;
+        position: absolute;
         margin-top: -30px;
     }
 
@@ -521,21 +517,21 @@
 
 
     .image-tools-add{
-        width: 80px;
-        height: 80px;
-        background:white;
-        opacity:0.5;
-        position:absolute;
-        margin-top: -80px;
-        z-index:100;
+        width: 95%;
+        height: 200px;
+        background: white;
+        opacity: 0.5;
+        position: absolute;
+        margin-top: -200px;
+        z-index: 100;
     }
 
     .image-tools-add-icon{
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 30px;
-        font-size: 20px;
+        margin-top: 75px;
+        font-size: 50px;
     }
 
     .custom-file-upload{
