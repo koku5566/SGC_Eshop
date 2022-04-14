@@ -500,19 +500,31 @@
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
                 var ext = img.files[0].name.split('.').pop();
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
-                if(img.files && img.files[0])
+
+                for (var a = 0; a < this.files.length; a++)
                 {
-                    if(extArr.includes(ext))
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        imageValid = false;
+                    }
+                }
+                if(imageValid){
+                    if(img.files && img.files[0] && img.files.length > 1)
+                    {
+                        if(extArr.includes(ext))
+                        {
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
+                        }
                     }
                     else{
-                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
-                        img.value = "";
-                    }
+                            alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                            img.value = "";
+                        }
                 }
             });
         });
@@ -549,7 +561,7 @@
     });
 </script>
 
-<!--<script src="../js/checkFileType.js"></script>-->
+<script src="../js/checkFileType.js"></script>
 
 <?php
     require __DIR__ . '/footer.php'
