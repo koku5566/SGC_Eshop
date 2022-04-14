@@ -7,7 +7,7 @@
     }
     else
     {
-        $_SESSION['AdminPanel'] = "All"
+        $_SESSION['AdminPanel'] = "All";
     }
 
     $subCategoryArray = array();

@@ -5,6 +5,10 @@
     {
         $_SESSION['Panel'] = $_GET['Panel'];
     }
+    else
+    {
+        $_SESSION['Panel'] = "All";
+    }
 
     $_SESSION['userId'] = "14";
 
