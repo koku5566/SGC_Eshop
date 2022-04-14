@@ -460,34 +460,14 @@
                                                                             echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
                                                                         }
                                                                         
-                                                                        echo("
-                                                                                        </div>
-                                                                                            <div class=\"row\" style=\"height: 40px;\">
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                                </div>
-                                                                                            </div>
-                                                                        ");
+                                                                        echo("</div>");
                                                                     }
                                                                     //If no variation
                                                                     else
                                                                     {
                                                                         echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
 
-                                                                        echo("
-                                                                                        </div>
-                                                                                            <div class=\"row\" style=\"height: 40px;\">
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                                </div>
-                                                                                            </div>
-                                                                        ");
+                                                                        echo("</div>");
                                                                     }
 
                                                                     echo("
