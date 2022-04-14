@@ -357,16 +357,15 @@
                                     
                                     <div class="image-layer-2">
                                     </div>
-                                        <div class="image-tools-delete hide">
-                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
-                                            <label class="custom-file-upload">
-                                                <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
-                                                <input name="imgDefault[]" type="text" value="<?php echo($picture) ?>" hidden/>
-                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                            </label>
-                                        </div>
+                                    <div class="image-tools-delete hide">
+                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
+                                        <label class="custom-file-upload">
+                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
+                                            <input name="imgDefault[]" type="text" value="<?php echo($picture) ?>" hidden/>
+                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
