@@ -106,7 +106,7 @@ if(mysqli_num_rows($result) > 0)
 	 }
 	 $picR = "img/product/";
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
-		 $picR .= $row["product_cover_picture"];
+		 $picR .= "'.$row["product_cover_picture"].'";
 		 echo '<img src = "'.$picR.'">';
 		 
 	 }else{
