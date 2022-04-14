@@ -13,12 +13,13 @@
 	A.product_cover_picture, A.product_pic_1, A.product_pic_2, A.product_pic_3, A.product_pic_4, 
 	A.product_pic_5, A.product_pic_6, A.product_pic_7, A.product_pic_8, A.product_virtual, 
 	A.product_variation,A.product_price,A.product_stock,A.product_sold, A.category_id, A.shop_id, 
-	C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
+	C.max_price,D.min_price,F.total_stock, R.rating, H.total_rated FROM `product` AS A 
 	LEFT JOIN variation AS B ON A.product_id = B.product_id 
 	LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
 	LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
 	LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-	LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+	LEFT JOIN (SELECT round(AVG(rr.rating),0) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+	LEFT JOIN (SELECT product_id, COUNT(rating) AS total_rated FROM reviewRating WHERE product_id = '$id' GROUP BY product_id) AS H ON A.product_id = H.product_id
 	WHERE A.product_id = '$id' AND A.product_status = 'A'
 	LIMIT 1";
 	$result_product = mysqli_query($conn, $sql_product);
@@ -49,6 +50,7 @@
 			$i_min_price = $row_product['min_price'];
 			$i_total_stock = $row_product['total_stock'];
 			$i_rating = $row_product['rating'];
+			$i_ratingRated = $row_product['total_rated'];
 		}
 	}
 	else{
@@ -205,7 +207,7 @@
                                     <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rating"); ?></b>
                                 </div>
                                 <div class="col">
-                                    <b><?php echo($i_rating == "" ? "No Rating Yet" :  $i_rating." Rated"); ?></b>
+                                    <b><?php echo($i_ratingRated == "" ? "No Rating Yet" :  $i_ratingRated." Rated"); ?></b>
                                 </div>
                                 <div class="col">
                                     <b><?php echo($i_product_sold); ?> Sold</b>
