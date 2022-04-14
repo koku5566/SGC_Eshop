@@ -21,7 +21,7 @@
     }
 
     //Promotion Status in DB - Edit
-    else if(isset($_POST['EditPromotion']))
+    if(isset($_POST['EditPromotion']))
     {
         $promotionId = $_POST['EditPromotionID'];
         $promotion_title = $_POST['EditPromotionTitle'];
@@ -527,6 +527,7 @@
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
                 img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -546,7 +547,7 @@
                         img.parentElement.parentElement.classList.add("hide");
                     }
                     else{
-                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                        alert("This Image is not a valid format");
                         img.value = "";
                     }
                 }
