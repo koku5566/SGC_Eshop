@@ -216,8 +216,9 @@
                                     </div>
                                 </div>
                             </div>
-                             <!--Shop List -->
-                             <div class="col-xl-9 col-lg-9" id="shopDivision">
+                             <!--Result for shop and product -->
+                             <div class="col-xl-9 col-lg-9">
+                                <!--Shop List -->                      
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
@@ -283,9 +284,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--Product List -->
-                            <div class="col-xl-9 col-lg-9">
+                                <!--Product List -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
