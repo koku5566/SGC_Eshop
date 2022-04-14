@@ -70,6 +70,8 @@
         </tr>
       </tbody>
     </table>
+    <?php endforeach
+    ?>
   </div>
 </div>
 
