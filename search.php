@@ -254,7 +254,7 @@
                                                                 <a data-sqe=\"link\" href=\"shopDetails.php?id=$id\">
                                                                     <div class=\"card\">
                                                                         <div class=\"image-container\">
-                                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image/png;base64,'.base64_encode($imgblob).'" alt=\"$name\">
+                                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image/png;base64,".base64_encode($imgblob)." alt=\"$name\">
                                                                         </div>
                                                                         <div class=\"card-body\">
                                                                             <div class=\"Name\">
