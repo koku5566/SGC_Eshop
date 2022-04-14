@@ -184,7 +184,7 @@
                             </div>
 
                             <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                <div style="padding-bottom: .625rem;display:flex">
+                                <div style="padding-bottom: .625rem;width:100%">
                                     <div class="imageDiv">
                                         <div class="image-container">
                                             <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
@@ -569,20 +569,54 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                var ext = img.files[0].name.split('.').pop();
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
-                if(img.files && img.files[0])
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++)
                 {
-                    if(extArr.includes(ext))
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        imageValid = false;
                     }
-                    else{
-                        alert("This Image is not a valid format");
-                        img.value = "";
+                }
+
+                if(imageValid)
+                {
+                    if (img.files && img.files[0] && img.files.length > 1) {
+                        for (var j = 0,i = 0; i < this.files.length; i++) {
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+                            if(j < 9)
+                            {
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
+                                imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                                imgInp[j].parentElement.parentElement.classList.add("hide");
+                            }
+                        }
                     }
+                    else if(img.files && img.files[0])
+                    {
+                        var j = 0;
+                        if(img.files[0].size < maxsize)
+                        {
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            {
+                                j++;
+                            }
+
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            imgInp[j].parentElement.parentElement.classList.add("hide");
+                        }
+                    }
+                }
+                else
+                {
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
