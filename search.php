@@ -231,7 +231,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div class="card-content row mb-3" style="display: none">
+                                        <div class="card-content row mb-3">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
                                                 if(isset($_SESSION['Search']))
@@ -569,7 +569,7 @@
                                                 {
                                                 ?>
                                                     <div class="row" style="display:block;width:100%;text-align:center;">
-                                                        <img src="/img/resource/product-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <img src="/img/resource/product-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
                                                         <h5>No Result Found</h5>
                                                     </div>
                                                 <?php  
