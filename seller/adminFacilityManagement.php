@@ -32,8 +32,6 @@
         <tr>
           <th>Facility Name</th>
           <th>Hourly Rate</th>
-          <th></th>
-          <th></th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -59,13 +57,9 @@
             <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
-          </td>
-          <td></td>
-          <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Delete</button>
           </td>
-          <td></td>
         </tr>
         <?php endforeach ?> 
       </tbody>
