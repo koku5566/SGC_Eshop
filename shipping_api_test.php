@@ -21,11 +21,12 @@
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
-    //Under the same seller
-    $productlength =[];
-    $productwidth = [];
-    $productheight = 0;
-    $productweight =0;
+
+  //Under the same seller
+  $productlength =[];
+  $productwidth = [];
+  $productheight = 0;
+  $productweight =0;
   
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $result = $conn->query($cartsql);
@@ -54,8 +55,8 @@ $customerUID = 3; //TO GET * from session
   $maximumlength = max($productlength);
   $maximumwidth = max($productwidth);
   
-  echo $productheight, $maximumlength, $maximumwidth;
-  echo $productweight;
+  //echo $productheight, $maximumlength, $maximumwidth;
+  //echo $productweight;
 
 
 //===========To get customer shipping information==================
@@ -85,7 +86,7 @@ $cPostalCode = $row['postal_code'];
 $cState = $row['state'];
 }
   }
-echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
+//echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
 
 
 //===========To get seller shipping information==================
@@ -117,7 +118,7 @@ $sPostalCode = $row['postal_code'];
 $sState = $row['state'];
 }
 }
-echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
+//echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
 
 //if get is not null then
 $domain = "https://demo.connect.easyparcel.my/?ac=";
@@ -161,6 +162,17 @@ ob_end_clean();
 curl_close($ch);
 
 $json = json_decode($return);
-echo "<pre>"; print_r($json); echo "</pre>";
+//echo "<pre>"; print_r($json); echo "</pre>";
+
+
+ for ($i = 0; $i<=5; $i++)
+ {
+      echo "<pre>";print_r($json -> result[0]->rates[$i]->shipment_price); echo"</pre>";
+      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_logo); echo"</pre>";
+      echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";
+      echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";
+ }
+
+
 ?>
 

@@ -1,5 +1,48 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    //Promotion Status in DB - Delete
+    if(isset($_POST['DeletePromotion']))
+    {
+        $promotionId = $_POST['DeletePromotionID'];
+        $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
+        if(mysqli_query($conn, $sql_delete))
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Deleted Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
+
+    //Promotion Status in DB - Edit
+    if(isset($_POST['EditPromotion']))
+    {
+        $promotionId = $_POST['EditPromotionID'];
+        $promotion_title = $_POST['EditPromotionTitle'];
+        $promotion_Date = date('Y-m-d', strtotime($_POST['EditPromotionDate']));
+        $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
+
+        $sql_edit = "UPDATE promotion SET promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
+        
+        if(mysqli_query($conn, $sql_edit))
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Edited Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
 ?>
 
     <!-- Begin Page Content -->
@@ -41,8 +84,8 @@
                                                     <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                     </div>
                                                 </td></tr>";
-                                                echo"</tbody></table>";
                                             }
+                                            echo"</tbody></table>";
                                         }
                                         else{
                                             echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
@@ -199,97 +242,159 @@
         <div class="modal fade" id="deletePromotionModel" tabindex="-1" role="dialog" aria-labelledby="deletePromotionModel" <?php echo(isset($_GET['delete']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Delete Promotion</h5>
-                    <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-sm-4">
-                            <div class="image-container">
-                                <?php
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Delete Promotion</h5>
+                        <button type="button" class="close closeDeleteModel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="text-canter" style="flex:auto">
+                                <div class="image-container-2">
+                                    <?php
+                                        $promotionId = $_GET['delete'];
+                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                
+                                                $picture = $row["promotion_image"];
+                                                $picName = "";
+
+                                                if($row["promotion_image"] != "")
+                                                {
+                                                    $picName = "/img/promotion/".$row["promotion_image"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                        }
+                                    ?>
+                                    
+                                    <div class="image-layer-2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center" style="flex:auto">
+                                <div class="form-group">
+                                    <label>Promotion Title</label>
+                                    <?php
                                     $promotionId = $_GET['delete'];
-                                    $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                    $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)) {
-                                            
-                                            $picture = $row["promotion_image"];
-                                            $picName = "";
+                                            $promotionId = $row["promotionID"];
+                                            $promotionTitle = $row["promotion_title"];
 
-                                            if($row["promotion_image"] != "")
-                                            {
-                                                $picName = "/img/promotion/".$row["promotion_image"];
-                                            }
-                                            
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
                                         }
                                     }
-                                    else
-                                    {
-                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
-                                    }
-                                ?>
-                                
-                                <div class="image-layer">
+                                    ?>
+                                    <br>
+                                    <p style="color:#ce0000;">Caution</p>
+                                    <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9 col-sm-9">
-                            <div class="form-group">
-                                <label>Promotion Title</label>
-                                <?php
-                                $promotionId = $_GET['delete'];
-                                $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
-                                $result = mysqli_query($conn, $sql);
-
-                                if (mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        $promotionId = $row["promotionID"];
-                                        $promotionTitle = $row["promotion_title"];
-
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
-                                        echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
-                                    }
-                                }
-                                ?>
-                                <p style="color:#ce0000;">Caution</p>
-                                <p style="color:#ce0000;">Once deleted, the promotion will not able to restore</p>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
-                    <button type="submit" name="DeletePromotion"  class="btn btn-danger">Delete</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="DeletePromotion"  class="btn btn-danger" value="1">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
-    <?php
-    //Promotion Status in DB - Delete
-    if(isset($_POST['DeletePromotion']))
-    {
-        $promotionId = $_POST['DeletePromotionID'];
-        echo '<script>alert(" ' . $productId . '")</script>';
-        $sql_delete = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
-        if(mysqli_query($conn, $sql_delete))
-        {
-            ?>
-                <script type="text/javascript">
-                    alert("Promotion Deleted Successful");
-                    window.location.href = window.location.origin + "/seller/promotion.php";
-                </script>
-            <?php
-        }
-        else{
-            echo '<script>alert("Failed")</script>';
-        }
-    }
-    ?>
+
+    <!-- Edit Promotion Modal - editPromotionModel -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal fade" id="editPromotionModel" tabindex="-1" role="dialog" aria-labelledby="editPromotionModel" <?php echo(isset($_GET['edit']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Edit Promotion</h5>
+                        <button type="button" class="close closeEditModel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="text-canter" style="flex:auto">
+                                <div class="image-container-2">
+                                    <?php
+                                        $promotionId = $_GET['edit'];
+                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                
+                                                $picture = $row["promotion_image"];
+                                                $picName = "";
+
+                                                if($row["promotion_image"] != "")
+                                                {
+                                                    $picName = "/img/promotion/".$row["promotion_image"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                        }
+                                    ?>
+                                    
+                                    <div class="image-layer-2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center" style="flex:auto">
+                                <div class="form-group">
+                                    <label>Promotion Title</label>
+                                    <?php
+                                    $promotionId = $_GET['edit'];
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $promotionId = $row["promotionID"];
+                                            $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
+
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
+                                            echo("<label>Date:</label>");
+                                            echo("<input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionDate\" value=\"$promotionDate\">");
+                                            echo("<input type=\"date\" class=\"form-control\" min=\"2022-04-14\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\">");
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="EditPromotion"  class="btn btn-danger" value="1">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
 <!-- /.container-fluid -->
 
 <style>
@@ -416,6 +521,21 @@
     closeDeleteModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
             $("#deletePromotionModel").modal('hide');
+        });
+    });
+
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['edit']) ? "1" : "0") ?> == 1)
+        {
+            $("#editPromotionModel").modal('show');
+        }
+    });
+
+    const closeEditModel = document.querySelectorAll('.closeEditModel');
+
+    closeEditModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#editPromotionModel").modal('hide');
         });
     });
 </script>
