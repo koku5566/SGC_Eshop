@@ -107,6 +107,7 @@ if(mysqli_num_rows($result) > 0)
 	 $picR = "img/product/";
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
 		 $picR .= $row["product_cover_picture"];
+		 
 	 }else{
 		 $picR .= 'ttps://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg';
 	 }
@@ -114,7 +115,7 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
    <tr colspan="2">
     <td><div class = "bengi">
-					<img src="'.$picR.'" class="jungle">
+					<img src="img/product/repair-tools.png" class="jungle">
 		</div>	
 	</td>	
 	<td>'.$row["product_name"].'</td>											
