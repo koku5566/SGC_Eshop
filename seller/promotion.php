@@ -232,6 +232,7 @@
                             $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
                             $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
                             $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
+                            $status = mysqli_real_escape_string($conn, SanitizeString($_POST['status']));
                             
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
@@ -247,7 +248,7 @@
                             if(in_array($fileType, $allowTypes)){ 
                                 if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
                                     $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`) 
-                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd')";
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd',$status)";
                                             
                                             $result = mysqli_query($conn,$sql);
 
