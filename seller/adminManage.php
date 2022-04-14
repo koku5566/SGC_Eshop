@@ -492,28 +492,31 @@
                                                                         ");
                                                                     }
 
-                                                                    echo("
-                                                                        <div class=\"row\">
-                                                                        <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                                        </div>
-                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                    ");
+                                                                    
 
                                                                     if($row_1['product_status'] == "A")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"BanProduct\" value=\"".$row_1['product_id']."\" >Ban</button>");
+                                                                        echo("
+                                                                            <div class=\"row\">
+                                                                                <div class=\"col-xl-12\" style=\"padding:0;\">
+                                                                                    <button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"BanProduct\" value=\"".$row_1['product_id']."\" >Ban</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        ");
                                                                     }
                                                                     else if($row_1['product_status'] == "B")
                                                                     {
-                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"UnbanProduct\" value=\"".$row_1['product_id']."\" >Approve</button>");
+                                                                        echo("
+                                                                            <div class=\"row\">
+                                                                                <div class=\"col-xl-12\" style=\"padding:0;\">
+                                                                                    <button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"UnbanProduct\" value=\"".$row_1['product_id']."\" >Approve</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        ");
                                                                     }
 
                                                                     echo("
                                                                                                 
-                                                                                            
-                                                                                        </div>
-                                                                                    </div>
                                                                                 </div>   
                                                                         </div>
                                                                     ");
