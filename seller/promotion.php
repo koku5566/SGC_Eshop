@@ -27,9 +27,45 @@
         $promotion_title = $_POST['EditPromotionTitle'];
         $promotion_Date = date('Y-m-d', strtotime($_POST['EditPromotionDate']));
         $promotionEnd_Date = date('Y-m-d', strtotime($_POST['EditPromotionEndDate']));
+        $promotion_image = "";
 
-        $sql_edit = "UPDATE promotion SET promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
+        $sql_edit = "UPDATE promotion SET promotion_image='$promotion_image', promotion_title='$promotion_title', promotion_Date='$promotion_Date', promotionEnd_Date='$promotionEnd_Date' WHERE promotionID = '$promotionId'";
         
+        $fileNames = array_filter($_FILES['img']['name']); 
+        $defaultFile = $_POST['imgDefault'];
+
+        // File upload configuration 
+        $targetDir = dirname(__DIR__, 1)."/img/category/"; 
+        $allowTypes = array('jpg','png','jpeg'); 
+
+        if(!empty($fileNames)){ 
+            foreach($_FILES['img']['name'] as $key=>$val){ 
+                // File upload path 
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_edit .= ", promotion_image = '$fileName' ";
+                    }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
+                    $sql_edit .= ", promotion_image = '$fileName' ";
+                }
+                else
+                {
+                    $sql_edit .= ", promotion_image = '' ";
+                }
+            } 
+        }
+
+        $sql_edit .= " WHERE promotionID = $promotionId ";
+
         if(mysqli_query($conn, $sql_edit))
         {
             ?>
