@@ -206,7 +206,7 @@
 					<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>';
 					 
 					 $picR = "img/product/";
-					  $picR .= repair-tools.png;
+					  $picR .= "repair-tools.png";
 					echo '<img src = "'.$picR.'">';
 					//<input type = "hidden" name = "rid" value = "'.$c1.'">
 
