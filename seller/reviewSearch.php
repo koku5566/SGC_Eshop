@@ -106,7 +106,7 @@ if(mysqli_num_rows($result) > 0)
 	 }
 	 $picR = 'img/product/';
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
-		 $picR .= '.$row["product_cover_picture"]';
+		 $picR .= ".$row['product_cover_picture']";
 	 }else{
 		 $picR .= 'https://img2.chinadaily.com.cn/images/201808/21/5b7b6956a310add1c697ce04.jpeg';
 	 }
