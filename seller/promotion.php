@@ -365,7 +365,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="image-container-2">
+                                <div class="image-container">
                                     <?php
                                         $promotionId = $_GET['edit'];
                                         $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
