@@ -104,7 +104,7 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="bi bi-star"></i> ';
 		 }
 	 }
-	 $picR = "img/product/";
+	 $picR = "../img/product/";
 	 $srcR = "";
 	 $picDisplay = "";
 	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
