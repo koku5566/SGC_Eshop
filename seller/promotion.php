@@ -510,7 +510,7 @@
                         img.parentElement.parentElement.classList.add("hide");
                     }
                     else{
-                        alert("This Image is not a valid format");
+                        alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
                         img.value = "";
                     }
                 }
@@ -549,7 +549,7 @@
     });
 </script>
 
-<script src="../js/checkFileType.js"></script>
+<!--<script src="../js/checkFileType.js"></script>-->
 
 <?php
     require __DIR__ . '/footer.php'
