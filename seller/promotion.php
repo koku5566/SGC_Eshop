@@ -463,9 +463,27 @@
 <!-- /.container-fluid -->
 
 <style>
+  .editIcon{
+        color: #a31f37;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height:100%;
+        background-color:white;
+        border-radius:0;
+        border:none;
+    }
+
+    .editIcon:hover{
+        color: white;
+        background-color:#a31f37;
+    }
+
+    .p-title{
+        color: #a31f37;
+    }
+
     .image-container{
-        width: 368px; 
-        height: 207px; 
+        width: 80px;
+        height: 80px;
         background-color: white;
     }
 
@@ -473,16 +491,12 @@
         display:block;
     }
 
-    .image-layer-2:hover ~ .image-tools-delete{
-        display:block;
-    }
-
     .image-layer{
-        width: 368px;
-        height: 207px;
+        width: 80px;
+        height: 80px;
         opacity:0.5;
         position:absolute;
-        margin-top: -200px;
+        margin-top: -80px;
     }
 
     .image-tools-delete:hover{
@@ -490,12 +504,11 @@
     }
 
     .image-tools-delete{
-        width: 368px;
-        height: 50px;
+        width: 80px;
+        height: 30px;
         background:grey;
         position:absolute;
-        margin-top: -50px;
-        opacity: 0.5;
+        margin-top: -30px;
     }
 
     .image-tools-delete-icon{
@@ -503,16 +516,17 @@
         justify-content: center;
         display: grid;
         margin-top: 5px;
-        font-size: 40px;
+        font-size: 20px;
     }
 
+
     .image-tools-add{
-        width: 368px;
-        height: 207px;
+        width: 80px;
+        height: 80px;
         background:white;
         opacity:0.5;
         position:absolute;
-        margin-top: -200px;
+        margin-top: -80px;
         z-index:100;
     }
 
@@ -520,8 +534,8 @@
         color: black;
         justify-content: center;
         display: grid;
-        margin-top: 80px;
-        font-size: 40px;
+        margin-top: 30px;
+        font-size: 20px;
     }
 
     .custom-file-upload{
@@ -532,6 +546,13 @@
     .imgInp{
         display:none;
     }
+
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+    
     .hide{
         display:none;
     }
