@@ -36,14 +36,15 @@
           <th></th>
           <th>Actions</th>
         </tr>
-      </thead>
-      <?php
+        <?php
       $getPic= "SELECT * FROM facilityPic";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
       foreach($showCategory as $facility): 
       ?>
 
+      </thead>
+      
       <tbody>
         <tr>
          <td>
