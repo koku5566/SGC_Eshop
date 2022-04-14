@@ -21,7 +21,7 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 echo ("
                                                     <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
-                                                        <a data-sqe=\"link\" href=\"subangjayaFacility.php?id=a\">
+                                                        <a data-sqe=\"link\" href=\"facilityCampus.php?campusId=".$row['shop_id']."\">
                                                             <div class=\"card\">
                                                                 <div class=\"image-container\">
                                                                     <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row['shop_profile_cover']."\" alt=\"Card image cap\">

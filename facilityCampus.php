@@ -1,14 +1,40 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+<?php
+    $_SESSION['campusId'] = $_GET['campusId'];
+?>
+<?php
+	//Fetch each product information
+	$id = $_SESSION['campusId'];
+
+    $sql_campus = "SELECT shop_name, shop_profile_cover FROM shopProfile AS A LEFT JOIN user AS B ON A.shop_id = B.user_id WHERE B.role = 'ADMIN' AND shop_id = '$id';  ";
+
+	$result_campus = mysqli_query($conn, $sql_campus);
+
+	if (mysqli_num_rows($result_campus) > 0) {
+		while($row_campus = mysqli_fetch_assoc($result_campus)) {
+			
+			$shopName = $row_campus['shop_name'];
+			$shopCover = $row_campus['shop_profile_cover'];
+		}
+	}
+	else{
+		?>
+			<script type="text/javascript">
+				window.location.href = window.location.origin + "/facilityrental.php";
+			</script>
+		<?php
+	}
+?>
 
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
                     
                     <div class="card-header py-3">
-                                    <h5>SEGI KUALA LUMPUR FACILITIES</h5>
-                                </div>s
+                        <h5><?php echo($shopName); ?></h5>
+                    </div>
                     <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
