@@ -378,6 +378,19 @@
                                                                             <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
+                                                                    ");
+                                                                    if($row_1['product_status'] == "B")
+                                                                    {
+                                                                        echo("
+                                                                        <div style=\"position: absolute;width: 100%;height: 40%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
+                                                                            <p style=\"color: white;/*! opacity: 1.0; */\">Product get banned, please contact administrator for future help</p>
+                                                                        </div>
+                                                                    ")
+                                                                    }
+                                                                    
+                                                                    echo("
+                                                                                        
+
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
                                                                                     </div>
                                                                                     <div class=\"card-body\">
@@ -449,7 +462,6 @@
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
-
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
