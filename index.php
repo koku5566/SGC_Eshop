@@ -32,7 +32,7 @@
                                                     if (mysqli_num_rows($result_1) > 0) {
                                                         
                                                         echo("
-                                                            <li class=\"menu-item menu-item-has-children\" style=\"display: list-item;\">
+                                                            <li class=\"menu-item menu-item-has-children\" style=\"display: list-item; padding: 10px 0\">
                                                                 <a href=\"category.php?mainCategory=$maincategoryid\" class=\"nav-link\">
                                                                 <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
                                                                 $categoryName
@@ -351,7 +351,6 @@
         display: inline-flex;
         align-items: center;
         justify-content: flex-start;
-        line-height:50px;
     }
 
     .browse-menu .dropdown-menu {
