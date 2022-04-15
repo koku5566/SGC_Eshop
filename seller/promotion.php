@@ -92,7 +92,7 @@
                     <!-- View Section -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                            <div class="col-xl-12">
                                 <div class="row">
                                     <?php
                                         $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date from promotion";
@@ -134,6 +134,25 @@
                 </div>
             </div>
         </div>
+
+        <!-- Approved Section-->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-sm-12">
+                                    <div class="row">
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <!-- Create Promotion -->
         <div class="row">
