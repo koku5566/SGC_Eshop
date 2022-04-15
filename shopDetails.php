@@ -176,7 +176,7 @@
 
       .carousel-item{
           height:60vh;
-          background-color:white;
+          background-color:black;
       }
 
       .carousel-inner img {
