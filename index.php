@@ -490,7 +490,7 @@
 
     .carousel-item{
         height:60vh;
-        background-color:white;
+        background-color:rgba(58,59,69,.15);
     }
 
     .carousel-inner img {
