@@ -79,32 +79,58 @@
                         
                         <!-- Slideshow -->
                         <div class="col-xl-10">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
+                            <!-- Picture -->
+                        <div class="col-xl-5 col-md-6 mb-6">
+							<div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                                <!-- slides -->
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://images.unsplash.com/photo-1603408639326-fad10b8fbc1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZyUyMHdheXxlbnwwfHwwfHw%3D&w=1000&q=80 alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Third slide">
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+									<?php
+										for($i = 0; $i < count($i_product_pic); $i++)
+										{
+											if($i_product_pic[$i] != "")
+											{
+												$picName = "/img/product/".$i_product_pic[$i];
+												if($i == 0)
+												{
+													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
+												}
+												else
+												{
+													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"$i_product_name\"> </div>");
+												}
+											}
+										}
+
+									?>
+                                </div> 
+								<!-- Left right --> 
+								<a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
+								<a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+								<!-- Thumbnails -->
+                                <ol class="carousel-indicators list-inline" style="height:60px;margin-left:0;margin-right:0;overflow:auto;">
+									<?php
+										$j = 0;
+										for($i = 0; $i < count($i_product_pic); $i++)
+										{
+											if($i_product_pic[$i] != "")
+											{
+												$picName = "/img/product/".$i_product_pic[$i];
+												if($i == 0)
+												{
+													echo("<li class=\"list-inline-item firstThumbnail active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+												}
+												else
+												{
+													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-1\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
+												}
+												$j++;
+											}
+										}
+
+									?>
+                                </ol>
                             </div>
+                        </div>
                         </div>
                     </div>
 
