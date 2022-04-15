@@ -206,7 +206,7 @@
                                 <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                             <?php
-                                if $_SESSION['role'] == "SELLER")
+                                if ($_SESSION['role'] == "SELLER")
                                 { echo "
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
@@ -224,7 +224,7 @@
                                 }
                             ?>
                             <?php
-                                if $_SESSION['role'] == "ADMIN")
+                                if ($_SESSION['role'] == "ADMIN")
                                 { echo "
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
