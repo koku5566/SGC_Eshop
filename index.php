@@ -5,7 +5,7 @@
 <?php
     //Fetch each promotion image information
 
-    $sql_promotion = "SELECT * FROM promotion_image AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.role = 'ADMIN' ";
+    $sql_promotion = "SELECT * FROM promotion_image AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' ";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     $promotion_title = array();
