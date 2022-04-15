@@ -95,13 +95,14 @@
                             <div class="col-xl-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                        $sql = "SELECT promotionID, promotion_image, promotion_title, promotion_Date, promotionEnd_Date from promotion";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
                                             <thead>
                                                 <tr>
                                                 <th scope=\"col\">Promotion Title</th>
+                                                <th scope=\"col\">Promotion Image</th>
                                                 <th scope=\"col\">Date</th>
                                                 <th scope=\"col\">Action</th>
                                                 </tr>
@@ -109,7 +110,8 @@
                                             <tbody> ";
                                             while($row = $result->fetch_assoc()){
                                                 echo"<tr><td>"
-                                                .$row["promotion_title"]."</td><td>"."Start:  "
+                                                .$row["promotion_title"]."</td><td>"
+                                                .$row["promotion_image"]."</td><td>"."Start:  "
                                                 .$row["promotion_Date"]."<br>"."End:   "
                                                 .$row["promotionEnd_Date"]."</td>
                                                 <td>
