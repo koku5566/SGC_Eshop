@@ -155,7 +155,7 @@
         height: 50vh;
       }
 
-      /*Slide show*/
+      /*Slide show by Lim Qiu Xiong*/
 
       .image-container{
           width:100%;
@@ -206,6 +206,7 @@
       #custCarousel .carousel-indicators li:hover img {
           opacity: 0.75
       }
+      /*End Slide Show by Lim Qiu Xiong*/
     </style>
 
     <?php
