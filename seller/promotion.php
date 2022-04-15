@@ -228,7 +228,7 @@
                                     <div class="input-group mb-3">
                                         <select class="form-control" id="status" name="status" required>
                                             <option name="sellerPage" value="1">Home Page</option>
-                                            <option name="homePage" value="2">Pop-up</option>
+                                            <option name="homePage" value="2">Home Page (Pop-up)</option>
                                         </select>
                                     </div>
                                 </div>
