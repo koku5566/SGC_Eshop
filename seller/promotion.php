@@ -209,7 +209,7 @@
                             </div>
                             <?php
                                 if ($_SESSION['role'] == "SELLER")
-                                { echo "
+                                { echo ("
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                             <p class=\"p-title\">Banner display at:</p>
@@ -222,12 +222,12 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>"
+                                    </div>");
                                 }
                             ?>
                             <?php
                                 if ($_SESSION['role'] == "ADMIN")
-                                { echo "
+                                { echo ("
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                             <p class=\"p-title\">Banner display at:</p>
@@ -240,7 +240,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>"
+                                    </div>");
                                 }
                             ?>
                         </div>
