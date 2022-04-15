@@ -36,7 +36,6 @@ try {
         if (addPayment($data) !== false && $data['payment_status'] === 'approved') {
             // Payment successfully added, redirect to the payment complete page.
 			$inserids =$db->insert_id;
-            //<script>window.location.href = "location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids";</script>
             header("location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids");
             exit(1);
         } else {
@@ -69,7 +68,7 @@ function addPayment($data)
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
         $stmt = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->bind_param(
-            'isdsssss',
+            'ssdsssss',
             $data['product_id'],
             $data['transaction_id'],
             $data['payment_amount'],
