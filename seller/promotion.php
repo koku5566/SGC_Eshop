@@ -112,7 +112,7 @@
                                                 echo"<tr><td>"
                                                 .$row["promotion_title"]."</td><td>"
                                                 .
-                                                $promotionId = $_GET['delete'];
+                                                $promotionId = "";
                                                 $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
                                                 $result = mysqli_query($conn, $sql);
         
