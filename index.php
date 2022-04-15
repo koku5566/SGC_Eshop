@@ -11,9 +11,11 @@
     $promotion_title = array();
     $promotion_image = array();
     if (mysqli_num_rows($result_promotion) > 0) {
-        array_push($promotion_title,$row_promotion['promotion_title']);
+        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
+            array_push($promotion_title,$row_promotion['promotion_title']);
         array_push($promotion_image,$row_promotion['promotion_image']);
-    }
+        }
+    }   
     else{
         ?>
             <script type="text/javascript">
