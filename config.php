@@ -29,6 +29,11 @@ define("USERNAME","sgcprot1_SGC_ESHOP");
 define("PASSWORD","3g48B8Qn8k6v6VF");
 define("DATABASE","sgcprot1_SGC_ESHOP");
 $dbConfig = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
+if(!$dbConfig)
+{
+    die("Connection Failed".mysqli_connect_error());
+}
+
 $apiContext = getApiContext($paypalConfig['client_id'], $paypalConfig['client_secret'], $enableSandbox);
 
 /**
