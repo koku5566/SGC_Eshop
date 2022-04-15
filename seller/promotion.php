@@ -111,7 +111,30 @@
                                             while($row = $result->fetch_assoc()){
                                                 echo"<tr><td>"
                                                 .$row["promotion_title"]."</td><td>"
-                                                .$row["promotion_image"]."</td><td>"."Start:  "
+                                                .
+                                                $promotionId = $_GET['delete'];
+                                                $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                                $result = mysqli_query($conn, $sql);
+        
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                        
+                                                        $picture = $row["promotion_image"];
+                                                        $picName = "";
+        
+                                                        if($row["promotion_image"] != "")
+                                                        {
+                                                            $picName = "/img/promotion/".$row["promotion_image"];
+                                                        }
+                                                        
+                                                        echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                                }
+                                            ."</td><td>"."Start:  "
                                                 .$row["promotion_Date"]."<br>"."End:   "
                                                 .$row["promotionEnd_Date"]."</td>
                                                 <td>
