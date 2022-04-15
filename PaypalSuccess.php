@@ -1,4 +1,7 @@
-   <link rel="stylesheet" type="text/css" href="css\payment.css">
+<?php
+    require __DIR__ . '/header.php'
+?>
+    <link rel="stylesheet" type="text/css" href="css\payment.css">
 </head>
 <div class="payment">
   <h1>Your Payment has been Successful</h1>
@@ -21,3 +24,6 @@
   </div>
 </div>  
 
+  <?php
+    require __DIR__ . '/footer.php'
+?>
