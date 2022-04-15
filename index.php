@@ -2,11 +2,11 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-    $_SESSION['promotionId'] = $_GET['promotionId'];
+    $_SESSION['promotionID'] = $_GET['promotionID'];
 ?>
 <?php
     //Fetch each promotion image information
-    $id = $_SESSION['promotionId'];
+    $id = $_SESSION['promotionID'];
         
     $sql_promotion = "SELECT * FROM promotion_image WHERE promotionID = '$id'";
 
