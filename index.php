@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 ?>
 <?php
     $_SESSION['promotionID'] = $_GET['promotionID'];
