@@ -127,28 +127,7 @@
                                <!-- Left right --> 
 								<a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
 								<a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
-                                <!-- Thumbnails -->
-                                <ol class="carousel-indicators list-inline" style="height:60px;margin-left:0;margin-right:0;overflow:auto;">
-									<?php
-										$j = 0;
-										for($i = 0; $i < count($promotion_image); $i++)
-										{
-											if($promotion_image[$i] != "")
-											{
-												$picName = "/img/promotion/".$promotion_image[$i];
-												if($i == 0)
-												{
-													echo("<li class=\"list-inline-item firstThumbnail active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
-												}
-												else
-												{
-													echo("<li class=\"list-inline-item\"> <a id=\"carousel-selector-1\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
-												}
-												$j++;
-											}
-										}
-									?>
-                                </ol>
+                                
                             </div>
                         </div>
                     </div>
