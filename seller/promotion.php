@@ -160,7 +160,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">Start</span>
                                                 </div>
-                                                <input class="form-control" type="date" name="pDate_From" id="promotion_Date" required>
+                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" name="pDate_From" id="promotion_Date" required>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
