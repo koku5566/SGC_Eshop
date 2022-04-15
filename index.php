@@ -4,16 +4,19 @@
 
 <?php
     //Fetch each promotion image information
-
-    $sql_promotion = "SELECT * FROM promotion_image AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' ";
-
-    $result_promotion = mysqli_query($conn, $sql_promotion);
     $promotion_title = array();
     $promotion_image = array();
+
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' ";
+
+    $result_promotion = mysqli_query($conn, $sql_promotion);
+    
     if (mysqli_num_rows($result_promotion) > 0) {
-        array_push($promotion_title,$row_promotion['promotion_title']);
+        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
+            array_push($promotion_title,$row_promotion['promotion_title']);
         array_push($promotion_image,$row_promotion['promotion_image']);
-    }
+        }
+    }   
     else{
         ?>
             <script type="text/javascript">
