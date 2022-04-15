@@ -256,12 +256,12 @@
                     <?php
                         if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                         {
-                            $title = $_POST['promotion_Title'];
-                            $dateStart = $_POST['pDate_From'];
-                            $dateEnd = $_POST['pDate_To'];
-                            $status = $_POST['status'];
+                            $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
+                            $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
+                            $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
+                            $status = mysqli_real_escape_string($conn, SanitizeString($_POST['status']));
                             $userId = $_SESSION['userId'];
-                            
+
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
                             $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
