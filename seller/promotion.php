@@ -218,6 +218,11 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-12">
+                                    <p class="p-title">Banner display at:</p>
+                                </div>
                                 <!-- Admin -->
                                 <div class="col-xl-10 col-lg-10 col-sm-12">
                                     <div class="input-group mb-3">
