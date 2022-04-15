@@ -4,6 +4,7 @@
 <?php
     $_SESSION['promotionID'] = $_GET['promotionID'];
 ?>
+
 <?php
     //Fetch each promotion image information
     $id = $_SESSION['promotionID'];
@@ -18,7 +19,7 @@
     else{
         ?>
             <script type="text/javascript">
-                window.location.href = window.location.origin + "/index.php";
+                //window.location.href = window.location.origin + "/index.php";
             </script>
         <?php
     }
