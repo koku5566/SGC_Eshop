@@ -1,8 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $_SESSION['role'] = "SELLER";
-    $_SESSION["userId"] = "S000025";
+    //$_SESSION['role'] = "SELLER";
+    //$_SESSION["userId"] = "S000025";
+
+    $_SESSION['role'] = "ADMIN";
+    $_SESSION["userId"] = "A000001";
 
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
@@ -275,7 +278,7 @@
                             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                             if(in_array($fileType, $allowTypes)){ 
                                 if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, 'user_id') 
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
                                             VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
                                             
                                             $result = mysqli_query($conn,$sql);
