@@ -80,7 +80,7 @@
                         <!-- Slideshow -->
                         <div class="col-xl-10">
                             <!-- Picture -->
-                        <div class="col-xl-5 col-md-6 mb-6">
+                        <div class="col-xl-10">
 							<div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <!-- slides -->
                                 <div class="carousel-inner">
