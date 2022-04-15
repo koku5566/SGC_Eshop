@@ -490,7 +490,7 @@
 
     .carousel-item{
         height:60vh;
-        background-color:transparent;
+        background-color:rgba(58,59,69,.15);
     }
 
     .carousel-inner img {
@@ -519,12 +519,6 @@
 
     #custCarousel .carousel-indicators li:hover img {
         opacity: 0.75
-    }
-    .carousel-control-next-icon,
-    .carousel-control-prev-icon {
-    background-image: none;
-    color: grey;
-    font-size: 20px;
     }
 
     .firstThumbnail{
