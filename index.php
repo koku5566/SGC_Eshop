@@ -79,12 +79,14 @@
                         
                         <!-- Slideshow -->
                         <div class="col-xl-10">
-                            <!-- Picture -->
-                        <div class="col-xl-10">
-							<div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
-                                <!-- slides -->
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
                                 <div class="carousel-inner">
-									<?php
+                                <?php
 										for($i = 0; $i < count($i_product_pic); $i++)
 										{
 											if($i_product_pic[$i] != "")
@@ -102,11 +104,11 @@
 										}
 
 									?>
-                                </div> 
-								<!-- Left right --> 
+                                </div>
+                               <!-- Left right --> 
 								<a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
 								<a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
-								<!-- Thumbnails -->
+                                <!-- Thumbnails -->
                                 <ol class="carousel-indicators list-inline" style="height:60px;margin-left:0;margin-right:0;overflow:auto;">
 									<?php
 										$j = 0;
@@ -126,11 +128,9 @@
 												$j++;
 											}
 										}
-
 									?>
                                 </ol>
                             </div>
-                        </div>
                         </div>
                     </div>
 
@@ -471,7 +471,15 @@
         display: block;
     }
 
+    .firstThumbnail{
+		margin-left: 100px !important;
+	}
 
+	@media only screen and (min-width: 600px) {
+		.firstThumbnail{
+			margin-left:0 !important;;
+		}
+	}
 
 </style>
 
