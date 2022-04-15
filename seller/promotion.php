@@ -260,7 +260,7 @@
                             $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
                             $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
                             $status = mysqli_real_escape_string($conn, SanitizeString($_POST['status']));
-                            $user_id = mysqli_real_escape_string($conn, SanitizeString($_POST['user_id']));
+                            $userid = mysqli_real_escape_string($conn, SanitizeString($_POST['userid']));
                             
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
@@ -275,8 +275,8 @@
                             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                             if(in_array($fileType, $allowTypes)){ 
                                 if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, 'user_id') 
-                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd',$status, $user_id)";
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, 'userid') 
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd',$status, $userid)";
                                             
                                             $result = mysqli_query($conn,$sql);
 
