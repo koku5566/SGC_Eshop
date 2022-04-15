@@ -4,6 +4,15 @@ use PayPal\Api\PaymentExecution;
 
 require __DIR__. '/config.php';
 
+define("HOST","localhost");
+    define("USERNAME","sgcprot1_SGC_ESHOP");
+    define("PASSWORD","3g48B8Qn8k6v6VF");
+    define("DATABASE","sgcprot1_SGC_ESHOP");
+
+    //create database connection
+    $db = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
+
+
 if (empty($_GET['paymentId']) || empty($_GET['PayerID'])) {
     throw new Exception('The response is missing the paymentId and PayerID');
 }
@@ -19,7 +28,7 @@ try {
     $payment->execute($execution, $apiContext);
 
     try {
-        $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
+       // $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
 
         $payment = Payment::get($paymentId, $apiContext);
 
