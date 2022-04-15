@@ -20,7 +20,7 @@ $paypalConfig = [
 $dbConfig = [
     'host' => 'localhost',
     'username' => 'sgcprot1_SGC_ESHOP',
-    'password' => 'bXrAcmvi,B#U',
+    'password' => '3g48B8Qn8k6v6VF',
     'name' => 'sgcprot1_SGC_ESHOP'
 ];
 
