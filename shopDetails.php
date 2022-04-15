@@ -11,28 +11,61 @@
     $result = $conn->query($sql);
 ?>
 
+<?php
+    //Fetch each promotion image information
+    $promotion_title = array();
+    $promotion_image = array();
+
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'SELLER' ";
+
+    $result_promotion = mysqli_query($conn, $sql_promotion);
+    
+    if (mysqli_num_rows($result_promotion) > 0) {
+        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
+            array_push($promotion_title,$row_promotion['promotion_title']);
+        array_push($promotion_image,$row_promotion['promotion_image']);
+        }
+    }   
+    else{
+        ?>
+            <script type="text/javascript">
+                //window.location.href = window.location.origin + "/index.php";
+            </script>
+        <?php
+    }
+?>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<div id="carouselExampleControls" class="carousel banner" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://images.pexels.com/photos/3806753/pexels-photo-3806753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
+
+<!-- Slide Show by Lim Qiu Xiong-->
+<div class="col-xl-10">
+  <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+      <div class="carousel-inner">
+        <?php
+          for($i = 0; $i < count($promotion_image); $i++)
+          {
+            if($promotion_image[$i] != "")
+            {
+              $picName = "/img/promotion/".$promotion_image[$i];
+              if($i == 0)
+              {
+                echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+              }
+              else
+              {
+                echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+              }
+            }
+          }
+       ?>
+      </div>
+    <!-- Left right --> 
+    <a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
+    <a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+                    
     </div>
-    <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/5926239/pexels-photo-5926239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/5872348/pexels-photo-5872348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
+<!-- End Slide Show by Lim Qiu Xiong-->
 
     <!--Main Navigation-->
     <!--Main layout-->
@@ -127,6 +160,58 @@
       .imgContainer
       {
         height: 50vh;
+      }
+
+      /*Slide show*/
+
+      .image-container{
+          width:100%;
+          height: 40vh;
+          padding: 20px;
+      }
+      .image-container .image{
+          max-height: 100%;
+          max-width: 100%;
+      }
+      .list-parent{
+          white-space: nowrap;
+          font-size: x-large;
+      }
+      .list-inline-item{
+          background-color:white;
+      }
+
+      .carousel-item{
+          height:60vh;
+          background-color:white;
+      }
+
+      .carousel-inner img {
+          width: 100%;
+          height: 100%;
+          object-fit:contain;
+      }
+
+      #custCarousel .carousel-indicators {
+          position: static;
+          margin-top: 20px
+      }
+
+      #custCarousel .carousel-indicators>li {
+          width: 100px
+      }
+
+      #custCarousel .carousel-indicators li img {
+          display: block;
+          opacity: 0.5
+      }
+
+      #custCarousel .carousel-indicators li.active img {
+          opacity: 1
+      }
+
+      #custCarousel .carousel-indicators li:hover img {
+          opacity: 0.75
       }
     </style>
 
