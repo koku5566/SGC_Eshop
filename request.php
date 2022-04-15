@@ -1,6 +1,6 @@
 <?php
 use PayPal\api\Amount;
-use PayPal\api\Payer;
+use paypal\api\Payer;
 use PayPal\api\Payment;
 use PayPal\api\RedirectUrls;
 use PayPal\api\Transaction;
