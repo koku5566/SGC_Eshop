@@ -19,7 +19,7 @@ try {
     $payment->execute($execution, $apiContext);
 
     try {
-        //$db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
+        $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
 
         $payment = Payment::get($paymentId, $apiContext);
 
@@ -35,7 +35,7 @@ try {
         ];
         if (addPayment($data) !== false && $data['payment_status'] === 'approved') {
             // Payment successfully added, redirect to the payment complete page.
-			$inserids =$dbConfig->insert_id;
+			$inserids =$db->insert_id;
             //<script>window.location.href = "location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids";</script>
             header("location:https://eshop.sgcprototype2.com/PaypalSuccess.php?payid=$inserids");
             exit(1);
@@ -63,11 +63,11 @@ try {
  */
 function addPayment($data)
 {
-    global $dbConfig;
+    global $db;
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
-        $stmt = $dbConfig->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->bind_param(
             'isdsssss',
             $data['product_id'],
@@ -82,7 +82,7 @@ function addPayment($data)
         $stmt->execute();
         $stmt->close();
 		
-        return $dbConfig->insert_id;
+        return $db->insert_id;
     }
 
     return false;
