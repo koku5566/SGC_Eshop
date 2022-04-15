@@ -38,7 +38,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <!-- Slide Show by Lim Qiu Xiong-->
-<div class="col-xl-10">
+<div class="col-xl-12">
   <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
         <?php
@@ -132,14 +132,7 @@
     <!--Main layout-->
 
     <style>
-      #carouselExampleControls,
-        .carousel-inner,
-        .carousel-item,
-        .carousel-item.active {
-          height: 80vh;
-          position: relative;
-        }
-
+      
       .ratingContainer{
         background-color: white;
         padding: 15px;
