@@ -1,27 +1,31 @@
 <?php
     require __DIR__ . '/header.php'
-
+?>
+<?php
+    $_SESSION['promotionId'] = $_GET['promotionId'];
+?>
+<?php
     //Fetch each promotion image information
-	$id = $_SESSION['promotionId'];
-    
-	$sql_promotion = "SELECT * FROM promotion_image WHERE promotionID = '$id'";
+    $id = $_SESSION['promotionId'];
+        
+    $sql_promotion = "SELECT * FROM promotion_image WHERE promotionID = '$id'";
 
-	$result_promotion = mysqli_query($conn, $sql_promotion);
+    $result_promotion = mysqli_query($conn, $sql_promotion);
 
-	if (mysqli_num_rows($result_promotion) > 0) {
-		while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
-			
-			$promotion_image = array($row_promotion['promotion_image']);
+    if (mysqli_num_rows($result_promotion) > 0) {
+        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
+            
+            $promotion_image = array($row_promotion['promotion_image']);
 
-		}
-	}
-	else{
-		?>
-			<script type="text/javascript">
-				window.location.href = window.location.origin + "/index.php";
-			</script>
-		<?php
-	}
+        }
+    }
+    else{
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/index.php";
+            </script>
+        <?php
+    }
 ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="mainContainer">
