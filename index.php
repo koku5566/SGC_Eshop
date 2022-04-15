@@ -1,20 +1,18 @@
 <?php
     require __DIR__ . '/header.php';
 ?>
-<?php
-    $_SESSION['promotionID'] = $_GET['promotionID'];
-?>
 
 <?php
     //Fetch each promotion image information
-    $id = $_SESSION['promotionID'];
-        
-    $sql_promotion = "SELECT * FROM promotion_image WHERE promotionID = '$id'";
+
+    $sql_promotion = "SELECT * FROM promotion_image AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.role = 'ADMIN' ";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
-
+    $promotion_title = array();
+    $promotion_image = array();
     if (mysqli_num_rows($result_promotion) > 0) {
-        $promotion_image = array($row_promotion['promotion_image']);
+        array_push($promotion_title,$row_promotion['promotion_title']);
+        array_push($promotion_image,$row_promotion['promotion_image']);
     }
     else{
         ?>
@@ -105,18 +103,18 @@
                             <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <div class="carousel-inner">
                                 <?php
-										for($i = 0; $i < count($i_promotion_pic); $i++)
+										for($i = 0; $i < count($promotion_image); $i++)
 										{
-											if($i_promotion_pic[$i] != "")
+											if($promotion_image[$i] != "")
 											{
-												$picName = "/img/promotion/".$i_promotion_pic[$i];
+												$picName = "/img/promotion/".$promotion_image[$i];
 												if($i == 0)
 												{
-													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"$i_promotion_title\"> </div>");
+													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
 												}
 												else
 												{
-													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"$i_promotion_title\"> </div>");
+													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
 												}
 											}
 										}
@@ -130,11 +128,11 @@
                                 <ol class="carousel-indicators list-inline" style="height:60px;margin-left:0;margin-right:0;overflow:auto;">
 									<?php
 										$j = 0;
-										for($i = 0; $i < count($i_promotion_pic); $i++)
+										for($i = 0; $i < count($promotion_image); $i++)
 										{
-											if($i_promotion_pic[$i] != "")
+											if($promotion_image[$i] != "")
 											{
-												$picName = "/img/promotion/".$i_promotion_pic[$i];
+												$picName = "/img/promotion/".$promotion_image[$i];
 												if($i == 0)
 												{
 													echo("<li class=\"list-inline-item firstThumbnail active\"> <a id=\"carousel-selector-0\" class=\"selected\" data-slide-to=\"$j\" data-target=\"#custCarousel\"> <img src=\"$picName\" class=\"img-fluid\"> </a> </li>");
