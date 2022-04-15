@@ -13,11 +13,7 @@
     $result_promotion = mysqli_query($conn, $sql_promotion);
 
     if (mysqli_num_rows($result_promotion) > 0) {
-        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
-            
-            $promotion_image = array($row_promotion['promotion_image']);
-
-        }
+        $promotion_image = array($row_promotion['promotion_image']);
     }
     else{
         ?>
