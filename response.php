@@ -46,7 +46,7 @@ try {
 
     } catch (Exception $e) {
         // Failed to retrieve payment from PayPal
-
+        throw new Exception('Failed to retrieve payment from PayPal');
     }
 
 } catch (Exception $e) {
