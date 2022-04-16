@@ -1,37 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
-	<div class="wrapper">
-  <?php 
-  $dbConfig = [
-    'HOST' => 'localhost',
-    'USERNAME' => 'sgcprot1_SGC_ESHOP',
-    'PASSWORD' => '3g48B8Qn8k6v6VF',
-    'NAME' => 'sgcprot1_SGC_ESHOP'
-]; 
-		$results = mysqli_query($dbConfig,"SELECT * FROM paymentPaypal where id='4' ");
-		$row = mysqli_fetch_array($results);
-  ?>
-	  <div class="status">
-      <h4>Payment Information</h4>
-      <p>Reference Number: <?php echo $row['invoice_id']; ?></p>
-      <p>Transaction ID: <?php echo $row['transaction_id']; ?></p>
-      <p>Paid Amount: <?php echo $row['payment_amount']; ?></p>
-      <p>Payment Status: <?php echo $row['payment_status']; ?></p>
-      <h4>Product Information</h4>
-      <p>Product id: <?php echo $row['product_id']; ?></p>
-      <p>Product Name: <?php echo $row['product_name']; ?></p>
-    </div>
-  </div>
-
-</body>
-</html>
 <?php
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -58,6 +24,15 @@ $paypalConfig = [
     'PASSWORD' => '3g48B8Qn8k6v6VF',
     'NAME' => 'sgcprot1_SGC_ESHOP'
 ]; 
+
+$results = mysqli_query($dbConfig,"SELECT * FROM paymentPaypal where id='4' ");
+		$row = mysqli_fetch_array($results);
+echo $row['invoice_id']; 
+echo $row['transaction_id'];
+echo $row['payment_amount'];
+echo $row['payment_status']; 
+echo $row['product_id']; 
+echo $row['product_name'];
 
 $apiContext = getApiContext($paypalConfig['client_id'], $paypalConfig['client_secret'], $enableSandbox);
 
