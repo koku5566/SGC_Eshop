@@ -63,6 +63,7 @@ try {
 function addPayment($data)
 {
     global $db;
+    $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
