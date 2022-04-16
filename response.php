@@ -60,10 +60,9 @@ try {
  * @param array $data Payment data
  * @return int|bool ID of new payment or false if failed
  */
-function addPayment($data)
+/* function addPayment($data)
 {
     global $db;
-    $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
@@ -86,4 +85,4 @@ function addPayment($data)
     }
 
     return false;
-}
+} */
