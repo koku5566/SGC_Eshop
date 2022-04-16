@@ -10,7 +10,7 @@
 	<div class="wrapper">
   <?php 
     $paymentid = $_GET['payid'];
-		$results = mysqli_query($dbConfig,"SELECT * FROM paymentPaypal where id='4' ");
+		$results = mysqli_query($conn,"SELECT * FROM paymentPaypal where id='4' ");
 		$row = mysqli_fetch_array($results);
   ?>
 	  <div class="status">
@@ -31,7 +31,7 @@
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 require __DIR__. '/autoload.php';
-
+require __DIR__. '/mysqli_connect.php';
 
 // For test payments we want to enable the sandbox mode. If you want to put live
 // payments through then this setting needs changing to `false`.
