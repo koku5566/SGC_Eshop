@@ -10,7 +10,7 @@
 	<div class="wrapper">
   <?php 
     $paymentid = $_GET['payid'];
-		$results = mysqli_query($conn,"SELECT * FROM paymentPaypal where id='4' ");
+		$results = mysqli_query($dbConfig,"SELECT * FROM paymentPaypal where id='4' ");
 		$row = mysqli_fetch_array($results);
   ?>
 	  <div class="status">
