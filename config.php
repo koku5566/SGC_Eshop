@@ -24,7 +24,8 @@ $paypalConfig = [
     'PASSWORD' => '3g48B8Qn8k6v6VF',
     'NAME' => 'sgcprot1_SGC_ESHOP'
 ]; 
-$db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
+
+/* $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 $results = mysqli_query($db,"SELECT * FROM paymentPaypal where id='4' ");
 		$row = mysqli_fetch_array($results);
 echo $row['invoice_id']; 
@@ -32,7 +33,7 @@ echo $row['transaction_id'];
 echo $row['payment_amount'];
 echo $row['payment_status']; 
 echo $row['product_id']; 
-echo $row['product_name'];
+echo $row['product_name']; */
 
 $apiContext = getApiContext($paypalConfig['client_id'], $paypalConfig['client_secret'], $enableSandbox);
 
