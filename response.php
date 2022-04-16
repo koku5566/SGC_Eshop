@@ -19,7 +19,7 @@ try {
     $payment->execute($execution, $apiContext);
 
     try {
-        $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
+        $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
         $payment = Payment::get($paymentId, $apiContext);
 

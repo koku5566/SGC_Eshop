@@ -18,10 +18,10 @@ $paypalConfig = [
 
 // Database settings. Change these for your database configuration.
  $dbConfig = [
-    'host' => 'localhost',
-    'username' => 'sgcprot1_SGC_ESHOP',
-    'password' => '3g48B8Qn8k6v6VF',
-    'name' => 'sgcprot1_SGC_ESHOP'
+    'HOST' => 'localhost',
+    'USERNAME' => 'sgcprot1_SGC_ESHOP',
+    'PASSWORD' => '3g48B8Qn8k6v6VF',
+    'NAME' => 'sgcprot1_SGC_ESHOP'
 ]; 
 
 $apiContext = getApiContext($paypalConfig['client_id'], $paypalConfig['client_secret'], $enableSandbox);
