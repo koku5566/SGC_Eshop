@@ -38,6 +38,7 @@ if(isset($_POST['update']))
 			
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
+				echo "<script>alert('Details Updated');</script>";
 			} else {
 				echo "<script>alert('Email Address Already Exists');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
