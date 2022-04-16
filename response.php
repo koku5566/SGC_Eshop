@@ -68,7 +68,7 @@ function addPayment($data)
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
         $send = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $send->bind_param(
-            'ssdsssss',
+            'ssfsssss',
             $data['product_id'],
             $data['transaction_id'],
             $data['payment_amount'],
@@ -80,15 +80,7 @@ function addPayment($data)
         );
         $send->execute();
         $send->close();
-        if(mysqli_stmt_affected_rows($send) == 1){
-            $id = mysqli_stmt_insert_id($send);
-            throw new Exception('success');
-            $data['transaction_id'] = $id;
-        }
-        else{
-            $error = mysqli_stmt_error($send);
-            throw new Exception('fail');
-        }
+
         return $db->insert_id;
     }
 
