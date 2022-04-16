@@ -64,8 +64,8 @@ function addPayment($data)
 {
     global $db;
 
-/*     if (is_array($data)) {
-		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
+    if (is_array($data)) {
+/* 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
         $send = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $send->bind_param(
             'ssdsssss',
@@ -94,7 +94,7 @@ function addPayment($data)
                 }
                     mysqli_stmt_close($stmt);
             }
-          }
+          
           return $db->insert_id;
     }
 
