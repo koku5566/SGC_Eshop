@@ -80,7 +80,6 @@ function addPayment($data)
         );
         $send->execute();
         $send->close();
-        return $db->insert_id;
         if(mysqli_stmt_affected_rows($db) == 1){
             $id = mysqli_stmt_insert_id($db);
             throw new Exception('success');
@@ -89,6 +88,8 @@ function addPayment($data)
         else{
             $error = mysqli_stmt_error($db);
             throw new Exception('fail');
+        }
+        return $db->insert_id;
     }
 
     return false;
