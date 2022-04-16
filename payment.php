@@ -17,7 +17,7 @@
 
    <div class="wrapper">
     <?php 
-		  $results = mysqli_query($conn,"SELECT * FROM product where product_id='B00001'");
+		  $results = mysqli_query($conn,"SELECT * FROM product where product_id='P000057'");
 		  while($row = mysqli_fetch_array($results)){
     ?>
 	    <div class="col__box">
