@@ -80,7 +80,10 @@ function addPayment($data)
         );
         $send->execute();
         $send->close();
-		
+	else 
+    {
+        throw new Exception('insert fail');
+    }
         return $db->insert_id;
     }
 
