@@ -64,7 +64,7 @@ function addPayment($data)
 {
     global $db;
 
-    if (is_array($data)) {
+/*     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
         $send = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $send->bind_param(
@@ -81,7 +81,21 @@ function addPayment($data)
         $send->execute();
         $send->close();
 		
-        return $db->insert_id;
+        return $db->insert_id; */
+
+        $sql = "INSERT INTO `payments`(product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            if ($stmt = mysqli_prepare($db,$sql)){
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"ssdsssss",$data['product_id'],  $data['transaction_id'], $data['payment_amount'],$data['currency_code'],$data['payment_status'],$data['invoice_id'], $data['product_name'], date('Y-m-d H:i:s'));
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
+                    mysqli_stmt_close($stmt);
+            }
+          }
+          return $db->insert_id;
     }
 
     return false;
