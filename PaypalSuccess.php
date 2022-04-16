@@ -8,7 +8,7 @@
   <div class="wrapper">
   <?php 
     $paymentid = $_GET['payid'];
-		$results = mysqli_query($conn,"SELECT * FROM paymentPaypal where id='$paymentid' ");
+		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid' ");
 		$row = mysqli_fetch_array($results);
   ?>
 	  <div class="status">

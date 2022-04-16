@@ -60,13 +60,13 @@ try {
  * @param array $data Payment data
  * @return int|bool ID of new payment or false if failed
  */
-/* function addPayment($data)
+function addPayment($data)
 {
     global $db;
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
-        $send = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $send = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $send->bind_param(
             'ssdsssss',
             $data['product_id'],
@@ -85,4 +85,4 @@ try {
     }
 
     return false;
-} */
+}
