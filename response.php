@@ -66,8 +66,8 @@ function addPayment($data)
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
-        $stmt = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt->bind_param(
+        $send = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $send->bind_param(
             'ssdsssss',
             $data['product_id'],
             $data['transaction_id'],
@@ -78,8 +78,8 @@ function addPayment($data)
             $data['product_name'],
             date('Y-m-d H:i:s')
         );
-        $stmt->execute();
-        $stmt->close();
+        $send->execute();
+        $send->close();
 		
         return $db->insert_id;
     }
