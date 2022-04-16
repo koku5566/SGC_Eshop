@@ -39,7 +39,8 @@ if(isset($_POST['update']))
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
 			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+				echo "<script>alert('Email Address Already Exists');</script>";
+				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
 		}
 		else
@@ -93,20 +94,5 @@ if(isset($_POST['update']))
 	</form>
 	</div>
 </div>
-
-<?php
-if(isset($_SESSION['Update']))
-	{
-		if($_SESSION['Update'] == true)
-		{
-			echo "<script>alert('Details Updated');</script>";
-		}
-		else if($_SESSION['Update'] == false && $_SESSION['Error'] != "")
-		{
-			echo "<script>alert('".$_SESSION['Error']."');</script>";
-		}
-		$_SESSION['Update'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>
