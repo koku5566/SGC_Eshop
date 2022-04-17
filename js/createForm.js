@@ -24,5 +24,5 @@ function enableOption()
 }
 
 completeBtn.addEventListener('click', function(){
-    window.location.href='./createForm.php';
+    window.location.href='./eventSellerDashboard.php';
 })
