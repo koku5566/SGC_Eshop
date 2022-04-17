@@ -14,7 +14,7 @@
         if ($conn->query($sql) === TRUE) {
           echo "Record updated successfully";
         } else {
-          echo "$eID Error updating record: " . $conn->error;
+          echo $eID . "Error updating record: " . $conn->error;
         }
     
     }
