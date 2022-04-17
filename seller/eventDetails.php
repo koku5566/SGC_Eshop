@@ -116,6 +116,9 @@
                     <div class="modal-body">
                         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <p>Are you sure to disable this event? (This cannot be undo)</p>
+                            <?php
+                                echo $_SESSION['eventIDView'];
+                            ?>
                             <div class="modal-footer">
                                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
                                 <button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="disabledEvent">Confirm</button>
