@@ -105,7 +105,7 @@
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt);
-                                echo "<script>alert($error + 'error');</script>";
+                                echo $error;
                             }		
                             mysqli_stmt_close($stmt);
                     }
