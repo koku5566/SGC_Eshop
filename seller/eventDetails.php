@@ -9,7 +9,8 @@
 <?php
     if(isset($_POST["disabledEvent"])){
         $eID = $_SESSION['eventIDView'];
-        $sql = "UPDATE `event` SET `status`='disabled' WHERE `event_id` = ".$_SESSION['eventIDView']."";
+        echo $eID;
+        $sql = "UPDATE `event` SET `status`='disabled' WHERE `event`.`event_id` = $eID";
 
         if ($conn->query($sql) === TRUE) {
           echo "Record updated successfully";
