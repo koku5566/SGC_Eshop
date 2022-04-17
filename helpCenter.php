@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">
+<div class="container-fluid" id="mainContainer">
 
 <?php
 
