@@ -32,3 +32,7 @@ var nextBtn = document.getElementById("nextForm");
 nextBtn.addEventListener('click', function(){
     window.location.href='./createForm.php';
 });
+var nextUpdateBtn = document.getElementById("nextUpdateForm");
+nextUpdateBtn.addEventListener('click', function(){
+    window.location.href='./updateForm.php';
+});
