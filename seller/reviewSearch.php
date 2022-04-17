@@ -31,7 +31,7 @@ if(isset($_POST["query"]))
 {
 	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- echo "$search|";
+ //echo "$search|";
  /*
  $query = "
   SELECT * 
@@ -70,8 +70,8 @@ if(isset($_POST["query"]))
 			  OR rr.message LIKE '%".$search."%') k
 			  WHERE k.disable_date IS NULL $rr $rr2";
 			  
-  echo "Rating = $rr |";
-   echo "Seller = $rr2 ";
+  //echo "Rating = $rr |";
+   //echo "Seller = $rr2 ";
 }
 
 else
@@ -92,8 +92,8 @@ else
 				WHERE rr.disable_date IS NULL $rr $rr2";
 				
 				
-	echo "Rating = $rr |";
-	echo "Seller = $rr2 ";
+	//echo "Rating = $rr |";
+	//echo "Seller = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
