@@ -247,9 +247,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 									mysqli_stmt_close($stmt);									
 								}							  							  
 							  ?>
+							  <!--
 							  <option value = "P000001">Product 1</option>
 							  <option value = "P000002">Product 2</option>
-							  <option value = "P000003">Product 3</option>							  
+							  <option value = "P000003">Product 3</option>		
+							  -->							  
 						</select>
 					</div>
 					<div class="col">
