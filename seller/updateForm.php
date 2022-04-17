@@ -351,16 +351,14 @@
     <!-- /.container-fluid -->
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/createForm.js"></script>
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
-    <!-- <script>
-        tinymce.init({
-        selector: '#eTncEditor'
-        });
-        tinymce.init({
-        selector: '#eDesceditor'
-        });
-    </script> -->
+    <script>
+        var completeBtn = document.getElementById("completeBtn");
+
+        completeBtn.addEventListener('click', function(){
+        window.location.href='./eventSellerDashboard.php';
+    })
+    </script>
 
 <?php
     require __DIR__ . '/footer.php'
