@@ -6,6 +6,38 @@
     $_SESSION['eventIDView'] = $_GET['id'];
 ?>
 
+<?php
+    if(isset($_POST["disabledEvent"])){
+        $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ? ";
+        $stat = "Disabled";
+            if ($stmt = mysqli_prepare($conn,$sql)){
+                if(false===$stmt){
+                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                }
+                $bp = mysqli_stmt_bind_param($stmt,"si",$stat,$_SESSION['eventIDView']);
+                if(false===$bp){
+                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                }
+                $bp = mysqli_stmt_execute($stmt);
+                if ( false===$bp ) {
+                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                }
+                    if(mysqli_stmt_affected_rows($stmt) == 1){
+                        echo "<script>alert('Event had been disabled permenantly');window.location.href='./eventSellerDashboard.php';</script>";
+                        //Add $_SESSION['eventID'] = "";
+                        //Add Redirect to next page
+                    }
+                    else{
+                        $error = mysqli_stmt_error($stmt);
+                        echo "<script>alert($error);</script>";
+                    }		
+                    mysqli_stmt_close($stmt);
+            }
+    
+    }
+
+?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
 <!-- Above Template -->
@@ -45,7 +77,8 @@
                                     <h5>Event Status: ".$row['status']."</h5>
                                     <h5>Location: ".$row['location']."</h5>
                                     <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5>
-                                    <a href = \"updateEvent.php?eventUpdate=".$row['event_id']."\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
+                                    <a href = \"updateEvent.php?eventUpdate=".$row['event_id']."\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\" hidden>Edit</button></a>
+                                    <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(149,149,149);margin-left: 10px;\" data-bs-toggle=\"modal\" data-bs-target=\"#disabled_modal\">Disable this event</button>
                                     <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
                                 </div>
                                 ");
@@ -55,6 +88,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <!-- Disable confirmation -->
+    <div class="modal fade modal-dialog-scrollable" role="dialog" tabindex="-1" id="disabled_modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Disable this event</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                            <p>Are you sure to disable this event? (This cannot be undo)</p>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="disabledEvent">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <h4 class="card-title">Ticket Type performance</h4>
