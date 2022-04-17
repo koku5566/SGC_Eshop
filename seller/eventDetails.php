@@ -8,31 +8,14 @@
 
 <?php
     if(isset($_POST["disabledEvent"])){
-        $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ? ";
-        $stat = "Disabled";
-            if ($stmt = mysqli_prepare($conn,$sql)){
-                if(false===$stmt){
-                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-                }
-                $bp = mysqli_stmt_bind_param($stmt,"si",$stat,$_GET['id']);
-                if(false===$bp){
-                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-                }
-                $bp = mysqli_stmt_execute($stmt);
-                if ( false===$bp ) {
-                    die('Error with execute: ') . htmlspecialchars($stmt->error);
-                }
-                    if(mysqli_stmt_affected_rows($stmt) == 1){
-                        echo "<script>alert('Event had been disabled permenantly');</script>";
-                        //Add $_SESSION['eventID'] = "";
-                        //Add Redirect to next page
-                    }
-                    else{
-                        $error = mysqli_stmt_error($stmt);
-                        echo "<script>console.log($error);</script>";
-                    }		
-                    mysqli_stmt_close($stmt);
-            }
+        $eID = $_GET['id'];
+        $sql = "UPDATE `event` SET `status`='disabled' WHERE `event_id` = $eID ";
+
+        if ($conn->query($sql) === TRUE) {
+          echo "Record updated successfully";
+        } else {
+          echo "Error updating record: " . $conn->error;
+        }
     
     }
 
