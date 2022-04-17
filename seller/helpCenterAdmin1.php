@@ -32,7 +32,7 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){	
 	
 			$selectedPID = $_POST['CUid'];
-			echo ($selectedPID );
+			//echo ($selectedPID );
             if($_POST['CUreply'] === "Reply"){
 				$sql = "SELECT cu_id, name, email, campus, subject, message, status 
 					    FROM `contactUs` 
