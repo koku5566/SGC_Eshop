@@ -85,7 +85,7 @@
                     $categoryPic = $pic;
                 }
 
-                if($eTitle == $row1['event_name'] && $eDateFrom == $row1['event_date'] && $eDateTo == $row1['eventEnd_date'] && $eTimeFrom == $row1['event_time'] && $eTimeTo == $row1['eventEnd_time'] && $eDes == $row1['description'] && $eCat == $row1['category'] && $eLoc == $row1['location'] && $eTnc == $row1['event_tnc']){
+                if($eTitle == $row1['event_name'] && $eDateFrom == $row1['event_date'] && $eDateTo == $row1['eventEnd_date'] && $eTimeFrom == $row1['event_time'] && $eTimeTo == $row1['eventEnd_time'] && $eDes == $row1['description'] && $eCat == $row1['category'] && $eLoc == $row1['location'] && $eTnc == $row1['event_tnc'] && $categoryPic == $row1['cover_image']){
                     echo "<script>alert('Nothing Changed');window.location.href='./eventSellerDashboard.php';</script>";
                 }
                 else
