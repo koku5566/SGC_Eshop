@@ -53,6 +53,7 @@ if(mysqli_num_rows($result) > 0)
  
  while($row = mysqli_fetch_array($result))
  {
+	 echo "<script>alert('$product')</script>";
 	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
