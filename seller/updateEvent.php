@@ -208,7 +208,9 @@
                                 <div class=\"col-sm-2\">
                                     <div class=\"form-check\" style=\"width: 100%;margin-top: 44px;\"><input class=\"form-check-input\" type=\"checkbox\" id=\"onlineCheck\"><label class=\"form-check-label\" for=\"oneDayEvent_check-1\"><strong>Online Event</strong></label></div>
                                 </div>
-                            </div><select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\"value=".$row['location'].">
+                            </div>
+                            <input type=\"hidden\" value=".$row['location']." id=\"selectChecker\">
+                            <select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\"value=".$row['location'].">
                                 <optgroup label=\"Northern Region\">
                                     <option value=\"Perlis\">Perlis</option>
                                     <option value=\"Kedah\">Kedah</option>

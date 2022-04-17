@@ -41,3 +41,11 @@ function onlineLocation()
     }
 }
 
+//-----------------auto select----------
+var selectChecker = document.getElementById("selectChecker");
+
+if(selectChecker!=null)
+{
+    locationOption.value = selectChecker.value;
+}
+
