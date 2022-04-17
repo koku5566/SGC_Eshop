@@ -285,6 +285,7 @@
         });
 
         //-----------------auto select----------
+        var locationOption = document.getElementById("optionLocation");
         var selectChecker = document.getElementById("selectChecker");
 
         $(document).ready ( function(){
