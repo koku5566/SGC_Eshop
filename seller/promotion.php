@@ -1,6 +1,12 @@
 <?php
     require __DIR__ . '/header.php';
 
+    $_SESSION['role'] = "SELLER";
+    $_SESSION["userId"] = "S000025";
+
+    //$_SESSION['role'] = "ADMIN";
+    //$_SESSION["userId"] = "A000001";
+
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
     {
@@ -86,10 +92,10 @@
                     <!-- View Section -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                            <div class="col-xl-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date from promotion";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'SELLER' ";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
@@ -128,6 +134,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Approved Section-->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-sm-12">
+                                    <div class="row">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <!-- Create Promotion -->
         <div class="row">
@@ -205,19 +231,41 @@
                             <div class="text-muted m-2 text-center" style="flex:auto">
                                 <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Banner display at:</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="input-group mb-3">
-                                        <select class="form-control" id="status" name="status" required>
-                                            <option name="sellerPage" value="0">Seller Page</option>
-                                            <option name="homePage" value="1">Home Page</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                                if ($_SESSION['role'] == "SELLER")
+                                { echo ("
+                                    <div class=\"row\">
+                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                            <p class=\"p-title\">Banner display at:</p>
+                                        </div>
+                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                            <div class=\"input-group mb-3\">
+                                                <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                    <option name=\"sellerPage\" value=\"0\">Seller Page</option>
+                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>");
+                                }
+                            ?>
+                            <?php
+                                if ($_SESSION['role'] == "ADMIN")
+                                { echo ("
+                                    <div class=\"row\">
+                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                            <p class=\"p-title\">Banner display at:</p>
+                                        </div>
+                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                            <div class=\"input-group mb-3\">
+                                                <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                    <option name=\"sellerPage\" value=\"1\">Home Page</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>");
+                                }
+                            ?>
                         </div>
                     </div>
 
@@ -226,14 +274,16 @@
                         <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
                     </div>
 
+                    <!-- Create Function -->
                     <?php
                         if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
                         {
-                            $title = mysqli_real_escape_string($conn, SanitizeString($_POST['promotion_Title']));
-                            $dateStart = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_From']));
-                            $dateEnd = mysqli_real_escape_string($conn, SanitizeString($_POST['pDate_To']));
-                            $status = mysqli_real_escape_string($conn, SanitizeString($_POST['status']));
-                            
+                            $title = $_POST['promotion_Title'];
+                            $dateStart = $_POST['pDate_From'];
+                            $dateEnd = $_POST['pDate_To'];
+                            $status = $_POST['status'];
+                            $userId = $_SESSION['userId'];
+
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
                             $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
@@ -247,8 +297,8 @@
                             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
                             if(in_array($fileType, $allowTypes)){ 
                                 if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`) 
-                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd',$status)";
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
                                             
                                             $result = mysqli_query($conn,$sql);
 
@@ -399,7 +449,7 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp"/>
+                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp" required/>
                                             <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
@@ -424,7 +474,7 @@
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
                                             echo("<br><label>Date</label>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d")."\" name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
                                             echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d")."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
                                         }
                                     }

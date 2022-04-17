@@ -16,7 +16,7 @@
         $productArray[] = $row;
     }
 
-    function SanitizeString(string $str):string{
+    function SanitizeString(string $str){
 		if(get_magic_quotes_gpc()){
 			$str = stripslashes($str); // take out all backslash inside the string
 		}

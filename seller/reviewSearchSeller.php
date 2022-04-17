@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","3g48B8Qn8k6v6VF","sgcprot1_SGC_ESHOP");
-$seller = "S000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+$seller = "14"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = '';
 
@@ -31,22 +31,10 @@ if(isset($_POST["query"]))
 {
 	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- echo "$search|";
+// echo "$search|";
  /*
- $query = "
-  SELECT * 
-  FROM(
-  SELECT cu_id, name, email, campus, subject, message, status, disable_date
-  FROM contactUs 
-  WHERE cu_id LIKE '%".$search."%'
-  OR name LIKE '%".$search."%' 
-  OR email LIKE '%".$search."%' 
-  OR campus LIKE '%".$search."%' 
-  OR subject LIKE '%".$search."%'
-  OR message LIKE '%".$search."%'
-  OR status LIKE '%".$search."%')k
-  WHERE disable_date IS NULL $rr $rr2";
-  */
+ 
+  
   $query = "SELECT * 
 			FROM(
 			SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
@@ -55,25 +43,41 @@ if(isset($_POST["query"]))
 			OR product_id LIKE '%".$search."%' 
 			OR message LIKE '%".$search."%')k 
 			WHERE disable_date IS NULL && status = 0 && seller_id = '$seller' $rr $rr2";
-  echo "Rating = $rr |";
-   echo "Product = $rr2 ";
+	*/
+	$query = "SELECT * 
+			  FROM 
+			  (SELECT p.product_name, p.product_cover_picture,rr.* 
+			  FROM product p INNER JOIN 
+			  (SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+			  FROM reviewRating) rr
+			  ON p.product_id = rr.product_id
+			  WHERE p.product_name LIKE '%".$search."%'
+			  OR rr.product_id LIKE '%".$search."%' 
+			  OR rr.message LIKE '%".$search."%') k
+			  WHERE k.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
+  //echo "Rating = $rr |";
+   //echo "Product = $rr2 ";
 }
 
 else
 {
-	/*
- $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
-		   FROM contactUs
-		   WHERE disable_date IS NULL $rr $rr2
-		   ORDER BY cu_id;";
-	*/
+	
+/*	
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
 		   WHERE disable_date IS NULL && status = 0 && seller_id = '$seller' $rr $rr2
 		   ORDER BY rr_id;";
+	*/	   
 		   
-	echo "Rating = $rr |";
-	echo "Product = $rr2 ";
+ $query = "SELECT p.product_name, p.product_cover_picture,rr.* 
+				FROM product p INNER JOIN 
+				(SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+				FROM reviewRating) rr
+				ON p.product_id = rr.product_id
+				WHERE rr.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
+		   
+	//echo "Rating = $rr |";
+	//echo "Product = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
@@ -83,9 +87,9 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-	 <th colspan="2">rr_id</th>
-     <th>product_id</th>
-     <th>message</th>
+	 <th colspan="2">Product Name</th>
+     <th>Product Id</th>
+     <th>Message</th>
 	 <th>Action</th>
     </tr>
  ';
@@ -94,16 +98,24 @@ if(mysqli_num_rows($result) > 0)
 	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
-			 $starR .='<i class="bi bi-star-fill"></i> ';
+			 $starR .='<i class="fa fa-star tqy"></i> ';
 		 }else{
-			 $starR .='<i class="bi bi-star"></i> ';
+			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
 		 }
 	 }
+	 $picR = "../img/product/";	
+	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
+		  $picR .= $row["product_cover_picture"];
+	 }else{
+		 $picR .= 'https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png';
+	 }
+	 
   $output .= '
    <tr colspan="2">
-    <td><div class = "bengi"><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></div>				
+    <td><div class = "bengi">
+		<img src="'.$picR.'" class="jungle">			
 	</td>	
-	<td>'.$row["rr_id"].'</td>											
+	<td>'.$row["product_name"].'</td>											
     <td>'.$row["product_id"].'</td>
     <td>
 	<div style="margin-bottom: 0.2em;">'.$starR.'</div>

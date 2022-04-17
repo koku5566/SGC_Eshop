@@ -1,5 +1,29 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+?>
+
+<?php
+    //Fetch each promotion image information
+    $promotion_title = array();
+    $promotion_image = array();
+
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' ";
+
+    $result_promotion = mysqli_query($conn, $sql_promotion);
+    
+    if (mysqli_num_rows($result_promotion) > 0) {
+        while($row_promotion = mysqli_fetch_assoc($result_promotion)) {
+            array_push($promotion_title,$row_promotion['promotion_title']);
+        array_push($promotion_image,$row_promotion['promotion_image']);
+        }
+    }   
+    else{
+        ?>
+            <script type="text/javascript">
+                //window.location.href = window.location.origin + "/index.php";
+            </script>
+        <?php
+    }
 ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="mainContainer">
@@ -79,31 +103,31 @@
                         
                         <!-- Slideshow -->
                         <div class="col-xl-10">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
+                            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="https://images.unsplash.com/photo-1603408639326-fad10b8fbc1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZyUyMHdheXxlbnwwfHwwfHw%3D&w=1000&q=80 alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Third slide">
-                                    </div>
+                                <?php
+										for($i = 0; $i < count($promotion_image); $i++)
+										{
+											if($promotion_image[$i] != "")
+											{
+												$picName = "/img/promotion/".$promotion_image[$i];
+												if($i == 0)
+												{
+													echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+												}
+												else
+												{
+													echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+												}
+											}
+										}
+
+									?>
                                 </div>
-                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                               <!-- Left right --> 
+								<a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
+								<a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+                                
                             </div>
                         </div>
                     </div>
@@ -445,7 +469,67 @@
         display: block;
     }
 
+    /*Slide show*/
 
+    .image-container{
+        width:100%;
+        height: 40vh;
+        padding: 20px;
+    }
+    .image-container .image{
+        max-height: 100%;
+        max-width: 100%;
+    }
+    .list-parent{
+        white-space: nowrap;
+        font-size: x-large;
+    }
+    .list-inline-item{
+        background-color:white;
+    }
+
+    .carousel-item{
+        height:60vh;
+        background-color:rgba(58,59,69,.15);
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit:contain;
+    }
+
+    #custCarousel .carousel-indicators {
+        position: static;
+        margin-top: 20px
+    }
+
+    #custCarousel .carousel-indicators>li {
+        width: 100px
+    }
+
+    #custCarousel .carousel-indicators li img {
+        display: block;
+        opacity: 0.5
+    }
+
+    #custCarousel .carousel-indicators li.active img {
+        opacity: 1
+    }
+
+    #custCarousel .carousel-indicators li:hover img {
+        opacity: 0.75
+    }
+
+    .firstThumbnail{
+		margin-left: 100px !important;
+	}
+
+	@media only screen and (min-width: 600px) {
+		.firstThumbnail{
+			margin-left:0 !important;;
+		}
+	}
 
 </style>
 

@@ -44,7 +44,9 @@
                                     <h3 name=\"eventName\">".$row['event_name']."</h3>
                                     <h5>Event Status: ".$row['status']."</h5>
                                     <h5>Location: ".$row['location']."</h5>
-                                    <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
+                                    <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5>
+                                    <a href = \"updateEvent.php?eventUpdate=".$row['event_id']."\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
+                                    <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
                                 </div>
                                 ");
                                 }
@@ -61,15 +63,15 @@
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <div class="row">
-                <div class="col-10">
-                    <h4>Participants List (DataTable)</h4>
+                <div class="col-12">
+                    <h4>Participants List</h4>
                 </div>
-                <div class="col-2"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Export CSV</button></div>
             </div>
             <div class="row" style="margin-top:20px">
                 <div class="col-12">
                 <table id="participantTable">
                         <thead>
+                            <!-- replace with proper value -->
                             <tr>
                                 <th>test</th>
                             </tr>

@@ -10,10 +10,6 @@ var t = $('#participantTable').DataTable({//call table id
                 title: 'Participant List'
             },
             {
-                extend: 'copyHtml5',
-                title: 'Participant List'
-            },
-            {
                 extend: 'csvHtml5',
                 title: 'Participant List'
             },

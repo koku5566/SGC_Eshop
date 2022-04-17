@@ -31,7 +31,7 @@ if(isset($_POST["query"]))
 {
 	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- echo "$search|";
+ //echo "$search|";
  /*
  $query = "
   SELECT * 
@@ -70,8 +70,8 @@ if(isset($_POST["query"]))
 			  OR rr.message LIKE '%".$search."%') k
 			  WHERE k.disable_date IS NULL $rr $rr2";
 			  
-  echo "Rating = $rr |";
-   echo "Seller = $rr2 ";
+  //echo "Rating = $rr |";
+   //echo "Seller = $rr2 ";
 }
 
 else
@@ -92,8 +92,8 @@ else
 				WHERE rr.disable_date IS NULL $rr $rr2";
 				
 				
-	echo "Rating = $rr |";
-	echo "Seller = $rr2 ";
+	//echo "Rating = $rr |";
+	//echo "Seller = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
@@ -114,9 +114,9 @@ if(mysqli_num_rows($result) > 0)
 	 $starR = '';
 	 for($i=0; $i<5; $i++){
 		 if($i < $row["rating"]){
-			 $starR .='<i class="bi bi-star-fill"></i> ';
+			 $starR .='<i class="fa fa-star tqy"></i> ';
 		 }else{
-			 $starR .='<i class="bi bi-star"></i> ';
+			 $starR .='<i class="fa fa-star ratingStar"></i> ';
 		 }
 	 }
 	 $picR = "../img/product/";	

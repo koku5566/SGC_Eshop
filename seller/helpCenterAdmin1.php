@@ -32,7 +32,7 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUid']) && !empty($_POST['CUid'])  ){	
 	
 			$selectedPID = $_POST['CUid'];
-			echo ($selectedPID );
+			//echo ($selectedPID );
             if($_POST['CUreply'] === "Reply"){
 				$sql = "SELECT cu_id, name, email, campus, subject, message, status 
 					    FROM `contactUs` 
@@ -462,7 +462,7 @@
 	}
 ?>
     <!-- Begin Page Content ------------------------------------------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
 	<!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Help Center</h1>

@@ -3,7 +3,7 @@
 ?>
 
 <?php
-$product = "P000001";
+$product = "P000057";
 //$_SESSION['product_ID']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])  ){
 	

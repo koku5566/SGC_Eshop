@@ -6,6 +6,7 @@
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  
  
 <?php
 /*
@@ -49,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 ?>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
 		
@@ -135,6 +136,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 .bengi{
 	width: 75px;
 	height: 75px;
+}
+.tqy{
+		color: #A31F37
+	}
+.ratingStar {
+    font-weight: inherit;
 }
 </style>
 
