@@ -20,6 +20,7 @@
         $decs = "";
         $tnc = "";
         $pic = "";
+        $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["hiddenID"]));
         echo 'hello';
         $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = $eID";
         $resultget = mysqli_query($conn, $sqlget);
@@ -67,7 +68,7 @@
                 $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-                $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["hiddenID"]));
+                
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
                 //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
