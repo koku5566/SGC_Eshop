@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:80%">
+<div class="container-fluid" id="mainContainer">
 
 <?php
 
@@ -79,10 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CUname'],$_POST['CUemail'],$_POST['CUmessage'],$_POST['CUsubject'],$_POST['CUcampuslist'],$_POST['CUsubmit']) && !empty($_POST["CUname"]) && !empty($_POST["CUemail"]) && !empty($_POST["CUmessage"]) && !empty($_POST["CUsubject"]) && !empty($_POST["CUcampuslist"])){
 
 
-		 $CUname = $_POST['CUname'];
-		 $CUemail = $_POST['CUemail'];
-		 $CUmessage = $_POST['CUmessage'];
-		 $CUsubject = $_POST['CUsubject'];
+		 $CUname = mysqli_real_escape_string($conn, SanitizeString($_POST['CUname']));
+		 $CUemail = mysqli_real_escape_string($conn, SanitizeString($_POST['CUemail']));
+		 $CUmessage = mysqli_real_escape_string($conn, SanitizeString($_POST['CUmessage']));
+		 $CUsubject = mysqli_real_escape_string($conn, SanitizeString($_POST['CUsubject']));
 		 $CUcampuslist = $_POST['CUcampuslist'];
 		 $check = true;
 			if (ltrim($CUname) === '') {
