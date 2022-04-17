@@ -221,10 +221,12 @@
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <script>
         tinymce.init({
-        selector: '#eTncEditor'
+        selector: '#eTncEditor',
+        toolbar: 'undo redo | styles | bold italic'
         });
         tinymce.init({
-        selector: '#eDesceditor'
+        selector: '#eDesceditor',
+        toolbar: 'undo redo | styles | bold italic'
         });
     </script>
 
