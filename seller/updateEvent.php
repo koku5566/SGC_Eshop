@@ -12,6 +12,7 @@
 
 <?php
     $_SESSION['eventUpdate'] = $_GET['eventUpdate'];
+    $updateEventID = $_SESSION['eventUpdate'];
 ?>
 
 <?php
@@ -80,14 +81,17 @@
                     if ($stmt = mysqli_prepare($conn,$sql)){
                         if(false===$stmt){
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                            echo '1';
                         }
-                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$_SESSION['eventUpdate']);
+                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$updateEventID);
                         if(false===$bp){
                             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                            echo '2';
                         }
                         $bp = mysqli_stmt_execute($stmt);
                         if ( false===$bp ) {
                             die('Error with execute: ') . htmlspecialchars($stmt->error);
+                            echo '3';
                         }
                             if(mysqli_stmt_affected_rows($stmt) == 1){
                                 echo "<script>alert('Update Event Successful' + $prevID);window.location.href='./eventSellerDashboard.php';</script>";
@@ -98,6 +102,7 @@
                             }		
                             mysqli_stmt_close($stmt);
                     }
+                    echo '0';
 
                 }
             }
