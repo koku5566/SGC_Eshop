@@ -30,8 +30,8 @@
                 $decs = html_entity_decode($row1['description']);
                 $tnc = html_entity_decode($row1['event_tnc']);
                 $pic = $row1["cover_image"];
-                }
-            }
+                
+            
 
                 $coverIMG = array_filter($_FILES['coverImage']['name']);
                 $targetDir = dirname(__DIR__, 1)."/img/event/"; 
@@ -85,8 +85,12 @@
                     $categoryPic = $pic;
                 }
 
-
-                $sql = "UPDATE `event` SET `cover_image`=?,`event_name`=?,`event_date`=?,`eventEnd_date`=?,`event_time`=?,`eventEnd_time`=?,`description`=?,`category`=?,`location`=?,`event_tnc`=? WHERE `event_id` = ?";
+                if($eTitle == $row1['event_name'] && $eDateFrom == $row1['event_date'] && $eDateTo == $row1['eventEnd_date'] && $eTimeFrom == $row1['event_time'] && $eTimeTo == $row1['eventEnd_time'] && $eDes == $row1['description'] && $eCat == $row1['category'] && $eLoc == $row1['location'] && $eTnc == $row1['event_tnc']){
+                    echo "<script>alert('Nothing Changed');window.location.href='./eventSellerDashboard.php';</script>";
+                }
+                else
+                {
+                    $sql = "UPDATE `event` SET `cover_image`=?,`event_name`=?,`event_date`=?,`eventEnd_date`=?,`event_time`=?,`eventEnd_time`=?,`description`=?,`category`=?,`location`=?,`event_tnc`=? WHERE `event_id` = ?";
                     if ($stmt = mysqli_prepare($conn,$sql)){
                         if(false===$stmt){
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
@@ -111,8 +115,10 @@
                             }		
                             mysqli_stmt_close($stmt);
                     }
-                    echo '0';
-
+                        echo '0';
+                }
+            }
+        }
             
 
             
