@@ -40,7 +40,7 @@ try {
             exit(1);
         } else {
             // Payment failed
-			header("location:https://eshop.sgcprototype2.com/payment-cancelled.html");
+			header("location:https://eshop.sgcprototype2.com/PaypalFailed.php");
              exit(1);
         }
 
