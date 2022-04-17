@@ -40,13 +40,13 @@ try {
             exit(1);
         } else {
             // Payment failed
-			header("location:https://eshop.sgcprototype2.com/payment-cancelled.html");
+			header("location:https://eshop.sgcprototype2.com/PaypalFailed.php");
              exit(1);
         }
 
     } catch (Exception $e) {
         // Failed to retrieve payment from PayPal
-        throw new Exception('Failed to retrieve payment from PayPal');
+
     }
 
 } catch (Exception $e) {
@@ -66,8 +66,8 @@ function addPayment($data)
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
-        $send = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-        $send->bind_param(
+        $stmt = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param(
             'ssdsssss',
             $data['product_id'],
             $data['transaction_id'],
@@ -78,9 +78,9 @@ function addPayment($data)
             $data['product_name'],
             date('Y-m-d H:i:s')
         );
-        $send->execute();
-        $send->close();
-		
+        $stmt->execute();
+        $stmt->close();
+
         return $db->insert_id;
     }
 

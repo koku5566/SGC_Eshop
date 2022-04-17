@@ -13,7 +13,7 @@ $enableSandbox = true;
 $paypalConfig = [
     'client_id' => 'AXwUvCxvA69PZNIw8yROCF9avXuWCThOctoMyva-gTq4HZ4fvr23JQEv-B-e5XAoyqlAO33O4o1-jg0V',
     'client_secret' => 'EPNDx2VJTNtxPcL_mU16_eVR4EVHo3AwpjiIThwsyBEbDZV6XRknodG6qkRoE9G6dBJoGo6dA5zmriLa',
-    'return_url' => 'https://eshop.sgcprototype2.com/PaypalSuccess.php',
+    'return_url' => 'https://eshop.sgcprototype2.com/response.php',
     'cancel_url' => 'https://eshop.sgcprototype2.com/payment-cancelled.html'
 ];
 
