@@ -17,6 +17,8 @@
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
+
+        echo 'hello';
         $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
         $resultget = mysqli_query($conn, $sqlget);
             if (mysqli_num_rows($resultget) > 0) {
