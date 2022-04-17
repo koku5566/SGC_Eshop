@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 ?>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Admin</h1>
 		
