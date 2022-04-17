@@ -23,7 +23,7 @@
                     die('Error with execute: ') . htmlspecialchars($stmt->error);
                 }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
-                        echo "<script>alert('Event had been disabled permenantly');window.location.href='./eventSellerDashboard.php';</script>";
+                        echo "<script>alert('Event had been disabled permenantly');</script>";
                         //Add $_SESSION['eventID'] = "";
                         //Add Redirect to next page
                     }
