@@ -360,6 +360,12 @@ h4.displayCategoryModal{
 	border: 1px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
 }
+.tqy{
+		color: #A31F37
+	}
+.ratingStar {
+    font-weight: inherit;
+}
 </style>
 
 
