@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             <div class=\"row\">
-                                <div class=\"col-sm-5\"><input class=\"form-control\" type=\"date\" name=\"eDate_From\" id=\"eStartDate\" value=".$row['event_date']."required></div>
+                                <div class=\"col-sm-5\"><input class=\"form-control\" type=\"date\" name=\"eDate_From\" id=\"eStartDate\" value=".$row['event_date']." required></div>
                                 <div class=\"col-sm-2\">
                                     <h5 style=\"text-align: center;margin-top: 6px;\">To</h5>
                                 </div>
@@ -162,8 +162,12 @@
                             </div>
                         </div>
                         <div style=\"margin-top: 30px;\">
+                            <h2>Previous Event Description</h2>
+                            <div>
+                                $decs
+                            </div>
                             <h3>Description</h3>
-                            <textarea class=\"form-control\" id=\"eDesceditor\" placeholder=\"Edit your description here...\" value=\"$decs\" name=\"eDesc\"></textarea>
+                            <textarea class=\"form-control\" id=\"eDesceditor\" placeholder=\"Edit your description here...\" name=\"eDesc\"></textarea>
                         </div>
                         <div style=\"margin-top: 30px;\">
                             <h3>Category</h3><input class=\"form-control\" type=\"text\" name=\"eCategory\" value=".$row['category'].">
