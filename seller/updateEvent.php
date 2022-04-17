@@ -291,7 +291,7 @@
         $(document).ready ( function(){
             locationOption.value = selectChecker.value;
             console.log(locationOption.value);
-         });​
+         });
     </script>
 
 <?php
