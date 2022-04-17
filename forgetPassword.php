@@ -32,7 +32,7 @@
 			</p>
 			";
 
-			$HTMLcontent = "<p><b>Dear ".$row["name"]."</b>,</p><p>$message</p>";
+			$HTMLcontent = "<p><b>Dear ".$res["name"]."</b>,</p><p>$message</p>";
 			
 			$boundary = md5(time());
 			$headers .= " boundary=\"{$boundary}\"";
