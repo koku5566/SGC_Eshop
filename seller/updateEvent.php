@@ -105,7 +105,7 @@
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt);
-                                echo $error;
+                                echo "<script>alert($error + 'sss');</script>";
                             }		
                             mysqli_stmt_close($stmt);
                     }
@@ -150,7 +150,7 @@
                     
                     <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
                         <h2>Event Details</h2>
-                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=".$row['event_name']."></h3>
+                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=" .$row['event_name']. "></h3>
                         <div>
                             <div class=\"row\">
                                 <div class=\"col-sm-2\">
