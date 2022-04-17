@@ -14,7 +14,7 @@
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"si",$stat,$_SESSION['eventIDView']);
+                $bp = mysqli_stmt_bind_param($stmt,"si",$stat,$_GET['id']);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
@@ -29,7 +29,7 @@
                     }
                     else{
                         $error = mysqli_stmt_error($stmt);
-                        echo "<script>alert($error);</script>";
+                        echo "<script>console.log($error);</script>";
                     }		
                     mysqli_stmt_close($stmt);
             }
