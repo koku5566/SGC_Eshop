@@ -1,6 +1,13 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","bXrAcmvi,B#U","sgcprot1_SGC_ESHOP");
-$product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+
+if(!isset($_SESSION)){
+        session_start();
+ }
+
+
+//$product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+$product = $_SESSION['productID'];
 //$_SESSION['product_ID']
 $output = '';
 
