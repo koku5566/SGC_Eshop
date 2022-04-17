@@ -15,7 +15,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_POST['pid'])){
 	
 	$ppid =  $_POST['pid'];
-	echo ($ppid );
+	//echo ($ppid );
 	//$array=json_decode(ujson);
 	//echo ($array);
 	 
