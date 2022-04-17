@@ -17,7 +17,9 @@
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
-
+        $decs = "";
+        $tnc = "";
+        $pic = "";
         echo 'hello';
         $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
         $resultget = mysqli_query($conn, $sqlget);
@@ -26,12 +28,15 @@
                 $picLocation = "/img/event/".$row1["cover_image"];
                 $decs = html_entity_decode($row1['description']);
                 $tnc = html_entity_decode($row1['event_tnc']);
+                $pic = $row1["cover_image"];
+                }
+            }
 
                 $coverIMG = array_filter($_FILES['coverImage']['name']);
                 $targetDir = dirname(__DIR__, 1)."/img/event/"; 
                 $allowTypes = array('jpg','png','jpeg'); 
                 $categoryPic = "";
-                echo $_SESSION['eventUpdate'],$picLocation, $decs, $tnc, $coverIMG;
+                //echo $_SESSION['eventUpdate'],$picLocation, $decs, $tnc, $coverIMG;
                 //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
                 $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
 
@@ -63,19 +68,19 @@
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
-                echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
+                //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
                 if($eDes = "" || $eDes = null)
                 {
-                    $eDes = $row1['description'];
+                    $eDes = $decs;
                 }
                 if($eTnc = "" || $eTnc = null)
                 {
-                    $eTnc = $row1['event_tnc'];
+                    $eTnc = $tnc;
                 }
                 if($coverIMG = "" || $coverIMG = null)
                 {
-                    $categoryPic = $row1["cover_image"];
+                    $categoryPic = $pic;
                 }
 
 
@@ -106,11 +111,10 @@
                     }
                     echo '0';
 
-                }
-            }
+            
 
             
-          }
+        }
 ?>
 
 <title>Update Event</title>
