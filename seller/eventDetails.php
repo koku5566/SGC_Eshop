@@ -8,7 +8,7 @@
 
 <?php
     if(isset($_POST["disabledEvent"])){
-        $eID = $_SESSION['eventIDView'];
+        $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["eventIDToChange"]));;
         echo $eID;
         $sql = "UPDATE `event` SET `status`='disabled' WHERE `event`.`event_id` = $eID";
 
@@ -117,7 +117,7 @@
                         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <p>Are you sure to disable this event? (This cannot be undo)</p>
                             <?php
-                                echo $_SESSION['eventIDView'];
+                                echo "<input type=\"hidden\" value=".$_SESSION['eventIDView']." name=\"eventIDToChange\">";
                             ?>
                             <div class="modal-footer">
                                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
