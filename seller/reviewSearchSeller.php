@@ -61,16 +61,20 @@ if(isset($_POST["query"]))
 
 else
 {
-	/*
- $query = "SELECT cu_id, name, email, campus, subject, message, status, disable_date
-		   FROM contactUs
-		   WHERE disable_date IS NULL $rr $rr2
-		   ORDER BY cu_id;";
-	*/
+	
+/*	
  $query = "SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 		   FROM reviewRating 
 		   WHERE disable_date IS NULL && status = 0 && seller_id = '$seller' $rr $rr2
 		   ORDER BY rr_id;";
+	*/	   
+		   
+ $query = "SELECT p.product_name, p.product_cover_picture,rr.* 
+				FROM product p INNER JOIN 
+				(SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
+				FROM reviewRating) rr
+				ON p.product_id = rr.product_id
+				WHERE rr.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
 		   
 	echo "Rating = $rr |";
 	echo "Product = $rr2 ";
