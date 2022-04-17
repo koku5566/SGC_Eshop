@@ -70,15 +70,15 @@
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
                 //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
-                if($eDes = "" || $eDes = null)
+                if(empty($eDes))
                 {
                     $eDes = $decs;
                 }
-                if($eTnc = "" || $eTnc = null)
+                if(empty($eTnc))
                 {
                     $eTnc = $tnc;
                 }
-                if($coverIMG = "" || $coverIMG = null)
+                if(empty($coverIMG))
                 {
                     $categoryPic = $pic;
                 }
@@ -101,7 +101,7 @@
                             echo '3';
                         }
                             if(mysqli_stmt_affected_rows($stmt) == 1){
-                                echo "<script>alert('Update Event Successful' + $prevID);window.location.href='./eventSellerDashboard.php';</script>";
+                                echo "<script>alert('Update Event Successful');window.location.href='./eventSellerDashboard.php';</script>";
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt);
