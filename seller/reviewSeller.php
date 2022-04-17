@@ -1,7 +1,5 @@
 <?php
     require __DIR__ . '/header.php'
-	
-	$shopId = '14';
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -24,6 +22,9 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
+
+$shopId = "14";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_POST['uimg'])  ){	
             
             
