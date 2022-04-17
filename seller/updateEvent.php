@@ -31,7 +31,7 @@
                 $targetDir = dirname(__DIR__, 1)."/img/event/"; 
                 $allowTypes = array('jpg','png','jpeg'); 
                 $categoryPic = "";
-
+                echo $_SESSION['eventUpdate'],$picLocation, $decs, $tnc, $coverIMG;
                 //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
                 $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
 
@@ -63,7 +63,7 @@
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
-
+                echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
                 if($eDes = "" || $eDes = null)
                 {
