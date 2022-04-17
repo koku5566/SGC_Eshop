@@ -36,7 +36,8 @@ $_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'NO SET LA SO
 
 	
 		$shop_id = $_SESSION["shop_id_product"];
-		echo "<script>alert('$shop_id')</script>";
+		
+		echo "<div class='alert alert-success'>$shop_id</div>";
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
