@@ -87,9 +87,9 @@ if(mysqli_num_rows($result) > 0)
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-	 <th colspan="2">rr_id</th>
-     <th>product_id</th>
-     <th>message</th>
+	 <th colspan="2">Product Name</th>
+     <th>Product Id</th>
+     <th>Message</th>
 	 <th>Action</th>
     </tr>
  ';
@@ -103,11 +103,19 @@ if(mysqli_num_rows($result) > 0)
 			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
 		 }
 	 }
+	 $picR = "../img/product/";	
+	 if($row["product_cover_picture"] !== NULL && $row["product_cover_picture"] !== ''){
+		  $picR .= $row["product_cover_picture"];
+	 }else{
+		 $picR .= 'https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png';
+	 }
+	 
   $output .= '
    <tr colspan="2">
-    <td><div class = "bengi"><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="jungle"></div>				
+    <td><div class = "bengi">
+		<img src="'.$picR.'" class="jungle">			
 	</td>	
-	<td>'.$row["rr_id"].'</td>											
+	<td>'.$row["product_name"].'</td>											
     <td>'.$row["product_id"].'</td>
     <td>
 	<div style="margin-bottom: 0.2em;">'.$starR.'</div>
