@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <input type=\"hidden\" value=".$row['location']." id=\"selectChecker\">
-                            <select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\"value=".$row['location'].">
+                            <select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\">
                                 <optgroup label=\"Northern Region\">
                                     <option value=\"Perlis\">Perlis</option>
                                     <option value=\"Kedah\">Kedah</option>
