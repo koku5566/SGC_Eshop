@@ -89,29 +89,6 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <!-- Disable confirmation -->
-    <div class="modal fade modal-dialog-scrollable" role="dialog" tabindex="-1" id="disabled_modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Disable this event</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                            <p>Are you sure to disable this event? (This cannot be undo)</p>
-                            <div class="modal-footer">
-                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                                <button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="disabledEvent">Confirm</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <h4 class="card-title">Ticket Type performance</h4>
@@ -143,6 +120,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <!-- Disable confirmation -->
+    <div class="modal fade modal-dialog-scrollable" role="dialog" tabindex="-1" id="disabled_modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Disable this event</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                            <p>Are you sure to disable this event? (This cannot be undo)</p>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="disabledEvent">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
 
 
