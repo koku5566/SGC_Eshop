@@ -8,7 +8,7 @@
 
 <?php
     if(isset($_POST["disabledEvent"])){
-        $eID = $_GET['id'];
+        $eID = $_SESSION['eventIDView'];
         $sql = "UPDATE `event` SET `status`='disabled' WHERE `event_id` = $eID ";
 
         if ($conn->query($sql) === TRUE) {
