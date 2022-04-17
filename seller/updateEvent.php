@@ -16,87 +16,93 @@
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
-        //echo "<script>alert('the script is running.....');</script>";
-        //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
-        //if($checkImage !== false)
-        //{
+        $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
+        $resultget = mysqli_query($conn, $sqlget);
+            if (mysqli_num_rows($resultget) > 0) {
+                while($row1 = mysqli_fetch_assoc($resultget)) {
+                $picLocation = "/img/event/".$row1["cover_image"];
+                $decs = html_entity_decode($row1['description']);
+                $tnc = html_entity_decode($row1['event_tnc']);
 
-            $coverIMG = array_filter($_FILES['coverImage']['name']);
-            $targetDir = dirname(__DIR__, 1)."/img/event/"; 
-            $allowTypes = array('jpg','png','jpeg'); 
-            $categoryPic = "";
+                $coverIMG = array_filter($_FILES['coverImage']['name']);
+                $targetDir = dirname(__DIR__, 1)."/img/event/"; 
+                $allowTypes = array('jpg','png','jpeg'); 
+                $categoryPic = "";
 
-            //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
+                //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
+                $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
 
-            if(!empty($coverIMG)){ 
-                foreach($_FILES['coverImage']['name'] as $key=>$val){ 
-                    // File upload path 
-                    echo(var_dump($_FILES['coverImage']));
-                    $fileName = basename($_FILES['coverImage']['name'][$key]); 
-                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                    $fileName = round(microtime(true) * 1000).".".$ext;
-                    $targetFilePath = $targetDir.$fileName; 
-                    echo($targetFilePath);
-                    // Check whether file type is valid 
-                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                    if(in_array($fileType, $allowTypes)){ 
-                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
-                            $categoryPic = "$fileName";
+                if(!empty($coverIMG)){ 
+                    foreach($_FILES['coverImage']['name'] as $key=>$val){ 
+                        // File upload path 
+                        echo(var_dump($_FILES['coverImage']));
+                        $fileName = basename($_FILES['coverImage']['name'][$key]); 
+                        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                        $fileName = round(microtime(true) * 1000).".".$ext;
+                        $targetFilePath = $targetDir.$fileName; 
+                        echo($targetFilePath);
+                        // Check whether file type is valid 
+                        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                        if(in_array($fileType, $allowTypes)){ 
+                            if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
+                                $categoryPic = "$fileName";
+                            }
                         }
-                    }
-                } 
-            }
-        //}
-        $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
-        $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
-        $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
-        $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
-        $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
-        $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
-        $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
-        $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
+                    } 
+                }
 
-        // $check = "SELECT * FROM `event`";
-        // if($stmt = mysqli_prepare ($conn, $check)){
-        //   mysqli_stmt_execute($stmt);
-        //   mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12);
+                $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
+                $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
+                $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
+                $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
+                $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
+                $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
+                $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
+                $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
+                $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
 
-        //   while(mysqli_stmt_fetch($stmt)){
-        //       if($eTitle == $c3)
-        //       {
-        //         echo "<script>alert('This Event seems to be in our database, check yo');window.location.href='seller/dashboard.php';</script>";
-        //       }
-        //   }
-        //   mysqli_stmt_close($stmt);
-        // }
-        
-        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            if ($stmt = mysqli_prepare($conn,$sql)){
-                if(false===$stmt){
-                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                //check for changes
+                if($eDes = "" || $eDes = null)
+                {
+                    $eDes = $row1['description'];
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
-                if(false===$bp){
-                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                if($eTnc = "" || $eTnc = null)
+                {
+                    $eTnc = $row1['event_tnc'];
                 }
-                $bp = mysqli_stmt_execute($stmt);
-                if ( false===$bp ) {
-                    die('Error with execute: ') . htmlspecialchars($stmt->error);
+                if($coverIMG = "" || $coverIMG = null)
+                {
+                    $categoryPic = $row1["cover_image"];
                 }
-                    if(mysqli_stmt_affected_rows($stmt) == 1){
-                        $prevID = mysqli_stmt_insert_id($stmt);
-                        echo "<script>alert('Success!!!!!' + $prevID);window.location.href='./addTicketType.php';</script>";
-                        $_SESSION['eventID'] = $prevID;
+
+
+                $sql = "UPDATE `event` SET `cover_image`=?,`event_name`=?,`event_date`=?,`eventEnd_date`=?,`event_time`=?,`eventEnd_time`=?,`description`=?,`category`=?,`location`=?,`event_tnc`=? WHERE `event_id` = ?";
+                    if ($stmt = mysqli_prepare($conn,$sql)){
+                        if(false===$stmt){
+                            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                        }
+                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$_SESSION['eventUpdate']);
+                        if(false===$bp){
+                            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                        }
+                        $bp = mysqli_stmt_execute($stmt);
+                        if ( false===$bp ) {
+                            die('Error with execute: ') . htmlspecialchars($stmt->error);
+                        }
+                            if(mysqli_stmt_affected_rows($stmt) == 1){
+                                echo "<script>alert('Update Event Successful' + $prevID);window.location.href='./eventSellerDashboard.php';</script>";
+                            }
+                            else{
+                                $error = mysqli_stmt_error($stmt);
+                                echo "<script>alert($error);</script>";
+                            }		
+                            mysqli_stmt_close($stmt);
                     }
-                    else{
-                        $error = mysqli_stmt_error($stmt);
-                        echo "<script>alert($error);</script>";
-                    }		
-                    mysqli_stmt_close($stmt);
+
+                }
             }
+
+            
           }
 ?>
 
@@ -128,7 +134,7 @@
                         <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
                         <h2>Update Cover Image (Maximum 1 picture Allowed) (size: 1920x1080)</h2>
                             <img src=\"$picLocation\" style=\"width:100%;\" />
-                            <input class=\"form-control\" type=\"file\" id=\"coverImg\" style=\"margin-top: 10px;\" name=\"coverImage[]\" accept=\".png,.jpeg,.jpg\" required>
+                            <input class=\"form-control\" type=\"file\" id=\"coverImg\" style=\"margin-top: 10px;\" name=\"coverImage[]\" accept=\".png,.jpeg,.jpg\">
                     </section>
                     
                     <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
@@ -245,10 +251,12 @@
     <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
     <script>
         tinymce.init({
-        selector: '#eTncEditor'
+        selector: '#eTncEditor',
+        toolbar: 'undo redo | styles | bold italic'
         });
         tinymce.init({
-        selector: '#eDesceditor'
+        selector: '#eDesceditor',
+        toolbar: 'undo redo | styles | bold italic'
         });
     </script>
 
