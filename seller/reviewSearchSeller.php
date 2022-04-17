@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","3g48B8Qn8k6v6VF","sgcprot1_SGC_ESHOP");
-$seller = "S000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+$seller = "14"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 
 $output = '';
 
