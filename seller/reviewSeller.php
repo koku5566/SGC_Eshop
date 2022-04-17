@@ -1,5 +1,7 @@
 <?php
     require __DIR__ . '/header.php'
+	
+	$shopId = '14';
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -231,8 +233,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
 							  <?php
-							    $sql ="SELECT shop_id, shop_name
-									   FROM shopProfile";
+							    $sql ="SELECT product_id, product_name 
+									   FROM product
+									   WHERE shop_id = '$shopId'";
 								if($stmt = mysqli_prepare ($conn, $sql)){
 									mysqli_stmt_execute($stmt);
 									mysqli_stmt_bind_result($stmt, $k1, $k2);
