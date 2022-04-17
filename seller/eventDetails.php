@@ -123,7 +123,7 @@
 
     <!-- Modal -->
     <!-- Disable confirmation -->
-    <div class="modal fade modal-dialog-scrollable" role="dialog" tabindex="-1" id="disabled_modal">
+    <div class="modal fade" role="dialog" tabindex="-1" id="disabled_modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
