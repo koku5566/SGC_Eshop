@@ -7,7 +7,7 @@
 		
 		$sql = "SELECT * FROM user WHERE email = '$email'";
 		$res = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_array($res)
+		$row = mysqli_fetch_array($res);
 		if (mysqli_num_rows($res) > 0)
 		{
 			$to = $email;
