@@ -3,7 +3,7 @@
   
 ?> 
 <?php
-if(isset($_POST['DeleteFacility']))
+if(isset($_POST['Delete']))
 {
     $id= $_POST['id'];
     $sql_delete = "DELETE FROM facilityPic WHERE id = '$id'";
@@ -77,7 +77,7 @@ if(isset($_POST['DeleteFacility']))
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             <form action ="adminFacilityManagement.php" method="post">
               <input type = "hidden" name="id" value="<?php $row['id']?>">
-              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="DeleteFacility" value="Delete">
+              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="Delete" value="Delete">
             </form>
           </td>
         </tr>
