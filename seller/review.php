@@ -140,6 +140,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1fa
 .tqy{
 		color: #A31F37
 	}
+.ratingStar {
+    font-weight: inherit;
+}
 </style>
 
 
