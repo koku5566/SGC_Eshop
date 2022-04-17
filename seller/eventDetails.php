@@ -15,7 +15,7 @@
         if ($conn->query($sql) === TRUE) {
           echo "Record updated successfully";
         } else {
-          echo $eID . "Error updating recordsssss: " . $conn->error . $_SESSION['eventIDView'];
+          echo $eID;
         }
     
     }
