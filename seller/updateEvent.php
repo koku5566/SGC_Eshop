@@ -21,7 +21,7 @@
         $tnc = "";
         $pic = "";
         echo 'hello';
-        $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
+        $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = $eID";
         $resultget = mysqli_query($conn, $sqlget);
             if (mysqli_num_rows($resultget) > 0) {
                 while($row1 = mysqli_fetch_assoc($resultget)) {
@@ -67,6 +67,7 @@
                 $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
+                $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["hiddenID"]));
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
                 //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
@@ -90,7 +91,7 @@
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                             echo '1';
                         }
-                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$updateEventID);
+                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eID);
                         if(false===$bp){
                             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                             echo '2';
@@ -240,6 +241,7 @@
                             <h2>Terms and Conditions (If any changes)</h2>
                             <textarea class=\"form-control\" id=\"eTncEditor\" placeholder=\"Edit your TnC here...\" name=\"eTnC\"></textarea>
                         </div>
+                        <input type=\"hidden\" value=".$_SESSION['eventUpdate']." name=\"hiddenID\">
                     </section>
                     
                     <div style=\"margin-top: 61px;text-align: center;margin-bottom: 61px;\">

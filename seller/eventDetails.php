@@ -6,22 +6,6 @@
     $_SESSION['eventIDView'] = $_GET['id'];
 ?>
 
-<?php
-    if(isset($_POST["disabledEvent"])){
-        $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["eventIDToChange"]));;
-        echo $eID;
-        $sql = "UPDATE `event` SET `status`='disabled' WHERE `event`.`event_id` = $eID";
-
-        if ($conn->query($sql) === TRUE) {
-          echo "Record updated successfully";
-        } else {
-          echo $eID;
-        }
-    
-    }
-
-?>
-
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
 <!-- Above Template -->
@@ -61,8 +45,7 @@
                                     <h5>Event Status: ".$row['status']."</h5>
                                     <h5>Location: ".$row['location']."</h5>
                                     <h5>Date: ".$row['event_date']." to ".$row['eventEnd_date']."</h5>
-                                    <a href = \"updateEvent.php?eventUpdate=".$row['event_id']."\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\" hidden>Edit</button></a>
-                                    <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(149,149,149);margin-left: 10px;\" data-bs-toggle=\"modal\" data-bs-target=\"#disabled_modal\">Disable this event</button>
+                                    <a href = \"updateEvent.php?eventUpdate=".$row['event_id']."\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
                                     <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
                                 </div>
                                 ");
@@ -72,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <h4 class="card-title">Ticket Type performance</h4>
@@ -104,31 +86,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <!-- Disable confirmation -->
-    <div class="modal fade" role="dialog" tabindex="-1" id="disabled_modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Disable this event</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                            <p>Are you sure to disable this event? (This cannot be undo)</p>
-                            <?php
-                                echo "<input type=\"hidden\" value=".$_SESSION['eventIDView']." name=\"eventIDToChange\">";
-                            ?>
-                            <div class="modal-footer">
-                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                                <button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="disabledEvent">Confirm</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
 
 
 
