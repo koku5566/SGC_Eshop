@@ -141,6 +141,7 @@
                         $picLocation = "/img/event/".$row["cover_image"];
                         $decs = html_entity_decode($row['description']);
                         $tnc = html_entity_decode($row['event_tnc']);
+                        $eventName = $row['event_name'];
                         
                         echo("
                         <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
@@ -151,7 +152,7 @@
                     
                     <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
                         <h2>Event Details</h2>
-                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=" .$row['event_name']. "></h3>
+                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=\"$eventName\"></h3>
                         <div>
                             <div class=\"row\">
                                 <div class=\"col-sm-2\">
