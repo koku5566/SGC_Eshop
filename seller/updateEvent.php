@@ -212,8 +212,12 @@
                     
                     <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
                         <div>
-                            <h2>Terms and Conditions</h2>
-                            <textarea class=\"form-control\" id=\"eTncEditor\" placeholder=\"Edit your TnC here...\" name=\"eTnC\" value=\"$tnc\"></textarea>
+                            <h2>Previous Terns and Conditions</h2>
+                            <div>
+                                $tnc
+                            </div>
+                            <h2>Terms and Conditions (If any changes)</h2>
+                            <textarea class=\"form-control\" id=\"eTncEditor\" placeholder=\"Edit your TnC here...\" name=\"eTnC\"></textarea>
                         </div>
                     </section>
                     
