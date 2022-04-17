@@ -44,9 +44,12 @@ function onlineLocation()
 //-----------------auto select----------
 var selectChecker = document.getElementById("selectChecker");
 
-if(selectChecker!=null)
-{
-    locationOption.value = selectChecker.value;
-    console.log(locationOption.value);
-}
+$(document).ready ( function(){
+    if(selectChecker!=null)
+    {
+        locationOption.value = selectChecker.value;
+        console.log(locationOption.value);
+    }
+ });​
+
 
