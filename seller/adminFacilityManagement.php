@@ -3,7 +3,24 @@
   
 ?> 
 <?php
-   
+if(isset($_POST['Delete']))
+{
+    $id= $_POST['id'];
+    $sql_delete = "DELETE FROM facilityPic WHERE id = '$id'";
+    if(mysqli_query($conn, $sql_delete))
+    {
+        ?>
+            <script type="text/javascript">
+                alert(" Deleted Successful");
+                window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+            </script>
+        <?php
+    }
+    else{
+        echo '<script>alert("Failed")</script>';
+    }
+}
+  
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -58,7 +75,10 @@
           </td>
           <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Delete</button>
+            <form action ="adminFacilityManagement.php" method="post">
+              <input type = "hidden" name="id" value="<?php $row['id']?>">
+              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="Delete" value="Delete">
+            </form>
           </td>
         </tr>
         <?php endforeach ?> 
