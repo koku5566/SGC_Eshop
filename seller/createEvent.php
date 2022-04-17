@@ -115,7 +115,7 @@
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Cover Image (Maximum 1 picture Allowed) (size: 1920x1080)
-                    <input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage" accept=".png,.jpeg,.jpg" required>
+                    <input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required>
                 </h2>
             </section>
             
