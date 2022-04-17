@@ -107,7 +107,8 @@
                             echo '3';
                         }
                             if(mysqli_stmt_affected_rows($stmt) == 1){
-                                echo "<script>alert('Update Event Successful');window.location.href='./eventSellerDashboard.php';</script>";
+                                echo "<script>alert('Update Event Successful');window.location.href='./UpdateTicketType.php';</script>";
+                                $_SESSION['updateID'] = $eID;
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt);
