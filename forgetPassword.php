@@ -5,42 +5,55 @@
 	{
 		$email=$_POST['email'];
 		
-		$to = $email;
-		$subject = "SGC E-Shop Reset Password";
-		$from = "reset-password@eshop.sgcprototype2.com";
-		$from2 = "contact_us_mail@sgcprototype2.com";
-		$fromName = "SGC E-Shop";
+		$sql = "SELECT * FROM user WHERE email = '$email'";
+		$res = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($res) > 0)
+		{
+			$to = $email;
+			$subject = "SGC E-Shop Reset Password";
+			$from = "reset-password@eshop.sgcprototype2.com";
+			$from2 = "contact_us_mail@sgcprototype2.com";
+			$fromName = "SGC E-Shop";
 
-		$headers =  "From: $fromName <$from> \r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: multipart/mixed;\r\n";
-		
-		$hash = md5( rand(0,1000) );
-		$_SESSION['VerifyCode'] = $hash;
-		$message = "
-		<p>We received a request to reset your SGC E-Shop account password.
-		<br>Click the link below to reset.
-		<br><b>https://eshop.sgcprototype2.com/resetPassword.php?email=$email&hash=$hash</b>
-		<br>
-		<br>
-		<br>
-		<br><b>Ignore this email if you did not make this request.</b>
-		</p>
-		";
+			$headers =  "From: $fromName <$from> \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: multipart/mixed;\r\n";
+			
+			$hash = md5( rand(0,1000) );
+			$_SESSION['VerifyCode'] = $hash;
+			$message = "
+			<p>We received a request to reset your SGC E-Shop account password.
+			<br>Click the link below to reset.
+			<br><b>https://eshop.sgcprototype2.com/resetPassword.php?email=$email&hash=$hash</b>
+			<br>
+			<br>
+			<br>
+			<br><b>Ignore this email if you did not make this request.</b>
+			</p>
+			";
 
-		$HTMLcontent = "<p><b>Dear User</b>,</p><p>$message</p>";
-		
-		$boundary = md5(time());
-		$headers .= " boundary=\"{$boundary}\"";
-		$message = "--{$boundary}\r\n";
-		$message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
-		$message .= "Content-Transfer-Encoding: 7bit\r\n";
-		$message .= $HTMLcontent . "\r\n";
-		$message .= "--{$boundary}\r\n";
-		$returnPath = "-f" . $from2;
-		
-		if(@mail($to, $subject, $message, $headers, $returnPath)){
-			echo "<script>alert('Link for reset password has been sent to the email address')</script>";
+			$HTMLcontent = "<p><b>Dear ".$row["name"]."</b>,</p><p>$message</p>";
+			
+			$boundary = md5(time());
+			$headers .= " boundary=\"{$boundary}\"";
+			$message = "--{$boundary}\r\n";
+			$message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+			$message .= "Content-Transfer-Encoding: 7bit\r\n";
+			$message .= $HTMLcontent . "\r\n";
+			$message .= "--{$boundary}\r\n";
+			$returnPath = "-f" . $from2;
+			
+			if(@mail($to, $subject, $message, $headers, $returnPath)){
+				echo "<script>alert('Link for reset password has been sent to the email address')</script>";
+			}
+			else
+			{
+				echo "<script>alert('Error')</script>";
+			}
+		}
+		else
+		{
+			echo "<script>alert('Account Does Not Exist')</script>";
 		}
 	}
 ?>
