@@ -102,7 +102,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<form action = "product.php" method = "GET">
+	<form action = "product.php" method = "POST">
 		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
 		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
 	</form>
