@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
 
 //$product = "P000001"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 $product = $_SESSION['productID'];
-echo "<script>alert('$product')</script>";
+//echo "<script>alert('$product')</script>";
 //$_SESSION['product_ID']
 $output = '';
 
