@@ -53,6 +53,7 @@
         $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
         $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
         $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
+        $status = "Waiting for Approval";
         $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
 
         // $check = "SELECT * FROM `event`";
@@ -69,12 +70,12 @@
         //   mysqli_stmt_close($stmt);
         // }
         
-        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `status`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eOrganiser);
+                $bp = mysqli_stmt_bind_param($stmt,"sssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$status,$eOrganiser);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }
@@ -113,7 +114,9 @@
         <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
-                <h2>Cover Image<input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required></h2>
+                <h2>Cover Image (Maximum 1 picture Allowed) (size: 1920x1080)
+                    <input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required>
+                </h2>
             </section>
             
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
