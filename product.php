@@ -555,7 +555,7 @@
 									$sql ="SELECT avg(rr.rating)
 										FROM user u INNER JOIN  reviewRating rr 
 										ON  u.userID = rr.user_id 
-										WHERE rr.disable_date IS NULL && rr.product_id = '$product'
+										WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id'
 										ORDER BY rr.rr_id";
 									if($stmt = mysqli_prepare ($conn, $sql)){
 										mysqli_stmt_execute($stmt);
