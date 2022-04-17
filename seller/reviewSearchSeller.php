@@ -31,7 +31,7 @@ if(isset($_POST["query"]))
 {
 	
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- echo "$search|";
+// echo "$search|";
  /*
  
   
@@ -55,8 +55,8 @@ if(isset($_POST["query"]))
 			  OR rr.product_id LIKE '%".$search."%' 
 			  OR rr.message LIKE '%".$search."%') k
 			  WHERE k.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
-  echo "Rating = $rr |";
-   echo "Product = $rr2 ";
+  //echo "Rating = $rr |";
+   //echo "Product = $rr2 ";
 }
 
 else
@@ -76,8 +76,8 @@ else
 				ON p.product_id = rr.product_id
 				WHERE rr.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
 		   
-	echo "Rating = $rr |";
-	echo "Product = $rr2 ";
+	//echo "Rating = $rr |";
+	//echo "Product = $rr2 ";
 }
 
 $result = mysqli_query($conn, $query);
