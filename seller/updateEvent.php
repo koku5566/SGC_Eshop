@@ -12,10 +12,15 @@
 
 <?php
     $_SESSION['eventUpdate'] = $_GET['eventUpdate'];
+    $updateEventID = $_SESSION['eventUpdate'];
 ?>
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
+        $decs = "";
+        $tnc = "";
+        $pic = "";
+        echo 'hello';
         $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
         $resultget = mysqli_query($conn, $sqlget);
             if (mysqli_num_rows($resultget) > 0) {
@@ -23,12 +28,15 @@
                 $picLocation = "/img/event/".$row1["cover_image"];
                 $decs = html_entity_decode($row1['description']);
                 $tnc = html_entity_decode($row1['event_tnc']);
+                $pic = $row1["cover_image"];
+                }
+            }
 
                 $coverIMG = array_filter($_FILES['coverImage']['name']);
                 $targetDir = dirname(__DIR__, 1)."/img/event/"; 
                 $allowTypes = array('jpg','png','jpeg'); 
                 $categoryPic = "";
-
+                //echo $_SESSION['eventUpdate'],$picLocation, $decs, $tnc, $coverIMG;
                 //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
                 $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
 
@@ -60,19 +68,19 @@
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
-
+                //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
                 if($eDes = "" || $eDes = null)
                 {
-                    $eDes = $row1['description'];
+                    $eDes = $decs;
                 }
                 if($eTnc = "" || $eTnc = null)
                 {
-                    $eTnc = $row1['event_tnc'];
+                    $eTnc = $tnc;
                 }
                 if($coverIMG = "" || $coverIMG = null)
                 {
-                    $categoryPic = $row1["cover_image"];
+                    $categoryPic = $pic;
                 }
 
 
@@ -80,14 +88,17 @@
                     if ($stmt = mysqli_prepare($conn,$sql)){
                         if(false===$stmt){
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                            echo '1';
                         }
-                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$_SESSION['eventUpdate']);
+                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$updateEventID);
                         if(false===$bp){
                             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                            echo '2';
                         }
                         $bp = mysqli_stmt_execute($stmt);
                         if ( false===$bp ) {
                             die('Error with execute: ') . htmlspecialchars($stmt->error);
+                            echo '3';
                         }
                             if(mysqli_stmt_affected_rows($stmt) == 1){
                                 echo "<script>alert('Update Event Successful' + $prevID);window.location.href='./eventSellerDashboard.php';</script>";
@@ -98,12 +109,12 @@
                             }		
                             mysqli_stmt_close($stmt);
                     }
-
-                }
-            }
+                    echo '0';
 
             
-          }
+
+            
+        }
 ?>
 
 <title>Update Event</title>
