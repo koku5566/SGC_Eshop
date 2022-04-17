@@ -228,7 +228,7 @@
                                 <optgroup label=\"Southern Region\">
                                     <option value=\"Negeri Sembilan\">Negeri Sembilan</option>
                                     <option value=\"Melaka\">Melaka</option>
-                                    <option value=\"Johor\" selected=\"\">Johor</option>
+                                    <option value=\"Johor\">Johor</option>
                                 </optgroup>
                                 <optgroup label=\"East Malaysia\">
                                     <option value=\"Sabah\">Sabah</option>
