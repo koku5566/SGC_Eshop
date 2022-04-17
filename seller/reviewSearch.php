@@ -116,7 +116,7 @@ if(mysqli_num_rows($result) > 0)
 		 if($i < $row["rating"]){
 			 $starR .='<i class="fa fa-star tqy"></i> ';
 		 }else{
-			 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
+			 $starR .='<i class="fa fa-star ratingStar"></i> ';
 		 }
 	 }
 	 $picR = "../img/product/";	
