@@ -2,6 +2,7 @@
    require __DIR__ . '/header.php'
   
 ?> 
+
 <?php
 if(isset($_POST['Delete']))
 {
@@ -12,7 +13,7 @@ if(isset($_POST['Delete']))
         ?>
             <script type="text/javascript">
                 alert(" Deleted Successful");
-                window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                /*window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";*/
             </script>
         <?php
     }
@@ -20,6 +21,7 @@ if(isset($_POST['Delete']))
         echo '<script>alert("Failed")</script>';
     }
 }
+
 /*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
 		
   $selectedPID = SanitizeString($_POST['id']);
