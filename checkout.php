@@ -148,9 +148,9 @@ $json = json_decode($return);
 
 ?>
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="../css/checkout.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
 <!-- Shipping Courier Option Modal -->
@@ -313,7 +313,7 @@ $json = json_decode($return);
             </div>
         </div>
     </div>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
 </div>
                 <!-- /.container-fluid -->
