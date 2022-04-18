@@ -1,19 +1,13 @@
 //to enable and disable option
-var editFormElement = document.getElementById("editFormElementSelection");
-var editOptionInput = document.getElementById("editOptionInput");
-var updateFormElement = document.getElementById("updateFormElementSelection");
-var updateOptionInput = document.getElementById("updateOptionInput");
 var formElement = document.getElementById("formElementSelection");
 var optionInput = document.getElementById("optionInput");
 var completeBtn = document.getElementById("completeBtn");
 
 formElement.addEventListener('click', enableOption);
-editFormElement.addEventListener('click', enableOption);
-updateFormElement.addEventListener('click', enableOption);
 
 function enableOption()
 {
-    if(formElement.value == "select" || editFormElement.value == "select" || updateFormElement.value == "select")
+    if(formElement.value == "select")
     {
         optionInput.style.display = 'block';
     }
@@ -24,5 +18,5 @@ function enableOption()
 }
 
 completeBtn.addEventListener('click', function(){
-    window.location.href='./createForm.php';
+    window.location.href='./eventSellerDashboard.php';
 })

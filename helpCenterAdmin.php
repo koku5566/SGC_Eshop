@@ -5,13 +5,16 @@
 
 
 <?php
+$_SESSION["userId"] = "U000018";
+$_SESSION["shop_id_product"] = 'Sohai';
+
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
 		$selectedPID = $_POST['rid'];
 		//echo "<script>alert('$selectedPID')</script>";	
 		//$selectedPID = SanitizeString($_POST['pid']);
 		
-		$sql = "SELECT product_id, product_name, product_brand, product_price, product_cover_picture
+		$sql = "SELECT product_id, product_name, product_brand, product_price, product_cover_picture, shop_id
 				FROM `product`
 				WHERE product_id = ?";
 		
@@ -21,7 +24,7 @@
 			mysqli_stmt_store_result($stmt);
 			
 			if(mysqli_stmt_num_rows($stmt) == 1){
-				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4,$j5);
+				mysqli_stmt_bind_result($stmt, $j1,$j2,$j3,$j4,$j5,$j6);
 				mysqli_stmt_fetch($stmt);
 			}
 			
@@ -30,17 +33,25 @@
 		
 		}
 		
+		
+		$_SESSION["shop_id_product"] = $j6;
+		$shop_id = $_SESSION["shop_id_product"];
+		
+		echo "<div class='alert alert-success'>$shop_id</div>";
+		
 	}
 
-
+	
+		
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
 		
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
-		$user_id = "U000005";	//change into S_SESSION [user id]
+		$user_id = $_SESSION["userId"];	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
+		
 		/*
 		$ss1 = $_FILES['img']['name'][0];
 		$ss2 = $_FILES['img']['name'][1];
