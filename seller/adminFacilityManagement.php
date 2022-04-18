@@ -4,23 +4,31 @@
 ?> 
 
 <?php
+/*
 if(isset($_POST['Delete']))
 {
     $id= $_POST['id'];
     $sql_delete = "DELETE FROM facilityPic WHERE id = $id";
     if(mysqli_query($conn, $sql_delete))
     {
+        ?>
 		
-        echo "<script>alert('Delete Successfully')</script>";
+            <script type="text/javascript">
+                alert(" Deleted Successful");
+                window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+            </script>
+        <?php
     }
     else{
         echo '<script>alert("Failed")</script>';
     }
 }
-
-/*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
+*/
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
 		
-  $selectedPID = SanitizeString($_POST['id']);
+		echo "<script>alert('SOHAI ');</script>";
+		/*
+  $selectedPID = $_POST['id'];
   $sql = "DELETE FROM `facilityPic` WHERE  `id`=?";
   
   if($stmt = mysqli_prepare($conn, $sql)){
@@ -37,8 +45,9 @@ if(isset($_POST['Delete']))
   
       mysqli_stmt_close($stmt);
     }
+	*/
 }
-*/
+
   
 ?>
 
