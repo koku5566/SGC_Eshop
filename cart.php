@@ -266,8 +266,8 @@
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `shopprofile`
-                            ON product.shop_id = shopprofile.shop_id
+                            JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$userID'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC";
