@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
-    include __DIR__.'../mysqli_connect.php'; 
+    //include __DIR__.'../mysqli_connect.php'; 
 
     $userID = "U000018";
     $KL = 14;
@@ -15,9 +15,9 @@
             JOIN `shopprofile`
             ON product.shop_id = shopprofile.shop_id
             WHERE cart.user_ID = '$userID'
-            AND product.shop_id = '$KL'
+            AND cart.shop_id = '$KL'
             AND cart.remove_Product = '0'
-            ORDER BY cart.create_at DESC";
+            ORDER BY cart.update_at DESC";
 
     $queryKL = mysqli_query($conn, $sql);
 
@@ -175,7 +175,7 @@
                         echo "
                                 </td>
                                 <td class='text-center'>    
-                                    <form action='/cart_manage.php' method='POST'>
+                                    <form action='cart_manage.php' method='POST'>
                                         <input type='hidden' id='cart_id[$i]' value='".$cart_id."' name='cartID' readonly>
                                         <button class='removeItem_kl' name='removeItemBtn' type='submit'>X</button>
                                     </form>
@@ -827,11 +827,11 @@ select.form-control {
        
         $.ajax({
             method: "POST",
-            url: "/cart_manage.php",
+            url: "cart_manage.php",
             data: { cart_id: cart_id, quantity: quantity }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + '/cart.php';
+                window.location.href = window.location.origin + 'cart.php';
          });
 
     }
@@ -845,11 +845,11 @@ select.form-control {
 
         $.ajax({
             method: "POST",
-            url: "/cart_manage.php",
+            url: "cart_manage.php",
             data: { cart_id2: cart_id, variation_id: variation_id }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + '/cart.php';
+                window.location.href = window.location.origin + 'cart.php';
                 //alert(msg);
          });
 

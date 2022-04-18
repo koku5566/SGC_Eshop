@@ -6,12 +6,13 @@
 $sql_2 = "SELECT
 myOrder.order_id,
 myOrder.order_status,
+product.product_id,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name
 FROM
 myOrder
