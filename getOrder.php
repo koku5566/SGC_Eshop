@@ -13,13 +13,12 @@ product.product_variation,
 orderDetails.quantity,
 orderDetails.price,
 shopProfile.shop_name
-GROUP_BY myOrder.order_id
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-
+GROUP BY myOrder.order_id
 
 ";
 $stmt_2 = $conn->prepare($sql_2);
