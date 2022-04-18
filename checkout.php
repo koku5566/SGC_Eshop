@@ -164,7 +164,7 @@ $json = json_decode($return);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+   
 
 <!-- Shipping Courier Option Modal -->
 <div class="modal fade" id="courieroptionModal" tabindex="-1" role="dialog" aria-labelledby="courieroptionModalLabel" aria-hidden="true">
@@ -324,6 +324,7 @@ $json = json_decode($return);
                         <li class="list-group-item"><span>Order Total</span></li>
                         <li class="list-group-item"><span>Shipping Total</span></li>
                         <li class="list-group-item"><span>Total Payment</span></li>
+                        <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;">Place Order</button></div>
                     </ul>
                 </div>
             </div>
