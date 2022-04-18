@@ -313,10 +313,12 @@ $json = json_decode($return);
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div class="row">
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
-                    <div class="form-check"><input class="form-check-input" type="radio"  name="paymentmethod" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Credit/Debit Card</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio"  name="paymentmethod" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Online Banking</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio"  name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
+                <form action="" method="post" class="paymentmethod">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Credit/Debit Card</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Online Banking</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash on Delivery</label></div>
+                </form>
                 </div>
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
@@ -326,7 +328,7 @@ $json = json_decode($return);
                     </ul>
                 </div>
             </div>
-                      <br>
+            <br>
             <div class = 'row'>
             <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
             </div>
