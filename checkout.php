@@ -151,7 +151,6 @@ $json = json_decode($return);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
 
 <!-- Shipping Courier Option Modal -->
 <div class="modal fade" id="courieroptionModal" tabindex="-1" role="dialog" aria-labelledby="courieroptionModalLabel" aria-hidden="true">
