@@ -127,11 +127,11 @@
 
             <div class="row">
                <div class="form-group col-md-12">
-                  <p class="p-title">Hourly Rate</p>
+                  <p class="p-title">Hourly Rate (RM)</p>
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                     <input type="number"min="0" value="0" class="form-control" name="priceperhour" placeholder = "(RM)" required>
+                     <input type="number"min="0" value="0" class="form-control" name="priceperhour" required>
                   </div>
                </div>
             </div>
