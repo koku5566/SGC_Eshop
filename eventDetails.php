@@ -1,6 +1,11 @@
 <?php
 require __DIR__ . '/header.php'
 ?>
+
+<?php
+    $eID = $_GET['eventID'];
+?>
+
 <title>Event Details</title>
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
@@ -11,7 +16,7 @@ require __DIR__ . '/header.php'
     <!-- Above Template -->
 
     <?php
-        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event_id` = 50";
+        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`event_id` = $eID";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -25,7 +30,7 @@ require __DIR__ . '/header.php'
                 $eventID = $row['event_id'];
 
                 //check price
-                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eID";
                 $result1 = mysqli_query($conn, $sql1);
                 $minPrice = 999999;
                 $maxPrice = 0;
@@ -53,7 +58,7 @@ require __DIR__ . '/header.php'
                     <div class=\"row\">
                         <div class=\"col-lg-10 col-xl-8 offset-lg-1 offset-xl-2\">
                             <div class=\"intro\">
-                                <h1 class=\"text-center\">Event Title</h1>
+                                <h1 class=\"text-center\">".$row['event_name']."</h1>
                                 <p class=\"text-center\"><span class=\"by\">Organized by</span> <a href=\"#\">Author Name</a></p>
                                 <div class=\"row\">
                                     <div class=\"col-12\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(30,79,204);margin-left: 10px;\">Resend Ticket</button></div>
