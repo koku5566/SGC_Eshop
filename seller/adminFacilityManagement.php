@@ -2,14 +2,17 @@
    require __DIR__ . '/header.php'
   
 ?> 
+
 <?php
+/*
 if(isset($_POST['Delete']))
 {
     $id= $_POST['id'];
-    $sql_delete = "DELETE FROM facilityPic WHERE id = '$id'";
+    $sql_delete = "DELETE FROM facilityPic WHERE id = $id";
     if(mysqli_query($conn, $sql_delete))
     {
         ?>
+		
             <script type="text/javascript">
                 alert(" Deleted Successful");
                 window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
@@ -20,9 +23,12 @@ if(isset($_POST['Delete']))
         echo '<script>alert("Failed")</script>';
     }
 }
-/*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
+*/
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
 		
-  $selectedPID = SanitizeString($_POST['id']);
+		//echo "<script>alert('SOHAI ');</script>";
+		/**/
+  $selectedPID = $_POST['id'];
   $sql = "DELETE FROM `facilityPic` WHERE  `id`=?";
   
   if($stmt = mysqli_prepare($conn, $sql)){
@@ -39,8 +45,9 @@ if(isset($_POST['Delete']))
   
       mysqli_stmt_close($stmt);
     }
+	
 }
-*/
+
   
 ?>
 
@@ -97,8 +104,8 @@ if(isset($_POST['Delete']))
           <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             
-            <form action = <?php $_SERVER["PHP_SELF"]?> method ="POST">
-              <input type = "hidden" name="id" value="del">
+            <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
+              <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">
               <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
             </form>
           </td>

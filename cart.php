@@ -1,14 +1,25 @@
 <?php
     require __DIR__ . '/header.php';
-    //include __DIR__.'../mysqli_connect.php'; 
+    include __DIR__.'../mysqli_connect.php'; 
 
+    $userID = "U000018";
+    $KL = 14;
+    $SB = 20;
 
-    $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_cover_picture AS P_pic 
+    $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
+            cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
+            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
             FROM `cart`
             JOIN `product`
-            ON product.product_id = cart.product_ID ";
+            ON product.product_id = cart.product_ID 
+            JOIN `shopprofile`
+            ON product.shop_id = shopprofile.shop_id
+            WHERE cart.user_ID = '$userID'
+            AND product.shop_id = '$KL'
+            AND cart.remove_Product = '0'
+            ORDER BY cart.create_at DESC";
 
-        $queryKL = mysqli_query($conn, $sql);
+    $queryKL = mysqli_query($conn, $sql);
 
         // while ($row = mysqli_fetch_array($query)) {
         //     //echo $row['cart_ID'], $row['user_ID'];
@@ -27,7 +38,8 @@
     </svg>  Back</a></div>
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
-        <table class="table">
+        
+        <table class="table" style="border: solid;">
             <thead>
             <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span>
                 <tr>
@@ -42,44 +54,139 @@
             <tbody>
                 <?php
                     $i=0;
+                    
                     while ($rowKL = mysqli_fetch_array($queryKL)) {
+
+                        $product_stock = 0;
+                        $product_price = 0;
+                        $stock_message = "";
+                        $cart_id = $rowKL['cart_id'];
+                        $product_id = $rowKL['PID'];
+                        $product_name = $rowKL['P_name'];
+                        $product_quantity = $rowKL['P_quantity'];
+                        $variation_message = "";
+                        $showNotif = false;
+
+                        //check product available
+                        if ($rowKL['P_status'] == 'A') {
+
+                            if ($rowKL['variation_id'] == "" ) {
+                                $product_price = $rowKL['P_price'];
+                                $product_stock = $rowKL['product_stock'];
+
+                                $variation_message = "<option selected>Not Variation</option>";
+                            }
+                            else if ($rowKL['variation_id'] != "") {
+                                
+                                $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
+                                while( $row = mysqli_fetch_assoc($query_get_variation_price))
+                                {
+                                    $product_price = $row['product_price'];
+                                    $product_stock = $row['product_stock'];
+
+                                    if ($row['product_stock'] == 0) {
+                                        $showNotif = true;
+                                        $product_stock = 0;
+                                        $product_price = 0;
+
+                                        $stock_message = "";
+                                        $stock_message = "OUT fOF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                                    }
+                                }
+
+                                $sql_get_variation = "SELECT * FROM `variation` WHERE `product_id` = '$product_id'";
+                                $query_get_variation = mysqli_query($conn, $sql_get_variation);
+                                while( $row = mysqli_fetch_assoc($query_get_variation))
+                                {
+
+                                    if ($row['variation_1_choice'] == "") {
+                                        $variation_message ="<option value='".$row['variation_id']."' disabled selected>Not Variation</option>";
+                                    }
+                                    else if ($row['variation_1_choice'] != "") {
+        
+                                        if ($row['variation_id'] == $rowKL['variation_id']) {
+                                            $variation_message = $variation_message . "<option value='".$row['variation_id']."' selected>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</option>";
+                                        }
+                                        else{
+                                            $variation_message = $variation_message . "<option value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</option>";
+                                        }
+                                                
+                                    }
+                                }
+
+                            }
+
+                            
+                            $stock_message = "RM <span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
+                        }
+                        else if ($rowKL['P_status'] != 'A') {
+                            $showNotif = true;
+                            $product_stock = 0;
+                            $product_price = 0;
+
+                            $stock_message = "OUT OF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                        }
+
                         echo "
-                        <tr>
-                            <td>
-                                <div class='product-item'>
-                                    <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                    <div class='product-info'>
-                                        <h4 class='product-title'><a href='#'>".$rowKL['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                            <tr>
+                                <td>
+                                    <div class='product-item'>
+                                        <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                        <div class='product-info'>
+                                            <label> Cart: ".$cart_id."</label><br>
+                                            <label>".$product_id."</label>
+                                            <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class='text-center'>
-                                <div class='variation-input'>
-                                    <select class='form-control-variation'>
-                                        <option>RED</option>
-                                        <option>YELLOW</option>
-                                        <option>GREEN</option>
-                                        <option>BLACK</option>
-                                        <option>WHITE</option> 
-                                    </select>
-                                </div>
-                            </td>
-                            <td class='text-center text-lg text-medium' class='price' id='upkl[$i]'>RM <span>".$rowKL['P_price']."</span> <input id='numberkl[$i]' type='hidden' value='".$rowKL['P_price']."' readonly></td>
-                            <td class='text-center'>
-                                <div class='count-input-kl'>
-                                    <span class = 'minus' id='minkl[$i]'>-</span>
-                                    <span class = 'num' id='numkl[$i]'>".$rowKL['P_quantity']."</span>
-                                    <span class = 'add' id='addkl[$i]'>+</span>
-                                </div>
-                            </td>
-                            <td class='text-center text-lg text-medium' >RM <span id='tpkl[$i]'>".$rowKL['P_price']."</span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$rowKL['P_price']."' readonly></td>
-                            <td class='text-center'><button class='removeItem_kl' type ='button'>X</button></td>
-                        </tr>";
+                                </td>
+                                <td class='text-center'>
+                                    <div class='variation-input'>
+                                        <select class='form-select' onchange='updateVariation(".$cart_id.")' id='updateVariation".$cart_id."'>";
+
+                                        echo  $variation_message;
+                                        //check product variation
+                                            // <option>RED</option>
+                                            // <option>YELLOW</option>
+                                            // <option>GREEN</option>
+                                            // <option>BLACK</option>
+                                            // <option>WHITE</option> 
+                         echo           "</select>
+                                    </div>
+                                </td>
+                                <td class='text-center text-lg text-medium' class='price' id='upkl[$i]'>RM <span>".$product_price."</span> <input id='numberkl[$i]' type='hidden' value='".$product_price."' readonly></td>
+                                <td class='text-center'>
+                                    <div class='count-input-kl'>
+                                        <input id='stockl[$i]' type='hidden' value='".$product_stock."' readonly>
+                                        <input id='cq[$i]' type='hidden' value='".$product_stock."' readonly>
+                                        <span class = 'minus' id='minkl[$i]'>-</span>
+                                        <span class = 'num' id='numkl[$i]'>".$product_quantity."</span> 
+                                        <span class = 'add' id='addkl[$i]'>+</span>
+                                    </div>
+                                </td>
+                                <td class='text-center text-lg text-medium' >";
+
+                        echo $stock_message; 
+                    
+                        if ($showNotif == true) {
+                            require __DIR__ . '/notifyModal.php';
+                        }
+                  
+                        echo "
+                                </td>
+                                <td class='text-center'>    
+                                    <form action='cart_manage.php' method='POST'>
+                                        <input type='hidden' id='cart_id[$i]' value='".$cart_id."' name='cartID' readonly>
+                                        <button class='removeItem_kl' name='removeItemBtn' type='submit'>X</button>
+                                    </form>
+                                </td>
+                            </tr>";
                         $i++;
                     }
                 ?>
             </tbody>
         </table>
+        <!-- <td class='text-center text-lg text-medium' >RM <span id='tpkl[$i]'>OUT OF STOCK</span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$rowKL['P_price']."' readonly></td> -->
             <!-- <div class="shopping-cart-footer">
                 <div class="column">
                     <form class="coupon-form" method="post"> -->
@@ -95,7 +202,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-            <div class="column text-lg" >Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
             </div>
             <div class="shopping-cart-footer" >
             <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
@@ -135,64 +242,116 @@
                     </td>
                     <td class="text-center text-lg text-medium">OUT OF STOCK
                     <?php
-                        // require __DIR__ . '/notifyModal.php'
+                        //require __DIR__ . '/notifyModal.php'
                     ?>
                     </td>
                     <td class="text-center"><button class="removeItem_pg" type ="button">X</button></td>
                 </tr>
             </tbody>
-        </table>
-        <div class="shopping-cart-footer" >
+        </table> -->
+        <!-- <div class="shopping-cart-footer" >
         <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_pg" >0</span></div>
         </div> -->
-        <table class="table">
+        <table class="table" style="border: solid;">
+            <span colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE SUBANG JAYA</strong></span>
             <tbody>
-                <tr> 
-                <th colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE SUBANG JAYA</strong></th> 
-                <!-- <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>  -->
-                </tr>
+                <!-- <tr> 
+                <td colspan="6"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE SUBANG JAYA</strong></td> 
+                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+                </tr> -->
                 <?php
-                   $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_cover_picture AS P_pic 
-                   FROM `cart`
-                   JOIN `product`
-                   ON product.product_id = cart.product_ID
-                   WHERE product.product_id = 'P000057'";
+                   $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, 
+                            cart.quantity AS P_quantity, product.product_variation AS P_variation, 
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status
+                            FROM `cart`
+                            JOIN `product`
+                            ON product.product_id = cart.product_ID 
+                            JOIN `shopprofile`
+                            ON product.shop_id = shopprofile.shop_id
+                            WHERE cart.user_ID = '$userID'
+                            AND cart.remove_Product = '0'
+                            ORDER BY cart.update_at DESC";
        
                 $querySJ = mysqli_query($conn, $sql);
                    $i=0;
                    while ($rowSJ = mysqli_fetch_array($querySJ)) {
-                       echo "
-                       <tr>
-                           <td>
-                               <div class='product-item'>
-                                   <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                   <div class='product-info'>
-                                       <h4 class='product-title'><a href='#'>".$rowSJ['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
-                                   </div>
-                               </div>
-                           </td>
-                           <td class='text-center'>
-                               <div class='variation-input'>
-                                   <select class='form-control-variation'>
-                                       <option>RED</option>
-                                       <option>YELLOW</option>
-                                       <option>GREEN</option>
-                                       <option>BLACK</option>
-                                       <option>WHITE</option> 
-                                   </select>
-                               </div>
-                           </td>
-                           <td class='text-center text-lg text-medium' class='price' id='upsj[$i]'>RM <span>".$rowSJ['P_price']."</span> <input id='numbersj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
-                           <td class='text-center'>
-                               <div class='count-input-sj'>
-                                   <span class = 'minus' id='minsj[$i]'>-</span>
-                                   <span class = 'num' id='numsj[$i]'>".$rowSJ['P_quantity']."</span>
-                                   <span class = 'add' id='addsj[$i]'>+</span>
-                               </div>
-                           </td>
-                           <td class='text-center text-lg text-medium' >RM <span id='tpsj[$i]'>".$rowSJ['P_price']."</span><input class='sub_sj' id='subsj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
-                           <td class='text-center'><button class='removeItem_sj' type ='button'>X</button></td>
-                       </tr>";
+                       if ($rowSJ['P_status'] == "A") {
+                        echo "
+                            <tr>
+                                <td>
+                                    <div class='product-item'>
+                                        <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                        <div class='product-info'>
+                                            <label>".$rowSJ['PID']."</label>
+                                            <h4 class='product-title'><a href='#'>".$rowSJ['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class='text-center'>
+                                    <div class='variation-input'>
+                                        <select class='form-control-variation'>
+                                            <option>RED</option>
+                                            <option>YELLOW</option>
+                                            <option>GREEN</option>
+                                            <option>BLACK</option>
+                                            <option>WHITE</option> 
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class='text-center text-lg text-medium' class='price' id='upsj[$i]'>RM <span>".$rowSJ['P_price']."</span> <input id='numbersj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
+                                <td class='text-center'>
+                                    <div class='count-input-sj'>
+                                        <span class = 'minus' id='minsj[$i]'>-</span>
+                                        <span class = 'num' id='numsj[$i]'>".$rowSJ['P_quantity']."</span>
+                                        <span class = 'add' id='addsj[$i]'>+</span>
+                                    </div>
+                                </td>
+                                <td class='text-center text-lg text-medium' >RM <span id='tpsj[$i]'>".$rowSJ['P_price']."</span><input class='sub_sj' id='subsj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
+                                <td class='text-center'><button class='removeItem_sj' type ='button'>X</button></td>
+                            </tr>";
+                        
+                       }
+                       else if ($rowSJ['P_status'] == "I") {
+                        $rowSJ['P_price'] = 0;
+                        echo "
+                        <tr>
+                            <td>
+                                <div class='product-item'>
+                                    <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                    <div class='product-info'>
+                                        <label>".$rowSJ['PID']."</label>
+                                        <h4 class='product-title'><a href='#'>".$rowSJ['P_name']."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class='text-center'>
+                                <div class='variation-input'>
+                                    <select class='form-control-variation'>
+                                        <option>RED</option>
+                                        <option>YELLOW</option>
+                                        <option>GREEN</option>
+                                        <option>BLACK</option>
+                                        <option>WHITE</option> 
+                                    </select>
+                                </div>
+                            </td>
+                            <td class='text-center text-lg text-medium' class='price' id='upsj[$i]'>RM <span>".$rowSJ['P_price']."</span> <input id='numbersj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly></td>
+                            <td class='text-center'>
+                                <div class='count-input-sj'>
+                                    <span class = 'minus' id='minsj[$i]' disabled>-</span>
+                                    <span class = 'num' id='numsj[$i]'>".$rowSJ['P_quantity']."</span>
+                                    <span class = 'add' id='addsj[$i]' disabled>+</span>
+                                </div>
+                            </td>
+                            <td class='text-center text-lg text-medium' >OUT OF STOCK <span id='tpsj[$i]' hidden>".$rowSJ['P_price']."</span><input class='sub_sj' id='subsj[$i]' type='hidden' value='".$rowSJ['P_price']."' readonly>";?>
+                            <?php
+                                require __DIR__ . '/notifyModal.php'
+                            ?>
+                            <?php echo "
+                            </td>
+                            <td class='text-center'><button class='removeItem_sj' type ='button'>X</button></td>
+                        </tr>";
+                       }
                        $i++;
                    }
                 ?>
@@ -663,4 +822,36 @@ select.form-control {
 
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     }  
+
+    function save_to_db(cart_id, quantity) {
+       
+        $.ajax({
+            method: "POST",
+            url: "cart_manage.php",
+            data: { cart_id: cart_id, quantity: quantity }
+        })
+        .done(function( msg ) {
+                window.location.href = window.location.origin + 'cart.php';
+         });
+
+    }
+
+    //update product variation
+    function updateVariation(cart_id)
+    {
+        var variation_id = parseInt($('#updateVariation'+cart_id).val());
+        console.log(cart_id);
+        console.log(parseInt(variation_id));
+
+        $.ajax({
+            method: "POST",
+            url: "cart_manage.php",
+            data: { cart_id2: cart_id, variation_id: variation_id }
+        })
+        .done(function( msg ) {
+                window.location.href = window.location.origin + 'cart.php';
+                //alert(msg);
+         });
+
+    }
 </script>
