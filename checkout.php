@@ -269,11 +269,11 @@ $json = json_decode($return);
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 40px;"><label class="form-label" style="margin-top: 10px;">Voucher</label>
+            <!-- <div style="margin-top: 40px;"><label class="form-label" style="margin-top: 10px;">Voucher</label>
                 <div class="row">
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
-            </div>
+            </div> -->
             <div class="shipping-option" >
                 <div class="row">
                     <div class="col"><label class="col-form-label" style="margin-top: 10px;">Shipping Option</label></div>
@@ -324,8 +324,8 @@ $json = json_decode($return);
                         <li class="list-group-item"><span>Order Total</span></li>
                         <li class="list-group-item"><span>Shipping Total</span></li>
                         <li class="list-group-item"><span>Total Payment</span></li>
-                        <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;">Place Order</button></div>
                     </ul>
+                    <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;">Place Order</button></div>
                 </div>
             </div>
         </div>
