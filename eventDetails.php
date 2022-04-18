@@ -28,6 +28,8 @@ require __DIR__ . '/header.php'
                     $eventDate = $row['event_date'] . " - " . $row['eventEnd_date'];
                 }
                 $eventID = $row['event_id'];
+                $desc = html_entity_decode($row['description']);
+                $tnc = html_entity_decode($row['event_tnc']);
 
                 //check price
                 $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eID";
@@ -104,11 +106,11 @@ require __DIR__ . '/header.php'
                                     </div>
                                     <div style=\"margin-top: 16px;\">
                                         <h3>Event Description</h3>
-                                        <div id=\"eventDesc-1\"></div>
+                                        <div id=\"eventDesc-1\">$desc</div>
                                     </div>
                                     <div style=\"margin-top: 16px;\">
                                         <h3>Terms &amp; Conditions</h3>
-                                        <div id=\"eventTnc\"></div>
+                                        <div id=\"eventTnc\">$tnc</div>
                                     </div>
                                     <div class=\"col-12\" style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button></div>
                                 </div>
