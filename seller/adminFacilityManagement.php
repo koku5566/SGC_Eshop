@@ -10,12 +10,8 @@ if(isset($_POST['Delete']))
     $sql_delete = "DELETE FROM facilityPic WHERE id = $id";
     if(mysqli_query($conn, $sql_delete))
     {
-        ?>
-            <script type="text/javascript">
-                alert(" Deleted Successful");
-                //window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
-            </script>
-        <?php
+		
+        echo "<script>alert('Delete Successfully')</script>";
     }
     else{
         echo '<script>alert("Failed")</script>';
