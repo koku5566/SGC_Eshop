@@ -1,11 +1,20 @@
 <?php
     require __DIR__ . '/header.php';
-	 if($_SESSION['login'] == false)
+	  if($_SESSION['login'] == false)
 	 {
 	 	echo "<script>alert('Login to checkout');
 	 		window.location.href='login.php';</script>";
-     }
+     } 
     
+//Username and address
+$usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+            FROM `userAddress`
+            JOIN `user`ON userAddress.user-id = user.user_id
+            WHERE userAddress.user_id= '$_SESSION[user_id]';";
+            
+            $userresult = $conn->query($usersql);  
+            $userrow = mysqli_fetch_array($userresult);      
+
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
 $customerUID = 3; //TO GET * from session
@@ -212,7 +221,7 @@ $json = json_decode($return);
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
             <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 15px;">Alex yeoh</label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;">018-211344</label></div>
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: var(--bs-pink);width: 122.95px;">Change</button></div>
             </div>
