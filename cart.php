@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
-    include __DIR__.'../mysqli_connect.php'; 
+    //include __DIR__.'../mysqli_connect.php'; 
 
     $userID = "U000018";
     $KL = 14;
