@@ -7,15 +7,11 @@
 if(isset($_POST['Delete']))
 {
     $id= $_POST['id'];
-    $sql_delete = "DELETE FROM facilityPic WHERE id = '$id'";
+    $sql_delete = "DELETE FROM facilityPic WHERE id = $id";
     if(mysqli_query($conn, $sql_delete))
     {
-        ?>
-            <script type="text/javascript">
-                alert(" Deleted Successful");
-                /*window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";*/
-            </script>
-        <?php
+		
+        echo "<script>alert('Delete Successfully')</script>";
     }
     else{
         echo '<script>alert("Failed")</script>';
@@ -100,7 +96,7 @@ if(isset($_POST['Delete']))
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             
             <form action = <?php $_SERVER["PHP_SELF"]?> method ="POST">
-              <input type = "hidden" name="id" value="del">
+              <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">
               <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
             </form>
           </td>
