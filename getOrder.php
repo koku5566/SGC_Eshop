@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 
 ?>
 <?php
@@ -13,7 +13,7 @@ product.product_variation,
 orderDetails.quantity,
 orderDetails.price,
 shopProfile.shop_name
-
+GROUP_BY myOrder.order_id
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
@@ -108,7 +108,7 @@ $orders = $stmt_2->get_result();
                 <!-- /.container-fluid -->
 
 <?php
-    require __DIR__ . '/footer.php'
+    require __DIR__ . '/footer.php';
 ?>
 
 <style>
