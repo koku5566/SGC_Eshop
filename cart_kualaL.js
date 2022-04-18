@@ -30,6 +30,7 @@ function calsubtotal()
         kltotal = kltotal + Number(document.getElementById('subkl['+index+']').value);
         //kltotal = kltotal + parseInt(document.getElementById('tpkl['+index+']').innerText);
     }
+
     
     document.getElementById('subtotal_kl').innerHTML = (Math.round((kltotal + Number.EPSILON) * 100) / 100).toFixed(2);
 }
@@ -52,6 +53,7 @@ function caldistotal()
 
 // Use array to find the row index
 const arr = new Array();
+
 function useArray()
 {
     kltotal = 0;
@@ -88,22 +90,43 @@ function removeint(x)
         
     }
 
+    if (arr.length == 0) {
+        document.getElementById('discount').remove();
+    }
+
     console.log("after remove arr length: " + arr.length);
     for (let index = 0; index < arr.length; index++) {
         kltotal = kltotal + Number(document.getElementById('subkl['+arr[index]+']').value);
         kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
         //kltotal = kltotal + parseInt(document.getElementById('tpkl['+arr[index]+']').innerText);
     }
-    document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
+
+    //var positiveValue = kldiscount
+    if (kldiscount >= 0) {
+        var positiveValue = kldiscount;
+    }
+    else if( kldiscount < 0)
+    {
+        var positiveValue = 0;
+    }
+
+    document.getElementById('subtotal_kl').innerHTML = (Math.round((positiveValue + Number.EPSILON) * 100) / 100).toFixed(2);
     //useArray();
 } 
 //  for loop increment and decrement
 useArray();
+
+
+
 var tempe = 0;
 for (var i = 0; i < count_input.length; i++) 
 {
      
     console.log('loop: ' + i);
+
+    //cart id
+    const cart_id = parseInt(document.getElementById('cart_id['+i+']').value);
+    console.log("CARTID: " + cart_id);
 
     //item counting
     var additembtn_kl = document.getElementById('addkl['+i+']');
@@ -112,6 +135,9 @@ for (var i = 0; i < count_input.length; i++)
     
     // get each produt quanity 
     const numValuekl = parseInt(document.getElementById('numkl['+i+']').innerText);
+
+    // product max available stock
+    const maxProduct = parseInt(document.getElementById('stockl['+i+']').value)
     
     //catch unit price id
     var unitprice_kl = document.getElementById('numberkl['+i+']').value;
@@ -128,6 +154,7 @@ for (var i = 0; i < count_input.length; i++)
     textpricef_kl = textprice_kl;
 
     let n = numValuekl;
+    let max = maxProduct;
     let uniprice_kl = unitpricef_kl;
     let toprice_kl = n * uniprice_kl;
 
@@ -135,26 +162,31 @@ for (var i = 0; i < count_input.length; i++)
         additembtnt_kl.addEventListener("click", ()=>{
             var subtotal = 0;
 
-            n++;
-            countitembtnt_kl.innerHTML = n.toString();
+            if(n < max)
+            {
+                n++;
+                countitembtnt_kl.innerHTML = n.toString();
+                
+                kltotal = kltotal - toprice_kl;
+
+                //display price each item
+                toprice_kl = n * unitpricef_kl;
+                //toprice_kl = n * unitpricef_kl;
+                //subtotal = subtotal + toprice;
+                totalpricef_kl.value = (Math.round((toprice_kl + Number.EPSILON) * 100) / 100).toFixed(2);
+                textpricef_kl.innerHTML = (Math.round((toprice_kl + Number.EPSILON) * 100) / 100).toFixed(2);
+                
+                //cal final sub total
+                kltotal = kltotal + toprice_kl;
+
+                //cal final total with discount
+                kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
+
+                document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
+                calling();
+                save_to_db(cart_id, n)
+            }
             
-            kltotal = kltotal - toprice_kl;
-
-            //display price each item
-            toprice_kl = n * unitpricef_kl;
-            //toprice_kl = n * unitpricef_kl;
-            //subtotal = subtotal + toprice;
-            totalpricef_kl.value = (Math.round((toprice_kl + Number.EPSILON) * 100) / 100).toFixed(2);
-            textpricef_kl.innerHTML = (Math.round((toprice_kl + Number.EPSILON) * 100) / 100).toFixed(2);
-            
-            //cal final sub total
-            kltotal = kltotal + toprice_kl;
-
-            //cal final total with discount
-            kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
-
-            document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
-            calling();
         })
 
         // Decrement count
@@ -183,22 +215,26 @@ for (var i = 0; i < count_input.length; i++)
                 
                 document.getElementById('subtotal_kl').innerText = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
                 calling();
+                save_to_db(cart_id, n)
             }
             
         })
     
     // Remove item
-    var button = removeCartItemButtons[i];
-    const temp = i; 
-    button.addEventListener('click', function(event)
-    {   
-        var buttonClicked = event.target
-        buttonClicked.parentElement.parentElement.remove()
-        //delete amount from row
-        console.log("remove row: " + temp);
-        removeint(temp);
-        calling();
-    }) 
+    // var button = removeCartItemButtons[i];
+    // const temp = i; 
+    // button.addEventListener('click', function(event)
+    // {   
+        
+    //     var buttonClicked = event.target
+    //     buttonClicked.parentElement.parentElement.remove()
+    //     //delete amount from row
+    //     document.getElementById('klform['+i+']').submit();
+    //     console.log("remove row: " + temp);
+    //     removeint(temp);
+    //     calling();
+        
+    // }) 
 }
 
 function calling()
