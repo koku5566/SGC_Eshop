@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <?php
     require __DIR__ . '/header.php';
 	  if($_SESSION['login'] == false)
@@ -165,6 +164,7 @@ $json = json_decode($return);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
 <!-- Shipping Courier Option Modal -->
 <div class="modal fade" id="courieroptionModal" tabindex="-1" role="dialog" aria-labelledby="courieroptionModalLabel" aria-hidden="true">
