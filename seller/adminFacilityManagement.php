@@ -7,7 +7,7 @@
 if(isset($_POST['Delete']))
 {
     $id= $_POST['id'];
-    $sql_delete = "DELETE FROM facilityPic WHERE id = '$id'";
+    $sql_delete = "DELETE FROM facilityPic WHERE id = $id";
     if(mysqli_query($conn, $sql_delete))
     {
         ?>
