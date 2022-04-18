@@ -831,7 +831,7 @@ select.form-control {
             data: { cart_id: cart_id, quantity: quantity }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
          });
 
     }
@@ -849,7 +849,7 @@ select.form-control {
             data: { cart_id2: cart_id, variation_id: variation_id }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
                 //alert(msg);
          });
 

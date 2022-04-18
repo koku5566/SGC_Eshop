@@ -9,7 +9,7 @@
 
         // remember change the path from '/test/cart.php' to '/cart.php'
         echo "<script type='text/javascript'>
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
             </script>";
     } 
     unset($_POST['removeItemBtn']);
