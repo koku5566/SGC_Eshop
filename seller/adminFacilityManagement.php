@@ -20,6 +20,27 @@ if(isset($_POST['Delete']))
         echo '<script>alert("Failed")</script>';
     }
 }
+/*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
+		
+  $selectedPID = SanitizeString($_POST['id']);
+  $sql = "DELETE FROM `facilityPic` WHERE  `id`=?";
+  
+  if($stmt = mysqli_prepare($conn, $sql)){
+      mysqli_stmt_bind_param($stmt, 'i',$selectedPID); 	//s=string , d=decimal value i=ID
+  
+      mysqli_stmt_execute($stmt);
+    
+      if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
+      {
+        echo "<script>alert('Delete successfully');</script>";
+      }else{
+        echo "<script>alert('Fail to Delete');</script>";
+      }
+  
+      mysqli_stmt_close($stmt);
+    }
+}
+*/
   
 ?>
 
@@ -75,9 +96,10 @@ if(isset($_POST['Delete']))
           </td>
           <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
-            <form action ="adminFacilityManagement.php" method="post">
-              <input type = "hidden" name="id" value="<?php $row['id']?>">
-              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="Delete" value="Delete">
+            
+            <form action = <?php $_SERVER["PHP_SELF"]?> method ="POST">
+              <input type = "hidden" name="id" value="del">
+              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
             </form>
           </td>
         </tr>
