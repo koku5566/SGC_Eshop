@@ -175,7 +175,7 @@
                         echo "
                                 </td>
                                 <td class='text-center'>    
-                                    <form action='cart_manage.php' method='POST'>
+                                    <form action='/cart_manage.php' method='POST'>
                                         <input type='hidden' id='cart_id[$i]' value='".$cart_id."' name='cartID' readonly>
                                         <button class='removeItem_kl' name='removeItemBtn' type='submit'>X</button>
                                     </form>
@@ -827,11 +827,11 @@ select.form-control {
        
         $.ajax({
             method: "POST",
-            url: "cart_manage.php",
+            url: "/cart_manage.php",
             data: { cart_id: cart_id, quantity: quantity }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
          });
 
     }
@@ -845,11 +845,11 @@ select.form-control {
 
         $.ajax({
             method: "POST",
-            url: "cart_manage.php",
+            url: "/cart_manage.php",
             data: { cart_id2: cart_id, variation_id: variation_id }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
                 //alert(msg);
          });
 
