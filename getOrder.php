@@ -11,7 +11,7 @@ product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.amount,
+orderDetails.price,
 shopProfile.shop_name
 
 FROM
@@ -19,6 +19,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+GROUP BY myOrder.order_id
 
 ";
 $stmt_2 = $conn->prepare($sql_2);
