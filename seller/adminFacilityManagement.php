@@ -24,7 +24,7 @@ if(isset($_POST['Delete']))
     }
 }
 */
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'delete' ){	
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'Delete' ){	
 		
 		//echo "<script>alert('SOHAI ');</script>";
 		/**/
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
             
             <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
               <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">
-              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
+              <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="Delete">
             </form>
           </td>
         </tr>
