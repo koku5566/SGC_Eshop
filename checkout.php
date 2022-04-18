@@ -2,7 +2,8 @@
     require __DIR__ . '/header.php';
 	 if($_SESSION['login'] == false)
 	 {
-	 	echo "window.location.href='login.php';</script>";
+	 	echo "<script>alert('Login to checkout');
+	 		window.location.href='login.php';</script>";
      }
     
 //get seller id -> retrieve seller shipping option from db
