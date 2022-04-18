@@ -25,10 +25,7 @@ $stmt_2 = $conn->prepare($sql_2);
 $stmt_2->execute();
 $orders = $stmt_2->get_result();
 
-
 ?>
-
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
                     <!---GET ORDER----->
