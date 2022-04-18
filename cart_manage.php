@@ -1,5 +1,5 @@
 <?php
-    //require __DIR__ . '/header.php';
+    require __DIR__ . '/header.php';
     include __DIR__.'../mysqli_connect.php';
 
     //remove product from cart table
