@@ -313,7 +313,7 @@ $json = json_decode($return);
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </div>
                 <!-- /.container-fluid -->
