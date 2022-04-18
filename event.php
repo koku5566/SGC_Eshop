@@ -48,18 +48,16 @@ require __DIR__ . '/header.php'
                 }
 
                 echo ("
-                    <a href=\"eventDetails.php?eventID=" . $row['event_id'] . "\">
                     <div class=\"col-sm-3\" style=\"margin-top: 20px;margin-bottom: 20px;\">
                         <div class=\"card\">
                             <div class=\"card-body\"><img src=\"$picLocation\" style=\"width:100%;\" />
                                 <h3 class=\"card-title\" style=\"margin-top: 10px;\">" . $row['event_name'] . "</h3>
                                 <h1 style=\"color: rgb(163, 31, 55);font-size: 20px;\">" . $row['location'] . "</h1>
                                 <h5 style=\"font-size: 20px;margin-bottom: 6px;margin-top: 19px;\">Date: $eventDate</h5>
-                                <h4 style=\"font-size: 20px;\">Organizer: " . $row['name'] . "</h4><button class=\"btn btn-primary float-end\" type=\"button\" style=\"margin-top: 5px;background: rgb(163, 31, 55);padding-right: 25px;padding-left: 25px;\">$buttonPrice</button>
+                                <h4 style=\"font-size: 20px;\">Organizer: " . $row['name'] . "</h4><a href=\"eventDetails.php?eventID=" . $row['event_id'] . "\"><button class=\"btn btn-primary float-end\" type=\"button\" style=\"margin-top: 5px;background: rgb(163, 31, 55);padding-right: 25px;padding-left: 25px;\">$buttonPrice</button></a>
                             </div>
                         </div>
                     </div>
-                    </a>
                     ");
             }
         }
