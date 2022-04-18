@@ -29,6 +29,18 @@ $("#ticketTypeList_tbl").on('click','.selectBtn',function(){
 });
 
 var nextBtn = document.getElementById("nextForm");
-nextBtn.addEventListener('click', function(){
-    window.location.href='./createForm.php';
+
+if(nextBtn!=null)
+{
+    nextBtn.addEventListener('click', function(){
+        window.location.href='./createForm.php';
+    });
+}
+
+var nextUpdateBtn = document.getElementById("nextUpdateForm");
+if(nextUpdateBtn!=null)
+{
+    nextUpdateBtn.addEventListener('click', function(){
+    window.location.href='./updateForm.php';
 });
+}

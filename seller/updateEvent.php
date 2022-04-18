@@ -20,8 +20,9 @@
         $decs = "";
         $tnc = "";
         $pic = "";
+        $eID = mysqli_real_escape_string($conn, SanitizeString($_POST["hiddenID"]));
         echo 'hello';
-        $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = ".$_SESSION['eventUpdate']."";
+        $sqlget = "SELECT * FROM `event` WHERE `event`.`event_id` = $eID";
         $resultget = mysqli_query($conn, $sqlget);
             if (mysqli_num_rows($resultget) > 0) {
                 while($row1 = mysqli_fetch_assoc($resultget)) {
@@ -29,8 +30,8 @@
                 $decs = html_entity_decode($row1['description']);
                 $tnc = html_entity_decode($row1['event_tnc']);
                 $pic = $row1["cover_image"];
-                }
-            }
+                
+            
 
                 $coverIMG = array_filter($_FILES['coverImage']['name']);
                 $targetDir = dirname(__DIR__, 1)."/img/event/"; 
@@ -67,6 +68,7 @@
                 $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
                 $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
                 $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
+                
                 $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
                 //echo $eTitle, $eDateFrom, $eDateTo,  $eTimeFrom ,  $eTimeTo,$eDes, $eCat , $eLoc, $eTnc ;
                 //check for changes
@@ -83,14 +85,19 @@
                     $categoryPic = $pic;
                 }
 
-
-                $sql = "UPDATE `event` SET `cover_image`=?,`event_name`=?,`event_date`=?,`eventEnd_date`=?,`event_time`=?,`eventEnd_time`=?,`description`=?,`category`=?,`location`=?,`event_tnc`=? WHERE `event_id` = ?";
+                if($eTitle == $row1['event_name'] && $eDateFrom == $row1['event_date'] && $eDateTo == $row1['eventEnd_date'] && $eTimeFrom == $row1['event_time'] && $eTimeTo == $row1['eventEnd_time'] && $eDes == $row1['description'] && $eCat == $row1['category'] && $eLoc == $row1['location'] && $eTnc == $row1['event_tnc'] && $categoryPic == $row1['cover_image']){
+                    echo "<script>alert('Nothing Changed');window.location.href='./UpdateTicketType.php';</script>";
+                    $_SESSION['updateID'] = $eID;
+                }
+                else
+                {
+                    $sql = "UPDATE `event` SET `cover_image`=?,`event_name`=?,`event_date`=?,`eventEnd_date`=?,`event_time`=?,`eventEnd_time`=?,`description`=?,`category`=?,`location`=?,`event_tnc`=? WHERE `event_id` = ?";
                     if ($stmt = mysqli_prepare($conn,$sql)){
                         if(false===$stmt){
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                             echo '1';
                         }
-                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$updateEventID);
+                        $bp = mysqli_stmt_bind_param($stmt,"ssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$eID);
                         if(false===$bp){
                             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                             echo '2';
@@ -101,7 +108,8 @@
                             echo '3';
                         }
                             if(mysqli_stmt_affected_rows($stmt) == 1){
-                                echo "<script>alert('Update Event Successful');window.location.href='./eventSellerDashboard.php';</script>";
+                                echo "<script>alert('Update Event Successful');window.location.href='./UpdateTicketType.php';</script>";
+                                $_SESSION['updateID'] = $eID;
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt);
@@ -109,8 +117,10 @@
                             }		
                             mysqli_stmt_close($stmt);
                     }
-                    echo '0';
-
+                        echo '0';
+                }
+            }
+        }
             
 
             
@@ -140,6 +150,7 @@
                         $picLocation = "/img/event/".$row["cover_image"];
                         $decs = html_entity_decode($row['description']);
                         $tnc = html_entity_decode($row['event_tnc']);
+                        $eventName = $row['event_name'];
                         
                         echo("
                         <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
@@ -150,7 +161,7 @@
                     
                     <section style=\"padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;\">
                         <h2>Event Details</h2>
-                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=" .$row['event_name']. "></h3>
+                        <h3 style=\"margin-top: 30px;\">Event Title<input class=\"form-control\" type=\"text\" required placeholder=\"Event Title\" style=\"margin-top: 10px;\" name=\"eventTitle\" value=\"$eventName\"></h3>
                         <div>
                             <div class=\"row\">
                                 <div class=\"col-sm-2\">
@@ -197,7 +208,9 @@
                                 <div class=\"col-sm-2\">
                                     <div class=\"form-check\" style=\"width: 100%;margin-top: 44px;\"><input class=\"form-check-input\" type=\"checkbox\" id=\"onlineCheck\"><label class=\"form-check-label\" for=\"oneDayEvent_check-1\"><strong>Online Event</strong></label></div>
                                 </div>
-                            </div><select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\"value=".$row['location'].">
+                            </div>
+                            <input type=\"hidden\" value=".$row['location']." id=\"selectChecker\">
+                            <select class=\"form-select\" name=\"eLocation\" id=\"optionLocation\">
                                 <optgroup label=\"Northern Region\">
                                     <option value=\"Perlis\">Perlis</option>
                                     <option value=\"Kedah\">Kedah</option>
@@ -217,7 +230,7 @@
                                 <optgroup label=\"Southern Region\">
                                     <option value=\"Negeri Sembilan\">Negeri Sembilan</option>
                                     <option value=\"Melaka\">Melaka</option>
-                                    <option value=\"Johor\" selected=\"\">Johor</option>
+                                    <option value=\"Johor\">Johor</option>
                                 </optgroup>
                                 <optgroup label=\"East Malaysia\">
                                     <option value=\"Sabah\">Sabah</option>
@@ -240,11 +253,12 @@
                             <h2>Terms and Conditions (If any changes)</h2>
                             <textarea class=\"form-control\" id=\"eTncEditor\" placeholder=\"Edit your TnC here...\" name=\"eTnC\"></textarea>
                         </div>
+                        <input type=\"hidden\" value=".$_SESSION['eventUpdate']." name=\"hiddenID\">
                     </section>
                     
                     <div style=\"margin-top: 61px;text-align: center;margin-bottom: 61px;\">
                         <div class=\"btn-group\" role=\"group\"><button class=\"btn btn-secondary\" type=\"button\" style=\"margin-left: 5px;margin-right: 5px;\">Back</button>
-                        <button class=\"btn btn-outline-primary\" type=\"submit\" name=\"eRegister\" style=\"margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);\">Submit</button></div>
+                        <button class=\"btn btn-outline-primary\" type=\"submit\" name=\"eRegister\" style=\"margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);\">Next</button></div>
                     </div>
                         ");
                     }
@@ -269,6 +283,14 @@
         selector: '#eDesceditor',
         toolbar: 'undo redo | styles | bold italic'
         });
+
+        //-----------------auto select----------
+        var locationOption = document.getElementById("optionLocation");
+        var selectChecker = document.getElementById("selectChecker");
+
+        $(document).ready ( function(){
+            locationOption.value = selectChecker.value;
+         });
     </script>
 
 <?php
