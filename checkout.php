@@ -248,6 +248,7 @@ $json = json_decode($return);
                             <tbody>
                                 <tr></tr>
                                 <tr>
+                                    <td></td>
                                     <td>Product 1</td>
                                     <td>Black</td>
                                     <td>RM20</td>
@@ -255,6 +256,7 @@ $json = json_decode($return);
                                     <td>RM40</td>
                                 </tr>
                                 <tr>
+                                    <td></td>
                                     <td>Product 2</td>
                                     <td>-</td>
                                     <td>RM50</td>
