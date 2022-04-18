@@ -12,8 +12,8 @@ $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddr
             JOIN `user`ON userAddress.user-id = user.user_id
             WHERE userAddress.user_id= '$_SESSION[user_id]';";
             
-            $userresult = $conn->query($usersql);  
-            $userrow = mysqli_fetch_array($userresult);      
+            $userresult = mysqli_query($conn, $usersql);  
+            $userrow = mysqli_fetch_assoc($userresult);      
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
