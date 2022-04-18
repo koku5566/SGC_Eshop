@@ -7,13 +7,13 @@
      } 
     
 //Username and address
-$usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+/* $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
             FROM `userAddress`
             JOIN `user`ON userAddress.user-id = user.user_id
             WHERE userAddress.user_id= '$_SESSION[user_id]';";
             
             $userresult = mysqli_query($conn, $usersql);  
-            $userrow = mysqli_fetch_assoc($userresult);      
+            $userrow = mysqli_fetch_assoc($userresult);  */     
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
