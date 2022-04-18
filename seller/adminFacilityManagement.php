@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
           <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             
-            <form action = <?php $_SERVER["PHP_SELF"]?> method ="POST">
+            <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
               <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">
               <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
             </form>
