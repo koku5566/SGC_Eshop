@@ -131,7 +131,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                     <input type="number"min="0" value="0" class="form-control" name="priceperhour" required>
+                     <input type="number"min="0" value="0" class="form-control" name="priceperhour" placeholder = "(RM)" required>
                   </div>
                </div>
             </div>
