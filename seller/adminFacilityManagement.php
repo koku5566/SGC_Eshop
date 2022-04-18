@@ -96,10 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
           <td>
             <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
             
-            <form action = '". $_SERVER['PHP_SELF']."'method ='POST'>" .
-              "<input type = "hidden" name="id" value="del">".
+            <form action = " $_SERVER['PHP_SELF']."method ='POST'>"
+              "<input type = "hidden" name="id" value="del">"
               "<input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="delete">
-            </form>".
+            </form>""
           </td>
         </tr>
         <?php endforeach ?> 
