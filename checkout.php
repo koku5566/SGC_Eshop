@@ -226,7 +226,7 @@ $json = json_decode($return);
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: var(--bs-pink);width: 122.95px;">Change</button></div>
             </div>
             <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 14px;">B-11-2A, Platino, Gelugor, 11700, Pulau Pinang</label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
             </div>
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
