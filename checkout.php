@@ -223,7 +223,7 @@ $json = json_decode($return);
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
-                <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: var(--bs-pink);width: 122.95px;">Change</button></div>
+                <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;">Change</button></div>
             </div>
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
@@ -270,7 +270,7 @@ $json = json_decode($return);
             </div>
             <div style="margin-top: 40px;"><label class="form-label" style="margin-top: 10px;">Voucher</label>
                 <div class="row">
-                    <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: var(--bs-pink);width: 122.95px;margin-left: 11px;">Apply</button></div>
+                    <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
             </div>
             <div class="shipping-option" >
