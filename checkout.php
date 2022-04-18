@@ -329,7 +329,7 @@ $json = json_decode($return);
             </div>
             <br>
             <div class = 'row'>
-            <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
+            <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
             </form>
             </div>
         </div>
