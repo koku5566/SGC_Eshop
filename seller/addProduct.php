@@ -251,7 +251,7 @@
                                                             </div>
                                                             <div class="image-tools-add">
                                                                 <label class="custom-file-upload">
-                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple required/>
+                                                                    <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
                                                                     <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                                                 </label>
                                                             </div>
@@ -849,27 +849,34 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.warning').length == 0)
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
-            if(document.getElementById("productType").value == "0")
+            if(document.querySelectorAll('.warning').length == 0)
             {
-                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                if(document.getElementById("productType").value == "0")
                 {
+                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    {
+                        document.getElementById("AddProduct").click();
+                    }
+                    else
+                    {
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").focus();
+                    }
+                }
+                else{
                     document.getElementById("AddProduct").click();
                 }
-                else
-                {
-                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                    document.getElementById("checkbox-err-msg").focus();
-                }
             }
-            else{
-                document.getElementById("AddProduct").click();
+            else
+            {
+                alert("Please Enter Distinct Product Variation and Choices");
             }
         }
         else
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            alert("Please Select a Cover Picture");
         }
     }
 
