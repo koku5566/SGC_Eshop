@@ -52,7 +52,6 @@
 					<th class="text-center">User ID</th>
 					<th class="text-center">Username</th>
 					<th class="text-center">E-Mail</th>
-					<th class="text-center">Password</th>
 					<th class="text-center">Name</th>
 					<th class="text-center">Contact</th>
 					<th class="text-center">Registration Date</th>
@@ -68,10 +67,9 @@
 						while($row = mysqli_fetch_array($res_data)){
 							echo("
 								<tr>
-									<td class='text-center text-lg text-medium'>".$row["user_id"]."</td>
+									<td class='text-center text-lg text-medium'>".$row["userID"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["username"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["email"]."</td>
-									<td class='text-center text-lg text-medium'>".$row["password"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["name"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["contact"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["registration_date"]."</td>
@@ -106,7 +104,7 @@ if(isset($_SESSION['DeleteUser']))
 <script>
     $(document).ready(function() {
         $('#dataTable').dataTable({
-        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        "lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]]
         });
     });
 </script>
