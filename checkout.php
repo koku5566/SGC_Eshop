@@ -227,7 +227,7 @@ $json = json_decode($return);
         </div>
         <div class="modal-body">
         <?php
-	$UID = $_SESSION["uid"];
+/* 	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
@@ -247,10 +247,8 @@ $json = json_decode($return);
                 </label>
 			</div>
 			");
-	}
+	} */
 ?>
-            <input class="form-check-input" type="radio" name="address-option" id="address-option" >
-            <label class="form-check-label" for="address-option">Standard Delivery</label>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

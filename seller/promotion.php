@@ -1,8 +1,8 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $_SESSION['role'] = "SELLER";
-    $_SESSION["userId"] = "S000025";
+    //$_SESSION['role'] = "SELLER";
+    //$_SESSION["userId"] = "S000025";
 
     //$_SESSION['role'] = "ADMIN";
     //$_SESSION["userId"] = "A000001";
