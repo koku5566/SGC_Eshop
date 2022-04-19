@@ -6,7 +6,8 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
-require __DIR__. '/config.php';
+require __DIR__. '/header.php';
+require __DIR__. '/paypalConfig.php';
 $conn = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
 $ticket = $_SESSION['ticketSelected'];
