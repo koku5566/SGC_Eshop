@@ -77,6 +77,7 @@
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
 
+        echo(var_dump($_FILES['img']));
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
             if($key < 9)
@@ -166,7 +167,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
