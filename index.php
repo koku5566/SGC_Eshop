@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    if($_SESSION['login'] == true && $_SESSION['role'] != "USER")
+    if($_SESSION['login'] == true && $_SESSION['role'] == "SELLER")
 	{
 		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;

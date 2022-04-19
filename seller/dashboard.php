@@ -2,6 +2,17 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+    if($_SESSION['login'] == true && $_SESSION['role'] == "USER")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+    }
+    else
+	{
+        ?><script>alert('Login to access');
+        window.location = '<?php echo("$domain/seller/selerLogin.php");?>'</script><?php
+    }
+?>
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
 
