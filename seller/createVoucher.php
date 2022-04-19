@@ -177,67 +177,35 @@
 
       $result = mysqli_query($conn,$sqlv);
 
+      if(mysqli_query($conn, $sqlv)){
 
-      if($result)
-      {
-          if($status == 2)
-          {
-              echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
-              ?>
+       $product = $_POST['productlist'];
+       $v = mysqli_insert_id($conn);//specific table
+
+       for($i = 0; $i < count($product); $i++){
+
+          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+                    VALUES ('".$product[$i]."', '$v');"; //get prod first array
+
+            if($status == 2)
+            {
+               echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
+               ?>
                   <script type="text/javascript">
-                      window.location.href = window.location.origin + "/seller/createVoucher.php";
+                        window.location.href = window.location.origin + "/seller/createVoucher.php";
                   </script>
-              <?php
-          }
-          else if ($status == 0)
-          {
-              echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
-          }
+               <?php
+            }
+            else if ($status == 0)
+            {
+               echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
+            }
+            else
+            {
+            echo '<script>alert("Failed")</script>';
+            }
+         }
       }
-      else
-      {
-          echo '<script>alert("Failed")</script>';
-      }
-
-      // if(mysqli_query($conn, $sqlv)){
-
-      // $product = $_POST['productlist'];
-      // $v = mysqli_insert_id($conn);//specific table
-
-      // for($i = 0; $i < count($product); $i++){
-
-      //    $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
-      //             VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-      //    if(mysqli_query($conn, $sqlpv)){
-      //       header("Location: /seller/createVoucher.php");
-      //       exit(0);
-      //    }
-      //    else{
-      //       echo 'add product failed';
-      //       echo $product;
-      //    }
-      // }
-      // }
-      // else{
-      //    echo 'add voucher failed';
-      //    echo $voucherCode;
-      // }
-
-       /* if($query_run)
-       {
-          $_SESSION['status'] = "Multiple Data Inserted Successfully";
-          header("Location: /seller/createVoucher.php");
-          exit(0);
-       }
-       else
-       {
-          $_SESSION['status'] = "Data Not Inserted";
-          header("Location: /seller/createVoucher.php");
-          exit(0);
-       } */
-
-    }
 ?>
 
 <!-- Add Product Modal -->
