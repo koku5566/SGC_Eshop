@@ -26,7 +26,7 @@ if(isset($_POST['Delete']))
 */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacility']) && !empty($_POST['id']) && !empty($_POST['dfacility']) && $_POST['dfacility'] === 'Delete' ){	
 		
-		//echo "<script>alert('SOHAI ');</script>";
+		//echo "<script>alert('TEST ');</script>";
 		/**/
   $selectedPID = $_POST['id'];
   $sql = "DELETE FROM `facilityPic` WHERE  `id`=?";

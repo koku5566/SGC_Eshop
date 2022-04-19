@@ -179,52 +179,39 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID = $_SESSION[uid]'
-                            AND product.shop_id = '$KL'
-                            AND cart.remove_Product = '0'
-                            ORDER BY cart.update_at DESC";
+                            WHERE cart.user_ID =  '$userID'
+                            AND product.shop_id = '$KL'";
                             
-                            $queryKL = mysqli_query($conn, $sql);
+                            $queryKL = mysqli_query($conn, $cartsql);
                             
                             $userID = "U000018";
                             $KL = 14;
                             $SB = 20;
-
-                             $i=0;
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $product_stock = 0;
-                                 $product_price = 0;
-                                 $stock_message = "";
                                  $cart_id = $rowKL['cart_id'];
                                  $product_id = $rowKL['PID'];
                                  $product_name = $rowKL['P_name'];
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
-                                 $variation_message = "";
-                                 $showNotif = false;
-                            echo "
+                                 $product_price =  $rowKL['P_price'];
+                            echo ("
                             <tr>
                                 <td>
-                                    <div class='product-item'>
-                                        <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                <span>hi</span>
                                 </td>
                                 <td>
-                                <label>".$product_name."</label>
+                                <span>".$product_variation."</span>
                                 </td>
                                 <td>
-                                <label>".$product_variation."</label>
+                                <span>".$product_price."</span>
                                 </td>
                                 <td>
-                                <label>".$product_price."</label>
+                                <span>".$product_quantity."</span>
                                 </td>
-                                <td>
-                                <label>".$product_quantity."</label>
-                                </td>
-                                        
-                                        
-                            </tr> ";             
+                                                                              
+                            </tr> ");             
                     }
                     ?>
                             </tbody>

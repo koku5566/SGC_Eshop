@@ -153,7 +153,6 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { echo ("
-                                            <div class=\"row\">
                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                     <p class=\"p-title\">Banner display at:</p>
                                                 </div>
@@ -164,14 +163,12 @@
                                                             <option name=\"homePage\" value=\"1\">Home Page</option>
                                                         </select>
                                                     </div>
-                                                </div>
-                                            </div>");
+                                                </div>");
                                         }
                                     ?>
                                     <?php
                                         if ($_SESSION['role'] == "ADMIN")
                                         { echo ("
-                                            <div class=\"row\">
                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                     <p class=\"p-title\">Banner display at:</p>
                                                 </div>
@@ -182,8 +179,7 @@
                                                             <option name=\"homePage\" value=\"1\">Home Page</option>
                                                         </select>
                                                     </div>
-                                                </div>
-                                            </div>");
+                                                </div>");
                                         }
                                     ?>
                                 </div>
@@ -500,7 +496,7 @@
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
                                             <input accept=".png,.jpeg,.jpg" id="img_Edit" name="imgEdit[]" type="file" class="imgInp" />
-                                            <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
+                                            <input name="imgDefaultEdit[]" id="img_Edit_Default" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
@@ -643,7 +639,7 @@
 <script>
 
     function submitEditForm(){
-        if(document.getElementById("img_Edit").value != "")
+        if(document.getElementById("img_Edit").value != "" || document.getElementById("img_Edit_Default").value != "")
         {
             document.getElementById("edit_btn").click();
         }
