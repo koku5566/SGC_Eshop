@@ -307,11 +307,9 @@
                                             $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
-                                            echo("Start Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionDate\" readonly>");
-                                            echo("End Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\" readonly><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div> ");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\" readonly><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div> ");
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <br><input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <br><input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
                                         }
                                     }
                                     ?>
