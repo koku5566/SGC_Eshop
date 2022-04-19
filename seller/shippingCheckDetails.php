@@ -84,9 +84,10 @@
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-        $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
-        
-        if ($conn->query($updatesql) === TRUE) {
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
+        $updatesql ="UPDATE myOrder SET  order_status = '$pickupstat' WHERE order_id = '$orderid'";
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
 
@@ -182,7 +183,7 @@
                                 </form>
                                 <?php }
 
-                                 if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
