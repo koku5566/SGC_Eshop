@@ -228,7 +228,7 @@ $json = json_decode($return);
         <div class="modal-body">
          <?php 
          if ($userresult->num_rows > 0) {
-         while ($addressrow = mysql_fetch_array($userresult))  
+         while ($addressrow ->fetch_assoc())  
         {   
          echo $addressrow["contact_name"],$addressrow["phone_number"],$addressrow["addreess"], $addressrow["postal_code"], $addressrow["area"], $addressrow["state"], $addressrow["country"];
         }}
