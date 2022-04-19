@@ -282,6 +282,12 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
+                        <a class="dropdown-item" href="cart.php">
+                            <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
+                        </a>
+                        
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
