@@ -75,7 +75,7 @@
 </div>
 
      <!-- Address Modal -->
-     <div class="modal fade" id="myModal" role="dialog" style="width 80%;">
+     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -92,7 +92,7 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
-			<div>
+			<div>" "
             <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
@@ -175,7 +175,7 @@
             </div> -->
             <div class="shipping-option" >
                 <div class="row">
-                    <div class="col"><label class="col-form-label" style="margin-top: 10px;">Shipping Option</label></div>
+                    <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
                 </div>
                 <div class="row">
                     <div class="col-2">
