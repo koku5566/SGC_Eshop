@@ -60,8 +60,8 @@
        ?>
       </div>
     <!-- Left right --> 
-    <a class="border carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
-    <a class="border carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+    <a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="border carousel-control-prev-icon"></span> </a> 
+    <a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="border carousel-control-next-icon"></span> </a> 
                     
     </div>
 </div>
