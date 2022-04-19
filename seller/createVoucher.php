@@ -22,7 +22,7 @@
       $date = date('Y-m-d H:i:s');
 
       
-      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+      $sqlv = "INSERT INTO `voucher` (`voucher_code`, `voucher_startdate`, `voucher_expired`, `discount_amount`, `voucher_limit`, `voucher_details`, `voucher_display`, `voucher_type`, `created_at`, `voucher_status`, `voucher_list`)
                VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0')";
 
 
