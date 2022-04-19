@@ -78,6 +78,7 @@ if (isset($_GET['id'])) {
     <div class="card">
         <div class="card-body">
             <div class="row">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                 <?php
                 $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
                 $result = mysqli_query($conn, $sql);
@@ -91,7 +92,7 @@ if (isset($_GET['id'])) {
                                     <h5>Event Status: " . $row['status'] . "</h5>
                                     <h5>Location: " . $row['location'] . "</h5>
                                     <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
-                                    <form action=\"<?php echo ".$_SERVER['PHP_SELF']."; ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                                    
                                     <button class=\"btn btn-secondary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"reject\">Reject</button>
                                     <button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\" name=\"approve\">Approve</button>
                                     </form>
