@@ -73,10 +73,12 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);            } 
+            header('Location: ' . $_SERVER['HTTP_REFERER']);            
+        } 
         else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          }
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+        }
     }
     
     if(isset($_POST["status_update"])){
@@ -161,7 +163,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;}?></td>
+                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;}?><button onclick="linkTrack('PL328056441873')">TRACK</button></td>
                                     </tr>
                                 <?php 
                                 }
@@ -196,7 +198,8 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            
+
+
                         </div>
 
                     </div>
@@ -205,7 +208,14 @@
 
         </div>
     </div>
-
+<script src="//www.tracking.my/track-button.js"></script>
+<script>
+  function linkTrack(num) {
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+</script>
 
     <!--  Payment Information -->
     <div class="row">
