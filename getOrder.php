@@ -66,10 +66,10 @@ $orders = $stmt_2->get_result();
                                                 <tr class="clickable "
                                                           onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row['order_id']?>">
                                                     <td><img src=/img/product/<?php echo $row['product_cover_picture']?>/><td>
-                                                    <td><?php echo $row['product_name']?></td>
+                                                    <td style="text-align:left;"><?php echo $row['product_name']?></td>
                                                     <td></td>
-                                                    <td><?php echo $row['quantity']?></td>
-                                                    <td><?php echo $row['amount']?></td>
+                                                    <td style="text-align:left;"><?php echo $row['quantity']?></td>
+                                                    <td style="text-align:left;"><?php echo $row['amount']?></td>
                                                 </tr>
                                             
                                             </tbody>
