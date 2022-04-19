@@ -227,7 +227,7 @@ $json = json_decode($return);
         </div>
         <div class="modal-body">
         <?php
-/* 	$UID = $_SESSION["uid"];
+	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
@@ -247,7 +247,7 @@ $json = json_decode($return);
                 </label>
 			</div>
 			");
-	} */
+	}
 ?>
         </div>  
         <div class="modal-footer">
