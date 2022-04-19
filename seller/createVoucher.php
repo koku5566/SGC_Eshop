@@ -1,14 +1,13 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
-      ?>
-          <script type="text/javascript">
-              window.location.href = window.location.origin + "/seller/sellerLogin.php";
-          </script>
-      <?php
-      exit;
- }
+    if(!isset($_SESSION)){
+      session_start();
+   }
+   if(!isset($_SESSION['id']))
+   {
+         $_SESSION['id'] = "";
+   }
 
     if(isset($_POST['submit'])){
 
@@ -380,10 +379,6 @@
      $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
-</script>
-
-<script type="text/javascript">
-    window.location.href = window.location.origin + "/seller/createVoucher.php";
 </script>
 
 <!-- Datatable -->
