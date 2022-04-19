@@ -212,35 +212,7 @@ if(isset($_GET['addressid']))
                                         <div class='product-info'>
                                             <label>".$product_id."</label>
                                             <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class='text-center'>
-                                    <div class='variation-input'>
-                                        <select class='form-select' onchange='updateVariation(".$cart_id.")' id='updateVariation".$cart_id."'>";
-
-                                        echo  $variation_message;
-                                        //check product variation
-                                            // <option>RED</option>
-                                            // <option>YELLOW</option>
-                                            // <option>GREEN</option>
-                                            // <option>BLACK</option>
-                                            // <option>WHITE</option>
-                         echo           "
-                                    </div>
-                                </td>
-                                <td class='text-center text-lg text-medium' class='price' id='upkl[$i]'>RM <span>".$product_price."</span> <input id='numberkl[$i]' type='hidden' value='".$product_price."' readonly></td>
-                                <td class='text-center'>
-                                    <div class='count-input-kl'>
-                                        <input id='stockl[$i]' type='hidden' value='".$product_stock."' readonly>
-                                        <input id='cq[$i]' type='hidden' value='".$product_stock."' readonly>
-                                        <span class = 'minus' id='minkl[$i]'>-</span>
-                                        <span class = 'num' id='numkl[$i]'>".$product_quantity."</span> 
-                                        <span class = 'add' id='addkl[$i]'>+</span>
-                                    </div>
-                                </td>
-                                <td class='text-center text-lg text-medium' >";             
-                        $i++;
+                                        </div>";             
                     }
                     ?>
                             </tbody>
