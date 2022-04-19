@@ -106,10 +106,11 @@
 			");
 	}
     ?>
-    </form>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Save changes</button>
+            </form>
         </div>
       </div>
       
