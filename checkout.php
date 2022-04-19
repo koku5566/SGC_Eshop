@@ -216,14 +216,13 @@ $json = json_decode($return);
   </div>
 </div>
 
-     <!-- Modal -->
+     <!-- Address Modal -->
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
           <p>Some text in the modal.</p>
@@ -235,6 +234,7 @@ $json = json_decode($return);
       
     </div>
   </div>
+  
     <div class="container-fluid" style="width:80%">
 <body style="background: #f5f2f2;">
     <div class="container" style="padding: 24px;margin-top: 30px;">
