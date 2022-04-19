@@ -14,7 +14,8 @@
     if(isset($_POST['Approve']))
     {
         $promotionId = $_POST['ApproveID'];
-        $sql_approve = "UPDATE FROM promotion WHERE promotionID = '$promotionId'";
+        
+        $sql_approve = "UPDATE promotion SET promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_approve))
         {
             ?>
