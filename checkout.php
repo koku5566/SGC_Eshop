@@ -1,5 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
+
 	  if($_SESSION['login'] == false)
 	 {
 	 	echo "<script>alert('Login to checkout');
@@ -13,7 +14,7 @@
             WHERE userAddress.user_id= '$_SESSION[uid]';";
             
             $userresult = mysqli_query($conn, $usersql);  
-            $userrow = mysqli_fetch_assoc($userresult);       
+            $userrow = mysqli_fetch_assoc($userresult);                 
 
 //get seller id -> retrieve seller shipping option from db
 $sellerUID = 11; //*TO GET*
@@ -225,7 +226,11 @@ $json = json_decode($return);
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+         <?php while ($addressrow = mysql_fetch_array($userresult))  
+        {   
+         echo $addressrow["contact_name"],$addressrow["phone_number"],$addressrow["addreess"], $addressrow["postal_code"], $addressrow["area"], $addressrow["state"], $addressrow["country"];
+        }
+?>  
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
