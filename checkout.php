@@ -15,7 +15,17 @@
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);             
-             
+                         
+            if(isset($_POST['submitAddress'])){
+                $UID = $_POST['submitAddress'];
+                if(!empty($UID)) {
+                    echo "<script>alert('success');
+                    </script>";
+                } else {
+                    echo "<script>alert('fail to change address');
+                    </script>";
+                }
+              }  
 
 
 ?>
@@ -112,19 +122,6 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button>
             </form>
-            <?php   
-            
-            if(isset($_POST['submitAddress'])){
-                if(!empty($_POST['submitAddress'])) {
-                    echo "<script>alert('success');
-                    </script>";
-                } else {
-                    echo "<script>alert('fail to change address');
-                    </script>";
-                }
-              }  
-            
-            ?>
         </div>
       </div>
       
