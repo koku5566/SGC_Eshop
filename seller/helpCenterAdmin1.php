@@ -449,7 +449,7 @@ $_SESSION["userId"] = "A000001";
 				
 					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 					{
-						echo "<script>alert('Update successfully');</script>";
+						//echo "<script>alert('Update successfully');</script>";
 					}else{
 						echo "<script>alert('Fail to Update');</script>";
 					}
