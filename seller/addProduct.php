@@ -1,10 +1,17 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit();
+	}
+
     
     if(isset($_POST['add']) || isset($_POST['publish'])){
-
-       
         $publish = 1;
         if(isset($_POST['add']))
         {
@@ -12,9 +19,8 @@
         }
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
-        $_SESSION['userid'] = "14";
         //Basic Details
-        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
 
         $productId = "";
         $productSKU = $_POST['productSKU'];
