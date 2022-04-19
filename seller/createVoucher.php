@@ -495,23 +495,9 @@
 
    } );
 
-   var voucherReview = $('#voucherReview').DataTable( {
-
-   retrieve: true,
-   responsive: true,
-   scrollCollapse: true,
-   ordering: true,
-   searching: true,
-   paging: true,
-
-   lengthMenu:[
-   [10,-1],
-   [10,"All"]
-   ],
-
-   order: [[ 1, 'asc' ]]
-
-   } );
+   $(document).ready(function() {
+    $('#voucherReview').DataTable();
+} );
 
    //-----------------------Delete Row-----------------------------//
    
