@@ -52,7 +52,7 @@
 <div class="container">
    <div class="form-row">
       <div class="form-group col-md-12">
-         <table class="table" id="createvouchertable">
+         <table class="table" id="">
             <thead>
                <tr>
                   <th>Voucher ID</th>
