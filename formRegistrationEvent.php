@@ -34,20 +34,21 @@ if (isset($_GET['ticketID'])) {
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $input = $row['element_type'];
+                        $fieldName = $row['field_name'];
 
                         if ($input != "select") {
                             if ($row['required'] == "required") {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=$input placeholder=" . $row['field_name'] . " required name=" . $row['field_name'] . ">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" required name=\"$fieldName\">
                                 </div>
                             ");
                             } else {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=$input placeholder=" . $row['field_name'] . " name=" . $row['field_name'] . ">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$fieldName\">
                                 </div>
                                 ");
                             }
@@ -58,13 +59,13 @@ if (isset($_GET['ticketID'])) {
                             echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <select class=\"form-select\" name=" . $row['field_name'] . ">
+                                <select class=\"form-select\" name=\"$fieldName\">
                             ");
 
                             foreach ($optionArr as $selection)
                             {
                                 echo("
-                                    <option value=$selection >$selection</option>
+                                    <option value=\"$selection\" >$selection</option>
                                 ");
                             }
 
