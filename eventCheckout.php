@@ -22,12 +22,12 @@ $price = 0;
     $mail->IsSMTP();
     $mail->Mailer = "smtp";
     $mail->SMTPDebug  = 1;  
-    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPAuth   = false;
     $mail->SMTPSecure = "tls";
     $mail->Port       = 465;
-    $mail->Host       = "smtp.gmail.com";
-    $mail->Username   = "sgceshop@gmail.com";
-    $mail->Password   = "wgsxuilbeajridsm";
+    $mail->Host       = "localhost";
+    $mail->Username   = "event@sgcprototype2.com";
+    $mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
 
 ?>
 
@@ -78,7 +78,7 @@ if (isset($_POST["completeRegister"])) {
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
 
                     $usermail = $buyerEmail;
-                    $adminmail = 'sgceshop@gmail.com';
+                    $adminmail = 'event@sgcprototype2.com';
                     $subject = 'Event Registered Successfully - ' . $eventName;
                     $mail->IsHTML(true);
                     $mail->AddAddress($usermail);
