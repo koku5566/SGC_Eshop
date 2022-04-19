@@ -408,6 +408,20 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo($_SESSION['name']);?></span>
                                 <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
+                                <!--User Profile Picture-->
+                                <?php
+                                $UID = $_SESSION["id"];
+                                $sql = "SELECT profile_picture FROM user WHERE username = '$UID'";
+
+                                $res_data = mysqli_query($conn,$sql);
+                                if (mysqli_num_rows($res_data) > 0){
+                                    while($row = mysqli_fetch_array($res_data)){
+                                        echo("
+                                            <img alt=\"../img/undraw_profile.svg\" class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
+                                            ");
+                                        }
+                                    }
+                                ?>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
