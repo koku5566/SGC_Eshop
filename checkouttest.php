@@ -28,7 +28,6 @@ $customerUID = 'U000018';
     $productQty = $row['quantity'];
 
     // Multiple items in one order: Volumetric weight calculation (kg) = Max Length (cm) x Max Width (cm) x Sum (Height (cm) x Quantity) / 5000.
-    //===========To get product weight, height, and width of the product==================
     $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
     $iresult = $conn->query($sqlinfo);
     if (mysqli_num_rows($iresult) > 0) {
@@ -52,7 +51,6 @@ else  { //if only one item in cart
         //echo $row['quantity'], $row['product_ID'];
 
         //Single item in one order: Volumetric weight calculation (kg) = Height (cm) x Width (cm) x Length (cm) / 5000.        
-        //===========To get product weight, height, and width of the product==================
             $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
             $iresult = $conn->query($sqlinfo);
             if (mysqli_num_rows($iresult) > 0) {
@@ -62,7 +60,7 @@ else  { //if only one item in cart
                     {
                         $volumetricWeight = $prod['product_height']* $prod['product_width']* $prod['product_length']/5000;
                     }
-                    else{
+                    else{ //if quantity more than 1 
                         $volumetricWeight = ($prod['product_height']*$productQty)* $prod['product_width']* $prod['product_length']/5000;
 
                     }
