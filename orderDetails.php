@@ -17,6 +17,10 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     exit;
 }
 
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+}
+
 ?>
 
                 <!-- Begin Page Content -->
@@ -29,7 +33,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                             <h2 class="font-weight-bold text-center">ORDER DETAILS</h2>
                             <hr class="mx-auto">
                         </div>
-                            <div class="card-body">
+                                <div class="card-body">
                                     <div class="table-responsive">
                                         <?php
                                         $count=1;
@@ -93,6 +97,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                         <hr>
                                         <?php } ?>
                                     </div>
+                                </div>
+                                <div class="card-footer">
+                                <a href="getOrder.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel</button></a>
                                 </div>
                     </section>
                 </div>

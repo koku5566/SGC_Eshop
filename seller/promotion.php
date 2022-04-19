@@ -150,38 +150,45 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="row">
-                                    <?php
-                                        if ($_SESSION['role'] == "SELLER")
-                                        { echo ("
-                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                    <p class=\"p-title\">Banner display at:</p>
-                                                </div>
-                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                    <div class=\"input-group mb-3\">
-                                                        <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                            <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                            <option name=\"homePage\" value=\"1\">Home Page</option>
-                                                        </select>
+                                        <?php
+                                            if ($_SESSION['role'] == "SELLER")
+                                            { 
+                                                echo ("
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Banner display at:</p>
                                                     </div>
-                                                </div>");
-                                        }
-                                    ?>
-                                    <?php
-                                        if ($_SESSION['role'] == "ADMIN")
-                                        { echo ("
-                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                    <p class=\"p-title\">Banner display at:</p>
-                                                </div>
-                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                    <div class=\"input-group mb-3\">
-                                                        <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                            <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                            <option name=\"homePage\" value=\"1\">Home Page</option>
-                                                        </select>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div class=\"input-group mb-3\">
+                                                            <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                                <option name=\"sellerPage\" value=\"0\">Seller Page</option>
+                                                                <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>");
+                                                    
+                                            }
+                                        ?>
+                                    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                        <?php
+                                            if ($_SESSION['role'] == "ADMIN")
+                                            { 
+                                                echo ("
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
                                                     </div>
-                                                </div>");
-                                        }
-                                    ?>
+                                                    <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                        <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button>
+                                                    </div>
+                                                    <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                        <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Approve</button>
+                                                    </div>
+                                                    <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                        <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Reject</button>
+                                                    </div>
+                                                    ");
+                                            }
+                                        ?>
+                                    </form>
                                 </div>
                             </div>
                         </div>
