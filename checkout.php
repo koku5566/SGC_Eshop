@@ -212,7 +212,14 @@ if(isset($_GET['addressid']))
                                         <div class='product-info'>
                                             <label>".$product_id."</label>
                                             <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
-                                        </div>";             
+                                        </div>
+                                </td>
+                                <td>
+                                <label>".$product_id."</label>
+                                </td>
+                                        
+                                        
+                                        ";             
                     }
                     ?>
                             </tbody>
