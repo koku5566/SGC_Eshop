@@ -74,7 +74,7 @@
 							</div>
 						</div>
 					</div>
-					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
+					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 				</a>
 			</div>
 			<hr>
