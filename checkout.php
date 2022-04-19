@@ -105,7 +105,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" value=".$addressrow["address_id"]."><label class=\"form-check-label\">
+            <button class=\"form-check-input\" type=\"radio\" name=\"address-option\" value=".$addressrow["address_id"].">/* <label class=\"form-check-label\"> */
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -113,7 +113,7 @@
 				".$addressrow["area"]."
 				".$addressrow["state"]."
 				".$addressrow["country"]."
-                </label>
+                </button>
 			</div>
 			");
 	} 
@@ -121,7 +121,7 @@
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress" value = <?php echo"$addressrow[address_id]"?>>Save changes</button>
+            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button>
             </form>
         </div>
       </div>
