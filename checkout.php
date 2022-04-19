@@ -209,7 +209,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price." ".$product_variation_price."</span>
+                                <span> ".$product_variation_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
