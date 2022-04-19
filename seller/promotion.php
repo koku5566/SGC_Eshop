@@ -310,7 +310,8 @@
 
                     <!-- Page Ending -->         
                     <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-                        <button class="btn btn-outline-primary" type="submit" name="create_btn" >Submit</button>
+                        <button class="btn btn-outline-primary" type="button" onclick="submitAddForm()">Submit</button>
+                        <button class="btn btn-outline-primary" type="submit" id="create_btn" name="create_btn" hidden>Submit</button>
                     </div>
 
                     <!-- Create Function -->
@@ -498,8 +499,8 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp"/>
-                                            <input name="imgDefaultEdit[]" type="text" value="<?php if(isset($picture)) {echo($picture);} { echo "0";} ?>" hidden/>
+                                            <input accept=".png,.jpeg,.jpg" id="img_Edit" name="imgEdit[]" type="file" class="imgInp" />
+                                            <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
@@ -510,28 +511,21 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['edit'];
-                                    $img_get = $_POST["imgDefaultEdit[]"]; 
-                                    if($img_get == 0)
-                                    {
-                                        echo '<script>alert("Please upload the image.")</script>';
-                                    }
-                                    else {
-                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
-                                        $result = mysqli_query($conn, $sql);
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                    $result = mysqli_query($conn, $sql);
 
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                $promotionId = $row["promotionID"];
-                                                $promotionTitle = $row["promotion_title"];
-                                                $promotionDate = $row["promotion_Date"];
-                                                $promotionEnd_Date = $row["promotionEnd_Date"];
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $promotionId = $row["promotionID"];
+                                            $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
 
-                                                echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
-                                                echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
-                                                echo("<br><label>Date</label>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
-                                            }
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
+                                            echo("<br><label>Date</label>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
                                         }
                                     }
                                     ?>
@@ -541,7 +535,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="EditPromotion"  class="btn btn-danger" value="1">Edit</button>
+                        <button type="button" onclick="submitEditForm()" class="btn btn-danger" value="1">Edit</button>
+                        <button type="submit" name="EditPromotion" id="edit_btn" class="btn btn-danger" value="1" hidden>Edit</button>
                     </div>
                 </div>
             </div>
@@ -646,6 +641,28 @@
 </style>
 
 <script>
+
+    function submitEditForm(){
+        if(document.getElementById("img_Edit").value != "")
+        {
+            document.getElementById("edit_btn").click();
+        }
+        else
+        {
+            alert("Please Select a Cover Picture");
+        }
+    }
+
+    function submitAddForm(){
+        if(document.getElementById("upload_file").value != "")
+        {
+            document.getElementById("create_btn").click();
+        }
+        else
+        {
+            alert("Please Select a Cover Picture");
+        }
+    }
 
     initImages();
 
