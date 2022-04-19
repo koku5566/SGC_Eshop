@@ -49,13 +49,14 @@ else  { //if only one item in cart
     while($row = $result->fetch_assoc()) {
         $productQty = $row['quantity'];
         echo $row['quantity'], $row['product_ID'];
-        
+
         //Single item in one order: Volumetric weight calculation (kg) = Height (cm) x Width (cm) x Length (cm) / 5000.        
         //===========To get product weight, height, and width of the product==================
             $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
             $iresult = $conn->query($sqlinfo);
             if (mysqli_num_rows($iresult) > 0) {
                 while ($prod = $iresult->fetch_assoc()) {
+                    echo $prod['product_height'],$prod['product_width'], $prod['product_weight'];
                     if ($productQty == 1) 
                     {
                         $volumetricWeight = $prod['product_height']* $prod['product_width']* $prod['product_length']/5000;
@@ -67,7 +68,6 @@ else  { //if only one item in cart
                 }
             }
         }
-
 }
 
 echo $volutetricWeight;
