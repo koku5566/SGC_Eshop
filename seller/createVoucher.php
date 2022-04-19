@@ -2,6 +2,16 @@
     require __DIR__ . '/header.php';
 ?>
 
+<?php 
+
+   if(!isset($_SESSION)){
+        session_start();
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+?>
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -164,6 +174,9 @@
                     
                     <tbody> 
                      <?php 
+
+                     $shopId = $_SESSION['uid'];
+
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -175,7 +188,8 @@
                          product.product_price
                     
                          FROM shopProfile
-                         INNER JOIN product ON shopProfile.shop_id = product.shop_id";
+                         INNER JOIN product ON shopProfile.shop_id = product.shop_id
+                         WHERE product.shop_id = '$shopId' ";
                     
                     
                        $stmt = $conn->prepare($sqlp);
@@ -183,21 +197,17 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
-
-                       echo $_SESSION["id"];
-
                          
                      ?>
                      <tr>
                         <td></td>
-                        <td id="voucherlogo"><img src="../img/<?php echo $row['product_cover_picture']; ?>"></td>
+                        <td id="voucherlogo"><img src="../img/product/<?php echo $row['product_cover_picture']; ?>"></td>
                         <td><?php echo $row['product_name']; ?></td>
                         <td><?php echo $row['product_id']; ?></td>
                         <td><?php echo $row['product_sku']; ?></td>
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
-                    <?php 
-                     
+                     <?php 
                      }?>
                     </tbody>
                </table>
@@ -323,7 +333,7 @@
 
             let pid = $('#productList').val();
 
-            let productid = $('<input type="text" name="productlist[]" class="form-control" hidden>').val(rowInsert[3]).append(pid);
+            let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
 
             console.log(rowInsert[3]);
 

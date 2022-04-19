@@ -59,18 +59,24 @@
     $stmt->execute();
     $sresult = $stmt->get_result();
 
-
+    echo 'p' ,$orderid;
     if(isset($_POST["tracking_send"])){
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
+        echo $trackingnum, $status, $orderid;
+        echo 'he', $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
         $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
-        
-        if ($conn->query($updatesql) && $conn->query($insertsql) === TRUE) {
+         $conn->query($insertsql);
+        // $conn->query($updatesql);
+        $iquery_run = mysqli_query($conn,$insertsql);
+        //$uquery_run = mysqli_query($conn,$updatesql);
+
+        if ($iquery_run) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
-
-            } else {
+            } 
+        else {
           $_SESSION['status'] = "Order status update failed";
           header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
           }
