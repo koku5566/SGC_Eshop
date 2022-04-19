@@ -2,17 +2,6 @@
     require __DIR__ . '/header.php';
 ?>
 
-<?php 
-
-   if(!isset($_SESSION)){
-        session_start();
-    }
-    if(!isset($_SESSION['id']))
-    {
-        $_SESSION['id'] = "";
-    }
-?>
-
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,6 +18,20 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
+<?php 
+     if(isset($_SESSION['status']))
+     {
+         ?>
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+         <?php
+         unset($_SESSION['status']);
+     }
+ ?>
+
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
 
@@ -174,6 +177,9 @@
                     
                     <tbody> 
                      <?php 
+
+                     $shopId = $_SESSION['uid'];
+
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -185,7 +191,8 @@
                          product.product_price
                     
                          FROM shopProfile
-                         INNER JOIN product ON shopProfile.shop_id = product.shop_id";
+                         INNER JOIN product ON shopProfile.shop_id = product.shop_id
+                         WHERE product.shop_id = '$shopId' ";
                     
                     
                        $stmt = $conn->prepare($sqlp);
@@ -193,21 +200,17 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
-                        // if($_SESSION['user_id'] = $rows['shop_id']){
-
-
                          
                      ?>
                      <tr>
                         <td></td>
-                        <td id="voucherlogo"><img src="../img/<?php echo $row['product_cover_picture']; ?>"></td>
+                        <td id="voucherlogo"><img src="../img/product/<?php echo $row['product_cover_picture']; ?>"></td>
                         <td><?php echo $row['product_name']; ?></td>
                         <td><?php echo $row['product_id']; ?></td>
                         <td><?php echo $row['product_sku']; ?></td>
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
                      <?php 
-                        // }
                      }?>
                     </tbody>
                </table>
@@ -333,7 +336,7 @@
 
             let pid = $('#productList').val();
 
-            let productid = $('<input type="text" name="productlist[]" class="form-control" hidden>').val(rowInsert[3]).append(pid);
+            let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
 
             console.log(rowInsert[3]);
 
