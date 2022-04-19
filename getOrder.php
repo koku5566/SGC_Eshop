@@ -383,10 +383,12 @@ $_SESSION["userId"] = "U000018";
                                         <thead>
                                             <tr>
                                                 
-                                                <form method="POST" action="orderDetails.php"> 
-                                                    <input type = "hidden" name = "rid" value = "<?php echo $row['order_id']?>">
-                                                    <input type = "submit" class="btn btn-primary" name = "order_details_btn" value = "Details"></form>
-                                                </form>
+                                            <form method="POST" action="orderDetails.php">
+                                                            <input type="hidden" value="<?php echo $row['order_id']?>" name="order_id"/>
+                                                            <input class="btn btn-primary" name="orderDetails_btn" value="Details" type="submit"/>
+
+                                                            
+                                                         </form>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
                                              
