@@ -36,17 +36,10 @@
 		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
 
 		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('User Edited');</script>";
+            echo "<script>alert('User Detail Edited');</script>";
 		} else {
 			echo "Error: " . mysqli_error($db);
 		}
-	}
-
-	if(isset($_POST['edit']))
-	{
-		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='adminEditUser.php';</script>");
 	}
 ?>
 
@@ -148,7 +141,7 @@
 						<input type="email" name="inpEditEmail" class="form-control" id="inpEditEmail" placeholder="" required>
 					</div>
 					<div class="form-group">
-						<label for="inpEditContact">Contact No.</label>
+						<label for="inpEditContact">Contact</label>
 						<input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" required>
 					</div>
 					<div class="form-group">
@@ -188,17 +181,6 @@
 	</div>    
 </form>
 
-<?php
-if(isset($_SESSION['DeleteUser']))
-	{
-		if($_SESSION['DeleteUser'] == true)
-		{
-			echo "<script>alert('User Removed');</script>";
-		}
-		$_SESSION['DeleteUser'] = NULL;
-	}
-?>
-
 <?php require __DIR__ . '/footer.php' ?>
 
 <script>
@@ -225,13 +207,13 @@ editButton.forEach(btn => {
 	});
 });
 
-function editUser(user_id) 
+function editUser(username) 
 {
 	$.ajax({
 		url:"editUserProfile.php",
 		method:"POST",
 		data:{
-			user_id:user_id,
+			username:username,
 			editUser:1
 		},
 		dataType: 'JSON',
@@ -239,12 +221,68 @@ function editUser(user_id)
 			var len = response.length;
 			for(var i=0; i<len; i++){
 				var name = response[i].name;
-				var contact = response[i].contact;
 				var email = response[i].email;
+				var contact = response[i].contact;
 				var role = response[i].role;
 
 				var priceHTML = `
+						<div class="modal-header">
+                            <h5 class="modal-title" >Edit Staff Information</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inpEditName">Name</label>
+                                <input type="text" name="inpEditName" class="form-control" id="inpEditName" placeholder="" value="`+name+`" required>
+                            </div>
+							<div class="form-group">
+                                <label for="inpEditEmail">Email</label>
+                                <input type="email" name="inpEditEmail" class="form-control" id="inpEditEmail" placeholder="" value="`+email+`" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inpEditContact">Contact No.</label>
+                                <input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" value="`+contact+`" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inpEditRole">Role</label>
+                                <select name="inpEditRole" class="form-control" id="inpEditRole" value="`+role+`" required>
+                                `;
+                                if(role == "ADMIN")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN" selected="selected">ADMIN</option>
+                                    <option value="Coordinator">Coordinator</option>
+                                    <option value="USER">USER</option>
+                                `;
+                                }
+                                else if(role == "SELLER")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="SELLER" selected="selected">SELLERSELLER</option>
+                                    <option value="USER">USER</option>
+                                `;
+                                }
+                                else if(role == "USER")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="SELLER">SELLER</option>
+                                    <option value="USER" selected="selected">USER</option>
+                                `;
+                                }
+                                priceHTML+=`
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="editStaff" value="`+username+`" class="btn btn-primary">Save changes</button>
+                        </div>
 				`;
 				
 				$("#editProfile").empty();
