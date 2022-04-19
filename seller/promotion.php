@@ -534,7 +534,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="EditPromotion"  class="btn btn-danger" value="1">Edit</button>
+                        <button type="button" onclick="submitForm()" class="btn btn-danger" value="1">Edit</button>
+                        <button type="submit" name="EditPromotion" id="edit_btn" class="btn btn-danger" value="1" hidden>Edit</button>
                     </div>
                 </div>
             </div>
@@ -639,6 +640,17 @@
 </style>
 
 <script>
+
+function submitForm(){
+        if(document.querySelectorAll('.imgInp')[0].value != "")
+        {
+            document.getElementById("edit_btn").click();
+        }
+        else
+        {
+            alert("Please Select a Cover Picture");
+        }
+    }
 
     initImages();
 
