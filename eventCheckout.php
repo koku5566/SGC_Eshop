@@ -21,11 +21,11 @@ $price = 0;
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->Mailer = "smtp";
-    $mail->SMTPDebug  = 1;  
-    $mail->SMTPAuth   = false;
+    $mail->SMTPDebug  = 2;  
+    $mail->SMTPAuth   = true;
     $mail->SMTPSecure = "tls";
     $mail->Port       = 465;
-    $mail->Host       = "mail.sgcprototype2.com";
+    $mail->Host       = "smtp.sgcprototype2.com";
     $mail->Username   = "event@sgcprototype2.com";
     $mail->Password   = "0124756909AaBb";
 
