@@ -17,7 +17,7 @@
 			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password'";
+			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password' AND role = 'USER'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
@@ -26,7 +26,8 @@
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
-                    $_SESSION['uid'] = $row["userID"];  
+                    $_SESSION['uid'] = $row["user_id"];
+                    $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php

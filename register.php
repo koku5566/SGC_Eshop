@@ -22,33 +22,19 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					//$sql = "INSERT INTO user (username, email, password, name, registration_date, role)
-					//VALUES ('$username','$email','$password','$username','$date','USER')";
-				
-
 					//Save new user
 					$sql  = "INSERT INTO user (userID, username, email, password, name, registration_date, role)
 					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$date','USER')";
 					if(mysqli_query($conn, $sql))
 					{
-						//Save new shop
-						//$sql = "INSERT INTO shop (shop_id, shop_name)
-						//VALUES ('','');
-						
 						$_SESSION['AddUser'] = true;
-						/*
-						if (mysqli_query($conn, $sql)) {
-							$_SESSION['AddUser'] = true;
-						} else {
-							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-						}
-						*/
+						echo "<script>alert('Registered Successful');
+						window.location.href='login.php';</script>";
 					}
 					else
 					{
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
-
 					mysqli_close($conn);
 				}
 			}
