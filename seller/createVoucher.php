@@ -2,14 +2,6 @@
     require __DIR__ . '/header.php';
 ?>
 
-<?php
- if($_SESSION['login'] == false)
- {
- 	echo "<script>alert('Login to Continue');
- 		window.location.href='login.php';</script>";
- }
-?>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -183,16 +175,16 @@
                      <?php 
                         $sqlp = 
                         "SELECT 
-                         user.shop_name,
-                         user.shop_profile_image,
+                         shopProfile.shop_name,
+                         shopProfile.shop_profile_image,
                          product.product_name,
                          product.product_cover_picture,
                          product.product_id,
                          product.product_sku,
                          product.product_price
                     
-                         FROM user
-                         INNER JOIN product ON user.user_id = product.user_id";
+                         FROM shopProfile
+                         INNER JOIN product ON shopProfile.shop_id = product.shop_id";
                     
                     
                        $stmt = $conn->prepare($sqlp);
