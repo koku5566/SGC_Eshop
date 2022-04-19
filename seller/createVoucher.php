@@ -225,21 +225,13 @@
                         <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-bs-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
-                  <div class="form-row" id="productraw">
-                     
-                  </div>
-                  <div class="form-row">
-                     <div class="float-right">
-                        <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
-                     </div>
-                  </div>
                </div>    
             </div>
          </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary-outline" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
       </div>
     </div>
   </div>
