@@ -99,7 +99,7 @@
                                 <div class="row">
                                     <?php
                                         $userId = $_SESSION['userid'];
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' ";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
@@ -150,7 +150,6 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <?php
-                                    $homepage = $_POST[""]
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
                                             echo ("
@@ -361,7 +360,7 @@
                                                             </script>
                                                         <?php
                                                     }
-                                                    else($status == 1)
+                                                    else if ($status == 1)
                                                     {
                                                         echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
                                                     }
