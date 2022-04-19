@@ -47,7 +47,7 @@
                                         <div class="h1 text-gray-900 mb-4">My Address Book</div>
                                     </div>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" id="myform">
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" id="userForm">
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -56,39 +56,27 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"form-group\">
-			<button href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\">
-				".$row["contact_name"]."
-				".$row["phone_number"]."
-				".$row["address"]."
-				".$row["postal_code"]."
-				".$row["area"]."
-				".$row["state"]."
-				".$row["country"]."
-				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
-			</div>
-
-			<div class=\"mb-4\">
-				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('myform').submit()\">
-				<div class=\"address\">
-					<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
-					<div class=\"row\">
-						<div class=\"col-lg-4\">
-							<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
-							<p style=\"font-size: 1.5rem;\">
-							".$row["address"]."
-							".$row["postal_code"]."
-							".$row["area"]."
-							".$row["state"]."
-							".$row["country"]."
-							</p>
+			<div class=\"mb-3\">
+				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('userForm').submit()\">
+					<div class=\"address\">
+						<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
+						<div class=\"row\">
+							<div class=\"col-lg-4\">
+								<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
+								<p style=\"font-size: 1.5rem;\">
+								".$row["address"]."
+								".$row["postal_code"]."
+								".$row["area"]."
+								".$row["state"]."
+								".$row["country"]."
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<hr>
+					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
 				</a>
 			</div>
+			<hr>
 			");
 	}
 ?>
