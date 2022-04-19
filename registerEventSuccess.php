@@ -13,7 +13,7 @@ $eventsql = "SELECT ticketTransaction.ticketOrder_id, ticketTransaction.buyer_na
             ON `event`.event_id = ticketTransaction.event_id
             JOIN `ticketType`
             ON ticketType.ticketType_id = ticketTransaction.ticket_type_id
-            WHERE ticketTransaction.ticketOrder_id = $ticketid;
+            WHERE ticketTransaction.ticketOrder_id = $ticketid
             ";
 
 $resultsql = mysqli_query($conn, $eventsql);                                             
