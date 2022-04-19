@@ -182,7 +182,10 @@ if (isset($_POST["eventPay"])) {
         throw new Exception('Unable to create link for payment');
     }
     
-    header('location:' . $payment->getApprovalLink());
+    $redirect = $payment->getApprovalLink();
+    echo ("
+    <script> window.location.rel=\"$redirect\" </script>
+    ");
     exit(1);
 
 }
