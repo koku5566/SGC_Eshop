@@ -20,7 +20,6 @@
       
       mysqli_query($conn, $sqlv);
 
-
       $product = $_POST['productlist'];
       $v = mysqli_insert_id($conn);//specific table
 
