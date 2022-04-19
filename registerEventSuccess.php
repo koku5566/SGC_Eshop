@@ -31,12 +31,12 @@ $row = mysqli_fetch_array($resultsql);
 	  <div class="status">
       <h4>Information</h4>
       <p>Transcation ID: <?php echo $row['ticketOrder_id']; ?></p>
-      <p>Buyer Name: <?php echo $row['ticketTransaction.buyer_name']; ?></p>
-      <p>Buyer Email: <?php echo $row['ticketTransaction.buyer_email']; ?></p>
-      <p>Buyer Contact: <?php echo $row['ticketTransaction.buyer_contact']; ?></p>
-      <p>Total Price: <?php echo $row['ticketTransaction.total_price']; ?></p>
-      <p>Register Event: <?php echo $row['`event`.event_name']; ?></p>
-      <p>Ticket: <?php echo $row['ticketType.ticket_name']; ?></p>
+      <p>Buyer Name: <?php echo $row['buyer_name']; ?></p>
+      <p>Buyer Email: <?php echo $row['buyer_email']; ?></p>
+      <p>Buyer Contact: <?php echo $row['buyer_contact']; ?></p>
+      <p>Total Price: <?php echo $row['total_price']; ?></p>
+      <p>Register Event: <?php echo $row['event_name']; ?></p>
+      <p>Ticket: <?php echo $row['ticket_name']; ?></p>
     </div>
   </div>
 </div>  
