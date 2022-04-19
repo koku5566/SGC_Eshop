@@ -7,11 +7,21 @@
 	 		window.location.href='login.php';</script>";
      } 
  
+     $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+     FROM `userAddress`
+     JOIN user ON userAddress.user_id = user.user_id
+     WHERE userAddress.user_id= '$_SESSION[uid]';";
+
+if(isset($_GET['addressid']))
+{
+    $_SESSION['getaddress'] = $_GET['addressid'];
+    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
+}
+
 //Username and address
- $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-            FROM `userAddress`
-            JOIN user ON userAddress.user_id = user.user_id
-            WHERE userAddress.user_id= '$_SESSION[uid]';";
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
@@ -106,7 +116,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -115,7 +125,7 @@
 				".$addressrow["state"]."
 				".$addressrow["country"]."
                 <br>
-                </button>
+                </button></a>
 			</div>
 			");
 	} 
