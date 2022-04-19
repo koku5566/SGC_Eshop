@@ -55,11 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
     if (mysqli_num_rows($result1) > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
             $fieldName = $row1['field_name'];
-            if (!empty($_POST["$fieldName"])) {
+            $nameFieldName = str_replace(' ', '', $fieldName);
+            if (!empty($_POST["$nameFieldName"])) {
                 $formCount++;
                 
 
-                $value = mysqli_real_escape_string($conn, SanitizeString($_POST["$fieldName"]));
+                $value = mysqli_real_escape_string($conn, SanitizeString($_POST["$nameFieldName"]));
                 $formID = $row1['form_element_id'];
 
                 $sql2 = "INSERT INTO `formResponse`(`form_id`, `entry_id`, `value`) VALUES (?,?,?)";
@@ -126,20 +127,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                     while ($row = mysqli_fetch_assoc($result)) {
                         $input = $row['element_type'];
                         $fieldName = $row['field_name'];
-
+                        $nameFieldName = str_replace(' ', '', $fieldName);
                         if ($input != "select") {
                             if ($row['required'] == "required") {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" required name=\"$fieldName\">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$nameFieldName\" required>
                                 </div>
                             ");
                             } else {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$fieldName\">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$nameFieldName\">
                                 </div>
                                 ");
                             }
@@ -150,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                             echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <select class=\"form-select\" name=\"$fieldName\">
+                                <select class=\"form-select\" name=\"$nameFieldName\">
                             ");
 
                             foreach ($optionArr as $selection) {
