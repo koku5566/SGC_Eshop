@@ -49,9 +49,9 @@
       </button>
    </div>
 
-   <div class="container m-4">
+   <div class="container m-2">
       <div class="form-row">
-         <div class="form-group col-md-12">
+         <div class="form-group">
             <table class="table" id="voucherReview">
                <thead>
                   <tr>
