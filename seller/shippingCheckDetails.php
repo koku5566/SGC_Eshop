@@ -34,6 +34,7 @@
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
+    myOrder.tracking_number,
     product.product_name,
     product.product_cover_picture,
     product.product_price,
@@ -59,20 +60,19 @@
     $stmt->execute();
     $sresult = $stmt->get_result();
 
-    echo 'p' ,$orderid;
     if(isset($_POST["tracking_send"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
         echo $trackingnum, $status, $orderid;
-        echo 'he', $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
-         $conn->query($insertsql);
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE order_id = '$orderid'";
+         //$conn->query($insertsql);
         // $conn->query($updatesql);
-        $iquery_run = mysqli_query($conn,$insertsql);
+        //$iquery_run = mysqli_query($conn,$insertsql);
         //$uquery_run = mysqli_query($conn,$updatesql);
 
-        if ($iquery_run) {
+        if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
             } 
@@ -84,15 +84,16 @@
     
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
         
         if ($conn->query($updatesql) === TRUE) {
             $_SESSION['success'] = "Order Status has been updated";
-            header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+            header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
 
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+          header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
           }
     }
 ?>
@@ -165,7 +166,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?></td>
+                                        <td><?php echo $srow['status'];  if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ;}?></td>
                                     </tr>
                                 <?php 
                                 }
@@ -176,6 +177,7 @@
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
+                                    <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
                                     <input class="form-control input" name="tracking_number" type="text" style="width:250px">
                                     <button type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
                                 </td>
@@ -186,6 +188,7 @@
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
+                                <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
                                     <select id="pickup" name="pickup">
                                       <option value="Preparing"> Order is Preparing</option>
                                       <option value="Ready">Pick-Up is Ready</option>

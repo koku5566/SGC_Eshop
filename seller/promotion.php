@@ -14,7 +14,8 @@
     if(isset($_POST['Approve']))
     {
         $promotionId = $_POST['ApproveID'];
-        $sql_approve = "UPDATE FROM promotion WHERE promotionID = '$promotionId'";
+        
+        $sql_approve = "UPDATE promotion SET promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_approve))
         {
             ?>
@@ -217,15 +218,24 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
-                                                echo ("
-                                                <div class=\"row\">
-                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                        <p class=\"p-title\">Promotion Title</p>
-                                                    </div>
-                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                    </div>
-                                                </div>");
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 2";
+                                                $result = $conn->query($sql);
+                                                if($result-> num_rows > 0){ 
+                                                    while($row = $result->fetch_assoc()){
+                                                    echo ("
+                                                    <div class=\"row\">
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>
+                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                        </div>
+                                                    </div>");
+                                                    }
+                                                }
+                                                else{
+                                                    echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
+                                                }
                                             }
                                         ?>
                             </div>
@@ -402,7 +412,7 @@
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
                                                     <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                    <option name=\"requestHomePage\" value=\"2\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -419,7 +429,7 @@
                                         <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"sellerPage\" value=\"1\">Home Page</option>
+                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>
