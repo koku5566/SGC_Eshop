@@ -2,6 +2,8 @@
     require __DIR__ . '/header.php';
 ?>
 
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -19,18 +21,7 @@
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-<?php 
-     if(isset($_SESSION['status']))
-     {
-         ?>
-             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
-             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-             </div>
-         <?php
-         unset($_SESSION['status']);
-     }
- ?>
+
    <h2 class="m-4">Create Voucher</h2>
    <form name="form" action="createVoucherAction.php" method="post">
       <div class="container m-2">
@@ -192,6 +183,9 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
+                          if($_SESSION["id"] == $row['shop_id']){
+
+                         
                      ?>
                      <tr>
                         <td></td>
@@ -202,6 +196,7 @@
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
                     <?php 
+                     }
                      }?>
                     </tbody>
                </table>
