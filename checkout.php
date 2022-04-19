@@ -180,7 +180,7 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `variation`
                             ON variation.variation_id = cart.variation_id
-                            WHERE cart.user_ID = '$_SESSION[uid]';";
+                            WHERE cart.user_ID = $userID";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
