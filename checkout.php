@@ -201,7 +201,7 @@ if(isset($_GET['addressid']))
                             echo ("
                             <tr>
                             <td>
-                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$product_pic['product_cover_picture']">
+                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$product_pic">
                             </td>
                                 <td>
                                 <span>".$product_name."</span>
