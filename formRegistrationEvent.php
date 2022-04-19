@@ -6,8 +6,9 @@ require __DIR__ . '/header.php'
 if (isset($_GET['ticketID'])) {
     $tID = $_GET['ticketID'];
     $_SESSION['ticketSelected'] = $_GET['ticketID'];
-    $eID =  $_SESSION['eventPurchaseID'];
+    
 }
+$eID =  $_SESSION['eventPurchaseID'];
 ?>
 
 <?php
@@ -45,55 +46,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
     }
 
 
-    //Insert each value into responses table
-    $sql1 = "SELECT * FROM `formElement` WHERE `event_id` = $eID";
-    $result1 = mysqli_query($conn, $sql);
-    $formCount = 0;
-    $counter = 0;
+    // //Insert each value into responses table
+    // $sql1 = "SELECT * FROM `formElement` WHERE `event_id` = $eID";
+    // $result1 = mysqli_query($conn, $sql);
+    // $formCount = 0;
+    // $counter = 0;
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row1 = mysqli_fetch_assoc($result1)) {
+    // if (mysqli_num_rows($result) > 0) {
+    //     while ($row1 = mysqli_fetch_assoc($result1)) {
 
-            if (!empty($_POST[$row1['field_name']])) {
-                $formCount++;
+    //         if (!empty($_POST[$row1['field_name']])) {
+    //             $formCount++;
 
-                $value = mysqli_real_escape_string($conn, SanitizeString($_POST[$row1['field_name']]));
-                $formID = $row1['form_element_id'];
+    //             $value = mysqli_real_escape_string($conn, SanitizeString($_POST[$row1['field_name']]));
+    //             $formID = $row1['form_element_id'];
 
-                $sql2 = "INSERT INTO `formResponse`(`form_id`, `entry_id`, `value`) VALUES (?,?,?)";
-                if ($stmt2 = mysqli_prepare($conn, $sql2)) {
-                    if (false === $stmt2) {
-                        die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-                    }
-                    $bp = mysqli_stmt_bind_param($stmt2, "iis", $formID, $entryID, $value);
-                    if (false === $bp) {
-                        die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-                    }
-                    $bp = mysqli_stmt_execute($stmt2);
-                    if (false === $bp) {
-                        die('Error with execute: ') . htmlspecialchars($stmt->error);
-                    }
-                    if (mysqli_stmt_affected_rows($stmt2) == 1) {
-                        $counter++;
-                    } 
-                    else {
-                        $error = mysqli_stmt_error($stmt2);
-                        echo "<script>alert($error);</script>";
-                    }
-                    mysqli_stmt_close($stmt2);
-                }
+    //             $sql2 = "INSERT INTO `formResponse`(`form_id`, `entry_id`, `value`) VALUES (?,?,?)";
+    //             if ($stmt2 = mysqli_prepare($conn, $sql2)) {
+    //                 if (false === $stmt2) {
+    //                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+    //                 }
+    //                 $bp = mysqli_stmt_bind_param($stmt2, "iis", $formID, $entryID, $value);
+    //                 if (false === $bp) {
+    //                     die('Error with bind_param: ') . htmlspecialchars($stmt2->error);
+    //                 }
+    //                 $bp = mysqli_stmt_execute($stmt2);
+    //                 if (false === $bp) {
+    //                     die('Error with execute: ') . htmlspecialchars($stmt2->error);
+    //                 }
+    //                 if (mysqli_stmt_affected_rows($stmt2) == 1) {
+    //                     $counter++;
+    //                 } 
+    //                 else {
+    //                     $error = mysqli_stmt_error($stmt2);
+    //                     echo "<script>alert($error);</script>";
+    //                 }
+    //                 mysqli_stmt_close($stmt2);
+    //             }
 
-                if($counter == $formCount){
-                    echo "<script>alert('Participant register successful. Proceed to checkout');window.location.href='./eventCheckout.php';</script>";
-                }
-                else{
-                    echo "<script>alert('Error in register. Contact admin for help');window.location.href='./event.php';</script>";
-                }
+    //             if($counter == $formCount){
+    //                 echo "<script>alert('Participant register successful. Proceed to checkout');window.location.href='./eventCheckout.php';</script>";
+    //             }
+    //             else{
+    //                 echo "<script>alert('Error in register. Contact admin for help');window.location.href='./event.php';</script>";
+    //             }
                 
-            }
-        }
+    //         }
+    //     }
 
-    }
+    // }
 }
 
 
@@ -168,7 +169,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                 ?>
             </section>
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-                <div class="btn-group" role="group"><button class="btn btn-primary" type="submit" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" name="registerParticipant">Submit</button></div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" name="registerParticipant">Submit</button>
+                </div>
             </div>
         </form>
 
