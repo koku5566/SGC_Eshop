@@ -17,7 +17,6 @@
 ?>
 
 <?php
-    $_SESSION['eventID'] = 1;
     //--------------Add new form element------------------------
     if(isset($_POST["addFormElementSubmit"])){
         $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
