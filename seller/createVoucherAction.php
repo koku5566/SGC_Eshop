@@ -1,6 +1,7 @@
 <?php
 
    require __DIR__ . '/header.php';
+   require __DIR__ . '/createVoucher.php';
 
    if(isset($_POST['submit'])){
 
@@ -22,7 +23,7 @@
          echo 'success add voucher';
       }
       else{
-         echo mysqli_error($conn, $sqlv);
+         echo $voucherCode;
       }
 
       $product = $_POST['productlist'];
