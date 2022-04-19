@@ -68,6 +68,26 @@
 				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
 			</button>
 			</div>
+
+			<div class=\"mb-4\">
+			<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
+			<div class=\"address\">
+				<p style=\"font-weight: bold;font-size: 1.55rem;\">".$row["contact_name"]."</p>
+				<div class=\"row\">
+					<div class=\"col-lg-4\">
+						<p style=\"font-size: 1rem;\">".$row["phone_number"]."</p>
+						<p style=\"font-size: 1.5rem;\">".$row["address"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["postal_code"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["area"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["state"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["country"]."></p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			</a>
+			</div>
+
 			");
 	}
 ?>
