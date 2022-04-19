@@ -2,6 +2,16 @@
     require __DIR__ . '/header.php';
 ?>
 
+<?php 
+
+   if(!isset($_SESSION)){
+        session_start();
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,12 +41,11 @@
          unset($_SESSION['status']);
      }
  ?>
-
+ 
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" action="createVoucherAction.php" method="post">
+   <form name="form" action="/seller/createVoucherAction.php" method="POST">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -178,7 +187,7 @@
                     <tbody> 
                      <?php 
 
-                     $shopId = $_SESSION['uid'];
+                        $shopId = $_SESSION['uid'];
 
                         $sqlp = 
                         "SELECT 
@@ -216,7 +225,7 @@
                </table>
             </div>
          </div>
-         <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All
+         <!-- <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -299,26 +308,26 @@
    });
 
 
-      $("#selectAll").on( "click", function(e) {
+      // $("#selectAll").on( "click", function(e) {
 
-         if ($(this).is( ":checked" )) {
+      //    if ($(this).is( ":checked" )) {
 
-            vouchertable.rows({
+      //       vouchertable.rows({
 
-               page:'current'
+      //          page:'current'
 
-            } ).select(); 
+      //       } ).select(); 
 
-         }else {
+      //    }else {
 
-            vouchertable.rows({
+      //       vouchertable.rows({
 
-               page:'current'
+      //          page:'current'
 
-            } ).deselect(); 
+      //       } ).deselect(); 
 
-         }
-      });
+      //    }
+      // });
 
       $('#select').click( function () {
 
@@ -357,7 +366,7 @@
             
       });
 
-     $('#select', '#selectAll').on( 'click',function () {
+     $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
 
