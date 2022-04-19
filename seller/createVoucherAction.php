@@ -25,12 +25,13 @@
 
       for($i = 0; $i < count($product); $i++){
 
-         $sqlpv = "INSERT INTO productvoucher (product_id, voucher_id)
+         $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
          mysqli_query($conn, $sqlpv);
          
       }
+
        if($query_run)
        {
           $_SESSION['status'] = "Multiple Data Inserted Successfully";
