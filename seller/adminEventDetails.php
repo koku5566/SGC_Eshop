@@ -6,8 +6,50 @@ require __DIR__ . '/header.php'
 
 if (isset($_GET['id'])) {
     $_SESSION['eventIDView'] = $_GET['id'];
+    $eID = $_SESSION['eventIDView'];
 }
 
+?>
+
+<?php
+    if(isset($_POST['reject']))
+    {
+        $status="Rejected";
+            $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
+                if ($stmt = mysqli_prepare($conn,$sql)){
+                    mysqli_stmt_bind_param($stmt,"si",$status, $eID);
+                    mysqli_stmt_execute($stmt);
+                        if(mysqli_stmt_affected_rows($stmt) == 1){
+                            echo "<script>alert('Success!!!!!');</script>";
+                            //Add $_SESSION['eventID'] = "";
+                            //Add Redirect to next page
+                        }
+                        else{
+                            $error = mysqli_stmt_error($stmt);
+                            echo "<script>alert($error);</script>";
+                        }		
+                        mysqli_stmt_close($stmt);
+                }
+    }
+    else if(isset($_POST['approve']))
+    {
+        $status="Approved";
+            $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
+                if ($stmt = mysqli_prepare($conn,$sql)){
+                    mysqli_stmt_bind_param($stmt,"si",$status, $eID);
+                    mysqli_stmt_execute($stmt);
+                        if(mysqli_stmt_affected_rows($stmt) == 1){
+                            echo "<script>alert('Success!!!!!');</script>";
+                            //Add $_SESSION['eventID'] = "";
+                            //Add Redirect to next page
+                        }
+                        else{
+                            $error = mysqli_stmt_error($stmt);
+                            echo "<script>alert($error);</script>";
+                        }		
+                        mysqli_stmt_close($stmt);
+                }
+    }
 ?>
 
 <!-- Begin Page Content -->
@@ -49,8 +91,10 @@ if (isset($_GET['id'])) {
                                     <h5>Event Status: " . $row['status'] . "</h5>
                                     <h5>Location: " . $row['location'] . "</h5>
                                     <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
-                                    <button class=\"btn btn-secondary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Reject</button>
-                                    <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Approve</button>
+                                    <form action=\"<?php echo ".$_SERVER['PHP_SELF']."; ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                                    <button class=\"btn btn-secondary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"reject\">Reject</button>
+                                    <button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\" name=\"approve\">Approve</button>
+                                    </form>
                                 </div>
                                 ");
                     }
