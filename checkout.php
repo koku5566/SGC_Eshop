@@ -217,7 +217,8 @@ if(isset($_GET['addressid']))
                                 </td>
                                 <td class='text-center'>
                                     <div class='variation-input'>
-                                    <label>".$P_variation."</label>
+                                    <label>".$product_id."</label>";
+
 
                          echo           "
                                     </div>
