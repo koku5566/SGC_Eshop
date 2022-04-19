@@ -17,12 +17,11 @@
 			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password'";
+			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password' AND role = 'USER'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
-                    if ($row['role']=="User"){
 					//echo "<script>alert('Login Successfull')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
@@ -31,11 +30,7 @@
                     $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
-                    }
-                    else{
-                        echo "<script>alert('error')</script>";
-                    }
+					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?ph
 				}
 			} else {
 				$Login = false;
