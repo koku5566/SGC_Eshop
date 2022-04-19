@@ -3,6 +3,7 @@
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
 </head>
+<div class="container-fluid" style="width:80%">
 <div class="payment">
   <h1>Your Payment has been Successful</h1>
   <div class="wrapper">
@@ -23,6 +24,9 @@
     </div>
   </div>
 </div>  
+</div>
+
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
   <?php
     require __DIR__ . '/footer.php'
