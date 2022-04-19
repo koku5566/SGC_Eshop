@@ -15,7 +15,7 @@ $eventsql = "SELECT ticketTransaction.ticketOrder_id, ticketTransaction.buyer_na
             ";
 
 $resultsql = mysqli_query($conn, $eventsql);                                             
-$row = mysqli_fetch_array($results);
+$row = mysqli_fetch_array($resultsql);
 
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
