@@ -38,8 +38,20 @@
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div class="col-xl-9">
-<div class="h1">My Payment Option</div>
+<div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-6 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-left">
+                                        <div class="h1 text-gray-900 mb-4">My Payment Option</div>
+                                    </div>
 <a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
 <a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
@@ -84,6 +96,14 @@
 	}
 ?>
 </form>
+	                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 
