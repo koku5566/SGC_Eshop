@@ -177,14 +177,16 @@
                                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                             <p class=\"p-title\">Promotion Title</p>
                                                         </div>
-                                                        <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                            <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button>
-                                                        </div>
-                                                        <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                            <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Approve</button>
-                                                        </div>
-                                                        <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                            <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Reject</button>
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button>
+                                                            </div>
+                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Approve</button>
+                                                            </div>
+                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
+                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Reject</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     ");
