@@ -235,8 +235,6 @@ $json = json_decode($return);
 	while($addressrow = mysqli_fetch_array($res_data)){
 		("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" >
-            <label class=\"form-check-label\" for=\"address-option\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -244,7 +242,6 @@ $json = json_decode($return);
 				".$addressrow["area"]."
 				".$addressrow["state"]."
 				".$addressrow["country"]."
-                </label>
 			</div>
 			");
 	}
