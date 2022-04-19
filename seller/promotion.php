@@ -9,6 +9,45 @@
         <?php
         exit;
 	}
+       //Promotion Status in DB - Approve Section
+       if(isset($_POST['Approve']))
+       {
+           $promotionId = $_POST['approveSectionID'];
+           
+           $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
+           $result = mysqli_query($conn, $sql_approve);
+           if(mysqli_affected_rows($result) == 1)
+           {
+               ?>
+                   <script type="text/javascript">
+                       alert("Promotion Approve Successful");
+                       window.location.href = window.location.origin + "/seller/promotion.php";
+                   </script>
+               <?php
+           }
+           else{
+               echo '<script>alert("Failed")</script>';
+           }
+       }
+   
+       //Promotion Status in DB - Reject Section
+       if(isset($_POST['Reject']))
+       {
+           $promotionId = $_POST['approveSectionID'];
+           $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
+           if(mysqli_query($conn, $sql_reject))
+           {
+               ?>
+                   <script type="text/javascript">
+                       alert("Promotion Reject Successful");
+                       window.location.href = window.location.origin + "/seller/promotion.php";
+                   </script>
+               <?php
+           }
+           else{
+               echo '<script>alert("Failed")</script>';
+           }
+       }
 
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
