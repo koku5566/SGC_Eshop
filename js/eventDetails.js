@@ -1,17 +1,17 @@
-var t = $('#participantTable').DataTable({//call table id
+var t = $('#transactionTable').DataTable({//call table id
     dom: 'Bfrtip',
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
             {
                 extend: 'pdfHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
             {
                 extend: 'csvHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
         ]
 });

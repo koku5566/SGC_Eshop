@@ -10,7 +10,7 @@
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
     $result = $conn->query($sql);
 ?>
-
+<!-- Slide Show by Lim Qiu Xiong-->
 <?php
     //Fetch each promotion image information
     $promotion_title = array();
@@ -34,6 +34,7 @@
         <?php
     }
 ?>
+<!-- Slide Show by Lim Qiu Xiong-->
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 

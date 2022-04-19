@@ -3,7 +3,9 @@
 
     $orderid = $_GET['order_id'];
     
+    //=========sql to get order information=============
     $orderstatus = "";
+    $deliverymethod="";
     $totalprice = 0;
     $shippingfee = 8.6;
     $orderinfosql = "SELECT
@@ -21,10 +23,10 @@
     $stmt->execute();
     $oresult = $stmt->get_result();
 
+    //=========sql to get order item information===========
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
-    myOrder.delivery_method,
     product.product_name,
     product.product_cover_picture,
     product.product_price,
@@ -43,6 +45,13 @@
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id,myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -51,6 +60,8 @@
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
      while ($orow = $oresult->fetch_assoc()) {
+         $orderstatus = $orow['order_status'];
+         $deliverymethod = $orow['delivery_method'];
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -75,7 +86,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
-                            <div id="recipient-name">Hoe Chian Xin</div>
+                            <div id="recipient-name"><?php echo $orow['username']?></div>
                             <div id="recipient-address"><?php echo $orow['address']?></div>
                         </div>
                     </div>
@@ -90,21 +101,46 @@
                         <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
+                            <form method="POST">
                                 <thead>
+
                                     <tr>
-                                        <th scope="col">Location</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Activity</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php                       
+                                     while ($srow = $Sresult->fetch_assoc()) {
+                                         
+                                ?>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                        <td><?php echo $srow['datetime'] ?></th>
+                                        <td><?php echo $srow['status']; ?></td>
                                     </tr>
+                                <?php 
+                                
+                                }
+                                if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
+                                <td><?php date("Y-m-d H:i:s");?></td>
+                                <td>Tracking No: <br>
+                                    <input class="input" name="tracking_number" type="text" style="width:250px">
+                                    <button type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
+                                </td>
+                                <?php }
+                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                <td><?php date("Y-m-d H:i:s");?></td>
+                                <td>Update Pick-Up Status: <br>
+                                    <select id="pickup" name="pickup">
+                                      <option value="Ready">Pick-Up is Ready</option>
+                                      <option value="Contact">You will contact customer</option>
+                                    </select>
+                                    <button type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
+                                </td>
+                                <?php }?>
                                 </tbody>
                             </table>
+                            </form>
                         </div>
 
                     </div>
@@ -179,7 +215,7 @@
                                     Total:
                                 </div>
                                 <div class="col">
-                                    <?php echo number_format($totalprice, 2)?>
+                                    RM<?php echo number_format($totalprice, 2)?>
                                 </div>
                             </div>
                             <div class="row p-2">
