@@ -62,9 +62,11 @@
 
     if(isset($_POST["tracking_send"])){
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
-        $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$trackingnum')";
+        $status = "Shipped";
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
         
-        if ($conn->query($updatesql) === TRUE) {
+        if ($conn->query($updatesql) && $conn->query($insertsql) === TRUE) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
 
@@ -144,7 +146,7 @@
                         <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
-                            <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+
                                 <thead>
                                     <tr>
                                         <th scope="col">Date</th>
@@ -165,13 +167,17 @@
                                 <tr>
                                 <?php 
                                 if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
+                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
                                     <input class="form-control input" name="tracking_number" type="text" style="width:250px">
                                     <button type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
                                 </td>
+                                </form>
                                 <?php }
+
                                 else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
                                     <select id="pickup" name="pickup">
@@ -181,11 +187,12 @@
                                     </select>
                                     <button type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
                                 </td>
+                                </form>
                                 <?php }?>
                                 </tr>
                                 </tbody>
                             </table>
-                            </form>
+                            
                         </div>
 
                     </div>
