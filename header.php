@@ -70,6 +70,10 @@
     {
         $_SESSION['uid'] = "";
     }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
     if(!isset($_SESSION['role']))
     {
         $_SESSION['role'] = "";

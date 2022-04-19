@@ -22,14 +22,20 @@
 			
 			if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
+                    if ($row['role']=="User"){
 					//echo "<script>alert('Login Successfull')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
                     $_SESSION['uid'] = $row["user_id"];
+                    $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+                    }
+                    else{
+                        echo "<script>alert('error')</script>";
+                    }
 				}
 			} else {
 				$Login = false;

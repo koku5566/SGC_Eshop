@@ -30,7 +30,7 @@ if(isset($_POST['signup']))
 							$userid = $row["AUTO_INCREMENT"];
 
 							$sql  = "INSERT INTO user (userID, username, email, password, name, registration_date, role)
-							VALUES ((SELECT CONCAT('S',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$date','SELLER')";		
+							VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$date','SELLER')";		
 							if (mysqli_query($conn, $sql)) {
 								$_SESSION['AddUser'] = true;
 
