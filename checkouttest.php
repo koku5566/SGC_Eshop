@@ -21,13 +21,14 @@ $customerUID = $_SESSION['userid'];
   $volumetricWeight = 0;
   
 
-  $seller = "SELECT DISTINCT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
+  $sellersql = "SELECT DISTINCT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
+  $result = $conn->query($sellersql);
   if ($result->num_rows > 0) { //if multiple product in cart
     while($row = $result->fetch_assoc()) {
         array_push($sellers, $prod['shop_id']);
     }
 }   
-    print_r($seller);
+    print_r($sellers);
 
   $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
   $result = $conn->query($cartsql);
