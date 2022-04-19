@@ -6,8 +6,9 @@ require __DIR__ . '/header.php'
 if (isset($_GET['ticketID'])) {
     $tID = $_GET['ticketID'];
     $_SESSION['ticketSelected'] = $_GET['ticketID'];
-    $eID =  $_SESSION['eventPurchaseID'];
+    
 }
+$eID =  $_SESSION['eventPurchaseID'];
 ?>
 
 <?php
@@ -47,17 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
 
     //Insert each value into responses table
     $sql1 = "SELECT * FROM `formElement` WHERE `event_id` = $eID";
-    $result1 = mysqli_query($conn, $sql);
+    $result1 = mysqli_query($conn, $sql1);
     $formCount = 0;
     $counter = 0;
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result1) > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
-
-            if (!empty($_POST[$row1['field_name']])) {
+            $fieldName = $row1['field_name'];
+            $nameFieldName = str_replace(' ', '', $fieldName);
+            if (!empty($_POST["$nameFieldName"])) {
                 $formCount++;
+                
 
-                $value = mysqli_real_escape_string($conn, SanitizeString($_POST[$row1['field_name']]));
+                $value = mysqli_real_escape_string($conn, SanitizeString($_POST["$nameFieldName"]));
                 $formID = $row1['form_element_id'];
 
                 $sql2 = "INSERT INTO `formResponse`(`form_id`, `entry_id`, `value`) VALUES (?,?,?)";
@@ -67,11 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                     }
                     $bp = mysqli_stmt_bind_param($stmt2, "iis", $formID, $entryID, $value);
                     if (false === $bp) {
-                        die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+                        die('Error with bind_param: ') . htmlspecialchars($stmt2->error);
                     }
                     $bp = mysqli_stmt_execute($stmt2);
                     if (false === $bp) {
-                        die('Error with execute: ') . htmlspecialchars($stmt->error);
+                        die('Error with execute: ') . htmlspecialchars($stmt2->error);
                     }
                     if (mysqli_stmt_affected_rows($stmt2) == 1) {
                         $counter++;
@@ -124,20 +127,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                     while ($row = mysqli_fetch_assoc($result)) {
                         $input = $row['element_type'];
                         $fieldName = $row['field_name'];
-
+                        $nameFieldName = str_replace(' ', '', $fieldName);
                         if ($input != "select") {
                             if ($row['required'] == "required") {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" required name=\"$fieldName\">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$nameFieldName\" required>
                                 </div>
                             ");
                             } else {
                                 echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$fieldName\">
+                                <input class=\"form-control\" type=\"$input\" placeholder=\"$fieldName\" name=\"$nameFieldName\">
                                 </div>
                                 ");
                             }
@@ -148,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                             echo ("
                                 <div class=\"row\" style=\"margin-top: 10px;\">
                                 <label class=\"form-label\" style=\"font-weight: bold;margin-bottom: 0px;padding-right: 0px;\">" . $row['field_name'] . "</label>
-                                <select class=\"form-select\" name=\"$fieldName\">
+                                <select class=\"form-select\" name=\"$nameFieldName\">
                             ");
 
                             foreach ($optionArr as $selection) {
@@ -168,7 +171,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
                 ?>
             </section>
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-                <div class="btn-group" role="group"><button class="btn btn-primary" type="submit" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" name="registerParticipant">Submit</button></div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" name="registerParticipant">Submit</button>
+                </div>
             </div>
         </form>
 
