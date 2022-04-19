@@ -222,7 +222,7 @@
                      </div>
                      <div class="form-group col-md-12">
                         <label for="">Applicable products</label>
-                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-bs-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
                   <div class="form-row" id="productraw">
@@ -247,7 +247,7 @@
 
 
 <!-- Add Product Modal -->
-<div class="modal fade" id="selectproduct" tabindex="-1" role="dialog" aria-labelledby="selectproductModalLabel" aria-hidden="true">
+<div class="modal fade" id="selectproduct" aria-labelledby="selectproductModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
