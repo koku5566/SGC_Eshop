@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    if($_SESSION['login'] == true && $_SESSION['role'] != "USER")
+    if($_SESSION['login'] == true && $_SESSION['role'] == "SELLER")
 	{
 		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
@@ -12,7 +12,7 @@
     $promotion_title = array();
     $promotion_image = array();
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' AND end_date >= now()";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'ADMIN' AND promotionEnd_Date >= now()";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
