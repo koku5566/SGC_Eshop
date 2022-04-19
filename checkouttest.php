@@ -57,7 +57,7 @@ else  { //if only one item in cart
             $iresult = $conn->query($sqlinfo);
             if (mysqli_num_rows($iresult) > 0) {
                 while ($prod = $iresult->fetch_assoc()) {
-                    echo $prod['product_height'],$prod['product_width'], $prod['product_weight'];
+                    echo 'h:',$prod['product_height'],'w:',$prod['product_width'], 'weight:',$prod['product_weight'];
                     if ($productQty == 1) 
                     {
                         $volumetricWeight = $prod['product_height']* $prod['product_width']* $prod['product_length']/5000;
