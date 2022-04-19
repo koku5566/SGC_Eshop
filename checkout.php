@@ -161,7 +161,7 @@ if(isset($_GET['addressid']))
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
@@ -172,12 +172,14 @@ if(isset($_GET['addressid']))
                             <tbody>
                             <?php
                                  $userID = "U000018";
-                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
+                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
+                            JOIN `variation`
+                            ON variation.variation_id = cart.variation_id
                             WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
@@ -190,17 +192,20 @@ if(isset($_GET['addressid']))
                                  $product_name = $rowKL['P_name'];
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
+                                 $product_variation1 =  $rowKL['variation_1_choice'];
+                                 $product_variation2 =  $rowKL['variation_2_choice'];
                                  $product_price =  $rowKL['P_price'];
+                                 $productvariation_price =  $rowKL['variation.product_price'];
                             echo ("
                             <tr>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <span>".$product_variation."</span>
+                                <span>".$product_variation." ".$product_variation1." ".$product_variation2."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price."</span>
+                                <span>".$product_price." ".$productvariation_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
