@@ -68,28 +68,28 @@
                </thead>
                <?php 
 
-                     $shopId = $_SESSION['uid'];
+                     // $shopId = $_SESSION['uid'];
 
-                     $sql_voucher =
-                     "SELECT 
-                        voucher.voucher_id,
-                        voucher.voucher_code,
-                        voucher.voucher_startdate,
-                        voucher.voucher_expired,
-                        voucher.voucher_display,
-                        voucher.voucher_type,
-                        voucher.voucher_limit,
-                        voucher.voucher_details,
-                        voucher.discount_amount,
+                     // $sql_voucher =
+                     // "SELECT 
+                     //    voucher.voucher_id,
+                     //    voucher.voucher_code,
+                     //    voucher.voucher_startdate,
+                     //    voucher.voucher_expired,
+                     //    voucher.voucher_display,
+                     //    voucher.voucher_type,
+                     //    voucher.voucher_limit,
+                     //    voucher.voucher_details,
+                     //    voucher.discount_amount,
 
-                        FROM voucher
-                        WHERE product.shop_id = '$shopId' "; 
+                     //    FROM voucher
+                     //    WHERE product.shop_id = '$shopId' "; 
 
-                     $stmt = $conn->prepare($sql_voucher);
-                     $stmt->execute();
-                     $result = $stmt->get_result();
+                     // $stmt = $conn->prepare($sql_voucher);
+                     // $stmt->execute();
+                     // $result = $stmt->get_result();
 
-                     while ($row = $res->fetch_assoc()) {
+                     // while ($row = $res->fetch_assoc()) {
 
                ?>
                <tbody>
@@ -108,7 +108,7 @@
                   </tr>
                </tbody>
                <?php 
-               }?>
+               // }?>
             </table>
          </div>
       </div>
