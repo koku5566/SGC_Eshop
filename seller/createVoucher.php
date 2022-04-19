@@ -32,7 +32,7 @@
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
 
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" action="/createVoucherAction.php" method="post">
+   <form name="form" action="createVoucherAction.php" method="post">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -212,7 +212,7 @@
                </table>
             </div>
          </div>
-         <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All
+         <!-- <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -295,26 +295,26 @@
    });
 
 
-      $("#selectAll").on( "click", function(e) {
+      // $("#selectAll").on( "click", function(e) {
 
-         if ($(this).is( ":checked" )) {
+      //    if ($(this).is( ":checked" )) {
 
-            vouchertable.rows({
+      //       vouchertable.rows({
 
-               page:'current'
+      //          page:'current'
 
-            } ).select(); 
+      //       } ).select(); 
 
-         }else {
+      //    }else {
 
-            vouchertable.rows({
+      //       vouchertable.rows({
 
-               page:'current'
+      //          page:'current'
 
-            } ).deselect(); 
+      //       } ).deselect(); 
 
-         }
-      });
+      //    }
+      // });
 
       $('#select').click( function () {
 
@@ -353,7 +353,7 @@
             
       });
 
-     $('#select', '#selectAll').on( 'click',function () {
+     $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
 
