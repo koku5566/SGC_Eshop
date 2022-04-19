@@ -20,7 +20,7 @@
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         //$productDescription = $_POST['productDescription'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -89,17 +89,20 @@
 
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            
-            $fileName = basename($_FILES['img']['name'][$key]); 
-            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round(microtime(true) * 1000).".".$ext;
-            $targetFilePath = $targetDir.$fileName; 
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                    $sql_insert .= "'$fileName', ";
-                    $imgInpCounter++;
+            if($key < 9)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_insert .= "'$fileName', ";
+                        $imgInpCounter++;
+                        echo($fileName);
+                    }
                 }
             }
         } 
@@ -168,7 +171,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -465,7 +468,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1122,7 +1125,7 @@
                 {
                     if (img.files && img.files[0] && img.files.length > 1) {
                         for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
@@ -1139,7 +1142,7 @@
                         var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }

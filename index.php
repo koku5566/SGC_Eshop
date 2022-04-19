@@ -218,7 +218,7 @@
                                                                 $calavgrat = $row_1['rating'];
                                                                 if($calavgrat == "")
                                                                 {
-                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+                                                                    echo("<p style=\"font-size:0.8rem;color:grey;margin-bottom: 0px;height: 23px;\">No Rating Yet</p>");
                                                                 }
                                                                 else{
                                                                     $check = true;
@@ -473,7 +473,7 @@
 
     .image-container{
         width:100%;
-        height: 40vh;
+        height: 25vh;
         padding: 20px;
     }
     .image-container .image{

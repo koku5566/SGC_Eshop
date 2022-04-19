@@ -300,7 +300,7 @@
 													<div class=\"row\"\>
 														<div class=\"col\">
 												");
-												$v_variation1ChoicesOnly = array_unique(array_combine($variation1Choice, $variation1Stock));
+												$v_variation1ChoicesOnly = array_combine($variation1Choice, $variation1Stock);
 												foreach ($v_variation1ChoicesOnly as $choice => $stock)
 												{
 													if($stock == 0 || $stock == "0")
