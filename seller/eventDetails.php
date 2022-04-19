@@ -115,6 +115,14 @@ if (isset($_GET['id'])) {
                                     ");
                                 }
                             }
+                            else
+                            {
+                                echo("
+                                        <tr>
+                                        <td colspan=\"10\" style=\"text-align:center;\">No Transaction yet</td>
+                                        </tr>
+                                ");
+                            }
                             ?>
                         </tbody>
                     </table>
