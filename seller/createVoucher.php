@@ -175,16 +175,16 @@
                      <?php 
                         $sqlp = 
                         "SELECT 
-                         shopProfile.shop_name,
-                         shopProfile.shop_profile_image,
+                         user.shop_name,
+                         user.shop_profile_image,
                          product.product_name,
                          product.product_cover_picture,
                          product.product_id,
                          product.product_sku,
                          product.product_price
                     
-                         FROM shopProfile
-                         INNER JOIN product ON shopProfile.shop_id = product.shop_id";
+                         FROM user
+                         INNER JOIN product ON user.user_id = product.user_id";
                     
                     
                        $stmt = $conn->prepare($sqlp);
