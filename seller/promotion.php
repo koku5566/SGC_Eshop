@@ -95,7 +95,8 @@
                             <div class="col-xl-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'SELLER' ";
+                                        $userId = $_SESSION['uid'];
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE user_id = '$userId' ";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
