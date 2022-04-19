@@ -22,7 +22,7 @@
          echo 'success add voucher';
       }
       else{
-         echo 'failed add voucher';
+         echo mysqli_error($conn, $sqlv);
       }
 
       $product = $_POST['productlist'];
@@ -37,7 +37,7 @@
             echo 'success add product';
          }
          else{
-            echo 'failed add product';
+            //echo mysqli_error($conn, $sqlv);
          }
          
       }
