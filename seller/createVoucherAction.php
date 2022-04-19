@@ -1,8 +1,5 @@
 <?php
 
-   require_once __DIR__ . '/mysqli_connect.php';   
-   //require '../localDbConn.php';
-
    if(isset($_POST['submit'])){
 
       $voucherCode = $_POST['voucherCode'];
