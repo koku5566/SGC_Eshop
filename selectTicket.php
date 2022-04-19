@@ -53,7 +53,6 @@ if (isset($_GET['eventID'])) {
                                         <tr>
                                         <td>" . $row['ticket_name'] . "</td>
                                         <td>" . $row['price'] . "</td>
-                                        <td>" . $row['ticketType_id'] . "</td>
                                         <td>Sales Ended</td>
                                         </tr>
                                         ");
