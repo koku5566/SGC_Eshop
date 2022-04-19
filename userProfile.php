@@ -81,7 +81,7 @@ if(isset($_POST['update']))
 					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
 					<div class=\"form-group\">
-					<label>Username</label>
+					<label>Username: </label>
 					<label>".$row["username"]."</label>
 					</div>
 
