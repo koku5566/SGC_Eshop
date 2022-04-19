@@ -18,7 +18,7 @@
                          
             //change address
             if(isset($_POST['submitAddress'])){
-                $UID = $_POST['submitAddress'];
+                $UID = $_POST['address-option'];
                 if(!empty($UID)) {
                     echo "<script>alert('$UID');
                     </script>";
@@ -106,6 +106,7 @@
 		echo("
 			<div>
             <button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <br>
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
