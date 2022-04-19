@@ -387,7 +387,7 @@ $_SESSION["userId"] = "U000018";
                                                             <input type="hidden" value="<?php echo $row['order_id']?>" name="order_id"/>
                                                             <input class="btn btn-primary" name="orderDetails_btn" value="Details" type="submit"/>
 
-                                                            <a href="getOrder.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();"><button type="button">Cancel</button></a>
+                                                            
                                                          </form>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
