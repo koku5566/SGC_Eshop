@@ -69,7 +69,7 @@ $orders = $stmt_2->get_result();
                                                 <tr >
                                                     
                                                     <td style="text-align: center;"><?php echo $row['order_id']?></td>
-                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?>><td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"><td>
                                                     <td style="text-align: left;"><?php echo $row['product_name']?></td>
                                                     <td style="text-align: center;"><?php echo $row['quantity']?></td>
                                                     <td style="text-align: center;"><?php echo $row['price']?></td>
