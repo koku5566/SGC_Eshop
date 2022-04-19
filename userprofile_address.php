@@ -47,7 +47,7 @@
                                         <div class="h1 text-gray-900 mb-4">My Address Book</div>
                                     </div>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" id="myform">
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -70,26 +70,25 @@
 			</div>
 
 			<div class=\"mb-4\">
-			<button class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
-			<div class=\"address\">
-				<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
-				<div class=\"row\">
-					<div class=\"col-lg-4\">
-						<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
-						<p style=\"font-size: 1.5rem;\">
-						".$row["address"]."
-						".$row["postal_code"]."
-						".$row["area"]."
-						".$row["state"]."
-						".$row["country"]."
-						</p>
+				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('myform').submit()\">
+				<div class=\"address\">
+					<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
+							<p style=\"font-size: 1.5rem;\">
+							".$row["address"]."
+							".$row["postal_code"]."
+							".$row["area"]."
+							".$row["state"]."
+							".$row["country"]."
+							</p>
+						</div>
 					</div>
 				</div>
+				<hr>
+				</a>
 			</div>
-			<hr>
-			</a>
-			</div>
-
 			");
 	}
 ?>
