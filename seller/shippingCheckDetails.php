@@ -28,7 +28,6 @@
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
         $address = $orow['address'];
-
     }
 
     //=========sql to get order item information===========
@@ -60,15 +59,53 @@
     $stmt->execute();
     $sresult = $stmt->get_result();
 
+
+    if(isset($_POST["tracking_send"])){
+        $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
+        $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$trackingnum')";
+        
+        if ($conn->query($updatesql) === TRUE) {
+            $_SESSION['success'] = "Order Status has been updated";
+            header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+
+            } else {
+          $_SESSION['status'] = "Order status update failed";
+          header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+          }
+    }
+    
+    if(isset($_POST["status_update"])){
+        $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
+        $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
+        
+        if ($conn->query($updatesql) === TRUE) {
+            $_SESSION['success'] = "Order Status has been updated";
+            header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+
+            } else {
+          $_SESSION['status'] = "Order status update failed";
+          header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+          }
+    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
-<?php                       
-
-?>
+<?php
+    if(isset($_SESSION['success'])&& $_SESSION['success']!='')
+    {
+        echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
+        unset($_SESSION['success']); //unset value when reload
+    }
+    
+    if(isset( $_SESSION['status'] )&&  $_SESSION['status'] )
+    {
+        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['status'] .'</div>';
+        unset( $_SESSION['status'] ); //unset value when reload
+    }
+    ?>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container m-3">
@@ -107,7 +144,7 @@
                         <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
-                            <form method="POST">
+                            <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <thead>
                                     <tr>
                                         <th scope="col">Date</th>
@@ -117,28 +154,28 @@
                                 <tbody>
                                 <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                         
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
                                         <td><?php echo $srow['status']; ?></td>
                                     </tr>
                                 <?php 
-                                
-                                }?>
+                                }
+                                ?>
                                 <tr>
                                 <?php 
                                 if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
-                                <td><?php date("Y-m-d H:i:s");?></td>
+                                <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
-                                    <input class="input" name="tracking_number" type="text" style="width:250px">
+                                    <input class="form-control input" name="tracking_number" type="text" style="width:250px">
                                     <button type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
                                 </td>
                                 <?php }
                                 else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
-                                <td><?php date("Y-m-d H:i:s");?></td>
+                                <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
                                     <select id="pickup" name="pickup">
+                                      <option value="Preparing"> Order is Preparing</option>
                                       <option value="Ready">Pick-Up is Ready</option>
                                       <option value="Contact">You will contact customer</option>
                                     </select>

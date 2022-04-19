@@ -14,7 +14,7 @@
             JOIN `shopProfile`
             ON product.shop_id = shopProfile.shop_id
             WHERE cart.user_ID = '$userID'
-            AND product.shop_id = '$KL'
+            AND cart.shop_id = '$KL'
             AND cart.remove_Product = '0'
             ORDER BY cart.update_at DESC";
 
