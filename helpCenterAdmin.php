@@ -52,31 +52,6 @@ $_SESSION["shop_id_product"] = 'Sohai';
 		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
 		
-		/*
-		$ss1 = $_FILES['img']['name'][0];
-		$ss2 = $_FILES['img']['name'][1];
-		$ss3 = $_FILES['img']['name'][2];
-		$ss4 = $_FILES['img']['name'][3];
-		$ss5 = $_FILES['img']['name'][4];
-		$ss6 = $_FILES['img']['name'][5];
-		*/
-		//$img1 = echo "<script>document.getElementById('view1').src</script>";
-		
-		
-		//echo $img1;
-		
-		
-		/*
-		for($i = 0; $i<5; $i++){
-			if($_FILES['img']['name'][$i] !== ""){
-				echo "<div class='alert alert-success'>GOT</div>";
-			}else{
-				echo "<div class='alert alert-danger'>NOT</div>";
-			}
-		}
-		
-		*/
-		
 		if (!file_exists("img/")){
 				mkdir("img");	//make directory
 		}
@@ -100,61 +75,25 @@ $_SESSION["shop_id_product"] = 'Sohai';
 		for($k = 0; $k< 5 - count($gotpic); $i++){
 				array_push($gotpic, '');
 		}
-		/*
-		for($j = 0; $j <5; $j++){
-			echo "<div class='alert alert-success'>$gotpic[$j]</div>";			
-		}
-		for($t = 0; $t <count($tempNamepic); $t++){
-			echo "<div class='alert alert-danger'>$tempNamepic[$t]</div>";			
-		}
-		*/
-		
-		//echo "RATING  - $ratingsec <br>";
-		//echo "COMMENT  - $commentsec";					
+					
 			
 			$pc1 = $gotpic[0];
 			$pc2 = $gotpic[1];
 			$pc3 = $gotpic[2];
 			$pc4 = $gotpic[3];
 			$pc5 = $gotpic[4];
-			
-			/*
-			echo "<div class='alert alert-success'>$pc1</div>";		
-			echo "<div class='alert alert-success'>$pc2</div>";	
-			echo "<div class='alert alert-success'>$pc3</div>";	
-			echo "<div class='alert alert-success'>$pc4</div>";	
-			echo "<div class='alert alert-success'>$pc5</div>";	
-			
-			
-			echo "<div class='alert alert-success'>$product_id</div>";
-			echo "<div class='alert alert-success'>$user_id</div>";
-			echo "<div class='alert alert-success'>$commentsec</div>";
-			echo "<div class='alert alert-success'>$ratingsec</div>";
-			
-			
-			$pc1 = "a";
-			$pc2 = "b";
-			$pc3 = "c";
-			$pc4 = "d";
-			$pc5 = "e";
-			*/																			
-		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,`pic2`,`pic3`, `pic4`, `pic5`) VALUES (?,?,?,?,?,?,?,?,?)";
+		echo "<div class='alert alert-success'>$shop_id</div>";	
+																		
+		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,`pic2`,`pic3`, `pic4`, `pic5`, `seller_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
-				mysqli_stmt_bind_param($stmt, 'sssisssss', $product_id, $user_id,$commentsec,$ratingsec,$pc1,$pc2,$pc3,$pc4,$pc5); 	//s=string , d=decimal value, i=integer
+				mysqli_stmt_bind_param($stmt, 'sssissssss', $product_id, $user_id,$commentsec,$ratingsec,$pc1,$pc2,$pc3,$pc4,$pc5,$shop_id); 	//s=string , d=decimal value, i=integer
 		
 				mysqli_stmt_execute($stmt);
 			
 				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 				{
 					echo "<script>alert('Insert successfully');</script>";
-					/**/
 					
-					/*
-					for($r = 0; $r< count($tempNamepic); $r++){
-						move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
-						echo "<div class='alert alert-success'>$tempNamepic[$r] +++ $gotpic[$r] +++ $r</div>";	
-					}
-					*/
 					for($r = 0; $r< 5; $r++){
 						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 						if(!empty($tempNamepic[$r])){
