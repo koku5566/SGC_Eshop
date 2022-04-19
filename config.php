@@ -3,15 +3,6 @@ use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 require __DIR__. '/autoload.php';
 
-function SanitizeString(string $str):string{
-    if(get_magic_quotes_gpc()){
-        $str = stripslashes($str); // take out all backslash inside the string
-    }
-    $str = strip_tags($str);//take out all html tag
-    $str = htmlentities($str, ENT_QUOTES);
-    
-    return $str;
-}
 
 // For test payments we want to enable the sandbox mode. If you want to put live
 // payments through then this setting needs changing to `false`.
@@ -33,14 +24,6 @@ $paypalConfig = [
     'PASSWORD' => '3g48B8Qn8k6v6VF',
     'NAME' => 'sgcprot1_SGC_ESHOP'
 ]; 
-
-define("HOST","localhost");
-    define("USERNAME","sgcprot1_SGC_ESHOP");
-    define("PASSWORD","3g48B8Qn8k6v6VF");
-    define("DATABASE","sgcprot1_SGC_ESHOP");
-
-    //create database connection
-    $conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
 
 /* $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 $results = mysqli_query($db,"SELECT * FROM paymentPaypal where id='4' ");
