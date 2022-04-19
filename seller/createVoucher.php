@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php';
+    require __DIR__ . '/header.php';  
 ?>
 
 <?php 
@@ -183,7 +183,7 @@
                     
                     <tbody> 
                      <?php 
-                        $shopId = $_SESSION['uid'];
+                        // $shopId = $_SESSION['uid'];
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -196,7 +196,8 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                         WHERE product.shop_id = '$shopId' ";
+                        --  WHERE product.shop_id = '$shopId' 
+                        ";
                     
                     
                        $stmt = $conn->prepare($sqlp);

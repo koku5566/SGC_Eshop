@@ -1,8 +1,5 @@
 <?php
 
-   require __DIR__ . '/header.php';
-   require __DIR__ . '/createVoucher.php';
-
    if(isset($_POST['submit'])){
 
       $voucherCode = $_POST['voucherCode'];
@@ -19,12 +16,7 @@
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
       
-      if(mysqli_query($conn, $sqlv)){
-         echo 'success add voucher';
-      }
-      else{
-         echo $voucherCode;
-      }
+      mysqli_query($conn, $sqlv);
 
       $product = $_POST['productlist'];
       $v = mysqli_insert_id($conn);//specific table
@@ -34,12 +26,7 @@
          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
-         if(mysqli_query($conn, $sqlpv)){
-            echo 'success add product';
-         }
-         else{
-            //echo mysqli_error($conn, $sqlv);
-         }
+         mysqli_query($conn, $sqlpv);
          
       }
 
