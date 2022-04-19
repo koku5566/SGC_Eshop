@@ -43,16 +43,20 @@
  ?>
 
 
-<div class="container">
-   <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
-   Create Voucher
-   </button>
-</div>
-
-<div class="container">
+<div class="container m-2">
    <div class="form-row">
       <div class="form-group col-md-12">
-         <table class="table" id="">
+         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+         Create Voucher
+         </button>
+      </div>
+   </div>
+</div>
+
+<div class="container m-2">
+   <div class="form-row">
+      <div class="form-group col-md-12">
+         <table class="table">
             <thead>
                <tr>
                   <th>Voucher ID</th>
@@ -68,9 +72,8 @@
                </tr>
             </thead>
             <tbody> 
-               <?php 
 
-                  $shopId = $_SESSION['uid'];
+               <?php 
 
                   $sql_voucher =
                   "SELECT 
