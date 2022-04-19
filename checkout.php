@@ -15,14 +15,6 @@
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-            
- $usersql2 ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-            FROM `userAddress`
-            JOIN user ON userAddress.user_id = user.user_id
-            WHERE userAddress.address_id= '$_SESSION[addressid]';";
-            
-            $userresult2 = mysqli_query($conn, $usersql2);  
-            $userrow2 = mysqli_fetch_assoc($userresult2);               
                          
             //change address
             if(isset($_POST['address-option'])){
@@ -144,12 +136,12 @@
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
             <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow2['contact_name']; ?></label></div>
-                <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow2['phone_number']; ?></label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
+                <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;" data-toggle="modal" data-target="#myModal"    >Change</button></div>
             </div>
             <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow2['address'],',',$userrow2['postal_code'],',', $userrow2['area'],',',$userrow2['state'],',',$userrow2['country']; ?></label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
             </div>
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
