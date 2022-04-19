@@ -7,7 +7,9 @@
                 window.location.href = window.location.origin + "/seller/sellerLogin.php";
             </script>
         <?php
+        exit;
 	}
+
 
     
     if(isset($_POST['add']) || isset($_POST['publish'])){
