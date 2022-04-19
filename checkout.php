@@ -217,9 +217,15 @@ if(isset($_GET['addressid']))
                                 </td>
                                 <td class='text-center'>
                                     <div class='variation-input'>
-                                    <label>".$product_id."</label>";
+                                        <select class='form-select' onchange='updateVariation(".$cart_id.")' id='updateVariation".$cart_id."'>";
 
-
+                                        echo  $variation_message;
+                                        //check product variation
+                                            // <option>RED</option>
+                                            // <option>YELLOW</option>
+                                            // <option>GREEN</option>
+                                            // <option>BLACK</option>
+                                            // <option>WHITE</option>
                          echo           "
                                     </div>
                                 </td>
