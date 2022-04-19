@@ -20,7 +20,7 @@
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         //$productDescription = $_POST['productDescription'];
-        $productDescription = mysqli_real_escape_string($con, $_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -171,7 +171,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    //window.location.href = window.location.origin + "/seller/myProduct.php";
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }

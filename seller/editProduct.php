@@ -12,7 +12,7 @@
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -77,25 +77,29 @@
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
 
+        echo(var_dump($_FILES['img']));
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            $fileName = basename($_FILES['img']['name'][$key]); 
-            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round((microtime(true) * 1000) + 1).".".$ext;
-            $targetFilePath = $targetDir.$fileName; 
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+            if($key < 9)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round((microtime(true) * 1000) + 1).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                        $imgInpCounter++;
+                    }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
                     $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
-            }
-            else if($defaultFile[$key] != "") //Get the default picture name
-            {
-                $fileName = $defaultFile[$key];
-                $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
-                $imgInpCounter++;
             }
         } 
 
@@ -163,7 +167,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -1305,7 +1309,7 @@
                 {
                     if (img.files && img.files[0] && img.files.length > 1) {
                         for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
@@ -1322,7 +1326,7 @@
                         var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
