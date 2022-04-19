@@ -221,11 +221,11 @@ $json = json_decode($return);
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content" style = "width:100%;">
+      <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Select Address</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="width 80%;">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
     <?php
 	$UID = $_SESSION["uid"];
