@@ -66,9 +66,7 @@
                      <th>List/Delist</th>
                   </tr>
                </thead>
-               <tbody>
-                  <tr>
-                  <?php 
+               <?php 
 
                      $shopId = $_SESSION['uid'];
 
@@ -93,7 +91,9 @@
 
                      while ($row = $res->fetch_assoc()) {
 
-                  ?>
+               ?>
+               <tbody>
+                  <tr>
                      <td><?php echo $row['voucher_id']; ?></td>
                      <td><?php echo $row['voucher_code']; ?></td>
                      <td><?php echo $row['voucher_type']; ?></td>
@@ -103,12 +103,12 @@
                      <td><?php echo $row['voucher_limit']; ?></td>
                      <td><?php echo $row['voucher_status']; ?></td>
                      <td><?php echo $row['voucher_list']; ?></td>
-                     
-                  <?php 
-                  }?>
-                  </tr>
 
+                  
+                  </tr>
                </tbody>
+               <?php 
+               }?>
             </table>
          </div>
       </div>
