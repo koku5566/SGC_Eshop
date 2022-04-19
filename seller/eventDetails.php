@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
                                     <h5>Location: " . $row['location'] . "</h5>
                                     <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
                                     <a href = \"updateEvent.php?eventUpdate=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
-                                    <button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button>
+                                    <a href = \"checkInEvent.php?eventCheckin=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button></a>
                                 </div>
                                 ");
                     }

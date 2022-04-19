@@ -2,6 +2,14 @@
 require __DIR__ . '/header.php'
 ?>
 
+<?php
+if(isset($_GET['eventCheckin']))
+{
+    $_SESSION['eventCheckin'] = $_GET['eventCheckin'];
+}
+
+?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
     <!-- Above Template -->
