@@ -199,7 +199,7 @@ if(isset($_GET['addressid']))
                             echo ("
                             <tr>
                                 <td>
-                                <span>".$product_name."</span>
+                                <span>"hi"</span>
                                 </td>
                                 <td>
                                 <span>".$product_variation."</span>
