@@ -173,23 +173,22 @@
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
                                                 echo ("
-                                                    <div class=\"row\">
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">Promotion Title</p>
-                                                        </div>
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
+                                                    </div>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                         <div class=\"row\">
-                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button>
-                                                            </div>
-                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Approve</button>
-                                                            </div>
-                                                            <div class=\"col-xl-3 col-lg-3 col-sm-12\">
-                                                                <button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">Reject</button>
-                                                            </div>
+                                                            <div class=\"col-xl-3 \"><button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button><div>
+                                                            <div class=\"col-xl-3 \"><button type=\"submit\" name=\"ApprovePromotion\"  class=\"btn btn-danger\">Approve</button><div>
+                                                            <div class=\"col-xl-3 \"><button type=\"submit\" name=\"RejectPromotion\"  class=\"btn btn-danger\">Reject</button><div>
                                                         </div>
                                                     </div>
                                                     ");
+
+                                                    echo('<div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary closeDeleteModel" data-dismiss="modal">Close</button>
+                                                    <button type="submit" name="DeletePromotion"  class="btn btn-danger" value="1">Delete</button>
+                                                </div>');
                                             }
                                         ?>
                                     </form>
