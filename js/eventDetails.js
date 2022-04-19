@@ -1,4 +1,4 @@
-var t = $('#participantTable').DataTable({//call table id
+var t = $('#transactionTable').DataTable({//call table id
     dom: 'Bfrtip',
         buttons: [
             {
