@@ -3,7 +3,9 @@
 ?>
 
 
-<?php  
+<?php 
+$ticketid = $_SESSION['ticketTransaction'];
+
 $eventsql = "SELECT ticketTransaction.ticketOrder_id, ticketTransaction.buyer_name, ticketTransaction.buyer_email, ticketTransaction.buyer_contact, ticketTransaction.total_price, ticketTransaction.event_id, ticketTransaction.ticket_type_id,`event`.event_id,
                     `event`.event_name, ticketType.ticketType_id, ticketType.ticket_name
             FROM `ticketTransaction`
@@ -11,7 +13,7 @@ $eventsql = "SELECT ticketTransaction.ticketOrder_id, ticketTransaction.buyer_na
             ON `event`.event_id = ticketTransaction.event_id
             JOIN `ticketType`
             ON ticketType.ticketType_id = ticketTransaction.ticket_type_id
-            WHERE ticketTransaction.ticketOrder_id = $_SESSION[ticketTransaction];
+            WHERE ticketTransaction.ticketOrder_id = $ticketid;
             ";
 
 $resultsql = mysqli_query($conn, $eventsql);                                             
