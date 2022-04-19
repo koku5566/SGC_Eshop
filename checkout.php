@@ -16,10 +16,11 @@
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);             
                          
+            //change address
             if(isset($_POST['submitAddress'])){
                 $UID = $_POST['submitAddress'];
                 if(!empty($UID)) {
-                    echo "<script>alert('success');
+                    echo "<script>alert('$UID');
                     </script>";
                 } else {
                     echo "<script>alert('fail to change address');
@@ -120,7 +121,7 @@
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button>
+            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress" value = <?php echo"$addressrow[address_id]"?>>Save changes</button>
             </form>
         </div>
       </div>
