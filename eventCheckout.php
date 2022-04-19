@@ -143,7 +143,7 @@ if (isset($_POST["completeRegister"])) {
                     <h5 class="mb-0">Buyer Details</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                    <form action="request2.php" method="POST" enctype="multipart/form-data">
                         <div><label class="form-label">Buyer Name</label><input class="form-control" type="text" placeholder="Buyer Name" name="buyerName" required></div>
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-6"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email" name="buyerEmail" required></div>
