@@ -179,7 +179,7 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID =  $userID'
+                            WHERE cart.user_ID =  '$userID'
                             AND product.shop_id = '$KL'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
@@ -212,8 +212,7 @@ if(isset($_GET['addressid']))
                                 <td>
                                 <span>".$product_quantity."</span>
                                 </td>
-                                        
-                                        
+                                                                              
                             </tr> ";             
                     }
                     ?>
