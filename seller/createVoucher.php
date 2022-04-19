@@ -3,7 +3,6 @@
 ?>
 
 <?php 
-
    if(!isset($_SESSION)){
         session_start();
     }
@@ -16,7 +15,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 
@@ -26,7 +24,6 @@
 <!-- Select datatable CSS-->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
-
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
 <?php 
@@ -146,6 +143,9 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
+            <div class="form-row" id="productraw">
+
+            </div>
             <div class="form-row">
                <div class="float-right">
                   <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
@@ -183,9 +183,7 @@
                     
                     <tbody> 
                      <?php 
-
                         $shopId = $_SESSION['uid'];
-
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -204,7 +202,6 @@
                        $stmt = $conn->prepare($sqlp);
                        $stmt->execute();
                        $res = $stmt->get_result();
-
                        while ($row = $res->fetch_assoc()) {
                          
                      ?>
@@ -234,7 +231,6 @@
 
 <script type ="module">
    var createvouchertable = $('#createvouchertable').DataTable( {
-
    retrieve: true,
    responsive: true,
    scrollCollapse: true,
@@ -242,95 +238,64 @@
    ordering: true,
    searching: false,
    paging: false,
-
    columnDefs: [{
       targets: -1,
       data: null,
       defaultContent: '<button class="btn btn-light btn-sm" type="button" data-toggle="tooltip"><i class="fa fa-trash"></i></button>'
    }],
-
    select: {
    style:    'multi', //'multi' - select multiple checkbox
    selector: 'td:first-child'
    },
-
    order: [[ 1, 'asc' ]]
-
    } );
-
    var vouchertable = $('#vouchertable').DataTable( {
-
    retrieve: true,
    responsive: true,
    scrollCollapse: true,
    ordering: true,
    searching: true,
    paging: true,
-
    columnDefs: [ {
    targets:   0,
    className: 'select-checkbox',
    }],
-
    lengthMenu:[
    [4,-1],
    [4,"All"]
    ],
-
    select: {
    style:    'multi', //'multi' - select multiple checkbox
    selector: 'td:first-child'
    },
-
    order: [[ 1, 'asc' ]]
-
    } );
-
    //-----------------------Delete Row-----------------------------//
    
    $('#createvouchertable tbody').on( 'click', 'button', function () {
-
    var row = createvouchertable.row($(this).parents('tr'));
    row.remove().draw(false);
    
    });
-
    //----------------------------Multiselect Function--------------------------------//
-
-
    $('#vouchertable tbody').on( 'click', 'tr', function () {
     
      $(this).toggleClass('selected');
-
    });
-
-
       // $("#selectAll").on( "click", function(e) {
-
       //    if ($(this).is( ":checked" )) {
-
       //       vouchertable.rows({
-
       //          page:'current'
-
       //       } ).select(); 
-
       //    }else {
-
       //       vouchertable.rows({
-
       //          page:'current'
-
       //       } ).deselect(); 
-
       //    }
       // });
-
       $('#select').click( function () {
-
          var testdata = [];
          testdata = vouchertable.rows('.selected').data();
-
          for(var i = 0; i<testdata.length; i++)
          {
             const rowInsert = [];
@@ -339,15 +304,10 @@
             {
                rowInsert.push(testdata[i][j]);
             }
-
             let pid = $('#productList').val();
-
             let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
-
             console.log(rowInsert[3]);
-
             $('#productraw').append(productid);
-
             createvouchertable.row.add([
             rowInsert[1],
             rowInsert[2],
@@ -357,26 +317,20 @@
             "",
       
             ] ).draw( false );
-
-
          }
             
       });
-
      $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
-
 </script>
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
 <!-- Select datatable JS-->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
-
 <script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
 
 <?php
