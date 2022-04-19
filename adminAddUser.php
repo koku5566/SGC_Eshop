@@ -26,7 +26,7 @@ if(isset($_POST['signup']))
 				$stmt_u = mysqli_query($conn, $sql_u);
 
 				if (mysqli_num_rows($stmt_u) > 0) {	
-					echo("<script>alert('User Already Exists');</script>");
+					echo("<script>alert('Username or Email Already Exists');</script>");
 				}
 				else
 				{
