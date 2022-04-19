@@ -49,6 +49,74 @@
       </button>
    </div>
 
+   <div class="container m-2">
+      <div class="form-row">
+         <div class="form-group col-md-12">
+            <table class="table" id="voucherReview">
+               <thead>
+                  <tr>
+                     <th>Voucher ID</th>
+                     <th>Voucher Code</th>
+                     <th>Voucher Type</th>
+                     <th>Voucher Start</th> <!-- data-visible="false" -->
+                     <th>Voucher Expired</th>
+                     <th>Voucher Details</th>
+                     <th>Voucher Limit</th>
+                     <th>Status</th>
+                     <th>List/Delist</th>
+                     <th></th>
+                  </tr>
+               </thead>
+               <tbody> 
+
+                  <?php 
+
+                     $shopId = $_SESSION['uid'];
+
+                     $sql_voucher =
+                     "SELECT 
+                        voucher.voucher_id,
+                        voucher.voucher_code,
+                        voucher.voucher_startdate,
+                        voucher.voucher_expired,
+                        voucher.voucher_display,
+                        voucher.voucher_type,
+                        voucher.voucher_limit,
+                        voucher.voucher_details,
+                        voucher.discount_amount,
+
+                        FROM voucher
+                        WHERE product.shop_id = '$shopId' "; 
+
+                     $stmt = $conn->prepare($sql_voucher);
+                     $stmt->execute();
+                     $result = $stmt->get_result();
+
+                  while ($row = $res->fetch_assoc()) {
+                     
+                  ?>
+
+                  <tr>
+                     <td><?php echo $row['voucher_id']; ?></td>
+                     <td><?php echo $row['voucher_code']; ?></td>
+                     <td><?php echo $row['voucher_type']; ?></td>
+                     <td><?php echo $row['voucher_startdate']; ?></td>
+                     <td><?php echo $row['voucher_expired']; ?></td>
+                     <td><?php echo $row['voucher_details']; ?></td>
+                     <td><?php echo $row['voucher_limit']; ?></td>
+                     <td><?php echo $row['voucher_status']; ?></td>
+                     <td><?php echo $row['voucher_list']; ?></td>
+                  </tr>
+
+                  <?php 
+                  }?>
+
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="createVoucherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -373,77 +441,6 @@
   </div>
 </div>
 
-
-
-<div class="container m-2">
-      <div class="form-row">
-         <div class="form-group col-md-12">
-            <table>
-               <thead>
-                  <tr>
-                     <th>Voucher ID</th>
-                     <th>Voucher Code</th>
-                     <th>Voucher Type</th>
-                     <th>Voucher Start</th>
-                     <th>Voucher Expired</th>
-                     <th>Voucher Details</th>
-                     <th>Voucher Limit</th>
-                     <th>Status</th>
-                     <th>List/Delist</th>
-                     <th></th>
-                  </tr>
-               </thead>
-               <tbody> 
-
-                  <?php 
-
-                     $shopId = $_SESSION['uid'];
-
-                     $sql_voucher =
-                     "SELECT 
-                        voucher.voucher_id,
-                        voucher.voucher_code,
-                        voucher.voucher_startdate,
-                        voucher.voucher_expired,
-                        voucher.voucher_display,
-                        voucher.voucher_type,
-                        voucher.voucher_limit,
-                        voucher.voucher_details,
-                        voucher.discount_amount,
-
-                        FROM voucher
-                        WHERE product.shop_id = '$shopId' "; 
-
-                     $stmt = $conn->prepare($sql_voucher);
-                     $stmt->execute();
-                     $result = $stmt->get_result();
-
-                  while ($row = $res->fetch_assoc()) {
-                     
-                  ?>
-
-                  <tr>
-                     <td><?php echo $row['voucher_id']; ?></td>
-                     <td><?php echo $row['voucher_code']; ?></td>
-                     <td><?php echo $row['voucher_type']; ?></td>
-                     <td><?php echo $row['voucher_startdate']; ?></td>
-                     <td><?php echo $row['voucher_expired']; ?></td>
-                     <td><?php echo $row['voucher_details']; ?></td>
-                     <td><?php echo $row['voucher_limit']; ?></td>
-                     <td><?php echo $row['voucher_status']; ?></td>
-                     <td><?php echo $row['voucher_list']; ?></td>
-                  </tr>
-
-                  <?php 
-                  }?>
-
-               </tbody>
-            </table>
-         </div>
-      </div>
-   </div>
-</div>
-
 <script type ="module">
    var createvouchertable = $('#createvouchertable').DataTable( {
 
@@ -493,6 +490,29 @@
    style:    'multi', //'multi' - select multiple checkbox
    selector: 'td:first-child'
    },
+
+   order: [[ 1, 'asc' ]]
+
+   } );
+
+   var voucherReview = $('#voucherReview').DataTable( {
+
+   retrieve: true,
+   responsive: true,
+   scrollCollapse: true,
+   ordering: true,
+   searching: true,
+   paging: true,
+
+   columnDefs: [ {
+   targets:   0,
+   className: 'select-checkbox',
+   }],
+
+   lengthMenu:[
+   [10,-1],
+   [10,"All"]
+   ],
 
    order: [[ 1, 'asc' ]]
 
