@@ -232,19 +232,17 @@ $json = json_decode($return);
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
-	while($row = mysqli_fetch_array($res_data)){
+	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-			<button href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\">
-				".$row["contact_name"]."
-				".$row["phone_number"]."
-				".$row["address"]."
-				".$row["postal_code"]."
-				".$row["area"]."
-				".$row["state"]."
-				".$row["country"]."
-				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
-			</button>
+            <input class="form-check-input" type="radio" name="address-option" id="$addressrow["address_id"]">
+            <label class="form-check-label" for="standarddelivery">".$addressrow["contact_name"]."
+            ".$addressrow["phone_number"]."
+            ".$addressrow["address"]."
+            ".$addressrow["postal_code"]."
+            ".$addressrow["area"]."
+            ".$addressrow["state"]."
+            ".$addressrow["country"]."</label>
 			</div>
 			");
 	}
