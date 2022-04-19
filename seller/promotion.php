@@ -149,7 +149,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="row">
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
@@ -169,24 +168,21 @@
                                         }
                                     ?>
                                     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                                    <?php
-                                        if ($_SESSION['role'] == "ADMIN")
-                                        { 
-                                            echo ("
-                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                    <p class=\"p-title\">Promotion Title</p>
-                                                </div>
-                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                    <div class=\"row\">
-                                                        <div class=\"col-xl-4 \"><button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button><div>
-                                                        <div class=\"col-xl-4 \"><button type=\"submit\" name=\"ApprovePromotion\"  class=\"btn btn-danger\">Approve</button><div>
-                                                        <div class=\"col-xl-4 \"><button type=\"submit\" name=\"RejectPromotion\"  class=\"btn btn-danger\">Reject</button><div>
+                                        <?php
+                                            if ($_SESSION['role'] == "ADMIN")
+                                            { 
+                                                echo ("
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
                                                     </div>
-                                                </div>");
-                                        }
-                                    ?>
+                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div class=\"row\">
+                                                            <div class=\"col-xl-4 \"><button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button><div>
+                                                        </div>
+                                                    </div>");
+                                            }
+                                        ?>
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>
