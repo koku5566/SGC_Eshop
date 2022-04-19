@@ -140,24 +140,59 @@
         </div>
 
         <!-- Approved Section-->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-sm-12">
-                                    <div class="row">
-                                    
-                                    </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <?php
+                                        if ($_SESSION['role'] == "SELLER")
+                                        { echo ("
+                                            <div class=\"row\">
+                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                    <p class=\"p-title\">Banner display at:</p>
+                                                </div>
+                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                    <div class=\"input-group mb-3\">
+                                                        <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                            <option name=\"sellerPage\" value=\"0\">Seller Page</option>
+                                                            <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>");
+                                        }
+                                    ?>
+                                    <?php
+                                        if ($_SESSION['role'] == "ADMIN")
+                                        { echo ("
+                                            <div class=\"row\">
+                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                    <p class=\"p-title\">Banner display at:</p>
+                                                </div>
+                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                    <div class=\"input-group mb-3\">
+                                                        <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                            <option name=\"sellerPage\" value=\"0\">Seller Page</option>
+                                                            <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>");
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
         <!-- Create Promotion -->
         <div class="row">
