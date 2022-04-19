@@ -6,7 +6,7 @@
 
 <div class="container-fluid" style="width:80%">
 <div class="payment">
-  <div class="wrapper" style="background colour: white;">
+  <div class="wrapper" style="background: #f1f7fc;">
   <h1>Your Payment has been Successful</h1>
   <?php 
     $paymentid = $_GET['payid'];
