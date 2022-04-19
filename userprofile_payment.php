@@ -72,7 +72,7 @@
 					".$row["bank_name"]."
 					".$row["bankAcc_name"]."
 					".$row["account_no"]."
-					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
+					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 				</div>
 			</div>
 			");
