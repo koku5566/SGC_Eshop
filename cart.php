@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
-    include __DIR__.'../mysqli_connect.php'; 
+    //include __DIR__.'../mysqli_connect.php'; 
 
     $userID = "U000018";
     $KL = 14;
@@ -12,12 +12,12 @@
             FROM `cart`
             JOIN `product`
             ON product.product_id = cart.product_ID 
-            JOIN `shopprofile`
-            ON product.shop_id = shopprofile.shop_id
+            JOIN `shopProfile`
+            ON product.shop_id = shopProfile.shop_id
             WHERE cart.user_ID = '$userID'
             AND product.shop_id = '$KL'
             AND cart.remove_Product = '0'
-            ORDER BY cart.create_at DESC";
+            ORDER BY cart.update_at DESC";
 
     $queryKL = mysqli_query($conn, $sql);
 
@@ -266,8 +266,8 @@
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `shopprofile`
-                            ON product.shop_id = shopprofile.shop_id
+                            JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$userID'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC";
@@ -831,7 +831,7 @@ select.form-control {
             data: { cart_id: cart_id, quantity: quantity }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
          });
 
     }
@@ -849,7 +849,7 @@ select.form-control {
             data: { cart_id2: cart_id, variation_id: variation_id }
         })
         .done(function( msg ) {
-                window.location.href = window.location.origin + 'cart.php';
+                window.location.href = window.location.origin + '/cart.php';
                 //alert(msg);
          });
 

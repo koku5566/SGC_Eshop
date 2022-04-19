@@ -12,7 +12,7 @@
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -69,7 +69,7 @@
         $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
-        $defaultFile = $_POST['imgDefault'];
+        $defaultFile = array_filter($_POST['imgDefault']);
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
@@ -77,25 +77,31 @@
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
 
+        echo(var_dump($defaultFile));
+        echo(var_dump($_FILES['img']));
+        
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            $fileName = basename($_FILES['img']['name'][$key]); 
-            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round((microtime(true) * 1000) + 1).".".$ext;
-            $targetFilePath = $targetDir.$fileName; 
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+            if($key < 9)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round((microtime(true) * 1000) + 1).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                        $imgInpCounter++;
+                    }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
                     $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
-            }
-            else if($defaultFile[$key] != "") //Get the default picture name
-            {
-                $fileName = $defaultFile[$key];
-                $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
-                $imgInpCounter++;
             }
         } 
 
@@ -119,6 +125,7 @@
         $sql_update .= "category_id = '$categoryCombinationId' ";
         $sql_update .= "WHERE product_id = '$productId' ";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
@@ -163,7 +170,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -1027,27 +1034,34 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.warning').length == 0)
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
-            if(document.getElementById("productType").value == "0")
+            if(document.querySelectorAll('.warning').length == 0)
             {
-                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                if(document.getElementById("productType").value == "0")
                 {
-                    document.getElementById("EditProduct").click();
+                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    {
+                        document.getElementById("AddProduct").click();
+                    }
+                    else
+                    {
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").focus();
+                    }
                 }
-                else
-                {
-                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                    document.getElementById("checkbox-err-msg").focus();
+                else{
+                    document.getElementById("AddProduct").click();
                 }
-            } 
-            else{
-                document.getElementById("EditProduct").click();
+            }
+            else
+            {
+                alert("Please Enter Distinct Product Variation and Choices");
             }
         }
         else
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            alert("Please Select a Cover Picture");
         }
     }
 
@@ -1305,7 +1319,7 @@
                 {
                     if (img.files && img.files[0] && img.files.length > 1) {
                         for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
@@ -1322,7 +1336,7 @@
                         var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
