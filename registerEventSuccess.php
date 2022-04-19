@@ -24,10 +24,10 @@ $row = mysqli_fetch_array($results);
 <div class="container-fluid" style="width:80%">
 <div class="payment">
   <div class="wrapper" style="background: #f1f7fc;">
-  <h1>Your Payment has been Successful</h1>
+  <h1>Register Successful</h1>
   
 	  <div class="status">
-      <h4>Payment Information</h4>
+      <h4>Information</h4>
       <p>Transcation ID: <?php echo $row['ticketTransaction.ticketOrder_id']; ?></p>
       <p>Buyer Name: <?php echo $row['ticketTransaction.buyer_name']; ?></p>
       <p>Buyer Email: <?php echo $row['ticketTransaction.buyer_email']; ?></p>
