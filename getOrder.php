@@ -19,7 +19,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-
+ORDER BY myOrder.order_id
 ";
 $stmt_2 = $conn->prepare($sql_2);
 $stmt_2->execute();
@@ -54,33 +54,40 @@ $orders = $stmt_2->get_result();
                                         <table class="table">
                                             <thead>
                                                 <tr>
+                                                    <th>Prod ID</th>
                                                     <th>Product(s)</th>
-                                                    <th>Product Name</th>
-                                                    <th>Product Variation</th>
+                                                    <th></th>
+                                                    <th></th>
                                                     <th>Product Quantity</th>
                                                     <th>Total Amount</th>
+                                                   
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
-                                                
-                                                <tr class="clickable "
-                                                          onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row['order_id']?>">
-                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?>/><td>
-                                                    <td><?php echo $row['product_name']?></td>
-                                                    <td><?php echo $row['product_variation']?></td>
-                                                    <td><?php echo $row['quantity']?></td>
-                                                    <td><?php echo $row['amount']?></td>
+                                              
+                                                <tr >
+                                                    
+                                                    <td style="text-align: center;"><?php echo $row['product_id']?></td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
+                                                    <td style="text-align: left;"><?php echo $row['product_name']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['quantity']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['amount']?></td>
+                                                    
                                                 </tr>
                                             
                                             </tbody>
+                                           
                                         </table>
                                     </div>
                                 </div>
+                        
                                 <div class="card-footer">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                             <button type="button" class="btn btn-primary">Order Status</button>
+                                                
+                                             <a href="orderDetails.php?id ="><button type="button" class="btn btn-primary">Order Status</button>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Ratings</button>
                                              <span style="margin-left:20%;">Total</span>

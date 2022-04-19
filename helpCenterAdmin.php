@@ -6,7 +6,7 @@
 
 <?php
 $_SESSION["userId"] = "U000018";
-$_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';;
+
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
@@ -33,8 +33,8 @@ $_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';;
 		
 		}
 		
-		
-		//$_SESSION["shop_id_product"] = $j6;
+		//$_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';
+		$_SESSION["shop_id_product"] = $j6;
 		
 		
 	}
@@ -44,9 +44,9 @@ $_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';;
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
-		
+	
 		$shop_id = $_SESSION["shop_id_product"];
-		echo "<div class='alert alert-success'>$shop_id</div>";
+		//echo "<div class='alert alert-success'>$shop_id</div>";
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
 		$user_id = $_SESSION["userId"];	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];

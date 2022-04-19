@@ -3,8 +3,16 @@
 	require __DIR__ .'/PHP_product.php';
 ?>
 <?php
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     $_SESSION['productID'] = $_GET['id'];
-	$_SESSION["userId"] = "U000018";
 ?>
 <?php
 	//Fetch each product information
@@ -654,12 +662,34 @@
                 <!-- /.container-fluid -->
 
 
-<div class="modal fade" id="MsgModel" tabindex="-1" role="dialog" aria-labelledby="MsgModel" aria-hidden="true">
+<div class="modal fade" id="MsgSuccessModel" tabindex="-1" role="dialog" aria-labelledby="MsgSuccessModel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div id="SuccessMsg">
 			<div class="SuccessMsg-content">
 				<img src="/img/resource/check.png" style="width: 80px;"/>
 				<p style="color: white;">Item has been added to your shopping cart</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="MsgFailModel" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div id="SuccessMsg">
+			<div class="SuccessMsg-content">
+				<img src="/img/resource/remove.png" style="width: 80px;"/>
+				<p style="color: white;">Add to cart fail</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="MsgLoginModel" tabindex="-1" role="dialog" aria-labelledby="MsgLoginModel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div id="SuccessMsg">
+			<div class="SuccessMsg-content">
+				<img src="/img/resource/enter.png" style="width: 80px;"/>
+				<p style="color: white;">Please Login before proceed to add to cart</p>
 			</div>
 		</div>
 	</div>
@@ -1176,10 +1206,20 @@
 			},
 			dataType: 'JSON',
 			success: function(response){
-				if(response == "true")
+				if(response == "success")
 				{
-					$("#MsgModel").modal('show');
-					setTimeout(function() {$("#MsgModel").modal('hide');}, 2000);
+					$("#MsgSuccessModel").modal('show');
+					setTimeout(function() {$("#MsgSuccessModel").modal('hide');}, 2000);
+				}
+				else if(response == "fail")
+				{
+					$("#MsgFailModel").modal('show');
+					setTimeout(function() {$("#MsgFailModel").modal('hide');}, 2000);
+				}
+				else if(response == "login")
+				{
+					$("#MsgLoginModel").modal('show');
+					setTimeout(function() {$("#MsgLoginModel").modal('hide');}, 2000);
 				}
 			},
 			error: function(err) {

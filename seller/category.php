@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) || $_SESSION['role'] != "ADMIN"){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_POST['addMain'])){
 
         $categoryName = $_POST['addCategoryName'];

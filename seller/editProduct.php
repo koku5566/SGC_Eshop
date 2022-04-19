@@ -1,13 +1,20 @@
 <?php
     require __DIR__ . '/header.php';
 
-    
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
-        $_SESSION['userid'] = "14";
-        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
@@ -186,8 +193,7 @@
     {
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
-        //$shopId = $_SESSION['user_id'];
-        $shopId = "14";
+        $shopId = $_SESSION['uid'];
 
         //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
         $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
