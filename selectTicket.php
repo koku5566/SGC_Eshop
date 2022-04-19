@@ -55,7 +55,7 @@ require __DIR__ . '/header.php'
                                     }
                                     else
                                     {
-                                        echo("<tr><td>
+                                        echo("<tr><td colspan=\"4\">
                                         All Sales Ended
                                         </td>
                                         </tr>
