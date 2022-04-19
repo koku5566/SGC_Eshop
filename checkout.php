@@ -161,7 +161,7 @@ if(isset($_GET['addressid']))
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
@@ -200,9 +200,6 @@ if(isset($_GET['addressid']))
 
                             echo ("
                             <tr>
-                            <td>
-                            <img src=\"/img/product/".$product_pic.">
-                            </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
