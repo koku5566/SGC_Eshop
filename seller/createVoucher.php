@@ -222,7 +222,7 @@
                      </div>
                      <div class="form-group col-md-12">
                         <label for="">Applicable products</label>
-                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-bs-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
                </div>    
