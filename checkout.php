@@ -171,22 +171,17 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
+                                 $userID = "U000018";
                             $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `shopProfile`
-                            ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID =  '$userID'
-                            AND product.shop_id = '$KL'";
+                            WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
-                            $userID = "U000018";
-                            $KL = 14;
-                            $SB = 20;
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
