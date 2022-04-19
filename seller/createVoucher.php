@@ -46,7 +46,7 @@
 <div class="container m-2">
    <div class="form-row">
       <div class="form-group col-md-12">
-         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
          Create Voucher
          </button>
       </div>
