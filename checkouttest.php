@@ -71,7 +71,7 @@ else  { //if only one item in cart
         }
 }
 
-echo 'volumetric= ',$volutetricWeight;
+echo 'volumetric= ',$volumetricWeight;
   
   //echo $productheight, $maximumlength, $maximumwidth;
   //echo $productweight;
