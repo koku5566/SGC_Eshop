@@ -42,10 +42,35 @@
      }
  ?>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
-  Create Voucher
-</button>
+
+<div class="container">
+   <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+   Create Voucher
+   </button>
+</div>
+
+<div class="container">
+   <div class="form-row">
+      <div class="form-group col-md-12">
+         <table class="table" id="createvouchertable">
+            <thead>
+               <tr>
+                  <th>Product Image</th>
+                  <th>Product Name</th>
+                  <th>Product ID</th> <!-- data-visible="false" -->
+                  <th>Product SKU</th>
+                  <th>Price (RM)</th>
+                  <th></th>
+               </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="createVoucherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
