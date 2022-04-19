@@ -227,7 +227,7 @@ function editUser(username)
 
 				var priceHTML = `
 						<div class="modal-header">
-                            <h5 class="modal-title" >Edit Staff Information</h5>
+                            <h5 class="modal-title" >Edit User Information</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -284,7 +284,6 @@ function editUser(username)
                             <button type="submit" name="editStaff" value="`+username+`" class="btn btn-primary">Save changes</button>
                         </div>
 				`;
-				
 				$("#editProfile").empty();
 				$("#editProfile").append(priceHTML);
 			}
@@ -294,7 +293,6 @@ function editUser(username)
 			}
 		},
 		error: function(err) {
-			//$('#login_message').html(err.responseText);
 			alert(err.responseText);
 		}
 	});
