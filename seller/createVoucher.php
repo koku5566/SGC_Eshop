@@ -1,13 +1,14 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if(!isset($_SESSION)){
-      session_start();
-   }
-   if(!isset($_SESSION['id']))
-   {
-         $_SESSION['id'] = "";
-   }
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+      ?>
+          <script type="text/javascript">
+              window.location.href = window.location.origin + "/seller/sellerLogin.php";
+          </script>
+      <?php
+      exit;
+ }
 
     if(isset($_POST['submit'])){
 
@@ -24,7 +25,7 @@
       
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0')";
-      
+
       if(mysqli_query($conn, $sqlv)){
 
       $product = $_POST['productlist'];
@@ -48,7 +49,6 @@
       else{
          echo 'add voucher failed';
          echo $voucherCode;
-         echo $conn;
       }
 
        /* if($query_run)
@@ -98,7 +98,7 @@
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" method="POST">
+   <form name="form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -380,6 +380,10 @@
      $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
+</script>
+
+<script type="text/javascript">
+    window.location.href = window.location.origin + "/seller/createVoucher.php";
 </script>
 
 <!-- Datatable -->
