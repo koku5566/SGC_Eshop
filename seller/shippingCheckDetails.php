@@ -191,10 +191,10 @@
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
-                                <input type="hidden" class="form-control" name="order_id" value="<?php echo $orderid?>" >
+                                <input type="hidden"  name="order_id" value="<?php echo $orderid?>" >
                                 <div class="row">
                                     <div class="col">
-                                    <select id="pickup" name="pickup">
+                                    <select id="pickup" name="pickup" class="form-control">
                                       <option value="Preparing"> Order is Preparing</option>
                                       <option value="Ready">Pick-Up is Ready</option>
                                       <option value="Contact">You will contact customer</option>
