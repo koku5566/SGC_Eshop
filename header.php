@@ -282,9 +282,12 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <a class="dropdown-item" href="cart.php">
-                            <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
-                        </a>
+
+                        <li class="nav-item">
+                            <a href="cart.php">
+                                <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
+                            </a>
+                        </li>
                         
                         <div class="topbar-divider d-none d-sm-block"></div>
 
