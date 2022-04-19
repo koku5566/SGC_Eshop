@@ -12,6 +12,60 @@
     }
 ?>
 
+<?php
+
+   if(isset($_POST['submit'])){
+
+      $voucherCode = $_POST['voucherCode'];
+      $voucherStartdate = $_POST['voucherStartdate'];
+      $voucherExpired = $_POST['voucherExpired'];
+      $discountAmount = $_POST['discountAmount'];
+      $voucherLimit = $_POST['voucherLimit'];
+      $voucherType = $_POST['voucherType'];
+      $voucherDetails = $_POST['voucherDetails'];
+      $voucherDisplay = $_POST['voucherDisplay'];
+      $date = date('Y-m-d H:i:s');
+
+      
+      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
+      
+      mysqli_query($conn, $sqlv);
+
+      $product = $_POST['productlist'];
+      $v = mysqli_insert_id($conn);//specific table
+
+      for($i = 0; $i < count($product); $i++){
+
+         $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+                  VALUES ('".$product[$i]."', '$v');"; //get prod first array
+
+         mysqli_query($conn, $sqlpv);
+         
+      }
+
+       if($query_run)
+       {
+          $_SESSION['status'] = "Multiple Data Inserted Successfully";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       }
+       else
+       {
+          $_SESSION['status'] = "Data Not Inserted";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       }
+
+    }
+    else {
+       echo "error";
+    }
+   
+   
+?>
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -42,7 +96,7 @@
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" action="/seller/createVoucherAction.php" method="POST">
+   <form name="form" action="/seller/createVoucher.php" method="POST">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
