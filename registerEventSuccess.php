@@ -28,7 +28,7 @@ $row = mysqli_fetch_array($resultsql);
   
 	  <div class="status">
       <h4>Information</h4>
-      <p>Transcation ID: <?php echo $row['ticketTransaction.ticketOrder_id']; ?></p>
+      <p>Transcation ID: <?php echo $row['ticketOrder_id']; ?></p>
       <p>Buyer Name: <?php echo $row['ticketTransaction.buyer_name']; ?></p>
       <p>Buyer Email: <?php echo $row['ticketTransaction.buyer_email']; ?></p>
       <p>Buyer Contact: <?php echo $row['ticketTransaction.buyer_contact']; ?></p>
