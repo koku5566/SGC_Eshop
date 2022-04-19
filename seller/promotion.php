@@ -4,8 +4,8 @@
     //$_SESSION['role'] = "SELLER";
     //$_SESSION["userId"] = "S000025";
 
-    $_SESSION['role'] = "ADMIN";
-    $_SESSION["userId"] = "A000001";
+    //$_SESSION['role'] = "ADMIN";
+    //$_SESSION["userId"] = "A000001";
 
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
