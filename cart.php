@@ -1,6 +1,5 @@
 <?php
     require __DIR__ . '/header.php';
-    include __DIR__.'../mysqli_connect.php'; 
 
     $userID = "U000018";
     $KL = 14;
@@ -15,7 +14,7 @@
             JOIN `shopProfile`
             ON product.shop_id = shopProfile.shop_id
             WHERE cart.user_ID = '$userID'
-            AND product.shop_id = '$KL'
+            AND cart.shop_id = '$KL'
             AND cart.remove_Product = '0'
             ORDER BY cart.update_at DESC";
 
