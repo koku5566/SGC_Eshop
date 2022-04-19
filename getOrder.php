@@ -54,28 +54,34 @@ $orders = $stmt_2->get_result();
                                         <table class="table">
                                             <thead>
                                                 <tr>
+                                                    <th>Order ID</th>
                                                     <th>Product(s)</th>
-                                                    <th>Product Name</th>
+                                                    <th></th>
                                                     <th></th>
                                                     <th>Product Quantity</th>
                                                     <th>Total Amount</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
-                                                
-                                                <tr class="clickable "
-                                                          onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row['order_id']?>">
-                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?>/><td>
-                                                    <td style="text-align:left;"><?php echo $row['product_name']?></td>
-                                                    <td></td>
-                                                    <td style="text-align:left;"><?php echo $row['quantity']?></td>
-                                                    <td style="text-align:left;"><?php echo $row['amount']?></td>
+                                              
+                                                <tr >
+                                                    
+                                                    <td style="text-align: center;"><?php echo $row['order_id']?></td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?>><td>
+                                                    <td style="text-align: left;"><?php echo $row['product_name']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['quantity']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['price']?></td>
+                                                    
                                                 </tr>
                                             
                                             </tbody>
+                                           
                                         </table>
                                     </div>
                                 </div>
+                        
                                 <div class="card-footer">
                                     <table class="table">
                                         <thead>
