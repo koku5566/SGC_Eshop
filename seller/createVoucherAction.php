@@ -35,13 +35,13 @@
        if($query_run)
        {
           $_SESSION['status'] = "Multiple Data Inserted Successfully";
-          header("Location: ../seller/createVoucher.php");
+          header("Location: /seller/createVoucher.php");
           exit(0);
        }
        else
        {
           $_SESSION['status'] = "Data Not Inserted";
-          header("Location: ../seller/createVoucher.php");
+          header("Location: /seller/createVoucher.php");
           exit(0);
        }
 
