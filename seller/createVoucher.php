@@ -2,17 +2,6 @@
     require __DIR__ . '/header.php';
 ?>
 
-<?php 
-
-   if(!isset($_SESSION)){
-        session_start();
-    }
-    if(!isset($_SESSION['id']))
-    {
-        $_SESSION['id'] = "";
-    }
-?>
-
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,6 +18,20 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
+<?php 
+     if(isset($_SESSION['status']))
+     {
+         ?>
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+         <?php
+         unset($_SESSION['status']);
+     }
+ ?>
+
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
 
