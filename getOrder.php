@@ -171,20 +171,12 @@ $_SESSION["userId"] = "U000018";
 									<img src = "<?php echo (isset($j5) && !empty ($j5))? 'img/product/'.$j5 : 'https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg'; ?>" class = "productpic">
 									<div class = "namestar">
 										<!--VALUE $C1 CHANGE TO RELAVANT INFO AR -->
-										<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'WI-SP510 Wireless Headphone blablabla - RMB PRODUCT NAME'; ?></h5>
-										<h6><?php echo (isset($j3) && !empty ($j3))? $j3 : 'Model: WISP510 - RMB MODEL/BRAND'; ?></h6>
-										<h3><?php echo (isset($j4) && !empty ($j4))? 'RM '.$j4 : 'RM 349.00 - RMB PRICE'; ?></h3>									
+										<h5 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0.3rem; color: #333; font-weight: bold;"><?php echo (isset($j2) && !empty ($j2))? $j2 : 'NO PRODUCT NAME AVAILABLE'; ?></h5>
+										<h6><?php echo (isset($j3) && !empty ($j3))? $j3 : 'NO MODEL/BRAND AVAILABLE'; ?></h6>
+										<h3><?php echo (isset($j4) && !empty ($j4))? 'RM '.$j4 : 'NO PRICE AVAILABLE'; ?></h3>									
 									</div>
 									
-									<!-- bi bi-star-fill 	21.13
-									<div style="margin-bottom: 1.1em; text-align: center;margin-top: 1.5rem;">
-									<i class="fa fa-star tqy rrting" id = "rr1"></i>
-									<i class="fa fa-star tqy rrting" id = "rr2"></i>
-									<i class="fa fa-star tqy rrting" id = "rr3"></i>
-									<i class="fa fa-star tqy rrting" id = "rr4"></i>
-									<i class="fa fa-star tqy rrting" id = "rr5"></i>
-									</div>
-									-->
+								
 								<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype = "multipart/form-data">	
 									<div class="rating"> 
 										<input type="radio" name="rating" value="5" id="5" checked required><label for="5">☆</label> 
