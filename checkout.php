@@ -226,10 +226,12 @@ $json = json_decode($return);
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-         <?php while ($addressrow = mysql_fetch_array($userresult))  
+         <?php 
+         if ($userresult->num_rows > 0) {
+         while ($addressrow = mysql_fetch_array($userresult))  
         {   
          echo $addressrow["contact_name"],$addressrow["phone_number"],$addressrow["addreess"], $addressrow["postal_code"], $addressrow["area"], $addressrow["state"], $addressrow["country"];
-        }
+        }}
 ?>  
         </div>  
         <div class="modal-footer">
