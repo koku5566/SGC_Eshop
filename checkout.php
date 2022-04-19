@@ -179,32 +179,24 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID =  $userID'
-                            AND product.shop_id = '$KL'
-                            AND cart.remove_Product = '0'
-                            ORDER BY cart.update_at DESC";
+                            WHERE cart.user_ID =  '$userID'
+                            AND product.shop_id = '$KL'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
                             $userID = "U000018";
                             $KL = 14;
                             $SB = 20;
-
-                             $i=0;
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $product_stock = 0;
-                                 $product_price = 0;
-                                 $stock_message = "";
                                  $cart_id = $rowKL['cart_id'];
                                  $product_id = $rowKL['PID'];
                                  $product_name = $rowKL['P_name'];
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
-                                 $variation_message = "";
-                                 $showNotif = false;
-                            echo "
+                                 $product_price =  $rowKL['P_price'];
+                            echo ("
                             <tr>
                                 <td>
                                 <span>".$product_name."</span>
@@ -218,9 +210,8 @@ if(isset($_GET['addressid']))
                                 <td>
                                 <span>".$product_quantity."</span>
                                 </td>
-                                        
-                                        
-                            </tr> ";             
+                                                                              
+                            </tr> ");             
                     }
                     ?>
                             </tbody>

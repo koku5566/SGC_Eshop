@@ -153,7 +153,6 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { echo ("
-                                            <div class=\"row\">
                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                     <p class=\"p-title\">Banner display at:</p>
                                                 </div>
@@ -164,14 +163,12 @@
                                                             <option name=\"homePage\" value=\"1\">Home Page</option>
                                                         </select>
                                                     </div>
-                                                </div>
-                                            </div>");
+                                                </div>");
                                         }
                                     ?>
                                     <?php
                                         if ($_SESSION['role'] == "ADMIN")
                                         { echo ("
-                                            <div class=\"row\">
                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                     <p class=\"p-title\">Banner display at:</p>
                                                 </div>
@@ -182,8 +179,7 @@
                                                             <option name=\"homePage\" value=\"1\">Home Page</option>
                                                         </select>
                                                     </div>
-                                                </div>
-                                            </div>");
+                                                </div>");
                                         }
                                     ?>
                                 </div>
