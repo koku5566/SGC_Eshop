@@ -163,7 +163,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?><br><input type="hidden" id="TrackNo" value="<?php $srow['tracking_number']?>"><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                                        <td><?php echo $srow['status']; ?><br><input type="text" id="TrackNo" value="<?php $srow['tracking_number']?>"><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                                     </tr>
                                 <?php 
                                 }
