@@ -3,6 +3,24 @@
 
     $orderid = $_GET['order_id'];
     
+    $orderstatus = "";
+    $totalprice = 0;
+    $shippingfee = 8.6;
+    $orderinfosql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    user.username,
+    userAddress.address
+    FROM
+    myOrder
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    WHERE myOrder.order_id = '$orderid';";
+    $stmt = $conn->prepare($orderinfosql);
+    $stmt->execute();
+    $oresult = $stmt->get_result();
+
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
@@ -18,7 +36,7 @@
     myOrder
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN user ON myOrder.user_id = user.user_id
-    JOIN product ON orderDetails.product_id = product.id
+    JOIN product ON orderDetails.product_id = product.product_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     WHERE myOrder.order_id = '$orderid';";
 
@@ -32,7 +50,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
-
+     while ($orow = $oresult->fetch_assoc()) {
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -45,7 +63,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            <?php echo $row['order_id']?>
+                            <?php echo $orow['order_id']?>
                         </div>
                     </div>
                 </div>
@@ -58,7 +76,7 @@
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
-                            <div id="recipient-address"><?php echo $row['address']?></div>
+                            <div id="recipient-address"><?php echo $orow['address']?></div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +138,10 @@
                     </div>
                     <?php
                     $i=0;
-                    while ($row = $result->fetch_assoc()) {?>
+                    while ($row = $result->fetch_assoc()) {
+
+                    $totalprice += $row['amount'];
+                    ?>
                     <!--Start of order item-->
                     <div class="card">
                         <div class="card-body">
@@ -146,8 +167,8 @@
                                         Card</span> </div>
                                 <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
                                     <span class="iconify" data-icon="carbon:delivery"
-                                        style="color: black;"></span>Processing
-                                    Order</div>
+                                        style="color: black;"></span>
+                                    <?php echo $orow['order_status']?></div>
                             </div>
                         </div>
                         <!--Ordered Item Price Amount Information-->
@@ -158,7 +179,7 @@
                                     Total:
                                 </div>
                                 <div class="col">
-                                    RM715.00
+                                    <?php echo number_format($totalprice, 2)?>
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -167,7 +188,7 @@
                                     Discounts:
                                 </div>
                                 <div class="col">
-                                    -RM258.00
+                                    -RM0.00
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -186,7 +207,7 @@
                                     <!--**to input quantity of items-->
                                 </div>
                                 <div class="col red-text">
-                                    <h5><strong>RM465.60</strong></h5>
+                                    <h5><strong>RM<?php echo number_format($totalprice+$shippingfee,2)?></strong></h5>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +219,7 @@
         </div>
     </div>
 
-
+<?php } ?>
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
