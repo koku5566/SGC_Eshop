@@ -25,7 +25,7 @@ $price = 0;
     $mail->SMTPAuth   = true;
     $mail->SMTPSecure = "tls";
     $mail->Port       = 465;
-    $mail->Host       = "smtp.sgcprototype2.com";
+    $mail->Host       = "sgcprototype2.com";
     $mail->Username   = "event@sgcprototype2.com";
     $mail->Password   = "0124756909AaBb";
 
