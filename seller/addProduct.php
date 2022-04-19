@@ -100,6 +100,7 @@
                 if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                     $sql_insert .= "'$fileName', ";
                     $imgInpCounter++;
+                    echo($fileName);
                 }
             }
         } 
@@ -168,7 +169,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/seller/myProduct.php";
+                    //window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
