@@ -196,10 +196,10 @@ if(isset($_GET['addressid']))
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
                                  $product_price =  $rowKL['P_price'];
-                            echo "
+                            echo ("
                             <tr>
                                 <td>
-                                <span>".$product_name."</span>
+                                <span>hi</span>
                                 </td>
                                 <td>
                                 <span>".$product_variation."</span>
@@ -211,7 +211,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_quantity."</span>
                                 </td>
                                                                               
-                            </tr> ";             
+                            </tr> ");             
                     }
                     ?>
                             </tbody>

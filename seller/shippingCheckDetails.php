@@ -22,6 +22,14 @@
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
+    while ($orow = $oresult->fetch_assoc()) {
+        $orderid = $orow['order_id'];
+        $orderstatus = $orow['order_status'];
+        $deliverymethod = $orow['delivery_method'];
+        $username = $orow['username'];
+        $address = $orow['address'];
+
+    }
 
     //=========sql to get order item information===========
     $sql = "SELECT
@@ -47,7 +55,7 @@
     $result = $stmt->get_result();
 
     //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id,myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
@@ -59,9 +67,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
-     while ($orow = $oresult->fetch_assoc()) {
-         $orderstatus = $orow['order_status'];
-         $deliverymethod = $orow['delivery_method'];
+
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -74,7 +80,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            <?php echo $orow['order_id']?>
+                            <?php echo $orderid?>
                         </div>
                     </div>
                 </div>
@@ -86,8 +92,8 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
-                            <div id="recipient-name"><?php echo $orow['username']?></div>
-                            <div id="recipient-address"><?php echo $orow['address']?></div>
+                            <div id="recipient-name"><?php echo $username?></div>
+                            <div id="recipient-address"><?php echo $address?></div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +109,6 @@
                             <table class="table">
                             <form method="POST">
                                 <thead>
-
                                     <tr>
                                         <th scope="col">Date</th>
                                         <th scope="col">Activity</th>
@@ -111,7 +116,7 @@
                                 </thead>
                                 <tbody>
                                 <?php                       
-                                     while ($srow = $Sresult->fetch_assoc()) {
+                                     while ($srow = $sresult->fetch_assoc()) {
                                          
                                 ?>
                                     <tr>
@@ -120,7 +125,9 @@
                                     </tr>
                                 <?php 
                                 
-                                }
+                                }?>
+                                <tr>
+                                <?php 
                                 if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
                                 <td><?php date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
@@ -138,6 +145,7 @@
                                     <button type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
                                 </td>
                                 <?php }?>
+                                </tr>
                                 </tbody>
                             </table>
                             </form>
@@ -175,7 +183,6 @@
                     <?php
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
-
                     $totalprice += $row['amount'];
                     ?>
                     <!--Start of order item-->
@@ -204,7 +211,7 @@
                                 <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
                                     <span class="iconify" data-icon="carbon:delivery"
                                         style="color: black;"></span>
-                                    <?php echo $orow['order_status']?></div>
+                                    <?php echo $orderstatus?></div>
                             </div>
                         </div>
                         <!--Ordered Item Price Amount Information-->
@@ -255,7 +262,7 @@
         </div>
     </div>
 
-<?php } ?>
+<?php  ?>
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
