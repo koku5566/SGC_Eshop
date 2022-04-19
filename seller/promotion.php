@@ -282,7 +282,7 @@
                             $dateStart = $_POST['pDate_From'];
                             $dateEnd = $_POST['pDate_To'];
                             $status = $_POST['status'];
-                            $userId = $_SESSION['userId'];
+                            $userId = $_SESSION['uid'];
 
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
