@@ -44,9 +44,7 @@
         </div>
 
         <!-- Voucher -->
-        <?php
-            require __DIR__ . '/voucherRun.php'
-        ?>
+
         
     </div>
     <!-- /.container-fluid -->
