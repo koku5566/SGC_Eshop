@@ -22,11 +22,12 @@ $customerUID = $_SESSION['userid'];
   
     // to identify different sellers from the cart item 
   $sellersql = "SELECT DISTINCT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
-  $result = $conn->query($sellersql);
-  if ($result->num_rows > 0) { //if multiple product in cart
-    while($row = $result->fetch_assoc()) {
-        array_push($sellers, $row['shop_id']);
+  $sresult = $conn->query($sellersql);
+  if ($sresult->num_rows > 0) { //if multiple product in cart
+    while($srow = $sresult->fetch_assoc()) {
+        array_push($sellers, $srow['shop_id']);
     }
+    print_r($sellers);
     }   
     //Loop seller one by one to calculate each shop's shipping price 
     for($i=0; $i<count($sellers); $i++)
@@ -57,10 +58,10 @@ $customerUID = $_SESSION['userid'];
          $volumetricWeight = $maximumlength* $maximumwidth* $productheight/5000;
          echo'if:', $volumetricWeight;
       }
-      else  { //if only one item in cart
+      else { //if only one item in cart
           while($row = $result->fetch_assoc()) {
               $productQty = $row['quantity'];
-              //echo $row['quantity'], $row['product_ID'];
+              echo'qty,prodid:', $row['quantity'], $row['product_ID'];
       
               //Single item in one order: Volumetric weight calculation (kg) = Height (cm) x Width (cm) x Length (cm) / 5000.        
                   $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
