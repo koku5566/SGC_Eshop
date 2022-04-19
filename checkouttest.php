@@ -10,16 +10,27 @@
  
 
 
-$customerUID = $_SESSION['uid'];
+$customerUID = $_SESSION['userid'];
 //$customerUID = 'U000018';
   //Under the same seller
   $productlength =[];
   $productwidth = [];
+  $sellers=[]; // to identify different sellers from the cart item 
   $productheight = 0;
  // $productweight =0;
   $volumetricWeight = 0;
   
-  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
+
+  $sellersql = "SELECT DISTINCT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
+  $result = $conn->query($sellersql);
+  if ($result->num_rows > 0) { //if multiple product in cart
+    while($row = $result->fetch_assoc()) {
+        array_push($sellers, $row['shop_id']);
+    }
+}   
+    print_r($sellers);
+
+  $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
   $result = $conn->query($cartsql);
 
   if ($result->num_rows > 1) { //if multiple product in cart
@@ -32,12 +43,10 @@ $customerUID = $_SESSION['uid'];
     $iresult = $conn->query($sqlinfo);
     if (mysqli_num_rows($iresult) > 0) {
         while ($prod = $iresult->fetch_assoc()) {
-        
             array_push($productlength, $prod['product_length']);
             array_push($productwidth, $prod['product_width']);
             $productheight += $prod['product_height']* $productQty;  // Sum (Height (cm) x Quantity)
             //$productweight += $prod['product_weight'] 
-            
         }
     }
   }
