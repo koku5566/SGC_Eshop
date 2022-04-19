@@ -150,6 +150,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                     <?php
+                                    $homepage = $_POST[""]
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
                                             echo ("
@@ -167,19 +168,20 @@
                                                 
                                         }
                                     ?>
+                                    <!-- Approve - View/Approve/Reject Section -->
                                     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
                                                 echo ("
+                                                <div class=\"row\">
                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                         <p class=\"p-title\">Promotion Title</p>
                                                     </div>
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                        <div class=\"row\">
-                                                            <div class=\"col-xl-4 \"><button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button><div>
-                                                        </div>
-                                                    </div>");
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?view=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                    </div>
+                                                </div>");
                                             }
                                         ?>
                                     </form>
@@ -189,6 +191,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- Create Promotion -->
         <div class="row">
@@ -349,12 +352,19 @@
 
                                                 if($result)
                                                 {
-                                                    echo '<script>alert("Add promotion successfully!")</script>';
-                                                    ?>
-                                                        <script type="text/javascript">
-                                                            window.location.href = window.location.origin + "/seller/promotion.php";
-                                                        </script>
-                                                    <?php
+                                                    if($status == 0)
+                                                    {
+                                                        echo '<script>alert("Add promotion successfully!")</script>';
+                                                        ?>
+                                                            <script type="text/javascript">
+                                                                window.location.href = window.location.origin + "/seller/promotion.php";
+                                                            </script>
+                                                        <?php
+                                                    }
+                                                    else($status == 1)
+                                                    {
+                                                        echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
+                                                    }
                                                 }
                                                 else
                                                 {
