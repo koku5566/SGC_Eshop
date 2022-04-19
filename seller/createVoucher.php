@@ -9,7 +9,7 @@
          $_SESSION['id'] = "";
    }
 
-    if(isset($_POST['submit'])){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'|| isset($_POST['submit'])){
 
       $voucherCode = $_POST['voucherCode'];
       $voucherStartdate = $_POST['voucherStartdate'];
@@ -23,7 +23,10 @@
 
       
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
-               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0')";
+               VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0')";
+
+
+      $result = mysqli_query($conn,$sqlv);
 
       if(mysqli_query($conn, $sqlv)){
 
