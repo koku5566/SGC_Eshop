@@ -1,23 +1,23 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
 
 ?>
 <?php
 $sql_2 = "SELECT
 myOrder.order_id,
 myOrder.order_status,
+product.product_id,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
 product.product_variation,
 orderDetails.quantity,
-orderDetails.price,
+orderDetails.amount,
 shopProfile.shop_name
-
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.id
+JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
 GROUP BY myOrder.order_id
 
@@ -26,10 +26,7 @@ $stmt_2 = $conn->prepare($sql_2);
 $stmt_2->execute();
 $orders = $stmt_2->get_result();
 
-
 ?>
-
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="width:80%">
                     <!---GET ORDER----->
@@ -108,7 +105,7 @@ $orders = $stmt_2->get_result();
                 <!-- /.container-fluid -->
 
 <?php
-    require __DIR__ . '/footer.php'
+    require __DIR__ . '/footer.php';
 ?>
 
 <style>
