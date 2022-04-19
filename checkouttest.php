@@ -7,16 +7,9 @@
   }
  echo $_SESSION['uid'];
 
-//Username and address
- $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-            FROM `userAddress`
-            JOIN user ON userAddress.user_id = user.user_id
-            WHERE userAddress.user_id= '$_SESSION[uid]';";
-            
-            $userresult = mysqli_query($conn, $usersql);  
-            $userrow = mysqli_fetch_assoc($userresult);       
+ 
 
-$sellerUID = 11; //*TO GET*
+
 $customerUID = $_SESSION['uid'];
 
   //Under the same seller
@@ -52,7 +45,7 @@ $maximumlength = max($productlength);
 $maximumwidth = max($productwidth);
 $volumetricWeight = $maximumlength* $maximumwidth* $productheight/5000;
 }
-else if ($result->num_rows = 1) { //if only one item in cart
+else  { //if only one item in cart
     while($row = $result->fetch_assoc()) {
         $productQty = $row['quantity'];
 
