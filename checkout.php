@@ -1,5 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
+
 	  if($_SESSION['login'] == false)
 	 {
 	 	echo "<script>alert('Login to checkout');
@@ -13,151 +14,8 @@
             WHERE userAddress.user_id= '$_SESSION[uid]';";
             
             $userresult = mysqli_query($conn, $usersql);  
-            $userrow = mysqli_fetch_assoc($userresult);       
+            $userrow = mysqli_fetch_assoc($userresult);                 
 
-//get seller id -> retrieve seller shipping option from db
-$sellerUID = 11; //*TO GET*
-$customerUID = 3; //TO GET * from session
-
-  //Under the same seller
-  $productlength =[];
-  $productwidth = [];
-  $productheight = 0;
-  $productweight =0;
-  
-  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
-  $result = $conn->query($cartsql);
-
-  if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-
-    $product = $row['product_ID'];
-    $productQty = $row['quantity'];
-
-   //===========To get product weight, height, and width of the product==================
-    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
-    $result = $conn->query($sqlinfo);
-    while ($prod = $result->fetch_assoc()) {
-
-    //to calculate parcel size of including all products
-    array_push($productlength, $prod['product_length']);
-    array_push($productwidth, $prod['product_width']);
-
-    $productheight += $prod['product_height'] * $productQty; // Sum (Height (cm) x Quantity)
-    $productweight += $prod['product_weight'] * $productQty;
-
-    }
-  }
-}
-  $maximumlength = max($productlength);
-  $maximumwidth = max($productwidth);
-  
-  //echo $productheight, $maximumlength, $maximumwidth;
-  //echo $productweight;
-
-
-//===========To get customer shipping information==================
-$customersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $customerUID";
-  $result = $conn->query($customersql);
-
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-$cPhone = $row['phone_number'];
-$cContactName  = $row['contact_name'];
-$cFullAddress = $row['address'];
-$cPostalCode = $row['postal_code'];
-$cState = $row['state'];
-}
-  }
-//echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
-
-
-//===========To get seller shipping information==================
-$sellersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $sellerUID";
-
-$result = $conn->query($sellersql);
-
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    $sPhone = $row['phone_number'];
-    $sContactName  = $row['contact_name'];
-    $sFullAddress = $row['address'];
-    $sPostalCode = $row['postal_code'];
-    $sState = $row['state'];
-    }
-}
-//echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
-
-//if get is not null then
-$domain = "https://demo.connect.easyparcel.my/?ac=";
-
-$action = "MPRateCheckingBulk";
-$postparam = array(
-'authentication'	=> 'LoFwGSDIZ4',
-'api'	=> 'EP-1ksAmVhmY',
-'bulk'	=> array(
-array(
-'pick_code'	=> $sPhone,//'10050',
-'pick_state'	=>$sState,//'png',
-'pick_country'	=> 'MY',
-'send_code'	=> $cPostalCode, //'11950',
-'send_state'	=> $cState,//'png',
-'send_country'	=> 'MY',
-'weight'	=> $productweight,
-'width'	=>$maximumwidth,// '0',
-'length'	=> $maximumlength,// '0',
-'height'	=>$productheight,//'0',
-'date_coll'	=> date("Y-m-d"), //'2022-4-10',
-),
-
-),
-'exclude_fields'	=> array(
-'rates.*.pickup_point',
-),
-);
-
-$url = $domain.$action;
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postparam));
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-ob_start(); 
-$return = curl_exec($ch);
-ob_end_clean();
-curl_close($ch);
-
-$json = json_decode($return);
-//echo "<pre>"; print_r($json); echo "</pre>";
 
 ?>
 
@@ -216,6 +74,47 @@ $json = json_decode($return);
   </div>
 </div>
 
+     <!-- Address Modal -->
+     <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Select Address</h4>
+        </div>
+        <div class="modal-body">
+        <?php
+/* 	$UID = $_SESSION["uid"];
+	
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
+
+	$res_data = mysqli_query($conn,$sql);
+	while($addressrow = mysqli_fetch_array($res_data)){
+		("
+			<div>
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" >
+            <label class=\"form-check-label\" for=\"address-option\">
+				".$addressrow["contact_name"]."
+				".$addressrow["phone_number"]."
+				".$addressrow["address"]."
+				".$addressrow["postal_code"]."
+				".$addressrow["area"]."
+				".$addressrow["state"]."
+				".$addressrow["country"]."
+                </label>
+			</div>
+			");
+	} */
+?>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
     <div class="container-fluid" style="width:80%">
 <body style="background: #f5f2f2;">
     <div class="container" style="padding: 24px;margin-top: 30px;">
@@ -223,7 +122,7 @@ $json = json_decode($return);
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
-                <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;">Change</button></div>
+                <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;" data-toggle="modal" data-target="#myModal"    >Change</button></div>
             </div>
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
