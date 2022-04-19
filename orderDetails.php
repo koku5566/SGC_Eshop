@@ -38,6 +38,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                         <table class="table">
                                             <tr>
                                                 <th colspan="3" align="left">Order Details (<?php echo $count++; ?>)</th>
+                                                <th>Order ID : <?php echo $row['order_id']?></th>
                                             </tr>
                                             <tr>
                                                 <td width="150">Delivery Method</td>
@@ -55,6 +56,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                                 <td><?php echo $row["order_date"]; ?></td>
                                             </tr>
                                             <tr>
+                                                <th colspan="3" align="left">Product Details</th>
+                                            </tr>
+                                            <tr>
                                                 <td>Quantity</td>
                                                 <td>:</td>
                                                 <td><?php echo $row["quantity"]; ?></td>
@@ -62,11 +66,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                             <tr>
                                                 <td>Price</td>
                                                 <td>:</td>
-                                                <td> RM <?php echo $row["price"]; ?></td>
+                                                <td> RM <?php echo $row["amount"]; ?></td>
                                             </tr>
-                                            <tr>
-                                                <th colspan="3" align="left">Product Details</th>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>SKU</td>
                                                 <td>:</td>
