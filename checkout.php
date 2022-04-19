@@ -180,9 +180,7 @@ if(isset($_GET['addressid']))
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID =  $userID'
-                            AND product.shop_id = '$KL'
-                            AND cart.remove_Product = '0'
-                            ORDER BY cart.update_at DESC";
+                            AND product.shop_id = '$KL'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
@@ -194,16 +192,12 @@ if(isset($_GET['addressid']))
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $product_stock = 0;
-                                 $product_price = 0;
-                                 $stock_message = "";
                                  $cart_id = $rowKL['cart_id'];
                                  $product_id = $rowKL['PID'];
                                  $product_name = $rowKL['P_name'];
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
-                                 $variation_message = "";
-                                 $showNotif = false;
+                                 $product_price =  $rowKL['P_price'];
                             echo "
                             <tr>
                                 <td>
