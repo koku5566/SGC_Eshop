@@ -3,11 +3,14 @@
 ?>
 
 <?php
-    if($_SESSION['login'] == true && $_SESSION['role'] == "SELLER")
+    if($_SESSION['role'] == "SELLER" || $_SESSION['role'] == "ADMIN")
 	{
 		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
     }
+?>
+
+<?php
     //Fetch each promotion image information
     $promotion_title = array();
     $promotion_image = array();

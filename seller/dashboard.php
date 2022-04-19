@@ -3,12 +3,13 @@
 ?>
 
 <?php
-    if($_SESSION['login'] == true && $_SESSION['role'] == "USER")
+    if($_SESSION['login'] == false || $_SESSION['role'] == "USER")
 	{
 		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
     }
 ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
 
