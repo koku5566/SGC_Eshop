@@ -152,7 +152,6 @@
                         <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
-
                                 <thead>
                                     <tr>
                                         <th scope="col">Date</th>
@@ -165,7 +164,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ;}?></td>
+                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;}?></td>
                                     </tr>
                                 <?php 
                                 }
@@ -183,7 +182,7 @@
                                 </form>
                                 <?php }
 
-                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                 if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
