@@ -498,8 +498,8 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp" required/>
-                                            <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
+                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp"/>
+                                            <input name="imgDefaultEdit[]" type="text" value="<?php if(isset($picture)) {echo($picture);} { echo "0";} ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
@@ -510,21 +510,28 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['edit'];
-                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
-                                    $result = mysqli_query($conn, $sql);
+                                    $img_get = $_POST["imgDefaultEdit[]"]; 
+                                    if($img_get == 0)
+                                    {
+                                        echo '<script>alert("Please upload the image.")</script>';
+                                    }
+                                    else {
+                                        $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
 
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            $promotionId = $row["promotionID"];
-                                            $promotionTitle = $row["promotion_title"];
-                                            $promotionDate = $row["promotion_Date"];
-                                            $promotionEnd_Date = $row["promotionEnd_Date"];
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $promotionId = $row["promotionID"];
+                                                $promotionTitle = $row["promotion_title"];
+                                                $promotionDate = $row["promotion_Date"];
+                                                $promotionEnd_Date = $row["promotionEnd_Date"];
 
-                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
-                                            echo("<br><label>Date</label>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
-                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
+                                                echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
+                                                echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
+                                                echo("<br><label>Date</label>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
+                                            }
                                         }
                                     }
                                     ?>
