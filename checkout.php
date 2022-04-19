@@ -237,7 +237,6 @@ $json = json_decode($return);
 		echo("
 			<div>
             <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
-                " "
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
