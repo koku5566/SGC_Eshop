@@ -77,7 +77,8 @@
                                     <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Email Address</label>
-											<input required type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+											<input required type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="Enter Your Email Address"/>
+											<hr>
 											<button type="submit" class="btn btn-primary btn-block" name="Send">Send</button>
 										</div>
 									</form>
