@@ -282,9 +282,8 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-
-                        <li class="nav-item">
-                            <a href="cart.php">
+                        <li class="nav-item no-arrow">
+                            <a class="nav-link" href="cart.php">
                                 <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
                             </a>
                         </li>
