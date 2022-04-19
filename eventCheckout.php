@@ -30,7 +30,7 @@ if (isset($_POST["completeRegister"])) {
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
         }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssssdiiii", $paymentID, $paymentStatus, $today, $now, $buyerName, $buyerEmail, $contact, $price, $formRecord, $ticket, $eID, $uID);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssssdiiii", $paymentID, $paymentStatus, $today, $now, $buyerName,  $contact, $buyerEmail, $price, $formRecord, $ticket, $eID, $uID);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }

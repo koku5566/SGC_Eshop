@@ -1,6 +1,6 @@
 <?php
 
-   require '../localDbConn.php';
+   require __DIR__ . '/header.php';
 
    if(isset($_POST['submit'])){
 
