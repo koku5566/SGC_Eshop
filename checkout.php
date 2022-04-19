@@ -218,14 +218,14 @@ $json = json_decode($return);
 </div>
 
      <!-- Address Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal fade" id="myModal" role="dialog" style="width 80%;">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Select Address</h4>
         </div>
-        <div class="modal-body" style="width 80%;">
+        <div class="modal-body">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
     <?php
 	$UID = $_SESSION["uid"];
