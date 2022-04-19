@@ -170,23 +170,59 @@ if(isset($_GET['addressid']))
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr></tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Product 1</td>
-                                    <td>Black</td>
-                                    <td>RM20</td>
-                                    <td>2</td>
-                                    <td>RM40</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Product 2</td>
-                                    <td>-</td>
-                                    <td>RM50</td>
-                                    <td>1</td>
-                                    <td>RM50</td>
-                                </tr>
+                            <?php
+                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
+                            cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
+                            FROM `cart`
+                            JOIN `product`
+                            ON product.product_id = cart.product_ID 
+                            JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
+                            WHERE cart.user_ID =  $userID'
+                            AND product.shop_id = '$KL'
+                            AND cart.remove_Product = '0'
+                            ORDER BY cart.update_at DESC";
+                            
+                            $queryKL = mysqli_query($conn, $cartsql);
+                            
+                            $userID = "U000018";
+                            $KL = 14;
+                            $SB = 20;
+
+                             $i=0;
+                            
+                             while ($rowKL = mysqli_fetch_array($queryKL)) {
+         
+                                 $product_stock = 0;
+                                 $product_price = 0;
+                                 $stock_message = "";
+                                 $cart_id = $rowKL['cart_id'];
+                                 $product_id = $rowKL['PID'];
+                                 $product_name = $rowKL['P_name'];
+                                 $product_quantity = $rowKL['P_quantity'];
+                                 $product_variation =  $rowKL['P_variation'];
+                                 $variation_message = "";
+                                 $showNotif = false;
+                            echo "
+                            <tr>
+                                <td>
+                                <span>".$product_name."</span>
+                                </td>
+                                <td>
+                                <span>".$product_variation."</span>
+                                </td>
+                                <td>
+                                <span>".$product_price."</span>
+                                </td>
+                                <td>
+                                <span>".$product_quantity."</span>
+                                </td>
+                                        
+                                        
+                            </tr> ";             
+                    }
+                    ?>
                             </tbody>
                         </table>
                     </div>

@@ -104,7 +104,7 @@ if(isset($_SESSION['DeleteUser']))
 <script>
     $(document).ready(function() {
         $('#dataTable').dataTable({
-        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        "lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]]
         });
     });
 </script>

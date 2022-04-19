@@ -9,6 +9,27 @@ $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
 ?>
+<img src="./PHPMailer-master/">
+<?php
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'PHPMailer-master/src/Exception.php';
+    require 'PHPMailer-master/src/PHPMailer.php';
+    require 'PHPMailer-master/src/SMTP.php';
+    $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->Mailer = "smtp";
+    $mail->SMTPDebug  = 0;  
+    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPSecure = "tls";
+    $mail->Port       = 587;
+    $mail->Host       = "smtp.gmail.com";
+    $mail->Username   = "sgceshop@gmail.com";
+    $mail->Password   = "wgsxuilbeajridsm";
+
+?>
 
 
 <?php
@@ -30,7 +51,7 @@ if (isset($_POST["completeRegister"])) {
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
         }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssssdiiii", $paymentID, $paymentStatus, $today, $now, $buyerName, $buyerEmail, $contact, $price, $formRecord, $ticket, $eID, $uID);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssssdiiii", $paymentID, $paymentStatus, $today, $now, $buyerName,  $contact, $buyerEmail, $price, $formRecord, $ticket, $eID, $uID);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }
@@ -55,7 +76,29 @@ if (isset($_POST["completeRegister"])) {
                     die('Error with execute: ') . htmlspecialchars($stmt1->error);
                 }
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
-                    echo "<script>alert('Register Successfully');window.location.href='./registerEventSuccess.php';</script>";
+
+                    $usermail = $buyerEmail;
+                    $adminmail = 'sgceshop@gmail.com';
+                    $subject = 'Event Registered Successfully - ' . $eventName;
+                    $mail->IsHTML(true);
+                    $mail->AddAddress($usermail);
+                    $mail->SetFrom($adminmail);
+                    $mail->Subject = "$buyerName :\n $subject";
+                    $mail->Body = "<h2>Thank you for register in: $eventName</h2>Dear $buyerName,
+                    <br><br>Your registration for event - $eventName is successful.
+                    <br>Your Ticket type is ($ticketType)
+                    <br><br>Thank You and Have a nice day!<br><br>From: SGC Eshop Event Management";
+                    //$mail->addAttachment('C:\xampp\htdocs\ISP\testQr\qrcode.png', $VisName);
+                    if(!$mail->Send()) {
+                        echo "<script>alert('Error while sending Email.')</script>";
+                        var_dump($mail);
+                    }
+                    else
+                    {
+                        echo "<script>alert('Register Successfully');window.location.href='./registerEventSuccess.php';</script>";
+                    }
+
+
                 } else {
                     $error1 = mysqli_stmt_error($stmt1);
                     echo "<script>alert($error1);</script>";
@@ -128,6 +171,8 @@ if (isset($_POST["completeRegister"])) {
                         }
 
                         $price = $row['price'];
+                        $eventName = $row['event_name'];
+                        $ticketType = $row['ticket_name'];
 
 
                         echo ("
