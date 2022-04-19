@@ -179,12 +179,12 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID = $_SESSION[uid]'
+                            WHERE cart.user_ID =  $userID'
                             AND product.shop_id = '$KL'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC";
                             
-                            $queryKL = mysqli_query($conn, $sql);
+                            $queryKL = mysqli_query($conn, $cartsql);
                             
                             $userID = "U000018";
                             $KL = 14;
@@ -206,9 +206,6 @@ if(isset($_GET['addressid']))
                                  $showNotif = false;
                             echo "
                             <tr>
-                                <td>
-                                <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
