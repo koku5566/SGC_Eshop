@@ -504,11 +504,6 @@
    searching: true,
    paging: true,
 
-   columnDefs: [ {
-   targets:   0,
-   className: 'select-checkbox',
-   }],
-
    lengthMenu:[
    [10,-1],
    [10,"All"]
