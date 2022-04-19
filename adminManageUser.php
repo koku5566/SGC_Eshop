@@ -3,11 +3,11 @@
 <?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
 	{
-		?><script>alert('Login as Admin account to access');
-		window.location = '<?php echo("$domain/adminLogin.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
     }
 ?>
+
 <?php
 	if(isset($_POST['remove']))
 	{
