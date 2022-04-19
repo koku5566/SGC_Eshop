@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if ($_SESSION['login'] == "" || $_SESSION['uid'] == ""){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_GET['Panel']))
     {
         $_SESSION['Panel'] = $_GET['Panel'];
@@ -9,8 +18,6 @@
     {
         $_SESSION['Panel'] = "All";
     }
-
-    $_SESSION['userId'] = "14";
 
     $subCategoryArray = array();
 
@@ -213,7 +220,7 @@
                                                 
                                                     if(isset($_POST['submitSearch']))
                                                     {
-                                                        $shopId = $_SESSION['userId'];
+                                                        $shopId = $_SESSION['uid'];
                                                         $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
                                                         $result = mysqli_query($conn, $sql);
                                                 
@@ -350,7 +357,7 @@
                                                                 break;
                                                         }
                                                     }
-                                                    $shopId = $_SESSION['userId'];
+                                                    $shopId = $_SESSION['uid'];
                                                     $sql .= " AND A.shop_id = '$shopId'";
 
                                                     $result = mysqli_query($conn, $sql);
@@ -489,7 +496,7 @@
                                                 }
                                                 else
                                                 {
-                                                    $shopId = $_SESSION['userId'];
+                                                    $shopId = $_SESSION['uid'];
                                                     $sql = "SELECT DISTINCT A.product_id FROM product AS A WHERE A.shop_id = '$shopId'";
 
                                                     if(isset($_GET['Panel']))

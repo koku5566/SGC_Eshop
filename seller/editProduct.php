@@ -1,13 +1,20 @@
 <?php
     require __DIR__ . '/header.php';
 
-    
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
-        $_SESSION['userid'] = "14";
-        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
@@ -69,7 +76,7 @@
         $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
-        $defaultFile = $_POST['imgDefault'];
+        $defaultFile = array_filter($_POST['imgDefault']);
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
@@ -77,7 +84,9 @@
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
 
+        echo(var_dump($defaultFile));
         echo(var_dump($_FILES['img']));
+        
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
             if($key < 9)
@@ -123,6 +132,7 @@
         $sql_update .= "category_id = '$categoryCombinationId' ";
         $sql_update .= "WHERE product_id = '$productId' ";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
@@ -183,8 +193,7 @@
     {
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
-        //$shopId = $_SESSION['user_id'];
-        $shopId = "14";
+        $shopId = $_SESSION['uid'];
 
         //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
         $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
@@ -1031,27 +1040,34 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.warning').length == 0)
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
-            if(document.getElementById("productType").value == "0")
+            if(document.querySelectorAll('.warning').length == 0)
             {
-                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                if(document.getElementById("productType").value == "0")
                 {
-                    document.getElementById("EditProduct").click();
+                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    {
+                        document.getElementById("AddProduct").click();
+                    }
+                    else
+                    {
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").focus();
+                    }
                 }
-                else
-                {
-                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                    document.getElementById("checkbox-err-msg").focus();
+                else{
+                    document.getElementById("AddProduct").click();
                 }
-            } 
-            else{
-                document.getElementById("EditProduct").click();
+            }
+            else
+            {
+                alert("Please Enter Distinct Product Variation and Choices");
             }
         }
         else
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            alert("Please Select a Cover Picture");
         }
     }
 

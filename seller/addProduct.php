@@ -1,10 +1,18 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
+
     
     if(isset($_POST['add']) || isset($_POST['publish'])){
-
-       
         $publish = 1;
         if(isset($_POST['add']))
         {
@@ -12,9 +20,8 @@
         }
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
-        $_SESSION['userid'] = "14";
         //Basic Details
-        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
 
         $productId = "";
         $productSKU = $_POST['productSKU'];
@@ -849,27 +856,34 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.warning').length == 0)
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
-            if(document.getElementById("productType").value == "0")
+            if(document.querySelectorAll('.warning').length == 0)
             {
-                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                if(document.getElementById("productType").value == "0")
                 {
+                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    {
+                        document.getElementById("AddProduct").click();
+                    }
+                    else
+                    {
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").focus();
+                    }
+                }
+                else{
                     document.getElementById("AddProduct").click();
                 }
-                else
-                {
-                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                    document.getElementById("checkbox-err-msg").focus();
-                }
             }
-            else{
-                document.getElementById("AddProduct").click();
+            else
+            {
+                alert("Please Enter Distinct Product Variation and Choices");
             }
         }
         else
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            alert("Please Select a Cover Picture");
         }
     }
 

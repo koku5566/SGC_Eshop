@@ -35,7 +35,7 @@
 				if (mysqli_query($conn, $sql)) {
 					$_SESSION['VerifyCorrect'] = false;
 					$_SESSION['VerifyCode'] = false;
-					echo "<script>alert('Password Reset Successful');
+					echo "<script>alert('Password Has Been Reset');
 					window.location.href='login.php';</script>";
 				} else {
 					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -54,17 +54,43 @@
 	}
 ?>
 
-<div id="title"><h2>Reset Password</h2></div>
-<div id="Login">
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-	<p id="label">Password</p>
-	<input required type="password" name="password" class="form-control" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
-	
-	<p id="label">Confirm Password</p>
-	<input required type="password" name="password2" class="form-control" id="inputRepeatPassword" maxlength="50">
-	
-	<button type="submit" name="confirm">Confirm</button>
-</form>
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-6 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-left">
+                                        <div class="h1 text-gray-900 mb-4">Reset Password</div>
+                                    </div>
+                                    
+                                    <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+											<label>Password</label>
+											<input required type="password" name="password" class="form-control" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
+											</div>
+											<div class="form-group">
+											<label>Confirm Password</label>
+											<input required type="password" name="password2" class="form-control" id="inputRepeatPassword" maxlength="50">
+											</div>
+											<hr>
+
+											<button type="submit" class="btn btn-primary btn-block" name="confirm">Confirm</button>
+										
+									</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>

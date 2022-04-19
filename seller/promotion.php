@@ -1,8 +1,8 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $_SESSION['role'] = "SELLER";
-    $_SESSION["userId"] = "S000025";
+    //$_SESSION['role'] = "SELLER";
+    //$_SESSION["userId"] = "S000025";
 
     //$_SESSION['role'] = "ADMIN";
     //$_SESSION["userId"] = "A000001";
@@ -95,7 +95,8 @@
                             <div class="col-xl-12">
                                 <div class="row">
                                     <?php
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'SELLER' ";
+                                        $userId = $_SESSION['uid'];
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE user_id = '$userId' ";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
@@ -282,7 +283,7 @@
                             $dateStart = $_POST['pDate_From'];
                             $dateEnd = $_POST['pDate_To'];
                             $status = $_POST['status'];
-                            $userId = $_SESSION['userId'];
+                            $userId = $_SESSION['uid'];
 
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
