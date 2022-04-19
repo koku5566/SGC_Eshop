@@ -193,14 +193,12 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
-                        // if($_SESSION['user_id'] = $rows['shop_id']){
-
 
                          
                      ?>
                      <tr>
                         <td></td>
-                        <td id="voucherlogo"><img src="../img/<?php echo $row['product_cover_picture']; ?>"></td>
+                        <td id="voucherlogo"><img src="../img/product/<?php echo $row['product_cover_picture']; ?>"></td>
                         <td><?php echo $row['product_name']; ?></td>
                         <td><?php echo $row['product_id']; ?></td>
                         <td><?php echo $row['product_sku']; ?></td>
