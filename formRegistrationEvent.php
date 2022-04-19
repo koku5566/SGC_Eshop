@@ -38,14 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
         if (mysqli_stmt_affected_rows($stmt) == 1) {
             $entryID = mysqli_stmt_insert_id($stmt);
             $_SESSION['formEntry'] = $entryID;
+        } else {
+            $error = mysqli_stmt_error($stmt);
+            echo "<script>alert($error);</script>";
+        }
+        mysqli_stmt_close($stmt);
+    }
 
-            //Insert each value into responses table
+
+    //Insert each value into responses table
     $sql1 = "SELECT * FROM `formElement` WHERE `event_id` = $eID";
-    $result1 = mysqli_query($conn, $sql);
+    $result1 = mysqli_query($conn, $sql1);
     $formCount = 0;
     $counter = 0;
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result1) > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
             $fieldName = $row1['field_name'];
             if (!empty($_POST["$fieldName"])) {
@@ -89,15 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
         }
 
     }
-        } else {
-            $error = mysqli_stmt_error($stmt);
-            echo "<script>alert($error);</script>";
-        }
-        mysqli_stmt_close($stmt);
-    }
-
-
-    
 }
 
 
