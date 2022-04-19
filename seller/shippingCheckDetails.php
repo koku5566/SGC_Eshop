@@ -73,12 +73,10 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
-            header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
-            } 
+            header('Location: ' . $_SERVER['HTTP_REFERER']);            } 
         else {
           $_SESSION['status'] = "Order status update failed";
-          header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
-          }
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          }
     }
     
     if(isset($_POST["status_update"])){
@@ -89,12 +87,10 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";
-            header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
-
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
-          }
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          }
     }
 ?>
 
