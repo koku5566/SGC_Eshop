@@ -36,12 +36,14 @@
        {
           $_SESSION['status'] = "Multiple Data Inserted Successfully";
           header("Location: /seller/createVoucher.php");
+          http_response_code(422);
           exit(0);
        }
        else
        {
           $_SESSION['status'] = "Data Not Inserted";
           header("Location: /seller/createVoucher.php");
+          http_response_code(422);
           exit(0);
        }
 
