@@ -52,7 +52,7 @@
    <div class="container m-2">
       <div class="form-row">
          <div class="form-group col-md-12">
-            <table>
+            <table class="table" id="voucherReview">
                <thead>
                   <tr>
                      <th>Voucher ID</th>
@@ -494,6 +494,10 @@
    order: [[ 1, 'asc' ]]
 
    } );
+
+   $(document).ready(function() {
+    $('#voucherReview').DataTable();
+} );
 
    //-----------------------Delete Row-----------------------------//
    
