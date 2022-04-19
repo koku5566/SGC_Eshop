@@ -106,7 +106,6 @@ if(isset($_GET['addressid']))
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" class="changeAddress"> 
     <?php
 	$UID = $_SESSION["uid"];
 	
@@ -134,7 +133,7 @@ if(isset($_GET['addressid']))
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <!-- <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button> -->
-            </form>
+            
         </div>
       </div>
       
