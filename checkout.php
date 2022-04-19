@@ -184,7 +184,7 @@ if(isset($_GET['addressid']))
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC";
                             
-                            $queryKL = mysqli_query($conn, $sql);
+                            $queryKL = mysqli_query($conn, $cartsql);
                             
                             $userID = "U000018";
                             $KL = 14;
