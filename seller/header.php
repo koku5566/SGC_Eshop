@@ -417,7 +417,7 @@
                                 if (mysqli_num_rows($res_data) > 0){
                                     while($row = mysqli_fetch_array($res_data)){
                                         echo("
-                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"../img/undraw_profile.svg\">
+                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
                                             ");
                                         }
                                     }
