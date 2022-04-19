@@ -70,21 +70,17 @@
 			</div>
 
 			<div class=\"mb-4\">
-			<a class=\"address-tag\" href=\"\">
+			<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
 			<div class=\"address\">
 				<p style=\"font-weight: bold;font-size: 1.55rem;\">".$row["contact_name"]."</p>
 				<div class=\"row\">
 					<div class=\"col-lg-4\">
 						<p style=\"font-size: 1rem;\">".$row["phone_number"]."</p>
 						<p style=\"font-size: 1.5rem;\">".$row["address"]."></p>
-					</div>
-					<div class=\"row col-lg-12\">
-						<div class=\"col-lg-6\" style=\"text-align: end;\">
-							<p style=\"font-size: 1rem;\">test</p>
-						</div>
-						<div class=\"col-lg-\" style=\"text-align: end;\">
-							<p style=\"font-size: 1rem;\">".$row["country"]."</p>
-						</div>
+						<p style=\"font-size: 1.5rem;\">".$row["postal_code"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["area"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["state"]."></p>
+						<p style=\"font-size: 1.5rem;\">".$row["country"]."></p>
 					</div>
 				</div>
 			</div>
