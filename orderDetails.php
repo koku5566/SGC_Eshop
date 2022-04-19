@@ -20,7 +20,7 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id   
 JOIN cancellation ON myOrder.cancellation_id = cancellation.cancellation_id
-WHERE myOrder.order_id = ?
+
 ";
 
 $stmt_Odetail = $conn->prepare($sql_Odetail);
