@@ -15,7 +15,7 @@
 		$UID = $_POST['deleteStaff'];
 
 		$sql = "DELETE FROM user WHERE username = '$UID'";
-
+		echo "<script>alert($UID);</script>";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
             echo "<script>alert('User Removed');</script>";
