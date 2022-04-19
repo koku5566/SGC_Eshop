@@ -63,6 +63,7 @@
     if(isset($_POST["tracking_send"])){
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
+        echo $trackingnum, $status;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
         $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
         
