@@ -9,89 +9,6 @@
          $_SESSION['id'] = "";
    }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'|| isset($_POST['submit'])){
-
-      $voucherCode = $_POST['voucherCode'];
-      $voucherStartdate = $_POST['voucherStartdate'];
-      $voucherExpired = $_POST['voucherExpired'];
-      $discountAmount = $_POST['discountAmount'];
-      $voucherLimit = $_POST['voucherLimit'];
-      $voucherType = $_POST['voucherType'];
-      $voucherDetails = $_POST['voucherDetails'];
-      $voucherDisplay = $_POST['voucherDisplay'];
-      $date = date('Y-m-d H:i:s');
-      $status = "2";
-      $delist = "0";
-
-      
-      $sqlv = "INSERT INTO `voucher` (`voucher_code`, `voucher_startdate`, `voucher_expired`, `discount_amount`, `voucher_limit`, `voucher_details`, `voucher_display`, `voucher_type`, `created_at`, `voucher_status`, `voucher_list`)
-               VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
-
-
-      $result = mysqli_query($conn,$sqlv);
-
-
-      if($result)
-      {
-          if($status == 2)
-          {
-              echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
-              ?>
-                  <script type="text/javascript">
-                      window.location.href = window.location.origin + "/seller/createVoucher.php";
-                  </script>
-              <?php
-          }
-          else if ($status == 0)
-          {
-              echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
-          }
-      }
-      else
-      {
-          echo '<script>alert("Failed")</script>';
-      }
-
-      // if(mysqli_query($conn, $sqlv)){
-
-      // $product = $_POST['productlist'];
-      // $v = mysqli_insert_id($conn);//specific table
-
-      // for($i = 0; $i < count($product); $i++){
-
-      //    $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
-      //             VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-      //    if(mysqli_query($conn, $sqlpv)){
-      //       header("Location: /seller/createVoucher.php");
-      //       exit(0);
-      //    }
-      //    else{
-      //       echo 'add product failed';
-      //       echo $product;
-      //    }
-      // }
-      // }
-      // else{
-      //    echo 'add voucher failed';
-      //    echo $voucherCode;
-      // }
-
-       /* if($query_run)
-       {
-          $_SESSION['status'] = "Multiple Data Inserted Successfully";
-          header("Location: /seller/createVoucher.php");
-          exit(0);
-       }
-       else
-       {
-          $_SESSION['status'] = "Data Not Inserted";
-          header("Location: /seller/createVoucher.php");
-          exit(0);
-       } */
-
-    }
-
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -237,6 +154,91 @@
       </div>
    </form>
 </div>
+
+<?php 
+   if($_SERVER['REQUEST_METHOD'] == 'POST'|| isset($_POST['submit'])){
+
+      $voucherCode = $_POST['voucherCode'];
+      $voucherStartdate = $_POST['voucherStartdate'];
+      $voucherExpired = $_POST['voucherExpired'];
+      $discountAmount = $_POST['discountAmount'];
+      $voucherLimit = $_POST['voucherLimit'];
+      $voucherType = $_POST['voucherType'];
+      $voucherDetails = $_POST['voucherDetails'];
+      $voucherDisplay = $_POST['voucherDisplay'];
+      $date = date('Y-m-d H:i:s');
+      $status = "2";
+      $delist = "0";
+
+      
+      $sqlv = "INSERT INTO `voucher` (`voucher_code`, `voucher_startdate`, `voucher_expired`, `discount_amount`, `voucher_limit`, `voucher_details`, `voucher_display`, `voucher_type`, `created_at`, `voucher_status`, `voucher_list`)
+               VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
+
+
+      $result = mysqli_query($conn,$sqlv);
+
+
+      if($result)
+      {
+          if($status == 2)
+          {
+              echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
+              ?>
+                  <script type="text/javascript">
+                      window.location.href = window.location.origin + "/seller/createVoucher.php";
+                  </script>
+              <?php
+          }
+          else if ($status == 0)
+          {
+              echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
+          }
+      }
+      else
+      {
+          echo '<script>alert("Failed")</script>';
+      }
+
+      // if(mysqli_query($conn, $sqlv)){
+
+      // $product = $_POST['productlist'];
+      // $v = mysqli_insert_id($conn);//specific table
+
+      // for($i = 0; $i < count($product); $i++){
+
+      //    $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+      //             VALUES ('".$product[$i]."', '$v');"; //get prod first array
+
+      //    if(mysqli_query($conn, $sqlpv)){
+      //       header("Location: /seller/createVoucher.php");
+      //       exit(0);
+      //    }
+      //    else{
+      //       echo 'add product failed';
+      //       echo $product;
+      //    }
+      // }
+      // }
+      // else{
+      //    echo 'add voucher failed';
+      //    echo $voucherCode;
+      // }
+
+       /* if($query_run)
+       {
+          $_SESSION['status'] = "Multiple Data Inserted Successfully";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       }
+       else
+       {
+          $_SESSION['status'] = "Data Not Inserted";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       } */
+
+    }
+?>
 
 <!-- Add Product Modal -->
 <div class="modal fade" id="selectproduct" tabindex="-1" role="dialog" aria-labelledby="selectproductModalLabel" aria-hidden="true">
