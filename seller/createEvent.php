@@ -1,100 +1,99 @@
 <?php
-    require __DIR__ . '/header.php'
+require __DIR__ . '/header.php'
 ?>
 
 <?php
-	// if($_SESSION['login'] == false)
-	// {
-	// 	echo "<script>alert('Login to Continue');
-	// 		window.location.href='login.php';</script>";
+// if($_SESSION['login'] == false)
+// {
+// 	echo "<script>alert('Login to Continue');
+// 		window.location.href='login.php';</script>";
+// }
+?>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])) {
+    //echo "<script>alert('the script is running.....');</script>";
+    //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
+    //if($checkImage !== false)
+    //{
+
+    $coverIMG = array_filter($_FILES['coverImage']['name']);
+    $targetDir = dirname(__DIR__, 1) . "/img/event/";
+    $allowTypes = array('jpg', 'png', 'jpeg');
+    $categoryPic = "";
+
+    //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
+    $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
+
+    if (!empty($coverIMG)) {
+        foreach ($_FILES['coverImage']['name'] as $key => $val) {
+            // File upload path 
+            echo (var_dump($_FILES['coverImage']));
+            $fileName = basename($_FILES['coverImage']['name'][$key]);
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000) . "." . $ext;
+            $targetFilePath = $targetDir . $fileName;
+            echo ($targetFilePath);
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)) {
+                    $categoryPic = "$fileName";
+                }
+            }
+        }
+    }
+    //}
+    $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
+    $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
+    $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
+    $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
+    $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
+    $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
+    $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
+    $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
+    $eTnc = htmlentities($_POST["eTnC"]); //decode using html_entity_decode()
+    $status = "Waiting for Approval";
+    $eOrganiser = 1; //mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
+
+    // $check = "SELECT * FROM `event`";
+    // if($stmt = mysqli_prepare ($conn, $check)){
+    //   mysqli_stmt_execute($stmt);
+    //   mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12);
+
+    //   while(mysqli_stmt_fetch($stmt)){
+    //       if($eTitle == $c3)
+    //       {
+    //         echo "<script>alert('This Event seems to be in our database, check yo');window.location.href='seller/dashboard.php';</script>";
+    //       }
+    //   }
+    //   mysqli_stmt_close($stmt);
     // }
-?>
 
-<?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["eRegister"])){
-        //echo "<script>alert('the script is running.....');</script>";
-        //$checkImage = getimagesize($_FILES["coverImage"]["tmp_name"]);
-        //if($checkImage !== false)
-        //{
-
-            $coverIMG = array_filter($_FILES['coverImage']['name']);
-            $targetDir = dirname(__DIR__, 1)."/img/event/"; 
-            $allowTypes = array('jpg','png','jpeg'); 
-            $categoryPic = "";
-
-            //$imageProperties = getimageSize($_FILES['coverImage']['tmp_name']);
-            $coverImgContent = addslashes(file_get_contents($_FILES['coverImage']['name']));
-
-            if(!empty($coverIMG)){ 
-                foreach($_FILES['coverImage']['name'] as $key=>$val){ 
-                    // File upload path 
-                    echo(var_dump($_FILES['coverImage']));
-                    $fileName = basename($_FILES['coverImage']['name'][$key]); 
-                    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                    $fileName = round(microtime(true) * 1000).".".$ext;
-                    $targetFilePath = $targetDir.$fileName; 
-                    echo($targetFilePath);
-                    // Check whether file type is valid 
-                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                    if(in_array($fileType, $allowTypes)){ 
-                        if(move_uploaded_file($_FILES["coverImage"]["tmp_name"][$key], $targetFilePath)){ 
-                            $categoryPic = "$fileName";
-                        }
-                    }
-                } 
-            }
-        //}
-        $eTitle = mysqli_real_escape_string($conn, SanitizeString($_POST["eventTitle"]));
-        $eDateFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_From"]));
-        $eDateTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eDate_To"]));
-        $eTimeFrom = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_From"]));
-        $eTimeTo = mysqli_real_escape_string($conn, SanitizeString($_POST["eTime_To"]));
-        $eDes = htmlentities($_POST["eDesc"]); //decode using stripslashes
-        $eCat = mysqli_real_escape_string($conn, SanitizeString($_POST["eCategory"]));
-        $eLoc = mysqli_real_escape_string($conn, SanitizeString($_POST["eLocation"]));
-        $eTnc = htmlentities($_POST["eTnC"]);//decode using html_entity_decode()
-        $status = "Waiting for Approval";
-        $eOrganiser = 1;//mysqli_real_escape_string($conn, SanitizeString($_SESSION["eLocation"]));
-
-        // $check = "SELECT * FROM `event`";
-        // if($stmt = mysqli_prepare ($conn, $check)){
-        //   mysqli_stmt_execute($stmt);
-        //   mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12);
-
-        //   while(mysqli_stmt_fetch($stmt)){
-        //       if($eTitle == $c3)
-        //       {
-        //         echo "<script>alert('This Event seems to be in our database, check yo');window.location.href='seller/dashboard.php';</script>";
-        //       }
-        //   }
-        //   mysqli_stmt_close($stmt);
-        // }
-        
-        $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `status`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-            if ($stmt = mysqli_prepare($conn,$sql)){
-                if(false===$stmt){
-                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-                }
-                $bp = mysqli_stmt_bind_param($stmt,"sssssssssssi",$categoryPic, $eTitle,$eDateFrom,$eDateTo,$eTimeFrom,$eTimeTo,$eDes,$eCat,$eLoc,$eTnc,$status,$eOrganiser);
-                if(false===$bp){
-                    die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-                }
-                $bp = mysqli_stmt_execute($stmt);
-                if ( false===$bp ) {
-                    die('Error with execute: ') . htmlspecialchars($stmt->error);
-                }
-                    if(mysqli_stmt_affected_rows($stmt) == 1){
-                        $prevID = mysqli_stmt_insert_id($stmt);
-                        echo "<script>alert('Success!!!!!' + $prevID);window.location.href='./addTicketType.php';</script>";
-                        $_SESSION['eventID'] = $prevID;
-                    }
-                    else{
-                        $error = mysqli_stmt_error($stmt);
-                        echo "<script>alert($error);</script>";
-                    }		
-                    mysqli_stmt_close($stmt);
-            }
-          }
+    $sql = "INSERT INTO `event`(`cover_image`, `event_name`, `event_date`, `eventEnd_date`, `event_time`, `eventEnd_time`, `description`, `category`, `location`, `event_tnc`, `status`, `organiser_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        if (false === $stmt) {
+            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+        }
+        $bp = mysqli_stmt_bind_param($stmt, "sssssssssssi", $categoryPic, $eTitle, $eDateFrom, $eDateTo, $eTimeFrom, $eTimeTo, $eDes, $eCat, $eLoc, $eTnc, $status, $eOrganiser);
+        if (false === $bp) {
+            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+        }
+        $bp = mysqli_stmt_execute($stmt);
+        if (false === $bp) {
+            die('Error with execute: ') . htmlspecialchars($stmt->error);
+        }
+        if (mysqli_stmt_affected_rows($stmt) == 1) {
+            $prevID = mysqli_stmt_insert_id($stmt);
+            echo "<script>alert('Success!!!!!' + $prevID);window.location.href='./addTicketType.php';</script>";
+            $_SESSION['eventID'] = $prevID;
+        } else {
+            $error = mysqli_stmt_error($stmt);
+            echo "<script>alert($error);</script>";
+        }
+        mysqli_stmt_close($stmt);
+    }
+}
 ?>
 
 <title>Create Event</title>
@@ -103,22 +102,22 @@
 <link rel="stylesheet" href="../css/event.css">
 
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid" style="width:80%">
+<!-- Begin Page Content -->
+<div class="container-fluid" style="width:80%">
     <!-- Above template -->
 
     <h1 style="margin-top: 50px;">Create New Event</h1>
     <div class="d-lg-block d-xl-block d-xxl-block" style="margin-top: 30px;">
-        
+
         <!-- Form for create new event -->
-        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-            
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Cover Image (Maximum 1 picture Allowed) (size: 1920x1080)
                     <input class="form-control" type="file" id="coverImg" style="margin-top: 10px;" name="coverImage[]" accept=".png,.jpeg,.jpg" required>
                 </h2>
             </section>
-            
+
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <h2>Event Details</h2>
                 <h3 style="margin-top: 30px;">Event Title<input class="form-control" type="text" required placeholder="Event Title" style="margin-top: 10px;" name="eventTitle"></h3>
@@ -197,39 +196,40 @@
                     </select>
                 </div>
             </section>
-            
+
             <section style="padding-top: 25px;padding-bottom: 40px;padding-right: 30px;padding-left: 30px;margin-top: 20px;box-shadow: 0px 0px 10px;">
                 <div>
                     <h2>Terms and Conditions</h2>
                     <textarea class="form-control" id="eTncEditor" placeholder="Edit your TnC here..." name="eTnC"></textarea>
                 </div>
             </section>
-            
+
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
                 <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
-                <button class="btn btn-outline-primary" type="submit" name="eRegister" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button></div>
+                    <button class="btn btn-outline-primary" type="submit" name="eRegister" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);color: rgb(255,255,255);">Submit</button>
+                </div>
             </div>
         </form>
     </div>
 
     <!-- Below template -->
-    </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
 
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/createEventJS.js"></script>
-    <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
-    <script>
-        tinymce.init({
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/createEventJS.js"></script>
+<script src='../tinymce/js/tinymce/tinymce.min.js'></script>
+<script>
+    tinymce.init({
         selector: '#eTncEditor',
         toolbar: 'undo redo | styles | bold italic'
-        });
-        tinymce.init({
+    });
+    tinymce.init({
         selector: '#eDesceditor',
         toolbar: 'undo redo | styles | bold italic'
-        });
-    </script>
+    });
+</script>
 
 <?php
-    require __DIR__ . '/footer.php'
+require __DIR__ . '/footer.php'
 ?>

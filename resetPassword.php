@@ -58,7 +58,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-12 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -73,14 +73,16 @@
                                         <div class="form-group">
 											<label>Password</label>
 											<input required type="password" name="password" class="form-control" id="inputPassword" maxlength="50" pattern="(?=.*\d).{8,}" placeholder="Use 8 or more characters with a mix of letters and numbers" title="Use 8 or more characters with a mix of letters and numbers">
-											
+										</div>
+										
+										<div class="form-group">
 											<label>Confirm Password</label>
 											<input required type="password" name="password2" class="form-control" id="inputRepeatPassword" maxlength="50">
-											
-											<hr>
-
-											<button type="submit" class="btn btn-primary btn-block" name="confirm">Confirm</button>
 										</div>
+
+										<hr>
+
+										<button type="submit" class="btn btn-primary btn-block" name="confirm">Confirm</button>					
 									</form>
                                 </div>
                             </div>
