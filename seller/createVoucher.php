@@ -28,11 +28,24 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
+<?php 
+     if(isset($_SESSION['status']))
+     {
+         ?>
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+         <?php
+         unset($_SESSION['status']);
+     }
+ ?>
+ 
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" action="createVoucherAction.php" method="post">
+   <form name="form" action="/createVoucherAction.php" method="POST">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
