@@ -70,17 +70,19 @@
 			</div>
 
 			<div class=\"mb-4\">
-			<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
+			<button class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"].">
 			<div class=\"address\">
-				<p style=\"font-weight: bold;font-size: 1.55rem;\">".$row["contact_name"]."</p>
+				<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
 				<div class=\"row\">
 					<div class=\"col-lg-4\">
-						<p style=\"font-size: 1rem;\">".$row["phone_number"]."</p>
-						<p style=\"font-size: 1.5rem;\">".$row["address"]."></p>
-						<p style=\"font-size: 1.5rem;\">".$row["postal_code"]."></p>
-						<p style=\"font-size: 1.5rem;\">".$row["area"]."></p>
-						<p style=\"font-size: 1.5rem;\">".$row["state"]."></p>
-						<p style=\"font-size: 1.5rem;\">".$row["country"]."></p>
+						<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
+						<p style=\"font-size: 1.5rem;\">
+						".$row["address"]."
+						".$row["postal_code"]."
+						".$row["area"]."
+						".$row["state"]."
+						".$row["country"]."
+						</p>
 					</div>
 				</div>
 			</div>
