@@ -14,7 +14,8 @@
     if(isset($_POST['Approve']))
     {
         $promotionId = $_POST['ApproveID'];
-        $sql_approve = "UPDATE FROM promotion WHERE promotionID = '$promotionId'";
+        
+        $sql_approve = "UPDATE promotion SET promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_approve))
         {
             ?>
@@ -217,6 +218,7 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
                                                 echo ("
                                                 <div class=\"row\">
                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
