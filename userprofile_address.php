@@ -18,6 +18,7 @@
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteAddress'] = true;
+			echo "<script>alert('Address Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -59,11 +60,11 @@
 			<div class=\"mb-3\">
 				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('userForm').submit()\">
 					<div class=\"address\">
-						<p style=\"font-weight: bold;font-size: 1.7rem;\">".$row["contact_name"]."</p>
+						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
 						<div class=\"row\">
 							<div class=\"col-lg-4\">
-								<p style=\"font-size: 1.55rem;\">".$row["phone_number"]."</p>
-								<p style=\"font-size: 1.5rem;\">
+								<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
+								<p style=\"font-size: 1.15rem;\">
 								".$row["address"]."
 								".$row["postal_code"]."
 								".$row["area"]."
@@ -91,16 +92,5 @@
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['DeleteAddress']))
-	{
-		if($_SESSION['DeleteAddress'] == true)
-		{
-			echo "<script>alert('Address Removed');</script>";
-		}
-		$_SESSION['DeleteAddress'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>
