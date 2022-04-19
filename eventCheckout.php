@@ -9,27 +9,7 @@ $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
 ?>
-<img src="./PHPMailer-master/">
-<?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Mailer = "smtp";
-$mail->SMTPDebug  = 1;
-$mail->SMTPAuth   = false;
-$mail->SMTPSecure = "tls";
-$mail->Port       = 465;
-$mail->Host       = "localhost";
-$mail->Username   = "event@sgcprototype2.com";
-$mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
-
-?>
 
 
 <?php
@@ -163,7 +143,7 @@ if (isset($_POST["completeRegister"])) {
                     <h5 class="mb-0">Buyer Details</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                    <form action="request2.php" method="POST" enctype="multipart/form-data">
                         <div><label class="form-label">Buyer Name</label><input class="form-control" type="text" placeholder="Buyer Name" name="buyerName" required></div>
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-6"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email" name="buyerEmail" required></div>
@@ -230,6 +210,10 @@ if (isset($_POST["completeRegister"])) {
                                 </div>
                                 <div class=\"col-8\">
                                     <p>" . $row['price'] . "</p>
+                                    <input type=\"hidden\" name=\"amount\" value =\"$price\">
+                                    <input type=\"hidden\" name=\"item_name\" value =\"$eventName\">
+                                    <input type=\"hidden\" name=\"item_number\" value =\"$eID\">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -247,7 +231,7 @@ if (isset($_POST["completeRegister"])) {
                         } else {
                             echo ("
                                 <div class=\"row\">
-                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\">Payment</button></div>
+                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\" name=\"eventPay\">Payment</button></div>
                                 </div>
                                 ");
                         }

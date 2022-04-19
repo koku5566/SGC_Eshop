@@ -1,6 +1,6 @@
 <?php
 
-   require __DIR__ . '/header.php';
+   require_once __DIR__ . '/mysqli_connect.php';
 
    if(isset($_POST['submit'])){
 
@@ -15,8 +15,8 @@
       $date = date('Y-m-d H:i:s');
 
       
-      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at)
-               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date');";
+      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
       
       mysqli_query($conn, $sqlv);
 
@@ -25,12 +25,13 @@
 
       for($i = 0; $i < count($product); $i++){
 
-         $sqlpv = "INSERT INTO productvoucher (product_id, voucher_id)
+         $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
          mysqli_query($conn, $sqlpv);
          
       }
+
        if($query_run)
        {
           $_SESSION['status'] = "Multiple Data Inserted Successfully";
