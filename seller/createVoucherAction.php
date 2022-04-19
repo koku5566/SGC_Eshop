@@ -1,6 +1,6 @@
 <?php
 
-   require __DIR__ . '/header.php';
+   require '/mysqli_connect.php';
 
    if(isset($_POST['submit'])){
 
