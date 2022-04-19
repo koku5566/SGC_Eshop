@@ -51,7 +51,7 @@
 
    <div class="container m-2">
       <div class="form-row">
-         <div class="form-group">
+         <div class="form-group col-md-12">
             <table class="table" id="voucherReview">
                <thead>
                   <tr>
