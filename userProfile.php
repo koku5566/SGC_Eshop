@@ -54,11 +54,11 @@ if(isset($_POST['update']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+<div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-6 col-md-9">
+            <div class="col-xl-12 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -80,6 +80,11 @@ if(isset($_POST['update']))
 					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
 					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
+					<div class=\"form-group\">
+					<label>Username</label>
+					<label>".$row["username"]."</label>
+					</div>
+
 					<div class=\"form-group\">
 					<label>Name</label>
 					<input required type=\"text\" name=\"name\" maxlength=\"50\" value=\"".$row["name"]."\" class=\"form-control\"/>
@@ -115,7 +120,6 @@ if(isset($_POST['update']))
         </div>
     </div>
 </div>
-
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
