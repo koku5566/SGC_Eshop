@@ -125,6 +125,7 @@
         $sql_update .= "category_id = '$categoryCombinationId' ";
         $sql_update .= "WHERE product_id = '$productId' ";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
