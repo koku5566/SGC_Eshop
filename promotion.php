@@ -43,8 +43,6 @@
             </div>
         </div>
 
-        <!-- Voucher -->
-
         
     </div>
     <!-- /.container-fluid -->

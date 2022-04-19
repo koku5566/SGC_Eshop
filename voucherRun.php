@@ -1,6 +1,6 @@
 <?php
 
-   $sql =
+   $sql_voucher =
     "SELECT 
      voucher.voucher_id,
      voucher.voucher_code,
@@ -22,7 +22,7 @@
      JOIN shop ON user.user_id = shop.shop_id
      GROUP BY voucher.voucher_id"; 
 
-   $stmt = $conn->prepare($sql);
+   $stmt = $conn->prepare($sql_voucher);
    $stmt->execute();
    $result = $stmt->get_result();
 
