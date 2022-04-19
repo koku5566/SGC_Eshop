@@ -25,7 +25,7 @@ $customerUID = $_SESSION['userid'];
   $result = $conn->query($sellersql);
   if ($result->num_rows > 0) { //if multiple product in cart
     while($row = $result->fetch_assoc()) {
-        array_push($sellers, $prod['shop_id']);
+        array_push($sellers, $row['shop_id']);
     }
 }   
     print_r($sellers);
