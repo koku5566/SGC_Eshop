@@ -5,7 +5,7 @@
 <?php
     if($_SESSION['login'] == true && $_SESSION['role'] != "USER")
 	{
-		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
     }
     //Fetch each promotion image information
