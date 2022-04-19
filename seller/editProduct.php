@@ -69,7 +69,7 @@
         $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
-        $defaultFile = $_POST['imgDefault'];
+        $defaultFile = array_filter($_POST['imgDefault']);
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
@@ -77,7 +77,9 @@
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
 
+        echo(var_dump($defaultFile));
         echo(var_dump($_FILES['img']));
+        
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
             if($key < 9)
@@ -123,6 +125,7 @@
         $sql_update .= "category_id = '$categoryCombinationId' ";
         $sql_update .= "WHERE product_id = '$productId' ";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
