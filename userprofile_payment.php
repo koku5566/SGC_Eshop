@@ -17,6 +17,7 @@
 		$sql = "DELETE FROM userBankAccount WHERE bankAcc_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeletePaymentB'] = true;
+			echo "<script>alert('Bank Account Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -30,6 +31,7 @@
 		$sql = "DELETE FROM userCard WHERE card_id = '$UID'";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeletePaymentC'] = true;
+			echo "<script>alert('Card Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -70,7 +72,7 @@
 					".$row["bank_name"]."
 					".$row["bankAcc_name"]."
 					".$row["account_no"]."
-					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\">Remove</button>
+					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 				</div>
 			</div>
 			");
@@ -89,7 +91,7 @@
 					".$row["name"]."
 					".$row["card_number"]."
 					".$row["expiry_date"]."
-					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\">Remove</button>
+					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 				</div>
 			</div>
 			");
@@ -106,25 +108,5 @@
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['DeletePaymentB']))
-	{
-		if($_SESSION['DeletePaymentB'] == true)
-		{
-			echo "<script>alert('Bank Account Removed');</script>";
-		}
-		$_SESSION['DeletePaymentB'] = NULL;
-	}
-	
-if(isset($_SESSION['DeletePaymentC']))
-	{
-		if($_SESSION['DeletePaymentC'] == true)
-		{
-			echo "<script>alert('Card Removed');</script>";
-		}
-		$_SESSION['DeletePaymentC'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>

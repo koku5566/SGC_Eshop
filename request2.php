@@ -6,13 +6,17 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
-require __DIR__. '/config.php';
+require __DIR__. '/header.php';
+require __DIR__. '/paypalConfig.php';
+$conn = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
 $ticket = $_SESSION['ticketSelected'];
 $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
+$eventName = $_SESSION['eventName'];
+$ticketType = $_SESSION['ticketType'];
 
 if (isset($_POST["completeRegister"])) {
 
@@ -102,7 +106,7 @@ if (isset($_POST["completeRegister"])) {
                     $returnPath = "-f" . $from2;
 
                     if (@mail($to, $subject, $message, $headers, $returnPath)) {
-                        echo "<script>alert('Link for reset password has been sent to $buyerEmail')</script>";
+                        echo "<script>alert('A purchase confirmation email has been sent to $buyerEmail')</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
@@ -127,8 +131,14 @@ if (empty($_POST['item_number'])) {
 }
 
 if (isset($_POST["eventPay"])) {
+    $buyerName = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerName"]));
+    $buyerEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerEmail"]));
+    $contact = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerContact"]));
 
-    
+    $_SESSION['buyerName'] = $buyerName;
+    $_SESSION['buyerEmail'] = $buyerEmail;
+    $_SESSION['buyerContact'] = $contact;
+
     $payer = new Payer();
     $payer->setPaymentMethod('paypal');
     // Set some example data for the payment.

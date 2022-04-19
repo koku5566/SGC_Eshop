@@ -36,6 +36,8 @@ if(isset($_POST['addAddress']))
 
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['AddAddress'] = true;
+				echo "<script>alert('New Address Added');
+				window.location.href='../userprofile_address.php';</script>";
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}

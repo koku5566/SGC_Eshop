@@ -163,7 +163,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;}?><button onclick="linkTrack('PL328056441873')">TRACK</button></td>
+                                        <td><?php echo $srow['status']; ?><br><input type="text" id="TrackNo" value="<?php $srow['tracking_number']?>"><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                                     </tr>
                                 <?php 
                                 }
@@ -210,7 +210,9 @@
     </div>
 <script src="//www.tracking.my/track-button.js"></script>
 <script>
-  function linkTrack(num) {
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
     TrackButton.track({
       tracking_no: num
     });
