@@ -24,10 +24,10 @@ $price = 0;
     $mail->SMTPDebug  = 1;  
     $mail->SMTPAuth   = false;
     $mail->SMTPSecure = "tls";
-    $mail->Port       = 25;
+    $mail->Port       = 465;
     $mail->Host       = "localhost";
     $mail->Username   = "event@sgcprototype2.com";
-    //$mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
+    $mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
 
 ?>
 
