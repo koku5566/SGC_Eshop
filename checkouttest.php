@@ -10,7 +10,7 @@
  
 
 
-$customerUID = $_SESSION['uid'];
+$customerUID = $_SESSION['userid'];
 //$customerUID = 'U000018';
   //Under the same seller
   $productlength =[];
