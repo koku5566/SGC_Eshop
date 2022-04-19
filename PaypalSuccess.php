@@ -59,6 +59,7 @@ $price = 0;
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
                     $to = $buyerEmail;
+                    $_SESSION['ticketTransaction'] = $ticketID;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
                     $from2 = "event@sgcprototype2.com";
