@@ -43,14 +43,10 @@
  ?>
 
 
-<div class="container m-2">
-   <div class="form-row">
-      <div class="form-group col-md-12">
-         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
-         Create Voucher
-         </button>
-      </div>
-   </div>
+<div class="container m-4">
+   <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+   Create Voucher
+   </button>
 </div>
 
 <div class="container m-2">
@@ -75,6 +71,8 @@
 
                <?php 
 
+                  $shopId = $_SESSION['uid'];
+
                   $sql_voucher =
                   "SELECT 
                      voucher.voucher_id,
@@ -86,16 +84,9 @@
                      voucher.voucher_limit,
                      voucher.voucher_details,
                      voucher.discount_amount,
-                     shopProfile.shop_name,
-                     shopProfile.shop_profile_image,
-                     product.product_name
 
                      FROM voucher
-                     JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                     JOIN product ON productVoucher.product_id = product.product_id	
-                     JOIN user ON product.user_id = user.user_id
-                     JOIN shop ON user.user_id = shop.shop_id
-                     GROUP BY voucher.voucher_id"; 
+                     WHERE product.shop_id = '$shopId' "; 
 
                   $stmt = $conn->prepare($sql_voucher);
                   $stmt->execute();
@@ -106,7 +97,6 @@
                ?>
 
                <tr>
-                  <td></td>
                   <td><?php echo $row['voucher_id']; ?></td>
                   <td><?php echo $row['voucher_code']; ?></td>
                   <td><?php echo $row['voucher_type']; ?></td>
