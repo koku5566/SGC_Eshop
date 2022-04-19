@@ -207,9 +207,6 @@ if(isset($_GET['addressid']))
                             echo "
                             <tr>
                                 <td>
-                                <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                </td>
-                                <td>
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
