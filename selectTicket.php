@@ -3,7 +3,11 @@ require __DIR__ . '/header.php'
 ?>
 
 <?php
-    $eID = $_GET['eventID'];
+    if(isset($_GET['eventID']))
+    {
+        $eID = $_GET['eventID'];
+        $_SESSION['eventPurchaseID'] = $_GET['eventID'];
+    }
 ?>
 
 <title>Select Ticket</title>
