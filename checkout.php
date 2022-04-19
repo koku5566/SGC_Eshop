@@ -105,7 +105,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <button class=\"form-check-input\" type=\"radio\" name=\"address-option\" value=".$addressrow["address_id"].">/* <label class=\"form-check-label\"> */
+            <button class=\"form-check-input\"  class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
