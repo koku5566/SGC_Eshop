@@ -93,7 +93,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\" required>
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"value=\"$addressrow[contact_name],$addressrow[phone_number],$addressrow[address],$addressrow[postal_code],$addressrow[area],$addressrow[state],$addressrow[country]\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -244,7 +244,7 @@
     var email = $("#email").val();
     var phone = $("#phone").val();
     var gender = $("input[type=radio]:checked").val();
-    $.post("submit.php", { name: name, email: email, phone: phone, gender: gender },
+    $.post("checkout.php", { name: name, email: email, phone: phone, gender: gender },
     function(data) {
 	 $('#results').html(data);
 	 $('#myForm')[0].reset();
