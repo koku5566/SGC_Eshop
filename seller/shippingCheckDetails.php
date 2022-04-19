@@ -175,8 +175,14 @@
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
                                     <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
-                                    <input class="form-control input" name="tracking_number" type="text" style="width:250px">
-                                    <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input class="form-control input" name="tracking_number" type="text" style="width:250px">
+                                        </div>
+                                        <div class="col">
+                                            <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
+                                        </div>
+                                    </div>
                                 </td>
                                 </form>
                                 <?php }
