@@ -3,10 +3,11 @@
 <?php	
 	if($_SESSION['login'] == false)
 	{
-		echo "<script>alert('Login to access');
-			window.location.href='login.php';</script>";
+		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+		exit;
     }
 ?>
+
 <?php
 	if(isset($_POST['remove']))
 	{
