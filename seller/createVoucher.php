@@ -1,20 +1,15 @@
 <?php
-    require __DIR__ . '/header.php';  
-?>
+    require __DIR__ . '/header.php';
 
-<?php 
-   if(!isset($_SESSION)){
-        session_start();
-    }
-    if(!isset($_SESSION['id']))
-    {
-        $_SESSION['id'] = "";
-    }
-?>
+    if(!isset($_SESSION)){
+      session_start();
+   }
+   if(!isset($_SESSION['id']))
+   {
+         $_SESSION['id'] = "";
+   }
 
-<?php
-
-   if(isset($_POST['submit'])){
+    if(isset($_POST['submit'])){
 
       $voucherCode = $_POST['voucherCode'];
       $voucherStartdate = $_POST['voucherStartdate'];
@@ -28,7 +23,7 @@
 
       
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
-               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0')";
       
       if(mysqli_query($conn, $sqlv)){
 
@@ -70,10 +65,8 @@
        } */
 
     }
-   
-   
-?>
 
+?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
