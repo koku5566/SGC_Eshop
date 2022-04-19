@@ -30,7 +30,7 @@
 
                     <!-- Content Row - Slidebar and SlideShow -->
                     <div class="row">
-                        <div class="col-xl-2 col-lg-12 col-12">
+                        <div class="col-xl-3 col-lg-12 col-12">
                             <div class="browse-menus">
                                 <div class="browse-menu active">
                                     <ul class="main-menu">
@@ -102,7 +102,7 @@
                         </div>
                         
                         <!-- Slideshow -->
-                        <div class="col-xl-10">
+                        <div class="col-xl-9">
                             <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <div class="carousel-inner">
                                 <?php
@@ -490,7 +490,7 @@
 
     .carousel-item{
         height:60vh;
-        background-color:rgba(58,59,69,.15);
+        background-color:transparent;
     }
 
     .carousel-inner img {
