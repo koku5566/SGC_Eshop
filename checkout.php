@@ -221,7 +221,7 @@ $json = json_decode($return);
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content"style="width: 80%;">
+      <div class="modal-content"style="width: 1000px;">
         <div class="modal-header">
           <h4 class="modal-title">Select Address</h4>
         </div>
