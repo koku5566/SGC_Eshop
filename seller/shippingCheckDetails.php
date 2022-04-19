@@ -116,7 +116,7 @@
                                 </thead>
                                 <tbody>
                                 <?php                       
-                                     while ($srow = $Sresult->fetch_assoc()) {
+                                     while ($srow = $sresult->fetch_assoc()) {
                                          
                                 ?>
                                     <tr>
