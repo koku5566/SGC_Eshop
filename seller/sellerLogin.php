@@ -116,10 +116,12 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index.php">
+                        <div class="sidebar-brand-icon">
+                            <img src="/img/segilogo.png" style="width:50px;height:50px;" alt="">
+                        </div>
+                        <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
+                    </a>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -332,6 +334,14 @@
 
                 </nav>
                 <!-- End of Topbar -->
+<style>
+    a:hover{
+        color: #a31f37 !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+    }
+</style>
+
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
         ?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php

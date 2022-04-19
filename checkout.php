@@ -15,7 +15,18 @@
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);             
-             
+                         
+            //change address
+            if(isset($_POST['submitAddress'])){
+                $UID = $_POST['submitAddress'];
+                if(!empty($UID)) {
+                    echo "<script>alert('$UID');
+                    </script>";
+                } else {
+                    echo "<script>alert('fail to change address');
+                    </script>";
+                }
+              }  
 
 
 ?>
@@ -94,7 +105,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" value=".$addressrow["address_id"]."><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -110,21 +121,8 @@
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button>
+            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress" value = <?php echo"$addressrow[address_id]"?>>Save changes</button>
             </form>
-            <?php   
-            
-            if(isset($_POST['submitAddress'])){
-                if(!empty($_POST['changeAddress'])) {
-                    echo "<script>alert('success');
-                    </script>";
-                } else {
-                    echo "<script>alert('fail to change address');
-                    </script>";
-                }
-              }  
-            
-            ?>
         </div>
       </div>
       
