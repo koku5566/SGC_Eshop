@@ -360,7 +360,7 @@
                                                             </script>
                                                         <?php
                                                     }
-                                                    else($status == 1)
+                                                    else if ($status == 1)
                                                     {
                                                         echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
                                                     }
