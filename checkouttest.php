@@ -10,8 +10,8 @@
  
 
 
-$customerUID = $_SESSION['uid'];
-
+//$customerUID = $_SESSION['uid'];
+$customerUID = 'U000018';
   //Under the same seller
   $productlength =[];
   $productwidth = [];
@@ -49,7 +49,7 @@ $volumetricWeight = $maximumlength* $maximumwidth* $productheight/5000;
 else  { //if only one item in cart
     while($row = $result->fetch_assoc()) {
         $productQty = $row['quantity'];
-        echo $row['quantity'], $row['product_ID'];
+        //echo $row['quantity'], $row['product_ID'];
 
         //Single item in one order: Volumetric weight calculation (kg) = Height (cm) x Width (cm) x Length (cm) / 5000.        
         //===========To get product weight, height, and width of the product==================
