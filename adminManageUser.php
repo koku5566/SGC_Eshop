@@ -112,7 +112,6 @@
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
 					<!--
 					<div class="imageDiv">
 						<div class="image-container">
@@ -131,28 +130,6 @@
 						</div>
 					</div>
 					--->
-
-					<div class="form-group">
-						<label for="inpEditName">Name</label>
-						<input type="text" name="inpEditName" class="form-control" id="inpEditName" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditEmail">Email</label>
-						<input type="email" name="inpEditEmail" class="form-control" id="inpEditEmail" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditContact">Contact</label>
-						<input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditRole">Role</label>
-						<input type="text" name="inpEditRole" class="form-control" id="inpEditRole" placeholder="" required>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" name="editStaff" class="btn btn-primary">Save changes</button>
-				</div>
 			</div>
 		</div>
 	</div>
