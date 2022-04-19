@@ -78,7 +78,7 @@ if (isset($_POST["completeRegister"])) {
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
 
                     $usermail = $buyerEmail;
-                    $adminmail = 'sgceshop@gmail.com';
+                    $adminmail = 'event@eshop.sgcprototype2.com';
                     $subject = 'Event Registered Successfully - ' . $eventName;
                     $mail->IsHTML(true);
                     $mail->AddAddress($usermail);
