@@ -9,45 +9,46 @@
         <?php
         exit;
 	}
-       //Promotion Status in DB - Approve Section
-       if(isset($_POST['Approve']))
-       {
-           $promotionId = $_POST['approveSectionID'];
-           
-           $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
-           $result = mysqli_query($conn, $sql_approve);
-           if(mysqli_affected_rows($result) == 1)
-           {
-               ?>
-                   <script type="text/javascript">
-                       alert("Promotion Approve Successful");
-                       window.location.href = window.location.origin + "/seller/promotion.php";
-                   </script>
-               <?php
-           }
-           else{
-               echo '<script>alert("Failed")</script>';
-           }
-       }
-   
-       //Promotion Status in DB - Reject Section
-       if(isset($_POST['Reject']))
-       {
-           $promotionId = $_POST['approveSectionID'];
-           $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
-           if(mysqli_query($conn, $sql_reject))
-           {
-               ?>
-                   <script type="text/javascript">
-                       alert("Promotion Reject Successful");
-                       window.location.href = window.location.origin + "/seller/promotion.php";
-                   </script>
-               <?php
-           }
-           else{
-               echo '<script>alert("Failed")</script>';
-           }
-       }
+
+    //Promotion Status in DB - Approve Section
+    if(isset($_POST['Approve']))
+    {
+        $promotionId = $_POST['Approve'];
+        
+        $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
+        $result = mysqli_query($conn, $sql_approve);
+        if(mysqli_affected_rows($result) == 1)
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Approve Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
+
+    //Promotion Status in DB - Reject Section
+    if(isset($_POST['Reject']))
+    {
+        $promotionId = $_POST['Reject'];
+        $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
+        if(mysqli_query($conn, $sql_reject))
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Promotion Reject Successful");
+                    window.location.href = window.location.origin + "/seller/promotion.php";
+                </script>
+            <?php
+        }
+        else{
+            echo '<script>alert("Failed")</script>';
+        }
+    }
 
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
@@ -218,15 +219,25 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
-                                                echo ("
-                                                <div class=\"row\">
-                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                        <p class=\"p-title\">Promotion Title</p>
-                                                    </div>
-                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                    </div>
-                                                </div>");
+                                                
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
+                                                $result = $conn->query($sql);
+                                                if($result-> num_rows > 0){ 
+                                                    while($row = $result->fetch_assoc()){
+                                                    echo ("
+                                                    <div class=\"row\">
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>
+                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                        </div>
+                                                    </div>");
+                                                    }
+                                                }
+                                                else{
+                                                    echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
+                                                }
                                             }
                                         ?>
                             </div>
@@ -292,9 +303,13 @@
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $promotionId = $row["promotionID"];
                                             $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div> readonly");
+                                            echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div> readonly");
                                         }
                                     }
                                     ?>
@@ -304,8 +319,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="1">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="1">Reject</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['approveSection']; ?>">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['approveSection']; ?>">Reject</button>
                     </div>
                 </div>
             </div>
@@ -399,7 +414,7 @@
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
                                                     <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                    <option name=\"requestHomePage\" value=\"2\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -416,7 +431,7 @@
                                         <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"sellerPage\" value=\"1\">Home Page</option>
+                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>

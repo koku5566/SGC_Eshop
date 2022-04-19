@@ -20,7 +20,7 @@
 			$_SESSION['DeleteUser'] = true;
             echo "<script>alert('User Removed');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
 	}
 
@@ -38,7 +38,7 @@
 		if (mysqli_query($conn, $sql)) {
             echo "<script>alert('User Detail Edited');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
 	}
 ?>
@@ -167,7 +167,6 @@ $(document).ready(function() {
 	});
 });
 
-
 const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
 	btn.addEventListener('click', function handleClick(event) {
@@ -187,7 +186,7 @@ editButton.forEach(btn => {
 function editUser(username) 
 {
 	$.ajax({
-		url:"editUserProfile.php",
+		url:"adminEditUser.php",
 		method:"POST",
 		data:{
 			username:username,
@@ -231,7 +230,7 @@ function editUser(username)
                                 {
                                     priceHTML+=`
                                     <option value="ADMIN" selected="selected">ADMIN</option>
-                                    <option value="Coordinator">Coordinator</option>
+                                    <option value="SELLER">SELLER</option>
                                     <option value="USER">USER</option>
                                 `;
                                 }
@@ -239,7 +238,7 @@ function editUser(username)
                                 {
                                     priceHTML+=`
                                     <option value="ADMIN">ADMIN</option>
-                                    <option value="SELLER" selected="selected">SELLERSELLER</option>
+                                    <option value="SELLER" selected="selected">SELLER</option>
                                     <option value="USER">USER</option>
                                 `;
                                 }
