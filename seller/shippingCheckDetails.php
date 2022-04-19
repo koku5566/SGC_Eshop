@@ -4,7 +4,8 @@
     $orderid = $_GET['order_id'];
     
     $orderstatus = "";
-
+    $totalprice = 0;
+    $shippingfee = 8.6;
     $orderinfosql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
@@ -137,7 +138,10 @@
                     </div>
                     <?php
                     $i=0;
-                    while ($row = $result->fetch_assoc()) {?>
+                    while ($row = $result->fetch_assoc()) {
+
+                    $totalprice += $row['amount'];
+                    ?>
                     <!--Start of order item-->
                     <div class="card">
                         <div class="card-body">
@@ -184,7 +188,7 @@
                                     Discounts:
                                 </div>
                                 <div class="col">
-                                    -RM258.00
+                                    -RM0.00
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -203,7 +207,7 @@
                                     <!--**to input quantity of items-->
                                 </div>
                                 <div class="col red-text">
-                                    <h5><strong>RM465.60</strong></h5>
+                                    <h5><strong>RM<?php echo round($totalprice+$shippingfee, 2)?></strong></h5>
                                 </div>
                             </div>
                         </div>
