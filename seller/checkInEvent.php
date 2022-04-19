@@ -6,17 +6,26 @@ require __DIR__ . '/header.php'
 if(isset($_GET['eventCheckin']))
 {
     $_SESSION['eventCheckin'] = $_GET['eventCheckin'];
+    $eID = $_SESSION['eventCheckin'];
 }
 
+$eventsql = "SELECT *
+            FROM `event`
+            INNER JOIN `ticket` 
+            ON `event`.`event_id` = `ticket`.`event_id`
+            WHERE `event`.`event_id` = $eID
+            ";
+
+$resultsql = mysqli_query($conn, $eventsql);                                             
+$row = mysqli_fetch_array($resultsql);
+$eventName = $row['event_name'];
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
     <!-- Above Template -->
-    <title>Event Dashboard</title>
+    <title>Event Check-in</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/CheckOutPage-V10.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <!-- Select datatable CSS-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
@@ -34,7 +43,7 @@ if(isset($_GET['eventCheckin']))
 
     <div class="card">
         <div class="card-header">
-            <h2 style="text-align: center;"><i class="fa fa-calendar-check-o"></i>Check in for eventName</h2>
+            <h2 style="text-align: center;"><i class="fa fa-calendar-check-o"></i>Check in for <?php echo($eventName)?></h2>
         </div>
         <div class="card-body">
             <form>
