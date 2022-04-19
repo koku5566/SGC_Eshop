@@ -127,8 +127,14 @@ if (empty($_POST['item_number'])) {
 }
 
 if (isset($_POST["eventPay"])) {
+    $buyerName = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerName"]));
+    $buyerEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerEmail"]));
+    $contact = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerContact"]));
 
-    
+    $_SESSION['buyerName'] = $buyerName;
+    $_SESSION['buyerEmail'] = $buyerEmail;
+    $_SESSION['buyerContact'] = $contact;
+
     $payer = new Payer();
     $payer->setPaymentMethod('paypal');
     // Set some example data for the payment.
