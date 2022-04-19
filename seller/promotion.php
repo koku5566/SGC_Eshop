@@ -13,7 +13,7 @@
     //Promotion Status in DB - Approve Section
     if(isset($_POST['Approve']))
     {
-        $promotionId = $_POST['ApproveID'];
+        $promotionId = $_POST['Approve'];
         
         $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
         $result = mysqli_query($conn, $sql_approve);
@@ -34,7 +34,7 @@
     //Promotion Status in DB - Reject Section
     if(isset($_POST['Reject']))
     {
-        $promotionId = $_POST['RejectID'];
+        $promotionId = $_POST['Reject'];
         $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_reject))
         {
