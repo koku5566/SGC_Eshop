@@ -218,7 +218,8 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
-                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 2";
+                                                
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
                                                 $result = $conn->query($sql);
                                                 if($result-> num_rows > 0){ 
                                                     while($row = $result->fetch_assoc()){
