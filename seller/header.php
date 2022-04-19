@@ -178,9 +178,16 @@
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
-                        <a class="collapse-item" href="addProduct.php">Add New Product</a>
-                        <a class="collapse-item" href="violationProduct.php">Product Violations</a>
-                        <a class="collapse-item" href="category.php">Category Management (Admin)</a>
+                        <a class="collapse-item" href="addProduct.php">Add Product</a>
+                        <?php 
+                        if($_SESSION['role'] == 'ADMIN' {
+                            echo("
+                                <a class=\"collapse-item\" href=\"adminManage.php\">Product Management</a>
+                                <a class=\"collapse-item\" href=\"category.php\">Category Management</a>
+                            ");
+                        }
+                        ?>
+                        
                     </div>
                 </div>
             </li>

@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+    
     if(isset($_GET['Panel']))
     {
         $_SESSION['AdminPanel'] = $_GET['AdminPanel'];
