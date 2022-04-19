@@ -4,9 +4,8 @@
     <link rel="stylesheet" type="text/css" href="css\payment.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
-</head>
 <div class="container-fluid" style="width:80%">
-<div class="payment">
+<div class="payment" style ="position:center;">
   <h1>Your Payment has been Successful</h1>
   <div class="wrapper">
   <?php 
