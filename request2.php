@@ -6,6 +6,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
+require __DIR__. '/header.php';
 require __DIR__. '/config.php';
 
 $ticket = $_SESSION['ticketSelected'];
