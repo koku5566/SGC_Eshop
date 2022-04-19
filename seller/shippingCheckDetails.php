@@ -18,7 +18,7 @@
     myOrder
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN user ON myOrder.user_id = user.user_id
-    JOIN product ON orderDetails.product_id = product.id
+    JOIN product ON orderDetails.product_id = product.product_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     WHERE myOrder.order_id = '$orderid';";
 
