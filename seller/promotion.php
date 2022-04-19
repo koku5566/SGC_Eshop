@@ -1,11 +1,14 @@
 <?php
     require __DIR__ . '/header.php';
 
-    //$_SESSION['role'] = "SELLER";
-    //$_SESSION["userId"] = "S000025";
-
-    //$_SESSION['role'] = "ADMIN";
-    //$_SESSION["userId"] = "A000001";
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
 
     //Promotion Status in DB - Delete
     if(isset($_POST['DeletePromotion']))
