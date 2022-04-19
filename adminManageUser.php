@@ -20,7 +20,7 @@
 			$_SESSION['DeleteUser'] = true;
             echo "<script>alert('User Removed');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
 	}
 
@@ -38,7 +38,7 @@
 		if (mysqli_query($conn, $sql)) {
             echo "<script>alert('User Detail Edited');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
 	}
 ?>
@@ -166,7 +166,6 @@ $(document).ready(function() {
 	"lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]]
 	});
 });
-
 
 const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
