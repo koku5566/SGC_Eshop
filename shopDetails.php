@@ -60,8 +60,8 @@
        ?>
       </div>
     <!-- Left right --> 
-    <a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> 
-    <a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+    <a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="border bg-secondary rounded carousel-control-prev-icon"></span> </a> 
+    <a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="border bg-secondary rounded carousel-control-next-icon"></span> </a> 
                     
     </div>
 </div>
@@ -157,6 +157,9 @@
 
       /*Slide show by Lim Qiu Xiong*/
 
+      #border{
+        background-color:black;
+      }
       .image-container{
           width:100%;
           height: 40vh;
@@ -176,7 +179,7 @@
 
       .carousel-item{
           height:60vh;
-          background-color:rgba(58,59,69,.15);
+          background-color:transparent;
       }
 
       .carousel-inner img {

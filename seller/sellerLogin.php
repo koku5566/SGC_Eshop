@@ -69,6 +69,10 @@
     {
         $_SESSION['uid'] = "";
     }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
     if(!isset($_SESSION['role']))
     {
         $_SESSION['role'] = "";
@@ -369,6 +373,7 @@
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
                     $_SESSION['uid'] = $row["user_id"];
+                    $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
@@ -391,7 +396,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-8 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->

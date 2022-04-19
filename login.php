@@ -8,7 +8,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$Login = false;
-		if(isset($_POST['username'],$_POST['password'])&& !empty($_POST['username'])  && !empty($_POST['password']))
+		if(isset($_POST['username'],$_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
 			$username = $_POST['username'];
 			$password = md5($_POST['password']); 
@@ -17,7 +17,7 @@
 			$username = filter_var(SanitizeString($_POST['username']), FILTER_SANITIZE_STRING);
 			
 			//Access Database
-			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password'";
+			$sql = "SELECT * FROM user WHERE username = '$username' OR email = '$username' AND password = '$password' AND role = 'USER'";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0) {
@@ -27,6 +27,7 @@
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
                     $_SESSION['uid'] = $row["user_id"];
+                    $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
@@ -49,7 +50,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-8 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
