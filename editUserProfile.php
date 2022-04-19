@@ -1,4 +1,4 @@
-<?php include('PHP_GetDataFromDb.php');  ?>
+<?php require __DIR__ . '/mysqli_connect.php' ?>
 
 <?php
 if(isset($_POST['editUser']))
