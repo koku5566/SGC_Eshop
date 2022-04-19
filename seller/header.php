@@ -180,7 +180,7 @@
                         <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add Product</a>
                         <?php 
-                        if($_SESSION['role'] == 'ADMIN' {
+                        if($_SESSION['role'] == 'ADMIN') {
                             echo("
                                 <a class=\"collapse-item\" href=\"adminManage.php\">Product Management</a>
                                 <a class=\"collapse-item\" href=\"category.php\">Category Management</a>
