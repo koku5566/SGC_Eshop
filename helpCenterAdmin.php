@@ -35,9 +35,7 @@ $_SESSION["shop_id_product"] = 'Sohai';
 		
 		
 		$_SESSION["shop_id_product"] = $j6;
-		$shop_id = $_SESSION["shop_id_product"];
 		
-		echo "<div class='alert alert-success'>$shop_id</div>";
 		
 	}
 
@@ -47,6 +45,8 @@ $_SESSION["shop_id_product"] = 'Sohai';
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
 		
+		$shop_id = $_SESSION["shop_id_product"];
+		echo "<div class='alert alert-success'>$shop_id</div>";
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
 		$user_id = $_SESSION["userId"];	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];
@@ -82,7 +82,7 @@ $_SESSION["shop_id_product"] = 'Sohai';
 			$pc3 = $gotpic[2];
 			$pc4 = $gotpic[3];
 			$pc5 = $gotpic[4];
-		echo "<div class='alert alert-success'>$shop_id</div>";	
+		
 																		
 		$sql = "INSERT INTO `reviewRating`(`product_id`, `user_id`, `message`,`rating`, `pic1`,`pic2`,`pic3`, `pic4`, `pic5`, `seller_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 			if($stmt = mysqli_prepare($conn, $sql)){
