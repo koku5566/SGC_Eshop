@@ -176,7 +176,7 @@
                                 <td>Tracking No: <br>
                                     <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
                                     <input class="form-control input" name="tracking_number" type="text" style="width:250px">
-                                    <button type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
+                                    <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
                                 </td>
                                 </form>
                                 <?php }
@@ -185,13 +185,13 @@
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Update Pick-Up Status: <br>
-                                <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
+                                <input type="hidden" class="form-control" name="order_id" value="<?php echo $orderid?>" >
                                     <select id="pickup" name="pickup">
                                       <option value="Preparing"> Order is Preparing</option>
                                       <option value="Ready">Pick-Up is Ready</option>
                                       <option value="Contact">You will contact customer</option>
                                     </select>
-                                    <button type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
+                                    <button  class="form-control btn btn-secondary" type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
                                 </td>
                                 </form>
                                 <?php }?>
