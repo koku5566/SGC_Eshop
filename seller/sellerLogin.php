@@ -116,7 +116,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/index.php">
                         <div class="sidebar-brand-icon">
                             <img src="/img/segilogo.png" style="width:50px;height:50px;" alt="">
                         </div>
@@ -334,6 +334,14 @@
 
                 </nav>
                 <!-- End of Topbar -->
+<style>
+    a:hover{
+        color: #a31f37 !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+    }
+</style>
+
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
         ?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
