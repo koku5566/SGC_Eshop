@@ -59,10 +59,11 @@
 	}
 ?>
 
-<div id="title"><h2>Forget Password</h2></div>
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 <div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
     <div class="container">
+	<div id="title"><h2>Forget Password</h2></div>
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-9">
 			<p id="label">Email Address</p>
