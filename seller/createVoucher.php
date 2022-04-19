@@ -30,7 +30,7 @@
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
       
-      mysqli_query($conn, $sqlv);
+      if(mysqli_query($conn, $sqlv)){
 
       $product = $_POST['productlist'];
       $v = mysqli_insert_id($conn);//specific table
@@ -40,11 +40,23 @@
          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
-         mysqli_query($conn, $sqlpv);
-         
+         if(mysqli_query($conn, $sqlpv)){
+            header("Location: /seller/createVoucher.php");
+            exit(0);
+         }
+         else{
+            echo 'add product failed';
+            echo $product;
+         }
+      }
+      }
+      else{
+         echo 'add voucher failed';
+         echo $voucherCode;
+         echo $conn;
       }
 
-       if($query_run)
+       /* if($query_run)
        {
           $_SESSION['status'] = "Multiple Data Inserted Successfully";
           header("Location: /seller/createVoucher.php");
@@ -55,11 +67,8 @@
           $_SESSION['status'] = "Data Not Inserted";
           header("Location: /seller/createVoucher.php");
           exit(0);
-       }
+       } */
 
-    }
-    else {
-       echo "error";
     }
    
    
