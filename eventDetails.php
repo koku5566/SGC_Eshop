@@ -55,7 +55,10 @@ require __DIR__ . '/header.php'
                 }
                 if ($maxPrice == 0) {
                     $buttonPrice = "Free";
-                } else {
+                } else if($minPrice == $maxPrice) {
+                    $buttonPrice = "RM " . $maxPrice;
+                }
+                else{
                     $buttonPrice = "RM " . $minPrice . " - RM " . $maxPrice;
                 }
 
