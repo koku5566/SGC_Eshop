@@ -17,7 +17,7 @@
       $fileNames = array_filter($_FILES['img']['name']); 
       $imgInpCounter = 0;
       $targetDir = dirname(__DIR__,1)."/img/facility/"; 
-      echo($targetDir);
+      //echo($targetDir);
       $allowTypes = array('jpg','png','jpeg'); 
 
       $sql_insert  = "INSERT INTO facilityPic (";

@@ -179,12 +179,12 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID = $_SESSION[uid]'
+                            WHERE cart.user_ID =  $userID'
                             AND product.shop_id = '$KL'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC";
                             
-                            $queryKL = mysqli_query($conn, $sql);
+                            $queryKL = mysqli_query($conn, $cartsql);
                             
                             $userID = "U000018";
                             $KL = 14;
@@ -207,24 +207,20 @@ if(isset($_GET['addressid']))
                             echo "
                             <tr>
                                 <td>
-                                    <div class='product-item'>
-                                        <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <label>".$product_name."</label>
+                                <span>".$product_variation."</span>
                                 </td>
                                 <td>
-                                <label>".$product_variation."</label>
+                                <span>".$product_price."</span>
                                 </td>
                                 <td>
-                                <label>".$product_price."</label>
-                                </td>
-                                <td>
-                                <label>".$product_quantity."</label>
+                                <span>".$product_quantity."</span>
                                 </td>
                                         
                                         
-                                        ";             
+                            </tr> ";             
                     }
                     ?>
                             </tbody>
