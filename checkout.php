@@ -75,7 +75,7 @@
 </div>
 
      <!-- Address Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal fade" id="myModal" role="dialog" style="width 80%;">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -83,17 +83,17 @@
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-        <?php
-/* 	$UID = $_SESSION["uid"];
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+    <?php
+	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
-		("
+		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" >
-            <label class=\"form-check-label\" for=\"address-option\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -104,8 +104,9 @@
                 </label>
 			</div>
 			");
-	} */
-?>
+	}
+    ?>
+    </form>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -9,7 +9,7 @@
 	// 		window.location.href='login.php';</script>";
     // }
 
-    // if($_SESSION['eventID'] == null)
+    // if($_SESSION['updateID'] == null)
     // {
     //     echo "<script>
  	// 	window.location.href='https://eshop.sgcprototype2.com/seller/createEvent.php';</script>";
@@ -17,14 +17,14 @@
 ?>
 
 <?php
-    $_SESSION['eventID'] = 1;
+    
     //--------------Add new form element------------------------
     if(isset($_POST["addFormElementSubmit"])){
         $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
         $fieldType = mysqli_real_escape_string($conn, SanitizeString($_POST["formElementSelect"]));
         $fieldOption = mysqli_real_escape_string($conn, SanitizeString($_POST["optionForList"]));
         $checkRequire = mysqli_real_escape_string($conn, $_POST['requiredCheck'] ? "required" : "optional");
-        $eventID = 1;//$_SESSION['event']
+        $eventID = $_SESSION['updateID'];
         
         $sql = "INSERT INTO `formElement`(`event_id`, `field_name`, `element_type`, `selection`, `required`) VALUES (?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
@@ -41,7 +41,7 @@
                 }
                     if(mysqli_stmt_affected_rows($stmt) == 1){
                         echo "<script>alert('Success!!!!!');</script>";
-                        //Add $_SESSION['eventID'] = "";
+                        //Add $_SESSION['updateID'] = "";
                         //Add Redirect to next page
                     }
                     else{
@@ -243,7 +243,7 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                            $sql = "SELECT * FROM `registrationForm` WHERE `event_id` = {$_SESSION['eventID']}";
+                                            $sql = "SELECT * FROM `registrationForm` WHERE `event_id` = {$_SESSION['updateID']}";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
@@ -313,7 +313,7 @@
                             <tbody>
                             <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                             <?php
-                            $sql = "SELECT * FROM `formElement` WHERE `event_id` = {$_SESSION['eventID']}";
+                            $sql = "SELECT * FROM `formElement` WHERE `event_id` = {$_SESSION['updateID']}";
                             $result = mysqli_query($conn, $sql);
 
                             if (mysqli_num_rows($result) > 0) {
