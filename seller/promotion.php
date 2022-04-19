@@ -218,7 +218,7 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
-                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 2";
                                                 $result = $conn->query($sql);
                                                 if($result-> num_rows > 0){ 
                                                     while($row = $result->fetch_assoc()){
@@ -412,7 +412,7 @@
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
                                                     <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
+                                                    <option name=\"requestHomePage\" value=\"2\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -429,7 +429,7 @@
                                         <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                             <div class=\"input-group mb-3\">
                                                 <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"sellerPage\" value=\"1\">Home Page</option>
+                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
                                                 </select>
                                             </div>
                                         </div>
