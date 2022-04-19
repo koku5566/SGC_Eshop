@@ -55,14 +55,25 @@ require __DIR__ . '/header.php'
                                     }
                                     else
                                     {
-                                        echo("<tr><td colspan=\"4\" style=\"text-align:center;\"s>
-                                        All Sales Ended
-                                        </td>
+                                        echo("
+                                        <tr>
+                                        <td>".$row['ticket_name']."</td>
+                                        <td>".$row['price']."</td>
+                                        <td>".$row['ticketType_id']."</td>
+                                        <td>Sales Ended</td>
                                         </tr>
                                         ");
                                     }
                                     
                                 }
+                            }
+                            else
+                            {
+                                echo("<tr><td colspan=\"4\" style=\"text-align:center;\"s>
+                                All Sales Ended
+                                </td>
+                                </tr>
+                                ");
                             }
 
                         ?>
