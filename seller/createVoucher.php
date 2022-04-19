@@ -72,8 +72,8 @@
                      <div class="input-group-append">
                         <select name="voucherType" class="custom-select">
                            <option value="">Please choose</option>
-                           <option value="ringgit">RM</option>
-                           <option value="%">%</option>
+                           <option value=" cashback">RM</option>
+                           <option value=" %">%</option>
                         </select>
                      </div>
                   </div>
@@ -138,7 +138,7 @@
             </div>
             <div class="form-row">
                <div class="float-right">
-                  <button type="submit" name="submit" class="btn btn-warning">SAVE</button>
+                  <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
                </div>
             </div>
          </div>    
@@ -207,6 +207,7 @@
                </table>
             </div>
          </div>
+         <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -222,6 +223,7 @@
    retrieve: true,
    responsive: true,
    scrollCollapse: true,
+   scrollY: '350px',
    ordering: true,
    searching: false,
    paging: false,
@@ -288,46 +290,65 @@
    });
 
 
-     $('#select').click( function () {
+      $("#selectAll").on( "click", function(e) {
 
-       var testdata = [];
-       testdata = vouchertable.rows('.selected').data();
+         if ($(this).is( ":checked" )) {
 
-       for(var i = 0; i<testdata.length; i++)
-       {
-          
+            vouchertable.rows({
 
-         const rowInsert = [];
-         
-         for(var j = 0; j<testdata[i].length; j++)
-         {
-             rowInsert.push(testdata[i][j]);
+               page:'current'
+
+            } ).select(); 
+
+         }else {
+
+            vouchertable.rows({
+
+               page:'current'
+
+            } ).deselect(); 
+
          }
+      });
 
-         let pid = $('#productList').val();
+      $('#select').click( function () {
 
-         let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
+         var testdata = [];
+         testdata = vouchertable.rows('.selected').data();
 
-         console.log(rowInsert[3]);
+         for(var i = 0; i<testdata.length; i++)
+         {
+            const rowInsert = [];
+            
+            for(var j = 0; j<testdata[i].length; j++)
+            {
+               rowInsert.push(testdata[i][j]);
+            }
 
-         $('#productraw').append(productid);
+            let pid = $('#productList').val();
 
-         createvouchertable.row.add([
-          rowInsert[1],
-          rowInsert[2],
-          rowInsert[3],
-          rowInsert[4],
-          rowInsert[5],
-          "",
-    
-         ] ).draw( false );
+            let productid = $('<input type="text" name="productlist[]" class="form-control" hidden>').val(rowInsert[3]).append(pid);
+
+            console.log(rowInsert[3]);
+
+            $('#productraw').append(productid);
+
+            createvouchertable.row.add([
+            rowInsert[1],
+            rowInsert[2],
+            rowInsert[3],
+            rowInsert[4],
+            rowInsert[5],
+            "",
+      
+            ] ).draw( false );
 
 
-       }
-         
-     });
+         }
+            
+      });
 
-     $('#select').on( 'click',function () {
+     $('#select', '#selectAll').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
 
