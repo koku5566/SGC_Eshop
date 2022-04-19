@@ -1,12 +1,13 @@
 <?php require __DIR__ . '/header.php' ?>
 
-<?php
+<?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
 	{
-		echo "<script>alert('Login as Admin account to access');
-			window.location.href='login.php';</script>";
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
     }
 ?>
+
 <?php
 if(isset($_POST['signup']))
 	{
@@ -35,6 +36,7 @@ if(isset($_POST['signup']))
 				
 					if (mysqli_query($conn, $sql)) {
 						$_SESSION['AddUser'] = true;
+						echo "<script>alert('User Added');</script>";
 					} else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
@@ -65,12 +67,12 @@ if(isset($_POST['signup']))
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 										<label>Email Address</label>
-										<input required type="email" name="email" class="form-control" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+										<input required type="email" name="email" class="form-control" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="Enter Email Address"/>
                                     </div>
 									
                                     <div class="col-sm-6">
 										<label>Username</label>
-										<input required type="text" name="username" class="form-control" id="inputUsername" maxlength="50" placeholder="Enter Your Username">
+										<input required type="text" name="username" class="form-control" id="inputUsername" maxlength="50" placeholder="Enter Username">
                                     </div>
                                 </div>
 
@@ -108,16 +110,5 @@ if(isset($_POST['signup']))
         </div>
     </div>
 </div>
-
-<?php
-if(isset($_SESSION['AddUser']))
-	{
-		if($_SESSION['AddUser'] == true)
-		{
-			echo "<script>alert('User Added');</script>";
-		}
-		$_SESSION['AddUser'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>

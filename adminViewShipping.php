@@ -2,6 +2,14 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php	
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
+?>
+
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->

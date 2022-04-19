@@ -176,7 +176,6 @@
                                         }
                                     ?>
                                     <!-- Approve - View/Approve/Reject Section -->
-                                    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
@@ -191,7 +190,6 @@
                                                 </div>");
                                             }
                                         ?>
-                                    </form>
                             </div>
                         </div>
                     </div>
@@ -199,6 +197,81 @@
             </div>
         </div>
         
+        <!-- Approve - View/Approve/Reject Section -->
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal fade" id="approveSectionModel" tabindex="-1" role="dialog" aria-labelledby="approveSectionModel" <?php echo(isset($_GET['approveSection']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Approve Section</h5>
+                        <button type="button" class="close approveSectionModel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                <div class="image-container">
+                                    <?php
+                                        $promotionId = $_GET['approveSection'];
+                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                
+                                                $picture = $row["promotion_image"];
+                                                $picName = "";
+
+                                                if($row["promotion_image"] != "")
+                                                {
+                                                    $picName = "/img/promotion/".$row["promotion_image"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                        }
+                                    ?>
+                                    
+                                    <div class="image-layer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Promotion Title</label>
+                                    <?php
+                                    $promotionId = $_GET['approveSection'];
+                                    $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $promotionId = $row["promotionID"];
+                                            $promotionTitle = $row["promotion_title"];
+
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="1">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="1">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
         <!-- Create Promotion -->
         <div class="row">
@@ -729,6 +802,21 @@
             });
         });
     }
+
+    window.addEventListener('load', function () {
+        if(<?php echo(isset($_GET['approveSection']) ? "1" : "0") ?> == 1)
+        {
+            $("#approveSectionModel").modal('show');
+        }
+    });
+
+    const approveSectionModel = document.querySelectorAll('.approveSectionModel');
+
+    approveSectionModel.forEach(btn => {
+        btn.addEventListener('click', function handleClick(event) {
+            $("#approveSectionModel").modal('hide');
+        });
+    });
 
     window.addEventListener('load', function () {
         if(<?php echo(isset($_GET['delete']) ? "1" : "0") ?> == 1)
