@@ -23,6 +23,7 @@ require __DIR__ . '/header.php'
             <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">All</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">Waiting for Approval</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">Approved</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4">Rejected</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" role="tabpanel" id="tab-1">
@@ -127,6 +128,54 @@ require __DIR__ . '/header.php'
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             if ($row['status'] == "Approved") {
+                                $eventID = $row['event_id'];
+                                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                                $result1 = mysqli_query($conn, $sql1);
+                                $minPrice = 999999;
+                                $maxPrice = 0;
+                                $buttonPrice = "";
+
+                                if (mysqli_num_rows($result1) > 0) {
+                                    while ($row1 = mysqli_fetch_assoc($result1)) {
+                                        if ($row1['price'] >= $maxPrice) {
+                                            $maxPrice = $row1['price'];
+                                        }
+                                        if ($row1['price'] <= $minPrice) {
+                                            $minPrice = $row1['price'];
+                                        }
+                                    }
+                                }
+                                if ($maxPrice == 0) {
+                                    $buttonPrice = "Free";
+                                } else {
+                                    $buttonPrice = "RM " . $minPrice . " - RM " . $maxPrice;
+                                }
+                                echo ("
+                                    <div class=\"card\" style=\"margin-top: 20px;\">
+                                        <div class=\"card-body shadow\">
+                                            <h4 class=\"card-title\">" . $row['event_name'] . "</h4>
+                                            <h6 class=\"text-muted card-subtitle mb-2\">" . $row['status'] . "</h6>
+                                            <h5>Date: " . $row['event_date'] . " - " . $row['eventEnd_date'] . "</h5>
+                                            <h5>Price: $buttonPrice</h5><a href=\"adminEventDetails.php?id=" . $row['event_id'] . "\"><button class=\"btn btn-primary float-end\" type=\"button\" style=\"background: rgb(163, 31, 55);width: 164.5px;\">Dashboard</button></a>
+                                        </div>
+                                    </div>
+                                ");
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <div class="tab-pane" role="tabpanel" id="tab-4">
+                <div style="margin-left: 80px;margin-right: 80px;">
+                    <?php
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id`";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            if ($row['status'] == "Rejected") {
                                 $eventID = $row['event_id'];
                                 $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
                                 $result1 = mysqli_query($conn, $sql1);
