@@ -42,7 +42,7 @@ require __DIR__ . '/header.php'
 
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)) {
-                                    if($row['sales_start'] <= date("Y-m-d") && $row['sales_end'] >= date("Y-m-d"))
+                                    if(date("Y-m-d")>= $row['sales_start'] && date("Y-m-d") <= $row['sales_end'])
                                     {
                                         echo("
                                        <tr>
@@ -55,8 +55,10 @@ require __DIR__ . '/header.php'
                                     }
                                     else
                                     {
-                                        echo("
+                                        echo("<tr><td>
                                         All Sales Ended
+                                        </td>
+                                        </tr>
                                         ");
                                     }
                                     
