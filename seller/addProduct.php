@@ -1125,12 +1125,13 @@
                 {
                     if (img.files && img.files[0] && img.files.length > 1) {
                         for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
-                            {
-                                j++;
-                            }
+                            
                             if(j < 9)
                             {
+                                while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                                {
+                                    j++;
+                                }
                                 imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[i]);
                                 imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
                                 imgInp[j].parentElement.parentElement.classList.add("hide");
