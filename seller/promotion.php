@@ -13,10 +13,11 @@
     //Promotion Status in DB - Approve Section
     if(isset($_POST['Approve']))
     {
-        $promotionId = $_POST['ApproveID'];
+        $promotionId = $_POST['Approve'];
         
-        $sql_approve = "UPDATE promotion SET promotionID = '$promotionId'";
-        if(mysqli_query($conn, $sql_approve))
+        $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
+        $result = mysqli_query($conn, $sql_approve);
+        if(mysqli_affected_rows($result) == 1)
         {
             ?>
                 <script type="text/javascript">
@@ -33,7 +34,7 @@
     //Promotion Status in DB - Reject Section
     if(isset($_POST['Reject']))
     {
-        $promotionId = $_POST['RejectID'];
+        $promotionId = $_POST['Reject'];
         $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_reject))
         {
@@ -318,8 +319,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="1">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="1">Reject</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['approveSection']; ?>">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['approveSection']; ?>">Reject</button>
                     </div>
                 </div>
             </div>

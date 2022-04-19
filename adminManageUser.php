@@ -20,7 +20,7 @@
 			$_SESSION['DeleteUser'] = true;
             echo "<script>alert('User Removed');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
 	}
 
@@ -36,17 +36,10 @@
 		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
 
 		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('User Edited');</script>";
+            echo "<script>alert('User Detail Edited');</script>";
 		} else {
-			echo "Error: " . mysqli_error($db);
+			echo "Error: " . mysqli_error($conn);
 		}
-	}
-
-	if(isset($_POST['edit']))
-	{
-		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='adminEditUser.php';</script>");
 	}
 ?>
 
@@ -119,7 +112,6 @@
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
 					<!--
 					<div class="imageDiv">
 						<div class="image-container">
@@ -138,28 +130,6 @@
 						</div>
 					</div>
 					--->
-
-					<div class="form-group">
-						<label for="inpEditName">Name</label>
-						<input type="text" name="inpEditName" class="form-control" id="inpEditName" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditEmail">Email</label>
-						<input type="email" name="inpEditEmail" class="form-control" id="inpEditEmail" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditContact">Contact No.</label>
-						<input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" required>
-					</div>
-					<div class="form-group">
-						<label for="inpEditRole">Role</label>
-						<input type="text" name="inpEditRole" class="form-control" id="inpEditRole" placeholder="" required>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" name="editStaff" class="btn btn-primary">Save changes</button>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -188,17 +158,6 @@
 	</div>    
 </form>
 
-<?php
-if(isset($_SESSION['DeleteUser']))
-	{
-		if($_SESSION['DeleteUser'] == true)
-		{
-			echo "<script>alert('User Removed');</script>";
-		}
-		$_SESSION['DeleteUser'] = NULL;
-	}
-?>
-
 <?php require __DIR__ . '/footer.php' ?>
 
 <script>
@@ -207,7 +166,6 @@ $(document).ready(function() {
 	"lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]]
 	});
 });
-
 
 const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
@@ -225,13 +183,13 @@ editButton.forEach(btn => {
 	});
 });
 
-function editUser(user_id) 
+function editUser(username) 
 {
 	$.ajax({
-		url:"editUserProfile.php",
+		url:"adminEditUser.php",
 		method:"POST",
 		data:{
-			user_id:user_id,
+			username:username,
 			editUser:1
 		},
 		dataType: 'JSON',
@@ -239,14 +197,69 @@ function editUser(user_id)
 			var len = response.length;
 			for(var i=0; i<len; i++){
 				var name = response[i].name;
-				var contact = response[i].contact;
 				var email = response[i].email;
+				var contact = response[i].contact;
 				var role = response[i].role;
 
 				var priceHTML = `
+						<div class="modal-header">
+                            <h5 class="modal-title" >Edit User Information</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inpEditName">Name</label>
+                                <input type="text" name="inpEditName" class="form-control" id="inpEditName" placeholder="" value="`+name+`" required>
+                            </div>
+							<div class="form-group">
+                                <label for="inpEditEmail">Email</label>
+                                <input type="email" name="inpEditEmail" class="form-control" id="inpEditEmail" placeholder="" value="`+email+`" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inpEditContact">Contact No.</label>
+                                <input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" value="`+contact+`" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inpEditRole">Role</label>
+                                <select name="inpEditRole" class="form-control" id="inpEditRole" value="`+role+`" required>
+                                `;
+                                if(role == "ADMIN")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN" selected="selected">ADMIN</option>
+                                    <option value="SELLER">SELLER</option>
+                                    <option value="USER">USER</option>
+                                `;
+                                }
+                                else if(role == "SELLER")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="SELLER" selected="selected">SELLER</option>
+                                    <option value="USER">USER</option>
+                                `;
+                                }
+                                else if(role == "USER")
+                                {
+                                    priceHTML+=`
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="SELLER">SELLER</option>
+                                    <option value="USER" selected="selected">USER</option>
+                                `;
+                                }
+                                priceHTML+=`
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="editStaff" value="`+username+`" class="btn btn-primary">Save changes</button>
+                        </div>
 				`;
-				
 				$("#editProfile").empty();
 				$("#editProfile").append(priceHTML);
 			}
@@ -256,7 +269,6 @@ function editUser(user_id)
 			}
 		},
 		error: function(err) {
-			//$('#login_message').html(err.responseText);
 			alert(err.responseText);
 		}
 	});
