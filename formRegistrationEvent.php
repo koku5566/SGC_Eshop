@@ -9,7 +9,7 @@ if (isset($_GET['ticketID'])) {
     
 }
 $eID =  $_SESSION['eventPurchaseID'];
-$uID = $_SESSION['id'];
+$uID = 1; //$_SESSION['id'];
 ?>
 
 <?php
