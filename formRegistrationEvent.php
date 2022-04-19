@@ -48,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
 
     //Insert each value into responses table
     $sql1 = "SELECT * FROM `formElement` WHERE `event_id` = $eID";
-    $result1 = mysqli_query($conn, $sql);
+    $result1 = mysqli_query($conn, $sql1);
     $formCount = 0;
     $counter = 0;
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result1) > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
             $fieldName = $row1['field_name'];
             if (!empty($_POST["$fieldName"])) {
