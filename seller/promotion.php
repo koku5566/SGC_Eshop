@@ -218,6 +218,7 @@
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
                                                 echo ("
                                                 <div class=\"row\">
                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
