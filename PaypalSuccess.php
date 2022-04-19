@@ -2,6 +2,8 @@
     require __DIR__ . '/header.php'
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
 </head>
 <div class="container-fluid" style="width:80%">
 <div class="payment">
