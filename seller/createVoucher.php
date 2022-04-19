@@ -17,8 +17,10 @@
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
 <!-- Datatable -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
 <!-- Select datatable CSS-->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
@@ -153,6 +155,7 @@
       </div>
    </form>
 </div>
+
 <!-- Add Product Modal -->
 <div class="modal fade" id="selectproduct" tabindex="-1" role="dialog" aria-labelledby="selectproductModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -225,6 +228,7 @@
     </div>
   </div>
 </div>
+
 <script type ="module">
    var createvouchertable = $('#createvouchertable').DataTable( {
    retrieve: true,
@@ -320,6 +324,7 @@
       $("#selectproduct").modal("hide"); 
      });
 </script>
+
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 <!-- Select datatable JS-->
@@ -327,6 +332,7 @@
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 <script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
+
 <?php
     require __DIR__ . '/footer.php'
 ?>
