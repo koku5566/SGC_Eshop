@@ -3,6 +3,8 @@
 ?>
 
 <?php
+
+$_SESSION["userId"] = "A000001";
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
             
@@ -395,6 +397,7 @@
 	}
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
 		
+		$adminId = $_SESSION["userId"];
 		$CUmessagereply = $_POST['CUmessagereply'];
 		//echo "<div class='alert alert-success'>$CUmessagereply</div>";
 		$selectedPID = $_POST['CUid2'];
@@ -437,16 +440,16 @@
 		 if(mail($to, $subject, $content, $header)){
 			  echo "<script>alert('Email sent!')</script>";
 			  $sql = "UPDATE 
-					 `contactUs` SET status =?, r_message=? 
+					 `contactUs` SET status =?, r_message=?, admin_id=?
 			          WHERE cu_id =?";
 				if($stmt = mysqli_prepare($conn, $sql)){
-					mysqli_stmt_bind_param($stmt, 'iss', $status, $CUmessagereply, $selectedPID); 	//s=string , d=decimal value i=ID
+					mysqli_stmt_bind_param($stmt, 'isss', $status, $CUmessagereply, $adminId, $selectedPID); 	//s=string , d=decimal value i=ID
 			
 					mysqli_stmt_execute($stmt);
 				
 					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 					{
-						echo "<script>alert('Update successfully');</script>";
+						//echo "<script>alert('Update successfully');</script>";
 					}else{
 						echo "<script>alert('Fail to Update');</script>";
 					}

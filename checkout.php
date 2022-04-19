@@ -16,149 +16,6 @@
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);                 
 
-//get seller id -> retrieve seller shipping option from db
-$sellerUID = 11; //*TO GET*
-$customerUID = 3; //TO GET * from session
-
-  //Under the same seller
-  $productlength =[];
-  $productwidth = [];
-  $productheight = 0;
-  $productweight =0;
-  
-  $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
-  $result = $conn->query($cartsql);
-
-  if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-
-    $product = $row['product_ID'];
-    $productQty = $row['quantity'];
-
-   //===========To get product weight, height, and width of the product==================
-    $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$product'";
-    $result = $conn->query($sqlinfo);
-    while ($prod = $result->fetch_assoc()) {
-
-    //to calculate parcel size of including all products
-    array_push($productlength, $prod['product_length']);
-    array_push($productwidth, $prod['product_width']);
-
-    $productheight += $prod['product_height'] * $productQty; // Sum (Height (cm) x Quantity)
-    $productweight += $prod['product_weight'] * $productQty;
-
-    }
-  }
-}
-  $maximumlength = max($productlength);
-  $maximumwidth = max($productwidth);
-  
-  //echo $productheight, $maximumlength, $maximumwidth;
-  //echo $productweight;
-
-
-//===========To get customer shipping information==================
-$customersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $customerUID";
-  $result = $conn->query($customersql);
-
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-$cPhone = $row['phone_number'];
-$cContactName  = $row['contact_name'];
-$cFullAddress = $row['address'];
-$cPostalCode = $row['postal_code'];
-$cState = $row['state'];
-}
-  }
-//echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
-
-
-//===========To get seller shipping information==================
-$sellersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $sellerUID";
-
-$result = $conn->query($sellersql);
-
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    $sPhone = $row['phone_number'];
-    $sContactName  = $row['contact_name'];
-    $sFullAddress = $row['address'];
-    $sPostalCode = $row['postal_code'];
-    $sState = $row['state'];
-    }
-}
-//echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
-
-//if get is not null then
-$domain = "https://demo.connect.easyparcel.my/?ac=";
-
-$action = "MPRateCheckingBulk";
-$postparam = array(
-'authentication'	=> 'LoFwGSDIZ4',
-'api'	=> 'EP-1ksAmVhmY',
-'bulk'	=> array(
-array(
-'pick_code'	=> $sPhone,//'10050',
-'pick_state'	=>$sState,//'png',
-'pick_country'	=> 'MY',
-'send_code'	=> $cPostalCode, //'11950',
-'send_state'	=> $cState,//'png',
-'send_country'	=> 'MY',
-'weight'	=> $productweight,
-'width'	=>$maximumwidth,// '0',
-'length'	=> $maximumlength,// '0',
-'height'	=>$productheight,//'0',
-'date_coll'	=> date("Y-m-d"), //'2022-4-10',
-),
-
-),
-'exclude_fields'	=> array(
-'rates.*.pickup_point',
-),
-);
-
-$url = $domain.$action;
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postparam));
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-ob_start(); 
-$return = curl_exec($ch);
-ob_end_clean();
-curl_close($ch);
-
-$json = json_decode($return);
-//echo "<pre>"; print_r($json); echo "</pre>";
 
 ?>
 
@@ -226,17 +83,17 @@ $json = json_decode($return);
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-        <?php
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" class="changeAddress"> 
+    <?php
 	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
-		("
+		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" >
-            <label class=\"form-check-label\" for=\"address-option\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"value=\"$addressrow["contact_name"],$addressrow["phone_number"],$addressrow["address"],$addressrow["postal_code"],$addressrow["area"],$addressrow["state"],$addressrow["country"]\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -248,10 +105,12 @@ $json = json_decode($return);
 			</div>
 			");
 	}
-?>
+    ?>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary text-center" type="submit"  onclick="changeAddress();"  style="text-align: right;background: #A71337;width: 122.95px;float: right;">Save changes</button>
+            </form>
         </div>
       </div>
       
@@ -259,7 +118,7 @@ $json = json_decode($return);
   </div>
   
     <div class="container-fluid" style="width:80%">
-<body style="background: #f5f2f2;">
+<div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
             <div class="row">
@@ -317,7 +176,7 @@ $json = json_decode($return);
             </div> -->
             <div class="shipping-option" >
                 <div class="row">
-                    <div class="col"><label class="col-form-label" style="margin-top: 10px;">Shipping Option</label></div>
+                    <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
                 </div>
                 <div class="row">
                     <div class="col-2">
@@ -376,8 +235,23 @@ $json = json_decode($return);
             </div>
         </div>
     </div>
+
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-</body>
+
+<!-- <script>
+    function changeAddress() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var gender = $("input[type=radio]:checked").val();
+    $.post("checkout.php", { name: name, email: email, phone: phone, gender: gender },
+    function(data) {
+	 $('#results').html(data);
+	 $('#myForm')[0].reset();
+    });
+}
+</script> -->
+</div>
 </div>
                 <!-- /.container-fluid -->
 
