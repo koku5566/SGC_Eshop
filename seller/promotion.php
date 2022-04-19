@@ -311,7 +311,7 @@
                     <!-- Page Ending -->         
                     <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
                         <button class="btn btn-outline-primary" type="button" onclick="submitAddForm()">Submit</button>
-                        <button class="btn btn-outline-primary" type="submit" name="create_btn" hidden>Submit</button>
+                        <button class="btn btn-outline-primary" type="submit" id="create_btn" name="create_btn" hidden>Submit</button>
                     </div>
 
                     <!-- Create Function -->
@@ -499,7 +499,7 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" name="imgEdit[]" type="file" class="imgInp" />
+                                            <input accept=".png,.jpeg,.jpg" id="imgEdit" name="imgEdit[]" type="file" class="imgInp" />
                                             <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
@@ -642,8 +642,8 @@
 
 <script>
 
-function submitEditForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != "")
+    function submitEditForm(){
+        if(document.getElementById("imgEdit").value != "")
         {
             document.getElementById("edit_btn").click();
         }
@@ -652,10 +652,11 @@ function submitEditForm(){
             alert("Please Select a Cover Picture");
         }
     }
+
     function submitAddForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != "")
+        if(document.getElementById("upload_file").value != "")
         {
-            document.getElementById("edit_btn").click();
+            document.getElementById("create_btn").click();
         }
         else
         {

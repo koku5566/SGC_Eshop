@@ -140,7 +140,9 @@
 
                     <br>
                     <!-- Voucher -->
-
+                    <?php
+                        require __DIR__ . '/voucherRun.php';
+                    ?>
                     <br>
 
                     <!-- List All Product - Demo Product  -->
