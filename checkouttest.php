@@ -1,11 +1,10 @@
 <?php
-    require __DIR__ . '/header.php';
-	//   if($_SESSION['login'] == false)
-	//  {
-	//  	echo "<script>alert('Login to checkout');
-	//  		window.location.href='login.php';</script>";
-    //  } 
-
+ require_once __DIR__ . '/mysqli_connect.php';
+   if($_SESSION['login'] == false)
+  {
+  	echo "<script>alert('Login to checkout');
+  		window.location.href='login.php';</script>";
+  }
  echo $_SESSION['uid'];
 
 //Username and address
