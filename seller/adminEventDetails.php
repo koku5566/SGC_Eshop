@@ -6,50 +6,46 @@ require __DIR__ . '/header.php'
 
 if (isset($_GET['id'])) {
     $_SESSION['eventIDView'] = $_GET['id'];
-    $eID = $_SESSION['eventIDView'];
+    
 }
 
 ?>
 
 <?php
-    if(isset($_POST['reject']))
-    {
-        $status="Rejected";
-            $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
-                if ($stmt = mysqli_prepare($conn,$sql)){
-                    mysqli_stmt_bind_param($stmt,"si",$status, $eID);
-                    mysqli_stmt_execute($stmt);
-                        if(mysqli_stmt_affected_rows($stmt) == 1){
-                            echo "<script>alert('Success!!!!!');</script>";
-                            //Add $_SESSION['eventID'] = "";
-                            //Add Redirect to next page
-                        }
-                        else{
-                            $error = mysqli_stmt_error($stmt);
-                            echo "<script>alert($error);</script>";
-                        }		
-                        mysqli_stmt_close($stmt);
-                }
+$eID = $_SESSION['eventIDView'];
+if (isset($_POST['reject'])) {
+    $status = "Rejected";
+    $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "si", $status, $eID);
+        mysqli_stmt_execute($stmt);
+        if (mysqli_stmt_affected_rows($stmt) == 1) {
+            echo "<script>alert('Success!!!!!');</script>";
+            //Add $_SESSION['eventID'] = "";
+            //Add Redirect to next page
+        } else {
+            $error = mysqli_stmt_error($stmt);
+            echo "<script>alert($error);</script>";
+        }
+        mysqli_stmt_close($stmt);
     }
-    else if(isset($_POST['approve']))
-    {
-        $status="Approved";
-            $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
-                if ($stmt = mysqli_prepare($conn,$sql)){
-                    mysqli_stmt_bind_param($stmt,"si",$status, $eID);
-                    mysqli_stmt_execute($stmt);
-                        if(mysqli_stmt_affected_rows($stmt) == 1){
-                            echo "<script>alert('Success!!!!!');</script>";
-                            //Add $_SESSION['eventID'] = "";
-                            //Add Redirect to next page
-                        }
-                        else{
-                            $error = mysqli_stmt_error($stmt);
-                            echo "<script>alert($error);</script>";
-                        }		
-                        mysqli_stmt_close($stmt);
-                }
+} else if (isset($_POST['approve'])) {
+    $status = "Approved";
+    $sql = "UPDATE `event` SET `status`=? WHERE `event_id` = ?";
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "si", $status, $eID);
+        mysqli_stmt_execute($stmt);
+        if (mysqli_stmt_affected_rows($stmt) == 1) {
+            echo "<script>alert('Success!!!!!');</script>";
+            //Add $_SESSION['eventID'] = "";
+            //Add Redirect to next page
+        } else {
+            $error = mysqli_stmt_error($stmt);
+            echo "<script>alert($error);</script>";
+        }
+        mysqli_stmt_close($stmt);
     }
+}
 ?>
 
 <!-- Begin Page Content -->
@@ -77,16 +73,16 @@ if (isset($_GET['id'])) {
     <h1>Event Dashboard</h1>
     <div class="card">
         <div class="card-body">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-            <div class="row">
-            
-                <?php
-                $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $picLocation = "/img/event/" . $row["cover_image"];
-                        echo ("
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                <div class="row">
+
+                    <?php
+                    $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $picLocation = "/img/event/" . $row["cover_image"];
+                            echo ("
                                 <div class=\"col-4\"><img src=\"$picLocation\" id=\"eventPhoto\" style=\"width: 100%;\" name=\"eventPhoto\"></div>
                                 <div class=\"col-8\">
                                     <h3 name=\"eventName\">" . $row['event_name'] . "</h3>
@@ -95,28 +91,23 @@ if (isset($_GET['id'])) {
                                     <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
                         ");
 
-                        if($row['status'] == "Approved" || $row['status'] == "Rejected")
-                        {
-                            echo("
+                            if ($row['status'] == "Approved" || $row['status'] == "Rejected") {
+                                echo ("
                                     </form>
                                 </div>
                             ");
-                        }
-                        else
-                        {
-                            echo("
+                            } else {
+                                echo ("
                                 <button class=\"btn btn-secondary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"reject\">Reject</button>
                                 <button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\" name=\"approve\">Approve</button>
                                 </form>
                             </div>
                             ");
+                            }
                         }
-                                    
-                                
                     }
-                }
-                ?>
-            </div>
+                    ?>
+                </div>
         </div>
     </div>
     <div class="card" style="margin-top: 40px;">
@@ -159,25 +150,23 @@ if (isset($_GET['id'])) {
                             $result1 = mysqli_query($conn, $sql1);
                             if (mysqli_num_rows($result1) > 0) {
                                 while ($row1 = mysqli_fetch_assoc($result1)) {
-                                    echo("
+                                    echo ("
                                         <tr>
-                                        <td>".$row1['ticketOrder_id']."</td>
-                                        <td>".$row1['payment_id']."</td>
-                                        <td>".$row1['payment_status']."</td>
-                                        <td>".$row1['transaction_date']."</td>
-                                        <td>".$row1['transaction_time']."</td>
-                                        <td>".$row1['buyer_name']."</td>
-                                        <td>".$row1['buyer_contact']."</td>
-                                        <td>".$row1['buyer_email']."</td>
-                                        <td>".$row1['total_price']."</td>
-                                        <td>".$row1['ticket_name']."</td>
+                                        <td>" . $row1['ticketOrder_id'] . "</td>
+                                        <td>" . $row1['payment_id'] . "</td>
+                                        <td>" . $row1['payment_status'] . "</td>
+                                        <td>" . $row1['transaction_date'] . "</td>
+                                        <td>" . $row1['transaction_time'] . "</td>
+                                        <td>" . $row1['buyer_name'] . "</td>
+                                        <td>" . $row1['buyer_contact'] . "</td>
+                                        <td>" . $row1['buyer_email'] . "</td>
+                                        <td>" . $row1['total_price'] . "</td>
+                                        <td>" . $row1['ticket_name'] . "</td>
                                         </tr>
                                     ");
                                 }
-                            }
-                            else
-                            {
-                                echo("
+                            } else {
+                                echo ("
                                         <tr>
                                         <td colspan=\"10\" style=\"text-align:center;\">No Transaction yet</td>
                                         </tr>
