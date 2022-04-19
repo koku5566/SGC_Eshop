@@ -98,15 +98,15 @@ $formRecord = $_SESSION['formEntry'];
                             {
                                 echo("
                                 <div class=\"row\">
-                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\">Register</button></div>
-                                </div>
+                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\">Register</button></div>
+                                </div> 
                                 ");
                             }
                             else
                             {
                                 echo("
                                 <div class=\"row\">
-                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\">Payment</button></div>
+                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\">Payment</button></div>
                                 </div>
                                 ");
                             }
