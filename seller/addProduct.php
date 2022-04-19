@@ -849,7 +849,7 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != null)
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
             if(document.querySelectorAll('.warning').length == 0)
             {
