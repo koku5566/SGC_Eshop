@@ -44,6 +44,7 @@ if (isset($_POST["completeRegister"])) {
         }
         if (mysqli_stmt_affected_rows($stmt) == 1) {
             $ticketOrderID = mysqli_stmt_insert_id($stmt);
+            $_SESSION['ticketTransaction'] = $ticketOrderID;
             $ticketString = $ticketOrderID."-".$ticket."-".$eID."-".$formRecord."-".$today.$now;
             $sql3 = "INSERT INTO `ticket`(`ticket_id`, `transaction_id`, `ticketType_id`, `event_id`, `form_entry_id`, `ticketGenerate_Date`, `ticketGenerate_Time`, `user_id`) VALUES (?,?,?,?,?,?,?,?)";
             if ($stmt1 = mysqli_prepare($conn, $sql3)) {
@@ -60,7 +61,7 @@ if (isset($_POST["completeRegister"])) {
                 }
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
-                    $_SESSION['ticketTransaction'] = $ticketID;
+                    
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
