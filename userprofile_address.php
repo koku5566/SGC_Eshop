@@ -56,7 +56,7 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div>
+			<div class=\"form-group\">
 			<button href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\">
 				".$row["contact_name"]."
 				".$row["phone_number"]."
