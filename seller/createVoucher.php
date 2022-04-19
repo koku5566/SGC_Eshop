@@ -44,7 +44,7 @@
 
 <div class="container">
    <div class="container m-4">
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+      <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#createVoucherModal">
       Create Voucher
       </button>
    </div>
@@ -121,7 +121,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create Voucher</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
          <form name="form" action="/seller/createVoucherAction.php" method="POST">
@@ -222,7 +222,7 @@
                      </div>
                      <div class="form-group col-md-12">
                         <label for="">Applicable products</label>
-                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-bs-dismiss="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-dismiss="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
                   <div class="form-row" id="productraw">
@@ -238,7 +238,7 @@
          </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -315,8 +315,8 @@
          <!-- <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select" data-bs-target="#createVoucherModal">Select</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal" data-target="#createVoucherModal">Close</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select" data-target="#createVoucherModal">Select</button>
       </div>
     </div>
   </div>
