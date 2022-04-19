@@ -8,7 +8,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$Login = false;
-		if(isset($_POST['username'],$_POST['password'])&& !empty($_POST['username'])  && !empty($_POST['password']))
+		if(isset($_POST['username'],$_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
 			$username = $_POST['username'];
 			$password = md5($_POST['password']); 
@@ -49,7 +49,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-8 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
