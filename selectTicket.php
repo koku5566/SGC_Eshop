@@ -37,7 +37,7 @@ require __DIR__ . '/header.php'
                             </thead>
                             <tbody>
                             <?php
-                            $sql = "SELECT * FROM `ticketType` WHERE `event_id` = {$_SESSION['eventPurchaseID']}";
+                            $sql = "SELECT * FROM `ticketType` WHERE `event_id` = $eID";
                             $result = mysqli_query($conn, $sql);
 
                             if (mysqli_num_rows($result) > 0) {
