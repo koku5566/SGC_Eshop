@@ -27,7 +27,7 @@ $price = 0;
     $mail->Port       = 25;
     $mail->Host       = "localhost";
     $mail->Username   = "event@sgcprototype2.com";
-    //$mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
+    $mail->Password   = "0124756909AaBb"; //wgsxuilbeajridsm
 
 ?>
 
