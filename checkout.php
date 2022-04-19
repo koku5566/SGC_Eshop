@@ -93,7 +93,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"value=\"$addressrow["contact_name"],$addressrow["phone_number"],$addressrow["address"],$addressrow["postal_code"],$addressrow["area"],$addressrow["state"],$addressrow["country"]\"><label class=\"form-check-label\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"value=\"$addressrow[contact_name],$addressrow[phone_number],$addressrow[address],$addressrow[postal_code],$addressrow[area],$addressrow[state],$addressrow[country]\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
