@@ -41,7 +41,7 @@
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
    <h2 class="m-4">Create Voucher</h2>
-   <form name="form" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -373,9 +373,11 @@
          }
             
       });
+
      $('#select').on( 'click',function () {
       $("#selectproduct").modal("hide"); 
      });
+
 </script>
 
 <!-- Datatable -->
@@ -387,5 +389,5 @@
 <script type ="module" src="../bootstrap/js/bootstrap.min.js"></script>
 
 <?php
-    require __DIR__ . '/footer.php'
+    require __DIR__ . '/footer.php';
 ?>
