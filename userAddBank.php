@@ -32,6 +32,8 @@ if(isset($_POST['addBank']))
 
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['AddBank'] = true;
+				echo "<script>alert('New Bank Account Added');
+				window.location.href='../userprofile_payment.php';</script>";
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
@@ -80,17 +82,5 @@ if(isset($_POST['addBank']))
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['AddBank']))
-	{
-		if($_SESSION['AddBank'] == true)
-		{
-			echo "<script>alert('Bank Account Added');
-			window.location.href='../userprofile_payment.php';</script>";
-		}
-		$_SESSION['AddBank'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>

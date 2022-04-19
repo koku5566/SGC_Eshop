@@ -183,6 +183,9 @@ if (isset($_POST["completeRegister"])) {
                         $eventName = $row['event_name'];
                         $ticketType = $row['ticket_name'];
 
+                        $_SESSION['eventName'] = $eventName;
+                        $_SESSION['ticketType'] = $ticketType;
+
 
                         echo ("
                             <div class=\"card-body\">

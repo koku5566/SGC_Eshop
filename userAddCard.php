@@ -33,6 +33,8 @@ if(isset($_POST['addCard']))
 
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['AddCard'] = true;
+				echo "<script>alert('Card Added');
+				window.location.href='../userprofile_payment.php';</script>";
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
@@ -86,17 +88,5 @@ if(isset($_POST['addCard']))
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['AddCard']))
-	{
-		if($_SESSION['AddCard'] == true)
-		{
-			echo "<script>alert('Card Added');
-			window.location.href='../userprofile_payment.php';</script>";
-		}
-		$_SESSION['AddCard'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>

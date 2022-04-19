@@ -18,6 +18,7 @@
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteAddress'] = true;
+			echo "<script>alert('Address Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -91,16 +92,5 @@
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['DeleteAddress']))
-	{
-		if($_SESSION['DeleteAddress'] == true)
-		{
-			echo "<script>alert('Address Removed');</script>";
-		}
-		$_SESSION['DeleteAddress'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>
