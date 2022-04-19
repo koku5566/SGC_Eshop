@@ -221,7 +221,7 @@ $json = json_decode($return);
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style = "width:100%;">
         <div class="modal-header">
           <h4 class="modal-title">Select Address</h4>
         </div>
@@ -236,7 +236,7 @@ $json = json_decode($return);
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            ' '<input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
