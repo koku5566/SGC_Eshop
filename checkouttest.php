@@ -7,9 +7,6 @@
   }
  echo $_SESSION['userid'];
 
- 
-
-
 $customerUID = $_SESSION['userid'];
 //$customerUID = 'U000018';
   //Under the same seller
@@ -39,7 +36,7 @@ $customerUID = $_SESSION['userid'];
         $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID'  AND shop_id = '$sellerid' AND remove_Product = 0";
         $result = $conn->query($cartsql);
       
-        if ($result->num_rows > 1) { //if multiple product in cart
+        if ($result->num_rows > 1) { //if multiple product from the same seller
           while($row = $result->fetch_assoc()) {
            
           $productQty = $row['quantity'];
@@ -58,7 +55,7 @@ $customerUID = $_SESSION['userid'];
          $maximumlength = max($productlength);
          $maximumwidth = max($productwidth);
          $volumetricWeight = $maximumlength* $maximumwidth* $productheight/5000;
-         
+         echo'if:', $volumetricWeight;
       }
       else  { //if only one item in cart
           while($row = $result->fetch_assoc()) {
@@ -77,15 +74,13 @@ $customerUID = $_SESSION['userid'];
                           }
                           else{ //if quantity more than 1 
                               $volumetricWeight = ($prod['product_height']*$productQty)* $prod['product_width']* $prod['product_length']/5000;
-      
                           }
                       }
                   }
               }
+        echo'else:', $volumetricWeight;
       }
       
-    
- 
 echo 'volumetric= ',$volumetricWeight;
 $shippingprice=0;
 //rates referred from: https://poslajutracking.org/poslaju-rates/
@@ -121,17 +116,14 @@ switch($volumetricWeight){
         $shippingprice = 'Please contact staff for price';
     }
 
-    echo $shippingprice;
+    echo 'single shipping price:',$shippingprice;
     array_push($shippingPriceBySeller, $shippingprice);
     print_r($shippingPriceBySeller);
  
 }
-    print_r(array_sum($shippingPriceBySeller));
-  //echo 'shippingprice:',$shippingprice;
-  //echo $productheight, $maximumlength, $maximumwidth;
-  //echo $productweight;
 
-
+    $totalShippingPrice= array_sum($shippingPriceBySeller);
+    echo $totalShippingPrice;
 
 ?>
 
