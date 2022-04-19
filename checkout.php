@@ -209,13 +209,18 @@ if(isset($_GET['addressid']))
                                 <td>
                                     <div class='product-item'>
                                         <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
-                                        <div class='product-info'>
-                                            <label>".$product_id."</label>
-                                            <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
-                                        </div>
                                 </td>
                                 <td>
-                                <label>".$product_id."</label>
+                                <label>".$product_name."</label>
+                                </td>
+                                <td>
+                                <label>".$product_variation."</label>
+                                </td>
+                                <td>
+                                <label>".$product_price."</label>
+                                </td>
+                                <td>
+                                <label>".$product_quantity."</label>
                                 </td>
                                         
                                         

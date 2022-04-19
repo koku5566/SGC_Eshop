@@ -499,7 +499,7 @@
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept=".png,.jpeg,.jpg" id="imgEdit" name="imgEdit[]" type="file" class="imgInp" />
+                                            <input accept=".png,.jpeg,.jpg" id="img_Edit" name="imgEdit[]" type="file" class="imgInp" />
                                             <input name="imgDefaultEdit[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
@@ -643,7 +643,7 @@
 <script>
 
     function submitEditForm(){
-        if(document.getElementById("imgEdit").value != "")
+        if(document.getElementById("img_Edit").value != "")
         {
             document.getElementById("edit_btn").click();
         }
