@@ -168,7 +168,7 @@
                                                     
                                             }
                                         ?>
-                                    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
@@ -185,7 +185,7 @@
                                                     </div>");
                                             }
                                         ?>
-                                    </form>
+                                        </form>
                                 </div>
                             </div>
                         </div>
