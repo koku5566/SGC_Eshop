@@ -19,10 +19,10 @@
                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
       
       if(mysqli_query($conn, $sqlv)){
-         echo 'success add voucher'
+         echo 'success add voucher';
       }
       else{
-         echo 'failed add voucher'
+         echo 'failed add voucher';
       }
 
       $product = $_POST['productlist'];
@@ -34,10 +34,10 @@
                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
          if(mysqli_query($conn, $sqlpv)){
-            echo 'success add product'
+            echo 'success add product';
          }
          else{
-            echo 'failed add product'
+            echo 'failed add product';
          }
          
       }
