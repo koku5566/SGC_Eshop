@@ -67,49 +67,7 @@
                      <th></th>
                   </tr>
                </thead>
-               <tbody> 
-
-                  <?php 
-
-                     $shopId = $_SESSION['uid'];
-
-                     $sql_voucher =
-                     "SELECT 
-                        voucher.voucher_id,
-                        voucher.voucher_code,
-                        voucher.voucher_startdate,
-                        voucher.voucher_expired,
-                        voucher.voucher_display,
-                        voucher.voucher_type,
-                        voucher.voucher_limit,
-                        voucher.voucher_details,
-                        voucher.discount_amount,
-
-                        FROM voucher
-                        WHERE product.shop_id = '$shopId' "; 
-
-                     $stmt = $conn->prepare($sql_voucher);
-                     $stmt->execute();
-                     $result = $stmt->get_result();
-
-                  while ($row = $res->fetch_assoc()) {
-                     
-                  ?>
-
-                  <tr>
-                     <td><?php echo $row['voucher_id']; ?></td>
-                     <td><?php echo $row['voucher_code']; ?></td>
-                     <td><?php echo $row['voucher_type']; ?></td>
-                     <td><?php echo $row['voucher_startdate']; ?></td>
-                     <td><?php echo $row['voucher_expired']; ?></td>
-                     <td><?php echo $row['voucher_details']; ?></td>
-                     <td><?php echo $row['voucher_limit']; ?></td>
-                     <td><?php echo $row['voucher_status']; ?></td>
-                     <td><?php echo $row['voucher_list']; ?></td>
-                  </tr>
-
-                  <?php 
-                  }?>
+               <tbody>
 
                </tbody>
             </table>
