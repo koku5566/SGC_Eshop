@@ -3,15 +3,15 @@ var t = $('#transactionTable').DataTable({//call table id
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
             {
                 extend: 'pdfHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
             {
                 extend: 'csvHtml5',
-                title: 'Participant List'
+                title: 'Transaction List'
             },
         ]
 });
