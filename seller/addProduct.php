@@ -7,7 +7,6 @@
                 window.location.href = window.location.origin + "/seller/sellerLogin.php";
             </script>
         <?php
-        exit();
 	}
 
     
