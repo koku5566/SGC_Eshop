@@ -226,13 +226,29 @@ $json = json_decode($return);
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-         <?php 
-         if ($userresult->num_rows > 0) {
-         while ($addressrow ->fetch_assoc())  
-        {   
-         echo $addressrow["contact_name"],$addressrow["phone_number"],$addressrow["addreess"], $addressrow["postal_code"], $addressrow["area"], $addressrow["state"], $addressrow["country"];
-        }}
-?>  
+        <?php
+	$UID = $_SESSION["uid"];
+	
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
+
+	$res_data = mysqli_query($conn,$sql);
+	while($row = mysqli_fetch_array($res_data)){
+		echo("
+			<div>
+			<button href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." class=\"btn btn-primary\">
+				".$row["contact_name"]."
+				".$row["phone_number"]."
+				".$row["address"]."
+				".$row["postal_code"]."
+				".$row["area"]."
+				".$row["state"]."
+				".$row["country"]."
+				<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\">Remove</button>
+			</button>
+			</div>
+			");
+	}
+?>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
