@@ -77,8 +77,9 @@ if (isset($_GET['id'])) {
     <h1>Event Dashboard</h1>
     <div class="card">
         <div class="card-body">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+            
                 <?php
                 $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
                 $result = mysqli_query($conn, $sql);
