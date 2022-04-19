@@ -81,3 +81,11 @@ if(isset($_SESSION['DeleteUser']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<script>
+    $(document).ready(function() {
+        $('#dataTable').dataTable({
+        "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        });
+    });
+</script>
