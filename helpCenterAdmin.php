@@ -6,7 +6,7 @@
 
 <?php
 $_SESSION["userId"] = "U000018";
-$_SESSION["shop_id_product"] = 'Sohai';
+$_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';;
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
 		
@@ -34,7 +34,7 @@ $_SESSION["shop_id_product"] = 'Sohai';
 		}
 		
 		
-		$_SESSION["shop_id_product"] = $j6;
+		//$_SESSION["shop_id_product"] = $j6;
 		
 		
 	}
