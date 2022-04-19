@@ -11,8 +11,12 @@
 ?>
 
 <?php
-    $_SESSION['eventUpdate'] = $_GET['eventUpdate'];
-    $updateEventID = $_SESSION['eventUpdate'];
+    if(isset($_GET['eventUpdate']))
+    {
+        $_SESSION['eventUpdate'] = $_GET['eventUpdate'];
+        $_SESSION['updateID'] = $_GET['eventUpdate'];
+        $updateEventID = $_SESSION['eventUpdate'];
+    }
 ?>
 
 <?php
