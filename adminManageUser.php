@@ -187,7 +187,7 @@ editButton.forEach(btn => {
 function editUser(username) 
 {
 	$.ajax({
-		url:"editUserProfile.php",
+		url:"adminEditUser.php",
 		method:"POST",
 		data:{
 			username:username,
