@@ -8,6 +8,7 @@ $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
+date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
 
 

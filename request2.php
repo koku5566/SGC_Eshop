@@ -9,6 +9,7 @@ use PayPal\Api\ItemList;
 require __DIR__. '/header.php';
 require __DIR__. '/paypalConfig.php';
 
+date_default_timezone_set("Asia/Kuala_Lumpur");
 $ticket = $_SESSION['ticketSelected'];
 $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
