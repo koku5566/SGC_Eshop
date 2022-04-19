@@ -6,11 +6,7 @@
     if($_SESSION['login'] == true && $_SESSION['role'] == "USER")
 	{
 		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
-    }
-    else
-	{
-        ?><script>alert('Login to access');
-        window.location = '<?php echo("$domain/seller/selerLogin.php");?>'</script><?php
+		exit;
     }
 ?>
 <!-- Begin Page Content -->
