@@ -224,7 +224,7 @@ if(isset($_GET['addressid']))
                                 </td>
                                         
                                         
-                                        ";             
+                            </tr> ";             
                     }
                     ?>
                             </tbody>
