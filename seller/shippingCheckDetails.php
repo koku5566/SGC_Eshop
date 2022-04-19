@@ -88,11 +88,11 @@
         
         if ($conn->query($updatesql) === TRUE) {
             $_SESSION['success'] = "Order Status has been updated";
-            header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+            header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
 
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
+          header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
           }
     }
 ?>
