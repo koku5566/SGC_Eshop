@@ -187,8 +187,6 @@ if(isset($_GET['addressid']))
                             $userID = "U000018";
                             $KL = 14;
                             $SB = 20;
-
-                             $i=0;
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
