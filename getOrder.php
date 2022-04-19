@@ -396,8 +396,9 @@ $_SESSION["userId"] = "U000018";
 											 
                                              
 											 <!--CHEONG KIT MIN (Rating)-->
-											
+											<!--
 											  <button type="button" class="btn btn-primary" style="margin-left:10px;">Ratings</button>
+											  -->
 												<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
 												<input type = "hidden" name = "rid" value = "<?php echo $row['product_id']?>">
 												<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
