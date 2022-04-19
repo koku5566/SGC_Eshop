@@ -92,12 +92,26 @@ if (isset($_GET['id'])) {
                                     <h5>Event Status: " . $row['status'] . "</h5>
                                     <h5>Location: " . $row['location'] . "</h5>
                                     <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
-                                    
-                                    <button class=\"btn btn-secondary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"reject\">Reject</button>
-                                    <button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\" name=\"approve\">Approve</button>
+                        ");
+
+                        if($row['status'] == "Approved" || $row['status'] == "Rejected")
+                        {
+                            echo("
                                     </form>
                                 </div>
-                                ");
+                            ");
+                        }
+                        else
+                        {
+                            echo("
+                                <button class=\"btn btn-secondary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"reject\">Reject</button>
+                                <button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\" name=\"approve\">Approve</button>
+                                </form>
+                            </div>
+                            ");
+                        }
+                                    
+                                
                     }
                 }
                 ?>
