@@ -3,6 +3,23 @@
 
     $orderid = $_GET['order_id'];
     
+    $orderstatus = "";
+
+    $orderinfosql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    user.username,
+    userAddress.address
+    FROM
+    myOrder
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    WHERE myOrder.order_id = '$orderid';";
+    $stmt = $conn->prepare($orderinfosql);
+    $stmt->execute();
+    $oresult = $stmt->get_result();
+
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
@@ -32,7 +49,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
 <?php                       
-
+     while ($orow = $oresult->fetch_assoc()) {
 ?>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -45,7 +62,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            <?php echo $row['order_id']?>
+                            <?php echo $orow['order_id']?>
                         </div>
                     </div>
                 </div>
@@ -58,7 +75,7 @@
                         <div class="col-1"></div>
                         <div class="col section-body">
                             <div id="recipient-name">Hoe Chian Xin</div>
-                            <div id="recipient-address"><?php echo $row['address']?></div>
+                            <div id="recipient-address"><?php echo $orow['address']?></div>
                         </div>
                     </div>
                 </div>
@@ -146,8 +163,8 @@
                                         Card</span> </div>
                                 <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
                                     <span class="iconify" data-icon="carbon:delivery"
-                                        style="color: black;"></span>Processing
-                                    Order</div>
+                                        style="color: black;"></span>
+                                    <?php echo $orow['order_status']?></div>
                             </div>
                         </div>
                         <!--Ordered Item Price Amount Information-->
@@ -198,7 +215,7 @@
         </div>
     </div>
 
-
+<?php } ?>
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
