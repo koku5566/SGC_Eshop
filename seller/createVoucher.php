@@ -183,7 +183,8 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
-                          if($_SESSION["id"] = $row['shop_id']){
+
+                       echo $_SESSION["id"];
 
                          
                      ?>
@@ -196,7 +197,7 @@
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
                     <?php 
-                     }
+                     
                      }?>
                     </tbody>
                </table>
