@@ -64,9 +64,11 @@
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
         echo $trackingnum, $status;
+
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
         $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
-        
+        $conn->query($insertsql);
+        $conn->query($updatesql);
         if ($conn->query($updatesql) && $conn->query($insertsql) === TRUE) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id='$orderid'.php");
