@@ -334,6 +334,14 @@
 
                 </nav>
                 <!-- End of Topbar -->
+<style>
+    a:hover{
+        color: #a31f37 !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+    }
+</style>
+
 <?php
     if (isset($_SESSION['login']) && $_SESSION['login']){
         ?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
