@@ -101,7 +101,7 @@ if (isset($_POST["completeRegister"])) {
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@ if (isset($_POST["completeRegister"])) {
 
                 ?>
 
-
+                </form>
 
 
 
