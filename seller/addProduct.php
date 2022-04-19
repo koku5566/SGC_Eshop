@@ -20,7 +20,7 @@
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         //$productDescription = $_POST['productDescription'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($con, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -89,18 +89,20 @@
 
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            
-            $fileName = basename($_FILES['img']['name'][$key]); 
-            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round(microtime(true) * 1000).".".$ext;
-            $targetFilePath = $targetDir.$fileName; 
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                    $sql_insert .= "'$fileName', ";
-                    $imgInpCounter++;
-                    echo($fileName);
+            if($key < 9)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_insert .= "'$fileName', ";
+                        $imgInpCounter++;
+                        echo($fileName);
+                    }
                 }
             }
         } 
