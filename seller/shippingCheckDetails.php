@@ -34,6 +34,7 @@
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
+    myOrder.tracking_number,
     product.product_name,
     product.product_cover_picture,
     product.product_price,
@@ -65,7 +66,7 @@
         $status = "Shipped";
         echo $trackingnum, $status, $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$orderstatus' WHERE order_id = '$orderid'";
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE order_id = '$orderid'";
          //$conn->query($insertsql);
         // $conn->query($updatesql);
         //$iquery_run = mysqli_query($conn,$insertsql);
@@ -165,7 +166,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?></td>
+                                        <td><?php echo $srow['status'];  if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ?></td>
                                     </tr>
                                 <?php 
                                 }
