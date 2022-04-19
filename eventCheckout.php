@@ -22,10 +22,10 @@ $price = 0;
     $mail->IsSMTP();
     $mail->Mailer = "smtp";
     $mail->SMTPDebug  = 1;  
-    $mail->SMTPAuth   = false;
+    $mail->SMTPAuth   = true;
     $mail->SMTPSecure = "tls";
     $mail->Port       = 465;
-    $mail->Host       = "localhost";
+    $mail->Host       = "eshop.sgcprototype2.com";
     $mail->Username   = "event@eshop.sgcprototype2.com";
     $mail->Password   = "0124756909AaBb";
 
