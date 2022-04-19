@@ -17,7 +17,7 @@
             $userrow = mysqli_fetch_assoc($userresult);             
                          
             //change address
-            if(isset($_POST['submitAddress'])){
+            if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
                 if(!empty($UID)) {
                     echo "<script>alert('$UID');
@@ -106,7 +106,6 @@
 		echo("
 			<div>
             <button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
-            <br>
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -115,6 +114,7 @@
 				".$addressrow["state"]."
 				".$addressrow["country"]."
                 </button>
+                <br>
 			</div>
 			");
 	} 
@@ -122,7 +122,7 @@
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button>
+            <!-- <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button> -->
             </form>
         </div>
       </div>
