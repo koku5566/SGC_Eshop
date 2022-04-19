@@ -1,12 +1,12 @@
 <?php
     require __DIR__ . '/header.php';
-	  if($_SESSION['login'] == false)
-	 {
-	 	echo "<script>alert('Login to checkout');
-	 		window.location.href='login.php';</script>";
-     } 
- echo $_SESSION['uid'];
+	//   if($_SESSION['login'] == false)
+	//  {
+	//  	echo "<script>alert('Login to checkout');
+	//  		window.location.href='login.php';</script>";
+    //  } 
 
+ echo $_SESSION['uid'];
 
 //Username and address
  $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
@@ -82,65 +82,6 @@ echo $volutetricWeight;
   //echo $productheight, $maximumlength, $maximumwidth;
   //echo $productweight;
 
-
-//===========To get customer shipping information==================
-$customersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $customerUID";
-  $result = $conn->query($customersql);
-
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-$cPhone = $row['phone_number'];
-$cContactName  = $row['contact_name'];
-$cFullAddress = $row['address'];
-$cPostalCode = $row['postal_code'];
-$cState = $row['state'];
-}
-  }
-//echo "cus". $cContactName,$cFullAddress,$cPostalCode,$cState;
-
-
-//===========To get seller shipping information==================
-$sellersql ="SELECT
-user.user_id,
-userAddress.contact_name,
-userAddress.phone_number,
-userAddress.address,
-userAddress.postal_code,
-userAddress.area,
-userAddress.state,
-userAddress.country
-FROM
-user
-JOIN userAddress ON user.user_id = userAddress.user_id
-WHERE
-user.user_id = $sellerUID";
-
-$result = $conn->query($sellersql);
-
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    $sPhone = $row['phone_number'];
-    $sContactName  = $row['contact_name'];
-    $sFullAddress = $row['address'];
-    $sPostalCode = $row['postal_code'];
-    $sState = $row['state'];
-    }
-}
-//echo "seller". $sPhone, $sContactName, $sFullAddress, $sPostalCode, $sState, $sPhone;
 
 
 ?>
