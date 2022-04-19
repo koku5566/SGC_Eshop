@@ -54,7 +54,7 @@ $orders = $stmt_2->get_result();
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Order ID</th>
+                                                    <th>Prod ID</th>
                                                     <th>Product(s)</th>
                                                     <th></th>
                                                     <th></th>
@@ -68,8 +68,8 @@ $orders = $stmt_2->get_result();
                                               
                                                 <tr >
                                                     
-                                                    <td style="text-align: center;"><?php echo $row['order_id']?></td>
-                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:50%;height:50%"><td>
+                                                    <td style="text-align: center;"><?php echo $row['product_id']?></td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
                                                     <td style="text-align: left;"><?php echo $row['product_name']?></td>
                                                     <td style="text-align: center;"><?php echo $row['quantity']?></td>
                                                     <td style="text-align: center;"><?php echo $row['amount']?></td>
