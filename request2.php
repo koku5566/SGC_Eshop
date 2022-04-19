@@ -13,6 +13,8 @@ $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
+$eventName = $_SESSION['eventName'];
+$ticketType = $_SESSION['ticketType'];
 
 if (isset($_POST["completeRegister"])) {
 
@@ -102,7 +104,7 @@ if (isset($_POST["completeRegister"])) {
                     $returnPath = "-f" . $from2;
 
                     if (@mail($to, $subject, $message, $headers, $returnPath)) {
-                        echo "<script>alert('Link for reset password has been sent to $buyerEmail')</script>";
+                        echo "<script>alert('A purchase confirmation email has been sent to $buyerEmail')</script>";
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
