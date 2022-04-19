@@ -95,8 +95,8 @@
                             <div class="col-xl-12">
                                 <div class="row">
                                     <?php
-                                        $userId = $_SESSION['uid'];
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' ";
+                                        $userId = $_SESSION['userid'];
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userid WHERE B.userid = '$userId' ";
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
@@ -283,7 +283,7 @@
                             $dateStart = $_POST['pDate_From'];
                             $dateEnd = $_POST['pDate_To'];
                             $status = $_POST['status'];
-                            $userId = $_SESSION['uid'];
+                            $userId = $_SESSION['userid'];
 
                             //File upload configuration 
                             $fileNames = array_filter($_FILES['img']['name']); 
