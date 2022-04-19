@@ -8,6 +8,7 @@ $sql = "SELECT
 myOrder.order_id,
 myOrder.order_status,
 myOrder.delivery_method,
+myOrder.tracking_number,
 product.product_name,
 product.product_cover_picture,
 product.product_price,
@@ -19,7 +20,7 @@ FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
+JOIN product ON orderDetails.product_id = product.id
 ";
 
 $stmt = $conn->prepare($sql);
@@ -168,7 +169,7 @@ $result = $stmt->get_result();
                                             <?php echo $row['product_price']?>.00
                                         </div>
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
-                                        <div class="col-2">DHL eCommerce 2121113134</div>
+                                        <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
                                         <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
                                         </div>

@@ -41,11 +41,146 @@
          unset($_SESSION['status']);
      }
  ?>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
+  Create Voucher
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="createVoucherModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="min-width: 80%">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Voucher</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <form name="form" action="/seller/createVoucherAction.php" method="POST">
+            <div class="container m-2">
+               <h5 class="mt-2 mb-4">Basic Information</h5>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                        <label for="">Voucher Code</label>
+                        <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code">
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                        <label for="">Voucher Claim Period</label>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="input-group">
+                                 <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Start</span>
+                                 </div>
+                                 <input type="date" name="voucherStartdate" aria-label="start date" class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="input-group">
+                                 <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">End</span>
+                                 </div>
+                                 <input type="date" name="voucherExpired" aria-label="end date" class="form-control">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="form-group col-md-8">
+                        <label class="" for="">Voucer Discount Amount</label>
+                        <div class="input-group col-mb-6">
+                           <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00">
+                           <div class="input-group-append">
+                              <select name="voucherType" class="custom-select">
+                                 <option value="">Please choose</option>
+                                 <option value=" cashback">RM</option>
+                                 <option value=" %">%</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group col-md-4">
+                        <label for="">Voucher Limit</label>
+                        <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit">
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                     <label for="">Voucher Details</label>
+                     <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required></textarea>
+                     <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
+                  </div>
+               </div>
+               <div class="container">
+                  <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                        <label for="">Voucher Display Setting</label>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios1" value="1" checked>
+                           <label class="form-check-label" for="exampleRadios1">
+                              Display on all pages.
+                           </label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios2" value="0">
+                           <label class="form-check-label" for="exampleRadios2">
+                              Do not display.
+                           </label>
+                           <small class="text-muted m-2">Voucher will not be displayed on any page but you may share the voucher code with the users.</small>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="form-group col-md-12">
+                        <table class="table" id="createvouchertable">
+                           <thead>
+                              <tr>
+                                 <th>Product Image</th>
+                                 <th>Product Name</th>
+                                 <th>Product ID</th> <!-- data-visible="false" -->
+                                 <th>Product SKU</th>
+                                 <th>Price (RM)</th>
+                                 <th></th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="form-group col-md-12">
+                        <label for="">Applicable products</label>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                     </div>
+                  </div>
+                  <div class="form-row" id="productraw">
+                     
+                  </div>
+                  <div class="form-row">
+                     <div class="float-right">
+                        <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
+                     </div>
+                  </div>
+               </div>    
+            </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
  
 <!-- Page Content -->
-<div class="container p-2" style="background-color: #FFFFFF; width:80%;">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width:80%;">
    <h2 class="m-4">Create Voucher</h2>
-   <form id="voucher" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+   <form name="form" action="/seller/createVoucherAction.php" method="POST">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
             <div class="form-row">
@@ -221,59 +356,6 @@
                      </tr>
                      <?php 
                      }?>
-
-                     <?php
-
-                     if(isset($_POST['submit'])){
-
-                        $voucherCode = $_POST['voucherCode'];
-                        $voucherStartdate = $_POST['voucherStartdate'];
-                        $voucherExpired = $_POST['voucherExpired'];
-                        $discountAmount = $_POST['discountAmount'];
-                        $voucherLimit = $_POST['voucherLimit'];
-                        $voucherType = $_POST['voucherType'];
-                        $voucherDetails = $_POST['voucherDetails'];
-                        $voucherDisplay = $_POST['voucherDisplay'];
-                        $date = date('Y-m-d H:i:s');
-
-                        
-                        $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at)
-                                 VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date');";
-                        
-                        mysqli_query($conn, $sqlv);
-
-
-                        $product = $_POST['productlist'];
-                        $v = mysqli_insert_id($conn);//specific table
-
-                        for($i = 0; $i < count($product); $i++){
-
-                           $sqlpv = "INSERT INTO productvoucher (product_id, voucher_id)
-                                    VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-                           mysqli_query($conn, $sqlpv);
-                           
-                        }
-                        if($query_run)
-                        {
-                           $_SESSION['status'] = "Multiple Data Inserted Successfully";
-                           header("Location: /seller/createVoucher.php");
-                           exit(0);
-                        }
-                        else
-                        {
-                           $_SESSION['status'] = "Data Not Inserted";
-                           header("Location: /seller/createVoucher.php");
-                           exit(0);
-                        }
-
-                     }
-                     else {
-                        echo "error";
-                     }
-
-
-                     ?>
                     </tbody>
                </table>
             </div>
