@@ -94,7 +94,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" value=".$addressrow["address_id"].".><label class=\"form-check-label\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" value=".$addressrow["address_id"]."><label class=\"form-check-label\">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -115,7 +115,7 @@
             <?php   
             
             if(isset($_POST['submitAddress'])){
-                if(!empty($_POST['changeAddress'])) {
+                if(!empty($_POST['submitAddress'])) {
                     echo "<script>alert('success');
                     </script>";
                 } else {
