@@ -48,30 +48,30 @@
     }
     else if(isset($_POST['addToCart']))
     {
-        /*
-        $_POST['quantity'];
-        $_SESSION['userId'];
-        $_SESSION['shopId'];
-        $_SESSION['productID'];
-        $_SESSION['variationId'];
-        */
-        $quatity = $_POST['quantity'];
-        $userId = $_SESSION["userId"];
-        $shopId = $_SESSION["shopId"];
-        $product_id = $_SESSION["productID"];
-        $variationId = $_SESSION["variationId"];
-
-        $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
-                            VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
-
-        if(mysqli_query($conn, $sql_insert_cart))
+        if(isset($_SESSION["uid"]))
         {
-            
-            echo json_encode("true");
+            $quatity = $_POST['quantity'];
+            $userId = $_SESSION["uid"];
+            $shopId = $_SESSION["shopId"];
+            $product_id = $_SESSION["productID"];
+            $variationId = $_SESSION["variationId"];
+    
+            $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
+                                VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
+    
+            if(mysqli_query($conn, $sql_insert_cart))
+            {
+                
+                echo json_encode("success");
+            }
+            else
+            {
+                echo json_encode("fail");
+            }
         }
         else
         {
-            echo json_encode("false");
+            echo json_encode("login");
         }
     }
 ?>

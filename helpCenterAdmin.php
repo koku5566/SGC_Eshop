@@ -33,8 +33,8 @@ $_SESSION["userId"] = "U000018";
 		
 		}
 		
-		
-		//$_SESSION["shop_id_product"] = $j6;
+		//$_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';
+		$_SESSION["shop_id_product"] = $j6;
 		
 		
 	}
@@ -44,7 +44,7 @@ $_SESSION["userId"] = "U000018";
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
-		$_SESSION["shop_id_product"] = (isset($j6) && !empty ($j6))? $j6 : 'Sohai';
+	
 		$shop_id = $_SESSION["shop_id_product"];
 		echo "<div class='alert alert-success'>$shop_id</div>";
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
