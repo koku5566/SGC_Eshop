@@ -222,7 +222,7 @@
                      </div>
                      <div class="form-group col-md-12">
                         <label for="">Applicable products</label>
-                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" id="addProductVBtn" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
                </div>    
@@ -315,6 +315,13 @@
 </div>
 
 <script type ="module">
+
+   $('#addProductVBtn').on( 'click', 'button', function () {
+  
+   $("#selectproduct").modal("show");
+
+   });
+
    var createvouchertable = $('#createvouchertable').DataTable( {
 
    retrieve: true,
