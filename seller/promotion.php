@@ -176,9 +176,7 @@
                                                         <p class=\"p-title\">Promotion Title</p>
                                                     </div>
                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                        <div class=\"row\">
-                                                            <div class=\"col-xl-4 \"><button type=\"submit\" name=\"DeletePromotion\"  class=\"btn btn-danger\">View</button><div>
-                                                        </div>
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?view=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
                                                     </div>");
                                             }
                                         ?>
