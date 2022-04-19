@@ -27,7 +27,7 @@ $customerUID = $_SESSION['userid'];
         array_push($sellers, $prod['shop_id']);
     }
 }   
-    echo 'seller:', $sellers;
+    print_r($seller);
 
   $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
   $result = $conn->query($cartsql);
