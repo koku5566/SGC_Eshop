@@ -179,7 +179,7 @@
 
       .carousel-item{
           height:60vh;
-          background-color:rgba(58,59,69,.15);
+          background-color:transparent;
       }
 
       .carousel-inner img {
