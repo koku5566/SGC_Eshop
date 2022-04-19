@@ -39,8 +39,8 @@
 			<div class="d-sm-flex mr-auto p-2">
 				<h6 class="m-0 font-weight-bold text-primary">User Table</h6>
 			</div>
-				<div class="pt-2">
-					<a href="../adminAddUser.php" class="btn btn-primary">Add User</a>
+			<div class="pt-2">
+				<a href="../adminAddUser.php" class="btn btn-primary">Add User</a>
 			</div>
 		</div>
 	</div>
@@ -88,11 +88,7 @@
 		</div>
 	</div>
 </div>
-
 </div>
-
-
-
 
 <?php
 if(isset($_SESSION['DeleteUser']))
@@ -104,7 +100,6 @@ if(isset($_SESSION['DeleteUser']))
 		$_SESSION['DeleteUser'] = NULL;
 	}
 ?>
-</div>
 
 <?php require __DIR__ . '/footer.php' ?>
 
