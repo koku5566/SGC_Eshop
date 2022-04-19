@@ -146,9 +146,6 @@
                   <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                </div>
             </div>
-            <div class="form-row" id="productraw">
-               
-            </div>
             <div class="form-row">
                <div class="float-right">
                   <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
