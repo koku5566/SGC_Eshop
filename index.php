@@ -139,10 +139,6 @@
                     </div>
 
                     <br>
-                    
-                    <?php
-                        require __DIR__ . '/voucherRun.php'
-                    ?>
 
                     <br>
 
