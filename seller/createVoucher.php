@@ -43,13 +43,13 @@
  ?>
 
 <div class="container">
-   <div class="container m-4">
+   <div class="container m-2">
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#createVoucherModal">
       Create Voucher
       </button>
    </div>
 
-   <div class="container m-4">
+   <div class="container m-2">
       <div class="form-row">
          <div class="form-group col-md-12">
             <table class="table" id="voucherReview">
@@ -222,15 +222,7 @@
                      </div>
                      <div class="form-group col-md-12">
                         <label for="">Applicable products</label>
-                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
-                     </div>
-                  </div>
-                  <div class="form-row" id="productraw">
-                     
-                  </div>
-                  <div class="form-row">
-                     <div class="float-right">
-                        <button type="submit" name="submit" class="btn btn-warning" style="float: right">SAVE</button>
+                        <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
                      </div>
                   </div>
                </div>    
@@ -238,15 +230,16 @@
          </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary-outline" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 
+
 <!-- Add Product Modal -->
-<div class="modal fade" id="selectproduct" tabindex="-1" role="dialog" aria-labelledby="selectproductModalLabel" aria-hidden="true">
+<div class="modal fade" id="selectproduct" aria-labelledby="selectproductModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -315,7 +308,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select" data-dismiss="modal" data-bs-target="createVoucherModal">Select</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select">Select</button>
       </div>
     </div>
   </div>

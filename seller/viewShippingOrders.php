@@ -15,7 +15,6 @@ product.product_price,
 orderDetails.quantity,
 user.username,
 orderDetails.amount
-
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
@@ -171,7 +170,7 @@ $result = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check details</a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php } ?></a>
                                         </div>
                                     </div>
                                 </div>
