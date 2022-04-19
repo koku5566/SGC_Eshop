@@ -60,13 +60,19 @@
 ?>
 
 <div id="title"><h2>Forget Password</h2></div>
-<div id="Login">
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-	<p id="label">Email Address</p>
-	<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
-	
-	<button type="submit" name="Send">Send</button>
-</form>
+<div class="bg-gradient-primary" style="margin-top: -1.5rem !important;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-6 col-md-9">
+			<p id="label">Email Address</p>
+			<input required type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="50" placeholder="xxxxx@xxx.xxx"/>
+			
+			<button type="submit" name="Send">Send</button>
+			</div>
+		</div>
+	</div>
 </div>
+</form>
 
 <?php require __DIR__ . '/footer.php' ?>
