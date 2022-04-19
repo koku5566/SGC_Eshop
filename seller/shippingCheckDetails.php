@@ -84,9 +84,10 @@
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-        $updatesql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
-        
-        if ($conn->query($updatesql) === TRUE) {
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
+        $updatesql ="UPDATE myOrder SET  order_status = '$pickupstat' WHERE order_id = '$orderid'";
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";
             header("Location: ../seller/shippingCheckDetails?order_id=$orderid.php");
 
@@ -152,7 +153,6 @@
                         <div class="col section-body">
                             <!--Shipping Progress table-->
                             <table class="table">
-
                                 <thead>
                                     <tr>
                                         <th scope="col">Date</th>
@@ -165,7 +165,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ;}?></td>
+                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;}?></td>
                                     </tr>
                                 <?php 
                                 }

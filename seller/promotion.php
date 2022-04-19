@@ -17,7 +17,7 @@
         
         $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
         $result = mysqli_query($conn, $sql_approve);
-        if(mysqli_affected_rows($result) == 1)
+        if($result)
         {
             ?>
                 <script type="text/javascript">
