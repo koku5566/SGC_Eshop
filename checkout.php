@@ -15,16 +15,7 @@
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);             
-            
-            if(isset($_POST['submitAddress'])){
-                if(!empty($_POST['changeAddress'])) {
-                    echo "<script>alert('success');
-                    </script>";
-                } else {
-                    echo "<script>alert('fail to change address');
-                    </script>";
-                }
-              }        
+             
 
 
 ?>
@@ -115,6 +106,16 @@
 			</div>
 			");
 	}
+
+    if(isset($_POST['submitAddress'])){
+        if(!empty($_POST['changeAddress'])) {
+            echo "<script>alert('success');
+            </script>";
+        } else {
+            echo "<script>alert('fail to change address');
+            </script>";
+        }
+      }   
     ?>
         </div>  
         <div class="modal-footer">
