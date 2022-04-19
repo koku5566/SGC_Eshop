@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
         if (mysqli_stmt_affected_rows($stmt) == 1) {
             $entryID = mysqli_stmt_insert_id($stmt);
             $_SESSION['formEntry'] = $entryID;
+            echo "<script>alert('can');</script>";
+
         } else {
             $error = mysqli_stmt_error($stmt);
             echo "<script>alert($error);</script>";
