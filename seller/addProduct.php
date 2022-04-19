@@ -468,7 +468,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000"></textarea>
                                 </div>
                             </div>
                         </div>
