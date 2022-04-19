@@ -20,7 +20,7 @@
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
         //$productDescription = $_POST['productDescription'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($con, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
