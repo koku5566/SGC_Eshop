@@ -56,7 +56,7 @@ $orders = $stmt_2->get_result();
                                                 <tr>
                                                     <th>Product(s)</th>
                                                     <th>Product Name</th>
-                                                    <th>Product Variation</th>
+                                                    <th></th>
                                                     <th>Product Quantity</th>
                                                     <th>Total Amount</th>
                                                 </tr>
@@ -67,7 +67,7 @@ $orders = $stmt_2->get_result();
                                                           onclick="location.href='orderDetails.php'" style="cursor:pointer;<?php echo $row['order_id']?>">
                                                     <td><img src=/img/product/<?php echo $row['product_cover_picture']?>/><td>
                                                     <td><?php echo $row['product_name']?></td>
-                                                    <td><?php echo $row['product_variation']?></td>
+                                                    <td></td>
                                                     <td><?php echo $row['quantity']?></td>
                                                     <td><?php echo $row['amount']?></td>
                                                 </tr>
