@@ -118,7 +118,7 @@
   </div>
   
     <div class="container-fluid" style="width:80%">
-<div style="background: #f5f2f2;">
+<div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
             <div class="row">
