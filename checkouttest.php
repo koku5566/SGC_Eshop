@@ -16,7 +16,8 @@ $customerUID = $_SESSION['uid'];
   $productlength =[];
   $productwidth = [];
   $productheight = 0;
-  $productweight =0;
+ // $productweight =0;
+  $volumetricWeight = 0;
   
   $cartsql = "SELECT product_ID, quantity FROM cart WHERE user_ID = '$customerUID'";
   $result = $conn->query($cartsql);
@@ -70,7 +71,7 @@ else  { //if only one item in cart
         }
 }
 
-echo $volutetricWeight;
+echo 'volumetric= ',$volutetricWeight;
   
   //echo $productheight, $maximumlength, $maximumwidth;
   //echo $productweight;
