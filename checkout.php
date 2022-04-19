@@ -83,7 +83,7 @@
           <h4 class="modal-title">Select Address</h4>
         </div>
         <div class="modal-body">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" class="changeAddress"> 
     <?php
 	$UID = $_SESSION["uid"];
 	
@@ -93,7 +93,7 @@
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\">
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\"><label class=\"form-check-label\" required>
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -106,10 +106,11 @@
 			");
 	}
     ?>
-    </form>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary text-center" type="submit"  onclick="changeAddress();"  style="text-align: right;background: #A71337;width: 122.95px;float: right;">Save changes</button>
+            </form>
         </div>
       </div>
       
@@ -117,7 +118,7 @@
   </div>
   
     <div class="container-fluid" style="width:80%">
-<body style="background: #f5f2f2;">
+<div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
             <div class="row">
@@ -234,8 +235,23 @@
             </div>
         </div>
     </div>
+
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-</body>
+
+<!-- <script>
+    function changeAddress() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var gender = $("input[type=radio]:checked").val();
+    $.post("submit.php", { name: name, email: email, phone: phone, gender: gender },
+    function(data) {
+	 $('#results').html(data);
+	 $('#myForm')[0].reset();
+    });
+}
+</script> -->
+</div>
 </div>
                 <!-- /.container-fluid -->
 
