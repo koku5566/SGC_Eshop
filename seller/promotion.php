@@ -198,7 +198,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">End</span>
                                                 </div>
-                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" name="endDate" id="promotionEnd_Date" required>
+                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d",  strtotime("-1 week")); ?>" name="endDate" id="promotionEnd_Date" required>
                                             </div>
                                         </div>
                                     </div>
