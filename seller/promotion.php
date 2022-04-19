@@ -296,7 +296,7 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['approveSection'];
-                                    $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
