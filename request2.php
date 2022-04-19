@@ -9,6 +9,7 @@ use PayPal\Api\ItemList;
 require __DIR__. '/header.php';
 require __DIR__. '/paypalConfig.php';
 
+date_default_timezone_set("Asia/Kuala_Lumpur");
 $ticket = $_SESSION['ticketSelected'];
 $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
@@ -181,7 +182,10 @@ if (isset($_POST["eventPay"])) {
         throw new Exception('Unable to create link for payment');
     }
     
-    header('location:' . $payment->getApprovalLink());
+    $redirect = $payment->getApprovalLink();
+    echo ("
+    <script> window.location.href=\"$redirect\" </script>
+    ");
     exit(1);
 
 }
