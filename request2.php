@@ -60,6 +60,7 @@ if (isset($_POST["completeRegister"])) {
                 }
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
+                    $_SESSION['ticketTransaction'] = $ticketID;
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
