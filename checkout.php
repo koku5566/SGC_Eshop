@@ -161,7 +161,7 @@ if(isset($_GET['addressid']))
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th></th> -->
+                                    <th></th>
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
@@ -171,7 +171,6 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
-                                 $userID = "U000018";
                             $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
@@ -180,7 +179,7 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `variation`
                             ON variation.variation_id = cart.variation_id
-                            WHERE cart.user_ID = $userID";
+                            WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
@@ -195,11 +194,14 @@ if(isset($_GET['addressid']))
                                  $product_variation1 =  $rowKL['variation_1_choice'];
                                  $product_variation2 =  $rowKL['variation_2_choice'];
                                  $product_price =  $rowKL['P_price'];
-                                 $productvariation_price =  $rowKL['variation.product_price'];
+                                 $product_variation_price = $rowKL['variation.product_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
 
                             echo ("
                             <tr>
+                            <td>
+
+                            </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
@@ -207,7 +209,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price." ".$productvariation_price."</span>
+                                <span> ".$product_variation_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
@@ -266,12 +268,13 @@ if(isset($_GET['addressid']))
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div class="row">
-                <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
+                <div class = "col"></div>
+                <!-- <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-3" required><label class="form-check-label" for="formCheck-3">Credit/Debit Card</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Online Banking</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash on Delivery</label></div>
-                </div>
+                </div> -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                         <li class="list-group-item"><span>Order Total</span></li>
