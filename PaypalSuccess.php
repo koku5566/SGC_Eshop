@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
-<div class="payment" style ="position:center;">
+<div class="payment">
+  <div class="wrapper" style="background colour: white;">
   <h1>Your Payment has been Successful</h1>
-  <div class="wrapper">
   <?php 
     $paymentid = $_GET['payid'];
 		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid' ");
