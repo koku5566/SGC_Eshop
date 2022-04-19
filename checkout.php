@@ -161,7 +161,7 @@ if(isset($_GET['addressid']))
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th></th> -->
+                                    <th></th>
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
@@ -196,13 +196,18 @@ if(isset($_GET['addressid']))
                                  $product_variation2 =  $rowKL['variation_2_choice'];
                                  $product_price =  $rowKL['P_price'];
                                  $productvariation_price =  $rowKL['variation.product_price'];
+                                 $product_pic =  $rowKL['product.product_cover_picture'];
+
                             echo ("
                             <tr>
+                            <td>
+                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$product_pic['product_cover_picture']">
+                            </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <span>".$product_variation." ".$product_variation1." ".$product_variation2."</span>
+                                <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
                                 </td>
                                 <td>
                                 <span>".$product_price." ".$productvariation_price."</span>
