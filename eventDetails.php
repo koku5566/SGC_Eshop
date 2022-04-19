@@ -3,7 +3,12 @@ require __DIR__ . '/header.php'
 ?>
 
 <?php
-    $eID = $_GET['eventID'];
+    
+    if(isset($_GET['eventID']))
+    {
+        $eID = $_GET['eventID'];
+        $_SESSION['eventPurchaseID'] = $_GET['eventID'];
+    }
 ?>
 
 <title>Event Details</title>
@@ -63,7 +68,7 @@ require __DIR__ . '/header.php'
                                 <h1 class=\"text-center\">".$row['event_name']."</h1>
                                 <p class=\"text-center\"><span class=\"by\">Organized by</span> <a href=\"#\">".$row['name']."</a></p>
                                 <div class=\"row\">
-                                    <div class=\"col-12\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(30,79,204);margin-left: 10px;\">Resend Ticket</button></div>
+                                    <div class=\"col-12\"><a href = \"selectTicket.php?eventID=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button></a><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(30,79,204);margin-left: 10px;\">Resend Ticket</button></div>
                                     <div class=\"row\">
                                         <div class=\"col col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 col-12\"><img style=\"width: 100%;\" src=\"$picLocation\" \"></div>
                                         <div class=\"col col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 col-12\">
@@ -112,7 +117,7 @@ require __DIR__ . '/header.php'
                                         <h3>Terms &amp; Conditions</h3>
                                         <div id=\"eventTnc\">$tnc</div>
                                     </div>
-                                    <div class=\"col-12\" style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button></div>
+                                    <div class=\"col-12\" style=\"text-align: center;\"><a href = \"selectTicket.php?eventID=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Buy Ticket</button></a></div>
                                 </div>
                             </div>
                         </div>
