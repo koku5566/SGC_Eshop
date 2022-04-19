@@ -233,20 +233,24 @@ $json = json_decode($return);
 
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
-		echo("
+		("
 			<div>
-            <input class="form-check-input" type="radio" name="address-option" id="$addressrow["address_id"]">
-            <label class="form-check-label" for="standarddelivery">".$addressrow["contact_name"]."
-            ".$addressrow["phone_number"]."
-            ".$addressrow["address"]."
-            ".$addressrow["postal_code"]."
-            ".$addressrow["area"]."
-            ".$addressrow["state"]."
-            ".$addressrow["country"]."</label>
+            <input class=\"form-check-input\" type=\"radio\" name=\"address-option\" id=\"address-option\" >
+            <label class=\"form-check-label\" for=\"address-option\">
+				".$addressrow["contact_name"]."
+				".$addressrow["phone_number"]."
+				".$addressrow["address"]."
+				".$addressrow["postal_code"]."
+				".$addressrow["area"]."
+				".$addressrow["state"]."
+				".$addressrow["country"]."
+                </label>
 			</div>
 			");
 	}
 ?>
+            <input class="form-check-input" type="radio" name="address-option" id="address-option" >
+            <label class="form-check-label" for="address-option">Standard Delivery</label>
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
