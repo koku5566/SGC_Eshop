@@ -315,8 +315,8 @@
          <!-- <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal" data-target="#createVoucherModal">Close</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" id="select" data-target="#createVoucherModal">Select</button>
+        <button type="button" class="btn btn-light" data-target="#createVoucherModal">Close</button>
+        <button type="button" class="btn btn-warning" id="select" data-target="#createVoucherModal">Select</button>
       </div>
     </div>
   </div>
