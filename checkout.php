@@ -131,8 +131,8 @@ if(isset($_GET['addressid']))
     ?>
         </div>  
         <div class="modal-footer">
+        <a href="userprofile_address.php"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Manage Address</button></a>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <!-- <button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 122.95px;float: right;" name="submitAddress">Save changes</button> -->
             
         </div>
       </div>
