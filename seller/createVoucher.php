@@ -2,6 +2,16 @@
     require __DIR__ . '/header.php';
 ?>
 
+<?php 
+
+   if(!isset($_SESSION)){
+        session_start();
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+?>
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -183,8 +193,8 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
+                        if($_SESSION['user_id'] = $rows['shop_id']){
 
-                       echo $_SESSION["id"];
 
                          
                      ?>
@@ -196,8 +206,8 @@
                         <td><?php echo $row['product_sku']; ?></td>
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
-                    <?php 
-                     
+                     <?php 
+                        }
                      }?>
                     </tbody>
                </table>
