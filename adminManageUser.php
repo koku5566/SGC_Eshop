@@ -231,7 +231,7 @@ function editUser(username)
                                 {
                                     priceHTML+=`
                                     <option value="ADMIN" selected="selected">ADMIN</option>
-                                    <option value="Coordinator">Coordinator</option>
+                                    <option value="SELLER">SELLER</option>
                                     <option value="USER">USER</option>
                                 `;
                                 }
@@ -239,7 +239,7 @@ function editUser(username)
                                 {
                                     priceHTML+=`
                                     <option value="ADMIN">ADMIN</option>
-                                    <option value="SELLER" selected="selected">SELLERSELLER</option>
+                                    <option value="SELLER" selected="selected">SELLER</option>
                                     <option value="USER">USER</option>
                                 `;
                                 }
