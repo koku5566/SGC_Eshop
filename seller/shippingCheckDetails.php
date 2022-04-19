@@ -179,7 +179,7 @@
                                     Total:
                                 </div>
                                 <div class="col">
-                                    RM715.00
+                                    <?php echo number_format($totalprice, 2)?>
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -207,7 +207,7 @@
                                     <!--**to input quantity of items-->
                                 </div>
                                 <div class="col red-text">
-                                    <h5><strong>RM<?php echo round($totalprice+$shippingfee, 2)?></strong></h5>
+                                    <h5><strong>RM<?php echo number_format($totalprice+$shippingfee,2)?></strong></h5>
                                 </div>
                             </div>
                         </div>
