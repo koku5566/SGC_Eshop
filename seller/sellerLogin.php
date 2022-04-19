@@ -116,9 +116,9 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                    <a class="nav-link dropdown-toggle" href="../index.php">
                         <div class="sidebar-brand-icon">
-                            <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
+                            <img src="../img/segilogo.png" style="width:50px;height:50px;" alt="">
                         </div>
                         <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
                     </a>
