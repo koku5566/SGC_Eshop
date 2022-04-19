@@ -9,6 +9,7 @@ if (isset($_GET['ticketID'])) {
     
 }
 $eID =  $_SESSION['eventPurchaseID'];
+$uID = $_SESSION['id'];
 ?>
 
 <?php
@@ -22,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST["registerParticipant"])
 
 
 
-    $sqlEntry = "INSERT INTO `formEntry`(`entry_date`, `entry_time`, `event_id`, `payment_status`) VALUES (?,?,?,?)";
+    $sqlEntry = "INSERT INTO `formEntry`(`entry_date`, `entry_time`, `event_id`, `user_id`, `payment_status`) VALUES (?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sqlEntry)) {
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
         }
-        $bp = mysqli_stmt_bind_param($stmt, "ssis", $today, $now, $eID, $pay);
+        $bp = mysqli_stmt_bind_param($stmt, "ssiis", $today, $now, $eID, $uID, $pay);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }
