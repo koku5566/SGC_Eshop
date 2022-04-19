@@ -214,8 +214,6 @@
     var num = document.getElementById("TrackNo").value;
     TrackButton.track({
       tracking_no: num
-      width: '900'
-      height: '1250'
     });
   }
 </script>
