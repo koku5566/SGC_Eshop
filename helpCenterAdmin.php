@@ -46,7 +46,7 @@ $_SESSION["userId"] = "U000018";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub'], $_POST['reviewid']) && !empty($_POST['reviewid']) && $_POST['rrsub'] === 'Submit'){
 	
 		$shop_id = $_SESSION["shop_id_product"];
-		echo "<div class='alert alert-success'>$shop_id</div>";
+		//echo "<div class='alert alert-success'>$shop_id</div>";
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
 		$user_id = $_SESSION["userId"];	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];
@@ -92,7 +92,7 @@ $_SESSION["userId"] = "U000018";
 			
 				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 				{
-					echo "<script>alert('Insert successfully');</script>";
+					//echo "<script>alert('Insert successfully');</script>";
 					
 					for($r = 0; $r< 5; $r++){
 						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
@@ -332,22 +332,6 @@ $_SESSION["userId"] = "U000018";
                         </div>
 					</div>
 					
-					
-					
-					<?php
-						if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rrsub']) && $_POST['rrsub'] === 'Submit'){
-						
-							
-
-						
-						}
-					
-					
-					
-					?>
-			
-			
-			
 			<!----------------------------------------------------------------------------------------------------------------------------->	
 			
 						
@@ -364,12 +348,7 @@ $_SESSION["userId"] = "U000018";
 </div>
 </div>
 
-       <h2>JUST SOME SPACE nani da fck</h2>
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2>                              
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2> 
-       <h2>JUST SOME SPACE</h2> 
+       
 </div>
 <!-- /.container-fluid ----------------------------------------------------------------------------------------------->
 
