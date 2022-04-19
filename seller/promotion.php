@@ -97,6 +97,7 @@
                                     <?php
                                         $userId = $_SESSION['uid'];
                                         $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE user_id = '$userId' ";
+                                        echo "<a<script>alert("1")</script>"
                                         $result = $conn->query($sql); 
                                         if($result-> num_rows > 0){
                                             echo"<table class=\"table table-hover\">
