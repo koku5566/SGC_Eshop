@@ -183,7 +183,7 @@
                        $res = $stmt->get_result();
 
                        while ($row = $res->fetch_assoc()) {
-                          if($_SESSION["id"] == $row['shop_id']){
+                          if($_SESSION["id"] = $row['shop_id']){
 
                          
                      ?>
