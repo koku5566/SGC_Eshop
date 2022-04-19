@@ -166,7 +166,7 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $srow['datetime'] ?></th>
-                                        <td><?php echo $srow['status'];  if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ?></td>
+                                        <td><?php echo $srow['status'];  if($srow['status'] =='Shipped'){ echo 'Tracking Number:',$srow['tracking_number'] ;}?></td>
                                     </tr>
                                 <?php 
                                 }
