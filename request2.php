@@ -184,7 +184,7 @@ if (isset($_POST["eventPay"])) {
     
     $redirect = $payment->getApprovalLink();
     echo ("
-    <script> window.location.rel=\"$redirect\" </script>
+    <script> window.location.href=\"$redirect\" </script>
     ");
     exit(1);
 
