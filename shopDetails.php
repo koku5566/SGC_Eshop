@@ -84,7 +84,7 @@
           <div class="voucherContainer d-flex align-items-center">
             <div class="container">
               <div class="coupon-card">
-                <img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">
+                <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
                 
                 <div class="coupon-row">
@@ -201,20 +201,22 @@
       
       #cpnCode{
         border: 1px dashed #fff;
-        padding: 10px 20px;
+        padding: 5px 10px;
         border-right: 0;
+        font-size: 10px;
       }
       
       #cpnBtn{
         border: 1px solid #fff;
         background:#fff; 
-        padding: 10px 20px;
+        padding: 5px 10px;
         color: #7158fe;
         cursor: pointer;
+        font-size: 10px;
       }
       
       .circle1, .circle2{
-        background: black;
+        background: #f0f0f0;
         width: 50px;
         height: 50px;
         border-radius: 50%;
