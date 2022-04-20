@@ -556,6 +556,7 @@
 						<?php
 							$apa = $_SESSION["productID"];
 							$apaDisplay = false;
+							
 						 $sql ="SELECT rr_id
 								FROM reviewRating
 								WHERE product_id = '$apa'";
@@ -569,7 +570,7 @@
 								mysqli_stmt_close($stmt);									
 							}
 						
-						if($apaDisplay == false){
+						if($apaDisplay !== true){
 							echo "<script>
 										document.getElementById('pickpickrating').style.display = 'none';
 										document.getElementById('reviewShowMe').style.display = 'none';
