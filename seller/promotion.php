@@ -136,7 +136,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12">
-                                <div class="row">
                                         <?php
                                             $userId = $_SESSION['userid'];
                                             if($_SESSION['role']=="SELLER")
@@ -180,7 +179,6 @@
                                                 echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
                                             }
                                         ?>
-                                </div>
                             </div>
                         </div>
                     </div>
