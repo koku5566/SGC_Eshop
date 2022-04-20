@@ -727,13 +727,11 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['edit'];
-                                    $dateStart = date('Y-m-d', strtotime($_GET['startDate']));
-                                    $dateEnd = date('Y-m-d', strtotime($_GET['endDate']));
 
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
                                      //check if date valid
-                                    if( $dateEnd < $dateStart)
+                                    if( $promotionEnd_Date < $promotionDate)
                                     {
                                         echo"<script>alert('The start date and end date is invalid.')</script>";
                                     }
