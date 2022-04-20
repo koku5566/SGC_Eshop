@@ -22,8 +22,8 @@
     shopProfile.shop_name,
     product.product_name,
     product.product_cover_picture,
-    product.product_price,
-    payments.payment_amount
+    product.product_price
+    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
@@ -51,7 +51,7 @@
         $productcoverimg = $orow['product_cover_picture'];
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
-        $totalamt = $orow['payment_amount'];
+        //$totalamt = $orow['payment_amount'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
 
@@ -187,7 +187,7 @@ else if($orderstatus=='Delivered'){
                         <td><?php echo $productname?></td>
                         <td>RM<?php echo $productprice?>.00</td>
                         <td>x<?php echo $qty ?></td>
-                        <td class="red-text">RM<?php echo $totalamt ?>.00</td>
+                        <td class="red-text">RM99.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
