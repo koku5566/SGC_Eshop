@@ -67,8 +67,6 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-
-
 			<div class=\"mb-3\">
 				<div class=\"bank\">
 					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
@@ -97,7 +95,6 @@
 	$res_data = mysqli_query($conn,$sql_1);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-
 			<div class=\"mb-3\">
 				<div class=\"card\">
 					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
