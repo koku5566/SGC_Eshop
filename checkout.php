@@ -198,6 +198,7 @@ if(isset($_GET['addressid']))
                                  $product_pic =  $rowKL['product.product_cover_picture'];
 
                             echo ("
+                            <script>' alert('$product_variation_price');</script> 
                             <tr>
                             <td>
 
