@@ -85,7 +85,8 @@
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
-                <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
+                <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
+                <h3>RM12 discount</h3>
                 
                 <div class="coupon-row">
                   <span id="cpnCode">STEALDEAL20</span>
@@ -167,14 +168,6 @@
         margin:; /* Better set align center */
       }
 
-      .voucher{
-        width: 40%;
-        background: #f0fff3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
       .coupon-card{
          background: linear-gradient(135deg, #7158fe, #9d4de6);
          color: #fff;
@@ -229,16 +222,16 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 20%;
+        top: 10%;
         transform: translateY(-50%);
       }
       
       .circle1{
-        left: 50px;
+        left: 60px;
       }
       
       .circle2{
-        right: 50px;
+        right: 200px;
       }
 
       .imgContainer
