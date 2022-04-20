@@ -19,7 +19,7 @@
 <div class="container-fluid" id="mainContainer">
 
     <form id="productForm" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000"></textarea>
+        <textarea class="form-control" id="productDescription" name="productDescription"></textarea>
         <button type="submit" name="submit">Submit</button>
     </form>
 </div>
