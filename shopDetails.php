@@ -257,6 +257,7 @@
       .imgContainer
       {
         height: 50vh;
+        width: 30vh;
       }
 
       /*Slide show by Lim Qiu Xiong*/
