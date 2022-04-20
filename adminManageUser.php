@@ -12,13 +12,13 @@
 	if(isset($_POST['deleteStaff']))
 	{
 		$_SESSION['DeleteUser'] = false;
-		$UID = $_POST['deleteStaff'];
+		$UN = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE username = '$UID'";
+		$sql = "DELETE FROM user WHERE username = '$UN'";
 
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('$UID Has Been Removed');</script>";
+            echo "<script>alert('$UN Has Been Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
