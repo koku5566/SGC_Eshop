@@ -564,19 +564,21 @@
 								mysqli_stmt_execute($stmt);
 								mysqli_stmt_bind_result($stmt, $c1);
 								
-								while(mysqli_stmt_fetch($stmt)){
+								if(mysqli_stmt_fetch($stmt) >0 ){
 									$apaDisplay = true;
+										
+								}else{
+									echo "<script>document.getElementById('pickpickrating').style.display = 'none';</script>";
+									echo "<script>document.getElementById('reviewShowMe').style.display = 'none';</script>";
 								}
 								mysqli_stmt_close($stmt);									
-							}
-						
+							}	
+								
+						/*
 						if($apaDisplay !== true){
-							echo "<script>
-										document.getElementById('pickpickrating').style.display = 'none';
-										document.getElementById('reviewShowMe').style.display = 'none';
-								  </script>";
+							
 						}
-						
+						*/
 						?>
 						
 						<div id = "pickpickrating">
