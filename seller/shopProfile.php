@@ -134,19 +134,6 @@
   ?>
 </div>
 <!-- /.container-fluid -->
-<?php
-$res = $db->query("SELECT shop_cover_image FROM shopProfile WHERE id = 8");
-    
-    if($res->num_rows > 0){
-        $shopCoverPic = $res->fetch_assoc();
-        
-        //Render the image
-        header("Content-type: image/jpg"); 
-        echo $shopCoverPic['shop_cover_image']; 
-    }else{
-        echo 'Image not found...';
-    }
-?>
 
 <?php
     require __DIR__ . '/footer.php'
