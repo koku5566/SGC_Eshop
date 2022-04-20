@@ -228,7 +228,7 @@ if(isset($_GET['addressid']))
                                             }
                                         }
         
-                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `product_id` = '$product_id'";
+                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
                                         $query_get_variation = mysqli_query($conn, $sql_get_variation);
                                         while( $row = mysqli_fetch_assoc($query_get_variation))
                                         {
