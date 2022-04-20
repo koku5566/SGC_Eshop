@@ -183,7 +183,7 @@
       }
       
       .coupon-card h3{
-        font-size: 28px;
+        font-size: 20px;
         font-weight: 400;
         line-height: 40px;
       }
@@ -224,11 +224,11 @@
       }
       
       .circle1{
-        left: -25px;
+        left: 50px;
       }
       
       .circle2{
-        right: -25px;
+        right: 50px;
       }
 
       .imgContainer
