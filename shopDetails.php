@@ -47,7 +47,7 @@
         <?php
         if(count($promotion_image)==0)
         {
-          echo("<div class=\"carousel-item active\"> <img src=\"/img/resourse/default_image.png\" alt=\"default_image\"> </div>");
+          echo("<div class=\"carousel-item active\"> <img src=\"/img/resource/default_image.png\" alt=\"default_image\"> </div>");
         }
         else 
         {
