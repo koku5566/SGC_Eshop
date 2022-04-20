@@ -178,7 +178,8 @@ else if($orderstatus=='Delivered'){
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="/img/product/<?php echo $productcoverimg?>"
+                        <td scope="row"><img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $productcoverimg?>"
                                 alt="<?php echo $productname?>"></td>
                         <td><?php echo $productname?></td>
                         <td><?php echo $productname?></td>
