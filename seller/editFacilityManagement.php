@@ -16,7 +16,7 @@
       $priceperhour = $_POST['priceperhour'];
       $contact = $_POST['contactwhatsapp'];
 
-      $sql_update = "UPDATE facilityPic SET";
+      $sql_update = "UPDATE facilityPic SET ";
       $sql_update .= "title = '$title',";
       $sql_update .= "pic_description = '$description',";
       $sql_update .= "address = '$address',";
@@ -24,6 +24,7 @@
 
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
+      $defaultFile = array_filter($_POST['imgDefault']);
       $imgInpCounter = 0;
       $targetDir = dirname(__DIR__,1)."/img/facility/"; 
       //echo($targetDir);
