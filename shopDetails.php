@@ -256,7 +256,7 @@
 
       .imgContainer
       {
-        height: 50vh;
+        height: 40vh;
         width: 30vh;
       }
 
