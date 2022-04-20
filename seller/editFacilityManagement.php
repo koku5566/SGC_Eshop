@@ -7,6 +7,7 @@
     $facilityid = $_GET['id'];
     
     if(isset($_POST['EditFacility'])){
+      $facilityid = $_SESSION['Id'];
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
