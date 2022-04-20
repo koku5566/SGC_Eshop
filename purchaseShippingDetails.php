@@ -1,42 +1,104 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $orderid = $_GET['order_id'];
+
+    //=========sql to get order information=============
+    $deliverymethod="";
+    $totalprice = 0;
+    $shippingfee = 8.6;
+    $orderinfosql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    myOrder.order_date,
+    myOrder.tracking_number,
+    user.username,
+    userAddress.contact_name,
+    userAddress.phone_number,
+    userAddress.address
+    FROM
+    myOrder
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    WHERE myOrder.order_id = '$orderid';";
+    $stmt = $conn->prepare($orderinfosql);
+    $stmt->execute();
+    $oresult = $stmt->get_result();
+    while ($orow = $oresult->fetch_assoc()) {
+        $orderid = $orow['order_id'];
+        $orderstatus = $orow['order_status'];
+        $deliverymethod = $orow['delivery_method'];
+        $username = $orow['username'];
+        $contactname = $orow['contact_name'];
+        $phone = $orow['phone_number'];
+        $address = $orow['address'];
+        $trackingnum = $orow['tracking_num'];
+        $orderdate = $orow['order_date'];
+    }
+    $estimateddelivery = strtotime('+7 days',$orderdate);
+?>
+<?php
+//to determine tracking status bar 
+echo $orderstatus;
+
+if($orderstatus=='Placed'){
+    ?>
+    <input type="hidden" id="one" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Paid'){
+    ?>
+    <input type="hidden" id="two" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Shipped'){
+    ?>
+    <input type="hidden" id="three" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Delivered'){
+    ?>
+    <input type="hidden" id="four" value="<?php echo $orderstatus; ?>">
+<?php
+}
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card mb-3">
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-size-medium">34VB5540K83</span></div>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Shipped Via:</span>DHL</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Processing Order</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span> SEP 09, 2017</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                <div class="step completed">
+                <div class="step" id="placed">
                     <div class="step-icon-wrap">
                         <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
-                    <h5 class="step-title">Confirmed Order</h5>
+                    <h5 class="step-title">Order Placed</h5>
                 </div>
-                <div class="step completed">
+                <div class="step" id="paid">
                     <div class="step-icon-wrap">
-                        <div class="step-icon "><i class="fa fa-box"></i></div>
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
                     </div>
-                    <h5 class="step-title">Processing Order</h5>
+                    <h5 class="step-title">Order Paid</h5>
                 </div>
-                <div class="step">
-                    <div class="step-icon-wrap">
+                <div class="step" id="shipped">
+                    <div class="step-icon-wrap" id="shipped">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
-                    <h5 class="step-title">Product Dispatched</h5>
+                    <h5 class="step-title">Order Shipped Out</h5>
                 </div>
-                <div class="step">
-                    <div class="step-icon-wrap">
+                <div class="step" id="delivered">
+                    <div class="step-icon-wrap" id="delivered">
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
-                    <h5 class="step-title">Product Delivered</h5>
+                    <h5 class="step-title">Order Delivered</h5>
                 </div>
             </div>
             <hr>
@@ -46,8 +108,8 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name">Yee YingYing</div>（+60）1117795416<br>
-                    <div id="address">9-13-9， Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"> </div>(+60)1117795416<br>
+                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
                 </div>
             </div>
             <hr>
@@ -180,6 +242,35 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script>
+var one = $("#one").val;
+var two = $("#two").val;
+var three = $("#three").val;
+var four = $("#four").val;
+if(one!= null)
+{
+    document.getElementById("placed").className +="completed";
+}
+if(two!= null)
+{
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
+}
+if(three!= null)
+{
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
+    document.getElementById("shipped").className +="completed";
+}
+if(four!= null)
+{
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
+    document.getElementById("shipped").className +="completed";
+    document.getElementById("delivered").className +="completed";
+}
+
+</script>
 
 <style>
     body {
@@ -447,3 +538,4 @@
     color: green;
     }
 </style>
+
