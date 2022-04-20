@@ -242,7 +242,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 15%;
+        top: 14.5%;
         transform: translateY(-50%);
       }
       
