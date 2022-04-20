@@ -42,26 +42,26 @@
 //to determine tracking status bar 
 echo $orderstatus;
 
-    if($orderstatus=='Placed'){
-        ?>
-        <input type="text" id="one" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Paid'){
-        ?>
-        <input type="text" id="two" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Shipped'){
-        ?>
-        <input type="text" id="three" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Delivered'){
-        ?>
-        <input type="text" id="four" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
+if($orderstatus=='Placed'){
+    ?>
+    <input type="text" id="one" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Paid'){
+    ?>
+    <input type="text" id="two" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Shipped'){
+    ?>
+    <input type="text" id="three" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Delivered'){
+    ?>
+    <input type="text" id="four" value="<?php echo $orderstatus; ?>">
+<?php
+}
 ?>
 
 <!-- Begin Page Content -->
