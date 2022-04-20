@@ -180,7 +180,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 													 }else{
 														 //DISPLAY REAL PICTURE/VIDEO THEY POST
 														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
-														echo '<td><img src="$c8" class="imgReply"></td>';
+														echo "<td><img src='".$c8."' class='imgReply'></td>";
 													 }
 														 
 												
@@ -188,12 +188,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 												
 												
 												?>
+												<!--
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
+												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
 												
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
-												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
+												-->
 											<tr>
 										</table>																			
 																					
