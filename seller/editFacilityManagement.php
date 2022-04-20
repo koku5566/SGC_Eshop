@@ -89,10 +89,9 @@
         $campusId = $_SESSION['uid'];
 
         $sql_facility = "SELECT * FROM facilityPic WHERE id = '$Id' AND campus_id = '$campusId'";
-        echo($sql_facility);
-        $result_facility = mysqli_query($conn, $sql_product);
+        $result_facility = mysqli_query($conn, $sql_facility);
 
-        if (mysqli_num_rows($result_product) > 0) {
+        if (mysqli_num_rows($result_facility) > 0) {
             while($row_facility = mysqli_fetch_assoc($result_facility)) {
                 $i_facility_title = $row_facility['title'];
                 $i_facility_address = $row_facility['address'];
