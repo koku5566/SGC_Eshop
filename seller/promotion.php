@@ -726,7 +726,7 @@
                                 <div class="form-group">
                                     <label>Promotion Title</label>
                                     <?php
-                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId' ,'$dateStart','$dateEnd'";
                                     $promotionId = $_GET['edit'];
                                     $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
                                     $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
