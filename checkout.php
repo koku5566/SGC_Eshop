@@ -218,7 +218,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_price."</span>
                                 </td>
                                 <td>
-                                <span>".$product_quantity."</span>
+                                <span>".$product_price."</span>
                                 </td>
                                                                               
                             </tr> ");             
