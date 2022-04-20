@@ -242,7 +242,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 10%;
+        top: 14%;
         transform: translateY(-50%);
       }
       
@@ -256,7 +256,7 @@
 
       .imgContainer
       {
-        height: 20vh;
+        height: 22vh;
         width: 20vh;
       }
 
