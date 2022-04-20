@@ -6,7 +6,7 @@
         $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
 
         $sql_update = "UPDATE product SET ";
-        $sql_update .= "product_description = '$productDescription' WHERE product_id = 'P000034' ";
+        $sql_update .= "product_description = '$productDescription' WHERE product_id = 'P000059' ";
 
         mysqli_query($conn,$sql_update);
     }
