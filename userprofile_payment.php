@@ -96,44 +96,21 @@
 	$res_data = mysqli_query($conn,$sql_1);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-
-
-
 		<div class=\"row2\">
-		<div class=\"col2\">
-		<div class=\"container-col2\">
-		<div class=\"container-left-col2\">
-
-		<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
-		<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
-		<p style=\"font-size: 1.15rem;\">
-		".$row["expiry_date"]."
-		</p>
-
-		</div>
-		<div class=\"container-right-col2\">
-		<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-		</div>
-		</div>
-		</div>
-
-
-
-			<div class=\"mb-3\">
-				<div class=\"userCard\">
-					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
-					<div class=\"row\">
-						<div class=\"col-lg-4\">
-							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
-							<p style=\"font-size: 1.15rem;\">
-							".$row["expiry_date"]."
-							</p>
-						</div>
+			<div class=\"col2\">
+				<div class=\"container-col2\">
+					<div class=\"container-left-col2\">
+						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+						<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+						<p style=\"font-size: 1.15rem;\">".$row["expiry_date"]."</p>
 					</div>
-				</div>
+			<div class=\"container-right-col2\">
 				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 			</div>
-			<hr>
+				</div>
+			</div>
+		</div>
+
 			");
 	}
 ?>
@@ -149,6 +126,21 @@
 </div>
 </div>
 
+<!--			<div class=\"mb-3\">
+				<div class=\"userCard\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">
+							".$row["expiry_date"]."
+							</p>
+						</div>
+					</div>
+				</div>
+				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+			</div>
+			<hr> -->
 <?php require __DIR__ . '/footer.php' ?>
 <style>
 
