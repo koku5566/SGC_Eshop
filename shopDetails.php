@@ -81,7 +81,7 @@
 
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
-          <div class="voucherContainer d-flex align-items-center">
+          <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
@@ -222,7 +222,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 10%;
+        top: 15%;
         transform: translateY(-50%);
       }
       
@@ -231,7 +231,7 @@
       }
       
       .circle2{
-        right: 200px;
+        right: 500px;
       }
 
       .imgContainer
