@@ -982,8 +982,10 @@
 			mysqli_stmt_bind_result($stmt, $c1);
 			
 			if(mysqli_stmt_fetch($stmt) > 0 ){
+									
+			}else{
 				$dc1 = "#pickpickrating";
-				$dc2 = "#reviewShowMe";					
+				$dc2 = "#reviewShowMe";
 			}
 			mysqli_stmt_close($stmt);									
 		}	
