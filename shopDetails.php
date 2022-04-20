@@ -217,7 +217,7 @@
       }
       
       .circle1, .circle2{
-        background: #f0fff3;
+        background: #fff;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -227,11 +227,11 @@
       }
       
       .circle1{
-        left: 45px;
+        left: 40px;
       }
       
       .circle2{
-        right: 945px;
+        right: 940px;
       }
 
       .imgContainer
