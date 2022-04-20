@@ -14,7 +14,7 @@
 		$_SESSION['DeleteUser'] = false;
 		$UID = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE username = '$UID'";
+		$sql = "DELETE FROM user WHERE user_id = '$UID'";
 		echo "<script>alert($UID);</script>";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
@@ -151,7 +151,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="<?php echo $row["username"]?>">Yes</button>
+				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="<?php echo $row["user_id"]?>">Yes</button>
 			</div>
 			</div>
 		</div>
