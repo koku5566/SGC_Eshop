@@ -65,6 +65,11 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
                                             <tr>
                                                 <td>Quantity</td>
                                                 <td>:</td>
+                                                <td><?php echo $row["product_cover_picture"]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quantity</td>
+                                                <td>:</td>
                                                 <td><?php echo $row["quantity"]; ?></td>
                                             </tr>
                                             <tr>
