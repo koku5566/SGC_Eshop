@@ -57,26 +57,26 @@ var orderstatus = document.getElementById("orderstatus").value;
 console.log(orderstatus);
 if(orderstatus == 'Placed')
 {
-    document.getElementById("placed").className +=" completed";
+    document.getElementById("placed").className ="step completed";
 }
 else if(orderstatus == 'Paid')
 {
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
 }
 else if(orderstatus == 'Shipped')
 {
     console.log('can work');
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
-    document.getElementById("shipped").className +=" completed";
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+    document.getElementById("shipped").className ="step completed";
 }
 else if(orderstatus == 'Delivered')
 {
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className += " completed";
-    document.getElementById("shipped").className +=" completed";
-    document.getElementById("delivered").className +=" completed";
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className = "step completed";
+    document.getElementById("shipped").className ="step completed";
+    document.getElementById("delivered").className ="step completed";
 }
 
 </script>
