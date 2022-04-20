@@ -141,7 +141,7 @@
                                         $userId = $_SESSION['userid'];
                                         if($_SESSION['role']=="SELLER")
                                         {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0"; //AND `status` = 1 (After approved by admin)
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
                                         }
                                         else if($_SESSION['role']=="ADMIN")
                                         {
@@ -202,7 +202,7 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 1 OR `status` = 9 ";
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role='SELLER' AND `status` = 1 OR `status` = 9 ";
                                             $result = $conn->query($sql);
                                             if($result-> num_rows > 0){
 
@@ -214,12 +214,15 @@
                                                     {
                                                         echo ("
                                                                 <div class=\"row\">
-                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                    <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                     </div>
                                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-bin \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                                     </div>
+                                                                </div>
+                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
@@ -227,12 +230,18 @@
                                                     {
                                                         echo ("
                                                                 <div class=\"row\">
-                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                    <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                     </div>
                                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</a>
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                                     </div>
+                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
