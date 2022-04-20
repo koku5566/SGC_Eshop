@@ -145,7 +145,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 														$starR .='<i class="fa fa-star tqy"></i> ';
 														
 													}else{
-													 $starR .='<i class="fa fa-star ratingStar" style = "color: transparent;"></i> ';
+													 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
 													}
 												}
 												echo $starR;
