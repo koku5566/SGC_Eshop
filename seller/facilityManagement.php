@@ -6,12 +6,12 @@
    if(isset($_POST['AddFacility']))
    {
       //$campusId = $_SESSION['userId'];
-      $campusId = "14";
+      $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
       $description = $_POST['description'];
       $address = $_POST['address'];
       $priceperhour = $_POST['priceperhour'];
-      $contact = $_POST[''];
+      $contact = $_POST['contactwhatsapp'];
 
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
@@ -132,6 +132,16 @@
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
                      <input type="number"min="0" value="0" class="form-control" name="priceperhour" required>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="form-group col-md-12">
+                  <p class="p-title">Contact Whatsapp</p>
+               </div>
+               <div class="col-xl-10 col-lg-10 col-sm-12">
+                  <div class="input-group mb-3">
+                  <textarea class="form-control" name="contactwhatsapp" maxlength="1000" required></textarea>
                   </div>
                </div>
             </div>
