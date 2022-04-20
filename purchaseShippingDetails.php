@@ -13,25 +13,15 @@
     myOrder.delivery_method,
     myOrder.order_date,
     myOrder.tracking_number,
-    orderDetails.quantity,
-    orderDetails.amount,
     user.username,
-    userAddress.address,
-    userAddress.phone_number,
-    shopProfile.shop_profile_image,
-    shopProfile.shop_name,
-    product.product_name,
-    product.product_cover_picture,
-    product.product_price
-    
+    userAddress.address
+      
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    JOIN shopProfile on orderDetails.shop_id = shopProfile.shop_id
-    JOIN product on orderDetails.product_id = product.product_id
-    JOIN payments ON orderDetails.product_id = payments.product_id
+    
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -44,14 +34,7 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
-        $phnumber = $orow['phone_number'];
-        $shopprofilepic = $orow['shop_profile_image'];
-        $shopname = $orow['shop_name'];
-        $productname = $orow['product_name'];
-        $productcoverpic = $orow['product_cover_picture'];
-        $qty = $orow['quantity'];
-        $amt = $orow['amount'];
-        //$totalamt = $orow['payment_amount'];
+       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
 
@@ -129,7 +112,7 @@ else if($orderstatus=='Delivered'){
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"><?php echo $username ?></div>&nbsp; &nbsp; <?php echo $phnumber?><br>
+                    <div id="recepient-name"><?php echo $username ?></div>&nbsp; &nbsp; 1234567890<br>
                     <div id="address">&nbsp; &nbsp; <?php echo $address ?></div>
                 </div>
             </div>
@@ -154,7 +137,6 @@ else if($orderstatus=='Delivered'){
         </div>
     </div>
 
-    <!--Order Details-->
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
@@ -162,9 +144,9 @@ else if($orderstatus=='Delivered'){
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="/img/product/<?php echo $shopprofilepic?>" alt="<?php echo $shopname ?>"
+                        <span><img src="" alt=""
                                 width="40" height="40"></span>
-                        <span><strong>| <?php echo $shopname ?></strong></span>
+                        <span><strong>| SHOP shop_name</strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
@@ -181,13 +163,13 @@ else if($orderstatus=='Delivered'){
                 <tbody>
                     <tr>
                         <td scope="row"><img class="card-img-top img-thumbnail"
-                                                style="object-fit:contain;width:30%;height:30%" src="/img/product/<?php echo $productcoverpic?>"
-                                alt="<?php echo $productname?>"></td>
-                        <td><?php echo $productname?></td>
-                        <td><?php echo $productname?></td>
-                        <td>RM<?php echo $productprice?>.00</td>
-                        <td>x<?php echo $qty ?></td>
-                        <td class="red-text">RM99.00</td>
+                                                style="object-fit:contain;width:30%;height:30%" src=""
+                                alt=""></td>
+                        <td>Product Name</td>
+                        <td>Navy </td>
+                        <td>RM100.00</td>
+                        <td>x1</td>
+                        <td class="red-text">RM100.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
