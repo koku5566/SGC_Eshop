@@ -15,10 +15,10 @@
 		$UID = $_POST['deleteStaff'];
 
 		$sql = "DELETE FROM user WHERE username = '$UID'";
-		echo "<script>alert($UID);</script>";
+
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert(' $UID User Removed');</script>";
+            echo "<script>alert('$UID Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -89,7 +89,6 @@
 									<td class='text-center text-lg text-medium'>".$row["role"]."</td>
 									<td class='text-center text-lg text-medium'><button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editUserModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button></td>
 									<td class='text-center text-lg text-medium'><button type='button' class='remove btn btn-primary' data-toggle='modal' data-target='#deleteUserModal' value=".$row["username"]."><i class='fa fa-trash' aria-hidden='true'></i></button></td>
-									<td class='text-center text-lg text-medium'> <p>".$row["username"]."</p></td>
 								</tr>
 							");
 						}
@@ -172,7 +171,7 @@ const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
 	btn.addEventListener('click', function handleClick(event) {
 		removeButton.forEach(btn => {
-			document.getElementById('deleteStaff').value=btn.value;
+			document.getElementById('deleteStaff').value=btn.value
 		});
 	});
 });
