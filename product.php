@@ -556,8 +556,7 @@
 						<?php
 							$apa = $_SESSION["productID"];
 							$apaDisplay = false;
-						echo"<script>document.getElementById('pickpickrating').style.display = 'none';</script>";
-									echo"<script>document.getElementById('reviewShowMe').style.display = 'none';</script>";
+						
 						/*	
 						 $sql ="SELECT rr_id
 								FROM reviewRating
@@ -577,7 +576,8 @@
 								
 						
 						if($apaDisplay !== true){
-							
+							echo"<script>document.getElementById('pickpickrating').style.display = 'none';</script>";
+									echo"<script>document.getElementById('reviewShowMe').style.display = 'none';</script>";
 						}
 						*/
 						?>
@@ -968,8 +968,8 @@
 	?>
 	$('<?php echo $showmedawae; ?>').modal('show');
 	
-	//document.getElementById('pickpickrating').style.display = 'none';
-	//document.getElementById('reviewShowMe').style.display = 'none';
+	document.getElementById('pickpickrating').style.display = 'none';
+	document.getElementById('reviewShowMe').style.display = 'none';
 
 	$(document).ready(function(){
 		load_data_display();
