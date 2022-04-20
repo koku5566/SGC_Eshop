@@ -150,13 +150,13 @@
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
 
-                                        echo"<div class=\"row\"> 
-                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                    <p class=\"p-title\">Promotion Title</p>
-                                                </div>";
-
                                         while($row = $result->fetch_assoc()){
-                                            echo"   <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                            echo"
+                                                <div class=\"row\"> 
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
+                                                    </div>
+                                                    <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
                                                         <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                             <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                         </div>
@@ -208,14 +208,12 @@
                                                 $promotionTitle = $row["promotion_title"];
                                                 $status = $row["status"];
 
-                                                echo ("<div class=\"row\"> 
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">Promotion Title</p>
-                                                        </div>");
-
                                                 if($status == 9)
                                                 {
-                                                    echo ("
+                                                    echo ("<div class=\"row\"> 
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Promotion Title</p>
+                                                            </div>
                                                             <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                     <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
@@ -233,7 +231,10 @@
                                                 }
                                                 else if($status == 1)
                                                 {
-                                                    echo ("
+                                                    echo ("<div class=\"row\"> 
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <p class=\"p-title\">Promotion Title</p>
+                                                                </div>
                                                                 <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
                                                                     <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
@@ -254,7 +255,10 @@
                                                 }
                                                 else if($status == 2)
                                                 {
-                                                    echo ("
+                                                    echo (" <div class=\"row\"> 
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <p class=\"p-title\">Promotion Title</p>
+                                                                </div>
                                                                 <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
                                                                     <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
