@@ -104,7 +104,6 @@
 							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
 							<p style=\"font-size: 1.15rem;\">
 							".$row["expiry_date"]."
-							".$row["expiry_date"]."
 							</p>
 						</div>
 					</div>
