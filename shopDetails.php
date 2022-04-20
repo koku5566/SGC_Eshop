@@ -237,7 +237,7 @@
       }
       
       .circle1, .circle2{
-        background: #fff;
+        background: ;
         width: 50px;
         height: 50px;
         border-radius: 50%;
