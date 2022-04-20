@@ -422,16 +422,17 @@
                                     <select class="form-control" id="subCategory" name="subCategoryId">
                                         <?php
                                             //Sub Category
-                                            $sql_selectSubId = "SELECT sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $sql_selectSubId = "SELECT main_category,sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
                                             $result_selectSubId = mysqli_query($conn, $sql_selectSubId);
 
                                             if (mysqli_num_rows($result_selectSubId) > 0) {
                                                 while($row_selectSubId = mysqli_fetch_assoc($result_selectSubId)) {
+                                                    $tempMainCategoryId = $row_selectSubId["main_category"];
                                                     $subCategoryId = $row_selectSubId["sub_category"];
                                                 }
                                             }
 
-                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$tempMainCategoryId' AND sub_Yes = '1'";
                                             $result_1 = mysqli_query($conn, $sql_1);
                                 
                                             if (mysqli_num_rows($result_1) > 0) {
