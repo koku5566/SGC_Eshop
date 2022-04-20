@@ -103,7 +103,7 @@
                 </div>
                 
                 <p>
-                  <?php echo " " . $row2["voucher_startdate"]. "till" . $row2["voucher_expired"]. " "; ?>
+                  <?php echo " " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
                 <div class="circle1"></div>
