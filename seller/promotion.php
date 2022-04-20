@@ -141,9 +141,9 @@
                                         $userId = $_SESSION['userid'];
                                         if($_SESSION['role']=="SELLER")
                                         {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0 AND `status` = 1" ;
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0 AND `status` = 1";
                                         }
-                                        else //if($_SESSION['role']=="ADMIN")
+                                        else if($_SESSION['role']=="ADMIN")
                                         {
                                             $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
                                         }

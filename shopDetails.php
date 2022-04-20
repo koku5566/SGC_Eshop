@@ -81,11 +81,12 @@
 
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
-          <div class="voucherContainer d-flex align-items-center">
+          <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
-                <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
+                <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
+                <h3>RM12 discount</h3>
                 
                 <div class="coupon-row">
                   <span id="cpnCode">STEALDEAL20</span>
@@ -167,14 +168,6 @@
         margin:; /* Better set align center */
       }
 
-      .voucher{
-        width: 40%;
-        background: #f0fff3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
       .coupon-card{
          background: linear-gradient(135deg, #7158fe, #9d4de6);
          color: #fff;
@@ -224,12 +217,12 @@
       }
       
       .circle1, .circle2{
-        background: #f0f0f0;
+        background: #fff;
         width: 50px;
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 20%;
+        top: 17%;
         transform: translateY(-50%);
       }
       
@@ -238,7 +231,7 @@
       }
       
       .circle2{
-        right: 50px;
+        right: 1000px;
       }
 
       .imgContainer
