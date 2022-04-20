@@ -202,7 +202,7 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2 OR `status` = 9 ";
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 1 OR `status` = 9 ";
                                             $result = $conn->query($sql);
                                             if($result-> num_rows > 0){
 
