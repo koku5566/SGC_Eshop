@@ -752,6 +752,10 @@
                                                 echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"endDate\" value=\"$endDate\"></div>");
                                             }
                                         }
+                                        else
+                                            {
+                                                echo '<script>alert("Failed")</script>';
+                                            }
                                     }
                                     ?>
                                 </div>
