@@ -80,10 +80,19 @@
   <div class="container profileContainer">
     <div class="row">
       <div>
+
+      <?php
+        while ($row=mysqli_fetch_assoc($result))
+        {
+          $shopProfilePic = $row['shop_profile_image'];
+          $shopName = $row['shop_name'];
+          $shopDescription = $row['shop_description'];
+      ?>
+
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
       <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" value='$coverPhoto' hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" value="<?php echo $shopProfilePic ?>" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -99,14 +108,6 @@
     </div>
     
     <div class="row">
-
-    <?php
-        while ($row=mysqli_fetch_assoc($result))
-        {
-          $shopName = $row['shop_name'];
-          $shopDescription = $row['shop_description'];
-    ?>
-    
       <label class="form-label">Shop Name</label><br>
       <input type="text" class="form-control" name="name" value="<?php echo $shopName ?>" required />
     </div>  
@@ -120,7 +121,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value='$imageVideo' onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
