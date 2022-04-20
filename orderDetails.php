@@ -18,7 +18,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
 }
 
 if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+    $conn->query("UPDATE myorder SET order_status = 'To Respond' WHERE order_id = ".$_GET["id"]);
 }
 
 ?>
