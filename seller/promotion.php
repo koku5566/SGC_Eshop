@@ -731,15 +731,14 @@
                                     $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
                                     $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
                                     
-                                    //check if date valid
-                                    if( $dateEnd < $dateStart)
-                                    {
-                                        echo"<script>alert('The start date and end date is invalid.')</script>";
-                                    }
-
-                                    else {
-                                        $result = mysqli_query($conn, $sql);
-                                        if(mysqli_num_rows($result) > 0) {
+                                    $result = mysqli_query($conn, $sql);
+                                    if(mysqli_num_rows($result) > 0) {
+                                        //check if date valid
+                                        if( $dateEnd < $dateStart)
+                                        {
+                                            echo"<script>alert('The start date and end date is invalid.')</script>";
+                                        }
+                                        
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $promotionId = $row["promotionID"];
                                                 $promotionTitle = $row["promotion_title"];
@@ -750,12 +749,11 @@
                                                 echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"startDate\" value=\"$startDate\"></div>");
                                                 echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"endDate\" value=\"$endDate\"></div>");
                                             }
-                                        }
-                                        else
-                                            {
+                                        else{
                                                 echo '<script>alert("Failed")</script>';
                                             }
                                     }
+                                        
                                     ?>
                                 </div>
                             </div>
