@@ -165,12 +165,14 @@
                                                 .$row["promotion_Date"]."<br>"."End:   "
                                                 .$row["promotionEnd_Date"]."</td>
                                                 <td>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                <div class=\"row\">
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
                                                     </div>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\" style=\"padding:0;\">
+                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                     </div>
+                                                <div>
                                                 </td></tr>";
                                             }
                                             echo"</tbody></table>";
@@ -221,7 +223,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
@@ -240,7 +242,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
