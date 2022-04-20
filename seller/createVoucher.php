@@ -167,26 +167,44 @@
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
       $date = date('Y-m-d H:i:s');
-      $status = "2";
-      $delist = "0";
 
       
-      $sqlv = "INSERT INTO `voucher` (`voucher_code`, `voucher_startdate`, `voucher_expired`, `discount_amount`, `voucher_limit`, `voucher_details`, `voucher_display`, `voucher_type`, `created_at`, `voucher_status`, `voucher_list`)
-               VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
+      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
+      
+      mysqli_query($conn, $sqlv);
 
+      $product = $_POST['productlist'];
+      $v = mysqli_insert_id($conn);//specific table
 
-      mysqli_query($conn,$sqlv);
+      for($i = 0; $i < count($product); $i++){
 
-      if(mysqli_query($conn, $sqlv)){
+         $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+                  VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
-       $product = $_POST['productlist'];
-       $v = mysqli_insert_id($conn);//specific table
-
-       for($i = 0; $i < count($product); $i++){
-
-          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
-                    VALUES ('".$product[$i]."', '$v');"; //get prod first array
+         mysqli_query($conn, $sqlpv);
+         
       }
+
+       if($query_run)
+       {
+          $_SESSION['status'] = "Multiple Data Inserted Successfully";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       }
+       else
+       {
+          $_SESSION['status'] = "Data Not Inserted";
+          header("Location: /seller/createVoucher.php");
+          exit(0);
+       }
+
+    }
+    else {
+       echo "error";
+    }
+   
+   
 ?>
 
 <!-- Add Product Modal -->
