@@ -42,26 +42,28 @@
 
 <?php
 //to determine tracking status bar 
-    if($orderstatus=='Placed'){
-        ?>
-        <input type="hidden" id="one" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Paid'){
-        ?>
-        <input type="hidden" id="two" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Shipped'){
-        ?>
-        <input type="hidden" id="three" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
-    else if($orderstatus=='Delivered'){
-        ?>
-        <input type="hidden" id="four" value="<?php echo $orderstatus; ?>">
-    <?php
-    }
+echo $orderstatus;
+
+if($orderstatus=='Placed'){
+    ?>
+    <input type="text" id="one" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Paid'){
+    ?>
+    <input type="text" id="two" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Shipped'){
+    ?>
+    <input type="text" id="three" value="<?php echo $orderstatus; ?>">
+<?php
+}
+else if($orderstatus=='Delivered'){
+    ?>
+    <input type="text" id="four" value="<?php echo $orderstatus; ?>">
+<?php
+}
 ?>
 
 <!-- Begin Page Content -->
@@ -71,7 +73,7 @@
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$order_status ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo $estimateddelivery?></div>
         </div>
         <div class="card-body">
