@@ -13,12 +13,9 @@
     myOrder.delivery_method,
     myOrder.order_date,
     myOrder.tracking_number,
-    orderDetails.quantity,
-    orderDetails.amount,
     user.username,
-    userAddress.address,
-    userAddress.phone_number,
-       
+    userAddress.address
+      
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
