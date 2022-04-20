@@ -472,7 +472,7 @@
 
                                                 if($result)
                                                 {
-                                                    if($status == 0)
+                                                    if($status == 0 || $status == 1)
                                                     {
                                                         echo '<script>alert("Add promotion successfully!")</script>';
                                                         ?>
