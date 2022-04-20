@@ -556,9 +556,14 @@
                                                         </script>
                                                     <?php
                                                 }
-                                                else if ($status == 1)
+                                                else if ($status == 2)
                                                 {
                                                     echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
+                                                    ?>
+                                                        <script type="text/javascript">
+                                                            window.location.href = window.location.origin + "/seller/promotion.php";
+                                                        </script>
+                                                    <?php
                                                 }
                                             }
                                             else
