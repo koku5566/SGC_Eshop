@@ -31,7 +31,7 @@
 <script>
     tinymce.init({
 
-    selector: '#mytextarea',
+    selector: '#productDescription',
 
     plugins: [
 
