@@ -21,7 +21,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Approve Successful");
+                    alert("Promotion Approved Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -40,7 +40,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Reject Successful");
+                    alert("Promotion Rejected Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -137,48 +137,50 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="row">
-                                    <?php
-                                        $userId = $_SESSION['userid'];
-                                        if($_SESSION['role']=="SELLER")
-                                        {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0"; //AND `status` = 1 (After approved by admin)
-                                        }
-                                        else if($_SESSION['role']=="ADMIN")
-                                        {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
-                                        }
-
-                                        $result = $conn->query($sql); 
-                                        if($result-> num_rows > 0){
-                                            echo"<table class=\"table table-hover\">
-                                            <thead>
-                                                <tr>
-                                                <th scope=\"col\">Promotion Title</th>
-                                                <th scope=\"col\">Date</th>
-                                                <th scope=\"col\">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody> ";
-                                            while($row = $result->fetch_assoc()){
-                                                echo"<tr><td>"
-                                                .$row["promotion_title"]."</td><td>"."Start:  "
-                                                .$row["promotion_Date"]."<br>"."End:   "
-                                                .$row["promotionEnd_Date"]."</td>
-                                                <td>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                    </div>
-                                                <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                    </div>
-                                                </td></tr>";
+                                    <div class="col-xl-12 col-lg-12 col-sm-12">
+                                        <?php
+                                            $userId = $_SESSION['userid'];
+                                            if($_SESSION['role']=="SELLER")
+                                            {
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
                                             }
-                                            echo"</tbody></table>";
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
-                                        }
-                                    ?>
+                                            else if($_SESSION['role']=="ADMIN")
+                                            {
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
+                                            }
+
+                                            $result = $conn->query($sql); 
+                                            if($result-> num_rows > 0){
+
+                                                echo"<div class=\"row\"> 
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>";
+
+                                                while($row = $result->fetch_assoc()){
+                                                    echo"<div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class=\"col-xl-12\">
+                                                            <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>";
+                                                }
+                                            }
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
+                                            }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,40 +194,118 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Request Section</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
-                                    
-                                    <!-- Approve - View/Approve/Reject Section -->
-                                        <?php
-                                            if ($_SESSION['role'] == "ADMIN")
-                                            { 
-                                                
-                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
-                                                $result = $conn->query($sql);
-                                                if($result-> num_rows > 0){ 
-                                                    while($row = $result->fetch_assoc())
+                                    <!-- Request - View/Request/Reject Section -->
+                                    <?php
+                                        if ($_SESSION['role'] == "SELLER")
+                                        { 
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role='SELLER' AND `status` = 1 OR `status` = 9 OR `status` = 2 ";
+                                            $result = $conn->query($sql);
+                                            if($result-> num_rows > 0){
+
+                                                while($row = $result->fetch_assoc())
+                                                {
+                                                    $promotionTitle = $row["promotion_title"];
+                                                    $status = $row["status"];
+
+                                                    echo ("<div class=\"row\"> <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
+                                                        </div>");
+
+                                                    if($status == 9)
                                                     {
+                                                        echo ("
+                                                                    <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=\"col-xl-12\">
+                                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            ");
+                                                    }
+                                                    else if($status == 1)
+                                                    {
+                                                        echo ("
+                                                                    <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=\"col-xl-12\">
+                                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            ");
+                                                    }
+                                                    else if($status == 2)
+                                                    {
+                                                        echo ("
+                                                                    <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class=\"col-xl-12\">
+                                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            ");
+                                                    }
+                                                }
+                                            }
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
+                                            } 
+                                        }
+                                    ?>
+                                    <?php
+                                        if ($_SESSION['role'] == "ADMIN")
+                                        { 
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
+                                            $result = $conn->query($sql);
+                                            if($result-> num_rows > 0){ 
+                                                while($row = $result->fetch_assoc())
+                                                {
                                                     $promotionTitle = $row["promotion_title"];
                                                     echo ("
                                                             <div class=\"row\">
                                                                 <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                 </div>
                                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
                                                                 </div>
                                                             </div>
                                                         ");
-                                                    }
-                                                }
-                                                else{
-                                                    echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
                                                 }
                                             }
-                                        ?>
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
+                                            }
+                                        }
+                                    ?>
                             </div>
                         </div>
                     </div>
@@ -233,86 +313,6 @@
             </div>
         </div>
         
-        <!-- Approve - View/Approve/Reject Section -->
-        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="approveSectionModel" tabindex="-1" role="dialog" aria-labelledby="approveSectionModel" <?php echo(isset($_GET['approveSection']) ? "" : "aria-hidden=\"true\"");?> >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" >Approve Section</h5>
-                        <button type="button" class="close approveSectionModel" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="image-container">
-                                    <?php
-                                        $promotionId = $_GET['approveSection'];
-                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                
-                                                $picture = $row["promotion_image"];
-                                                $picName = "";
-
-                                                if($row["promotion_image"] != "")
-                                                {
-                                                    $picName = "/img/promotion/".$row["promotion_image"];
-                                                }
-                                                
-                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
-                                        }
-                                    ?>
-                                    
-                                    <div class="image-layer">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Promotion Title</label>
-                                    <?php
-                                    $promotionId = $_GET['approveSection'];
-                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            $promotionId = $row["promotionID"];
-                                            $promotionTitle = $row["promotion_title"];
-                                            $promotionDate = $row["promotion_Date"];
-                                            $promotionEnd_Date = $row["promotionEnd_Date"];
-
-                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
-                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionDate\" readonly>");
-                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['approveSection']; ?>">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['approveSection']; ?>">Reject</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
         <!-- Create Promotion -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -481,9 +481,14 @@
                                                             </script>
                                                         <?php
                                                     }
-                                                    else if ($status == 1)
+                                                    else if ($status == 2)
                                                     {
                                                         echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
+                                                        ?>
+                                                            <script type="text/javascript">
+                                                                window.location.href = window.location.origin + "/seller/promotion.php";
+                                                            </script>
+                                                        <?php
                                                     }
                                                 }
                                                 else
@@ -498,7 +503,88 @@
                 </form>
             </div>
         </div>
+
     </div>
+
+    <!-- Request - View/Approve/Reject Section -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal fade" id="requestSectionModel" tabindex="-1" role="dialog" aria-labelledby="requestSectionModel" <?php echo(isset($_GET['requestSection']) ? "" : "aria-hidden=\"true\"");?> >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Request Section</h5>
+                        <button type="button" class="close requestSectionModel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                <div class="image-container">
+                                    <?php
+                                        $promotionId = $_GET['requestSection'];
+                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                
+                                                $picture = $row["promotion_image"];
+                                                $picName = "";
+
+                                                if($row["promotion_image"] != "")
+                                                {
+                                                    $picName = "/img/promotion/".$row["promotion_image"];
+                                                }
+                                                
+                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
+                                        }
+                                    ?>
+                                    
+                                    <div class="image-layer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Promotion Title</label>
+                                    <?php
+                                    $promotionId = $_GET['requestSection'];
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $promotionId = $row["promotionID"];
+                                            $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
+
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"requestSectionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary requestSectionModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['requestSection']; ?>">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['requestSection']; ?>">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <!-- Delete Promotion Modal - deletePromotionModel -->
     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -549,16 +635,20 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['delete'];
-                                    $sql = "SELECT promotionID, promotion_title FROM promotion WHERE promotionID = '$promotionId'";
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $promotionId = $row["promotionID"];
                                             $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
                                         }
                                     }
                                     ?>
@@ -844,17 +934,17 @@
     }
 
     window.addEventListener('load', function () {
-        if(<?php echo(isset($_GET['approveSection']) ? "1" : "0") ?> == 1)
+        if(<?php echo(isset($_GET['requestSection']) ? "1" : "0") ?> == 1)
         {
-            $("#approveSectionModel").modal('show');
+            $("#requestSectionModel").modal('show');
         }
     });
 
-    const approveSectionModel = document.querySelectorAll('.approveSectionModel');
+    const requestSectionModel = document.querySelectorAll('.requestSectionModel');
 
-    approveSectionModel.forEach(btn => {
+    requestSectionModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
-            $("#approveSectionModel").modal('hide');
+            $("#requestSectionModel").modal('hide');
         });
     });
 

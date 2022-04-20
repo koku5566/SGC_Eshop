@@ -383,7 +383,7 @@
 										</div>
 										<div class=\"col-xl-9 col-md-8 sidebar-brand-text\" style=\"font-size: 1.5rem;\">
 											<b>$shop_name</b>
-											<a href=\"shopDetails.php?id=$shop_id\" class=\"btn btn-primary\" style=\"width: inherit;position: absolute;bottom: 0;left: 0;\">
+											<a href=\"shopDetails.php?id=$shop_id\" class=\"btn btn-primary\" style=\"width: 50%;position: absolute;bottom: 10px;left: 0;\">
 												<span class=\"text\">View Shop</span>
 											</a>
 										</div>
