@@ -551,8 +551,27 @@
 						</div>
 						</div>
 						  
-						  
-						<!--------------------------Rating PICK PICK---------------------------->	
+						 
+						<!--------------------------Rating PICK PICK---------------------------->
+						<?php
+						
+						 $sql ="SELECT rr_id
+								FROM reviewRating
+								WHERE product_id = '$_SESSION["productID"]'";
+							if($stmt = mysqli_prepare ($conn, $sql)){
+								mysqli_stmt_execute($stmt);
+								mysqli_stmt_bind_result($stmt, $c1);
+								
+								while(mysqli_stmt_fetch($stmt)){
+									echo"sohai - $c1";
+								}
+								mysqli_stmt_close($stmt);									
+							}
+						
+						
+						
+						?>
+						
 						<div id = "pickpickrating">
 							<div class="row pickbox">
 							  <div class="col-5" style = "background-color:;">
@@ -637,7 +656,7 @@
 										<!-- List All Product -->
 										<div class="card-body">
 											<div>
-												<h2 style ="text-align:center">Review</h2>
+												<h2 id = "reviewShowMe" style ="text-align:center">Review</h2>
 											</div>
 												<div class="row">
 													<!-- Card Body -->
