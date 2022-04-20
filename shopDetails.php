@@ -6,7 +6,7 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql1 = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product";
     $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
@@ -145,7 +145,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>" . $row1["product_brand"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>" . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
