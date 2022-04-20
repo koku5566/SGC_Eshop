@@ -64,7 +64,7 @@
 ?>
 
 <?php
-  $sql = "SELECT * FROM shopProfile";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
   $result = mysqli_query($conn, $sql);
 ?>
 
