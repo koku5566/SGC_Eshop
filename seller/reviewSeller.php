@@ -169,21 +169,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											<tr>
 												<?php
 												
-												$picR = '';
-												 for($i=8; $i<=12; $i++){
-													 if('$c' . "$i" === null || '$c' . "$i" == ''){
-														 $picR .='';
+												
+											
+													 if($c8 === null || $c8 == ''){
+													
 														 /*
 														 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
 														 */
-														 echo "GOT";
+														 echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";
 													 }else{
 														 //DISPLAY REAL PICTURE/VIDEO THEY POST
 														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
-														echo "NOT";
+														echo '<td><img src="$c8" class="imgReply"></td>';
 													 }
 														 
-												 }
+												
 												
 												
 												
