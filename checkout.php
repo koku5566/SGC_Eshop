@@ -239,10 +239,10 @@ if(isset($_GET['addressid']))
                                             else if ($row['variation_1_choice'] != "") {
                 
                                                 if ($row['variation_id'] == $rowKL['variation_id']) {
-                                                    $variation_message = $variation_message . "<option value='".$row['variation_id']."' selected>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</option>";
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."' selected>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
                                                 }
                                                 else{
-                                                    $variation_message = $variation_message . "<option value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</option>";
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
                                                 }
                                                         
                                             }
