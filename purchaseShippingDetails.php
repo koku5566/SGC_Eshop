@@ -110,8 +110,8 @@ else if($orderstatus=='Delivered'){
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"><?php echo $username ?></div><?php echo $phnumber?><br>
-                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"><?php echo $username ?></div>&nbsp; &nbsp; <?php echo $phnumber?><br>
+                    <div id="address">&nbsp; &nbsp; <?php echo $address ?></div>
                 </div>
             </div>
             <hr>
