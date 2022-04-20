@@ -168,7 +168,7 @@
       }
 
       .voucher{
-        width: 50%;
+        width: 40%;
         background: #f0fff3;
         display: flex;
         align-items: center;
@@ -179,7 +179,7 @@
          background: linear-gradient(135deg, #7158fe, #9d4de6);
          color: #fff;
          text-align: center;
-         padding: 40px 80px;
+         padding: 10px 30px;
          border-radius: 15px;
          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
       }
