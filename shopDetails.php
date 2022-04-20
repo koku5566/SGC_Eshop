@@ -115,6 +115,13 @@
                 <div class="circle2"></div>
               </div>
             </div>
+            <?php
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
+            ?>
           </div>
         </section>
 
