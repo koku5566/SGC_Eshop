@@ -24,7 +24,7 @@ if(isset($_POST['addCard']))
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
-			echo("<script>alert('Bank Account Already Exists');</script>");
+			echo("<script>alert('Card Already Exists');</script>");
 		}
 		else
 		{

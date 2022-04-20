@@ -21,7 +21,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Approve Successful");
+                    alert("Promotion Approved Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -40,7 +40,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Reject Successful");
+                    alert("Promotion Rejected Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -192,32 +192,76 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Request Section</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                     
-                                    <!-- Approve - View/Approve/Reject Section -->
+                                    <!-- Request - View/Request/Reject Section -->
+                                    <?php
+                                        if ($_SESSION['role'] == "SELLER")
+                                        { 
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 1 OR `status` = 9 ";
+                                            $result = $conn->query($sql);
+                                            if($result-> num_rows > 0){
+
+                                                while($row = $result->fetch_assoc())
+                                                {
+                                                    $promotionTitle = $row["promotion_title"];
+                                                    $status = $row["status"];
+                                                    if($status == 9)
+                                                    {
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    </div>
+                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                                    </div>
+                                                                </div>
+                                                            ");
+                                                    }
+                                                    else if($status == 1)
+                                                    {
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    </div>
+                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</a>
+                                                                    </div>
+                                                                </div>
+                                                            ");
+                                                    }
+                                                }
+                                            }
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
+                                            } 
+                                        }
+                                    ?>
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
-                                                
                                                 $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
                                                 $result = $conn->query($sql);
                                                 if($result-> num_rows > 0){ 
                                                     while($row = $result->fetch_assoc())
                                                     {
-                                                    echo ("
-                                                            <div class=\"row\">
-                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <p class=\"p-title\">.$row['promotion_title']</p>
+                                                        $promotionTitle = $row["promotion_title"];
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    </div>
+                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                                    </div>
                                                                 </div>
-                                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                                </div>
-                                                            </div>
-                                                        ");
+                                                            ");
                                                     }
                                                 }
                                                 else{
@@ -232,14 +276,14 @@
             </div>
         </div>
         
-        <!-- Approve - View/Approve/Reject Section -->
+        <!-- Request - View/Approve/Reject Section -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="approveSectionModel" tabindex="-1" role="dialog" aria-labelledby="approveSectionModel" <?php echo(isset($_GET['approveSection']) ? "" : "aria-hidden=\"true\"");?> >
+        <div class="modal fade" id="requestSectionModel" tabindex="-1" role="dialog" aria-labelledby="requestSectionModel" <?php echo(isset($_GET['requestSection']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" >Approve Section</h5>
-                        <button type="button" class="close approveSectionModel" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" >Request Section</h5>
+                        <button type="button" class="close requestSectionModel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -248,7 +292,7 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="image-container">
                                     <?php
-                                        $promotionId = $_GET['approveSection'];
+                                        $promotionId = $_GET['requestSection'];
                                         $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
                                         $result = mysqli_query($conn, $sql);
 
@@ -280,7 +324,7 @@
                                 <div class="form-group">
                                     <label>Promotion Title</label>
                                     <?php
-                                    $promotionId = $_GET['approveSection'];
+                                    $promotionId = $_GET['requestSection'];
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
@@ -291,10 +335,10 @@
                                             $promotionDate = $row["promotion_Date"];
                                             $promotionEnd_Date = $row["promotionEnd_Date"];
 
-                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
-                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionDate\" readonly>");
-                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"requestSectionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
                                         }
                                     }
                                     ?>
@@ -303,200 +347,201 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['approveSection']; ?>">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['approveSection']; ?>">Reject</button>
+                        <button type="button" class="btn btn-secondary requestSectionModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['requestSection']; ?>">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['requestSection']; ?>">Reject</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 
-        <!-- Create Promotion -->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Create New Promotion</h5>
-                    </div>
-                    <div class="card-body">
-                        <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Promotion Title</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="input-group mb-3">
-                                        <input class="form-control" type="text" required placeholder="Enter ..." name="promotion_Title" required>
-                                    </div>
+    <!-- Create Promotion -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">Create New Promotion</h5>
+                </div>
+                <div class="card-body">
+                    <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Promotion Title</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <input class="form-control" type="text" required placeholder="Enter ..." name="promotion_Title" required>
                                 </div>
                             </div>
-
-                            <div class="row" style="margin-top: 10px">
-                                <div class="col-xl-2 col-lg-2 col-sm-12">
-                                    <p class="p-title">Date</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-lg-6">
-                                            <div class="input-group mb-2">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1">Start</span>
-                                                </div>
-                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d", strtotime("-1 month")); ?>" name="startDate" id="promotion_Date" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6">
-                                            <div class="input-group mb-2">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1">End</span>
-                                                </div>
-                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d",  strtotime("-1 month")); ?>" name="endDate" id="promotionEnd_Date" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <p class="p-title">Cover Image</p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                                <div style="padding-bottom: .625rem;width:100%">
-                                    <div class="imageDiv">
-                                        <div class="image-container">
-                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                            <div class="image-layer">
-                                            </div>
-                                            <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                    <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
-                                                    <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-muted m-2 text-center" style="flex:auto">
-                                <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
-                            </div>
-                            <?php
-                                if ($_SESSION['role'] == "SELLER")
-                                { echo ("
-                                    <div class=\"row\">
-                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                            <p class=\"p-title\">Banner display at:</p>
-                                        </div>
-                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                            <div class=\"input-group mb-3\">
-                                                <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                    <option name=\"requestHomePage\" value=\"2\">Home Page</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>");
-                                }
-                            ?>
-                            <?php
-                                if ($_SESSION['role'] == "ADMIN")
-                                { echo ("
-                                    <div class=\"row\">
-                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                            <p class=\"p-title\">Banner display at:</p>
-                                        </div>
-                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                            <div class=\"input-group mb-3\">
-                                                <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>");
-                                }
-                            ?>
                         </div>
-                    </div>
 
-                    <!-- Page Ending -->         
-                    <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-                        <button class="btn btn-outline-primary" type="button" onclick="submitAddForm()">Submit</button>
-                        <button class="btn btn-outline-primary" type="submit" id="create_btn" name="create_btn" hidden>Submit</button>
-                    </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-xl-2 col-lg-2 col-sm-12">
+                                <p class="p-title">Date</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Start</span>
+                                            </div>
+                                            <input class="form-control" type="date" min="<?php echo date("Y-m-d", strtotime("-1 month")); ?>" name="startDate" id="promotion_Date" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">End</span>
+                                            </div>
+                                            <input class="form-control" type="date" min="<?php echo date("Y-m-d",  strtotime("-1 month")); ?>" name="endDate" id="promotionEnd_Date" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Create Function -->
-                    <?php
-                        if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
-                        {
-                            $title = $_POST['promotion_Title'];
-                            $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
-                            $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
-                            $status = $_POST['status'];
-                            $userId = $_SESSION['userid'];
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <p class="p-title">Cover Image</p>
+                            </div>
+                        </div>
 
-                            //if date valid
-                            if( $dateEnd < $dateStart)
-                            {
-                                echo"<script>alert('The start date and end date is invalid.')</script>";
+                        <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                            <div style="padding-bottom: .625rem;width:100%">
+                                <div class="imageDiv">
+                                    <div class="image-container">
+                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                        <div class="image-layer">
+                                        </div>
+                                        <div class="image-tools-delete hide">
+                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="image-tools-add">
+                                            <label class="custom-file-upload">
+                                                <input type="file" accept=".png,.jpeg,.jpg" name="img[]" id="upload_file" class="imgInp" required>
+                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-muted m-2 text-center" style="flex:auto">
+                            <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
+                        </div>
+                        <?php
+                            if ($_SESSION['role'] == "SELLER")
+                            { echo ("
+                                <div class=\"row\">
+                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                        <p class=\"p-title\">Banner display at:</p>
+                                    </div>
+                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                        <div class=\"input-group mb-3\">
+                                            <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                <option name=\"sellerPage\" value=\"0\">Seller Page</option>
+                                                <option name=\"requestHomePage\" value=\"2\">Home Page</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>");
                             }
-                            
-                            else
-                            {
-                                //File upload configuration 
-                                $fileNames = array_filter($_FILES['img']['name']); 
-                                $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
-                                $allowTypes = array('jpg','png','jpeg');
+                        ?>
+                        <?php
+                            if ($_SESSION['role'] == "ADMIN")
+                            { echo ("
+                                <div class=\"row\">
+                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                        <p class=\"p-title\">Banner display at:</p>
+                                    </div>
+                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                        <div class=\"input-group mb-3\">
+                                            <select class=\"form-control\" id=\"status\" name=\"status\" required>
+                                                <option name=\"homePage\" value=\"1\">Home Page</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>");
+                            }
+                        ?>
+                    </div>
+                </div>
 
-                                $fileName = basename($_FILES['img']['name'][0]); 
-                                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                                $fileName = round(microtime(true) * 1000).".".$ext;
-                                $targetFilePath = $targetDir.$fileName; 
-                                // Check whether file type is valid 
-                                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                                if(in_array($fileType, $allowTypes)){ 
+                <!-- Page Ending -->         
+                <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
+                    <button class="btn btn-outline-primary" type="button" onclick="submitAddForm()">Submit</button>
+                    <button class="btn btn-outline-primary" type="submit" id="create_btn" name="create_btn" hidden>Submit</button>
+                </div>
 
-                                    if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
-                                        $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
-                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
-                                                
-                                                $result = mysqli_query($conn,$sql);
+                <!-- Create Function -->
+                <?php
+                    if($_SERVER['REQUEST_METHOD'] == 'POST' ||isset($_POST['create_btn']))
+                    {
+                        $title = $_POST['promotion_Title'];
+                        $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
+                        $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
+                        $status = $_POST['status'];
+                        $userId = $_SESSION['userid'];
 
-                                                if($result)
+                        //if date valid
+                        if( $dateEnd < $dateStart)
+                        {
+                            echo"<script>alert('The start date and end date is invalid.')</script>";
+                        }
+                        
+                        else
+                        {
+                            //File upload configuration 
+                            $fileNames = array_filter($_FILES['img']['name']); 
+                            $targetDir = dirname(__DIR__, 1)."/img/promotion/"; 
+                            $allowTypes = array('jpg','png','jpeg');
+
+                            $fileName = basename($_FILES['img']['name'][0]); 
+                            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                            $fileName = round(microtime(true) * 1000).".".$ext;
+                            $targetFilePath = $targetDir.$fileName; 
+                            // Check whether file type is valid 
+                            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                            if(in_array($fileType, $allowTypes)){ 
+
+                                if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
+                                    $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
+                                            VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
+                                            
+                                            $result = mysqli_query($conn,$sql);
+
+                                            if($result)
+                                            {
+                                                if($status == 0)
                                                 {
-                                                    if($status == 0)
-                                                    {
-                                                        echo '<script>alert("Add promotion successfully!")</script>';
-                                                        ?>
-                                                            <script type="text/javascript">
-                                                                window.location.href = window.location.origin + "/seller/promotion.php";
-                                                            </script>
-                                                        <?php
-                                                    }
-                                                    else if ($status == 1)
-                                                    {
-                                                        echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
-                                                    }
+                                                    echo '<script>alert("Add promotion successfully!")</script>';
+                                                    ?>
+                                                        <script type="text/javascript">
+                                                            window.location.href = window.location.origin + "/seller/promotion.php";
+                                                        </script>
+                                                    <?php
                                                 }
-                                                else
+                                                else if ($status == 1)
                                                 {
-                                                    echo '<script>alert("Failed")</script>';
+                                                    echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
                                                 }
-                                    }
+                                            }
+                                            else
+                                            {
+                                                echo '<script>alert("Failed")</script>';
+                                            }
                                 }
                             }
                         }
-                    ?>
-                </form>
-            </div>
+                    }
+                ?>
+            </form>
         </div>
+    </div>
+
     </div>
 
     <!-- Delete Promotion Modal - deletePromotionModel -->
@@ -843,17 +888,17 @@
     }
 
     window.addEventListener('load', function () {
-        if(<?php echo(isset($_GET['approveSection']) ? "1" : "0") ?> == 1)
+        if(<?php echo(isset($_GET['requestSection']) ? "1" : "0") ?> == 1)
         {
-            $("#approveSectionModel").modal('show');
+            $("#requestSectionModel").modal('show');
         }
     });
 
-    const approveSectionModel = document.querySelectorAll('.approveSectionModel');
+    const requestSectionModel = document.querySelectorAll('.requestSectionModel');
 
-    approveSectionModel.forEach(btn => {
+    requestSectionModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
-            $("#approveSectionModel").modal('hide');
+            $("#requestSectionModel").modal('hide');
         });
     });
 

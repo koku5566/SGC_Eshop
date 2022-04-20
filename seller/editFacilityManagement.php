@@ -7,6 +7,7 @@
     $facilityid = $_GET['id'];
     
     if(isset($_POST['EditFacility'])){
+      $facilityid = $_SESSION['Id'];
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
@@ -15,14 +16,17 @@
       $priceperhour = $_POST['priceperhour'];
       $contact = $_POST['contactwhatsapp'];
 
-      $sql_update = "UPDATE facilityPic SET";
+      $sql_update = "UPDATE facilityPic SET ";
       $sql_update .= "title = '$title',";
       $sql_update .= "pic_description = '$description',";
       $sql_update .= "address = '$address',";
+      $sql_update .= "contact_whatsapp = '$contact',";
+
       
 
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
+      $defaultFile = array_filter($_POST['imgDefault']);
       $imgInpCounter = 0;
       $targetDir = dirname(__DIR__,1)."/img/facility/"; 
       //echo($targetDir);
@@ -65,6 +69,7 @@
         $sql_update .= "price_per_hour = '$priceperhour'";
         $sql_update .= "WHERE id = '$facilityid '";
 
+    
         if(mysqli_query($conn, $sql_update)){
             ?>
                 <script type="text/javascript">
@@ -145,7 +150,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" value="<?php echo($i_facility_description); ?>" name="description" maxlength="3000" required>
+                  <textarea class="form-control" name="description" maxlength="3000" required><?php echo($i_facility_description); ?></textarea>
                   </div>
                </div>
             </div>
@@ -240,7 +245,7 @@
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
+               <button type="submit" id="EditFacility" name="EditFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>

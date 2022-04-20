@@ -6,9 +6,15 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher";
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $result = $conn->query($sql);
+?>
+
+<?php
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
     $result = $conn->query($sql);
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
@@ -94,7 +100,19 @@
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
-                <p><?php echo " " . $row["voucher_startdate"]. "till" . $row["voucher_expired"].?></p>
+                <p>
+                <?php
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      echo " " . $row["voucher_startdate"]. " " . $row["voucher_expired"]. " ";
+                    }
+                  } else {
+                    echo "error";
+                  }
+                  $conn->close();
+                ?>
+                </p>
                 
                 <div class="circle1"></div>
                 <div class="circle2"></div>
@@ -135,12 +153,11 @@
               </div>
             </div>
             <?php
-            }
-          } else {
-            echo "error";
-          }
-          $conn->close();
-
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
             ?>
           </div>
         </section>
