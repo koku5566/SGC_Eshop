@@ -219,7 +219,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 100%;
+        top: 30%;
         transform: translateY(-50%);
       }
       
