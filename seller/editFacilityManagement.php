@@ -145,7 +145,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" value="<?php echo($i_facility_description); ?>" name="description" maxlength="3000" required>
+                  <textarea class="form-control" name="description" maxlength="3000" required><?php echo($i_facility_description); ?></textarea>
                   </div>
                </div>
             </div>
@@ -155,7 +155,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <textarea class="form-control" value="<?php echo($i_facility_address); ?>" name="address" maxlength="3000" required></textarea>
+                  <textarea class="form-control" name="address" maxlength="3000" required><?php echo($i_facility_address); ?></textarea>
                   </div>
                </div>
             </div>
@@ -166,7 +166,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                     <input type="number"min="0" value="<?php echo($i_facility_priceperhour); ?>" class="form-control" name="priceperhour" required>
+                     <input type="number"min="0" value="<?php echo($i_facility_price_per_hour); ?>" class="form-control" name="priceperhour" required>
                   </div>
                </div>
             </div>
@@ -176,7 +176,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <textarea class="form-control" value="<?php echo($i_facility_contactwhatsapp); ?>" name="contactwhatsapp" maxlength="1000" required></textarea>
+                  <input type="text" class="form-control" value="<?php echo($i_facility_whatsapp); ?>" name="contactwhatsapp" maxlength="1000" required>
                   </div>
                </div>
             </div>
