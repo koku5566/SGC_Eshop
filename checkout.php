@@ -194,14 +194,8 @@ if(isset($_GET['addressid']))
                                  $product_variation1 =  $rowKL['variation_1_choice'];
                                  $product_variation2 =  $rowKL['variation_2_choice'];
                                  $product_price =  $rowKL['product.product_price'];
-                                 $product_variation_price = $rowKL['variation.product_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
                             
-                                if ($product_price == 0 )
-                                {
-                                    $product_price = $product_variation_price;
-                                }
-                                 
 
                             echo ("
                             <tr>
