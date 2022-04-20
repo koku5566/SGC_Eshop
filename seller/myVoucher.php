@@ -90,6 +90,12 @@
       </div>
    </div>
 
+<script type ="module">
+  $(document).ready(function() {
+    $('#voucherReview').DataTable();
+   } );
+</script>
+
 
 <!-- Datatable -->
 <script charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
