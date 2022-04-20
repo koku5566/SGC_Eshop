@@ -216,7 +216,7 @@
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                     </div>
                                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
                                                                     </div>
                                                                 </div>
                                                             ");
