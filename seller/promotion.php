@@ -137,45 +137,50 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="row">
-                                    <?php
-                                        $userId = $_SESSION['userid'];
-                                        if($_SESSION['role']=="SELLER")
-                                        {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
-                                        }
-                                        else if($_SESSION['role']=="ADMIN")
-                                        {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
-                                        }
-
-                                        $result = $conn->query($sql); 
-                                        if($result-> num_rows > 0){
-                                            echo"<div class=\"row\"> <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                            <p class=\"p-title\">Promotion Title</p>
-                                            </div>";
-                                            while($row = $result->fetch_assoc()){
-                                                echo"<div class=\"row col-xl-10 col-lg-10 col-sm-12\">
-                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                        </div>
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                        </div>
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class=\"col-xl-12\">
-                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
-                                                    </div>
-                                                </div>
-                                                <hr>";
+                                    <div class="col-xl-12 col-lg-12 col-sm-12">
+                                        <?php
+                                            $userId = $_SESSION['userid'];
+                                            if($_SESSION['role']=="SELLER")
+                                            {
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
                                             }
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
-                                        }
-                                    ?>
+                                            else if($_SESSION['role']=="ADMIN")
+                                            {
+                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
+                                            }
+
+                                            $result = $conn->query($sql); 
+                                            if($result-> num_rows > 0){
+                                                
+                                                echo"<div class=\"row\"> 
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>";
+
+                                                while($row = $result->fetch_assoc()){
+                                                    echo"<div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class=\"col-xl-12\">
+                                                            <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>";
+                                                }
+                                            }
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Promotion.</p></div>";
+                                            }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -275,32 +280,32 @@
                                             } 
                                         }
                                     ?>
-                                        <?php
-                                            if ($_SESSION['role'] == "ADMIN")
-                                            { 
-                                                $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
-                                                $result = $conn->query($sql);
-                                                if($result-> num_rows > 0){ 
-                                                    while($row = $result->fetch_assoc())
-                                                    {
-                                                        $promotionTitle = $row["promotion_title"];
-                                                        echo ("
-                                                                <div class=\"row\">
-                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                                    </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                                    </div>
+                                    <?php
+                                        if ($_SESSION['role'] == "ADMIN")
+                                        { 
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2";
+                                            $result = $conn->query($sql);
+                                            if($result-> num_rows > 0){ 
+                                                while($row = $result->fetch_assoc())
+                                                {
+                                                    $promotionTitle = $row["promotion_title"];
+                                                    echo ("
+                                                            <div class=\"row\">
+                                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                    <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                 </div>
-                                                            ");
-                                                    }
-                                                }
-                                                else{
-                                                    echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                                </div>
+                                                            </div>
+                                                        ");
                                                 }
                                             }
-                                        ?>
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
+                                            }
+                                        }
+                                    ?>
                             </div>
                         </div>
                     </div>
