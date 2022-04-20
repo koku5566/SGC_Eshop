@@ -87,8 +87,6 @@
 
 <hr>
 
-<div class="row">
-<div class="h3">Card</div>
 
 <div class="row2">
 	<div class="col2">
@@ -97,7 +95,7 @@
 			<h3 >Card</h3>
 			</div>
 	<div class="container-right-col2">
-		<a href="../userAddCard.php" >Add Card</a>
+		<button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php">Add Card</a></button>
 	</div>
 		</div>
 	</div>
