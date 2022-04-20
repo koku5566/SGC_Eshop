@@ -10,6 +10,7 @@ if(isset($_POST['signup']))
 			$email = $_POST['email'];
 			$password = md5($_POST['password']);
 			$password1 = md5($_POST['password1']);
+			$contact = ("6010-0000000");
 			$date = date("d/m/Y");
 
 			if($password==$password1){
@@ -23,8 +24,8 @@ if(isset($_POST['signup']))
 				else
 				{
 					//Save new user
-					$sql  = "INSERT INTO user (userID, username, email, password, name, registration_date, role)
-					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$date','USER')";
+					$sql  = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
+					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','USER')";
 					if(mysqli_query($conn, $sql))
 					{
 						$_SESSION['AddUser'] = true;

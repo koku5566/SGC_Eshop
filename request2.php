@@ -1,28 +1,30 @@
 <?php
-    require __DIR__ . '/header.php'
-?>
+use PayPal\Api\Amount;
+use PayPal\Api\Payer;
+use PayPal\Api\Payment;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Transaction;
+use PayPal\Api\ItemList; 
 
-<?php 
-    $paymentid = $_GET['payid'];
-		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid'");
-		$row = mysqli_fetch_array($results);
-?>
+require __DIR__. '/header.php';
+require __DIR__. '/paypalConfig.php';
 
-
-<?php  
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $ticket = $_SESSION['ticketSelected'];
 $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
+$eventName = $_SESSION['eventName'];
+$ticketType = $_SESSION['ticketType'];
 
+if (isset($_POST["completeRegister"])) {
 
-    $buyerName = $_SESSION['buyerName'];
-    $buyerEmail = $_SESSION['buyerEmail'];
-    $contact = $_SESSION['buyerContact'];
-    $paymentID = $row['transaction_id'];
-    $paymentStatus = $row['payment_status'];
+    $buyerName = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerName"]));
+    $buyerEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerEmail"]));
+    $contact = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerContact"]));
+    $paymentID = "free";
+    $paymentStatus = "Success";
     $today = date("Y-m-d");
     $now = date("H:i");
 
@@ -42,6 +44,7 @@ $price = 0;
         }
         if (mysqli_stmt_affected_rows($stmt) == 1) {
             $ticketOrderID = mysqli_stmt_insert_id($stmt);
+            $_SESSION['ticketTransaction'] = $ticketOrderID;
             $ticketString = $ticketOrderID."-".$ticket."-".$eID."-".$formRecord."-".$today.$now;
             $sql3 = "INSERT INTO `ticket`(`ticket_id`, `transaction_id`, `ticketType_id`, `event_id`, `form_entry_id`, `ticketGenerate_Date`, `ticketGenerate_Time`, `user_id`) VALUES (?,?,?,?,?,?,?,?)";
             if ($stmt1 = mysqli_prepare($conn, $sql3)) {
@@ -58,6 +61,7 @@ $price = 0;
                 }
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
+                    
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -108,6 +112,7 @@ $price = 0;
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
+                    echo "<script>alert('Register Successfully');window.location.href='./registerEventSuccess.php';</script>";
                 } else {
                     $error1 = mysqli_stmt_error($stmt1);
                     echo "<script>alert($error1);</script>";
@@ -120,33 +125,72 @@ $price = 0;
         }
         mysqli_stmt_close($stmt);
     }
+}
 
 
-?>
-    <link rel="stylesheet" type="text/css" href="css\payment.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+if (empty($_POST['item_number'])) {
+    throw new Exception('This script should not be called directly, expected post data');
+}
 
-<div class="container-fluid" style="width:80%">
-<div class="payment">
-  <div class="wrapper" style="background: #f1f7fc;">
-  <h1>Your Payment has been Successful</h1>
-  
-	  <div class="status">
-      <h4>Payment Information</h4>
-      <p>Reference Number: <?php echo $row['invoice_id']; ?></p>
-      <p>Transaction ID: <?php echo $row['transaction_id']; ?></p>
-      <p>Paid Amount: <?php echo $row['payment_amount']; ?></p>
-      <p>Payment Status: <?php echo $row['payment_status']; ?></p>
-      <h4>Product Information</h4>
-      <p>Product id: <?php echo $row['product_id']; ?></p>
-      <p>Product Name: <?php echo $row['product_name']; ?></p>
-    </div>
-  </div>
-</div>  
-</div>
+if (isset($_POST["eventPay"])) {
+    $buyerName = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerName"]));
+    $buyerEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerEmail"]));
+    $contact = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerContact"]));
 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    $_SESSION['buyerName'] = $buyerName;
+    $_SESSION['buyerEmail'] = $buyerEmail;
+    $_SESSION['buyerContact'] = $contact;
 
-  <?php
-    require __DIR__ . '/footer.php'
-?>
+    $payer = new Payer();
+    $payer->setPaymentMethod('paypal');
+    // Set some example data for the payment.
+    $currency = 'MYR';
+    $item_qty = 1;
+    $amountPayable = $_POST['amount'];
+    $product_name = $_POST['item_name'];
+    $item_code = $_POST['item_number'];
+    $description = 'Paypal transaction';
+    $invoiceNumber = uniqid();
+    $my_items = array(
+        array('name'=> $product_name, 'quantity'=> $item_qty, 'price'=> $amountPayable, 'sku'=> $item_code, 'currency'=> $currency)
+    );
+        
+    $amount = new Amount();
+    $amount->setCurrency($currency)
+        ->setTotal($amountPayable);
+    
+    $items = new ItemList();
+    $items->setItems($my_items);
+        
+    $transaction = new Transaction();
+    $transaction->setAmount($amount)
+        ->setDescription($description)
+        ->setInvoiceNumber($invoiceNumber)
+        ->setItemList($items);
+    
+    $redirectUrls = new RedirectUrls();
+    $redirectUrls->setReturnUrl($paypalConfig['return_url'])
+        ->setCancelUrl($paypalConfig['cancel_url']);
+    
+    $payment = new Payment();
+    $payment->setIntent('sale')
+        ->setPayer($payer)
+        ->setTransactions([$transaction])
+        ->setRedirectUrls($redirectUrls);
+    
+    try {
+        $payment->create($apiContext);
+    } catch (Exception $e) {
+        throw new Exception('Unable to create link for payment');
+    }
+    
+    $redirect = $payment->getApprovalLink();
+    echo ("
+    <script> window.location.href=\"$redirect\" </script>
+    ");
+    exit(1);
+
+}
+
+
+

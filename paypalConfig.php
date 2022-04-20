@@ -17,13 +17,6 @@ $paypalConfig = [
     'cancel_url' => 'https://eshop.sgcprototype2.com/payment-cancelled.html'
 ];
 
-// Database settings. Change these for your database configuration.
- $dbConfig = [
-    'HOST' => 'localhost',
-    'USERNAME' => 'sgcprot1_SGC_ESHOP',
-    'PASSWORD' => '3g48B8Qn8k6v6VF',
-    'NAME' => 'sgcprot1_SGC_ESHOP'
-]; 
 
 /* $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 $results = mysqli_query($db,"SELECT * FROM paymentPaypal where id='4' ");

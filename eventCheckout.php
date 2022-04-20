@@ -8,113 +8,7 @@ $eID =  $_SESSION['eventPurchaseID'];
 $uID = 1; //$_SESSION['id']
 $formRecord = $_SESSION['formEntry'];
 $price = 0;
-?>
-<img src="./PHPMailer-master/">
-<?php
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-
-    require 'PHPMailer-master/src/Exception.php';
-    require 'PHPMailer-master/src/PHPMailer.php';
-    require 'PHPMailer-master/src/SMTP.php';
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->Mailer = "smtp";
-    $mail->SMTPDebug  = 1;  
-    $mail->SMTPAuth   = TRUE;
-    $mail->SMTPSecure = "ssl";
-    $mail->Port       = 465;
-    $mail->Host       = "smtp.gmail.com";
-    $mail->Username   = "sgceshop@gmail.com";
-    $mail->Password   = "wgsxuilbeajridsm";
-
-?>
-
-
-<?php
-//process payment / store details
-
-if (isset($_POST["completeRegister"])) {
-
-    $buyerName = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerName"]));
-    $buyerEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerEmail"]));
-    $contact = mysqli_real_escape_string($conn, SanitizeString($_POST["buyerContact"]));
-    $paymentID = "free";
-    $paymentStatus = "Success";
-    $today = date("Y-m-d");
-    $now = date("H:i");
-
-
-    $sql2 = "INSERT INTO `ticketTransaction`(`payment_id`, `payment_status`, `transaction_date`, `transaction_time`, `buyer_name`, `buyer_contact`, `buyer_email`, `total_price`, `form_entry_id`, `ticket_type_id`, `event_id`, `user_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-    if ($stmt = mysqli_prepare($conn, $sql2)) {
-        if (false === $stmt) {
-            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-        }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssssdiiii", $paymentID, $paymentStatus, $today, $now, $buyerName,  $contact, $buyerEmail, $price, $formRecord, $ticket, $eID, $uID);
-        if (false === $bp) {
-            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-        }
-        $bp = mysqli_stmt_execute($stmt);
-        if (false === $bp) {
-            die('Error with execute: ') . htmlspecialchars($stmt->error);
-        }
-        if (mysqli_stmt_affected_rows($stmt) == 1) {
-            $ticketOrderID = mysqli_stmt_insert_id($stmt);
-
-            $sql3 = "INSERT INTO `ticket`(`transaction_id`, `ticketType_id`, `event_id`, `form_entry_id`, `ticketGenerate_Date`, `ticketGenerate_Time`, `user_id`) VALUES (?,?,?,?,?,?,?)";
-            if ($stmt1 = mysqli_prepare($conn, $sql3)) {
-                if (false === $stmt1) {
-                    die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-                }
-                $bp = mysqli_stmt_bind_param($stmt1, "iiiissi", $ticketOrderID, $ticket, $eID, $formRecord, $today, $now, $uID);
-                if (false === $bp) {
-                    die('Error with bind_param: ') . htmlspecialchars($stmt1->error);
-                }
-                $bp = mysqli_stmt_execute($stmt1);
-                if (false === $bp) {
-                    die('Error with execute: ') . htmlspecialchars($stmt1->error);
-                }
-                if (mysqli_stmt_affected_rows($stmt1) == 1) {
-
-                    $usermail = $buyerEmail;
-                    $adminmail = 'sgceshop@gmail.com';
-                    $subject = 'Event Registered Successfully - ' . $eventName;
-                    $mail->IsHTML(true);
-                    $mail->AddAddress($usermail);
-                    $mail->SetFrom($adminmail);
-                    $mail->Subject = "$buyerName :\n $subject";
-                    $mail->Body = "<h2>Thank you for register in: $eventName</h2>Dear $buyerName,
-                    <br><br>Your registration for event - $eventName is successful.
-                    <br>Your Ticket type is ($ticketType)
-                    <br><br>Thank You and Have a nice day!<br><br>From: SGC Eshop Event Management";
-                    //$mail->addAttachment('C:\xampp\htdocs\ISP\testQr\qrcode.png', $VisName);
-                    if(!$mail->Send()) {
-                        echo "<script>alert('Error while sending Email.')</script>";
-                        var_dump($mail);
-                    }
-                    else
-                    {
-                        echo "<script>alert('Register Successfully');window.location.href='./registerEventSuccess.php';</script>";
-                    }
-
-
-                } else {
-                    $error1 = mysqli_stmt_error($stmt1);
-                    echo "<script>alert($error1);</script>";
-                }
-                mysqli_stmt_close($stmt1);
-            }
-        } else {
-            $error = mysqli_stmt_error($stmt);
-            echo "<script>alert($error);</script>";
-        }
-        mysqli_stmt_close($stmt);
-    }
-}
-
-
-
+date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
 
 <title>Register Participant</title>
@@ -134,7 +28,7 @@ if (isset($_POST["completeRegister"])) {
                     <h5 class="mb-0">Buyer Details</h5>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                    <form action="request2.php" method="POST" enctype="multipart/form-data">
                         <div><label class="form-label">Buyer Name</label><input class="form-control" type="text" placeholder="Buyer Name" name="buyerName" required></div>
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-6"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email" name="buyerEmail" required></div>
@@ -144,7 +38,7 @@ if (isset($_POST["completeRegister"])) {
                                 </div>
                             </div>
                         </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -174,6 +68,9 @@ if (isset($_POST["completeRegister"])) {
                         $eventName = $row['event_name'];
                         $ticketType = $row['ticket_name'];
 
+                        $_SESSION['eventName'] = $eventName;
+                        $_SESSION['ticketType'] = $ticketType;
+
 
                         echo ("
                             <div class=\"card-body\">
@@ -201,6 +98,10 @@ if (isset($_POST["completeRegister"])) {
                                 </div>
                                 <div class=\"col-8\">
                                     <p>" . $row['price'] . "</p>
+                                    <input type=\"hidden\" name=\"amount\" value =\"$price\">
+                                    <input type=\"hidden\" name=\"item_name\" value =\"$eventName\">
+                                    <input type=\"hidden\" name=\"item_number\" value =\"$eID\">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -218,7 +119,7 @@ if (isset($_POST["completeRegister"])) {
                         } else {
                             echo ("
                                 <div class=\"row\">
-                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\">Payment</button></div>
+                                <div class=\"col\" style=\"text-align: center;\"><button class=\"btn btn-secondary\" type=\"button\">Back</button><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55); margin-left:5px;\" name=\"eventPay\">Payment</button></div>
                                 </div>
                                 ");
                         }
