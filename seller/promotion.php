@@ -739,7 +739,7 @@
 
                                     else {
                                         $result = mysqli_query($conn, $sql);
-                                        if($result > 0) {
+                                        if($result) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $promotionId = $row["promotionID"];
                                                 $promotionTitle = $row["promotion_title"];
