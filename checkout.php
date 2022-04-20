@@ -197,7 +197,7 @@ if(isset($_GET['addressid']))
                                  $product_variation_price = $rowKL['variation.product_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
                             
-                                if ($product_price == 0 )
+                                if ($rowKL['P_price'] == 0 )
                                 {
                                     $product_price = $product_variation_price;
                                 }
