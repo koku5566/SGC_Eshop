@@ -271,25 +271,25 @@ var three = $("#three").val;
 var four = $("#four").val;
 if(one!= null)
 {
-    document.getElementById("placed").className +="completed";
+    document.getElementByID("placed").className +="completed";
 }
 if(two!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
 }
 if(three!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
+    document.getElementByID("shipped").className +="completed";
 }
 if(four!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
-    document.getElementById("delivered").className +="completed";
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
+    document.getElementByID("shipped").className +="completed";
+    document.getElementByID("delivered").className +="completed";
 }
 
 </script>
