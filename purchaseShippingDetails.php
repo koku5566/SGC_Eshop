@@ -14,6 +14,8 @@
     myOrder.order_date,
     myOrder.tracking_number,
     user.username,
+    userAddress.contact_name,
+    userAddress.phone_number,
     userAddress.address
     FROM
     myOrder
@@ -28,38 +30,43 @@
         $orderstatus = $orow['order_status'];
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
+        $contactname = $orow['contact_name'];
+        $phone = $orow['phone_number'];
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
+ 
 
-
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
 ?>
-
-
 <?php
 //to determine tracking status bar 
 echo $orderstatus;
 
 if($orderstatus=='Placed'){
     ?>
-    <input type="text" id="one" value="<?php echo $orderstatus; ?>">
+    <input type="hidden" id="one" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Paid'){
     ?>
-    <input type="text" id="two" value="<?php echo $orderstatus; ?>">
+    <input type="hidden" id="two" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Shipped'){
     ?>
-    <input type="text" id="three" value="<?php echo $orderstatus; ?>">
+    <input type="hidden" id="three" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Delivered'){
     ?>
-    <input type="text" id="four" value="<?php echo $orderstatus; ?>">
+    <input type="hidden" id="four" value="<?php echo $orderstatus; ?>">
 <?php
 }
 ?>
@@ -72,7 +79,7 @@ else if($orderstatus=='Delivered'){
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo $estimateddelivery?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
@@ -88,13 +95,13 @@ else if($orderstatus=='Delivered'){
                     </div>
                     <h5 class="step-title">Order Paid</h5>
                 </div>
-                <div class="step">
+                <div class="step" id="shipped">
                     <div class="step-icon-wrap" id="shipped">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Order Shipped Out</h5>
                 </div>
-                <div class="step">
+                <div class="step" id="delivered">
                     <div class="step-icon-wrap" id="delivered">
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
@@ -108,8 +115,8 @@ else if($orderstatus=='Delivered'){
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name">Yee YingYing</div>(+60)1117795416<br>
-                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"><?php echo $contactname?> </div><?php echo $phone?><br>
+                    <div id="address"><?php echo $address?></div> </div>
                 </div>
             </div>
             <hr>
@@ -117,16 +124,21 @@ else if($orderstatus=='Delivered'){
             <table class="table track-shipping">
                 <thead>
                     <tr>
-                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php                       
+                     while ($srow = $sresult->fetch_assoc()) {
+                ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td><?php echo $srow['datetime'] ?></th>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                    </tr>
+                <?php 
+                    }
+                ?>
                     </tr>
                 </tbody>
             </table>
@@ -137,11 +149,11 @@ else if($orderstatus=='Delivered'){
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-right p-1"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
+                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Shop Image"
                                 width="40" height="40"></span>
                         <span><strong>| SEGi College Subang Jaya</strong></span>
                     </div>
@@ -249,25 +261,25 @@ var three = $("#three").val;
 var four = $("#four").val;
 if(one!= null)
 {
-    document.getElementByID("placed").className +="completed";
+    document.getElementById("placed").className +="completed";
 }
 if(two!= null)
 {
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
 }
 if(three!= null)
 {
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
-    document.getElementByID("shipped").className +="completed";
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
+    document.getElementById("shipped").className +="completed";
 }
 if(four!= null)
 {
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
-    document.getElementByID("shipped").className +="completed";
-    document.getElementByID("delivered").className +="completed";
+    document.getElementById("placed").className +="completed";
+    document.getElementById("paid").className +="completed";
+    document.getElementById("shipped").className +="completed";
+    document.getElementById("delivered").className +="completed";
 }
 
 </script>
