@@ -13,12 +13,12 @@
 	{
 		$_SESSION['DeleteUser'] = false;
 		$UID = $_POST['deleteStaff'];
-
+	
 		$sql = "DELETE FROM user WHERE username = '$UID'";
 		echo "<script>alert($UID);</script>";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('User Removed');</script>";
+            echo "<script>alert('$UID User Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -171,8 +171,7 @@ const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
 	btn.addEventListener('click', function handleClick(event) {
 		removeButton.forEach(btn => {
-		var x = document.getElementById('deleteStaff').value;
-			console.log(x);
+			document.getElementById('deleteStaff').value;
 		});
 	});
 });
