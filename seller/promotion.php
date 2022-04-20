@@ -726,35 +726,34 @@
                                 <div class="form-group">
                                     <label>Promotion Title</label>
                                     <?php
-                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
+                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId' ,'$dateStart','$dateEnd'";
                                     $promotionId = $_GET['edit'];
                                     $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
                                     $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
-
+                                    
                                     $result = mysqli_query($conn, $sql);
-                                    //check if date valid
-                                    if( $dateEnd < $dateStart)
-                                    {
-                                        echo"<script>alert('The start date and end date is invalid.')</script>";
-                                    }
-
-                                    else {
+                                    if(mysqli_num_rows($result) > 0) {
+                                        //check if date valid
+                                        if( $dateEnd < $dateStart)
+                                        {
+                                            echo"<script>alert('The start date and end date is invalid.')</script>";
+                                        }
                                         
-                                        if(mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $promotionId = $row["promotionID"];
                                                 $promotionTitle = $row["promotion_title"];
-                                                $promotionDate = $row["promotion_Date"];
-                                                $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                                 echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                                 echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
                                                 echo("<br><label>Date</label>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"EditPromotionDate\" value=\"$promotionDate\"></div>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"EditPromotionEndDate\" value=\"$promotionEnd_Date\"></div>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"startDate\" value=\"$startDate\"></div>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"endDate\" value=\"$endDate\"></div>");
                                             }
-                                        }
+                                        else{
+                                                echo '<script>alert("Failed")</script>';
+                                            }
                                     }
+                                        
                                     ?>
                                 </div>
                             </div>

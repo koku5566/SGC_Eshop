@@ -36,33 +36,20 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
     }
-    $estimateddelivery = strtotime('+7 days',$orderdate);
+    $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+    
 ?>
 <?php
 //to determine tracking status bar 
-echo $orderstatus;
+echo $orderstatus;?>
+<input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
-if($orderstatus=='Placed'){
-    ?>
-    <input type="hidden" id="one" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Paid'){
-    ?>
-    <input type="hidden" id="two" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Shipped'){
-    ?>
-    <input type="hidden" id="three" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Delivered'){
-    ?>
-    <input type="hidden" id="four" value="<?php echo $orderstatus; ?>">
-<?php
-}
-?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
@@ -89,13 +76,13 @@ else if($orderstatus=='Delivered'){
                     <h5 class="step-title">Order Paid</h5>
                 </div>
                 <div class="step" id="shipped">
-                    <div class="step-icon-wrap" id="shipped">
+                    <div class="step-icon-wrap">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Order Shipped Out</h5>
                 </div>
                 <div class="step" id="delivered">
-                    <div class="step-icon-wrap" id="delivered">
+                    <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
                     <h5 class="step-title">Order Delivered</h5>
@@ -113,23 +100,28 @@ else if($orderstatus=='Delivered'){
                 </div>
             </div>
             <hr>
-            <!--Shipping Progress table-->
-            <table class="table track-shipping">
+             <!--Shipping Progress table-->
+             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php                       
+                     while ($srow = $sresult->fetch_assoc()) {
+                ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td><?php echo $srow['datetime'] ?></th>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
+                <?php 
+                }
+                ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 
@@ -242,33 +234,15 @@ else if($orderstatus=='Delivered'){
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script src="//www.tracking.my/track-button.js"></script>
 <script>
-var one = $("#one").val;
-var two = $("#two").val;
-var three = $("#three").val;
-var four = $("#four").val;
-if(one!= null)
-{
-    document.getElementById("placed").className +="completed";
-}
-if(two!= null)
-{
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-}
-if(three!= null)
-{
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
-}
-if(four!= null)
-{
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
-    document.getElementById("delivered").className +="completed";
-}
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
 
 </script>
 
@@ -539,3 +513,33 @@ if(four!= null)
     }
 </style>
 
+<script>
+var orderstatus = document.getElementById("orderstatus").value;
+
+
+console.log(orderstatus);
+if(orderstatus == 'Placed')
+{
+    document.getElementById("placed").className ="step completed";
+}
+else if(orderstatus == 'Paid')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+}
+else if(orderstatus == 'Shipped')
+{
+    console.log('can work');
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+    document.getElementById("shipped").className ="step completed";
+}
+else if(orderstatus == 'Delivered')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className = "step completed";
+    document.getElementById("shipped").className ="step completed";
+    document.getElementById("delivered").className ="step completed";
+}
+
+</script>
