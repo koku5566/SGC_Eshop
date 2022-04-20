@@ -221,7 +221,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
@@ -240,7 +240,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                                 </div>
                                                             ");
                                                     }
