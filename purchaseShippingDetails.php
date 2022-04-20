@@ -13,13 +13,18 @@
     myOrder.delivery_method,
     myOrder.order_date,
     myOrder.tracking_number,
+    orderDetails.order_id,
     user.username,
     userAddress.address,
-    userAddress.phone_number
+    userAddress.phone_number,
+    shopProfile.shop_profile_image,
+    shopProfile.shop_name
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN shopProfile on orderDetails.shop_id = shopProfile.shop_id
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -33,6 +38,8 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
         $phnumber = $orow['phone_number'];
+        $shopprofileimg = $orow['shop_profile_image'];
+        $shopname = $orow['shop_name'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
 
@@ -139,18 +146,18 @@ else if($orderstatus=='Delivered'){
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1" style="text-align: right;"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
                         <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
                                 width="40" height="40"></span>
-                        <span><strong>| SEGi College Subang Jaya</strong></span>
+                        <span><strong>| <?php echo $shopname ?></strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            04 Sep 2021 | 04:45 p.m.
+                            <?php echo $orderdate?>
                             </span>
                         </div>
                     </div>
