@@ -296,6 +296,19 @@
       /*End Slide Show by Lim Qiu Xiong*/
     </style>
 
+    <script>
+       var cpnBtn = document.getElementById("cpnBtn");
+       var cpnCode = document.getElementById("cpnCode");
+       
+       cpnBtn.onclick = function(){
+         navigator.clipboard.writeText(cpnCode.innerHTML);
+         cpnBtn.innerHTML = "COPIED";
+         setTimeout(function(){
+           cpnBtn.innerHTML = "COPIED";
+         }, 3000);
+       }
+    </script>
+
     <?php
     require __DIR__ . '/footer.php'
 ?>
