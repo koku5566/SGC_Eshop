@@ -14,7 +14,8 @@
     myOrder.order_date,
     myOrder.tracking_number,
     user.username,
-    userAddress.address
+    userAddress.address,
+    userAddress.phone_number
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
@@ -31,6 +32,7 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
+        $phnumber = $orow['phone_number'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
 
@@ -106,7 +108,7 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name">Yee YingYing</div>(+60)1117795416<br>
+                    <div id="recepient-name"><?php echo $username ?></div><?php echo $phnumber?><br>
                     <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
                 </div>
             </div>
