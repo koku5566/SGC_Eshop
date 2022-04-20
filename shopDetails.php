@@ -103,7 +103,7 @@
                 </div>
                 
                 <p>
-                  <?php echo " " . $row2["voucher_startdate"]. " " . $row2["voucher_expired"]. " "; ?>
+                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
                 <div class="circle1"></div>
@@ -132,7 +132,7 @@
                 while($row1 = $result1->fetch_assoc()) {
             ?>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -184,6 +184,9 @@
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
       }
+      .voucher{
+        margin: 0 10px 0 0;
+      }
 
       .coupon-card{
          background: linear-gradient(135deg, #7158fe, #9d4de6);
@@ -213,7 +216,7 @@
       .coupon-row{
         display: flex;
         align-items: center;
-        margin: 25px auto;
+        margin: 10px auto;
         width: fit-content;
       }
       
@@ -239,7 +242,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 17%;
+        top: 10%;
         transform: translateY(-50%);
       }
       
@@ -248,12 +251,13 @@
       }
       
       .circle2{
-        right: 965px;
+        right: 925px;
       }
 
       .imgContainer
       {
-        height: 50vh;
+        height: 25vh;
+        width: 20vh;
       }
 
       /*Slide show by Lim Qiu Xiong*/
