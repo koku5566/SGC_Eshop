@@ -9,20 +9,7 @@
 ?>
 
 <?php
-	if(isset($_POST['deleteStaff']))
-	{
-		$_SESSION['DeleteUser'] = false;
-		$UID = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE username = '$UID'";
-
-		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('$UID Removed');</script>";
-		} else {
-			echo "Error: " . mysqli_error($conn);
-		}
-	}
 
 	if(isset($_POST['editStaff']))
 	{
