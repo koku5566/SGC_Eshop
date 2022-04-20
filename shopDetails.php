@@ -183,13 +183,13 @@
       }
       
       .coupon-card h3{
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 400;
         line-height: 40px;
       }
       
       .coupon-card p{
-        font-size: 15px;
+        font-size: 10px;
       }
       
       .coupon-row{
@@ -219,7 +219,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 30%;
+        top: 20%;
         transform: translateY(-50%);
       }
       
