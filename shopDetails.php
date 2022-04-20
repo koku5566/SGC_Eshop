@@ -90,7 +90,7 @@
                 
                 <div class="coupon-row">
                   <span id="cpnCode">STEALDEAL20</span>
-                  <span id="cpnBtn">COPY CODE</span>
+                  <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>Valid Till: 20 Dec, 2021</p>
@@ -231,7 +231,7 @@
       }
       
       .circle2{
-        right: 940px;
+        right: 950px;
       }
 
       .imgContainer
