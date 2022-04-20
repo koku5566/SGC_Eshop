@@ -178,7 +178,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 														 */
 													 }else{
 														 //DISPLAY REAL PICTURE/VIDEO THEY POST
-														 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
+														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
+														echo "sohai kia"
 													 }
 														 
 												 }
