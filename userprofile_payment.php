@@ -94,7 +94,7 @@
 			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php">Add Card</a></button></div>
 		</div>
 	</div>
-<div>
+</div>
 
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
