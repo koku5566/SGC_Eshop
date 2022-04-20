@@ -237,12 +237,12 @@
       }
       
       .circle1, .circle2{
-        background: #fff;
+        background: black;
         width: 50px;
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 10%;
+        top: 15%;
         transform: translateY(-50%);
       }
       
@@ -256,7 +256,7 @@
 
       .imgContainer
       {
-        height: 25vh;
+        height: 22vh;
         width: 20vh;
       }
 
