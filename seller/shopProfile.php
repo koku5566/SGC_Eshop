@@ -23,28 +23,36 @@
 //    }
 ?>
 <?php
-if($conn->connect_error){
-	die("Connection failed ".$conn->connect_error);
-}
+//if($conn->connect_error){
+//	die("Connection failed ".$conn->connect_error);
+//}
+//
+//$sql = "select * from shopProfile where shop_id='$shop_id'";
+//
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0){
+//
+//$row = $result->fetch_assoc();
+//
+//$coverPhoto = $row["coverPhoto"];
+//$profileImage = $row["profileImage"];
+//$name = $row["name"];
+//$description = $row["description"];
+//$imageVideo = $row["imageVideo"];
+//
+//} else {
+//	echo "Not Found";
+//}
+//$conn->close();
+?>
 
-$sql = "select * from students where student_id='$student_id'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0){
-
-$row = $result->fetch_assoc();
-
-$coverPhoto = $row["coverPhoto"];
-$profileImage = $row["profileImage"];
-$name = $row["name"];
-$description = $row["description"];
-$imageVideo = $row["imageVideo"];
-
-} else {
-	echo "Not Found";
-}
-$conn->close();
+<?php
+  include 'connection.php';
+  session_start();
+$id=$_SESSION['id'];
+$query=mysqli_query($db,"SELECT * FROM shopProfile where shop_id='$id'")or die(mysqli_error());
+$row=mysqli_fetch_array($query);
 ?>
 
 <?php
@@ -95,7 +103,7 @@ $conn->close();
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name" value='$name'/>
+      <input type="text" class="form-control" name="name" value="<?php echo $row['shop_name']; ?>" required />/>
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
@@ -117,6 +125,15 @@ $conn->close();
   </div>
 </div>
 <!-- /.container-fluid -->
+
+<?php
+      if(isset($_POST['submit'])){
+        $shopName = $_POST['shop_name'];
+      $query = "UPDATE shopProfile SET shop_name = '$shopName',
+                      WHERE shop_id = '$id'";
+                    $result = mysqli_query($db, $query) or die(mysqli_error($db));
+             }              
+?>
 
 <?php
     require __DIR__ . '/footer.php'
