@@ -552,36 +552,7 @@
 						</div>
 						  
 						 
-						<!--------------------------Rating PICK PICK---------------------------->
-						<?php
-							$apa = $_SESSION["productID"];
-							$apaDisplay = false;
-						echo"<script>document.getElementById('pickpickrating').style.display = 'block';</script>";
-									echo"<script>document.getElementById('reviewShowMe').style.display = 'block';</script>";
-						/*	
-						 $sql ="SELECT rr_id
-								FROM reviewRating
-								WHERE product_id = '$apa'";
-							if($stmt = mysqli_prepare ($conn, $sql)){
-								mysqli_stmt_execute($stmt);
-								mysqli_stmt_bind_result($stmt, $c1);
-								
-								if(mysqli_stmt_fetch($stmt) >0 ){
-									$apaDisplay = true;
-										
-								}else{
-									
-								}
-								mysqli_stmt_close($stmt);									
-							}	
-								
-						
-						if($apaDisplay !== true){
-							
-						}
-						*/
-						?>
-						
+						<!--------------------------Rating PICK PICK---------------------------->											
 						<div id = "pickpickrating">
 							<div class="row pickbox">
 							  <div class="col-5" style = "background-color:;">
@@ -968,6 +939,31 @@
 	?>
 	$('<?php echo $showmedawae; ?>').modal('show');
 	
+	<?php
+		$apa = $_SESSION["productID"];
+		$dc1 = "";
+		$dc2 = "";
+	
+	/**/	
+	 $sql ="SELECT rr_id
+			FROM reviewRating
+			WHERE product_id = '$apa'";
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $c1);
+			
+			if(mysqli_stmt_fetch($stmt) > 0 ){
+									
+			}else{
+				$dc1 = "#pickpickrating";
+				$dc2 = "#reviewShowMe";
+			}
+			mysqli_stmt_close($stmt);									
+		}	
+			
+	?>
+	$('<?php echo $dc1; ?>').hide();
+	$('<?php echo $dc2; ?>').hide();
 
 
 	$(document).ready(function(){
