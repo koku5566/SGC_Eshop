@@ -357,8 +357,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 .imgReply{
 	width: 75%;
 	height: 75%;
-	min-width: 75%;
-	min-height: 75%;
 	object-fit: cover;
 }
 h4.displayCategoryModal{
