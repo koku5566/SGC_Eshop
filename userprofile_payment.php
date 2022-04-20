@@ -172,14 +172,17 @@
 }
 
 @media only screen and (max-width: 768px) {
-  
-  .container-left-col2 {
-  width: 70%;
-  display: block;
-}
-.container-right-col2 {
-display: block;
-}
 
+	.row2 {
+	display: block; 
+	
+	}
+	.container-left-col2 {
+	
+	display: block;
+	}
+	.container-right-col2 {
+	display: block;
+	}
 }
 </style>
