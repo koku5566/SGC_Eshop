@@ -231,7 +231,7 @@
       }
       
       .circle2{
-        right: 960px;
+        right: 970px;
       }
 
       .imgContainer
