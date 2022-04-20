@@ -175,7 +175,7 @@
                VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
 
 
-      $result = mysqli_query($conn,$sqlv);
+      mysqli_query($conn,$sqlv);
 
       if(mysqli_query($conn, $sqlv)){
 
@@ -186,25 +186,6 @@
 
           $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
                     VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-            if($status == 2)
-            {
-               echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
-               ?>
-                  <script type="text/javascript">
-                        window.location.href = window.location.origin + "/seller/createVoucher.php";
-                  </script>
-               <?php
-            }
-            else if ($status == 0)
-            {
-               echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
-            }
-            else
-            {
-            echo '<script>alert("Failed")</script>';
-            }
-         }
       }
 ?>
 
@@ -235,7 +216,7 @@
                     
                     <tbody> 
                      <?php 
-                        // $shopId = $_SESSION['uid'];
+                        $shopId = $_SESSION['uid'];
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -248,7 +229,7 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                        --  WHERE product.shop_id = '$shopId' 
+                        WHERE product.shop_id = '$shopId' 
                         ";
                     
                     
