@@ -20,6 +20,8 @@
       $sql_update .= "title = '$title',";
       $sql_update .= "pic_description = '$description',";
       $sql_update .= "address = '$address',";
+      $sql_update .= "contactwhatsapp = '$contact',";
+
       
 
       // File upload configuration 
