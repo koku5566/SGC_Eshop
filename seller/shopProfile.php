@@ -112,7 +112,7 @@
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control"  rows="3" name="description" value='<?php echo $shopDescription ?>'></textarea>
+      <textarea class="form-control"  rows="3" name="description" value="<?php echo $shopDescription ?>"></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
