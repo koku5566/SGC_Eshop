@@ -143,7 +143,7 @@ else if($orderstatus=='Delivered'){
                 <?php 
                     }
                 ?>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
