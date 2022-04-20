@@ -552,36 +552,7 @@
 						</div>
 						  
 						 
-						<!--------------------------Rating PICK PICK---------------------------->
-						<?php
-							//$apa = $_SESSION["productID"];
-							//$apaDisplay = false;
-						
-						/*	
-						 $sql ="SELECT rr_id
-								FROM reviewRating
-								WHERE product_id = '$apa'";
-							if($stmt = mysqli_prepare ($conn, $sql)){
-								mysqli_stmt_execute($stmt);
-								mysqli_stmt_bind_result($stmt, $c1);
-								
-								if(mysqli_stmt_fetch($stmt) >0 ){
-									$apaDisplay = true;
-										
-								}else{
-									
-								}
-								mysqli_stmt_close($stmt);									
-							}	
-								
-						
-						if($apaDisplay !== true){
-							echo"<script>document.getElementById('pickpickrating').style.display = 'none';</script>";
-									echo"<script>document.getElementById('reviewShowMe').style.display = 'none';</script>";
-						}
-						*/
-						?>
-						
+						<!--------------------------Rating PICK PICK---------------------------->											
 						<div id = "pickpickrating">
 							<div class="row pickbox">
 							  <div class="col-5" style = "background-color:;">
@@ -993,8 +964,7 @@
 	?>
 	$('<?php echo $dc1; ?>').hide();
 	$('<?php echo $dc2; ?>').hide();
-	//document.getElementById('pickpickrating').style.display = 'none';
-	//document.getElementById('reviewShowMe').style.display = 'none';
+
 
 	$(document).ready(function(){
 		load_data_display();
