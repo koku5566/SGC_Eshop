@@ -48,6 +48,22 @@
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
+            <div class="container">
+              <div class="coupon-card">
+                <img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">
+                <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
+                
+                <div class="coupon-row">
+                  <span id="cpnCode">STEALDEAL20</span>
+                  <span id="cpnBtn">COPY CODE</span>
+                </div>
+                
+                <p>Valid Till: 20 Dec, 2021</p>
+                
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+              </div>
+            </div>
           </div>
         </section>
 
