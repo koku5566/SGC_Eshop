@@ -106,8 +106,8 @@
                   <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
-                <div class="circle1"></div>
-                <div class="circle2"></div>
+                <!--<div class="circle1"></div>
+                <div class="circle2"></div>-->
               </div>
             </div>
             <?php
@@ -124,7 +124,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>best Sellers</strong></h4>
+          <h4 class="mb-5"><strong>Best Sellers</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
@@ -133,7 +133,7 @@
             ?>
             
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card" style="height:35vh;">
+              <div class="card" style="height:50vh;">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="/img/product/<?php echo $row1['product_cover_picture']?>"
