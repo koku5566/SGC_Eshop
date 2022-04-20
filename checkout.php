@@ -178,7 +178,7 @@ if(isset($_GET['addressid']))
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
                             JOIN `variation`
-                            ON cart.variation_id = variation.variation_id
+                            ON variation.product_id = cart.product_ID
                             WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
@@ -196,7 +196,12 @@ if(isset($_GET['addressid']))
                                  $product_price =  $rowKL['P_price'];
                                  $product_variation_price = $rowKL['variation.product_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
- 
+                            
+                                if ($product_price == 0 )
+                                {
+                                    $product_price = $product_variation_price;
+                                }
+                                 
 
                             echo ("
                             <tr>
