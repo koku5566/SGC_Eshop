@@ -249,25 +249,25 @@ var three = $("#three").val;
 var four = $("#four").val;
 if(one!= null)
 {
-    document.getElementById("placed").className +="completed";
+    document.getElementById("placed").className +=" completed";
 }
-if(two!= null)
+else if(two!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className +=" completed";
 }
-if(three!= null)
+else if(three!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className +=" completed";
+    document.getElementById("shipped").className +=" completed";
 }
-if(four!= null)
+else if(four!= null)
 {
-    document.getElementById("placed").className +="completed";
-    document.getElementById("paid").className +="completed";
-    document.getElementById("shipped").className +="completed";
-    document.getElementById("delivered").className +="completed";
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className += " completed";
+    document.getElementById("shipped").className +=" completed";
+    document.getElementById("delivered").className +=" completed";
 }
 
 </script>
