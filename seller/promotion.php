@@ -208,7 +208,7 @@
                                                 while($row = $result->fetch_assoc())
                                                 {
                                                     $promotionTitle = $row["promotion_title"];
-                                                    if(`status` = 9)
+                                                    if(`status` == 9)
                                                     {
                                                         echo ("
                                                                 <div class=\"row\">
@@ -221,7 +221,7 @@
                                                                 </div>
                                                             ");
                                                     }
-                                                    else if(`status`= 1)
+                                                    else if(`status`== 1)
                                                     {
                                                         echo ("
                                                                 <div class=\"row\">
