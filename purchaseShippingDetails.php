@@ -51,22 +51,22 @@ echo $orderstatus;
 
 if($orderstatus=='Placed'){
     ?>
-    <input type="hidden" id="one" value="<?php echo $orderstatus; ?>">
+    <input type="text" id="one" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Paid'){
     ?>
-    <input type="hidden" id="two" value="<?php echo $orderstatus; ?>">
+    <input type="text" id="two" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Shipped'){
     ?>
-    <input type="hidden" id="three" value="<?php echo $orderstatus; ?>">
+    <input type="text" id="three" value="<?php echo $orderstatus; ?>">
 <?php
 }
 else if($orderstatus=='Delivered'){
     ?>
-    <input type="hidden" id="four" value="<?php echo $orderstatus; ?>">
+    <input type="text" id="four" value="<?php echo $orderstatus; ?>">
 <?php
 }
 ?>
@@ -264,10 +264,10 @@ else if($orderstatus=='Delivered'){
     });
   }
 
-var one = $("#one").val;
-var two = $("#two").val;
-var three = $("#three").val;
-var four = $("#four").val;
+var one = document.getElementById("one").value;
+var two = document.getElementById("two").value;
+var three = document.getElementById("three").value;
+var four = document.getElementById("four").value;
 
 console.log(one, two, three, four);
 if(one!= null)
