@@ -170,7 +170,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 												<?php
 												
 												
-											
+													$picR = "../";
 													 if($c8 === null || $c8 == ''){
 													
 														 /*
@@ -180,7 +180,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 													 }else{
 														 //DISPLAY REAL PICTURE/VIDEO THEY POST
 														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
-														echo "<td><img src='".$c8."' class='imgReply'></td>";
+														$pic1 = $picR . $c8;
+														echo "<td><img src='".$pic1."' class='imgReply'></td>";
 													 }
 														 
 												
