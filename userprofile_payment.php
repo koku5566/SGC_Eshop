@@ -54,10 +54,9 @@
                                     <div class="text-left">
                                         <div class="h1 text-gray-900 mb-4">My Payment Option</div>
                                     </div>
-<a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
-<a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<div class="h3">Bank</div>
+<div class="row">
+<div class="h3">Bank</div><a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a></div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -68,7 +67,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"mb-3\">
-				<div class=\"bank\">
+				<div class=\"userBank\">
 					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
 					<div class=\"row\">
 						<div class=\"col-lg-4\">
@@ -88,7 +87,9 @@
 
 <hr>
 
+<div class="row">
 <div class="h3">Card</div>
+<a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a></div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
@@ -96,7 +97,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"mb-3\">
-				<div class=\"card\">
+				<div class=\"userCard\">
 					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
 					<div class=\"row\">
 						<div class=\"col-lg-4\">
