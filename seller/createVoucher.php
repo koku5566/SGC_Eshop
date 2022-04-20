@@ -81,8 +81,8 @@
                      <div class="input-group-append">
                         <select name="voucherType" class="custom-select">
                            <option value="">Please choose</option>
-                           <option value=" cashback">RM</option>
-                           <option value=" %">%</option>
+                           <option value="cashback">RM</option>
+                           <option value="%">%</option>
                         </select>
                      </div>
                   </div>
@@ -166,46 +166,55 @@
       $voucherType = $_POST['voucherType'];
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
+      $vstatus = "2";
+      $vlist = "0";
       $date = date('Y-m-d H:i:s');
-      $status = "2";
-      $delist = "0";
 
       
-      $sqlv = "INSERT INTO `voucher` (`voucher_code`, `voucher_startdate`, `voucher_expired`, `discount_amount`, `voucher_limit`, `voucher_details`, `voucher_display`, `voucher_type`, `created_at`, `voucher_status`, `voucher_list`)
-               VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
+      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vstatus', '$vlist');";
+      
+      mysqli_query($conn, $sqlv);
 
+      $product = $_POST['productlist'];
+      $v = mysqli_insert_id($conn);//specific table
 
-      $result = mysqli_query($conn,$sqlv);
+      for($i = 0; $i < count($product); $i++){
 
-      if(mysqli_query($conn, $sqlv)){
+         $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+                  VALUES ('".$product[$i]."', '$v');"; //get prod first array
 
-       $product = $_POST['productlist'];
-       $v = mysqli_insert_id($conn);//specific table
+         $res = mysqli_query($conn, $sqlpv);
 
-       for($i = 0; $i < count($product); $i++){
-
-          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
-                    VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-            if($status == 2)
+         if($res)
             {
-               echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
-               ?>
-                  <script type="text/javascript">
-                        window.location.href = window.location.origin + "/seller/createVoucher.php";
-                  </script>
-               <?php
-            }
-            else if ($status == 0)
-            {
-               echo '<script>alert("Add voucher successfully! Voucher has been listed.")</script>';
+                if($vstatus == 2)
+                {
+                    echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
+                    ?>
+                        <script type="text/javascript">
+                            window.location.href = window.location.origin + "/seller/createVoucher.php";
+                        </script>
+                    <?php
+                }
+                else if ($vstatus == 0)
+                {
+                    echo '<script>alert("Voucher is added")</script>';
+                }
             }
             else
             {
-            echo '<script>alert("Failed")</script>';
+                echo '<script>alert("Failed")</script>';
             }
-         }
+         
       }
+
+    }
+    else {
+       echo "error";
+    }
+   
+   
 ?>
 
 <!-- Add Product Modal -->
@@ -235,7 +244,7 @@
                     
                     <tbody> 
                      <?php 
-                        // $shopId = $_SESSION['uid'];
+                        $shopId = $_SESSION['uid'];
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -248,7 +257,7 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                        --  WHERE product.shop_id = '$shopId' 
+                        WHERE product.shop_id = '$shopId' 
                         ";
                     
                     

@@ -193,7 +193,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/seller/promotion.php">Promotion</a>
-                        <a class="collapse-item" href="/seller/createVoucher.php">Voucher</a>
+                        <a class="collapse-item" href="/seller/myVoucher.php">My Voucher</a>
+                        <a class="collapse-item" href="/seller/createVoucher.php">Create Voucher</a>
                     </div>
                 </div>
             </li>
