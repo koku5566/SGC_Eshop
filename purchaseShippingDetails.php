@@ -17,13 +17,10 @@
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address
-      
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
-    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -38,16 +35,8 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
-       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
- 
-
-    //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
-    $stmt = $conn->prepare($statussql);
-    $stmt->execute();
-    $sresult = $stmt->get_result();
 ?>
 <?php
 //to determine tracking status bar 
@@ -119,8 +108,8 @@ else if($orderstatus=='Delivered'){
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"><?php echo $contactname?> </div><?php echo $phone?><br>
-                    <div id="address"><?php echo $address?></div> </div>
+                    <div id="recepient-name"> </div>(+60)1117795416<br>
+                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
                 </div>
             </div>
             <hr>
@@ -128,42 +117,38 @@ else if($orderstatus=='Delivered'){
             <table class="table track-shipping">
                 <thead>
                     <tr>
+                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php                       
-                     while ($srow = $sresult->fetch_assoc()) {
-                ?>
                     <tr>
-                        <td><?php echo $srow['datetime'] ?></th>
-                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
                     </tr>
-                <?php 
-                    }
-                ?>
-                    
                 </tbody>
             </table>
         </div>
     </div>
 
+    <!--Order Details-->
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-right p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Shop Image"
+                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
                                 width="40" height="40"></span>
-                        <span><strong>| SHOP shop_name</strong></span>
+                        <span><strong>| SEGi College Subang Jaya</strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            <?php echo $orderdate?>
+                            04 Sep 2021 | 04:45 p.m.
                             </span>
                         </div>
                     </div>
@@ -174,14 +159,13 @@ else if($orderstatus=='Delivered'){
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img class="card-img-top img-thumbnail"
-                                                style="object-fit:contain;width:30%;height:30%" src=""
-                                alt=""></td>
-                        <td>Product Name</td>
-                        <td>Navy </td>
-                        <td>RM100.00</td>
+                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
+                                alt="W3Schools.com"></td>
+                        <td>3-in-1 Power Bank with Phone Stand Model: WI-SP510</td>
+                        <td>Navy blue</td>
+                        <td>RM34.00</td>
                         <td>x1</td>
-                        <td class="red-text">RM100.00</td>
+                        <td class="red-text">rm349.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
