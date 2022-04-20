@@ -9,7 +9,20 @@
 ?>
 
 <?php
+	if(isset($_POST['deleteStaff']))
+	{
+		$_SESSION['DeleteUser'] = false;
+		$UID = $_POST['deleteStaff'];
 
+		$sql = "DELETE FROM user WHERE username = '$UID'";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['DeleteUser'] = true;
+            echo "<script>alert('$UID Has Been Removed');</script>";
+		} else {
+			echo "Error: " . mysqli_error($conn);
+		}
+	}
 
 	if(isset($_POST['editStaff']))
 	{
@@ -146,12 +159,6 @@
 </form>
 
 <?php require __DIR__ . '/footer.php' ?>
-<script type="text/javascript">
-        $("#deleteStaff").click(function () {
-            var name = $(".remove").val();
-            console.log(name);
-        });
-</script>
 
 <script>
 $(document).ready(function() {
@@ -175,8 +182,6 @@ editButton.forEach(btn => {
 		editUser(btn.value);
 	});
 });
-
-
 
 function editUser(username) 
 {
