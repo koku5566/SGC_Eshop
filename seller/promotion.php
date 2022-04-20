@@ -10,18 +10,18 @@
         exit;
 	}
 
-    //Promotion Status in DB - Approve Section
-    if(isset($_POST['Approve']))
+    //Promotion Status in DB - Request Section
+    if(isset($_POST['Request']))
     {
-        $promotionId = $_POST['Approve'];
+        $promotionId = $_POST['Request'];
         
-        $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
-        $result = mysqli_query($conn, $sql_approve);
+        $sql_request = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
+        $result = mysqli_query($conn, $sql_request);
         if($result)
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Approve Successful");
+                    alert("Promotion Request Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -192,13 +192,13 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Approve Section</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Request Section</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                     
-                                    <!-- Approve - View/Approve/Reject Section -->
+                                    <!-- Request - View/Request/Reject Section -->
                                         <?php
                                             if ($_SESSION['role'] == "ADMIN")
                                             { 
@@ -212,10 +212,10 @@
                                                     echo ("
                                                             <div class=\"row\">
                                                                 <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                 </div>
                                                                 <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
                                                                 </div>
                                                             </div>
                                                         ");
@@ -233,14 +233,14 @@
             </div>
         </div>
         
-        <!-- Approve - View/Approve/Reject Section -->
+        <!-- Request - View/Request/Reject Section -->
         <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="approveSectionModel" tabindex="-1" role="dialog" aria-labelledby="approveSectionModel" <?php echo(isset($_GET['approveSection']) ? "" : "aria-hidden=\"true\"");?> >
+        <div class="modal fade" id="requestSectionModel" tabindex="-1" role="dialog" aria-labelledby="requestSectionModel" <?php echo(isset($_GET['requestSection']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" >Approve Section</h5>
-                        <button type="button" class="close approveSectionModel" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" >Request Section</h5>
+                        <button type="button" class="close requestSectionModel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -249,7 +249,7 @@
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="image-container">
                                     <?php
-                                        $promotionId = $_GET['approveSection'];
+                                        $promotionId = $_GET['requestSection'];
                                         $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
                                         $result = mysqli_query($conn, $sql);
 
@@ -281,7 +281,7 @@
                                 <div class="form-group">
                                     <label>Promotion Title</label>
                                     <?php
-                                    $promotionId = $_GET['approveSection'];
+                                    $promotionId = $_GET['requestSection'];
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
 
@@ -292,10 +292,10 @@
                                             $promotionDate = $row["promotion_Date"];
                                             $promotionEnd_Date = $row["promotionEnd_Date"];
 
-                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"approveSectionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionTitle\" readonly>");
-                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionDate\" readonly>");
-                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"approveSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
+                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"requestSectionID\" value=\"$promotionId\" hidden>");
+                                            echo("<input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
                                         }
                                     }
                                     ?>
@@ -304,9 +304,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary approveSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['approveSection']; ?>">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['approveSection']; ?>">Reject</button>
+                        <button type="button" class="btn btn-secondary requestSectionModel" data-dismiss="modal">Close</button>
+                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['requestSection']; ?>">Approve</button>
+                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['requestSection']; ?>">Reject</button>
                     </div>
                 </div>
             </div>
@@ -844,17 +844,17 @@
     }
 
     window.addEventListener('load', function () {
-        if(<?php echo(isset($_GET['approveSection']) ? "1" : "0") ?> == 1)
+        if(<?php echo(isset($_GET['requestSection']) ? "1" : "0") ?> == 1)
         {
-            $("#approveSectionModel").modal('show');
+            $("#requestSectionModel").modal('show');
         }
     });
 
-    const approveSectionModel = document.querySelectorAll('.approveSectionModel');
+    const requestSectionModel = document.querySelectorAll('.requestSectionModel');
 
-    approveSectionModel.forEach(btn => {
+    requestSectionModel.forEach(btn => {
         btn.addEventListener('click', function handleClick(event) {
-            $("#approveSectionModel").modal('hide');
+            $("#requestSectionModel").modal('hide');
         });
     });
 
