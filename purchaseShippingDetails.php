@@ -32,7 +32,7 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
     }
-    $estimateddelivery = strtotime('+ 7 days',$orderdate);
+    $estimateddelivery = strtotime('+7 days',$orderdate);
 
 
 ?>
@@ -61,35 +61,6 @@
     <?php
     }
 ?>
-<script>
-var one = $("#one").val;
-var two = $("#two").val;
-var three = $("#three").val;
-var four = $("#four").val;
-if(one!= null)
-{
-    document.getElementByID("placed").className +="completed";
-}
-if(two!= null)
-{
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
-}
-if(three!= null)
-{
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
-    document.getElementByID("shipped").className +="completed";
-}
-if(three!= null)
-{
-    document.getElementByID("placed").className +="completed";
-    document.getElementByID("paid").className +="completed";
-    document.getElementByID("shipped").className +="completed";
-    document.getElementByID("delivered").className +="completed";
-}
-
-</script>
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
@@ -269,6 +240,35 @@ if(three!= null)
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script>
+var one = $("#one").val;
+var two = $("#two").val;
+var three = $("#three").val;
+var four = $("#four").val;
+if(one!= null)
+{
+    document.getElementByID("placed").className +="completed";
+}
+if(two!= null)
+{
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
+}
+if(three!= null)
+{
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
+    document.getElementByID("shipped").className +="completed";
+}
+if(four!= null)
+{
+    document.getElementByID("placed").className +="completed";
+    document.getElementByID("paid").className +="completed";
+    document.getElementByID("shipped").className +="completed";
+    document.getElementByID("delivered").className +="completed";
+}
+
+</script>
 
 <style>
     body {
@@ -536,3 +536,4 @@ if(three!= null)
     color: green;
     }
 </style>
+
