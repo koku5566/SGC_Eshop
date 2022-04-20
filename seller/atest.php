@@ -8,7 +8,10 @@
         $sql_update = "UPDATE product SET ";
         $sql_update .= "product_description = '$productDescription' WHERE product_id = 'P000059' ";
 
-        mysqli_query($conn,$sql_update);
+        if(!mysqli_query($conn,$sql_update))
+        {
+            echo("Error description: " . mysqli_error($conn));
+        }
     }
 ?>
 
