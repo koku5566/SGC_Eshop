@@ -132,9 +132,9 @@
           <h4 class="mb-5"><strong>best Sellers</strong></h4>
           <div class="row">
             <?php
-              if ($result->num_rows > 0) {
+              if ($result1->num_rows > 0) {
                 // output data of each row
-                while($row1 = $result->fetch_assoc()) {
+                while($row1 = $result1->fetch_assoc()) {
             ?>
             
             <div class="col-lg-4 col-md-6 mb-4">
