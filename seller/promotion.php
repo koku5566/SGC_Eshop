@@ -35,7 +35,7 @@
     if(isset($_POST['Reject']))
     {
         $promotionId = $_POST['Reject'];
-        $sql_reject = "DELETE FROM promotion WHERE promotionID = '$promotionId'";
+        $sql_reject = "UPDATE promotion SET `status` = 9 WHERE promotionID = '$promotionId'";
         if(mysqli_query($conn, $sql_reject))
         {
             ?>
@@ -141,7 +141,7 @@
                                         $userId = $_SESSION['userid'];
                                         if($_SESSION['role']=="SELLER")
                                         {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0 AND `status` = 1";
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0"; //AND `status` = 1 (After approved by admin)
                                         }
                                         else if($_SESSION['role']=="ADMIN")
                                         {
@@ -200,19 +200,34 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
-                                            echo ("
-                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                    <p class=\"p-title\">Banner display at:</p>
-                                                </div>
-                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                    <div class=\"input-group mb-3\">
-                                                        <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                            <option name=\"sellerPage\" value=\"0\">Seller Page</option>
-                                                            <option name=\"homePage\" value=\"1\">Home Page</option>
-                                                        </select>
-                                                    </div>
-                                                </div>");
-                                                
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId'";
+                                            if(`status` = 9)
+                                            {
+                                                echo ("
+                                                        <div class=\"row\">
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">.$row['promotion_title']</p>
+                                                        </div>
+                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                        </div>
+                                                    </div>"
+                                                );
+                                            }
+                                            else if(`status`= 1)
+                                            {
+                                                echo ("
+                                                        <div class=\"row\">
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">.$row['promotion_title']</p>
+                                                        </div>
+                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</a>
+                                                        </div>
+                                                    </div>"
+                                                );
+                                            }
+                                                        
                                         }
                                     ?>
                                     <!-- Approve - View/Approve/Reject Section -->
@@ -227,7 +242,7 @@
                                                     echo ("
                                                     <div class=\"row\">
                                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">Promotion Title</p>
+                                                            <p class=\"p-title\">.$row['promotion_title']</p>
                                                         </div>
                                                         <div class=\"col-xl-10 col-lg-10 col-sm-12\">
                                                             <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
