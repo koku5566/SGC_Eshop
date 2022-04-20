@@ -223,7 +223,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
                                                                 </div>
                                                                 <hr>
                                                             ");
@@ -255,8 +255,6 @@
                                                                     <div class=\"col-xl-8 col-lg-8 col-sm-12\">
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                     </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>                                                                    </div>
                                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                                         <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                                     </div>
@@ -636,9 +634,13 @@
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $promotionId = $row["promotionID"];
                                             $promotionTitle = $row["promotion_title"];
+                                            $promotionDate = $row["promotion_Date"];
+                                            $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                             echo("<br><input type=\"text\" class=\"form-control\" name=\"DeletePromotionID\" value=\"$promotionId\" hidden>");
                                             echo("<input type=\"text\" class=\"form-control\" name=\"DeletePromotionTitle\" value=\"$promotionTitle\" readonly>");
+                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
+                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
                                         }
                                     }
                                     ?>
