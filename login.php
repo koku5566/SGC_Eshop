@@ -8,7 +8,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$Login = false;
-		if(isset($_POST['username'],$_POST['password'])&& !empty($_POST['username'])  && !empty($_POST['password']))
+		if(isset($_POST['username'],$_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
 			$username = $_POST['username'];
 			$password = md5($_POST['password']); 
@@ -22,11 +22,11 @@
 			
 			if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
-					//echo "<script>alert('Login Successfull')</script>";
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
                     $_SESSION['uid'] = $row["user_id"];
+                    $_SESSION['userid'] = $row["userID"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
@@ -49,7 +49,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-8 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -156,9 +156,44 @@
   startApp();
 </script>
 
-<!--Get User Google Profile Informaton-->
 <script>
     function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', 'https://eshop.sgcprototype2.com/googleLogin.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+        console.log('Signed in as: ' + xhr.responseText);
+        };
+        xhr.send('idtoken=' + id_token);
+
+        $.ajax({
+			url:"https://oauth2.googleapis.com/tokeninfo",
+			method:"GET",
+			data:{
+				id_token:id_token,
+			},
+			dataType: 'JSON',
+			success: function(response){
+                var len = response.length;
+				for(var i=0; i<len; i++){
+					var email = response[i].email;
+					var email_verified = response[i].email_verified;
+                    var name = response[i].name;
+
+                    if(email_verified == "true")
+                    {
+
+                    }
+				}
+			},
+			error: function(err) {
+				//$('#login_message').html(err.responseText);
+				alert(err.responseText);
+			}
+		});
+
         var profile = googleUser.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + profile.getName());

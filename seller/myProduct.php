@@ -1,9 +1,22 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if ($_SESSION['login'] == "" || $_SESSION['uid'] == ""){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_GET['Panel']))
     {
         $_SESSION['Panel'] = $_GET['Panel'];
+    }
+    else
+    {
+        $_SESSION['Panel'] = "All";
     }
 
     $subCategoryArray = array();
@@ -205,72 +218,46 @@
 
                                                 <?php
                                                 
-                                                    if(isset($_POST['submitSearch']))
+                                                    $shopId = $_SESSION['uid'];
+                                                    $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE shop_id = '$shopId' ";
+
+                                                    if(isset($_GET['Panel']))
                                                     {
-                                                        //$shopId = $_SESSION['shopId'];
-                                                        $shopId = "14";
-                                                        $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
-                                                        $result = mysqli_query($conn, $sql);
-                                                
-                                                        if (mysqli_num_rows($result) > 0) {
-                                                            while($row = mysqli_fetch_assoc($result)) {
-                                                                $total = (int) $row["total_product"];
-                                                                $percent = $total/10;
-                                                                $uploadAvailable = 1000 - $total;
-                                                                echo("
-                                                                    <h5>$total Products</h5>
-                                                                
-                                                                    <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                                                                    </div>
-                                                                    <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                            
-                                                                ");
-                                                            }
+                                                        switch($_GET['Panel'])
+                                                        {
+                                                            case "Publish":
+                                                                $sql .= " WHERE A.product_status = 'A'";
+                                                                break;
+                                                            case "Unpublish":
+                                                                $sql .= " WHERE A.product_status = 'I'";
+                                                                break;
+                                                            case "Violation":
+                                                                $sql .= " WHERE A.product_status = 'B'";
+                                                                break;
+                                                            case "OutOfStock":
+                                                                $sql .= " WHERE A.product_status = 'O'";
+                                                                break;
                                                         }
                                                     }
-                                                    else
-                                                    {
-                                                        $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A";
 
-                                                        if(isset($_GET['Panel']))
-                                                        {
-                                                            switch($_GET['Panel'])
-                                                            {
-                                                                case "Publish":
-                                                                    $sql .= " WHERE A.product_status = 'A'";
-                                                                    break;
-                                                                case "Unpublish":
-                                                                    $sql .= " WHERE A.product_status = 'I'";
-                                                                    break;
-                                                                case "Violation":
-                                                                    $sql .= " WHERE A.product_status = 'B'";
-                                                                    break;
-                                                                case "OutOfStock":
-                                                                    $sql .= " WHERE A.product_status = 'O'";
-                                                                    break;
-                                                            }
+                                                    $result = mysqli_query($conn, $sql);
+                                        
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            $total = (int) $row["total_product"];
+                                                            $percent = $total/10;
+                                                            $uploadAvailable = 1000 - $total;
+                                                            echo("
+                                                                <h5>$total Products</h5>
+                                                            
+                                                                <div class=\"progress\" style=\"height:0.3rem;\">
+                                                                    <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                                                                </div>
+                                                                <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
+                                                                        
+                                                            ");
                                                         }
-
-                                                        $result = mysqli_query($conn, $sql);
-                                            
-                                                        if (mysqli_num_rows($result) > 0) {
-                                                            while($row = mysqli_fetch_assoc($result)) {
-                                                                $total = (int) $row["total_product"];
-                                                                $percent = $total/10;
-                                                                $uploadAvailable = 1000 - $total;
-                                                                echo("
-                                                                    <h5>$total Products</h5>
-                                                                
-                                                                    <div class=\"progress\" style=\"height:0.3rem;\">
-                                                                        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: $percent%\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                                                                    </div>
-                                                                    <p data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Number of upload product available = 1000 - Number of current product\">You can still upload $uploadAvailable products</p>
-                                                                            
-                                                                ");
-                                                            }
-                                                        }
-                                                    }                                                        
+                                                    }                                                      
                                                 ?>
 
                                             </div>
@@ -345,6 +332,8 @@
                                                                 break;
                                                         }
                                                     }
+                                                    $shopId = $_SESSION['uid'];
+                                                    $sql .= " AND A.shop_id = '$shopId'";
 
                                                     $result = mysqli_query($conn, $sql);
 
@@ -367,10 +356,23 @@
                                                                 while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                                     
                                                                     echo("
-                                                                        <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                        <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                             <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
+                                                                    ");
+                                                                    if($row_1['product_status'] == "B")
+                                                                    {
+                                                                        echo("
+                                                                            <div style=\"position: absolute;width: 100%;height: 40%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
+                                                                                <p style=\"color: white;\">Product get banned, please contact administrator for future help</p>
+                                                                            </div>
+                                                                        ");
+                                                                    }
+                                                                    
+                                                                    echo("
+                                                                                        
+
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
                                                                                     </div>
                                                                                     <div class=\"card-body\">
@@ -442,7 +444,6 @@
                                                                     {
                                                                         echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
                                                                     }
-
                                                                     echo("
                                                                     </div>
                                                                         <div class=\"col-xl-6\" style=\"padding:0;\">
@@ -470,23 +471,24 @@
                                                 }
                                                 else
                                                 {
-                                                    $sql = "SELECT DISTINCT A.product_id FROM product AS A";
+                                                    $shopId = $_SESSION['uid'];
+                                                    $sql = "SELECT DISTINCT A.product_id FROM product AS A WHERE A.shop_id = '$shopId'";
 
                                                     if(isset($_GET['Panel']))
                                                     {
                                                         switch($_GET['Panel'])
                                                         {
                                                             case "Publish":
-                                                                $sql .= " WHERE A.product_status = 'A'";
+                                                                $sql .= " AND A.product_status = 'A'";
                                                                 break;
                                                             case "Unpublish":
-                                                                $sql .= " WHERE A.product_status = 'I'";
+                                                                $sql .= " AND A.product_status = 'I'";
                                                                 break;
                                                             case "Violation":
-                                                                $sql .= " WHERE A.product_status = 'B'";
+                                                                $sql .= " AND A.product_status = 'B'";
                                                                 break;
                                                             case "OutOfStock":
-                                                                $sql .= " WHERE A.product_status = 'O'";
+                                                                $sql .= " AND A.product_status = 'O'";
                                                                 break;
                                                         }
                                                     }
@@ -512,10 +514,23 @@
                                                                 while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                                     
                                                                     echo("
-                                                                        <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                        <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                             <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
+                                                                    ");
+                                                                    if($row_1['product_status'] == "B")
+                                                                    {
+                                                                        echo("
+                                                                            <div style=\"position: absolute;width: 100%;height: 40%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
+                                                                                <p style=\"color: white;\">Product get banned, please contact administrator for future help</p>
+                                                                            </div>
+                                                                        ");
+                                                                    }
+                                                                    
+                                                                    echo("
+                                                                                        
+
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
                                                                                     </div>
                                                                                     <div class=\"card-body\">

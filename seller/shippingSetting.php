@@ -54,10 +54,10 @@
     <option value="PosLaju">Pos Laju</option> 
     <option value="Skynet">Sky Net</option>
     <option value="ABX">ABX Express</option>
-    <option value="Flash Express">Flash Express</option>
+    <option value="Flash">Flash Express</option>
     <option value="DHL eCommerce">DHL eCommerce</option>
     <option value="Pgeon">Pgeon Delivery</option>
-    <option value="J&T Express"> J&T Express</option>
+    <option value="J&T"> J&T Express</option>
   </select>
 </div>
 
@@ -67,7 +67,7 @@
 </div>
 <!-- /.container-fluid -->
 
-
+<!-- display all possible point based seller and cus add-->
 
 
 

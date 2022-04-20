@@ -132,10 +132,15 @@
                                                                 array_push($ratingArray,"<a href=\"?Rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             } 
 
-                                                            
+                                                            foreach ($ratingArray as $value) {
+                                                                echo("{$value}");
+                                                            }
+
+                                                            /*
                                                             foreach (array_reverse($ratingArray) as $value) {
                                                                 echo("{$value}");
                                                             }
+                                                            */
                                                         }
                                                         else
                                                         {
@@ -211,8 +216,81 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--Product List -->
-                            <div class="col-xl-9 col-lg-9">
+                             <!--Result for shop and product -->
+                             <div class="col-xl-9 col-lg-9">
+                                <!--Shop List -->                      
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-3">
+                                                <h5 class="m-0 font-weight-bold text-primary">Shop List</h5>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-9">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-content row mb-3">
+                                            <!--PHP Loop Product List by Search Result-->
+                                            <?php
+                                                if(isset($_SESSION['Search']))
+                                                {
+                                                    $SearchBy = $_SESSION['Search'];
+                                                    $sql = "SELECT * FROM shopProfile WHERE shop_name LIKE '%$SearchBy%' LIMIT 4";
+
+                                                    $result = mysqli_query($conn, $sql);
+                                    
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+
+                                                            $id = $row['shop_id'];
+                                                            $name = $row['shop_name'];
+                                                            $imgblob = $row['shop_profile_image'];
+
+                                                            echo("
+                                                            
+                                                            <div class=\"col-xl-3 col-lg-4 col-sm-6 shop-item\" style=\"padding-bottom: 0.625rem;\">
+                                                                <a data-sqe=\"link\" href=\"shopDetails.php?id=$id\">
+                                                                    <div class=\"card\">
+                                                                        <div class=\"image-container\">
+                                                                            <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image/png;base64,".base64_encode($imgblob)." alt=\"$name\">
+                                                                        </div>
+                                                                        <div class=\"card-body\">
+                                                                            <div class=\"Name\">
+                                                                            <p class=\"card-text product-name\">$name</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            
+                                                            ");
+                                                        }
+                                                    }
+                                                    else{
+                                                        ?>
+                                                            <div class="row" style="display:block;width:100%;text-align:center;">
+                                                                <img src="/img/resource/shop-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                                <h5>No Shop Found</h5>
+                                                            </div>
+                                                        <?php  
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <div class="row" style="display:block;width:100%;text-align:center;">
+                                                        <img src="/img/resource/shop-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <h5>No Shop Found</h5>
+                                                    </div>
+                                                <?php  
+                                                }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Product List -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <div class="row">
@@ -240,16 +318,6 @@
                                         <div class="card-content row mb-3" style="display: none">
                                             <!--PHP Loop Product List by Search Result-->
                                             <?php
-                                                /*
-                                                $SearchBy = $_GET['Search'];
-                                                $SortBy = $_GET['SortBy'];
-                                                $Rating = $_GET['Rating'];
-                                                $minPrice = $_GET['minPrice'];
-                                                $maxPrice = $_GET['maxPrice'];
-                                                $StandardDelivery = $_GET['chkStandardDelivery'];
-                                                $SelfCollection = $_GET['chkSelfCollection'];
-                                                */
-
                                                 //Check for Main Category
                                                 $sql = "SELECT A.product_id, R.rating FROM product AS A 
                                                 LEFT JOIN (SELECT DISTINCT(product_id), rating FROM reviewRating t1 WHERE rating = (SELECT MIN(rating) FROM reviewRating WHERE product_id = t1.product_id)) AS R ON A.product_id = R.product_id 
@@ -272,7 +340,7 @@
                                                 if(isset($_SESSION['Search']))
                                                 {
                                                     $SearchBy = $_SESSION['Search'];
-                                                    $sql .= "AND product_name LIKE '%$SearchBy%' ";
+                                                    $sql .= "AND (product_name LIKE '%$SearchBy%') ";
                                                 }
 
                                                 if(isset($_SESSION['chkStandardDelivery']))
@@ -503,6 +571,15 @@
                                                             }
                                                         }
                                                     }
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <div class="row" style="display:block;width:100%;text-align:center;">
+                                                        <img src="/img/resource/product-not-found.png" style="width:200px; height:200px;opacity:0.3;"/>
+                                                        <h5>No Result Found</h5>
+                                                    </div>
+                                                <?php  
                                                 }
                                                 
                                             ?>

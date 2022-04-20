@@ -1,13 +1,22 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if(isset($_GET['AdminPanel']))
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+    
+    if(isset($_GET['Panel']))
     {
         $_SESSION['AdminPanel'] = $_GET['AdminPanel'];
     }
     else
     {
-        $_SESSION['AdminPanel'] = "All"
+        $_SESSION['AdminPanel'] = "All";
     }
 
     $subCategoryArray = array();
@@ -44,32 +53,32 @@
     }      
 
     //Product Status in DB - Active, Inactive, Banned, Suspended, Deleted
-    if(isset($_POST['PublishProduct']))
+    if(isset($_POST['BanProduct']))
     {
-        $categoryId = $_POST['PublishProduct'];
-        $sql = "UPDATE `product` SET product_status= 'A' WHERE product_id = '$categoryId'";
+        $productId = $_POST['BanProduct'];
+        $sql = "UPDATE `product` SET product_status= 'B' WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql))
         {
             $Panel = $_SESSION['AdminPanel'];
             ?>
                 <script type="text/javascript">
-                    alert("Publish Successful");
-                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    alert("Ban Successful");
+                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
     }
-    else if(isset($_POST['UnpublishProduct']))
+    else if(isset($_POST['UnbanProduct']))
     {
-        $categoryId = $_POST['UnpublishProduct'];
-        $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$categoryId'";
+        $productId = $_POST['UnbanProduct'];
+        $sql = "UPDATE `product` SET product_status= 'I' WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql))
         {
             $Panel = $_SESSION['AdminPanel'];
             ?>
                 <script type="text/javascript">
-                    alert("Unpublish Successful");
-                    window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                    alert("Approve Successful");
+                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
@@ -191,9 +200,7 @@
                             <nav id="myTab" class="nav nav-tabs" role="tablist">
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "All" ? "active" : "" ); ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php echo($_GET['Panel'] == "All" ? "true" : "false"); ?>">All</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Publish" ? "active" : ""); ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php echo($_GET['Panel'] == "Publish" ? "true" : "false"); ?>">Published</a>
-                                <a class="nav-item nav-link <?php echo($_GET['Panel'] == "OutOfStock" ? "active" : ""); ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php echo($_GET['Panel'] == "OutOfStock" ? "true" : "false"); ?>">Out of Stock</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Violation" ? "active" : ""); ?>" id="nav-violation-tab" href="?Panel=Violation" aria-selected="<?php echo($_GET['Panel'] == "Violation" ? "true" : "false"); ?>">Banned</a>
-                                <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Unpublish" ? "active" : ""); ?>" id="nav-unpublish-tab" href="?Panel=Unpublish" aria-selected="<?php echo($_GET['Panel'] == "Delisted" ? "true" : "false"); ?>">Delisted</a>
                             </nav>
 
                             <br>
@@ -265,6 +272,9 @@
                                                                 break;
                                                         }
                                                     }
+
+                                                    $shopId = $_SESSION['userId'];
+                                                    $sql .= " AND A.shop_id = '$shopId'";
 
                                                     $result = mysqli_query($conn, $sql);
 
@@ -419,12 +429,13 @@
                                                             //Fetch each product information
                                                             $id = $row['product_id'];
                                                             $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                            C.max_price,D.min_price,F.total_stock FROM `product` AS A 
+                                                            C.max_price,D.min_price,F.total_stock,G.shop_name FROM `product` AS A 
                                                             LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
                                                             LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
                                                             LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-                                                            WHERE A.product_id = '$id' 
+                                                            LEFT JOIN shopProfile AS G ON A.shop_id = G.shop_id
+                                                            WHERE A.product_id = '$id' AND (A.product_status = 'A' OR  A.product_status = 'B')
                                                             LIMIT 1";
                                                             $result_1 = mysqli_query($conn, $sql_1);
                                                 
@@ -433,7 +444,6 @@
                                                                     
                                                                     echo("
                                                                         <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                            <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                                 <div class=\"card\">
                                                                                     <div class=\"image-container\">
                                                                                         <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
@@ -441,9 +451,6 @@
                                                                                     <div class=\"card-body\">
                                                                                         <div class=\"Name\">
                                                                                             <p class=\"card-text product-name\">".$row_1['product_name']."</p>
-                                                                                        </div>
-                                                                                        <div class=\"Tag\">
-                                                                                            <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
                                                                                         </div>
                                                                                         <div class=\"Price\">
                                                                     ");
@@ -460,67 +467,50 @@
                                                                             echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
                                                                         }
                                                                         
-                                                                        echo("
-                                                                                        </div>
-                                                                                            <div class=\"row\" style=\"height: 40px;\">
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['total_stock']."</p>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                                </div>
-                                                                                            </div>
-                                                                        ");
+                                                                        echo("</div>");
                                                                     }
                                                                     //If no variation
                                                                     else
                                                                     {
                                                                         echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
 
+                                                                        echo("</div>");
+                                                                    }
+
+                                                                    echo("
+                                                                    <div class=\"row\" style=\"height: 40px;\">
+                                                                        <div class=\"col-xl-12\">
+                                                                            <p style=\"font-size:0.8rem;color:grey;\">".$row_1['shop_name']."</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    ");
+
+                                                                    
+
+                                                                    if($row_1['product_status'] == "A")
+                                                                    {
                                                                         echo("
-                                                                                        </div>
-                                                                                            <div class=\"row\" style=\"height: 40px;\">
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Stock ".$row_1['product_stock']."</p>
-                                                                                                </div>
-                                                                                                <div class=\"col-xl-6\">
-                                                                                                    <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                                </div>
-                                                                                            </div>
+                                                                            <div class=\"row\">
+                                                                                <div class=\"col-xl-12\" style=\"padding:0;\">
+                                                                                    <button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"BanProduct\" value=\"".$row_1['product_id']."\" >Ban</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        ");
+                                                                    }
+                                                                    else if($row_1['product_status'] == "B")
+                                                                    {
+                                                                        echo("
+                                                                            <div class=\"row\">
+                                                                                <div class=\"col-xl-12\" style=\"padding:0;\">
+                                                                                    <button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"UnbanProduct\" value=\"".$row_1['product_id']."\" >Approve</button>
+                                                                                </div>
+                                                                            </div>
                                                                         ");
                                                                     }
 
                                                                     echo("
-                                                                        <div class=\"row\">
-                                                                        <div class=\"col-xl-12\" style=\"padding:0;\">
-                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"editProduct.php?id=".$row_1['product_id']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                                        </div>
-                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                    ");
-
-                                                                    if($row_1['product_status'] == "A")
-                                                                    {
-                                                                        echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Delist</button>");
-                                                                    }
-                                                                    else if($row_1['product_status'] == "I")
-                                                                    {
-                                                                        echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
-                                                                    }
-
-                                                                    echo("
-                                                                    </div>
-                                                                        <div class=\"col-xl-6\" style=\"padding:0;\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row_1['product_id']."\" ><i class=\"fa fa-trash \" aria-hidden=\"true\"></i></a>
-                                                                        </div>
-                                                                    ");
-
-                                                                    echo("
-                                                                                                
-                                                                                            
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    </div>       
                                                                                 </div>   
-                                                                            </a>
                                                                         </div>
                                                                     ");
                                                                 }

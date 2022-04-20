@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) || $_SESSION['role'] != "ADMIN"){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_POST['addMain'])){
 
         $categoryName = $_POST['addCategoryName'];
@@ -134,31 +143,29 @@
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                $fileName = round(microtime(true) * 1000).".".$ext;
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_update .= ", category_pic = '$fileName' ";
-                    }
-                }
-                else if($defaultFile[$key] != "") //Get the default picture name
-                {
-                    $fileName = $defaultFile[$key];
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                     $sql_update .= ", category_pic = '$fileName' ";
                 }
-                else
-                {
-                    $sql_update .= ", category_pic = '' ";
-                }
-            } 
-        }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $fileName = $defaultFile[$key];
+                $sql_update .= ", category_pic = '$fileName' ";
+            }
+            else
+            {
+                $sql_update .= ", category_pic = '' ";
+            }
+        } 
 
         $sql_update .= " WHERE category_id = $categoryId ";
 
@@ -216,7 +223,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" id="mainContainer" style="height: 80vh;">
+<div class="container-fluid" id="mainContainer" style="min-height: 80vh;">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -338,15 +345,27 @@
                                             }
                                             echo("</div>");
                                             echo("
+                                                <div>
+                                                    <div class=\"input-group\">
+                                                        <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    </div>
+                                                </div>
+                                            ");
+                                        }
+                                        else
+                                        {
+                                            echo("
+                                            <div class=\"categoryList\">
+                                            </div>
                                             <div>
                                                 <div class=\"input-group\">
                                                     <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
-                                        ");
+                                            
+                                            ");
                                         }
                                     }
-                                    
                                 ?>
                             </div>
                         </div>
@@ -740,6 +759,7 @@
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
                 img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -748,23 +768,39 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                var ext = img.files[0].name.split('.').pop();
+                var maxsize = 2000000;
                 var extArr = ["jpg", "jpeg", "png"];
-                if(img.files && img.files[0])
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++)
                 {
-                    if(extArr.includes(ext))
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
                     {
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                        img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                        img.parentElement.parentElement.classList.add("hide");
+                        imageValid = false;
                     }
-                    else{
-                        alert("This Image is not a valid format");
-                        img.value = "";
+                }
+
+                if(imageValid)
+                {
+                    if(img.files && img.files[0])
+                    {
+                        if(img.files[0].size < maxsize)
+                        {
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
+                        }
                     }
+                }
+                else
+                {
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
+
+        
     }
 
 </script>

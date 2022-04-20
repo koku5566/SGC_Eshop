@@ -29,7 +29,7 @@
                     $_SESSION['uid'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+					?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 				}
 			} else {
 				$Login = false;
@@ -49,7 +49,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-6 col-md-9">
+            <div class="col-xl-8 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->

@@ -70,12 +70,15 @@
     {
         $_SESSION['uid'] = "";
     }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
     if(!isset($_SESSION['role']))
     {
         $_SESSION['role'] = "";
     }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,9 +95,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -278,6 +279,14 @@
                             </div>
                         </li>
 
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <li class="nav-item no-arrow">
+                            <a class="nav-link" href="cart.php">
+                                <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
+                            </a>
+                        </li>
+                        
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->

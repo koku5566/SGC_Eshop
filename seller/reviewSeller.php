@@ -22,6 +22,9 @@ if($_SESSION['login'] == false)
 
 ?>
 <?php
+
+$shopId = "14";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_POST['uimg'])  ){	
             
             
@@ -105,7 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 ?>
 
 <!-- Begin Page Content -------------------------------------------------------------------------------------------------------------------->
-<div class="container-fluid" style="width:100%;">
+<div class="container-fluid" id="mainContainer">
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Review Seller</h1>
 	</div>
@@ -230,9 +233,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 						  <label>Product</label>
 						  <select class="form-control" id = "selectSeller">
 							  <option value = "All">All*</option>
+							  <?php
+							    $sql ="SELECT product_id, product_name 
+									   FROM product
+									   WHERE shop_id = '$shopId'";
+								if($stmt = mysqli_prepare ($conn, $sql)){
+									mysqli_stmt_execute($stmt);
+									mysqli_stmt_bind_result($stmt, $k1, $k2);
+									
+									while(mysqli_stmt_fetch($stmt)){
+										echo "<option value = '$k1'>$k2</option>";
+									}
+									mysqli_stmt_close($stmt);									
+								}							  							  
+							  ?>
+							  <!--
 							  <option value = "P000001">Product 1</option>
 							  <option value = "P000002">Product 2</option>
-							  <option value = "P000003">Product 3</option>							  
+							  <option value = "P000003">Product 3</option>		
+							  -->							  
 						</select>
 					</div>
 					<div class="col">
@@ -359,6 +378,12 @@ h4.displayCategoryModal{
 	overflow: auto;
 	border: 1px solid rgba(0 0 0 / .1);
 	border-radius: 5px;
+}
+.tqy{
+		color: #A31F37
+	}
+.ratingStar {
+    font-weight: inherit;
 }
 </style>
 

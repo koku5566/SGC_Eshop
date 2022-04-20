@@ -17,14 +17,13 @@
 ?>
 
 <?php
-    $_SESSION['eventID'] = 1;
     //--------------Add new form element------------------------
     if(isset($_POST["addFormElementSubmit"])){
         $fieldName = mysqli_real_escape_string($conn, SanitizeString($_POST["fieldName"]));
         $fieldType = mysqli_real_escape_string($conn, SanitizeString($_POST["formElementSelect"]));
         $fieldOption = mysqli_real_escape_string($conn, SanitizeString($_POST["optionForList"]));
         $checkRequire = mysqli_real_escape_string($conn, $_POST['requiredCheck'] ? "required" : "optional");
-        $eventID = 1;//$_SESSION['event']
+        $eventID = $_SESSION['eventID'];
         
         $sql = "INSERT INTO `formElement`(`event_id`, `field_name`, `element_type`, `selection`, `required`) VALUES (?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){

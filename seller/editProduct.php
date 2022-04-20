@@ -1,18 +1,25 @@
 <?php
     require __DIR__ . '/header.php';
 
-    
+    if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+            </script>
+        <?php
+        exit;
+	}
+
     if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
-        $_SESSION['userid'] = "14";
-        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];
         $productName = $_POST['productName'];
-        $productDescription = htmlspecialchars($_POST["productDescription"]);
+        $productDescription = mysqli_real_escape_string($conn, $_POST["productDescription"]);
         $productBrand = $_POST['productBrand'];
 
         $productType = $_POST['productType'];
@@ -69,33 +76,36 @@
         $sql_update .= "product_cover_video = '$productVideo', ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
-        $defaultFile = $_POST['imgDefault'];
+        $defaultFile = array_filter($_POST['imgDefault']);
         $imgInpCounter = 0;
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/product/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
-
+        
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
-            $fileName = basename($_FILES['img']['name'][$key]); 
-            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $fileName = round((microtime(true) * 1000) + 1).".".$ext;
-            $targetFilePath = $targetDir.$fileName; 
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+            if($key < 9)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round((microtime(true) * 1000) + 1).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                        $imgInpCounter++;
+                    }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
                     $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
                     $imgInpCounter++;
                 }
-            }
-            else if($defaultFile[$key] != "") //Get the default picture name
-            {
-                $fileName = $defaultFile[$key];
-                $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
-                $imgInpCounter++;
             }
         } 
 
@@ -179,8 +189,7 @@
     {
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
-        //$shopId = $_SESSION['user_id'];
-        $shopId = "14";
+        $shopId = $_SESSION['uid'];
 
         //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
         $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
@@ -316,7 +325,16 @@
                                                                         <div class=\"image-tools-add $add\">
                                                                             <label class=\"custom-file-upload\">
                                                                                 <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
-                                                                                <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                            ");
+                                                            if($i == 0)
+                                                            {
+                                                                echo("<input id=\"coverImgDefault\" name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            else
+                                                            {
+                                                                echo("<input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            echo("
                                                                                 <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
                                                                             </label>
                                                                         </div>
@@ -400,16 +418,17 @@
                                     <select class="form-control" id="subCategory" name="subCategoryId">
                                         <?php
                                             //Sub Category
-                                            $sql_selectSubId = "SELECT sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $sql_selectSubId = "SELECT main_category,sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
                                             $result_selectSubId = mysqli_query($conn, $sql_selectSubId);
 
                                             if (mysqli_num_rows($result_selectSubId) > 0) {
                                                 while($row_selectSubId = mysqli_fetch_assoc($result_selectSubId)) {
+                                                    $tempMainCategoryId = $row_selectSubId["main_category"];
                                                     $subCategoryId = $row_selectSubId["sub_category"];
                                                 }
                                             }
 
-                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$tempMainCategoryId' AND sub_Yes = '1'";
                                             $result_1 = mysqli_query($conn, $sql_1);
                                 
                                             if (mysqli_num_rows($result_1) > 0) {
@@ -442,7 +461,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo(html_entity_decode($i_product_description)); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000"><?php echo(html_entity_decode($i_product_description)); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1027,27 +1046,34 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.warning').length == 0)
+        if(document.querySelectorAll('.imgInp')[0].value != "" || document.getElementById('coverImgDefault').value != "")
         {
-            if(document.getElementById("productType").value == "0")
+            if(document.querySelectorAll('.warning').length == 0)
             {
-                if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                if(document.getElementById("productType").value == "0")
                 {
+                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    {
+                        document.getElementById("EditProduct").click();
+                    }
+                    else
+                    {
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").focus();
+                    }
+                }
+                else{
                     document.getElementById("EditProduct").click();
                 }
-                else
-                {
-                    document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
-                    document.getElementById("checkbox-err-msg").focus();
-                }
-            } 
-            else{
-                document.getElementById("EditProduct").click();
+            }
+            else
+            {
+                alert("Please Enter Distinct Product Variation and Choices");
             }
         }
         else
         {
-            alert("Please Enter Distinct Product Variation and Choices");
+            alert("Please Select a Cover Picture");
         }
     }
 
@@ -1305,7 +1331,7 @@
                 {
                     if (img.files && img.files[0] && img.files.length > 1) {
                         for (var j = 0,i = 0; i < this.files.length; i++) {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }
@@ -1322,7 +1348,7 @@
                         var j = 0;
                         if(img.files[0].size < maxsize)
                         {
-                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 9)
+                            while(imgInp[j].parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('src') != "" && j < 8)
                             {
                                 j++;
                             }

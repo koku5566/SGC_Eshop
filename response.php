@@ -4,6 +4,7 @@ use PayPal\Api\PaymentExecution;
 
 require __DIR__. '/config.php';
 
+date_default_timezone_set("Asia/Kuala_Lumpur");
 if (empty($_GET['paymentId']) || empty($_GET['PayerID'])) {
     throw new Exception('The response is missing the paymentId and PayerID');
 }
@@ -19,7 +20,7 @@ try {
     $payment->execute($execution, $apiContext);
 
     try {
-        $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
+        $db = new mysqli($dbConfig['HOST'], $dbConfig['USERNAME'], $dbConfig['PASSWORD'], $dbConfig['NAME']);
 
         $payment = Payment::get($paymentId, $apiContext);
 
@@ -40,7 +41,7 @@ try {
             exit(1);
         } else {
             // Payment failed
-			header("location:https://eshop.sgcprototype2.com/payment-cancelled.html");
+			header("location:https://eshop.sgcprototype2.com/PaypalFailed.php");
              exit(1);
         }
 
@@ -66,9 +67,9 @@ function addPayment($data)
 
     if (is_array($data)) {
 		//'isdsssss' --- i - integer, d - double, s - string, b - BLOB
-        $stmt = $db->prepare('INSERT INTO `paymentPaypal` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO `payments` (product_id,transaction_id, payment_amount,currency_code, payment_status, invoice_id, product_name, createdtime) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->bind_param(
-            'isdsssss',
+            'ssdsssss',
             $data['product_id'],
             $data['transaction_id'],
             $data['payment_amount'],
@@ -80,7 +81,7 @@ function addPayment($data)
         );
         $stmt->execute();
         $stmt->close();
-		
+
         return $db->insert_id;
     }
 
