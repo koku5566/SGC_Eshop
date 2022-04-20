@@ -6,8 +6,15 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $result = $conn->query($sql);
+?>
+
+<?php
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
     $result = $conn->query($sql);
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
