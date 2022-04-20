@@ -175,6 +175,7 @@
                VALUES('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$status', '$delist')";
 
 
+      echo($sqlv);
       $result = mysqli_query($conn,$sqlv);
 
       if(mysqli_query($conn, $sqlv)){
@@ -192,7 +193,7 @@
                echo '<script>alert("Voucher is pending to added, need to be approved by admin.")</script>';
                ?>
                   <script type="text/javascript">
-                        window.location.href = window.location.origin + "/seller/createVoucher.php";
+                        //window.location.href = window.location.origin + "/seller/createVoucher.php";
                   </script>
                <?php
             }
