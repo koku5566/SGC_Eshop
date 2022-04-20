@@ -555,6 +555,7 @@
 						<!--------------------------Rating PICK PICK---------------------------->
 						<?php
 							$apa = $_SESSION["productID"];
+							$apaDisplay = false;
 						 $sql ="SELECT rr_id
 								FROM reviewRating
 								WHERE product_id = '$apa'";
@@ -563,12 +564,17 @@
 								mysqli_stmt_bind_result($stmt, $c1);
 								
 								while(mysqli_stmt_fetch($stmt)){
-									echo"sohai - $c1";
+									$apaDisplay = true;
 								}
 								mysqli_stmt_close($stmt);									
 							}
 						
-						
+						if($apaDisplay == false){
+							echo "<script>
+										document.getElementById('pickpickrating').style.display = 'none'
+										document.getElementById('reviewShowMe').style.display = 'none'
+								  </script>";
+						}
 						
 						?>
 						
