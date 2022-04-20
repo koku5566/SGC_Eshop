@@ -241,7 +241,7 @@
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
+               <button type="submit" id="EditFacility" name="EditFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>
