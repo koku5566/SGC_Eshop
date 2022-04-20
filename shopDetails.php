@@ -227,11 +227,11 @@
       }
       
       .circle1{
-        left: 50px;
+        left: 45px;
       }
       
       .circle2{
-        right: 900px;
+        right: 950px;
       }
 
       .imgContainer
