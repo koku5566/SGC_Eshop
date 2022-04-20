@@ -9,7 +9,6 @@
     $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
     $result = $conn->query($sql);
-    echo 'voucher_startdate';
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
 <?php
@@ -94,7 +93,19 @@
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
-                <p>date</p>
+                <p>
+                <?php
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      echo " " . $row["product_name"]. " " . $row["product_description"]. " ";
+                    }
+                  } else {
+                    echo "error";
+                  }
+                  $conn->close();
+                ?>
+                </p>
                 
                 <div class="circle1"></div>
                 <div class="circle2"></div>
@@ -135,12 +146,11 @@
               </div>
             </div>
             <?php
-            }
-          } else {
-            echo "error";
-          }
-          $conn->close();
-
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
             ?>
           </div>
         </section>
