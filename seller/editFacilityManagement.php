@@ -89,6 +89,7 @@
         $campusId = $_SESSION['uid'];
 
         $sql_facility = "SELECT * FROM facilityPic WHERE id = '$Id' AND campus_id = '$campusId'";
+        echo($sql_facility);
         $result_facility = mysqli_query($conn, $sql_product);
 
         if (mysqli_num_rows($result_product) > 0) {
@@ -124,7 +125,7 @@
 
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-   <h2 class="m-4">Facility Management</h2>
+   <h2 class="m-4">Edit Facility Management</h2>
    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
