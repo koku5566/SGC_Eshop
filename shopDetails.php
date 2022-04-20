@@ -132,7 +132,7 @@
                 while($row1 = $result1->fetch_assoc()) {
             ?>
             
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
@@ -237,7 +237,7 @@
       }
       
       .circle1, .circle2{
-        background: ;
+        background: #fff;
         width: 50px;
         height: 50px;
         border-radius: 50%;
