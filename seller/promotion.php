@@ -227,7 +227,9 @@
                                                     </div>"
                                                 );
                                             }
-                                                        
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
+                                            }       
                                         }
                                     ?>
                                     <!-- Approve - View/Approve/Reject Section -->
