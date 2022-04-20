@@ -254,7 +254,16 @@ else if($orderstatus=='Delivered'){
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script src="//www.tracking.my/track-button.js"></script>
 <script>
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+
 var one = $("#one").val;
 var two = $("#two").val;
 var three = $("#three").val;
