@@ -45,6 +45,12 @@
   <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
         <?php
+        if(count($promotion_image)==0)
+        {
+          echo("<div class=\"carousel-item active\"> <img src=\"/img/resourse/default_image.png\" alt=\"default_image\"> </div>");
+        }
+        else 
+        {
           for($i = 0; $i < count($promotion_image); $i++)
           {
             if($promotion_image[$i] != "")
@@ -60,6 +66,8 @@
               }
             }
           }
+        }
+          
        ?>
       </div>
     <!-- Left right --> 
