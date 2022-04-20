@@ -50,36 +50,7 @@
 echo $orderstatus;?>
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
-<script>
-var orderstatus = document.getElementById("orderstatus").value;
 
-
-console.log(orderstatus);
-if(orderstatus == 'Placed')
-{
-    document.getElementById("placed").className ="step completed";
-}
-else if(orderstatus == 'Paid')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
-}
-else if(orderstatus == 'Shipped')
-{
-    console.log('can work');
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
-    document.getElementById("shipped").className ="step completed";
-}
-else if(orderstatus == 'Delivered')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className = "step completed";
-    document.getElementById("shipped").className ="step completed";
-    document.getElementById("delivered").className ="step completed";
-}
-
-</script>
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
@@ -542,3 +513,33 @@ else if(orderstatus == 'Delivered')
     }
 </style>
 
+<script>
+var orderstatus = document.getElementById("orderstatus").value;
+
+
+console.log(orderstatus);
+if(orderstatus == 'Placed')
+{
+    document.getElementById("placed").className ="step completed";
+}
+else if(orderstatus == 'Paid')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+}
+else if(orderstatus == 'Shipped')
+{
+    console.log('can work');
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+    document.getElementById("shipped").className ="step completed";
+}
+else if(orderstatus == 'Delivered')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className = "step completed";
+    document.getElementById("shipped").className ="step completed";
+    document.getElementById("delivered").className ="step completed";
+}
+
+</script>
