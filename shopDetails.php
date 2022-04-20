@@ -133,7 +133,7 @@
             ?>
             
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card" style="height:50vh;">
+              <div class="card"><!--<div class="card" style="height:50vh;">-->
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="/img/product/<?php echo $row1['product_cover_picture']?>"
