@@ -571,8 +571,8 @@
 						
 						if($apaDisplay == false){
 							echo "<script>
-										document.getElementById('pickpickrating').style.display = 'none'
-										document.getElementById('reviewShowMe').style.display = 'none'
+										document.getElementById('pickpickrating').style.display = 'none';
+										document.getElementById('reviewShowMe').style.display = 'none';
 								  </script>";
 						}
 						
