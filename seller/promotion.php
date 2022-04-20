@@ -730,8 +730,7 @@
                                     $promotionId = $_GET['edit'];
                                     $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
                                     $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
-
-                                    $result = mysqli_query($conn, $sql);
+                                    
                                     //check if date valid
                                     if( $dateEnd < $dateStart)
                                     {
@@ -739,7 +738,7 @@
                                     }
 
                                     else {
-                                        
+                                        $result = mysqli_query($conn, $sql);
                                         if(mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $promotionId = $row["promotionID"];
