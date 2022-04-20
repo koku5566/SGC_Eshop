@@ -166,11 +166,13 @@
       $voucherType = $_POST['voucherType'];
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
+      $vstatus = "2";
+      $vlist = "0";
       $date = date('Y-m-d H:i:s');
 
       
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
-               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '2', '0');";
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vstatus', '$vlist');";
       
       mysqli_query($conn, $sqlv);
 
@@ -186,16 +188,16 @@
 
          if($res)
             {
-                if($status == 2)
+                if($vstatus == 2)
                 {
                     echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
                     ?>
                         <script type="text/javascript">
-                            window.location.href = window.location.origin + "/seller/promotion.php";
+                            window.location.href = window.location.origin + "/seller/createVoucher.php";
                         </script>
                     <?php
                 }
-                else if ($status == 0)
+                else if ($vstatus == 0)
                 {
                     echo '<script>alert("Voucher is added")</script>';
                 }
