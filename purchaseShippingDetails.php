@@ -264,10 +264,10 @@ else if($orderstatus=='Delivered'){
     });
   }
 
-var one = $("#one").val;
-var two = $("#two").val;
-var three = $("#three").val;
-var four = $("#four").val;
+var one = document.getElementById("one").value;
+var two = document.getElementById("two").value;
+var three = document.getElementById("three").value;
+var four = document.getElementById("four").value;
 
 console.log(one, two, three, four);
 if(one!= null)
