@@ -30,9 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
             
             $selectedPID = $_POST['uimg'];
             //CHANGE SELLER ID HOR I TELL U SLAP KAO U
+			/*
             $sql = "SELECT rr_id, product_id, user_id, message, rating, seller_id, r_message 
 					FROM reviewRating
-					WHERE rr_id = ? && disable_date IS NULL && seller_id = 'S000001';";
+					WHERE rr_id = ? && disable_date IS NULL && seller_id = '$shopId';";
+			*/
+		    $sql = "SELECT rr.*, u.username 
+					FROM user u INNER JOIN   
+					(SELECT  rr_id, product_id, user_id, message, rating, seller_id, r_message, pic1, pic2, pic3, pic4, pic5
+					FROM reviewRating
+					WHERE disable_date IS NULL) rr
+					ON u.userID = rr.user_id
+					WHERE rr.rr_id = ? && rr.seller_id = '$shopId'";
 		   
             if($stmt = mysqli_prepare ($conn, $sql)){
                 mysqli_stmt_bind_param($stmt, "s", $selectedPID);	//HARLO IF THIS INT = i, STRING = s
@@ -40,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+                    mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13);
                     mysqli_stmt_fetch($stmt);
                 }
                 
@@ -126,16 +135,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;"><?php echo(isset($c13) && !empty ($c13))? $c13 : ''; ?></h6>
 										<div style="margin-bottom: 0.1em;">
 											<?php 									
 											$starR = '';
 											if(isset($c5) && !empty ($c5)){
 												for($i=0; $i<5; $i++){
 													if($i < $c5){
-														$starR .='<i class="bi bi-star-fill"></i> ';
+														$starR .='<i class="fa fa-star tqy"></i> ';
+														
 													}else{
-													 $starR .='<i class="bi bi-star"></i> ';
+													 $starR .='<i class="fa fa-star ratingStar tqy"></i> ';
 													}
 												}
 												echo $starR;
@@ -157,11 +167,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
+												<?php
+												
+												
+													$picR = "../";
+													 if($c8 === null || $c8 == ''){
+													
+														 /*
+														 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
+														 */
+														 echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";
+													 }else{
+														 //DISPLAY REAL PICTURE/VIDEO THEY POST
+														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
+														$pic1 = $picR . $c8;
+														echo "<td><img src='".$pic1."' class='imgReply'></td>";
+													 }
+														 
+												
+												
+												
+												
+												?>
+												<!--
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
+												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
+												
+												-->
 											<tr>
 										</table>																			
 																					
@@ -292,6 +327,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.tqy{
+		color: #A31F37
+	}
 .imgReply{
 	width: 75%;
 	height: 75%;
