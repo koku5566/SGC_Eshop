@@ -642,7 +642,7 @@
 												<div class="row">
 													<!-- Card Body -->
 													<div class="card-body">
-														<div class="row" style = "background-color: lightblue;" id = "displaySearch">
+														<div class="row" style = "background-color: ;" id = "displaySearch">
 															
 														</div>
 													</div>  
@@ -743,8 +743,9 @@
 	}
 	.divpink{
 		padding-bottom: .625rem; 
-		
 		padding-top: .625rem;
+		background-color: #fff;
+		border-radius: 8px;
 	}
 	.namestar{
 		min-height: 6rem;
