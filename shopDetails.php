@@ -145,7 +145,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>" . $row1["product_price"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
