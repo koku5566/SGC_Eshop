@@ -167,6 +167,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 										</h6>
 										<table style = "margin-bottom: 0.3rem;">
 											<tr>
+												<?php
+												
+												$picR = '';
+												 for($i=1; $i<=5; $i++){
+													 if('$c' . "$i" === null || '$c' . "$i" == ''){
+														 $picR .='';
+														 /*
+														 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
+														 */
+													 }else{
+														 //DISPLAY REAL PICTURE/VIDEO THEY POST
+														 $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
+													 }
+														 
+												 }
+												
+												
+												
+												?>
+												
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
