@@ -223,7 +223,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" id="mainContainer" style="height: 80vh;">
+<div class="container-fluid" id="mainContainer" style="min-height: 80vh;">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -345,15 +345,27 @@
                                             }
                                             echo("</div>");
                                             echo("
+                                                <div>
+                                                    <div class=\"input-group\">
+                                                        <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    </div>
+                                                </div>
+                                            ");
+                                        }
+                                        else
+                                        {
+                                            echo("
+                                            <div class=\"categoryList\">
+                                            </div>
                                             <div>
                                                 <div class=\"input-group\">
                                                     <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
-                                        ");
+                                            
+                                            ");
                                         }
                                     }
-                                    
                                 ?>
                             </div>
                         </div>
