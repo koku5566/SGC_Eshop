@@ -222,7 +222,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 15%;
+        top: 17%;
         transform: translateY(-50%);
       }
       
@@ -231,7 +231,7 @@
       }
       
       .circle2{
-        right: 500px;
+        right: 800px;
       }
 
       .imgContainer
