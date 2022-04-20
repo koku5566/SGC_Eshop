@@ -1,12 +1,12 @@
 <?php
-   require __DIR__ . '/header.php'
+   require __DIR__ . '/header.php';
   
 ?> 
 <?php
 
     $facilityid = $_GET['id'];
-   if(isset($_POST['EditFacility']))
-   {
+    
+    if(isset($_POST['EditFacility'])){
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
@@ -15,7 +15,7 @@
       $priceperhour = $_POST['priceperhour'];
       $contact = $_POST['contactwhatsapp'];
 
-      $sql_update = "UPDATE facilityPic SET"
+      $sql_update = "UPDATE facilityPic SET";
       $sql_update .= "title = '$title',";
       $sql_update .= "pic_description = '$description',";
       $sql_update .= "address = '$address',";
@@ -89,9 +89,9 @@
         $campusId = $_SESSION['uid'];
 
         $sql_facility = "SELECT * FROM facilityPic WHERE id = '$Id' AND campus_id = '$campusId'";
-        $result_facility = mysqli_query($conn, $sql_product);
+        $result_facility = mysqli_query($conn, $sql_facility);
 
-        if (mysqli_num_rows($result_product) > 0) {
+        if (mysqli_num_rows($result_facility) > 0) {
             while($row_facility = mysqli_fetch_assoc($result_facility)) {
                 $i_facility_title = $row_facility['title'];
                 $i_facility_address = $row_facility['address'];
@@ -104,6 +104,7 @@
             }
         }  
     }
+    
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -123,7 +124,7 @@
 
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-   <h2 class="m-4">Facility Management</h2>
+   <h2 class="m-4">Edit Facility Management</h2>
    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
@@ -239,7 +240,7 @@
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Add Facility</button>
+               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>

@@ -201,33 +201,41 @@
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
                                             $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId'";
-                                            if(`status` = 9)
-                                            {
-                                                echo ("
-                                                        <div class=\"row\">
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">.$row['promotion_title']</p>
-                                                        </div>
-                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
-                                                        </div>
-                                                    </div>"
-                                                );
+                                            $result = $conn->query($sql);
+                                            if($result-> num_rows > 0){
+                                                while($row = $result->fetch_assoc())
+                                                {
+                                                    if(`status` = 9)
+                                                    {
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <p class=\"p-title\">.$row['promotion_title']</p>
+                                                                </div>
+                                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                                </div>
+                                                            </div>"
+                                                        );
+                                                    }
+                                                    else if(`status`= 1)
+                                                    {
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <p class=\"p-title\">.$row['promotion_title']</p>
+                                                                </div>
+                                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</a>
+                                                                </div>
+                                                            </div>"
+                                                        );
+                                                    }
+                                                }
                                             }
-                                            else if(`status`= 1)
-                                            {
-                                                echo ("
-                                                        <div class=\"row\">
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">.$row['promotion_title']</p>
-                                                        </div>
-                                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</a>
-                                                        </div>
-                                                    </div>"
-                                                );
-                                            }
-                                                        
+                                            else{
+                                                echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
+                                            } 
                                         }
                                     ?>
                                     <!-- Approve - View/Approve/Reject Section -->
