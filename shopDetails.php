@@ -103,7 +103,7 @@
                 </div>
                 
                 <p>
-                  <?php echo " " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
+                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
                 <div class="circle1"></div>
@@ -183,6 +183,9 @@
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
+      }
+      .voucher{
+        margin: 0 10px 0 0;
       }
 
       .coupon-card{
