@@ -150,7 +150,9 @@
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
 
-                                        while($row = $result->fetch_assoc()){
+                                        while($row = $result->fetch_assoc())
+                                        {
+                                            $promotionTitle = $row["promotion_title"];
                                             echo"
                                                 <div class=\"row\"> 
                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
@@ -166,9 +168,6 @@
                                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                             <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                         </div>
-                                                    </div>
-                                                    <div class=\"col-xl-12\">
-                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                     </div>
                                                 </div>
                                             <hr>";
