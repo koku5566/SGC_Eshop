@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
       <tbody>
       <?php
       $campusId = $_SESSION["uid"];
-      $getPic= "SELECT * FROM facilityPic WHERE campus_id = '$campusId'";
+      $getPic= "SELECT * FROM facilityPic WHERE campus_id = '$campusid'";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
       foreach($showCategory as $facility): 
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
             <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
-            <a class="btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> </a>
+            <a class="btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> Edit </a>
 
             
             <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
