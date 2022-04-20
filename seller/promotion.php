@@ -443,7 +443,7 @@
                             $status = $_POST['status'];
                             $userId = $_SESSION['userid'];
 
-                            //if date valid
+                            //check if date valid
                             if( $dateEnd < $dateStart)
                             {
                                 echo"<script>alert('The start date and end date is invalid.')</script>";
@@ -729,8 +729,13 @@
                                     $promotionId = $_GET['edit'];
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
+                                    //check if date valid
+                                    if( $dateEnd < $dateStart)
+                                    {
+                                        echo"<script>alert('The start date and end date is invalid.')</script>";
+                                    }
 
-                                    if (mysqli_num_rows($result) > 0) {
+                                    else (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)) {
                                             $promotionId = $row["promotionID"];
                                             $promotionTitle = $row["promotion_title"];
