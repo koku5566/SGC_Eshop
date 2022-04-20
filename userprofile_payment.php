@@ -87,7 +87,6 @@
 
 <hr>
 
-
 <div class="row2">
 	<div class="col2">
 		<div class="container-col2">
@@ -101,8 +100,7 @@
 		</div>
 	</div>
 <div>
-
-
+	
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
@@ -137,7 +135,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
 <!--			<div class=\"mb-3\">
 				<div class=\"userCard\">
