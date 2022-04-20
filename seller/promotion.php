@@ -730,6 +730,7 @@
                                     $promotionId = $_GET['edit'];
                                     $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
                                     $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
+
                                     
                                     //check if date valid
                                     if( $dateEnd < $dateStart)

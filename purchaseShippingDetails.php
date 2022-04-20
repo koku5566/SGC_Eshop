@@ -47,60 +47,10 @@
 ?>
 <?php
 //to determine tracking status bar 
-echo $orderstatus;
+echo $orderstatus;?>
+<input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
-if($orderstatus=='Placed'){
-    ?>
-    <input type="text" id="one" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Paid'){
-    ?>
-    <input type="text" id="two" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Shipped'){
-    ?>
-    <input type="text" id="three" value="<?php echo $orderstatus; ?>">
-<?php
-}
-else if($orderstatus=='Delivered'){
-    ?>
-    <input type="text" id="four" value="<?php echo $orderstatus; ?>">
-<?php
-}
-?>
-<script>
-var one = document.getElementById("one").value;
-var two = document.getElementById("two").value;
-var three = document.getElementById("three").value;
-var four = document.getElementById("four").value;
 
-console.log(one, two, three, four);
-if(one!= null)
-{
-    document.getElementById("placed").className +=" completed";
-}
-else if(two!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
-}
-else if(three!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
-    document.getElementById("shipped").className +=" completed";
-}
-else if(four!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className += " completed";
-    document.getElementById("shipped").className +=" completed";
-    document.getElementById("delivered").className +=" completed";
-}
-
-</script>
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
@@ -126,13 +76,13 @@ else if(four!= null)
                     <h5 class="step-title">Order Paid</h5>
                 </div>
                 <div class="step" id="shipped">
-                    <div class="step-icon-wrap" id="shipped">
+                    <div class="step-icon-wrap">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Order Shipped Out</h5>
                 </div>
                 <div class="step" id="delivered">
-                    <div class="step-icon-wrap" id="delivered">
+                    <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
                     <h5 class="step-title">Order Delivered</h5>
@@ -563,3 +513,33 @@ else if(four!= null)
     }
 </style>
 
+<script>
+var orderstatus = document.getElementById("orderstatus").value;
+
+
+console.log(orderstatus);
+if(orderstatus == 'Placed')
+{
+    document.getElementById("placed").className ="step completed";
+}
+else if(orderstatus == 'Paid')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+}
+else if(orderstatus == 'Shipped')
+{
+    console.log('can work');
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+    document.getElementById("shipped").className ="step completed";
+}
+else if(orderstatus == 'Delivered')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className = "step completed";
+    document.getElementById("shipped").className ="step completed";
+    document.getElementById("delivered").className ="step completed";
+}
+
+</script>
