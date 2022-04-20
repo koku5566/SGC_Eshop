@@ -722,23 +722,23 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-xl-12 col-lg-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Promotion Title</label>
                                     <?php
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId' ,'$dateStart','$dateEnd'";
                                     $promotionId = $_GET['edit'];
-                                    $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
-                                    $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
-
+                                    //$dateStart = date('Y-m-d', strtotime($_POST['startDate']));
+                                    //$dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
                                     
                                     //check if date valid
-                                    if( $dateEnd < $dateStart)
-                                    {
-                                        echo"<script>alert('The start date and end date is invalid.')</script>";
-                                    }
+                                    //if( $dateEnd < $dateStart)
+                                   // {
+                                    //    echo"<script>alert('The start date and end date is invalid.')</script>";
+                                   // }
 
-                                    else {
+                                    //else {
                                         $result = mysqli_query($conn, $sql);
                                         if(mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
@@ -756,7 +756,7 @@
                                             {
                                                 echo '<script>alert("Failed")</script>';
                                             }
-                                    }
+                                    //}
                                     ?>
                                 </div>
                             </div>
