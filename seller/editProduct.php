@@ -1057,7 +1057,7 @@
                 {
                     if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
                     {
-                        document.getElementById("AddProduct").click();
+                        document.getElementById("EditProduct").click();
                     }
                     else
                     {
@@ -1066,7 +1066,7 @@
                     }
                 }
                 else{
-                    document.getElementById("AddProduct").click();
+                    document.getElementById("EditProduct").click();
                 }
             }
             else
