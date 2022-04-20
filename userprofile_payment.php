@@ -67,18 +67,29 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\" value=".$row["bankAcc_id"].">
-				<div class=\"btn btn-primary\">
-					".$row["bank_name"]."
-					".$row["bankAcc_name"]."
-					".$row["account_no"]."
-					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+
+
+			<div class=\"mb-3\">
+				<div class=\"bank\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.3rem;\">".$row["bankAcc_name"]."</p>
+							<p style=\"font-size: 1.15rem;\">
+							".$row["account_no"]."
+							</p>
+						</div>
+					</div>
 				</div>
+				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 			</div>
+			<hr>
 			");
 	}
 ?>
+
 <hr>
+
 <div class="h3">Card</div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
@@ -86,14 +97,23 @@
 	$res_data = mysqli_query($conn,$sql_1);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\">
-				<div class=\"btn btn-primary\" value=".$row["card_id"].">
-					".$row["name"]."
-					".$row["card_number"]."
-					".$row["expiry_date"]."
-					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+
+			<div class=\"mb-3\">
+				<div class=\"card\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">
+							".$row["expiry_date"]."
+							".$row["expiry_date"]."
+							</p>
+						</div>
+					</div>
 				</div>
+				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 			</div>
+			<hr>
 			");
 	}
 ?>
