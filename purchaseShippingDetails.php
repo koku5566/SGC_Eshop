@@ -45,10 +45,10 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
         $phnumber = $orow['phone_number'];
-        $shopprofileimg = $orow['shop_profile_image'];
+        $shopprofilepic = $orow['shop_profile_image'];
         $shopname = $orow['shop_name'];
         $productname = $orow['product_name'];
-        $productcoverimg = $orow['product_cover_picture'];
+        $productcoverpic = $orow['product_cover_picture'];
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
         //$totalamt = $orow['payment_amount'];
@@ -162,7 +162,7 @@ else if($orderstatus=='Delivered'){
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="/img/product/<?php echo $shopprofileimg?>" alt="<?php echo $shopname ?>"
+                        <span><img src="/img/product/<?php echo $shopprofilepic?>" alt="<?php echo $shopname ?>"
                                 width="40" height="40"></span>
                         <span><strong>| <?php echo $shopname ?></strong></span>
                     </div>
@@ -181,7 +181,7 @@ else if($orderstatus=='Delivered'){
                 <tbody>
                     <tr>
                         <td scope="row"><img class="card-img-top img-thumbnail"
-                                                style="object-fit:contain;width:30%;height:30%" src="/img/product/<?php echo $productcoverimg?>"
+                                                style="object-fit:contain;width:30%;height:30%" src="/img/product/<?php echo $productcoverpic?>"
                                 alt="<?php echo $productname?>"></td>
                         <td><?php echo $productname?></td>
                         <td><?php echo $productname?></td>
