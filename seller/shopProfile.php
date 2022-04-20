@@ -65,7 +65,7 @@
 
 <?php
   $sql = "SELECT * FROM shopProfile";
-  $result = mysqli_query($con, $sql);
+  $result = mysqli_query($conn, $sql);
 ?>
 
 <!-- Icon -->
@@ -100,7 +100,7 @@
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name" value="<?php echo $row['shop_name']; ?>" required />/>
+      <input type="text" class="form-control" name="name" value="<?php echo $row['shop_name']; ?>" required />
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
