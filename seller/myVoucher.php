@@ -25,7 +25,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
-   <div class="container m-4">
+<div class="container">
+   <div class="container m-2">
       <div class="form-row">
          <div class="form-group col-md-12">
             <table class="table" id="voucherReview">
@@ -89,6 +90,7 @@
          </div>
       </div>
    </div>
+</div>
 
 <script type ="module">
   $(document).ready(function() {
