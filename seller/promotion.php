@@ -143,9 +143,9 @@
                                         {
                                             $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
                                         }
-                                        else //if($_SESSION['role']=="ADMIN")
+                                        else //if($_SESSION['role']=="ADMIN") B.userID = '$userId' AND
                                         {
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE  `status` = 1";
                                         }
 
                                         $result = $conn->query($sql); 
