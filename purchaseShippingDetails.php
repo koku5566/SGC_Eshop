@@ -37,6 +37,13 @@
         $orderdate = $orow['order_date'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+    
 ?>
 <?php
 //to determine tracking status bar 
@@ -113,23 +120,28 @@ else if($orderstatus=='Delivered'){
                 </div>
             </div>
             <hr>
-            <!--Shipping Progress table-->
-            <table class="table track-shipping">
+             <!--Shipping Progress table-->
+             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php                       
+                     while ($srow = $sresult->fetch_assoc()) {
+                ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td><?php echo $srow['datetime'] ?></th>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
+                <?php 
+                }
+                ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 
