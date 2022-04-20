@@ -142,9 +142,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											if(isset($c5) && !empty ($c5)){
 												for($i=0; $i<5; $i++){
 													if($i < $c5){
-														$starR .='<i class="bi bi-star-fill"></i> ';
+														$starR .='<i class="fa fa-star tqy"></i> ';
+														
 													}else{
-													 $starR .='<i class="bi bi-star"></i> ';
+													 $starR .='<i class="fa fa-star ratingStar" style = "color: transparent;"></i> ';
 													}
 												}
 												echo $starR;
@@ -301,6 +302,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 </div>
 <!-- /.container-fluid --------------------------------------------------------------------------------------------------------------------->
 <style>
+.tqy{
+		color: #A31F37
+	}
 .imgReply{
 	width: 75%;
 	height: 75%;
