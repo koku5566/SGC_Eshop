@@ -167,6 +167,14 @@
         margin:; /* Better set align center */
       }
 
+      .container{
+        width: 50%;
+        background: #f0fff3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .coupon-card{
          background: linear-gradient(135deg, #7158fe, #9d4de6);
          color: #fff;
