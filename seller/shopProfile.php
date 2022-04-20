@@ -23,44 +23,49 @@
 //    }
 ?>
 <?php
-if($conn->connect_error){
-	die("Connection failed ".$conn->connect_error);
-}
-
-$sql = "select * from shopProfile where shop_id='$shop_id'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0){
-
-$row = $result->fetch_assoc();
-
-$coverPhoto = $row["coverPhoto"];
-$profileImage = $row["profileImage"];
-$name = $row["name"];
-$description = $row["description"];
-$imageVideo = $row["imageVideo"];
-
-} else {
-	echo "Not Found";
-}
-$conn->close();
+//if($conn->connect_error){
+//	die("Connection failed ".$conn->connect_error);
+//}
+//
+//$sql = "select * from shopProfile where shop_id='$shop_id'";
+//
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0){
+//
+//$row = $result->fetch_assoc();
+//
+//$coverPhoto = $row["coverPhoto"];
+//$profileImage = $row["profileImage"];
+//$name = $row["name"];
+//$description = $row["description"];
+//$imageVideo = $row["imageVideo"];
+//
+//} else {
+//	echo "Not Found";
+//}
+//$conn->close();
 ?>
 
 <?php
-if ($conn->connect_error){
-	die("Connection failed: ". $conn->connect_error);
-}
+//if ($conn->connect_error){
+//	die("Connection failed: ". $conn->connect_error);
+//}
+//
+//$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+//
+//if ($conn->query($sql) === TRUE) {
+//	echo "Records updated: ".$name."-".$description;
+//} else {
+//	echo "Error: ".$sql."<br>".$conn->error;
+//}
+//
+//$conn->close();
+?>
 
-$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
-
-if ($conn->query($sql) === TRUE) {
-	echo "Records updated: ".$name."-".$description;
-} else {
-	echo "Error: ".$sql."<br>".$conn->error;
-}
-
-$conn->close();
+<?php
+  $sql = "SELECT * FROM shopProfile";
+  $result = mysqli_query($con, $sql);
 ?>
 
 <!-- Icon -->
@@ -117,6 +122,21 @@ $conn->close();
   </div>
 </div>
 <!-- /.container-fluid -->
+
+<?php
+    while ($row=mysqli_fetch_assoc($result))
+    {
+      $shopName = $row['shop_name'];
+      $shopDescription = $row['shop_description'];
+  ?>
+<div class="div">
+  <?php echo $shopName ?>
+  <?php echo $shopDescription ?>
+</div>
+
+<?php
+}
+?>
 
 <?php
     require __DIR__ . '/footer.php'
