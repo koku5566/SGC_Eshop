@@ -138,11 +138,11 @@
 $res = $db->query("SELECT shop_cover_image FROM shopProfile WHERE id = 8");
     
     if($res->num_rows > 0){
-        $img = $res->fetch_assoc();
+        $shopCoverPic = $res->fetch_assoc();
         
         //Render the image
         header("Content-type: image/jpg"); 
-        echo $img['image']; 
+        echo $shopCoverPic['shop_cover_image']; 
     }else{
         echo 'Image not found...';
     }
