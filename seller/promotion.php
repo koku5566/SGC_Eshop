@@ -263,7 +263,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock-o \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
+                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
                                                                 </div>
                                                                 <hr>
                                                             ");
