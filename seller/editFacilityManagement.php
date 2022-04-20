@@ -65,11 +65,12 @@
         $sql_update .= "price_per_hour = '$priceperhour'";
         $sql_update .= "WHERE id = '$facilityid '";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             ?>
                 <script type="text/javascript">
                     alert("Facility Edited Successful");
-                    window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                    //window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
                 </script>
             <?php
         }
