@@ -81,8 +81,8 @@
                      <div class="input-group-append">
                         <select name="voucherType" class="custom-select">
                            <option value="">Please choose</option>
-                           <option value=" cashback">RM</option>
-                           <option value=" %">%</option>
+                           <option value="cashback">RM</option>
+                           <option value="%">%</option>
                         </select>
                      </div>
                   </div>
@@ -163,9 +163,9 @@
       $voucherExpired = $_POST['voucherExpired'];
       $discountAmount = $_POST['discountAmount'];
       $voucherLimit = $_POST['voucherLimit'];
-      $voucherType = $_POST['voucherType'];
-      $voucherDetails = $_POST['voucherDetails'];
-      $voucherDisplay = $_POST['voucherDisplay'];
+      $voucherType = mysqli_real_escape_string($conn, $_POST['voucherType']);
+      $voucherDetails = mysqli_real_escape_string($conn, $_POST['voucherDetails']);
+      $voucherDisplay = mysqli_real_escape_string($conn, $_POST['voucherDisplay']);
       $date = date('Y-m-d H:i:s');
 
       
