@@ -14,7 +14,7 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
+    $sql = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE voucher_id == 8"; 
     $result = $conn->query($sql);
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
@@ -91,27 +91,24 @@
           <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
             <div class="voucher">
               <div class="coupon-card">
+              <?php
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                ?>
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
-                <h3>RM12 discount</h3>
+                <h3>RM
+                  <?php echo " " . $row["discount_amount"]. " "; ?>
+                </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode">STEALDEAL20</span>
+                  <span id="cpnCode"><?php echo " " . $row["voucher_code"]. " "; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                <?php
-                  if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                      echo " " . $row["voucher_startdate"]. " " . $row["voucher_expired"]. " ";
-                    }
-                  } else {
-                    echo "error";
-                  }
-                  $conn->close();
-                ?>
+                  <?php echo " " . $row["voucher_startdate"]. " " . $row["voucher_expired"]. " "; ?>
                 </p>
                 
                 <div class="circle1"></div>
