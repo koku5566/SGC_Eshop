@@ -216,7 +216,7 @@
       .coupon-row{
         display: flex;
         align-items: center;
-        margin: 25px auto;
+        margin: 10px auto;
         width: fit-content;
       }
       
@@ -237,7 +237,7 @@
       }
       
       .circle1, .circle2{
-        background: #fff;
+        background: black;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -256,8 +256,8 @@
 
       .imgContainer
       {
-        height: 30vh;
-        width: 25vh;
+        height: 25vh;
+        width: 20vh;
       }
 
       /*Slide show by Lim Qiu Xiong*/
