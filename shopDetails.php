@@ -6,7 +6,7 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql1 = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product";
     $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
@@ -106,8 +106,8 @@
                   <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
-                <div class="circle1"></div>
-                <div class="circle2"></div>
+                <!--<div class="circle1"></div>
+                <div class="circle2"></div>-->
               </div>
             </div>
             <?php
@@ -124,7 +124,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>best Sellers</strong></h4>
+          <h4 class="mb-5"><strong>Best Sellers</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
@@ -133,7 +133,7 @@
             ?>
             
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
+              <div class="card" style="height:50vh;">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
                     src="/img/product/<?php echo $row1['product_cover_picture']?>"
@@ -145,7 +145,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>" . $row1["product_brand"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
@@ -237,7 +237,7 @@
       }
       
       .circle1, .circle2{
-        background: black;
+        background: #fff;
         width: 50px;
         height: 50px;
         border-radius: 50%;
