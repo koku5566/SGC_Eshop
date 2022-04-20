@@ -268,8 +268,9 @@ var one = document.getElementById("one").value;
 var two = document.getElementById("two").value;
 var three = document.getElementById("three").value;
 var four = document.getElementById("four").value;
+var hi =0;
 
-console.log(one, two, three, four);
+console.log( three);
 if(one!= null)
 {
     document.getElementById("placed").className +=" completed";
