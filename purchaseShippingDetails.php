@@ -54,8 +54,8 @@ echo $orderstatus;?>
 var orderstatus = document.getElementById("orderstatus").value;
 
 
-console.log(one);
-if(orderstatus == 'Placed]')
+console.log(orderstatus);
+if(orderstatus == 'Placed')
 {
     document.getElementById("placed").className +=" completed";
 }
@@ -104,13 +104,13 @@ else if(orderstatus == 'Delivered')
                     <h5 class="step-title">Order Paid</h5>
                 </div>
                 <div class="step" id="shipped">
-                    <div class="step-icon-wrap" id="shipped">
+                    <div class="step-icon-wrap">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
                     <h5 class="step-title">Order Shipped Out</h5>
                 </div>
                 <div class="step" id="delivered">
-                    <div class="step-icon-wrap" id="delivered">
+                    <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
                     <h5 class="step-title">Order Delivered</h5>
