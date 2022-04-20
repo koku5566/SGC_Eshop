@@ -171,36 +171,43 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
-                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
+                            $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.remove_Product
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `variation`
-                            ON variation.product_id = cart.product_ID
-                            WHERE cart.user_ID = 'U000018' AND cart.remove_Product = 0";
+                            JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
+                            WHERE cart.user_ID = 'U000018'
+                            AND cart.shop_id = 14
+                            AND cart.remove_Product = '0'
+                            ORDER BY cart.update_at DESC
+                            ";
                             
-                            $queryKL = mysqli_query($conn, $cartsql);
+                            $queryKL = mysqli_query($conn, $sql);
                             
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $cart_id = $rowKL['cart_id'];
-                                 $product_id = $rowKL['PID'];
-                                 $product_name = $rowKL['P_name'];
-                                 $product_quantity = $rowKL['P_quantity'];
-                                 $product_variation =  $rowKL['P_variation'];
-                                 $product_variation1 =  $rowKL['variation_1_choice'];
-                                 $product_variation2 =  $rowKL['variation_2_choice'];
-                                 $product_price =  $rowKL['P_price'];
-                                 $product_pic =  $rowKL['product.product_cover_picture'];
+                                $product_stock = 0;
+                                $product_price = 0;
+                                $stock_message = "";
+                                $cart_id = $rowKL['cart_id'];
+                                $product_id = $rowKL['PID'];
+                                $product_name = $rowKL['P_name'];
+                                $product_quantity = $rowKL['P_quantity'];
 
-                                 if ($rowKL['P_status'] == 'A') {
+                                $variation_message = "";
+                                $showNotif = false;
+
+                                if ($rowKL['P_status'] == 'A') {
 
                                     if ($rowKL['variation_id'] == "" ) {
                                         $product_price = $rowKL['P_price'];
                                         $product_stock = $rowKL['product_stock'];
+        
+                                        $variation_message = "<option selected>Not Variation</option>";
                                     }
                                     else if ($rowKL['variation_id'] != "") {
                                         
@@ -211,8 +218,47 @@ if(isset($_GET['addressid']))
                                             $product_price = $row['product_price'];
                                             $product_stock = $row['product_stock'];
         
+                                            if ($row['product_stock'] == 0) {
+                                                $showNotif = true;
+                                                $product_stock = 0;
+                                                $product_price = 0;
+        
+                                                $stock_message = "";
+                                                $stock_message = "OUT fOF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                                            }
                                         }
+        
+                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $query_get_variation = mysqli_query($conn, $sql_get_variation);
+                                        while( $row = mysqli_fetch_assoc($query_get_variation))
+                                        {
+        
+                                            if ($row['variation_1_choice'] == "") {
+                                                $variation_message ="<span value='".$row['variation_id']."' disabled selected>Not Variation</span>";
+                                            }
+                                            else if ($row['variation_1_choice'] != "") {
+                
+                                                if ($row['variation_id'] == $rowKL['variation_id']) {
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
+                                                }
+                                                else{
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
+                                                }
+                                                        
+                                            }
+                                        }
+        
                                     }
+        
+                                    
+                                    $stock_message = "RM <span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
+                                }
+                                else if ($rowKL['P_status'] != 'A') {
+                                    $showNotif = true;
+                                    $product_stock = 0;
+                                    $product_price = 0;
+        
+                                    $stock_message = "OUT OF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
                                 }
 
                             echo ("
@@ -224,7 +270,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
+                                <span>".$variation_message."</span>
                                 </td>
                                 <td>
                                 <span>".$product_price."</span>

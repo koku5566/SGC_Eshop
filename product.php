@@ -501,24 +501,24 @@
 																if(isset($c1) && !empty ($c1)){			
 																	
 																if( $c10 === null || $c10 == ''){echo '';}
-																		else{echo '<div class="carousel-item active">
+																		else{echo '<div class="carousel-item active kk">
 																						<img class="d-block w-100" src="'.$c10.'" >
 																				  </div> ';} 													 
 																		
 																	if( $c11 === null || $c11 == ''){echo '';}
-																		else{echo '<div class="carousel-item">
+																		else{echo '<div class="carousel-item kk">
 																						 <img class="d-block w-100" src="'.$c11.'" >
 																				  </div>';}
 																	if( $c12 === null || $c12 == ''){echo '';}
-																		else{echo '<div class="carousel-item">
+																		else{echo '<div class="carousel-item kk">
 																						 <img class="d-block w-100" src="'.$c12.'" >
 																				  </div>';}	
 																	if( $c13 === null || $c13 == ''){echo '';}
-																		else{echo '<div class="carousel-item">
+																		else{echo '<div class="carousel-item kk">
 																						 <img class="d-block w-100" src="'.$c13.'" >
 																				  </div>';}		
 																	if( $c14 === null || $c14 == ''){echo '';}
-																		else{echo '<div class="carousel-item">
+																		else{echo '<div class="carousel-item kk">
 																						 <img class="d-block w-100" src="'.$c14.'" >
 																				  </div>';}										
 																								
@@ -551,8 +551,8 @@
 						</div>
 						</div>
 						  
-						  
-						<!--------------------------Rating PICK PICK---------------------------->	
+						 
+						<!--------------------------Rating PICK PICK---------------------------->											
 						<div id = "pickpickrating">
 							<div class="row pickbox">
 							  <div class="col-5" style = "background-color:;">
@@ -637,12 +637,12 @@
 										<!-- List All Product -->
 										<div class="card-body">
 											<div>
-												<h2 style ="text-align:center">Review</h2>
+												<h2 id = "reviewShowMe" style ="text-align:center">Review</h2>
 											</div>
 												<div class="row">
 													<!-- Card Body -->
 													<div class="card-body">
-														<div class="row" style = "background-color: lightblue;" id = "displaySearch">
+														<div class="row" style = "background-color: ;" id = "displaySearch">
 															
 														</div>
 													</div>  
@@ -702,6 +702,9 @@
 
 <style>
 	/*Cheong Kit Min - Review & Rating ************************************/
+	.kk{
+		max-height: 15rem;
+	}
 	#sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
@@ -743,8 +746,12 @@
 	}
 	.divpink{
 		padding-bottom: .625rem; 
-		
 		padding-top: .625rem;
+		
+		border-radius: 4px;
+		outline-style: solid;
+		outline-width: 1.8px;
+		outline-color: #A31F37;
 	}
 	.namestar{
 		min-height: 6rem;
@@ -932,6 +939,31 @@
 	?>
 	$('<?php echo $showmedawae; ?>').modal('show');
 	
+	<?php
+		$apa = $_SESSION["productID"];
+		$dc1 = "";
+		$dc2 = "";
+	
+	/**/	
+	 $sql ="SELECT rr_id
+			FROM reviewRating
+			WHERE product_id = '$apa'";
+		if($stmt = mysqli_prepare ($conn, $sql)){
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $c1);
+			
+			if(mysqli_stmt_fetch($stmt) > 0 ){
+									
+			}else{
+				$dc1 = "#pickpickrating";
+				$dc2 = "#reviewShowMe";
+			}
+			mysqli_stmt_close($stmt);									
+		}	
+			
+	?>
+	$('<?php echo $dc1; ?>').hide();
+	$('<?php echo $dc2; ?>').hide();
 
 
 	$(document).ready(function(){

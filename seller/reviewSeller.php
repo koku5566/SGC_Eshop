@@ -169,21 +169,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 											<tr>
 												<?php
 												
-												
+												/**/
 													$picR = "../";
 													 if($c8 === null || $c8 == ''){
-													
-														 /*
-														 $picR .='<td><img src="https://cdn4.iconfinder.com/data/icons/lucid-files-and-folders/24/file_disabled_not_allowed_no_permission_no_access-512.png" class="imgReply"></td>';
-														 */
-														 echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";
-													 }else{
-														 //DISPLAY REAL PICTURE/VIDEO THEY POST
-														// $picR .='<td><img src="'.$row["pic$i"].'" class="imgReply"></td>';
-														$pic1 = $picR . $c8;
+														echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";										
+													}else{
+														 $pic1 = $picR . $c8;
 														echo "<td><img src='".$pic1."' class='imgReply'></td>";
 													 }
-														 
+													 
+													 if($c9 === null || $c9 == ''){
+														echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";										
+													}else{
+														 $pic2 = $picR . $c9;
+														echo "<td><img src='".$pic2."' class='imgReply'></td>";
+													 }
+													 
+													 if($c10 === null || $c10 == ''){
+														echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";										
+													}else{
+														 $pic3 = $picR . $c10;
+														echo "<td><img src='".$pic3."' class='imgReply'></td>";
+													 }
+													 
+													 if($c11 === null || $c11 == ''){
+														echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";										
+													}else{
+														 $pic4 = $picR . $c11;
+														echo "<td><img src='".$pic4."' class='imgReply'></td>";
+													 }
+													 
+													 if($c12 === null || $c12 == ''){
+														echo "<td><img src='https://archive.org/download/no-photo-available/no-photo-available.png' class='imgReply'></td>";										
+													}else{
+														 $pic5 = $picR . $c12;
+														echo "<td><img src='".$pic5."' class='imgReply'></td>";
+													 }
+														
+														 	 
+													 
 												
 												
 												
@@ -193,10 +217,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
-												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
-												<td><img src="https://archive.org/download/no-photo-available/no-photo-available.png" class="imgReply"></td>
-												
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
+												<td><img src="https://i.kym-cdn.com/photos/images/original/001/431/201/40f.png" class="imgReply"></td>
 												-->
+												
 											<tr>
 										</table>																			
 																					

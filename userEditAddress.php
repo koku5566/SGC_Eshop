@@ -34,6 +34,9 @@
 		
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
+				echo "<script>alert('Details Updated');
+				window.location.href='userprofile_address.php';</script>";
+				
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
@@ -103,17 +106,5 @@
 </form>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['Update']))
-	{
-		if($_SESSION['Update'] == true)
-		{
-			echo "<script>alert('Details Updated');
-			window.location.href='userprofile_address.php';</script>";
-		}
-		$_SESSION['Update'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>
