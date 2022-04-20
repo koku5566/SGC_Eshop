@@ -211,19 +211,27 @@
                                                 {
                                                     $promotionTitle = $row["promotion_title"];
                                                     $status = $row["status"];
+
+                                                    echo ("<div class=\"row\"> <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
+                                                        </div>");
+
                                                     if($status == 9)
                                                     {
                                                         echo ("
-                                                                <div class=\"row\">
-                                                                    <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <div class=\"row\">
+                                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                            </div>
+                                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
                                                                 </div>
                                                                 <hr>
                                                             ");
@@ -231,19 +239,20 @@
                                                     else if($status == 1)
                                                     {
                                                         echo ("
-                                                                <div class=\"row\">
+                                                                    <div class=\"row\">
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                                     </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                                    </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
                                                                 </div>
                                                                 <hr>
                                                             ");
@@ -251,16 +260,17 @@
                                                     else if($status == 2)
                                                     {
                                                         echo ("
-                                                                <div class=\"row\">
+                                                                    <div class=\"row\">
+                                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        </div>
+                                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                        <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
                                                                     </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
                                                                 </div>
                                                                 <hr>
                                                             ");
@@ -305,8 +315,8 @@
             </div>
         </div>
         
-        <!-- Request - View/Approve/Reject Section -->
-        <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <!-- Request - View/Approve/Reject Section -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="modal fade" id="requestSectionModel" tabindex="-1" role="dialog" aria-labelledby="requestSectionModel" <?php echo(isset($_GET['requestSection']) ? "" : "aria-hidden=\"true\"");?> >
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
