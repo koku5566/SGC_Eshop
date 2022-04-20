@@ -177,8 +177,6 @@ if(isset($_GET['addressid']))
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `variation`
-                            ON variation.variation_id = cart.variation_id
                             WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
@@ -194,8 +192,26 @@ if(isset($_GET['addressid']))
                                  $product_variation1 =  $rowKL['variation_1_choice'];
                                  $product_variation2 =  $rowKL['variation_2_choice'];
                                  $product_price =  $rowKL['P_price'];
-                                 $product_variation_price = $rowKL['variation.product_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
+
+                                 if ($rowKL['P_status'] == 'A') {
+
+                                    if ($rowKL['variation_id'] == "" ) {
+                                        $product_price = $rowKL['P_price'];
+                                        $product_stock = $rowKL['product_stock'];
+                                    }
+                                    else if ($rowKL['variation_id'] != "") {
+                                        
+                                        $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
+                                        while( $row = mysqli_fetch_assoc($query_get_variation_price))
+                                        {
+                                            $product_price = $row['product_price'];
+                                            $product_stock = $row['product_stock'];
+        
+                                        }
+                                    }
+                                }
 
                             echo ("
                             <tr>
@@ -209,7 +225,7 @@ if(isset($_GET['addressid']))
                                 <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price." ".$product_variation_price."</span>
+                                <span>".$product_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>

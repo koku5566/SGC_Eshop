@@ -17,10 +17,13 @@
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address
+      
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -35,6 +38,7 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
+       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
  
@@ -145,7 +149,6 @@ else if($orderstatus=='Delivered'){
         </div>
     </div>
 
-    <!--Order Details-->
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
@@ -155,12 +158,12 @@ else if($orderstatus=='Delivered'){
                         <!--Shop Logo & Name-->
                         <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Shop Image"
                                 width="40" height="40"></span>
-                        <span><strong>| SEGi College Subang Jaya</strong></span>
+                        <span><strong>| SHOP shop_name</strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            04 Sep 2021 | 04:45 p.m.
+                            <?php echo $orderdate?>
                             </span>
                         </div>
                     </div>
@@ -171,13 +174,14 @@ else if($orderstatus=='Delivered'){
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
-                        <td>3-in-1 Power Bank with Phone Stand Model: WI-SP510</td>
-                        <td>Navy blue</td>
-                        <td>RM34.00</td>
+                        <td scope="row"><img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:30%;height:30%" src=""
+                                alt=""></td>
+                        <td>Product Name</td>
+                        <td>Navy </td>
+                        <td>RM100.00</td>
                         <td>x1</td>
-                        <td class="red-text">rm349.00</td>
+                        <td class="red-text">RM100.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
