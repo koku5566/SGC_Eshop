@@ -204,12 +204,17 @@
                                         { 
                                             $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2 OR `status` = 9 ";
                                             $result = $conn->query($sql);
+                                            echo '<script>alert("1")</script>';
                                             if($result-> num_rows > 0){
+                                                echo '<script>alert("2")</script>';
+
                                                 while($row = $result->fetch_assoc())
+                                                echo '<script>alert("3")</script>';
                                                 {
                                                     $promotionTitle = $row["promotion_title"];
                                                     if(`status` == 9)
                                                     {
+                                                        echo '<script>alert("4")</script>';
                                                         echo ("
                                                                 <div class=\"row\">
                                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
