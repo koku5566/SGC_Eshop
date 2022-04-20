@@ -21,7 +21,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Request Successful");
+                    alert("Promotion Approved Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
@@ -40,7 +40,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert("Promotion Reject Successful");
+                    alert("Promotion Rejected Successful");
                     window.location.href = window.location.origin + "/seller/promotion.php";
                 </script>
             <?php
