@@ -329,7 +329,16 @@
                                                                         <div class=\"image-tools-add $add\">
                                                                             <label class=\"custom-file-upload\">
                                                                                 <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
-                                                                                <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                            ");
+                                                            if($i == 0)
+                                                            {
+                                                                echo("<input id=\"coverImgDefault\" name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            else
+                                                            {
+                                                                echo("<input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            echo("
                                                                                 <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
                                                                             </label>
                                                                         </div>
@@ -1040,7 +1049,7 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != "" || document.querySelectorAll('.imgDefault')[0].value != "")
+        if(document.querySelectorAll('.imgInp')[0].value != "" || document.getElementById('coverImgDefault').value != "")
         {
             if(document.querySelectorAll('.warning').length == 0)
             {

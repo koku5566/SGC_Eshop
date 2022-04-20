@@ -856,7 +856,7 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != "" || document.querySelectorAll('.imgDefault')[0].value != "")
+        if(document.querySelectorAll('.imgInp')[0].value != "")
         {
             if(document.querySelectorAll('.warning').length == 0)
             {
