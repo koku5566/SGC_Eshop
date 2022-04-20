@@ -110,7 +110,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" name="description" maxlength="1000" required>
+                  <textarea class="form-control" name="description" maxlength="3000" required></textarea>
                   </div>
                </div>
             </div>
@@ -141,7 +141,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <textarea class="form-control" name="contactwhatsapp" maxlength="1000" required></textarea>
+                  <input type="text" class="form-control" name="contactwhatsapp" maxlength="1000" required>
                   </div>
                </div>
             </div>
