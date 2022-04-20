@@ -727,6 +727,9 @@
                                     <label>Promotion Title</label>
                                     <?php
                                     $promotionId = $_GET['edit'];
+                                    $dateStart = date('Y-m-d', strtotime($_POST['startDate']));
+                                    $dateEnd = date('Y-m-d', strtotime($_POST['endDate']));
+                                    
                                     $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
                                     $result = mysqli_query($conn, $sql);
                                     //check if date valid
