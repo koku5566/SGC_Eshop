@@ -1,12 +1,12 @@
 <?php
-   require __DIR__ . '/header.php'
+   require __DIR__ . '/header.php';
   
 ?> 
 <?php
 
     $facilityid = $_GET['id'];
-   if(isset($_POST['EditFacility']))
-   {
+    /*
+    if(isset($_POST['EditFacility'])){
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
@@ -104,6 +104,7 @@
             }
         }  
     }
+    */
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
