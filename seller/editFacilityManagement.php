@@ -5,7 +5,7 @@
 <?php
 
     $facilityid = $_GET['id'];
-    /*
+    
     if(isset($_POST['EditFacility'])){
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
@@ -15,7 +15,7 @@
       $priceperhour = $_POST['priceperhour'];
       $contact = $_POST['contactwhatsapp'];
 
-      $sql_update = "UPDATE facilityPic SET"
+      $sql_update = "UPDATE facilityPic SET";
       $sql_update .= "title = '$title',";
       $sql_update .= "pic_description = '$description',";
       $sql_update .= "address = '$address',";
@@ -104,7 +104,7 @@
             }
         }  
     }
-    */
+    
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -240,7 +240,7 @@
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Add Facility</button>
+               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>
