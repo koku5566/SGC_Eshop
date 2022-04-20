@@ -744,14 +744,12 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $promotionId = $row["promotionID"];
                                                 $promotionTitle = $row["promotion_title"];
-                                                $promotionDate = $row["promotion_Date"];
-                                                $promotionEnd_Date = $row["promotionEnd_Date"];
 
                                                 echo("<br><input type=\"text\" class=\"form-control\" name=\"EditPromotionID\" value=\"$promotionId\" hidden>");
                                                 echo("<input type=\"text\" class=\"form-control\" name=\"EditPromotionTitle\" value=\"$promotionTitle\">");
                                                 echo("<br><label>Date</label>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"startDate\" value=\"$promotionDate\"></div>");
-                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"endDate\" value=\"$promotionEnd_Date\"></div>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">Start</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\"name=\"startDate\" value=\"$startDate\"></div>");
+                                                echo("<div class=\"input-group mb-2\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">End</span></div><input type=\"date\" class=\"form-control\" min=\"". date("Y-m-d",  strtotime("-1 month"))."\" name=\"endDate\" value=\"$endDate\"></div>");
                                             }
                                         }
                                     }
