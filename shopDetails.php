@@ -214,12 +214,12 @@
       }
       
       .circle1, .circle2{
-        background: #f0fff3;
+        background: black;
         width: 50px;
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 50%;
+        top: 100%;
         transform: translateY(-50%);
       }
       
