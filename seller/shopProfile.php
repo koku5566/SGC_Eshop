@@ -99,12 +99,20 @@
     </div>
     
     <div class="row">
+
+    <?php
+        while ($row=mysqli_fetch_assoc($result))
+        {
+          $shopName = $row['shop_name'];
+          $shopDescription = $row['shop_description'];
+    ?>
+    
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name" value="<?php echo $row['shop_name']; ?>" required />
+      <input type="text" class="form-control" name="name" value="<?php echo $shopName ?>" required />
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control"  rows="3" name="description" value='$description'></textarea>
+      <textarea class="form-control"  rows="3" name="description" value='<?php echo $shopDescription ?>'></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
@@ -120,23 +128,11 @@
     </div> 
     </form>
   </div>
+  <?php
+    }
+  ?>
 </div>
 <!-- /.container-fluid -->
-
-<?php
-    while ($row=mysqli_fetch_assoc($result))
-    {
-      $shopName = $row['shop_name'];
-      $shopDescription = $row['shop_description'];
-  ?>
-<div class="div">
-  <?php echo $shopName ?>
-  <?php echo $shopDescription ?>
-</div>
-
-<?php
-}
-?>
 
 <?php
     require __DIR__ . '/footer.php'
