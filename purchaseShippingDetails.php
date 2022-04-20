@@ -70,7 +70,37 @@ else if($orderstatus=='Delivered'){
 <?php
 }
 ?>
+<script>
+var one = document.getElementById("one").value;
+var two = document.getElementById("two").value;
+var three = document.getElementById("three").value;
+var four = document.getElementById("four").value;
 
+console.log(one, two, three, four);
+if(one!= null)
+{
+    document.getElementById("placed").className +=" completed";
+}
+else if(two!= null)
+{
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className +=" completed";
+}
+else if(three!= null)
+{
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className +=" completed";
+    document.getElementById("shipped").className +=" completed";
+}
+else if(four!= null)
+{
+    document.getElementById("placed").className +=" completed";
+    document.getElementById("paid").className += " completed";
+    document.getElementById("shipped").className +=" completed";
+    document.getElementById("delivered").className +=" completed";
+}
+
+</script>
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
@@ -263,36 +293,6 @@ else if($orderstatus=='Delivered'){
       tracking_no: num
     });
   }
-
-var one = document.getElementById("one").value;
-var two = document.getElementById("two").value;
-var three = document.getElementById("three").value;
-var four = document.getElementById("four").value;
-var hi =0;
-
-console.log( three);
-if(one!= null)
-{
-    document.getElementById("placed").className +=" completed";
-}
-else if(two!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
-}
-else if(three!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className +=" completed";
-    document.getElementById("shipped").className +=" completed";
-}
-else if(four!= null)
-{
-    document.getElementById("placed").className +=" completed";
-    document.getElementById("paid").className += " completed";
-    document.getElementById("shipped").className +=" completed";
-    document.getElementById("delivered").className +=" completed";
-}
 
 </script>
 
