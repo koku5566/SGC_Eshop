@@ -13,18 +13,25 @@
     myOrder.delivery_method,
     myOrder.order_date,
     myOrder.tracking_number,
-    orderDetails.order_id,
+    orderDetails.quantity,
+    orderDetails.amount,
     user.username,
     userAddress.address,
     userAddress.phone_number,
     shopProfile.shop_profile_image,
-    shopProfile.shop_name
+    shopProfile.shop_name,
+    product.product_name,
+    product.product_cover_picture,
+    product.product_price
+    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     JOIN shopProfile on orderDetails.shop_id = shopProfile.shop_id
+    JOIN product on orderDetails.product_id = product.product_id
+    JOIN payments ON orderDetails.product_id = payments.product_id
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -38,8 +45,13 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
         $phnumber = $orow['phone_number'];
-        $shopprofileimg = $orow['shop_profile_image'];
+        $shopprofilepic = $orow['shop_profile_image'];
         $shopname = $orow['shop_name'];
+        $productname = $orow['product_name'];
+        $productcoverpic = $orow['product_cover_picture'];
+        $qty = $orow['quantity'];
+        $amt = $orow['amount'];
+        //$totalamt = $orow['payment_amount'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate);
 
@@ -150,7 +162,7 @@ else if($orderstatus=='Delivered'){
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
+                        <span><img src="/img/product/<?php echo $shopprofilepic?>" alt="<?php echo $shopname ?>"
                                 width="40" height="40"></span>
                         <span><strong>| <?php echo $shopname ?></strong></span>
                     </div>
@@ -168,13 +180,14 @@ else if($orderstatus=='Delivered'){
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
-                        <td>3-in-1 Power Bank with Phone Stand Model: WI-SP510</td>
-                        <td>Navy blue</td>
-                        <td>RM34.00</td>
-                        <td>x1</td>
-                        <td class="red-text">rm349.00</td>
+                        <td scope="row"><img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:30%;height:30%" src="/img/product/<?php echo $productcoverpic?>"
+                                alt="<?php echo $productname?>"></td>
+                        <td><?php echo $productname?></td>
+                        <td><?php echo $productname?></td>
+                        <td>RM<?php echo $productprice?>.00</td>
+                        <td>x<?php echo $qty ?></td>
+                        <td class="red-text">RM99.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
