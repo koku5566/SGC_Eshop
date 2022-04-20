@@ -177,8 +177,6 @@ if(isset($_GET['addressid']))
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `variation`
-                            ON variation.product_id = product.product_id
                             WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
