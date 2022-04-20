@@ -171,8 +171,8 @@ const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
 	btn.addEventListener('click', function handleClick(event) {
 		removeButton.forEach(btn => {
-			document.getElementById('deleteStaff').value;
-			console.log('deleteStaff');
+		var x = document.getElementById('deleteStaff').value;
+			console.log(x);
 		});
 	});
 });
