@@ -145,7 +145,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" value="<?php echo($i_facility_description); ?>" name="description" maxlength="3000" required>
+                  <textarea class="form-control" name="description" maxlength="3000" required><?php echo($i_facility_description); ?></textarea>
                   </div>
                </div>
             </div>
