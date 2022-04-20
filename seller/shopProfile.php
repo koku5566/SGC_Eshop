@@ -90,9 +90,9 @@
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" src="/img/product/<?php echo $row['product_cover_picture']?>"><br><br>
+      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" value="" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" value="<?php echo $shopProfilePic ?>" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -134,6 +134,20 @@
   ?>
 </div>
 <!-- /.container-fluid -->
+<?php
+$res = $db->query("SELECT shop_cover_image FROM shopProfile WHERE id = 8");
+    
+    if($res->num_rows > 0){
+        $img = $res->fetch_assoc();
+        
+        //Render the image
+        header("Content-type: image/jpg"); 
+        echo $img['image']; 
+    }else{
+        echo 'Image not found...';
+    }
+}
+?>
 
 <?php
     require __DIR__ . '/footer.php'
