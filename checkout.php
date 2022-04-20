@@ -234,7 +234,7 @@ if(isset($_GET['addressid']))
                                         {
         
                                             if ($row['variation_1_choice'] == "") {
-                                                $variation_message ="<option value='".$row['variation_id']."' disabled selected>Not Variation</option>";
+                                                $variation_message ="<span value='".$row['variation_id']."' disabled selected>Not Variation</span>";
                                             }
                                             else if ($row['variation_1_choice'] != "") {
                 
