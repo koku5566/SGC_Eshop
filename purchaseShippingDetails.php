@@ -36,7 +36,7 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
     }
-    $estimateddelivery = strtotime('+7 days',$orderdate);
+    $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
 
     //=========sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
@@ -268,6 +268,8 @@ var one = $("#one").val;
 var two = $("#two").val;
 var three = $("#three").val;
 var four = $("#four").val;
+
+console.log(one, two, three, four);
 if(one!= null)
 {
     document.getElementById("placed").className +=" completed";
