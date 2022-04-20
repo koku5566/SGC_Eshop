@@ -146,7 +146,6 @@ $res = $db->query("SELECT shop_cover_image FROM shopProfile WHERE id = 8");
     }else{
         echo 'Image not found...';
     }
-}
 ?>
 
 <?php
