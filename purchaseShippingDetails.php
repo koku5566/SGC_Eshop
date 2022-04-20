@@ -66,6 +66,7 @@ else if(orderstatus == 'Paid')
 }
 else if(orderstatus == 'Shipped')
 {
+    console.log('can work');
     document.getElementById("placed").className +=" completed";
     document.getElementById("paid").className +=" completed";
     document.getElementById("shipped").className +=" completed";
