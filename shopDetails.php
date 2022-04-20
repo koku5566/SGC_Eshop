@@ -82,7 +82,7 @@
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
-            <div class="container">
+            <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
@@ -167,7 +167,7 @@
         margin:; /* Better set align center */
       }
 
-      .container{
+      .voucher{
         width: 50%;
         background: #f0fff3;
         display: flex;
