@@ -7,6 +7,7 @@
     $facilityid = $_GET['id'];
     
     if(isset($_POST['EditFacility'])){
+      $facilityid = $_SESSION['Id'];
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
@@ -65,11 +66,12 @@
         $sql_update .= "price_per_hour = '$priceperhour'";
         $sql_update .= "WHERE id = '$facilityid '";
 
+        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             ?>
                 <script type="text/javascript">
                     alert("Facility Edited Successful");
-                    window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                    //window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
                 </script>
             <?php
         }
@@ -240,7 +242,7 @@
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
+               <button type="submit" id="EditFacility" name="EditFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>
