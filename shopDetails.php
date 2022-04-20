@@ -106,7 +106,7 @@
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                       echo " " . $row["voucher_startdate"]. " ";
-                ?><span>till</span>
+                ?>
                 <?php
                   echo " " . $row["voucher_expired"]. " ";
                 ?>
