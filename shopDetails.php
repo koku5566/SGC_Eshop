@@ -7,7 +7,7 @@
       die("Connection failed: " . $conn->connect_error);
     }
     
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"
+    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher";
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
     $result = $conn->query($sql);
 ?>
