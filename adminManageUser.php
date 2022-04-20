@@ -14,7 +14,7 @@
 		$_SESSION['DeleteUser'] = false;
 		$UID = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE user_id = '$UID'";
+		$sql = "DELETE FROM user WHERE username = '$UID'";
 		echo "<script>alert($UID);</script>";
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
@@ -89,6 +89,7 @@
 									<td class='text-center text-lg text-medium'>".$row["role"]."</td>
 									<td class='text-center text-lg text-medium'><button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editUserModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button></td>
 									<td class='text-center text-lg text-medium'><button type='button' class='remove btn btn-primary' data-toggle='modal' data-target='#deleteUserModal' value=".$row["username"]."><i class='fa fa-trash' aria-hidden='true'></i></button></td>
+									<td class='text-center text-lg text-medium'> <p>".$row["username"]."</p></td>
 								</tr>
 							");
 						}
@@ -151,7 +152,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="<?php echo $row["user_id"]?>">Yes</button>
+				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="<?php echo $row["username"]?>">Yes</button>
 			</div>
 			</div>
 		</div>
