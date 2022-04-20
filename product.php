@@ -744,8 +744,11 @@
 	.divpink{
 		padding-bottom: .625rem; 
 		padding-top: .625rem;
-		background-color: #fff;
-		border-radius: 8px;
+		
+		border-radius: 4px;
+		outline-style: solid;
+		outline-width: 1.8px;
+		outline-color: #A31F37;
 	}
 	.namestar{
 		min-height: 6rem;
