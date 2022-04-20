@@ -210,10 +210,8 @@
                                                 {
                                                     $promotionTitle = $row["promotion_title"];
                                                     $status = $row["status"];
-                                                    echo "<script>alert('$status')</script>";
                                                     if($status == 9)
                                                     {
-                                                        echo '<script>alert("4")</script>';
                                                         echo ("
                                                                 <div class=\"row\">
                                                                     <div class=\"col-xl-10 col-lg-10 col-sm-12\">
