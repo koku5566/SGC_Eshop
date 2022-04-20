@@ -30,9 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
             
             $selectedPID = $_POST['uimg'];
             //CHANGE SELLER ID HOR I TELL U SLAP KAO U
+			/*
             $sql = "SELECT rr_id, product_id, user_id, message, rating, seller_id, r_message 
 					FROM reviewRating
 					WHERE rr_id = ? && disable_date IS NULL && seller_id = '$shopId';";
+			*/
+		    $sql = "SELECT rr.*, u.username 
+					FROM user u INNER JOIN   
+					(SELECT  rr_id, product_id, user_id, message, rating, seller_id, r_message, pic1, pic2, pic3, pic4, pic5
+					FROM reviewRating
+					WHERE disable_date IS NULL) rr
+					ON u.userID = rr.user_id
+					WHERE rr.rr_id = ? && rr.seller_id = '$shopId'";
 		   
             if($stmt = mysqli_prepare ($conn, $sql)){
                 mysqli_stmt_bind_param($stmt, "s", $selectedPID);	//HARLO IF THIS INT = i, STRING = s
@@ -40,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7);
+                    mysqli_stmt_bind_result($stmt, $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12,$c13);
                     mysqli_stmt_fetch($stmt);
                 }
                 
@@ -126,7 +135,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg'], $_POST['sktfak
 								<!--REPLY MESSAGE MODAL-->
 									
 									<div>
-										<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;"><?php echo(isset($c3) && !empty ($c3))? $c3 : ''; ?></h6>
+										<h6 style = "font-size: 1rem; margin-bottom: 0.1rem;"><?php echo(isset($c13) && !empty ($c13))? $c13 : ''; ?></h6>
 										<div style="margin-bottom: 0.1em;">
 											<?php 									
 											$starR = '';
