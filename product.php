@@ -556,7 +556,9 @@
 						<?php
 							$apa = $_SESSION["productID"];
 							$apaDisplay = false;
-							
+						echo"<script>document.getElementById('pickpickrating').style.display = 'block';</script>";
+									echo"<script>document.getElementById('reviewShowMe').style.display = 'block';</script>";
+						/*	
 						 $sql ="SELECT rr_id
 								FROM reviewRating
 								WHERE product_id = '$apa'";
@@ -568,13 +570,12 @@
 									$apaDisplay = true;
 										
 								}else{
-									echo "<script>document.getElementById('pickpickrating').style.display = 'none';</script>";
-									echo "<script>document.getElementById('reviewShowMe').style.display = 'none';</script>";
+									
 								}
 								mysqli_stmt_close($stmt);									
 							}	
 								
-						/*
+						
 						if($apaDisplay !== true){
 							
 						}
