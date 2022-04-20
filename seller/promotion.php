@@ -202,7 +202,7 @@
                                     <?php
                                         if ($_SESSION['role'] == "SELLER")
                                         { 
-                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId'";
+                                            $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE `status` = 2 OR `status` = 9 ";
                                             $result = $conn->query($sql);
                                             if($result-> num_rows > 0){
                                                 while($row = $result->fetch_assoc())
@@ -216,7 +216,7 @@
                                                                         <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                                     </div>
                                                                     <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
+                                                                        <a href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation-circle \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</a>
                                                                     </div>
                                                                 </div>
                                                             ");
@@ -249,17 +249,17 @@
                                                 if($result-> num_rows > 0){ 
                                                     while($row = $result->fetch_assoc())
                                                     {
-                                                    $promotionTitle = $row["promotion_title"];
-                                                    echo ("
-                                                            <div class=\"row\">
-                                                                <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                        $promotionTitle = $row["promotion_title"];
+                                                        echo ("
+                                                                <div class=\"row\">
+                                                                    <div class=\"col-xl-10 col-lg-10 col-sm-12\">
+                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                    </div>
+                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
+                                                                    </div>
                                                                 </div>
-                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                                </div>
-                                                            </div>
-                                                        ");
+                                                            ");
                                                     }
                                                 }
                                                 else{
