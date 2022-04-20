@@ -87,20 +87,11 @@
 
 <hr>
 
-<div class="row2">
-	<div class="col2">
-		<div class="container-col2">
-			<div class="container-left-col2">
-			<h3 >Card</h3>
-			</div>
+<div class="row">
+<div class="h3">Card</div>
 
-	<div class="container-right-col2">
-		<button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php">Add Card</a></button>
-	</div>
-		</div>
-	</div>
-<div>
-	
+
+<a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a></div>
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
