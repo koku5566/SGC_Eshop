@@ -7,6 +7,7 @@
       die("Connection failed: " . $conn->connect_error);
     }
     
+    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher";
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
     $result = $conn->query($sql);
 ?>
@@ -93,7 +94,7 @@
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
-                <p>Valid Till: 20 Dec, 2021</p>
+                <p><?php echo " " . $row["voucher_startdate"]. "till" . $row["voucher_expired"].?></p>
                 
                 <div class="circle1"></div>
                 <div class="circle2"></div>

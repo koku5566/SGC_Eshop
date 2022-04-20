@@ -63,6 +63,17 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
                                                 <th colspan="3" align="left">Product Details</th>
                                             </tr>
                                             <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <img class="card-img-top img-thumbnail"
+                                                    style="object-fit:contain;width:100%;height:100%"
+                                                    src="/img/product/<?php echo $row['product_cover_picture']?>"
+                                                    />
+                                                </td>
+                                                
+                                            </tr>
+                                            <tr>
                                                 <td>Quantity</td>
                                                 <td>:</td>
                                                 <td><?php echo $row["quantity"]; ?></td>
