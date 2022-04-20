@@ -171,7 +171,7 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
-                            $cartsql ="SELECT product.product_name AS P_name, product.product_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
+                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
@@ -193,8 +193,26 @@ if(isset($_GET['addressid']))
                                  $product_variation =  $rowKL['P_variation'];
                                  $product_variation1 =  $rowKL['variation_1_choice'];
                                  $product_variation2 =  $rowKL['variation_2_choice'];
-                                 $product_price =  $rowKL['product.product_price'];
+                                 $product_price =  $rowKL['P_price'];
                                  $product_pic =  $rowKL['product.product_cover_picture'];
+
+                                 if ($rowKL['P_status'] == 'A') {
+
+                                    if ($rowKL['variation_id'] == "" ) {
+                                        $product_price = $rowKL['P_price'];
+                                        $product_stock = $rowKL['product_stock'];
+                                    }
+                                    else if ($rowKL['variation_id'] != "") {
+                                        
+                                        $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
+                                        while( $row = mysqli_fetch_assoc($query_get_variation_price))
+                                        {
+                                            $product_price = $row['product_price'];
+                                            $product_stock = $row['product_stock'];
+        
+                                        }
+                                    }
                             
 
                             echo ("
