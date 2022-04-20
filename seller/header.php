@@ -182,6 +182,30 @@
                 </div>
             </li>
 
+            <?php 
+                if($_SESSION['role'] == 'ADMIN') {
+            ?>
+                <!-- Nav Item - Facility Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFacility"
+                        aria-expanded="true" aria-controls="collapseFacility">
+                        <i class="fas fa-fw fa-suitcase"></i>
+                        <span>Facility</span>
+                    </a>
+                    <div id="collapseFacility" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="adminFacilityManagement.php">My Facilities</a>
+                            <a class="collapse-item" href="facilityManagement.php">Add Facility</a>
+                            
+                            
+                        </div>
+                    </div>
+                </li>
+            <?php
+                }
+            ?>
+            
+
             <!-- Nav Item - Marketing Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMarketing"
