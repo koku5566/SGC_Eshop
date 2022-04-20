@@ -237,7 +237,7 @@
       }
       
       .circle1, .circle2{
-        background: #fff;
+        background: black;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -256,7 +256,7 @@
 
       .imgContainer
       {
-        height: 25vh;
+        height: 20vh;
         width: 20vh;
       }
 
