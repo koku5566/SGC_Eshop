@@ -502,24 +502,24 @@
 																	
 																if( $c10 === null || $c10 == ''){echo '';}
 																		else{echo '<div class="carousel-item active">
-																						<img class="d-block w-100" src="'.$c10.'" >
+																						<img class="d-block w-100 kk" src="'.$c10.'" >
 																				  </div> ';} 													 
 																		
 																	if( $c11 === null || $c11 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="'.$c11.'" >
+																						 <img class="d-block w-100 kk" src="'.$c11.'" >
 																				  </div>';}
 																	if( $c12 === null || $c12 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="'.$c12.'" >
+																						 <img class="d-block w-100 kk" src="'.$c12.'" >
 																				  </div>';}	
 																	if( $c13 === null || $c13 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="'.$c13.'" >
+																						 <img class="d-block w-100 kk" src="'.$c13.'" >
 																				  </div>';}		
 																	if( $c14 === null || $c14 == ''){echo '';}
 																		else{echo '<div class="carousel-item">
-																						 <img class="d-block w-100" src="'.$c14.'" >
+																						 <img class="d-block w-100 kk" src="'.$c14.'" >
 																				  </div>';}										
 																								
 																}else{
@@ -702,6 +702,9 @@
 
 <style>
 	/*Cheong Kit Min - Review & Rating ************************************/
+	.kk{
+		max-height: 25rem;
+	}
 	#sellresponse{
 	background-color: #DCDCDC; 
 	padding: 0.2rem; 
