@@ -6,10 +6,10 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher";
+    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
     $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
     $result = $conn->query($sql);
+    echo 'voucher_startdate';
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
 <?php
@@ -94,7 +94,7 @@
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
-                <p><?php echo " " . $row["voucher_startdate"]. "till" . $row["voucher_expired"].?></p>
+                <p>date</p>
                 
                 <div class="circle1"></div>
                 <div class="circle2"></div>
