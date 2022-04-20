@@ -1,12 +1,13 @@
 <?php require __DIR__ . '/header.php' ?>
 
-<?php
+<?php	
 	if($_SESSION['login'] == false)
 	{
-		echo "<script>alert('Login to Continue');
-			window.location.href='login.php';</script>";
+		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+		exit;
     }
 ?>
+
 <?php
 if(isset($_POST['addCard']))
 	{
@@ -32,6 +33,8 @@ if(isset($_POST['addCard']))
 
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['AddCard'] = true;
+				echo "<script>alert('Card Added');
+				window.location.href='../userprofile_payment.php';</script>";
 			} else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
@@ -42,7 +45,7 @@ if(isset($_POST['addCard']))
 
 <div class="row">
 <?php require __DIR__ . '/userprofilenav.php' ?>
-<div class="bg-gradient-primary col-xl-9" style="margin-top: -1.5rem !important; padding: 4rem 0;">
+<div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important; padding: 4rem 0;">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg">
             <div class="card-body p-0">
@@ -85,17 +88,5 @@ if(isset($_POST['addCard']))
     </div>
 </div>
 </div>
-
-<?php
-if(isset($_SESSION['AddCard']))
-	{
-		if($_SESSION['AddCard'] == true)
-		{
-			echo "<script>alert('Card Added');
-			window.location.href='../userprofile_payment.php';</script>";
-		}
-		$_SESSION['AddCard'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>

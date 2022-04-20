@@ -83,9 +83,6 @@
         $allowTypes = array('jpg','png','jpeg'); 
 
         $pictureOrder = array("product_cover_picture","product_pic_1","product_pic_2","product_pic_3","product_pic_4","product_pic_5","product_pic_6","product_pic_7","product_pic_8");
-
-        echo(var_dump($defaultFile));
-        echo(var_dump($_FILES['img']));
         
         foreach($_FILES['img']['name'] as $key=>$val){ 
             // File upload path 
@@ -132,7 +129,6 @@
         $sql_update .= "category_id = '$categoryCombinationId' ";
         $sql_update .= "WHERE product_id = '$productId' ";
 
-        echo($sql_update);
         if(mysqli_query($conn, $sql_update)){
             //Got Variation
             if($variationType == 1)
@@ -177,7 +173,7 @@
             }
             ?>
                 <script type="text/javascript">
-                    //window.location.href = window.location.origin + "/seller/myProduct.php";
+                    window.location.href = window.location.origin + "/seller/myProduct.php";
                 </script>
             <?php
         }
@@ -329,7 +325,16 @@
                                                                         <div class=\"image-tools-add $add\">
                                                                             <label class=\"custom-file-upload\">
                                                                                 <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
-                                                                                <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>
+                                                            ");
+                                                            if($i == 0)
+                                                            {
+                                                                echo("<input id=\"coverImgDefault\" name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            else
+                                                            {
+                                                                echo("<input name=\"imgDefault[]\" type=\"text\" value=\"".$i_product_pic[$i]."\" hidden/>");
+                                                            }
+                                                            echo("
                                                                                 <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
                                                                             </label>
                                                                         </div>
@@ -413,16 +418,17 @@
                                     <select class="form-control" id="subCategory" name="subCategoryId">
                                         <?php
                                             //Sub Category
-                                            $sql_selectSubId = "SELECT sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
+                                            $sql_selectSubId = "SELECT main_category,sub_category FROM categoryCombination WHERE combination_id = '$i_category_id'";
                                             $result_selectSubId = mysqli_query($conn, $sql_selectSubId);
 
                                             if (mysqli_num_rows($result_selectSubId) > 0) {
                                                 while($row_selectSubId = mysqli_fetch_assoc($result_selectSubId)) {
+                                                    $tempMainCategoryId = $row_selectSubId["main_category"];
                                                     $subCategoryId = $row_selectSubId["sub_category"];
                                                 }
                                             }
 
-                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                            $sql_1 = "SELECT B.category_id,B.category_name FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$tempMainCategoryId' AND sub_Yes = '1'";
                                             $result_1 = mysqli_query($conn, $sql_1);
                                 
                                             if (mysqli_num_rows($result_1) > 0) {
@@ -455,7 +461,7 @@
                             </div>
                             <div class="col-xl-10 col-lg-10 col-sm-12">
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000" required><?php echo(html_entity_decode($i_product_description)); ?></textarea>
+                                    <textarea class="form-control" id="productDescription" name="productDescription" maxlength="3000"><?php echo(html_entity_decode($i_product_description)); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1040,7 +1046,7 @@
     var priceTableArray = [];
 
     function submitForm(){
-        if(document.querySelectorAll('.imgInp')[0].value != "")
+        if(document.querySelectorAll('.imgInp')[0].value != "" || document.getElementById('coverImgDefault').value != "")
         {
             if(document.querySelectorAll('.warning').length == 0)
             {
@@ -1048,7 +1054,7 @@
                 {
                     if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
                     {
-                        document.getElementById("AddProduct").click();
+                        document.getElementById("EditProduct").click();
                     }
                     else
                     {
@@ -1057,7 +1063,7 @@
                     }
                 }
                 else{
-                    document.getElementById("AddProduct").click();
+                    document.getElementById("EditProduct").click();
                 }
             }
             else

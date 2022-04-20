@@ -171,56 +171,51 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
-                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
+                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `shopProfile`
-                            ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID =  $userID'
-                            AND product.shop_id = '$KL'
-                            AND cart.remove_Product = '0'
-                            ORDER BY cart.update_at DESC";
+                            JOIN `variation`
+                            ON variation.variation_id = cart.variation_id
+                            WHERE cart.user_ID = 'U000018'";
                             
                             $queryKL = mysqli_query($conn, $cartsql);
                             
-                            $userID = "U000018";
-                            $KL = 14;
-                            $SB = 20;
-
-                             $i=0;
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $product_stock = 0;
-                                 $product_price = 0;
-                                 $stock_message = "";
                                  $cart_id = $rowKL['cart_id'];
                                  $product_id = $rowKL['PID'];
                                  $product_name = $rowKL['P_name'];
                                  $product_quantity = $rowKL['P_quantity'];
                                  $product_variation =  $rowKL['P_variation'];
-                                 $variation_message = "";
-                                 $showNotif = false;
-                            echo "
+                                 $product_variation1 =  $rowKL['variation_1_choice'];
+                                 $product_variation2 =  $rowKL['variation_2_choice'];
+                                 $product_price =  $rowKL['P_price'];
+                                 $product_variation_price = $rowKL['variation.product_price'];
+                                 $product_pic =  $rowKL['product.product_cover_picture'];
+
+                            echo ("
                             <tr>
+                            <td>
+
+                            </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <span>".$product_variation."</span>
+                                <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price."</span>
+                                <span>".$product_price." ".$product_variation_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
                                 </td>
-                                        
-                                        
-                            </tr> ";             
+                                                                              
+                            </tr> ");             
                     }
                     ?>
                             </tbody>
@@ -273,12 +268,13 @@ if(isset($_GET['addressid']))
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div class="row">
-                <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
+                <div class = "col"></div>
+                <!-- <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-3" required><label class="form-check-label" for="formCheck-3">Credit/Debit Card</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Online Banking</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash on Delivery</label></div>
-                </div>
+                </div> -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                         <li class="list-group-item"><span>Order Total</span></li>

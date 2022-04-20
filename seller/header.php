@@ -193,7 +193,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/seller/promotion.php">Promotion</a>
-                        <a class="collapse-item" href="/seller/createVoucher.php">Voucher</a>
+                        <a class="collapse-item" href="/seller/myVoucher.php">My Voucher</a>
+                        <a class="collapse-item" href="/seller/createVoucher.php">Create Voucher</a>
                     </div>
                 </div>
             </li>
@@ -407,7 +408,6 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo($_SESSION['name']);?></span>
-                                <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                                 <!--User Profile Picture-->
                                 <?php
                                 $UID = $_SESSION["id"];
@@ -432,7 +432,7 @@
 
                                 <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="../admin.php">
+                                <a class="dropdown-item" href="../adminManageUser.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     ADMIN PANEL
                                 </a>

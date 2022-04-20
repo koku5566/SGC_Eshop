@@ -5,13 +5,20 @@
 if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     $order_id = $_POST['order_id'];
     
-    $stmt4 =$conn->prepare("SELECT * FROM myorder o JOIN orderdetails od ON od.order_id = o.order_id JOIN product p ON p.id = od.product_id WHERE od.order_id = ?");
+    $stmt4 =$conn->prepare("SELECT * FROM myOrder
+    JOIN orderDetails  ON orderDetails.order_id = myOrder.order_id
+    JOIN product ON product.product_id = orderDetails.product_id
+    WHERE orderDetails.order_id  = ?");
     $stmt4->bind_param('i',$order_id);
     $stmt4->execute();
     $order_details = $stmt4->get_result();
 }else{
     header('location: getOrder.php');
     exit;
+}
+
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'To Respond' WHERE order_id = ".$_GET["id"]);
 }
 
 ?>
@@ -26,7 +33,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                             <h2 class="font-weight-bold text-center">ORDER DETAILS</h2>
                             <hr class="mx-auto">
                         </div>
-                            <div class="card-body">
+                                <div class="card-body">
                                     <div class="table-responsive">
                                         <?php
                                         $count=1;
@@ -35,6 +42,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                         <table class="table">
                                             <tr>
                                                 <th colspan="3" align="left">Order Details (<?php echo $count++; ?>)</th>
+                                                <th>Order ID : <?php echo $row['order_id']?></th>
                                             </tr>
                                             <tr>
                                                 <td width="150">Delivery Method</td>
@@ -52,6 +60,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                                 <td><?php echo $row["order_date"]; ?></td>
                                             </tr>
                                             <tr>
+                                                <th colspan="3" align="left">Product Details</th>
+                                            </tr>
+                                            <tr>
                                                 <td>Quantity</td>
                                                 <td>:</td>
                                                 <td><?php echo $row["quantity"]; ?></td>
@@ -59,11 +70,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                             <tr>
                                                 <td>Price</td>
                                                 <td>:</td>
-                                                <td> RM <?php echo $row["price"]; ?></td>
+                                                <td> RM <?php echo $row["amount"]; ?></td>
                                             </tr>
-                                            <tr>
-                                                <th colspan="3" align="left">Product Details</th>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>SKU</td>
                                                 <td>:</td>
@@ -88,6 +97,9 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
                                         <hr>
                                         <?php } ?>
                                     </div>
+                                </div>
+                                <div class="card-footer">
+                                <a href="getOrder.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel</button></a>
                                 </div>
                     </section>
                 </div>

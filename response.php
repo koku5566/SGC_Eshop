@@ -4,6 +4,7 @@ use PayPal\Api\PaymentExecution;
 
 require __DIR__. '/config.php';
 
+date_default_timezone_set("Asia/Kuala_Lumpur");
 if (empty($_GET['paymentId']) || empty($_GET['PayerID'])) {
     throw new Exception('The response is missing the paymentId and PayerID');
 }

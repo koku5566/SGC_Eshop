@@ -16,7 +16,7 @@
     $promotion_title = array();
     $promotion_image = array();
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.role = 'SELLER' AND promotionEnd_Date >= now()";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE promotionEnd_Date >= now() AND `status` = 0";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
@@ -82,6 +82,22 @@
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="voucherContainer d-flex align-items-center">
+            <div class="container">
+              <div class="coupon-card">
+                <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
+                <h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>
+                
+                <div class="coupon-row">
+                  <span id="cpnCode">STEALDEAL20</span>
+                  <span id="cpnBtn">COPY CODE</span>
+                </div>
+                
+                <p>Valid Till: 20 Dec, 2021</p>
+                
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -149,6 +165,80 @@
         height: 15vh; /* should be remove after add in voucher */
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
+      }
+
+      .container{
+        width: 50%;
+        background: #f0fff3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .coupon-card{
+         background: linear-gradient(135deg, #7158fe, #9d4de6);
+         color: #fff;
+         text-align: center;
+         padding: 40px 80px;
+         border-radius: 15px;
+         box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
+      }
+      
+      .logo{
+        width: 80px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      
+      .coupon-card h3{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+      
+      .coupon-card p{
+        font-size: 10px;
+      }
+      
+      .coupon-row{
+        display: flex;
+        align-items: center;
+        margin: 25px auto;
+        width: fit-content;
+      }
+      
+      #cpnCode{
+        border: 1px dashed #fff;
+        padding: 5px 10px;
+        border-right: 0;
+        font-size: 10px;
+      }
+      
+      #cpnBtn{
+        border: 1px solid #fff;
+        background:#fff; 
+        padding: 5px 10px;
+        color: #7158fe;
+        cursor: pointer;
+        font-size: 10px;
+      }
+      
+      .circle1, .circle2{
+        background: #f0f0f0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        top: 20%;
+        transform: translateY(-50%);
+      }
+      
+      .circle1{
+        left: 50px;
+      }
+      
+      .circle2{
+        right: 50px;
       }
 
       .imgContainer

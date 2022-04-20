@@ -3,7 +3,9 @@
 
     $orderid = $_GET['order_id'];
     
+    //=========sql to get order information=============
     $orderstatus = "";
+    $deliverymethod="";
     $totalprice = 0;
     $shippingfee = 8.6;
     $orderinfosql = "SELECT
@@ -20,11 +22,18 @@
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
+    while ($orow = $oresult->fetch_assoc()) {
+        $orderid = $orow['order_id'];
+        $orderstatus = $orow['order_status'];
+        $deliverymethod = $orow['delivery_method'];
+        $username = $orow['username'];
+        $address = $orow['address'];
+    }
 
+    //=========sql to get order item information===========
     $sql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
-    myOrder.delivery_method,
     product.product_name,
     product.product_cover_picture,
     product.product_price,
@@ -43,15 +52,67 @@
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+
+    if(isset($_POST["tracking_send"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
+        $status = "Shipped";
+        echo $trackingnum, $status, $orderid;
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE order_id = '$orderid'";
+         //$conn->query($insertsql);
+        // $conn->query($updatesql);
+        //$iquery_run = mysqli_query($conn,$insertsql);
+        //$uquery_run = mysqli_query($conn,$updatesql);
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
+            $_SESSION['success'] = "Order Status has been updated";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);            
+        } 
+        else {
+          $_SESSION['status'] = "Order status update failed";
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+        }
+    }
+    
+    if(isset($_POST["status_update"])){
+        $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
+        $updatesql ="UPDATE myOrder SET  order_status = '$pickupstat' WHERE order_id = '$orderid'";
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+            $_SESSION['success'] = "Order Status has been updated";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            } else {
+          $_SESSION['status'] = "Order status update failed";
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          }
+    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
-<?php                       
-     while ($orow = $oresult->fetch_assoc()) {
-?>
+<?php
+    if(isset($_SESSION['success'])&& $_SESSION['success']!='')
+    {
+        echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
+        unset($_SESSION['success']); //unset value when reload
+    }
+    
+    if(isset( $_SESSION['status'] )&&  $_SESSION['status'] )
+    {
+        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['status'] .'</div>';
+        unset( $_SESSION['status'] ); //unset value when reload
+    }
+    ?>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container m-3">
@@ -63,7 +124,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            <?php echo $orow['order_id']?>
+                            <?php echo $orderid?>
                         </div>
                     </div>
                 </div>
@@ -75,8 +136,8 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
-                            <div id="recipient-name">Hoe Chian Xin</div>
-                            <div id="recipient-address"><?php echo $orow['address']?></div>
+                            <div id="recipient-name"><?php echo $username?></div>
+                            <div id="recipient-address"><?php echo $address?></div>
                         </div>
                     </div>
                 </div>
@@ -92,19 +153,65 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Location</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Activity</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php                       
+                                     while ($srow = $sresult->fetch_assoc()) {
+                                ?>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                        <td><?php echo $srow['datetime'] ?></th>
+                                        <td><?php echo $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                                     </tr>
+                                <?php 
+                                }
+                                ?>
+                                <tr>
+                                <?php 
+                                if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
+                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                <td><?php echo date("Y-m-d H:i:s");?></td>
+                                <td>Tracking No: <br>
+                                    <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
+                                    <div class="row">
+                                        <div class="col">
+                                            <input class="form-control input" name="tracking_number" type="text" style="width:250px">
+                                        </div>
+                                        <div class="col">
+                                            <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
+                                        </div>
+                                    </div>
+                                </td>
+                                </form>
+                                <?php }
+
+                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                <td><?php echo date("Y-m-d H:i:s");?></td>
+                                <td>Update Pick-Up Status: <br>
+                                <input type="hidden"  name="order_id" value="<?php echo $orderid?>" >
+                                <div class="row">
+                                    <div class="col">
+                                    <select id="pickup" name="pickup" class="form-control">
+                                      <option value="Preparing"> Order is Preparing</option>
+                                      <option value="Ready">Pick-Up is Ready</option>
+                                      <option value="Contact">You will contact customer</option>
+                                    </select>                                        </div>
+                                    <div class="col">
+                                        <button  class="form-control btn btn-secondary" type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
+                                    </div>
+                                </div>
+
+                                </td>
+                                </form>
+                                <?php }?>
+                                </tr>
                                 </tbody>
                             </table>
+
+
                         </div>
 
                     </div>
@@ -113,7 +220,16 @@
 
         </div>
     </div>
-
+<script src="//www.tracking.my/track-button.js"></script>
+<script>
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+</script>
 
     <!--  Payment Information -->
     <div class="row">
@@ -139,7 +255,6 @@
                     <?php
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
-
                     $totalprice += $row['amount'];
                     ?>
                     <!--Start of order item-->
@@ -168,7 +283,7 @@
                                 <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
                                     <span class="iconify" data-icon="carbon:delivery"
                                         style="color: black;"></span>
-                                    <?php echo $orow['order_status']?></div>
+                                    <?php echo $orderstatus?></div>
                             </div>
                         </div>
                         <!--Ordered Item Price Amount Information-->
@@ -179,7 +294,7 @@
                                     Total:
                                 </div>
                                 <div class="col">
-                                    <?php echo number_format($totalprice, 2)?>
+                                    RM<?php echo number_format($totalprice, 2)?>
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -219,7 +334,7 @@
         </div>
     </div>
 
-<?php } ?>
+<?php  ?>
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
