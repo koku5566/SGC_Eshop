@@ -10,13 +10,13 @@
         exit;
 	}
 
-    //Promotion Status in DB - Request Section
-    if(isset($_POST['Request']))
+    //Promotion Status in DB - Approve Section
+    if(isset($_POST['Approve']))
     {
-        $promotionId = $_POST['Request'];
+        $promotionId = $_POST['Approve'];
         
-        $sql_request = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
-        $result = mysqli_query($conn, $sql_request);
+        $sql_approve = "UPDATE promotion SET `status` = 1 WHERE promotionID = '$promotionId'"; 
+        $result = mysqli_query($conn, $sql_approve);
         if($result)
         {
             ?>
