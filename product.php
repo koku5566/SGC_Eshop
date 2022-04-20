@@ -554,10 +554,10 @@
 						 
 						<!--------------------------Rating PICK PICK---------------------------->
 						<?php
-						
+							$apa = $_SESSION["productID"];
 						 $sql ="SELECT rr_id
 								FROM reviewRating
-								WHERE product_id = '$_SESSION["productID"]'";
+								WHERE product_id = '$apa'";
 							if($stmt = mysqli_prepare ($conn, $sql)){
 								mysqli_stmt_execute($stmt);
 								mysqli_stmt_bind_result($stmt, $c1);
