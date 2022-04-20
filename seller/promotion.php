@@ -212,7 +212,7 @@
                                                 echo '<script>alert("3")</script>';
                                                 {
                                                     $promotionTitle = $row["promotion_title"];
-                                                    if(`status` == 9)
+                                                    if($row["status"] == 9)
                                                     {
                                                         echo '<script>alert("4")</script>';
                                                         echo ("
@@ -226,7 +226,7 @@
                                                                 </div>
                                                             ");
                                                     }
-                                                    else if(`status`== 1)
+                                                    else if($row["status"] == 1)
                                                     {
                                                         echo ("
                                                                 <div class=\"row\">
