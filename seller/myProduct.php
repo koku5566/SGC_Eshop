@@ -223,7 +223,7 @@
                                                         $shopId = $_SESSION['uid'];
                                                         $sql_count = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE A.product_status != 'B' AND shop_id = '$shopId' ";
                                                         $result = mysqli_query($conn, $sql);
-                                                
+                                                        echo($sql_count);
                                                         if (mysqli_num_rows($result) > 0) {
                                                             while($row = mysqli_fetch_assoc($result)) {
                                                                 $total = (int) $row["total_product"];
