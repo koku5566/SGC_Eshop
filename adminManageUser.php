@@ -159,6 +159,12 @@
 </form>
 
 <?php require __DIR__ . '/footer.php' ?>
+<script type="text/javascript">
+        $("#deleteStaff").click(function () {
+            var name = $(".remove").val();
+            console.log(name);
+        });
+</script>
 
 <script>
 $(document).ready(function() {
@@ -182,6 +188,8 @@ editButton.forEach(btn => {
 		editUser(btn.value);
 	});
 });
+
+
 
 function editUser(username) 
 {
