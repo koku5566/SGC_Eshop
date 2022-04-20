@@ -151,7 +151,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="">Yes</button>
+				<button type="submit" id="deleteStaff" name="deleteStaff" class="btn btn-primary" value="<?php echo $row["username"]?>">Yes</button>
 			</div>
 			</div>
 		</div>
