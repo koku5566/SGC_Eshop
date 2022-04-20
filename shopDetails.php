@@ -6,16 +6,16 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
-    $result = $conn->query($sql);
+    $sql1 = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
+    $result1 = $conn->query($sql1);
 ?>
 
 <?php
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE voucher_id == 8"; 
-    $result = $conn->query($sql);
+    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE voucher_id == 8"; 
+    $result2 = $conn->query($sql2);
 ?>
 <!-- Slide Show by Lim Qiu Xiong-->
 <?php
@@ -92,23 +92,23 @@
             <div class="voucher">
               <div class="coupon-card">
               <?php
-                  if ($result->num_rows > 0) {
+                  if ($result2->num_rows > 0) {
                     // output data of each row
-                    while($row = $result->fetch_assoc()) {
+                    while($row2 = $result2->fetch_assoc()) {
                 ?>
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
                 <h3>RM
-                  <?php echo " " . $row["discount_amount"]. " "; ?>
+                  <?php echo " " . $row2["discount_amount"]. " "; ?>
                 </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode"><?php echo " " . $row["voucher_code"]. " "; ?></span>
+                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                  <?php echo " " . $row["voucher_startdate"]. " " . $row["voucher_expired"]. " "; ?>
+                  <?php echo " " . $row2["voucher_startdate"]. " " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
                 <div class="circle1"></div>
@@ -134,14 +134,14 @@
             <?php
               if ($result->num_rows > 0) {
                 // output data of each row
-                while($row = $result->fetch_assoc()) {
+                while($row1 = $result->fetch_assoc()) {
             ?>
             
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card">
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="/img/product/<?php echo $row['product_cover_picture']?>"
+                    src="/img/product/<?php echo $row1['product_cover_picture']?>"
                     class="imgContainer"
                   />
                   <a href="#!">
@@ -150,7 +150,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>" . $row1["product_brand"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
