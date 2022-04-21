@@ -64,8 +64,8 @@
                         product.product_name
 
                         FROM voucher
-                        -- INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                        -- INNER JOIN product ON productVoucher.product_id = product.product_id	
+                        INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                        INNER JOIN product ON productVoucher.voucher_id = product.voucher_id	
                         -- INNER JOIN user ON product.shop_id = user.user_id
                         -- INNER JOIN shopProfile ON user.user_id = shopProfile.shop_id
                         -- WHERE product.shop_id = '$shopId'
