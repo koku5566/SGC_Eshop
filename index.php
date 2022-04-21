@@ -152,8 +152,7 @@
 
                     <br>
                     <!-- Voucher -->
-                    <div class="container">
-                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
                         <?php 
                             
                             $sql_voucher =
@@ -262,7 +261,6 @@
 
                             
                         </div>
-                    </div>
 
                     <br>
 
