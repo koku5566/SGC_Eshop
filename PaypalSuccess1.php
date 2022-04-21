@@ -121,21 +121,12 @@ $queryKL = mysqli_query($conn, $sql);
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        if (false === $stmt) {
-            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-        }
         $bp = mysqli_stmt_bind_param($stmt, "sssssis", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $create_time);
-        if (false === $bp) {
-            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-        }
         $bp = mysqli_stmt_execute($stmt);
-        if (false === $bp) {
-            die('Error with execute: ') . htmlspecialchars($stmt->error);
     }
     else {
         $error = mysqli_stmt_error($stmt);
         echo "<script>alert($error);</script>";
-        }
     mysqli_stmt_close($stmt);
     }
 }
