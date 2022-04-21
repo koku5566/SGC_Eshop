@@ -94,8 +94,8 @@ if (isset($_POST["completeRegister"])) {
                     }
                     $tempTicket = $ticketOrderID.$ticket.".png";
                     $qrcode = new QrCode($ticketString);
-                    $qrcode->writeFile(__DIR__.'\img\event'.$tempTicket);  
-                    $barcodeLocation = "https://eshop.sgcprototype2.com/img/event/".$tempTicket;
+                    $qrcode->writeFile(__DIR__.'/img/event/test.png');  
+                    $barcodeLocation = "https://eshop.sgcprototype2.com/img/event/test.png";
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -119,7 +119,7 @@ if (isset($_POST["completeRegister"])) {
                     <p>Ticket: $ticketType</p>
                     <h5>Barcode below is your ticket for organizer check in purposes. Kindly bookmark this email and keep it safely</h5>
                     <h2>$ticketString</h2>
-                    <img src=\"$picLocation\" style\"width:100%;\">
+                    <img src=\"$barcodeLocation\" style\"width:100%;\">
                     <h4>Thank you</h4>
                     <h4>Best Regards</h4>
                     <h4>SGC Eshop</h4>
