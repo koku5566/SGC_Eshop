@@ -3,9 +3,9 @@
 ?>
 
 <?php
-/*QUERY FOR ORDER*/
+/*QUERY FOR ALL ORDER */
 $sql = "SELECT
-myOrder.order_id,
+DISTINCT myOrder.order_id,
 myOrder.order_status,
 myOrder.delivery_method,
 myOrder.tracking_number,
@@ -20,12 +20,114 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
+ORDER BY myOrder.order_id DESC
 ";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
+
+
+/*QUERY FOR TO SHIP */
+$toshipsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.order_status = 'Paid'
+ORDER BY myOrder.order_id DESC";
+
+$stmt = $conn->prepare($toshipsql);
+$stmt->execute();
+$toshipresult = $stmt->get_result();
+
+/*QUERY FOR PICK UP */
+$pickupsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready'
+ORDER BY myOrder.order_id DESC";
+
+$stmt = $conn->prepare($pickupsql);
+$stmt->execute();
+$pickupresult = $stmt->get_result();
+
+
+
+/*QUERY FOR SHIPPING */
+$shippingsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.order_status != 'Shipped'
+ORDER BY myOrder.order_id DESC";
+
+$stmt = $conn->prepare($shippingsql);
+$stmt->execute();
+$shippingresult = $stmt->get_result();
+
+
+/*QUERY FOR COMPLETED */
+$completedsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.order_status = 'Received'
+ORDER BY myOrder.order_id DESC";
+
+$stmt = $conn->prepare($completedsql);
+$stmt->execute();
+$completedresult = $stmt->get_result();
 ?>
+
 
 
 
@@ -170,7 +272,7 @@ $result = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php } ?></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Paid'){?>Arrange Shipment<?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']!='Ready'){ ?> Update Pick-Up <?php } else { ?>Check Details <?php } ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -183,22 +285,188 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
+                            <?php                       
+                            while ($tsrow = $toshipresult->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong><?php echo $tsrow['username'];?></strong></span></div></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $tsrow['order_id']; ?> </strong></span></div>
+                                    </div>
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $tsrow['product_cover_picture']?>"
+                                                alt="<?php echo $tsrow['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $tsrow['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $tsrow['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $tsrow['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
+                                        <div class="col-2">DHL eCommerce <?php echo $tsrow['tracking_number']?></div>
+                                        <div class="col-2">
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id'];?>">Arrange Shipment</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--End of Order Item-->
+                                <?php 
+                                }?>
+
 
                             </div>
 
                             <!--------------------------------Pick Up--------------------------------------->
-                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
-                                yomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomamayomama
+                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
+                            <?php                       
+                            while ($purow = $pickupresult->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong><?php echo $purow['username'];?></strong></span></div></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span>Order ID:<?php echo $purow['order_id']; ?> </span></div>
+                                    </div>
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $purow['product_cover_picture']?>"
+                                                alt="<?php echo $purow['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $purow['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $purow['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $purow['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $purow['order_status'] ?></div>
+                                        <div class="col-2">DHL eCommerce <?php echo $purow['tracking_number']?></div>
+                                        <div class="col-2">
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id'];?>">Update Status</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--End of Order Item-->
+                                <?php 
+                                }?>
                             </div>
 
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                                yopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapayopapa
+                            <?php                       
+                            while ($shiprow = $shippingresult->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong><?php echo $shiprow['username'];?></strong></span></div></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $shiprow['order_id']; ?> </strong></span></div>
+                                    </div>
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $shiprow['product_cover_picture']?>"
+                                                alt="<?php echo $shiprow['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $shiprow['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $shiprow['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $shiprow['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $shiprow['order_status'] ?></div>
+                                        <div class="col-2">DHL eCommerce <?php echo $shiprow['tracking_number']?></div>
+                                        <div class="col-2">
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $shiprow['order_id'];?>">Check Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--End of Order Item-->
+                                <?php 
+                                }?>
                             </div>
 
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                                yosis
+                            <?php                       
+                            while ($crow = $completedresult->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong><?php echo $crow['username'];?></strong></span></div></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $crow['order_id']; ?> </strong></span></div>
+                                    </div>
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $crow['product_cover_picture']?>"
+                                                alt="<?php echo $crow['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $crow['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $crow['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $crow['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $crow['order_status'] ?></div>
+                                        <div class="col-2">DHL eCommerce <?php echo $crow['tracking_number']?></div>
+                                        <div class="col-2">
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $crow['order_id'];?>">Check Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--End of Order Item-->
+                                <?php 
+                                }?>
                             </div>
 
 

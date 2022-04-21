@@ -6,17 +6,12 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
-    $result = $conn->query($sql);
+    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product";
+    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
+    $result1 = $conn->query($sql1);
+    $result2 = $conn->query($sql2);
 ?>
 
-<?php
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT voucher_startdate, voucher_expired FROM voucher"; 
-    $result = $conn->query($sql);
-?>
 <!-- Slide Show by Lim Qiu Xiong-->
 <?php
     //Fetch each promotion image information
@@ -50,6 +45,12 @@
   <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
         <?php
+        if(count($promotion_image)==0)
+        {
+          echo("<div class=\"carousel-item active\"> <img src=\"/img/resource/default_image.png\" alt=\"default_image\"> </div>");
+        }
+        else 
+        {
           for($i = 0; $i < count($promotion_image); $i++)
           {
             if($promotion_image[$i] != "")
@@ -65,6 +66,8 @@
               }
             }
           }
+        }
+          
        ?>
       </div>
     <!-- Left right --> 
@@ -89,35 +92,39 @@
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
+          <?php
+                  if ($result2->num_rows > 0) {
+                    // output data of each row
+                    while($row2 = $result2->fetch_assoc()) {
+          ?>
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
-                <h3>RM12 discount</h3>
+                <h3>RM
+                  <?php echo " " . $row2["discount_amount"]. " "; ?>
+                </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode">STEALDEAL20</span>
+                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                <?php
-                  if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                      echo " " . $row["voucher_startdate"]. " " . $row["voucher_expired"]. " ";
-                    }
-                  } else {
-                    echo "error";
-                  }
-                  $conn->close();
-                ?>
+                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
-                <div class="circle1"></div>
-                <div class="circle2"></div>
+                <!--<div class="circle1"></div>
+                <div class="circle2"></div>-->
               </div>
             </div>
+            <?php
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
+            ?>
           </div>
         </section>
 
@@ -125,19 +132,19 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>best Sellers</strong></h4>
+          <h4 class="mb-5"><strong>Best Sellers</strong></h4>
           <div class="row">
             <?php
-              if ($result->num_rows > 0) {
+              if ($result1->num_rows > 0) {
                 // output data of each row
-                while($row = $result->fetch_assoc()) {
+                while($row1 = $result1->fetch_assoc()) {
             ?>
             
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card"><!--<div class="card" style="height:50vh;">-->
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="/img/product/<?php echo $row['product_cover_picture']?>"
+                    src="/img/product/<?php echo $row1['product_cover_picture']?>"
                     class="imgContainer"
                   />
                   <a href="#!">
@@ -146,7 +153,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
@@ -185,12 +192,15 @@
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
       }
+      .voucher{
+        margin: 0 10px 0 0;
+      }
 
       .coupon-card{
          background: linear-gradient(135deg, #7158fe, #9d4de6);
          color: #fff;
          text-align: center;
-         padding: 10px 30px;
+         padding: 10px 45px;
          border-radius: 15px;
          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
       }
@@ -214,7 +224,7 @@
       .coupon-row{
         display: flex;
         align-items: center;
-        margin: 25px auto;
+        margin: 10px auto;
         width: fit-content;
       }
       
@@ -240,7 +250,7 @@
         height: 50px;
         border-radius: 50%;
         position: absolute;
-        top: 17%;
+        top: 14.5%;
         transform: translateY(-50%);
       }
       
@@ -249,12 +259,13 @@
       }
       
       .circle2{
-        right: 965px;
+        right: 925px;
       }
 
       .imgContainer
       {
-        height: 50vh;
+        height: 22vh;
+        width: 20vh;
       }
 
       /*Slide show by Lim Qiu Xiong*/

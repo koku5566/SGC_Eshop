@@ -135,7 +135,7 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="seller/ViewShippingOrder.php">My Shipment</a>
+                        <a class="collapse-item" href="seller/ViewShippingOrders.php">My Shipment</a>
                         <a class="collapse-item" href="register.php">Mass Ship</a>
                         <a class="collapse-item" href="forgot-password.php">Shipping Setting</a>
                     </div>
@@ -441,7 +441,7 @@
                                 if (mysqli_num_rows($res_data) > 0){
                                     while($row = mysqli_fetch_array($res_data)){
                                         echo("
-                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
+                                            <img class=\"img-profile rounded-circle\" style=\"object-fit:cover;\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
                                             ");
                                         }
                                     }

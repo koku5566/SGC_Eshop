@@ -33,6 +33,9 @@
         <?php
     }
 ?>
+
+<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="mainContainer">
 
@@ -114,6 +117,12 @@
                             <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
                                 <div class="carousel-inner">
                                 <?php
+                                    if(count($promotion_image)==0)
+                                    {
+                                        echo("<div class=\"carousel-item active\"> <img src=\"/img/resource/default_image.png\" alt=\"default_image\"> </div>");
+                                    }
+                                    else 
+                                    {
 										for($i = 0; $i < count($promotion_image); $i++)
 										{
 											if($promotion_image[$i] != "")
@@ -129,8 +138,8 @@
 												}
 											}
 										}
-
-									?>
+                                    }
+								?>
                                 </div>
 
                                <!-- Left right --> 
@@ -143,6 +152,142 @@
 
                     <br>
                     <!-- Voucher -->
+                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
+                        <?php 
+                            
+                            $sql_voucher =
+                            "SELECT 
+                            voucher.voucher_id,
+                            voucher.voucher_code,
+                            voucher.voucher_type,
+                            voucher.discount_amount,
+                            voucher.voucher_display,
+                            voucher.voucher_limit,
+                            voucher.voucher_startdate,
+                            productVoucher.voucher_id AS pv_voucher_id,
+                            voucher.voucher_expired,
+                            voucher.voucher_details,
+                            shopProfile.shop_name,
+                            shopProfile.shop_profile_image
+
+                            FROM voucher
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            JOIN product ON productVoucher.product_id = product.product_id
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
+                            "; 
+
+                            $stmt = $conn->prepare($sql_voucher);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            
+                            while ($row = $result->fetch_assoc()) {
+
+                             $td = date('y-m-d');
+                             $expr = $row['voucher_expired'];
+
+                             $today = strtotime($td);
+                             $expired = strtotime($expr);
+
+                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
+                            
+                            ?>
+
+                            <div class="col-md-2 m-4">
+                                <div class="card" id="vouchercard">
+                                    <div class="container">
+                                        <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                        <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                        <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                        <u>
+                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
+                                            T&C applied.
+                                            </a>
+                                        </u>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- Modal -->
+
+                        <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="termsModalLongTitle">Terms and Conditions.</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="card m-2" id="termsvouchercard">
+                                            <div class="container">
+                                                <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                                <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tnccontainer">
+                                        <div class="container">
+                                            <strong>Product</strong>
+                                            <p>
+                                                <?php 
+                                                $sql_pn=
+                                                "SELECT
+                                                product.product_name,
+                                                productVoucher.voucher_id AS pv_voucher_id
+                                                
+                                                FROM product
+                                                JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                ";
+                    
+                    
+                                                $stmt = $conn->prepare($sql_pn);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                
+                                                while ($r = $result->fetch_assoc()) {
+
+                                                    if($r['pv_voucher_id'] = $row['pv_voucher_id']){
+                                                    echo $r['product_name']; 
+                                                    }
+                                                }
+                                                ?>
+                                            </p>
+                                        </div>
+                                        <div class="container">
+                                            <strong>More Details</strong>
+                                            <p> <?php echo $row['voucher_details']; ?> </p>
+                                        </div>
+                                        <div class="container">
+                                            <strong>Usage Period</strong>
+                                            <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            <?php 
+                            } else{
+
+                            }
+                        }?>
+
+                            
+                        </div>
 
                     <br>
 

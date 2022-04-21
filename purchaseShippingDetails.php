@@ -1,44 +1,145 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $orderid = $_GET['order_id'];
+
+    //=========sql to get order information=============
+    $deliverymethod="";
+    $totalprice = 0;
+    $shippingfee = 8.6;
+   // $ordertotal = $amt * $shippingfee;
+    $orderinfosql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    myOrder.order_date,
+    myOrder.tracking_number,
+    user.username,
+    userAddress.contact_name,
+    userAddress.phone_number,
+    userAddress.address,
+    orderDetails.quantity,
+    orderDetails.amount,
+    orderDetails.shop_id,
+    product.product_name,
+    product.product_price,
+    product.product_cover_picture,
+    shopProfile.shop_name,
+    shopProfile.shop_profile_image
+    
+    FROM
+    myOrder
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+    JOIN product ON orderDetails.product_id = product.product_id
+    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
+    WHERE myOrder.order_id = '$orderid';";
+    $stmt = $conn->prepare($orderinfosql);
+    $stmt->execute();
+    $oresult = $stmt->get_result();
+    while ($orow = $oresult->fetch_assoc()) {
+        $orderid = $orow['order_id'];
+        $orderstatus = $orow['order_status'];
+        $deliverymethod = $orow['delivery_method'];
+        $username = $orow['username'];
+        $contactname = $orow['contact_name'];
+        $phone = $orow['phone_number'];
+        $address = $orow['address'];
+        $trackingnum = $orow['tracking_num'];
+        $orderdate = $orow['order_date'];
+        $qty = $orow['quantity'];
+        $amt = $orow['amount'];
+        $productname = $orow['product_name'];
+        $productprice = $orow['product_price'];
+        $productcover = $orow['product_cover_picture'];
+        $shopname = $orow['shop_name'];
+        $shopprofile = $orow['shop_profile_image'];
+    }
+    $orderdate = strtotime($orderdate);
+    $estimateddelivery = strtotime('+7 day',$orderdate); //to fix
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+    
 ?>
+
+<input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
+<input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
-    <div class="card mb-3">
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-size-medium">34VB5540K83</span></div>
+    <div class="card shadow mb-3">
+        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Shipped Via:</span>DHL</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Processing Order</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span> SEP 09, 2017</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
+            <!---------FOR STANDARD SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard'){?>
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                <div class="step completed">
+                <div class="step" id="placed">
                     <div class="step-icon-wrap">
                         <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
-                    <h5 class="step-title">Confirmed Order</h5>
+                    <h5 class="step-title">Order Placed</h5>
                 </div>
-                <div class="step completed">
+                <div class="step" id="paid">
                     <div class="step-icon-wrap">
-                        <div class="step-icon "><i class="fa fa-box"></i></div>
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
                     </div>
-                    <h5 class="step-title">Processing Order</h5>
+                    <h5 class="step-title">Order Paid</h5>
                 </div>
-                <div class="step">
+                <div class="step" id="shipped">
                     <div class="step-icon-wrap">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
-                    <h5 class="step-title">Product Dispatched</h5>
+                    <h5 class="step-title">Order Shipped Out</h5>
                 </div>
-                <div class="step">
-                    <div class="step-icon-wrap">
+                <div class="step" id="delivered">
+                    <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
-                    <h5 class="step-title">Product Delivered</h5>
+                    <h5 class="step-title">Order Delivered</h5>
                 </div>
             </div>
+            <?php } else{?>
+            <!------------ FOR PICK UP( SELF-COLLECTION) STATUS --------->
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="pplaced">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="ppaid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="ppreparing">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-clipboard-list"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Preparing</h5>
+                </div>
+                <div class="step" id="pready">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
+                    </div>
+                    <h5 class="step-title">Ready To Pick Up</h5>
+                </div>
+            </div>
+            <?php }?>
             <hr>
             <!--Delivery Details-->
             <div class="delivery-details pl-2">
@@ -46,47 +147,59 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name">Yee YingYing</div>（+60）1117795416<br>
-                    <div id="address">9-13-9， Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"> </div>(+60)1117795416<br>
+                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
                 </div>
             </div>
             <hr>
-            <!--Shipping Progress table-->
-            <table class="table track-shipping">
+             <!--Shipping Progress table-->
+             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                <?php                       
+                     while ($srow = $sresult->fetch_assoc()) {
+                ?>
+                 <?php if($srow['status']=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
+                        <td><?php echo $srow['datetime'] ?></th>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
+                <?php 
+                }
+                ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 
+    <!---$qty = $orow['quantity'];
+        $amt = $orow['amount'];
+        $productname = $orow['product_name'];
+        $productcover = $orow['product_cover_picture'];
+        $shopname = $orow['shop_name'];
+        $shopprofile = $orow['shop_profile_image'];-->
+
     <!--Order Details-->
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1" style="text-align: right;"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
+                        <span><img src="<?php echo $shopprofile ?>" alt="<?php echo $shopname?>"
                                 width="40" height="40"></span>
-                        <span><strong>| SEGi College Subang Jaya</strong></span>
+                        <span><strong>|<?php echo $shopname ?></strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            04 Sep 2021 | 04:45 p.m.
+                            <?php echo $orderdate ?> | 
                             </span>
                         </div>
                     </div>
@@ -97,23 +210,15 @@
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
-                        <td>3-in-1 Power Bank with Phone Stand Model: WI-SP510</td>
-                        <td>Navy blue</td>
-                        <td>RM34.00</td>
-                        <td>x1</td>
-                        <td class="red-text">rm349.00</td>
+                        <td scope="row"><img src="/img/product/<?php echo $productcover?>"
+                                alt="<?php echo $productname ?>" style="object-fit:contain;width:15%;height:15%"></td>
+                        <td><?php echo $productname?></td>
+                        <td></td>
+                        <td>RM<?php echo $productprice?>.00</td>
+                        <td>x <?php echo $qty ?></td>
+                        <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
-                    <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
-                        <td>3-in-1 Powe</td>
-                        <td>Navy blue</td>
-                        <td>RM34.00</td>
-                        <td>x1</td>
-                        <td class="red-text">rm349.00</td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <hr>
@@ -123,11 +228,9 @@
                     <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
                         <div class="w-100 text-start"><span class="text-size-medium p-2"><strong> Payment
                                     Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
-                                style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
-                                Card</span> </div>
+                                style="color: black; width: 30px;height:30px"></span><span class="p-2"><?php echo $paymentstat?></span> </div>
                         <div class="w-100 text-start"><span class="text-size-medium"><strong>Status:</strong></span> <span
-                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
-                            Order</div>
+                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span><?php echo $orderstatus?></div>
                     </div>
                 </div>
                 <!--Ordered Item Price Amount Information-->
@@ -138,7 +241,7 @@
                             Total:
                         </div>
                         <div class="col">
-                            RM715.00
+                            RM<?php echo $amt?>.00
                         </div>
                     </div>
                     <div class="row p-2">
@@ -147,7 +250,7 @@
                             Discounts:
                         </div>
                         <div class="col">
-                            -RM258.00
+                            N/A
                         </div>
                     </div>
                     <div class="row p-2">
@@ -156,7 +259,7 @@
                             Delivery Fees:
                         </div>
                         <div class="col">
-                            RM8.60
+                            <?php echo $shippingfee?>
                         </div>
                     </div>
                     <div class="row p-2">
@@ -166,13 +269,18 @@
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h5><strong>RM465.60</strong></h5>
+                            <h5><strong>RM</strong></h5>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        <div class= "card-footer">
+        <a href="purchaseShippingDetials.php?confirm&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Confirm Order</button></a>
+        <a href="purchaseShippingDetials.php?cancel&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Cancel Order</button></a>
+        </div>
+        
     </div>
 </div>
 <!-- /.container-fluid -->
@@ -180,6 +288,17 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script src="//www.tracking.my/track-button.js"></script>
+<script>
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+
+</script>
 
 <style>
     body {
@@ -447,3 +566,59 @@
     color: green;
     }
 </style>
+
+<script>
+var orderstatus = document.getElementById("orderstatus").value;
+var deliverymethod = document.getElementById("deliverymethod").value;
+
+console.log(orderstatus);
+if (deliverymethod == "standard") {
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("placed").className ="step completed";
+    }
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
+    }
+    else if(orderstatus == 'Shipped')
+    {
+        console.log('can work');
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
+        document.getElementById("shipped").className ="step completed";
+    }
+    else if(orderstatus == 'Delivered')
+    {
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className ="step completed";
+        document.getElementById("delivered").className ="step completed";
+    }
+}
+else{
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("pplaced").className ="step completed";
+    }
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+    }
+    else if(orderstatus == 'Preparing')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+        document.getElementById("ppreparing").className ="step completed";
+    }
+    else if(orderstatus == 'Ready')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className = "step completed";
+        document.getElementById("ppreparing").className ="step completed";
+        document.getElementById("pready").className ="step completed";
+    }
+}
+</script>

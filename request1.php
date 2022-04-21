@@ -5,12 +5,20 @@ use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
+use PayPal\Api\InputFields; 
 
-require __DIR__. '/config.php';
+require __DIR__. '/config1.php';
 
 if (empty($_POST['item_number'])) {
     throw new Exception('This script should not be called directly, expected post data');
 }
+
+
+$inputFields = new InputFields();
+$inputFields->setAllowNote(true)
+    ->setNoShipping(1) 
+    ->setAddressOverride(0);
+
 
 $payer = new Payer();
 $payer->setPaymentMethod('paypal');
@@ -55,6 +63,8 @@ try {
     throw new Exception('Unable to create link for payment');
 }
 
-header('location:' . $payment->getApprovalLink());
+$redirect = $payment->getApprovalLink();
+echo ("
+<script> window.location.href=\"$redirect\" </script>
+");
 exit(1);
-

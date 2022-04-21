@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 
+<!-- Insert data -->
 <?php
 //    if(isset($_POST['submit'])){
 //      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
@@ -22,45 +23,124 @@
 //        mysqli_close($conn);
 //    }
 ?>
+
+<!-- Select Data -->
 <?php
-if($conn->connect_error){
-	die("Connection failed ".$conn->connect_error);
-}
+//if($conn->connect_error){
+//	die("Connection failed ".$conn->connect_error);
+//}
+//
+//$sql = "select * from shopProfile where shop_id='$shop_id'";
+//
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0){
+//
+//$row = $result->fetch_assoc();
+//
+//$coverPhoto = $row["coverPhoto"];
+//$profileImage = $row["profileImage"];
+//$name = $row["name"];
+//$description = $row["description"];
+//$imageVideo = $row["imageVideo"];
+//
+//} else {
+//	echo "Not Found";
+//}
+//$conn->close();
+?>
 
-$sql = "select * from students where student_id='$student_id'";
+<!-- Update Profile -->
+<?php
+//if ($conn->connect_error){
+//	die("Connection failed: ". $conn->connect_error);
+//}
+//
+//$sql = "UPDATE shopProfile SET coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' WHERE shop_id='$shop_id'";
+//
+//if ($conn->query($sql) === TRUE) {
+//	echo "Records updated: ".$name."-".$description;
+//} else {
+//	echo "Error: ".$sql."<br>".$conn->error;
+//}
+//
+//$conn->close();
+?>
 
-$result = $conn->query($sql);
+<!-- Select Data -->
+<?php
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
+  $result1 = mysqli_query($conn, $sql); 
+?>
 
-if ($result->num_rows > 0){
-
-$row = $result->fetch_assoc();
-
-$coverPhoto = $row["coverPhoto"];
-$profileImage = $row["profileImage"];
-$name = $row["name"];
-$description = $row["description"];
-$imageVideo = $row["imageVideo"];
-
-} else {
-	echo "Not Found";
-}
-$conn->close();
+<!-- Upload Image -->
+<?php 
+// If file upload form is submitted 
+//$status = $statusMsg = ''; 
+//if(isset($_POST["submit"])){ 
+//    $status = 'error'; 
+//    if(!empty($_FILES["image"]["name"])) { 
+//        // Get file info 
+//        $fileName = basename($_FILES["image"]["name"]); 
+//        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+//         
+//        // Allow certain file formats 
+//        $allowTypes = array('jpg','png','jpeg','gif'); 
+//        if(in_array($fileType, $allowTypes)){ 
+//            $image = $_FILES['image']['tmp_name']; 
+//            $shopImage = addslashes(file_get_contents($image)); 
+//         
+//            // Insert image content into database 
+//            $insert = $db->query("INSERT into shopProfile (image, created) VALUES ('$shopImage', NOW())"); 
+//             
+//            if($insert){ 
+//                $status = 'success'; 
+//                $statusMsg = "File uploaded successfully."; 
+//            }else{ 
+//                $statusMsg = "File upload failed, please try again."; 
+//            }  
+//        }else{ 
+//            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+//        } 
+//    }else{ 
+//        $statusMsg = 'Please select an image file to upload.'; 
+//    } 
+//} 
+// 
+//// Display status message 
+//echo $statusMsg; 
 ?>
 
 <?php
-if ($conn->connect_error){
-	die("Connection failed: ". $conn->connect_error);
-}
+  if(isset($_POST['update']))
+  {
+    $shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    $shopMedia = $_POST['mediaContainer'];
 
-$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
+    $result2 = mysqli_query($conn,$query);
 
-if ($conn->query($sql) === TRUE) {
-	echo "Records updated: ".$name."-".$description;
-} else {
-	echo "Error: ".$sql."<br>".$conn->error;
-}
+    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
 
-$conn->close();
+
+
+    if($result2)
+    {
+      echo 'Successfully Update';
+    }
+    else
+    {
+      echo 'Please Check Your Query';
+    }
+  }
+  else
+  {
+    echo 'error';
+  }
 ?>
 
 <!-- Icon -->
@@ -75,46 +155,60 @@ $conn->close();
   <div class="container profileContainer">
     <div class="row">
       <div>
-      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
+
+      <?php
+        while ($row=mysqli_fetch_assoc($result1))
+        {
+          $shopProfilePic = $row['shop_profile_image'];
+          $shopName = $row['shop_name'];
+          $shopDescription = $row['shop_description'];
+      ?>
+
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
+      <img class="relative bg-image img-fluid" name="coverContainer[]" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" value='$coverPhoto' hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>-->
-      <div class="profile-pic">
+      <div class="profile-pic"> 
         <label class="-label" for="file">
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage" value='$profileImage' onchange="loadFile(event)"/>
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
+        <input id="file" type="file" name="profileImage" value="" onchange="loadFile(event)"/>
+        <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profilePicContainer" width="200"/>
       </div>
     </div>
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name" value='$name'/>
+      <input type="text" class="form-control" name="name" value="<?php echo $shopName ?>" required />
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control"  rows="3" name="description" value='$description'></textarea>
+      <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" class="imageContainer clearfix">
+      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value='$imageVideo' onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
+
+
     <div class="text-center">
-      <button type="submit" class="saveBtn" name="submit">Save</button>
+      <button type="submit" class="saveBtn" name="update">Save</button>
     </div> 
     </form>
   </div>
+  <?php
+    }
+  ?>
 </div>
 <!-- /.container-fluid -->
 

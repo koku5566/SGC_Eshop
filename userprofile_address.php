@@ -23,12 +23,6 @@
 			echo "Error: " . mysqli_error($conn);
 		}
 	}
-	
-	if(isset($_POST['edit']))
-	{
-		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='userEditAddress.php';</script>");
-	}
 ?>
 
 <div class="row">
@@ -45,10 +39,10 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-left">
-                                        <div class="h1 text-gray-900 mb-4">My Address Book</div>
+                                        <div class="h1 text-gray-900 mb-4 container-left-col2">My Address Book</div>
+										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
                                     </div>
-<a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" id="userForm">
+									<hr>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -57,31 +51,25 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"mb-3\">
-				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('userForm').submit()\">
-					<div class=\"address\">
-						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
-						<div class=\"row\">
-							<div class=\"col-lg-4\">
-								<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-								<p style=\"font-size: 1.15rem;\">
-								".$row["address"]."
-								".$row["postal_code"]."
-								".$row["area"]."
-								".$row["state"]."
-								".$row["country"]."
-								</p>
-							</div>
+			<div class=\"row2\">
+			<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
+				<div class=\"col2\">
+					<div class=\"container-col2\">
+						<div class=\"container-left-col2\">
+							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
+							<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">".$row["address"]." ".$row["postal_code"]." ".$row["area"]." ".$row["state"]." ".$row["country"]."</p>
+						</div>
+						<div class=\"container-right-col2\">
+							<button name=\"removeC\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 						</div>
 					</div>
-					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-				</a>
+				</div>
+			</a>
 			</div>
-			<hr>
 			");
 	}
 ?>
-</form>
 	                            </div>
                             </div>
                         </div>
@@ -94,3 +82,40 @@
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+.row2 {
+	background-color: lightgrey;
+	border: 3px solid white;
+}
+
+.col2 {
+	flex: 1;
+	border:1px solid #ddd;
+	padding: 1em;
+}
+
+.container-left-col2 {
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.container-right-col2 {
+	width: 20%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+	.row2 {
+	display: block; 
+	}
+	.container-left-col2 {
+	display: block;
+	}
+	.container-right-col2 {
+	display: block;
+	}
+}
+</style>

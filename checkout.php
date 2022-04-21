@@ -7,27 +7,21 @@
 	 		window.location.href='login.php';</script>";
      } 
  
-     $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
      WHERE userAddress.user_id= '$_SESSION[uid]';";
 
-if(isset($_GET['addressid']))
-{
-    $_SESSION['getaddress'] = $_GET['addressid'];
-    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-    FROM `userAddress`
-    JOIN user ON userAddress.user_id = user.user_id
-    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
-}
 
 //Username and address
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-                         
-            //change address
-            if(isset($_POST['address-option'])){
+            $_SESSION['getaddress'] = $userrow['address_id'];
+            $_SESSION['userEmail'] = $userrow['email'];
+            $_SESSION['userName'] = $userrow['name'];
+
+/*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
                 if(!empty($UID)) {
                     $_SESSION['addressid'] = $UID;
@@ -38,7 +32,17 @@ if(isset($_GET['addressid']))
                     </script>";
                 }
               }  
+ */
 
+ // change address
+if(isset($_GET['addressid']))
+{
+    $_SESSION['getaddress'] = $_GET['addressid'];
+    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
+}
 
 ?>
 
@@ -107,6 +111,8 @@ if(isset($_GET['addressid']))
         </div>
         <div class="modal-body">
     <?php
+
+    /* user address call */
 	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
@@ -115,7 +121,7 @@ if(isset($_GET['addressid']))
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -144,7 +150,9 @@ if(isset($_GET['addressid']))
 <div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
-            <div class="row">
+        <!-- user address display -->    
+        <form action="request1.php" method="post" class="paymentmethod">
+        <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;" data-toggle="modal" data-target="#myModal"    >Change</button></div>
@@ -155,6 +163,7 @@ if(isset($_GET['addressid']))
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div></div>
+            <!-- cart -->
             <div class="row">
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Your Order</strong></label>
                     <div class="table-responsive">
@@ -166,36 +175,101 @@ if(isset($_GET['addressid']))
                                     <th>Variation</th>
                                     <th>Unit Price</th>
                                     <th>Quantity</th>
-                                    <th>Item Subtototal</th>
+                                    <!-- <th>Item Subtototal</th> -->
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $cartsql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, variation.variation_1_choice,variation.variation_2_choice, variation.product_price,
+                            $uid = "U000018";
+                            $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
-                            JOIN `variation`
-                            ON variation.variation_id = cart.variation_id
-                            WHERE cart.user_ID = 'U000018'";
+                            JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
+                            WHERE cart.user_ID = '$uid'
+                            AND cart.remove_Product = '0'
+                            ORDER BY cart.update_at DESC
+                            ";
                             
-                            $queryKL = mysqli_query($conn, $cartsql);
+                            $queryKL = mysqli_query($conn, $sql);
                             
                             
                              while ($rowKL = mysqli_fetch_array($queryKL)) {
          
-                                 $cart_id = $rowKL['cart_id'];
-                                 $product_id = $rowKL['PID'];
-                                 $product_name = $rowKL['P_name'];
-                                 $product_quantity = $rowKL['P_quantity'];
-                                 $product_variation =  $rowKL['P_variation'];
-                                 $product_variation1 =  $rowKL['variation_1_choice'];
-                                 $product_variation2 =  $rowKL['variation_2_choice'];
-                                 $product_price =  $rowKL['P_price'];
-                                 $product_variation_price = $rowKL['variation.product_price'];
-                                 $product_pic =  $rowKL['product.product_cover_picture'];
+                                $product_stock = 0;
+                                $product_price = 0;
+                                $stock_message = "";
+                                $cart_id = $rowKL['cart_id'];
+                                $product_id = $rowKL['PID'];
+                                $product_name = $rowKL['P_name'];
+                                $product_quantity = $rowKL['P_quantity'];
+                                $shop_id = $rowKL['shop_id'];
+
+                                $variation_message = "";
+                                $showNotif = false;
+
+                                if ($rowKL['P_status'] == 'A') {
+
+                                    if ($rowKL['variation_id'] == "" ) {
+                                        $product_price = $rowKL['P_price'];
+                                        $product_stock = $rowKL['product_stock'];
+        
+                                        $variation_message = "<option selected>Not Variation</option>";
+                                    }
+                                    else if ($rowKL['variation_id'] != "") {
+                                        
+                                        $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
+                                        while( $row = mysqli_fetch_assoc($query_get_variation_price))
+                                        {
+                                            $product_price = $row['product_price'];
+                                            $product_stock = $row['product_stock'];
+        
+                                            if ($row['product_stock'] == 0) {
+                                                $showNotif = true;
+                                                $product_stock = 0;
+                                                $product_price = 0;
+        
+                                                $stock_message = "";
+                                                $stock_message = "OUT fOF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                                            }
+                                        }
+        
+                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $query_get_variation = mysqli_query($conn, $sql_get_variation);
+                                        while( $row = mysqli_fetch_assoc($query_get_variation))
+                                        {
+        
+                                            if ($row['variation_1_choice'] == "") {
+                                                $variation_message ="<span value='".$row['variation_id']."' disabled selected>Not Variation</span>";
+                                            }
+                                            else if ($row['variation_1_choice'] != "") {
+                
+                                                if ($row['variation_id'] == $rowKL['variation_id']) {
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
+                                                }
+                                                else{
+                                                    $variation_message = $variation_message . "<span value='".$row['variation_id']."'>".$row['variation_1_name'].":".$row['variation_1_choice']." - ".$row['variation_2_name'].":".$row['variation_2_choice']."</span>";
+                                                }
+                                                        
+                                            }
+                                        }
+        
+                                    }
+        
+                                    
+                                    $stock_message = "RM <span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
+                                }
+                                else if ($rowKL['P_status'] != 'A') {
+                                    $showNotif = true;
+                                    $product_stock = 0;
+                                    $product_price = 0;
+        
+                                    $stock_message = "OUT OF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                                }
 
                             echo ("
                             <tr>
@@ -206,10 +280,10 @@ if(isset($_GET['addressid']))
                                 <span>".$product_name."</span>
                                 </td>
                                 <td>
-                                <span>".$product_variation." ".$product_variation1." , ".$product_variation2."</span>
+                                <span>".$variation_message."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price." ".$product_variation_price."</span>
+                                <span>".$product_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
@@ -235,7 +309,6 @@ if(isset($_GET['addressid']))
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                        <form action="" method="post" class="paymentmethod">
                             <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
@@ -275,17 +348,24 @@ if(isset($_GET['addressid']))
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash on Delivery</label></div>
                 </div> -->
+                <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                        <li class="list-group-item"><span>Order Total</span></li>
-                        <li class="list-group-item"><span>Shipping Total</span></li>
-                        <li class="list-group-item"><span>Total Payment</span></li>
+                        <?php  
+                        $_SESSION['total'] = 100;
+                        ?>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM 90</span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['total'] ?></span></li>
                     </ul>
                 </div>
             </div>
             <br>
             <div class = 'row'>
-            <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
+            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['total'] ?>>
+            <input type = "hidden" name = "item_name" value = "e-shop">
+            <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
+            <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
             </form>
             </div>
         </div>

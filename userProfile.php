@@ -39,7 +39,8 @@ if(isset($_POST['update']))
 			
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
-				echo "<script>alert('Details Updated');</script>";
+				?><script>alert('Details Updated');
+				window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
 			} else {
 				echo "<script>alert('Email Address Already Exists');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -77,8 +78,20 @@ if(isset($_POST['update']))
 		if (mysqli_num_rows($res_data) > 0){
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
-					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
-					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+				<div class=\"form-group\">
+					<div class=\"image-container\">				
+						<div class=\"image-layer\">
+						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+						</div>
+
+						<div class=\"image-tools-add\">
+							<label class=\"custom-file-upload\">
+								<input type=\"file\" accept=\".png,.jpg,.jpeg\" name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
+								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Change
+							</label>
+						</div>
+					</div>
+				</div>
 					
 					<div class=\"form-group\">
 					<label>Username: </label>
@@ -123,3 +136,41 @@ if(isset($_POST['update']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+    .img-thumbnail{
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		border-radius: 10px;
+        border: 1px solid darkgrey;
+    }
+	.image-container{
+		text-align: center;
+		width: fit-content;
+		background-color: white;
+	}
+</style>
+
+<script>
+var img = document.getElementById('profilePic');
+
+img.addEventListener('change', function handleChange(event) {
+	const [file] = img.files;
+	var maxsize = 2000000;
+	var extArr = ["png","jpg","jpeg"];
+	var imageValid = true;
+	for (var a = 0; a < this.files.length; a++)
+	{
+		var ext = img.files[a].name.split('.').pop();
+		if(img.files[a].size >= maxsize || !extArr.includes(ext))
+		{
+			imageValid = false;
+		}
+	}
+	if (!imageValid){
+		alert('Image File Size Cannot More Than 2 MB');
+		img.value=null;
+	}
+});
+</script>
