@@ -66,15 +66,18 @@
     $sresult = $stmt->get_result();
 
     if(isset($_POST["completeBtn"])){
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', 'Completed')";
-        $updatesql = "UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$orderid'";
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $status = "Completed";
+        echo $orderid;
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
         echo 'aiyooo';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+          header("Location:purchaseShippingDetails.php?order_id=".$orderid);
         }
     }
 ?>
@@ -200,6 +203,7 @@
             
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
                     <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
                     </form>
                 <?php } ?>
