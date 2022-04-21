@@ -2,15 +2,12 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-class Chat{
-    private $host  = 'localhost';
-    private $user  = 'root';
-    private $password   = "";
-    private $database  = "phpzag_demo";      
+class chat{
+
+    private $database  = "sgcprot1_SGC_ESHOP";      
     private $chatTable = 'chat';
 	private $chatUsersTable = 'chat_users';
 	private $chatLoginDetailsTable = 'chat_login_details';
-	private $dbConnect = false;
     public function __construct(){
         if(!$this->dbConnect){ 
             $conn = new mysqli($this->host, $this->user, $this->password, $this->database);
