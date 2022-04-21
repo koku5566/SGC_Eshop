@@ -11,7 +11,7 @@ myOrder.delivery_method,
 myOrder.tracking_number,
 product.product_name,
 product.product_cover_picture,
-product.product_price,git pull --rebase --autostash
+product.product_price,
 orderDetails.quantity,
 user.username,
 orderDetails.amount
