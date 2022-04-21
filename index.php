@@ -196,16 +196,15 @@
                             $res = $sm->get_result();
                             
                             while ($row = $result->fetch_assoc()) {
+                                while ($r = $res->fetch_assoc()) {
+                                    $td = date('y-m-d');
+                                    $expr = $row['voucher_expired'];
 
-                             $td = date('y-m-d');
-                             $expr = $row['voucher_expired'];
+                                    $today = strtotime($td);
+                                    $expired = strtotime($expr);
 
-                             $today = strtotime($td);
-                             $expired = strtotime($expr);
-
-                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
-                                ){
-                            
+                                    if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
+                                        ){
                             ?>
 
                             <div class="col-md-2 m-4">
@@ -230,12 +229,6 @@
                             </div>
 
                         <!-- Modal -->
-
-                        <?php 
-                            while ($r = $res->fetch_assoc()) {
-                                $voucherid = $r['voucher_id'];
-                                $voucherid2 = $row['voucher_id'];
-                        ?>
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -262,18 +255,7 @@
                                     <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <?php
-                                            for($i = 0; $i < count($voucherid2); $i++){
-                                                for($x = 0; $x < count($voucherid); $x++){
-                                                    if($voucherid2[$i] === $voucherid[$x]){
-                                            ?>
                                             <p><?php echo $r['product_name'];?>, </p>
-                                            <?php
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            ?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
@@ -289,8 +271,9 @@
                         </div>
                             
                             <?php 
-                            } else{
+                                } else{
 
+                                }
                             }
                         }?>
 
