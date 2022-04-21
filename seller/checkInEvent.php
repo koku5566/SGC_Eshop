@@ -8,6 +8,13 @@ if(isset($_GET['eventCheckin']))
     $_SESSION['eventCheckin'] = $_GET['eventCheckin'];
     $eID = $_SESSION['eventCheckin'];
 }
+$eID = $_SESSION['eventCheckin'];
+if(isset($_GET['searchID']))
+{
+    $_SESSION['searchID'] = $_GET['searchID'];
+    $tID = $_SESSION['searchID'];
+}
+$tID = $_SESSION['searchID'];
 
 $eventsql = "SELECT *
             FROM `event`
@@ -16,9 +23,18 @@ $eventsql = "SELECT *
             WHERE `event`.`event_id` = $eID
             ";
 
+$ticketsql = "SELECT *
+            FROM `ticket`
+            INNER JOIN `ticketType` 
+            ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
+            WHERE `ticket`.`ticket_id` = $tID
+            ";
+
 $resultsql = mysqli_query($conn, $eventsql);                                             
 $row = mysqli_fetch_array($resultsql);
 $eventName = $row['event_name'];
+$ticketresultsql = mysqli_query($conn, $ticketsql);                                             
+$row1 = mysqli_fetch_array($ticketresultsql);
 ?>
 
 <!-- Begin Page Content -->
@@ -47,8 +63,8 @@ $eventName = $row['event_name'];
         </div>
         <div class="card-body">
             <form>
-                <div class="input-group"><input class="form-control" type="text">
-                    <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
+                <div class="input-group"><input class="form-control" type="text" id="searchField">
+                    <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);" id="serachBtn"><i class="fa fa-search"></i></button></div>
                 </div>
             </form>
         </div>
@@ -65,14 +81,41 @@ $eventName = $row['event_name'];
                             <th>Ticket ID</th>
                             <th>Ticket Name</th>
                             <th>Ticket Generate Date</th>
+                            <th>Check-in Status</th>
+                            <th>Check-in Date</th>
+                            <th>Check-in Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Cell 1</td>
-                            <td>Cell 2</td>
-                            <td>Cell 2</td>
-                        </tr>
+                        <?php
+                            echo("
+                            <tr>
+                            <td>".$row1['ticket_id']."</td>
+                            <td>".$row1['ticket_name']."</td>
+                            <td>".$row1['ticketGenerate_Date']."</td>
+                            ");
+                            if($row1['check_in'] == 0)
+                            {
+                                $checkin = "Not Yet Check in";
+                                echo("
+                                <td>$checkin</td>
+                                <td>-</td>
+                                <td>-</td>
+                                </tr>
+                                ");
+                            }
+                            else if($row1['check_in'] == 1)
+                            {
+                                $checkin = "Checked-in";
+                                echo("
+                                <td>$checkin</td>
+                                <td>".$row1['checkIn_date']."</td>
+                                <td>".$row1['checkIn_time']."</td>
+                                </tr>
+                                ");
+                            }
+                            
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -80,7 +123,21 @@ $eventName = $row['event_name'];
         </div>
     </div>
 
+<script>
+    var searchBtn = document.getElementById("serachBtn");
 
+    searchBtn.addEventListener("click",function(){
+        var query = document.getElementById("searchField").value;
+        if(query == null || query == "")
+        {
+            window.alert("Do not search for empty ticket");
+        }
+        else
+        {
+            window.location.href("checkInEvent.php?searchID="+query);
+        }
+    });
+</script>
 
 
     <!-- Below Template -->
