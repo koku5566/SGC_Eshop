@@ -68,8 +68,8 @@
 ?>
 
 <?php
-//  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-//  $result = mysqli_query($conn, $sql); 
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
+  $result = mysqli_query($conn, $sql); 
 ?>
 
 <?php 
