@@ -116,24 +116,14 @@ $queryKL = mysqli_query($conn, $sql);
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
         $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
-            if(mysqli_stmt_affected_rows($stmt2) == 1){
-            }
-            else{
-                $error = mysqli_stmt_error($stmt2);
-            }		
             mysqli_stmt_close($stmt2);
     } 
     }
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
     if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
-        $bp = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity,$variation_id);
-        $bp = mysqli_stmt_execute($stmt3);
-            if(mysqli_stmt_affected_rows($stmt3) == 1){
-            }
-            else{
-                $error = mysqli_stmt_error($stmt3);
-            }		
+        $bp1 = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity,$variation_id);
+        $bp1 = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
     }
