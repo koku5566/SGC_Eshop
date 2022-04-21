@@ -238,7 +238,7 @@
                                         </form>
                                         <?php 
                                         }
-                                        else if($orderstatus=='Placed'){?>
+                                        else if($orderstatus =='Placed'){?>
                                             <td>
                                             </td>
                                             <td>Waiting for customer to pay </td>
