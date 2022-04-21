@@ -18,13 +18,16 @@
     userAddress.phone_number,
     userAddress.address,
     product.product_name,
-    product.product_cover_picture
+    product.product_cover_picture,
+    payments.payment_status,
+    payments.payment_amount
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     JOIN product ON orderDetails.product_id = product.product_id
+    JOIN payments ON product.product_id = payments.product_id
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -40,6 +43,8 @@
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
         $productname = $orow['product_name'];
+        $paymentstat = $orow['payment_status'];
+        $paymentamt = $orow['payment_amount'];
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
 
@@ -180,11 +185,9 @@
                     <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
                         <div class="w-100 text-start"><span class="text-size-medium p-2"><strong> Payment
                                     Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
-                                style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
-                                Card</span> </div>
+                                style="color: black; width: 30px;height:30px"></span><span class="p-2"><?php echo $paymentstat?></span> </div>
                         <div class="w-100 text-start"><span class="text-size-medium"><strong>Status:</strong></span> <span
-                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
-                            Order</div>
+                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span><?php echo $orderstatus?></div>
                     </div>
                 </div>
                 <!--Ordered Item Price Amount Information-->
@@ -223,7 +226,7 @@
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h5><strong>RM465.60</strong></h5>
+                            <h5><strong><?php echo $paymentamt?></strong></h5>
                         </div>
                     </div>
                 </div>
