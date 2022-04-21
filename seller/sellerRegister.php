@@ -369,10 +369,13 @@ if(isset($_POST['signup']))
 
 							$sql  = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
 							VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','SELLER')";		
-							if (mysqli_query($conn, $sql)) {
+							
+                            SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))
+                            
+                            if (mysqli_query($conn, $sql)) {
 								$_SESSION['AddUser'] = true;
 
-								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$userid','$username')";
+								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES (SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0))),'$username')";
 								if (mysqli_query($conn, $sql)) {
 									echo "<script>alert('Registered Successful');
 									window.location.href='sellerLogin.php';</script>";
