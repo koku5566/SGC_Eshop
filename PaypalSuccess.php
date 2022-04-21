@@ -127,10 +127,9 @@ $price = 0;
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
-<div class="payment">
-  <div class="wrapper" style="background: #f1f7fc;">
-  <h1>Your Payment has been Successful</h1>
-  
+
+<div class="App">
+  <h1>Your Payment has been Successful</h1>  
 	  <div class="status">
       <h4>Payment Information</h4>
       <p>Reference Number: <?php echo $row['invoice_id']; ?></p>
@@ -140,10 +139,11 @@ $price = 0;
       <h4>Product Information</h4>
       <p>Product id: <?php echo $row['product_id']; ?></p>
       <p>Product Name: <?php echo $row['product_name']; ?></p>
+      <br>
+      <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
     </div>
   </div>
-</div>  
-</div>
+<br>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
