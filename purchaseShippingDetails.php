@@ -45,9 +45,7 @@
     $sresult = $stmt->get_result();
     
 ?>
-<?php
-//to determine tracking status bar 
-echo $orderstatus;?>
+
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
 
