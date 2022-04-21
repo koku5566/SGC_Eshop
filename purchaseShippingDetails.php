@@ -5,6 +5,7 @@
 
     //=========sql to get order information=============
     $deliverymethod="";
+    $ordertotal = $amt * $shippingfee;
     $totalprice = 0;
     $shippingfee = 8.6;
     $orderinfosql = "SELECT
@@ -182,7 +183,7 @@
                         <td></td>
                         <td>RM<?php echo $amt?>.00</td>
                         <td>x <?php echo $productprice ?></td>
-                        <td class="red-text">RM<?php echo $amt?>.00</td>
+                        <td class="red-text">RM<?php echo $ordertotal?>.00</td>
                     </tr>
                     
                 </tbody>
@@ -235,7 +236,7 @@
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h5><strong>RM465.60</strong></h5>
+                            <h5><strong>RM<?php echo $amt?></strong></h5>
                         </div>
                     </div>
                 </div>
