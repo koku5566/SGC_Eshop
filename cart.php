@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php';
 
     $userID = $_SESSION["uid"];
-    $KL = 14;
+    $KL = 3;
     $SB = 20;
 
     $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 

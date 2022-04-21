@@ -114,7 +114,7 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-    <div class="card shadow mt-4">
+    <div class="card shadow mt-4 mb-4">
         <div class="card-body">
             <div class="container">
                 <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
@@ -256,9 +256,8 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">
-                                                            <option value="Preparing"> Order is Preparing</option>
                                                             <option value="Ready">Pick-Up is Ready</option>
-                                                            <option value="Contact">You will contact customer</option>
+                                                            <option value="Failed">Fail to fulfill order</option>
                                                         </select>
                                                     </div>
                                                     <div class="col">
