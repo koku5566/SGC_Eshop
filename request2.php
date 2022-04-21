@@ -91,7 +91,7 @@ if (isset($_POST["completeRegister"])) {
                             mysqli_stmt_close($stmt5);
                     }
 
-                    $picLocation = "/img/event/1649595721697.png";
+                    $picLocation = "https://eshop.sgcprototype.com/img/event/1649595721697.png";
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
