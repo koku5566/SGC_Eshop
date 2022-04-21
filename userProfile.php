@@ -40,7 +40,7 @@ if(isset($_POST['update']))
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
 				?><script>alert('Details Updated');
-				window.location = '<?php echo("$domain/login.php");?>'</script><?php
+				window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
 			} else {
 				echo "<script>alert('Email Address Already Exists');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -80,8 +80,9 @@ if(isset($_POST['update']))
 				echo("
 				<div class=\"imageDiv\">
 					<div class=\"image-container\">
-						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+						
 						<div class=\"image-layer\">
+						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
 						<div class=\"image-tools-delete hide\">
 							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
@@ -162,7 +163,7 @@ img.addEventListener('change', function handleChange(event) {
 		}
 	}
 	if (!imageValid){
-		alert('File size more than 2mb');
+		alert('Image File Size Cannot More Than 2 MB');
 		img.value=null;
 	}
 });
