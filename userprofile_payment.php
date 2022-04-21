@@ -56,7 +56,7 @@
                                     </div>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 <div class="row">
-<div class="h3">Bank</div><a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a></div>
+<div class="h3">Bank Account</div><a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a></div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -90,8 +90,8 @@
 <div class="row2">
 	<div class="col2" style="background-color: #a31f37;">
 		<div class="container-col2">
-			<div class="container-left-col2"><h3 style="color: white;">Card</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus"></i></a></button></div>
+			<div class="container-left-col2"><h3 style="color: white;">Credit / Debit Card</h3></div>
+			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
 		</div>
 	</div>
 </div>
