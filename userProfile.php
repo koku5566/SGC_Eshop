@@ -143,5 +143,5 @@ if(isset($_POST['update']))
 		if (!imageValid){
 			alert('File size more than 2mb');
 		}
-	}
+	});
 </script>
