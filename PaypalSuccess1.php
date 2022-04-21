@@ -110,6 +110,8 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
+        <span>".$product_id."</span>
+        <span>".$uid."</span>
         <span>".$user_address."</span>
         <span>".$create_time."</span>
 

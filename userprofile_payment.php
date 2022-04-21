@@ -55,32 +55,36 @@
                                         <div class="h1 text-gray-900 mb-4">My Payment Option</div>
                                     </div>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<div class="row">
-<div class="h3">Bank</div><a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a></div>
+<div class="row2">
+	<div class="col2" style="background-color: #a31f37;">
+		<div class="container-col2">
+			<div class="container-left-col2"><h3 style="color: white;">Credit / Debit Card</h3></div>
+			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
+		</div>
+	</div>
+</div>
 <?php
 	$UID = $_SESSION["uid"];
-	
-	$sql = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
-	//$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON userBankAccount.user_id ='$UID' AND userCard.user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql);
+	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
+
+	$res_data = mysqli_query($conn,$sql_1);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"mb-3\">
-				<div class=\"userBank\">
-					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
-					<div class=\"row\">
-						<div class=\"col-lg-4\">
-							<p style=\"font-size: 1.3rem;\">".$row["bankAcc_name"]."</p>
-							<p style=\"font-size: 1.15rem;\">
-							".$row["account_no"]."
-							</p>
+			<div class=\"row2\">
+				<div class=\"col2\">
+					<div class=\"container-col2\">
+						<div class=\"container-left-col2\">
+							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">".$row["expiry_date"]."</p>
+						</div>
+						<div class=\"container-right-col2\">
+							<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 						</div>
 					</div>
 				</div>
-				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 			</div>
-			<hr>
 			");
 	}
 ?>
@@ -88,33 +92,33 @@
 <hr>
 
 <div class="row2">
-	<div class="col2">
+	<div class="col2" style="background-color: #a31f37;">
 		<div class="container-col2">
-			<div class="container-left-col2"><h3 style="color: white;">Card</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus"></i></a></button></div>
+			<div class="container-left-col2"><h3 style="color: white;">Bank Account</h3></div>
+			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
 		</div>
 	</div>
 </div>
 <?php
-	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
+	$sql_2 = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql_1);
+	$res_data = mysqli_query($conn,$sql_2);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-		<div class=\"row2\">
-			<div class=\"col2\">
-				<div class=\"container-col2\">
-					<div class=\"container-left-col2\">
-						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
-						<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
-						<p style=\"font-size: 1.15rem;\">".$row["expiry_date"]."</p>
+			<div class=\"row2\">
+				<div class=\"col2\">
+					<div class=\"container-col2\">
+						<div class=\"container-left-col2\">
+							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
+							<p style=\"font-size: 1.3rem;\">".$row["bankAcc_name"]."</p>
+							<p style=\"font-size: 1.15rem;\">".$row["account_no"]."</p>
+						</div>
+						<div class=\"container-right-col2\">
+							<button name=\"removeC\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+						</div>
 					</div>
-			<div class=\"container-right-col2\">
-				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-			</div>
 				</div>
 			</div>
-		</div>
 			");
 	}
 ?>
@@ -141,7 +145,6 @@
 	flex: 1;
 	border:1px solid #ddd;
 	padding: 1em;
-	background-color: #a31f37;
 }
 
 .container-left-col2 {
