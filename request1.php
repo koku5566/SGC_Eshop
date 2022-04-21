@@ -13,6 +13,11 @@ if (empty($_POST['item_number'])) {
 }
 
 
+$inputFields = new InputFields();
+$inputFields->setAllowNote(true)
+    ->setNoShipping(1) 
+    ->setAddressOverride(0);
+
 
 $payer = new Payer();
 $payer->setPaymentMethod('paypal');
