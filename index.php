@@ -153,7 +153,7 @@
                     <br>
                     <!-- Voucher -->
                     <div class="container">
-                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 pr-2">
+                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
                             <?php 
                             
                             $sql_voucher =
@@ -193,23 +193,24 @@
                             
                             ?>
 
-                            <div class="col-md-2 m-2">
-                            <div class="card" id="vouchercard">
-                                <div class="container">
-                                    <img class="m-4" src="../img/" id="voucherlogo" >
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title"><strong></strong></h6>
-                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                    <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
-                                    <u>
-                                        <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
-                                        T&C applied.
-                                        </a>
-                                    </u>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
+                            <div class="col-md-2">
+                                <div class="card" id="vouchercard">
+                                    <div class="container">
+                                        <img class="m-4" src="../img/" id="voucherlogo" >
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="card-title"><strong></strong></h6>
+                                        <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                        <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                        <u>
+                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
+                                            T&C applied.
+                                            </a>
+                                        </u>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
