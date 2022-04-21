@@ -112,7 +112,7 @@
 ?>
 
 <?php
-  if(isset($_POST['submit']))
+  if(isset($_POST['update']))
   {
     $shopProfileCover = $_POST['coverContainer'];
     $shopProfilePic = $_POST['profilePicContainer'];
@@ -195,7 +195,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="saveBtn" name="submit">Save</button>
+      <button type="submit" class="saveBtn" name="update">Save</button>
     </div> 
     </form>
   </div>
