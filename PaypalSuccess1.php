@@ -141,9 +141,9 @@ $queryKL = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
+    <div class="App">
   <h1>Your Payment has been Successful</h1>
       <h4>Payment Information</h4>
-      <div class="wrapper">
       <p>Reference Number: <?php echo $row1['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
       <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
@@ -153,7 +153,6 @@ $queryKL = mysqli_query($conn, $sql);
       <p>Product Name: <?php echo $row1['product_name']; ?></p>
     </div>
   </div>
-</div>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
