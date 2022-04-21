@@ -174,7 +174,7 @@
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
                             JOIN product ON productVoucher.product_id = product.product_id	
                             JOIN user ON product.shop_id = user.user_id
-                            JOIN shop ON user.user_id = shop.shop_id
+                            JOIN shopProfile ON user.user_id = shopProfile.shop_id
                             GROUP BY voucher.voucher_id"; 
 
                             $stmt = $conn->prepare($sql_voucher);
@@ -196,7 +196,7 @@
                             <div class="col-md-2 m-2">
                             <div class="card" id="vouchercard">
                                 <div class="container">
-                                    <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                    <img class="m-4" src="../img/<?php echo $row['shop_profile_cover']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
