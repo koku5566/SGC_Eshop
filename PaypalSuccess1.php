@@ -138,7 +138,6 @@ $queryKL = mysqli_query($conn, $sql);
 
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
     <div class="App">
@@ -157,7 +156,7 @@ $queryKL = mysqli_query($conn, $sql);
   </div>
 <br>
 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
   <?php
     require __DIR__ . '/footer.php'
