@@ -86,6 +86,7 @@
 <style>
 .row2 {
 	background-color: lightgrey;
+	border: 3px solid white;
 }
 
 .col2 {
