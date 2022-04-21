@@ -109,7 +109,12 @@ $queryKL = mysqli_query($conn, $sql);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }
+        $bp = mysqli_stmt_execute($stmt);
+        if (false === $bp) {
+            die('Error with execute: ') . htmlspecialchars($stmt->error);
     }
+    mysqli_stmt_close($stmt);
+}
 }
 
 
