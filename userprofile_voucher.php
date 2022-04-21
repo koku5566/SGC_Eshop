@@ -33,8 +33,6 @@
    $stmt = $conn->prepare($sql_voucher);
    $stmt->execute();
    $result = $stmt->get_result();
-
-   while ($row = $result->fetch_assoc()) {
    
 ?>
 
@@ -129,8 +127,6 @@
       </div>
    </div>
 </div>
-<?php 
-}?>
 
 
 
