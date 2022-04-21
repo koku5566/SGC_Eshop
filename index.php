@@ -161,6 +161,7 @@
                             voucher.voucher_code,
                             voucher.voucher_type,
                             voucher.discount_amount,
+                            voucher.voucher_display,
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
                             voucher.voucher_details,
