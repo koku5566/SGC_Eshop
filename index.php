@@ -227,11 +227,11 @@
                                         <div class="d-flex justify-content-center">
                                             <div class="card m-2" id="termsvouchercard">
                                             <div class="container">
-                                                <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                                 <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                             </div>
                                             </div>
