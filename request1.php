@@ -5,6 +5,7 @@ use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
+use PayPal\Api\InputFields; 
 
 require __DIR__. '/config1.php';
 
