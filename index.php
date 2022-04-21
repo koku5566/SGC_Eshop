@@ -194,7 +194,7 @@
                             $sm->execute();
                             $res = $sm->get_result();
                             
-                            while ($row = $result->fetch_assoc() && $r = $res->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
 
                              $td = date('y-m-d');
                              $expr = $row['voucher_expired'];
@@ -203,7 +203,7 @@
                              $expired = strtotime($expr);
 
                             if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
-                                && $r['voucher_id'] = $row['voucher_id']){
+                                ){
                             
                             ?>
 
@@ -253,11 +253,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer">
+                                    <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
                                             <p>
-                                                <?php echo $r['product_name']; ?>
+                                                <?php 
+                                                    while ($r = $res->fetch_assoc()) {
+                                                        $voucherid = $r['voucher_id'];
+                                                        $voucherid2 = $row['voucher_id'];
+
+                                                        for($i = 0; $i < count($voucherid); $i++){
+                                                            for($x = 0; $x < count($voucherid2); $x++){
+                                                                if($voucherid[$i] === $voucherid2[$x]){
+                                                                    echo $r['product_name']; 
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
                                             </p>
                                         </div>
                                         <div class="container">

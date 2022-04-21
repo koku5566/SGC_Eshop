@@ -115,38 +115,78 @@
     }
     ?>
     <div class="card shadow mt-4 mb-4">
+    <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
+        <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
+        </div>
         <div class="card-body">
             <div class="container">
                 <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                    <div class="step" id="placed">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Placed</h5>
+            <!---------FOR STANDARD SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard'){?>
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="placed">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
-                    <div class="step" id="paid">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-receipt"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Paid</h5>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="paid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
                     </div>
-                    <div class="step" id="shipped">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon"><i class="fa fa-truck"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Shipped Out</h5>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="shipped">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
-                    <div class="step" id="delivered">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-house"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Delivered</h5>
+                    <h5 class="step-title">Order Shipped Out</h5>
+                </div>
+                <div class="step" id="delivered">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
+                    <h5 class="step-title">Order Delivered</h5>
+                </div>
+            </div>
+            <?php } else{?>
+            <!------------ FOR PICK UP( SELF-COLLECTION) STATUS --------->
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="pplaced">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="ppaid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="pready">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-box"></i></div>
+                    </div>
+                    <h5 class="step-title">Ready To Pick Up</h5>
+                </div>
+                <div class="step" id="pcompleted">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Completed</h5>
+                </div>
+            </div>
+            <?php }?>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card shadow">
+    <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container m-3">
                 <div class="order-section mb-3">
