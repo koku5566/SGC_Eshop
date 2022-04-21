@@ -89,7 +89,7 @@ $eventName = $row['event_name'];
                                             FROM `ticket`
                                             INNER JOIN `ticketType` 
                                             ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-                                            WHERE `ticket`.`ticket_id` = $tID
+                                            WHERE `ticket`.`ticket_id` = $queriesUser
                                             ";
 
                                 $ticketresultsql = mysqli_query($conn, $ticketsql);                                             
