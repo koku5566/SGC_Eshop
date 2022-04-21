@@ -74,6 +74,30 @@ $stmt = $conn->prepare($pickupsql);
 $stmt->execute();
 $pickupresult = $stmt->get_result();
 
+
+
+/*QUERY FOR SHIPPING */
+$shippingsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.order_status != 'Shipped'";
+
+$stmt = $conn->prepare($shippingsql);
+$stmt->execute();
+$shippingresult = $stmt->get_result();
 ?>
 
 
@@ -327,6 +351,48 @@ $pickupresult = $stmt->get_result();
 
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                            <?php                       
+                            while ($shiprow = $shippingresult->fetch_assoc()) {
+                            ?>
+                            <!--Each Order Item-->
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col md-auto text-start"><span><strong><?php echo $shiprow['username'];?></strong></span></div></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $shiprow['order_id']; ?> </strong></span></div>
+                                    </div>
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-1 image-container">
+                                            <img class="card-img-top img-thumbnail"
+                                                style="object-fit:contain;width:100%;height:100%"
+                                                src="/img/product/<?php echo $shiprow['product_cover_picture']?>"
+                                                alt="<?php echo $shiprow['product_name']?>" />
+                                        </div>
+                                        <div class="col-3">
+                                            <?php echo $shiprow['product_name']?>
+                                        </div>
+                                        <div class="col-1">
+                                            x
+                                            <?php echo $shiprow['quantity']?>
+                                        </div>
+
+                                        <div class="col-1">
+                                            RM
+                                            <?php echo $shiprow['product_price']?>.00
+                                        </div>
+                                        <div class="col-2"><?php echo $shiprow['order_status'] ?></div>
+                                        <div class="col-2">DHL eCommerce <?php echo $shiprow['tracking_number']?></div>
+                                        <div class="col-2">
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $shiprow['order_id'];?>">Check Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!--End of Order Item-->
+                                <?php 
+                                }?>
                             </div>
 
                             <!--------------------------------Completed--------------------------------------->

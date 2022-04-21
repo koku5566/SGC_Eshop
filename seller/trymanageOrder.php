@@ -99,7 +99,7 @@ if(isset($_GET["ship"])){
                                     <hr>
 
                                     <?php
-                                    $sql2 = "SELECT * FROM myOrder WHERE order_status NOT IN ('cancelled', 'shipping') ";
+                                    $sql2 = "SELECT * FROM myOrder WHERE order_status NOT IN ('Cancelled', 'Shipped') ";
                                     $result2 = $conn->query($sql2);
                                     while($row2 = $result2->fetch_assoc()){
                                         $order_id = $row2['order_id'];
