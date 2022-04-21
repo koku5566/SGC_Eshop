@@ -246,10 +246,11 @@
                                                 $sql_pn=
                                                 "SELECT
                                                 product.product_name,
-                                                productVoucher.voucher_id AS pv_voucher_id
+                                                voucher.voucher_id
                                                 
                                                 FROM product
-                                                LEFT JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                JOIN voucher ON productVoucher.voucher_id = voucher.voucher_id
                                                 ";
                     
                     
@@ -259,7 +260,7 @@
                                                 
                                                 while ($r = $res->fetch_assoc()) {
 
-                                                    if($r['pv_voucher_id'] = $row['voucher_id']){
+                                                    if($r['voucher_id'] = $row['voucher_id']){
                                                     echo $r['product_name']; 
                                                     }
                                                     else{
