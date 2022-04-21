@@ -213,57 +213,56 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Voucher Modal -->
+                            <!-- Voucher Modal -->
 
-                        <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="termsModalLongTitle">Terms and Conditions.</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card m-2" id="termsvouchercard">
+                            <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="termsModalLongTitle">Terms and Conditions.</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="card m-2" id="termsvouchercard">
+                                                    <div class="container">
+                                                        <img class="m-4" src="../img/" id="voucherlogo">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h6 class="card-title"><strong></strong></h6>
+                                                        <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                                                        <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tnccontainer">
                                                 <div class="container">
-                                                    <img class="m-4" src="../img/" id="voucherlogo">
+                                                    <strong>Product</strong>
+                                                    <p></p>
                                                 </div>
-                                                <div class="card-body">
-                                                    <h6 class="card-title"><strong></strong></h6>
-                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
-                                                    <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                                <div class="container">
+                                                    <strong>More Details</strong>
+                                                    <p> <?php echo $row['voucher_details']; ?> </p>
                                                 </div>
+                                                <div class="container">
+                                                    <strong>Usage Period</strong>
+                                                    <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="tnccontainer">
-                                            <div class="container">
-                                                <strong>Product</strong>
-                                                <p></p>
-                                            </div>
-                                            <div class="container">
-                                                <strong>More Details</strong>
-                                                <p> <?php echo $row['voucher_details']; ?> </p>
-                                            </div>
-                                            <div class="container">
-                                                <strong>Usage Period</strong>
-                                                <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <?php 
-                            // }else{
-                            // }
-                            }?>
+                                
+                                <?php 
+                                // }else{
+                                // }
+                                }?>
 
-                            
+                            </div>
                         </div>
                     </div>
 
