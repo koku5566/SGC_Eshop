@@ -2,22 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-class chat{
 
-    private $database  = "sgcprot1_SGC_ESHOP";      
-    private $chatTable = 'chat';
-	private $chatUsersTable = 'chat_users';
-	private $chatLoginDetailsTable = 'chat_login_details';
-    public function __construct(){
-        if(!$this->dbConnect){ 
-            $conn = new mysqli($this->host, $this->user, $this->password, $this->database);
-            if($conn->connect_error){
-                die("Error failed to connect to MySQL: " . $conn->connect_error);
-            }else{
-                $this->dbConnect = $conn;
-            }
-        }
-    }
 	private function getData($sqlQuery) {
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		if(!$result){
