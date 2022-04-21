@@ -70,6 +70,7 @@
                         JOIN product ON productVoucher.product_id = product.product_id		
                         JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
                         WHERE shopProfile.shop_id = '$shopId'
+                        GROUP BY voucher.voucher_id
                         "; 
 
                      $stmt = $conn->prepare($sql_myvoucher);
