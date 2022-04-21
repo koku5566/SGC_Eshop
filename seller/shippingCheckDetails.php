@@ -238,7 +238,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <td>
                                             <?php echo $srow['datetime'] ?>
@@ -260,7 +260,7 @@
                                 if($orderstatus =='Paid'&& $deliverymethod=='standard'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
-                                                <?php echo date("Y-m-d H:i:s");?>
+                                                <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $orderid?>">
