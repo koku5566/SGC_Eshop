@@ -185,7 +185,9 @@
                             product.product_name,
                             voucher.voucher_id
                             
-                            FROM voucher, product
+                            FROM product
+                            JOIN productVoucher ON product.product_id = productVoucher.product_id
+                            JOIN voucher ON productVoucher.voucher_id = voucher.voucher_id
                             ";
 
                             $sm = $conn->prepare($sql_pn);
