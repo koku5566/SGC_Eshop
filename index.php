@@ -263,7 +263,7 @@
                                                             for($x = 0; $x < count($voucherid); $x++){
                                                                 if($voucherid2[$i] = $voucherid[$x]){
                                             ?>
-                                            <p><?php echo $voucherid2[$i];?>, </p>
+                                            <p><?php echo $r['product_name'];?>, </p>
                                             <?php }}}}?>
                                         </div>
                                         <div class="container">
