@@ -78,7 +78,7 @@ if(isset($_POST['update']))
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
 					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
-					<input type=\"file\" name=\"proPic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+					<input type=\"file\" accept=\".png,.jpeg,.jpg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
 					<div class=\"form-group\">
 					<label>Username: </label>
@@ -123,3 +123,25 @@ if(isset($_POST['update']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<script>
+	var img = document.getElementById('profilePic');
+	
+	img.addEventListener('change', function handleChange(event) {
+		const [file] = img.files;
+		var maxsize = 2000000;
+		var extArr = ["jpg", "jpeg", "png"];
+		var imageValid = true;
+		for (var a = 0; a < this.files.length; a++)
+		{
+			var ext = img.files[a].name.split('.').pop();
+			if(img.files[a].size >= maxsize || !extArr.includes(ext))
+			{
+				imageValid = false;
+			}
+		}
+		if (!imageValid){
+			alert('File size more than 2mb');
+		}
+	}
+</script>
