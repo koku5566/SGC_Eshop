@@ -50,27 +50,22 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"mb-3\">
-				<a class=\"address-tag\" href=\"../userEditAddress.php?id=".$row["address_id"]."\">
-					<div class=\"address\">
-						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
-						<div class=\"row\">
-							<div class=\"col-lg-4\">
-								<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-								<p style=\"font-size: 1.15rem;\">
-								".$row["address"]."
-								".$row["postal_code"]."
-								".$row["area"]."
-								".$row["state"]."
-								".$row["country"]."
-								</p>
-							</div>
+			<div class=\"row2\">
+			<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
+				<div class=\"col2\">
+					<div class=\"container-col2\">
+						<div class=\"container-left-col2\">
+							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
+							<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">".$row["address"]." ".$row["postal_code"]." ".$row["area"]." ".$row["state"]." ".$row["country"]."</p>
+						</div>
+						<div class=\"container-right-col2\">
+							<button name=\"removeC\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 						</div>
 					</div>
-					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-				</a>
+				</div>
+			</a>
 			</div>
-			<hr>
 			");
 	}
 ?>
@@ -86,3 +81,41 @@
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+.row2 {
+	display: flex;
+}
+
+.col2 {
+	flex: 1;
+	border:1px solid #ddd;
+	padding: 1em;
+}
+
+.container-left-col2 {
+	padding:20px;
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.container-right-col2 {
+	padding:15px;
+	width: 20%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+	.row2 {
+	display: block; 
+	}
+	.container-left-col2 {
+	display: block;
+	}
+	.container-right-col2 {
+	display: block;
+	}
+}
+</style>
