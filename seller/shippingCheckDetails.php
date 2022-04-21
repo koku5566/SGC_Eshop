@@ -114,9 +114,8 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-<!--Horizontal Order Tracking Status-->
-<div class="card shadow mb-3">
-        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+    <div class="card shadow mt-4 mb-4">
+    <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
@@ -124,6 +123,8 @@
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
+            <div class="container">
+                <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
             <!---------FOR STANDARD SHIPPING STATUS------------->
             <?php if($deliverymethod == 'standard'){?>
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
@@ -181,6 +182,10 @@
                 </div>
             </div>
             <?php }?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container m-3">
@@ -733,57 +738,27 @@
     }
 </style>
 <script>
-var orderstatus = document.getElementById("orderstatus").value;
-var deliverymethod = document.getElementById("deliverymethod").value;
+    var orderstatus = document.getElementById("orderstatus").value;
 
-console.log(orderstatus);
-if (deliverymethod == "standard") {
-    if(orderstatus == 'Placed')
-    {
-        document.getElementById("placed").className ="step completed";
+    console.log(orderstatus);
+    if (orderstatus == 'Placed') {
+        document.getElementById("placed").className = "step completed";
     }
-    else if(orderstatus == 'Paid')
-    {
-        document.getElementById("placed").className ="step completed";
-        document.getElementById("paid").className ="step completed";
-    }
-    else if(orderstatus == 'Shipped')
-    {
-        console.log('can work');
-        document.getElementById("placed").className ="step completed";
-        document.getElementById("paid").className ="step completed";
-        document.getElementById("shipped").className ="step completed";
-    }
-    else if(orderstatus == 'Delivered')
-    {
-        document.getElementById("placed").className ="step completed";
+    else if (orderstatus == 'Paid') {
+        document.getElementById("placed").className = "step completed";
         document.getElementById("paid").className = "step completed";
-        document.getElementById("shipped").className ="step completed";
-        document.getElementById("delivered").className ="step completed";
     }
-}
-else{
-    if(orderstatus == 'Placed')
-    {
-        document.getElementById("pplaced").className ="step completed";
+    else if (orderstatus == 'Shipped') {
+        console.log('can work');
+        document.getElementById("placed").className = "step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className = "step completed";
     }
-    else if(orderstatus == 'Paid')
-    {
-        document.getElementById("pplaced").className ="step completed";
-        document.getElementById("ppaid").className ="step completed";
+    else if (orderstatus == 'Delivered') {
+        document.getElementById("placed").className = "step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className = "step completed";
+        document.getElementById("delivered").className = "step completed";
     }
-    else if(orderstatus == 'Ready')
-    {
-        document.getElementById("pplaced").className ="step completed";
-        document.getElementById("ppaid").className ="step completed";
-        document.getElementById("ppreparing").className ="step completed";
-    }
-    else if(orderstatus == 'Completed')
-    {
-        document.getElementById("pplaced").className ="step completed";
-        document.getElementById("ppaid").className = "step completed";
-        document.getElementById("pready").className ="step completed";
-        document.getElementById("pcompleted").className ="step completed";
-    }
-}
+
 </script>
