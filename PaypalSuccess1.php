@@ -154,7 +154,7 @@ $queryKL = mysqli_query($conn, $sql);
         <p>Invoice ID:$invoice_id</p>
         <p>Transaction ID:$transaction_id</p>
         <p>Date and Time:$create_time</p>
-        <p>Paid Amount:RM $paidAmount</p>
+        <p>Paid Amount: RM $paidAmount</p>
         ";
 
         $HTMLcontent = "<p><b>Dear $userName</b>,</p><p>$message</p>";
@@ -167,12 +167,14 @@ $queryKL = mysqli_query($conn, $sql);
         $message .= $HTMLcontent . "\r\n";
         $message .= "--{$boundary}\r\n";
         $returnPath = "-f" . $from2;
-        }
+
+    } 
     else {
         $error = mysqli_stmt_error($stmt);
         echo "<script>alert($error);</script>";
-    mysqli_stmt_close($stmt);
     }
+    mysqli_stmt_close($stmt);
+    
 }
 
 
