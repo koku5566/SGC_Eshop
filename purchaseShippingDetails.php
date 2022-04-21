@@ -174,7 +174,7 @@
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="<?php echo $productcover?>"
+                        <td scope="row"><img src="/img/product<?php echo $productcover?>"
                                 alt="<?php echo $productname ?>"></td>
                         <td><?php echo $productname?></td>
                         <td>Navy blue</td>
