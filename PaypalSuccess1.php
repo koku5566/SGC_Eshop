@@ -34,6 +34,7 @@ $queryKL = mysqli_query($conn, $sql);
     $product_id = $rowKL['PID'];
     $product_name = $rowKL['P_name'];
     $product_quantity = $rowKL['P_quantity'];
+    $shop_id = $rowKL['shop_id'];
 
     $variation_message = "";
     $showNotif = false;
@@ -119,9 +120,9 @@ $queryKL = mysqli_query($conn, $sql);
     "); */
 
     
-    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`,`shop_id`) VALUES (?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $create_time);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $create_time,$shop_id);
         $bp = mysqli_stmt_execute($stmt);
     }
     else {
@@ -141,11 +142,11 @@ $queryKL = mysqli_query($conn, $sql);
 
 <div class="container-fluid" style="width:80%">
 <div class="payment">
-  <div class="wrapper" style="background: #f1f7fc;">
+    <div class="App">
   <h1>Your Payment has been Successful</h1>
-  
-	  <div class="status">
       <h4>Payment Information</h4>
+      <div class="wrapper">
+      <div class="col__box">
       <p>Reference Number: <?php echo $row1['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
       <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
@@ -155,7 +156,10 @@ $queryKL = mysqli_query($conn, $sql);
       <p>Product Name: <?php echo $row1['product_name']; ?></p>
     </div>
   </div>
+</div>
+</div>
 </div>  
+
 </div>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
