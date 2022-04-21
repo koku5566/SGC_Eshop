@@ -114,7 +114,7 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-    <div class="card shadow m-4">
+    <div class="card shadow mt-4">
         <div class="card-body">
             <div class="container">
                 <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
@@ -146,7 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="card shadow mb-4">
+    <div class="card shadow">
         <div class="card-body">
             <div class="container m-3">
                 <div class="order-section mb-3">
@@ -443,7 +443,6 @@
     .steps .step {
         display: block;
         width: 100%;
-        margin-bottom: 35px;
         text-align: center
     }
 

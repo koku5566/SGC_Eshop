@@ -75,6 +75,8 @@
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card shadow mb-3">
+        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } ?>
+
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
