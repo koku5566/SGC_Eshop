@@ -257,8 +257,7 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                        WHERE product.shop_id = '$shopId' 
-                        ";
+                         WHERE product.shop_id = '$shopId'";
                     
                     
                        $stmt = $conn->prepare($sqlp);
@@ -367,7 +366,7 @@
                rowInsert.push(testdata[i][j]);
             }
             let pid = $('#productList').val();
-            let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
+            let productid = $('<input type="text" name="productlist[]" class="form-control" hidden>').val(rowInsert[3]).append(pid);
             console.log(rowInsert[3]);
             $('#productraw').append(productid);
             createvouchertable.row.add([
