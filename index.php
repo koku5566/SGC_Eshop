@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    if($_SESSION['role'] == "SELLER" || $_SESSION['role'] == "ADMIN")
+    if($_SESSION['role'] == "SELLER")
 	{
 		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
