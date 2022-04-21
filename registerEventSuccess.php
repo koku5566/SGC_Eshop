@@ -24,11 +24,8 @@ $row = mysqli_fetch_array($resultsql);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
-<div class="payment">
-  <div class="wrapper" style="background: #f1f7fc;">
+<div class="App">
   <h1>Register Successful</h1>
-  
-	  <div class="status">
       <h4>Information</h4>
       <p>Transcation ID: <?php echo $row['ticketOrder_id']; ?></p>
       <p>Buyer Name: <?php echo $row['buyer_name']; ?></p>
@@ -37,10 +34,11 @@ $row = mysqli_fetch_array($resultsql);
       <p>Total Price: <?php echo $row['total_price']; ?></p>
       <p>Register Event: <?php echo $row['event_name']; ?></p>
       <p>Ticket: <?php echo $row['ticket_name']; ?></p>
-    </div>
-  </div>
+      <br>
+      <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
 </div>  
 </div>
+<br>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
