@@ -103,6 +103,10 @@ $queryKL = mysqli_query($conn, $sql);
     $payment_status = $row1['payment_status'];
     $user_address =  $_SESSION['getaddress'];
     $create_time = $row1['createdtime'];
+    $userName = $_SESSION['userName'];
+    $userEmail = $_SESSION['userEmail'];
+    $transaction_id = $row1['transaction_id'];
+    $paidAmount = $_SESSION['total'];
 
 
 
@@ -125,15 +129,57 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time);
         $bp = mysqli_stmt_execute($stmt);
     }
+    if (mysqli_stmt_affected_rows($stmt) == 1) {
+        $ticketID = mysqli_stmt_insert_id($stmt);
+        $to =" chrischom03@gmail.com";
+        $subject = "Here is your SGC E-Shop Invoice";
+        $from = "info@sgcprototype2.com";
+        $from2 = "info@sgcprototype2.com";
+        $fromName = "SGC E-Shop";
+
+        $headers =  "From: $fromName <$from> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+        $message = "
+        <link href='https://fonts.googleapis.com/css?family=Libre Barcode 128' rel='stylesheet'>
+        <style>
+        h2 {
+            font-family: 'Libre Barcode 128';font-size: 22px;
+        }
+        </style>
+        <h3>Thank You</h3>
+        <h5>Your payment has been successful. Below is the details of your transaction </h5>
+        <p>Invoice ID:     $invoice_id</p>
+        <p>Transaction ID: $transaction_id</p>
+        <p>Date and Time:  $create_time</p>
+        <p>Paid Amount:    $paidAmount</p>
+        ";
+
+        $HTMLcontent = "<p><b>Dear $userName</b>,</p><p>$message</p>";
+
+        $boundary = md5(time());
+        $headers .= " boundary=\"{$boundary}\"";
+        $message = "--{$boundary}\r\n";
+        $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+        $message .= "Content-Transfer-Encoding: 7bit\r\n";
+        $message .= $HTMLcontent . "\r\n";
+        $message .= "--{$boundary}\r\n";
+        $returnPath = "-f" . $from2;
+
+        if (@mail($to, $subject, $message, $headers, $returnPath)) {
+            echo "<script>alert('A purchase confirmation email has been sent to $buyerEmail')</script>";
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+    } 
     else {
         $error = mysqli_stmt_error($stmt);
         echo "<script>alert($error);</script>";
     mysqli_stmt_close($stmt);
     }
 }
-
-
-
 
 
 ?>

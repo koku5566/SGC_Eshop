@@ -18,6 +18,7 @@
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
+            $_SESSION['userEmail'] = $userrow['email'];
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
