@@ -80,7 +80,7 @@
     }
 
     //Set true to enable seller register
-    $_SESSION['enableSeller'] = true;
+    $_SESSION['enableSeller'] = false;
 ?>
 
 <!DOCTYPE html>
