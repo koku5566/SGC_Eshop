@@ -174,7 +174,8 @@
                             LEFT JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                             LEFT JOIN product ON productVoucher.product_id = product.product_id
                             LEFT JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            GROUP BY shopProfile.shop_id 
+                            -- GROUP BY shopProfile.shop_id try see
+                            -- when it load over 3 second it is unnormal, means error, okay..
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
