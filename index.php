@@ -2,8 +2,6 @@
     require __DIR__ . '/header.php';
 ?>
 
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
-
 <?php
     if($_SESSION['role'] == "SELLER" || $_SESSION['role'] == "ADMIN")
 	{
@@ -35,6 +33,9 @@
         <?php
     }
 ?>
+
+<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="mainContainer">
 
@@ -197,11 +198,11 @@
                             <div class="col-md-2 m-2">
                             <div class="card" id="vouchercard">
                                 <div class="container">
-                                    <img class="m-4" src="../img/" id="voucherlogo">
+                                    <img class="m-2" src="../img/" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title"><strong></strong></h6>
-                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
                                         <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
