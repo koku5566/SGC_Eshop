@@ -228,16 +228,8 @@
                             </div>
 
                         <!-- Modal -->
+                        <?php while ($r = $res->fetch_assoc()) {?>
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
-                        <?php 
-                                                    while ($r = $res->fetch_assoc()) {
-                                                        // $voucherid = $r['voucher_id'];
-                                                        // $voucherid2 = $row['voucher_id'];
-
-                                                        // for($i = 0; $i < count($voucherid2); $i++){
-                                                        //     for($x = 0; $x < count($voucherid); $x++){
-                                                                 if($row['voucher_id'] = $r['voucher_id']){
-                                            ?>
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -263,7 +255,15 @@
                                     <div class="tnccontainer m-5">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            
+                                            <?php 
+                                                    
+                                                        // $voucherid = $r['voucher_id'];
+                                                        // $voucherid2 = $row['voucher_id'];
+
+                                                        // for($i = 0; $i < count($voucherid2); $i++){
+                                                        //     for($x = 0; $x < count($voucherid); $x++){
+                                                                 if($r['voucher_id'] = $row['voucher_id']){
+                                            ?>
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php 
                                             // }}
