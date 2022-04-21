@@ -9,12 +9,12 @@ if(isset($_GET['eventCheckin']))
     $eID = $_SESSION['eventCheckin'];
 }
 $eID = $_SESSION['eventCheckin'];
-if(isset($_GET['searchID']))
-{
-    $_SESSION['searchID'] = $_GET['searchID'];
-    $tID = $_SESSION['searchID'];
-}
-$tID = $_SESSION['searchID'];
+// if(isset($_GET['searchID']))
+// {
+//     $_SESSION['searchID'] = $_GET['searchID'];
+//     $tID = $_SESSION['searchID'];
+// }
+// $tID = $_SESSION['searchID'];
 
 $eventsql = "SELECT *
             FROM `event`
@@ -23,18 +23,11 @@ $eventsql = "SELECT *
             WHERE `event`.`event_id` = $eID
             ";
 
-$ticketsql = "SELECT *
-            FROM `ticket`
-            INNER JOIN `ticketType` 
-            ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-            WHERE `ticket`.`ticket_id` = $tID
-            ";
+
 
 $resultsql = mysqli_query($conn, $eventsql);                                             
 $row = mysqli_fetch_array($resultsql);
 $eventName = $row['event_name'];
-$ticketresultsql = mysqli_query($conn, $ticketsql);                                             
-$row1 = mysqli_fetch_array($ticketresultsql);
 ?>
 
 <!-- Begin Page Content -->
@@ -62,9 +55,9 @@ $row1 = mysqli_fetch_array($ticketresultsql);
             <h2 style="text-align: center;"><i class="fa fa-calendar-check-o"></i>Check in for <?php echo($eventName)?></h2>
         </div>
         <div class="card-body">
-            <form>
-                <div class="input-group"><input class="form-control" type="text" id="searchField">
-                    <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);" id="serachBtn"><i class="fa fa-search"></i></button></div>
+            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                <div class="input-group"><input class="form-control" type="text" id="searchField" name="searchQuery">
+                    <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" id="serachBtn" name="search"><i class="fa fa-search"></i></button></div>
                 </div>
             </form>
         </div>
@@ -88,33 +81,48 @@ $row1 = mysqli_fetch_array($ticketresultsql);
                     </thead>
                     <tbody>
                         <?php
-                            echo("
-                            <tr>
-                            <td>".$row1['ticket_id']."</td>
-                            <td>".$row1['ticket_name']."</td>
-                            <td>".$row1['ticketGenerate_Date']."</td>
-                            ");
-                            if($row1['check_in'] == 0)
+                            if(isset($_POST["search"]))
                             {
-                                $checkin = "Not Yet Check in";
+                                $queriesUser = mysqli_real_escape_string($conn, SanitizeString($_POST["searchQuery"]));
+                                $_SESSION['searchID'] = $queriesUser;
+                                $ticketsql = "SELECT *
+                                            FROM `ticket`
+                                            INNER JOIN `ticketType` 
+                                            ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
+                                            WHERE `ticket`.`ticket_id` = $tID
+                                            ";
+
+                                $ticketresultsql = mysqli_query($conn, $ticketsql);                                             
+                                $row1 = mysqli_fetch_array($ticketresultsql);
                                 echo("
-                                <td>$checkin</td>
-                                <td>-</td>
-                                <td>-</td>
-                                </tr>
+                                <tr>
+                                <td>".$row1['ticket_id']."</td>
+                                <td>".$row1['ticket_name']."</td>
+                                <td>".$row1['ticketGenerate_Date']."</td>
                                 ");
-                            }
-                            else if($row1['check_in'] == 1)
-                            {
-                                $checkin = "Checked-in";
-                                echo("
-                                <td>$checkin</td>
-                                <td>".$row1['checkIn_date']."</td>
-                                <td>".$row1['checkIn_time']."</td>
-                                </tr>
-                                ");
-                            }
-                            
+                                if($row1['check_in'] == 0)
+                                {
+                                    $checkin = "Not Yet Check in";
+                                    echo("
+                                    <td>$checkin</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    </tr>
+                                    ");
+                                }
+                                else if($row1['check_in'] == 1)
+                                {
+                                    $checkin = "Checked-in";
+                                    echo("
+                                    <td>$checkin</td>
+                                    <td>".$row1['checkIn_date']."</td>
+                                    <td>".$row1['checkIn_time']."</td>
+                                    </tr>
+                                    ");
+                                }
+
+                                }
+                                                       
                         ?>
                     </tbody>
                 </table>
@@ -123,7 +131,7 @@ $row1 = mysqli_fetch_array($ticketresultsql);
         </div>
     </div>
 
-<script>
+<!-- <script>
     var searchBtn = document.getElementById("serachBtn");
 
     searchBtn.addEventListener("click",function(){
@@ -137,7 +145,7 @@ $row1 = mysqli_fetch_array($ticketresultsql);
             window.location.href="checkInEvent.php?searchID="+query;
         }
     });
-</script>
+</script> -->
 
 
     <!-- Below Template -->
