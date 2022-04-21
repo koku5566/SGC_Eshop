@@ -16,18 +16,12 @@
     user.username,
     userAddress.contact_name,
     userAddress.phone_number,
-    userAddress.address,
-    product.product_name,
-    product.product_cover_picture,
-    payments.payment_status,
-    payments.payment_amount
+    userAddress.address
+    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
-    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    JOIN product ON orderDetails.product_id = product.product_id
-    JOIN payments ON product.product_id = payments.product_id
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -42,9 +36,7 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
-        $productname = $orow['product_name'];
-        $paymentstat = $orow['payment_status'];
-        $paymentamt = $orow['payment_amount'];
+       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
 
@@ -226,7 +218,7 @@
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h5><strong><?php echo $paymentamt?></strong></h5>
+                            <h5><strong>RM465.60</strong></h5>
                         </div>
                     </div>
                 </div>
