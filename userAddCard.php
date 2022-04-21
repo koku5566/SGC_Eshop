@@ -212,5 +212,5 @@ if(isset($_POST['addCard']))
 
 <?php require __DIR__ . '/footer.php' ?>
 
-<link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet"><link rel="stylesheet" href="../css/card.css">
+<link rel="stylesheet" href="../css/card.css">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js'></script><script  src="../js/card.js"></script>
