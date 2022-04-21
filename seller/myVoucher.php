@@ -35,7 +35,7 @@
                      <th>Voucher ID</th>
                      <th>Voucher Code</th>
                      <th>Voucher Type</th>
-                     <th>Voucher Start</th> <!-- data-visible="false" -->
+                     <th>Voucher Start</th>
                      <th>Voucher Expired</th>
                      <th>Voucher Details</th>
                      <th>Voucher Limit</th>
@@ -45,28 +45,32 @@
                </thead>
                <?php 
 
-                     // $shopId = $_SESSION['uid'];
+                      $shopId = $_SESSION['uid'];
 
-                     // $sql_voucher =
-                     // "SELECT 
-                     //    voucher.voucher_id,
-                     //    voucher.voucher_code,
-                     //    voucher.voucher_startdate,
-                     //    voucher.voucher_expired,
-                     //    voucher.voucher_display,
-                     //    voucher.voucher_type,
-                     //    voucher.voucher_limit,
-                     //    voucher.voucher_details,
-                     //    voucher.discount_amount,
+                      $sql_voucher =
+                      "SELECT 
+                         voucher.voucher_id,
+                         voucher.voucher_code,
+                         voucher.voucher_startdate,
+                         voucher.voucher_expired,
+                         voucher.voucher_display,
+                         voucher.voucher_type,
+                         voucher.voucher_limit,
+                         voucher.voucher_details,
+                         voucher.discount_amount,
 
-                     //    FROM voucher
-                     //    WHERE product.shop_id = '$shopId' "; 
+                         FROM voucher
+                         JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                         JOIN product ON productVoucher.product_id = product.product_id	
+                         JOIN user ON product.user_id = user.user_id
+                         JOIN shop ON user.user_id = shop.shop_id
+                         WHERE product.shop_id = '$shopId' "; 
 
-                     // $stmt = $conn->prepare($sql_voucher);
-                     // $stmt->execute();
-                     // $result = $stmt->get_result();
+                      $stmt = $conn->prepare($sql_voucher);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
 
-                     // while ($row = $res->fetch_assoc()) {
+                      while ($row = $res->fetch_assoc()) {
 
                ?>
                <tbody>
@@ -81,11 +85,10 @@
                      <td><?php echo $row['voucher_status']; ?></td>
                      <td><?php echo $row['voucher_list']; ?></td>
 
-                  
                   </tr>
                </tbody>
                <?php 
-               // }?>
+                }?>
             </table>
          </div>
       </div>
