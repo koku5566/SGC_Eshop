@@ -193,7 +193,7 @@
                             
                             ?>
 
-                            <div class="col-md-2 m-2">
+                            <div class="col-md-2">
                                 <div class="card" id="vouchercard">
                                     <div class="container">
                                         <img class="m-4" src="../img/" id="voucherlogo">
