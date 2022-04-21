@@ -231,6 +231,11 @@
 
                         <!-- Modal -->
 
+                        <?php 
+                            while ($r = $res->fetch_assoc()) {
+                                $voucherid = $r['voucher_id'];
+                                $voucherid2 = $row['voucher_id'];
+                        ?>
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -257,14 +262,10 @@
                                     <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <?php 
-                                                    while ($r = $res->fetch_assoc()) {
-                                                        $voucherid = $r['voucher_id'];
-                                                        $voucherid2 = $row['voucher_id'];
-
-                                                        for($i = 0; $i < count($voucherid2); $i++){
-                                                            for($x = 0; $x < count($voucherid); $x++){
-                                                                if($voucherid2[$i] === $voucherid[$x]){
+                                            <?php
+                                            for($i = 0; $i < count($voucherid2); $i++){
+                                                for($x = 0; $x < count($voucherid); $x++){
+                                                    if($voucherid2[$i] === $voucherid[$x]){
                                             ?>
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php

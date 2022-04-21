@@ -99,6 +99,8 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
+<input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
     <?php
