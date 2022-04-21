@@ -56,7 +56,8 @@
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
     }
-    $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
+    $orderdate = strtotime($orderdate);
+    $estimateddelivery = strtotime('+7 day',$orderdate); //to fix
 
     //=========sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
@@ -164,7 +165,6 @@
                 ?>
                  <?php if($orderstatus=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
-
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
                 <?php 
