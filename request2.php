@@ -6,6 +6,8 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
+use Endroid\QrCode\QrCode;
+
 require __DIR__. '/header.php';
 require __DIR__. '/paypalConfig.php';
 
@@ -90,8 +92,10 @@ if (isset($_POST["completeRegister"])) {
                             }		
                             mysqli_stmt_close($stmt5);
                     }
-
-                    $picLocation = "https://eshop.sgcprototype2.com/img/event/1649595721697.png";
+                    $tempTicket = $ticketOrderID.$ticket.".png";
+                    $qrcode = new QrCode($ticketString);
+                    $qrcode->writeFile(__DIR__.'\img\event'.$tempTicket);  
+                    $barcodeLocation = "https://eshop.sgcprototype2.com/img/event/".$tempTicket;
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -104,12 +108,6 @@ if (isset($_POST["completeRegister"])) {
 
 
                     $message = "
-                    <link href='https://fonts.googleapis.com/css?family=Libre Barcode 128' rel='stylesheet'>
-                    <style>
-                    h2 {
-                        font-family: 'Libre Barcode 128';font-size: 22px;
-                    }
-                    </style>
                     <h3>Thank you for registering in $eventName</h3>
                     <h5>Your Transaction Summary</h5>
                     <p>Transaction ID: $ticketOrderID</p>
