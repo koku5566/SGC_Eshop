@@ -162,8 +162,9 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                    <tr>
+                 <?php if($orderstatus=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
+
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
                 <?php 
