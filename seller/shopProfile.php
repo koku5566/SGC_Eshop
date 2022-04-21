@@ -115,7 +115,14 @@
   if(isset($_POST['update']))
   {
     $shopProfileCover = $_POST['coverContainer'];
-    $shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+
+    if($_FILES['profileImage']['tmp_name'] != "")
+		{
+			$shopProfilePic = addslashes(file_get_contents($_FILES['profileImage']['tmp_name']));
+		}
+
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     $shopMedia = $_POST['mediaContainer'];
