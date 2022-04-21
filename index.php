@@ -185,7 +185,10 @@
                             product.product_name,
                             voucher.voucher_id
                             
-                            FROM voucher, product
+                            FROM voucher
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            JOIN product ON productVoucher.product_id = product.product_id
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                             ";
 
                             $sm = $conn->prepare($sql_pn);
@@ -196,8 +199,6 @@
                             while ($row = $result->fetch_assoc()) {
                                 $td = date('y-m-d');
                                 $expr = $row['voucher_expired'];
-
-                                $r = $res->fetch_assoc();
                                 
                                 $today = strtotime($td);
                                 $expired = strtotime($expr);
@@ -214,8 +215,9 @@
                                         <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                         <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                         <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                        <?php while ($r = $res->fetch_assoc()) {?>
                                         <u>
-                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
+                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $r['voucher_id']; ?>">
                                             T&C applied.
                                             </a>
                                         </u>
@@ -227,7 +229,7 @@
                             </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+                        <div class="modal fade" id="termsModal<?php echo $r['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -250,10 +252,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer m-2">
+                                    <div class="tnccontainer m-5 p-3">
                                         <div class="container">
                                             <strong>Product</strong>
+                                            <?php 
+                                                        // $voucherid = $r['voucher_id'];
+                                                        // $voucherid2 = $row['voucher_id'];
+
+                                                        // for($i = 0; $i < count($voucherid2); $i++){
+                                                        //     for($x = 0; $x < count($voucherid); $x++){
+                                                                 if($r['voucher_id'] = $row['voucher_id']){
+                                            ?>
                                             <p><?php echo $r['product_name'];?>, </p>
+                                            <?php 
+                                            // }}
+                                        }
+                                        }?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
