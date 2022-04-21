@@ -168,16 +168,14 @@
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
-                            --shopProfile.shop_profile_image,
+                            shopProfile.shop_profile_image,
                             product.product_name
+
                             FROM voucher
-                            LEFT JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                            LEFT JOIN product ON productVoucher.product_id = product.product_id
-                            LEFT JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            GROUP BY shopProfile.shop_id
-                            -- the name from SELECT all correct right
-                            -- correct gua.....
-                            -- when it load over 3 second it is unnormal, means error, okay..
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            JOIN product ON productVoucher.product_id = product.product_id
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            -- GROUP BY voucher.voucher_id
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);

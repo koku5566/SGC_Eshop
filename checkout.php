@@ -107,6 +107,8 @@ if(isset($_GET['addressid']))
         </div>
         <div class="modal-body">
     <?php
+
+    /* user address call */
 	$UID = $_SESSION["uid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
@@ -144,7 +146,8 @@ if(isset($_GET['addressid']))
 <div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
-        <!-- user address -->    
+        <!-- user address display -->    
+        <form action="request1.php" method="post" class="paymentmethod">
         <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
@@ -302,7 +305,6 @@ if(isset($_GET['addressid']))
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                        <form action="request1.php" method="post" class="paymentmethod">
                             <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery

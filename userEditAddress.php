@@ -9,14 +9,13 @@
 ?>
 
 <?php
-
-if(isset($_GET['id'])){
-	$_SESSION['ToEdit']=$_GET['id'];
-
-}else{
-	?><script>window.location = '<?php echo("$domain/userprofile_address.php");?>'</script><?php
-
-}
+	if(isset($_GET['address-id'])){
+		$_SESSION['ToEdit']=$_GET['address-id'];
+	}
+	else
+	{
+		?><script>window.location = '<?php echo("$domain/userprofile_address.php");?>'</script><?php
+	}
 
 	if(isset($_POST['update']))
 	{
@@ -37,7 +36,8 @@ if(isset($_GET['id'])){
 			if($_POST['address'] != ""){
 				$sql = "UPDATE userAddress SET contact_name='$name', phone_number='$contact', address='$address', postal_code='$postal', area='$area', state='$state', country='$country' WHERE address_id='$UID'";
 			}
-			else{
+			else
+			{
 				echo("<script>alert('Error');</script>");
 			}
 		
@@ -46,7 +46,9 @@ if(isset($_GET['id'])){
 				echo "<script>alert('Details Updated');
 				window.location.href='userprofile_address.php';</script>";
 				
-			} else {
+			}
+			else
+			{
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
 			mysqli_close($conn);
