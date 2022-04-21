@@ -58,7 +58,7 @@
 						<div class=\"container-left-col2\">
 							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
 							<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-							<p style=\"font-size: 1.15rem;\">".$row["address"]." ".$row["postal_code"]." ".$row["area"]." ".$row["state"]." ".$row["country"]."</p>
+							<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
 						</div>
 						<div class=\"container-right-col2\">
 							<button name=\"removeC\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>

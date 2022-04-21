@@ -89,10 +89,11 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header("Location:shippingCheckDetails.php?order_id=".$orderid);
+            //echoheader('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+          header("Location:shippingCheckDetails.php?order_id=".$orderid);
         }
     }
 ?>
@@ -238,7 +239,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <td>
                                             <?php echo $srow['datetime'] ?>
@@ -260,7 +261,7 @@
                                 if($orderstatus =='Paid'&& $deliverymethod=='standard'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
-                                                <?php echo date("Y-m-d H:i:s");?>
+                                                <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $orderid?>">
@@ -290,7 +291,7 @@
                                 else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
-                                                <?php echo date("Y-m-d H:i:s");?>
+                                                <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $orderid?>">
