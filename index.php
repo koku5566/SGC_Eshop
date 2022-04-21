@@ -250,7 +250,6 @@
                                                 
                                                 FROM product
                                                 LEFT JOIN productVoucher ON product.product_id = productVoucher.product_id
-                                                GROUP BY product.product_name
                                                 ";
                     
                     
