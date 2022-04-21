@@ -205,6 +205,7 @@ if(isset($_GET['addressid']))
                                 $product_id = $rowKL['PID'];
                                 $product_name = $rowKL['P_name'];
                                 $product_quantity = $rowKL['P_quantity'];
+                                $shop_id = $rowKL['shop_id'];
 
                                 $variation_message = "";
                                 $showNotif = false;
