@@ -7,7 +7,7 @@
 	 		window.location.href='login.php';</script>";
      } 
  
-     $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
      WHERE userAddress.user_id= '$_SESSION[uid]';";
@@ -19,6 +19,7 @@
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
+            $_SESSION['userName'] = $userrow['name'];
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];

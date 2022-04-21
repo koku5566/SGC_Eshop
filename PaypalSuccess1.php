@@ -151,10 +151,10 @@ $queryKL = mysqli_query($conn, $sql);
         </style>
         <h3>Thank You</h3>
         <h5>Your payment has been successful. Below is the details of your transaction </h5>
-        <p>Invoice ID:     $invoice_id</p>
-        <p>Transaction ID: $transaction_id</p>
-        <p>Date and Time:  $create_time</p>
-        <p>Paid Amount:    $paidAmount</p>
+        <p>Invoice ID:"     "$invoice_id</p>
+        <p>Transaction ID:" "$transaction_id</p>
+        <p>Date and Time:"  "$create_time</p>
+        <p>Paid Amount:"     RM "$paidAmount</p>
         ";
 
         $HTMLcontent = "<p><b>Dear $userName</b>,</p><p>$message</p>";
