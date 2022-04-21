@@ -179,6 +179,20 @@
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
+
+                            $sql_pn=
+                            "SELECT
+                            product.product_name,
+                            voucher.voucher_id
+                            
+                            FROM product
+                            JOIN productVoucher ON product.product_id = productVoucher.product_id
+                            JOIN voucher ON productVoucher.voucher_id = voucher.voucher_id
+                            ";
+
+                            $sm = $conn->prepare($sql_pn);
+                            $sm->execute();
+                            $res = $sm->get_result();
                             
                             while ($row = $result->fetch_assoc()) {
 
@@ -188,7 +202,8 @@
                              $today = strtotime($td);
                              $expired = strtotime($expr);
 
-                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
+                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
+                                ){
                             
                             ?>
 
@@ -242,31 +257,7 @@
                                         <div class="container">
                                             <strong>Product</strong>
                                             <p>
-                                                <?php 
-                                                $sql_pn=
-                                                "SELECT
-                                                product.product_name,
-                                                productVoucher.voucher_id AS pv_voucher_id
-                                                
-                                                FROM product
-                                                LEFT JOIN productVoucher ON product.product_id = productVoucher.product_id
-                                                ";
-                    
-                    
-                                                $sm = $conn->prepare($sql_pn);
-                                                $sm->execute();
-                                                $res = $sm->get_result();
-                                                
-                                                while ($r = $res->fetch_assoc()) {
-
-                                                    if($r['pv_voucher_id'] = $row['voucher_id']){
-                                                    echo $r['product_name']; 
-                                                    }
-                                                    else{
-                                                        echo null;
-                                                    }
-                                                }
-                                                ?>
+                                                <?php echo $r['product_name']; ?>
                                             </p>
                                         </div>
                                         <div class="container">
