@@ -73,12 +73,12 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>">'</script>
+            <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
             <?php
            // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
           $_SESSION['status'] = "Order status update failed";?>
-           <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>">'</script>
+           <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
           <?php
         }
     }
