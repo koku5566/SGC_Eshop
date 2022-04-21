@@ -171,9 +171,9 @@
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-      <img class="relative bg-image img-fluid" name="coverContainer" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
+      <img class="relative bg-image img-fluid" name="coverContainer[]" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
