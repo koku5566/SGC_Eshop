@@ -64,6 +64,8 @@
 	</div>
 </div>
 <?php
+	$UID = $_SESSION["uid"];
+
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql_1);
@@ -98,12 +100,9 @@
 	</div>
 </div>
 <?php
-	$UID = $_SESSION["uid"];
-	
-	$sql = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
-	//$sql = "SELECT * FROM userBankAccount INNER JOIN userCard ON userBankAccount.user_id ='$UID' AND userCard.user_id ='$UID'";
+	$sql_2 = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql);
+	$res_data = mysqli_query($conn,$sql_2);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"row2\">
