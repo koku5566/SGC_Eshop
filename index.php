@@ -187,7 +187,7 @@
                              $today = strtotime($td);
                              $expired = strtotime($expr);
 
-                            //  if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
+                            if($row['voucher_display'] > 0){
                             
                             ?>
 
@@ -256,9 +256,9 @@
                         </div>
                             
                             <?php 
-                            // } else{
+                            } else{
 
-                            // }
+                            }
                         }?>
 
                             
