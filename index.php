@@ -194,7 +194,7 @@
                             $sm->execute();
                             $res = $sm->get_result();
                             
-                            while ($row = $result->fetch_assoc() && $r = $res->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
 
                              $td = date('y-m-d');
                              $expr = $row['voucher_expired'];
@@ -203,7 +203,7 @@
                              $expired = strtotime($expr);
 
                             if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
-                                && $r['voucher_id'] = $row['voucher_id']){
+                                ){
                             
                             ?>
 
