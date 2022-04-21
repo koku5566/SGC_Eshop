@@ -165,7 +165,7 @@
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            <?php echo $orderdate ?> | 04:45 p.m.
+                            <?php echo $orderdate ?> | 
                             </span>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                             Total:
                         </div>
                         <div class="col">
-                            RM715.00
+                            RM<?php echo $amt?>.00
                         </div>
                     </div>
                     <div class="row p-2">
@@ -216,7 +216,7 @@
                             Discounts:
                         </div>
                         <div class="col">
-                            -RM258.00
+                            N/A
                         </div>
                     </div>
                     <div class="row p-2">
@@ -225,7 +225,7 @@
                             Delivery Fees:
                         </div>
                         <div class="col">
-                            RM8.60
+                            <?php echo $shippingfee?>
                         </div>
                     </div>
                     <div class="row p-2">
