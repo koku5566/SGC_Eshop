@@ -244,6 +244,9 @@
             </div>
 
         </div>
+        <div class= "card-footer">
+        <a href="orderDetails.php?cancel&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Cancel Order</button></a>
+        </div>
         
     </div>
 </div>
