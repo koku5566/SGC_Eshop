@@ -83,7 +83,7 @@ if(isset($_POST['update']))
 						<div class=\"image-layer\">
 						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
-						<div class=\"image-tools-delete hide\">
+						<div class=\"image-tools-delete\" id=\"delPic\">
 							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
 						</div>
 						<div class=\"image-tools-add\">
@@ -156,15 +156,12 @@ if(isset($_POST['update']))
 </style>
 
 <script>
-const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
-deleteImg.forEach(img => {
-	img.addEventListener('click', function handleClick(event) {
-		img.parentElement.previousElementSibling.previousElementSibling.src="";
-		img.parentElement.nextElementSibling.classList.remove("hide");
-		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
-		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
-		img.parentElement.classList.add("hide");
-	});
+var del = document.getElementById('delPic');
+var img1 = document.getElementById('profilePic');
+del.addEventListener('click', function handleChange(event) {
+
+		img1.value=null;
+
 });
 
 var img = document.getElementById('profilePic');
