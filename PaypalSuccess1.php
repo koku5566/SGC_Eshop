@@ -131,7 +131,7 @@ $queryKL = mysqli_query($conn, $sql);
     }
     if (mysqli_stmt_affected_rows($stmt) == 1) {
         $ticketID = mysqli_stmt_insert_id($stmt);
-        $to =" chrischom03@gmail.com";
+        $to =" chrischom02@gmail.com";
         $subject = "Here is your SGC E-Shop Invoice";
         $from = "info@sgcprototype2.com";
         $from2 = "info@sgcprototype2.com";
