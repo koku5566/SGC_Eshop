@@ -167,14 +167,14 @@
                             voucher.voucher_details,
                             voucher.discount_amount,
                             shopProfile.shop_name,
-                            shopProfile.shop_profile_cover,
+                            shopProfile.shop_profile_image,
                             product.product_name
 
                             FROM voucher
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
                             JOIN product ON productVoucher.product_id = product.product_id	
-                            JOIN user ON product.shop_id = user.user_id
-                            JOIN shopProfile ON user.user_id = shopProfile.shop_id
+                            JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+                            WHERE shopProfile.shop_id = '$shopId'
                             GROUP BY voucher.voucher_id"; 
 
                             $stmt = $conn->prepare($sql_voucher);
@@ -183,20 +183,20 @@
                             
                             while ($row = $result->fetch_assoc()) {
 
-                            $td = date('y-m-d');
-                            $expr = $row['voucher_expired'];
+                            // $td = date('y-m-d');
+                            // $expr = $row['voucher_expired'];
 
-                            $today = strtotime($td);
-                            $expired = strtotime($expr);
+                            // $today = strtotime($td);
+                            // $expired = strtotime($expr);
 
-                            if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
+                            // if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
                             
                             ?>
 
                             <div class="col-md-2 m-2">
                             <div class="card" id="vouchercard">
                                 <div class="container">
-                                    <img class="m-4" src="../img/<?php echo $row['shop_profile_cover']; ?>" id="voucherlogo">
+                                    <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -257,8 +257,9 @@
                             </div>
                         </div>
                             
-                            <?php }else{
-                            }
+                            <?php 
+                            // }else{
+                            // }
                         }?>
 
                             
