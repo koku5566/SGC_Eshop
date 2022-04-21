@@ -2,10 +2,16 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-    $_SESSION['campusId'] = $_GET['campusId'];
-?>
-<?php
-ublic function __construct(){
+class Chat{
+    private $host  = 'localhost';
+    private $user  = 'root';
+    private $password   = "";
+    private $database  = "phpzag_demo";      
+    private $chatTable = 'chat';
+	private $chatUsersTable = 'chat_users';
+	private $chatLoginDetailsTable = 'chat_login_details';
+	private $dbConnect = false;
+    public function __construct(){
         if(!$this->dbConnect){ 
             $conn = new mysqli($this->host, $this->user, $this->password, $this->database);
             if($conn->connect_error){
@@ -158,97 +164,51 @@ ublic function __construct(){
 			$output = $numRows;
 		}
 		return $output;
-	}			
+	}	
+	public function updateTypingStatus($is_type, $loginDetailsId) {		
+		$sqlUpdate = "
+			UPDATE ".$this->chatLoginDetailsTable." 
+			SET is_typing = '".$is_type."' 
+			WHERE id = '".$loginDetailsId."'";
+		mysqli_query($this->dbConnect, $sqlUpdate);
+	}		
+	public function fetchIsTypeStatus($userId){
+		$sqlQuery = "
+		SELECT is_typing FROM ".$this->chatLoginDetailsTable." 
+		WHERE userid = '".$userId."' ORDER BY last_activity DESC LIMIT 1"; 
+		$result =  $this->getData($sqlQuery);
+		$output = '';
+		foreach($result as $row) {
+			if($row["is_typing"] == 'yes'){
+				$output = ' - <small><em>Typing...</em></small>';
+			}
+		}
+		return $output;
+	}		
+	public function insertUserLoginDetails($userId) {		
+		$sqlInsert = "
+			INSERT INTO ".$this->chatLoginDetailsTable."(userid) 
+			VALUES ('".$userId."')";
+		mysqli_query($this->dbConnect, $sqlInsert);
+		$lastInsertId = mysqli_insert_id($this->dbConnect);
+        return $lastInsertId;		
+	}	
+	public function updateLastActivity($loginDetailsId) {		
+		$sqlUpdate = "
+			UPDATE ".$this->chatLoginDetailsTable." 
+			SET last_activity = now() 
+			WHERE id = '".$loginDetailsId."'";
+		mysqli_query($this->dbConnect, $sqlUpdate);
+	}	
+	public function getUserLastActivity($userId) {
+		$sqlQuery = "
+			SELECT last_activity FROM ".$this->chatLoginDetailsTable." 
+			WHERE userid = '$userId' ORDER BY last_activity DESC LIMIT 1";
+		$result =  $this->getData($sqlQuery);
+		foreach($result as $row) {
+			return $row['last_activity'];
+		}
+	}	
 }
 ?>
-<div id="profile">
-<?php
-include ('Chat.php');
-$chat = new Chat();
-$loggedUser = $chat->getUserDetails($_SESSION['userid']);
-echo '<div class="wrap">';
-$currentSession = '';
-foreach ($loggedUser as $user) {
-	$currentSession = $user['current_session'];
-	echo '<img id="profile-img" src="userpics/'.$user['avatar'].'" class="online" alt="" />';
-	echo  '<p>'.$user['username'].'</p>';
-		echo '<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>';
-		echo '<div id="status-options">';
-		echo '<ul>';
-			echo '<li id="status-online" class="active"><span 
-class="status-circle"></span> <p>Online</p></li>';
-			echo '<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>';
-			echo '<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>';
-			echo '<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>';
-		echo '</ul>';
-		echo '</div>';
-		echo '<div id="expanded">';			
-		echo '<a href="logout.php">Logout</a>';
-		echo '</div>';
-}
-echo '</div>';
-?>
-</div>
-<div id="contacts">	
-<?php
-echo '<ul>';
-$chatUsers = $chat->chatUsers($_SESSION['userid']);
-foreach ($chatUsers as $user) {
-	$status = 'offline';						
-	if($user['online']) {
-		$status = 'online';
-	}
-	$activeUser = '';
-	if($user['userid'] == $currentSession) {
-		$activeUser = "active";
-	}
-	echo '<li id="'.$user['userid'].'" class="contact '.$activeUser.'" data-touserid="'.$user['userid'].'" data-tousername="'.$user['username'].'">';
-	echo '<div class="wrap">';
-	echo '<span id="status_'.$user['userid'].'" class="contact-status '.$status.'"></span>';
-	echo '<img src="userpics/'.$user['avatar'].'" alt="" />';
-	echo '<div class="meta">';
-	echo '<p class="name">'.$user['username'].'<span id="unread_'.$user['userid'].'" 
-class="unread">'.$chat->getUnreadMessageCount($user['userid'], $_SESSION['userid']).'</span></p>';
-	echo '<p class="preview"><span id="isTyping_'.$user['userid'].'" class="isTyping"></span></p>';
-	echo '</div>';
-	echo '</div>';
-	echo '</li>'; 
-}
-echo '</ul>';
-?>
-</div>
-<div class="contact-profile" id="userSection">	
-<?php
-$userDetails = $chat->getUserDetails($currentSession);
-foreach ($userDetails as $user) {										
-	echo '<img src="userpics/'.$user['avatar'].'" alt="" />';
-		echo '<p>'.$user['username'].'</p>';
-		echo '<div class="social-media">';
-			echo '<i class="fa fa-facebook" aria-hidden="true"></i>';
-			echo '<i class="fa fa-twitter" aria-hidden="true"></i>';
-			 echo '<i class="fa fa-instagram" aria-hidden="true"></i>';
-		echo '</div>';
-}	
-?>						
-</div>
-<div class="messages" id="conversation">		
-<?php
-echo $chat->getUserChat($_SESSION['userid'], $currentSession);						
-?>
-</div>
-<br>
-<?php
-    require __DIR__ . '/footer.php'
-?>
-
-<style>
-    .campus-name{
-        color:white;
-        height:50px;
-        overflow:hidden;
-        text-align: center;   
-
-    }
-
-
 </style>
