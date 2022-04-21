@@ -173,8 +173,8 @@
                             FROM voucher
                             LEFT JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
                             LEFT JOIN product ON productVoucher.product_id = product.product_id		
-                            LEFT JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-                            -- GROUP BY voucher.voucher_id
+                            LEFT JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            GROUP BY voucher.voucher_id
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
