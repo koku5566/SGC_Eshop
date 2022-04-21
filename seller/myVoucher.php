@@ -32,7 +32,6 @@
             <table class="table" id="voucherReview">
                <thead>
                   <tr>
-                     <th>Voucher ID</th>
                      <th>Voucher Code</th>
                      <th>Voucher Type</th>
                      <th>Discount Amount</th>
@@ -47,7 +46,7 @@
                <tbody>
                   <?php 
 
-                     // $shopId = $_SESSION['uid'];
+                     $shopId = $_SESSION['uid'];
 
                      $sql_myvoucher =
                      "SELECT
@@ -67,11 +66,12 @@
                         -- product.product_id
 
                         FROM voucher
-                        -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                        -- JOIN product ON productVoucher.voucher_id = product.voucher_id	
-                        -- JOIN user ON product.shop_id = user.user_id
-                        -- JOIN shopProfile ON user.user_id = shopProfile.shop_id
-                        -- WHERE product.shop_id = '$shopId'
+                        JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                        JOIN product ON productVoucher.voucher_id = product.voucher_id	
+                        JOIN product ON productVoucher.product_id = product.product_id	
+                        JOIN user ON product.shop_id = user.user_id
+                        JOIN shopProfile ON user.user_id = shopProfile.shop_id
+                        WHERE product.shop_id = '$shopId'
                         "; 
 
                      $stmt = $conn->prepare($sql_myvoucher);
@@ -82,7 +82,6 @@
 
                   ?>
                   <tr>
-                     <td><?php echo $r['voucher_id']; ?></td>
                      <td><?php echo $r['voucher_code']; ?></td>
                      <td><?php echo $r['voucher_type']; ?></td>
                      <td><?php echo $r['discount_amount']; ?></td>
