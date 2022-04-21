@@ -94,7 +94,7 @@ if (isset($_POST["completeRegister"])) {
                     }
                     $tempTicket = $ticketOrderID.$ticket.".png";
                     $qrcode = new QrCode($ticketString);
-                    $qrcode->writeFile(__DIR__.'\img\event'.$tempTicket);  
+                    $qrcode->writeFile(__DIR__.'/img/event/'.$tempTicket);  
                     $barcodeLocation = "https://eshop.sgcprototype2.com/img/event/".$tempTicket;
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
