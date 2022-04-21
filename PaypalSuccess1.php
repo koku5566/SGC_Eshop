@@ -101,12 +101,12 @@ $queryKL = mysqli_query($conn, $sql);
     $invoice_id = $row1['invoice_id'];
     $variation_id= $rowKL['variation_id'];
     $payment_status = $row1['payment_status'];
-    $user_address = $_SESSION['getaddress'];
+    $user_address =  $_SESSION['getaddress'];
     $create_time = $row1['createdtime'];
 
 
 
-   echo(" 
+/*    echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
@@ -116,10 +116,10 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$create_time."</span>
 
    
-    ");
+    "); */
 
     
-/*     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
@@ -137,7 +137,7 @@ $queryKL = mysqli_query($conn, $sql);
         echo "<script>alert($error);</script>";
         }
     mysqli_stmt_close($stmt);
-    } */
+    }
 }
 
 
