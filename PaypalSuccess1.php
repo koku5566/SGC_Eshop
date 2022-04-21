@@ -145,7 +145,6 @@ $queryKL = mysqli_query($conn, $sql);
   <h1>Your Payment has been Successful</h1>
       <h4>Payment Information</h4>
       <div class="wrapper">
-      <div class="col__box">
       <p>Reference Number: <?php echo $row1['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
       <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
@@ -156,8 +155,6 @@ $queryKL = mysqli_query($conn, $sql);
     </div>
   </div>
 </div>
-</div>
-
 </div>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
