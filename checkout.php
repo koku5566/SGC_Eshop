@@ -301,7 +301,7 @@ if(isset($_GET['addressid']))
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                        <form action="" method="post" class="paymentmethod">
+                        <form action="request.php" method="post" class="paymentmethod">
                             <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
@@ -355,6 +355,9 @@ if(isset($_GET['addressid']))
             </div>
             <br>
             <div class = 'row'>
+            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['total'] ?>>
+            <input type = "hidden" name = "item_name" value = "e-shop">
+            <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
             </form>
             </div>
