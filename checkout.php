@@ -173,6 +173,7 @@ if(isset($_GET['addressid']))
                             </thead>
                             <tbody>
                             <?php
+                            $uid = "U000018";
                             $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
@@ -181,7 +182,7 @@ if(isset($_GET['addressid']))
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID = 'U000018'
+                            WHERE cart.user_ID = '$uid'
                             AND cart.shop_id = 14
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC
@@ -301,7 +302,7 @@ if(isset($_GET['addressid']))
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                        <form action="request.php" method="post" class="paymentmethod">
+                        <form action="request1.php" method="post" class="paymentmethod">
                             <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
@@ -358,7 +359,7 @@ if(isset($_GET['addressid']))
             <input type = "hidden" name = "amount" value =<?php echo $_SESSION['total'] ?>>
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
-            <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;">Place Order</button></div>
+            <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
             </form>
             </div>
         </div>
