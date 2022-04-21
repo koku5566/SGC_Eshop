@@ -57,7 +57,7 @@ $eventName = $row['event_name'];
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt5);
-                                echo "<script>alert(\"Participants Successful Check in\");</script>";
+                                echo "<script>alert(Participants Successful Check in);</script>";
                             }		
                             mysqli_stmt_close($stmt5);
                     }
