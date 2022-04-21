@@ -66,7 +66,46 @@
 <?php
   $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
   $result = mysqli_query($conn, $sql);
+  $imageResult = $db->query("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile"); 
 ?>
+
+<?php 
+// If file upload form is submitted 
+$status = $statusMsg = ''; 
+if(isset($_POST["submit"])){ 
+    $status = 'error'; 
+    if(!empty($_FILES["image"]["name"])) { 
+        // Get file info 
+        $fileName = basename($_FILES["image"]["name"]); 
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+         
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg','gif'); 
+        if(in_array($fileType, $allowTypes)){ 
+            $image = $_FILES['image']['tmp_name']; 
+            $shopImage = addslashes(file_get_contents($image)); 
+         
+            // Insert image content into database 
+            $insert = $db->query("INSERT into shopProfile (image, created) VALUES ('$shopImage', NOW())"); 
+             
+            if($insert){ 
+                $status = 'success'; 
+                $statusMsg = "File uploaded successfully."; 
+            }else{ 
+                $statusMsg = "File upload failed, please try again."; 
+            }  
+        }else{ 
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+        } 
+    }else{ 
+        $statusMsg = 'Please select an image file to upload.'; 
+    } 
+} 
+ 
+// Display status message 
+echo $statusMsg; 
+?>
+
 
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -97,14 +136,20 @@
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>-->
+      <?php if($imageResult->num_rows > 0){ ?> 
       <div class="profile-pic">
+        <?php while($row = $imageResult->fetch_assoc()){ ?> 
         <label class="-label" for="file">
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage" value='$profileImage' onchange="loadFile(event)"/>
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
+        <input id="file" type="file" name="profileImage" value="<?php echo $shopProfilePic ?>" onchange="loadFile(event)"/>
+        <!--<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>--> <img id="profilePic" width="200" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['shop_profile_image']); ?>" /> 
+        <?php } ?> 
       </div>
+    <?php }else{ ?> 
+    <p class="status error">Image(s) not found...</p> 
+    <?php } ?>
     </div>
     
     <div class="row">
