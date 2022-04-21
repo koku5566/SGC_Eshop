@@ -57,7 +57,7 @@ $eventName = $row['event_name'];
         <div class="card-body">
             <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                 <div class="input-group"><input class="form-control" type="text" id="searchField" name="searchQuery">
-                    <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" id="serachBtn" name="search"><i class="fa fa-search"></i></button></div>
+                    <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" id="serachBtn" name="searchTicket"><i class="fa fa-search"></i></button></div>
                 </div>
             </form>
         </div>
@@ -81,7 +81,7 @@ $eventName = $row['event_name'];
                     </thead>
                     <tbody>
                         <?php
-                            if(isset($_POST["search"]))
+                            if(isset($_POST["searchTicket"]))
                             {
                                 $queriesUser = mysqli_real_escape_string($conn, SanitizeString($_POST["searchQuery"]));
                                 $_SESSION['searchID'] = $queriesUser;
