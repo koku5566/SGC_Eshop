@@ -123,6 +123,10 @@
     $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
     $result2 = mysqli_query($conn,$sql);
 
+    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
+
+
+
     if($result2)
     {
       echo 'Successfully Update';
