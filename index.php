@@ -185,25 +185,24 @@
                             product.product_name,
                             voucher.voucher_id
                             
-                            FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                            JOIN product ON productVoucher.product_id = product.product_id
-                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            FROM voucher, product
                             ";
 
                             $sm = $conn->prepare($sql_pn);
                             $sm->execute();
                             $res = $sm->get_result();
                             
+                            
                             while ($row = $result->fetch_assoc()) {
                                 $td = date('y-m-d');
                                 $expr = $row['voucher_expired'];
 
+                                $r = $res->fetch_assoc();
+                                
                                 $today = strtotime($td);
                                 $expired = strtotime($expr);
 
-                                if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
-                                    ){
+                                if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
                             ?>
 
                             <div class="col-md-2 m-4">
