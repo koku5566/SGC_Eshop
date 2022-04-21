@@ -52,13 +52,13 @@
                      "SELECT
                         voucher.voucher_id,
                         voucher.voucher_code,
+                        voucher.voucher_type,
                         voucher.voucher_startdate,
                         voucher.voucher_expired,
-                        voucher.voucher_display,
-                        voucher.voucher_type,
-                        voucher.voucher_limit,
                         voucher.voucher_details,
-                        voucher.discount_amount,
+                        voucher.voucher_limit,
+                        voucher.voucher_status,
+                        voucher.discount_list
                         -- shopProfile.shop_name,
                         -- shopProfile.shop_profile_image,
                         -- product.product_name,
