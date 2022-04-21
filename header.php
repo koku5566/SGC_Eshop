@@ -80,10 +80,7 @@
     }
 
     //Set true to enable seller register
-    if(!isset($_SESSION['enableSeller']))
-    {
-        $_SESSION['enableSeller'] = true;
-    }
+    $_SESSION['enableSeller'] = true;
 ?>
 
 <!DOCTYPE html>
