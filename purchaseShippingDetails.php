@@ -214,7 +214,7 @@
                         <td><?php echo $productname?></td>
                         <td></td>
                         <td>RM<?php echo $amt?>.00</td>
-                        <td>x <?php echo $productprice ?></td>
+                        <td>x <?php echo $qty ?></td>
                         <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
                     
