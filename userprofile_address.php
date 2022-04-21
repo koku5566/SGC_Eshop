@@ -42,6 +42,7 @@
                                         <div class="h1 text-gray-900 mb-4 container-left-col2">My Address Book</div>
 										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
                                     </div>
+									<hr>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -83,10 +84,6 @@
 <?php require __DIR__ . '/footer.php' ?>
 
 <style>
-.row2 {
-	display: flex;
-}
-
 .col2 {
 	flex: 1;
 	border:1px solid #ddd;
