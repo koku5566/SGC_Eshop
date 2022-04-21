@@ -1,27 +1,40 @@
+<?php require __DIR__ . '/header.php' ?>
+
+<?php	
+	if($_SESSION['login'] == false)
+	{
+		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+		exit;
+    }
+?>
+
 <?php
-   require 'localDbConn.php';
 
-   $sql = 
-    "SELECT 
-     voucher.voucher_id,
-     voucher.voucher_code,
-     voucher.voucher_startdate,
-     voucher.voucher_expired,
-     voucher.voucher_type,
-     voucher.voucher_details,
-     voucher.discount_amount,
-     user.shop_name,
-     user.shop_profile_image,
-     product.product_name
+   $sql_voucher =
+   "SELECT 
+   voucher.voucher_id,
+   voucher.voucher_code,
+   voucher.voucher_type,
+   voucher.discount_amount,
+   voucher.voucher_startdate,
+   voucher.voucher_expired,
+   voucher.voucher_details,
+   shopProfile.shop_name,
+   shopProfile.shop_profile_image,
+   product.product_name
 
-     FROM voucher
-     INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-     INNER JOIN product ON productVoucher.product_id = product.product_id	
-     INNER JOIN user ON product.user_id = user.user_id";	
+   FROM voucher
+   JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+   JOIN product ON productVoucher.product_id = product.product_id		
+   JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+   -- GROUP BY voucher.voucher_id
+   "; 
 
-   $getv = $conn->prepare($sql);
-   $getv->execute();
-   $result = $getv->get_result();
+   $stmt = $conn->prepare($sql_voucher);
+   $stmt->execute();
+   $result = $stmt->get_result();
+
+   while ($row = $result->fetch_assoc()) {
    
 ?>
 
@@ -30,10 +43,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Custom styles for this template-->
+
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <link href="css/classic.css" rel="stylesheet">
 
@@ -117,6 +129,8 @@
       </div>
    </div>
 </div>
+<?php 
+}?>
 
 
 
