@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $userID = "U000018";
+    $userID = $_SESSION["uid"];
     $KL = 14;
     $SB = 20;
 
