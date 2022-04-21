@@ -107,7 +107,7 @@ $queryKL = mysqli_query($conn, $sql);
 
 
 
-/*    echo(" 
+   echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
@@ -115,9 +115,10 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$uid."</span>
         <span>".$user_address."</span>
         <span>".$create_time."</span>
+        <span>".$shop_id."</span>
 
    
-    "); */
+    "); 
 
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
