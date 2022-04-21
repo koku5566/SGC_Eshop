@@ -45,9 +45,7 @@
     $sresult = $stmt->get_result();
     
 ?>
-<?php
-//to determine tracking status bar 
-echo $orderstatus;?>
+
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
 
@@ -129,7 +127,7 @@ echo $orderstatus;?>
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1" style="text-align: right;"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
@@ -140,7 +138,7 @@ echo $orderstatus;?>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            04 Sep 2021 | 04:45 p.m.
+                            <?php echo $orderdate ?> | 04:45 p.m.
                             </span>
                         </div>
                     </div>
@@ -227,6 +225,7 @@ echo $orderstatus;?>
             </div>
 
         </div>
+        
     </div>
 </div>
 <!-- /.container-fluid -->
