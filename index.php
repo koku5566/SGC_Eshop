@@ -256,15 +256,17 @@
                                             <strong>Product</strong>
                                             <?php 
                                                     while ($r = $res->fetch_assoc()) {
-                                                        $voucherid = $r['voucher_id'];
-                                                        $voucherid2 = $row['voucher_id'];
+                                                        // $voucherid = $r['voucher_id'];
+                                                        // $voucherid2 = $row['voucher_id'];
 
-                                                        for($i = 0; $i < count($voucherid2); $i++){
-                                                            for($x = 0; $x < count($voucherid); $x++){
-                                                                if($voucherid2[$i] = $voucherid[$x]){
+                                                        // for($i = 0; $i < count($voucherid2); $i++){
+                                                        //     for($x = 0; $x < count($voucherid); $x++){
+                                                        //         if($voucherid2[$i] = $voucherid[$x]){
                                             ?>
                                             <p><?php echo $r['product_name'];?>, </p>
-                                            <?php }}}}?>
+                                            <?php 
+                                            // }}}
+                                        }?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
