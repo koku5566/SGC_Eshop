@@ -60,17 +60,17 @@ if(isset($_POST['addCard']))
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 								<div class="form-group">
 								<label>Card Number</label>
-								<input required type="text" name="cardNo" pattern="[0-9]{1,}" maxlength="19" class="form-control"/>
+								<input required type="text" name="cardNo" pattern="[0-9]{1,}" maxlength="19" class="form-control" id="cardnumber"/>
 								</div>
 
 								<div class="form-group">
 								<label>Expiry Date (MM/YY)</label>
-								<input required type="tel" name="expDate" pattern="[0-9]{2}/[0-9]{2}" maxlength="5" class="form-control"/>
+								<input required type="text" name="expDate" pattern="[0-9]{2}" maxlength="5" class="form-control" id="expirationdate"/>
 								</div>
 								
 								<div class="form-group">
 								<label>CVV</label>
-								<input required type="text" name="cardCVV" pattern="[0-9]{3,4}" maxlength="4" class="form-control"/>
+								<input required type="text" name="cardCVV" pattern="[0-9]{3,4}" maxlength="4" class="form-control" id="securitycode"/>
 								</div>
 
 								<div class="form-group">
@@ -90,3 +90,25 @@ if(isset($_POST['addCard']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<script>
+window.onload = function () {
+
+const name = document.getElementById('name');
+const cardnumber = document.getElementById('cardnumber');
+const expirationdate = document.getElementById('expirationdate');
+const securitycode = document.getElementById('securitycode');
+const output = document.getElementById('output');
+const ccicon = document.getElementById('ccicon');
+const ccsingle = document.getElementById('ccsingle');
+const generatecard = document.getElementById('generatecard');
+
+var expirationdate_mask = new IMask(expirationdate, {
+    mask: 'MM{/}YY',
+    groups: {
+        YY: new IMask.MaskedPattern.Group.Range([0, 99]),
+        MM: new IMask.MaskedPattern.Group.Range([1, 12]),
+    }
+});
+};
+</script>
