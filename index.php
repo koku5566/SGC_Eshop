@@ -155,14 +155,14 @@
                             <?php 
                             
                             $sql_voucher =
-                            "SELECT *
-                            -- voucher.voucher_id,
-                            -- voucher.voucher_code,
-                            -- voucher.voucher_type,
-                            -- voucher.discount_amount,
-                            -- voucher.voucher_startdate,
-                            -- voucher.voucher_expired,
-                            -- voucher.voucher_details
+                            "SELECT 
+                            voucher.voucher_id,
+                            voucher.voucher_code,
+                            voucher.voucher_type,
+                            voucher.discount_amount,
+                            voucher.voucher_startdate,
+                            voucher.voucher_expired,
+                            voucher.voucher_details
                             -- shopProfile.shop_name,
                             -- shopProfile.shop_profile_image,
                             -- product.product_name
