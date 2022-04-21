@@ -84,7 +84,19 @@
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 <input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
 
-
+<?php
+    if(isset($_SESSION['success'])&& $_SESSION['success']!='')
+    {
+        echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
+        unset($_SESSION['success']); //unset value when reload
+    }
+    
+    if(isset( $_SESSION['status'] )&&  $_SESSION['status'] )
+    {
+        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['status'] .'</div>';
+        unset( $_SESSION['status'] ); //unset value when reload
+    }
+    ?>
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
