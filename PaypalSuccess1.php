@@ -8,8 +8,8 @@
 		$row1 = mysqli_fetch_array($results);
 
 $uid = "U000018";
-$sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
-cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
+$sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id,
+cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock, product.stock,
 product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
 FROM `cart`
 JOIN `product`
@@ -107,6 +107,26 @@ $queryKL = mysqli_query($conn, $sql);
     $userEmail = $_SESSION['userEmail'];
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $_SESSION['total'];
+
+/*     $stock = $rowKL['product.stock'];
+    $deductQuantity = $stock - $product_quantity;
+
+    if ($variation_id == "") {
+    $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
+    if ($stmt2 = mysqli_prepare($conn,$deductsql)){
+        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
+        $bp = mysqli_stmt_execute($stmt2);
+            mysqli_stmt_close($stmt2);
+    } 
+    }
+    else {
+        $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
+    if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
+        $bp1 = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity,$variation_id);
+        $bp1 = mysqli_stmt_execute($stmt3);
+            mysqli_stmt_close($stmt3);
+        }
+    } */
 
 
 
