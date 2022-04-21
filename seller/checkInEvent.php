@@ -134,7 +134,7 @@ $row1 = mysqli_fetch_array($ticketresultsql);
         }
         else
         {
-            window.location.href("checkInEvent.php?searchID="+query);
+            window.location.href="checkInEvent.php?searchID="+query;
         }
     });
 </script>
