@@ -95,7 +95,7 @@
 	<div class="col2" style="background-color: #a31f37;">
 		<div class="container-col2">
 			<div class="container-left-col2"><h3 style="color: white;">Bank Account</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
+			<div class="container-right-col2"><a style="color:white;" href="../userAddBank.php"><button class="btn btn-primary"><i class="fa-solid fa-plus" aria-hidden="true"></i></button></a></div>
 		</div>
 	</div>
 </div>
