@@ -178,7 +178,7 @@
                                 alt="<?php echo $productname ?>"></td>
                         <td><?php echo $productname?></td>
                         <td>Navy blue</td>
-                        <td>RM<?php echo $amount?>.00</td>
+                        <td>RM<?php echo $amt?>.00</td>
                         <td>x <?php echo $qty ?></td>
                         <td class="red-text">rm349.00</td>
                     </tr>
