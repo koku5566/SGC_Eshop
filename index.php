@@ -155,6 +155,8 @@
                     <div class="container">
                         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
                             <?php 
+
+                            // $shopId = $_SESSION['uid'];
                             
                             $sql_voucher =
                             "SELECT 
@@ -173,7 +175,7 @@
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
                             JOIN product ON productVoucher.product_id = product.product_id		
                             JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-                            WHERE shopProfile.shop_id = '$shopId'
+                            -- WHERE shopProfile.shop_id = '$shopId'
                             GROUP BY voucher.voucher_id
                             "; 
 
