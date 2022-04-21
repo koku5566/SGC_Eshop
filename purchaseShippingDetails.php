@@ -5,9 +5,9 @@
 
     //=========sql to get order information=============
     $deliverymethod="";
-    $ordertotal = $amt * $shippingfee;
     $totalprice = 0;
     $shippingfee = 8.6;
+   // $ordertotal = $amt * $shippingfee;
     $orderinfosql = "SELECT
     myOrder.order_id,
     myOrder.order_status,
@@ -55,6 +55,7 @@
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
+        
        
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
@@ -236,7 +237,7 @@
                             <!--**to input quantity of items-->
                         </div>
                         <div class="col red-text">
-                            <h5><strong>RM<?php echo $ordertotal?></strong></h5>
+                            <h5><strong>RM</strong></h5>
                         </div>
                     </div>
                 </div>
