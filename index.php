@@ -157,16 +157,14 @@
                             <?php 
                             
                             $sql_voucher =
-                            "SELECT *
-                            -- voucher.voucher_id,
-                            -- voucher.voucher_code,
-                            -- voucher.voucher_startdate,
-                            -- voucher.voucher_expired,
-                            -- voucher.voucher_display,
-                            -- voucher.voucher_type,
-                            -- voucher.voucher_limit,
-                            -- voucher.voucher_details,
-                            -- voucher.discount_amount,
+                            "SELECT 
+                            voucher.voucher_id,
+                            voucher.voucher_code,
+                            voucher.voucher_type,
+                            voucher.discount_amount,
+                            voucher.voucher_startdate,
+                            voucher.voucher_expired,
+                            voucher.voucher_details
                             -- shopProfile.shop_name,
                             -- shopProfile.shop_profile_image,
                             -- product.product_name
@@ -198,7 +196,7 @@
                             <div class="col-md-2 m-2">
                             <div class="card" id="vouchercard">
                                 <div class="container">
-                                    <img class="m-2" src="../img/" id="voucherlogo">
+                                    <img class="m-4" src="../img/" id="voucherlogo" >
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title"><strong></strong></h6>
