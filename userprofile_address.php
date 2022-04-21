@@ -86,7 +86,6 @@
 <style>
 .row2 {
 	background-color: lightgrey;
-	color: #a31f37;
 }
 
 .col2 {

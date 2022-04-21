@@ -139,6 +139,8 @@
 <style>
 .row2 {
 	display: flex;
+	background-color: lightgrey;
+	color: #a31f37;
 }
 
 .col2 {
