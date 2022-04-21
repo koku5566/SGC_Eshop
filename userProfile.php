@@ -81,11 +81,9 @@ if(isset($_POST['update']))
 				<div class=\"form-group\">
 					<div class=\"image-container\">				
 						<div class=\"image-layer\">
-						<img class=\"card-img-top img-thumbnail\" id=\"profilePicDB\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
-						<div class=\"image-tools-delete\" id=\"delPic\">
-							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
-						</div>
+
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\" name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
@@ -141,10 +139,9 @@ if(isset($_POST['update']))
 
 <style>
     .img-thumbnail{
-		width:100%;
-		height:100%;
-		object-fit:contain;
-        min-height: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 		border-radius: 10px;
         border: 1px solid darkgrey;
     }
@@ -156,15 +153,8 @@ if(isset($_POST['update']))
 </style>
 
 <script>
-var del = document.getElementById('delPic');
-var img1 = document.getElementById('profilePicDB');
-del.addEventListener('click', function handleChange(event) {
-
-		img1.value=null;
-
-});
-
 var img = document.getElementById('profilePic');
+
 img.addEventListener('change', function handleChange(event) {
 	const [file] = img.files;
 	var maxsize = 2000000;
