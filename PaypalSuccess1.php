@@ -120,9 +120,9 @@ $queryKL = mysqli_query($conn, $sql);
     "); */
 
     
-    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`,`shop_id`) VALUES (?,?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`) VALUES (?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $create_time,$shop_id);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time);
         $bp = mysqli_stmt_execute($stmt);
     }
     else {
@@ -146,7 +146,7 @@ $queryKL = mysqli_query($conn, $sql);
       <h4>Payment Information</h4>
       <p>Reference Number: <?php echo $row1['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
-      <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
+      <p>Paid Amount: RM <?php echo $row1['payment_amount']; ?></p>
       <p>Payment Status: <?php echo $row1['payment_status']; ?></p>
       <br>
       <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
