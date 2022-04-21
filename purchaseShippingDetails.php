@@ -245,7 +245,8 @@
 
         </div>
         <div class= "card-footer">
-        <a href="orderDetails.php?cancel&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Cancel Order</button></a>
+        <a href="purchaseShippingDetials.php?confirm&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Confirm Order</button></a>
+        <a href="purchaseShippingDetials.php?cancel&id=<?php echo $order_id?>" ><button type="button" class="btn btn-primary">Cancel Order</button></a>
         </div>
         
     </div>
