@@ -5,7 +5,7 @@
 <?php
 /*QUERY FOR ORDER*/
 $sql = "SELECT
-myOrder.order_id,
+DISTINCT myOrder.order_id,
 myOrder.order_status,
 myOrder.delivery_method,
 myOrder.tracking_number,
