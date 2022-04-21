@@ -248,7 +248,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer m-4">
+                                    <div class="tnccontainer m-5">
                                         <div class="container">
                                             <strong>Product</strong>
                                             <?php 
@@ -260,7 +260,7 @@
                                                             for($x = 0; $x < count($voucherid); $x++){
                                                                 if($voucherid2[$i] = $voucherid[$x]){
                                             ?>
-                                            <p><?php echo $r['product_name'];?>, </p>
+                                            <p><?php echo $voucherid2[$i];?>, </p>
                                             <?php }}}}?>
                                         </div>
                                         <div class="container">
