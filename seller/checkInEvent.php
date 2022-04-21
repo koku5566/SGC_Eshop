@@ -83,7 +83,7 @@ $eventName = $row['event_name'];
                         <?php
                             if(isset($_POST["searchTicket"]))
                             {
-                                $queriesUser = mysqli_real_escape_string($conn, SanitizeString($_POST["searchQuery"]));
+                                $queriesUser = $_POST["searchQuery"];
                                 $_SESSION['searchID'] = $queriesUser;
                                 $ticketsql = "SELECT *
                                             FROM `ticket`
