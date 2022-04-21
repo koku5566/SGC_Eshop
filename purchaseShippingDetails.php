@@ -50,7 +50,7 @@
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
         $productname = $orow['product_name'];
-        $productprice = $orow['product_price']
+        $productprice = $orow['product_price'];
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
