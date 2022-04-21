@@ -79,14 +79,11 @@ if(isset($_POST['update']))
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
 				<div class=\"imageDiv\">
-					<div class=\"image-container\">
-						
+					<div class=\"image-container\">				
 						<div class=\"image-layer\">
 						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
-						<div class=\"image-tools-delete hide\">
-							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
-						</div>
+
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>

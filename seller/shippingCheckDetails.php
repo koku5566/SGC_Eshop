@@ -85,7 +85,7 @@
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
-        $updatesql ="UPDATE myOrder SET  order_status = '$pickupstat' WHERE order_id = '$orderid'";
+        $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE order_id = '$orderid'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";
@@ -113,7 +113,7 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-        <div class="card mb-3">
+        <div class="card shadow m-3">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
             <div class="step" id="placed">
                 <div class="step-icon-wrap">
@@ -648,7 +648,6 @@
 </style>
 <script>
 var orderstatus = document.getElementById("orderstatus").value;
-
 
 console.log(orderstatus);
 if(orderstatus == 'Placed')
