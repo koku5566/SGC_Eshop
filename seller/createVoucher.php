@@ -24,19 +24,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
-
-<?php 
-     if(isset($_SESSION['status']))
-     {
-         ?>
-             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-             <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
-             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-             </div>
-         <?php
-         unset($_SESSION['status']);
-     }
- ?>
  
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
@@ -245,6 +232,7 @@
                     <tbody> 
                      <?php 
                         $shopId = $_SESSION['uid'];
+
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
@@ -257,8 +245,7 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                        WHERE product.shop_id = '$shopId' 
-                        ";
+                         WHERE product.shop_id = '$shopId'";
                     
                     
                        $stmt = $conn->prepare($sqlp);
@@ -367,7 +354,7 @@
                rowInsert.push(testdata[i][j]);
             }
             let pid = $('#productList').val();
-            let productid = $('<input type="text" name="productlist[]" class="form-control">').val(rowInsert[3]).append(pid);
+            let productid = $('<input type="text" name="productlist[]" class="form-control" hidden>').val(rowInsert[3]).append(pid);
             console.log(rowInsert[3]);
             $('#productraw').append(productid);
             createvouchertable.row.add([

@@ -144,7 +144,8 @@ if(isset($_GET['addressid']))
 <div>
     <div class="container" style="padding: 24px;margin-top: 30px;">
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);"><label class="form-label" style="font-size: 20px;"><i class="fa fa-map-marker" style="width: 19.4375px;"></i><strong>Delivery Address</strong></label>
-            <div class="row">
+        <!-- user address -->    
+        <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
                 <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;" data-toggle="modal" data-target="#myModal"    >Change</button></div>
@@ -155,6 +156,7 @@ if(isset($_GET['addressid']))
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div></div>
+            <!-- cart -->
             <div class="row">
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Your Order</strong></label>
                     <div class="table-responsive">
@@ -339,11 +341,15 @@ if(isset($_GET['addressid']))
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-6"><label class="form-check-label" for="formCheck-6">E-Wallet</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash on Delivery</label></div>
                 </div> -->
+                <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                        <li class="list-group-item"><span>Order Total</span></li>
-                        <li class="list-group-item"><span>Shipping Total</span></li>
-                        <li class="list-group-item"><span>Total Payment</span></li>
+                        <?php  
+                        $_SESSION['total'] = 100;
+                        ?>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM 90</span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['total'] ?></span></li>
                     </ul>
                 </div>
             </div>

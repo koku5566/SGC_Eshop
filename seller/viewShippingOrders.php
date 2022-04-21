@@ -3,9 +3,9 @@
 ?>
 
 <?php
-/*QUERY FOR ORDER*/
+/*QUERY FOR ORDER */
 $sql = "SELECT
-myOrder.order_id,
+DISTINCT myOrder.order_id,
 myOrder.order_status,
 myOrder.delivery_method,
 myOrder.tracking_number,
@@ -183,7 +183,7 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-
+                            
                             </div>
 
                             <!--------------------------------Pick Up--------------------------------------->

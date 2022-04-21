@@ -17,6 +17,7 @@
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address
+    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
@@ -35,6 +36,7 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
+       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
 
@@ -45,9 +47,7 @@
     $sresult = $stmt->get_result();
     
 ?>
-<?php
-//to determine tracking status bar 
-echo $orderstatus;?>
+
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 
 
@@ -129,7 +129,7 @@ echo $orderstatus;?>
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                <div class="text-start p-1"><small>Purchased Date & Time</small></div>
+                <div class="text-start p-1" style="text-align: right;"><small>Purchased Date & Time</small></div>
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
@@ -140,7 +140,7 @@ echo $orderstatus;?>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
                         <div class="text-end pt-2">
-                            04 Sep 2021 | 04:45 p.m.
+                            <?php echo $orderdate ?> | 04:45 p.m.
                             </span>
                         </div>
                     </div>
@@ -153,7 +153,7 @@ echo $orderstatus;?>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
                                 alt="W3Schools.com"></td>
-                        <td>3-in-1 Power Bank with Phone Stand Model: WI-SP510</td>
+                        <td><?php echo $productname?></td>
                         <td>Navy blue</td>
                         <td>RM34.00</td>
                         <td>x1</td>
@@ -177,11 +177,9 @@ echo $orderstatus;?>
                     <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
                         <div class="w-100 text-start"><span class="text-size-medium p-2"><strong> Payment
                                     Method:</strong></span><span class="iconify" data-icon="bi:credit-card"
-                                style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
-                                Card</span> </div>
+                                style="color: black; width: 30px;height:30px"></span><span class="p-2"><?php echo $paymentstat?></span> </div>
                         <div class="w-100 text-start"><span class="text-size-medium"><strong>Status:</strong></span> <span
-                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span>Processing
-                            Order</div>
+                                class="iconify" data-icon="carbon:delivery" style="color: black;"></span><?php echo $orderstatus?></div>
                     </div>
                 </div>
                 <!--Ordered Item Price Amount Information-->
@@ -227,6 +225,7 @@ echo $orderstatus;?>
             </div>
 
         </div>
+        
     </div>
 </div>
 <!-- /.container-fluid -->
