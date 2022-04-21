@@ -141,7 +141,6 @@ $queryKL = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
-<div class="payment">
     <div class="App">
   <h1>Your Payment has been Successful</h1>
       <h4>Payment Information</h4>
@@ -158,7 +157,6 @@ $queryKL = mysqli_query($conn, $sql);
   </div>
 </div>
 </div>
-</div>  
 
 </div>
 
