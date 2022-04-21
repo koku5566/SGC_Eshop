@@ -125,7 +125,7 @@
 
     if($result)
     {
-      header("location:shopProfile.php");
+      echo 'Successfully Update';
     }
     else
     {
