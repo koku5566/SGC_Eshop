@@ -96,8 +96,7 @@ if(isset($_POST['update']))
 
 
 
-					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
-					<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
+
 					
 					<div class=\"form-group\">
 					<label>Username: </label>
