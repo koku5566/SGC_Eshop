@@ -84,8 +84,8 @@ if(isset($_POST['update']))
 						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
 						<div class=\"image-tools-delete hide\">
-						<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
-					</div>
+							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+						</div>
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
@@ -156,8 +156,18 @@ if(isset($_POST['update']))
 </style>
 
 <script>
-var img = document.getElementById('profilePic');
+const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+deleteImg.forEach(img => {
+	img.addEventListener('click', function handleClick(event) {
+		img.parentElement.previousElementSibling.previousElementSibling.src="";
+		img.parentElement.nextElementSibling.classList.remove("hide");
+		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
+		img.parentElement.classList.add("hide");
+	});
+});
 
+var img = document.getElementById('profilePic');
 img.addEventListener('change', function handleChange(event) {
 	const [file] = img.files;
 	var maxsize = 2000000;
