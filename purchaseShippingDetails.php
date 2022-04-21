@@ -175,7 +175,7 @@
                 <tbody>
                     <tr>
                         <td scope="row"><img src="/img/product/<?php echo $productcover?>"
-                                alt="<?php echo $productname ?>"></td>
+                                alt="<?php echo $productname ?>" style="object-fit:contain;width:10%;height:10%"></td>
                         <td><?php echo $productname?></td>
                         <td></td>
                         <td>RM<?php echo $amt?>.00</td>
