@@ -30,6 +30,41 @@ $row = mysqli_fetch_array($resultsql);
 $eventName = $row['event_name'];
 ?>
 
+<?php
+    if(isset($_POST['checkinparticipant']))
+    {
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+        $today = date("Y-m-d");
+        $now = date("H:i");
+        $checked = 1;
+        $tID = $_SESSION['searchID'];
+
+        $sqlupdate = "UPDATE `ticket` SET `check_in`=?,`checkIn_time`=?,`checkIn_date`=? WHERE `ticket_id` = ?";
+                    if ($stmt5 = mysqli_prepare($conn,$sqlupdate)){
+                        if(false===$stmt5){
+                            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                        }
+                        $bp = mysqli_stmt_bind_param($stmt5,"issi",$checked,$now,$today,$tID);
+                        if(false===$bp){
+                            die('Error with bind_param: ') . htmlspecialchars($stmt5->error);
+                        }
+                        $bp = mysqli_stmt_execute($stmt5);
+                        if ( false===$bp ) {
+                            die('Error with execute: ') . htmlspecialchars($stmt5->error);
+                        }
+                            if(mysqli_stmt_affected_rows($stmt5) == 1){
+
+                            }
+                            else{
+                                $error = mysqli_stmt_error($stmt5);
+                                echo "<script>alert(\"Participants Successful Check in\");</script>";
+                            }		
+                            mysqli_stmt_close($stmt5);
+                    }
+    }
+
+?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
     <!-- Above Template -->
@@ -59,7 +94,6 @@ $eventName = $row['event_name'];
                 <div class="input-group"><input class="form-control" type="text" id="searchField" name="searchQuery">
                     <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" id="serachBtn" name="searchTicket"><i class="fa fa-search"></i></button></div>
                 </div>
-            </form>
         </div>
     </div>
     <div class="card" style="margin-top: 30px;">
@@ -97,7 +131,6 @@ $eventName = $row['event_name'];
                                 $id = $row1['ticket_id'];
                                 $tName = $row1['ticket_name'];
                                 $ticketDate = $row1['ticketGenerate_Date'];
-                                echo("$queriesUser,$ticketsql,$tName");
                                 echo("
                                 <tr>
                                 <td>$id</td>
@@ -112,6 +145,10 @@ $eventName = $row['event_name'];
                                     <td>-</td>
                                     <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"checkinparticipant\">Check in</button></div>
                                     ");
                                 }
                                 else if($row1['check_in'] == 1)
@@ -122,16 +159,17 @@ $eventName = $row['event_name'];
                                     <td>".$row1['checkIn_date']."</td>
                                     <td>".$row1['checkIn_time']."</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"checkinparticipant\">Check in</button></div>
                                     ");
                                 }
 
                                 }
                                                        
                         ?>
-                    </tbody>
-                </table>
-            </div>
-            <div style="text-align: center;"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Check in</button></div>
+                                    </form>
         </div>
     </div>
 
