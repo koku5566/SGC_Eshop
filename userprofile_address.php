@@ -84,6 +84,11 @@
 <?php require __DIR__ . '/footer.php' ?>
 
 <style>
+.row2 {
+	background-color: lightgrey;
+	color: #a31f37;
+}
+
 .col2 {
 	flex: 1;
 	border:1px solid #ddd;
