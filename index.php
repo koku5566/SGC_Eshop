@@ -162,6 +162,7 @@
                             voucher.voucher_type,
                             voucher.discount_amount,
                             voucher.voucher_display,
+                            voucher.voucher_limit,
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
                             voucher.voucher_details,
@@ -188,7 +189,7 @@
                              $today = strtotime($td);
                              $expired = strtotime($expr);
 
-                            if($row['voucher_display'] > 0){
+                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
                             
                             ?>
 
