@@ -183,70 +183,7 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-                            <div class="card mt-2">
-                                <div class="card-header">
-                                    
-                                    <div class="row">
-                                        <div class="col md-auto text-start"><span><strong>USERNAME</strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong> </strong></span></div>
-                                </div>
-                  
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-1">
-                                           <b>Order ID</b>
-                                        </div>
-                                        <div class="col-7">
-                                            <b>Product Detail</b>
-                                        </div>
-                                        <div class="col-2"><b>Status</b></div>
-                                        <div class="col-2"><b>Action</b></div>
-                                    </div>
-                                    <hr>
-
-                                    <?php
-                                    $sql2 = "SELECT * FROM myOrder WHERE order_status NOT IN ('cancelled', 'shipping') ";
-                                    $result2 = $conn->query($sql2);
-                                    while($row2 = $result2->fetch_assoc()){
-                                        $order_id = $row2['order_id'];
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <?php echo $order_id; ?>
-                                        </div>
-                                        <div class="col-7">
-                                            <?php
-                                            $sql3 = "SELECT * FROM orderDetails JOIN product ON orderDetails.product_id = product.id JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE order_id = $order_id";
-                                            $result3 = $conn->query($sql3);
-                                            while($row3 = $result3->fetch_assoc()){
-                                            ?>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <img src=/img/product/<?php echo $row3['product_cover_picture']?>>
-                                                </div>
-                                                <div class="col-5">
-                                                    <?php echo $row3['product_name']?>
-                                                </div>
-                                                <div class="col-1">
-                                                   x <?php echo $row3['quantity']?>
-                                                </div>
-                                                <div class="col-2">
-                                                    RM <?php echo $row3['price']?>
-                                                </div>
-                                            </div>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="col-2"><?php echo $row3["order_status"]; ?></div>
-                                        <div class="col-2">
-                                        <a href="manageOrder.php?ship&order_id=<?php echo $order_id;;?>">Arrange Shipment</a>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <?php } ?>
-                                </div>
-            </div>
+                            
                             </div>
 
                             <!--------------------------------Pick Up--------------------------------------->
