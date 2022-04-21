@@ -127,6 +127,22 @@
             </div>
 
             <!-- Nav Item - Shipment Collapse Menu -->
+            <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
+                    aria-expanded="true" aria-controls="collapseAdmin">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Admin Panel</span>
+                </a>
+                <div id="collapseAdmin" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../adminManageUser.php">User Management</a>
+                    </div>
+                </div>
+            </li>
+            <?php endif?>
+
+            <!-- Nav Item - Shipment Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipment"
                     aria-expanded="true" aria-controls="collapseShipment">
@@ -449,25 +465,18 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <!--Admin Panel-->
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+                                <a class="dropdown-item" href="../index.php">
+                                    <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Switch
+                                </a>
+                                <?php endif?>
+                            
                                 <a class="dropdown-item" href="../seller/shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>
-
-                                <!--Admin Panel-->
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="../adminManageUser.php">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    ADMIN PANEL
-                                </a>
-                                <?php endif?>
-
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "ADMIN") :?>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    My Purchase
-                                </a>
-                                <?php endif?>
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
