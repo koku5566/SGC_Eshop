@@ -174,13 +174,13 @@
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="/img/product<?php echo $productcover?>"
+                        <td scope="row"><img src="/img/product/<?php echo $productcover?>"
                                 alt="<?php echo $productname ?>"></td>
                         <td><?php echo $productname?></td>
-                        <td>Navy blue</td>
+                        <td></td>
                         <td>RM<?php echo $amt?>.00</td>
                         <td>x <?php echo $qty ?></td>
-                        <td class="red-text">rm349.00</td>
+                        <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
                     <tr>
                         <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
