@@ -185,26 +185,24 @@
                             product.product_name,
                             voucher.voucher_id
                             
-                            FROM product
-                            JOIN productVoucher ON product.product_id = productVoucher.product_id
-                            JOIN voucher ON productVoucher.voucher_id = voucher.voucher_id
+                            FROM voucher, product
                             ";
 
                             $sm = $conn->prepare($sql_pn);
                             $sm->execute();
                             $res = $sm->get_result();
                             
-                            while ($row = $result->fetch_assoc()) {
-
-                             $td = date('y-m-d');
-                             $expr = $row['voucher_expired'];
-
-                             $today = strtotime($td);
-                             $expired = strtotime($expr);
-
-                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today
-                                ){
                             
+                            while ($row = $result->fetch_assoc()) {
+                                $td = date('y-m-d');
+                                $expr = $row['voucher_expired'];
+
+                                $r = $res->fetch_assoc();
+                                
+                                $today = strtotime($td);
+                                $expired = strtotime($expr);
+
+                                if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
                             ?>
 
                             <div class="col-md-2 m-4">
@@ -229,7 +227,6 @@
                             </div>
 
                         <!-- Modal -->
-
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -253,12 +250,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer">
+                                    <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <p>
-                                                <?php echo $r['product_name']; ?>
-                                            </p>
+                                            <p><?php echo $r['product_name'];?>, </p>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
@@ -274,9 +269,9 @@
                         </div>
                             
                             <?php 
-                            } else{
+                                } else{
 
-                            }
+                                }
                         }?>
 
                             

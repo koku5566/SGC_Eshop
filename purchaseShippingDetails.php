@@ -78,13 +78,24 @@
           header('Location: ' . $_SERVER['HTTP_REFERER']);          
         }
     }
-    
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 <input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
 
-
+<?php
+    if(isset($_SESSION['success'])&& $_SESSION['success']!='')
+    {
+        echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
+        unset($_SESSION['success']); //unset value when reload
+    }
+    
+    if(isset( $_SESSION['status'] )&&  $_SESSION['status'] )
+    {
+        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['status'] .'</div>';
+        unset( $_SESSION['status'] ); //unset value when reload
+    }
+    ?>
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
@@ -178,7 +189,7 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                 <?php if($srow['status']=='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed') {?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
+                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed') {?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
