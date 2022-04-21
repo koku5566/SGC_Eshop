@@ -170,9 +170,7 @@ $(document).ready(function() {
 const removeButton = document.querySelectorAll('.remove');
 removeButton.forEach(btn => {
 	btn.addEventListener('click', function handleClick(event) {
-		removeButton.forEach(btn => {
-			document.getElementById('deleteStaff').value=btn.value
-		});
+		document.getElementById('deleteStaff').value=btn.value;
 	});
 });
 
