@@ -83,7 +83,9 @@ if(isset($_POST['update']))
 						<div class=\"image-layer\">
 						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
-
+						<div class=\"image-tools-delete hide\">
+						<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+					</div>
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
