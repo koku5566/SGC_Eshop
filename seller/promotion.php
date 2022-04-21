@@ -140,11 +140,11 @@
                                     $userId = $_SESSION['userid'];
                                     if($_SESSION['role']=="SELLER")
                                     {
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 0 AND promotionEnd_Date >= now()";
                                     }
                                     else if($_SESSION['role']=="ADMIN")
                                     {
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND `status` = 1 AND promotionEnd_Date >= now()";
                                     }
 
                                     $result = $conn->query($sql); 
