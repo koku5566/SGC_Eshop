@@ -75,9 +75,8 @@
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card shadow mb-3">
-        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } ?>
-
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
+        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
@@ -165,7 +164,7 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                 <?php if($orderstatus=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
+                 <?php if($srow['status']=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
