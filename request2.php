@@ -91,7 +91,7 @@ if (isset($_POST["completeRegister"])) {
                             mysqli_stmt_close($stmt5);
                     }
 
-
+                    $picLocation = "/img/event/1649595721697.png";
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -121,6 +121,7 @@ if (isset($_POST["completeRegister"])) {
                     <p>Ticket: $ticketType</p>
                     <h5>Barcode below is your ticket for organizer check in purposes. Kindly bookmark this email and keep it safely</h5>
                     <h2>$ticketString</h2>
+                    <img src=\"$picLocation\" style\"width:100%;\">
                     <h4>Thank you</h4>
                     <h4>Best Regards</h4>
                     <h4>SGC Eshop</h4>
