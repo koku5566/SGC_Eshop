@@ -35,6 +35,7 @@
                      <th>Voucher ID</th>
                      <th>Voucher Code</th>
                      <th>Voucher Type</th>
+                     <th>Discount Amount</th>
                      <th>Voucher Start</th>
                      <th>Voucher Expired</th>
                      <th>Voucher Details</th>
@@ -53,12 +54,13 @@
                         voucher.voucher_id,
                         voucher.voucher_code,
                         voucher.voucher_type,
+                        voucher.discount_amount,
                         voucher.voucher_startdate,
                         voucher.voucher_expired,
                         voucher.voucher_details,
                         voucher.voucher_limit,
                         voucher.voucher_status,
-                        voucher.discount_list
+                        voucher.voucher_list
                         -- shopProfile.shop_name,
                         -- shopProfile.shop_profile_image,
                         -- product.product_name,
@@ -83,6 +85,7 @@
                      <td><?php echo $r['voucher_id']; ?></td>
                      <td><?php echo $r['voucher_code']; ?></td>
                      <td><?php echo $r['voucher_type']; ?></td>
+                     <td><?php echo $r['discount_amount']; ?></td>
                      <td><?php echo $r['voucher_startdate']; ?></td>
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_details']; ?></td>
