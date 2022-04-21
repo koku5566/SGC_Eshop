@@ -68,7 +68,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.delivery_method = 'self-collection'";
+WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready'";
 
 $stmt = $conn->prepare($pickupsql);
 $stmt->execute();
@@ -220,7 +220,7 @@ $pickupresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php }  else{ ?> Check Details <?php } ?></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']!='Ready'){ ?> Update Pick-Up <?php } else { ?>Check Details <?php } ?></a>
                                         </div>
                                     </div>
                                 </div>
