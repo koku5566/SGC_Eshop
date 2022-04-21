@@ -138,6 +138,7 @@ $queryKL = mysqli_query($conn, $sql);
 
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
     <div class="App">
@@ -147,9 +148,6 @@ $queryKL = mysqli_query($conn, $sql);
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
       <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
       <p>Payment Status: <?php echo $row1['payment_status']; ?></p>
-      <h4>Product Information</h4>
-      <p>Product id: <?php echo $row1['product_id']; ?></p>
-      <p>Product Name: <?php echo $row1['product_name']; ?></p>
       <br>
       <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
     </div>
