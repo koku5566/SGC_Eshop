@@ -21,6 +21,7 @@
     orderDetails.amount,
     orderDetails.shop_id,
     product.product_name,
+    product.product_price,
     product.product_cover_picture,
     shopProfile.shop_name,
     shopProfile.shop_profile_image
@@ -49,6 +50,7 @@
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
         $productname = $orow['product_name'];
+        $productprice = $orow['product_price']
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
@@ -179,7 +181,7 @@
                         <td><?php echo $productname?></td>
                         <td></td>
                         <td>RM<?php echo $amt?>.00</td>
-                        <td>x <?php echo $qty ?></td>
+                        <td>x <?php echo $productprice ?></td>
                         <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
                     
