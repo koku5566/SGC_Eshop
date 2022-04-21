@@ -65,8 +65,7 @@
 
 <?php
   $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-  $result = mysqli_query($conn, $sql);
-  $imageResult = $db->query("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile"); 
+  $result = mysqli_query($conn, $sql); 
 ?>
 
 <?php 
@@ -104,6 +103,10 @@ if(isset($_POST["submit"])){
  
 // Display status message 
 echo $statusMsg; 
+?>
+
+<?php
+  $imageResult = $db->query("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile WHERE shop_id = 8");
 ?>
 
 
