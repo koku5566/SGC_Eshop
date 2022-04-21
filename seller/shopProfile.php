@@ -114,11 +114,11 @@
 <?php
   if(isset($_POST['submit']))
   {
-    $shopProfileCover = $_POST['shop_profile_cover'];
-    $shopProfilePic = $_POST['shop_profile_image'];
-    $shopName = $_POST['shop_name'];
-    $shopDescription = $_POST['shop_description'];
-    $shopMedia = $_POST['shop_media'];
+    $shopProfileCover = $_POST['coverContainer'];
+    $shopProfilePic = $_POST['profilePicContainer'];
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    $shopMedia = $_POST['mediaContainer'];
 
     $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
     $result2 = mysqli_query($conn,$sql);
@@ -160,9 +160,9 @@
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-      <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
+      <img class="relative bg-image img-fluid" name="coverContainer" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" value="<?php echo $shopProfilePic ?>" hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -173,7 +173,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage" value="" onchange="loadFile(event)"/>
-        <img src="<?php echo $shopProfilePic ?>" id="profilePic" width="200"/>
+        <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profilePicContainer" width="200"/>
       </div>
     </div>
     
@@ -186,7 +186,7 @@
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" class="imageContainer clearfix">
+      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
