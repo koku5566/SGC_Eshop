@@ -121,8 +121,9 @@
     $shopDescription = $_POST['description'];
     $shopMedia = $_POST['mediaContainer'];
 
-    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
-    $result2 = mysqli_query($conn,$sql);
+    $query = "UPDATE shopProfile SET shop_name='SONY' WHERE id=8";
+    //$sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
+    $result2 = mysqli_query($conn,$query);
 
     echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
 
