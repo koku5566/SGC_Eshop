@@ -164,7 +164,6 @@
                             voucher.voucher_display,
                             voucher.voucher_limit,
                             voucher.voucher_startdate,
-                            productVoucher.voucher_id AS pv_voucher_id,
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
@@ -254,18 +253,18 @@
                                                 ";
                     
                     
-                                                $stmt = $conn->prepare($sql_pn);
-                                                $stmt->execute();
-                                                $result = $stmt->get_result();
+                                                $sm = $conn->prepare($sql_pn);
+                                                $sm->execute();
+                                                $res = $sm->get_result();
                                                 
-                                                while ($r = $result->fetch_assoc()) {
+                                                while ($r = $res->fetch_assoc()) {
 
-                                                    if($r['pv_voucher_id'] = $row['pv_voucher_id']){
+                                                    if($r['pv_voucher_id'] = $row['voucher_id']){
                                                     echo $r['product_name']; 
                                                     }
                                                 }
                                                 ?>
-                                            </p>
+                                            , </p>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
