@@ -60,7 +60,7 @@ if(isset($_POST['addCard']))
                             <form class="user" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 								<div class="form-group">
 								<label>Card Number</label>
-								<input required type="text" name="cardNo" pattern="[0-9]{1,}" maxlength="19" class="form-control"/>
+								<input required type="number" name="cardNo" pattern="[0-9]{1,}" maxlength="19" class="form-control"/>
 								</div>
 
 								<div class="form-group">
