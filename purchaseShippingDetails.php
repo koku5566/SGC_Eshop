@@ -16,12 +16,22 @@
     user.username,
     userAddress.contact_name,
     userAddress.phone_number,
-    userAddress.address
+    userAddress.address,
+    orderDetails.quantity,
+    orderDetails.amount,
+    orderDetails.shop_id,
+    product.product_name,
+    product.product_cover_picture,
+    shopProfile.shop_name,
+    shopProfile.shop_profile_image
     
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+    JOIN product ON orderDetails.product_id = product.product_id
+    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
     WHERE myOrder.order_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -36,6 +46,12 @@
         $address = $orow['address'];
         $trackingnum = $orow['tracking_num'];
         $orderdate = $orow['order_date'];
+        $qty = $orow['quantity'];
+        $amt = $orow['amount'];
+        $productname = $orow['product_name'];
+        $productcover = $orow['product_cover_picture'];
+        $shopname = $orow['shop_name'];
+        $shopprofile = $orow['shop_profile_image'];
        
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
@@ -125,6 +141,13 @@
         </div>
     </div>
 
+    <!---$qty = $orow['quantity'];
+        $amt = $orow['amount'];
+        $productname = $orow['product_name'];
+        $productcover = $orow['product_cover_picture'];
+        $shopname = $orow['shop_name'];
+        $shopprofile = $orow['shop_profile_image'];-->
+
     <!--Order Details-->
     <div class="card">
         <div class="card-header">
@@ -133,9 +156,9 @@
                 <div class="row">
                     <div class="col-8">
                         <!--Shop Logo & Name-->
-                        <span><img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"
+                        <span><img src="<?php echo $shopprofile ?>" alt="<?php echo $shopname?>"
                                 width="40" height="40"></span>
-                        <span><strong>| SEGi College Subang Jaya</strong></span>
+                        <span><strong>|<?php echo $shopname ?></strong></span>
                     </div>
                     <div class="col-4 text-right">
                         <!--Purchase Date and Time-->
@@ -151,12 +174,12 @@
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
+                        <td scope="row"><img src="<?php echo $productcover?>"
+                                alt="<?php echo $productname ?>"></td>
                         <td><?php echo $productname?></td>
                         <td>Navy blue</td>
-                        <td>RM34.00</td>
-                        <td>x1</td>
+                        <td>RM<?php echo $amount?>.00</td>
+                        <td>x <?php echo $qty ?></td>
                         <td class="red-text">rm349.00</td>
                     </tr>
                     <tr>
