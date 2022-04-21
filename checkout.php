@@ -12,22 +12,14 @@
      JOIN user ON userAddress.user_id = user.user_id
      WHERE userAddress.user_id= '$_SESSION[uid]';";
 
-if(isset($_GET['addressid']))
-{
-    $_SESSION['getaddress'] = $_GET['addressid'];
-    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-    FROM `userAddress`
-    JOIN user ON userAddress.user_id = user.user_id
-    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
-}
 
 //Username and address
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-                         
-            //change address
-            if(isset($_POST['address-option'])){
+            $_SESSION['getaddress'] = $userrow['address_id'];
+
+/*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
                 if(!empty($UID)) {
                     $_SESSION['addressid'] = $UID;
@@ -38,7 +30,17 @@ if(isset($_GET['addressid']))
                     </script>";
                 }
               }  
+ */
 
+ // change address
+if(isset($_GET['addressid']))
+{
+    $_SESSION['getaddress'] = $_GET['addressid'];
+    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
+}
 
 ?>
 
