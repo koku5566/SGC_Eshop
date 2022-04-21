@@ -106,7 +106,7 @@ echo $statusMsg;
 ?>
 
 <?php
-  $imageResult = $db->query("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile WHERE shop_id = 8");
+  $imageResult = $db->sql("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile WHERE shop_id = 8");
 ?>
 
 
