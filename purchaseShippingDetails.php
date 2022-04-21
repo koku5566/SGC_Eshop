@@ -175,22 +175,14 @@
                 <tbody>
                     <tr>
                         <td scope="row"><img src="/img/product/<?php echo $productcover?>"
-                                alt="<?php echo $productname ?>" style="object-fit:contain;width:10%;height:10%"></td>
+                                alt="<?php echo $productname ?>" style="object-fit:contain;width:15%;height:15%"></td>
                         <td><?php echo $productname?></td>
                         <td></td>
                         <td>RM<?php echo $amt?>.00</td>
                         <td>x <?php echo $qty ?></td>
                         <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
-                    <tr>
-                        <td scope="row"><img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                                alt="W3Schools.com"></td>
-                        <td>3-in-1 Powe</td>
-                        <td>Navy blue</td>
-                        <td>RM34.00</td>
-                        <td>x1</td>
-                        <td class="red-text">rm349.00</td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <hr>
