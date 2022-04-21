@@ -169,11 +169,11 @@
                             -- product.product_name
 
                             FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            JOIN product ON productVoucher.product_id = product.product_id	
-                            JOIN user ON product.user_id = user.user_id
-                            JOIN shop ON user.user_id = shop.shop_id
-                            GROUP BY voucher.voucher_id
+                            -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            -- JOIN product ON productVoucher.product_id = product.product_id	
+                            -- JOIN user ON product.user_id = user.user_id
+                            -- JOIN shop ON user.user_id = shop.shop_id
+                            -- GROUP BY voucher.voucher_id
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
