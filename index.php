@@ -185,9 +185,10 @@
                             product.product_name,
                             voucher.voucher_id
                             
-                            FROM product
-                            JOIN productVoucher ON product.product_id = productVoucher.product_id
-                            JOIN voucher ON productVoucher.voucher_id = voucher.voucher_id
+                            FROM voucher
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            JOIN product ON productVoucher.product_id = product.product_id
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                             ";
 
                             $sm = $conn->prepare($sql_pn);
@@ -256,22 +257,22 @@
                                     <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <p>
-                                                <?php 
+                                            <?php 
                                                     while ($r = $res->fetch_assoc()) {
                                                         $voucherid = $r['voucher_id'];
                                                         $voucherid2 = $row['voucher_id'];
 
-                                                        for($i = 0; $i < count($voucherid); $i++){
-                                                            for($x = 0; $x < count($voucherid2); $x++){
-                                                                if($voucherid[$i] === $voucherid2[$x]){
-                                                                    echo $r['product_name']; 
-                                                                }
+                                                        for($i = 0; $i < count($voucherid2); $i++){
+                                                            for($x = 0; $x < count($voucherid); $x++){
+                                                                if($voucherid2[$i] === $voucherid[$x]){
+                                            ?>
+                                            <p><?php echo $r['product_name'];?>, </p>
+                                            <?php
                                                             }
                                                         }
                                                     }
-                                                ?>
-                                            </p>
+                                                }
+                                            ?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
