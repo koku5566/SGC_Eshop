@@ -49,25 +49,26 @@
                      // $shopId = $_SESSION['uid'];
 
                      $sql_myvoucher =
-                     "SELECT *
-                        -- voucher.voucher_id,
-                        -- voucher.voucher_code,
-                        -- voucher.voucher_startdate,
-                        -- voucher.voucher_expired,
-                        -- voucher.voucher_display,
-                        -- voucher.voucher_type,
-                        -- voucher.voucher_limit,
-                        -- voucher.voucher_details,
-                        -- voucher.discount_amount,
+                     "SELECT
+                        voucher.voucher_id,
+                        voucher.voucher_code,
+                        voucher.voucher_startdate,
+                        voucher.voucher_expired,
+                        voucher.voucher_display,
+                        voucher.voucher_type,
+                        voucher.voucher_limit,
+                        voucher.voucher_details,
+                        voucher.discount_amount,
                         -- shopProfile.shop_name,
                         -- shopProfile.shop_profile_image,
-                        -- product.product_name
+                        -- product.product_name,
+                        -- product.product_id
 
                         FROM voucher
-                        JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                        JOIN product ON productVoucher.voucher_id = product.voucher_id	
-                        JOIN user ON product.shop_id = user.user_id
-                        JOIN shopProfile ON user.user_id = shopProfile.shop_id
+                        -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                        -- JOIN product ON productVoucher.voucher_id = product.voucher_id	
+                        -- JOIN user ON product.shop_id = user.user_id
+                        -- JOIN shopProfile ON user.user_id = shopProfile.shop_id
                         -- WHERE product.shop_id = '$shopId'
                         "; 
 
