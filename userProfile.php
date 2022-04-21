@@ -78,7 +78,7 @@ if(isset($_POST['update']))
 		if (mysqli_num_rows($res_data) > 0){
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
-				<div class=\"imageDiv\">
+				<div class=\"form-group\">
 					<div class=\"image-container\">				
 						<div class=\"image-layer\">
 						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
@@ -86,8 +86,8 @@ if(isset($_POST['update']))
 
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
-								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
-								<i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
+								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden />
+								<i class=\"fa fa-edit image-tools-add-icon\" aria-hidden=\"true\"></i>
 							</label>
 						</div>
 					</div>
