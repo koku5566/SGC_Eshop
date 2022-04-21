@@ -65,7 +65,7 @@ if(isset($_POST['addCard']))
 
 								<div class="form-group">
 								<label>Expiry Date (MM/YY)</label>
-								<input required type="text" name="expDate" id="expDate" pattern="[0-9]{2}+/[0-9]{2}" maxlength="5" class="form-control"/>
+								<input required type="text" name="expDate" pattern="[0-9]{2}+/[0-9]{2}" maxlength="5" class="form-control"/>
 								</div>
 								
 								<div class="form-group">
@@ -90,12 +90,3 @@ if(isset($_POST['addCard']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
-
-<script>
-const expdate = document.getElementById('expDate');
-const expDateFormatter = expdate.replace(/\//g, "").substring(0, 2) + 
-  (expdate.length > 2 ? '/' : '') + 
-  expdate.replace(/\//g, "").substring(2, 4);
-  
-console.log(expDateFormatter)
-</script>

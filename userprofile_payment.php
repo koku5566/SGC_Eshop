@@ -90,12 +90,11 @@
 <div class="row2">
 	<div class="col2">
 		<div class="container-col2">
-			<div class="container-left-col2"><h3>Card</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php">Add Card</a></button></div>
+			<div class="container-left-col2"><h3 style="color: white;">Card</h3></div>
+			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus"></i></a></button></div>
 		</div>
 	</div>
 </div>
-
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
@@ -116,7 +115,6 @@
 				</div>
 			</div>
 		</div>
-
 			");
 	}
 ?>
@@ -132,59 +130,39 @@
 </div>
 </div>
 
-<!--			<div class=\"mb-3\">
-				<div class=\"userCard\">
-					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
-					<div class=\"row\">
-						<div class=\"col-lg-4\">
-							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
-							<p style=\"font-size: 1.15rem;\">
-							".$row["expiry_date"]."
-							</p>
-						</div>
-					</div>
-				</div>
-				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-			</div>
-			<hr> -->
 <?php require __DIR__ . '/footer.php' ?>
+
 <style>
-
 .row2 {
-  display: flex; 
-  /* equal height of the children */
-
+	display: flex;
 }
 
 .col2 {
-  flex: 1; /* additionally, equal width */
- border:1px solid #ddd;
- padding: 1em;   
-
+	flex: 1;
+	border:1px solid #ddd;
+	padding: 1em;
+	background-color: #a31f37;
 }
 
 .container-left-col2 {
- padding:20px;
-  width: 100%;
-  display: table-cell;
-  vertical-align: middle;
+	padding:20px;
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .container-right-col2 {
-	 padding:15px;
-  width: 20%;
-  display: table-cell;
-  vertical-align: middle;
+	padding:15px;
+	width: 20%;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 @media only screen and (max-width: 768px) {
-
 	.row2 {
 	display: block; 
-	
 	}
 	.container-left-col2 {
-	
 	display: block;
 	}
 	.container-right-col2 {

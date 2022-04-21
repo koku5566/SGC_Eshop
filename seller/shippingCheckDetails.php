@@ -92,7 +92,8 @@
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          }
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+        }
     }
 ?>
 
@@ -100,7 +101,7 @@
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
-<?php
+    <?php
     if(isset($_SESSION['success'])&& $_SESSION['success']!='')
     {
         echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
@@ -113,38 +114,38 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-        <div class="card shadow mb-4">
+    <div class="card shadow m-4">
         <div class="card-body">
-            <div class="container m-3">
-            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-            <div class="step" id="placed">
-                <div class="step-icon-wrap">
-                    <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+            <div class="container">
+                <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                    <div class="step" id="placed">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+                        </div>
+                        <h5 class="step-title">Order Placed</h5>
+                    </div>
+                    <div class="step" id="paid">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon "><i class="fa fa-receipt"></i></div>
+                        </div>
+                        <h5 class="step-title">Order Paid</h5>
+                    </div>
+                    <div class="step" id="shipped">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon"><i class="fa fa-truck"></i></div>
+                        </div>
+                        <h5 class="step-title">Order Shipped Out</h5>
+                    </div>
+                    <div class="step" id="delivered">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon "><i class="fa fa-house"></i></div>
+                        </div>
+                        <h5 class="step-title">Order Delivered</h5>
+                    </div>
                 </div>
-                <h5 class="step-title">Order Placed</h5>
-            </div>
-            <div class="step" id="paid">
-                <div class="step-icon-wrap">
-                    <div class="step-icon "><i class="fa fa-receipt"></i></div>
-                </div>
-                <h5 class="step-title">Order Paid</h5>
-            </div>
-            <div class="step" id="shipped">
-                <div class="step-icon-wrap">
-                    <div class="step-icon"><i class="fa fa-truck"></i></div>
-                </div>
-                <h5 class="step-title">Order Shipped Out</h5>
-            </div>
-            <div class="step" id="delivered">
-                <div class="step-icon-wrap" >
-                    <div class="step-icon "><i class="fa fa-house"></i></div>
-                </div>
-                <h5 class="step-title">Order Delivered</h5>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="container m-3">
@@ -168,8 +169,12 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body">
-                            <div id="recipient-name"><?php echo $username?></div>
-                            <div id="recipient-address"><?php echo $address?></div>
+                            <div id="recipient-name">
+                                <?php echo $username?>
+                            </div>
+                            <div id="recipient-address">
+                                <?php echo $address?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -190,56 +195,83 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php                       
+                                    <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
                                 ?>
                                     <tr>
-                                        <td><?php echo $srow['datetime'] ?></th>
-                                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                                        <td>
+                                            <?php echo $srow['datetime'] ?>
+                                            </th>
+                                        <td>Order
+                                            <?php echo ' ', $srow['status']; ?><br>
+                                            <?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?>
+                                                <input type="hidden" id="TrackNo"
+                                                value="<?php echo $srow['tracking_number'];?>"><br><button
+                                                class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button>
+                                            <?php }?>
+                                        </td>
                                     </tr>
-                                <?php 
+                                    <?php 
                                 }
                                 ?>
-                                <tr>
-                                <?php 
-                                if ($orderstatus!='Shipped'&&$orderstatus!='Placed'&& $deliverymethod=='standard'){?>
-                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                <td><?php echo date("Y-m-d H:i:s");?></td>
-                                <td>Tracking No: <br>
-                                    <input type="hidden" name="order_id" value="<?php echo $orderid?>" >
-                                    <div class="row">
-                                        <div class="col">
-                                            <input class="form-control input" name="tracking_number" type="text" style="width:250px">
-                                        </div>
-                                        <div class="col">
-                                            <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send" style="width:100px">Send</button>
-                                        </div>
-                                    </div>
-                                </td>
-                                </form>
-                                <?php }
+                                    <tr>
+                                        <?php 
+                                if($orderstatus =='Paid'&& $deliverymethod=='standard'){?>
+                                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                            <td>
+                                                <?php echo date("Y-m-d H:i:s");?>
+                                            </td>
+                                            <td>Tracking No: <br>
+                                                <input type="hidden" name="order_id" value="<?php echo $orderid?>">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input class="form-control input" name="tracking_number"
+                                                            type="text" style="width:250px">
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="form-control btn btn-secondary" type="submit"
+                                                            id="tracking_send" name="tracking_send"
+                                                            style="width:100px">Send</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </form>
+                                        <?php 
+                                        }
+                                        else if($orderstatus=='Placed'){?>
+                                            <td>
+                                            </td>
+                                            <td>Waiting for customer to pay </td>
+                                        <?php
+                                        }
+
 
                                 else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
-                                <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                                <td><?php echo date("Y-m-d H:i:s");?></td>
-                                <td>Update Pick-Up Status: <br>
-                                <input type="hidden"  name="order_id" value="<?php echo $orderid?>" >
-                                <div class="row">
-                                    <div class="col">
-                                    <select id="pickup" name="pickup" class="form-control">
-                                      <option value="Preparing"> Order is Preparing</option>
-                                      <option value="Ready">Pick-Up is Ready</option>
-                                      <option value="Contact">You will contact customer</option>
-                                    </select>                                        </div>
-                                    <div class="col">
-                                        <button  class="form-control btn btn-secondary" type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
-                                    </div>
-                                </div>
+                                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                            <td>
+                                                <?php echo date("Y-m-d H:i:s");?>
+                                            </td>
+                                            <td>Update Pick-Up Status: <br>
+                                                <input type="hidden" name="order_id" value="<?php echo $orderid?>">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <select id="pickup" name="pickup" class="form-control">
+                                                            <option value="Preparing"> Order is Preparing</option>
+                                                            <option value="Ready">Pick-Up is Ready</option>
+                                                            <option value="Contact">You will contact customer</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="form-control btn btn-secondary" type="submit"
+                                                            id="status_update" name="status_update"
+                                                            style="width:100px">Update</button>
+                                                    </div>
+                                                </div>
 
-                                </td>
-                                </form>
-                                <?php }?>
-                                </tr>
+                                            </td>
+                                        </form>
+                                        <?php }?>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -252,16 +284,16 @@
 
         </div>
     </div>
-<script src="//www.tracking.my/track-button.js"></script>
-<script>
-  function linkTrack() {
-    var num = document.getElementById("TrackNo").value;
-    console.log(num);
-    TrackButton.track({
-      tracking_no: num
-    });
-  }
-</script>
+    <script src="//www.tracking.my/track-button.js"></script>
+    <script>
+        function linkTrack() {
+            var num = document.getElementById("TrackNo").value;
+            console.log(num);
+            TrackButton.track({
+                tracking_no: num
+            });
+        }
+    </script>
 
     <!--  Payment Information -->
     <div class="row">
@@ -293,12 +325,25 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-1"><?php echo ++$i;?>.</div>
-                                <div class="col-1"><img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $row['product_cover_picture']?>" alt="<?php echo $row['product_name']?>" /></div>
-                                <div class="col-4"><?php echo $row['product_name']?></div>
-                                <div class="col-2">RM<?php echo $row['product_price']?>.00</div>
-                                <div class="col-1">X<?php echo $row['quantity']?></div>
-                                <div class="col-3 red-text">RM<?php echo $row['amount']?>.00</div>
+                                <div class="col-1">
+                                    <?php echo ++$i;?>.
+                                </div>
+                                <div class="col-1"><img class="card-img-top img-thumbnail"
+                                        style="object-fit:contain;width:100%;height:100%"
+                                        src="/img/product/<?php echo $row['product_cover_picture']?>"
+                                        alt="<?php echo $row['product_name']?>" /></div>
+                                <div class="col-4">
+                                    <?php echo $row['product_name']?>
+                                </div>
+                                <div class="col-2">RM
+                                    <?php echo $row['product_price']?>.00
+                                </div>
+                                <div class="col-1">X
+                                    <?php echo $row['quantity']?>
+                                </div>
+                                <div class="col-3 red-text">RM
+                                    <?php echo $row['amount']?>.00
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -313,9 +358,9 @@
                                         style="color: black; width: 30px;height:30px"></span><span class="p-2">Credit
                                         Card</span> </div>
                                 <div class="w-100 text-start"><span class="text-medium"><strong>Status:</strong></span>
-                                    <span class="iconify" data-icon="carbon:delivery"
-                                        style="color: black;"></span>
-                                    <?php echo $orderstatus?></div>
+                                    <span class="iconify" data-icon="carbon:delivery" style="color: black;"></span>
+                                    <?php echo $orderstatus?>
+                                </div>
                             </div>
                         </div>
                         <!--Ordered Item Price Amount Information-->
@@ -326,7 +371,8 @@
                                     Total:
                                 </div>
                                 <div class="col">
-                                    RM<?php echo number_format($totalprice, 2)?>
+                                    RM
+                                    <?php echo number_format($totalprice, 2)?>
                                 </div>
                             </div>
                             <div class="row p-2">
@@ -354,7 +400,9 @@
                                     <!--**to input quantity of items-->
                                 </div>
                                 <div class="col red-text">
-                                    <h5><strong>RM<?php echo number_format($totalprice+$shippingfee,2)?></strong></h5>
+                                    <h5><strong>RM
+                                            <?php echo number_format($totalprice+$shippingfee,2)?>
+                                        </strong></h5>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +414,7 @@
         </div>
     </div>
 
-<?php  ?>
+    <?php  ?>
 </div>
 <!-- /.container-fluid -->
 <!--Date Picker-->
@@ -391,7 +439,7 @@
         color: #A71337;
         font-weight: bold;
     }
-    
+
     .steps .step {
         display: block;
         width: 100%;
@@ -623,9 +671,10 @@
         font-weight: bold;
     }
 
-    .text-size-medium{
-        font-size:18px;
+    .text-size-medium {
+        font-size: 18px;
     }
+
     .prev:hover {
         color: #D50000 !important
     }
@@ -647,35 +696,31 @@
     }
 
     .track-shipping tr:first-child td {
-    color: green;
+        color: green;
     }
 </style>
 <script>
-var orderstatus = document.getElementById("orderstatus").value;
+    var orderstatus = document.getElementById("orderstatus").value;
 
-console.log(orderstatus);
-if(orderstatus == 'Placed')
-{
-    document.getElementById("placed").className ="step completed";
-}
-else if(orderstatus == 'Paid')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
-}
-else if(orderstatus == 'Shipped')
-{
-    console.log('can work');
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
-    document.getElementById("shipped").className ="step completed";
-}
-else if(orderstatus == 'Delivered')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className = "step completed";
-    document.getElementById("shipped").className ="step completed";
-    document.getElementById("delivered").className ="step completed";
-}
+    console.log(orderstatus);
+    if (orderstatus == 'Placed') {
+        document.getElementById("placed").className = "step completed";
+    }
+    else if (orderstatus == 'Paid') {
+        document.getElementById("placed").className = "step completed";
+        document.getElementById("paid").className = "step completed";
+    }
+    else if (orderstatus == 'Shipped') {
+        console.log('can work');
+        document.getElementById("placed").className = "step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className = "step completed";
+    }
+    else if (orderstatus == 'Delivered') {
+        document.getElementById("placed").className = "step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className = "step completed";
+        document.getElementById("delivered").className = "step completed";
+    }
 
 </script>
