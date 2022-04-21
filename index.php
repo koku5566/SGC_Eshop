@@ -181,13 +181,13 @@
                             
                             while ($row = $result->fetch_assoc()) {
 
-                            // $td = date('y-m-d');
-                            // $expr = $row['voucher_expired'];
+                             $td = date('y-m-d');
+                             $expr = $row['voucher_expired'];
 
-                            // $today = strtotime($td);
-                            // $expired = strtotime($expr);
+                             $today = strtotime($td);
+                             $expired = strtotime($expr);
 
-                            // if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
+                             if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
                             
                             ?>
 
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                             
-                            <?php 
+                            <?php } 
                         }?>
 
                             
