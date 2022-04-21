@@ -97,7 +97,7 @@ $eventName = $row['event_name'];
                                 $id = $row1['ticket_id'];
                                 $tName = $row1['ticket_name'];
                                 $ticketDate = $row1['ticketGenerate_Date'];
-                                echo("$queriesUser,$id,$tName");
+                                echo("$queriesUser,$ticketsql,$tName");
                                 echo("
                                 <tr>
                                 <td>$id</td>
