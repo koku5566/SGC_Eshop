@@ -40,16 +40,8 @@
                                 <div class="p-5">
                                     <div class="text-left">
                                         <div class="h1 text-gray-900 mb-4 container-left-col2">My Address Book</div>
-										<div class="container-right-col2"><a class="btn btn-primary" style="color:#a31f37; background-color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
+										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
                                     </div>
-<div class="row2">
-	<div class="col2">
-		<div class="container-col2">
-			<div class="container-left-col2"><h3 style="color: white;">Bank Account</h3></div>
-			<div class="container-right-col2"><a class="btn btn-primary" style="color:#a31f37; background-color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
-		</div>
-	</div>
-</div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -102,14 +94,12 @@
 }
 
 .container-left-col2 {
-	padding:20px;
 	width: 100%;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 .container-right-col2 {
-	padding:15px;
 	width: 20%;
 	display: table-cell;
 	vertical-align: middle;
