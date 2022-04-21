@@ -164,6 +164,7 @@
                             voucher.voucher_display,
                             voucher.voucher_limit,
                             voucher.voucher_startdate,
+                            productVoucher.voucher_id,
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
