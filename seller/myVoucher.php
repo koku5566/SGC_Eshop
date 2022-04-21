@@ -47,7 +47,7 @@
 
                       $shopId = $_SESSION['uid'];
 
-                      $sql_voucher =
+                      $sql_myvoucher =
                       "SELECT 
                          voucher.voucher_id,
                          voucher.voucher_code,
@@ -58,15 +58,19 @@
                          voucher.voucher_limit,
                          voucher.voucher_details,
                          voucher.discount_amount,
+                         shopProfile.shop_name,
+                         shopProfile.shop_profile_image,
+                         product.product_name
 
                          FROM voucher
-                        --  JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                        --  JOIN product ON productVoucher.product_id = product.product_id	
-                        --  JOIN user ON product.user_id = user.user_id
-                        --  JOIN shop ON user.user_id = shop.shop_id
+                         JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                         JOIN product ON productVoucher.product_id = product.product_id	
+                         JOIN user ON product.shop_id = user.user_id
+                         JOIN shopProfile ON user.user_id = shopProfile.shop_id
+                         WHERE product.shop_id = '$shopId'
                          "; 
 
-                      $stmt = $conn->prepare($sql_voucher);
+                      $stmt = $conn->prepare($sql_myvoucher);
                       $stmt->execute();
                       $result = $stmt->get_result();
 
