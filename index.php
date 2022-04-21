@@ -259,8 +259,12 @@
                                             <p>
                                                 <?php 
                                                     while ($r = $res->fetch_assoc()) {
-                                                        if($r['voucher_id'] === $row['voucher_id']){
-                                                            echo $r['product_name']; 
+                                                        $voucherid = $r['voucher_id'];
+
+                                                        for($i = 0; $i < count($voucherid); $i++){
+                                                            if($voucherid[$i] === $row['voucher_id']){
+                                                                echo $r['product_name']; 
+                                                            }
                                                         }
                                                     }
                                                 ?>
