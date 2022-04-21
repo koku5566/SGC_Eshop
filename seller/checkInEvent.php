@@ -94,11 +94,14 @@ $eventName = $row['event_name'];
 
                                 $ticketresultsql = mysqli_query($conn, $ticketsql);                                             
                                 $row1 = mysqli_fetch_array($ticketresultsql);
+                                $id = $row1['ticket_id'];
+                                $tName = $row1['ticket_name'];
+                                $ticketDate = $row1['ticketGenerate_Date'];
                                 echo("
                                 <tr>
-                                <td>".$row1['ticket_id']."</td>
-                                <td>".$row1['ticket_name']."</td>
-                                <td>".$row1['ticketGenerate_Date']."</td>
+                                <td>$id</td>
+                                <td>$tName</td>
+                                <td>$ticketDate</td>
                                 ");
                                 if($row1['check_in'] == 0)
                                 {
