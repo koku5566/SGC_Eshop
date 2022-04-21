@@ -1,39 +1,36 @@
-<?php
 
-    $sql_voucher =
-     "SELECT 
-      voucher.voucher_id,
-      voucher.voucher_code,
-      voucher.voucher_startdate,
-      voucher.voucher_expired,
-      voucher.voucher_display,
-      voucher.voucher_type,
-      voucher.voucher_limit,
-      voucher.voucher_details,
-      voucher.discount_amount,
-      shopProfile.shop_name,
-      shopProfile.shop_profile_image,
-      product.product_name
 
-      FROM voucher
-      JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-      JOIN product ON productVoucher.product_id = product.product_id	
-      JOIN user ON product.user_id = user.user_id
-      JOIN shop ON user.user_id = shop.shop_id
-      GROUP BY voucher.voucher_id"; 
-
-    $stmt = $conn->prepare($sql_voucher);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-?>
-
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
 
       <div class="container">
          <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-            <?php  
+            <?php 
+            
+            $sql_voucher =
+            "SELECT 
+               voucher.voucher_id,
+               voucher.voucher_code,
+               voucher.voucher_startdate,
+               voucher.voucher_expired,
+               voucher.voucher_display,
+               voucher.voucher_type,
+               voucher.voucher_limit,
+               voucher.voucher_details,
+               voucher.discount_amount,
+               shopProfile.shop_name,
+               shopProfile.shop_profile_image,
+               product.product_name
+
+               FROM voucher
+               JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+               JOIN product ON productVoucher.product_id = product.product_id	
+               JOIN user ON product.user_id = user.user_id
+               JOIN shop ON user.user_id = shop.shop_id
+               GROUP BY voucher.voucher_id"; 
+
+            $stmt = $conn->prepare($sql_voucher);
+            $stmt->execute();
+            $result = $stmt->get_result();
             
             while ($row = $result->fetch_assoc()) {
 
