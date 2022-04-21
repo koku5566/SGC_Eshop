@@ -81,13 +81,13 @@ if(isset($_POST['update']))
 				<div class=\"form-group\">
 					<div class=\"image-container\">				
 						<div class=\"image-layer\">
-						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
 
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
-								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Edit
+								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Change
 							</label>
 						</div>
 					</div>
@@ -139,10 +139,18 @@ if(isset($_POST['update']))
 
 <style>
     .img-thumbnail{
+		width:100%;
+		height:100%;
+		object-fit:contain;
         min-height: 0;
-        border: 1px solid #e3e3e3;
-        border-radius: 10px;
+		border-radius: 10px;
+        border: 1px solid darkgrey;
     }
+	.image-container{
+		text-align: center;
+		width: fit-content;
+		background-color: white;
+	}
 </style>
 
 <script>
