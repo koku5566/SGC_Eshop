@@ -76,7 +76,7 @@ $price = 0;
                         font-family: 'Libre Barcode 128';font-size: 22px;
                     }
                     </style>
-                    <h3>Thank you for registering in eventName</h3>
+                    <h3>Thank you for registering in $eventName</h3>
                     <h5>Your Transaction Summary</h5>
                     <p>Transaction ID: $ticketOrderID</p>
                     <p>Buyer Name: $buyerName</p>

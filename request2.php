@@ -65,7 +65,7 @@ if (isset($_POST["completeRegister"])) {
                     $sql5 = "SELECT * FROM `ticketType` WHERE `ticketType_id` = $ticket";
                     $result5 = mysqli_query($conn, $sql5);
                     $row5 = mysqli_fetch_assoc($result5);
-                    $currentUpdateQtt = $row5['current_quantity']--;
+                    $currentUpdateQtt = $row5['current_quantity']-1;
 
 
                     $sqlupdate = "UPDATE `ticketType` SET `current_quantity`=? WHERE `ticketType_id` = ?";
@@ -82,11 +82,11 @@ if (isset($_POST["completeRegister"])) {
                             die('Error with execute: ') . htmlspecialchars($stmt5->error);
                         }
                             if(mysqli_stmt_affected_rows($stmt5) == 1){
-                                
+
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt5);
-                                echo "<script>alert($error);</script>";
+                                echo "<script>alert(".$row5['current_quantity'].");</script>";
                             }		
                             mysqli_stmt_close($stmt5);
                     }
@@ -110,7 +110,7 @@ if (isset($_POST["completeRegister"])) {
                         font-family: 'Libre Barcode 128';font-size: 22px;
                     }
                     </style>
-                    <h3>Thank you for registering in eventName</h3>
+                    <h3>Thank you for registering in $eventName</h3>
                     <h5>Your Transaction Summary</h5>
                     <p>Transaction ID: $ticketOrderID</p>
                     <p>Buyer Name: $buyerName</p>
