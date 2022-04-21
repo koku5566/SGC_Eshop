@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 
+<!-- Insert data -->
 <?php
 //    if(isset($_POST['submit'])){
 //      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
@@ -22,6 +23,8 @@
 //        mysqli_close($conn);
 //    }
 ?>
+
+<!-- Select Data-->
 <?php
 //if($conn->connect_error){
 //	die("Connection failed ".$conn->connect_error);
@@ -47,12 +50,13 @@
 //$conn->close();
 ?>
 
+<!-- Update Profile -->
 <?php
 //if ($conn->connect_error){
 //	die("Connection failed: ". $conn->connect_error);
 //}
 //
-//$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+//$sql = "UPDATE shopProfile SET coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' WHERE shop_id='$shop_id'";
 //
 //if ($conn->query($sql) === TRUE) {
 //	echo "Records updated: ".$name."-".$description;
@@ -64,8 +68,8 @@
 ?>
 
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-  $result = mysqli_query($conn, $sql); 
+  //$sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
+  //$result = mysqli_query($conn, $sql); 
 ?>
 
 <?php 
