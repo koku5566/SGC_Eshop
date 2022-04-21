@@ -10,31 +10,7 @@
 
 <?php
 
-   $sql_voucher =
-   "SELECT 
-   voucher.voucher_id,
-   voucher.voucher_code,
-   voucher.voucher_type,
-   voucher.discount_amount,
-   voucher.voucher_startdate,
-   voucher.voucher_expired,
-   voucher.voucher_details,
-   shopProfile.shop_name,
-   shopProfile.shop_profile_image,
-   product.product_name
 
-   FROM voucher
-   JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-   JOIN product ON productVoucher.product_id = product.product_id		
-   JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-   -- GROUP BY voucher.voucher_id
-   "; 
-
-   $stmt = $conn->prepare($sql_voucher);
-   $stmt->execute();
-   $result = $stmt->get_result();
-
-   while ($row = $result->fetch_assoc()) {
    
 ?>
 
@@ -60,7 +36,7 @@
       <div class="col-xl-9">
          <div class="" style="background-color: #ffffff">
             <div class="row row-cols-2 p-5">
-               <?php  while ($row = $result->fetch_assoc()) {?>
+               
                <div class="col-6 mt-2 mb-2">
                   <div class="card" id="vouchercard2">
                      <div class="card-body">
@@ -121,7 +97,6 @@
 
                </div>
 
-               <?php }?>
 
             </div>
          </div>
@@ -129,8 +104,6 @@
       </div>
    </div>
 </div>
-<?php 
-}?>
 
 
 

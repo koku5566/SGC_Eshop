@@ -24,7 +24,7 @@
 //    }
 ?>
 
-<!-- Select Data-->
+<!-- Select Data -->
 <?php
 //if($conn->connect_error){
 //	die("Connection failed ".$conn->connect_error);
@@ -67,11 +67,13 @@
 //$conn->close();
 ?>
 
+<!-- Select Data -->
 <?php
   $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-  $result = mysqli_query($conn, $sql); 
+  $result1 = mysqli_query($conn, $sql); 
 ?>
 
+<!-- Upload Image -->
 <?php 
 // If file upload form is submitted 
 //$status = $statusMsg = ''; 
@@ -109,6 +111,33 @@
 //echo $statusMsg; 
 ?>
 
+<?php
+  if(isset($_POST['submit']))
+  {
+    $shopProfileCover = $_POST['shop_profile_cover'];
+    $shopProfilePic = $_POST['shop_profile_image'];
+    $shopName = $_POST['shop_name'];
+    $shopDescription = $_POST['shop_description'];
+    $shopMedia = $_POST['shop_media'];
+
+    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
+    $result2 = mysqli_query($conn,$sql);
+
+    if($result2)
+    {
+      echo 'Successfully Update';
+    }
+    else
+    {
+      echo 'Please Check Your Query';
+    }
+  }
+  else
+  {
+    echo 'error';
+  }
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -123,7 +152,7 @@
       <div>
 
       <?php
-        while ($row=mysqli_fetch_assoc($result))
+        while ($row=mysqli_fetch_assoc($result1))
         {
           $shopProfilePic = $row['shop_profile_image'];
           $shopName = $row['shop_name'];

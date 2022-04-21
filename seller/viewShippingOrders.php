@@ -45,7 +45,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status = 'Paid'";
+WHERE myOrder.order_status = 'Paid'
+ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($toshipsql);
 $stmt->execute();
@@ -68,7 +69,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready'";
+WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready'
+ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($pickupsql);
 $stmt->execute();
@@ -93,7 +95,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status != 'Shipped'";
+WHERE myOrder.order_status != 'Shipped'
+ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($shippingsql);
 $stmt->execute();
@@ -117,7 +120,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status = 'Received'";
+WHERE myOrder.order_status = 'Received'
+ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($completedsql);
 $stmt->execute();
@@ -268,7 +272,7 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']!='Ready'){ ?> Update Pick-Up <?php } else { ?>Check Details <?php } ?></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Paid'){?>Arrange Shipment<?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']!='Ready'){ ?> Update Pick-Up <?php } else { ?>Check Details <?php } ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -315,7 +319,7 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $tsrow['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id'];?>"><strong>Arrange Shipment</strong></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id'];?>">Arrange Shipment</a>
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +341,7 @@ $completedresult = $stmt->get_result();
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col md-auto text-start"><span><strong><?php echo $purow['username'];?></strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $purow['order_id']; ?> </strong></span></div>
+                                        <div class="col md-auto text-end" style="text-align:right;"><span>Order ID:<?php echo $purow['order_id']; ?> </span></div>
                                     </div>
                                 
                                 <div class="card-body">
@@ -363,7 +367,7 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $purow['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $purow['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a class="btn" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id'];?>"><strong>Update Status</strong></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id'];?>">Update Status</a>
                                         </div>
                                     </div>
                                 </div>
