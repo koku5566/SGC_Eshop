@@ -113,7 +113,9 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-        <div class="card shadow m-3">
+        <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="container m-3">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
             <div class="step" id="placed">
                 <div class="step-icon-wrap">
@@ -139,6 +141,8 @@
                 </div>
                 <h5 class="step-title">Order Delivered</h5>
             </div>
+        </div>
+        </div>
         </div>
         </div>
     <div class="card shadow mb-4">
