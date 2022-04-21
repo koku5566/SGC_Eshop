@@ -57,7 +57,7 @@
         $shopprofile = $orow['shop_profile_image'];
     }
     $orderdate = strtotime($orderdate);
-    $estimateddelivery = strtotime('+7 day',$orderdate); //to fix
+    $estimateddelivery = strtotime('+7 day',$orderdate); 
 
     //=========sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
@@ -66,10 +66,9 @@
     $sresult = $stmt->get_result();
 
     if(isset($_POST["completeBtn"])){
-
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', 'Completed')";
-        $updatesql ="UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$orderid'";
-
+        $updatesql = "UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$orderid'";
+        echo 'aiyooo';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -189,7 +188,7 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed') {?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
+                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed' && $orderstatus =='Failed'){?> <{?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
