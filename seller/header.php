@@ -154,7 +154,7 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="seller/ViewShippingOrders.php">My Shipment</a>
+                        <a class="collapse-item" href="viewShippingOrders.php">My Shipment</a>
                         <a class="collapse-item" href="register.php">Mass Ship</a>
                         <a class="collapse-item" href="forgot-password.php">Shipping Setting</a>
                     </div>
