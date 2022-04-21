@@ -46,7 +46,7 @@
                <tbody>
                   <?php 
 
-                     // $shopId = $_SESSION['uid'];
+                     $shopId = $_SESSION['uid'];
 
                      $sql_myvoucher =
                      "SELECT *
@@ -68,7 +68,7 @@
                         -- INNER JOIN product ON productVoucher.voucher_id = product.voucher_id	
                         -- INNER JOIN user ON product.shop_id = user.user_id
                         -- INNER JOIN shopProfile ON user.user_id = shopProfile.shop_id
-                        -- WHERE product.shop_id = '$shopId'
+                        WHERE product.shop_id = '$shopId'
                         "; 
 
                      $stmt = $conn->prepare($sql_myvoucher);
