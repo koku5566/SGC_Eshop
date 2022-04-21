@@ -151,9 +151,9 @@ $queryKL = mysqli_query($conn, $sql);
       <h4>Product Information</h4>
       <p>Product id: <?php echo $row1['product_id']; ?></p>
       <p>Product Name: <?php echo $row1['product_name']; ?></p>
+      <br>
+      <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
     </div>
-    <br>
-    <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
   </div>
 <br>
 
