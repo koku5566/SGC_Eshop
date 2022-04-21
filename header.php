@@ -78,6 +78,12 @@
     {
         $_SESSION['role'] = "";
     }
+
+    //Set true to enable seller register
+    if(!isset($_SESSION['enableSeller']))
+    {
+        $_SESSION['enableSeller'] = false;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -353,14 +359,12 @@
                                     User
                                 </a>
 
-                                <?php echo('
-                                <div hidden>
+                                <?php if($_SESSION['enableSeller'] == true):?>
                                 <a class="dropdown-item" href="../seller/sellerRegister.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Seller
                                 </a>
-                                </div>
-                                ');?>
+                                <?php endif?>
                             </div>
                         </li>
 
