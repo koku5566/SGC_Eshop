@@ -163,17 +163,16 @@
                             voucher.discount_amount,
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
-                            voucher.voucher_details
-                            -- shopProfile.shop_name,
-                            -- shopProfile.shop_profile_image,
-                            -- product.product_name
+                            voucher.voucher_details,
+                            shopProfile.shop_name,
+                            shopProfile.shop_profile_image,
+                            product.product_name
 
                             FROM voucher
-                            -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            -- JOIN product ON productVoucher.product_id = product.product_id	
-                            -- JOIN user ON product.user_id = user.user_id
-                            -- JOIN shop ON user.user_id = shop.shop_id
-                            -- GROUP BY voucher.voucher_id
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            JOIN product ON productVoucher.product_id = product.product_id		
+                            JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+                            GROUP BY voucher.voucher_id
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
@@ -195,7 +194,7 @@
                             <div class="col-md-2 m-4">
                                 <div class="card" id="vouchercard">
                                     <div class="container">
-                                        <img class="mt-3" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                        <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -228,7 +227,7 @@
                                         <div class="d-flex justify-content-center">
                                             <div class="card m-2" id="termsvouchercard">
                                             <div class="container">
-                                                <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
