@@ -249,7 +249,8 @@
                                                 productVoucher.voucher_id AS pv_voucher_id
                                                 
                                                 FROM product
-                                                JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                LEFT JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                GROUP BY product.product_name
                                                 ";
                     
                     
@@ -262,9 +263,12 @@
                                                     if($r['pv_voucher_id'] = $row['voucher_id']){
                                                     echo $r['product_name']; 
                                                     }
+                                                    else{
+                                                        echo null;
+                                                    }
                                                 }
                                                 ?>
-                                            , </p>
+                                            </p>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
