@@ -86,7 +86,7 @@ if(isset($_POST['update']))
 
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
-								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
+								<input type=\"file\" accept=\".png,.jpg,.jpeg\" name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
 								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Change
 							</label>
 						</div>
@@ -139,10 +139,9 @@ if(isset($_POST['update']))
 
 <style>
     .img-thumbnail{
-		width:100%;
-		height:100%;
-		object-fit:contain;
-        min-height: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 		border-radius: 10px;
         border: 1px solid darkgrey;
     }

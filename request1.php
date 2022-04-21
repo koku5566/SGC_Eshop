@@ -5,6 +5,7 @@ use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
+use PayPal\Api\InputFields; 
 
 require __DIR__. '/config1.php';
 
@@ -12,6 +13,11 @@ if (empty($_POST['item_number'])) {
     throw new Exception('This script should not be called directly, expected post data');
 }
 
+
+$inputFields = new InputFields();
+$inputFields->setAllowNote(true)
+    ->setNoShipping(1) 
+    ->setAddressOverride(0);
 
 
 $payer = new Payer();

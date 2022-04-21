@@ -39,9 +39,10 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-left">
-                                        <div class="h1 text-gray-900 mb-4">My Address Book</div>
+                                        <div class="h1 text-gray-900 mb-4 container-left-col2">My Address Book</div>
+										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
                                     </div>
-<a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
+									<hr>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -84,7 +85,8 @@
 
 <style>
 .row2 {
-	display: flex;
+	background-color: lightgrey;
+	border: 3px solid white;
 }
 
 .col2 {
@@ -94,14 +96,12 @@
 }
 
 .container-left-col2 {
-	padding:20px;
 	width: 100%;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 .container-right-col2 {
-	padding:15px;
 	width: 20%;
 	display: table-cell;
 	vertical-align: middle;

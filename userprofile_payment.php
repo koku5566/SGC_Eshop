@@ -139,6 +139,9 @@
 <style>
 .row2 {
 	display: flex;
+	background-color: lightgrey;
+	color: #a31f37;
+	border: 3px solid white;
 }
 
 .col2 {
@@ -148,14 +151,12 @@
 }
 
 .container-left-col2 {
-	padding:20px;
 	width: 100%;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 .container-right-col2 {
-	padding:15px;
 	width: 20%;
 	display: table-cell;
 	vertical-align: middle;
