@@ -170,12 +170,11 @@
                             shopProfile.shop_name,
                             shopProfile.shop_profile_image,
                             product.product_name
-
                             FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                            JOIN product ON productVoucher.product_id = product.product_id
-                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            -- GROUP BY voucher.voucher_id
+                            LEFT JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            LEFT JOIN product ON productVoucher.product_id = product.product_id
+                            LEFT JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            GROUP BY shopProfile.shop_id 
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
