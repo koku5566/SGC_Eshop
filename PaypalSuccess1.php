@@ -100,12 +100,12 @@ $queryKL = mysqli_query($conn, $sql);
 
         $stock_message = "OUT OF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
     }        
-    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
         }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $row1['invoice_id'], $uid, $product_id, $rowKL['variation_id'], $row1['payment_status'], $_SESSION['getaddress'], $row1['createdtime']);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $row1['invoice_id'], $uid, $product_id, $row1['payment_status'], $_SESSION['getaddress'], $row1['createdtime']);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }
@@ -116,6 +116,7 @@ $queryKL = mysqli_query($conn, $sql);
     mysqli_stmt_close($stmt);
 }
 }
+
 
 
 
