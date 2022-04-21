@@ -143,8 +143,8 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage" value="<?php echo $shopProfilePic ?>" onchange="loadFile(event)"/>
-        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
+        <input id="file" type="file" name="profileImage" value="" onchange="loadFile(event)"/>
+        <img src="<?php echo $shopProfilePic ?>" id="profilePic" width="200"/>
       </div>
     </div>
     
