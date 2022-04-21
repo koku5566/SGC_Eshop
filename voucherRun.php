@@ -1,35 +1,44 @@
+<?php
+
+   $sql =
+    "SELECT 
+     voucher.voucher_id,
+     voucher.voucher_code,
+     voucher.voucher_startdate,
+     voucher.voucher_expired,
+     voucher.voucher_display,
+     voucher.voucher_type,
+     voucher.voucher_limit,
+     voucher.voucher_details,
+     voucher.discount_amount,
+     shopProfile.shop_name,
+     shopProfile.shop_profile_image,
+     product.product_name
+
+     FROM voucher
+     JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+     JOIN product ON productVoucher.product_id = product.product_id	
+     JOIN user ON product.user_id = user.user_id
+     JOIN shop ON user.user_id = shop.shop_id
+     GROUP BY voucher.voucher_id"; 
+
+   $stmt = $conn->prepare($sql);
+   $stmt->execute();
+   $result = $stmt->get_result();
+
+?>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
+<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
 
       <div class="container">
          <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-            <?php 
-            
-            $sql_voucher =
-            "SELECT 
-               voucher.voucher_id,
-               voucher.voucher_code,
-               voucher.voucher_startdate,
-               voucher.voucher_expired,
-               voucher.voucher_display,
-               voucher.voucher_type,
-               voucher.voucher_limit,
-               voucher.voucher_details,
-               voucher.discount_amount,
-               shopProfile.shop_name,
-               shopProfile.shop_profile_image,
-               product.product_name
-
-               FROM voucher
-               JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-               JOIN product ON productVoucher.product_id = product.product_id	
-               JOIN user ON product.user_id = user.user_id
-               JOIN shop ON user.user_id = shop.shop_id
-               GROUP BY voucher.voucher_id"; 
-
-            $stmt = $conn->prepare($sql_voucher);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            while ($row = $result->fetch_assoc()) {
+            <?php  while ($row = $result->fetch_assoc()) {
 
                $td = date('y-m-d');
                $expr = $row['voucher_expired'];
@@ -96,10 +105,8 @@
                         <strong>More Details</strong>
                         <p> <?php echo $row['voucher_details']; ?> </p>
                      </div>
-                     <div class="container">
-                        <strong>Usage Period</strong>
-                        <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
-                     </div>
+                     <div class="container"><strong>Usage Period</strong></div>
+                     <div class="container"><p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p></div>
                   </div>
                </div>
             </div>
