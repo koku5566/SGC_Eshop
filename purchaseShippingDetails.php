@@ -126,13 +126,13 @@
                 </div>
                 <div class="step" id="ppreparing">
                     <div class="step-icon-wrap">
-                        <div class="step-icon"><i class="fa fa-person-carry-box"></i></div>
+                        <div class="step-icon"><i class="fa fa-clipboard-list"></i></div>
                     </div>
                     <h5 class="step-title">Order Preparing</h5>
                 </div>
                 <div class="step" id="pready">
                     <div class="step-icon-wrap" >
-                        <div class="step-icon "><i class="fa fa-box-check"></i></div>
+                        <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
                     </div>
                     <h5 class="step-title">Ready To Pick Up</h5>
                 </div>
