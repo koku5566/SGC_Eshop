@@ -228,7 +228,6 @@
                             </div>
 
                         <!-- Modal -->
-                        <?php while ($r = $res->fetch_assoc()) {?>
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -256,7 +255,7 @@
                                         <div class="container">
                                             <strong>Product</strong>
                                             <?php 
-                                                    
+                                                    while ($r = $res->fetch_assoc()) {
                                                         // $voucherid = $r['voucher_id'];
                                                         // $voucherid2 = $row['voucher_id'];
 
