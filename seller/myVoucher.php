@@ -67,11 +67,9 @@
 
                         FROM voucher
                         JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                        JOIN product ON productVoucher.voucher_id = product.voucher_id	
-                        JOIN product ON productVoucher.product_id = product.product_id	
-                        JOIN user ON product.shop_id = user.user_id
-                        JOIN shopProfile ON user.user_id = shopProfile.shop_id
-                        WHERE product.shop_id = '$shopId'
+                        JOIN product ON productVoucher.product_id = product.product_id		
+                        JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+                        WHERE shopProfile.shop_id = '$shopId'
                         "; 
 
                      $stmt = $conn->prepare($sql_myvoucher);
