@@ -257,7 +257,13 @@
                                         <div class="container">
                                             <strong>Product</strong>
                                             <p>
-                                                <?php echo $r['product_name']; ?>
+                                                <?php 
+                                                    while ($r = $res->fetch_assoc()) {
+                                                        if($r['voucher_id'] === $row['voucher_id']){
+                                                            echo $r['product_name']; 
+                                                        }
+                                                    }
+                                                ?>
                                             </p>
                                         </div>
                                         <div class="container">
