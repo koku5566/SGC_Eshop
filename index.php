@@ -164,16 +164,16 @@
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
                             voucher.voucher_details
-                            -- shopProfile.shop_name,
+                            shopProfile.shop_name,
                             -- shopProfile.shop_profile_image,
                             -- product.product_name
 
                             FROM voucher
-                            -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            -- JOIN product ON productVoucher.product_id = product.product_id	
-                            -- JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-                            -- WHERE shopProfile.shop_id = '$shopId'
-                            -- GROUP BY voucher.voucher_id
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            JOIN product ON productVoucher.product_id = product.product_id	
+                            JOIN user ON product.user_id = user.user_id
+                            JOIN shop ON user.user_id = shop.shop_id
+                            GROUP BY voucher.voucher_id"; 
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
