@@ -43,56 +43,58 @@
                      <th>List/Delist</th>
                   </tr>
                </thead>
-               <?php 
-
-                      $shopId = $_SESSION['uid'];
-
-                      $sql_myvoucher =
-                      "SELECT 
-                         voucher.voucher_id,
-                         voucher.voucher_code,
-                         voucher.voucher_startdate,
-                         voucher.voucher_expired,
-                         voucher.voucher_display,
-                         voucher.voucher_type,
-                         voucher.voucher_limit,
-                         voucher.voucher_details,
-                         voucher.discount_amount,
-                         shopProfile.shop_name,
-                         shopProfile.shop_profile_image,
-                         product.product_name
-
-                         FROM voucher
-                         JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                         JOIN product ON productVoucher.product_id = product.product_id	
-                         JOIN user ON product.shop_id = user.user_id
-                         JOIN shopProfile ON user.user_id = shopProfile.shop_id
-                         WHERE product.shop_id = '$shopId'
-                         "; 
-
-                      $stmt = $conn->prepare($sql_myvoucher);
-                      $stmt->execute();
-                      $result = $stmt->get_result();
-
-                      while ($row = $res->fetch_assoc()) {
-
-               ?>
                <tbody>
-                  <tr>
-                     <td><?php echo $row['voucher_id']; ?></td>
-                     <td><?php echo $row['voucher_code']; ?></td>
-                     <td><?php echo $row['voucher_type']; ?></td>
-                     <td><?php echo $row['voucher_startdate']; ?></td>
-                     <td><?php echo $row['voucher_expired']; ?></td>
-                     <td><?php echo $row['voucher_details']; ?></td>
-                     <td><?php echo $row['voucher_limit']; ?></td>
-                     <td><?php echo $row['voucher_status']; ?></td>
-                     <td><?php echo $row['voucher_list']; ?></td>
+                  <?php 
 
+                     $shopId = $_SESSION['uid'];
+
+                     $sql_myvoucher =
+                     "SELECT 
+                        voucher.voucher_id,
+                        voucher.voucher_code,
+                        voucher.voucher_startdate,
+                        voucher.voucher_expired,
+                        voucher.voucher_display,
+                        voucher.voucher_type,
+                        voucher.voucher_limit,
+                        voucher.voucher_details,
+                        voucher.discount_amount,
+                        shopProfile.shop_name,
+                        shopProfile.shop_profile_image,
+                        product.product_name
+
+                        FROM voucher
+                        -- INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                        -- INNER JOIN product ON productVoucher.product_id = product.product_id	
+                        -- INNER JOIN user ON product.shop_id = user.user_id
+                        -- INNER JOIN shopProfile ON user.user_id = shopProfile.shop_id
+                        -- WHERE product.shop_id = '$shopId'
+                        "; 
+
+                     $stmt = $conn->prepare($sql_myvoucher);
+                     $stmt->execute();
+                     $result = $stmt->get_result();
+
+                     while ($r = $res->fetch_assoc()) {
+
+                  ?>
+                  <tr>
+                     <td><?php echo $r['voucher_id']; ?></td>
+                     <td><?php echo $r['voucher_code']; ?></td>
+                     <td><?php echo $r['voucher_type']; ?></td>
+                     <td><?php echo $r['voucher_startdate']; ?></td>
+                     <td><?php echo $r['voucher_expired']; ?></td>
+                     <td><?php echo $r['voucher_details']; ?></td>
+                     <td><?php echo $r['voucher_limit']; ?></td>
+                     <td><?php echo $r['voucher_status']; ?></td>
+                     <td><?php echo $r['voucher_list']; ?></td>
                   </tr>
+
+                  <?php 
+                  }?>
+
                </tbody>
-               <?php 
-                }?>
+
             </table>
          </div>
       </div>

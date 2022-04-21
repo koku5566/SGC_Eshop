@@ -245,6 +245,7 @@
                     <tbody> 
                      <?php 
                         $shopId = $_SESSION['uid'];
+                        
                         $sqlp = 
                         "SELECT 
                          shopProfile.shop_name,
