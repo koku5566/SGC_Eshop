@@ -1,5 +1,5 @@
 
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
 
 
       <div class="container">

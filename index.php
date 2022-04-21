@@ -167,13 +167,13 @@
                             voucher.voucher_details,
                             voucher.discount_amount,
                             shopProfile.shop_name,
-                            shopProfile.shop_profile_image,
+                            shopProfile.shop_profile_cover,
                             product.product_name
 
                             FROM voucher
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
                             JOIN product ON productVoucher.product_id = product.product_id	
-                            JOIN user ON product.user_id = user.user_id
+                            JOIN user ON product.shop_id = user.user_id
                             JOIN shop ON user.user_id = shop.shop_id
                             GROUP BY voucher.voucher_id"; 
 
