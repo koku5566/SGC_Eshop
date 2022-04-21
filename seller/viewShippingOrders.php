@@ -11,7 +11,7 @@ myOrder.delivery_method,
 myOrder.tracking_number,
 product.product_name,
 product.product_cover_picture,
-product.product_price,
+product.product_price,git pull --rebase --autostash
 orderDetails.quantity,
 user.username,
 orderDetails.amount
@@ -328,7 +328,7 @@ $completedresult = $stmt->get_result();
                             </div>
 
                             <!--------------------------------Pick Up--------------------------------------->
-                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">...
+                            <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php                       
                             while ($purow = $pickupresult->fetch_assoc()) {
                             ?>
@@ -363,7 +363,7 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $purow['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $purow['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id'];?>"><strong>Arrange Shipment</strong></a>
+                                        <a class="btn" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id'];?>"><strong>Update Status</strong></a>
                                         </div>
                                     </div>
                                 </div>
