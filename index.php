@@ -164,7 +164,7 @@
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
                             voucher.voucher_details
-                            shopProfile.shop_name,
+                            -- shopProfile.shop_name,
                             -- shopProfile.shop_profile_image,
                             -- product.product_name
 
