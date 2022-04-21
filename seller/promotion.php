@@ -184,6 +184,87 @@
             </div>
         </div>
 
+        <!-- History Section-->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <?php
+                                    if ($_SESSION['role'] == "SELLER")
+                                    { 
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE promotionEnd_Date <= now() AND `status` = 0";
+                                        $result = $conn->query($sql);
+                                        if($result-> num_rows > 0){
+
+                                            while($row = $result->fetch_assoc())
+                                            {
+                                                $promotionTitle = $row["promotion_title"];
+                                                echo ("<div class=\"row\"> 
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>
+                                                        <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    ");
+                                        
+                                            }
+                                        }
+                                        else{
+                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
+                                        } 
+                                    }
+                                ?>
+                                <?php
+                                    if ($_SESSION['role'] == "ADMIN")
+                                    { 
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE promotionEnd_Date <= now() AND `status` = 1";
+                                        $result = $conn->query($sql);
+                                        if($result-> num_rows > 0){ 
+                                            while($row = $result->fetch_assoc())
+                                            {
+                                                $promotionTitle = $row["promotion_title"];
+                                                echo ("<div class=\"row\"> 
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>
+                                                        <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    ");
+                                            }
+                                        }
+                                        else{
+                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Approved Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
