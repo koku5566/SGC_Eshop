@@ -66,15 +66,18 @@
     $sresult = $stmt->get_result();
 
     if(isset($_POST["completeBtn"])){
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', 'Completed')";
-        $updatesql = "UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$orderid'";
+
+        $status = "Completed";
+        echo $orderid;
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
         echo 'aiyooo';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+          header("Location:purchaseShippingDetails.php?order_id=".$orderid);
         }
     }
 ?>
