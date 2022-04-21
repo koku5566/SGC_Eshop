@@ -10,14 +10,13 @@
 $uid = "U000018";
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
 cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
+product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
 FROM `cart`
 JOIN `product`
 ON product.product_id = cart.product_ID 
 JOIN `shopProfile`
 ON product.shop_id = shopProfile.shop_id
 WHERE cart.user_ID = '$uid' 
-AND cart.shop_id = 14
 AND cart.remove_Product = '0'
 ORDER BY cart.update_at DESC
 ";
@@ -104,10 +103,14 @@ $queryKL = mysqli_query($conn, $sql);
     $payment_status = $row1['payment_status'];
     $user_address =  $_SESSION['getaddress'];
     $create_time = $row1['createdtime'];
+    $userName = $_SESSION['userName'];
+    $userEmail = $_SESSION['userEmail'];
+    $transaction_id = $row1['transaction_id'];
+    $paidAmount = $_SESSION['total'];
 
 
 
-/*    echo(" 
+  /*  echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
@@ -115,25 +118,68 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$uid."</span>
         <span>".$user_address."</span>
         <span>".$create_time."</span>
+        <span>".$shop_id."</span>
 
    
-    "); */
+    ");  */
 
     
-    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`,`shop_id`) VALUES (?,?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`) VALUES (?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $create_time,$shop_id);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time);
         $bp = mysqli_stmt_execute($stmt);
     }
+    if (mysqli_stmt_affected_rows($stmt) == 1) {
+        $ticketID = mysqli_stmt_insert_id($stmt);
+        $to =" chrischom03@gmail.com";
+        $subject = "Here is your SGC E-Shop Invoice";
+        $from = "info@sgcprototype2.com";
+        $from2 = "info@sgcprototype2.com";
+        $fromName = "SGC E-Shop";
+
+        $headers =  "From: $fromName <$from> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+        $message = "
+        <link href='https://fonts.googleapis.com/css?family=Libre Barcode 128' rel='stylesheet'>
+        <style>
+        h2 {
+            font-family: 'Libre Barcode 128';font-size: 22px;
+        }
+        </style>
+        <h3>Thank You</h3>
+        <h5>Your payment has been successful. Below is the details of your transaction </h5>
+        <p>Invoice ID:$invoice_id</p>
+        <p>Transaction ID:$transaction_id</p>
+        <p>Date and Time:$create_time</p>
+        <p>Paid Amount:RM $paidAmount</p>
+        ";
+
+        $HTMLcontent = "<p><b>Dear $userName</b>,</p><p>$message</p>";
+
+        $boundary = md5(time());
+        $headers .= " boundary=\"{$boundary}\"";
+        $message = "--{$boundary}\r\n";
+        $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+        $message .= "Content-Transfer-Encoding: 7bit\r\n";
+        $message .= $HTMLcontent . "\r\n";
+        $message .= "--{$boundary}\r\n";
+        $returnPath = "-f" . $from2;
+
+        if (@mail($to, $subject, $message, $headers, $returnPath)) {
+            echo "<script>alert('A purchase confirmation email has been sent to $buyerEmail')</script>";
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+    } 
     else {
         $error = mysqli_stmt_error($stmt);
         echo "<script>alert($error);</script>";
     mysqli_stmt_close($stmt);
     }
 }
-
-
-
 
 
 ?>
@@ -146,15 +192,15 @@ $queryKL = mysqli_query($conn, $sql);
       <h4>Payment Information</h4>
       <p>Reference Number: <?php echo $row1['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row1['transaction_id']; ?></p>
-      <p>Paid Amount: <?php echo $row1['payment_amount']; ?></p>
+      <p>Paid Amount: RM <?php echo $row1['payment_amount']; ?></p>
       <p>Payment Status: <?php echo $row1['payment_status']; ?></p>
-      <h4>Product Information</h4>
-      <p>Product id: <?php echo $row1['product_id']; ?></p>
-      <p>Product Name: <?php echo $row1['product_name']; ?></p>
+      <br>
+      <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
     </div>
   </div>
+<br>
 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
   <?php
     require __DIR__ . '/footer.php'

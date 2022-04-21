@@ -55,8 +55,6 @@
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
-        
-       
     }
     $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
 
@@ -69,6 +67,7 @@
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
+<input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
 
 
 <!-- Begin Page Content -->
@@ -568,10 +567,10 @@
 
 <script>
 var orderstatus = document.getElementById("orderstatus").value;
-
+var deliverymethod = document.getElementById("deliverymethod").value;
 
 console.log(orderstatus);
-if ($deliverymethod == "standard") {
+if (deliverymethod == "standard") {
     if(orderstatus == 'Placed')
     {
         document.getElementById("placed").className ="step completed";
