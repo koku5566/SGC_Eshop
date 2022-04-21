@@ -89,7 +89,7 @@ $eventName = $row['event_name'];
                                             FROM `ticket`
                                             INNER JOIN `ticketType` 
                                             ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-                                            WHERE `ticket`.`ticket_id` = `$queriesUser`
+                                            WHERE `ticket`.`ticket_id` = \"$queriesUser\"
                                             ";
 
                                 $ticketresultsql = mysqli_query($conn, $ticketsql);                                             
@@ -97,7 +97,7 @@ $eventName = $row['event_name'];
                                 $id = $row1['ticket_id'];
                                 $tName = $row1['ticket_name'];
                                 $ticketDate = $row1['ticketGenerate_Date'];
-                                echo("$queriesUser,$id,$tName");
+                                echo("$queriesUser,$ticketsql,$tName");
                                 echo("
                                 <tr>
                                 <td>$id</td>

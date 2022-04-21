@@ -108,9 +108,15 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $_SESSION['total'];
 
+    $stocksql = "SELECT product.product_stock, variation.product_stock
+    FROM `product`
+    JOIN  `variation`
+    ";
+    $stocksql1 = mysqli_query($conn, $stocksql);
+    $row3 = mysqli_fetch_array($stocksql1);
 
-    $stock = $rowKL['product.product_stock'];
-    $variationStock = $row['product_stock'];
+    $stock = $row3['product.product_stock'];
+    $variationStock = $row3['product_stock'];
     $deductQuantity1 = $stock - $product_quantity;
     $deductQuantity2 = $variationStock - $product_quantity;
      

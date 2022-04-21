@@ -68,22 +68,27 @@
     if(isset($_POST["completeBtn"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $status = "Completed";
-        echo $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
         $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
-        echo 'aiyooo';
+
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-            $_SESSION['success'] = "Thank you for updating!";
-            header("Location:purchaseShippingDetails.php?order_id=".$orderid);
+            $_SESSION['success'] = "Thank you for updating!";?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>">'</script>
+            <?php
+           // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
-          $_SESSION['status'] = "Order status update failed";
-          header("Location:purchaseShippingDetails.php?order_id=".$orderid);
+          $_SESSION['status'] = "Order status update failed";?>
+           <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>">'</script>
+          <?php
         }
     }
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 <input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
+
+<!-- Begin Page Content -->
+<div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
 
 <?php
     if(isset($_SESSION['success'])&& $_SESSION['success']!='')
@@ -98,8 +103,6 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-<!-- Begin Page Content -->
-<div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card shadow mb-3">
         <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
