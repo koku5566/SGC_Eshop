@@ -105,6 +105,17 @@ $queryKL = mysqli_query($conn, $sql);
     $create_time = $row1['createdtime'];
 
 
+
+   echo(" 
+        <span>".$invoice_id."</span>
+        <span>".$variation_id."</span>
+        <span>".$payment_status."</span>
+        <span>".$user_address."</span>
+        <span>".$create_time."</span>
+
+   
+    ");
+
     
 /*     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `createdtime`) VALUES (?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
