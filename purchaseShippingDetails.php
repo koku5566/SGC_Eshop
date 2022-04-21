@@ -64,6 +64,20 @@
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
+
+    if(isset($_POST["completeBtn"])){
+
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', 'Completed')";
+        $updatesql ="UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$orderid'";
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+            $_SESSION['success'] = "Thank you for updating!";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            } else {
+          $_SESSION['status'] = "Order status update failed";
+          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+        }
+    }
     
 ?>
 
@@ -126,17 +140,17 @@
                     </div>
                     <h5 class="step-title">Order Paid</h5>
                 </div>
-                <div class="step" id="ppreparing">
-                    <div class="step-icon-wrap">
-                        <div class="step-icon"><i class="fa fa-clipboard-list"></i></div>
-                    </div>
-                    <h5 class="step-title">Order Preparing</h5>
-                </div>
                 <div class="step" id="pready">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-box"></i></div>
+                    </div>
+                    <h5 class="step-title">Ready To Pick Up</h5>
+                </div>
+                <div class="step" id="pcompleted">
                     <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
                     </div>
-                    <h5 class="step-title">Ready To Pick Up</h5>
+                    <h5 class="step-title">Order Completed</h5>
                 </div>
             </div>
             <?php }?>
@@ -147,8 +161,8 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"> </div>(+60)1117795416<br>
-                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"> </div><?php echo $phone ?><br>
+                    <div id="address"><?php echo $address?> </div>
                 </div>
             </div>
             <hr>
@@ -164,7 +178,7 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                 <?php if($srow['status']=='Ready'){?> <tr class="table-success"><?php } else{?><tr><?php }?>  <!-- if pick up order is ready, set row to green colour-->
+                 <?php if($srow['status']=='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed') {?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
@@ -173,14 +187,20 @@
                 ?>
                 </tbody>
             </table>
-
+            
+                <?php if($orderstatus =='Ready'){?>
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
+                    </form>
+                <?php } ?>
+            
         </div>
     </div>
 
     <!---$qty = $orow['quantity'];
         $amt = $orow['amount'];
         $productname = $orow['product_name'];
-        $productcover = $orow['product_cover_picture'];
+        $productcover = $orow['product_cover_picture'];ref
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];-->
 
@@ -607,18 +627,18 @@ else{
         document.getElementById("pplaced").className ="step completed";
         document.getElementById("ppaid").className ="step completed";
     }
-    else if(orderstatus == 'Preparing')
+    else if(orderstatus == 'Ready')
     {
         document.getElementById("pplaced").className ="step completed";
         document.getElementById("ppaid").className ="step completed";
         document.getElementById("ppreparing").className ="step completed";
     }
-    else if(orderstatus == 'Ready')
+    else if(orderstatus == 'Completed')
     {
         document.getElementById("pplaced").className ="step completed";
         document.getElementById("ppaid").className = "step completed";
-        document.getElementById("ppreparing").className ="step completed";
         document.getElementById("pready").className ="step completed";
+        document.getElementById("pcompleted").className ="step completed";
     }
 }
 </script>
