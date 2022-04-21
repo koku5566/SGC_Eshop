@@ -109,12 +109,6 @@
 //echo $statusMsg; 
 ?>
 
-<?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-  $imageResult = $db->sql("SELECT shop_profile_cover, shop_profile_image, shop_profile_media FROM shopProfile WHERE shop_id = 8");
-?>
-
-
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -150,7 +144,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage" value="<?php echo $shopProfilePic ?>" onchange="loadFile(event)"/>
-        <!--<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>--> <img id="profilePic" width="200" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['shop_profile_image']); ?>" /> 
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePic" width="200"/>
       </div>
     </div>
     
