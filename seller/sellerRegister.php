@@ -375,7 +375,8 @@ if(isset($_POST['signup']))
                             if (mysqli_query($conn, $sql)) {
 								$_SESSION['AddUser'] = true;
 
-								$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES (SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0))),'$username')";
+								$sql = "SET @shop_id=(SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0))));
+                                INSERT INTO shopProfile (shop_id, shop_name) VALUES (@shop_id,'$username')";
 								if (mysqli_query($conn, $sql)) {
 									echo "<script>alert('Registered Successful');
 									window.location.href='sellerLogin.php';</script>";
