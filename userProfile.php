@@ -86,17 +86,12 @@ if(isset($_POST['update']))
 
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
-								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden />
-								<i class=\"fa fa-edit image-tools-add-icon\" aria-hidden=\"true\"></i>
+								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
+								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Edit
 							</label>
 						</div>
 					</div>
 				</div>
-
-
-
-
-
 					
 					<div class=\"form-group\">
 					<label>Username: </label>
@@ -141,6 +136,14 @@ if(isset($_POST['update']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+</style>
 
 <script>
 var img = document.getElementById('profilePic');
