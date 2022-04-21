@@ -40,7 +40,7 @@
                                 <div class="p-5">
                                     <div class="text-left">
                                         <div class="h1 text-gray-900 mb-4 container-left-col2">My Address Book</div>
-										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
+										<div class="container-right-col2"><a class="btn btn-primary" href="../userAddAddress.php"><i class="fa-solid fa-plus"></i></a></div>
                                     </div>
 									<hr>
 <?php
