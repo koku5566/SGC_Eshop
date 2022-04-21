@@ -302,7 +302,7 @@ if(isset($_GET['addressid']))
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                        <form action="request.php" method="post" class="paymentmethod">
+                        <form action="request1.php" method="post" class="paymentmethod">
                             <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
