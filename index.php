@@ -195,7 +195,7 @@
                             <div class="col-md-2 m-4">
                                 <div class="card" id="vouchercard">
                                     <div class="container">
-                                        <img class="m-4" src="../img/" id="voucherlogo">
+                                        <img class="m-3" src="../img/" id="voucherlogo">
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-title"><strong></strong></h6>
