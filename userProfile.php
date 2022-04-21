@@ -115,7 +115,7 @@ if(isset($_POST['update']))
 
 					<div class=\"form-group\">
 					<label>Contact</label>
-					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control\"/>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{2,3,4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control\"/>
 					</div>
 					
 					<button type=\"submit\" class=\"btn btn-primary btn-block\" name=\"update\">Update</button>

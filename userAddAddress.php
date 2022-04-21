@@ -68,7 +68,7 @@ if(isset($_POST['addAddress']))
 
 								<div class="form-group">
 								<label>Contact Number</label>
-								<input required type="tel" name="contact" pattern="[0-9]{4}-[0-9]{7,}" maxlength="13" placeholder="0000-00000000" class="form-control"/>
+								<input required type="tel" name="contact" pattern="[0-9]{2,3,4}-[0-9]{7,}" maxlength="13" placeholder="0000-00000000" class="form-control"/>
 								</div>
 
 								<div class="form-group">
