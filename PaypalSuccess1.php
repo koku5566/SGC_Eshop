@@ -171,7 +171,7 @@ if (mysqli_stmt_affected_rows($stmt) == 1) {
     $returnPath = "-f" . $from2;
 
     if (@mail($to, $subject, $message, $headers, $returnPath)) {
-        echo "'success";
+
     } else {
         echo "<script>alert('Error')</script>";
     }
