@@ -171,10 +171,10 @@
                             product.product_name
 
                             FROM voucher
-                            INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            INNER JOIN product ON productVoucher.product_id = product.product_id		
-                            INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            -- GROUP BY voucher_id
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            JOIN product ON productVoucher.product_id = product.product_id		
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            GROUP BY productVoucher.voucher_id
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
