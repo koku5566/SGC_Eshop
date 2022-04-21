@@ -349,7 +349,7 @@ if(isset($_GET['addressid']))
                         ?>
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM 90</span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;"><?php echo $_SESSION['total'] ?></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['total'] ?></span></li>
                     </ul>
                 </div>
             </div>
