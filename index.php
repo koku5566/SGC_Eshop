@@ -164,12 +164,11 @@
                             voucher.voucher_display,
                             voucher.voucher_limit,
                             voucher.voucher_startdate,
-                            productVoucher.voucher_id,
+                            productVoucher.voucher_id AS pv_voucher_id,
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
                             shopProfile.shop_profile_image
-                            -- product.product_name
 
                             FROM voucher
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
@@ -243,7 +242,30 @@
                                     <div class="tnccontainer">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <p><?php echo $row['product_name']; ?></p>
+                                            <p>
+                                                <?php 
+                                                $sql_pn=
+                                                "SELECT
+                                                product.product_name,
+                                                productVoucher.voucher_id AS pv_voucher_id
+                                                
+                                                FROM product
+                                                JOIN productVoucher ON product.product_id = productVoucher.product_id
+                                                ";
+                    
+                    
+                                                $stmt = $conn->prepare($sql_pn);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                
+                                                while ($r = $result->fetch_assoc()) {
+
+                                                    if($r['pv_voucher_id'] = $row['pv_voucher_id']){
+                                                    echo $r['product_name']; 
+                                                    }
+                                                }
+                                                ?>
+                                            </p>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
