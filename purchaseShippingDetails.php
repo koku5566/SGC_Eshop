@@ -74,7 +74,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
-    <div class="card mb-3">
+    <div class="card shadow mb-3">
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
@@ -153,7 +153,7 @@
         $shopprofile = $orow['shop_profile_image'];-->
 
     <!--Order Details-->
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h5 class="card-title">
                 <div class="text-start p-1" style="text-align: right;"><small>Purchased Date & Time</small></div>
