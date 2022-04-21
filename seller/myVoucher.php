@@ -73,7 +73,7 @@
 
                      $stmt = $conn->prepare($sql_myvoucher);
                      $stmt->execute();
-                     $result = $stmt->get_result();
+                     $res = $stmt->get_result();
 
                      while ($r = $res->fetch_assoc()) {
 
