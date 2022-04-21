@@ -195,7 +195,7 @@
                             <div class="col-md-2 m-4">
                                 <div class="card" id="vouchercard">
                                     <div class="container">
-                                        <img src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                        <img class="mt-3" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
