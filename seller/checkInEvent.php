@@ -44,7 +44,7 @@ $eventName = $row['event_name'];
                         if(false===$stmt5){
                             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                         }
-                        $bp = mysqli_stmt_bind_param($stmt5,"issi",$checked,$now,$today,"$tID");
+                        $bp = mysqli_stmt_bind_param($stmt5,"issi",$checked,$now,$today,$tID);
                         if(false===$bp){
                             die('Error with bind_param: ') . htmlspecialchars($stmt5->error);
                         }
