@@ -122,10 +122,19 @@
 
     $sql = "UPDATE shopProfile SET shop_profile_cover ='".$shopProfileCover."', shop_profile_image ='".$shopProfilePic."', shop_name ='".$shopName."', shop_description ='".$shopDescription."', shop_media ='".$shopMedia."' WHERE shop_id = 8";
     $result = mysqli_query($conn,$sql);
+
+    if($result)
+    {
+      header("location:shopProfile.php");
+    }
+    else
+    {
+      echo 'Please Check Your Query';
+    }
   }
   else
   {
-    echo "error";
+    echo 'error';
   }
 ?>
 
