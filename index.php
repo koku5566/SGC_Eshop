@@ -196,8 +196,6 @@
                             while ($row = $result->fetch_assoc()) {
                                 $td = date('y-m-d');
                                 $expr = $row['voucher_expired'];
-
-                                $r = $res->fetch_assoc();
                                 
                                 $today = strtotime($td);
                                 $expired = strtotime($expr);
@@ -253,7 +251,17 @@
                                     <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
+                                            <?php 
+                                                    while ($r = $res->fetch_assoc()) {
+                                                        $voucherid = $r['voucher_id'];
+                                                        $voucherid2 = $row['voucher_id'];
+
+                                                        for($i = 0; $i < count($voucherid2); $i++){
+                                                            for($x = 0; $x < count($voucherid); $x++){
+                                                                if($voucherid2[$i] === $voucherid[$x]){
+                                            ?>
                                             <p><?php echo $r['product_name'];?>, </p>
+                                            <?php }}}}?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
