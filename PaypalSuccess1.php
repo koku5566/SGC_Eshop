@@ -105,7 +105,7 @@ $queryKL = mysqli_query($conn, $sql);
         if (false === $stmt) {
             die('Error with prepare: ') . htmlspecialchars($mysqli->error);
         }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $row1['invoice_id'], $uid, $product_id, $rowKL['variation_id'], $row1['payment_status'], $_SESSION['getaddress'], $row['createdtime']);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssis", $row1['invoice_id'], $uid, $product_id, $rowKL['variation_id'], $row1['payment_status'], $_SESSION['getaddress'], $row1['createdtime']);
         if (false === $bp) {
             die('Error with bind_param: ') . htmlspecialchars($stmt->error);
         }
