@@ -9,6 +9,15 @@
 ?>
 
 <?php
+
+if(isset($_GET['id'])){
+	$_SESSION['ToEdit']=$_GET['id'];
+
+}else{
+	?><script>window.location = '<?php echo("$domain/userprofile_address.php");?>'</script><?php
+
+}
+
 	if(isset($_POST['update']))
 	{
 		$UID = $_SESSION['ToEdit'];

@@ -23,12 +23,6 @@
 			echo "Error: " . mysqli_error($conn);
 		}
 	}
-	
-	if(isset($_POST['edit']))
-	{
-		$_SESSION['ToEdit'] = $_POST['edit'];
-		?><script>window.location = '<?php echo("$domain/userEditAddress.php");?>'</script><?php
-	}
 ?>
 
 <div class="row">
@@ -48,7 +42,6 @@
                                         <div class="h1 text-gray-900 mb-4">My Address Book</div>
                                     </div>
 <a href="../userAddAddress.php" class="btn btn-primary btn-block">Add Address</a>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data" id="userForm">
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -58,7 +51,7 @@
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
 			<div class=\"mb-3\">
-				<a class=\"address-tag\" href=\"../userEditAddress.php\" name=\"edit\" value=".$row["address_id"]." onclick=\"document.getElementById('userForm').submit()\">
+				<a class=\"address-tag\" href=\"../userEditAddress.php?id=".$row["address_id"]."\">
 					<div class=\"address\">
 						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
 						<div class=\"row\">
@@ -81,7 +74,6 @@
 			");
 	}
 ?>
-</form>
 	                            </div>
                             </div>
                         </div>
