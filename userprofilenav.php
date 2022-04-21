@@ -5,7 +5,7 @@
             <a href="../userProfile.php" class="list-group-item list-group-item-action"><img src="./img/myprofile.png" id="uprofileside" style="width: 50px; height: 50px;"> My Profile</a>
             <a href="../userprofile_address.php" class="list-group-item list-group-item-action"><img src="./img/myaddressbook.png" id="uprofileside" style="width: 50px; height: 50px;"> My Address Book</a>
             <a href="../userprofile_payment.php" class="list-group-item list-group-item-action"><img src="./img/paymentoption.png" id="uprofileside" style="width: 50px; height: 50px;"> My Payment Option</a>
-            <a href="" class="list-group-item list-group-item-action"><img src="./img/myvoucher.png" id="uprofileside" style="width: 50px; height: 50px;"> My Voucher</a>
+            <a href="../userprofile_voucher.php" class="list-group-item list-group-item-action"><img src="./img/myvoucher.png" id="uprofileside" style="width: 50px; height: 50px;"> My Voucher</a>
       </div>
    </div>
 </div>

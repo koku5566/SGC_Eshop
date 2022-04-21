@@ -161,18 +161,19 @@
                             voucher.voucher_code,
                             voucher.voucher_type,
                             voucher.discount_amount,
+                            voucher.voucher_display,
+                            voucher.voucher_limit,
                             voucher.voucher_startdate,
                             voucher.voucher_expired,
-                            voucher.voucher_details
-                            -- shopProfile.shop_name,
-                            -- shopProfile.shop_profile_image,
-                            -- product.product_name
+                            voucher.voucher_details,
+                            shopProfile.shop_name,
+                            shopProfile.shop_profile_image,
+                            product.product_name
 
                             FROM voucher
-                            -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            -- JOIN product ON productVoucher.product_id = product.product_id	
-                            -- JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-                            -- WHERE shopProfile.shop_id = '$shopId'
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            JOIN product ON productVoucher.product_id = product.product_id		
+                            JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
                             -- GROUP BY voucher.voucher_id
                             "; 
 
@@ -182,20 +183,20 @@
                             
                             while ($row = $result->fetch_assoc()) {
 
-                            // $td = date('y-m-d');
-                            // $expr = $row['voucher_expired'];
+                             $td = date('y-m-d');
+                             $expr = $row['voucher_expired'];
 
-                            // $today = strtotime($td);
-                            // $expired = strtotime($expr);
+                             $today = strtotime($td);
+                             $expired = strtotime($expr);
 
-                            // if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
+                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
                             
                             ?>
 
                             <div class="col-md-2 m-4">
                                 <div class="card" id="vouchercard">
                                     <div class="container">
-                                        <img class="mt-3" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                        <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -228,11 +229,11 @@
                                         <div class="d-flex justify-content-center">
                                             <div class="card m-2" id="termsvouchercard">
                                             <div class="container">
-                                                <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                             </div>
                                             <div class="card-body">
                                                 <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                                 <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                             </div>
                                             </div>
@@ -257,6 +258,9 @@
                         </div>
                             
                             <?php 
+                            } else{
+
+                            }
                         }?>
 
                             
