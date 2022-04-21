@@ -170,7 +170,7 @@ $result = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php } ?></a>
+                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Placed'){?><strong>Update Status </strong><?php }  else{ ?> <strong>Check Details </strong><?php } ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@ $result = $stmt->get_result();
                             </div>
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
-
+                            
                             </div>
 
                             <!--------------------------------Pick Up--------------------------------------->

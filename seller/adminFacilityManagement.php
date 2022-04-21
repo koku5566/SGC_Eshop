@@ -4,6 +4,7 @@
 ?> 
 
 <?php
+
 /*
 if(isset($_POST['Delete']))
 {
@@ -83,7 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
       
       <tbody>
       <?php
-      $getPic= "SELECT * FROM facilityPic";
+      $campusId = $_SESSION["uid"];
+      $getPic= "SELECT * FROM facilityPic WHERE campus_id = '$campusId'";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
       foreach($showCategory as $facility): 
@@ -102,7 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
             <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
-            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold">Edit</button>
+            <a class="btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> Edit </a>
+
             
             <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
               <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">

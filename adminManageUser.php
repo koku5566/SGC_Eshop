@@ -12,13 +12,13 @@
 	if(isset($_POST['deleteStaff']))
 	{
 		$_SESSION['DeleteUser'] = false;
-		$UID = $_POST['deleteStaff'];
+		$UN = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE username = '$UID'";
-		echo "<script>alert($UID);</script>";
+		$sql = "DELETE FROM user WHERE username = '$UN'";
+
 		if (mysqli_query($conn, $sql)) {
 			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('User Removed');</script>";
+            echo "<script>alert('$UN Has Been Removed');</script>";
 		} else {
 			echo "Error: " . mysqli_error($conn);
 		}
@@ -107,7 +107,7 @@
 		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 			<div class="modal-content" id="editProfile">
 				<div class="modal-header">
-					<h5 class="modal-title" >Edit Staff Information</h5>
+					<h5 class="modal-title">Edit Staff Information</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>

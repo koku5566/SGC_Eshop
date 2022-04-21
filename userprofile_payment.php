@@ -54,10 +54,9 @@
                                     <div class="text-left">
                                         <div class="h1 text-gray-900 mb-4">My Payment Option</div>
                                     </div>
-<a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a>
-<a href="../userAddCard.php" class="btn btn-primary btn-block">Add Card</a>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-<div class="h3">Bank</div>
+<div class="row">
+<div class="h3">Bank</div><a href="../userAddBank.php" class="btn btn-primary btn-block">Add Bank Account</a></div>
 <?php
 	$UID = $_SESSION["uid"];
 	
@@ -67,33 +66,57 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\" value=".$row["bankAcc_id"].">
-				<div class=\"btn btn-primary\">
-					".$row["bank_name"]."
-					".$row["bankAcc_name"]."
-					".$row["account_no"]."
-					<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+			<div class=\"mb-3\">
+				<div class=\"userBank\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["bank_name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.3rem;\">".$row["bankAcc_name"]."</p>
+							<p style=\"font-size: 1.15rem;\">
+							".$row["account_no"]."
+							</p>
+						</div>
+					</div>
 				</div>
+				<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 			</div>
+			<hr>
 			");
 	}
 ?>
+
 <hr>
-<div class="h3">Card</div>
+
+<div class="row2">
+	<div class="col2">
+		<div class="container-col2">
+			<div class="container-left-col2"><h3>Card</h3></div>
+			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php">Add Card</a></button></div>
+		</div>
+	</div>
+</div>
+
 <?php
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql_1);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"container\">
-				<div class=\"btn btn-primary\" value=".$row["card_id"].">
-					".$row["name"]."
-					".$row["card_number"]."
-					".$row["expiry_date"]."
-					<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+		<div class=\"row2\">
+			<div class=\"col2\">
+				<div class=\"container-col2\">
+					<div class=\"container-left-col2\">
+						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+						<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+						<p style=\"font-size: 1.15rem;\">".$row["expiry_date"]."</p>
+					</div>
+			<div class=\"container-right-col2\">
+				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+			</div>
 				</div>
 			</div>
+		</div>
+
 			");
 	}
 ?>
@@ -109,4 +132,63 @@
 </div>
 </div>
 
+<!--			<div class=\"mb-3\">
+				<div class=\"userCard\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["name"]."</p>
+					<div class=\"row\">
+						<div class=\"col-lg-4\">
+							<p style=\"font-size: 1.3rem;\">".$row["card_number"]."</p>
+							<p style=\"font-size: 1.15rem;\">
+							".$row["expiry_date"]."
+							</p>
+						</div>
+					</div>
+				</div>
+				<button name=\"removeC\" value=".$row["card_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+			</div>
+			<hr> -->
 <?php require __DIR__ . '/footer.php' ?>
+<style>
+
+.row2 {
+  display: flex; 
+  /* equal height of the children */
+
+}
+
+.col2 {
+  flex: 1; /* additionally, equal width */
+ border:1px solid #ddd;
+ padding: 1em;   
+
+}
+
+.container-left-col2 {
+ padding:20px;
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.container-right-col2 {
+	 padding:15px;
+  width: 20%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.row2 {
+	display: block; 
+	
+	}
+	.container-left-col2 {
+	
+	display: block;
+	}
+	.container-right-col2 {
+	display: block;
+	}
+}
+</style>

@@ -6,10 +6,12 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "SELECT product_name, product_description, product_brand, product_cover_picture FROM product";
-    $result = $conn->query($sql);
+    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product";
+    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
+    $result1 = $conn->query($sql1);
+    $result2 = $conn->query($sql2);
 ?>
+
 <!-- Slide Show by Lim Qiu Xiong-->
 <?php
     //Fetch each promotion image information
@@ -43,6 +45,12 @@
   <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
         <?php
+        if(count($promotion_image)==0)
+        {
+          echo("<div class=\"carousel-item active\"> <img src=\"/img/resource/default_image.png\" alt=\"default_image\"> </div>");
+        }
+        else 
+        {
           for($i = 0; $i < count($promotion_image); $i++)
           {
             if($promotion_image[$i] != "")
@@ -58,6 +66,8 @@
               }
             }
           }
+        }
+          
        ?>
       </div>
     <!-- Left right --> 
@@ -81,7 +91,40 @@
 
         <section class="text-center">
           <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
-          <div class="voucherContainer d-flex align-items-center">
+          <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
+          <?php
+                  if ($result2->num_rows > 0) {
+                    // output data of each row
+                    while($row2 = $result2->fetch_assoc()) {
+          ?>
+            <div class="voucher">
+              <div class="coupon-card">
+                <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
+                <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
+                <h3>RM
+                  <?php echo " " . $row2["discount_amount"]. " "; ?>
+                </h3>
+                
+                <div class="coupon-row">
+                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
+                  <span id="cpnBtn">COPY</span>
+                </div>
+                
+                <p>
+                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
+                </p>
+                
+                <!--<div class="circle1"></div>
+                <div class="circle2"></div>-->
+              </div>
+            </div>
+            <?php
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
+            ?>
           </div>
         </section>
 
@@ -89,19 +132,19 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>best Sellers</strong></h4>
+          <h4 class="mb-5"><strong>Best Sellers</strong></h4>
           <div class="row">
             <?php
-              if ($result->num_rows > 0) {
+              if ($result1->num_rows > 0) {
                 // output data of each row
-                while($row = $result->fetch_assoc()) {
+                while($row1 = $result1->fetch_assoc()) {
             ?>
             
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card"><!--<div class="card" style="height:50vh;">-->
                 <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                   <img
-                    src="/img/product/<?php echo $row['product_cover_picture']?>"
+                    src="/img/product/<?php echo $row1['product_cover_picture']?>"
                     class="imgContainer"
                   />
                   <a href="#!">
@@ -110,19 +153,18 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row["product_name"]. "<br>" . $row["product_description"]. "<br>" . $row["product_brand"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
               </div>
             </div>
             <?php
-            }
-          } else {
-            echo "error";
-          }
-          $conn->close();
-
+                }
+              } else {
+                echo "error";
+              }
+              $conn->close();
             ?>
           </div>
         </section>
@@ -150,10 +192,80 @@
         width: 180vh; /* should be remove after add in voucher */
         margin:; /* Better set align center */
       }
+      .voucher{
+        margin: 0 10px 0 0;
+      }
+
+      .coupon-card{
+         background: linear-gradient(135deg, #7158fe, #9d4de6);
+         color: #fff;
+         text-align: center;
+         padding: 10px 45px;
+         border-radius: 15px;
+         box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
+      }
+      
+      .logo{
+        width: 80px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      
+      .coupon-card h3{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+      
+      .coupon-card p{
+        font-size: 10px;
+      }
+      
+      .coupon-row{
+        display: flex;
+        align-items: center;
+        margin: 10px auto;
+        width: fit-content;
+      }
+      
+      #cpnCode{
+        border: 1px dashed #fff;
+        padding: 5px 10px;
+        border-right: 0;
+        font-size: 10px;
+      }
+      
+      #cpnBtn{
+        border: 1px solid #fff;
+        background:#fff; 
+        padding: 5px 10px;
+        color: #7158fe;
+        cursor: pointer;
+        font-size: 10px;
+      }
+      
+      .circle1, .circle2{
+        background: #fff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        top: 14.5%;
+        transform: translateY(-50%);
+      }
+      
+      .circle1{
+        left: 40px;
+      }
+      
+      .circle2{
+        right: 925px;
+      }
 
       .imgContainer
       {
-        height: 50vh;
+        height: 22vh;
+        width: 20vh;
       }
 
       /*Slide show by Lim Qiu Xiong*/
@@ -212,6 +324,19 @@
       }
       /*End Slide Show by Lim Qiu Xiong*/
     </style>
+
+    <script>
+       var cpnBtn = document.getElementById("cpnBtn");
+       var cpnCode = document.getElementById("cpnCode");
+       
+       cpnBtn.onclick = function(){
+         navigator.clipboard.writeText(cpnCode.innerHTML);
+         cpnBtn.innerHTML = "COPIED";
+         setTimeout(function(){
+           cpnBtn.innerHTML = "COPIED";
+         }, 3000);
+       }
+    </script>
 
     <?php
     require __DIR__ . '/footer.php'

@@ -27,7 +27,7 @@
 	if(isset($_POST['edit']))
 	{
 		$_SESSION['ToEdit'] = $_POST['edit'];
-		echo("<script>window.location.href='userEditAddress.php';</script>");
+		?><script>window.location = '<?php echo("$domain/userEditAddress.php");?>'</script><?php
 	}
 ?>
 

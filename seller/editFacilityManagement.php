@@ -1,10 +1,13 @@
 <?php
-   require __DIR__ . '/header.php'
+   require __DIR__ . '/header.php';
   
 ?> 
 <?php
-   if(isset($_POST['AddFacility']))
-   {
+
+    $facilityid = $_GET['id'];
+    
+    if(isset($_POST['EditFacility'])){
+      $facilityid = $_SESSION['Id'];
       //$campusId = $_SESSION['userId'];
       $campusId = $_SESSION["uid"];
       $title = $_POST['title'];
@@ -13,63 +16,100 @@
       $priceperhour = $_POST['priceperhour'];
       $contact = $_POST['contactwhatsapp'];
 
+      $sql_update = "UPDATE facilityPic SET ";
+      $sql_update .= "title = '$title',";
+      $sql_update .= "pic_description = '$description',";
+      $sql_update .= "address = '$address',";
+      $sql_update .= "contact_whatsapp = '$contact',";
+
+      
+
       // File upload configuration 
       $fileNames = array_filter($_FILES['img']['name']); 
+      $defaultFile = array_filter($_POST['imgDefault']);
       $imgInpCounter = 0;
       $targetDir = dirname(__DIR__,1)."/img/facility/"; 
       //echo($targetDir);
       $allowTypes = array('jpg','png','jpeg'); 
 
-      $sql_insert  = "INSERT INTO facilityPic (";
-      $sql_insert .= "facility_id, title, price_per_hour, pic_description, address, ";
-      $sql_insert .= "contact_whatsapp, pic_cover, pic1, pic2, pic3, pic4, campus_id ";
-      $sql_insert .= ") ";
-      $sql_insert .= "VALUES ((SELECT CONCAT('F',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'facilityPic'), 6, 0))) AS newCombinationId),'$title','$priceperhour','$description','$address', ";
-      $sql_insert .= "'$contact', ";
+      $pictureOrder = array("pic_cover","pic1","pic2","pic3","pic4");
 
-      foreach($_FILES['img']['name'] as $key=>$val){ 
-         // File upload path 
-         $fileName = basename($_FILES['img']['name'][$key]); 
-         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-         $fileName = round(microtime(true) * 1000).".".$ext;
-         $targetFilePath = $targetDir.$fileName; 
-         // Check whether file type is valid 
-         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-         if(in_array($fileType, $allowTypes)){ 
-            if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-               $sql_insert .= "'$fileName', ";
-               $imgInpCounter++;
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            if($key < 5)
+            {
+                $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round((microtime(true) * 1000) + 1).".".$ext;
+                $targetFilePath = $targetDir.$fileName; 
+                // Check whether file type is valid 
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                        $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                        $imgInpCounter++;
+                    }
+                }
+                else if($defaultFile[$key] != "") //Get the default picture name
+                {
+                    $fileName = $defaultFile[$key];
+                    $sql_update .= "".$pictureOrder[$key]." = '$fileName', ";
+                    $imgInpCounter++;
+                }
             }
-         }
-     } 
+        } 
 
-     //Enter empty for picture col that did not use
-     while($imgInpCounter < 5)
-     {
-         $sql_insert .= "'', ";
-         $imgInpCounter++;
-     }
+        //Enter empty for picture col that did not use
+        while($imgInpCounter < 5)
+        {
+            $sql_update .= "".$pictureOrder[$imgInpCounter]." = '', ";
+            $imgInpCounter++;
+        }
 
-     $sql_insert .= "'$campusId'";
-     $sql_insert .= ") ";
+        $sql_update .= "price_per_hour = '$priceperhour'";
+        $sql_update .= "WHERE id = '$facilityid '";
 
-     if(mysqli_query($conn, $sql_insert)){
-         ?>
-             <script type="text/javascript">
-                 //window.location.href = window.location.origin + "/seller/myProduct.php";
-             </script>
-         <?php
-         
-     }
-     else
-     {
-         echo '<script language="javascript">';
-         echo 'alert("Fail to Add Facility")';
-         echo '</script>';
-     }
-   }
+    
+        if(mysqli_query($conn, $sql_update)){
+            ?>
+                <script type="text/javascript">
+                    alert("Facility Edited Successful");
+                    window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                </script>
+            <?php
+        }
+        else
+        {
+            ?>
+                <script type="text/javascript">
+                    alert("Facility Edited Fail");
+                </script>
+            <?php
+        }
+    } 
+    else
+    {
+        $Id = $_GET['id'];
+        $_SESSION['Id'] = $_GET['id'];
+        $campusId = $_SESSION['uid'];
 
-   $sql_2 = "SELECT * FROM facilityPic";
+        $sql_facility = "SELECT * FROM facilityPic WHERE id = '$Id' AND campus_id = '$campusId'";
+        $result_facility = mysqli_query($conn, $sql_facility);
+
+        if (mysqli_num_rows($result_facility) > 0) {
+            while($row_facility = mysqli_fetch_assoc($result_facility)) {
+                $i_facility_title = $row_facility['title'];
+                $i_facility_address = $row_facility['address'];
+                $i_facility_description = $row_facility['pic_description'];
+                $i_facility_price_per_hour = $row_facility['price_per_hour'];
+                $i_facility_whatsapp = $row_facility['contact_whatsapp'];
+                $i_facility_pic = array($row_facility['pic_cover']);
+                array_push($i_facility_pic,$row_facility['pic1'],$row_facility['pic2']);
+                array_push($i_facility_pic,$row_facility['pic3'],$row_facility['pic4']);
+            }
+        }  
+    }
+    
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -89,7 +129,7 @@
 
 <!-- Page Content -->
 <div class="container p-2" style="background-color: #FFFFFF; width:80%;">
-   <h2 class="m-4">Facility Management</h2>
+   <h2 class="m-4">Edit Facility Management</h2>
    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <div class="container m-2">
          <h5 class="mt-2 mb-4">Basic Information</h5>
@@ -99,7 +139,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type ="text" class="form-control" name="title" maxlength="1000" required>
+                  <input type ="text" class="form-control" value="<?php echo($i_facility_title); ?>" name="title" maxlength="1000" required>
                   </div>
                </div>
             </div>
@@ -110,7 +150,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <textarea class="form-control" name="description" maxlength="3000" required></textarea>
+                  <textarea class="form-control" name="description" maxlength="3000" required><?php echo($i_facility_description); ?></textarea>
                   </div>
                </div>
             </div>
@@ -120,7 +160,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <textarea class="form-control" name="address" maxlength="3000" required></textarea>
+                  <textarea class="form-control" name="address" maxlength="3000" required><?php echo($i_facility_address); ?></textarea>
                   </div>
                </div>
             </div>
@@ -131,7 +171,7 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                     <input type="number"min="0" value="0" class="form-control" name="priceperhour" required>
+                     <input type="number"min="0" value="<?php echo($i_facility_price_per_hour); ?>" class="form-control" name="priceperhour" required>
                   </div>
                </div>
             </div>
@@ -141,121 +181,77 @@
                </div>
                <div class="col-xl-10 col-lg-10 col-sm-12">
                   <div class="input-group mb-3">
-                  <input type="text" class="form-control" name="contactwhatsapp" maxlength="1000" required>
+                  <input type="text" class="form-control" value="<?php echo($i_facility_whatsapp); ?>" name="contactwhatsapp" maxlength="1000" required>
                   </div>
                </div>
             </div>
             <div class="form-row">   
                <div class="row">
                   <div class="col-xl-12 col-lg-12 col-sm-12" style="padding-bottom: .625rem;">
-                        <div class="drag-list">
-                           <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
-                              <div style="padding-bottom: .625rem;display:flex">
-                                    <div class="drag-item" draggable="true">
-                                       <div class="image-container">
-                                          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                          <div class="image-layer">
-                                                
-                                          </div>
-                                          <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                          </div>
-                                          <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                   <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                   <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                          </div>
-                                       </div>
-                                       <p>Cover Picture</p>
-                                    </div>
-                              </div>
-                              <div style="padding-bottom: .625rem;display:flex">
-                                    <div class="drag-item" draggable="true">
-                                       <div class="image-container">
-                                          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                          <div class="image-layer">
-                                                
-                                          </div>
-                                          <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                          </div>
-                                          <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                   <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                   <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                          </div>
-                                       </div>
-                                       <p>Picture 1</p>
-                                    </div>
-                                    <div class="drag-item" draggable="true">
-                                       <div class="image-container">
-                                          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                          <div class="image-layer">
-                                                
-                                          </div>
-                                          <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                          </div>
-                                          <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                   <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                   <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                          </div>
-                                       </div>
-                                       <p>Picture 2</p>
-                                    </div>
-                                    <div class="drag-item" draggable="true">
-                                       <div class="image-container">
-                                          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                          <div class="image-layer">
-                                                
-                                          </div>
-                                          <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                          </div>
-                                          <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                   <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                   <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                          </div>
-                                       </div>
-                                       <p>Picture 3</p>
-                                    </div>
-                                    <div class="drag-item" draggable="true">
-                                       <div class="image-container">
-                                          <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                          <div class="image-layer">
-                                                
-                                          </div>
-                                          <div class="image-tools-delete hide">
-                                                <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                          </div>
-                                          <div class="image-tools-add">
-                                                <label class="custom-file-upload">
-                                                   <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp" multiple/>
-                                                   <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                                </label>
-                                          </div>
-                                       </div>
-                                       <p>Picture 4</p>
-                                    </div>
-                              </div>
-                           </div>
+                    <div class="drag-list">
+                        <div class="row" style="margin-right: 0.5rem;margin-left: 0.5rem;">
+                            <?php  
+                                $pictureText = array("Cover Picture","Picture 1","Picture 2","Picture 3","Picture 4");
+                                
+                                for($i = 0; $i < count($i_facility_pic); $i++)
+                                {
+                                    if($i == 0 || $i == 1)
+                                    {
+                                        echo("<div style=\"padding-bottom: .625rem;display:flex\">");
+                                    }
+
+                                    if($i_facility_pic[$i] != "")
+                                    {
+                                        $picName = "/img/facility/".$i_facility_pic[$i];
+                                        $add = "hide";
+                                    }
+                                    else{
+                                        $picName = "";
+                                        $add = "";
+                                    }
+
+                                    echo("
+                                            <div class=\"drag-item\" draggable=\"true\">
+                                                <div class=\"image-container\">
+                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">
+                                                    <div class=\"image-layer\">
+                                                        
+                                                    </div>
+                                                    <div class=\"image-tools-delete hide\">
+                                                        <i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+                                                    </div>
+                                                    <div class=\"image-tools-add $add\">
+                                                        <label class=\"custom-file-upload\">
+                                                            <input accept=\".png,.jpeg,.jpg\" name=\"img[]\" type=\"file\" class=\"imgInp\" multiple/>
+                                                            <input name=\"imgDefault[]\" type=\"text\" value=\"".$i_facility_pic[$i]."\" hidden/>
+                                                            <i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <p>".$pictureText[$i]."</p>
+                                            </div>
+                                        ");
+
+                                    if($i == 0 || $i == 4)
+                                    {
+                                        echo("</div>");
+                                    }
+                                }
+
+                            ?>
                         </div>
+                    </div>
                   </div>
                </div>      
             </div>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
-               <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Add Facility</button>
+               <button type="submit" id="EditFacility" name="EditFacility" class="btn btn-outline-primary"></i>Edit Facility</button>
             </div>
          </div>    
       </div>
    </form>
 </div>
+
       
     </div>
   </div>

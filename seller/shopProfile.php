@@ -23,44 +23,49 @@
 //    }
 ?>
 <?php
-if($conn->connect_error){
-	die("Connection failed ".$conn->connect_error);
-}
-
-$sql = "select * from students where student_id='$student_id'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0){
-
-$row = $result->fetch_assoc();
-
-$coverPhoto = $row["coverPhoto"];
-$profileImage = $row["profileImage"];
-$name = $row["name"];
-$description = $row["description"];
-$imageVideo = $row["imageVideo"];
-
-} else {
-	echo "Not Found";
-}
-$conn->close();
+//if($conn->connect_error){
+//	die("Connection failed ".$conn->connect_error);
+//}
+//
+//$sql = "select * from shopProfile where shop_id='$shop_id'";
+//
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0){
+//
+//$row = $result->fetch_assoc();
+//
+//$coverPhoto = $row["coverPhoto"];
+//$profileImage = $row["profileImage"];
+//$name = $row["name"];
+//$description = $row["description"];
+//$imageVideo = $row["imageVideo"];
+//
+//} else {
+//	echo "Not Found";
+//}
+//$conn->close();
 ?>
 
 <?php
-if ($conn->connect_error){
-	die("Connection failed: ". $conn->connect_error);
-}
+//if ($conn->connect_error){
+//	die("Connection failed: ". $conn->connect_error);
+//}
+//
+//$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
+//
+//if ($conn->query($sql) === TRUE) {
+//	echo "Records updated: ".$name."-".$description;
+//} else {
+//	echo "Error: ".$sql."<br>".$conn->error;
+//}
+//
+//$conn->close();
+?>
 
-$sql = "update shopProfile set coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' where shop_id='$shop_id'";
-
-if ($conn->query($sql) === TRUE) {
-	echo "Records updated: ".$name."-".$description;
-} else {
-	echo "Error: ".$sql."<br>".$conn->error;
-}
-
-$conn->close();
+<?php
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
+  $result = mysqli_query($conn, $sql);
 ?>
 
 <!-- Icon -->
@@ -75,10 +80,19 @@ $conn->close();
   <div class="container profileContainer">
     <div class="row">
       <div>
+
+      <?php
+        while ($row=mysqli_fetch_assoc($result))
+        {
+          $shopProfilePic = $row['shop_profile_image'];
+          $shopName = $row['shop_name'];
+          $shopDescription = $row['shop_description'];
+      ?>
+
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
       <img class="relative bg-image img-fluid" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="coverPhoto" value='$coverPhoto' hidden/>
+        <input type="file" id="actual-btn" name="coverPhoto" value="<?php echo $shopProfilePic ?>" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -95,11 +109,11 @@ $conn->close();
     
     <div class="row">
       <label class="form-label">Shop Name</label><br>
-      <input type="text" class="form-control" name="name" value='$name'/>
+      <input type="text" class="form-control" name="name" value="<?php echo $shopName ?>" required />
     </div>  
     <div class="row">
       <label class="form-label">Shop Description</label><br>
-      <textarea class="form-control"  rows="3" name="description" value='$description'></textarea>
+      <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
     <div class="row">
       <div id="uploadContainer" class="imageContainer clearfix">
@@ -107,7 +121,7 @@ $conn->close();
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value='$imageVideo' onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
     <div class="text-center">
@@ -115,6 +129,9 @@ $conn->close();
     </div> 
     </form>
   </div>
+  <?php
+    }
+  ?>
 </div>
 <!-- /.container-fluid -->
 

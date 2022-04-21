@@ -1,42 +1,91 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    $orderid = $_GET['order_id'];
+
+    //=========sql to get order information=============
+    $deliverymethod="";
+    $totalprice = 0;
+    $shippingfee = 8.6;
+    $orderinfosql = "SELECT
+    myOrder.order_id,
+    myOrder.order_status,
+    myOrder.delivery_method,
+    myOrder.order_date,
+    myOrder.tracking_number,
+    user.username,
+    userAddress.contact_name,
+    userAddress.phone_number,
+    userAddress.address
+    FROM
+    myOrder
+    JOIN user ON myOrder.user_id = user.user_id
+    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    WHERE myOrder.order_id = '$orderid';";
+    $stmt = $conn->prepare($orderinfosql);
+    $stmt->execute();
+    $oresult = $stmt->get_result();
+    while ($orow = $oresult->fetch_assoc()) {
+        $orderid = $orow['order_id'];
+        $orderstatus = $orow['order_status'];
+        $deliverymethod = $orow['delivery_method'];
+        $username = $orow['username'];
+        $contactname = $orow['contact_name'];
+        $phone = $orow['phone_number'];
+        $address = $orow['address'];
+        $trackingnum = $orow['tracking_num'];
+        $orderdate = $orow['order_date'];
+    }
+    $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
+
+    //=========sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $stmt = $conn->prepare($statussql);
+    $stmt->execute();
+    $sresult = $stmt->get_result();
+    
 ?>
+<?php
+//to determine tracking status bar 
+echo $orderstatus;?>
+<input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
     <!--Horizontal Order Tracking Status-->
     <div class="card mb-3">
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking Order No - </span><span class="text-size-medium">34VB5540K83</span></div>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Shipped Via:</span>DHL</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Processing Order</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span> SEP 09, 2017</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                <div class="step completed">
+                <div class="step" id="placed">
                     <div class="step-icon-wrap">
                         <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
-                    <h5 class="step-title">Confirmed Order</h5>
+                    <h5 class="step-title">Order Placed</h5>
                 </div>
-                <div class="step completed">
+                <div class="step" id="paid">
                     <div class="step-icon-wrap">
-                        <div class="step-icon "><i class="fa fa-box"></i></div>
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
                     </div>
-                    <h5 class="step-title">Processing Order</h5>
+                    <h5 class="step-title">Order Paid</h5>
                 </div>
-                <div class="step">
+                <div class="step" id="shipped">
                     <div class="step-icon-wrap">
                         <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
-                    <h5 class="step-title">Product Dispatched</h5>
+                    <h5 class="step-title">Order Shipped Out</h5>
                 </div>
-                <div class="step">
-                    <div class="step-icon-wrap">
+                <div class="step" id="delivered">
+                    <div class="step-icon-wrap" >
                         <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
-                    <h5 class="step-title">Product Delivered</h5>
+                    <h5 class="step-title">Order Delivered</h5>
                 </div>
             </div>
             <hr>
@@ -46,28 +95,33 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name">Yee YingYing</div>（+60）1117795416<br>
-                    <div id="address">9-13-9， Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"> </div>(+60)1117795416<br>
+                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
                 </div>
             </div>
             <hr>
-            <!--Shipping Progress table-->
-            <table class="table track-shipping">
+             <!--Shipping Progress table-->
+             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Location</th>
                         <th scope="col">Date</th>
                         <th scope="col">Activity</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php                       
+                     while ($srow = $sresult->fetch_assoc()) {
+                ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td><?php echo $srow['datetime'] ?></th>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
+                <?php 
+                }
+                ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 
@@ -180,6 +234,17 @@
 <?php
     require __DIR__ . '/footer.php'
 ?>
+<script src="//www.tracking.my/track-button.js"></script>
+<script>
+  function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+
+</script>
 
 <style>
     body {
@@ -447,3 +512,34 @@
     color: green;
     }
 </style>
+
+<script>
+var orderstatus = document.getElementById("orderstatus").value;
+
+
+console.log(orderstatus);
+if(orderstatus == 'Placed')
+{
+    document.getElementById("placed").className ="step completed";
+}
+else if(orderstatus == 'Paid')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+}
+else if(orderstatus == 'Shipped')
+{
+    console.log('can work');
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className ="step completed";
+    document.getElementById("shipped").className ="step completed";
+}
+else if(orderstatus == 'Delivered')
+{
+    document.getElementById("placed").className ="step completed";
+    document.getElementById("paid").className = "step completed";
+    document.getElementById("shipped").className ="step completed";
+    document.getElementById("delivered").className ="step completed";
+}
+
+</script>

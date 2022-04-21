@@ -24,7 +24,7 @@ if(isset($_POST['addCard']))
 		$stmt_u = mysqli_query($conn, $sql_u);
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
-			echo("<script>alert('Bank Account Already Exists');</script>");
+			echo("<script>alert('Card Already Exists');</script>");
 		}
 		else
 		{
@@ -65,7 +65,7 @@ if(isset($_POST['addCard']))
 
 								<div class="form-group">
 								<label>Expiry Date (MM/YY)</label>
-								<input required type="text" name="expDate" maxlength="5" class="form-control"/>
+								<input required type="text" name="expDate" pattern="[0-9]{2}+/[0-9]{2}" maxlength="5" class="form-control"/>
 								</div>
 								
 								<div class="form-group">

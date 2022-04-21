@@ -102,7 +102,7 @@ if(mysqli_num_rows($result) > 0)
 		<tr>
 	</table>
 	
-	<form action = "product.php" method = "POST">
+	<form action = "" method = "POST">
 		<input type = "hidden" name = "pid" value = "'.$row["rr_id"].'">
 		<input type = "submit" name = "eProduct" value = "see more..." class="hyperlink">
 	</form>
@@ -116,7 +116,7 @@ if(mysqli_num_rows($result) > 0)
 }
 else
 {
- echo 'Data Not Found';
+ //echo 'Data Not Found';
 }
 
 ?>
