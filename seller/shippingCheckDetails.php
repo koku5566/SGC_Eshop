@@ -170,7 +170,7 @@
                                 ?>
                                 <tr>
                                 <?php 
-                                if ($orderstatus!='Shipped'&& $deliverymethod=='standard'){?>
+                                if ($orderstatus!='Shipped'&&$orderstatus!='Placed'&& $deliverymethod=='standard'){?>
                                 <form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                 <td><?php echo date("Y-m-d H:i:s");?></td>
                                 <td>Tracking No: <br>
