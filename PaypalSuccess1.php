@@ -108,7 +108,29 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $_SESSION['total'];
 
-    
+
+    $stock = $rowKL['product.product_stock'];
+    $variationStock = $row['product_stock'];
+    $deductQuantity1 = $stock - $product_quantity;
+    $deductQuantity2 = $variationStock - $product_quantity;
+     
+
+    if ($variation_id == "") {
+    $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
+    if ($stmt2 = mysqli_prepare($conn,$deductsql)){
+        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
+        $bp = mysqli_stmt_execute($stmt2);
+            mysqli_stmt_close($stmt2);
+    } 
+    }
+    else {
+        $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
+    if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
+        $bp1 = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
+        $bp1 = mysqli_stmt_execute($stmt3);
+            mysqli_stmt_close($stmt3);
+        }
+    }
 
   /*  echo(" 
         <span>".$invoice_id."</span>
