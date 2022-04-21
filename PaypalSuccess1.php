@@ -108,7 +108,7 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $_SESSION['total'];
 
-    $stock = $rowKL['product.stock'];
+/*     $stock = $rowKL['product.stock'];
     $deductQuantity = $stock - $product_quantity;
 
     if ($variation_id == "") {
@@ -126,7 +126,7 @@ $queryKL = mysqli_query($conn, $sql);
         $bp1 = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    }
+    } */
 
 
 
