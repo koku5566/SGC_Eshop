@@ -34,6 +34,8 @@
     }
 ?>
 
+<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="mainContainer">
 
