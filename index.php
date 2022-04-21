@@ -156,26 +156,27 @@
                             <?php 
                             
                             $sql_voucher =
-                            "SELECT 
-                            voucher.voucher_id,
-                            voucher.voucher_code,
-                            voucher.voucher_startdate,
-                            voucher.voucher_expired,
-                            voucher.voucher_display,
-                            voucher.voucher_type,
-                            voucher.voucher_limit,
-                            voucher.voucher_details,
-                            voucher.discount_amount,
-                            shopProfile.shop_name,
-                            shopProfile.shop_profile_cover,
-                            product.product_name
+                            "SELECT *
+                            -- voucher.voucher_id,
+                            -- voucher.voucher_code,
+                            -- voucher.voucher_startdate,
+                            -- voucher.voucher_expired,
+                            -- voucher.voucher_display,
+                            -- voucher.voucher_type,
+                            -- voucher.voucher_limit,
+                            -- voucher.voucher_details,
+                            -- voucher.discount_amount,
+                            -- shopProfile.shop_name,
+                            -- shopProfile.shop_profile_image,
+                            -- product.product_name
 
                             FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-                            JOIN product ON productVoucher.product_id = product.product_id	
-                            JOIN user ON product.shop_id = user.user_id
-                            JOIN shopProfile ON user.user_id = shopProfile.shop_id
-                            GROUP BY voucher.voucher_id"; 
+                            -- JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+                            -- JOIN product ON productVoucher.product_id = product.product_id	
+                            -- JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+                            -- WHERE shopProfile.shop_id = '$shopId'
+                            -- GROUP BY voucher.voucher_id
+                            "; 
 
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
@@ -183,23 +184,23 @@
                             
                             while ($row = $result->fetch_assoc()) {
 
-                            $td = date('y-m-d');
-                            $expr = $row['voucher_expired'];
+                            // $td = date('y-m-d');
+                            // $expr = $row['voucher_expired'];
 
-                            $today = strtotime($td);
-                            $expired = strtotime($expr);
+                            // $today = strtotime($td);
+                            // $expired = strtotime($expr);
 
-                            if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
+                            // if($row['voucher_display'] > 0  && $row['voucher_limit'] > 0 && $expired > $today){
                             
                             ?>
 
                             <div class="col-md-2 m-2">
                             <div class="card" id="vouchercard">
                                 <div class="container">
-                                    <img class="m-4" src="../img/<?php echo $row['shop_profile_cover']; ?>" id="voucherlogo">
+                                    <img class="m-4" src="../img/" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                    <h6 class="card-title"><strong></strong></h6>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
@@ -229,10 +230,10 @@
                                     <div class="d-flex justify-content-center">
                                         <div class="card m-2" id="termsvouchercard">
                                         <div class="container">
-                                            <img class="m-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                            <img class="m-4" src="../img/" id="voucherlogo">
                                         </div>
                                         <div class="card-body">
-                                            <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                            <h6 class="card-title"><strong></strong></h6>
                                             <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
                                             <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                         </div>
@@ -242,7 +243,7 @@
                                 <div class="tnccontainer">
                                     <div class="container">
                                         <strong>Product</strong>
-                                        <p><?php echo $row['product_name']; ?></p>
+                                        <p></p>
                                     </div>
                                     <div class="container">
                                         <strong>More Details</strong>
@@ -257,8 +258,9 @@
                             </div>
                         </div>
                             
-                            <?php }else{
-                            }
+                            <?php 
+                            // }else{
+                            // }
                         }?>
 
                             
