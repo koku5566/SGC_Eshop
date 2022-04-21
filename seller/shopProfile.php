@@ -118,9 +118,9 @@
     //$shopProfilePic = $_POST['profilePicContainer'];
     //$shopProfilePic = array_filter($_FILES['img']['name']);
 
-    if($_FILES['proPic']['tmp_name'] != "")
+    if($_FILES['profileImage']['tmp_name'] != "")
 		{
-			$shopProfilePic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+			$shopProfilePic = addslashes(file_get_contents($_FILES['profileImage']['tmp_name']));
 		}
 
     $shopName = $_POST['name'];
@@ -205,20 +205,7 @@
         <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
-    <div class="imageDiv">
-					<div class="image-container">				
-						<div class="image-layer">
-						<img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" alt="Image.jpg">
-						</div>
 
-						<div class="image-tools-add">
-							<label class="custom-file-upload">
-								<input type="file" accept=".png,.jpg,.jpeg"name="proPic" id="profilePic" value=""/>
-								<i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-							</label>
-						</div>
-					</div>
-				</div>
 
     <div class="text-center">
       <button type="submit" class="saveBtn" name="update">Save</button>
