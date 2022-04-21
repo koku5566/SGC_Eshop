@@ -118,9 +118,9 @@
     //$shopProfilePic = $_POST['profilePicContainer'];
     //$shopProfilePic = array_filter($_FILES['img']['name']);
 
-    if($_FILES['profileImage']['tmp_name'] != "")
+    if($_FILES['proPic']['tmp_name'] != "")
 		{
-			$shopProfilePic = addslashes(file_get_contents($_FILES['profileImage']['tmp_name']));
+			$shopProfilePic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
 		}
 
     $shopName = $_POST['name'];
@@ -170,7 +170,7 @@
           $shopDescription = $row['shop_description'];
       ?>
 
-      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
       <img class="relative bg-image img-fluid" name="coverContainer" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto" hidden/>
@@ -205,6 +205,21 @@
         <input class="form-control" type="file" id="uploadBtn" name="imageVideo" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
+    <div class="imageDiv">
+					<div class="image-container">				
+						<div class="image-layer">
+						<img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="" alt="Image.jpg">
+						</div>
+
+						<div class="image-tools-add">
+							<label class="custom-file-upload">
+								<input type="file" accept=".png,.jpg,.jpeg"name="proPic" id="profilePic" value=""/>
+								<i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+							</label>
+						</div>
+					</div>
+				</div>
+
     <div class="text-center">
       <button type="submit" class="saveBtn" name="update">Save</button>
     </div> 
