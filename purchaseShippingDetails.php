@@ -214,7 +214,7 @@
                                 alt="<?php echo $productname ?>" style="object-fit:contain;width:15%;height:15%"></td>
                         <td><?php echo $productname?></td>
                         <td></td>
-                        <td>RM<?php echo $amt?>.00</td>
+                        <td>RM<?php echo $productprice?>.00</td>
                         <td>x <?php echo $qty ?></td>
                         <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
