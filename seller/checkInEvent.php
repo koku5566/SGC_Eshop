@@ -53,11 +53,11 @@ $eventName = $row['event_name'];
                             die('Error with execute: ') . htmlspecialchars($stmt5->error);
                         }
                             if(mysqli_stmt_affected_rows($stmt5) == 1){
-
+                                echo "<script>alert(\"Participants Successful Check in\");</script>";
                             }
                             else{
                                 $error = mysqli_stmt_error($stmt5);
-                                echo "<script>alert(Participants Successful Check in);</script>";
+                                echo "<script>alert($error);</script>";
                             }		
                             mysqli_stmt_close($stmt5);
                     }
@@ -96,24 +96,7 @@ $eventName = $row['event_name'];
                 </div>
         </div>
     </div>
-    <div class="card" style="margin-top: 30px;">
-        <div class="card-header">
-            <h5 class="mb-0" style="text-align: center;">Participant Details</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Ticket ID</th>
-                            <th>Ticket Name</th>
-                            <th>Ticket Generate Date</th>
-                            <th>Check-in Status</th>
-                            <th>Check-in Date</th>
-                            <th>Check-in Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    
                         <?php
                             if(isset($_POST["searchTicket"]))
                             {
@@ -132,6 +115,24 @@ $eventName = $row['event_name'];
                                 $tName = $row1['ticket_name'];
                                 $ticketDate = $row1['ticketGenerate_Date'];
                                 echo("
+                                <div class=\"card\" style=\"margin-top: 30px;\">
+                                <div class=\"card-header\">
+                                    <h5 class=\"mb-0\" style=\"text-align: center;\">Participant Details</h5>
+                                </div>
+                                <div class=\"card-body\">
+                                    <div class=\"table-responsive\">
+                                        <table class=\"table\">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ticket ID</th>
+                                                    <th>Ticket Name</th>
+                                                    <th>Ticket Generate Date</th>
+                                                    <th>Check-in Status</th>
+                                                    <th>Check-in Date</th>
+                                                    <th>Check-in Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                 <tr>
                                 <td>$id</td>
                                 <td>$tName</td>
@@ -169,7 +170,7 @@ $eventName = $row['event_name'];
                                 }
                                                        
                         ?>
-                                    </form>
+            </form>
         </div>
     </div>
 
