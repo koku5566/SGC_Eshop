@@ -66,7 +66,7 @@
     $sresult = $stmt->get_result();
 
     if(isset($_POST["completeBtn"])){
-
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $status = "Completed";
         echo $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
@@ -203,6 +203,7 @@
             
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
                     <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
                     </form>
                 <?php } ?>
