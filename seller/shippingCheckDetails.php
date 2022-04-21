@@ -783,7 +783,7 @@ else{
     {
         document.getElementById("pplaced").className ="step completed";
         document.getElementById("ppaid").className ="step completed";
-        document.getElementById("ppreparing").className ="step completed";
+        document.getElementById("pready").className ="step completed";
     }
     else if(orderstatus == 'Completed')
     {
