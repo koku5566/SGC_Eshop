@@ -74,6 +74,30 @@ $stmt = $conn->prepare($pickupsql);
 $stmt->execute();
 $pickupresult = $stmt->get_result();
 
+
+
+/*QUERY FOR SHIPPING */
+$shippingsql = "SELECT
+DISTINCT myOrder.order_id,
+myOrder.order_status,
+myOrder.delivery_method,
+myOrder.tracking_number,
+product.product_name,
+product.product_cover_picture,
+product.product_price,
+orderDetails.quantity,
+user.username,
+orderDetails.amount
+FROM
+myOrder
+JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+JOIN user ON myOrder.user_id = user.user_id
+JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.order_status != 'Shipped'";
+
+$stmt = $conn->prepare($pickupsql);
+$stmt->execute();
+$pickupresult = $stmt->get_result();
 ?>
 
 
