@@ -341,11 +341,6 @@
                         </li>
 
                         <?php else :?>
-                        <!--
-                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                        -->
 
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Sign Up</a>
