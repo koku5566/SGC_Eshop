@@ -253,17 +253,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer">
+                                    <div class="tnccontainer m-2">
                                         <div class="container">
                                             <strong>Product</strong>
                                             <p>
                                                 <?php 
                                                     while ($r = $res->fetch_assoc()) {
                                                         $voucherid = $r['voucher_id'];
+                                                        $voucherid2 = $row['voucher_id'];
 
                                                         for($i = 0; $i < count($voucherid); $i++){
-                                                            if($voucherid[$i] === $row['voucher_id']){
-                                                                echo $r['product_name']; 
+                                                            for($x = 0; $x < count($voucherid2); $x++){
+                                                                if($voucherid[$i] === $voucherid2[$x]){
+                                                                    echo $r['product_name']; 
+                                                                }
                                                             }
                                                         }
                                                     }
