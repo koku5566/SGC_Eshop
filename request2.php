@@ -62,6 +62,36 @@ if (isset($_POST["completeRegister"])) {
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
                     
+                    $sql5 = "SELECT * FROM `ticketType` WHERE `ticketType_id` = $ticket";
+                    $result5 = mysqli_query($conn, $sql5);
+                    $row5 = mysqli_fetch_assoc($result5);
+                    $currentUpdateQtt = $row5['current_quantity']--;
+
+
+                    $sqlupdate = "UPDATE `ticketType` SET `current_quantity`=? WHERE `ticketType_id` = ?";
+                    if ($stmt5 = mysqli_prepare($conn,$sqlupdate)){
+                        if(false===$stmt5){
+                            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                        }
+                        $bp = mysqli_stmt_bind_param($stmt5,"ii",$currentUpdateQtt,$ticket);
+                        if(false===$bp){
+                            die('Error with bind_param: ') . htmlspecialchars($stmt5->error);
+                        }
+                        $bp = mysqli_stmt_execute($stmt5);
+                        if ( false===$bp ) {
+                            die('Error with execute: ') . htmlspecialchars($stmt5->error);
+                        }
+                            if(mysqli_stmt_affected_rows($stmt5) == 1){
+                                
+                            }
+                            else{
+                                $error = mysqli_stmt_error($stmt5);
+                                echo "<script>alert($error);</script>";
+                            }		
+                            mysqli_stmt_close($stmt5);
+                    }
+
+
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
