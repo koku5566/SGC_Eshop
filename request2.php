@@ -6,8 +6,8 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Api\ItemList; 
 
-require _DIR_. '/header.php';
-require _DIR_. '/paypalConfig.php';
+require __DIR__ . '/header.php';
+require __DIR__ . '/paypalConfig.php';
 
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $ticket = $_SESSION['ticketSelected'];
