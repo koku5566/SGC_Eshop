@@ -167,13 +167,7 @@ $queryKL = mysqli_query($conn, $sql);
         $message .= $HTMLcontent . "\r\n";
         $message .= "--{$boundary}\r\n";
         $returnPath = "-f" . $from2;
-
-        if (@mail($to, $subject, $message, $headers, $returnPath)) {
-            echo "<script>alert('A purchase confirmation email has been sent to $buyerEmail')</script>";
-        } else {
-            echo "<script>alert('Error')</script>";
         }
-    } 
     else {
         $error = mysqli_stmt_error($stmt);
         echo "<script>alert($error);</script>";
