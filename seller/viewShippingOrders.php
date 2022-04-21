@@ -3,7 +3,7 @@
 ?>
 
 <?php
-/*QUERY FOR ORDER*/
+/*QUERY FOR ORDER */
 $sql = "SELECT
 DISTINCT myOrder.order_id,
 myOrder.order_status,
