@@ -6,10 +6,7 @@
     $paymentid = $_GET['payid'];
 		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid'");
 		$row1 = mysqli_fetch_array($results);
-?>
 
-
-<?php  
 $uid = "U000018";
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
 cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
@@ -113,9 +110,14 @@ $queryKL = mysqli_query($conn, $sql);
         if (false === $bp) {
             die('Error with execute: ') . htmlspecialchars($stmt->error);
     }
+    else {
+        $error = mysqli_stmt_error($stmt);
+        echo "<script>alert($error);</script>";
+        }
     mysqli_stmt_close($stmt);
+    }
 }
-}
+
 
 
 
