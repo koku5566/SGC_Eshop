@@ -246,7 +246,7 @@ $completedresult = $stmt->get_result();
                             <?php       
                               $sqlheader = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
                               $resultheader = mysqli_query($conn, $sqlheader);
-                              if (mysqli_num_rows($resultkoku1) > 0) {
+                              if (mysqli_num_rows($resultheader) > 0) {
                             while ($rowheader = mysqli_fetch_assoc($resultheader)) {
                                       //Loop header
                             ?>
