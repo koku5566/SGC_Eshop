@@ -237,6 +237,10 @@
                                     ;
                                 }
                         }?>
+
+                        <div class="alert alert-success" role="alert" id="alert">
+                        Voucher has been created succesfully!
+                        </div>
                         
                     </div>
                 </div>
