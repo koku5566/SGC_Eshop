@@ -44,17 +44,14 @@ google.charts.setOnLoadCallback(drawColChart);
 function drawColChart() {
 
 var data = google.visualization.arrayToDataTable([
-         ['Ticket Type', 'Ticket Sold',],         
-         ['Gold', 19.30,],
- <?php 
-
- foreach ($query_run as $row)
- {          
-    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
- }
-   ?>
-       ['Platinum', 21.45], // CSS-style declaration
-      ]);
+    ['Ticket Type', 'Ticket Sold',],         
+    <?php 
+    foreach ($query_run as $row)
+    {          
+       echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+    }
+      ?>
+  ]);
 
 var options = {
    width: 800,
