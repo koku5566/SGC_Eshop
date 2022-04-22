@@ -9,7 +9,7 @@
     $output = "";
     $query = mysqli_query($conn, $sql);
     if(mysqli_num_rows($query) > 0){
-        include_once "info.php";
+        include_once "/livechat/backend/info.php";
     }else{
         $output .= 'No user found related to your search term';
     }

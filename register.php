@@ -14,7 +14,7 @@ if(isset($_POST['signup']))
 			$date = date("d/m/Y");
 
 			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username OR email = '$username' OR '$email'";
+				$sql_u = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
 
 				$stmt_u = mysqli_query($conn, $sql_u);
 
