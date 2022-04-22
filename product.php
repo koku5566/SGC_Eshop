@@ -695,14 +695,13 @@
 									<!-- Card Body -->
 									<div class=\"card-body\">
 										<!-- Product List -->
-										<div class=\"card-content row mb-3\" style=\"display: none\">
+										<div class=\"card-content row mb-3\">
 
 							
 							");
 
 							while($row = mysqli_fetch_assoc($result)) {
 
-								echo("Enter description");
 								//Fetch each product information
 								$id = $row['product_id'];
 								$sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
@@ -715,7 +714,6 @@
 								WHERE A.product_id = '$id'
 								LIMIT 1";
 								$result_1 = mysqli_query($conn, $sql_1);
-								echo($sql_1);
 
 								if (mysqli_num_rows($result_1) > 0) {
 									while($row_1 = mysqli_fetch_assoc($result_1)) {
