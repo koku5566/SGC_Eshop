@@ -155,7 +155,7 @@
       }
       ?>
 
-      <img class="relative bg-image img-fluid" name="profileImage" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
+      <img class="relative bg-image img-fluid" name="backgroundImage" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
         <input type="file" id="actual-btn" name="profileImage[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
@@ -168,7 +168,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage[]" value="" onchange="loadFile(event)"/>
-        <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profileImage" width="200"/>
+        <img src="<?php echo $shopProfilePic ?>" id="profileImage" name="profileImage" width="200"/>
       </div>
     </div>
     
