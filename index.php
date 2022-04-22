@@ -10,6 +10,42 @@
     }
 ?>
 
+<?php 
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    //Login
+    if(!isset($_SESSION['login']))
+    {
+        $_SESSION['login'] = false;
+    }
+    if(!isset($_SESSION['name']))
+    {
+        $_SESSION['name'] = "";
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
+    }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
+    if(!isset($_SESSION['role']))
+    {
+        $_SESSION['role'] = "";
+    }
+
+    //Set true to enable seller register
+    $_SESSION['enableSeller'] = false;
+?>
+
 <?php
     //Fetch each promotion image information
     $promotion_title = array();
@@ -48,7 +84,7 @@
                                         <!-- PHP Loop here - Category -->
                                         <?php
                                             //Main Category
-                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id ORDER BY B.category_name ASC";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
@@ -61,7 +97,7 @@
                                                         $picName = "/img/category/".$row["category_pic"];
                                                     }
 
-                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1' ORDER BY B.category_name ASC";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
                                                     if (mysqli_num_rows($result_1) > 0) {
@@ -152,7 +188,7 @@
 
                     <br>
                     <!-- Voucher -->
-                        <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
+                    <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
                         <?php 
                             
                             $sql_voucher =
@@ -215,9 +251,8 @@
                                         <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                         <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                         <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
-                                        <?php while ($r = $res->fetch_assoc()) {?>
                                         <u>
-                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $r['voucher_id']; ?>">
+                                            <a type="" class="" data-toggle="modal" data-target="#termsModal<?php echo $row['voucher_id']; ?>">
                                             T&C applied.
                                             </a>
                                         </u>
@@ -229,7 +264,7 @@
                             </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="termsModal<?php echo $r['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+                        <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -256,17 +291,18 @@
                                         <div class="container">
                                             <strong>Product</strong>
                                             <?php 
+                                                    while ($r = $res->fetch_assoc()) {
                                                         // $voucherid = $r['voucher_id'];
                                                         // $voucherid2 = $row['voucher_id'];
 
                                                         // for($i = 0; $i < count($voucherid2); $i++){
                                                         //     for($x = 0; $x < count($voucherid); $x++){
-                                                                 if($r['voucher_id'] = $row['voucher_id']){
+                                                                 if($r['voucher_id'] == $row['voucher_id']){
                                             ?>
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php 
                                             // }}
-                                        }
+                                            }
                                         }?>
                                         </div>
                                         <div class="container">
@@ -284,12 +320,12 @@
                             
                             <?php 
                                 } else{
-
+                                    ;
                                 }
                         }?>
 
                             
-                        </div>
+                    </div>
 
                     <br>
 
@@ -331,7 +367,7 @@
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             
                                                             echo("
-                                                                <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                     <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
                                                                         <div class=\"card\">
                                                                             <div class=\"image-container\">
@@ -340,9 +376,6 @@
                                                                             <div class=\"card-body\">
                                                                                 <div class=\"Name\">
                                                                                     <p class=\"card-text product-name\">".$row_1['product_name']."</p>
-                                                                                </div>
-                                                                                <div class=\"Tag\">
-                                                                                    <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
                                                                                 </div>
                                                                                 <div class=\"Price\">
                                                             ");

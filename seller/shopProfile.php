@@ -50,6 +50,12 @@
 //$conn->close();
 ?>
 
+<!-- Select Data -->
+<?php
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 4";
+  $result1 = mysqli_query($conn, $sql); 
+?>
+
 <!-- Update Profile -->
 <?php
 //if ($conn->connect_error){
@@ -67,10 +73,81 @@
 //$conn->close();
 ?>
 
-<!-- Select Data -->
+<!-- Update Profile -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 8";
-  $result1 = mysqli_query($conn, $sql); 
+ 
+ session_start();
+ if(isset($_POST['update']))
+ {
+    //$shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    //$shopMedia = $_POST['mediaContainer'];
+    $select= "SELECT * FROM shopProfile WHERE id='$id'";
+    $sql = mysqli_query($conn,$select);
+    $row = mysqli_fetch_assoc($sql);
+    $res= $row['id'];
+    if($res === $id)
+    {
+       echo 'Hello';
+       $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
+       $sql2=mysqli_query($conn,$update);
+       echo 'Hi';
+       if($sql2)
+       { 
+           /*Successful*/
+           //header('location:Dashboard.php');
+           echo 'Success';
+       }
+       else
+       {
+           /*sorry your profile is not update*/
+           //header('location:Profile_edit_form.php');
+           echo 'Fail';
+       }
+    }
+    else
+    {
+        /*sorry your id is not match*/
+        //header('location:Profile_edit_form.php');
+        echo 'Error!';
+    }
+ }
+?>
+
+<!-- Upload Data -->
+<?php
+//  if(isset($_POST['update']))
+//  {
+//    $shopProfileCover = $_POST['coverContainer'];
+//    //$shopProfilePic = $_POST['profilePicContainer'];
+//    //$shopProfilePic = array_filter($_FILES['img']['name']);
+//    $shopName = $_POST['name'];
+//    $shopDescription = $_POST['description'];
+//    $shopMedia = $_POST['mediaContainer'];
+//
+//    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
+//    $result2 = mysqli_query($conn,$query);
+//
+//    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
+//
+//
+//
+//    if($result2)
+//    {
+//      echo 'Successfully Update';
+//    }
+//    else
+//    {
+//      echo 'Please Check Your Query';
+//    }
+//  }
+//  else
+//  {
+//    echo 'error';
+//  }
 ?>
 
 <!-- Upload Image -->
@@ -111,38 +188,6 @@
 //echo $statusMsg; 
 ?>
 
-<?php
-  if(isset($_POST['update']))
-  {
-    $shopProfileCover = $_POST['coverContainer'];
-    //$shopProfilePic = $_POST['profilePicContainer'];
-    //$shopProfilePic = array_filter($_FILES['img']['name']);
-    $shopName = $_POST['name'];
-    $shopDescription = $_POST['description'];
-    $shopMedia = $_POST['mediaContainer'];
-
-    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
-    $result2 = mysqli_query($conn,$query);
-
-    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
-
-
-
-    if($result2)
-    {
-      echo 'Successfully Update';
-    }
-    else
-    {
-      echo 'Please Check Your Query';
-    }
-  }
-  else
-  {
-    echo 'error';
-  }
-?>
-
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -159,13 +204,14 @@
       <?php
         while ($row=mysqli_fetch_assoc($result1))
         {
+          $shopCoverImage = $row['shop_profile_cover'];
           $shopProfilePic = $row['shop_profile_image'];
           $shopName = $row['shop_name'];
           $shopDescription = $row['shop_description'];
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-      <img class="relative bg-image img-fluid" name="coverContainer[]" src="https://edufair.fsi.com.my/img/sponsor/20/cover_1530346726.jpeg"><br><br> <?php //echo $shopProfilePic ?>
+      <img class="relative bg-image img-fluid" name="coverContainer[]" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
         <input type="file" id="actual-btn" name="coverPhoto[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>

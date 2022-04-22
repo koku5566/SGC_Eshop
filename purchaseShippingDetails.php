@@ -26,7 +26,6 @@
     product.product_cover_picture,
     shopProfile.shop_name,
     shopProfile.shop_profile_image
-    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
@@ -46,7 +45,7 @@
         $contactname = $orow['contact_name'];
         $phone = $orow['phone_number'];
         $address = $orow['address'];
-        $trackingnum = $orow['tracking_num'];
+        $trackingnum = $orow['tracking_number'];
         $orderdate = $orow['order_date'];
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
@@ -65,6 +64,7 @@
     $stmt->execute();
     $sresult = $stmt->get_result();
 
+    //complete pick up
     if(isset($_POST["completeBtn"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $status = "Completed";
@@ -105,8 +105,14 @@
     ?>
     <!--Horizontal Order Tracking Status-->
     <div class="card shadow mb-3">
-        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
+    <div class="p-4 text-center text-white text-lg bg-dark rounded-top">
+        <span class="text-uppercase">
+        <?php if($deliverymethod =='self-collection'):?>
+        PICK UP ORDER
+        <?php  else :?>
+        Tracking No - </span><span class="text-size-medium"><?php echo $trackingnum?></span>
+        <?php endif; ?>
+        </div>      
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>

@@ -326,7 +326,7 @@
                                 </a>
 
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "SELLER") :?>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="../getOrder.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Purchase
                                 </a>
