@@ -43,7 +43,7 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"></div>
+                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
                         <div class="col-4">
                             <?php echo $row2['product_name']; ?>
                         </div>
@@ -61,12 +61,40 @@ $order_id = $_GET['order_id'];
                 </div>
                 <?php } ?>
             </div>
+            <div class="col-4">
+                    <div class="row p-2">
+                        <div class="col">Total:</div>
+                        <div class="col"> RM<?php echo $row2['amount']?>.00</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col">Discounts:</div>
+                        <div class="col">-RM0.00</div>
+                    </div>
+                    <div class="row p-2">
+                        
+                        <div class="col">Delivery Fees:</div>
+                        <div class="col">
+                            RM8.60
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        
+                        <div class="col">
+                            <h5>Order Total:</h5>
+                           
+                        </div>
+                        <div class="col red-text">
+                            <h5><strong>RM<?php echo $row2['amount']?></strong></h5>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-footer">
                 <?php if($row['order_status'] =='Paid'){?>
                     <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
                     <?php } else{ ?>
                     <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
                     <?php }?>
+                    
                 </div>
                
             </div>
