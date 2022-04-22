@@ -56,6 +56,7 @@
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
     }
+    echo 'tn:',$trackingnum;
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
 
