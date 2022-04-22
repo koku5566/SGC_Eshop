@@ -92,11 +92,11 @@
                         <span class="badge badge-primary">
                            <?php 
                            
-                              if($r['voucher_status'] = 2 ){
+                              if($r['voucher_status'] == 2 ){
                                  echo "Pending";
-                              }elseif($r['voucher_status'] = 1 ){
+                              }elseif($r['voucher_status'] == 1 ){
                                  echo "Approved";
-                              }elseif($r['voucher_status'] = 0 ){
+                              }elseif($r['voucher_status'] == 0 ){
                                  echo "Rejected";
                               }
 
