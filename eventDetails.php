@@ -14,7 +14,7 @@ require __DIR__ . '/header.php'
 <?php
     if(isset($_POST['resendTicket']))
     {
-        $tEmail = mysqli_real_escape_string($conn, SanitizeString($_POST["emailTicket"]));
+        $tEmail = $_POST["emailTicket"];
         $sql1 = "SELECT * FROM `ticket` 
         INNER JOIN ticketTransaction ON `ticket`.`transaction_id` = `ticketTransaction`.`ticketOrder_id`
         INNER JOIN `event` ON `event`.`event_id` = `ticket`.`event_id` 

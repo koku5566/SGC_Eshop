@@ -4,6 +4,7 @@
 ?>
 <?php
 $sql_2 = "SELECT
+DISTINCT
 myOrder.order_id,
 myOrder.order_status,
 product.product_id,
@@ -19,7 +20,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-ORDER BY myOrder.order_id
+
+ORDER BY myOrder.order_id DESC
 ";
 $stmt_2 = $conn->prepare($sql_2);
 $stmt_2->execute();
