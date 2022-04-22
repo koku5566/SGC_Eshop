@@ -7,7 +7,7 @@
 	}
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		
+		$Login = false;
 		if(isset($_POST['username'],$_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
 			$username = $_POST['username'];
@@ -22,7 +22,7 @@
 			
 			if (mysqli_num_rows($result) > 0) {
 				while($row = mysqli_fetch_assoc($result)) {
-					
+					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
                     $_SESSION['uid'] = $row["user_id"];
