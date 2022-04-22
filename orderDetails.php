@@ -68,7 +68,7 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                     </div>
                 </div>
                 <br>
-                <?php } ?>
+                
             </div>
             <br>
             <div class="col-4" style="text-align:right; margin-left:60%">
@@ -106,7 +106,7 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                   
                     <span>Order Status: <?php echo $row2['order_status']?></span>
                 </div>
-               
+                <?php } ?>
             </div>
           
 
