@@ -663,7 +663,7 @@
 					<?php
 						$shopid = $_SESSION['shopId'];
 						$sql = "SELECT product_id FROM product WHERE product_status = 'A' AND shop_id = '$shopid' ORDER BY id DESC";
-
+						echo($sql);			  	
 						$result = mysqli_query($conn, $sql);
 
 						if (mysqli_num_rows($result) > 0) {
