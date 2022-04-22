@@ -48,7 +48,6 @@ if(isset($_GET['addressid']))
     //get subtotal
     if (isset($_POST['subtotal'])) {
         $_SESSION['subtotal'] = $_POST['subtotal'];
-        echo "<script>alert(".$_SESSION['subtotal'].");</script>";
     }
 
 
