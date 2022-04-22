@@ -26,7 +26,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '4'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '52'";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
@@ -158,7 +158,7 @@
 
       <img class="relative bg-image img-fluid" name="backgroundImage" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="profileImage[]" hidden/>
+        <input type="file" id="actual-btn" name="" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -169,7 +169,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage[]" value="" onchange="loadFile(event)"/>
-        <img src="<?php echo $shopProfilePic ?>" id="profileImage" name="profileImage" width="200"/>
+        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" width="200"/>
       </div>
     </div>
     
@@ -187,7 +187,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="profileImage[]" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
 
