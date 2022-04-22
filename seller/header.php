@@ -465,7 +465,7 @@
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
                                 <a class="dropdown-item" href="../index.php">
                                     <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Switch
+                                    User
                                 </a>
                                 <?php endif?>
                             
