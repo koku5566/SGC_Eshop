@@ -28,6 +28,9 @@
         //     <label>Product Quantity: <span>".$row['P_variation']."</span></label><br>
         //     <label>Product Quantity: <span>".$row['P_pic']."</span></label>";
         // }
+
+
+    //filter shop profile
 ?>
 
 <!-- Begin Page Content -->

@@ -40,7 +40,7 @@ if(isset($_POST['signup']))
 
 						$to = $email;
 						$subject = "SGC E-Shop New User Account";
-						$from = "reset-password@eshop.sgcprototype2.com";
+						$from = "user-account@sgcprototype2.com";
 						$from2 = "contact_us_mail@sgcprototype2.com";
 						$fromName = "SGC E-Shop";
 			
@@ -49,15 +49,15 @@ if(isset($_POST['signup']))
 						$headers .= "Content-Type: multipart/mixed;\r\n";
 						
 						$message = "
-						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com
+						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
 						
-						Change your password after first login. Thank You.
+						Change your password after first login. Thank You.<br>
 
-						Username: $username
+						Username: $username<br>
 						Password: $passwordE
-						";
+						)";
 			
-						$HTMLcontent = "<p><b>Dear ".$row["name"]."</b>,</p><p>$message</p>";
+						$HTMLcontent = "<p><b>Dear ".$_POST['username']."</b>,</p><p>$message</p>";
 						
 						$boundary = md5(time());
 						$headers .= " boundary=\"{$boundary}\"";
