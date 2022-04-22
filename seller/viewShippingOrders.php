@@ -315,7 +315,7 @@ $completedresult = $stmt->get_result();
 
 
 
-                            </div>
+                            
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php                       
