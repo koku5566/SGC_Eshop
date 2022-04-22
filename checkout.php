@@ -183,7 +183,7 @@ if(isset($_GET['addressid']))
                             $uid = "U000034";
                             $sql2 ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
