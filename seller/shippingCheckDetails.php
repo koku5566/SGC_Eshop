@@ -81,6 +81,7 @@
         }
     }
     
+    //pick up status update
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
@@ -88,17 +89,23 @@
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE order_id = '$orderid'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-            $_SESSION['success'] = "Order Status has been updated";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            $_SESSION['success'] = "Order Status has been updated";?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+
+            <?php
             } else {
-          $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+          $_SESSION['status'] = "Order status update failed";?>
+          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+
+          <?php
         }
     }
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
+<input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%; font-size:14px">
     <?php
@@ -114,36 +121,75 @@
         unset( $_SESSION['status'] ); //unset value when reload
     }
     ?>
-    <div class="card shadow m-4">
+        <div class="card shadow mb-3">
+        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
+        <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
+        </div>
         <div class="card-body">
-            <div class="container">
-                <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                    <div class="step" id="placed">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Placed</h5>
+            <!---------FOR STANDARD SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard'){?>
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="placed">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
                     </div>
-                    <div class="step" id="paid">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-receipt"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Paid</h5>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="paid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
                     </div>
-                    <div class="step" id="shipped">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon"><i class="fa fa-truck"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Shipped Out</h5>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="shipped">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-truck"></i></div>
                     </div>
-                    <div class="step" id="delivered">
-                        <div class="step-icon-wrap">
-                            <div class="step-icon "><i class="fa fa-house"></i></div>
-                        </div>
-                        <h5 class="step-title">Order Delivered</h5>
+                    <h5 class="step-title">Order Shipped Out</h5>
+                </div>
+                <div class="step" id="delivered">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-house"></i></div>
                     </div>
+                    <h5 class="step-title">Order Delivered</h5>
                 </div>
             </div>
+            <?php } else{?>
+            <!------------ FOR PICK UP( SELF-COLLECTION) STATUS --------->
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="pplaced">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="ppaid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="pready">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-box"></i></div>
+                    </div>
+                    <h5 class="step-title">Ready To Pick Up</h5>
+                </div>
+                <div class="step" id="pcompleted">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Completed</h5>
+                </div>
+            </div>
+            <?php }?>
+           
+            
+            
         </div>
     </div>
     <div class="card shadow mb-4">
@@ -197,7 +243,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <td>
                                             <?php echo $srow['datetime'] ?>
@@ -216,10 +262,10 @@
                                 ?>
                                     <tr>
                                         <?php 
-                                if($orderstatus =='Paid'&& $deliverymethod=='standard'){?>
+                                if($orderstatus =='Paid'&& $deliverymethod=='standard' && $orderstatus!='Delivered'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
-                                                <?php echo date("Y-m-d H:i:s");?>
+                                                <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $orderid?>">
@@ -238,7 +284,7 @@
                                         </form>
                                         <?php 
                                         }
-                                        else if($orderstatus=='Placed'){?>
+                                        else if($orderstatus =='Placed'){?>
                                             <td>
                                             </td>
                                             <td>Waiting for customer to pay </td>
@@ -246,19 +292,18 @@
                                         }
 
 
-                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection' && $orderstatus!='Completed'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
-                                                <?php echo date("Y-m-d H:i:s");?>
+                                                <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $orderid?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">
-                                                            <option value="Preparing"> Order is Preparing</option>
                                                             <option value="Ready">Pick-Up is Ready</option>
-                                                            <option value="Contact">You will contact customer</option>
+                                                            <option value="Failed">Fail to fulfill order</option>
                                                         </select>
                                                     </div>
                                                     <div class="col">
@@ -443,7 +488,6 @@
     .steps .step {
         display: block;
         width: 100%;
-        margin-bottom: 35px;
         text-align: center
     }
 
@@ -700,27 +744,58 @@
     }
 </style>
 <script>
-    var orderstatus = document.getElementById("orderstatus").value;
+var orderstatus = document.getElementById("orderstatus").value;
+var deliverymethod = document.getElementById("deliverymethod").value;
 
-    console.log(orderstatus);
-    if (orderstatus == 'Placed') {
-        document.getElementById("placed").className = "step completed";
+console.log(orderstatus);
+if (deliverymethod == "standard") {
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("placed").className ="step completed";
     }
-    else if (orderstatus == 'Paid') {
-        document.getElementById("placed").className = "step completed";
-        document.getElementById("paid").className = "step completed";
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
     }
-    else if (orderstatus == 'Shipped') {
+    else if(orderstatus == 'Shipped')
+    {
         console.log('can work');
-        document.getElementById("placed").className = "step completed";
-        document.getElementById("paid").className = "step completed";
-        document.getElementById("shipped").className = "step completed";
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
+        document.getElementById("shipped").className ="step completed";
     }
-    else if (orderstatus == 'Delivered') {
-        document.getElementById("placed").className = "step completed";
+    else if(orderstatus == 'Delivered')
+    {
+        document.getElementById("placed").className ="step completed";
         document.getElementById("paid").className = "step completed";
-        document.getElementById("shipped").className = "step completed";
-        document.getElementById("delivered").className = "step completed";
+        document.getElementById("shipped").className ="step completed";
+        document.getElementById("delivered").className ="step completed";
     }
+}
+else{
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("pplaced").className ="step completed";
+    }
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+    }
+    else if(orderstatus == 'Ready')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+        document.getElementById("pready").className ="step completed";
+    }
+    else if(orderstatus == 'Completed')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className = "step completed";
+        document.getElementById("pready").className ="step completed";
+        document.getElementById("pcompleted").className ="step completed";
+    }
+}
 
 </script>

@@ -11,7 +11,7 @@ require __DIR__ . '/header.php'
     <!-- Above template -->
     <div class="row">
         <?php
-        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id`";
+        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {

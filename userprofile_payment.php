@@ -59,7 +59,7 @@
 	<div class="col2" style="background-color: #a31f37;">
 		<div class="container-col2">
 			<div class="container-left-col2"><h3 style="color: white;">Credit / Debit Card</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
+			<div class="container-right-col2"><a class="btn btn-primary" style="color:#a31f37; background-color:white;" href="../userAddCard.php"><i class="fa-solid fa-plus"></i></a></div>
 		</div>
 	</div>
 </div>
@@ -95,7 +95,7 @@
 	<div class="col2" style="background-color: #a31f37;">
 		<div class="container-col2">
 			<div class="container-left-col2"><h3 style="color: white;">Bank Account</h3></div>
-			<div class="container-right-col2"><button class="btn btn-primary"><a style="color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus" aria-hidden="true"></i></a></button></div>
+			<div class="container-right-col2"><a class="btn btn-primary" style="color:#a31f37; background-color:white;" href="../userAddBank.php"><i class="fa-solid fa-plus"></i></a></div>
 		</div>
 	</div>
 </div>
@@ -139,6 +139,9 @@
 <style>
 .row2 {
 	display: flex;
+	background-color: lightgrey;
+	color: #a31f37;
+	border: 3px solid white;
 }
 
 .col2 {
@@ -148,14 +151,12 @@
 }
 
 .container-left-col2 {
-	padding:20px;
 	width: 100%;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 .container-right-col2 {
-	padding:15px;
 	width: 20%;
 	display: table-cell;
 	vertical-align: middle;

@@ -78,26 +78,20 @@ if(isset($_POST['update']))
 		if (mysqli_num_rows($res_data) > 0){
 			while($row = mysqli_fetch_array($res_data)){
 				echo("
-				<div class=\"imageDiv\">
+				<div class=\"form-group\">
 					<div class=\"image-container\">				
 						<div class=\"image-layer\">
-						<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
 
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
-								<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
-								<i class=\"fa fa-plus image-tools-add-icon\" aria-hidden=\"true\"></i>
+								<input type=\"file\" accept=\".png,.jpg,.jpeg\" name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
+								<i class=\"fa fa-edit\" aria-hidden=\"true\"></i> Change
 							</label>
 						</div>
 					</div>
 				</div>
-
-
-
-
-					<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\" id=\"aPic\" style=\"width:150px\">
-					<input type=\"file\" accept=\".png,.jpg,.jpeg\"name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\"/>
 					
 					<div class=\"form-group\">
 					<label>Username: </label>
@@ -121,7 +115,7 @@ if(isset($_POST['update']))
 
 					<div class=\"form-group\">
 					<label>Contact</label>
-					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control\"/>
+					<input required type=\"tel\" name=\"contact\" pattern=\"[0-9]{2,3,4}-[0-9]{7,}\" maxlength=\"13\" placeholder=\"0000-00000000\" value=\"".$row["contact"]."\" class=\"form-control\"/>
 					</div>
 					
 					<button type=\"submit\" class=\"btn btn-primary btn-block\" name=\"update\">Update</button>
@@ -142,6 +136,21 @@ if(isset($_POST['update']))
 </div>
 
 <?php require __DIR__ . '/footer.php' ?>
+
+<style>
+    .img-thumbnail{
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		border-radius: 10px;
+        border: 1px solid darkgrey;
+    }
+	.image-container{
+		text-align: center;
+		width: fit-content;
+		background-color: white;
+	}
+</style>
 
 <script>
 var img = document.getElementById('profilePic');

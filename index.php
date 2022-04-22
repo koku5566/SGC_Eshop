@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    if($_SESSION['role'] == "SELLER" || $_SESSION['role'] == "ADMIN")
+    if($_SESSION['role'] == "SELLER")
 	{
 		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
 		exit;
@@ -48,7 +48,7 @@
                                         <!-- PHP Loop here - Category -->
                                         <?php
                                             //Main Category
-                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id ORDER BY B.category_name ASC";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
@@ -61,7 +61,7 @@
                                                         $picName = "/img/category/".$row["category_pic"];
                                                     }
 
-                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1' ORDER BY B.category_name ASC";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
                                                     if (mysqli_num_rows($result_1) > 0) {
@@ -164,34 +164,46 @@
                             voucher.voucher_display,
                             voucher.voucher_limit,
                             voucher.voucher_startdate,
-                            productVoucher.voucher_id,
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
-                            shopProfile.shop_profile_image,
-                            product.product_name
+                            shopProfile.shop_profile_image
 
                             FROM voucher
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                             JOIN product ON productVoucher.product_id = product.product_id
                             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            -- GROUP BY voucher.voucher_id
+                            GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
                             "; 
 
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
+
+                            $sql_pn=
+                            "SELECT
+                            product.product_name,
+                            voucher.voucher_id
+                            
+                            FROM voucher
+                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                            JOIN product ON productVoucher.product_id = product.product_id
+                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                            ";
+
+                            $sm = $conn->prepare($sql_pn);
+                            $sm->execute();
+                            $res = $sm->get_result();
+                            
                             
                             while ($row = $result->fetch_assoc()) {
+                                $td = date('y-m-d');
+                                $expr = $row['voucher_expired'];
+                                
+                                $today = strtotime($td);
+                                $expired = strtotime($expr);
 
-                             $td = date('y-m-d');
-                             $expr = $row['voucher_expired'];
-
-                             $today = strtotime($td);
-                             $expired = strtotime($expr);
-
-                            if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
-                            
+                                if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
                             ?>
 
                             <div class="col-md-2 m-4">
@@ -216,7 +228,6 @@
                             </div>
 
                         <!-- Modal -->
-
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -240,10 +251,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tnccontainer">
+                                    <div class="tnccontainer m-5 p-3">
                                         <div class="container">
                                             <strong>Product</strong>
-                                            <p><?php echo $row['product_name']; ?></p>
+                                            <?php 
+                                                    while ($r = $res->fetch_assoc()) {
+                                                        // $voucherid = $r['voucher_id'];
+                                                        // $voucherid2 = $row['voucher_id'];
+
+                                                        // for($i = 0; $i < count($voucherid2); $i++){
+                                                        //     for($x = 0; $x < count($voucherid); $x++){
+                                                                 if($r['voucher_id'] == $row['voucher_id']){
+                                            ?>
+                                            <p><?php echo $r['product_name'];?>, </p>
+                                            <?php 
+                                            // }}
+                                            }
+                                        }?>
                                         </div>
                                         <div class="container">
                                             <strong>More Details</strong>
@@ -259,9 +283,9 @@
                         </div>
                             
                             <?php 
-                            } else{
-
-                            }
+                                } else{
+                                    ;
+                                }
                         }?>
 
                             
@@ -283,7 +307,7 @@
                                     <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";
 
                                             $result = mysqli_query($conn, $sql);
 

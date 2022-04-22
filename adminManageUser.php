@@ -3,7 +3,7 @@
 <?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
 	{
-		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/E404.php");?>'</script><?php
 		exit;
     }
 ?>
@@ -52,7 +52,7 @@
 				<h6 class="m-0 font-weight-bold text-primary">User Table</h6>
 			</div>
 			<div class="pt-2">
-				<a href="../adminAddUser.php" class="btn btn-primary">Add User</a>
+				<a href="../adminAddUser.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add User</a>
 			</div>
 		</div>
 	</div>
@@ -112,24 +112,6 @@
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-					<!--
-					<div class="imageDiv">
-						<div class="image-container">
-							<img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-							<div class="image-layer">
-							</div>
-							<div class="image-tools-delete hide">
-								<i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-							</div>
-							<div class="image-tools-add">
-								<label class="custom-file-upload">
-									<input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp">
-									<i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-								</label>
-							</div>
-						</div>
-					</div>
-					--->
 			</div>
 		</div>
 	</div>

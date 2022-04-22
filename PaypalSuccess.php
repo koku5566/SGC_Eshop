@@ -58,6 +58,36 @@ $price = 0;
                 }
                 if (mysqli_stmt_affected_rows($stmt1) == 1) {
                     $ticketID = mysqli_stmt_insert_id($stmt1);
+
+                    $sql5 = "SELECT * FROM `ticketType` WHERE `ticketType_id` = $ticket";
+                    $result5 = mysqli_query($conn, $sql5);
+                    $row5 = mysqli_fetch_assoc($result5);
+                    $currentUpdateQtt = $row5['current_quantity']-1;
+
+
+                    $sqlupdate = "UPDATE `ticketType` SET `current_quantity`=? WHERE `ticketType_id` = ?";
+                    if ($stmt5 = mysqli_prepare($conn,$sqlupdate)){
+                        if(false===$stmt5){
+                            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                        }
+                        $bp = mysqli_stmt_bind_param($stmt5,"ii",$currentUpdateQtt,$ticket);
+                        if(false===$bp){
+                            die('Error with bind_param: ') . htmlspecialchars($stmt5->error);
+                        }
+                        $bp = mysqli_stmt_execute($stmt5);
+                        if ( false===$bp ) {
+                            die('Error with execute: ') . htmlspecialchars($stmt5->error);
+                        }
+                            if(mysqli_stmt_affected_rows($stmt5) == 1){
+
+                            }
+                            else{
+                                $error = mysqli_stmt_error($stmt5);
+                                echo "<script>alert(".$row5['current_quantity'].");</script>";
+                            }		
+                            mysqli_stmt_close($stmt5);
+                    }
+
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -76,7 +106,7 @@ $price = 0;
                         font-family: 'Libre Barcode 128';font-size: 22px;
                     }
                     </style>
-                    <h3>Thank you for registering in eventName</h3>
+                    <h3>Thank you for registering in $eventName</h3>
                     <h5>Your Transaction Summary</h5>
                     <p>Transaction ID: $ticketOrderID</p>
                     <p>Buyer Name: $buyerName</p>
@@ -127,10 +157,9 @@ $price = 0;
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 <div class="container-fluid" style="width:80%">
-<div class="payment">
-  <div class="wrapper" style="background: #f1f7fc;">
-  <h1>Your Payment has been Successful</h1>
-  
+
+<div class="App">
+  <h1>Your Payment has been Successful</h1>  
 	  <div class="status">
       <h4>Payment Information</h4>
       <p>Reference Number: <?php echo $row['invoice_id']; ?></p>
@@ -140,10 +169,11 @@ $price = 0;
       <h4>Product Information</h4>
       <p>Product id: <?php echo $row['product_id']; ?></p>
       <p>Product Name: <?php echo $row['product_name']; ?></p>
+      <br>
+      <a href ="index.php"> <button class="btn btn-primary text-center" style="text-align: right;background: #A71337;width: 200.95px;">Return to Shop</button></a>
     </div>
   </div>
-</div>  
-</div>
+<br>
 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 

@@ -55,33 +55,67 @@
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
-        
-       
     }
-    $estimateddelivery = strtotime('+7 days',$orderdate); //to fix
+    $orderdate = strtotime($orderdate);
+    $estimateddelivery = strtotime('+7 day',$orderdate); 
 
     //=========sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
-    
+
+    //complete pick up
+    if(isset($_POST["completeBtn"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $status = "Completed";
+        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
+
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+            $_SESSION['success'] = "Thank you for updating!";?>
+            <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+            <?php
+           // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
+            } else {
+          $_SESSION['status'] = "Order status update failed";?>
+           <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+          <?php
+        }
+    }
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
-
+<input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
 
 <!-- Begin Page Content -->
 <div class="container-fluid mb-3" style="width:80%; margin-bottom:50px;">
+
+<?php
+    if(isset($_SESSION['success'])&& $_SESSION['success']!='')
+    {
+        echo '<div class="alert alert-primary" role="alert">'.$_SESSION['success'].'</div>';
+        unset($_SESSION['success']); //unset value when reload
+    }
+    
+    if(isset( $_SESSION['status'] )&&  $_SESSION['status'] )
+    {
+        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['status'] .'</div>';
+        unset( $_SESSION['status'] ); //unset value when reload
+    }
+    ?>
     <!--Horizontal Order Tracking Status-->
     <div class="card shadow mb-3">
-        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div>
+        <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
+            <!---------FOR STANDARD SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard'){?>
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step" id="placed">
                     <div class="step-icon-wrap">
@@ -108,6 +142,35 @@
                     <h5 class="step-title">Order Delivered</h5>
                 </div>
             </div>
+            <?php } else{?>
+            <!------------ FOR PICK UP( SELF-COLLECTION) STATUS --------->
+            <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                <div class="step" id="pplaced">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-cart-shopping"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Placed</h5>
+                </div>
+                <div class="step" id="ppaid">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon "><i class="fa fa-receipt"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Paid</h5>
+                </div>
+                <div class="step" id="pready">
+                    <div class="step-icon-wrap">
+                        <div class="step-icon"><i class="fa fa-box"></i></div>
+                    </div>
+                    <h5 class="step-title">Ready To Pick Up</h5>
+                </div>
+                <div class="step" id="pcompleted">
+                    <div class="step-icon-wrap" >
+                        <div class="step-icon "><i class="fa fa-clipboard-check"></i></div>
+                    </div>
+                    <h5 class="step-title">Order Completed</h5>
+                </div>
+            </div>
+            <?php }?>
             <hr>
             <!--Delivery Details-->
             <div class="delivery-details pl-2">
@@ -115,8 +178,8 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"> </div>(+60)1117795416<br>
-                    <div id="address">9-13-9, Sri Impian Apartment, Lengkok Angsana, 11500 Ayer Itam, Pulau Pinang </div>
+                    <div id="recepient-name"> </div><?php echo $phone ?><br>
+                    <div id="address"><?php echo $address?> </div>
                 </div>
             </div>
             <hr>
@@ -132,7 +195,7 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                    <tr>
+                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed' && $orderstatus =='Failed'){?> <{?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
                         <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                     </tr>
@@ -141,14 +204,21 @@
                 ?>
                 </tbody>
             </table>
-
+            
+                <?php if($orderstatus =='Ready'){?>
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
+                    </form>
+                <?php } ?>
+            
         </div>
     </div>
 
     <!---$qty = $orow['quantity'];
         $amt = $orow['amount'];
         $productname = $orow['product_name'];
-        $productcover = $orow['product_cover_picture'];
+        $productcover = $orow['product_cover_picture'];ref
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];-->
 
@@ -182,8 +252,8 @@
                                 alt="<?php echo $productname ?>" style="object-fit:contain;width:15%;height:15%"></td>
                         <td><?php echo $productname?></td>
                         <td></td>
-                        <td>RM<?php echo $amt?>.00</td>
-                        <td>x <?php echo $productprice ?></td>
+                        <td>RM<?php echo $productprice?>.00</td>
+                        <td>x <?php echo $qty ?></td>
                         <td class="red-text">RM<?php echo $amt?>.00</td>
                     </tr>
                     
@@ -537,31 +607,56 @@
 
 <script>
 var orderstatus = document.getElementById("orderstatus").value;
-
+var deliverymethod = document.getElementById("deliverymethod").value;
 
 console.log(orderstatus);
-if(orderstatus == 'Placed')
-{
-    document.getElementById("placed").className ="step completed";
+if (deliverymethod == "standard") {
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("placed").className ="step completed";
+    }
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
+    }
+    else if(orderstatus == 'Shipped')
+    {
+        console.log('can work');
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className ="step completed";
+        document.getElementById("shipped").className ="step completed";
+    }
+    else if(orderstatus == 'Delivered')
+    {
+        document.getElementById("placed").className ="step completed";
+        document.getElementById("paid").className = "step completed";
+        document.getElementById("shipped").className ="step completed";
+        document.getElementById("delivered").className ="step completed";
+    }
 }
-else if(orderstatus == 'Paid')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
+else{
+    if(orderstatus == 'Placed')
+    {
+        document.getElementById("pplaced").className ="step completed";
+    }
+    else if(orderstatus == 'Paid')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+    }
+    else if(orderstatus == 'Ready')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className ="step completed";
+        document.getElementById("ppreparing").className ="step completed";
+    }
+    else if(orderstatus == 'Completed')
+    {
+        document.getElementById("pplaced").className ="step completed";
+        document.getElementById("ppaid").className = "step completed";
+        document.getElementById("pready").className ="step completed";
+        document.getElementById("pcompleted").className ="step completed";
+    }
 }
-else if(orderstatus == 'Shipped')
-{
-    console.log('can work');
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className ="step completed";
-    document.getElementById("shipped").className ="step completed";
-}
-else if(orderstatus == 'Delivered')
-{
-    document.getElementById("placed").className ="step completed";
-    document.getElementById("paid").className = "step completed";
-    document.getElementById("shipped").className ="step completed";
-    document.getElementById("delivered").className ="step completed";
-}
-
 </script>

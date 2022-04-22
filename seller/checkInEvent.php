@@ -8,6 +8,13 @@ if(isset($_GET['eventCheckin']))
     $_SESSION['eventCheckin'] = $_GET['eventCheckin'];
     $eID = $_SESSION['eventCheckin'];
 }
+$eID = $_SESSION['eventCheckin'];
+// if(isset($_GET['searchID']))
+// {
+//     $_SESSION['searchID'] = $_GET['searchID'];
+//     $tID = $_SESSION['searchID'];
+// }
+// $tID = $_SESSION['searchID'];
 
 $eventsql = "SELECT *
             FROM `event`
@@ -16,9 +23,46 @@ $eventsql = "SELECT *
             WHERE `event`.`event_id` = $eID
             ";
 
+
+
 $resultsql = mysqli_query($conn, $eventsql);                                             
 $row = mysqli_fetch_array($resultsql);
 $eventName = $row['event_name'];
+?>
+
+<?php
+    if(isset($_POST['checkinparticipant']))
+    {
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+        $today = date("Y-m-d");
+        $now = date("H:i");
+        $checked = 1;
+        $tID = $_SESSION['searchID'];
+
+        $sqlupdate = "UPDATE `ticket` SET `check_in`=?,`checkIn_time`=?,`checkIn_date`=? WHERE `ticket_id` = ?";
+                    if ($stmt5 = mysqli_prepare($conn,$sqlupdate)){
+                        if(false===$stmt5){
+                            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+                        }
+                        $bp = mysqli_stmt_bind_param($stmt5,"isss",$checked,$now,$today,$tID);
+                        if(false===$bp){
+                            die('Error with bind_param: ') . htmlspecialchars($stmt5->error);
+                        }
+                        $bp = mysqli_stmt_execute($stmt5);
+                        if ( false===$bp ) {
+                            die('Error with execute: ') . htmlspecialchars($stmt5->error);
+                        }
+                            if(mysqli_stmt_affected_rows($stmt5) == 1){
+                                echo "<script>alert(\"Participants Successful Check in\");</script>";
+                            }
+                            else{
+                                $error = mysqli_stmt_error($stmt5);
+                                echo "<script>alert($error);</script>";
+                            }		
+                            mysqli_stmt_close($stmt5);
+                    }
+    }
+
 ?>
 
 <!-- Begin Page Content -->
@@ -46,41 +90,105 @@ $eventName = $row['event_name'];
             <h2 style="text-align: center;"><i class="fa fa-calendar-check-o"></i>Check in for <?php echo($eventName)?></h2>
         </div>
         <div class="card-body">
-            <form>
-                <div class="input-group"><input class="form-control" type="text">
-                    <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
+            <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
+                <div class="input-group"><input class="form-control" type="text" id="searchField" name="searchQuery">
+                    <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" id="serachBtn" name="searchTicket"><i class="fa fa-search"></i></button></div>
                 </div>
+        </div>
+    </div>
+    
+                        <?php
+                            if(isset($_POST["searchTicket"]))
+                            {
+                                $queriesUser = $_POST["searchQuery"];
+                                $_SESSION['searchID'] = $queriesUser;
+                                $ticketsql = "SELECT *
+                                            FROM `ticket`
+                                            INNER JOIN `ticketType` 
+                                            ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
+                                            WHERE `ticket`.`ticket_id` = \"$queriesUser\"
+                                            ";
+
+                                $ticketresultsql = mysqli_query($conn, $ticketsql);                                             
+                                $row1 = mysqli_fetch_array($ticketresultsql);
+                                $id = $row1['ticket_id'];
+                                $tName = $row1['ticket_name'];
+                                $ticketDate = $row1['ticketGenerate_Date'];
+                                echo("
+                                <div class=\"card\" style=\"margin-top: 30px;\">
+                                <div class=\"card-header\">
+                                    <h5 class=\"mb-0\" style=\"text-align: center;\">Participant Details</h5>
+                                </div>
+                                <div class=\"card-body\">
+                                    <div class=\"table-responsive\">
+                                        <table class=\"table\">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ticket ID</th>
+                                                    <th>Ticket Name</th>
+                                                    <th>Ticket Generate Date</th>
+                                                    <th>Check-in Status</th>
+                                                    <th>Check-in Date</th>
+                                                    <th>Check-in Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                <tr>
+                                <td>$id</td>
+                                <td>$tName</td>
+                                <td>$ticketDate</td>
+                                ");
+                                if($row1['check_in'] == 0)
+                                {
+                                    $checkin = "Not Yet Check in";
+                                    echo("
+                                    <td>$checkin</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"checkinparticipant\">Check in</button></div>
+                                    ");
+                                }
+                                else if($row1['check_in'] == 1)
+                                {
+                                    $checkin = "Checked-in";
+                                    echo("
+                                    <td>$checkin</td>
+                                    <td>".$row1['checkIn_date']."</td>
+                                    <td>".$row1['checkIn_time']."</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div style=\"text-align: center;\"><button class=\"btn btn-primary\" type=\"submit\" style=\"background: rgb(163, 31, 55);\" name=\"checkinparticipant\">Check in</button></div>
+                                    ");
+                                }
+
+                                }
+                                                       
+                        ?>
             </form>
         </div>
     </div>
-    <div class="card" style="margin-top: 30px;">
-        <div class="card-header">
-            <h5 class="mb-0" style="text-align: center;">Participant Details</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Ticket ID</th>
-                            <th>Ticket Name</th>
-                            <th>Ticket Generate Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cell 1</td>
-                            <td>Cell 2</td>
-                            <td>Cell 2</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div style="text-align: center;"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);">Check in</button></div>
-        </div>
-    </div>
 
+<!-- <script>
+    var searchBtn = document.getElementById("serachBtn");
 
+    searchBtn.addEventListener("click",function(){
+        var query = document.getElementById("searchField").value;
+        if(query == null || query == "")
+        {
+            window.alert("Do not search for empty ticket");
+        }
+        else
+        {
+            window.location.href="checkInEvent.php?searchID="+query;
+        }
+    });
+</script> -->
 
 
     <!-- Below Template -->

@@ -63,6 +63,9 @@
     {
         $_SESSION['role'] = "";
     }
+
+    //Set true to enable seller register
+    $_SESSION['enableSeller'] = false;
 ?>
 
 
@@ -127,6 +130,22 @@
             </div>
 
             <!-- Nav Item - Shipment Collapse Menu -->
+            <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
+                    aria-expanded="true" aria-controls="collapseAdmin">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Admin Panel</span>
+                </a>
+                <div id="collapseAdmin" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../adminManageUser.php">User Management</a>
+                    </div>
+                </div>
+            </li>
+            <?php endif?>
+
+            <!-- Nav Item - Shipment Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipment"
                     aria-expanded="true" aria-controls="collapseShipment">
@@ -135,7 +154,7 @@
                 </a>
                 <div id="collapseShipment" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="seller/ViewShippingOrder.php">My Shipment</a>
+                        <a class="collapse-item" href="viewShippingOrders.php">My Shipment</a>
                         <a class="collapse-item" href="register.php">Mass Ship</a>
                         <a class="collapse-item" href="forgot-password.php">Shipping Setting</a>
                     </div>
@@ -441,7 +460,7 @@
                                 if (mysqli_num_rows($res_data) > 0){
                                     while($row = mysqli_fetch_array($res_data)){
                                         echo("
-                                            <img class=\"img-profile rounded-circle\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
+                                            <img class=\"img-profile rounded-circle\" style=\"object-fit:cover;\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\">
                                             ");
                                         }
                                     }
@@ -449,25 +468,18 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <!--Admin Panel-->
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+                                <a class="dropdown-item" href="../index.php">
+                                    <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Switch
+                                </a>
+                                <?php endif?>
+                            
                                 <a class="dropdown-item" href="../seller/shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>
-
-                                <!--Admin Panel-->
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="../adminManageUser.php">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    ADMIN PANEL
-                                </a>
-                                <?php endif?>
-
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "ADMIN") :?>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    My Purchase
-                                </a>
-                                <?php endif?>
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -478,14 +490,9 @@
                         </li>
 
                         <?php else :?>
-                        <!--
-                        <a class="nav-link" href="register.php">Sign Up <i class="fas fa-user"></i></a>
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <a class="nav-link" href="login.php">Login <i class="fas fa-user"></i></a>
-                        -->
 
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Sign Up</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Sign Up</a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="../register.php">
@@ -493,37 +500,21 @@
                                     User
                                 </a>
 
+                                <?php if($_SESSION['enableSeller'] == true):?>
                                 <a class="dropdown-item" href="../seller/sellerRegister.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Seller
                                 </a>
+                                <?php endif?>
                             </div>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a31f37;">Login</a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="../login.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    User
-                                </a>
-
-                                <a class="dropdown-item" href="../seller/sellerLogin.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Seller
-                                </a>
-
-                                <a class="dropdown-item" href="../adminLogin.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Admin
-                                </a>
-                            </div>
+                        <li class="nav-item no-arrow">
+                            <a class="nav-link" href="../login.php" style="color: #a31f37;"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Login</a>
                         </li>
                         <?php endif?>
-
                     </ul>
 
                 </nav>

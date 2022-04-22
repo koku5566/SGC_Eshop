@@ -7,27 +7,21 @@
 	 		window.location.href='login.php';</script>";
      } 
  
-     $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
      WHERE userAddress.user_id= '$_SESSION[uid]';";
 
-if(isset($_GET['addressid']))
-{
-    $_SESSION['getaddress'] = $_GET['addressid'];
-    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-    FROM `userAddress`
-    JOIN user ON userAddress.user_id = user.user_id
-    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
-}
 
 //Username and address
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-                         
-            //change address
-            if(isset($_POST['address-option'])){
+            $_SESSION['getaddress'] = $userrow['address_id'];
+            $_SESSION['userEmail'] = $userrow['email'];
+            $_SESSION['userName'] = $userrow['name'];
+
+/*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
                 if(!empty($UID)) {
                     $_SESSION['addressid'] = $UID;
@@ -38,7 +32,17 @@ if(isset($_GET['addressid']))
                     </script>";
                 }
               }  
+ */
 
+ // change address
+if(isset($_GET['addressid']))
+{
+    $_SESSION['getaddress'] = $_GET['addressid'];
+    $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.address_id= '$_SESSION[getaddress]';";
+}
 
 ?>
 
@@ -117,7 +121,7 @@ if(isset($_GET['addressid']))
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-primary\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
@@ -171,7 +175,7 @@ if(isset($_GET['addressid']))
                                     <th>Variation</th>
                                     <th>Unit Price</th>
                                     <th>Quantity</th>
-                                    <th>Item Subtototal</th>
+                                    <!-- <th>Item Subtototal</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,14 +183,13 @@ if(isset($_GET['addressid']))
                             $uid = "U000018";
                             $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
+                            product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
                             FROM `cart`
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$uid'
-                            AND cart.shop_id = 14
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC
                             ";
@@ -203,6 +206,7 @@ if(isset($_GET['addressid']))
                                 $product_id = $rowKL['PID'];
                                 $product_name = $rowKL['P_name'];
                                 $product_quantity = $rowKL['P_quantity'];
+                                $shop_id = $rowKL['shop_id'];
 
                                 $variation_message = "";
                                 $showNotif = false;

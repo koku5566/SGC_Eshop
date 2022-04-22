@@ -102,7 +102,7 @@
                                         </div>
 
                                         <div class="btn btn-facebook btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-                                             Facebook
+                                            
                                         </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
                                         </div>
                                     </form>

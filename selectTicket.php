@@ -40,7 +40,7 @@ if (isset($_GET['eventID'])) {
 
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        if (date("Y-m-d") >= $row['sales_start'] && date("Y-m-d") <= $row['sales_end']) {
+                                        if (date("Y-m-d") >= $row['sales_start'] && date("Y-m-d") <= $row['sales_end'] && $row['current_quantity'] > 0) {
                                             echo ("
                                        <tr>
                                         <td>" . $row['ticket_name'] . "</td>
