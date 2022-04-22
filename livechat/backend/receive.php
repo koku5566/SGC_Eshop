@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    if(isset($_SESSION['userID'])){
-        include_once "db.php";
-        $outgoing_id = $_SESSION['userID'];
+    if(isset($_SESSION['userid'])){
+        include_once "mysqli_connect.php";
+        $outgoing_id = $_SESSION['userid'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $output = "";
         $sql = "SELECT * FROM messages LEFT JOIN users ON users.userID = messages.outgoing_msg_id
