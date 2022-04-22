@@ -97,7 +97,7 @@ require __DIR__ . '/header.php'
                 if(isset($_GET['eventSearch']))
                 {
                     $nameEvent = $_GET['eventSearch'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE`event`.`event_name` LIKE \"%$nameEvent%\" AND `event`.`status` = 'Approved'";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE`event`.`event_name` LIKE '%$nameEvent%' AND `event`.`status` = 'Approved'";
                 }
                 if(isset($_GET['searchDate']))
                 {
