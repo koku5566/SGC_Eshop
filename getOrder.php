@@ -349,7 +349,7 @@ $_SESSION["userId"] = "U000018";
                                             <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                             OrderID:<?php echo $row['order_date']?></strong></span>
+                                             Purchase Date: &nbsp;&nbsp;<?php echo $row['order_date']?></strong></span>
                                             </div>
                                         </div>
                                 </div>
