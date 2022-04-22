@@ -102,7 +102,7 @@ require __DIR__ . '/header.php'
                 if(isset($_GET['searchDate']))
                 {
                     $dateEvent = $_GET['searchDate'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` >= \"$date\" AND `event`.`event_date` <= \"$date\"";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` >= \"$dateEvent\" AND `event`.`event_date` <= \"$dateEvent\"";
                 }
                 $result = mysqli_query($conn, $sql);
 
