@@ -54,7 +54,10 @@ $shippingfee = 8.6;
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
    
-
+    <form action="/cart_manage.php" method="POST">
+    <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal">
+    <input type='submit'>
+    </form>
 
 
      <!-- Address Modal -->

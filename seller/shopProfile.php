@@ -3,14 +3,13 @@
 ?>
 
 <?php
- if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
-  ?>
-      <script type="text/javascript">
-          window.location.href = window.location.origin + "/seller/sellerLogin.php";
-      </script>
-  <?php
-  exit;
-}
+ session_start(); 
+
+  if(!isset($_SESSION['login']) || $_SESSION['role'] == "SELLER")
+	{
+	  ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+	  exit;
+  }
 ?>
 
 <!-- Insert data -->
