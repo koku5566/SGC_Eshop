@@ -3,6 +3,7 @@
 ?>
 
 <?php
+$user_id = $_SESSION["uid"];
 /*QUERY FOR ALL ORDER */
 $sql = "SELECT
 DISTINCT myOrder.order_id,
@@ -20,6 +21,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
+WHERE myOrder.user_id = '$user_id'
 ORDER BY myOrder.order_id DESC
 ";
 
@@ -46,6 +48,7 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
 WHERE myOrder.order_status = 'Paid'
+AND myOrder.user_id = '$user_id'
 ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($toshipsql);
@@ -69,7 +72,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready'
+WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' AND myOrder.user_id = '$user_id'
 ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($pickupsql);
@@ -95,7 +98,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status != 'Shipped'
+WHERE myOrder.order_status != 'Shipped' 
+AND myOrder.user_id = '$user_id'
 ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($shippingsql);
@@ -121,6 +125,7 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN user ON myOrder.user_id = user.user_id
 JOIN product ON orderDetails.product_id = product.product_id
 WHERE myOrder.order_status = 'Received'
+AND myOrder.user_id = '$user_id'
 ORDER BY myOrder.order_id DESC";
 
 $stmt = $conn->prepare($completedsql);
