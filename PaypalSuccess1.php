@@ -44,6 +44,7 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
+            $variation_id = "";
 
             $variation_message = "<option selected>Not Variation</option>";
         }
