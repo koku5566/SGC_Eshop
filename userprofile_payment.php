@@ -64,7 +64,7 @@
 	</div>
 </div>
 <?php
-	$UID = $_SESSION["uid"];
+	$UID = $_SESSION["userid"];
 
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
