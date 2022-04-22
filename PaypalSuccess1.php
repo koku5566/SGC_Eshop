@@ -111,7 +111,7 @@ $queryKL = mysqli_query($conn, $sql);
 
 
     /* deduct stock */
-    $stocksql = "SELECT product.product_stock, variation.product_stock
+/*     $stocksql = "SELECT product.product_stock, variation.product_stock
     FROM `product`
     JOIN  `variation`
     ";
@@ -127,8 +127,8 @@ $queryKL = mysqli_query($conn, $sql);
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
-        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
-        $bp = mysqli_stmt_execute($stmt2);
+        $bp2 = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
+        $bp2 = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
     }
@@ -139,7 +139,7 @@ $queryKL = mysqli_query($conn, $sql);
         $bp1 = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    }
+    } */
 
 /*    echo(" 
         <span>".$invoice_id."</span>
@@ -174,8 +174,8 @@ $queryKL = mysqli_query($conn, $sql);
     }
         /*  $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
         if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp = mysqli_stmt_bind_param($stmt4, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
-            $bp = mysqli_stmt_execute($stmt4);
+            $bp3 = mysqli_stmt_bind_param($stmt4, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
+            $bp3 = mysqli_stmt_execute($stmt4);
     }  */
     
 }
