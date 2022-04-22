@@ -96,32 +96,33 @@
 ?>
 
 <?php
-  $status = $statusMsg = '';
   if(isset($_POST["saveBtn"])){
-    $status = 'error';
-    if (!empty($FILES["profileImage"]["name"])){
-      $fileName = basename ($_FILES["profileImage"]["name"]);
-      $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+    $coverIMG = array_filter($_FILES['profileImage']['name']);
+    $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+    $allowTypes = array('jpg', 'png', 'jpeg');
+    $categoryPic = "";
 
-      $allowTypes = array('jpg','png','jpeg','gif');
-      if(in_array($fileType, $allowTypes)){
-        $image = $_FILES["profileImage"]["name"];
-        $imageContent = addslashes(file_get_contents($image));
+    //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
+    $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
 
-        $sql = "INSERT INTO shopProfile (image, created) VALUES ($imageContent, NOW())";
-        $insert = $db -> query($sql);
-
-        if($insert){
-          $status = 'success';
-          $statusMsg = "File uploaded successfully";
-        }else{
-          $statusMsg = "File uploaded failed, please try again";
+    if (!empty($coverIMG)) {
+        foreach ($_FILES['profileImage']['name'] as $key => $val) {
+            // File upload path 
+            echo (var_dump($_FILES['profileImage']));
+            $fileName = basename($_FILES['profileImage']['name'][$key]);
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000) . "." . $ext;
+            $targetFilePath = $targetDir . $fileName;
+            echo ($targetFilePath);
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
+                    $categoryPic = "$fileName";
+                }
+            }
         }
-      }else{
-        $statusMsg = "Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload";
-      }
     }
-  }
 ?>
 
 <!-- Icon -->
@@ -156,7 +157,7 @@
 
       <img class="relative bg-image img-fluid" name="profileImage" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="profileImage" hidden/>
+        <input type="file" id="actual-btn" name="profileImage[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -166,7 +167,7 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage" value="" onchange="loadFile(event)"/>
+        <input id="file" type="file" name="profileImage[]" value="" onchange="loadFile(event)"/>
         <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profileImage" width="200"/>
       </div>
     </div>
@@ -185,7 +186,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="profileImage" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="profileImage[]" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
 
