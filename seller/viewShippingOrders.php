@@ -320,7 +320,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php       
-                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id WHERE myOrder.order_status = 'Paid' ";
+                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
                               $tsresultheader = mysqli_query($conn, $sqltsheader);
                               if (mysqli_num_rows($tsresultheader) > 0) {
                               while ($tsrowheader = mysqli_fetch_assoc($tsresultheader)) {
