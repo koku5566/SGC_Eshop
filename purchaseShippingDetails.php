@@ -28,7 +28,7 @@
     shopProfile.shop_profile_image
     FROM
     myOrder
-    JOIN user ON myOrder.user_id = user.userID
+    JOIN user ON myOrder.userID = user.userID
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN product ON orderDetails.product_id = product.product_id
@@ -84,7 +84,7 @@
     }
 ?>
 
-<input type="text" id="orderstatus" value="<?php echo $orderstatus; ?>">
+<input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
 <input type="hidden" id="deliverymethod" value="<?php echo $deliverymethod; ?>">
 
 <!-- Begin Page Content -->
