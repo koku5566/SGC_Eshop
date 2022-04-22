@@ -269,7 +269,7 @@ $completedresult = $stmt->get_result();
                                             $toshipsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = $oID ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$oID' ORDER BY myOrder.order_id DESC";
                                             $toshipresult = mysqli_query($conn, $toshipsql);
                                             if (mysqli_num_rows($toshipresult) > 0) {
                                                 while ($tsrow = mysqli_fetch_assoc($toshipresult)) {
