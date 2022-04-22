@@ -92,9 +92,9 @@
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          //header("refresh:1; url=shopProfile.php");
-          header("Location: shopProfile.php");
-          echo 'Success';
+          header("Refresh:0");
+          //header("Location: shopProfile.php");
+          //echo 'Success';
       }
       else
       {
