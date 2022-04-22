@@ -31,43 +31,10 @@ if (isset($_GET['id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-
-    <h1>Event Dashboard</h1>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <?php
-                $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $picLocation = "/img/event/" . $row["cover_image"];
-                        echo ("
-                                <div class=\"col-4\"><img src=\"$picLocation\" id=\"eventPhoto\" style=\"width: 100%;\" name=\"eventPhoto\"></div>
-                                <div class=\"col-8\">
-                                    <h3 name=\"eventName\">" . $row['event_name'] . "</h3>
-                                    <h5>Event Status: " . $row['status'] . "</h5>
-                                    <h5>Location: " . $row['location'] . "</h5>
-                                    <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
-                                    <a href = \"updateEvent.php?eventUpdate=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
-                                    <a href = \"checkInEvent.php?eventCheckin=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button></a>
-                                </div>
-                                ");
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-    <div class="card" style="margin-top: 40px;">
-        <div class="card-body">
-            <h4 class="card-title">Ticket Type performance</h4>
-            <div id="columnchart" class="col-sm-6"style="width: 600px; height: 500px; padding-right:50px;"></div>  </body>
-        </div>
-    </div>
-    
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">    
+<script type="text/javascript">    
+  google.charts.load('current', {packages: ['corechart']});
+  google.charts.load('current', {'packages':['bar']});
 // Draw the coulumn chart when Charts is loaded.
 google.charts.setOnLoadCallback(drawColChart);
 
@@ -104,6 +71,41 @@ var options = {
 };
   
 </script>
+    <h1>Event Dashboard</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <?php
+                $sql = "SELECT * FROM `event` WHERE `event`.`event_id` = " . $_SESSION['eventIDView'] . "";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $picLocation = "/img/event/" . $row["cover_image"];
+                        echo ("
+                                <div class=\"col-4\"><img src=\"$picLocation\" id=\"eventPhoto\" style=\"width: 100%;\" name=\"eventPhoto\"></div>
+                                <div class=\"col-8\">
+                                    <h3 name=\"eventName\">" . $row['event_name'] . "</h3>
+                                    <h5>Event Status: " . $row['status'] . "</h5>
+                                    <h5>Location: " . $row['location'] . "</h5>
+                                    <h5>Date: " . $row['event_date'] . " to " . $row['eventEnd_date'] . "</h5>
+                                    <a href = \"updateEvent.php?eventUpdate=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);\">Edit</button></a>
+                                    <a href = \"checkInEvent.php?eventCheckin=" . $row['event_id'] . "\"><button class=\"btn btn-primary\" type=\"button\" style=\"background: rgb(163, 31, 55);margin-left: 10px;\">Check in Participants</button></a>
+                                </div>
+                                ");
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top: 40px;">
+        <div class="card-body">
+            <h4 class="card-title">Ticket Type performance</h4>
+            <div id="columnchart" class="col-sm-6"style="width: 600px; height: 500px; padding-right:50px;"></div>  </body>
+        </div>
+    </div>
+    
+
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <div class="row">
