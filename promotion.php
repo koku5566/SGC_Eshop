@@ -74,7 +74,9 @@
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
         <br>
+
         <!-- Voucher -->
+        
         <div class="row">
             <div class = "container-fluid m-5">
                 <div class = "d-flex justify-content-center">
@@ -192,7 +194,7 @@
                                             $sm->execute();
                                             $res = $sm->get_result();
 
-                                                    while ($r = $res->fetch_assoc()) {
+                                                while ($r = $res->fetch_assoc()) {
                                             ?>
 
                                             <p><?php echo $r['product_name'];?></p>
@@ -218,16 +220,6 @@
                                     ;
                                 }
                         }?>
-
-                        <div class="modal fade" id="voucherclaimed" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div id="SuccessMsg">
-                                    <div class="SuccessMsg-content">
-                                        <p style="color: white;">Voucher add successfully.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         
                     </div>
                 </div>
@@ -262,7 +254,7 @@
                 echo '<script>alert("Voucher claimed succesfully.")</script>';
             }
             else{
-                echo '<script>alert("Voucher claimed failed.")</script>';
+                echo '<script>alert("Voucher claimed failed. Login to claimed voucher")</script>';
             }
         }
 
