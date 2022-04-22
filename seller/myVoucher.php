@@ -93,13 +93,10 @@
                            <?php 
                            
                               if($r['voucher_status'] = "2" ){
-                                 break;
                                  echo "Pending";
-                              }else if($r['voucher_status'] = "1" ){
-                                 break;
+                              }elseif($r['voucher_status'] = "1" ){
                                  echo "Approved";
-                              }else if($r['voucher_status'] = "0" ){
-                                 break;
+                              }elseif($r['voucher_status'] = "0" ){
                                  echo "Rejected";
                               }
 
