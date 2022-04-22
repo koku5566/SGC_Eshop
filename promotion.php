@@ -128,6 +128,8 @@
                             GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id
                             "; 
 
+                            $shop_name = $_SESSION['shop_name'];
+
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
@@ -164,8 +166,7 @@
                                     <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                    <input type="text" name="shopname" class="form-control"><?php echo $row['shop_name']; ?></input>
+                                    <h6 class="card-title"><strong><?php echo $shop_name; ?></strong></h6>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
