@@ -128,8 +128,6 @@
                             GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id
                             "; 
 
-                            $_SESSION['shop_name'] = $shop_name;
-
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
@@ -166,7 +164,7 @@
                                     <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong><?php echo $shop_name; ?></strong></h6>
+                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
@@ -176,10 +174,28 @@
                                     </u>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed<?php echo $row['shop_id']?>" id="claimVoucherBtn">CLAIM</button>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                                        <input type="text" name="voucher_id" value="<?php echo $row['voucher_id']?>">
+                                        <button type="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+
+                        <?php 
+
+                            if(isset($_POST['submit'])){
+
+                                $user_id = $row['user_id'];
+
+                                $voucer_id = $row['voucher_id'];
+                                $date = date('Y-m-d H:i:s');
+
+                                $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, user_id)
+                                         VALUES ();";
+                            }
+
+                        ?>
 
                         <!-- Voucher Modal -->
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
@@ -241,7 +257,7 @@
                                 }
                         }?>
 
-                        <div class="modal fade" id="voucherclaimed<?php echo $row['shop_id']?>" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
+                        <div class="modal fade" id="voucherclaimed" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div id="SuccessMsg">
                                     <div class="SuccessMsg-content">
