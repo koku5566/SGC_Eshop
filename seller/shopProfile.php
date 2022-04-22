@@ -141,7 +141,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage[]" value="" onchange="loadImage(event)"/>
-        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-2" width="200"/>
+        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-5" width="200"/>
       </div>
     </div>
     
@@ -235,14 +235,14 @@ div.absolute {
   height: 65px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  left: 300px;
+  left: 280px;
 }
 .profile-pic .-label {
   position: absolute;
   cursor: pointer;
   height: 65px;
   width: 65px;
-  left: 300px;
+  left: 280px;
 }
 .profile-pic:hover .-label {
   display: flex;
