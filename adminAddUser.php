@@ -88,10 +88,10 @@ if(isset($_POST['signup']))
 									if (mysqli_query($conn, $sql)){
 										echo "";
 									}else{
-										echo "Error: ".$sql."<br>".mysqli_error($conn);
+										echo "Error: -".$sql."<br>".mysqli_error($conn);
 									}
 								}else{
-									echo "Error: ".$sql."<br>".mysqli_error($conn);
+									echo "Error: +".$sql."<br>".mysqli_error($conn);
 								}
 								$_SESSION['AddUser'] = true;
 								echo "<script>alert('User Added');</script>";
@@ -100,7 +100,7 @@ if(isset($_POST['signup']))
 					}
 					else
 					{
-						echo "Error: ".$sql."<br>".mysqli_error($conn);
+						echo "Error: 5".$sql."<br>".mysqli_error($conn);
 					}
 					mysqli_close($conn);
 				}
