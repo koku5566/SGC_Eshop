@@ -292,7 +292,7 @@
                                                     }
                                                 }
 
-                                                $sql = "SELECT A.product_id FROM product AS A LEFT JOIN categoryCombination AS C ON A.category_id = C.combination_id";
+                                                $sql = "SELECT A.product_id FROM product AS A LEFT JOIN categoryCombination AS C ON A.category_id = C.combination_id ";
                                                 $Where = false;
 
                                                 if($_POST['keyword'] != "")
@@ -300,12 +300,12 @@
                                                     $keyword = $_POST['keyword'];
                                                     if($Where == false)
                                                     {
-                                                        $sql .= "WHERE $searchBy LIKE '%$keyword%'";
+                                                        $sql .= " WHERE $searchBy LIKE '%$keyword%'";
                                                         $Where = true;
                                                     }
                                                     else
                                                     {
-                                                        $sql .= "AND $searchBy LIKE '%$keyword%'";
+                                                        $sql .= " AND $searchBy LIKE '%$keyword%'";
                                                     }
                                                 }
 
@@ -314,12 +314,12 @@
                                                     $tempMainCategoryId = $_POST['mainCategoryId'];
                                                     if($Where == false)
                                                     {
-                                                        $sql .= "WHERE C.main_category = '$tempMainCategoryId'";
+                                                        $sql .= " WHERE C.main_category = '$tempMainCategoryId'";
                                                         $Where = true;
                                                     }
                                                     else
                                                     {
-                                                        $sql .= "AND C.main_category = '$tempMainCategoryId'";
+                                                        $sql .= " AND C.main_category = '$tempMainCategoryId'";
                                                     }
                                                 }
 
@@ -328,12 +328,12 @@
                                                     $tempSubCategoryId = $_POST['subCategoryId'];
                                                     if($Where == false)
                                                     {
-                                                        $sql .= "WHERE C.sub_category = '$tempSubCategoryId'";
+                                                        $sql .= " WHERE C.sub_category = '$tempSubCategoryId'";
                                                         $Where = true;
                                                     }
                                                     else
                                                     {
-                                                        $sql .= "AND C.sub_category = '$tempSubCategoryId'";
+                                                        $sql .= " AND C.sub_category = '$tempSubCategoryId'";
                                                     }
                                                 }
 
@@ -341,12 +341,12 @@
                                                 {
                                                     if($Where == false)
                                                     {
-                                                        $sql .= "WHERE ";
+                                                        $sql .= " WHERE ";
                                                         $Where = true;
                                                     }
                                                     else
                                                     {
-                                                        $sql .= "AND ";
+                                                        $sql .= " AND ";
                                                     }
                                                     switch($_GET['Panel'])
                                                     {
@@ -367,12 +367,12 @@
                                                 $shopId = $_SESSION['uid'];
                                                 if($Where == false)
                                                 {
-                                                    $sql .= "WHERE ";
+                                                    $sql .= " WHERE ";
                                                     $Where = true;
                                                 }
                                                 else
                                                 {
-                                                    $sql .= "AND ";
+                                                    $sql .= " AND ";
                                                 }
                                                 $sql .= " A.shop_id = '$shopId'";
 
