@@ -183,8 +183,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-                                        <input type="text" name="voucher_id" value="<?php echo $row['voucher_id']?>">
-                                        <input type="text" name="uid" value="<?php echo $_SESSION['uid']?>">
+                                        <input type="hidden" name="voucher_id" value="<?php echo $row['voucher_id']?>">
                                         <button type="submit" name="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
                                     </form>
                                 </div>
@@ -195,17 +194,29 @@
 
                             if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])){
 
-                                $uid = $_POST['uid'];
+                                if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+                                    ?>
+                                        <script type="text/javascript">
+                                            window.location.href = window.location.origin + "/login.php";
+                                        </script>
+                                    <?php
+                                    exit;
+                                }else
+                                {
+
+                                $uid = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
                                 $date = date('Y-m-d H:i:s');
 
-                                $sqlc = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, user_id)
+                                $sqlc = "INSERT INTO voucherRedemption ('voucher_redemption_at', 'voucher_id', 'user_id')
                                          VALUES ('$date', '$voucher_id','$uid');";
 
                                 mysqli_query($conn, $sqlc);
+                                
+                                }
 
                             }else{
-                                echo '<script>alert("<?php echo $uid?>")</script>';
+                                echo '<script>alert("Voucher claimed failed")</script>';
                             }
 
                         ?>
