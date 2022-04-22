@@ -862,13 +862,13 @@
             {
                 if(document.getElementById("productType").value == "0")
                 {
-                    if(document.getElementById("chkSelfCollection").checked || document.getElementById("chkStandardDelivery").checked)
+                    if(document.getElementById("chkStandardDelivery").checked)
                     {
                         document.getElementById("AddProduct").click();
                     }
                     else
                     {
-                        document.getElementById("checkbox-err-msg").innerHTML = "Please select atleast 1 delivery method";
+                        document.getElementById("checkbox-err-msg").innerHTML = "Please Select Standard Delivery";
                         document.getElementById("checkbox-err-msg").focus();
                     }
                 }
