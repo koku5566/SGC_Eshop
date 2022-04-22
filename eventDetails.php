@@ -9,6 +9,7 @@ require __DIR__ . '/header.php'
         $eID = $_GET['eventID'];
         $_SESSION['eventPurchaseID'] = $_GET['eventID'];
     }
+    $eID = $_SESSION['eventPurchaseID'];
 ?>
 
 <?php
@@ -20,7 +21,7 @@ require __DIR__ . '/header.php'
         INNER JOIN `event` ON `event`.`event_id` = `ticket`.`event_id` 
         INNER JOIN `ticketType` ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
         WHERE `ticketTransaction`.`buyer_email` = \"$tEmail\"
-        AND `ticket`.`event_id`= $eID";
+        AND `ticket`.`event_id`= \"$eID\"";
         $res = mysqli_query($conn, $sqlgetTic);
 
         if (mysqli_num_rows($res) > 0) {
