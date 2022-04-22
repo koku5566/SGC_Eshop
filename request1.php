@@ -19,6 +19,7 @@ $inputFields->setAllowNote(true)
     ->setNoShipping(1) 
     ->setAddressOverride(0);
 
+$_SESSION['shippingMethod'] = $_POST['shipping-option'];     
 
 $payer = new Payer();
 $payer->setPaymentMethod('paypal');
