@@ -412,7 +412,7 @@ $_SESSION["userId"] = "U000018";
 											  -->
 												<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
 												<input type = "hidden" name = "rid" value = "<?php echo $row['product_id']?>">
-												<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
+												<input style="margin-left:10px;" type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
                                              <span style="margin-left:20%;">Total</span>
                                              <span style="margin-left:30%;" ><?php echo $row['amount']?></span>

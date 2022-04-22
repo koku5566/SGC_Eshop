@@ -172,9 +172,9 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_execute($stmt);
     }
          $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
-        if ($stmt = mysqli_prepare($conn, $sql3)) {
-            $bp = mysqli_stmt_bind_param($stmt3, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
-            $bp = mysqli_stmt_execute($stmt3);
+        if ($stmt4 = mysqli_prepare($conn, $sql3)) {
+            $bp = mysqli_stmt_bind_param($stmt4, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
+            $bp = mysqli_stmt_execute($stmt4);
     } 
     
 }
