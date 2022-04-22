@@ -3,6 +3,8 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
+$sql = "SELECT * FROM myOrder";
+$result = $conn->query($sql);
 
 
 ?>
