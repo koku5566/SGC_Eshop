@@ -34,9 +34,19 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="col-1"></div>
                     <div class="col-5"></div>
-                    <div class="col-2">Unit Price</div>
-                    <div class="col-1">Quantity</div>
-                    <div class="col-3">Total Price</div>     
+                    <div class="col-2"></div>
+                    <div class="col-1"></div>
+                    <div class="col-3"></div>     
+                </div>
+                <div class="card-footer">
+                <a class="btn btn-primary"style="margin-left:10px;" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
+                <a class="btn btn-primary"style="margin-left:10px;" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
+
+                <?php if($row['order_status'] =='Paid'){?>
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
+                    <?php } else{ ?>
+                    <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
+                    <?php }?>
                 </div>
                
             </div>

@@ -253,12 +253,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $row['order_id'];
+                                            $oID = $rowkoku1['order_id'];
                                             //Loop product in each order
                                             $sqlkoku2 = "SELECT * FROM `orderDetails` INNER JOIN `myOrder`ON `orderDetails`.`order_id` = `myOrder`.`order_id`
                         INNER JOIN `user` ON `myOrder`.`user_id` = `user`.`user_id`
                         INNER JOIN `product` ON `orderDetails`.`product_id` = `product`.`product_id`
-                        WHERE `myOrder`.`order_id` = $oID";
+                        WHERE `orderDetails`.`order_id` = $oID";
                                             $resultkoku2 = mysqli_query($conn, $sqlkoku2);
                                             if (mysqli_num_rows($resultkoku2) > 0) {
                                                 while ($rowkoku2 = mysqli_fetch_assoc($resultkoku2)) {
@@ -289,7 +289,8 @@ $completedresult = $stmt->get_result();
                                                     </div>
                                             <?php
                                                 }
-                                            }
+                                            }else
+                                            echo("cannot");
                                             ?>
                                         </div>
                                     </div>
