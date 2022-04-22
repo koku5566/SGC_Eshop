@@ -235,14 +235,14 @@ div.absolute {
   height: 65px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  left: 280px;
+  left: 320px;
 }
 .profile-pic .-label {
   position: absolute;
   cursor: pointer;
   height: 65px;
   width: 65px;
-  left: 280px;
+  left: 320px;
 }
 .profile-pic:hover .-label {
   display: flex;
