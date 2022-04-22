@@ -18,7 +18,7 @@
     $promotion_title = array();
     $promotion_image = array();
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE promotionEnd_Date >= now() AND `status` = 0";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
