@@ -193,17 +193,17 @@
 
                         <?php 
 
-                            if(isset($_POST['claim'])){
+                            // if(isset($_POST['claim'])){
 
-                                $user_id = $_POST['uid'];
-                                $voucher_id = $_POST['voucher_id'];
-                                $date = date('Y-m-d H:i:s');
+                            //     $user_id = $_POST['uid'];
+                            //     $voucher_id = $_POST['voucher_id'];
+                            //     $date = date('Y-m-d H:i:s');
 
-                                $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, 'user_id')
-                                         VALUES ('$date', '$voucher_id','$user_id');";
-                            }else{
-                                echo '<script>alert("Failed to add")</script>';
-                            }
+                            //     $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, 'user_id')
+                            //              VALUES ('$date', '$voucher_id','$user_id');";
+                            // }else{
+                            //     echo '<script>alert("Failed to add")</script>';
+                            // }
 
                         ?>
 
