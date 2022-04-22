@@ -90,9 +90,9 @@
 
        echo 'Hello';
        $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = 4";
-       $sql2=mysqli_query($conn,$update);
+       ;
        echo 'Hi';
-       if($sql2)
+       if($conn->query($update))
        { 
            /*Successful*/
            //header('location:Dashboard.php');
@@ -104,8 +104,8 @@
            //header('location:Profile_edit_form.php');
            echo 'Fail';
        }
-    }
- }
+}
+ 
 ?>
 
 <?php
