@@ -113,7 +113,7 @@
         <?php  else :?>
         Tracking No - </span><span class="text-size-medium"><?php echo $trackingnum?></span>
         <?php endif; ?>
-        </div>        </div> 
+        </div>      
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
