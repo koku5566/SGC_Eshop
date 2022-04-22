@@ -1,7 +1,6 @@
 <?php
     session_start();
-    include_once "mysqli_connect.php";
-    //require_once __DIR__ . '/mysqli_connect.php';
+    require_once dirname(__DIR__, 1) . '/mysqli_connect.php';
     $outgoing_id = $_SESSION['userid'];
     $sql = "SELECT * FROM user WHERE userID != '$outgoing_id' AND (role = 'SELLER' OR role = 'ADMIN') ORDER BY user_id DESC";
     $query = mysqli_query($conn, $sql);
