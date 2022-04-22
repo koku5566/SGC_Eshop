@@ -108,7 +108,7 @@
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
-          parent.window.location.reload();
+          //parent.window.location.reload();
           echo 'Success';
       }
       else
