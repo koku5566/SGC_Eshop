@@ -41,8 +41,7 @@
          <div class="container">
             <!-- Outer Row -->
             <div class="row justify-content-center">
-               <div class="col-12">
-                  <div class="card o-hidden border-0 shadow-lg">
+               <div class="col-12 card o-hidden border-0 shadow-lg">
                      <div class="row row-cols-2">
                      <div class="col-6 m-2">
                         <div class="card" id="vouchercard2">
