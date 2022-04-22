@@ -246,8 +246,8 @@ $completedresult = $stmt->get_result();
                             <?php       
                               $sqlheader = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
                               $resultheader = mysqli_query($conn, $sqlheader);
-
-                                  while ($rowheader = mysqli_fetch_assoc($resultheader)) {
+                              if (mysqli_num_rows($resultkoku1) > 0) {
+                            while ($rowheader = mysqli_fetch_assoc($resultheader)) {
                                       //Loop header
                             ?>
                             <!--Each Order Item-->
@@ -261,14 +261,6 @@ $completedresult = $stmt->get_result();
                                 <div class="card-body">
                                     <div class="row">
 
-                                    <?php
-                            $tsheadsql = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
-                            $tsheadresult = mysqli_query($conn, $tsheadsql);
-
-                            if (mysqli_num_rows($tsheadresult) > 0) {
-                                while ($tsheader = mysqli_fetch_assoc($tsheadresult)) {
-                                    //Loop header
-                            ?>
                                     <div class="card mt-2">
                                         <div class="card-header">
                                             <div class="row">
@@ -285,10 +277,10 @@ $completedresult = $stmt->get_result();
 
                                             $oID = $tsheader['order_id'];
                                             //Loop product in each order
-                                            $toshipsql = "SELECT * FROM `orderDetails` INNER JOIN `myOrder`ON `orderDetails`.`order_id` = `myOrder`.`order_id`
-                                                        INNER JOIN `user` ON `myOrder`.`user_id` = `user`.`user_id`
-                                                        INNER JOIN `product` ON `orderDetails`.`product_id` = `product`.`product_id`
-                                                        WHERE `orderDetails`.`order_id` = $oID ORDER BY myOrder.order_id DESC";
+                                            $toshipsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
+                                                        WHERE orderDetails.order_id = $oID ORDER BY myOrder.order_id DESC";
                                             $toshipresult = mysqli_query($conn, $toshipsql);
                                             if (mysqli_num_rows($toshipresult) > 0) {
                                                 while ($tsrow = mysqli_fetch_assoc($toshipresult)) {
