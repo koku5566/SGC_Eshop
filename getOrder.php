@@ -335,63 +335,49 @@ $_SESSION["userId"] = "U000018";
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
+                        <?php while($row = $orders ->fetch_assoc()){ 
+                            
+                            ?>
                         
-                        <div class="card-body">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                            <div class="col md-auto text-start"><span><strong><?php echo $row['shop_name']?></strong></span>
+                                            </div>
+                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                                             OrderID:<?php echo $row['order_id']?></strong></span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table" style="width:100%;">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Order ID</th>
-                                                    <th align="left">Details</th>
-                                                    <th align="left">Status</th>
-                                                    <th>Actions</th>
+                                                    <th>Prod ID</th>
+                                                    <th>Product(s)</th>
                                                     <th></th>
+                                                    <th></th>
+                                                    <th>Product Quantity</th>
+                                                    <th>Total Amount</th>
+                                                   
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
-                                            <?php 
-                                            while($row = $result ->fetch_assoc()){ 
-                                                $order_id = $row['order_id'];
-                                            ?>
-                                                <tr>
+                                              
+                                                <tr >
                                                     
-                                                    <td style="text-align: center;"><?php echo $order_id; ?></td>
-                                                    <td>
-                                                        <table>
-                                                            <tr>
-                                                                <th></th>
-                                                                <th align="left">Product Name</th>
-                                                                <th>Product Quantity</th>
-                                                                <th>Total Amount</th>
-                                                            </tr>
-                                                            <?php
-                                                            $sql2 = "SELECT * FROM orderDetails JOIN product ON orderDetails.product_id = product.id JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE order_id = $order_id";
-                                                            $result2 = $conn->query($sql2);
-                                                            while($row2 = $result2->fetch_assoc()){
-                                                            ?>
-                                                            <tr>
-                                                                <td><img src=/img/product/<?php echo $row2['product_cover_picture']?>></td>
-                                                                <td style="text-align: left;"><?php echo $row2['product_name']?></td>
-                                                                <td style="text-align: center;"><?php echo $row2['quantity']?></td>
-                                                                <td style="text-align: center;"><?php echo $row2['price']?></td>
-                                                            </tr>
-                                                            <?php } ?>
-                                                        </table>
-
-                                                    </td>
-                                                    <td><?php echo $row["order_status"]; ?></td>
-                                                    <td align="center">
-                                                        <form method="POST" action="orderDetails.php">
-                                                            <input type="hidden" value="<?php echo $row['order_id']?>" name="order_id"/>
-                                                            <input class="btn btn-primary" name="orderDetails_btn" value="Details" type="submit"/>
-                                                         </form>
-                                                    </td>
+                                                    <td style="text-align: center;"><?php echo $row['product_id']?></td>
+                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
+                                                    <td style="text-align: left;"><?php echo $row['product_name']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['quantity']?></td>
+                                                    <td style="text-align: center;"><?php echo $row['amount']?></td>
+                                                    
                                                 </tr>
-                                                <tr>
-                                                    <td colspan="5"><hr></td>
-                                                </tr>
-                                                
+                                            
                                             </tbody>
+                                           
                                         </table>
                                     </div>
                                 </div>
