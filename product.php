@@ -662,8 +662,8 @@
 
 					<?php
 						$shopid = $_SESSION['shopId'];
-						$sql = "SELECT product_id FROM product WHERE product_status = 'A' AND shop_id = '$shopid' ORDER BY id DESC";
-						echo($sql);			  	
+						$thisProductId = $_SESSION['productID'];
+						$sql = "SELECT product_id FROM product WHERE product_status = 'A' AND shop_id = '$shopid' AND product_id != '$thisProductId' ORDER BY id DESC";		  	
 						$result = mysqli_query($conn, $sql);
 
 						if (mysqli_num_rows($result) > 0) {
@@ -699,7 +699,7 @@
 								WHERE A.product_id = '$id'
 								LIMIT 1";
 								$result_1 = mysqli_query($conn, $sql_1);
-
+								echo($sql_1);
 								if (mysqli_num_rows($result_1) > 0) {
 									while($row_1 = mysqli_fetch_assoc($result_1)) {
 										
