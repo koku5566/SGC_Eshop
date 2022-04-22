@@ -224,7 +224,6 @@ div.absolute {
   align-items: center;
   position: absolute;
   transition: all 0.3s ease;
-  margin: 20px;
 }
 .profile-pic input {
   display: none;
