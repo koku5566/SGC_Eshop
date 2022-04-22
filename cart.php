@@ -140,7 +140,7 @@
                                 <tr>
                                     <td>
                                         <div class='product-item'>
-                                            <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
+                                            <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
                                             <div class='product-info'>
                                                 <label> Cart: ".$cart_id."</label><br>
                                                 <label>".$product_id."</label>
