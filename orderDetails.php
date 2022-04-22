@@ -104,7 +104,7 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                     
                     <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm=<?php echo $row['order_id'];?>">Confirmed Order</a>
                   
-                    <span style="text-align:reight;">Order Status: <?php echo $row2['order_status']?></span>
+                    <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
                 <?php } ?>
             </div>
