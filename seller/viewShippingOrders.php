@@ -3,7 +3,7 @@
 ?>
 
 <?php
-$user_id = $_SESSION["uid"];
+$user_id = $_SESSION["userid"];
 /*QUERY FOR ALL ORDER */
 $sql = "SELECT
 DISTINCT myOrder.order_id,
