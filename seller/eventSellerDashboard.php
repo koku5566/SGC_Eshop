@@ -13,7 +13,6 @@ require __DIR__ . '/header.php'
 
     <div style="margin-left: 80px;margin-right: 80px;height: 181.8px;">
         <div class="text-end" style="margin-top: 20px; text-align:right;"><a href="https://eshop.sgcprototype2.com/seller/createEvent.php"><button class="btn btn-primary" id="createEventBtn" type="button" style="background: rgb(163, 31, 55);width: 121.75px;height: 47px;">Create Event</button></a></div>
-        <h4>Search</h4><input type="search" style="width: 100%;">
     </div>
     <div>
         <ul class="nav nav-tabs" role="tablist">
