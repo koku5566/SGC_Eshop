@@ -52,7 +52,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
                     INNER JOIN `ticketType` 
                     ON `event`.`event_id` = `ticketType`.`event_id` 
                     INNER JOIN `user`
-                    ON `event`.`organiser_id` = `user`.`user_id`
+                    ON `event`.`organiser_id` = `user`.`id`
                     WHERE `ticketType`.`ticketType_id` = $ticket";
                 $result = mysqli_query($conn, $sql);
 

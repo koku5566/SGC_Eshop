@@ -106,7 +106,7 @@ require __DIR__ . '/header.php'
     <!-- Above Template -->
 
     <?php
-        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`event_id` = $eID";
+        $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`event_id` = $eID";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -122,7 +122,7 @@ require __DIR__ . '/header.php'
                 $tnc = html_entity_decode($row['event_tnc']);
 
                 //check price
-                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eID";
+                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eID";
                 $result1 = mysqli_query($conn, $sql1);
                 $minPrice = 999999;
                 $maxPrice = 0;

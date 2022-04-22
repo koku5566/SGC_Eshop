@@ -121,7 +121,7 @@ if (isset($_POST['searchEventDateBtn'])) {
         <div class="col-12 col-sm12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
             <div class="row">
                 <?php
-                $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
+                $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`status` = 'Approved'";
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -135,7 +135,7 @@ if (isset($_POST['searchEventDateBtn'])) {
                         $eventID = $row['event_id'];
 
                         //check price
-                        $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                        $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
                         $result1 = mysqli_query($conn, $sql1);
                         $minPrice = 999999;
                         $maxPrice = 0;

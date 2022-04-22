@@ -121,22 +121,22 @@ if (isset($_POST['searchEventDateBtn'])) {
         <div class="col-12 col-sm12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
             <div class="row">
                 <?php
-                $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
+                $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`status` = 'Approved'";
                 if (isset($_GET['location'])) {
                     $location = $_GET['location'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`location` = \"$location\"";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`status` = 'Approved' AND `event`.`location` = \"$location\"";
                 }
                 if (isset($_GET['date'])) {
                     $date = $_GET['date'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` <= \"$date\"";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` <= \"$date\"";
                 }
                 if (isset($_GET['searchEvent'])) {
                     $nameEvent = $_GET['searchEvent'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE`event`.`event_name` LIKE '%$nameEvent%' AND `event`.`status` = 'Approved'";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE`event`.`event_name` LIKE '%$nameEvent%' AND `event`.`status` = 'Approved'";
                 }
                 if (isset($_GET['searchDate'])) {
                     $dateEvent = $_GET['searchDate'];
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` >= \"$dateEvent\" AND `event`.`event_date` <= \"$dateEvent\"";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` >= \"$dateEvent\" AND `event`.`event_date` <= \"$dateEvent\"";
                 }
                 $result = mysqli_query($conn, $sql);
 
@@ -151,7 +151,7 @@ if (isset($_POST['searchEventDateBtn'])) {
                         $eventID = $row['event_id'];
 
                         //check price
-                        $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                        $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
                         $result1 = mysqli_query($conn, $sql1);
                         $minPrice = 999999;
                         $maxPrice = 0;
