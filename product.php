@@ -375,12 +375,27 @@
 										while($row_shop = mysqli_fetch_assoc($result_shop)) {
 											$shop_id = $row_shop['shop_id'];
 											$shop_name = $row_shop['shop_name'];
+											$shop_pic = $row_shop['shop_profile_image'];
 										}
 
+										if($shop_pic != "")
+										{
+											echo("
+											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/$shop_pic\">
+											</div>
+											");
+										}
+										else
+										{
+											echo("
+											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/store.png\">
+											</div>
+											");
+										}
+										
 										echo("
-										<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-											<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"data:image/jpeg;base64,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\">
-										</div>
 										<div class=\"col-xl-9 col-md-8 sidebar-brand-text\" style=\"font-size: 1.5rem;\">
 											<b>$shop_name</b>
 											<a href=\"shopDetails.php?id=$shop_id\" class=\"btn btn-primary\" style=\"width: 50%;position: absolute;bottom: 10px;left: 0;\">
@@ -658,206 +673,219 @@
                         </div>
                     </div>
 
-					<!-- List All Product - Demo Product  -->
-					<div class="row">
-                        <!--Product List -->
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">From the same shop</h5>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <!-- Product List -->
-                                    <div class="card-content row mb-3" style="display: none">
-                                        <!--PHP Loop Product List by Search Result-->
-                                        <?php
-											$shopid = $_SESSION['shopId'];
-                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A' AND shop_id = '$shopid' ORDER BY id DESC";
+					<!-- List All Product - From the same shop  -->
 
-                                            $result = mysqli_query($conn, $sql);
+					<?php
+						$shopid = $_SESSION['shopId'];
+						$thisProductId = $_SESSION['productID'];
+						$sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";		  	
+						$result = mysqli_query($conn, $sql);
 
-                                            if (mysqli_num_rows($result) > 0) {
-                                                while($row = mysqli_fetch_assoc($result)) {
+						if (mysqli_num_rows($result) > 0) {
 
-                                                    //Fetch each product information
-                                                    $id = $row['product_id'];
-                                                    $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                    C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
-                                                    LEFT JOIN variation AS B ON A.product_id = B.product_id 
-                                                    LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
-                                                    LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                    LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-                                                    LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
-                                                    WHERE A.product_id = '$id'
-                                                    LIMIT 1";
-                                                    $result_1 = mysqli_query($conn, $sql_1);
+							echo("
+							
+							<div class=\"row\">
 
-                                                    if (mysqli_num_rows($result_1) > 0) {
-                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
-                                                            
-                                                            echo("
-                                                                <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                    <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
-                                                                        <div class=\"card\">
-                                                                            <div class=\"image-container\">
-                                                                                <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
-                                                                            </div>
-                                                                            <div class=\"card-body\">
-                                                                                <div class=\"Name\">
-                                                                                    <p class=\"card-text product-name\">".$row_1['product_name']."</p>
-                                                                                </div>
-                                                                                <div class=\"Tag\">
-                                                                                    <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
-                                                                                </div>
-                                                                                <div class=\"Price\">
-                                                            ");
-                                                            
-                                                            //Pricing
-                                                            //If got variation
-                                                            if($row_1['product_variation'] == 1)
-                                                            {
-                                                                if($row_1['min_price'] != $row_1['max_price'])
-                                                                {
-                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
-                                                                }
-                                                                else
-                                                                {
-                                                                    echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
-                                                                }
-                                                                echo("</div>");
-                                                                //End of Price Division
+							<div class=\"col-xl-12 col-lg-12\">
+								<div class=\"card shadow mb-4\">
+									<div class=\"card-header py-3\">
+										<h5 class=\"m-0 font-weight-bold text-primary\">From the same shop</h5>
+									</div>
+									<!-- Card Body -->
+									<div class=\"card-body\">
+										<!-- Product List -->
+										<div class=\"card-content row mb-3\" style=\"display: none\">
 
-                                                                
+							
+							");
 
-                                                                //Start Stock Division
-                                                                echo("     
-                                                                                <div class=\"Stock\">
-                                                                                    <div class=\"row\" style=\"height: 40px;\">
-                                                                                        <div class=\"col-xl-7\">
-                                                                ");
+							while($row = mysqli_fetch_assoc($result)) {
 
-                                                                //Start Rating Division
-                                                                echo("<div class=\"Rating\">");
+								echo("Enter description");
+								//Fetch each product information
+								$id = $row['product_id'];
+								$sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
+								C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
+								LEFT JOIN variation AS B ON A.product_id = B.product_id 
+								LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
+								LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
+								LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
+								LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+								WHERE A.product_id = '$id'
+								LIMIT 1";
+								$result_1 = mysqli_query($conn, $sql_1);
+								echo($sql_1);
 
-                                                                $calavgrat = $row_1['rating'];
-                                                                if($calavgrat == "")
-                                                                {
-                                                                    echo("<p style=\"font-size:0.8rem;color:grey;margin-bottom: 0px;height: 23px;\">No Rating Yet</p>");
-                                                                }
-                                                                else{
-                                                                    $check = true;
-                                                                    for($i = 0; $i<5; $i++){
-                                                                        if(round($calavgrat) && $check == true){
-                                                                        echo "<i class=\"fa fa-star\"></i>";
-                                                                        $calavgrat -= 1;
-                                                                        }else{
-                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
-                                                                        }
-                                                                        else{
-                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
-                                                                        }
-                                                                        $check = false;
-                                                                        $calavgrat -= 1;
-                                                                        }
-                                                                    }
-                                                                }
-                                                                echo("</div>");
-                                                                //End of Rating Division
+								if (mysqli_num_rows($result_1) > 0) {
+									while($row_1 = mysqli_fetch_assoc($result_1)) {
+										
+										echo("
+											<div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+												<a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
+													<div class=\"card\">
+														<div class=\"image-container\">
+															<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
+														</div>
+														<div class=\"card-body\">
+															<div class=\"Name\">
+																<p class=\"card-text product-name\">".$row_1['product_name']."</p>
+															</div>
+															<div class=\"Tag\">
+																<span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
+															</div>
+															<div class=\"Price\">
+										");
+										
+										//Pricing
+										//If got variation
+										if($row_1['product_variation'] == 1)
+										{
+											if($row_1['min_price'] != $row_1['max_price'])
+											{
+												echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']." - RM ".$row_1['max_price']." <span></b>");
+											}
+											else
+											{
+												echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['min_price']."<span></b>");
+											}
+											echo("</div>");
+											//End of Price Division
 
-                                                                echo("  
-                                                                                        </div>
-                                                                                        <div class=\"col-xl-5\">
-                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                ");
-                                                                //End of Stock Division
-                                                            }
-                                                            //If no variation
-                                                            else
-                                                            {
-                                                                echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
-                                                                echo("</div>");
-                                                                //End of Price Division
+											
 
-                                                                //Start Stock Division
-                                                                echo("     
-                                                                                <div class=\"Stock\">
-                                                                                    <div class=\"row\" style=\"height: 40px;\">
-                                                                                        <div class=\"col-xl-7\">
-                                                                ");
+											//Start Stock Division
+											echo("     
+															<div class=\"Stock\">
+																<div class=\"row\" style=\"height: 40px;\">
+																	<div class=\"col-xl-7\">
+											");
 
-                                                                //Start Rating Division
-                                                                echo("<div class=\"Rating\">");
+											//Start Rating Division
+											echo("<div class=\"Rating\">");
 
-                                                                $calavgrat = $row_1['rating'];
-                                                                if($calavgrat == "")
-                                                                {
-                                                                    echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
-                                                                }
-                                                                else{
-                                                                    $check = true;
-                                                                    for($i = 0; $i<5; $i++){
-                                                                        if(round($calavgrat) && $check == true){
-                                                                        echo "<i class=\"fa fa-star\"></i>";
-                                                                        $calavgrat -= 1;
-                                                                        }else{
-                                                                        if ($calavgrat >= 0 && $calavgrat < 0.5 ){
-                                                                            echo "<i class=\"fa fa-star-half-alt\"></i>";
-                                                                        }
-                                                                        else{
-                                                                            echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
-                                                                        }
-                                                                        $check = false;
-                                                                        $calavgrat -= 1;
-                                                                        }
-                                                                    }
-                                                                }
-                                                                echo("</div>");
-                                                                //End of Rating Division
+											$calavgrat = $row_1['rating'];
+											if($calavgrat == "")
+											{
+												echo("<p style=\"font-size:0.8rem;color:grey;margin-bottom: 0px;height: 23px;\">No Rating Yet</p>");
+											}
+											else{
+												$check = true;
+												for($i = 0; $i<5; $i++){
+													if(round($calavgrat) && $check == true){
+													echo "<i class=\"fa fa-star\"></i>";
+													$calavgrat -= 1;
+													}else{
+													if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+														echo "<i class=\"fa fa-star-half-alt\"></i>";
+													}
+													else{
+														echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+													}
+													$check = false;
+													$calavgrat -= 1;
+													}
+												}
+											}
+											echo("</div>");
+											//End of Rating Division
 
-                                                                echo("  
-                                                                                        </div>
-                                                                                        <div class=\"col-xl-5\">
-                                                                                            <p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                ");
-                                                                //End of Stock Division
-                                                            }
+											echo("  
+																	</div>
+																	<div class=\"col-xl-5\">
+																		<p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+																	</div>
+																</div>
+															</div>
+											");
+											//End of Stock Division
+										}
+										//If no variation
+										else
+										{
+											echo("<b><span style=\"font-size:1rem;\">RM ".$row_1['product_price']." <span></b>");
+											echo("</div>");
+											//End of Price Division
 
-                                                            //Start of Location Division
-                                                            //$location = $row_1['location'];
-                                                            $location = "Subang Jaya";
-                                                            echo("
-                                                                <div class=\"Location\">
-                                                                    <span style=\"font-size: 10pt; color:grey;\" >$location</span>
-                                                                </div>
-                                                            ");
-                                                            //End of Location Division
+											//Start Stock Division
+											echo("     
+															<div class=\"Stock\">
+																<div class=\"row\" style=\"height: 40px;\">
+																	<div class=\"col-xl-7\">
+											");
 
-                                                            echo("
-                                                                                        
-                                                                                    
-                                                                            </div>
-                                                                        </div>   
-                                                                    </a>
-                                                                </div>
-                                                            ");
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+											//Start Rating Division
+											echo("<div class=\"Rating\">");
+
+											$calavgrat = $row_1['rating'];
+											if($calavgrat == "")
+											{
+												echo("<p style=\"font-size:0.8rem;color:grey;\">No Rating Yet</p>");
+											}
+											else{
+												$check = true;
+												for($i = 0; $i<5; $i++){
+													if(round($calavgrat) && $check == true){
+													echo "<i class=\"fa fa-star\"></i>";
+													$calavgrat -= 1;
+													}else{
+													if ($calavgrat >= 0 && $calavgrat < 0.5 ){
+														echo "<i class=\"fa fa-star-half-alt\"></i>";
+													}
+													else{
+														echo "<i class=\"fa fa-star\" style=\"font-weight:normal;\"></i>";
+													}
+													$check = false;
+													$calavgrat -= 1;
+													}
+												}
+											}
+											echo("</div>");
+											//End of Rating Division
+
+											echo("  
+																	</div>
+																	<div class=\"col-xl-5\">
+																		<p style=\"font-size:0.8rem;color:grey;\">Sold ".$row_1['product_sold']."</p>
+																	</div>
+																</div>
+															</div>
+											");
+											//End of Stock Division
+										}
+
+										//Start of Location Division
+										//$location = $row_1['location'];
+										$location = "Subang Jaya";
+										echo("
+											<div class=\"Location\">
+												<span style=\"font-size: 10pt; color:grey;\" >$location</span>
+											</div>
+										");
+										//End of Location Division
+
+										echo("
+																	
+																
+														</div>
+													</div>   
+												</a>
+											</div>
+										");
+									}
+								}
+							}
+							
+							echo("
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							");
+						}
+					?>
+                                    
                 </div>
                 <!-- /.container-fluid -->
 

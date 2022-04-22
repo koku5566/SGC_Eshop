@@ -10,6 +10,42 @@
     }
 ?>
 
+<?php 
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    //Login
+    if(!isset($_SESSION['login']))
+    {
+        $_SESSION['login'] = false;
+    }
+    if(!isset($_SESSION['name']))
+    {
+        $_SESSION['name'] = "";
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
+    }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
+    if(!isset($_SESSION['role']))
+    {
+        $_SESSION['role'] = "";
+    }
+
+    //Set true to enable seller register
+    $_SESSION['enableSeller'] = false;
+?>
+
 <?php
     //Fetch each promotion image information
     $promotion_title = array();
@@ -289,7 +325,7 @@
                         }?>
 
                             
-                        </div>
+                    </div>
 
                     <br>
 
@@ -307,7 +343,7 @@
                                     <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
 
                                             $result = mysqli_query($conn, $sql);
 
