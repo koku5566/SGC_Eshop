@@ -71,57 +71,47 @@
 //}
 //
 //$conn->close();
+// $select= "SELECT * FROM shopProfile WHERE id=4";
+// $sql = mysqli_query($conn,$select);
+// $row = mysqli_fetch_assoc($sql);
 ?>
 
 <!-- Update Profile -->
 <?php
 //  session_start();
-// if(isset($_POST['update']))
-// {
-//    //$shopProfileCover = $_POST['coverContainer'];
-//    //$shopProfilePic = $_POST['profilePicContainer'];
-//    //$shopProfilePic = array_filter($_FILES['img']['name']);
-//    $shopName = $_POST['name'];
-//    $shopDescription = $_POST['description'];
-//    //$shopMedia = $_POST['mediaContainer'];
-//    $select= "SELECT * FROM shopProfile WHERE id='$id'";
-//    $sql = mysqli_query($conn,$select);
-//    $row = mysqli_fetch_assoc($sql);
-//    $res= $row['id'];
-//    if($res === $id)
-//    {
-//       echo 'Hello';
-//       $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
-//       $sql2=mysqli_query($conn,$update);
-//       echo 'Hi';
-//       if($sql2)
-//       { 
-//           /*Successful*/
-//           //header('location:Dashboard.php');
-//           echo 'Success';
-//       }
-//       else
-//       {
-//           /*sorry your profile is not update*/
-//           //header('location:Profile_edit_form.php');
-//           echo 'Fail';
-//       }
-//    }
-//    else
-//    {
-//        /*sorry your id is not match*/
-//        //header('location:Profile_edit_form.php');
-//        echo 'Error!';
-//    }
-// }
+ if(isset($_POST['saveBtn']))
+ {
+    //$shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    echo $shopName, $shopDescription;
+    //$shopMedia = $_POST['mediaContainer'];
+       $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = '4'";
+
+       if($conn->query($update))
+       { 
+           /*Successful*/
+           //header('location:Dashboard.php');
+           header("refresh:1; url=shopProfile.php");
+       }
+       else
+       {
+           /*sorry your profile is not update*/
+           //header('location:Profile_edit_form.php');
+           echo 'Fail';
+       }
+}
+ 
 ?>
 
 <?php
-  $sql = "UPDATE shopProfile SET shop_name ='$_POST[name]', shop_description = '$_POST[description]' WHERE shop_id=4";
-  if (mysqli_query($sql, $conn))
-    header("refresh:1; url=shopProfile.php");
-  else
-    echo "Not Update";
+  //$sql = "UPDATE shopProfile SET shop_name ='$_POST[name]', shop_description = '$_POST[description]' WHERE shop_id=4";
+  //if (mysqli_query($sql, $conn))
+  //  header("refresh:1; url=shopProfile.php");
+  //else
+  //  echo "Not Update";
 ?>
 
 <!-- Upload Data -->
@@ -255,7 +245,7 @@
 
 
     <div class="text-center">
-      <button type="submit" class="saveBtn" name="update">Save</button>
+      <button type="submit" class="saveBtn" id="saveBtn" name="saveBtn">Save</button>
     </div> 
     </form>
   </div>

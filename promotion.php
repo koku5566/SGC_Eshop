@@ -6,8 +6,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
 <style>
-    #voucherlogo{
+   #voucherlogo{
    height: 100px;
    width: 100px;
    display: flex;
@@ -60,7 +61,7 @@
         max-height: 580px;
         min-width: 80%;
     }
-</style>>
+</style>
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
@@ -210,7 +211,7 @@
                                                         // $voucherid2 = $row['voucher_id'];
                                                         // for($i = 0; $i < count($voucherid2); $i++){
                                                         //     for($x = 0; $x < count($voucherid); $x++){
-                                                                if($r['voucher_id'] == $row['voucher_id']){
+                                                                // if($r['voucher_id'] == $row['voucher_id']){
                                             ?>
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php 
@@ -232,9 +233,9 @@
                         </div>
                             
                             <?php 
-                                } else{
-                                    ;
-                                }
+                                // } else{
+                                //     ;
+                                //}
                         }?>
                         
                     </div>
