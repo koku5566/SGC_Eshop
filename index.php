@@ -356,6 +356,7 @@
                                 }
                                 else{
                                     echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
+                                    echo $uid;
                                 }
                             }
 
