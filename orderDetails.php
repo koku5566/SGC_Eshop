@@ -7,7 +7,7 @@ $order_id = $_GET['order_id'];
 if(isset($_GET["cancel"]) && isset($_GET["id"])){
     $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["order_id"]);
 }
-if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
+if(isset($_GET["confirm"]) && isset($_GET["id"])){
     $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["order_id"]);
 }
 
