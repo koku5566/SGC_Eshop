@@ -49,7 +49,9 @@
                     while ($row = mysqli_fetch_array($query_shop)) {
                         $shop_id = $row['shopID'];
 
-                        echo "<tr colspan='6'>  $shop_id  </tr>";
+                        echo "<tr >   
+                            <td colspan='6'>$shop_id </td>
+                            </tr>";
 
                         //select product from this shop
                         $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
