@@ -244,7 +244,7 @@
                          product.product_price
                     
                          FROM shopProfile
-                         INNER JOIN product ON shopProfile.shop_id = product.shop_id
+                         JOIN product ON shopProfile.shop_id = product.shop_id
                          WHERE product.shop_id = '$shopId'";
                     
                     
