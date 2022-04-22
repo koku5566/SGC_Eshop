@@ -23,7 +23,7 @@ if(isset($_POST['signup']))
 			$role = $_POST['role'];
 
 			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username OR email = '$username' OR '$email'";
+				$sql_u = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
 
 				$stmt_u = mysqli_query($conn, $sql_u);
 
