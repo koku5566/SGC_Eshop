@@ -3,27 +3,7 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-$sqlod = "SELECT
-myOrder.order_id,
-myOrder.order_date,
-orderDetails.quantity,
-orderDetails.amount,
-orderDetails.shop_id,
-product.product_name,
-product.product_price,
-product.product_cover_picture,
-shopProfile.shop_name,
-shopProfile.shop_profile_image
-FROM
-myOrder
-JOIN user ON myOrder.user_id = user.user_id
-JOIN userAddress ON myOrder.user_id = userAddress.user_id
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.product_id
-JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-WHERE myOrder.order_id = '$order_id' 
-";
-$result = $conn->query($sqlod);
+
 
 
 ?>
