@@ -75,45 +75,37 @@
 
 <!-- Update Profile -->
 <?php
-//  session_start();
-// if(isset($_POST['update']))
-// {
-//    //$shopProfileCover = $_POST['coverContainer'];
-//    //$shopProfilePic = $_POST['profilePicContainer'];
-//    //$shopProfilePic = array_filter($_FILES['img']['name']);
-//    $shopName = $_POST['name'];
-//    $shopDescription = $_POST['description'];
-//    //$shopMedia = $_POST['mediaContainer'];
-//    $select= "SELECT * FROM shopProfile WHERE id='$id'";
-//    $sql = mysqli_query($conn,$select);
-//    $row = mysqli_fetch_assoc($sql);
-//    $res= $row['id'];
-//    if($res === $id)
-//    {
-//       echo 'Hello';
-//       $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
-//       $sql2=mysqli_query($conn,$update);
-//       echo 'Hi';
-//       if($sql2)
-//       { 
-//           /*Successful*/
-//           //header('location:Dashboard.php');
-//           echo 'Success';
-//       }
-//       else
-//       {
-//           /*sorry your profile is not update*/
-//           //header('location:Profile_edit_form.php');
-//           echo 'Fail';
-//       }
-//    }
-//    else
-//    {
-//        /*sorry your id is not match*/
-//        //header('location:Profile_edit_form.php');
-//        echo 'Error!';
-//    }
-// }
+  session_start();
+ if(isset($_POST['update']))
+ {
+    //$shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    //$shopMedia = $_POST['mediaContainer'];
+    $select= "SELECT * FROM shopProfile WHERE id=4";
+    $sql = mysqli_query($conn,$select);
+    $row = mysqli_fetch_assoc($sql);
+
+       echo 'Hello';
+       $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = 4";
+       $sql2=mysqli_query($conn,$update);
+       echo 'Hi';
+       if($sql2)
+       { 
+           /*Successful*/
+           //header('location:Dashboard.php');
+           echo 'Success';
+       }
+       else
+       {
+           /*sorry your profile is not update*/
+           //header('location:Profile_edit_form.php');
+           echo 'Fail';
+       }
+    }
+ }
 ?>
 
 <?php
