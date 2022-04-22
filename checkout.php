@@ -180,7 +180,7 @@ $shippingfee = 8.6;
                                         $product_price = $rowKL['P_price'];
                                         $product_stock = $rowKL['product_stock'];
         
-                                        $variation_message = " ";
+                                        $variation_message = " no variation ";
                                     }
                                     else if ($rowKL['variation_id'] != "") {
                                         
