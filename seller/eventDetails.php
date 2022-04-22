@@ -9,7 +9,6 @@ if (isset($_GET['id'])) {
     $eventid = $_GET['id'];
 }
 
-echo $_SESSION['eventIDView'];
  $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
  $query_run = mysqli_query($conn,$query);
 ?>
