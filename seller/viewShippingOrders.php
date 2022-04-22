@@ -264,12 +264,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $rowheader['order_id'];
+                                            $aoID = $rowheader['order_id'];
                                             //Loop product in each order
                                             $allsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ";
+                                                        WHERE orderDetails.order_id = '$aoID' AND orderDetails.shop_id = '$user_id' ";
                                           
                                             $allresult = mysqli_query($conn, $allsql);
                                             if (mysqli_num_rows($allresult) > 0) {
@@ -340,12 +340,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $tsrowheader['order_id'];
+                                            $toID = $tsrowheader['order_id'];
                                             //Loop product in each order
                                             $tssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$toID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
@@ -414,12 +414,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $purowheader['order_id'];
+                                            $poID = $purowheader['order_id'];
                                             //Loop product in each order
                                             $pusql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$poID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
                                             
                                             $puresult = mysqli_query($conn, $pusql);
                                             if (mysqli_num_rows($puresult) > 0) {
@@ -486,12 +486,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $srowheader['order_id'];
+                                            $soID = $srowheader['order_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$soID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
@@ -558,12 +558,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $srowheader['order_id'];
+                                            $coID = $srowheader['order_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$coID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
