@@ -76,7 +76,7 @@ if(isset($_POST['signup']))
 								$returnPath = "-f" . $from2;
 
 								if (@mail($to, $subject, $message, $headers, $returnPath)){
-									echo " ";
+									echo "";
 								}
 								else
 								{
@@ -86,7 +86,7 @@ if(isset($_POST['signup']))
 								if ($_POST['role'] == "SELLER"){
 									$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
 									if (mysqli_query($conn, $sql)){
-										echo " ";
+										echo "";
 									}else{
 										echo "Error: ".$sql."<br>".mysqli_error($conn);
 									}
