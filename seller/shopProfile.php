@@ -118,12 +118,12 @@
       <div>
 
       <?php
-      //  while ($row=mysqli_fetch_assoc($result1))
-      //  {
-      //    $shopCoverImage = $row['shop_profile_cover'];
-      //    $shopProfilePic = $row['shop_profile_image'];
-      //    $shopName = $row['shop_name'];
-      //    $shopDescription = $row['shop_description'];
+        while ($row=mysqli_fetch_assoc($result1))
+        {
+          $shopCoverImage = $row['shop_profile_cover'];
+          $shopProfilePic = $row['shop_profile_image'];
+          $shopName = $row['shop_name'];
+          $shopDescription = $row['shop_description'];
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
@@ -170,7 +170,7 @@
     </form>
   </div>
   <?php
-  //  }
+    }
   ?>
 </div>
 <!-- /.container-fluid -->
