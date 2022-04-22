@@ -247,35 +247,24 @@ $completedresult = $stmt->get_result();
                               $sqlheader = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
                               $resultheader = mysqli_query($conn, $sqlheader);
                               if (mysqli_num_rows($resultheader) > 0) {
-                            while ($rowheader = mysqli_fetch_assoc($resultheader)) {
-                                      //Loop header
-                            ?>
-                            <!--Each Order Item-->
-                            <div class="card mt-2">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col md-auto text-start"><span><strong><?php echo $rowheader['username'];?></strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $rowheader['order_id']; ?> </strong></span></div>
-                                    </div>
-                                
-                                <div class="card-body">
-                                    <div class="row">
-
+                              while ($rowheader = mysqli_fetch_assoc($resultheader)) {
+                                        //Loop header
+                              ?>
                                     <div class="card mt-2">
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col md-auto text-start">
-                                                    <span><strong><?php echo $tsheader['username']; ?></strong></span>
+                                                    <span><strong><?php echo $rowheader['username']; ?></strong></span>
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $tsheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $rowheader['order_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $tsheader['order_id'];
+                                            $oID = $rowheader['order_id'];
                                             //Loop product in each order
                                             $toshipsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
