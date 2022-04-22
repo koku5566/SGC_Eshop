@@ -49,7 +49,7 @@ $queryKL = mysqli_query($conn, $sql);
         }
         else if ($rowKL['variation_id'] != "") {
             
-            $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."AND product_stock != 0'";
+            $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
             $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
             while( $row = mysqli_fetch_assoc($query_get_variation_price))
             {
@@ -66,7 +66,7 @@ $queryKL = mysqli_query($conn, $sql);
                 }
             }
 
-            $sql_get_variation = "SELECT * FROM `variation` WHERE `variation_id` = '$product_id'";
+            $sql_get_variation = "SELECT * FROM `variation` WHERE `product_id` = '$product_id'";
             $query_get_variation = mysqli_query($conn, $sql_get_variation);
             while( $row = mysqli_fetch_assoc($query_get_variation))
             {
