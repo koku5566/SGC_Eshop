@@ -194,15 +194,15 @@
 
                             if(isset($_POST['claim'])){
 
-                                if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
-                                    ?>
-                                        <script type="text/javascript">
-                                            window.location.href = "/login.php";
-                                        </script>
-                                    <?php
-                                    exit;
-                                }else
-                                {
+                                // if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+                                //     ?>
+                                //         <script type="text/javascript">
+                                //             window.location.href = "/login.php";
+                                //         </script>
+                                //     <?php
+                                //     exit;
+                                // }else
+                                // {
 
                                 $uid = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
@@ -213,7 +213,7 @@
                                 mysqli_query($conn, $sqlc);
 
                                 
-                                }
+                              //  }
 
                             }else{
                                 echo '<script>alert("Voucher claimed failed")</script>';
