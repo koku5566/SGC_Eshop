@@ -6,7 +6,7 @@
     $query = mysqli_query($conn, $sql);
     $output = "";
     if(mysqli_num_rows($query) == 0){
-        $output .= "No users are available to chat";
+        $output .= $outgoing_id . "No users are available to chat";
     }elseif(mysqli_num_rows($query) > 0){
         require __DIR__ . '/livechat/info.php';
     }
