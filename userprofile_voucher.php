@@ -24,7 +24,7 @@
 
    $sql_voucherR =
     "SELECT 
-    voucherRedemption.voucher_id
+    voucherRedemption.voucher_id,
     voucher.voucher_id,
     voucher.voucher_code,
     voucher.voucher_type,
