@@ -142,15 +142,15 @@ if (isset($_GET['id'])) {
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">    
-// Draw the coulumn chart(TOP 5 POPULAR BOOK) when Charts is loaded.
+// Draw the coulumn chart when Charts is loaded.
 google.charts.setOnLoadCallback(drawColChart);
 
 function drawColChart() {
  var data = google.visualization.arrayToDataTable([
  ["Ticket Type ", "Total"],
  <?php 
- $query ="SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id GROUP BY ticket_type_id ORDER BY COUNT(*) DESC";
- $query_run = mysqli_query($connection,$query);
+ $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction WHERE ticketTransaction.ticketOrder_id = '$_SESSION[eventIDView]' GROUP BY ticket_type_id ORDER BY COUNT(*) DESC";
+ $query_run = mysqli_query($conn,$query);
 
    foreach ($query_run as $row)
    {          
