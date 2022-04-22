@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
             <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
-            <a class="btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> Edit </a>
+            <a class="text-success btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> Edit </a>
 
             
             <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
