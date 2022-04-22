@@ -42,11 +42,11 @@
             <!-- Outer Row -->
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
-                  <div class="card o-hidden border-0 shadow-lg my-5">
+                  <div class="card o-hidden border-0 shadow-lg">
                      <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                           <div class="col-lg-12">
+                           <div class="col-12">
                                  <div class="text-left">
                                     <div class="h1 text-gray-900 container-left-col2 p-5">My Voucher</div>
                                  </div>
@@ -70,7 +70,7 @@
                                              </div>
                                           </div>
                                        </div>
-                                       <div class="card" id="vouchercard2">
+                                       <div class="card m-2" id="vouchercard2">
                                           <div class="card-body">
                                              <div class="row">
                                                 <div class="col-mb-3 m-2">
