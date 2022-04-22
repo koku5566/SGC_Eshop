@@ -16,7 +16,7 @@
           }
         ?>
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <img src="images/<?php echo $row['profile_picture']; ?>" alt="">
+        <img src="<?php echo("data:image;base64,".base64_encode($row["profile_picture"])."")?>" alt="">
         <div class="details">
           <span><?php echo $row['username']?></span>
         </div>
@@ -32,7 +32,7 @@
     </section>
   </div>
 
-  <script src="js/chat.js"></script>
+  <script src="/js/chat.js"></script>
 
 </body>
 </html>

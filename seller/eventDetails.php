@@ -6,9 +6,17 @@ require __DIR__ . '/header.php'
 
 if (isset($_GET['id'])) {
     $_SESSION['eventIDView'] = $_GET['id'];
+    $eventid = $_GET['id'];
 }
 
-?>
+echo $_SESSION['eventIDView'];
+ $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$_SESSION[eventIDView]' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
+ $query_run = mysqli_query($conn,$query);
+
+ foreach ($query_run as $row)
+ {          
+    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+ }?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:100%;">
@@ -33,25 +41,32 @@ if (isset($_GET['id'])) {
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">    
-  google.charts.load('current', {packages: ['corechart']});
   google.charts.load('current', {'packages':['bar']});
 // Draw the coulumn chart when Charts is loaded.
 google.charts.setOnLoadCallback(drawColChart);
 
 function drawColChart() {
- var data = google.visualization.arrayToDataTable([
- ["Ticket Type ", "Total"],
- <?php 
-echo $_SESSION['eventIDView'];
- $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$_SESSION[eventIDView]' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
- $query_run = mysqli_query($conn,$query);
+//  var data = google.visualization.arrayToDataTable([
+//  ["Ticket Type ", "Total"],
+//  <?php 
+// echo $_SESSION['eventIDView'];
+//  $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
+//  $query_run = mysqli_query($conn,$query);
 
- foreach ($query_run as $row)
- {          
-    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
- }
-   ?>
- ]);
+//  foreach ($query_run as $row)
+//  {          
+//     echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+//  }
+//    ?>
+//  ]);
+var data = google.visualization.arrayToDataTable([
+         ['Element', 'Density', { role: 'style' }],
+         ['Copper', 8.94, '#b87333'],            // RGB value
+         ['Silver', 10.49, 'silver'],            // English color name
+         ['Gold', 19.30, 'gold'],
+
+       ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
+      ]);
 
 var options = {
    width: 800,

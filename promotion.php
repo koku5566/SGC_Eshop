@@ -73,41 +73,10 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
-        <!-- Slideshow -->
-        <div class="row">
-            <div class="justify-content-center">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                            <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="https://www.iphonehacks.com/wp-content/uploads/2021/09/iPhone-13-pre-order.jpg" alt="Third slide">
-                            </div>
-                        </div>
-                            <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <br>
+
         <!-- Voucher -->
+        
         <div class="row">
             <div class = "container-fluid m-5">
                 <div class = "d-flex justify-content-center">
@@ -225,7 +194,7 @@
                                             $sm->execute();
                                             $res = $sm->get_result();
 
-                                                    while ($r = $res->fetch_assoc()) {
+                                                while ($r = $res->fetch_assoc()) {
                                             ?>
 
                                             <p><?php echo $r['product_name'];?></p>
@@ -251,16 +220,6 @@
                                     ;
                                 }
                         }?>
-
-                        <div class="modal fade" id="voucherclaimed" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div id="SuccessMsg">
-                                    <div class="SuccessMsg-content">
-                                        <p style="color: white;">Voucher add successfully.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         
                     </div>
                 </div>
@@ -295,7 +254,7 @@
                 echo '<script>alert("Voucher claimed succesfully.")</script>';
             }
             else{
-                echo '<script>alert("Voucher claimed failed.")</script>';
+                echo '<script>alert("Voucher claimed failed. Login to claimed voucher")</script>';
             }
         }
 

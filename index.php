@@ -187,7 +187,9 @@
                     </div>
 
                     <br>
+
                     <!-- Voucher -->
+
                     <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
                         <?php 
                             
@@ -215,21 +217,6 @@
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
-
-                            $sql_pn=
-                            "SELECT
-                            product.product_name,
-                            voucher.voucher_id
-                            
-                            FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                            JOIN product ON productVoucher.product_id = product.product_id
-                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            ";
-
-                            $sm = $conn->prepare($sql_pn);
-                            $sm->execute();
-                            $res = $sm->get_result();
                             
                             
                             while ($row = $result->fetch_assoc()) {
@@ -258,7 +245,11 @@
                                         </u>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
+                                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                                            <!-- <input type="hidden " name="uid" value="<?php echo $_SESSION['uid'];?>"> -->
+                                            <input type="hidden" name="voucher_id" value="<?php echo $row['voucher_id']?>">
+                                            <button type="submit" name="claim" class="btn btn-warning btn-sm" style="float: right" id="claimVoucherBtn">CLAIM</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -291,18 +282,31 @@
                                         <div class="container">
                                             <strong>Product</strong>
                                             <?php 
-                                                    while ($r = $res->fetch_assoc()) {
-                                                        // $voucherid = $r['voucher_id'];
-                                                        // $voucherid2 = $row['voucher_id'];
 
-                                                        // for($i = 0; $i < count($voucherid2); $i++){
-                                                        //     for($x = 0; $x < count($voucherid); $x++){
-                                                                 if($r['voucher_id'] == $row['voucher_id']){
+                                            $voucher_id = $row['voucher_id'];
+
+                                            $sql_pn=
+                                            "SELECT
+                                            product.product_name,
+                                            voucher.voucher_id
+                                                                
+                                            FROM voucher
+                                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                                            JOIN product ON productVoucher.product_id = product.product_id
+                                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                                            WHERE voucher.voucher_id = $voucher_id
+                                            ";
+                
+                                            $sm = $conn->prepare($sql_pn);
+                                            $sm->execute();
+                                            $res = $sm->get_result();
+
+                                                while ($r = $res->fetch_assoc()) {
                                             ?>
+
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php 
-                                            // }}
-                                            }
+
                                         }?>
                                         </div>
                                         <div class="container">
@@ -323,6 +327,39 @@
                                     ;
                                 }
                         }?>
+
+                        <?php 
+
+                        if(isset($_POST['claim'])){
+
+                            if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+                                ?>
+                                    <script type="text/javascript">
+                                        window.location.href = window.location.origin + "/login.php";
+                                    </script>
+                                <?php
+                                exit;
+                            }
+                            else{
+
+                                $uid = $_SESSION['uid'];
+                                $voucher_id = $_POST['voucher_id'];
+
+                                $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
+                                        VALUES ('$voucher_id','$uid')";
+                                        
+                                if($conn->query($sqlc))
+                                {
+                                    echo '<script>alert("Voucher claimed succesfully.")</script>';
+                                }
+                                else{
+                                    echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
+                                }
+                            }
+
+                        }
+
+                        ?>
 
                             
                     </div>

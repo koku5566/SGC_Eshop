@@ -1,6 +1,6 @@
-const searchBar = document.querySelector(".search input"),
-searchIcon = document.querySelector(".search button"),
-usersList = document.querySelector(".users-list");
+const searchBar = document.querySelector(".search input");
+const searchIcon = document.querySelector(".search button");
+const usersList = document.querySelector(".users-list");
 
 searchIcon.onclick = ()=>{
   searchBar.classList.toggle("show");
@@ -20,7 +20,7 @@ searchBar.onkeyup = ()=>{
     searchBar.classList.remove("active");
   }
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "/livechat/backend/search.php", true);
+  xhr.open("POST", "/livechat/search.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
@@ -35,7 +35,7 @@ searchBar.onkeyup = ()=>{
 
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "/livechat/backend/users.php", true);
+  xhr.open("GET", "/livechat/users.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){

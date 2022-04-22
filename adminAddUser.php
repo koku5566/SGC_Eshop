@@ -23,7 +23,7 @@ if(isset($_POST['signup']))
 			$role = $_POST['role'];
 
 			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username OR email = '$username' OR '$email'";
+				$sql_u = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
 
 				$stmt_u = mysqli_query($conn, $sql_u);
 
@@ -38,6 +38,12 @@ if(isset($_POST['signup']))
 					if (mysqli_query($conn, $sql)) {
 						if ($_POST['role'] == "SELLER"){
 							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
+							echo($sql);
+							if (mysqli_query($conn, $sql)) {
+								echo "";
+							}else {
+								echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+							}
 						}else{
 							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 						}
