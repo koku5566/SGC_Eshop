@@ -2,6 +2,13 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+  if (!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit();
+  }
+?>
+
 <!-- Insert data -->
 <?php
 //    if(isset($_POST['saveBtn'])){
