@@ -128,7 +128,7 @@
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 
-      <img class="relative bg-image img-fluid" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
+      <img class="relative bg-image img-fluid" id="backgroundImage" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
         <input type="file" id="actual-btn" name="profileCover[]" onchange="loadCover(event)" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
@@ -327,7 +327,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
 /* Cover photo review */
 var loadCover = function (event) {
-var cover = document.getElementById("profileCover");
-cover.src = URL.createObjectURL(event.target.files[0]);
+var image = document.getElementById("backgroundImage");
+image.src = URL.createObjectURL(event.target.files[0]);
 };
 </script>
