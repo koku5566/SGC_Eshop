@@ -100,9 +100,9 @@
      $coverIMG = array_filter($_FILES['profileImage']['name']);
      $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
      $allowTypes = array('jpg', 'png', 'jpeg');
-     $proImage = "";
+     $profilePic = "";
      //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
-     $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
+     $profileImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
      if (!empty($coverIMG)) {
          foreach ($_FILES['profileImage']['name'] as $key => $val) {
              // File upload path 
@@ -116,7 +116,7 @@
              $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
              if (in_array($fileType, $allowTypes)) {
                  if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
-                     $proImage = "$fileName";
+                     $profilePic = "$fileName";
                  }
              }
          }
@@ -128,7 +128,7 @@
      $shopDescription = $_POST['description'];
      $shopMedia = $_POST['mediaContainer'];
      $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
-     $result = mysqli_query($conn, $update)
+     $result = mysqli_query($conn, $update);
    }
 ?>
 
