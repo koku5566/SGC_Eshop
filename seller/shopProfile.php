@@ -100,10 +100,11 @@
     $coverIMG = array_filter($_FILES['profileImage']['name']);
     $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
     $allowTypes = array('jpg', 'png', 'jpeg');
-    $categoryPic = "";
+    $shopProfilePic = "";
 
     //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
     $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
 
     if (!empty($coverIMG)) {
         foreach ($_FILES['profileImage']['name'] as $key => $val) {
@@ -123,6 +124,17 @@
             }
         }
     }
+
+    if($conn->query($update))
+      { 
+          /*Successful*/
+          header("refresh:1; url=shopProfile.php");
+      }
+      else
+      {
+          /*Fail*/
+          echo 'Update Fail';
+      }
   }
 ?>
 
