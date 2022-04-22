@@ -50,6 +50,12 @@
 //$conn->close();
 ?>
 
+<!-- Select Data -->
+<?php
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 4";
+  $result1 = mysqli_query($conn, $sql); 
+?>
+
 <!-- Update Profile -->
 <?php
 //if ($conn->connect_error){
@@ -67,10 +73,73 @@
 //$conn->close();
 ?>
 
-<!-- Select Data -->
+<!-- Update Profile -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 4";
-  $result1 = mysqli_query($conn, $sql); 
+ 
+ session_start();
+ include "Connection.php";
+ if(isset($_POST['submit']))
+ {
+    //$shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    //$shopMedia = $_POST['mediaContainer'];
+    $select= "SELECT * FROM shopProfile WHERE id=4";
+    $sql = mysqli_query($conn,$select);
+    $row = mysqli_fetch_assoc($sql);
+    
+   
+       $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
+       $sql2=mysqli_query($conn,$update);
+if($sql2)
+       { 
+           /*Successful*/
+           //header('location:Dashboard.php');
+           echo 'Success';
+       }
+       else
+       {
+           /*sorry your profile is not update*/
+           //header('location:Profile_edit_form.php');
+           echo 'Fail';
+       }
+    }
+ 
+?>
+
+<!-- Upload Data -->
+<?php
+//  if(isset($_POST['update']))
+//  {
+//    $shopProfileCover = $_POST['coverContainer'];
+//    //$shopProfilePic = $_POST['profilePicContainer'];
+//    //$shopProfilePic = array_filter($_FILES['img']['name']);
+//    $shopName = $_POST['name'];
+//    $shopDescription = $_POST['description'];
+//    $shopMedia = $_POST['mediaContainer'];
+//
+//    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
+//    $result2 = mysqli_query($conn,$query);
+//
+//    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
+//
+//
+//
+//    if($result2)
+//    {
+//      echo 'Successfully Update';
+//    }
+//    else
+//    {
+//      echo 'Please Check Your Query';
+//    }
+//  }
+//  else
+//  {
+//    echo 'error';
+//  }
 ?>
 
 <!-- Upload Image -->
@@ -109,38 +178,6 @@
 // 
 //// Display status message 
 //echo $statusMsg; 
-?>
-
-<?php
-  if(isset($_POST['update']))
-  {
-    $shopProfileCover = $_POST['coverContainer'];
-    //$shopProfilePic = $_POST['profilePicContainer'];
-    //$shopProfilePic = array_filter($_FILES['img']['name']);
-    $shopName = $_POST['name'];
-    $shopDescription = $_POST['description'];
-    $shopMedia = $_POST['mediaContainer'];
-
-    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
-    $result2 = mysqli_query($conn,$query);
-
-    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
-
-
-
-    if($result2)
-    {
-      echo 'Successfully Update';
-    }
-    else
-    {
-      echo 'Please Check Your Query';
-    }
-  }
-  else
-  {
-    echo 'error';
-  }
 ?>
 
 <!-- Icon -->
