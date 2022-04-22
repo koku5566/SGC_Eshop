@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/cart_manage.php';
+    require __DIR__ . '/header.php';
 
 	  if($_SESSION['login'] == false)
 	 {
