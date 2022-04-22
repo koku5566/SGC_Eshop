@@ -10,12 +10,12 @@
 $uid = $_SESSION['uid'];
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
 cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
-product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, shopProfile.shop_id
+product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id, cart.shop_id
 FROM `cart`
 JOIN `product`
 ON product.product_id = cart.product_ID 
 JOIN `shopProfile`
-ON cart.shop_id = shopProfile.shop_id
+ON shopProfile.shop_id = shopProfile.shop_id
 WHERE cart.user_ID = '$uid' 
 AND cart.remove_Product = '0'
 AND product.product_status = 'A'
@@ -34,7 +34,7 @@ $queryKL = mysqli_query($conn, $sql);
     $product_id = $rowKL['PID'];
     $product_name = $rowKL['P_name'];
     $product_quantity = $rowKL['P_quantity'];
-    $shop_id = $rowKL['shopProfile.shop_id'];
+    $shop_id1 = $rowKL['cart.shop_id'];
 
     $variation_message = "";
     $showNotif = false;
@@ -151,7 +151,7 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$uid."</span>
         <span>".$user_address."</span>
         <span>".$create_time."</span>
-        <span>".$shop_id."</span>
+        <span>".$shop_id1."</span>
 
    
     "); 
@@ -170,7 +170,7 @@ $queryKL = mysqli_query($conn, $sql);
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id1, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
         /*  $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
