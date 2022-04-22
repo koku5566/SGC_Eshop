@@ -92,8 +92,8 @@ $order_id = $_GET['order_id'];
                     </div>
                 </div>
                 <div class="card-footer">
-                <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
-                <button ><a href="orderDetails.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order</a></button>  
+                <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return confirm_click();">Confirmed Order</a>
+                
                     <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
                 <?php } ?>
@@ -116,7 +116,7 @@ $order_id = $_GET['order_id'];
 <script type="text/javascript">
 function confirm_click()
 {
-return confirm("Are you sure to cancel order?");
+return confirm("Are you sure you want to complete the order?");
 }
 
 
