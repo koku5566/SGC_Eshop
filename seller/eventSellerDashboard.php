@@ -24,12 +24,12 @@ require __DIR__ . '/header.php'
             <div class="tab-pane active" role="tabpanel" id="tab-1">
                 <div style="margin-left: 80px;margin-right: 80px;">
                     <?php
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `organiser_id` = 1";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `organiser_id` = 1";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $eventID = $row['event_id'];
-                            $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                            $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON ``event`.`organiser_id` = `user`.`id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
                             $result1 = mysqli_query($conn, $sql1);
                             $minPrice = 999999;
                             $maxPrice = 0;
@@ -118,14 +118,14 @@ require __DIR__ . '/header.php'
             <div class="tab-pane" role="tabpanel" id="tab-3">
                 <div style="margin-left: 80px;margin-right: 80px;">
                     <?php
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `organiser_id` = 1";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `organiser_id` = 1";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             if ($row['event_date'] < date("Y-m-d")) {
                                 $eventID = $row['event_id'];
-                                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
+                                $sql1 = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` INNER JOIN `ticketType` ON `event`.`event_id` = `ticketType`.`event_id` WHERE `event`.`event_id` = $eventID";
                                 $result1 = mysqli_query($conn, $sql1);
                                 $minPrice = 999999;
                                 $maxPrice = 0;
