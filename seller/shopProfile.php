@@ -2,21 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-<?php
-//session_start();
-//if (!isset($_SESSION['login']))
-//{
-//  header('Location: login.php');
-//}
-//else
-//{
-//  if ($_SESSION['role'] != "SELLER")
-//  {
-//    header('location: index.php');
-//  }  
-//}
-?>
-
 <!-- Insert data -->
 <?php
 //    if(isset($_POST['saveBtn'])){
@@ -108,7 +93,6 @@
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
-          parent.window.location.reload();
           echo 'Success';
       }
       else
