@@ -76,7 +76,7 @@ if(isset($_POST['signup']))
 						{
 							echo "<script>alert('Error');</script>";
 						}
-						if ($role = "SELLER"){
+						if ($_POST['role'] = "SELLER"){
 							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
 						}
 					}
