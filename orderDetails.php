@@ -2,13 +2,31 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+    $id = $_GET["id"];
+    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = $id");
+
+    echo "<script>
+        alert('Order ID #$id has been cancelled');
+        window.location.href='getOrder.php';
+        </script>";
+    exit;
+}
+if(isset($_GET["confirm"]) && isset($_GET["id"])){
+    $id = $_GET["id"];
+    $conn->query("UPDATE myorder SET order_status = 'COMPLETE' WHERE order_id = $id");
+
+    echo "<script>
+        alert('Order ID #$id is Complete');
+        window.location.href='getOrder.php';
+        </script>";
+    exit;
+}
+
 if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     $order_id = $_POST['order_id'];
     
-    $stmt4 =$conn->prepare("SELECT * FROM myOrder
-    JOIN orderDetails  ON orderDetails.order_id = myOrder.order_id
-    JOIN product ON product.product_id = orderDetails.product_id
-    WHERE orderDetails.order_id  = ?");
+    $stmt4 =$conn->prepare("SELECT * FROM myorder o JOIN orderdetails od ON od.order_id = o.order_id JOIN product p ON p.id = od.product_id WHERE od.order_id = ?");
     $stmt4->bind_param('i',$order_id);
     $stmt4->execute();
     $order_details = $stmt4->get_result();
@@ -17,8 +35,13 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     exit;
 }
 
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'To Respond' WHERE order_id = ".$_GET["id"]);
+if(isset($_POST['save_reason_type']))
+{
+    $reason_type = $_POST['reason_type'];
+    //echo $reason_type;
+    foreach($reason_type as $reason){
+        $conn->query("UPDATE myorder WHERE reason_type = $reason");
+    }
 }
 
 ?>
@@ -33,81 +56,49 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
                             <h2 class="font-weight-bold text-center">ORDER DETAILS</h2>
                             <hr class="mx-auto">
                         </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <?php
+                        <div class="card">
+                                
+                                <div class="card-header">
+                                    
+                                   <div class="order-list-panel">
+                                        <div class="row">
+                                          
+                                            <div class="col-1">No.</div>
+                                            <div class="col-5">Product(s)</div>
+                                            <div class="col-2">Unit Price</div>
+                                            <div class="col-1">Quantity</div>
+                                            <div class="col-3">Total Amount</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <?php
                                         $count=1;
                                         while($row = $order_details->fetch_assoc()){
                                         ?>
-                                        <table class="table">
-                                            <tr>
-                                                <th colspan="3" align="left">Order Details (<?php echo $count++; ?>)</th>
-                                                <th>Order ID : <?php echo $row['order_id']?></th>
-                                            </tr>
-                                            <tr>
-                                                <td width="150">Delivery Method</td>
-                                                <td width="20">:</td>
-                                                <td><?php echo $row["delivery_method"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Status</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["order_status"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["order_date"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="3" align="left">Product Details</th>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <img class="card-img-top img-thumbnail"
-                                                    style="object-fit:contain;width:100%;height:100%"
-                                                    src="/img/product/<?php echo $row['product_cover_picture']?>"
-                                                    />
-                                                </td>
+                                        <div class="order-list-panel">
+                                            <div class="row">
+                                                <div class="col-1"><?php echo $count++; ?>.</div>
+                                                <div class="col-5"><img src="/img/product/<?php echo $row['product_cover_picture']?>">&nbsp;&nbsp;<?php echo $row["product_name"]; ?></div>
+                                                <div class="col-2"><?php echo $row["product_price"]; ?></div>
+                                                <div class="col-1"><?php echo $row["quantity"]; ?></div>
+                                                <div class="col-3"><?php echo $row["price"]; ?></div>
+                                            </div>
+                                        </div>
                                                 
-                                            </tr>
-                                            <tr>
-                                                <td>Quantity</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["quantity"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Price</td>
-                                                <td>:</td>
-                                                <td> RM <?php echo $row["amount"]; ?></td>
-                                            </tr>
+                                                
                                             
-                                            <tr>
-                                                <td>SKU</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["product_sku"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["product_name"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Description</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["product_description"]; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brand</td>
-                                                <td>:</td>
-                                                <td><?php echo $row["product_brand"]; ?></td>
-                                            </tr>
-                                        </table>
                                         <hr>
                                         <?php } ?>
-                                    </div>
+
+                                        <br>
+                                        <a href="orderDetails.php?cancel&id=<?php echo $order_id?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel Order</button></a>
+                                        <a href="orderDetails.php?confirm&id=<?php echo $order_id?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Confirm Order</button></a>
+                                        <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                              Cancel Order
+                                            </button>
+                                        <br><br>
+                                   
                                 </div>
                                 <div class="card-footer">
                                 <a href="getOrder.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel</button></a>
