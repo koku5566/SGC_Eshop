@@ -169,7 +169,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage[]" value="" onchange="loadFile(event)"/>
-        <img src="<?php echo $shopProfilePic ?>" id="profileImage" name="profileImage" width="200"/>
+        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" width="200"/>
       </div>
     </div>
     
