@@ -52,7 +52,7 @@
 
 
 <br>
-<div class="container">
+
    <div class="row">
       <?php require __DIR__ . '/userprofilenav.php' ?><br>
       <div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
@@ -124,7 +124,7 @@
          </div>
       </div>
    </div>
-</div>
+
 
 <?php require __DIR__ . '/footer.php' ?>
 
