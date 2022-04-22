@@ -353,7 +353,7 @@
                                     echo '<script>alert("Voucher claimed succesfully.")</script>';
                                 }
                                 else{
-                                    echo '<script>alert("Voucher claimed failed.")</script>';
+                                    echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
                                 }
                             }
 
