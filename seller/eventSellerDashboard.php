@@ -70,7 +70,7 @@ require __DIR__ . '/header.php'
             <div class="tab-pane" role="tabpanel" id="tab-2">
                 <div style="margin-left: 80px;margin-right: 80px;">
                     <?php
-                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `organiser_id` = 1";
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `event`.`organiser_id` = `user`.`id` WHERE `event`.`organiser_id` = 1";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
