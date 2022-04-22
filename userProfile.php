@@ -30,13 +30,13 @@ if(isset($_POST['update']))
 
 		if (mysqli_num_rows($stmt_u) > 0) {	
 		
-			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
+			if($_FILES['proPic']['tmp_name'] != "" && $_POST['password'] != ""){
 				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 			}
 			else{
 				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
 			}
-			
+
 			if (mysqli_query($conn, $sql)) {
 				$_SESSION['Update'] = true;
 				?><script>alert('Details Updated');
