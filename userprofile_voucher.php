@@ -43,8 +43,7 @@
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
                   <div class="card o-hidden border-0 shadow-lg my-5">
-                     <div class="col-6 mt-2 mb-2">
-                     <?php
+                  <?php
 
 $uid = $_SESSION['uid'];
 
@@ -79,6 +78,7 @@ $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
 
 ?>
+                     <div class="col-6 mt-2 mb-2">
                         <div class="card" id="vouchercard2">
                            <div class="card-body">
                               <div class="row">
