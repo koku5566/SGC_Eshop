@@ -1,11 +1,11 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php	
-	if($_SESSION['login'] == false)
-	{
-		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
-		exit;
-    }
+	// if($_SESSION['login'] == false)
+	// {
+	// 	?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+	// 	exit;
+   //  }
 ?>
 
 <?php
