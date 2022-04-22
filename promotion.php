@@ -13,57 +13,53 @@
    display: flex;
    justify-content: center;
    overflow: hidden
-}
+    }
 
-#voucherlogo img {
-   width: 100px
-}
+    #voucherlogo img {
+    width: 100px
+    }
 
-img {
-   width: 100px
-}
+    img {
+    width: 100px
+    }
 
-#vouchercard{
-   width: 11.5rem;
-   height: 25rem;
-}
+    #vouchercard{
+    width: 11.5rem;
+    height: 25rem;
+    }
 
-#termsvouchercard{
-   width: 11.5rem;
-   height: 20rem;
-}
+    #termsvouchercard{
+    width: 11.5rem;
+    height: 20rem;
+    }
 
-.tnccontainer{
-   border-radius: 10px;
-   border: dashed;
-}
+    .tnccontainer{
+    border-radius: 10px;
+    border: dashed;
+    }
 
-.selectvoucher{
-   width: 40px;
-   height: 28px;
-}
+    .selectvoucher{
+    width: 40px;
+    height: 28px;
+    }
 
-/* -------------------- Category Scrollbar----------------------- */
+    /* -------------------- Category Scrollbar----------------------- */
 
-/* width */
-::-webkit-scrollbar {
-   width: 5px;
-   height: 5px;
- }
+    /* width */
+    ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    }
 
- .scrolling-wrapper{
-	overflow-x: auto;
-    display: flex;
-    justify-content: center;
-    overflow: hidden
-}
+    .scrolling-wrapper{
+        overflow-x: auto;
+    }
 
- .scrolling-wrapper2{
-	overflow-y: auto;
-   max-height: 580px;
-}
-</style>
-
+    .scrolling-wrapper2{
+        overflow-y: auto;
+    max-height: 580px;
+    }
+</style>>
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
@@ -103,7 +99,7 @@ img {
         <br>
         <!-- Voucher -->
         <div class="row">
-            <div class = "container m-5 p-5">
+            <div class = "container m-5">
                 <div class = "d-flex justify-content-center">
                     <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
                         <?php 
@@ -193,14 +189,14 @@ img {
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-center">
                                             <div class="card m-2" id="termsvouchercard">
-                                                <div class="container">
-                                                    <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
-                                                </div>
-                                                <div class="card-body">
-                                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                    <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
-                                                </div>
+                                            <div class="container">
+                                                <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                                <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
