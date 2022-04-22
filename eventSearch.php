@@ -94,6 +94,16 @@ require __DIR__ . '/header.php'
                     $date = $_GET['date'];
                     $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` <= \"$date\"";
                 }
+                if(isset($_GET['eventSearch']))
+                {
+                    $nameEvent = $_GET['eventSearch'];
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`event_name` LIKE '%\"$nameEvent\"%";
+                }
+                if(isset($_GET['searchDate']))
+                {
+                    $dateEvent = $_GET['searchDate'];
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` <= \"$date\" AND `event`.`event_date` >= \"$date\"";
+                }
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -144,6 +154,12 @@ require __DIR__ . '/header.php'
                     </div>
                     ");
                     }
+                }
+                else
+                {
+                    echo("
+                    <h1 style=\"color: rgb(163, 31, 55);\">No Result Found</h1>
+                    ");
                 }
                 ?>
             </div>

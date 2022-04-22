@@ -277,36 +277,25 @@
         if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
             ?>
                 <script type="text/javascript">
-                    window.location.href = "/login.php";
+                    window.location.href = window.location.origin + "/login.php";
                 </script>
             <?php
             exit;
         }
         else{
 
-            $claimedcheckv = $pdo->prepare("SELECT voucher_id FROM `voucherRedemption`");
-            $claimedchecku = $pdo->prepare("SELECT user_id FROM `voucherRedemption`");
             $uid = $_SESSION['uid'];
+            $voucher_id = $_POST['voucher_id'];
 
-            if($row['voucher_id'] = $claimedcheck &&  $uid = $claimedchecku){
-
-                echo '<script>alert("Voucher has been claimed.")</script>';
-
-            }else{
-
-                $uid = $_SESSION['uid'];
-                $voucher_id = $_POST['voucher_id'];
-
-                $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
-                        VALUES ('$voucher_id','$uid')";
-
-                if($conn->query($sqlc))
-                {
-                    echo '<script>alert("Voucher claimed succesfully.")</script>';
-                }
-                else{
-                    echo '<script>alert("Voucher claimed failed.")</script>';
-                }
+            $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
+                    VALUES ('$voucher_id','$uid')";
+                    
+            if($conn->query($sqlc))
+            {
+                echo '<script>alert("Voucher claimed succesfully.")</script>';
+            }
+            else{
+                echo '<script>alert("Voucher claimed failed.")</script>';
             }
         }
 
