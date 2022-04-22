@@ -289,7 +289,8 @@ $completedresult = $stmt->get_result();
                                                     </div>
                                             <?php
                                                 }
-                                            }
+                                            }else
+                                            echo("cannot");
                                             ?>
                                         </div>
                                     </div>
