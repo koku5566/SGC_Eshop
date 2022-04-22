@@ -46,7 +46,7 @@
       if($conn->query($update))
       { 
           /*Successful*/
-          header("refresh:1; url=shopProfile.php");
+          header("url=shopProfile.php");
       }
       else
       {
