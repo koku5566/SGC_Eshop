@@ -1,8 +1,8 @@
 <?php 
     session_start();
-    if(isset($_SESSION['unique_id'])){
+    if(isset($_SESSION['userID'])){
         include_once "db.php";
-        $outgoing_id = $_SESSION['unique_id'];
+        $outgoing_id = $_SESSION['userID'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $message = mysqli_real_escape_string($conn, $_POST['message']);
         if(!empty($message)){

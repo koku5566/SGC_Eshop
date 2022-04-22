@@ -4,7 +4,7 @@
 <?php 
   session_start();
   include_once "backend/db.php";
-  if(!isset($_SESSION['unique_id'])){
+  if(!isset($_SESSION['userID'])){
     header("location: login.php");
   }
 ?>
@@ -14,15 +14,14 @@
       <header>
         <div class="content">
           <?php 
-            $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+            $sql = mysqli_query($conn, "SELECT * FROM users WHERE userID = {$_SESSION['userID']}");
             if(mysqli_num_rows($sql) > 0){
               $row = mysqli_fetch_assoc($sql);
             }
           ?>
-          <img src="php/images/<?php echo $row['img']; ?>" alt="">
+          <img src="php/images/<?php echo $row['profile_picture']; ?>" alt="">
           <div class="details">
-            <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
-            <p><?php echo $row['status']; ?></p>
+            <span><?php echo $row['username'] ?></span>
           </div>
         </div>
       </header>

@@ -1,11 +1,11 @@
 <?php 
     session_start();
-    if(isset($_SESSION['unique_id'])){
+    if(isset($_SESSION['userID'])){
         include_once "db.php";
-        $outgoing_id = $_SESSION['unique_id'];
+        $outgoing_id = $_SESSION['userID'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $output = "";
-        $sql = "SELECT * FROM messages LEFT JOIN users ON users.unique_id = messages.outgoing_msg_id
+        $sql = "SELECT * FROM messages LEFT JOIN users ON users.userID = messages.outgoing_msg_id
                 WHERE (outgoing_msg_id = {$outgoing_id} AND incoming_msg_id = {$incoming_id})
                 OR (outgoing_msg_id = {$incoming_id} AND incoming_msg_id = {$outgoing_id}) ORDER BY msg_id";
         $query = mysqli_query($conn, $sql);
@@ -19,7 +19,7 @@
                                 </div>';
                 }else{
                     $output .= '<div class="chat incoming">
-                                <img src="php/images/'.$row['img'].'" alt="">
+                                <img src="php/images/'.$row['profile_picture'].'" alt="">
                                 <div class="details">
                                     <p>'. $row['msg'] .'</p>
                                 </div>
@@ -27,7 +27,7 @@
                 }
             }
         }else{
-            $output .= '<div class="text">No messages are available. Once you send message they will appear here.</div>';
+            $output .= '<div class="text">No messages are available.</div>';
         }
         echo $output;
     }else{
