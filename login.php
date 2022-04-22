@@ -86,6 +86,7 @@
                                             <a class="small" href="forgetPassword.php">Forgot Password?</a>
                                         </div>
                                         
+                                        <div hidden>
                                         <div class="or-container">
                                             <div class="or-line"></div>
                                             <span style="padding: 0 1rem">OR</span>
@@ -93,17 +94,18 @@
                                         </div>
 
                                         <div class="alt-login" style="display: flex;">
-                                        <div class="btn btn-microsoft btn-block">
-                                            <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
-                                        </div>
+                                            <div class="btn btn-microsoft btn-block">
+                                                <i class="fab fa-microsoft fa-fw"></i> Microsoft 365
+                                            </div>
 
-                                        <div class="btn btn-google btn-block" id="google-login-button">
-                                            <i class="fab fa-google fa-fw"></i> Google
-                                        </div>
+                                            <div class="btn btn-google btn-block" id="google-login-button">
+                                                <i class="fab fa-google fa-fw"></i> Google
+                                            </div>
 
-                                        <div class="btn btn-facebook btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-                                            
-                                        </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
+                                            <div class="btn btn-facebook btn-block fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                                                
+                                            </div><!--<i class="fab fa-facebook-f fa-fw"></i>-->
+                                        </div>
                                         </div>
                                     </form>
 
