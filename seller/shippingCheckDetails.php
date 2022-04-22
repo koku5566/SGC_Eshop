@@ -81,6 +81,7 @@
         }
     }
     
+    //pick up status update
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
@@ -88,12 +89,15 @@
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE order_id = '$orderid'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-            $_SESSION['success'] = "Order Status has been updated";
-            header("Location:shippingCheckDetails.php?order_id=".$orderid);
-            //echoheader('Location: ' . $_SERVER['HTTP_REFERER']);
+            $_SESSION['success'] = "Order Status has been updated";?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+
+            <?php
             } else {
-          $_SESSION['status'] = "Order status update failed";
-          header("Location:shippingCheckDetails.php?order_id=".$orderid);
+          $_SESSION['status'] = "Order status update failed";?>
+          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+
+          <?php
         }
     }
 ?>
@@ -258,7 +262,7 @@
                                 ?>
                                     <tr>
                                         <?php 
-                                if($orderstatus =='Paid'&& $deliverymethod=='standard'){?>
+                                if($orderstatus =='Paid'&& $deliverymethod=='standard' && $orderstatus!='Delivered'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
                                                 <?php //echo date("Y-m-d H:i:s");?> 
@@ -288,7 +292,7 @@
                                         }
 
 
-                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection'){?>
+                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection' && $orderstatus!='Completed'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
                                                 <?php //echo date("Y-m-d H:i:s");?>

@@ -65,6 +65,7 @@
     $stmt->execute();
     $sresult = $stmt->get_result();
 
+    //complete pick up
     if(isset($_POST["completeBtn"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $status = "Completed";
