@@ -89,7 +89,7 @@
     echo $shopName, $shopDescription;
     //$shopMedia = $_POST['mediaContainer'];
        echo 'Hello';
-       $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = 4";
+       $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = '4'";
        echo 'Hi';
        if($conn->query($update))
        { 
