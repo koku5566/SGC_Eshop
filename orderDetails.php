@@ -43,10 +43,7 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-1"><img class="card-img-top img-thumbnail"
-                                style="object-fit:contain;width:100%;height:100%"
-                                src=/img/product/<?php echo $row['product_cover_picture']?> 
-                                alt="<?php echo $row2['product_name']; ?>" /></div>
+                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"></div>
                         <div class="col-4">
                             <?php echo $row2['product_name']; ?>
                         </div>
@@ -57,7 +54,7 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['quantity']; ?>
                         </div>
                         <div class="col-3 red-text">RM
-                            <?php echo $row2['price']; ?>.00
+                            <?php echo $row2['amount']; ?>.00
                         </div>
                         
                     </div>
