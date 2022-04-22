@@ -194,23 +194,23 @@
 
                             if(isset($_POST['claim'])){
 
-                                // if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
-                                //     ?>
-                                //         <script type="text/javascript">
-                                //             window.location.href = "/login.php";
-                                //         </script>
-                                //     <?php
-                                //     exit;
-                                // }else
-                                // {
 
                                 $uid = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
-
+                                echo $uid, $voucher_id;
+                                echo'hello';
                                 $sqlc = "INSERT INTO voucherRedemption ('voucher_id', 'user_id')
                                          VALUES ('$voucher_id','$uid');";
 
-                                mysqli_query($conn, $sqlc);
+                                if($conn->query($sqlc))
+                                {
+                                    echo 'success';
+                                }
+                                else{
+                                    echo 'failed';
+                                }
+
+
 
                                 
                               //  }
