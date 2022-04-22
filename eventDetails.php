@@ -87,7 +87,8 @@ require __DIR__ . '/header.php'
         {
             echo("
             <script>alert(\"No Ticket Found, Please check your ticket ID again\") </script>
-            ");
+            
+            ".$row1['buyer_email']);
         }
 
     }
