@@ -154,6 +154,7 @@ $shippingfee = 8.6;
                             WHERE cart.user_ID = '$UID'
                             AND cart.remove_Product = '0'
                             AND product.product_status = 'A'
+                            AND product.product_stock != 0
                             ORDER BY cart.update_at DESC
                             ";
                             
