@@ -88,7 +88,7 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
-                     <td><span class="badge badge-primary"></span></td>
+                     <td><span class="badge badge-primary"><?php echo $r['voucher_status']; ?></span></td>
                      <td><?php echo $r['voucher_list']; ?></td>
                   </tr>
 
