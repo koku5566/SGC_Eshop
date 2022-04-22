@@ -11,7 +11,7 @@ require __DIR__ . '/header.php'
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <div style="margin-left: 80px;margin-right: 80px;height: 181.8px;">
+    <div style="margin-left: 80px;margin-right: 80px;">
         <div class="text-end" style="margin-top: 20px; text-align:right;"><a href="https://eshop.sgcprototype2.com/seller/createEvent.php"><button class="btn btn-primary" id="createEventBtn" type="button" style="background: rgb(163, 31, 55);width: 121.75px;height: 47px;">Create Event</button></a></div>
     </div>
     <div>
