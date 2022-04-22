@@ -37,7 +37,7 @@
                      <th>Discount Amount</th>
                      <th>Voucher Start</th>
                      <th>Voucher Expired</th>
-                     <th>Voucher Details</th>
+                     <th>Voucher Display</th>
                      <th>Voucher Limit</th>
                      <th>Status</th>
                      <th>List/Delist</th>
@@ -56,7 +56,7 @@
                         voucher.discount_amount,
                         voucher.voucher_startdate,
                         voucher.voucher_expired,
-                        voucher.voucher_details,
+                        voucher.voucher_display,
                         voucher.voucher_limit,
                         voucher.voucher_status,
                         voucher.voucher_list
@@ -88,7 +88,7 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_details']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
-                     <td><?php echo $r['voucher_status']; ?></td>
+                     <td><span class="badge badge-primary"><?php echo $r['voucher_status']; ?></span></td>
                      <td><?php echo $r['voucher_list']; ?></td>
                   </tr>
 

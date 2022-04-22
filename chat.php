@@ -3,6 +3,7 @@
 ?>
 
 <body>
+  
   <div class="wrapper">
     <section class="chat-area">
       <header>
