@@ -208,7 +208,7 @@ if(@$_GET){
                 </div>
                 <div class="card-footer">
                 
-                <button ><a href="getOrder.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order </a></button>
+                <button class="btn btn-primary"><a href="getOrder.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order </a></button>
                     
                     <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
                    
