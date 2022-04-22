@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-$orderid = $_GET['order_id'];
+$order_id = $_GET['order_id'];
 $sqlod = "SELECT
 myOrder.order_id,
 myOrder.order_date,
@@ -21,7 +21,7 @@ JOIN userAddress ON myOrder.user_id = userAddress.user_id
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-WHERE myOrder.order_id = '$orderid';";  
+WHERE myOrder.order_id = '$order_id';";  
 $stmtod = $conn->prepare($sqlod);
 $stmtod->execute();
 $resultod = $stmt_2->get_result();
@@ -55,7 +55,7 @@ $resultod = $stmt_2->get_result();
                                 </div>
                                   <?php
                                         $count=1;
-                                        while($row = $resultod->fetch_assoc()){
+                                        while($rowod = $resultod->fetch_assoc()){
                                         ?>
                                         <div class="order-list-panel">
                                             <div class="row">
