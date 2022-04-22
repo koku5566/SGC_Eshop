@@ -34,7 +34,8 @@ if(isset($_POST['signup']))
 				{
 					$sql = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
 					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
-				
+					$userid = $row["AUTO_INCREMENT"];
+
 					if (mysqli_query($conn, $sql)) {
 						if ($_POST['role'] == "SELLER"){
 							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";

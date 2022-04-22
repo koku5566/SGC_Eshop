@@ -35,7 +35,7 @@
                     <div class="card-header py-3">
                         <h5><?php echo($shopName); ?></h5>
                     </div>
-                    <!-- Slideshow -->
+                   <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -44,15 +44,36 @@
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="Third slide">
-                                    </div>
+                                    <?php
+                                    $sql = "SELECT * FROM facilityPic LIMIT 3";
+
+                                    $result = mysqli_query($conn, $sql);
+                                    $i = false;
+                        
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            if ($i){
+
+                                                echo ("
+                                                    <div class=\"carousel-item\">
+                                                    <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                    </div>         
+                                                ");
+                                            }
+                                            else{
+                                                echo ("
+                                                <div class=\"carousel-item active\">
+                                                <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                </div>
+                                                            
+                                                ");
+                                                $i = true;
+                                            }
+                                        }
+                                    }
+
+                                    ?>
+                    
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
