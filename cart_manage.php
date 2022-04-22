@@ -43,4 +43,13 @@
     }
     unset($_POST['cart_id2']);
     unset($_POST['variation_id']);
+
+    //get subtotal
+    if (isset($_POST['subtotal'])) {
+        $_SESSION['subtotal'] = $_POST['subtotal'];
+
+        echo "<script type='text/javascript'>
+                window.location.href = window.location.origin + '/payment.php';
+            </script>";
+    }
 ?>
