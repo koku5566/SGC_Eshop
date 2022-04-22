@@ -1,40 +1,40 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php	
-	// if($_SESSION['login'] == false)
-	// {
-	// 	?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
-	// 	exit;
-   //  }
+	if($_SESSION['login'] == false)
+	{
+		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+		exit;
+    }
 ?>
 
 <?php
 
-   // $sql_voucher =
-   // "SELECT 
-   // voucher.voucher_id,
-   // voucher.voucher_code,
-   // voucher.voucher_type,
-   // voucher.discount_amount,
-   // voucher.voucher_startdate,
-   // voucher.voucher_expired,
-   // voucher.voucher_details,
-   // shopProfile.shop_name,
-   // shopProfile.shop_profile_image,
-   // product.product_name
+   $sql_voucher =
+   "SELECT 
+   voucher.voucher_id,
+   voucher.voucher_code,
+   voucher.voucher_type,
+   voucher.discount_amount,
+   voucher.voucher_startdate,
+   voucher.voucher_expired,
+   voucher.voucher_details,
+   shopProfile.shop_name,
+   shopProfile.shop_profile_image,
+   product.product_name
 
-   // FROM voucher
-   // JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-   // JOIN product ON productVoucher.product_id = product.product_id		
-   // JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-   // -- GROUP BY voucher.voucher_id
-   // "; 
+   FROM voucher
+   JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
+   JOIN product ON productVoucher.product_id = product.product_id		
+   JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
+   -- GROUP BY voucher.voucher_id
+   "; 
 
-   // $stmt = $conn->prepare($sql_voucher);
-   // $stmt->execute();
-   // $result = $stmt->get_result();
+   $stmt = $conn->prepare($sql_voucher);
+   $stmt->execute();
+   $result = $stmt->get_result();
 
-   // while ($row = $result->fetch_assoc()) {
+   while ($row = $result->fetch_assoc()) {
    
 ?>
 
@@ -49,6 +49,7 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <link href="css/classic.css" rel="stylesheet">
 
+
 <br>
 <div class="container">
    <div class="row">
@@ -59,22 +60,20 @@
       <div class="col-xl-9">
          <div class="" style="background-color: #ffffff">
             <div class="row row-cols-2 p-5">
-               <?php  
-               // while ($row = $result->fetch_assoc()) {
-                  ?>
+               <?php  while ($row = $result->fetch_assoc()) {?>
                <div class="col-6 mt-2 mb-2">
                   <div class="card" id="vouchercard2">
                      <div class="card-body">
                         <div class="row">
                            <div class="col-mb-3 m-2">
-                              <img class="m-2" src="../img/<?php  ?>" id="voucherlogo">
+                              <img class="m-2" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                            </div>
                            <div class="col-mb-7 m-2">
-                              <h6 class="card-title"><strong><?php  ?></strong></h6>
-                              <h5 class="card-subtitle text-muted"><?php  ?><?php  ?> off</h5>
-                              <small>Expired:<?php  ?></small><br>
+                              <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                              <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                              <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
                               <u>
-                                 <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php  ?>">
+                                 <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
                                  T&C applied.
                                  </a>
                               </u>
@@ -85,7 +84,7 @@
 
                   <!-- Modal -->
 
-                  <div class="modal fade" id="termsv2Modal<?php  ?>" tabindex="-1" role="dialog" aria-labelledby="termsv2ModalTitle" aria-hidden="true">
+                  <div class="modal fade" id="termsv2Modal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsv2ModalTitle" aria-hidden="true">
                      <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -98,23 +97,23 @@
                               <div class="d-flex justify-content-center">
                                  <div class="card m-2" id="termsvouchercard">
                                     <div class="container">
-                                       <img class="mt-4 mb-4" src="../img/<?php  ?>" id="voucherlogo">
+                                       <img class="mt-4 mb-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                     </div>
                                     <div class="card-body">
-                                       <h6 class="card-title"><strong><?php  ?></strong></h6>
-                                       <h5 class="card-subtitle text-muted"><?php  ?><?php  ?> off</h5>
-                                       <small>Used : <?php  ?> ~ <?php  ?></small><br>
+                                       <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                       <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?><?php echo $row['voucher_type']; ?> off</h5>
+                                       <small>Used : <?php echo $row['voucher_startdate']; ?>~<?php echo $row['voucher_expired']; ?></small><br>
                                     </div>
                                  </div>
                               </div>
                            </div>
                            <div class="tnccontainer">
                               <strong>Product</strong>
-                              <p><?php  ?></p>
+                              <p><?php echo $row['product_name']; ?></p>
                               <strong>More Details</strong>
-                              <p><?php  ?></p>
+                              <p><?php echo $row['voucher_details']; ?></p>
                               <strong>Usage Period</strong>
-                              <p><?php  ?> ~ <?php  ?></p>
+                              <p><?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></p>
                            </div>
                         </div>
                      </div>
@@ -122,8 +121,7 @@
 
                </div>
 
-               <?php 
-            // }?>
+               <?php }?>
 
             </div>
          </div>
@@ -132,7 +130,7 @@
    </div>
 </div>
 <?php 
-// }?>
+}?>
 
 
 
