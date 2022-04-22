@@ -272,151 +272,40 @@
 
     <?php 
 
-if(isset($_POST['claim'])){
+    if(isset($_POST['claim'])){
 
-    //$uid = $_POST['uid'];
-    $uid = $_SESSION['uid'];
-    $voucher_id = $_POST['voucher_id'];
-    echo $uid, $voucher_id; 
-    echo'hello';
-    $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
-             VALUES ('$voucher_id','$uid')";
+        if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+            ?>
+                <script type="text/javascript">
+                    window.location.href = "/login.php";
+                </script>
+            <?php
+            exit;
+        }
+        else{
 
-    if($conn->query($sqlc))
-    {
-        echo 'success';
+            $uid = $_SESSION['uid'];
+            $voucher_id = $_POST['voucher_id'];
+            // echo $uid, $voucher_id; 
+            // echo'hello';
+
+            $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
+                    VALUES ('$voucher_id','$uid')";
+
+            if($conn->query($sqlc))
+            {
+                 echo '<script>alert("Voucher claimed succesfully.")</script>';
+            }
+            else{
+                echo '<script>alert("Voucher claimed failed.")</script>';
+            }
+        }
+
+    }else{
+        echo '<script>alert("Login to claimed voucher.")</script>';
     }
-    else{
-        echo 'failed';
-    }
 
-
-
-    
-  //  }
-
-}else{
-    echo '<script>alert("Voucher claimed failed")</script>';
-}
-
-?>
-<?php 
-//    if(isset($_POST['submit'])){
-
-//       $voucherCode = $_POST['voucherCode'];
-//       $voucherStartdate = $_POST['voucherStartdate'];
-//       $voucherExpired = $_POST['voucherExpired'];
-//       $discountAmount = $_POST['discountAmount'];
-//       $voucherLimit = $_POST['voucherLimit'];
-//       $voucherType = $_POST['voucherType'];
-//       $voucherDetails = $_POST['voucherDetails'];
-//       $voucherDisplay = $_POST['voucherDisplay'];
-//       $vstatus = "2";
-//       $vlist = "0";
-//       $date = date('Y-m-d H:i:s');
-
-      
-//       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
-//                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vstatus', '$vlist');";
-      
-//       mysqli_query($conn, $sqlv);
-
-//       $product = $_POST['productlist'];
-//       $v = mysqli_insert_id($conn);//specific table
-
-//       for($i = 0; $i < count($product); $i++){
-
-//          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
-//                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
-
-//          $res = mysqli_query($conn, $sqlpv);
-
-//          if($res)
-//             {
-//                 if($vstatus == 2)
-//                 {
-//                     echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
-//                     ?>
-//                         <script type="text/javascript">
-//                             window.location.href = window.location.origin + "/seller/createVoucher.php";
-//                         </script>
-//                     <?php
-//                 }
-//                 else if ($vstatus == 0)
-//                 {
-//                     echo '<script>alert("Voucher is added")</script>';
-//                 }
-//             }
-//             else
-//             {
-//                 echo '<script>alert("Failed")</script>';
-//             }
-         
-//       }
-
-//     }
-//     else {
-//        echo "error";
-//     }
-   
-   
-?>
-    
-<script>
-    // initAddToCartButton();
-
-    // function initAddToCartButton()
-    // {
-    //     document.getElementById('claimVoucherBtn').addEventListener('click', function handleClick(event) {
-    //         if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
-    //         {
-    //             addToCart();
-    //         }
-    //         else
-    //         {
-    //             if(!document.getElementById("VariationErrorMsg"))
-    //             {
-    //                 var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;">Please select product variation to continue</p>`;
-    //                 document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
-    //             }
-    //         }
-    //     });
-    // }
-
-    // function addToCart(productId) 
-	// {
-	// 	var qty = document.getElementById('txtQuantity').value;
-	// 	$.ajax({
-	// 		url:"PHP_product.php",
-	// 		method:"POST",
-	// 		data:{
-	// 			addToCart:true,
-	// 			quantity:qty
-	// 		},
-	// 		dataType: 'JSON',
-	// 		success: function(response){
-	// 			if(response == "success")
-	// 			{
-	// 				$("#MsgSuccessModel").modal('show');
-	// 				setTimeout(function() {$("#MsgSuccessModel").modal('hide');}, 2000);
-	// 			}
-	// 			else if(response == "fail")
-	// 			{
-	// 				$("#MsgFailModel").modal('show');
-	// 				setTimeout(function() {$("#MsgFailModel").modal('hide');}, 2000);
-	// 			}
-	// 			else if(response == "login")
-	// 			{
-	// 				$("#MsgLoginModel").modal('show');
-	// 				setTimeout(function() {$("#MsgLoginModel").modal('hide');}, 2000);
-	// 			}
-	// 		},
-	// 		error: function(err) {
-	// 			alert(err.responseText);
-	// 		}
-	// 	});
-	// }
-</script>
+    ?>
 
 
 <?php
