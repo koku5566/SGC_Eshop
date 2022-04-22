@@ -75,11 +75,9 @@
                         $stmt = $conn->prepare($sql_voucherR);
                         $stmt->execute();
                         $result = $stmt->get_result();
-
-                        while ($row = $result->fetch_assoc()) {
-
                         ?>
                         <div class="card" id="vouchercard2">
+                           <?php  while ($row = $result->fetch_assoc()) {?>
                            <div class="card-body">
                               <div class="row">
                                  <div class="col-mb-3 m-2">
