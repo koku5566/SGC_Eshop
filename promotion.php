@@ -206,10 +206,9 @@
 
                                 $uid = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
-                                $date = date('Y-m-d H:i:s');
 
-                                $sqlc = "INSERT INTO voucherRedemption ('voucher_redemption_at', 'voucher_id', 'user_id')
-                                         VALUES ('$date', '$voucher_id','$uid');";
+                                $sqlc = "INSERT INTO voucherRedemption ('voucher_id', 'user_id')
+                                         VALUES ('$voucher_id','$uid');";
 
                                 mysqli_query($conn, $sqlc);
 
