@@ -321,13 +321,7 @@ function imageIsLoaded(e) {
 
 /* Profile image review */
 var loadFile = function (event) {
-var image = document.getElementById("profileImage");
+var image = document.getElementById("profileImage[]");
 image.src = URL.createObjectURL(event.target.files[0]);
 };
-
-var loadFile = function (event) {
-var image = document.getElementById("profileCover");
-image.src = URL.createObjectURL(event.target.files[0]);
-};
-
 </script>
