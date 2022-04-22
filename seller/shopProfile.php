@@ -217,8 +217,8 @@
         <!-- Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
         -->
-        <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <!--<label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
+        <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>-->       
       </div>
     </div>
 
