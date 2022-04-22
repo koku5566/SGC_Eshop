@@ -2,24 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $id = $_GET["id"];
-    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = $id");
 
-    echo "<script>
-        alert('Order ID #$id has been cancelled');
-        window.location.href='getOrder.php';
-        </script>";
-    exit;
-}
-
-$order_id = $_GET['order_id'];
-$sqlod = "
-SELECT * FROM myOrder
-";
-$stmtod = $conn->prepare($sqlod);
-$stmtod->execute();
-$order_details = $stmt->get_result();
    
 
 
@@ -72,16 +55,11 @@ $order_details = $stmt->get_result();
                                         <br>
                                         <a href="orderDetails.php?cancel&id=<?php echo $order_id?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel Order</button></a>
                                         <a href="orderDetails.php?confirm&id=<?php echo $order_id?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Confirm Order</button></a>
-                                        <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                              Cancel Order
-                                            </button>
+                                        
                                         <br><br>
                                    
                                 </div>
-                                <div class="card-footer">
-                                <a href="getOrder.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();"><button type="button" class="btn btn-primary">Cancel</button></a>
-                                </div>
+                              
                     </section>
                 </div>
                 <!-- /.container-fluid -->

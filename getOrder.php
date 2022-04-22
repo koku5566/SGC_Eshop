@@ -402,9 +402,6 @@ $_SESSION["userId"] = "U000018";
                                                 <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
                                             <?php }?>
                                             <!-- **END OF CAROL PART**--->
-
-                                             <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
-											 
                                              
 											 <!--CHEONG KIT MIN (Rating)-->
 											<!--
