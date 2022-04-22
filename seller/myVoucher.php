@@ -100,14 +100,7 @@
                            ?>
                         </span>
                      </td>
-                     <td>
-                        <?php if ($r['voucher_list'] = 0){
-                           echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");
-                        }else if($r['voucher_list'] = 1){
-                           echo ("<button type=\"button\" class=\"btn btn-light\">List</button>");
-                        }
-                        ?>
-                     </td>
+                     <td><?php echo $r['voucher_list']; ?></td>
                   </tr>
 
                   <?php 
