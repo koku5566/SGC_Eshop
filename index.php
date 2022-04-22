@@ -48,7 +48,7 @@
                                         <!-- PHP Loop here - Category -->
                                         <?php
                                             //Main Category
-                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id";
+                                            $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id ORDER BY B.category_name ASC";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
@@ -61,7 +61,7 @@
                                                         $picName = "/img/category/".$row["category_pic"];
                                                     }
 
-                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
+                                                    $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1' ORDER BY B.category_name ASC";
                                                     $result_1 = mysqli_query($conn, $sql_1);
 
                                                     if (mysqli_num_rows($result_1) > 0) {
@@ -284,7 +284,7 @@
                             
                             <?php 
                                 } else{
-
+                                    ;
                                 }
                         }?>
 
