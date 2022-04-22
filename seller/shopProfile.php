@@ -38,7 +38,7 @@
   $coverIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-  $categoryPic = "";
+  $profilePic = "";
   //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
   $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
   if (!empty($coverIMG)) {
