@@ -4,7 +4,11 @@
     $userID = $_SESSION["uid"];
 
     //filter shop profile
-    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` = $userID AND cart.remove_Product = '0'";
+    $sql_shop = "SELECT DISTINCT(cart.shop_id) AS shopID, shopProfile.shop_name as shop_name 
+                FROM cart 
+                JOIN shopProfile
+                ON cart.shop_id = shopProfile.shop_id
+                WHERE `user_ID` = $userID AND cart.remove_Product = '0'";
     $query_shop = mysqli_query($conn, $sql_shop);
 
 ?>
@@ -35,10 +39,11 @@
                     //start loop each shop contain which product
                     while ($row = mysqli_fetch_array($query_shop)) {
                         $shop_id = $row['shopID'];
+                        $shop_name = $row['shop_name'];
 
                         //header for each shop 
                         echo "<tr >   
-                            <td colspan='6'>$shop_id </td>
+                            <td colspan='6'>$shop_name</td>
                             </tr>";
 
                         //select product from this shop
