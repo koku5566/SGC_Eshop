@@ -7,6 +7,9 @@ $order_id = $_GET['order_id'];
 if(isset($_GET["cancel"]) && isset($_GET["id"])){
     $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
 }
+if(isset($_GET["confirm"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["id"]);
+}
 
 ?>
 
@@ -96,11 +99,11 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
                     </div>
                 </div>
                 <div class="card-footer">
-                <?php if($row['order_status'] =='Paid'){?>
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?cancel=<?php echo $row['order_id'];?>">Cancel Order</a>
-                    <?php } else{ ?>
-                    <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
-                    <?php }?>
+                
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel=<?php echo $row['order_id'];?>">Cancel Order</a>
+                    
+                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm=<?php echo $row['order_id'];?>">Confirmed Order</a>
+                  
                     
                 </div>
                
