@@ -21,7 +21,7 @@ require __DIR__ . '/header.php'
 <div class="container-fluid" style="width:80%">
     <!-- Above template -->
     <div class="row">
-        <div class="col-2">
+        <div class="col-4">
         <div class="card">
     <div class="card-header">
         <h5 class="mb-0">Filter</h5>
@@ -80,7 +80,7 @@ require __DIR__ . '/header.php'
     </div>
 </div>
         </div>
-        <div class="col-10">
+        <div class="col-8">
             <div class="row">
                 <?php
                 $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
