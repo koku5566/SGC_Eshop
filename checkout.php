@@ -44,62 +44,18 @@ if(isset($_GET['addressid']))
     WHERE userAddress.address_id= '$_SESSION[getaddress]';";
 }
 
+
+//calculate shipping fee
+
+$shippingfee = 8.6;
+
 ?>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
    
 
-<!-- Shipping Courier Option Modal -->
-<div class="modal fade" id="courieroptionModal" tabindex="-1" role="dialog" aria-labelledby="courieroptionModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="courieroptionModalLabel">Select Courier Option</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
 
-        <!-- option -->
-        <div class="form-check"> 
-        <?php 
-           for ($i = 0; $i<=5; $i++)
-           {
-          ?>
-          <div class="row">
-            <div class="col-1">
-            <input class="form-check-input" type="radio" name="courierselection" id="<?php print_r($json -> result[0]->rates[$i]->rate_id)?>" checked>
-            </div>
-            <div class="col">
-                <img class="card-img-top img-thumbnail"style="object-fit:contain;width:100%;height:100%" src="<?php echo $json -> result[0]->rates[$i]->courier_logo; ?>"  alt="<?php print_r($json -> result[0]->rates[$i]->courier_name)?>" />
-                <label class="form-check-label" for="<?php print_r($json -> result[0]->rates[$i]->rate_id)?>">
-                <div class="row">
-                    <div class="col-3">
-                        <span><strong><?php echo "<pre>";print_r($json -> result[0]->rates[$i]->courier_name); echo "</pre>";?></strong></span>
-                        <span><small><?php echo "<pre>";print_r($json -> result[0]->rates[$i]->delivery); echo "</pre>";?></small></span>
-                    </div>
-                    <div class="col">
-                        <span style="color:#A71337"><?php  echo "<pre>";print_r($json -> result[0]->rates[$i]->shipment_price); echo"</pre>";?></span>
-                    </div>
-                </div>
-                </label>
-            </div>
-          </div>
-          <hr>
-          <!-- end of option -->
-          <?php } ?>
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
      <!-- Address Modal -->
      <div class="modal fade" id="myModal" role="dialog">
@@ -313,8 +269,6 @@ if(isset($_GET['addressid']))
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
                              </label>
-                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#courieroptionModal">Choose</button>
-
                         </div>
                     </div>
                     <div class="col2">
