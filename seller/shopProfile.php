@@ -100,11 +100,10 @@
     $coverIMG = array_filter($_FILES['profileImage']['name']);
     $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
     $allowTypes = array('jpg', 'png', 'jpeg');
-    $shopProfilePic = "";
+    $categoryPic = "";
 
     //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
     $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
-    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
 
     if (!empty($coverIMG)) {
         foreach ($_FILES['profileImage']['name'] as $key => $val) {
@@ -125,16 +124,29 @@
         }
     }
 
-    if($conn->query($update))
-      { 
-          /*Successful*/
-          header("refresh:1; url=shopProfile.php");
-      }
-      else
-      {
-          /*Fail*/
-          echo 'Update Fail';
-      }
+    $sql = "UPDATE `shopProfile`(`shop_profile_cover`, `shop_profile_image`, `shop_name`, `shop_description`, `shop_media`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        if (false === $stmt) {
+            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
+        }
+        $bp = mysqli_stmt_bind_param($stmt, "sssssssssssi", $shopCoverImage, $shopName, $shopDescription);
+        if (false === $bp) {
+            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
+        }
+        $bp = mysqli_stmt_execute($stmt);
+        if (false === $bp) {
+            die('Error with execute: ') . htmlspecialchars($stmt->error);
+        }
+        if (mysqli_stmt_affected_rows($stmt) == 1) {
+            $prevID = mysqli_stmt_insert_id($stmt);
+            echo "Success";
+            $_SESSION['eventID'] = $prevID;
+        } else {
+            $error = mysqli_stmt_error($stmt);
+            echo "Fail";
+        }
+        mysqli_stmt_close($stmt);
+    }
   }
 ?>
 
@@ -170,7 +182,7 @@
 
       <img class="relative bg-image img-fluid" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="" hidden/>
+        <input type="file" id="actual-btn" name="profileImage[]" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
