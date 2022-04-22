@@ -17,7 +17,7 @@ $order_id = $_GET['order_id'];
                 <h2 class="font-weight-bold text-center">ORDER DETAILS</h2>
                 <hr class="mx-auto">
             </div>
-            <?php while ($rowod = $resultod->fetch_assoc()) {?>
+            
             <div class="card">
                 <div class="card-header">
                     <div class="order-list-panel">
@@ -30,20 +30,17 @@ $order_id = $_GET['order_id'];
                         </div>
                     </div>
                 </div>
-                <?php
-                $count=1;
-                {
-                ?>
+                
                 <div class="card-body">
                     <div class="col-1"></div>
-                    <div class="col-5"><?php echo $rowod['product_name']?></div>
+                    <div class="col-5"></div>
                     <div class="col-2">Unit Price</div>
                     <div class="col-1">Quantity</div>
                     <div class="col-3">Total Price</div>     
                 </div>
-                <?php }?>
+               
             </div>
-            <?php }?>
+          
 
 
         </section>
