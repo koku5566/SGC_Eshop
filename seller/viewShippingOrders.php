@@ -264,12 +264,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $rowheader['order_id'];
+                                            $aoID = $rowheader['order_id'];
                                             //Loop product in each order
                                             $allsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ";
+                                                        WHERE orderDetails.order_id = '$aoID' AND orderDetails.shop_id = '$user_id' ";
                                           
                                             $allresult = mysqli_query($conn, $allsql);
                                             if (mysqli_num_rows($allresult) > 0) {
@@ -340,12 +340,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $tsrowheader['order_id'];
+                                            $toID = $tsrowheader['order_id'];
                                             //Loop product in each order
                                             $tssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$toID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
@@ -394,7 +394,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php       
-                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE  myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND orderDetails.shop_id = '$user_id' ";
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
@@ -414,12 +414,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $purowheader['order_id'];
+                                            $poID = $purowheader['order_id'];
                                             //Loop product in each order
                                             $pusql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$poID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
                                             
                                             $puresult = mysqli_query($conn, $pusql);
                                             if (mysqli_num_rows($puresult) > 0) {
@@ -486,12 +486,12 @@ $completedresult = $stmt->get_result();
                                         <div class="card-body">
                                             <?php
 
-                                            $oID = $srowheader['order_id'];
+                                            $soID = $srowheader['order_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$soID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
@@ -537,48 +537,74 @@ $completedresult = $stmt->get_result();
 
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                            <?php                       
-                            while ($crow = $completedresult->fetch_assoc()) {
-                            ?>
-                            <!--Each Order Item-->
-                            <div class="card mt-2">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col md-auto text-start"><span><strong><?php echo $crow['username'];?></strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $crow['order_id']; ?> </strong></span></div>
-                                    </div>
-                                
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-1 image-container">
-                                            <img class="card-img-top img-thumbnail"
-                                                style="object-fit:contain;width:100%;height:100%"
-                                                src="/img/product/<?php echo $crow['product_cover_picture']?>"
-                                                alt="<?php echo $crow['product_name']?>" />
+                            <?php       
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND orderDetails.shop_id = '$user_id' ";
+                              $sresultheader = mysqli_query($conn, $sqlsheader);
+                              if (mysqli_num_rows($sresultheader) > 0) {
+                              while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
+                              //Loop header
+                              ?>
+                                    <div class="card mt-2">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col md-auto text-start">
+                                                    <span><strong><?php echo $srowheader['username']; ?></strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="col md-auto text-end" style="text-align:right;">
+                                                <span><strong>Order ID:<?php echo $srowheader['order_id']; ?> </strong></span>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <?php echo $crow['product_name']?>
-                                        </div>
-                                        <div class="col-1">
-                                            x
-                                            <?php echo $crow['quantity']?>
-                                        </div>
+                                        <div class="card-body">
+                                            <?php
 
-                                        <div class="col-1">
-                                            RM
-                                            <?php echo $crow['product_price']?>.00
-                                        </div>
-                                        <div class="col-2"><?php echo $crow['order_status'] ?></div>
-                                        <div class="col-2">DHL eCommerce <?php echo $crow['tracking_number']?></div>
-                                        <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $crow['order_id'];?>">Check Details</a>
+                                            $coID = $srowheader['order_id'];
+                                            //Loop product in each order
+                                            $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
+                                                        WHERE orderDetails.order_id = '$coID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                            
+                                            $sresult = mysqli_query($conn, $ssql);
+                                            if (mysqli_num_rows($sresult) > 0) {
+                                                while ($srow = mysqli_fetch_assoc($sresult)) {
+                                            ?>
+                                                    <div class="row">
+                                                        <div class="col-1 image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $srow['product_cover_picture'] ?>" alt="<?php echo $srow['product_name'] ?>" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <?php echo $srow['product_name'] ?>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            x
+                                                            <?php echo $srow['quantity'] ?>
+                                                        </div>
+
+                                                        <div class="col-1">
+                                                            RM
+                                                            <?php echo $srow['product_price'] ?>.00
+                                                        </div>
+                                                        <div class="col-2"><?php echo $srow['order_status'] ?></div>
+                                                        <div class="col-2"> <?php echo $srow['tracking_number'] ?></div>
+                                                        <div class="col-2">
+                                                            <?php if ($srow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Check Details</a><?php } ?>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                }
+                                            }else
+                                            echo("cannot");
+                                            ?>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                                <!--End of Order Item-->
-                                <?php 
-                                }?>
+                            <?php
+
+                                }
+                            }
+                            ?>
                             </div>
 
 
