@@ -98,10 +98,6 @@ if(isset($_POST['signup']))
 							}
 						}
 					}
-					else
-					{
-						echo "Error: ".$sql."<br>".mysqli_error($conn);
-					}
 					mysqli_close($conn);
 				}
 			}
