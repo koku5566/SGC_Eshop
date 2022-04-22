@@ -21,7 +21,8 @@ JOIN userAddress ON myOrder.user_id = userAddress.user_id
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-WHERE myOrder.order_id = '$order_id';";
+WHERE myOrder.order_id = '$order_id' 
+";
 $result = $conn->query($sqlod);
 
 
