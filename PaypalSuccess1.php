@@ -15,7 +15,7 @@ FROM `cart`
 JOIN `product`
 ON product.product_id = cart.product_ID 
 JOIN `shopProfile`
-ON product.shop_id = shopProfile.shop_id
+ON cart.shop_id = shopProfile.shop_id
 WHERE cart.user_ID = '$uid' 
 AND cart.remove_Product = '0'
 AND product.product_status = 'A'
