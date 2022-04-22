@@ -30,6 +30,11 @@
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+                    if($_SESSION['role'] == "ADMIN")
+                    {
+                        ?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
+                        exit;
+                    }
 				}
 			} else {
 				$Login = false;
