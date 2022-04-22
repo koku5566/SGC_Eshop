@@ -3,10 +3,14 @@
 ?>
 
 <?php
-  if (!isset($_SESSION['login'])){
-    header("Location: index.php");
-    exit();
-  }
+ if (!isset($_SESSION['login']) || !isset($_SESSION['uid'])){
+  ?>
+      <script type="text/javascript">
+          window.location.href = window.location.origin + "/seller/sellerLogin.php";
+      </script>
+  <?php
+  exit;
+}
 ?>
 
 <!-- Insert data -->
