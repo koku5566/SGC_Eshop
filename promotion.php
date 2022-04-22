@@ -6,8 +6,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
 <style>
-    #voucherlogo{
+   #voucherlogo{
    height: 100px;
    width: 100px;
    display: flex;
@@ -60,7 +61,7 @@
         max-height: 580px;
         min-width: 80%;
     }
-</style>>
+</style>
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
@@ -117,14 +118,17 @@
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
+                            shopProfile.shop_id,
                             shopProfile.shop_profile_image
 
                             FROM voucher
                             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                             JOIN product ON productVoucher.product_id = product.product_id
                             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
+                            GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id
                             "; 
+
+                            $shop_name = $_SESSION['shop_name'];
 
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
@@ -162,7 +166,7 @@
                                     <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                    <h6 class="card-title"><strong><?php echo $shop_name; ?></strong></h6>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
@@ -172,7 +176,7 @@
                                     </u>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#alert">CLAIM</button>
+                                    <button type="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed<?php echo $row['shop_id']?>" id="claimVoucherBtn">CLAIM</button>
                                 </div>
                             </div>
                         </div>
@@ -236,6 +240,16 @@
                                     ;
                                 }
                         }?>
+
+                        <div class="modal fade" id="voucherclaimed<?php echo $row['shop_id']?>" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div id="SuccessMsg">
+                                    <div class="SuccessMsg-content">
+                                        <p style="color: white;">Voucher add successfully.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                 </div>
@@ -244,7 +258,124 @@
         </div>
         <br>
     </div>
+
+<?php 
+//    if(isset($_POST['submit'])){
+
+//       $voucherCode = $_POST['voucherCode'];
+//       $voucherStartdate = $_POST['voucherStartdate'];
+//       $voucherExpired = $_POST['voucherExpired'];
+//       $discountAmount = $_POST['discountAmount'];
+//       $voucherLimit = $_POST['voucherLimit'];
+//       $voucherType = $_POST['voucherType'];
+//       $voucherDetails = $_POST['voucherDetails'];
+//       $voucherDisplay = $_POST['voucherDisplay'];
+//       $vstatus = "2";
+//       $vlist = "0";
+//       $date = date('Y-m-d H:i:s');
+
+      
+//       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
+//                VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vstatus', '$vlist');";
+      
+//       mysqli_query($conn, $sqlv);
+
+//       $product = $_POST['productlist'];
+//       $v = mysqli_insert_id($conn);//specific table
+
+//       for($i = 0; $i < count($product); $i++){
+
+//          $sqlpv = "INSERT INTO productVoucher (product_id, voucher_id)
+//                   VALUES ('".$product[$i]."', '$v');"; //get prod first array
+
+//          $res = mysqli_query($conn, $sqlpv);
+
+//          if($res)
+//             {
+//                 if($vstatus == 2)
+//                 {
+//                     echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
+//                     ?>
+//                         <script type="text/javascript">
+//                             window.location.href = window.location.origin + "/seller/createVoucher.php";
+//                         </script>
+//                     <?php
+//                 }
+//                 else if ($vstatus == 0)
+//                 {
+//                     echo '<script>alert("Voucher is added")</script>';
+//                 }
+//             }
+//             else
+//             {
+//                 echo '<script>alert("Failed")</script>';
+//             }
+         
+//       }
+
+//     }
+//     else {
+//        echo "error";
+//     }
+   
+   
+?>
     
+<script>
+    // initAddToCartButton();
+
+    // function initAddToCartButton()
+    // {
+    //     document.getElementById('claimVoucherBtn').addEventListener('click', function handleClick(event) {
+    //         if(document.getElementById("stockAvailable").contains(document.getElementById("stockAmount")))
+    //         {
+    //             addToCart();
+    //         }
+    //         else
+    //         {
+    //             if(!document.getElementById("VariationErrorMsg"))
+    //             {
+    //                 var errorMsg = `<p id="VariationErrorMsg" style="color: #f24a4a;padding: 0 0 0 12px;">Please select product variation to continue</p>`;
+    //                 document.getElementById("QuantityDiv").insertAdjacentHTML('beforeend', errorMsg);
+    //             }
+    //         }
+    //     });
+    // }
+
+    // function addToCart(productId) 
+	// {
+	// 	var qty = document.getElementById('txtQuantity').value;
+	// 	$.ajax({
+	// 		url:"PHP_product.php",
+	// 		method:"POST",
+	// 		data:{
+	// 			addToCart:true,
+	// 			quantity:qty
+	// 		},
+	// 		dataType: 'JSON',
+	// 		success: function(response){
+	// 			if(response == "success")
+	// 			{
+	// 				$("#MsgSuccessModel").modal('show');
+	// 				setTimeout(function() {$("#MsgSuccessModel").modal('hide');}, 2000);
+	// 			}
+	// 			else if(response == "fail")
+	// 			{
+	// 				$("#MsgFailModel").modal('show');
+	// 				setTimeout(function() {$("#MsgFailModel").modal('hide');}, 2000);
+	// 			}
+	// 			else if(response == "login")
+	// 			{
+	// 				$("#MsgLoginModel").modal('show');
+	// 				setTimeout(function() {$("#MsgLoginModel").modal('hide');}, 2000);
+	// 			}
+	// 		},
+	// 		error: function(err) {
+	// 			alert(err.responseText);
+	// 		}
+	// 	});
+	// }
+</script>
 
 
 <?php

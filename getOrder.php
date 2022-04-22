@@ -335,7 +335,9 @@ $_SESSION["userId"] = "U000018";
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
-                        <?php while($row = $orders ->fetch_assoc()){ ?>
+                        <?php while($row = $orders ->fetch_assoc()){ 
+                            
+                            ?>
                         
                             <div class="card">
                                 <div class="card-header">
@@ -390,7 +392,7 @@ $_SESSION["userId"] = "U000018";
                                                 <input class="btn btn-primary" name="orderDetails_btn" value="Details" type="submit"/> 
                                            </form>-->
 
-                                            <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
+                                            <a class="btn btn-primary" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
                                                          
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
