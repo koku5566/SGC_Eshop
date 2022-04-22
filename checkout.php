@@ -180,11 +180,11 @@ $shippingfee = 8.6;
                                         $product_price = $rowKL['P_price'];
                                         $product_stock = $rowKL['product_stock'];
         
-                                        $variation_message = " no variation ";
+                                        $variation_message = "no variation";
                                     }
                                     else if ($rowKL['variation_id'] != "") {
                                         
-                                        $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']." AND product_stock != 0'";
+                                        $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
                                         $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
                                         while( $row = mysqli_fetch_assoc($query_get_variation_price))
                                         {
