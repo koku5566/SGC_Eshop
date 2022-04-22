@@ -128,7 +128,7 @@
                             GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id
                             "; 
 
-                            $shop_name = $_SESSION['shop_name'];
+                            $_SESSION['shop_name'] = $shop_name;
 
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
