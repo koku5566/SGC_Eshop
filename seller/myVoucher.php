@@ -88,26 +88,8 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
-                     <td>
-                        <span class="badge badge-primary">
-                           <?php if($r['voucher_status'] = "2" ){
-                                 echo "Pending";
-                              }else if($r['voucher_status'] = "1" ){
-                                 echo "Approved";
-                              }else if($r['voucher_status'] = "0" ){
-                                 echo "Rejected";
-                              }
-                           ?>
-                        </span>
-                     </td>
-                     <td>
-                        <?php if ($r['voucher_list'] = "0" ){
-                           echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");
-                        }else if($r['voucher_list'] = "1" ){
-                           echo ("<button type=\"button\" class=\"btn btn-light\">List</button>");
-                        }
-                        ?>
-                     </td>
+                     <td><span class="badge badge-primary"><?php echo $r['voucher_status']; ?></span></td>
+                     <td><?php echo $r['voucher_list']; ?></td>
                   </tr>
 
                   <?php 
