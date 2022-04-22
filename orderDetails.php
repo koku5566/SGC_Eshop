@@ -4,6 +4,10 @@
 <?php
 $order_id = $_GET['order_id'];
 
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+}
+
 ?>
 
 
@@ -31,6 +35,7 @@ $order_id = $_GET['order_id'];
                 </div>
                 <div class="card">
                 <?php
+                    $shippingfee = 8.6;
                     $sql2 = "SELECT * FROM myOrder 
                     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
                     JOIN product ON orderDetails.product_id = product.product_id
@@ -76,7 +81,7 @@ $order_id = $_GET['order_id'];
                         
                         <div class="col">Delivery Fees:</div>
                         <div class="col">
-                            RM8.60
+                            <?php echo $shippingfee?>0
                         </div>
                     </div>
                     <div class="row p-2">
@@ -92,7 +97,7 @@ $order_id = $_GET['order_id'];
                 </div>
                 <div class="card-footer">
                 <?php if($row['order_status'] =='Paid'){?>
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?cancel=<?php echo $row['order_id'];?>">Cancel Order</a>
                     <?php } else{ ?>
                     <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
                     <?php }?>
