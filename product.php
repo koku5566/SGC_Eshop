@@ -382,7 +382,7 @@
 										{
 											echo("
 											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src\"img/shop_log/$shop_pic\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"img/shop_log/$shop_pic\">
 											</div>
 											");
 										}
@@ -390,7 +390,7 @@
 										{
 											echo("
 											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src\"img/shop_log/store.png\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"img/shop_log/store.png\">
 											</div>
 											");
 										}
