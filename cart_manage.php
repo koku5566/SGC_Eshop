@@ -49,7 +49,7 @@
         $_SESSION['subtotal'] = $_POST['subtotal'];
 
         echo "<script type='text/javascript'>
-                window.location.href = window.location.origin + '/payment.php';
+                window.location.href = window.location.origin + '/checkout.php';
             </script>";
     }
 ?>
