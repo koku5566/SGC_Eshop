@@ -141,7 +141,7 @@ $queryKL = mysqli_query($conn, $sql);
         }
     } */
 
-/*    echo(" 
+   echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
@@ -153,7 +153,7 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$shop_id."</span>
 
    
-    ");  */
+    "); 
 
 /*      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
