@@ -24,7 +24,8 @@
 
    $sql_voucherR =
     "SELECT 
-    voucherRedemption.voucher_id
+    voucherRedemption.voucher_id,
+    voucherRedemption.user_id,
     voucher.voucher_id,
     voucher.voucher_code,
     voucher.voucher_type,
@@ -43,7 +44,7 @@
     INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
     INNER JOIN product ON productVoucher.product_id = product.product_id
     INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-    WHERE voucherRedemption.voucher_id = '$uid'";
+    WHERE voucherRedemption.user_id = '$uid'";
 
    $stmt = $conn->prepare($sql_voucherR);
    $stmt->execute();
