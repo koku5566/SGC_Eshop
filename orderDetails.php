@@ -26,7 +26,7 @@ if(isset($_GET["confirm"]) && isset($_GET["id"])){
 if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     $order_id = $_POST['order_id'];
     
-    $stmt4 =$conn->prepare("SELECT * FROM myorder o JOIN orderdetails od ON od.order_id = o.order_id JOIN product p ON p.id = od.product_id WHERE od.order_id = ?");
+    $stmt4 =$conn->prepare("SELECT * FROM myOrder o JOIN orderDetails od ON od.order_id = o.order_id JOIN product p ON p.product_id = od.product_id WHERE od.order_id = ?");
     $stmt4->bind_param('i',$order_id);
     $stmt4->execute();
     $order_details = $stmt4->get_result();
