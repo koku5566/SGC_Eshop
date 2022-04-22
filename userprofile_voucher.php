@@ -53,8 +53,8 @@
                                  </div>
                                  <hr>
                                  <div class="container">
-                                    <div class="row row-cols-3">
-                                       <div class="col-6">
+                                    <div class="row row-cols-2">
+                                       <div class="col-6 m-2">
                                           <div class="card" id="vouchercard2">
                                              <div class="card-body">
                                                 <div class="row">
