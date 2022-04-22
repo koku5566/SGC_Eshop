@@ -100,10 +100,10 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                 </div>
                 <div class="card-footer">
                 
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel=<?php echo $row['order_id'];?>">Cancel Order</a>
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel&id=<?php echo $row['order_id'];?>">Cancel Order</a>
                     
-                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm=<?php echo $row['order_id'];?>">Confirmed Order</a>
-                  
+                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>">Confirmed Order</a>
+                   
                     <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
                 <?php } ?>
