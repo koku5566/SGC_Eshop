@@ -272,8 +272,8 @@ $completedresult = $stmt->get_result();
                                                         WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ";
                                           
                                             $allresult = mysqli_query($conn, $allsql);
-                                            if (mysqli_num_rows($aallresult) > 0) {
-                                                while ($arow = mysqli_fetch_assoc($aallresult)) {
+                                            if (mysqli_num_rows($allresult) > 0) {
+                                                while ($arow = mysqli_fetch_assoc($allresult)) {
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
@@ -345,11 +345,11 @@ $completedresult = $stmt->get_result();
                                             $tssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
-                                                while ($arow = mysqli_fetch_assoc($tsresult)) {
+                                                while ($tsrow = mysqli_fetch_assoc($tsresult)) {
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
