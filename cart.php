@@ -17,7 +17,7 @@
 
 
     //filter shop profile
-    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` AND cart.remove_Product = '0' =  $userID";
+    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` = $userID AND cart.remove_Product = '0'";
     $query_shop = mysqli_query($conn, $sql_shop);
 
 ?>
