@@ -48,13 +48,11 @@
                         <div class="row">
                            <div class="col-lg-12">
                                  <div class="text-left">
-                                    <div class="h1 text-gray-900 mb-4 container-left-col2 p-5">My Voucher</div>
+                                    <div class="h1 text-gray-900 container-left-col2 p-5">My Voucher</div>
                                  </div>
                                  <hr>
                                  <div class="container">
-                                    <div class="row row-cols-2">
-                                       <div class="col-6">
-                                          <div class="card" id="vouchercard2">
+                                          <div class="card m-2" id="vouchercard2">
                                              <div class="card-body">
                                                 <div class="row">
                                                    <div class="col-mb-3 m-2">
@@ -72,9 +70,7 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-6">
+
                                           <div class="card" id="vouchercard2">
                                              <div class="card-body">
                                                 <div class="row">
@@ -206,7 +202,7 @@ img {
 }
 
 #vouchercard2{
-   width: 22rem;
+   width: 30rem;
    height: 10.5rem;
 }
 </style>
