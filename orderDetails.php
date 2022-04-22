@@ -4,11 +4,11 @@
 <?php
 $order_id = $_GET['order_id'];
 
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+if(isset($_GET["cancel"]) && isset($_GET["order_id"])){
+    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["order_id"]);
 }
-if(isset($_GET["confirm"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["id"]);
+if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
+    $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["order_id"]);
 }
 
 ?>
@@ -104,7 +104,7 @@ if(isset($_GET["confirm"]) && isset($_GET["id"])){
                     
                     <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm=<?php echo $row['order_id'];?>">Confirmed Order</a>
                   
-                    
+                    <span>Order Status: <?php echo $row2['order_status']?></span>
                 </div>
                
             </div>

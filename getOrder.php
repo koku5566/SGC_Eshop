@@ -415,7 +415,7 @@ $_SESSION["userId"] = "U000018";
 												<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
                                              <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:18%;" ><?php echo $row['amount']?></span>
+                                             <span style="margin-left:30%;" ><?php echo $row['amount']?></span>
                                             </tr>
                                         </thead>
                                     </table>
