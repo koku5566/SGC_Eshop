@@ -40,7 +40,7 @@ if(isset($_POST['signup']))
 
 						$to = $email;
 						$subject = "SGC E-Shop New User Account";
-						$from = "reset-password@eshop.sgcprototype2.com";
+						$from = "user-account@sgcprototype2.com";
 						$from2 = "contact_us_mail@sgcprototype2.com";
 						$fromName = "SGC E-Shop";
 			
@@ -49,15 +49,15 @@ if(isset($_POST['signup']))
 						$headers .= "Content-Type: multipart/mixed;\r\n";
 						
 						$message = "
-						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com
-						
-						Change your password after first login. Thank You.
-
-						Username: $username
+						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
+						<br>
+						Change your password after first login. Thank You.<br>
+						<br>
+						Username: $username<br>
 						Password: $passwordE
 						";
 			
-						$HTMLcontent = "<p><b>Dear ".$row["name"]."</b>,</p><p>$message</p>";
+						$HTMLcontent = "<p><b>Dear ".$_POST['username']."</b>,</p><p>$message</p>";
 						
 						$boundary = md5(time());
 						$headers .= " boundary=\"{$boundary}\"";
@@ -75,6 +75,9 @@ if(isset($_POST['signup']))
 						else
 						{
 							echo "<script>alert('Error');</script>";
+						}
+						if ($role = "SELLER"){
+							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
 						}
 					}
 					else

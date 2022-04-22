@@ -28,6 +28,12 @@
         //     <label>Product Quantity: <span>".$row['P_variation']."</span></label><br>
         //     <label>Product Quantity: <span>".$row['P_pic']."</span></label>";
         // }
+
+
+    //filter shop profile
+    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` =  $userID";
+    $query_shop = mysqli_query($conn, $sql_shop);
+    
 ?>
 
 <!-- Begin Page Content -->
