@@ -77,11 +77,12 @@ function drawColChart() {
  <?php 
 echo $_SESSION['eventIDView'];
  $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$_SESSION[eventIDView]' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
- $stmt->execute();
- $result = $stmt->get_result();
- while ($row = $result->fetch_assoc()) {
-      echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
-   }
+ $query_run = mysqli_query($conn,$query);
+
+ foreach ($query_run as $row)
+ {          
+    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+ }
    ?>
  ]);
 
@@ -102,7 +103,6 @@ var options = {
  chart.draw(data, google.charts.Bar.convertOptions(options));
 };
   
-
 </script>
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
