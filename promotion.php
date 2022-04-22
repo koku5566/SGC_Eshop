@@ -194,7 +194,7 @@
 
                             if(isset($_POST['submit'])){
 
-                                $user_id = $_SESSION["id"];
+                                $user_id = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
                                 $date = date('Y-m-d H:i:s');
 
