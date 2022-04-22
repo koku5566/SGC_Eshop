@@ -59,10 +59,35 @@
           }
       }
   }
+
+  $coverIMG = array_filter($_FILES['profileCover']['name']);
+  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
+  $profileCover = "";
+  //$imageProperties = getimageSize($_FILES['profileCover']['tmp_name']);
+  $coverImgContent = addslashes(file_get_contents($_FILES['profileCover']['name']));
+  if (!empty($profileIMG)) {
+      foreach ($_FILES['profileCover']['name'] as $key => $val) {
+          // File upload path 
+          echo (var_dump($_FILES['profileCover']));
+          $fileName = basename($_FILES['profileCover']['name'][$key]);
+          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+          $fileName = round(microtime(true) * 1000) . "." . $ext;
+          $targetFilePath = $targetDir . $fileName;
+          echo ($targetFilePath);
+          // Check whether file type is valid 
+          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+          if (in_array($fileType, $allowTypes)) {
+              if (move_uploaded_file($_FILES["profileCover"]["tmp_name"][$key], $targetFilePath)) {
+                  $profileCover  = "$fileName";
+              }
+          }
+      }
+  }
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
 
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profilePic', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
 
       if (mysqli_query($conn, $update))
       { 
@@ -105,7 +130,7 @@
 
       <img class="relative bg-image img-fluid" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="profileCover[]" hidden/>
+        <input type="file" id="actual-btn" name="profileCover[]" onchange="loadFile(event)" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -297,6 +322,11 @@ function imageIsLoaded(e) {
 /* Profile image review */
 var loadFile = function (event) {
 var image = document.getElementById("profileImage");
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+var loadFile = function (event) {
+var image = document.getElementById("profileCover");
 image.src = URL.createObjectURL(event.target.files[0]);
 };
 
