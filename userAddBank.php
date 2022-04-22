@@ -12,7 +12,7 @@
 if(isset($_POST['addBank']))
 	{
 		$_SESSION['AddBank'] = false;
-		$uid = $_SESSION['uid'];
+		$uid = $_SESSION['userid'];
 
 		$bankName = $_POST['bankName'];
 		$name = $_POST['name'];
