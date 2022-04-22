@@ -2,7 +2,6 @@
     require __DIR__ . '/header.php'
 ?>
 
-
 <!-- Insert data -->
 <?php
 //    if(isset($_POST['saveBtn'])){
