@@ -4,7 +4,7 @@
 <?php
 $order_id = $_GET['order_id'];
 
-if(isset($_GET["cancel"]) && isset($_GET["order_id"])){
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
     $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["order_id"]);
 }
 if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
@@ -100,9 +100,9 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                 </div>
                 <div class="card-footer">
                 
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel&id=<?php echo $row['order_id'];?>">Cancel Order</a>
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel&id=<?php echo $row['order_id'];?>" onclick="return confirm_click();">Cancel Order</a>
                     
-                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>">Confirmed Order</a>
+                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
                    
                     <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
@@ -123,3 +123,14 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
 <style>
 
 </style>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Are you sure to cancel order?");
+}
+function complete_click()
+{
+    return confirm("Are you sure to complete the orders?");
+}
+
+</script>
