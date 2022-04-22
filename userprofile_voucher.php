@@ -81,7 +81,7 @@
                         <div class="card-body">
                            <div class="row">
                               <div class="col-mb-3 m-2">
-                                 <img class="m-2" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                 <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                               </div>
                               <div class="col-mb-7 m-2">
                                  <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -112,7 +112,7 @@
                                  <div class="d-flex justify-content-center">
                                     <div class="card m-2" id="termsvouchercard">
                                        <div class="container">
-                                          <img class="mt-4 mb-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                          <img class="mt-4 mb-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                        </div>
                                        <div class="card-body">
                                           <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
