@@ -16,6 +16,7 @@
           }
         ?>
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <br>
         <img src="<?php echo("data:image;base64,".base64_encode($row["profile_picture"])."")?>" alt="">
         <div class="details">
           <span><?php echo $row['username']?></span>
