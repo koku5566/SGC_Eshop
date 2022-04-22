@@ -357,8 +357,6 @@
                                 }
                             }
 
-                        }else{
-                            echo '<script>alert("Login to claimed voucher.")</script>';
                         }
 
                         ?>
