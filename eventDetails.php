@@ -15,22 +15,22 @@ require __DIR__ . '/header.php'
     if(isset($_POST['resendTicket']))
     {
         $tEmail = $_POST["emailTicket"];
-        $sql1 = "SELECT * FROM `ticket` 
+        $sqlgetTic = "SELECT * FROM `ticket` 
         INNER JOIN ticketTransaction ON `ticket`.`transaction_id` = `ticketTransaction`.`ticketOrder_id`
         INNER JOIN `event` ON `event`.`event_id` = `ticket`.`event_id` 
         INNER JOIN `ticketType` ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-        WHERE `ticketTransaction`.`buyer_email` = $tEmail";
-        $result1 = mysqli_query($conn, $sql1);
+        WHERE `ticketTransaction`.`buyer_email` = \"$tEmail\"";
+        $res = mysqli_query($conn, $sqlgetTic);
 
-        if (mysqli_num_rows($result1) > 0) {
-            while ($row1 = mysqli_fetch_assoc($result1)) {
-                $buyerEmail = $row1['buyer_email'];
-                $eventName = $row1['event_name'];
-                $ticketOrderID = $row1['ticketOrder_id'];
-                $buyerName = $row1['buyer_name'];
-                $ticketType = $row1['ticket_name'];
-                $contact = $row1['buyer_contact'];
-                $ticketString = $row1['ticket_id'];
+        if (mysqli_num_rows($res) > 0) {
+            while ($row100 = mysqli_fetch_assoc($res)) {
+                $buyerEmail = $row100['buyer_email'];
+                $eventName = $row100['event_name'];
+                $ticketOrderID = $row100['ticketOrder_id'];
+                $buyerName = $row100['buyer_name'];
+                $ticketType = $row100['ticket_name'];
+                $contact = $row100['buyer_contact'];
+                $ticketString = $row100['ticket_id'];
                     $to = $buyerEmail;
                     $subject = "Event Regisration Completed - " . $eventName;
                     $from = "event@sgcprototype2.com";
@@ -88,7 +88,7 @@ require __DIR__ . '/header.php'
             echo("
             <script>alert(\"No Ticket Found, Please check your ticket ID again\") </script>
             
-            ".$row1['buyer_email']);
+            ".$row100['buyer_email']);
         }
 
     }
