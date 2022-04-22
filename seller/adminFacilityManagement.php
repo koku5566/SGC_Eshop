@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
           <th>Facility Name</th>
           <th>Hourly Rate</th>
           <th>Actions</th>
+          <th> </th>
         </tr>
       </thead>
       
@@ -104,8 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
             <p class="fw-normal mb-1"><?php echo $facility["price_per_hour"]?></p>
           </td>
           <td>
-            <a class="btn btn-success btn-rounded btn-sm fw-bold" href="editFacilityManagement.php?id=<?php echo $facility["id"]?>"> Edit </a>
-
             <form action ="<?php echo $_SERVER['PHP_SELF'];?>" method = "POST">
               <input type = "hidden" name="id" value="<?php echo $facility["id"]?>">
               <input type="submit" class="btn btn-danger btn-rounded btn-sm fw-bold" name="dfacility" value="Delete">
