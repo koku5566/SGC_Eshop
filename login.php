@@ -32,14 +32,8 @@
 					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 				}
 			} else {
-				$Login = false;
-			}
-
-			if($Login == false)
-			{
 				echo "<script>alert('Invalid Username/Email or Password')</script>";
 			}
-
 			mysqli_close($conn);
 		}
 	}
