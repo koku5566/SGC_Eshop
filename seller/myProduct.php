@@ -309,7 +309,7 @@
                                                     }
                                                 }
 
-                                                if($_POST['mainCategoryId'] != "")
+                                                if($_POST['mainCategoryId'] != "" && $_POST['mainCategoryId'] != "All")
                                                 {
                                                     $tempMainCategoryId = $_POST['mainCategoryId'];
                                                     if($Where == false)
@@ -323,7 +323,7 @@
                                                     }
                                                 }
 
-                                                if($_POST['subCategoryId'] != "")
+                                                if($_POST['subCategoryId'] != "" && $_POST['subCategoryId'] != "All")
                                                 {
                                                     $tempSubCategoryId = $_POST['subCategoryId'];
                                                     if($Where == false)
