@@ -6,6 +6,10 @@ require __DIR__ . '/header.php'
 
 if (isset($_GET['id'])) {
     $_SESSION['eventIDView'] = $_GET['id'];
+
+    echo $_SESSION['eventIDView'];
+ $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
+ $query_run = mysqli_query($conn,$query);
     
 }
 
@@ -69,6 +73,42 @@ if (isset($_POST['reject'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">    
+  google.charts.load('current', {'packages':['bar']});
+// Draw the coulumn chart when Charts is loaded.
+google.charts.setOnLoadCallback(drawColChart);
+
+function drawColChart() {
+
+var data = google.visualization.arrayToDataTable([
+    ['Ticket Type', 'Ticket Sold',],         
+    <?php 
+    foreach ($query_run as $row)
+    {          
+       echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+    }
+      ?>
+  ]);
+
+var options = {
+   width: 800,
+   legend: { position: 'none' },
+   chart: {
+     title: 'Tickets Sold By Ticket Type',
+     subtitle: 'Ticket Number Sold' },
+   axes: {
+     x: {
+       0: { side: 'top', label: 'Ticket Type'} // Top x-axis.
+     }
+   },
+   bar: { groupWidth: "50%" }
+ };
+ var chart = new google.charts.Bar(document.getElementById('columnchart'));
+ chart.draw(data, google.charts.Bar.convertOptions(options));
+};
+  
+</script>
 
     <h1>Event Dashboard</h1>
     <div class="card">
@@ -113,6 +153,7 @@ if (isset($_POST['reject'])) {
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <h4 class="card-title">Ticket Type performance</h4>
+            <div id="columnchart" class="col-sm-6"style="width: 600px; height: 500px; padding-right:50px;"></div>  </body>
         </div>
     </div>
     <div class="card" style="margin-top: 40px;">
