@@ -33,23 +33,23 @@ require __DIR__ . '/header.php'
             </div>
             <div class="card-body">
                 <ul class="list-unstyled">
-                    <li style="margin-bottom: 5px;">Perlis</li>
-                    <li style="margin-bottom: 5px;">Kedah</li>
-                    <li style="margin-bottom: 5px;">Pulau Pinang</li>
-                    <li style="margin-bottom: 5px;">Perak</li>
-                    <li style="margin-bottom: 5px;">Selangor</li>
-                    <li style="margin-bottom: 5px;">Kuala Lumpur</li>
-                    <li style="margin-bottom: 5px;">Putrajaya</li>
-                    <li style="margin-bottom: 5px;">Kelantan</li>
-                    <li style="margin-bottom: 5px;">Terengganu</li>
-                    <li style="margin-bottom: 5px;">Pahang</li>
-                    <li style="margin-bottom: 5px;">Negeri Sembilan</li>
-                    <li style="margin-bottom: 5px;">Melaka</li>
-                    <li style="margin-bottom: 5px;">Johor</li>
-                    <li style="margin-bottom: 5px;">Sabah</li>
-                    <li style="margin-bottom: 5px;">Sarawak</li>
-                    <li style="margin-bottom: 5px;">Labuan</li>
-                    <li style="margin-bottom: 5px;">Online</li>
+                    <a href = "event.php?location=Perlis"><li style="margin-bottom: 5px;">Perlis</li></a>
+                    <a href = "event.php?location=Kedah"><li style="margin-bottom: 5px;">Kedah</li></a>
+                    <a href = "event.php?location=Pulau Pinang"><li style="margin-bottom: 5px;">Pulau Pinang</li></a>
+                    <a href = "event.php?location=Perak"><li style="margin-bottom: 5px;">Perak</li></a>
+                    <a href = "event.php?location=Selangor"><li style="margin-bottom: 5px;">Selangor</li></a>
+                    <a href = "event.php?location=Kuala Lumpur"><li style="margin-bottom: 5px;">Kuala Lumpur</li></a>
+                    <a href = "event.php?location=Putrajaya"><li style="margin-bottom: 5px;">Putrajaya</li></a>
+                    <a href = "event.php?location=Kelantan"><li style="margin-bottom: 5px;">Kelantan</li></a>
+                    <a href = "event.php?location=Terengganu"><li style="margin-bottom: 5px;">Terengganu</li></a>
+                    <a href = "event.php?location=Pahang"><li style="margin-bottom: 5px;">Pahang</li></a>
+                    <a href = "event.php?location=Negeri Sembilan"><li style="margin-bottom: 5px;">Negeri Sembilan</li></a>
+                    <a href = "event.php?location=Melaka"><li style="margin-bottom: 5px;">Melaka</li></a>
+                    <a href = "event.php?location=Johor"><li style="margin-bottom: 5px;">Johor</li></a>
+                    <a href = "event.php?location=Sabah"><li style="margin-bottom: 5px;">Sabah</li></a>
+                    <a href = "event.php?location=Sarawak"><li style="margin-bottom: 5px;">Sarawak</li></a>
+                    <a href = "event.php?location=Labuan"><li style="margin-bottom: 5px;">Labuan</li></a>
+                    <a href = "event.php?location=Online"><li style="margin-bottom: 5px;">Online</li></a>
                 </ul>
             </div>
         </div>
@@ -83,6 +83,17 @@ require __DIR__ . '/header.php'
         <div class="col-12 col-sm12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
             <div class="row">
                 <?php
+                $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
+                if(isset($_GET['location']))
+                {
+                    $location = $_GET['location'];
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`location` = \"$location\"";
+                }
+                if(isset($_GET['date']))
+                {
+                    $date = $_GET['date'];
+                    $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved' AND `event`.`eventEnd_date` <= \"$date\"";
+                }
                 $sql = "SELECT * FROM `event` INNER JOIN `user` ON `organiser_id` = `user_id` WHERE `event`.`status` = 'Approved'";
                 $result = mysqli_query($conn, $sql);
 
