@@ -49,7 +49,6 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <link href="css/classic.css" rel="stylesheet">
 
-
 <br>
 <div class="container">
    <div class="row">
@@ -61,7 +60,7 @@
          <div class="" style="background-color: #ffffff">
             <div class="row row-cols-2 p-5">
                <?php  
-               while ($row = $result->fetch_assoc()) {
+               // while ($row = $result->fetch_assoc()) {
                   ?>
                <div class="col-6 mt-2 mb-2">
                   <div class="card" id="vouchercard2">
@@ -123,7 +122,8 @@
 
                </div>
 
-               <?php }?>
+               <?php 
+            // }?>
 
             </div>
          </div>
