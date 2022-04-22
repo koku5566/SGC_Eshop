@@ -71,12 +71,15 @@
 //}
 //
 //$conn->close();
+// $select= "SELECT * FROM shopProfile WHERE id=4";
+// $sql = mysqli_query($conn,$select);
+// $row = mysqli_fetch_assoc($sql);
 ?>
 
 <!-- Update Profile -->
 <?php
-  session_start();
- if(isset($_POST['update']))
+//  session_start();
+ if(isset($_POST['saveBtn']))
  {
     //$shopProfileCover = $_POST['coverContainer'];
     //$shopProfilePic = $_POST['profilePicContainer'];
@@ -84,13 +87,8 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     //$shopMedia = $_POST['mediaContainer'];
-    $select= "SELECT * FROM shopProfile WHERE id=4";
-    $sql = mysqli_query($conn,$select);
-    $row = mysqli_fetch_assoc($sql);
-
        echo 'Hello';
        $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = 4";
-       ;
        echo 'Hi';
        if($conn->query($update))
        { 
@@ -247,7 +245,7 @@
 
 
     <div class="text-center">
-      <button type="submit" class="saveBtn" name="update">Save</button>
+      <button type="submit" class="saveBtn" id="saveBtn" name="saveBtn">Save</button>
     </div> 
     </form>
   </div>
