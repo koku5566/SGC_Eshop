@@ -3,18 +3,18 @@
 ?>
 
 <?php
-  $user = wp_get_current_user();
-  echo $user->roles[0];
-?>
-
-<?php
- session_start(); 
-
-  if(!isset($_SESSION['login']) || $_SESSION['role'] == "SELLER")
-	{
-	  ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
-	  exit;
-  }
+//session_start();
+//if (!isset($_SESSION['login']))
+//{
+//  header('Location: login.php');
+//}
+//else
+//{
+//  if ($_SESSION['role'] != "SELLER")
+//  {
+//    header('location: index.php');
+//  }  
+//}
 ?>
 
 <!-- Insert data -->
@@ -108,6 +108,7 @@
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
+          parent.window.location.reload();
           echo 'Success';
       }
       else
