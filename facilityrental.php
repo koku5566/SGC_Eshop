@@ -69,14 +69,14 @@
 
                                                 echo ("
                                                     <div class=\"carousel-item\">
-                                                    <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                    <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
                                                     </div>         
                                                 ");
                                             }
                                             else{
                                                 echo ("
                                                 <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
                                                 </div>
                                                             
                                                 ");

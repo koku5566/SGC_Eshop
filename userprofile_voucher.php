@@ -24,6 +24,7 @@
 
    $sql_voucherR =
     "SELECT 
+    voucherRedemption.voucher_id
     voucher.voucher_id,
     voucher.voucher_code,
     voucher.voucher_type,
@@ -38,17 +39,17 @@
     shopProfile.shop_profile_image
 
     FROM voucherRedemption
-    JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
-    JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-    JOIN product ON productVoucher.product_id = product.product_id
-    JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-    WHERE product.shop_id = '$uid'";
+    INNER JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
+    INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+    INNER JOIN product ON productVoucher.product_id = product.product_id
+    INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+    WHERE voucherRedemption.voucher_id = '$uid'";
 
    $stmt = $conn->prepare($sql_voucherR);
    $stmt->execute();
    $result = $stmt->get_result();
 
-    while ($row = $result->fetch_assoc()) {
+   while ($row = $result->fetch_assoc()) {
    
 ?>
 
@@ -69,6 +70,7 @@
 
    <div class="row">
       <?php require __DIR__ . '/userprofilenav.php' ?><br>
+
       <div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
          <div class="container">
             <!-- Outer Row -->
