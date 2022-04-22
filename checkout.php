@@ -309,7 +309,7 @@ $shippingfee = 8.6;
                 <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $_SESSION['subtotal'] ?></span></li>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $_SESSION['subtotal']; ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
