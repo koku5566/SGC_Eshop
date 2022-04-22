@@ -118,6 +118,7 @@
                             voucher.voucher_expired,
                             voucher.voucher_details,
                             shopProfile.shop_name,
+                            shopProfile.shop_id,
                             shopProfile.shop_profile_image
 
                             FROM voucher
