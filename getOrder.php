@@ -23,7 +23,7 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-JOIN user on myOrder.user_id = user.user_id 
+JOIN user ON myOrder.user_id = user.userID
 WHERE myOrder.user_id = 'user_id'
 ORDER BY myOrder.order_id DESC
 ";
