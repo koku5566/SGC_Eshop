@@ -40,7 +40,7 @@
       <div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
          <div class="container">
             <!-- Outer Row -->
-            <div class="row justify-content-center">
+            <div class="row">
                <div class="col-12 card o-hidden border-0 shadow-lg">
                      <div class="row row-cols-2">
                      <div class="col-6 m-2">
