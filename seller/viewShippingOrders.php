@@ -282,7 +282,7 @@ $completedresult = $stmt->get_result();
                                         WHERE orderDetails.order_id = '$oID'";
                                      
                                         $toshipresult = mysqli_query($conn, $toshipsql);
-                                        while ($row = $result->fetch_assoc()) {
+                                        while ($row = $toshipresult->fetch_assoc()) {
                                     ?>
                                         <div class="col-1 image-container">
                                             <img class="card-img-top img-thumbnail"
@@ -306,16 +306,17 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"> <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
                                         <?php if($row['order_status']=='Paid'){?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Arrange Shipment</a>
-                                            <?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
-                                                <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check Details</a><?php } ?>
+                                        <?php } else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
+                                        <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check Details</a><?php } ?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                <!--End of Order Item-->
                                 <?php 
                                 }
                             }?>
+                            </div>
+                                <!--End of Order Item-->
+
 
 
                             </div>
