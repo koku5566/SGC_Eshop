@@ -32,29 +32,29 @@
 
 <!-- Update Profile -->
 <?php
-//  session_start();
-// if(isset($_POST['saveBtn']))
-// {
-//    $shopProfileCover = $_POST['coverContainer'];
-//    $shopProfilePic = $_POST['profilePicContainer'];
-//    //$shopProfilePic = array_filter($_FILES['img']['name']);
-//    $shopName = $_POST['name'];
-//    $shopDescription = $_POST['description'];
-//    $shopMedia = $_POST['mediaContainer'];
-//    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
-//
-//      if($conn->query($update))
-//      { 
-//          /*Successful*/
-//          header("refresh:1; url=shopProfile.php");
-//      }
-//      else
-//      {
-//          /*Fail*/
-//          echo 'Update Fail';
-//      }
-//   }
-// 
+  session_start();
+ if(isset($_POST['saveBtn']))
+ {
+    $shopProfileCover = $_POST['coverContainer'];
+    $shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    $shopMedia = $_POST['mediaContainer'];
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
+
+      if($conn->query($update))
+      { 
+          /*Successful*/
+          header("refresh:1; url=shopProfile.php");
+      }
+      else
+      {
+          /*Fail*/
+          echo 'Update Fail';
+      }
+   }
+ 
 ?>
 
 <!-- Upload Image -->
