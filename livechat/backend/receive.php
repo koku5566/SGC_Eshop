@@ -18,12 +18,12 @@
                                 </div>
                                 </div>';
                 }else{
-                    $output .= '<div class="chat incoming">
-                                <img src="php/images/'.$row['profile_picture'].'" alt="">
-                                <div class="details">
-                                    <p>'. $row['msg'] .'</p>
+                    $output .= "<div class=\"chat incoming\">
+                                <img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+                                <div class=\"details\">
+                                    <p>". $row['msg'] ."</p>
                                 </div>
-                                </div>';
+                                </div>";
                 }
             }
         }else{
