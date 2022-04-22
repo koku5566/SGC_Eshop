@@ -394,7 +394,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php       
-                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' AND orderDetails.shop_id = '$user_id' ";
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
