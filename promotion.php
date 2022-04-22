@@ -57,7 +57,8 @@
 
     .scrolling-wrapper2{
         overflow-y: auto;
-    max-height: 580px;
+        max-height: 580px;
+        min-width: 80%;
     }
 </style>>
 
