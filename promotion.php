@@ -195,12 +195,12 @@
 
                             if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])){
 
-                                $user_id = $_POST['uid'];
+                                $uid = $_POST['uid'];
                                 $voucher_id = $_POST['voucher_id'];
                                 $date = date('Y-m-d H:i:s');
 
                                 $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, user_id)
-                                         VALUES ('$date', '$voucher_id','$user_id');";
+                                         VALUES ('$date', '$voucher_id','$uid');";
                             }else{
                                 echo '<script>alert("Failed to add")</script>';
                             }
