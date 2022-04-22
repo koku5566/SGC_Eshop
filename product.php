@@ -1057,7 +1057,7 @@
 	/*Cheong Kit Min - End of Review & Rating ****************/
     .image-container{
         width:100%;
-        height: 40vh;
+        height: 25vh;
         padding: 20px;
     }
     .image-container .image{
