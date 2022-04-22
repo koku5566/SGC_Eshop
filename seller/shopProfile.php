@@ -3,6 +3,11 @@
 ?>
 
 <?php
+  $user = wp_get_current_user();
+  echo $user->roles[0];
+?>
+
+<?php
  session_start(); 
 
   if(!isset($_SESSION['login']) || $_SESSION['role'] == "SELLER")

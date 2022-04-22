@@ -53,12 +53,6 @@ $shippingfee = 8.6;
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/checkout.css">
-   
-    <form action="/cart_manage.php" method="POST">
-    <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal">
-    <input type='submit'>
-    </form>
-
 
      <!-- Address Modal -->
      <div class="modal fade" id="myModal" role="dialog">
@@ -150,6 +144,7 @@ $shippingfee = 8.6;
                             ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$UID'
                             AND cart.remove_Product = '0'
+                            AND product.product_status = 'A'
                             ORDER BY cart.update_at DESC
                             ";
                             
