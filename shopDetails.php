@@ -17,6 +17,7 @@
     //Fetch each promotion image information
     $promotion_title = array();
     $promotion_image = array();
+    $userId = $_SESSION['userid'];
 
     $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
