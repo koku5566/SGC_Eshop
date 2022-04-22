@@ -76,24 +76,22 @@ if(isset($_POST['signup']))
 								$returnPath = "-f" . $from2;
 
 								if (@mail($to, $subject, $message, $headers, $returnPath)){
-									$_SESSION['AddUser'] = true;
-									echo "<script>alert('User Added');</script>";
+									echo "";
 								}
 								else
 								{
-									echo "<script>alert('Error');</script>";
+									echo "Error: ".$sql."<br>".mysqli_error($conn);
 								}
 
 								if ($_POST['role'] == "SELLER"){
 									$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
-									echo($sql);
 									if (mysqli_query($conn, $sql)){
 										echo "";
 									}else{
-										echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+										echo "Error: ".$sql."<br>".mysqli_error($conn);
 									}
 								}else{
-									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+									echo "Error: ".$sql."<br>".mysqli_error($conn);
 								}
 								$_SESSION['AddUser'] = true;
 								echo "<script>alert('User Added');</script>";
@@ -102,7 +100,7 @@ if(isset($_POST['signup']))
 					}
 					else
 					{
-						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+						echo "Error: ".$sql."<br>".mysqli_error($conn);
 					}
 					mysqli_close($conn);
 				}
