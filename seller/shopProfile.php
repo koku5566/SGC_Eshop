@@ -26,7 +26,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '10'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000001'";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
@@ -87,7 +87,7 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
 
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = 'U000001'";
 
       if (mysqli_query($conn, $update))
       { 
@@ -141,7 +141,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage[]" value="" onchange="loadImage(event)"/>
-        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" width="200"/>
+        <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-2" width="200"/>
       </div>
     </div>
     
@@ -235,14 +235,14 @@ div.absolute {
   height: 65px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  left: 320px;
+  left: 300px;
 }
 .profile-pic .-label {
   position: absolute;
   cursor: pointer;
   height: 65px;
   width: 65px;
-  left: 320px;
+  left: 300px;
 }
 .profile-pic:hover .-label {
   display: flex;
