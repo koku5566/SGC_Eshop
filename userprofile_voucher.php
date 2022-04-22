@@ -52,62 +52,39 @@
                                  </div>
                                  <hr>
                                  <div class="container">
-                                          <div class="card m-2" id="vouchercard2">
-                                             <div class="card-body">
-                                                <div class="row">
-                                                   <div class="col-mb-3 m-2">
-                                                      <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
-                                                   </div>
-                                                   <div class="col-mb-7 m-2">
-                                                      <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                      <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                      <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
-                                                      <u>
-                                                         <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
-                                                         T&C applied.
-                                                         </a>
-                                                      </u>
-                                                   </div>
-                                                </div>
+                                    <div class="card m-2" id="vouchercard2">
+                                       <div class="card-body">
+                                          <div class="row">
+                                             <div class="col-mb-3 m-2">
+                                                <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                              </div>
-
-                                          <div class="card" id="vouchercard2">
-                                             <div class="card-body">
-                                                <div class="row">
-                                                   <div class="col-mb-3 m-2">
-                                                      <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
-                                                   </div>
-                                                   <div class="col-mb-7 m-2">
-                                                      <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                      <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                      <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
-                                                      <u>
-                                                         <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
-                                                         T&C applied.
-                                                         </a>
-                                                      </u>
-                                                   </div>
-                                                </div>
+                                             <div class="col-mb-7 m-2">
+                                                <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                                <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
+                                                <u>
+                                                   <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
+                                                   T&C applied.
+                                                   </a>
+                                                </u>
                                              </div>
                                           </div>
                                        </div>
-                                       <div class="col-6">
-                                          <div class="card" id="vouchercard2">
-                                             <div class="card-body">
-                                                <div class="row">
-                                                   <div class="col-mb-3 m-2">
-                                                      <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
-                                                   </div>
-                                                   <div class="col-mb-7 m-2">
-                                                      <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                      <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                      <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
-                                                      <u>
-                                                         <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
-                                                         T&C applied.
-                                                         </a>
-                                                      </u>
-                                                   </div>
+                                       <div class="card" id="vouchercard2">
+                                          <div class="card-body">
+                                             <div class="row">
+                                                <div class="col-mb-3 m-2">
+                                                   <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                </div>
+                                                <div class="col-mb-7 m-2">
+                                                   <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                                   <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                                   <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
+                                                   <u>
+                                                      <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
+                                                      T&C applied.
+                                                      </a>
+                                                   </u>
                                                 </div>
                                              </div>
                                           </div>
