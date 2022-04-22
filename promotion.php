@@ -184,6 +184,7 @@
                                 <div class="card-footer">
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                                         <input type="text" name="voucher_id" value="<?php echo $row['voucher_id']?>">
+                                        <input type="text" name="voucher_id" value="<?php echo $_SESSION['uid']?>">
                                         <button type="submit" name="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
                                     </form>
                                 </div>
@@ -194,7 +195,7 @@
 
                             if(isset($_POST['submit'])){
 
-                                $user_id = $_SESSION["id"];
+                                $user_id = $_SESSION['uid'];
                                 $voucher_id = $_POST['voucher_id'];
                                 $date = date('Y-m-d H:i:s');
 
