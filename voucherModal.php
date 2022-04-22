@@ -34,10 +34,7 @@
             </div>
          </div>
          <div class="scrolling-wrapper2 row">
-            <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-               <label class="form-check-label" for="defaultCheck1">
-               <?php
+<?php
 
 $uid = $_SESSION['uid'];
 
@@ -75,6 +72,9 @@ while ($row = $result->fetch_assoc()) {
 
 ?>
 
+<div class="form-check mt-2 mb-2 ml-4 mr-4">
+<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+<label class="form-check-label" for="defaultCheck1">
 <div class="col-sm-12">
    <div class="card m-2">
       <div class="card-body">
