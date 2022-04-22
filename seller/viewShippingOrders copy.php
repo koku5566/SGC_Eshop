@@ -258,7 +258,7 @@ $completedresult = $stmt->get_result();
                                             $sqlkoku2 = "SELECT * FROM `orderDetails` INNER JOIN `myOrder`ON `orderDetails`.`order_id` = `myOrder`.`order_id`
                         INNER JOIN `user` ON `myOrder`.`user_id` = `user`.`user_id`
                         INNER JOIN `product` ON `orderDetails`.`product_id` = `product`.`product_id`
-                        WHERE `myOrder`.`order_id` = \"$oID\"";
+                        WHERE `myOrder`.`order_id` = $oID";
                                             $resultkoku2 = mysqli_query($conn, $sqlkoku2);
                                             if (mysqli_num_rows($resultkoku2) > 0) {
                                                 while ($rowkoku2 = mysqli_fetch_assoc($resultkoku2)) {
