@@ -65,6 +65,45 @@ if (isset($_GET['id'])) {
             <div id="columnchart" class="col-sm-6"style="width: 600px; height: 500px; padding-right:50px;"></div>  </body>
         </div>
     </div>
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">    
+// Draw the coulumn chart when Charts is loaded.
+google.charts.setOnLoadCallback(drawColChart);
+
+function drawColChart() {
+ var data = google.visualization.arrayToDataTable([
+ ["Ticket Type ", "Total"],
+ <?php 
+echo $_SESSION['eventIDView'];
+ $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$_SESSION[eventIDView]' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
+ $stmt->execute();
+ $result = $stmt->get_result();
+ while ($row = $result->fetch_assoc()) {
+      echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+   }
+   ?>
+ ]);
+
+var options = {
+   width: 800,
+   legend: { position: 'none' },
+   chart: {
+     title: 'Tickets Sold By Ticket Type',
+     subtitle: 'Ticket Number Sold' },
+   axes: {
+     x: {
+       0: { side: 'top', label: 'Ticket Type'} // Top x-axis.
+     }
+   },
+   bar: { groupWidth: "50%" }
+ };
+ var chart = new google.charts.Bar(document.getElementById('columnchart'));
+ chart.draw(data, google.charts.Bar.convertOptions(options));
+};
+  
+
+</script>
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <div class="row">
@@ -140,44 +179,6 @@ if (isset($_GET['id'])) {
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/eventDetails.js"></script>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">    
-// Draw the coulumn chart when Charts is loaded.
-google.charts.setOnLoadCallback(drawColChart);
-
-function drawColChart() {
- var data = google.visualization.arrayToDataTable([
- ["Ticket Type ", "Total"],
- <?php 
-echo $_SESSION['eventIDView'];
- $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$_SESSION[eventIDView]' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
- $stmt->execute();
- $result = $stmt->get_result();
- while ($row = $result->fetch_assoc()) {
-      echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
-   }
-   ?>
- ]);
-
-var options = {
-   width: 800,
-   legend: { position: 'none' },
-   chart: {
-     title: 'Tickets Sold By Ticket Type',
-     subtitle: 'Ticket Number Sold' },
-   axes: {
-     x: {
-       0: { side: 'top', label: 'Ticket Type'} // Top x-axis.
-     }
-   },
-   bar: { groupWidth: "50%" }
- };
- var chart = new google.charts.Bar(document.getElementById('columnchart'));
- chart.draw(data, google.charts.Bar.convertOptions(options));
-};
-  
-
-</script>
 <?php
 require __DIR__ . '/footer.php'
 ?>
