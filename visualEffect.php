@@ -459,6 +459,190 @@
 ?>
 
 <style>
+	/*Cheong Kit Min - Review & Rating ************************************/
+	.kk{
+		max-height: 15rem;
+	}
+	#sellresponse{
+	background-color: #DCDCDC; 
+	padding: 0.2rem; 
+	border-radius: 4px; 
+	}
+	.pickbox{
+		width: 100%;
+		margin: 0 auto;
+		height: 100%;
+		background-color: rgba(86,61,124,.15);
+		border: 1px solid rgba(86,61,124,.2);
+		align-content: center;
+	}
+	#pickpickrating{
+		background-color: white;
+		height: 100%;
+		width: 100%;
+	}
+	.modal-footer{
+		border-top: none;
+	}
+	.hyperlink:hover{
+		cursor: pointer;
+		color: #A31F37;
+	}
+	.hyperlink{
+		float: right;
+		color: #858796;
+		border: none;
+		background-color: transparent;
+		
+	}
+	.divcontent{
+		font-size: 0.85rem; 
+		max-height: 5rem; 
+		min-height: 5rem; 
+		overflow: hidden; 
+		margin-top: 0.5 rem;
+	}
+	.divpink{
+		padding-bottom: .625rem; 
+		padding-top: .625rem;
+		
+		border-radius: 4px;
+		outline-style: solid;
+		outline-width: 1.8px;
+		outline-color: #A31F37;
+	}
+	.namestar{
+		min-height: 6rem;
+		padding: auto;
+		position: relative;
+		
+	}
+	.reviewprofilepic{
+		display: block; 
+		float: left;
+		margin: 0.75em 0.75em 0 0.75em; 
+		border-radius: 50%; 
+		width: 5rem; 
+		height: 5rem;
+	}
+	.tqy{
+		color: #A31F37
+	}
+	.atss{
+		max-width: 25rem;
+		max-height: 25rem;
+		margin: 0 auto;
+	}
+	.bi-star-half{
+		-webkit-text-fill-color: orange;
+	}
+	.bi.bi-star-fill{
+		-webkit-text-fill-color: orange;
+	}
+	.imgReply{
+		width: 2.3rem;
+		height: 2.3rem;
+		object-fit: cover;
+	}
+	.pp{
+		width: 100%;
+		border: 1px solid purple;
+	}
+	.ppparent{
+		
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.ppparent > div {
+		flex:50%;
+		box-shadow: 0 0 0 1px black;
+		margin-bottom: 10px
+	}
+	/*Cheong Kit Min - End of Review & Rating ****************/
+    .image-container{
+        width:100%;
+        height: 25vh;
+        padding: 20px;
+    }
+    .image-container .image{
+        max-height: 100%;
+        max-width: 100%;
+    }
+    .list-parent{
+        white-space: nowrap;
+        font-size: x-large;
+    }
+    .list-inline-item{
+        background-color:white;
+    }
+
+    .carousel-item{
+        height:60vh;
+        background-color:white;
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit:contain;
+    }
+
+    #custCarousel .carousel-indicators {
+        position: static;
+        margin-top: 20px
+    }
+
+    #custCarousel .carousel-indicators>li {
+        width: 100px
+    }
+
+    #custCarousel .carousel-indicators li img {
+        display: block;
+        opacity: 0.5
+    }
+
+    .variation-item{
+        width:100px;
+        padding:1rem;
+        text-align:center;
+        color:black;
+    }
+
+    #custCarousel .carousel-indicators li.active img {
+        opacity: 1
+    }
+
+    #custCarousel .carousel-indicators li:hover img {
+        opacity: 0.75
+    }
+
+    .numner-input{
+        padding: 0 0 1rem 0;
+    }
+
+    .quantity-input{
+        appearance: textfield;
+        min-height: 3rem;
+        text-align: center;
+    }
+
+    .quantity-selector-btn{
+        min-width:3rem;
+        min-height:3rem;
+        color: #ffffff;
+        border-color: #a31f37;
+        background-color: #a31f37;
+        transition: all ease 200ms;
+    }
+
+    .quantity-selector-btn:hover{
+        opacity:0.8;
+    }
+
+
+</style>
+
+<style>
 	.img-fluid {
 		max-width: 50px;
 		max-height: 50px;
