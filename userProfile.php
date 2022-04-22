@@ -110,7 +110,7 @@ if(isset($_POST['update']))
 
 					<div class=\"form-group\">
 					<label>Password</label>
-					<input type=\"password\" name=\"password\" pattern=\"(?=.*\d).{8,}\" maxlength=\"50\" title=\"Use 8 or more characters with a mix of letters and numbers\" value=\"".$row["password"]."\" class=\"form-control\"/>
+					<input type=\"password\" name=\"password\" pattern=\"(?=.*\d).{8,}\" maxlength=\"50\" title=\"Use 8 or more characters with a mix of letters and numbers\" class=\"form-control\"/>
 					</div>
 
 					<div class=\"form-group\">
