@@ -14,8 +14,13 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
 }
 
 $order_id = $_GET['order_id'];
-
-
+$sqlod = "
+SELECT * FROM myOrder
+";
+$stmtod = $conn->prepare($sqlod);
+$stmtod->execute();
+$order_details = $stmt->get_result();
+   
 
 
 ?>
