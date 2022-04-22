@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "db.php";
+    include_once "mysqli_connect.php";
     $outgoing_id = $_SESSION['userID'];
     $sql = "SELECT * FROM users WHERE NOT userID = {$outgoing_id} ORDER BY user_id DESC";
     $query = mysqli_query($conn, $sql);
