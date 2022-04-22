@@ -164,7 +164,8 @@
                                     <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?> <?php echo $row['shop_id']?></strong></h6>
+                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                    <input type="text" name="shopname" class="form-control"><?php echo $row['shop_name']; ?>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
@@ -174,7 +175,7 @@
                                     </u>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIMED</button>
+                                    <button type="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed<?php echo $row['shop_id']?>" id="claimVoucherBtn">CLAIMED</button>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +240,7 @@
                                 }
                         }?>
 
-                        <div class="modal fade" id="voucherclaimed" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
+                        <div class="modal fade" id="voucherclaimed<?php echo $row['shop_id']?>" tabindex="-1" role="dialog" aria-labelledby="MsgFailModel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div id="SuccessMsg">
                                     <div class="SuccessMsg-content">
