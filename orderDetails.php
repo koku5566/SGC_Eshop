@@ -31,6 +31,7 @@ $order_id = $_GET['order_id'];
                 </div>
                 <div class="card">
                 <?php
+                    $shippingfee = 8.6;
                     $sql2 = "SELECT * FROM myOrder 
                     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
                     JOIN product ON orderDetails.product_id = product.product_id
@@ -76,7 +77,7 @@ $order_id = $_GET['order_id'];
                         
                         <div class="col">Delivery Fees:</div>
                         <div class="col">
-                            RM8.60
+                            <?php echo $shippingfee?>
                         </div>
                     </div>
                     <div class="row p-2">
