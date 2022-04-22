@@ -146,8 +146,7 @@
                             $sm = $conn->prepare($sql_pn);
                             $sm->execute();
                             $res = $sm->get_result();
-                                                
-                                                
+                                                                 
                             while ($row = $result->fetch_assoc()) {
                                 $td = date('y-m-d');
                                 $expr = $row['voucher_expired'];
@@ -165,7 +164,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                    <input type="text" name="shopname" class="form-control"><?php echo $row['shop_name']; ?>
+                                    <?php echo $row[($_SESSION['product_id'])]?>
                                     <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                     <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                     <u>
