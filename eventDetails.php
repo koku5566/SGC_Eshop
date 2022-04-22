@@ -19,7 +19,7 @@ require __DIR__ . '/header.php'
         INNER JOIN ticketTransaction ON `ticket`.`transaction_id` = `ticketTransaction`.`ticketOrder_id`
         INNER JOIN `event` ON `event`.`event_id` = `ticket`.`event_id` 
         INNER JOIN `ticketType` ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-        WHERE `ticketTransaction`.`buyer_email` = $tEmail";
+        WHERE `ticketTransaction`.`buyer_email` = \"$tEmail\"";
         $res = mysqli_query($conn, $sqlgetTic);
 
         if (mysqli_num_rows($res) > 0) {
