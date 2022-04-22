@@ -35,17 +35,17 @@
   session_start();
  if(isset($_POST['saveBtn']))
  {
-  $coverIMG = array_filter($_FILES['profileImage','profileCover']['name']);
+  $coverIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
   $profilePic = "";
   //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
-  $coverImgContent = addslashes(file_get_contents($_FILES['profileImage', 'profileCover']['name']));
+  $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
   if (!empty($coverIMG)) {
-      foreach ($_FILES['profileImage', 'profileCover']['name'] as $key => $val) {
+      foreach ($_FILES['profileImage']['name'] as $key => $val) {
           // File upload path 
-          echo (var_dump($_FILES['profileImage', 'profileCover']));
-          $fileName = basename($_FILES['profileImage', 'profileCover']['name'][$key]);
+          echo (var_dump($_FILES['profileImage']));
+          $fileName = basename($_FILES['profileImage']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
@@ -53,7 +53,7 @@
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
-              if (move_uploaded_file($_FILES["profileImage", 'profileCover']["tmp_name"][$key], $targetFilePath)) {
+              if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
                   $profilePic = "$fileName";
               }
           }
