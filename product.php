@@ -237,7 +237,27 @@
                             <!-- Price -->
                             <div class="row mb-4" id="PriceDiv">
                                 <div class="col">
-                                    <span style="color:#a31f37;font-size:18pt;font-weight: bold;"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
+								<?php echo( ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?>
+									<?php
+									if($i_product_variation == 0)
+									{
+										echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_product_price</span>");
+									}
+									else{
+										if($i_min_price != $i_max_price)
+										{
+											echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_min_price - RM$i_max_price </span>");
+										}
+										else
+										{
+											echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_min_price</span>");
+										}
+									}
+									
+										
+									?>
+
+                                    
                                 </div>
                             </div>
                             <!-- Variation -->
