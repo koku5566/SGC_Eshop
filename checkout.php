@@ -305,18 +305,15 @@ $shippingfee = 8.6;
                 <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                        <?php  
-                        $_SESSION['total'] = 100;
-                        ?>
-                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM 90</span></li>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $_SESSION['subtotal'] ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['total'] ?></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
             </div>
             <br>
             <div class = 'row'>
-            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['total'] ?>>
+            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['subtotal'] ?>>
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
