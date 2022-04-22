@@ -13,7 +13,7 @@
               $row = mysqli_fetch_assoc($sql);
             }
           ?>
-          <img src=<?php echo("data:image;base64,".base64_encode($row["profile_picture"])."")?>alt="">
+          <img src="<?php echo("data:image;base64,".base64_encode($row["profile_picture"])."")?>" alt="">
           <div class="details">
             <span><?php echo $row['username'] ?></span>
           </div>

@@ -41,8 +41,8 @@
          <div class="container">
             <!-- Outer Row -->
             <div class="row justify-content-center">
-               <div class="col-xl-12 col-lg-6 col-md-9">
-                  <div class="card o-hidden border-0 shadow-lg">
+               <div class="col-12 card o-hidden border-0 shadow-lg">
+                     <div class="row row-cols-2">
                      <div class="col-6 m-2">
                         <div class="card" id="vouchercard2">
                            <div class="card-body">
@@ -83,6 +83,7 @@
                               </div>
                            </div>
                         </div>
+                     </div>
                         <!-- Modal -->
                         <!-- <div class="modal fade" id="termsv2Modal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsv2ModalTitle" aria-hidden="true">
                            <div class="modal-dialog modal-dialog-centered" role="document">
@@ -160,11 +161,6 @@ img {
    padding: 15px 18px 15px 18px;
    border-radius: 10px;
    border: dashed;
-}
-
-.selectvoucher{
-   width: 40px;
-   height: 28px;
 }
 
 #vouchercard2{
