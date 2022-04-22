@@ -3,7 +3,7 @@
 
 ?>
 <?php
-$user_id = $_SESSION["uid"];
+$userid = $_SESSION["userid"]; //EXP: U000063
 $sql_2 = "SELECT
 DISTINCT
 myOrder.order_id,
@@ -23,8 +23,8 @@ myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-JOIN user on myOrder.user_id = user.user_id 
-WHERE myOrder.user_id = 'user_id'
+JOIN user on myOrder.userID = user.userID 
+WHERE myOrder.userID = '$userid'
 ORDER BY myOrder.order_id DESC
 ";
 $stmt_2 = $conn->prepare($sql_2);
