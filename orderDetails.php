@@ -3,7 +3,7 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-$sql = "SELECT
+$sqlod = "SELECT
 myOrder.order_id,
 myOrder.order_date,
 orderDetails.quantity,
@@ -22,7 +22,12 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
 WHERE myOrder.order_id = '$order_id';";
-$result = $conn->query($sql);
+$result = $conn->query($sqlod);
+
+while ($rowod = $resultod->fetch_assoc()) {
+    $orderdate = $rowod['order_date'];
+    $productname = $rowod['product_name'];
+}
 
 
 ?>
@@ -55,7 +60,7 @@ $result = $conn->query($sql);
                             ?>
                            <div class="card-body">
                                 <div class="col-1"></div>
-                                <div class="col-5">Product</div>
+                                <div class="col-5"><?php echo $productname?></div>
                                 <div class="col-2">Unit Price</div>
                                 <div class="col-1">Quantity</div>
                                 <div class="col-3">Total Price</div>     
