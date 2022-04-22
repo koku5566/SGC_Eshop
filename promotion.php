@@ -184,8 +184,8 @@
                                 <div class="card-footer">
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                                         <input type="text" name="voucher_id" value="<?php echo $row['voucher_id']?>">
-                                        <input type="text" name="uid" value="<?php echo $_SESSION['uid']?>">
-                                        <button type="submit" name="claim" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
+                                        <input type="text" name="user_id" value="<?php echo $_SESSION['uid'];?>">
+                                        <button type="submit" name="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
                                     </form>
                                 </div>
                             </div>
@@ -193,17 +193,17 @@
 
                         <?php 
 
-                            // if(isset($_POST['claim'])){
+                            if(isset($_POST['submit'])){
 
-                            //     $user_id = $_POST['uid'];
-                            //     $voucher_id = $_POST['voucher_id'];
-                            //     $date = date('Y-m-d H:i:s');
+                                $user_id = $_SESSION['uid'];
+                                $voucher_id = $_POST['voucher_id'];
+                                $date = date('Y-m-d H:i:s');
 
-                            //     $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, 'user_id')
-                            //              VALUES ('$date', '$voucher_id','$user_id');";
-                            // }else{
-                            //     echo '<script>alert("Failed to add")</script>';
-                            // }
+                                $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, user_id)
+                                         VALUES ('$date', '$voucher_id','$user_id');";
+                            }else{
+                                echo '<script>alert("Failed to add")</script>';
+                            }
 
                         ?>
 
