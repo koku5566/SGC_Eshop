@@ -188,6 +188,7 @@ if(isset($_GET['addressid']))
                             JOIN `product`
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
+                            ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$uid'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC
