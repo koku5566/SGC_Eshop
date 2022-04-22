@@ -140,7 +140,7 @@ $queryKL = mysqli_query($conn, $sql);
         }
     }
 
-   echo(" 
+/*    echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
         <span>".$payment_status."</span>
@@ -152,7 +152,7 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$shop_id."</span>
 
    
-    "); 
+    ");  */
 
    /*  date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
@@ -168,14 +168,14 @@ $queryKL = mysqli_query($conn, $sql);
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-      /*   $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
+         $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
         if ($stmt = mysqli_prepare($conn, $sql3)) {
             $bp = mysqli_stmt_bind_param($stmt3, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
             $bp = mysqli_stmt_execute($stmt3);
-    } */
+    } 
     
 }
 if (mysqli_stmt_affected_rows($stmt) == 1) {
