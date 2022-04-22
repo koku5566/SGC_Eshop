@@ -32,61 +32,72 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					$sql = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
-					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
-				
-					if (mysqli_query($conn, $sql)) {
-						if ($_POST['role'] == "SELLER"){
-							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
-							echo($sql);
+					$sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'";
+					$result = mysqli_query($conn, $sql);
+
+					if (mysqli_num_rows($result) > 0) {
+						while($row = mysqli_fetch_assoc($result)) {
+							$userid = $row["AUTO_INCREMENT"];
+
+							$sql = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
+							VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
+
 							if (mysqli_query($conn, $sql)) {
-								echo "";
-							}else {
-								echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+								$passwordE=$_POST['password'];
+
+								$to = $email;
+								$subject = "SGC E-Shop New User Account";
+								$from = "user-account@sgcprototype2.com";
+								$from2 = "contact_us_mail@sgcprototype2.com";
+								$fromName = "SGC E-Shop";
+					
+								$headers =  "From: $fromName <$from> \r\n";
+								$headers .= "MIME-Version: 1.0\r\n";
+								$headers .= "Content-Type: multipart/mixed;\r\n";
+								
+								$message = "
+								Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
+								<br>
+								Change your password after first login. Thank You.<br>
+								<br>
+								Username: $username<br>
+								Password: $passwordE
+								";
+					
+								$HTMLcontent = "<p><b>Dear ".$_POST['username']."</b>,</p><p>$message</p>";
+								
+								$boundary = md5(time());
+								$headers .= " boundary=\"{$boundary}\"";
+								$message = "--{$boundary}\r\n";
+								$message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+								$message .= "Content-Transfer-Encoding: 7bit\r\n";
+								$message .= $HTMLcontent . "\r\n";
+								$message .= "--{$boundary}\r\n";
+								$returnPath = "-f" . $from2;
+
+								if (@mail($to, $subject, $message, $headers, $returnPath)){
+									$_SESSION['AddUser'] = true;
+									echo "<script>alert('User Added');</script>";
+								}
+								else
+								{
+									echo "<script>alert('Error');</script>";
+								}
+
+								if ($_POST['role'] == "SELLER"){
+									$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
+									echo($sql);
+									if (mysqli_query($conn, $sql)){
+										echo "";
+									}else{
+										echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+									}
+								}else{
+									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+								}
+								$_SESSION['AddUser'] = true;
+								echo "<script>alert('User Added');</script>";
 							}
-						}else{
-							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-						}
-
-						$passwordE=$_POST['password'];
-
-						$to = $email;
-						$subject = "SGC E-Shop New User Account";
-						$from = "user-account@sgcprototype2.com";
-						$from2 = "contact_us_mail@sgcprototype2.com";
-						$fromName = "SGC E-Shop";
-			
-						$headers =  "From: $fromName <$from> \r\n";
-						$headers .= "MIME-Version: 1.0\r\n";
-						$headers .= "Content-Type: multipart/mixed;\r\n";
-						
-						$message = "
-						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
-						<br>
-						Change your password after first login. Thank You.<br>
-						<br>
-						Username: $username<br>
-						Password: $passwordE
-						";
-			
-						$HTMLcontent = "<p><b>Dear ".$_POST['username']."</b>,</p><p>$message</p>";
-						
-						$boundary = md5(time());
-						$headers .= " boundary=\"{$boundary}\"";
-						$message = "--{$boundary}\r\n";
-						$message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
-						$message .= "Content-Transfer-Encoding: 7bit\r\n";
-						$message .= $HTMLcontent . "\r\n";
-						$message .= "--{$boundary}\r\n";
-						$returnPath = "-f" . $from2;
-
-						if (@mail($to, $subject, $message, $headers, $returnPath)){
-							$_SESSION['AddUser'] = true;
-							echo "<script>alert('User Added');</script>";
-						}
-						else
-						{
-							echo "<script>alert('Error');</script>";
 						}
 					}
 					else
