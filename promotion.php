@@ -6,7 +6,64 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+<style>
+    #voucherlogo{
+   height: 100px;
+   width: 100px;
+   display: flex;
+   justify-content: center;
+   overflow: hidden
+}
+
+#voucherlogo img {
+   width: 100px
+}
+
+img {
+   width: 100px
+}
+
+#vouchercard{
+   width: 11.5rem;
+   height: 25rem;
+}
+
+#termsvouchercard{
+   width: 11.5rem;
+   height: 20rem;
+}
+
+.tnccontainer{
+   border-radius: 10px;
+   border: dashed;
+}
+
+.selectvoucher{
+   width: 40px;
+   height: 28px;
+}
+
+/* -------------------- Category Scrollbar----------------------- */
+
+/* width */
+::-webkit-scrollbar {
+   width: 5px;
+   height: 5px;
+ }
+
+ .scrolling-wrapper{
+	overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    overflow: hidden
+}
+
+ .scrolling-wrapper2{
+	overflow-y: auto;
+   max-height: 580px;
+}
+</style>
+
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
@@ -136,14 +193,14 @@
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-center">
                                             <div class="card m-2" id="termsvouchercard">
-                                            <div class="container">
-                                                <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
-                                            </div>
-                                            <div class="card-body">
-                                                <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
-                                                <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
-                                            </div>
+                                                <div class="container">
+                                                    <img class="m-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                                    <small>Used : <?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
