@@ -2,7 +2,7 @@
     session_start();
     include_once "mysqli_connect.php";
     $outgoing_id = $_SESSION['userid'];
-    $sql = "SELECT * FROM user WHERE NOT userID = {$outgoing_id} ORDER BY user_id DESC";
+    $sql = "SELECT * FROM user WHERE userID = {$outgoing_id} AND (role = 'SELLER' OR role = 'ADMIN') ORDER BY user_id DESC";
     $query = mysqli_query($conn, $sql);
     $output = "";
     if(mysqli_num_rows($query) == 0){
