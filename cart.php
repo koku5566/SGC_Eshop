@@ -48,7 +48,7 @@
 
                         //select product from this shop
                         $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
-                        cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock, product.product_cover_image AS product_image,
+                        cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock, 
                         product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
                         FROM `cart`
                         JOIN `product`
@@ -70,7 +70,7 @@
                             $cart_id = $rowKL['cart_id'];
                             $product_id = $rowKL['PID'];
                             $product_name = $rowKL['P_name'];
-                            $product_image = $rowKL['product_image'];
+                            $product_image = $rowKL['P_pic'];
                             $product_quantity = $rowKL['P_quantity'];
                             $variation_message = "";
                             $showNotif = false;
@@ -140,7 +140,7 @@
                                 <tr>
                                     <td>
                                         <div class='product-item'>
-                                            <a class='product-thumb' href='#'><img src='https://www.sony.com.my/image/5d02da5df552836db894cead8a68f5f3?fmt=png-alpha&wid=330&hei=330' alt='Product'></a>
+                                            <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
                                             <div class='product-info'>
                                                 <label> Cart: ".$cart_id."</label><br>
                                                 <label>".$product_id."</label>
