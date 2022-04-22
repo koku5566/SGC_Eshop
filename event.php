@@ -122,7 +122,7 @@ require __DIR__ . '/header.php'
                         }
 
                         echo ("
-                    <div class=\"col-12 col-sm12 col-md-12 col-lg-4 col-xl-4 col-xxl-4\" style=\"margin-top: 20px;margin-bottom: 20px;\">
+                    <div class=\"col-12 col-sm12 col-md-6 col-lg-6 col-xl-4 col-xxl-4\" style=\"margin-top: 20px;margin-bottom: 20px;\">
                         <div class=\"card\">
                             <div class=\"card-body\"><img src=\"$picLocation\" style=\"width:100%;\" />
                                 <h3 class=\"card-title\" style=\"margin-top: 10px;\">" . $row['event_name'] . "</h3>
