@@ -35,13 +35,13 @@
   session_start();
  if(isset($_POST['saveBtn']))
  {
-  $coverIMG = array_filter($_FILES['profileImage']['name']);
+  $profileIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
   $profilePic = "";
   //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
   $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
-  if (!empty($coverIMG)) {
+  if (!empty($profileIMG)) {
       foreach ($_FILES['profileImage']['name'] as $key => $val) {
           // File upload path 
           echo (var_dump($_FILES['profileImage']));
