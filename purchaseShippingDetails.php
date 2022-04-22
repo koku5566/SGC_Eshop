@@ -82,6 +82,24 @@
           <?php
         }
     }
+        //order received
+        if(isset($_POST["receivedBtn"])){
+            $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+            $status = "Received";
+            $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
+    
+            if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+                $_SESSION['success'] = "Thank you for updating!";?>
+                <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+                <?php
+               // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
+                } else {
+              $_SESSION['status'] = "Order status update failed";?>
+               <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+              <?php
+            }
+        }
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
@@ -214,6 +232,13 @@
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
                     <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
+                    </form>
+                <?php } ?>
+
+                <?php if($orderstatus =='Shipped'){?>
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <button type="submit" name="receivedBtn" class="btn btn-primary">Order Received</button>
                     </form>
                 <?php } ?>
             
