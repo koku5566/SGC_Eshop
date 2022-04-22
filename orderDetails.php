@@ -24,11 +24,6 @@ JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
 WHERE myOrder.order_id = '$order_id';";
 $result = $conn->query($sqlod);
 
-while ($rowod = $resultod->fetch_assoc()) {
-    $orderdate = $rowod['order_date'];
-    $productname = $rowod['product_name'];
-}
-
 
 ?>
 
@@ -41,32 +36,33 @@ while ($rowod = $resultod->fetch_assoc()) {
                 <h2 class="font-weight-bold text-center">ORDER DETAILS</h2>
                 <hr class="mx-auto">
             </div>
+            <?php while ($rowod = $resultod->fetch_assoc()) {?>
             <div class="card">
-                            <div class="card-header">
-                               <div class="order-list-panel">
-                        
-                            <div class="row">
-                                <div class="col-1"></div>
-                                <div class="col-5">Product</div>
-                                <div class="col-2">Unit Price</div>
-                                <div class="col-1">Quantity</div>
-                                <div class="col-3">Total Price</div>
-                            </div>
-                            </div>
-                            </div>
-                            <?php
-                            $count=1;
-                            {
-                            ?>
-                           <div class="card-body">
-                                <div class="col-1"></div>
-                                <div class="col-5"><?php echo $productname?></div>
-                                <div class="col-2">Unit Price</div>
-                                <div class="col-1">Quantity</div>
-                                <div class="col-3">Total Price</div>     
-                            </div>
-                            <?php }?>
+                <div class="card-header">
+                    <div class="order-list-panel">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-5">Product</div>
+                            <div class="col-2">Unit Price</div>
+                            <div class="col-1">Quantity</div>
+                            <div class="col-3">Total Price</div>
                         </div>
+                    </div>
+                </div>
+                <?php
+                $count=1;
+                {
+                ?>
+                <div class="card-body">
+                    <div class="col-1"></div>
+                    <div class="col-5"><?php echo $rowod['product_name']?></div>
+                    <div class="col-2">Unit Price</div>
+                    <div class="col-1">Quantity</div>
+                    <div class="col-3">Total Price</div>     
+                </div>
+                <?php }?>
+            </div>
+            <?php }?>
 
 
         </section>
