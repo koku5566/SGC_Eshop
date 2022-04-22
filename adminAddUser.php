@@ -48,12 +48,12 @@ if(isset($_POST['signup']))
 						$headers .= "MIME-Version: 1.0\r\n";
 						$headers .= "Content-Type: multipart/mixed;\r\n";
 						
-						$message = "nl2br(
+						$message = "
 						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
 						
-						Change your password after first login. Thank You.\r\n
+						Change your password after first login. Thank You.<br>
 
-						Username: $username\r\n
+						Username: $username<br>
 						Password: $passwordE
 						)";
 			
