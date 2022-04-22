@@ -77,7 +77,6 @@
 <?php
  
  session_start();
- include "Connection.php";
  if(isset($_POST['update']))
  {
     //$shopProfileCover = $_POST['coverContainer'];
