@@ -42,45 +42,45 @@
             <!-- Outer Row -->
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
-               <?php
-
-               $uid = $_SESSION['uid'];
-
-               $sql_voucherR =
-               "SELECT 
-               voucherRedemption.voucher_id,
-               voucherRedemption.user_id,
-               voucher.voucher_id,
-               voucher.voucher_code,
-               voucher.voucher_type,
-               voucher.discount_amount,
-               voucher.voucher_display,
-               voucher.voucher_limit,
-               voucher.voucher_startdate,
-               voucher.voucher_expired,
-               voucher.voucher_details,
-               shopProfile.shop_name,
-               shopProfile.shop_id,
-               shopProfile.shop_profile_image
-
-               FROM voucherRedemption
-               INNER JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
-               INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-               INNER JOIN product ON productVoucher.product_id = product.product_id
-               INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-               WHERE voucherRedemption.user_id = '$uid'";
-
-               $stmt = $conn->prepare($sql_voucherR);
-               $stmt->execute();
-               $result = $stmt->get_result();
-
-               while ($row = $result->fetch_assoc()) {
-
-?>
                   <div class="col-6 mt-2 mb-2">
                      <div class="card" id="vouchercard2">
                         <div class="card-body">
                            <div class="row">
+                              <?php
+
+                              $uid = $_SESSION['uid'];
+
+                              $sql_voucherR =
+                              "SELECT 
+                              voucherRedemption.voucher_id,
+                              voucherRedemption.user_id,
+                              voucher.voucher_id,
+                              voucher.voucher_code,
+                              voucher.voucher_type,
+                              voucher.discount_amount,
+                              voucher.voucher_display,
+                              voucher.voucher_limit,
+                              voucher.voucher_startdate,
+                              voucher.voucher_expired,
+                              voucher.voucher_details,
+                              shopProfile.shop_name,
+                              shopProfile.shop_id,
+                              shopProfile.shop_profile_image
+
+                              FROM voucherRedemption
+                              INNER JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
+                              INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                              INNER JOIN product ON productVoucher.product_id = product.product_id
+                              INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                              WHERE voucherRedemption.user_id = '$uid'";
+
+                              $stmt = $conn->prepare($sql_voucherR);
+                              $stmt->execute();
+                              $result = $stmt->get_result();
+
+                              while ($row = $result->fetch_assoc()) {
+
+                              ?>
                               <div class="col-mb-3 m-2">
                                  <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                               </div>
