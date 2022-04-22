@@ -339,24 +339,42 @@
 
                                                 if(isset($_GET['Panel']))
                                                 {
+                                                    if($Where == false)
+                                                    {
+                                                        $sql .= "WHERE ";
+                                                        $Where = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        $sql .= "AND ";
+                                                    }
                                                     switch($_GET['Panel'])
                                                     {
                                                         case "Publish":
-                                                            $sql .= " AND A.product_status = 'A'";
+                                                            $sql .= "  A.product_status = 'A'";
                                                             break;
                                                         case "Unpublish":
-                                                            $sql .= " AND A.product_status = 'I'";
+                                                            $sql .= "  A.product_status = 'I'";
                                                             break;
                                                         case "Violation":
-                                                            $sql .= " AND A.product_status = 'B'";
+                                                            $sql .= "  A.product_status = 'B'";
                                                             break;
                                                         case "OutOfStock":
-                                                            $sql .= " AND A.product_status = 'O'";
+                                                            $sql .= "  A.product_status = 'O'";
                                                             break;
                                                     }
                                                 }
                                                 $shopId = $_SESSION['uid'];
-                                                $sql .= " AND A.shop_id = '$shopId'";
+                                                if($Where == false)
+                                                {
+                                                    $sql .= "WHERE ";
+                                                    $Where = true;
+                                                }
+                                                else
+                                                {
+                                                    $sql .= "AND ";
+                                                }
+                                                $sql .= " A.shop_id = '$shopId'";
 
                                                 $result = mysqli_query($conn, $sql);
 
