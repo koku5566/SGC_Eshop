@@ -78,7 +78,7 @@
  
  session_start();
  include "Connection.php";
- if(isset($_POST['submit']))
+ if(isset($_POST['update']))
  {
     //$shopProfileCover = $_POST['coverContainer'];
     //$shopProfilePic = $_POST['profilePicContainer'];
