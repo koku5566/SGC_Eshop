@@ -139,21 +139,6 @@
                             $stmt = $conn->prepare($sql_voucher);
                             $stmt->execute();
                             $result = $stmt->get_result();
-
-                            $sql_pn=
-                            "SELECT
-                            product.product_name,
-                            voucher.voucher_id
-                                                
-                            FROM voucher
-                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                            JOIN product ON productVoucher.product_id = product.product_id
-                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                            ";
-
-                            $sm = $conn->prepare($sql_pn);
-                            $sm->execute();
-                            $res = $sm->get_result();
                                                 
                                                 
                             while ($row = $result->fetch_assoc()) {
@@ -219,14 +204,33 @@
                                     <div class="tnccontainer m-5 p-3">
                                         <div class="container">
                                             <strong>Product</strong>
+
                                             <?php 
+
+                                            $voucher_id = $row['voucher_id'];
+
+                                            $sql_pn=
+                                            "SELECT
+                                            product.product_name,
+                                            voucher.voucher_id
+                                                                
+                                            FROM voucher
+                                            JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                                            JOIN product ON productVoucher.product_id = product.product_id
+                                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                                            WHERE voucher.voucher_id = $voucher_id
+                                            ";
+                
+                                            $sm = $conn->prepare($sql_pn);
+                                            $sm->execute();
+                                            $res = $sm->get_result();
+
                                                     while ($r = $res->fetch_assoc()) {
-                                                        if($r['voucher_id'] == $row['voucher_id']){
                                             ?>
+
                                             <p><?php echo $r['product_name'];?>, </p>
+
                                             <?php 
-                                            // }}
-                                            }
                                         }?>
                                         </div>
                                         <div class="container">

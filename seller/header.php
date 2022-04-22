@@ -190,6 +190,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="myProduct.php?Panel=All">My Product</a>
                         <a class="collapse-item" href="addProduct.php">Add Product</a>
+						<a class="collapse-item" href="reviewSeller.php">Product Review</a>
                     </div>
                 </div>
             </li>
