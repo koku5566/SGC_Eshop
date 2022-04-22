@@ -45,13 +45,13 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="/img/facility/blue".alt="First slide">
+                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="/img/facility/red" alt="Second slide">
+                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="Second slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="/img/facility/blue" alt="Third slide">
+                                        <img class="d-block w-100" src="/img/resource/default_image.png" alt="Third slide">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
