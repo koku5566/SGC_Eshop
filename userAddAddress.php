@@ -12,7 +12,7 @@
 if(isset($_POST['addAddress']))
 	{
 		$_SESSION['AddAddress'] = false;
-		$uid = $_SESSION['uid'];
+		$uid = $_SESSION['userid'];
 
 		$name = $_POST['name'];
 		$contact = $_POST['contact'];

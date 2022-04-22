@@ -12,7 +12,7 @@
 if(isset($_POST['addCard']))
 	{
 		$_SESSION['AddCard'] = false;
-		$uid = $_SESSION['uid'];
+		$uid = $_SESSION['userid'];
 
 		$cardNo = $_POST['cardNo'];
 		$expDate = $_POST['expDate'];

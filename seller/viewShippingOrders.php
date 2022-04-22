@@ -243,53 +243,79 @@ $completedresult = $stmt->get_result();
                         <!--------------------------------All-------------------------------------->
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             
-                            <?php                       
-                            while ($row = $result->fetch_assoc()) {
-                            ?>
-                            <!--Each Order Item-->
-                            <div class="card mt-2">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col md-auto text-start"><span><strong><?php echo $row['username'];?></strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>Order ID:<?php echo $row['order_id']; ?> </strong></span></div>
-                                    </div>
-                                
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-1 image-container">
-                                            <img class="card-img-top img-thumbnail"
-                                                style="object-fit:contain;width:100%;height:100%"
-                                                src="/img/product/<?php echo $row['product_cover_picture']?>"
-                                                alt="<?php echo $row['product_name']?>" />
+                            <?php       
+                              $sqlheader = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
+                              $resultheader = mysqli_query($conn, $sqlheader);
+                              if (mysqli_num_rows($resultheader) > 0) {
+                              while ($rowheader = mysqli_fetch_assoc($resultheader)) {
+                                        //Loop header
+                              ?>
+                                    <div class="card mt-2">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col md-auto text-start">
+                                                    <span><strong><?php echo $rowheader['username']; ?></strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="col md-auto text-end" style="text-align:right;">
+                                                <span><strong>Order ID:<?php echo $rowheader['order_id']; ?> </strong></span>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <?php echo $row['product_name']?>
-                                        </div>
-                                        <div class="col-1">
-                                            x
-                                            <?php echo $row['quantity']?>
-                                        </div>
+                                        <div class="card-body">
+                                            <?php
 
-                                        <div class="col-1">
-                                            RM
-                                            <?php echo $row['product_price']?>.00
-                                        </div>
-                                        <div class="col-2"><?php echo $row['order_status'] ?></div>
-                                        <div class="col-2"> <?php echo $row['tracking_number']?></div>
-                                        <div class="col-2">
-                                        <?php if($row['order_status']=='Paid'){?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Arrange Shipment</a>
-                                            <?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
-                                                <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check Details</a><?php } ?>
+                                            $oID = $rowheader['order_id'];
+                                            //Loop product in each order
+                                            $toshipsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
+                                                        WHERE orderDetails.order_id = '$oID' ORDER BY myOrder.order_id DESC";
+                                            $toshipresult = mysqli_query($conn, $toshipsql);
+                                            if (mysqli_num_rows($toshipresult) > 0) {
+                                                while ($tsrow = mysqli_fetch_assoc($toshipresult)) {
+                                            ?>
+                                                    <div class="row">
+                                                        <div class="col-1 image-container">
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $tsrow['product_cover_picture'] ?>" alt="<?php echo $tsrow['product_name'] ?>" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <?php echo $tsrow['product_name'] ?>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            x
+                                                            <?php echo $tsrow['quantity'] ?>
+                                                        </div>
+
+                                                        <div class="col-1">
+                                                            RM
+                                                            <?php echo $tsrow['product_price'] ?>.00
+                                                        </div>
+                                                        <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
+                                                        <div class="col-2"> <?php echo $tsrow['tracking_number'] ?></div>
+                                                        <div class="col-2">
+                                                            <?php if ($tsrow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Update Pick-Up</a>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Check Details</a><?php } ?>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                }
+                                            }else
+                                            echo("cannot");
+                                            ?>
                                         </div>
                                     </div>
-                                </div>
+                            <?php
+
+                                }
+                            }
+                            ?>
                             </div>
                                 <!--End of Order Item-->
-                                <?php 
-                                }?>
 
 
-                            </div>
+
+                            
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php                       

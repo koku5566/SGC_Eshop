@@ -4,15 +4,52 @@
 <?php
 $order_id = $_GET['order_id'];
 
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
-}
-if(isset($_GET["confirm"]) && isset($_GET["id"])){
-    $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["id"]);
-}
-
+?>
+<?php
+if(@$_GET){
 ?>
 
+
+<div class="container-fluid" style="width:80%">
+    <div class="card-body" style="margin-top:10%">
+        <div class="card">
+               <h2>Tell us why do you want to cancel? &nbsp;&nbsp;</h2>
+            <form method="post" action="getOrder.php" style="font-size:25px;">
+                <input type="radio" id="id_1" name="reason" value="Regrets"  checked>
+                <label for="id_1" >Regrets</label><br>
+                <input type="radio" id="id_2" name="reason" value="Change Of Mind">
+                <label for="id_2">Change of Mind</label><br>
+                <input type="radio" id="id_3" name="reason" value="Change Color">
+                <label for="id_3">Change Color</label><br>
+                <input type="radio" id="id_4" name="reason" value="Others" checked>
+                <label for="id_1">Others</label><br>
+                <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
+                <input type="submit" value="Confirm">
+            </form>
+            <div><button><a href="getOrder.php">Back</a></button></div>
+        </div>
+    </div>
+</div>
+
+<?php
+}elseif(@$_POST){
+
+    $reason = $_POST['reason'];
+    $order_id = $_POST['order_id'];
+    
+
+    $sql = "UPDATE myorder SET reason_type = '$reason' , order_status='To respond' WHERE order_id = '$order_id'";
+    $rs = $conn->query($sql);
+    if($rs){
+        
+        echo 'Cancel Pending. Please wait for respond. <a href="getOrder.php">Click to return order page.</a>';
+    }else{
+        echo 'Cancel FAILED. <a href="getOrder.php">Click to return order page.</a>';
+    }
+    
+
+}else{
+?>
 
 <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%">
@@ -68,7 +105,7 @@ if(isset($_GET["confirm"]) && isset($_GET["id"])){
                     </div>
                 </div>
                 <br>
-                <?php } ?>
+                
             </div>
             <br>
             <div class="col-4" style="text-align:right; margin-left:60%">
@@ -94,26 +131,23 @@ if(isset($_GET["confirm"]) && isset($_GET["id"])){
                            
                         </div>
                         <div class="col red-text">
-                            <h5><strong>RM<?php echo $row2['amount']?></strong></h5>
+                            <h5><strong>RM<?php echo $row2['amount']?>.00</strong></h5>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
-                
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel=<?php echo $row['order_id'];?>">Cancel Order</a>
-                    
-                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm=<?php echo $row['order_id'];?>">Confirmed Order</a>
-                  
-                    
+                <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
+                <button ><a href="orderDetails.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order</a></button>  
+                    <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
-               
+                <?php } ?>
             </div>
           
 
 
         </section>
     </div>
-    
+    <?php } ?>
                 <!-- /.container-fluid -->
 
 <?php
@@ -123,3 +157,11 @@ if(isset($_GET["confirm"]) && isset($_GET["id"])){
 <style>
 
 </style>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Are you sure to cancel order?");
+}
+
+
+</script>

@@ -45,6 +45,15 @@ if(isset($_GET['addressid']))
 }
 
 
+    //get subtotal
+    if (isset($_SESSION['subtotal'])) {
+        $subtotal = $_SESSION['subtotal'];
+    }
+    else if($_SESSION['subtotal'] == ""){
+        $subtotal = "No Value";
+    }
+
+
 //calculate shipping fee
 
 $shippingfee = 8.6;
@@ -144,6 +153,7 @@ $shippingfee = 8.6;
                             ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$UID'
                             AND cart.remove_Product = '0'
+                            AND product.product_status = 'A'
                             ORDER BY cart.update_at DESC
                             ";
                             
@@ -170,7 +180,7 @@ $shippingfee = 8.6;
                                         $product_price = $rowKL['P_price'];
                                         $product_stock = $rowKL['product_stock'];
         
-                                        $variation_message = "<option selected>Not Variation</option>";
+                                        $variation_message = "no variation";
                                     }
                                     else if ($rowKL['variation_id'] != "") {
                                         
@@ -191,7 +201,7 @@ $shippingfee = 8.6;
                                             }
                                         }
         
-                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+                                        $sql_get_variation = "SELECT * FROM `variation` WHERE `product_id` = '$product_id'AND variation_id = '".$rowKL['variation_id']."'";
                                         $query_get_variation = mysqli_query($conn, $sql_get_variation);
                                         while( $row = mysqli_fetch_assoc($query_get_variation))
                                         {
@@ -302,7 +312,7 @@ $shippingfee = 8.6;
                 <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $_SESSION['subtotal'] ?></span></li>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
