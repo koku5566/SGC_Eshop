@@ -92,7 +92,7 @@
     $res= $row['id'];
     if($res === $id)
     {
-   
+      echo 'Success';
        $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
        $sql2=mysqli_query($conn,$update);
 if($sql2)
