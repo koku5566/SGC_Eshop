@@ -7,7 +7,7 @@
     $output = "";
     if(mysqli_num_rows($query) == 0){
         $output .= "No users are available to chat";
-    }elseif(mysqli_num_rows($query) > 0){
+    }else if(mysqli_num_rows($query) > 0){
         while($row = mysqli_fetch_assoc($query)){
             
             $userId = $row['userid'];
