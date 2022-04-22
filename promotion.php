@@ -6,7 +6,61 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<link href="/css/voucher.css" rel="stylesheet" type="text/css">
+<style>
+    #voucherlogo{
+   height: 100px;
+   width: 100px;
+   display: flex;
+   justify-content: center;
+   overflow: hidden
+    }
+
+    #voucherlogo img {
+    width: 100px
+    }
+
+    img {
+    width: 100px
+    }
+
+    #vouchercard{
+    width: 11.5rem;
+    height: 25rem;
+    }
+
+    #termsvouchercard{
+    width: 11.5rem;
+    height: 20rem;
+    }
+
+    .tnccontainer{
+    border-radius: 10px;
+    border: dashed;
+    }
+
+    .selectvoucher{
+    width: 40px;
+    height: 28px;
+    }
+
+    /* -------------------- Category Scrollbar----------------------- */
+
+    /* width */
+    ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    }
+
+    .scrolling-wrapper{
+        overflow-x: auto;
+    }
+
+    .scrolling-wrapper2{
+        overflow-y: auto;
+        max-height: 580px;
+        min-width: 80%;
+    }
+</style>>
 
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%;">
@@ -46,9 +100,9 @@
         <br>
         <!-- Voucher -->
         <div class="row">
-            <div class = "container m-5" style="margin-left: 100px;">
+            <div class = "container-fluid m-5">
                 <div class = "d-flex justify-content-center">
-                    <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
+                    <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2 mr-2">
                         <?php 
                                                 
                             $sql_voucher =

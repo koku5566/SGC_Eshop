@@ -270,9 +270,11 @@ $completedresult = $stmt->get_result();
                                             <?php echo $row['product_price']?>.00
                                         </div>
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
-                                        <div class="col-2">DHL eCommerce <?php echo $row['tracking_number']?></div>
+                                        <div class="col-2"> <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>"><?php if($row['order_status']=='Paid'){?>Arrange Shipment<?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']!='Ready'){ ?> Update Pick-Up <?php } else { ?>Check Details <?php } ?></a>
+                                        <?php if($row['order_status']=='Paid'){?><a class="btn btn-primary" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Arrange Shipment</a>
+                                            <?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
+                                                <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check Details</a><?php } ?>
                                         </div>
                                     </div>
                                 </div>
