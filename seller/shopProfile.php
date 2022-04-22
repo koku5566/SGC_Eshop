@@ -26,8 +26,8 @@
 
 <!-- Select Data -->
 <?php
-//  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000001'";
-//  $result1 = mysqli_query($conn, $sql); 
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000001'";
+  $result1 = mysqli_query($conn, $sql); 
 ?>
 
 <!-- Update Profile -->
