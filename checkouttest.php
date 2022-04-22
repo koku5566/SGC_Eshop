@@ -21,7 +21,7 @@ $customerUID = $_SESSION['userid'];
   $volumetricWeight = 0;
   
     // to identify different sellers from the cart item 
-  $sellersql = "SELECT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
+  $sellersql = "SELECT DISTINCT shop_id FROM cart WHERE user_ID = '$customerUID' AND remove_Product = 0";
   $sresult = $conn->query($sellersql);
   if ($sresult->num_rows > 0) { //if multiple product in cart
     while($srow = $sresult->fetch_assoc()) {

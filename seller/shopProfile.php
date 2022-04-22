@@ -4,24 +4,24 @@
 
 <!-- Insert data -->
 <?php
-    if(isset($_POST['saveBtn'])){
-      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
-        $coverPhoto = $_POST['coverPhoto'];
-        $profileImage = $_POST['profileImage'];
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $imageVideo = $_POST['imageVideo'];
-
-        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
-
-        //$run = mysqli_query($conn,$query);
-        if (mysqli_query($conn, $query)) {
-          echo "Form Submitted Successfully" ;
-        } else {
-          echo "Error: " . $query . "<br>" . mysqli_error($conn);
-        }
-        mysqli_close($conn);
-    }
+//    if(isset($_POST['saveBtn'])){
+//      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+//        $coverPhoto = $_POST['coverPhoto'];
+//        $profileImage = $_POST['profileImage'];
+//        $name = $_POST['name'];
+//        $description = $_POST['description'];
+//        $imageVideo = $_POST['imageVideo'];
+//
+//        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+//
+//        //$run = mysqli_query($conn,$query);
+//        if (mysqli_query($conn, $query)) {
+//          echo "Form Submitted Successfully" ;
+//        } else {
+//          echo "Error: " . $query . "<br>" . mysqli_error($conn);
+//        }
+//        mysqli_close($conn);
+//    }
 ?>
 
 <!-- Select Data -->
@@ -38,7 +38,7 @@
   $coverIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-  $categoryPic = "";
+  $profilePic = "";
   //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
   $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
   if (!empty($coverIMG)) {
@@ -65,9 +65,9 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     //$shopMedia = $_POST['mediaContainer'];
-    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$ProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
 
-      if($conn->query($update))
+      if (mysqli_query($conn, $update))
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
@@ -212,15 +212,15 @@
       <label class="form-label">Shop Description</label><br>
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
-    <div class="row">
+    <!--<div class="row">
       <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
-        <!-- Image display frame (place where the image will display)
+         Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
-        -->
+        
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
-    </div>
+    </div>-->
 
 
     <div class="text-center">
