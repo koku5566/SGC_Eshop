@@ -93,9 +93,14 @@
                            <?php 
                            
                               if($r['voucher_status'] = "2" ){
+                                 break;
                                  echo "Pending";
-                              }else{
+                              }else if($r['voucher_status'] = "1" ){
+                                 break;
                                  echo "Approved";
+                              }else if($r['voucher_status'] = "0" ){
+                                 break;
+                                 echo "Rejected";
                               }
 
                            ?>
