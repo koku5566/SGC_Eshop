@@ -50,9 +50,9 @@ if(isset($_POST['signup']))
 						
 						$message = "
 						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com<br>
-						
+						<br>
 						Change your password after first login. Thank You.<br>
-
+						<br>
 						Username: $username<br>
 						Password: $passwordE
 						";
@@ -75,6 +75,9 @@ if(isset($_POST['signup']))
 						else
 						{
 							echo "<script>alert('Error');</script>";
+						}
+						if ($_POST['role'] == "SELLER"){
+							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
 						}
 					}
 					else
