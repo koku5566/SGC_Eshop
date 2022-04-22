@@ -20,6 +20,7 @@
 	$sql_product = "SELECT A.product_id, A.product_name, A.product_description, A.product_brand, A.product_cover_video,
 	A.product_cover_picture, A.product_pic_1, A.product_pic_2, A.product_pic_3, A.product_pic_4, 
 	A.product_pic_5, A.product_pic_6, A.product_pic_7, A.product_pic_8, A.product_virtual, 
+	A.product_self_collect, A.product_standard_delivery, 
 	A.product_variation,A.product_price,A.product_stock,A.product_sold, A.category_id, A.shop_id, 
 	C.max_price,D.min_price,F.total_stock, R.rating, H.total_rated FROM `product` AS A 
 	LEFT JOIN variation AS B ON A.product_id = B.product_id 
@@ -46,6 +47,8 @@
 			array_push($i_product_pic,$row_product['product_pic_7'],$row_product['product_pic_8']);
 
 			$i_product_virtual = $row_product['product_virtual'];
+			$i_product_self_collect = $row_product['product_self_collect'];
+			$i_product_standard_delivery = $row_product['product_standard_delivery'];
 			$i_product_variation = $row_product['product_variation'];
 			$i_product_price = $row_product['product_price'];
 			$i_product_stock = $row_product['product_stock'];
@@ -222,10 +225,39 @@
                                 </div>
                             </div>
                             <br>
+							<!-- Shipping Option -->
+                            <div class="row mb-4" id="ShippingOptionDiv">
+								<div class="col-12">
+                                    <span style="font-weight: bold;"><?php echo($i_product_self_collect == 0 ? "" :  "This is a product able to make self collect"); ?></span>
+                                </div>
+                                <div class="col-12">
+                                    <span style="font-weight: bold;"><?php echo($i_product_virtual == 0 ? "" :  "This is a virtual product without shippingment"); ?></span>
+                                </div>
+                            </div>
                             <!-- Price -->
                             <div class="row mb-4" id="PriceDiv">
                                 <div class="col">
-                                    <span style="color:#a31f37;font-size:18pt;font-weight: bold;"><?php echo($i_product_variation == 0 ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?></span>
+								<?php echo( ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?>
+									<?php
+									if($i_product_variation == 0)
+									{
+										echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_product_price</span>");
+									}
+									else{
+										if($i_min_price != $i_max_price)
+										{
+											echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_min_price - RM$i_max_price </span>");
+										}
+										else
+										{
+											echo("<span style=\"color:#a31f37;font-size:18pt;font-weight: bold;\">RM$i_min_price</span>");
+										}
+									}
+									
+										
+									?>
+
+                                    
                                 </div>
                             </div>
                             <!-- Variation -->
@@ -336,7 +368,7 @@
                                         <div class="input-group-prepend">
                                         <button class="quantity-selector-btn" style="border-radius: 10px 0 0 10px;" id="minus" name = "ChangeQuantity" type = "button"><i class="fa fa-minus"></i></button>
                                         </div>
-                                        <input min="1" name="quantity[]" id="txtQuantity" value="1" type="number" class="form-control quantity-input">
+                                        <input min="1" name="quantity[]" id="txtQuantity" value="1" type="number" class="form-control quantity-input" readonly>
                                         <div class="input-group-append">
                                         <button class="quantity-selector-btn" style="border-radius: 0 10px 10px 0 ;" id="plus" name = "ChangeQuantity" type = "button"><i class="fa fa-plus"></i></button>
                                         </div>

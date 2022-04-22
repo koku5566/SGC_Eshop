@@ -19,7 +19,8 @@ require __DIR__ . '/header.php'
         INNER JOIN ticketTransaction ON `ticket`.`transaction_id` = `ticketTransaction`.`ticketOrder_id`
         INNER JOIN `event` ON `event`.`event_id` = `ticket`.`event_id` 
         INNER JOIN `ticketType` ON `ticket`.`ticketType_id` = `ticketType`.`ticketType_id`
-        WHERE `ticketTransaction`.`buyer_email` = $tEmail";
+        WHERE `ticketTransaction`.`buyer_email` = \"$tEmail\"
+        AND `ticket`.`event_id`= $eID";
         $res = mysqli_query($conn, $sqlgetTic);
 
         if (mysqli_num_rows($res) > 0) {
@@ -87,8 +88,7 @@ require __DIR__ . '/header.php'
         {
             echo("
             <script>alert(\"No Ticket Found, Please check your ticket ID again\") </script>
-            
-            ".$row100['buyer_email']);
+            ");
         }
 
     }
