@@ -36,56 +36,56 @@ if (isset($_POST['searchEventDateBtn'])) {
                             <h5 class="mb-0">By Location</h5>
                         </div>
                         <div class="card-body">
-                            <ul class="list-unstyled">
-                                <a href="event.php?location=Perlis">
+                        <ul class="list-unstyled">
+                                <a href="eventSearch.php?location=Perlis">
                                     <li style="margin-bottom: 5px;">Perlis</li>
                                 </a>
-                                <a href="event.php?location=Kedah">
+                                <a href="eventSearch.php?location=Kedah">
                                     <li style="margin-bottom: 5px;">Kedah</li>
                                 </a>
-                                <a href="event.php?location=Pulau Pinang">
+                                <a href="eventSearch.php?location=Pulau Pinang">
                                     <li style="margin-bottom: 5px;">Pulau Pinang</li>
                                 </a>
-                                <a href="event.php?location=Perak">
+                                <a href="eventSearch.php?location=Perak">
                                     <li style="margin-bottom: 5px;">Perak</li>
                                 </a>
-                                <a href="event.php?location=Selangor">
+                                <a href="eventSearch.php?location=Selangor">
                                     <li style="margin-bottom: 5px;">Selangor</li>
                                 </a>
-                                <a href="event.php?location=Kuala Lumpur">
+                                <a href="eventSearch.php?location=Kuala Lumpur">
                                     <li style="margin-bottom: 5px;">Kuala Lumpur</li>
                                 </a>
-                                <a href="event.php?location=Putrajaya">
+                                <a href="eventSearch.php?location=Putrajaya">
                                     <li style="margin-bottom: 5px;">Putrajaya</li>
                                 </a>
-                                <a href="event.php?location=Kelantan">
+                                <a href="eventSearch.php?location=Kelantan">
                                     <li style="margin-bottom: 5px;">Kelantan</li>
                                 </a>
-                                <a href="event.php?location=Terengganu">
+                                <a href="eventSearch.php?location=Terengganu">
                                     <li style="margin-bottom: 5px;">Terengganu</li>
                                 </a>
-                                <a href="event.php?location=Pahang">
+                                <a href="eventSearch.php?location=Pahang">
                                     <li style="margin-bottom: 5px;">Pahang</li>
                                 </a>
-                                <a href="event.php?location=Negeri Sembilan">
+                                <a href="eventSearch.php?location=Negeri Sembilan">
                                     <li style="margin-bottom: 5px;">Negeri Sembilan</li>
                                 </a>
-                                <a href="event.php?location=Melaka">
+                                <a href="eventSearch.php?location=Melaka">
                                     <li style="margin-bottom: 5px;">Melaka</li>
                                 </a>
-                                <a href="event.php?location=Johor">
+                                <a href="eventSearch.php?location=Johor">
                                     <li style="margin-bottom: 5px;">Johor</li>
                                 </a>
-                                <a href="event.php?location=Sabah">
+                                <a href="eventSearch.php?location=Sabah">
                                     <li style="margin-bottom: 5px;">Sabah</li>
                                 </a>
-                                <a href="event.php?location=Sarawak">
+                                <a href="eventSearch.php?location=Sarawak">
                                     <li style="margin-bottom: 5px;">Sarawak</li>
                                 </a>
-                                <a href="event.php?location=Labuan">
+                                <a href="eventSearch.php?location=Labuan">
                                     <li style="margin-bottom: 5px;">Labuan</li>
                                 </a>
-                                <a href="event.php?location=Online">
+                                <a href="eventSearch.php?location=Online">
                                     <li style="margin-bottom: 5px;">Online</li>
                                 </a>
                             </ul>

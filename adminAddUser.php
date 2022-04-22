@@ -32,13 +32,53 @@ if(isset($_POST['signup']))
 				}
 				else
 				{
-					$sql = "INSERT INTO user (username, email, password, name, contact, registration_date, role)
-					VALUES ('$username','$email','$password','$username',''$contact'','$date','$role')";
+					$sql = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
+					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
 				
 					if (mysqli_query($conn, $sql)) {
-						$_SESSION['AddUser'] = true;
-						echo "<script>alert('User Added');</script>";
-					} else {
+						$passwordE=$_POST['password'];
+
+						$to = $email;
+						$subject = "SGC E-Shop New User Account";
+						$from = "reset-password@eshop.sgcprototype2.com";
+						$from2 = "contact_us_mail@sgcprototype2.com";
+						$fromName = "SGC E-Shop";
+			
+						$headers =  "From: $fromName <$from> \r\n";
+						$headers .= "MIME-Version: 1.0\r\n";
+						$headers .= "Content-Type: multipart/mixed;\r\n";
+						
+						$message = "
+						Informations below are the login credentials for you to login into SCG E-Shop: https://eshop.sgcprototype2.com
+						
+						Change your password after first login. Thank You.
+
+						Username: $username
+						Password: $passwordE
+						";
+			
+						$HTMLcontent = "<p><b>Dear ".$row["name"]."</b>,</p><p>$message</p>";
+						
+						$boundary = md5(time());
+						$headers .= " boundary=\"{$boundary}\"";
+						$message = "--{$boundary}\r\n";
+						$message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+						$message .= "Content-Transfer-Encoding: 7bit\r\n";
+						$message .= $HTMLcontent . "\r\n";
+						$message .= "--{$boundary}\r\n";
+						$returnPath = "-f" . $from2;
+
+						if (@mail($to, $subject, $message, $headers, $returnPath)){
+							$_SESSION['AddUser'] = true;
+							echo "<script>alert('User Added');</script>";
+						}
+						else
+						{
+							echo "<script>alert('Error');</script>";
+						}
+					}
+					else
+					{
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}
 					mysqli_close($conn);

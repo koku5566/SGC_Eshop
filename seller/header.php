@@ -172,8 +172,8 @@
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="viewShippingOrders">My Order</a>
-                        <a class="collapse-item" href="register.html">Cancellation</a>
+                        <a class="collapse-item" href="viewShippingOrders.php">My Order</a>
+                        <a class="collapse-item" href="viewShippingOrders.php">Cancellation</a>
                         <a class="collapse-item" href="forgot-password.html">Return/Refund</a>
                     </div>
                 </div>
