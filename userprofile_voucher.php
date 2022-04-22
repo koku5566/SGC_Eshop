@@ -47,7 +47,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                            <div class="col-lg-12">
-                              <div class="p-5">
+                              <div class="p-3">
                                  <div class="text-left">
                                     <div class="h1 text-gray-900 mb-4 container-left-col2">My Voucher</div>
                                  </div>
