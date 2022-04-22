@@ -2,6 +2,21 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+  $user = wp_get_current_user();
+  echo $user->roles[0];
+?>
+
+<?php
+ session_start(); 
+
+  if(!isset($_SESSION['login']) || $_SESSION['role'] == "SELLER")
+	{
+	  ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+	  exit;
+  }
+?>
+
 <!-- Insert data -->
 <?php
 //    if(isset($_POST['saveBtn'])){
@@ -26,7 +41,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '1'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '10'";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
@@ -44,12 +59,12 @@
   if (!empty($profileIMG)) {
       foreach ($_FILES['profileImage']['name'] as $key => $val) {
           // File upload path 
-          //echo (var_dump($_FILES['profileImage']));
+          echo (var_dump($_FILES['profileImage']));
           $fileName = basename($_FILES['profileImage']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
-          //echo ($targetFilePath);
+          echo ($targetFilePath);
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
@@ -69,12 +84,12 @@
   if (!empty($profileIMG)) {
       foreach ($_FILES['profileCover']['name'] as $key => $val) {
           // File upload path 
-          //echo (var_dump($_FILES['profileCover']));
+          echo (var_dump($_FILES['profileCover']));
           $fileName = basename($_FILES['profileCover']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
-          //echo ($targetFilePath);
+          echo ($targetFilePath);
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
@@ -87,12 +102,12 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
 
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '1'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
 
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          //header("Location: shopProfile.php");
+          //header("refresh:1; url=shopProfile.php");
           echo 'Success';
       }
       else

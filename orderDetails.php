@@ -4,6 +4,13 @@
 <?php
 $order_id = $_GET['order_id'];
 
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["order_id"]);
+}
+if(isset($_GET["confirm"]) && isset($_GET["id"])){
+    $conn->query("UPDATE myorder SET order_status = 'completed' WHERE order_id = ".$_GET["order_id"]);
+}
+
 ?>
 
 
@@ -24,13 +31,14 @@ $order_id = $_GET['order_id'];
                             <div class="col-1"></div>
                             <div class="col-5">Product</div>
                             <div class="col-2">Unit Price</div>
-                            <div class="col-1">Quantity</div>
-                            <div class="col-3">Total Price</div>
+                            <div class="col-2">Quantity</div>
+                            <div class="col-2">Total Price</div>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                 <?php
+                    $shippingfee = 8.6;
                     $sql2 = "SELECT * FROM myOrder 
                     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
                     JOIN product ON orderDetails.product_id = product.product_id
@@ -43,32 +51,62 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"></div>
-                        <div class="col-4">
+                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
+                        <div class="col-5">
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
                             <?php echo $row2['product_price']; ?>.00
                         </div>
-                        <div class="col-1">X
+                        <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
                         </div>
-                        <div class="col-3 red-text">RM
+                        <div class="col-2 red-text">RM
                             <?php echo $row2['amount']; ?>.00
                         </div>
                         
                     </div>
                 </div>
-                <?php } ?>
+                <br>
+                
             </div>
-                <div class="card-footer">
-                <?php if($row['order_status'] =='Paid'){?>
-                    <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
-                    <?php } else{ ?>
-                    <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Confirmed Order</a>
-                    <?php }?>
+            <br>
+            <div class="col-4" style="text-align:right; margin-left:60%">
+                    <div class="row p-2">
+                        <div class="col">Total:</div>
+                        <div class="col"> RM<?php echo $row2['amount']?>.00</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col">Discounts:</div>
+                        <div class="col">-RM0.00</div>
+                    </div>
+                    <div class="row p-2">
+                        
+                        <div class="col">Delivery Fees:</div>
+                        <div class="col">
+                            <?php echo $shippingfee?>0
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        
+                        <div class="col">
+                            <h5>Order Total:</h5>
+                           
+                        </div>
+                        <div class="col red-text">
+                            <h5><strong>RM<?php echo $row2['amount']?>.00</strong></h5>
+                        </div>
+                    </div>
                 </div>
-               
+                <div class="card-footer">
+                
+                    <a class="btn btn-primary " style="margin-left:10px;"  href="getOrder.php?cancel&id=<?php echo $row['order_id'];?>" onclick="return confirm_click();">Cancel Order</a>
+                    
+                    <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
+                   
+                    <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
+                </div>
+                <?php } ?>
             </div>
           
 
@@ -85,3 +123,14 @@ $order_id = $_GET['order_id'];
 <style>
 
 </style>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Are you sure to cancel order?");
+}
+function complete_click()
+{
+    return confirm("Are you sure to complete the orders?");
+}
+
+</script>

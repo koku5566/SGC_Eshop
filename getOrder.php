@@ -3,7 +3,7 @@
 
 ?>
 <?php
-//$user_id = $_SESSION["uid"];
+$user_id = $_SESSION["uid"];
 $sql_2 = "SELECT
 DISTINCT
 myOrder.order_id,
@@ -24,7 +24,7 @@ JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
 JOIN user on myOrder.user_id = user.user_id 
-
+WHERE myOrder.user_id = 'user_id'
 ORDER BY myOrder.order_id DESC
 ";
 $stmt_2 = $conn->prepare($sql_2);
@@ -415,7 +415,7 @@ $_SESSION["userId"] = "U000018";
 												<input type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
                                              <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:18%;" ><?php echo $row['amount']?></span>
+                                             <span style="margin-left:30%;" ><?php echo $row['amount']?></span>
                                             </tr>
                                         </thead>
                                     </table>
