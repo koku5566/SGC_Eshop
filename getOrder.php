@@ -393,7 +393,11 @@ $_SESSION["userId"] = "U000018";
                                            </form>-->
 
                                             <a class="btn btn-primary" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
-                                                         
+                                            <?php if($row['delivery_method'] =='standard'){?>
+                                            <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
+                                            <?php } else{ ?>
+                                                <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
+                                            <?php }?>
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
                                              

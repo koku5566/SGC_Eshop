@@ -12,16 +12,7 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
         </script>";
     exit;
 }
-if(isset($_GET["confirm"]) && isset($_GET["id"])){
-    $id = $_GET["id"];
-    $conn->query("UPDATE myorder SET order_status = 'COMPLETE' WHERE order_id = $id");
 
-    echo "<script>
-        alert('Order ID #$id is Complete');
-        window.location.href='getOrder.php';
-        </script>";
-    exit;
-}
 
 if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     $order_id = $_POST['order_id'];
@@ -35,14 +26,7 @@ if(isset($_POST['orderDetails_btn']) && isset($_POST['order_id'])){
     exit;
 }
 
-if(isset($_POST['save_reason_type']))
-{
-    $reason_type = $_POST['reason_type'];
-    //echo $reason_type;
-    foreach($reason_type as $reason){
-        $conn->query("UPDATE myorder WHERE reason_type = $reason");
-    }
-}
+
 
 ?>
 
