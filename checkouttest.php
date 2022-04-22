@@ -33,8 +33,8 @@ $customerUID = $_SESSION['userid'];
     for($i=0; $i<count($sellers); $i++)
     {
         $sellerid = $sellers[i];
-
-        $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID'  AND shop_id = '$sellerid' AND remove_Product = 0";
+        echo $customerUID,$sellerid;
+        $cartsql = "SELECT product_ID, quantity, shop_id FROM cart WHERE user_ID = '$customerUID' AND shop_id = '$sellerid' AND product_virtual = 0";
         $result = $conn->query($cartsql);
       
         if ($result->num_rows > 1) { //if multiple product from the same seller
@@ -43,7 +43,7 @@ $customerUID = $_SESSION['userid'];
           $productQty = $row['quantity'];
       
           // Multiple items in one order: Volumetric weight calculation (kg) = Max Length (cm) x Max Width (cm) x Sum (Height (cm) x Quantity) / 5000.
-          $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
+          $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]' AND product_virtual = 0";
           $iresult = $conn->query($sqlinfo);
           if (mysqli_num_rows($iresult) > 0) {
               while ($prod = $iresult->fetch_assoc()) {
@@ -64,7 +64,7 @@ $customerUID = $_SESSION['userid'];
               echo'qty,prodid:', $row['quantity'], $row['product_ID'];
       
               //Single item in one order: Volumetric weight calculation (kg) = Height (cm) x Width (cm) x Length (cm) / 5000.        
-                  $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]'";
+                  $sqlinfo = "SELECT product_length, product_width, product_height, product_weight FROM product WHERE product_id = '$row[product_ID]' AND product_virtual = 0";
                   $iresult = $conn->query($sqlinfo);
                   if (mysqli_num_rows($iresult) > 0) {
                       while ($prod = $iresult->fetch_assoc()) {

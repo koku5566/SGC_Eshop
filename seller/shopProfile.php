@@ -4,7 +4,7 @@
 
 <!-- Insert data -->
 <?php
-//    if(isset($_POST['submit'])){
+//    if(isset($_POST['saveBtn'])){
 //      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
 //        $coverPhoto = $_POST['coverPhoto'];
 //        $profileImage = $_POST['profileImage'];
@@ -35,18 +35,43 @@
   session_start();
  if(isset($_POST['saveBtn']))
  {
-    $shopProfileCover = $_POST['coverContainer'];
-    $shopProfilePic = $_POST['profilePicContainer'];
+  $coverIMG = array_filter($_FILES['profileImage']['name']);
+  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
+  $profilePic = "";
+  //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
+  $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
+  if (!empty($coverIMG)) {
+      foreach ($_FILES['profileImage']['name'] as $key => $val) {
+          // File upload path 
+          echo (var_dump($_FILES['profileImage']));
+          $fileName = basename($_FILES['profileImage']['name'][$key]);
+          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+          $fileName = round(microtime(true) * 1000) . "." . $ext;
+          $targetFilePath = $targetDir . $fileName;
+          echo ($targetFilePath);
+          // Check whether file type is valid 
+          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+          if (in_array($fileType, $allowTypes)) {
+              if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
+                  $profilePic = "$fileName";
+              }
+          }
+      }
+  }
+    //$shopProfileCover = $_POST['coverContainer'];
+    //$shopProfilePic = $_POST['profilePicContainer'];
     //$shopProfilePic = array_filter($_FILES['img']['name']);
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
-    $shopMedia = $_POST['mediaContainer'];
-    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
+    //$shopMedia = $_POST['mediaContainer'];
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$ProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
 
-      if($conn->query($update))
+      if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          header("refresh:1; url=shopProfile.php");
+          //header("refresh:1; url=shopProfile.php");
+          echo 'Success';
       }
       else
       {
@@ -187,15 +212,15 @@
       <label class="form-label">Shop Description</label><br>
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
-    <div class="row">
+    <!--<div class="row">
       <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
-        <!-- Image display frame (place where the image will display)
+         Image display frame (place where the image will display)
           <img id="frame" src="" class="img-fluid" />
-        -->
+        
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
-    </div>
+    </div>-->
 
 
     <div class="text-center">

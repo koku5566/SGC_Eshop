@@ -277,7 +277,7 @@
         if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
             ?>
                 <script type="text/javascript">
-                    window.location.href = "/login.php";
+                    window.location.href = window.location.origin + "/login.php";
                 </script>
             <?php
             exit;

@@ -24,7 +24,7 @@
                                                         <a data-sqe=\"link\" href=\"facilityCampus.php?campusId=".$row['shop_id']."\">
                                                             <div class=\"card\">
                                                                 <div class=\"image-container\">
-                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row['shop_profile_cover']."\" alt=\"Card image cap\">
+                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/shop_logo/".$row['shop_profile_image']."\" alt=\"Card image cap\">
                                                                 </div>
                                                                 <div class=\"card-body-text\">
                                                                     <div class=\"Name\">
@@ -69,14 +69,14 @@
 
                                                 echo ("
                                                     <div class=\"carousel-item\">
-                                                    <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                    <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
                                                     </div>         
                                                 ");
                                             }
                                             else{
                                                 echo ("
                                                 <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
+                                                <img class=\"d-block w-100\" src=\"/img/facility/".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
                                                 </div>
                                                             
                                                 ");

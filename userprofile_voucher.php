@@ -1,4 +1,14 @@
-<?php require __DIR__ . '/header.php' ?>
+<?php
+    require __DIR__ . '/header.php';
+
+    if(!isset($_SESSION)){
+      session_start();
+   }
+   if(!isset($_SESSION['id']))
+   {
+         $_SESSION['id'] = "";
+   }
+ ?>
 
 <?php	
 	if($_SESSION['login'] == false)
@@ -6,36 +16,6 @@
 		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
 		exit;
     }
-?>
-
-<?php
-
-   // $sql_voucher =
-   // "SELECT 
-   // voucher.voucher_id,
-   // voucher.voucher_code,
-   // voucher.voucher_type,
-   // voucher.discount_amount,
-   // voucher.voucher_startdate,
-   // voucher.voucher_expired,
-   // voucher.voucher_details,
-   // shopProfile.shop_name,
-   // shopProfile.shop_profile_image,
-   // product.product_name
-
-   // FROM voucher
-   // JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id	
-   // JOIN product ON productVoucher.product_id = product.product_id		
-   // JOIN shopProfile ON product.shop_id	= shopProfile.shop_id
-   // -- GROUP BY voucher.voucher_id
-   // "; 
-
-   // $stmt = $conn->prepare($sql_voucher);
-   // $stmt->execute();
-   // $result = $stmt->get_result();
-
-   // while ($row = $result->fetch_assoc()) {
-   
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -55,17 +35,53 @@
 
    <div class="row">
       <?php require __DIR__ . '/userprofilenav.php' ?><br>
+
       <div class="bg-gradient col-xl-9" style="margin-top: -1.5rem !important;">
          <div class="container">
             <!-- Outer Row -->
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
                   <div class="col-6 mt-2 mb-2">
+                     <?php
+
+                     $uid = $_SESSION['uid'];
+
+                     $sql_voucherR =
+                     "SELECT 
+                     voucherRedemption.voucher_id,
+                     voucherRedemption.user_id,
+                     voucher.voucher_id,
+                     voucher.voucher_code,
+                     voucher.voucher_type,
+                     voucher.discount_amount,
+                     voucher.voucher_display,
+                     voucher.voucher_limit,
+                     voucher.voucher_startdate,
+                     voucher.voucher_expired,
+                     voucher.voucher_details,
+                     shopProfile.shop_name,
+                     shopProfile.shop_id,
+                     shopProfile.shop_profile_image
+
+                     FROM voucherRedemption
+                     INNER JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
+                     INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                     INNER JOIN product ON productVoucher.product_id = product.product_id
+                     INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                     WHERE voucherRedemption.user_id = '$uid'";
+
+                     $stmt = $conn->prepare($sql_voucherR);
+                     $stmt->execute();
+                     $result = $stmt->get_result();
+
+                     while ($row = $result->fetch_assoc()) {
+
+                     ?>
                      <div class="card" id="vouchercard2">
                         <div class="card-body">
                            <div class="row">
                               <div class="col-mb-3 m-2">
-                                 <img class="m-2" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                 <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                               </div>
                               <div class="col-mb-7 m-2">
                                  <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -96,7 +112,7 @@
                                  <div class="d-flex justify-content-center">
                                     <div class="card m-2" id="termsvouchercard">
                                        <div class="container">
-                                          <img class="mt-4 mb-4" src="../img/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                          <img class="mt-4 mb-4" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                        </div>
                                        <div class="card-body">
                                           <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
@@ -125,7 +141,7 @@
       </div>
    </div>
    <?php 
-// }?>
+ }?>
 
 
 <?php require __DIR__ . '/footer.php' ?>

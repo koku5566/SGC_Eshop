@@ -48,7 +48,7 @@ require __DIR__ . '/header.php'
                         <tbody>
                             <?php
 
-                            $sqlpayment = "SELECT * FROM `payments`";
+                            $sqlpayment = "SELECT  * FROM `payments` INNER JOIN (SELECT invoice_id, shop_id FROM productTransaction GROUP BY invoice_id, shop_id)t on payments.invoice_id = t.invoice_id WHERE t.shop_id = '14' ";
                             $result1 = mysqli_query($conn, $sqlpayment);
                             if (mysqli_num_rows($result1) > 0) {
                                 while ($row1 = mysqli_fetch_assoc($result1)) {
