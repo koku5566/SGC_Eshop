@@ -29,10 +29,7 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 <link href="css/classic.css" rel="stylesheet">
 
-
-
 <br>
-
    
 <div class="row">
    <?php require __DIR__ . '/userprofilenav.php' ?>
@@ -97,7 +94,7 @@
                                                 <div class="col-mb-7 m-2">
                                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
-                                                   <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
+                                                   <small>Validation:<?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                                    <u>
                                                       <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
                                                       T&C applied.
