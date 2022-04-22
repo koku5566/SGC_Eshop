@@ -272,8 +272,8 @@ $completedresult = $stmt->get_result();
                                         <div class="col-2"><?php echo $row['order_status'] ?></div>
                                         <div class="col-2"> <?php echo $row['tracking_number']?></div>
                                         <div class="col-2">
-                                        <?php if($row['order_status']=='Paid'){?><a class="btn btn-primary" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Arrange Shipment</a>
-                                            <?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
+                                        <?php if($row['order_status']=='Paid'){?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Arrange Shipment</a>
+                                            <?php }  else if($row['delivery_method']=='self-collection' && $row['order_status']=='Paid'){ ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Update Pick-Up</a> 
                                                 <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $row['order_id'];?>">Check Details</a><?php } ?>
                                         </div>
                                     </div>
