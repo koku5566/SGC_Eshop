@@ -2,7 +2,7 @@
     session_start();
     include_once "mysqli_connect.php";
 
-    $outgoing_id = $_SESSION['userID'];
+    $outgoing_id = $_SESSION['userid'];
     $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 
     $sql = "SELECT * FROM users WHERE NOT userID = {$outgoing_id} AND (username LIKE '%{$searchTerm}%') ";
