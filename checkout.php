@@ -45,6 +45,12 @@ if(isset($_GET['addressid']))
 }
 
 
+    //get subtotal
+    if (isset($_POST['subtotal'])) {
+        $_SESSION['subtotal'] = $_POST['subtotal'];
+    }
+
+
 //calculate shipping fee
 
 $shippingfee = 8.6;
