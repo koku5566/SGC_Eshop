@@ -5,11 +5,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid" style="width:100%;">
     <div class="card mt-2">
-                                <div class="card-header">
-                                    <div class="row">
-                                        <div class="col md-auto text-start"><span><strong>USERNAME</strong></span></div></div>
-                                        <div class="col md-auto text-end" style="text-align:right;"><span><strong>CANCALLED </strong></span></div>
-                                </div>
+                                
                                 
                                 <div class="card-body">
                                     <div class="row">
