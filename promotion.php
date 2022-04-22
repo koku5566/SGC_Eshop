@@ -1,5 +1,13 @@
 <?php
-    require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php';
+
+    if(!isset($_SESSION)){
+        session_start();
+     }
+     if(!isset($_SESSION['id']))
+     {
+           $_SESSION['id'] = "";
+     }
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -186,13 +194,12 @@
 
                             if(isset($_POST['submit'])){
 
-                                $user_id = $row['user_id'];
-
-                                $voucer_id = $row['voucher_id'];
+                                $user_id = $_SESSION['user_id'];
+                                $voucher_id = $_POST['voucher_id'];
                                 $date = date('Y-m-d H:i:s');
 
                                 $sqlv = "INSERT INTO voucherRedemption (voucher_redemption_at, voucher_id, user_id)
-                                         VALUES ();";
+                                         VALUES ('$date', '$voucher_id','$user_id');";
                             }
 
                         ?>
