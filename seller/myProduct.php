@@ -376,6 +376,7 @@
                                                 }
                                                 $sql .= " A.shop_id = '$shopId'";
 
+                                                echo($sql);
                                                 $result = mysqli_query($conn, $sql);
 
                                                 if (mysqli_num_rows($result) > 0) {
