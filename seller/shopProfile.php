@@ -86,10 +86,12 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     //$shopMedia = $_POST['mediaContainer'];
-    $select= "SELECT * FROM shopProfile WHERE id=4";
+    $select= "SELECT * FROM shopProfile WHERE id='$id'";
     $sql = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($sql);
-    
+    $res= $row['id'];
+    if($res === $id)
+    {
    
        $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
        $sql2=mysqli_query($conn,$update);
@@ -106,7 +108,13 @@ if($sql2)
            echo 'Fail';
        }
     }
- 
+    else
+    {
+        /*sorry your id is not match*/
+        //header('location:Profile_edit_form.php');
+        echo 'Error!';
+    }
+ }
 ?>
 
 <!-- Upload Data -->
