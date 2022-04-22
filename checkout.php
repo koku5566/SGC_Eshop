@@ -144,6 +144,7 @@ $shippingfee = 8.6;
                             ON product.shop_id = shopProfile.shop_id
                             WHERE cart.user_ID = '$UID'
                             AND cart.remove_Product = '0'
+                            AND product.product_status = 'A'
                             ORDER BY cart.update_at DESC
                             ";
                             
