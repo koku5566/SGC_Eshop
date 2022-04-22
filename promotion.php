@@ -184,7 +184,7 @@
                                 <div class="card-footer">
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="voucher_id" value="<?php echo $row['voucher_id']?>">
-                                        <button type="submit" name="submit" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
+                                        <button type="submit" name="claim" class="btn btn-warning btn-sm" style="float: right" data-toggle="modal" data-target="#voucherclaimed" id="claimVoucherBtn">CLAIM</button>
                                     </form>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@
 
                         <?php 
 
-                            if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])){
+                            if(isset($_POST['claim'])){
 
                                 if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
                                     ?>
