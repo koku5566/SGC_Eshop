@@ -678,7 +678,7 @@
 					<?php
 						$shopid = $_SESSION['shopId'];
 						$thisProductId = $_SESSION['productID'];
-						$sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";		  	
+						$sql = "SELECT product_id FROM product WHERE product_status = 'A' AND shop_id = '$shopid' AND product_id != '$thisProductId' ORDER BY id DESC";		  	
 						$result = mysqli_query($conn, $sql);
 
 						if (mysqli_num_rows($result) > 0) {
