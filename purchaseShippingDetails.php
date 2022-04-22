@@ -26,7 +26,6 @@
     product.product_cover_picture,
     shopProfile.shop_name,
     shopProfile.shop_profile_image
-    
     FROM
     myOrder
     JOIN user ON myOrder.user_id = user.user_id
@@ -46,7 +45,7 @@
         $contactname = $orow['contact_name'];
         $phone = $orow['phone_number'];
         $address = $orow['address'];
-        $trackingnum = $orow['tracking_num'];
+        $trackingnum = $orow['tracking_number'];
         $orderdate = $orow['order_date'];
         $qty = $orow['quantity'];
         $amt = $orow['amount'];
@@ -56,7 +55,6 @@
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
     }
-    echo 'tn:',$trackingnum;
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
 
