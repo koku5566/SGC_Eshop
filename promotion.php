@@ -46,7 +46,7 @@
         <br>
         <!-- Voucher -->
         <div class="row">
-            <div class = "container m-5" style="margin-left: 100px;">
+            <div class = "container m-5 p-5">
                 <div class = "d-flex justify-content-center">
                     <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
                         <?php 
