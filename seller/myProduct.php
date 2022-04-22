@@ -376,7 +376,6 @@
                                                 }
                                                 $sql .= " A.shop_id = '$shopId'";
 
-                                                echo($sql);
                                                 $result = mysqli_query($conn, $sql);
 
                                                 if (mysqli_num_rows($result) > 0) {
@@ -384,7 +383,7 @@
 
                                                         //Fetch each product information
                                                         $id = $row['product_id'];
-                                                        $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,
+                                                        $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
                                                         C.max_price,D.min_price,F.total_stock FROM `product` AS A 
                                                         LEFT JOIN variation AS B ON A.product_id = B.product_id 
                                                         LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
