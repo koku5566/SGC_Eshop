@@ -466,7 +466,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Shipped' AND orderDetails.shop_id = '$user_id' ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -491,7 +491,7 @@ $completedresult = $stmt->get_result();
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
