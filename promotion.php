@@ -43,62 +43,61 @@
             </div>
         </div>
         <br>
-
         <!-- Voucher -->
         <div class="row">
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-3 pb-4 pt-2">
-            <?php 
-                                    
-                $sql_voucher =
-                "SELECT 
-                voucher.voucher_id,
-                voucher.voucher_code,
-                voucher.voucher_type,
-                voucher.discount_amount,
-                voucher.voucher_display,
-                voucher.voucher_limit,
-                voucher.voucher_startdate,
-                voucher.voucher_expired,
-                voucher.voucher_details,
-                shopProfile.shop_name,
-                shopProfile.shop_profile_image
+                <?php 
+                                        
+                    $sql_voucher =
+                    "SELECT 
+                    voucher.voucher_id,
+                    voucher.voucher_code,
+                    voucher.voucher_type,
+                    voucher.discount_amount,
+                    voucher.voucher_display,
+                    voucher.voucher_limit,
+                    voucher.voucher_startdate,
+                    voucher.voucher_expired,
+                    voucher.voucher_details,
+                    shopProfile.shop_name,
+                    shopProfile.shop_profile_image
 
-                FROM voucher
-                JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                JOIN product ON productVoucher.product_id = product.product_id
-                JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
-                "; 
+                    FROM voucher
+                    JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                    JOIN product ON productVoucher.product_id = product.product_id
+                    JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                    GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
+                    "; 
 
-                $stmt = $conn->prepare($sql_voucher);
-                $stmt->execute();
-                $result = $stmt->get_result();
+                    $stmt = $conn->prepare($sql_voucher);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
 
-                $sql_pn=
-                "SELECT
-                product.product_name,
-                voucher.voucher_id
-                                    
-                FROM voucher
-                JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-                JOIN product ON productVoucher.product_id = product.product_id
-                JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                ";
+                    $sql_pn=
+                    "SELECT
+                    product.product_name,
+                    voucher.voucher_id
+                                        
+                    FROM voucher
+                    JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+                    JOIN product ON productVoucher.product_id = product.product_id
+                    JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                    ";
 
-                $sm = $conn->prepare($sql_pn);
-                $sm->execute();
-                $res = $sm->get_result();
-                                    
-                                    
-                while ($row = $result->fetch_assoc()) {
-                    $td = date('y-m-d');
-                    $expr = $row['voucher_expired'];
-                    
-                    $today = strtotime($td);
-                    $expired = strtotime($expr);
-                    
-                    if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
-                ?>
+                    $sm = $conn->prepare($sql_pn);
+                    $sm->execute();
+                    $res = $sm->get_result();
+                                        
+                                        
+                    while ($row = $result->fetch_assoc()) {
+                        $td = date('y-m-d');
+                        $expr = $row['voucher_expired'];
+                        
+                        $today = strtotime($td);
+                        $expired = strtotime($expr);
+                        
+                        if($row['voucher_display'] > 0   && $row['voucher_limit'] > 0 && $expired > $today){
+                    ?>
 
                 <div class="col-md-2 m-4">
                     <div class="card" id="vouchercard">
@@ -182,8 +181,11 @@
                 }?>
                 
             </div>
+        <br>
         </div>
-    <br>
+        <br>
+    </div>
+    
 
 
 <?php
