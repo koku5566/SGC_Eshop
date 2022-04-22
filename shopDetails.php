@@ -12,7 +12,7 @@
     $result2 = $conn->query($sql2);
 ?>
 
-<!-- Slide Show by Lim Qiu Xiong-->
+<!-- Promotion banner by Lim Qiu Xiong-->
 <?php
     //Fetch each promotion image information
     $promotion_title = array();
@@ -36,11 +36,9 @@
         <?php
     }
 ?>
-<!-- Slide Show by Lim Qiu Xiong-->
+<!-- Promotion banner by Lim Qiu Xiong-->
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<!-- Slide Show by Lim Qiu Xiong-->
+<!-- Promotion banner by Lim Qiu Xiong-->
 <div class="col-xl-12">
   <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
@@ -76,7 +74,7 @@
                     
     </div>
 </div>
-<!-- End Slide Show by Lim Qiu Xiong-->
+<!-- End Promotion banner by Lim Qiu Xiong-->
 
     <!--Main Navigation-->
     <!--Main layout-->
@@ -268,7 +266,7 @@
         width: 20vh;
       }
 
-      /*Slide show by Lim Qiu Xiong*/
+      /*Promotion banner by Lim Qiu Xiong*/
 
       #border{
         background-color:black;
@@ -322,7 +320,7 @@
       #custCarousel .carousel-indicators li:hover img {
           opacity: 0.75
       }
-      /*End Slide Show by Lim Qiu Xiong*/
+      /*End Promotion banner by Lim Qiu Xiong*/
     </style>
 
     <script>

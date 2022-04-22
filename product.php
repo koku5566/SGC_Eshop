@@ -237,7 +237,6 @@
                             <!-- Price -->
                             <div class="row mb-4" id="PriceDiv">
                                 <div class="col">
-								<?php echo( ? "RM".$i_product_price :  "RM".$i_min_price." - RM".$i_max_price); ?>
 									<?php
 									if($i_product_variation == 0)
 									{
@@ -1058,7 +1057,7 @@
 	/*Cheong Kit Min - End of Review & Rating ****************/
     .image-container{
         width:100%;
-        height: 40vh;
+        height: 25vh;
         padding: 20px;
     }
     .image-container .image{
