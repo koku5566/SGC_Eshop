@@ -395,9 +395,9 @@ $_SESSION["userId"] = "U000018";
 
                                             <a class="btn btn-primary" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
 
-                                            <!-- **CAROL PART**-->
+                                            <!-- **CAROL PART** (TRACK SHIPMENT BUTTON)-->
                                             <?php if($row['delivery_method'] =='standard'){?>
-                                            <a class="btn btn-primary " href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
+                                            <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
                                             <?php } else{ ?>
                                                 <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
                                             <?php }?>
