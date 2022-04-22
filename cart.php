@@ -99,7 +99,7 @@
                                             $product_price = 0;
     
                                             $stock_message = "";
-                                            $stock_message = "OUT fOF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
+                                            $stock_message = "OUT OF STOCK<span id='tpkl[$i]' hidden></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='' readonly>";
                                         }
                                     }
     
@@ -126,7 +126,7 @@
                                 }
     
                                 
-                                $stock_message = "RM <span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
+                                $stock_message = "OUT OF STOCK<span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
                             }
                             else if ($rowKL['P_status'] != 'A') {
                                 $showNotif = true;

@@ -26,7 +26,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '10'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '5'";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
@@ -69,12 +69,12 @@
   if (!empty($profileIMG)) {
       foreach ($_FILES['profileCover']['name'] as $key => $val) {
           // File upload path 
-          echo (var_dump($_FILES['profileCover']));
+          //echo (var_dump($_FILES['profileCover']));
           $fileName = basename($_FILES['profileCover']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
+          //echo ($targetFilePath);
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
@@ -87,13 +87,14 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
 
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '5'";
 
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          //header("refresh:1; url=shopProfile.php");
-          echo 'Success';
+          header("Refresh:0");
+          //header("Location: shopProfile.php");
+          //echo 'Success';
       }
       else
       {
@@ -140,7 +141,7 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage[]" value="" onchange="loadFile(event)"/>
+        <input id="file" type="file" name="profileImage[]" value="" onchange="loadImage(event)"/>
         <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" width="200"/>
       </div>
     </div>
@@ -320,7 +321,7 @@ function imageIsLoaded(e) {
 };
 
 /* Profile image review */
-var loadFile = function (event) {
+var loadImage = function (event) {
 var image = document.getElementById("profileImage");
 image.src = URL.createObjectURL(event.target.files[0]);
 };
