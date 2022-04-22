@@ -65,7 +65,7 @@
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     //$shopMedia = $_POST['mediaContainer'];
-    $update = "UPDATE shopProfile SET shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription' WHERE shop_id = '10'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profilePic', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '10'";
 
       if (mysqli_query($conn, $update))
       { 
