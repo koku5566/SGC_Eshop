@@ -324,4 +324,10 @@ var loadFile = function (event) {
 var image = document.getElementById("profileImage");
 image.src = URL.createObjectURL(event.target.files[0]);
 };
+
+/* Cover photo review */
+var loadCover = function (event) {
+var cover = document.getElementById("profileCover");
+cover.src = URL.createObjectURL(event.target.files[0]);
+};
 </script>
