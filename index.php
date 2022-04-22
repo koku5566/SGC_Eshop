@@ -10,6 +10,42 @@
     }
 ?>
 
+<?php 
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    //Login
+    if(!isset($_SESSION['login']))
+    {
+        $_SESSION['login'] = false;
+    }
+    if(!isset($_SESSION['name']))
+    {
+        $_SESSION['name'] = "";
+    }
+    if(!isset($_SESSION['id']))
+    {
+        $_SESSION['id'] = "";
+    }
+    if(!isset($_SESSION['uid']))
+    {
+        $_SESSION['uid'] = "";
+    }
+    if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
+    if(!isset($_SESSION['role']))
+    {
+        $_SESSION['role'] = "";
+    }
+
+    //Set true to enable seller register
+    $_SESSION['enableSeller'] = false;
+?>
+
 <?php
     //Fetch each promotion image information
     $promotion_title = array();
