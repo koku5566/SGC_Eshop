@@ -46,19 +46,27 @@ echo $_SESSION['eventIDView'];
 google.charts.setOnLoadCallback(drawColChart);
 
 function drawColChart() {
- var data = google.visualization.arrayToDataTable([
- ["Ticket Type ", "Total"],
- <?php 
-echo $_SESSION['eventIDView'];
- $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
- $query_run = mysqli_query($conn,$query);
+//  var data = google.visualization.arrayToDataTable([
+//  ["Ticket Type ", "Total"],
+//  <?php 
+// echo $_SESSION['eventIDView'];
+//  $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
+//  $query_run = mysqli_query($conn,$query);
 
- foreach ($query_run as $row)
- {          
-    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
- }
-   ?>
- ]);
+//  foreach ($query_run as $row)
+//  {          
+//     echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+//  }
+//    ?>
+//  ]);
+var data = google.visualization.arrayToDataTable([
+         ['Element', 'Density', { role: 'style' }],
+         ['Copper', 8.94, '#b87333'],            // RGB value
+         ['Silver', 10.49, 'silver'],            // English color name
+         ['Gold', 19.30, 'gold'],
+
+       ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
+      ]);
 
 var options = {
    width: 800,
