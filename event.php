@@ -3,10 +3,14 @@ require __DIR__ . '/header.php'
 ?>
 
 <?php
-if (isset($_GET['location'])) {
-}
-if (isset($_GET['date'])) {
-}
+    if(isset($_GET['location']))
+    {
+        
+    }
+    if(isset($_GET['date']))
+    {
+
+    }
 ?>
 
 <title>Event</title>
@@ -17,62 +21,64 @@ if (isset($_GET['date'])) {
 <div class="container-fluid" style="width:80%">
     <!-- Above template -->
     <div class="row">
+        <div class="col-2">
+        <div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Filter</h5>
+    </div>
+    <div class="card-body">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Filter</h5>
+                <h5 class="mb-0">By Location</h5>
             </div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">By Location</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled">
-                            <li style="margin-bottom: 5px;">Perlis</li>
-                            <li style="margin-bottom: 5px;">Kedah</li>
-                            <li style="margin-bottom: 5px;">Pulau Pinang</li>
-                            <li style="margin-bottom: 5px;">Perak</li>
-                            <li style="margin-bottom: 5px;">Selangor</li>
-                            <li style="margin-bottom: 5px;">Kuala Lumpur</li>
-                            <li style="margin-bottom: 5px;">Putrajaya</li>
-                            <li style="margin-bottom: 5px;">Kelantan</li>
-                            <li style="margin-bottom: 5px;">Terengganu</li>
-                            <li style="margin-bottom: 5px;">Pahang</li>
-                            <li style="margin-bottom: 5px;">Negeri Sembilan</li>
-                            <li style="margin-bottom: 5px;">Melaka</li>
-                            <li style="margin-bottom: 5px;">Johor</li>
-                            <li style="margin-bottom: 5px;">Sabah</li>
-                            <li style="margin-bottom: 5px;">Sarawak</li>
-                            <li style="margin-bottom: 5px;">Labuan</li>
-                            <li style="margin-bottom: 5px;">Online</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card" style="margin-top: 22px;">
-                    <div class="card-header">
-                        <h5 class="mb-0">By date</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="input-group"><input class="form-control" type="date" name="eDateSearch" />
-                                <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="card" style="margin-top: 22px;">
-                    <div class="card-header">
-                        <h5 class="mb-0">By Name</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="input-group"><input class="form-control" type="text" name="eNameSearch" />
-                                <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <ul class="list-unstyled">
+                    <li style="margin-bottom: 5px;">Perlis</li>
+                    <li style="margin-bottom: 5px;">Kedah</li>
+                    <li style="margin-bottom: 5px;">Pulau Pinang</li>
+                    <li style="margin-bottom: 5px;">Perak</li>
+                    <li style="margin-bottom: 5px;">Selangor</li>
+                    <li style="margin-bottom: 5px;">Kuala Lumpur</li>
+                    <li style="margin-bottom: 5px;">Putrajaya</li>
+                    <li style="margin-bottom: 5px;">Kelantan</li>
+                    <li style="margin-bottom: 5px;">Terengganu</li>
+                    <li style="margin-bottom: 5px;">Pahang</li>
+                    <li style="margin-bottom: 5px;">Negeri Sembilan</li>
+                    <li style="margin-bottom: 5px;">Melaka</li>
+                    <li style="margin-bottom: 5px;">Johor</li>
+                    <li style="margin-bottom: 5px;">Sabah</li>
+                    <li style="margin-bottom: 5px;">Sarawak</li>
+                    <li style="margin-bottom: 5px;">Labuan</li>
+                    <li style="margin-bottom: 5px;">Online</li>
+                </ul>
             </div>
+        </div>
+        <div class="card" style="margin-top: 22px;">
+            <div class="card-header">
+                <h5 class="mb-0">By date</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="input-group"><input class="form-control" type="date" name="eDateSearch" />
+                        <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 22px;">
+            <div class="card-header">
+                <h5 class="mb-0">By Name</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="input-group"><input class="form-control" type="text" name="eNameSearch" />
+                        <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);"><i class="fa fa-search"></i></button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
         <div class="col-10">
             <div class="row">
