@@ -49,7 +49,7 @@ if(isset($_GET['addressid']))
     if (isset($_SESSION['subtotal'])) {
         $subtotal = $_SESSION['subtotal'];
     }
-    else {
+    else if($_SESSION['subtotal'] == ""){
         $subtotal = "No Value";
     }
 
