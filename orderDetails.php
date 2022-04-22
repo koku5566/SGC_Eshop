@@ -137,7 +137,7 @@ if(@$_GET){
                 </div>
                 <div class="card-footer">
                 <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return complete_click();">Confirmed Order</a>
-                <button ><a href="getOrder.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order  <?php echo $order_id; ?></a></button>  
+                <button ><a href="orderDetails.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order</a></button>  
                     <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
                 </div>
                 <?php } ?>
@@ -162,9 +162,6 @@ function confirm_click()
 {
 return confirm("Are you sure to cancel order?");
 }
-function complete_click()
-{
-    return confirm("Are you sure to complete the orders?");
-}
+
 
 </script>
