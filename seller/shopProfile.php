@@ -123,30 +123,14 @@
             }
         }
     }
+    $shopProfileCover = $_POST['coverContainer'];
+    $shopProfilePic = $_POST['profilePicContainer'];
+    //$shopProfilePic = array_filter($_FILES['img']['name']);
+    $shopName = $_POST['name'];
+    $shopDescription = $_POST['description'];
+    $shopMedia = $_POST['mediaContainer'];
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
 
-    $sql = "UPDATE `shopProfile`(`shop_profile_cover`, `shop_profile_image`, `shop_name`, `shop_description`, `shop_media`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-    if ($stmt = mysqli_prepare($conn, $sql)) {
-        if (false === $stmt) {
-            die('Error with prepare: ') . htmlspecialchars($mysqli->error);
-        }
-        $bp = mysqli_stmt_bind_param($stmt, "sssssssssssi", $shopCoverImage, $shopName, $shopDescription);
-        if (false === $bp) {
-            die('Error with bind_param: ') . htmlspecialchars($stmt->error);
-        }
-        $bp = mysqli_stmt_execute($stmt);
-        if (false === $bp) {
-            die('Error with execute: ') . htmlspecialchars($stmt->error);
-        }
-        if (mysqli_stmt_affected_rows($stmt) == 1) {
-            $prevID = mysqli_stmt_insert_id($stmt);
-            echo "Success";
-            $_SESSION['eventID'] = $prevID;
-        } else {
-            $error = mysqli_stmt_error($stmt);
-            echo "Fail";
-        }
-        mysqli_stmt_close($stmt);
-    }
   }
 ?>
 
