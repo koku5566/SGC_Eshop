@@ -26,82 +26,82 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000001'";
-  $result1 = mysqli_query($conn, $sql); 
+//  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000001'";
+//  $result1 = mysqli_query($conn, $sql); 
 ?>
 
 <!-- Update Profile -->
 <?php
-  session_start();
- if(isset($_POST['saveBtn']))
- {
-  $profileIMG = array_filter($_FILES['profileImage']['name']);
-  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
-  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-  $profilePic = "";
-  //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
-  $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
-  if (!empty($profileIMG)) {
-      foreach ($_FILES['profileImage']['name'] as $key => $val) {
-          // File upload path 
-          echo (var_dump($_FILES['profileImage']));
-          $fileName = basename($_FILES['profileImage']['name'][$key]);
-          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-          $fileName = round(microtime(true) * 1000) . "." . $ext;
-          $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
-          // Check whether file type is valid 
-          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-          if (in_array($fileType, $allowTypes)) {
-              if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
-                  $profilePic = "$fileName";
-              }
-          }
-      }
-  }
-
-  $coverIMG = array_filter($_FILES['profileCover']['name']);
-  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
-  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-  $profileCover = "";
-  //$imageProperties = getimageSize($_FILES['profileCover']['tmp_name']);
-  $coverImgContent = addslashes(file_get_contents($_FILES['profileCover']['name']));
-  if (!empty($profileIMG)) {
-      foreach ($_FILES['profileCover']['name'] as $key => $val) {
-          // File upload path 
-          echo (var_dump($_FILES['profileCover']));
-          $fileName = basename($_FILES['profileCover']['name'][$key]);
-          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-          $fileName = round(microtime(true) * 1000) . "." . $ext;
-          $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
-          // Check whether file type is valid 
-          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-          if (in_array($fileType, $allowTypes)) {
-              if (move_uploaded_file($_FILES["profileCover"]["tmp_name"][$key], $targetFilePath)) {
-                  $profileCover  = "$fileName";
-              }
-          }
-      }
-  }
-    $shopName = $_POST['name'];
-    $shopDescription = $_POST['description'];
-
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = 'U000001'";
-
-      if (mysqli_query($conn, $update))
-      { 
-          /*Successful*/
-          //header("refresh:1; url=shopProfile.php");
-          echo 'Success';
-      }
-      else
-      {
-          /*Fail*/
-          echo 'Update Fail';
-      }
-   }
- 
+//  session_start();
+// if(isset($_POST['saveBtn']))
+// {
+//  $profileIMG = array_filter($_FILES['profileImage']['name']);
+//  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+//  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
+//  $profilePic = "";
+//  //$imageProperties = getimageSize($_FILES['profileImage']['tmp_name']);
+//  $coverImgContent = addslashes(file_get_contents($_FILES['profileImage']['name']));
+//  if (!empty($profileIMG)) {
+//      foreach ($_FILES['profileImage']['name'] as $key => $val) {
+//          // File upload path 
+//          echo (var_dump($_FILES['profileImage']));
+//          $fileName = basename($_FILES['profileImage']['name'][$key]);
+//          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+//          $fileName = round(microtime(true) * 1000) . "." . $ext;
+//          $targetFilePath = $targetDir . $fileName;
+//          echo ($targetFilePath);
+//          // Check whether file type is valid 
+//          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+//          if (in_array($fileType, $allowTypes)) {
+//              if (move_uploaded_file($_FILES["profileImage"]["tmp_name"][$key], $targetFilePath)) {
+//                  $profilePic = "$fileName";
+//              }
+//          }
+//      }
+//  }
+//
+//  $coverIMG = array_filter($_FILES['profileCover']['name']);
+//  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+//  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
+//  $profileCover = "";
+//  //$imageProperties = getimageSize($_FILES['profileCover']['tmp_name']);
+//  $coverImgContent = addslashes(file_get_contents($_FILES['profileCover']['name']));
+//  if (!empty($profileIMG)) {
+//      foreach ($_FILES['profileCover']['name'] as $key => $val) {
+//          // File upload path 
+//          echo (var_dump($_FILES['profileCover']));
+//          $fileName = basename($_FILES['profileCover']['name'][$key]);
+//          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+//          $fileName = round(microtime(true) * 1000) . "." . $ext;
+//          $targetFilePath = $targetDir . $fileName;
+//          echo ($targetFilePath);
+//          // Check whether file type is valid 
+//          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+//          if (in_array($fileType, $allowTypes)) {
+//              if (move_uploaded_file($_FILES["profileCover"]["tmp_name"][$key], $targetFilePath)) {
+//                  $profileCover  = "$fileName";
+//              }
+//          }
+//      }
+//  }
+//    $shopName = $_POST['name'];
+//    $shopDescription = $_POST['description'];
+//
+//    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = 'U000001'";
+//
+//      if (mysqli_query($conn, $update))
+//      { 
+//          /*Successful*/
+//          //header("refresh:1; url=shopProfile.php");
+//          echo 'Success';
+//      }
+//      else
+//      {
+//          /*Fail*/
+//          echo 'Update Fail';
+//      }
+//   }
+// 
 ?>
 
 <!-- Icon -->
@@ -118,12 +118,12 @@
       <div>
 
       <?php
-        while ($row=mysqli_fetch_assoc($result1))
-        {
-          $shopCoverImage = $row['shop_profile_cover'];
-          $shopProfilePic = $row['shop_profile_image'];
-          $shopName = $row['shop_name'];
-          $shopDescription = $row['shop_description'];
+      //  while ($row=mysqli_fetch_assoc($result1))
+      //  {
+      //    $shopCoverImage = $row['shop_profile_cover'];
+      //    $shopProfilePic = $row['shop_profile_image'];
+      //    $shopName = $row['shop_name'];
+      //    $shopDescription = $row['shop_description'];
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
@@ -170,7 +170,7 @@
     </form>
   </div>
   <?php
-    }
+  //  }
   ?>
 </div>
 <!-- /.container-fluid -->
