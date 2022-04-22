@@ -4,24 +4,24 @@
 
 <!-- Insert data -->
 <?php
-//    if(isset($_POST['submit'])){
-//      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
-//        $coverPhoto = $_POST['coverPhoto'];
-//        $profileImage = $_POST['profileImage'];
-//        $name = $_POST['name'];
-//        $description = $_POST['description'];
-//        $imageVideo = $_POST['imageVideo'];
-//
-//        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
-//
-//        //$run = mysqli_query($conn,$query);
-//        if (mysqli_query($conn, $query)) {
-//          echo "Form Submitted Successfully" ;
-//        } else {
-//          echo "Error: " . $query . "<br>" . mysqli_error($conn);
-//        }
-//        mysqli_close($conn);
-//    }
+    if(isset($_POST['submit'])){
+      //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
+        $coverPhoto = $_POST['coverPhoto'];
+        $profileImage = $_POST['profileImage'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $imageVideo = $_POST['imageVideo'];
+
+        $query = "INSERT INTO shopProfile(shop_profile_cover,shop_profile_image,shop_name,shop_description, shop_media) VALUES ('$coverPhoto','$profileImage','$name','$description','$imageVideo')";
+
+        //$run = mysqli_query($conn,$query);
+        if (mysqli_query($conn, $query)) {
+          echo "Form Submitted Successfully" ;
+        } else {
+          echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+    }
 ?>
 
 <!-- Select Data -->
