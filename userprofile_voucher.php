@@ -42,8 +42,8 @@
             <!-- Outer Row -->
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
-                  <div class="card o-hidden border-0 shadow-lg my-5 row row-cols-3">
-                     <div class="col-6 mt-2 mb-2">
+                  <div class="card o-hidden border-0 shadow-lg my-5 row row-cols-2">
+                     <div class="col col-6 mt-2 mb-2">
                      <?php
 
                         $uid = $_SESSION['uid'];
