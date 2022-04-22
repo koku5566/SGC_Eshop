@@ -24,8 +24,8 @@ $order_id = $_GET['order_id'];
                             <div class="col-1"></div>
                             <div class="col-5">Product</div>
                             <div class="col-2">Unit Price</div>
-                            <div class="col-1">Quantity</div>
-                            <div class="col-3">Total Price</div>
+                            <div class="col-2">Quantity</div>
+                            <div class="col-2">Total Price</div>
                         </div>
                     </div>
                 </div>
@@ -44,24 +44,26 @@ $order_id = $_GET['order_id'];
                     <div class="row">
                         
                         <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
-                        <div class="col-4">
+                        <div class="col-5">
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
                             <?php echo $row2['product_price']; ?>.00
                         </div>
-                        <div class="col-1">X
+                        <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
                         </div>
-                        <div class="col-3 red-text">RM
+                        <div class="col-2 red-text">RM
                             <?php echo $row2['amount']; ?>.00
                         </div>
                         
                     </div>
                 </div>
+                <br>
                 <?php } ?>
             </div>
-            <div class="col-4">
+            <br>
+            <div class="col-4" style="text-align:right; margin-left:65%">
                     <div class="row p-2">
                         <div class="col">Total:</div>
                         <div class="col"> RM<?php echo $row2['amount']?>.00</div>
