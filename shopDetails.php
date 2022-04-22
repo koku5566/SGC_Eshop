@@ -30,11 +30,6 @@
         }
     }   
     else{
-        ?>
-            <script type="text/javascript">
-                window.location.href = window.location.origin + "/index.php";
-            </script>
-        <?php
     }
 ?>
 <!-- Promotion banner by Lim Qiu Xiong-->
