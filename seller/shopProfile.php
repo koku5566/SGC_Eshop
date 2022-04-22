@@ -26,54 +26,8 @@
 
 <!-- Select Data -->
 <?php
-//if($conn->connect_error){
-//	die("Connection failed ".$conn->connect_error);
-//}
-//
-//$sql = "select * from shopProfile where shop_id='$shop_id'";
-//
-//$result = $conn->query($sql);
-//
-//if ($result->num_rows > 0){
-//
-//$row = $result->fetch_assoc();
-//
-//$coverPhoto = $row["coverPhoto"];
-//$profileImage = $row["profileImage"];
-//$name = $row["name"];
-//$description = $row["description"];
-//$imageVideo = $row["imageVideo"];
-//
-//} else {
-//	echo "Not Found";
-//}
-//$conn->close();
-?>
-
-<!-- Select Data -->
-<?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 4";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '4'";
   $result1 = mysqli_query($conn, $sql); 
-?>
-
-<!-- Update Profile -->
-<?php
-//if ($conn->connect_error){
-//	die("Connection failed: ". $conn->connect_error);
-//}
-//
-//$sql = "UPDATE shopProfile SET coverPhoto='$coverPhoto', profileImage='$profileImage', name='$name', description='$description', imageVideo='$imageVideo' WHERE shop_id='$shop_id'";
-//
-//if ($conn->query($sql) === TRUE) {
-//	echo "Records updated: ".$name."-".$description;
-//} else {
-//	echo "Error: ".$sql."<br>".$conn->error;
-//}
-//
-//$conn->close();
-// $select= "SELECT * FROM shopProfile WHERE id=4";
-// $sql = mysqli_query($conn,$select);
-// $row = mysqli_fetch_assoc($sql);
 ?>
 
 <!-- Update Profile -->
@@ -81,70 +35,26 @@
 //  session_start();
  if(isset($_POST['saveBtn']))
  {
-    //$shopProfileCover = $_POST['coverContainer'];
-    //$shopProfilePic = $_POST['profilePicContainer'];
+    $shopProfileCover = $_POST['coverContainer'];
+    $shopProfilePic = $_POST['profilePicContainer'];
     //$shopProfilePic = array_filter($_FILES['img']['name']);
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
-    echo $shopName, $shopDescription;
-    //$shopMedia = $_POST['mediaContainer'];
-       $update = "UPDATE shopProfile SET shop_name='$shopName',shop_description='$shopDescription' WHERE shop_id = '4'";
+    $shopMedia = $_POST['mediaContainer'];
+    $update = "UPDATE shopProfile SET shop_profile_cover='$shopProfileCover', shop_profile_image='$shopProfilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = '4'";
 
-       if($conn->query($update))
-       { 
-           /*Successful*/
-           //header('location:Dashboard.php');
-           header("refresh:1; url=shopProfile.php");
-       }
-       else
-       {
-           /*sorry your profile is not update*/
-           //header('location:Profile_edit_form.php');
-           echo 'Fail';
-       }
+      if($conn->query($update))
+      { 
+          /*Successful*/
+          header("refresh:1; url=shopProfile.php");
+      }
+      else
+      {
+          /*Fail*/
+          echo 'Update Fail';
+      }
 }
  
-?>
-
-<?php
-  //$sql = "UPDATE shopProfile SET shop_name ='$_POST[name]', shop_description = '$_POST[description]' WHERE shop_id=4";
-  //if (mysqli_query($sql, $conn))
-  //  header("refresh:1; url=shopProfile.php");
-  //else
-  //  echo "Not Update";
-?>
-
-<!-- Upload Data -->
-<?php
-//  if(isset($_POST['update']))
-//  {
-//    $shopProfileCover = $_POST['coverContainer'];
-//    //$shopProfilePic = $_POST['profilePicContainer'];
-//    //$shopProfilePic = array_filter($_FILES['img']['name']);
-//    $shopName = $_POST['name'];
-//    $shopDescription = $_POST['description'];
-//    $shopMedia = $_POST['mediaContainer'];
-//
-//    $sql = "UPDATE shopProfile SET shop_profile_cover ='$shopProfileCover', shop_profile_image ='$shopProfilePic', shop_name ='$shopName', shop_description ='$shopDescription', shop_media ='$shopMedia' WHERE shop_id = 8";
-//    $result2 = mysqli_query($conn,$query);
-//
-//    echo $shopProfileCover, $shopProfilePic, $shopName, $shopDescription, $shopMedia;
-//
-//
-//
-//    if($result2)
-//    {
-//      echo 'Successfully Update';
-//    }
-//    else
-//    {
-//      echo 'Please Check Your Query';
-//    }
-//  }
-//  else
-//  {
-//    echo 'error';
-//  }
 ?>
 
 <!-- Upload Image -->
