@@ -325,7 +325,7 @@
                         }?>
 
                             
-                        </div>
+                    </div>
 
                     <br>
 
@@ -343,7 +343,7 @@
                                     <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
 
                                             $result = mysqli_query($conn, $sql);
 
@@ -367,7 +367,7 @@
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             
                                                             echo("
-                                                                <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                     <a data-sqe=\"link\" href=\"product.php?id=".$row_1['product_id']."\">
                                                                         <div class=\"card\">
                                                                             <div class=\"image-container\">
