@@ -335,7 +335,9 @@ $_SESSION["userId"] = "U000018";
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
-                        <?php while($row = $orders ->fetch_assoc()){ ?>
+                        <?php while($row = $orders ->fetch_assoc()){ 
+                            $order_id = $row['order_id'];
+                            ?>
                         
                             <div class="card">
                                 <div class="card-header">
@@ -363,17 +365,21 @@ $_SESSION["userId"] = "U000018";
                                             </thead>
                                             
                                             <tbody>
-                                              
+                                            <?php
+                                                            $sql2 = "SELECT * FROM orderDetails JOIN product ON orderDetails.product_id = product.id JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE order_id = $order_id";
+                                                            $result2 = $conn->query($sql2);
+                                                            while($row2 = $result2->fetch_assoc()){
+                                                            ?>
                                                 <tr >
                                                     
-                                                    <td style="text-align: center;"><?php echo $row['product_id']?></td>
-                                                    <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
-                                                    <td style="text-align: left;"><?php echo $row['product_name']?></td>
-                                                    <td style="text-align: center;"><?php echo $row['quantity']?></td>
-                                                    <td style="text-align: center;"><?php echo $row['amount']?></td>
+                                                    <td style="text-align: center;"><?php echo $row2['product_id']?></td>
+                                                    <td><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
+                                                    <td style="text-align: left;"><?php echo $row2['product_name']?></td>
+                                                    <td style="text-align: center;"><?php echo $row2['quantity']?></td>
+                                                    <td style="text-align: center;"><?php echo $row2['amount']?></td>
                                                     
                                                 </tr>
-                                            
+                                                <?php } ?>
                                             </tbody>
                                            
                                         </table>
