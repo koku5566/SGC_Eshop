@@ -15,14 +15,14 @@
         
         ($outgoing_id == $row['userid']) ? $hid_me = "hide" : $hid_me = "";
 
-        $output .= '<a href="chat.php?user_id='. $row['userid'] .'">
-                    <div class="content">
-                    <img src="php/images/'. $row['profile_picture'] .'" alt="">
-                    <div class="details">
-                        <span>'. $row['username'].'</span>
-                        <p>'. $you . $msg .'</p>
+        $output .= "<a href=\"chat.php?user_id=". $row['userid'] .">
+                    <div class=\"content\">
+                    <img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
+                    <div class=\"details\">
+                        <span>". $row['username']."</span>
+                        <p>". $you . $msg ."</p>
                     </div>
                     </div>
-                </a>';
+                </a>";
     }
 ?>
