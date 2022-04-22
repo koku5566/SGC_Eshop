@@ -307,7 +307,7 @@
                                     <div class="card-content row mb-3" style="display: none">
                                         <!--PHP Loop Product List by Search Result-->
                                         <?php
-                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A'";
+                                            $sql = "SELECT product_id FROM product WHERE product_status = 'A' ORDER BY id DESC";
 
                                             $result = mysqli_query($conn, $sql);
 
