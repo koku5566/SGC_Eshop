@@ -4,7 +4,7 @@
 
 <!-- Insert data -->
 <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['saveBtn'])){
       //if(!empty($_POST['coverPhoto']) && !empty($_POST['profileImage']) && !empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['imageVideo'])){
         $coverPhoto = $_POST['coverPhoto'];
         $profileImage = $_POST['profileImage'];
