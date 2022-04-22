@@ -92,11 +92,11 @@
     $res= $row['id'];
     if($res === $id)
     {
-       echo $shopName;
+       echo 'Hello';
        $update = "UPDATE users SET shop_name='$shopName',shop_description='$shopDescription'";
        $sql2=mysqli_query($conn,$update);
-       echo $shopDescription;
-if($sql2)
+       echo 'Hi';
+       if($sql2)
        { 
            /*Successful*/
            //header('location:Dashboard.php');
