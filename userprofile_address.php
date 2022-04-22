@@ -46,7 +46,7 @@
 <?php
 	$UID = $_SESSION["userid"];
 	
-	$sql = "SELECT * FROM userAddress WHERE userID ='$UID'";
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
