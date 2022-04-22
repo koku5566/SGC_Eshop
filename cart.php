@@ -17,7 +17,7 @@
 
 
     //filter shop profile
-    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` =  $userID";
+    $sql_shop = "SELECT DISTINCT(shop_id) AS shopID FROM cart WHERE `user_ID` AND cart.remove_Product = '0' =  $userID";
     $query_shop = mysqli_query($conn, $sql_shop);
 
 ?>
@@ -49,6 +49,7 @@
                     while ($row = mysqli_fetch_array($query_shop)) {
                         $shop_id = $row['shopID'];
 
+                        //header for each shop 
                         echo "<tr >   
                             <td colspan='6'>$shop_id </td>
                             </tr>";
