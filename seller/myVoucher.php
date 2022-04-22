@@ -91,15 +91,13 @@
                      <td>
                         <span class="badge badge-primary">
                            <?php 
-                           for($i = 0; $i < count($r['voucher_status']); $i++){
-                              if($r['voucher_status'][$i] = "2" ){
+                           
+                              if($r['voucher_status'] = "2" ){
                                  echo "Pending";
-                              }else if($r['voucher_status'][$i] = "1" ){
+                              }else{
                                  echo "Approved";
-                              }else if($r['voucher_status'][$i] = "0" ){
-                                 echo "Rejected";
                               }
-                           }
+
                            ?>
                         </span>
                      </td>
