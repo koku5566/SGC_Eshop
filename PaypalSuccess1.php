@@ -165,9 +165,9 @@ $queryKL = mysqli_query($conn, $sql);
     $userid = $userresult['user_id']; */
 
     
-    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`) VALUES (?,?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
-        $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time);
+        $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
       /*   $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `sku`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?,?)";
