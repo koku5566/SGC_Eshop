@@ -382,7 +382,7 @@
 										{
 											echo("
 											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"img/shop_log/$shop_pic\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/$shop_pic\">
 											</div>
 											");
 										}
@@ -390,7 +390,7 @@
 										{
 											echo("
 											<div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"img/shop_log/store.png\">
+												<img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/store.png\">
 											</div>
 											");
 										}
@@ -702,6 +702,7 @@
 
 							while($row = mysqli_fetch_assoc($result)) {
 
+								echo("Enter description");
 								//Fetch each product information
 								$id = $row['product_id'];
 								$sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
@@ -715,6 +716,7 @@
 								LIMIT 1";
 								$result_1 = mysqli_query($conn, $sql_1);
 								echo($sql_1);
+
 								if (mysqli_num_rows($result_1) > 0) {
 									while($row_1 = mysqli_fetch_assoc($result_1)) {
 										
