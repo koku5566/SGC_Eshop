@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php';
+    require __DIR__ . '/cart_manage.php';
 
 	  if($_SESSION['login'] == false)
 	 {
@@ -136,7 +136,7 @@ $shippingfee = 8.6;
                             </thead>
                             <tbody>
                             <?php
-                            $uid = "U000018";
+                            
                             $sql2 ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
                             cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
                             product.product_cover_picture AS P_pic, cart.product_ID AS PID, product.product_status AS P_status, cart.cart_ID AS cart_id
@@ -145,7 +145,7 @@ $shippingfee = 8.6;
                             ON product.product_id = cart.product_ID 
                             JOIN `shopProfile`
                             ON product.shop_id = shopProfile.shop_id
-                            WHERE cart.user_ID = '$uid'
+                            WHERE cart.user_ID = '$UID'
                             AND cart.remove_Product = '0'
                             ORDER BY cart.update_at DESC
                             ";
@@ -305,18 +305,15 @@ $shippingfee = 8.6;
                 <!-- order summary -->
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
-                        <?php  
-                        $_SESSION['total'] = 100;
-                        ?>
-                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM 90</span></li>
+                    <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $_SESSION['subtotal'] ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['total'] ?></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
             </div>
             <br>
             <div class = 'row'>
-            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['total'] ?>>
+            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['subtotal'] ?>>
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>

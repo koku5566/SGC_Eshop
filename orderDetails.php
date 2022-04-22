@@ -4,9 +4,8 @@
 <?php
 $order_id = $_GET['order_id'];
 
-
-
 ?>
+
 
 <!-- Begin Page Content -->
     <div class="container-fluid" style="width:80%">
@@ -18,32 +17,25 @@ $order_id = $_GET['order_id'];
                 <hr class="mx-auto">
             </div>
             
-            <div class="card-body">
-        <div class="order-list-panel">
-            
-            <div class="top-card card-header">
-                <div class="row">
-                    <div class="col-5">Product</div>
-                    <div class="col-2">Unit Price</div>
-                    <div class="col-1">Quantity</div>
-                    <div class="col-3">Total Price</div>
-                </div>
-            </div>
-        </div>
-        <?php 
-            while($row = $result ->fetch_assoc()){ 
-            $order_id = $row['order_id'];
-            $reason_type = $row['reason_type'];
-        ?>
-            <!--Start of order item-->
-            
             <div class="card">
+                <div class="card-header">
+                    <div class="order-list-panel">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-5">Product</div>
+                            <div class="col-2">Unit Price</div>
+                            <div class="col-1">Quantity</div>
+                            <div class="col-3">Total Price</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
                 <?php
                     $sql2 = "SELECT * FROM orderDetails 
-                    LEFT JOIN product ON orderDetails.product_id = product.id 
-                    LEFT JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id 
-                    LEFT JOIN myorder ON orderDetails.order_id = myorder.order_id
-                    WHERE orderDetails.order_id = $order_id";
+                     LEFT JOIN product ON orderDetails.product_id = product.id 
+                     LEFT JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id 
+                     LEFT JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                     WHERE orderDetails.order_id = $order_id";
                     if(@$user_id){
                         $sql2 .= " AND myorder.user_id = '$user_id'";
                     }
@@ -55,7 +47,7 @@ $order_id = $_GET['order_id'];
                         
                         <div class="col-1"><img class="card-img-top img-thumbnail"
                                 style="object-fit:contain;width:100%;height:100%"
-                                src="https://as2.ftcdn.net/v2/jpg/02/23/22/49/1000_F_223224945_It1F8KPqNKubBWCOEYQXuYYdmSDIRkwZ.jpg"
+                                src="img/product/<?php echo $row2['product_cover_picture'] ?>"
                                 alt="<?php echo $row2['product_name']; ?>" /></div>
                         <div class="col-4">
                             <?php echo $row2['product_name']; ?>
@@ -74,13 +66,6 @@ $order_id = $_GET['order_id'];
                 </div>
                 <?php } ?>
             </div>
-            <div class="card-footer">
-                <button>Confirm Order ID <?php echo $order_id; ?></button>
-                <a class="btn btn-primary" href="getOrder.php?cancelOrder=<?php echo $order_id; ?>">Cancel Order ID <?php echo $order_id; ?></a>
-        <br>
-        <?php }?>
-       
-    </div> 
                 <div class="card-footer">
                 <?php if($row['order_status'] =='Paid'){?>
                     <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
@@ -95,7 +80,7 @@ $order_id = $_GET['order_id'];
 
         </section>
     </div>
-                   
+    
                 <!-- /.container-fluid -->
 
 <?php
