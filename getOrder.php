@@ -392,7 +392,7 @@ $_SESSION["userId"] = "U000018";
                                                 <input class="btn btn-primary" name="orderDetails_btn" value="Details" type="submit"/> 
                                            </form>-->
 
-                                            <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
+                                            <a class="btn btn-primary" href="orderDetials.php?order_id=<?php echo $row['order_id'];?>">Details</a>
                                                          
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
