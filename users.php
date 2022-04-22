@@ -1,17 +1,7 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
-<?php 
-  session_start();
-  include_once "backend/db.php";
-  if(!isset($_SESSION['userid'])){
-    ?>
-			<script type="text/javascript">
-				window.location.href = window.location.origin + "/login.php";
-			</script>
-		<?php
-  }
-?>
+
 <body>
   <div class="wrapper">
     <section class="users">
