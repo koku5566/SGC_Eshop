@@ -279,8 +279,8 @@ if(isset($_POST['claim'])){
     $voucher_id = $_POST['voucher_id'];
     echo $uid, $voucher_id; 
     echo'hello';
-    $sqlc = "INSERT INTO voucherRedemption ('voucher_id', 'user_id')
-             VALUES ('$voucher_id','$uid');";
+    $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
+             VALUES ('$voucher_id','$uid')";
 
     if($conn->query($sqlc))
     {
