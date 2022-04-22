@@ -7,6 +7,7 @@ $sql_2 = "SELECT
 DISTINCT
 myOrder.order_id,
 myOrder.order_status,
+myOrder.delivery_method,
 product.product_id,
 product.product_name,
 product.product_cover_picture,
@@ -393,11 +394,15 @@ $_SESSION["userId"] = "U000018";
                                            </form>-->
 
                                             <a class="btn btn-primary" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Details</a>
+
+                                            <!-- **CAROL PART**-->
                                             <?php if($row['delivery_method'] =='standard'){?>
-                                            <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
+                                            <a class="btn btn-primary " href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
                                             <?php } else{ ?>
-                                                <a class="btn btn-primary" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
+                                                <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
                                             <?php }?>
+                                            <!-- **END OF CAROL PART**--->
+
                                              <button type="button" class="btn btn-primary" style="margin-left:10px;">Order Again</button>
 											 
                                              
