@@ -221,14 +221,7 @@ session_start();
     width: 45px;
   }
 }
-body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #f7f7f7;
-  padding: 0 10px;
-}
+
 .wrapper{
   background: #fff;
   max-width: 450px;
