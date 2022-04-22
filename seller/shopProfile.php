@@ -107,11 +107,11 @@
 ?>
 
 <?php
-  $sql = "UPDATE shopProfile SET shop_name ='$_POST[name]', shop_description = '$_POST[description]' WHERE shop_id=4";
-  if (mysqli_query($sql, $conn))
-    header("refresh:1; url=shopProfile.php");
-  else
-    echo "Not Update";
+  //$sql = "UPDATE shopProfile SET shop_name ='$_POST[name]', shop_description = '$_POST[description]' WHERE shop_id=4";
+  //if (mysqli_query($sql, $conn))
+  //  header("refresh:1; url=shopProfile.php");
+  //else
+  //  echo "Not Update";
 ?>
 
 <!-- Upload Data -->
