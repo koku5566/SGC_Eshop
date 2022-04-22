@@ -33,7 +33,7 @@ if(isset($_POST['signup']))
 				else
 				{
 					$sql = "INSERT INTO user (username, email, password, name, contact, registration_date, role)
-					VALUES ('$username','$email','$password','$username',''$contact'','$date','$role')";
+					VALUES ('$username','$email','$password','$username','$contact','$date','$role')";
 				
 					if (mysqli_query($conn, $sql)) {
 						$passwordE=$_POST['password'];
