@@ -327,7 +327,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
 /* Cover photo review */
 var loadCover = function (event) {
-var cover = document.getElementById("backgroundImage");
-cover.src = URL.createObjectURL(event.target.files[0]);
+var image = document.getElementById("backgroundImage");
+image.src = URL.createObjectURL(event.target.files[0]);
 };
 </script>
