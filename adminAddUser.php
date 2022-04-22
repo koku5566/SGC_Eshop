@@ -38,6 +38,8 @@ if(isset($_POST['signup']))
 					if (mysqli_query($conn, $sql)) {
 						if ($_POST['role'] == "SELLER"){
 							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
+						}else{
+							echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 						}
 
 						$passwordE=$_POST['password'];
