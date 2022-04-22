@@ -42,43 +42,28 @@
             <!-- Outer Row -->
             <div class="row justify-content-center">
                <div class="col-xl-12 col-lg-6 col-md-9">
-                  <div class="card o-hidden border-0 shadow-lg row row-cols-2">
-                  <?php
-
-$uid = $_SESSION['uid'];
-
-$sql_voucherR =
-"SELECT 
-voucherRedemption.voucher_id,
-voucherRedemption.user_id,
-voucher.voucher_id,
-voucher.voucher_code,
-voucher.voucher_type,
-voucher.discount_amount,
-voucher.voucher_display,
-voucher.voucher_limit,
-voucher.voucher_startdate,
-voucher.voucher_expired,
-voucher.voucher_details,
-shopProfile.shop_name,
-shopProfile.shop_id,
-shopProfile.shop_profile_image
-
-FROM voucherRedemption
-INNER JOIN voucher ON voucherRedemption.voucher_id = voucher.voucher_id
-INNER JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
-INNER JOIN product ON productVoucher.product_id = product.product_id
-INNER JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-WHERE voucherRedemption.user_id = '$uid'";
-
-$stmt = $conn->prepare($sql_voucherR);
-$stmt->execute();
-$result = $stmt->get_result();
-
-while ($row = $result->fetch_assoc()) {
-
-?>
-                     <div class="col-6">
+                  <div class="card o-hidden border-0 shadow-lg">
+                     <div class="col-6 m-2">
+                        <div class="card" id="vouchercard2">
+                           <div class="card-body">
+                              <div class="row">
+                                 <div class="col-mb-3 m-2">
+                                    <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                 </div>
+                                 <div class="col-mb-7 m-2">
+                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
+                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
+                                    <small>Expired:<?php echo $row['voucher_expired']; ?></small><br>
+                                    <u>
+                                       <a type="" class="" data-toggle="modal" data-target="#termsv2Modal<?php echo $row['voucher_id']; ?>">
+                                       T&C applied.
+                                       </a>
+                                    </u>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     <div class="col-6 m-2">
                         <div class="card" id="vouchercard2">
                            <div class="card-body">
                               <div class="row">
@@ -99,7 +84,7 @@ while ($row = $result->fetch_assoc()) {
                            </div>
                         </div>
                         <!-- Modal -->
-                        <div class="modal fade" id="termsv2Modal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsv2ModalTitle" aria-hidden="true">
+                        <!-- <div class="modal fade" id="termsv2Modal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsv2ModalTitle" aria-hidden="true">
                            <div class="modal-dialog modal-dialog-centered" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
@@ -132,9 +117,9 @@ while ($row = $result->fetch_assoc()) {
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
                         <?php 
-                        }?>
+                        //}?>
                      </div>
                   </div>
                </div>
