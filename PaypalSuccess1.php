@@ -18,6 +18,7 @@ JOIN `shopProfile`
 ON product.shop_id = shopProfile.shop_id
 WHERE cart.user_ID = '$uid' 
 AND cart.remove_Product = '0'
+AND product.product_status = 'A'
 ORDER BY cart.update_at DESC
 ";
 
@@ -48,7 +49,7 @@ $queryKL = mysqli_query($conn, $sql);
         }
         else if ($rowKL['variation_id'] != "") {
             
-            $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."'";
+            $sql_get_variation_price = "SELECT * FROM `variation` WHERE `variation_id` = '".$rowKL['variation_id']."AND product_stock != 0'";
             $query_get_variation_price = mysqli_query($conn, $sql_get_variation_price);
             while( $row = mysqli_fetch_assoc($query_get_variation_price))
             {
@@ -154,16 +155,16 @@ $queryKL = mysqli_query($conn, $sql);
    
     ");  */
 
-   /*  date_default_timezone_set("Asia/Kuala_Lumpur");
+/*      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
     $shippingMethod = $_SESSION['shippingMethod'] 
 
-    $usersql ="SELECT user.user_id FROM `user` WHERE user.userID= '$uid'";
+    $usersql ="SELECT user.user_id FROM `user` WHERE user.userID= '.$uid.'";
         $usersql1 = mysqli_query($conn, $suersql);
         $userrow = mysqli_fetch_array($userresult);
 
-    $userid = $userresult['user_id']; */
+    $userid = $userresult['user_id'];  */
 
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -171,11 +172,11 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-         $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
+        /*  $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
         if ($stmt4 = mysqli_prepare($conn, $sql3)) {
             $bp = mysqli_stmt_bind_param($stmt4, "iissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
             $bp = mysqli_stmt_execute($stmt4);
-    } 
+    }  */
     
 }
 if (mysqli_stmt_affected_rows($stmt) == 1) {
