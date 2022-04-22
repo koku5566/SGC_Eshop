@@ -307,17 +307,6 @@
                                                         }
                                                     }
                                                 }
-                                                $shopId = $_SESSION['uid'];
-                                                if($Where == false)
-                                                {
-                                                    $sql .= " WHERE ";
-                                                    $Where = true;
-                                                }
-                                                else
-                                                {
-                                                    $sql .= " AND ";
-                                                }
-                                                $sql .= " A.shop_id = '$shopId'";
 
                                                 $result = mysqli_query($conn, $sql);
 
