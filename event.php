@@ -64,9 +64,9 @@ require __DIR__ . '/header.php'
                 <h5 class="mb-0">By date</h5>
             </div>
             <div class="card-body">
-                <form>
+                <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                     <div class="input-group"><input class="form-control" type="date" name="eDateSearch" />
-                        <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);" name="searchEventDateBtn"><i class="fa fa-search"></i></button></div>
+                        <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="searchEventDateBtn"><i class="fa fa-search"></i></button></div>
                     </div>
                 </form>
             </div>
@@ -76,9 +76,9 @@ require __DIR__ . '/header.php'
                 <h5 class="mb-0">By Name</h5>
             </div>
             <div class="card-body">
-                <form>
+                <form action = "<?php echo $_SERVER['PHP_SELF'];?>" method = "POST" enctype="multipart/form-data">
                     <div class="input-group"><input class="form-control" type="text" name="eNameSearch" />
-                        <div class="input-group-append"><button class="btn btn-primary" type="button" style="background: rgb(163, 31, 55);" name="searchEventNameBtn"><i class="fa fa-search"></i></button></div>
+                        <div class="input-group-append"><button class="btn btn-primary" type="submit" style="background: rgb(163, 31, 55);" name="searchEventNameBtn"><i class="fa fa-search"></i></button></div>
                     </div>
                 </form>
             </div>
