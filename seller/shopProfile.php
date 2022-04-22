@@ -26,7 +26,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '4'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '52'";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
