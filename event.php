@@ -21,7 +21,7 @@ require __DIR__ . '/header.php'
 <div class="container-fluid" style="width:80%">
     <!-- Above template -->
     <div class="row">
-        <div class="col-12 col-sm12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+        <div class="d-none d-sm-none d-md-none col-lg-3 col-xl-3 col-xxl-3">
         <div class="card">
     <div class="card-header">
         <h5 class="mb-0">Filter</h5>
