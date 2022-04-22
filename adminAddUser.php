@@ -55,7 +55,7 @@ if(isset($_POST['signup']))
 
 						Username: $username<br>
 						Password: $passwordE
-						)";
+						";
 			
 						$HTMLcontent = "<p><b>Dear ".$_POST['username']."</b>,</p><p>$message</p>";
 						
