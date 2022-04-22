@@ -1,106 +1,48 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
-                    <!-- List All Product -->
-                    <div class="card-body">
-                                <div>
-                                    <h5 style ="text-align:center">CHOOSE A CAMPUS</h5>
-                                </div>
-                    <div class="row">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <?php
-                                        $sql = "SELECT DISTINCT(shop_id), shop_name, shop_profile_cover FROM shopProfile AS A LEFT JOIN user AS B ON A.shop_id = B.user_id WHERE B.role = 'ADMIN';  ";
+<?php
+session_start();
+  include_once "backend/db.php";
+  if(!isset($_SESSION['userID'])){
+    header("location: login.php");
+  }
+?>
+<body>
+  <div class="wrapper">
+    <section class="chat-area">
+      <header>
+        <?php 
+          $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE userID = {$user_id}");
+          if(mysqli_num_rows($sql) > 0){
+            $row = mysqli_fetch_assoc($sql);
+          }else{
+            header("location: users.php");
+          }
+        ?>
+        <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <img src="php/images/<?php echo $row['profile_picture']; ?>" alt="">
+        <div class="details">
+          <span><?php echo $row['username']?></span>
+        </div>
+      </header>
+      <div class="chat-box">
 
-                                        $result = mysqli_query($conn, $sql);
- 
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                echo ("
-                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6\" style=\"padding-bottom: .625rem;\">
-                                                        <a data-sqe=\"link\" href=\"facilityCampus.php?campusId=".$row['shop_id']."\">
-                                                            <div class=\"card\">
-                                                                <div class=\"image-container\">
-                                                                    <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"".$row['shop_profile_cover']."\" alt=\"Card image cap\">
-                                                                </div>
-                                                                <div class=\"card-body-text\">
-                                                                    <div class=\"Name\">
-                                                                        <p class=\"card-text campus-name\">".$row['shop_name']."</p>
-                                                                    </div>            
-                                                                </div>
-                                                            </div>   
-                                                        </a>
-                                                    </div>         
-                                                ");
-                                            }
-                                        }
+      </div>
+      <form action="#" class="typing-area">
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
+        <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+        <button><i class="fab fa-telegram-plane"></i></button>
+      </form>
+    </section>
+  </div>
 
-                                        ?>
-                                        
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    <br>
-                    <div class="card-header py-3">
-                                    <h5>EXPLORE SEGI FACILITIES</h5>
-                                </div>
-                    <!-- Slideshow -->
-                    <div class="w3-display-middle" style="width:100%">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <?php
-                                    $sql = "SELECT * FROM facilityPic LIMIT 3";
+  <script src="javascript/chat.js"></script>
 
-                                    $result = mysqli_query($conn, $sql);
-                                    $i = false;
-                        
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            if ($i){
-
-                                                echo ("
-                                                    <div class=\"carousel-item\">
-                                                    <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
-                                                    </div>         
-                                                ");
-                                            }
-                                            else{
-                                                echo ("
-                                                <div class=\"carousel-item active\">
-                                                <img class=\"d-block w-100\" src=\"".$row["pic_cover"]."\" alt=\"".$row["title"]."\">
-                                                </div>
-                                                            
-                                                ");
-                                                $i = true;
-                                            }
-                                        }
-                                    }
-
-                                    ?>
-                    
-                                </div>
-                                <a class="carousel-control-prev" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" style="z-index:0;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <!-- /.container-fluid -->
-                <br>
+</body>
+</html>
+<br>
 
 <?php
     require __DIR__ . '/footer.php'
