@@ -221,14 +221,7 @@ session_start();
     width: 45px;
   }
 }
-body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #f7f7f7;
-  padding: 0 10px;
-}
+
 .wrapper{
   background: #fff;
   max-width: 450px;
@@ -237,9 +230,6 @@ body{
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
               0 32px 64px -48px rgba(0,0,0,0.5);
 }
-    .card-body{
-       background-color: #A31F37;
-    }
 
 </style>
 

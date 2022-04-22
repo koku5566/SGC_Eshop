@@ -183,6 +183,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                                        <!-- <input type="hidden " name="uid" value="<?php echo $_SESSION['uid'];?>"> -->
                                         <input type="hidden" name="voucher_id" value="<?php echo $row['voucher_id']?>">
                                         <button type="submit" name="claim" class="btn btn-warning btn-sm" style="float: right" id="claimVoucherBtn">CLAIM</button>
                                     </form>
@@ -190,36 +191,6 @@
                             </div>
                         </div>
 
-                        <?php 
-
-                            if(isset($_POST['claim'])){
-
-
-                                $uid = $_SESSION['uid'];
-                                $voucher_id = $_POST['voucher_id'];
-                                echo $uid, $voucher_id;
-                                echo'hello';
-                                $sqlc = "INSERT INTO voucherRedemption ('voucher_id', 'user_id')
-                                         VALUES ('$voucher_id','$uid');";
-
-                                if($conn->query($sqlc))
-                                {
-                                    echo 'success';
-                                }
-                                else{
-                                    echo 'failed';
-                                }
-
-
-
-                                
-                              //  }
-
-                            }else{
-                                echo '<script>alert("Voucher claimed failed")</script>';
-                            }
-
-                        ?>
 
                         <!-- Voucher Modal -->
                         <div class="modal fade" id="termsModal<?php echo $row['voucher_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
@@ -299,6 +270,36 @@
         <br>
     </div>
 
+    <?php 
+
+if(isset($_POST['claim'])){
+
+    //$uid = $_POST['uid'];
+    $uid = $_SESSION['uid'];
+    $voucher_id = $_POST['voucher_id'];
+    echo $uid, $voucher_id; 
+    echo'hello';
+    $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
+             VALUES ('$voucher_id','$uid')";
+
+    if($conn->query($sqlc))
+    {
+        echo 'success';
+    }
+    else{
+        echo 'failed';
+    }
+
+
+
+    
+  //  }
+
+}else{
+    echo '<script>alert("Voucher claimed failed")</script>';
+}
+
+?>
 <?php 
 //    if(isset($_POST['submit'])){
 
