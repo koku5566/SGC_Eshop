@@ -244,7 +244,7 @@ $completedresult = $stmt->get_result();
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             
                             <?php       
-                              $sqlheader = "SELECT * FROM `myOrder` INNER JOIN user ON `myOrder`.`user_id` = `user`.`user_id` ";
+                              $sqlheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id WHERE orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
                               $resultheader = mysqli_query($conn, $sqlheader);
                               if (mysqli_num_rows($resultheader) > 0) {
                               while ($rowheader = mysqli_fetch_assoc($resultheader)) {
@@ -269,7 +269,7 @@ $completedresult = $stmt->get_result();
                                             $allsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.user_id = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
+                                                        WHERE orderDetails.order_id = '$oID' AND orderDetails.shop_id = '$user_id' ";
                                           
                                             $allresult = mysqli_query($conn, $allsql);
                                             if (mysqli_num_rows($aallresult) > 0) {
