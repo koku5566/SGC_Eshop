@@ -147,7 +147,14 @@
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-      <img class="relative bg-image img-fluid" name="profileImage[]" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
+
+      <?php if(!empty($statusMsg)){
+        echo $status;
+        echo $statusMsg;
+      }
+      ?>
+
+      <img class="relative bg-image img-fluid" name="profileImage" src="<?php echo $shopCoverImage ?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
         <input type="file" id="actual-btn" name="profileImage" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
@@ -160,7 +167,7 @@
           <span>Change<br>Image</span>
         </label>
         <input id="file" type="file" name="profileImage" value="" onchange="loadFile(event)"/>
-        <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profileImage[]" width="200"/>
+        <img src="<?php echo $shopProfilePic ?>" id="profilePic" name="profileImage" width="200"/>
       </div>
     </div>
     
@@ -178,7 +185,7 @@
           <img id="frame" src="" class="img-fluid" />
         -->
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="profileImage[]" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="profileImage" value="<?php echo $shopProfilePic ?>" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
 
