@@ -75,7 +75,8 @@
                                     JOIN product ON productVoucher.product_id = product.product_id
                                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                                     GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id
-                                    WHERE voucherRedemption.user_id = $uid";
+                                    -- WHERE voucherRedemption.user_id = $uid
+                                    ";
 
                                     $stmt = $conn->prepare($sql_voucherR);
                                     $stmt->execute();
