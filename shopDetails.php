@@ -32,7 +32,7 @@
     else{
         ?>
             <script type="text/javascript">
-                //window.location.href = window.location.origin + "/index.php";
+                window.location.href = window.location.origin + "/index.php";
             </script>
         <?php
     }
