@@ -154,12 +154,27 @@ $queryKL = mysqli_query($conn, $sql);
    
     "); 
 
+   /*  date_default_timezone_set("Asia/Kuala_Lumpur");
+    $date = date("Y-m-d");
+    $paid = "Paid";
+
+    $usersql ="SELECT user.user_id FROM `user` WHERE user.userID= '$uid'";
+        $usersql1 = mysqli_query($conn, $suersql);
+        $userrow = mysqli_fetch_array($userresult);
+
+    $userid = $userresult['user_id']; */
+
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`) VALUES (?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
         $bp = mysqli_stmt_bind_param($stmt, "sssssiss", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time);
         $bp = mysqli_stmt_execute($stmt);
     }
+      /*   $sql3 = "INSERT INTO `myOrder`(`user_id`, `address_id`, `delivery_method`, `sku`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?,?)";
+        if ($stmt = mysqli_prepare($conn, $sql3)) {
+            $bp = mysqli_stmt_bind_param($stmt3, "iisssss", $userid, $user_address, $date, $paid, $invoice_id );
+            $bp = mysqli_stmt_execute($stmt3);
+    } */
     
 }
 if (mysqli_stmt_affected_rows($stmt) == 1) {
