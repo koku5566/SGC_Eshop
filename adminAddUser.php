@@ -36,7 +36,7 @@ if(isset($_POST['signup']))
 					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
 				
 					if (mysqli_query($conn, $sql)) {
-						if ($role == "SELLER"){
+						if ($_POST['role'] == "SELLER"){
 							$sql = "INSERT INTO shopProfile (shop_id, shop_name) VALUES ((SELECT CONCAT('U',(SELECT LPAD('$userid', 6, 0)))),'$username')";
 						}
 
