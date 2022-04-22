@@ -130,7 +130,7 @@
 
       <img class="relative bg-image img-fluid" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
       <div class="absolute">
-        <input type="file" id="actual-btn" name="profileCover[]" hidden/>
+        <input type="file" id="actual-btn" name="profileCover[]" onchange="loadFile(event)" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
@@ -322,6 +322,11 @@ function imageIsLoaded(e) {
 /* Profile image review */
 var loadFile = function (event) {
 var image = document.getElementById("profileImage");
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+var loadFile = function (event) {
+var image = document.getElementById("profileCover");
 image.src = URL.createObjectURL(event.target.files[0]);
 };
 
