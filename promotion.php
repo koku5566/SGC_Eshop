@@ -211,7 +211,7 @@
                                                         // $voucherid2 = $row['voucher_id'];
                                                         // for($i = 0; $i < count($voucherid2); $i++){
                                                         //     for($x = 0; $x < count($voucherid); $x++){
-                                                                // if($r['voucher_id'] == $row['voucher_id']){
+                                                                if($r['voucher_id'] == $row['voucher_id']){
                                             ?>
                                             <p><?php echo $r['product_name'];?>, </p>
                                             <?php 
@@ -233,9 +233,9 @@
                         </div>
                             
                             <?php 
-                                // } else{
-                                //     ;
-                                //}
+                                } else{
+                                    ;
+                                }
                         }?>
                         
                     </div>
