@@ -244,7 +244,8 @@
                          product.product_price
                     
                          FROM shopProfile
-                         INNER JOIN product ON shopProfile.shop_id = product.shop_id;
+                         INNER JOIN product ON shopProfile.shop_id = product.shop_id
+                         ";
                     
                     
                        $stmt = $conn->prepare($sqlp);
