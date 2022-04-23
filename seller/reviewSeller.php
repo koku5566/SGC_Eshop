@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_P
 					(SELECT  rr_id, product_id, user_id, message, rating, seller_id, r_message, pic1, pic2, pic3, pic4, pic5
 					FROM reviewRating
 					WHERE disable_date IS NULL) rr
-					ON u.userID = rr.user_id
+					ON u.user_id = rr.user_id
 					WHERE rr.rr_id = ? && rr.seller_id = '$shopId'";
 		   
             if($stmt = mysqli_prepare ($conn, $sql)){

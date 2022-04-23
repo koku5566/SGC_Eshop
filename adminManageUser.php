@@ -80,7 +80,7 @@
 						while($row = mysqli_fetch_array($res_data)){
 							echo("
 								<tr>
-									<td class='text-center text-lg text-medium'>".$row["userID"]."</td>
+									<td class='text-center text-lg text-medium'>".$row["user_id"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["username"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["email"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["name"]."</td>

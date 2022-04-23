@@ -39,7 +39,7 @@ if(isset($_POST['signup']))
 					while($row = mysqli_fetch_assoc($result)) {
 						$userid = $row["AUTO_INCREMENT"];
 
-						$sql = "INSERT INTO user (userID, username, email, password, name, contact, registration_date, role)
+						$sql = "INSERT INTO user (user_id, username, email, password, name, contact, registration_date, role)
 						VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','$role')";
 
 						if (mysqli_query($conn, $sql)) {

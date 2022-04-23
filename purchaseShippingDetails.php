@@ -28,7 +28,7 @@
     shopProfile.shop_profile_image
     FROM
     myOrder
-    JOIN user ON myOrder.userID = user.userID
+    JOIN user ON myOrder.userID = user.user_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN product ON orderDetails.product_id = product.product_id

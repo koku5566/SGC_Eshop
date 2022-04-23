@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 	$selectedPID = SanitizeString($_POST['pid']);
 		$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
 			    FROM user u INNER JOIN  reviewRating rr 
-			    ON  u.userID = rr.user_id 
+			    ON  u.user_id = rr.user_id 
 			    WHERE rr.disable_date IS NULL && rr.product_id = '$product' && rr.rr_id = ? 
 			    ORDER BY rr.rr_id";
 		
@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['pid']) && !empty($_PO
 			<?php			
 			$sql ="SELECT avg(rr.rating)
 			    FROM user u INNER JOIN  reviewRating rr 
-			    ON  u.userID = rr.user_id 
+			    ON  u.user_id = rr.user_id 
 			    WHERE rr.disable_date IS NULL && rr.product_id = '$product'
 			    ORDER BY rr.rr_id";
 			if($stmt = mysqli_prepare ($conn, $sql)){
