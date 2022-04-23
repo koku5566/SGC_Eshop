@@ -91,7 +91,11 @@ $order_id = $_GET['order_id'];
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                <a class="btn btn-primary"style="margin-left:10px;" href="getOrder.php?confirm&id=<?php echo $row['order_id'];?>" onclick="return confirm_click();">Confirmed Order</a>
                 
+                    <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
+                </div>
                 <?php } ?>
             </div>
           
