@@ -272,7 +272,7 @@ $shippingfee = 8.6;
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" value="standard delivery"checked>
+                            <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" value="standard-delivery"checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
                              </label>
@@ -280,7 +280,7 @@ $shippingfee = 8.6;
                     </div>
                     <div class="col2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping-option" id="pickup" value="pick up"required >
+                            <input class="form-check-input" type="radio" name="shipping-option" id="pickup" value="pick-up"required >
                             <label class="form-check-label" for="pickup">
                                 Pick-up
                             </label>
