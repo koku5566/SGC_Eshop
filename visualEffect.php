@@ -385,7 +385,7 @@
 									
 									$sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$i_shop_id'";
 									$result_shop = mysqli_query($conn, $sql_shop);
-									echo($sql_shop);
+
 									if (mysqli_num_rows($result_shop) > 0) {
 										while($row_shop = mysqli_fetch_assoc($result_shop)) {
 											$shop_id = $row_shop['shop_id'];
