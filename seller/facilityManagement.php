@@ -25,7 +25,7 @@
       $sql_insert .= "contact_whatsapp, pic_cover, pic1, pic2, pic3, pic4, campus_id ";
       $sql_insert .= ") ";
       $sql_insert .= "VALUES ((SELECT CONCAT('F',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'facilityPic'), 6, 0))) AS newCombinationId),'$title','$priceperhour','$description','$address', ";
-      $sql_insert .= "'$contact', ";
+      $sql_insert .= "'$contact',";
 
       foreach($_FILES['img']['name'] as $key=>$val){ 
          // File upload path 
@@ -249,6 +249,7 @@
                   </div>
                </div>      
             </div>
+            <?php echo "aaaaaa".$campusId?>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
                <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Add Facility</button>
             </div>
