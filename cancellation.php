@@ -10,11 +10,11 @@ if(@$_POST){
   $order_id = $_POST['order_id'];
   
 
-  $sql = "UPDATE myOrder SET reason_type = '$reason' , order_status='To respond' WHERE order_id = '$order_id'";
+  $sql = "UPDATE myOrder SET reason_type = '$reason' WHERE order_id = '$order_id'";
   $cancelOrder = $conn->query($sql);
 }
 if(isset($_GET["cancel"]) && isset($_GET["id"])){
-  $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+  $conn->query("UPDATE myOrder SET order_status = 'To Respond' WHERE order_id = ".$_GET["id"]);
 }
 ?>
 
