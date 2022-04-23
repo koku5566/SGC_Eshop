@@ -352,6 +352,9 @@ $_SESSION["userId"] = "U000018";
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
                                              Purchase Date: &nbsp;&nbsp;<?php echo $row['order_date']?></strong></span>
                                             </div>
+                                            <div class="col md-auto text-end" style="text-align:right;"><span><strong>
+                                             Order Status: &nbsp;&nbsp;<?php echo $row['order_status']?></strong></span>
+                                            </div>
                                         </div>
                                 </div>
                                 <div class="card-body">
