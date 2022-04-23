@@ -62,6 +62,24 @@ $order_id = $_GET['order_id'];
       </div>
 
       <!--------------------END OF DETAILS---------------------->
+      <!--------------------ASK REASON TO CANCEL---------------->
+      <div class="card-body">
+          <h1>Please tell us the reason why you want to cancel</h1>
+          <form method="post" action="getOrder.php" style="font-size:25px;">
+                <input type="radio" id="id_1" name="reason" value="Regrets"  checked>
+                <label for="id_1" >Regrets</label><br>
+                <input type="radio" id="id_2" name="reason" value="Change Of Mind">
+                <label for="id_2">Change of Mind</label><br>
+                <input type="radio" id="id_3" name="reason" value="Change Color">
+                <label for="id_3">Change Color</label><br>
+                <input type="radio" id="id_4" name="reason" value="Others" checked>
+                <label for="id_1">Others</label><br>
+                <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
+                <input type="submit" value="Confirm">
+            </form>
+      </div>
+      <!-----------------END OF ASK REASON TO CANCEL------------>
+
     </div>
   </section>
 </div>
