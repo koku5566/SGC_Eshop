@@ -219,7 +219,7 @@
 <script>
    function handleChange() {
       var x = [];
-      $("input[type='checkbox']").change(function(){
+      $("input[type='checkbox']")
       if(this.checked){
          x.push(this.value);
       }
@@ -228,7 +228,7 @@
          x.splice(index, 1);
       }
       console.log(x.join(','));
-      });
+      ;
 }
    //  var allCB = document.getElementById("input[id='defaultCheck1']").value;
    //  console.log(allCB);
