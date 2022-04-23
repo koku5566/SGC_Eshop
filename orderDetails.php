@@ -3,7 +3,15 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-
+$shippingfee = 8.6;
+                    $sql3 = "SELECT * FROM myOrder 
+                    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+                    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
+                    WHERE myOrder.order_id = $order_id";
+                    
+                    $result3 = $conn->query($sql3);
+                    while($row3 = $result3->fetch_assoc()){
+                        
 ?>
 
 
@@ -64,16 +72,7 @@ $order_id = $_GET['order_id'];
                 <br>
                 
                 <?php }?>
-                <?php
-                    $shippingfee = 8.6;
-                    $sql3 = "SELECT * FROM myOrder 
-                    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-                    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-                    WHERE myOrder.order_id = $order_id";
-                    
-                    $result3 = $conn->query($sql3);
-                    while($row3 = $result3->fetch_assoc()){
-                ?>
+                
                 <div class="card-footer">
                     <div class="col-4" style="text-align:right; margin-left:60%">
                         <div class="row p-2">
