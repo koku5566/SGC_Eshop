@@ -50,7 +50,7 @@
                                     <hr>
                                     <?php
 
-                                    $uid = $_SESSION['uid'];
+                                    $uid = $_SESSION['userid'];
 
                                     $sql_voucherR =
                                     "SELECT 
