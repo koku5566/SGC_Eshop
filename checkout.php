@@ -12,7 +12,7 @@
      $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
-     WHERE userAddress.user_id = '$_SESSION[uid]'";
+     WHERE userAddress.user_id = '$userID'";
 
 
 //Username and address
@@ -77,7 +77,7 @@ $shippingfee = 8.6;
     <?php
 
     /* user address call */
-	$sql = "SELECT * FROM userAddress WHERE user_id ='$_SESSION[uid]'";
+	$sql = "SELECT * FROM userAddress WHERE user_id ='$userID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
