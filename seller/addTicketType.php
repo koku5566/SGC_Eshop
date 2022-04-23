@@ -165,10 +165,10 @@
                                 <h5>Ticket Name</h5><input class="form-control" type="text" placeholder="Ticket Name" name="ticketName">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Capacity</h5><input class="form-control" type="text" placeholder="Number of ticket can be sold" name="capacity">
+                                <h5>Capacity</h5><input class="form-control" type="number" placeholder="Number of ticket can be sold" name="capacity">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <h5>Price</h5><input class="form-control" type="text" placeholder="Price" name="price">
+                                <h5>Price</h5><input class="form-control" type="number" placeholder="Price" name="price">
                             </div>
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-6">
@@ -205,11 +205,11 @@
                             </div>
                             <div style="margin-bottom: 20px;">
                                 <h5>Capacity</h5>
-                                <input class="form-control" type="text" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
+                                <input class="form-control" type="number" id="editCapacity" name="editCapacity" placeholder="Number of ticket can be sold">
                             </div>
                             <div style="margin-bottom: 20px;">
                                 <h5>Price</h5>
-                                <input class="form-control" type="text" id="editPrice" name="editPrice" placeholder="Price">
+                                <input class="form-control" type="number" id="editPrice" name="editPrice" placeholder="Price">
                             </div>
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-6">

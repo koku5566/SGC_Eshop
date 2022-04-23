@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $eventid = $_GET['id'];
 }
 $query = "SELECT ticketType.ticket_name,COUNT(*) AS cnt FROM ticketTransaction JOIN ticketType ON ticketType.ticketType_id = ticketTransaction.ticket_type_id WHERE ticketTransaction.event_id = '$eventid' GROUP BY ticketType.ticket_name ORDER BY COUNT(*) DESC ";
-$query_run = mysqli_query($conn,$query);
+$query_run = mysqli_query($conn, $query);
 
 ?>
 
@@ -22,9 +22,54 @@ if (isset($_POST['reject'])) {
         mysqli_stmt_bind_param($stmt, "si", $status, $eID);
         mysqli_stmt_execute($stmt);
         if (mysqli_stmt_affected_rows($stmt) == 1) {
-            echo "<script>alert('Success!!!!!');</script>";
-            //Add $_SESSION['eventID'] = "";
-            //Add Redirect to next page
+
+            $sqlgetSeller = "SELECT * FROM `event` INNER JOIN `user` ON `user`.`id` = `event`.`organiser_id` WHERE `event_id` = \"$eID\"";
+            $resultSeller = mysqli_query($conn, $sqlgetSeller);
+
+            if (mysqli_num_rows($resultSeller) > 0) {
+                while ($rowSeller = mysqli_fetch_assoc($resultSeller)) {
+                    $buyerEmail = "koku5566@gmail.com"; //$rowSeller['email']; //--------------Need Change-----------------
+                    $eventName = $rowSeller['event_name'];
+                    $buyerName = $rowSeller['name'];
+                    $to = $buyerEmail;
+                    $subject = "Event Status for $eventName - " . $status;
+                    $from = "event@sgcprototype2.com";
+                    $from2 = "event@sgcprototype2.com";
+                    $fromName = "SGC E-Shop Admin";
+
+                    $headers =  "From: $fromName <$from> \r\n";
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+                    $message = "
+                    <h5>Your Event Had Been $status</h5>
+                    <p>Organiser Name: $buyerName</p>
+                    <p>Organiser Email: $buyerEmail</p>
+                    <p>Created Event: $eventName</p>
+                    <h4>Thank you</h4>
+                    <h4>Best Regards</h4>
+                    <h4>SGC Eshop</h4>
+			        ";
+
+                    $HTMLcontent = "<p><b>Dear $buyerName</b>,</p><p>$message</p>";
+
+                    $boundary = md5(time());
+                    $headers .= " boundary=\"{$boundary}\"";
+                    $message = "--{$boundary}\r\n";
+                    $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+                    $message .= "Content-Transfer-Encoding: 7bit\r\n";
+                    $message .= $HTMLcontent . "\r\n";
+                    $message .= "--{$boundary}\r\n";
+                    $returnPath = "-f" . $from2;
+
+                    if (@mail($to, $subject, $message, $headers, $returnPath)) {
+                        echo "<script>alert('A notification email has been sent to $buyerEmail')</script>";
+                    } else {
+                        echo "<script>alert('Error')</script>";
+                    }
+                }
+            }
         } else {
             $error = mysqli_stmt_error($stmt);
             echo "<script>alert($error);</script>";
@@ -38,9 +83,48 @@ if (isset($_POST['reject'])) {
         mysqli_stmt_bind_param($stmt, "si", $status, $eID);
         mysqli_stmt_execute($stmt);
         if (mysqli_stmt_affected_rows($stmt) == 1) {
-            echo "<script>alert('Success!!!!!');</script>";
-            //Add $_SESSION['eventID'] = "";
-            //Add Redirect to next page
+            
+            $buyerEmail = "koku5566@gmail.com"; //$rowSeller['email']; //--------------Need Change-----------------
+                    $eventName = $rowSeller['event_name'];
+                    $buyerName = $rowSeller['name'];
+                    $to = $buyerEmail;
+                    $subject = "Event Status for $eventName - " . $status;
+                    $from = "event@sgcprototype2.com";
+                    $from2 = "event@sgcprototype2.com";
+                    $fromName = "SGC E-Shop Admin";
+
+                    $headers =  "From: $fromName <$from> \r\n";
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+                    $message = "
+                    <h5>Your Event Had Been $status</h5>
+                    <p>Organiser Name: $buyerName</p>
+                    <p>Organiser Email: $buyerEmail</p>
+                    <p>Created Event: $eventName</p>
+                    <h4>Thank you</h4>
+                    <h4>Best Regards</h4>
+                    <h4>SGC Eshop</h4>
+			        ";
+
+                    $HTMLcontent = "<p><b>Dear $buyerName</b>,</p><p>$message</p>";
+
+                    $boundary = md5(time());
+                    $headers .= " boundary=\"{$boundary}\"";
+                    $message = "--{$boundary}\r\n";
+                    $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+                    $message .= "Content-Transfer-Encoding: 7bit\r\n";
+                    $message .= $HTMLcontent . "\r\n";
+                    $message .= "--{$boundary}\r\n";
+                    $returnPath = "-f" . $from2;
+
+                    if (@mail($to, $subject, $message, $headers, $returnPath)) {
+                        echo "<script>alert('A notification email has been sent to $buyerEmail')</script>";
+                    } else {
+                        echo "<script>alert('Error')</script>";
+                    }
+
         } else {
             $error = mysqli_stmt_error($stmt);
             echo "<script>alert($error);</script>";
@@ -72,41 +156,49 @@ if (isset($_POST['reject'])) {
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">    
-  google.charts.load('current', {'packages':['bar']});
-// Draw the coulumn chart when Charts is loaded.
-google.charts.setOnLoadCallback(drawColChart);
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        // Draw the coulumn chart when Charts is loaded.
+        google.charts.setOnLoadCallback(drawColChart);
 
-function drawColChart() {
+        function drawColChart() {
 
-var data = google.visualization.arrayToDataTable([
-    ['Ticket Type', 'Ticket Sold',],         
-    <?php 
-    foreach ($query_run as $row)
-    {          
-       echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
-    }
-      ?>
-  ]);
+            var data = google.visualization.arrayToDataTable([
+                ['Ticket Type', 'Ticket Sold', ],
+                <?php
+                foreach ($query_run as $row) {
+                    echo "['" . $row['ticket_name'] . "', " . $row['cnt'] . "],";
+                }
+                ?>
+            ]);
 
-var options = {
-   width: 800,
-   legend: { position: 'none' },
-   chart: {
-     title: 'Tickets Sold By Ticket Type',
-     subtitle: 'Ticket Number Sold' },
-   axes: {
-     x: {
-       0: { side: 'top', label: 'Ticket Type'} // Top x-axis.
-     }
-   },
-   bar: { groupWidth: "50%" }
- };
- var chart = new google.charts.Bar(document.getElementById('columnchart'));
- chart.draw(data, google.charts.Bar.convertOptions(options));
-};
-  
-</script>
+            var options = {
+                width: 800,
+                legend: {
+                    position: 'none'
+                },
+                chart: {
+                    title: 'Tickets Sold By Ticket Type',
+                    subtitle: 'Ticket Number Sold'
+                },
+                axes: {
+                    x: {
+                        0: {
+                            side: 'top',
+                            label: 'Ticket Type'
+                        } // Top x-axis.
+                    }
+                },
+                bar: {
+                    groupWidth: "50%"
+                }
+            };
+            var chart = new google.charts.Bar(document.getElementById('columnchart'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+    </script>
 
     <h1>Event Dashboard</h1>
     <div class="card">
@@ -151,7 +243,8 @@ var options = {
     <div class="card" style="margin-top: 40px;">
         <div class="card-body">
             <h4 class="card-title">Ticket Type performance</h4>
-            <div id="columnchart" class="col-sm-6"style="width: 600px; height: 500px; padding-right:50px;"></div>  </body>
+            <div id="columnchart" class="col-sm-6" style="width: 600px; height: 500px; padding-right:50px;"></div>
+            </body>
         </div>
     </div>
     <div class="card" style="margin-top: 40px;">
