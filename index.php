@@ -143,6 +143,18 @@
                                                 }
                                             }   
                                         ?>
+
+                                            <li class="menu-item" style="display: list-item;">
+                                            <a href="event.php" class="nav-link">
+                                            <img src="/img/resource/event.png" style="width:25px;margin-right:5px;">
+                                            Event
+                                            </a>
+                                            <li class="menu-item" style="display: list-item;">
+                                            <a href="facilityRental.php" class="nav-link">
+                                            <img src="/img/resource/facility.png" style="width:25px;margin-right:5px;">
+                                            Facility Rental
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -400,7 +412,6 @@
                                                     WHERE A.product_id = '$id'
                                                     LIMIT 1";
                                                     $result_1 = mysqli_query($conn, $sql_1);
-                                                    echo($sql_1);
                                                     if (mysqli_num_rows($result_1) > 0) {
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             
