@@ -7,6 +7,21 @@
 		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid'");
 		$row1 = mysqli_fetch_array($results);
 
+    /* deduct stock */
+    $stocksql = "SELECT product_stock, FROM `product`
+    ";
+    $stockresult = mysqli_query($conn, $stocksql);
+    while($row3 = mysqli_fetch_array($stockresult)){
+        $stock = $row3['product_stock'];
+    }
+
+    $stocksql2 = "SELECT product_stock, FROM `variation`
+    ";
+    $variationresult = mysqli_query($conn, $stocksql2);
+    while($row4 = mysqli_fetch_array($variationresult)){
+        $variationStock = $row4['product_stock'];
+    }
+
 $uid = $_SESSION['userid'];
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
 cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
@@ -110,19 +125,6 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $row1['payment_amount'];
 
-
-    /* deduct stock */
-     $stocksql = "SELECT product_stock, FROM `product`
-    ";
-    $stockresult = mysqli_query($conn, $stocksql);
-    while ($row3 = mysqli_fetch_array($stockresult)) {
-
-
-    $stocksql2 = "SELECT product_stock, FROM `variation`
-    ";
-    $variationresult = mysqli_query($conn, $stocksql2);
-    while ($row4 = mysqli_fetch_array($variationresult)) {
-
 /*     $stock = $row3['product.product_stock'];
     $variationStock = $row3['variation.product_stock'];
     $deductQuantity1 = $stock-$product_quantity;
@@ -132,7 +134,6 @@ $queryKL = mysqli_query($conn, $sql);
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
-        $stock = $row3['product_stock'];
         $deductQuantity1 = $stock-$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
@@ -142,14 +143,13 @@ $queryKL = mysqli_query($conn, $sql);
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
     if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
-        $variationStock = $row4['product_stock'];
         $deductQuantity2 = $variationStock-$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
         $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    } }
-    }
+    } 
+
 /*    echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
