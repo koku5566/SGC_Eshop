@@ -30,9 +30,6 @@ $order_id = $_GET['order_id'];
         </div>
       </div>
     </div>
-      
-      <br>
-    </div>
   </section>
 </div>
 <!-- /.container-fluid -->
