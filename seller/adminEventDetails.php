@@ -43,7 +43,7 @@ if (isset($_POST['reject'])) {
 
 
                     $message = "
-                    <h5>Your Event Had Been $status</h5>
+                    <h5>Your Event Has Been $status</h5>
                     <p>Organiser Name: $buyerName</p>
                     <p>Organiser Email: $buyerEmail</p>
                     <p>Created Event: $eventName</p>
@@ -105,7 +105,7 @@ if (isset($_POST['reject'])) {
 
 
                     $message = "
-                    <h5>Your Event Had Been $status</h5>
+                    <h5>Your Event Has Been $status</h5>
                     <p>Organiser Name: $buyerName</p>
                     <p>Organiser Email: $buyerEmail</p>
                     <p>Created Event: $eventName</p>
