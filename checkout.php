@@ -83,7 +83,7 @@ $shippingfee = 8.6;
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <a href=\"checkout.php?addressid=".$addressrow["user_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
