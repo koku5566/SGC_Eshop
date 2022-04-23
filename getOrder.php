@@ -3,7 +3,7 @@
 
 ?>
 <?php
-$userid = $_SESSION["userid"]; //EXP: U000063
+$user_id = $_SESSION["userid"]; //EXP: U000063
 
 $sql_2 = "SELECT
 DISTINCT
