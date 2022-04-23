@@ -201,8 +201,17 @@
                         //end looping product for each shop    
                         }
 
-                        echo "<tr >   
-                                <td colspan='6'>Total: ".number_format($total,2)."</td>
+                        echo "<tr >  
+                                <td colspan='4'>";
+                    ?>
+                    
+                    <?php
+                            require __DIR__ .'/voucherModal.php'
+                        ?>
+                    <?php
+                        echo"
+                                </td>
+                                <td colspan='2' style='text-align: right;'>Total: ".number_format($total,2)."</td>
                             </tr>";
                     // end of looping shop    
                     }
@@ -217,7 +226,7 @@
                         <!-- Select voucher Modal -->
                         
                         <?php
-                            require __DIR__ .'/voucherModal.php'
+                            //require __DIR__ .'/voucherModal.php'
                         ?>
                     <!-- </form> -->
                         <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
