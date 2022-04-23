@@ -228,7 +228,7 @@
                                 $today = strtotime($td);
                                 $expired = strtotime($expr);
 
-                                if($row['voucher_display'] == 1   && $row['voucher_limit'] > 0 && $expired > $today && $row['voucher_list'] == 1 &&  $row['voucher_status'] == 1){
+                                if($row['voucher_display'] == 1   && $row['voucher_limit'] > 0 && $expired > $today){
                             ?>
 
                             <div class="col-md-2 m-4">
@@ -355,7 +355,7 @@
                                     echo '<script>alert("Voucher claimed succesfully.")</script>';
                                 }
                                 else{
-                                    echo $uid;
+                                    echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
                                 }
                             }
 
