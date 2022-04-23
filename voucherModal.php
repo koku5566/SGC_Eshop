@@ -223,7 +223,8 @@
       values.push($(this).val());
       for( var i=0; i<values.length;i++)
       {
-          console.log(i +"is"+ values[i]);
+          //console.log(i +"is"+ values[i]);
+          
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
