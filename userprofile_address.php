@@ -64,7 +64,7 @@
 					</a>
 				</div>
 				<div class=\"col-2\">
-					<form method=\"post\">
+					<form method=\"post\" style=\"height:100%;width:100%;\">
 						<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 					</form>
 				</div>
