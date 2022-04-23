@@ -36,7 +36,7 @@ $queryKL = mysqli_query($conn, $sql);
     $product_name = $rowKL['P_name'];
     $product_quantity = $rowKL['P_quantity'];
     $shop_id = $rowKL['shop_id'];
-    $shop_id = $rowKL['shop_id'];
+
     
 
     $variation_message = "";
@@ -47,7 +47,7 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
-            $variation_id = "";
+            $variation_id = "0";
 
             $variation_message = "<option selected>Not Variation</option>";
         }
