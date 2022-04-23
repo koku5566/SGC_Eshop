@@ -44,7 +44,7 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
+                        <div class="col-1"><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
                         <div class="col-5">
                             <?php echo $row2['product_name']; ?>
                         </div>
