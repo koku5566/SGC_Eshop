@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" onclick="applyVoucher()">Apply</button>
+        <button type="button" class="btn btn-warning" onclick="useVoucher()">Apply</button>
       </div>
     </div>
   </div>
@@ -217,16 +217,13 @@
 </div>
 
 <script>
-   function applyVoucher() {
+   function useVoucher() {
       var values = new Array();
       $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
       for( var i=0; i<values.length;i++)
       {
-          $amount = values;
-          <?php
-          echo "<p>$amount</p>"
-          ?>;
+          console.log(values[i]);
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
