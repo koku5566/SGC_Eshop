@@ -238,7 +238,7 @@
         </div>
     </div>
     <div class="shopping-cart-footer" >
-        <form action="cart_manage.php" method="POST">
+        <form class = "footer" action="cart_manage.php" method="POST">
             <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
@@ -670,6 +670,11 @@ select.form-control {
 
 .form-control-sm:not(textarea) {
     height: 36px;
+}
+
+.footer
+{
+    float:right;
 }
 </style>
 
