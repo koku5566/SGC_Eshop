@@ -3,7 +3,12 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-
+if(isset($_POST['cancel']))
+{
+  $reason_type = $_POST['reason_type'];
+  $order_id = $_POST['order_id'];
+  $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
+}
 
 ?>
 
@@ -66,13 +71,13 @@ $order_id = $_GET['order_id'];
       <div class="card-body">
           <h2>Please tell us the reason why you want to cancel</h2>
           <form method="post" action="getOrder.php" style="font-size:25px;">
-                <input type="radio" id="id_1" name="reason" value="Regrets"  >
+                <input type="radio" id="id_1" name="reason_type" value="Regrets"  >
                 <label for="id_1" >Regrets</label><br>
-                <input type="radio" id="id_2" name="reason" value="Change Of Mind">
+                <input type="radio" id="id_2" name="reason_type" value="Change Of Mind">
                 <label for="id_2">Change of Mind</label><br>
-                <input type="radio" id="id_3" name="reason" value="Change Color">
+                <input type="radio" id="id_3" name="reason_type" value="Change Color">
                 <label for="id_3">Change Color</label><br>
-                <input type="radio" id="id_4" name="reason" value="Others" >
+                <input type="radio" id="id_4" name="reason_type" value="Others" >
                 <label for="id_1">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
                 <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" onclick="return confirm_click();">
