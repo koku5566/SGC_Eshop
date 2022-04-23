@@ -46,7 +46,7 @@
 
                         //header for each shop 
                         echo "<tr >   
-                            <td colspan='6'>Total: $shop_name</td>
+                            <td colspan='6'>SHOP NAME: $shop_name</td>
                             </tr>";
 
                         //select product from this shop
