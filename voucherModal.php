@@ -73,7 +73,7 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" value="kk" id="defaultCheck1">
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
