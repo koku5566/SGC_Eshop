@@ -5,8 +5,8 @@
 <?php
    if(isset($_POST['AddFacility']))
    {
-      //$campusId = $_SESSION['userId'];
-      $campusId = $_SESSION["uid"];
+      $campusId = $_SESSION['userid'];
+      //$campusId = $_SESSION["uid"];
       $title = $_POST['title'];
       $description = $_POST['description'];
       $address = $_POST['address'];
