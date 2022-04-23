@@ -51,7 +51,7 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"row\">
+			<div class=\"row\" style=\"background-color: lightgrey; border: 3px solid white;\">
 				<div class=\"col-10\">
 					<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
 						<div class=\"container-col2\">
@@ -86,16 +86,7 @@
 <?php require __DIR__ . '/footer.php' ?>
 
 <style>
-.row2 {
-	background-color: lightgrey;
-	border: 3px solid white;
-}
 
-.col2 {
-	flex: 1;
-	border:1px solid #ddd;
-	padding: 1em;
-}
 
 .container-left-col2 {
 	width: 100%;
