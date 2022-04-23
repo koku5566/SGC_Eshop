@@ -115,12 +115,12 @@ $queryKL = mysqli_query($conn, $sql);
      $stocksql = "SELECT product_stock, FROM `product`
     ";
     $stockresult = mysqli_query($conn, $stocksql);
-    $row3 = mysqli_fetch_array($stockresult);
+    $row3 = mysqli_fetch_assoc($stockresult);
 
     $stocksql2 = "SELECT product_stock, FROM `variation`
     ";
     $variationresult = mysqli_query($conn, $stocksql2);
-    $row4 = mysqli_fetch_array($variationresult);
+    $row4 = mysqli_fetch_assoc($variationresult);
 
 /*     $stock = $row3['product.product_stock'];
     $variationStock = $row3['variation.product_stock'];
