@@ -675,6 +675,7 @@ select.form-control {
 .footer
 {
     float:right;
+    margin-bottom: 25px;
 }
 </style>
 
