@@ -162,7 +162,7 @@ $queryKL = mysqli_query($conn, $sql);
     $paid = "Paid";
     $shippingMethod = $_SESSION['shippingMethod'];  
 
-    $usersql ="SELECT id FROM `user` WHERE user.user_id= '".$uid."'";
+    $usersql ="SELECT id FROM `user` WHERE user.user_id= '$uid'";
         $usersql1 = mysqli_query($conn, $suersql);
         $userrow = mysqli_fetch_array($userresult);
         $userid = $userresult['id'];
@@ -176,7 +176,7 @@ $queryKL = mysqli_query($conn, $sql);
     }
            $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?,?)";
         if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp3 = mysqli_stmt_bind_param($stmt4, "ssissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
+            $bp3 = mysqli_stmt_bind_param($stmt4, "ssissss", $userid, $uid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
             $bp3 = mysqli_stmt_execute($stmt4);
     }   
     
