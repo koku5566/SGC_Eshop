@@ -53,4 +53,6 @@
                 window.location.href = window.location.origin + '/checkout.php';
             </script>";
     }
+
+    //$sql_table = "SELECT * FROM "
 ?>
