@@ -136,11 +136,11 @@
       <!--<div class="sellerPicContainer mx-auto d-block"><img id="" class="sellerPic" name="profileImage" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"></div><br><br>
       </div>-->
       <div class="profile-pic"> 
-        <label class="-label" for="file">
+        <label class="-label mb-5" for="file">
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage[]"class="mb-5"  value="" onchange="loadImage(event)"/>
+        <input id="file" type="file" name="profileImage[]"  value="" onchange="loadImage(event)"/>
         <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-5" width="200"/>
       </div>
     </div>
