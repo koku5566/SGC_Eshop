@@ -140,7 +140,7 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage[]" value="" onchange="loadImage(event)"/>
+        <input id="file" type="file" name="profileImage[]"class="mb-5"  value="" onchange="loadImage(event)"/>
         <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-5" width="200"/>
       </div>
     </div>
@@ -243,7 +243,6 @@ div.absolute {
   height: 65px;
   width: 65px;
   left: 320px;
-  margin-bottom: 30px;
 }
 .profile-pic:hover .-label {
   display: flex;
