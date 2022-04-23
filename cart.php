@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $userID = $_SESSION["uid"];
+    $userID = $_SESSION["userid"];
 
     //filter shop profile
     $sql_shop = "SELECT DISTINCT(cart.shop_id) AS shopID, shopProfile.shop_name as shop_name 

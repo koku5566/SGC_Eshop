@@ -48,10 +48,10 @@
     }
     else if(isset($_POST['addToCart']))
     {
-        if(isset($_SESSION["uid"]))
+        if(isset($_SESSION["userid"]))
         {
             $quatity = $_POST['quantity'];
-            $userId = $_SESSION["uid"];
+            $userId = $_SESSION["userid"];
             $shopId = $_SESSION["shopId"];
             $product_id = $_SESSION["productID"];
             $variationId = $_SESSION["variationId"];

@@ -36,7 +36,7 @@
          <div class="scrolling-wrapper2 row">
          <?php
 
-         $uid = $_SESSION['uid'];
+         $uid = $_SESSION['userid'];
 
          $sql_voucherR =
          "SELECT 
