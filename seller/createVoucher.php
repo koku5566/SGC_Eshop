@@ -231,7 +231,7 @@
                     
                     <tbody> 
                      <?php 
-                        $shopId = $_SESSION['uid'];
+                        $shopId = $_SESSION['userid'];
 
                         $sqlp = 
                         "SELECT 

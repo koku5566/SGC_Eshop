@@ -44,7 +44,7 @@ $order_id = $_GET['order_id'];
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-1"><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
+                        <div class="col-1"><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
                         <div class="col-5">
                             <?php echo $row2['product_name']; ?>
                         </div>
@@ -61,8 +61,36 @@ $order_id = $_GET['order_id'];
                     </div>
                 </div>
                 <br>
-                
-            </div>
+                <div class="card-footer">
+                <div class="col-4" style="text-align:right; margin-left:60%">
+                    <div class="row p-2">
+                        <div class="col">Total:</div>
+                        <div class="col"> RM<?php echo $row2['amount']?>.00</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col">Discounts:</div>
+                        <div class="col">-RM0.00</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col">Delivery Fees:</div>
+                        <div class="col">
+                                0.00
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col">
+                            <h5>Order Total:</h5>
+                            
+                        </div>
+                        <div class="col red-text">
+                            <h5><strong>RM<?php echo $row2['amount']?>.00</strong></h5>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                </div>
             <br>
             
             <?php }?>
