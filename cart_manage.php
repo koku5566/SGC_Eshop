@@ -54,5 +54,10 @@
             </script>";
     }
 
-    //$sql_table = "SELECT * FROM "
-?>
+    // if (isset($_POST['product_id']))
+    // {
+    //     $_SESSION['product_id'] = $_POST['product_id'];
+
+    //     echo "";
+    // }
+?> 
