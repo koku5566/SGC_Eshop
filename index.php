@@ -358,7 +358,6 @@
                                     echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
                                 }
                             }
-
                         }
 
                         ?>
@@ -401,7 +400,7 @@
                                                     WHERE A.product_id = '$id'
                                                     LIMIT 1";
                                                     $result_1 = mysqli_query($conn, $sql_1);
-
+                                                    echo($sql_1);
                                                     if (mysqli_num_rows($result_1) > 0) {
                                                         while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                             

@@ -108,7 +108,6 @@
                     if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
                         $sql_insert .= "'$fileName', ";
                         $imgInpCounter++;
-                        echo($fileName);
                     }
                 }
             }
@@ -127,7 +126,6 @@
         $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
-        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
             //Got Variation
             if($variationType == 1)
