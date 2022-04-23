@@ -73,7 +73,7 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" value="<?php echo $row['voucher_code']; ?>" id="defaultCheck1[]">
+               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['voucher_code']; ?>" id="defaultCheck1">
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
@@ -219,8 +219,9 @@
 <script>
    function handleChange() {
       var values = new Array();
-      $.each($("input[id='defaultCheck1[]']:checked"), function() {
+      $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
+      echo (values);
   // or you can do something to the actual checked checkboxes by working directly with  'this'
   // something like $(this).hide() (only something useful, probably) :P
 });
