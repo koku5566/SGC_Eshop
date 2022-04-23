@@ -218,7 +218,7 @@
 
 <script>
    function handleChange() {
-    var allCB = document.querySelectorAll("input[id='defaultCheck1']");
+    var allCB = document.getElementById("input[id='defaultCheck1']").value;
     console.log(allCB);
    //  for(var i=0; i< allCB.length; i++){
    //      allCB[i].checked=true;
