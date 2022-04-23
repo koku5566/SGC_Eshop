@@ -4,18 +4,7 @@
 <?php
 $order_id = $_GET['order_id'];
 
-if(@$_POST){
 
-  $reason = $_POST['reason'];
-  $order_id = $_POST['order_id'];
-  
-
-  $sql = "UPDATE myOrder SET reason_type = '$reason' WHERE order_id = '$order_id'";
-  $cancelOrder = $conn->query($sql);
-}
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-  $conn->query("UPDATE myOrder SET order_status = 'To Respond' WHERE order_id = ".$_GET["id"]);
-}
 ?>
 
 
@@ -76,7 +65,7 @@ if(isset($_GET["cancel"]) && isset($_GET["id"])){
       <!--------------------ASK REASON TO CANCEL---------------->
       <div class="card-body">
           <h2>Please tell us the reason why you want to cancel</h2>
-          <form method="post" action="orderDetails.php" style="font-size:25px;">
+          <form method="post" action="getOrder.php" style="font-size:25px;">
                 <input type="radio" id="id_1" name="reason" value="Regrets"  >
                 <label for="id_1" >Regrets</label><br>
                 <input type="radio" id="id_2" name="reason" value="Change Of Mind">
