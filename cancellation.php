@@ -10,7 +10,13 @@ if(@$_POST){
   
 
   $sql = "UPDATE myOrder SET reason_type = '$reason' , order_status='Cancelled' WHERE order_id = '$order_id'";
-  $rs = $conn->query($sql);
+  $orderCancel = $conn->query($sql);
+  if($orderCancel){
+        
+    echo 'Order Cancelled <a href="getOrder.php">Click to return order page.</a>';
+}else{
+    echo 'Cancel FAILED. <a href="getOrder.php">Click to return order page.</a>';
+}
 }
 ?>
 
