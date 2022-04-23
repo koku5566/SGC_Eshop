@@ -230,7 +230,7 @@
                 <!-- Select voucher Modal -->
                 
                 <?php
-                    require __DIR__ .'/voucherModal.php'
+                    //require __DIR__ .'/voucherModal.php'
                 ?>
             </form>
                 <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">

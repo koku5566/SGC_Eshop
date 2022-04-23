@@ -46,7 +46,7 @@
                <tbody>
                   <?php 
 
-                     $shopId = $_SESSION['uid'];
+                     $shopId = $_SESSION['userid'];
 
                      $sql_myvoucher =
                      "SELECT

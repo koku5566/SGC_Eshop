@@ -244,7 +244,7 @@ $completedresult = $stmt->get_result();
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             
                             <?php       
-                              $sqlheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
+                              $sqlheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
                               $resultheader = mysqli_query($conn, $sqlheader);
                               if (mysqli_num_rows($resultheader) > 0) {
                               while ($rowheader = mysqli_fetch_assoc($resultheader)) {
@@ -320,7 +320,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php       
-                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
+                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
                               $tsresultheader = mysqli_query($conn, $sqltsheader);
                               if (mysqli_num_rows($tsresultheader) > 0) {
                               while ($tsrowheader = mysqli_fetch_assoc($tsresultheader)) {
@@ -343,7 +343,7 @@ $completedresult = $stmt->get_result();
                                             $toID = $tsrowheader['order_id'];
                                             //Loop product in each order
                                             $tssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
-                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
                                                         WHERE orderDetails.order_id = '$toID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
@@ -394,7 +394,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php       
-                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE  myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE  myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND orderDetails.shop_id = '$user_id' ";
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
@@ -417,7 +417,7 @@ $completedresult = $stmt->get_result();
                                             $poID = $purowheader['order_id'];
                                             //Loop product in each order
                                             $pusql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
-                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
                                                         WHERE orderDetails.order_id = '$poID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
                                             
@@ -466,7 +466,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Shipped' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Shipped' AND orderDetails.shop_id = '$user_id' ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -489,7 +489,7 @@ $completedresult = $stmt->get_result();
                                             $soID = $srowheader['order_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
-                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
                                                         WHERE orderDetails.order_id = '$soID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
@@ -538,7 +538,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.user_id = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND orderDetails.shop_id = '$user_id' ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -561,7 +561,7 @@ $completedresult = $stmt->get_result();
                                             $coID = $srowheader['order_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
-                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
                                                         WHERE orderDetails.order_id = '$coID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
