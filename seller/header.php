@@ -55,9 +55,9 @@
     {
         $_SESSION['id'] = "";
     }
-    if(!isset($_SESSION['uid']))
+    if(!isset($_SESSION['userid']))
     {
-        $_SESSION['uid'] = "";
+        $_SESSION['userid'] = "";
     }
     if(!isset($_SESSION['role']))
     {

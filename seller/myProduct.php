@@ -218,7 +218,7 @@
 
                                                 <?php
                                                 
-                                                    $shopId = $_SESSION['uid'];
+                                                    $shopId = $_SESSION['userid'];
                                                     $sql = "SELECT COUNT(DISTINCT A.product_id) AS total_product FROM product AS A WHERE shop_id = '$shopId' ";
 
                                                     if(isset($_GET['Panel']))
@@ -367,7 +367,7 @@
                                                         }
                                                     }
                                                 }
-                                                $shopId = $_SESSION['uid'];
+                                                $shopId = $_SESSION['userid'];
                                                 if($Where == false)
                                                 {
                                                     $sql .= " WHERE ";

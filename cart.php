@@ -8,7 +8,7 @@
                 FROM cart 
                 JOIN shopProfile
                 ON cart.shop_id = shopProfile.shop_id
-                WHERE `user_ID` = $userID AND cart.remove_Product = '0'";
+                WHERE `user_ID` = '$userID' AND cart.remove_Product = '0'";
     $query_shop = mysqli_query($conn, $sql_shop);
 
 ?>
@@ -209,7 +209,7 @@
                         <!-- Select voucher Modal -->
                         
                         <?php
-                           // require __DIR__ .'/voucherModal.php'
+                            require __DIR__ .'/voucherModal.php'
                         ?>
                     <!-- </form> -->
                         <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">

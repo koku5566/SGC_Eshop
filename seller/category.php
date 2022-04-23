@@ -562,7 +562,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Product</button>
+                        <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Category</button>
                         <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                         <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
                     </div>
@@ -597,7 +597,7 @@
                         }
                         ?>
                         <p>Caution</p>
-                        <p>Delete a main category will cause all sub category be also deleted !!!</p>
+                        <p>Delete a main category will cause all of its sub category be also deleted !!!</p>
                         <p>Only a category that are no product within it only able to delete</p>
                     </div>
                     <div class="modal-footer">
