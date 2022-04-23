@@ -11,19 +11,16 @@
 
 
 
-/*      $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-     FROM `userAddress`
-     JOIN user ON userAddress.user_id = user.user_id
-     WHERE userAddress.user_id = '$userID'"; */
+    
 
 
 //Username and address
             
- /*            $userresult = mysqli_query($conn, $usersql);  
+           $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
-            $_SESSION['userName'] = $userrow['name']; */
+            $_SESSION['userName'] = $userrow['name']; 
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
@@ -48,6 +45,14 @@
      JOIN user ON userAddress.user_id = user.user_id
      WHERE userAddress.address_id= '$_SESSION[getaddress]'";
  }
+
+else{
+    $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.user_id = '$userID'"; 
+
+}
 
     //get subtotal
     if (isset($_SESSION['subtotal'])) {
@@ -97,7 +102,7 @@ $shippingfee = 8.6;
                 </button></a>
 			</div>
 			");
-	 
+    }
     ?>
         </div>  
         <div class="modal-footer">
@@ -117,14 +122,14 @@ $shippingfee = 8.6;
         <!-- user address display -->    
         <form action="request1.php" method="post" class="paymentmethod">
         <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $addressrow['contact_name']; ?></label></div>
-                <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $addressrow['phone_number']; ?></label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 15px;"><?php echo $userrow['contact_name']; ?></label></div>
+                <div class="col offset-lg-0" style="text-align: left;"><label class="col-form-label" style="text-align: center;"><?php echo $userrow['phone_number']; ?></label></div>
                 <div class="col"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;" data-toggle="modal" data-target="#myModal"    >Change</button></div>
             </div>
             <div class="row">
-                <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $addressrow['address'],',',$addressrow['postal_code'],',', $addressrow['area'],',',$addressrow['state'],',',$addressrow['country']; ?></label></div>
+                <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
             </div>
-    }
+    
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div></div>
