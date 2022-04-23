@@ -77,7 +77,7 @@ $shippingfee = 8.6;
     /* user address call */
 	$UID = $_SESSION["userid"];
 	
-	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
+	$sql = "SELECT * FROM userAddress WHERE userAddress.user_id ='$UID'";
 
 	$res_data = mysqli_query($conn,$sql);
 	while($addressrow = mysqli_fetch_array($res_data)){
