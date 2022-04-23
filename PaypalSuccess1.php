@@ -168,16 +168,16 @@ $queryKL = mysqli_query($conn, $sql);
     <span>".$date."</span>
     <span>".$paid."</span>
     ");
-    
+
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-           $sql3 = "INSERT INTO `myOrder`(`userID` `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
+           $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp3 = mysqli_stmt_bind_param($stmt4, "sissss", $uid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
+            $bp3 = mysqli_stmt_bind_param($stmt4, "ssisisssssis", '0',$uid, $user_address,$shippingMethod, '0','0','0',$date, $paid,'0','0', $invoice_id );
             $bp3 = mysqli_stmt_execute($stmt4);
     }   
     
