@@ -320,7 +320,7 @@ $shippingfee = 8.6;
             </div>
             <br>
             <div class = 'row'>
-            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['subtotal'] ?>>
+            <input type = "hidden" name = "amount" value ='50'>
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = <?php echo $_SESSION['uid'] ?>>
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
