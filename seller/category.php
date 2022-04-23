@@ -4,7 +4,7 @@
     if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) || $_SESSION['role'] != "ADMIN"){
         ?>
             <script type="text/javascript">
-                window.location.href = window.location.origin + "/seller/sellerLogin.php";
+                window.location.href = window.location.origin + "/login.php";
             </script>
         <?php
         exit;
