@@ -128,16 +128,16 @@ $queryKL = mysqli_query($conn, $sql);
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
-        $bp2 = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
-        $bp2 = mysqli_stmt_execute($stmt2);
+        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
+        $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
     }
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
     if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
-        $bp1 = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
-        $bp1 = mysqli_stmt_execute($stmt3);
+        $bp = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
+        $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
     } 
@@ -177,10 +177,10 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-           $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp3 = mysqli_stmt_bind_param($stmt4, "ssisisssssis", $emptystring ,$uid, $user_address,$shippingMethod, $emptyint,$emptystring,$emptystring,$date, $paid,$emptystring,$emptyint, $invoice_id );
-            $bp3 = mysqli_stmt_execute($stmt4);
+    $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    if ($stmt4 = mysqli_prepare($conn, $sql3)) {
+        $bp = mysqli_stmt_bind_param($stmt4, "ssisisssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $date, $paid, $emptystring, $emptyint, $invoice_id );
+        $bp = mysqli_stmt_execute($stmt4);
     }   
     
 }
