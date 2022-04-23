@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-    $sql = (!empty(@$user_id)) ? "SELECT * FROM myOrder WHERE user_id ='$user_id'" : "SELECT * FROM myorder";
+    $sql = "SELECT * FROM myorder";
     $result = $conn->query($sql);
 ?>
 <?php
