@@ -75,7 +75,7 @@ $shippingfee = 8.6;
     <?php
 
     /* user address call */
-	$UID = $_SESSION["uid"];
+	$UID = $_SESSION["userid"];
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
