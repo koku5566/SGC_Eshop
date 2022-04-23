@@ -218,15 +218,22 @@
 
 <script>
    function handleChange() {
-    var allCB = document.getElementById("input[id='defaultCheck1']").value;
-    console.log(allCB);
+      var x = [];
+      $("input[type='checkbox']").change(function(){
+      if(this.checked){
+         x.push(this.value);
+      }
+      else {
+         var index = x.indexOf(this.value);
+         x.splice(index, 1);
+      }
+      console.log(x.join(','));
+      });
+}
+   //  var allCB = document.getElementById("input[id='defaultCheck1']").value;
+   //  console.log(allCB);
    //  for(var i=0; i< allCB.length; i++){
    //      allCB[i].checked=true;
    //  }
-}
-   // function myFunction() 
-   // {
-   // var x = document.getElementById("defaultCheck1").value;
-   // console.log(x);
-   // }
+
 </script>
