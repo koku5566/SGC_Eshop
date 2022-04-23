@@ -221,13 +221,13 @@
       var x = [];
       $("input[type='checkbox']").change(function(){
       if(this.checked){
-        echo (this.value);
+         x.push(this.value);
       }
       else {
          var index = x.indexOf(this.value);
-         echo ("no value");
+         x.splice(index, 1);
       }
-      // console.log(x.join(','));
+      console.log(x.join(','));
       });
 }
    //  var allCB = document.getElementById("input[id='defaultCheck1']").value;
