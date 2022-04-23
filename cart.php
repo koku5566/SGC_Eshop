@@ -142,7 +142,7 @@
                             }
     
                             echo "
-                                <tr>
+                                <tr id='".$product_id."'>
                                     <td>
                                         <div class='product-item'>
                                             <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
@@ -177,7 +177,7 @@
                                             <span class = 'add' id='addkl[$i]'>+</span>
                                         </div>
                                     </td>
-                                    <td class='text-center text-lg text-medium' >";
+                                    <td class='text-center text-lg text-medium' id='".$product_id."'>";
     
                             echo $stock_message; 
                         

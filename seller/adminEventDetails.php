@@ -43,7 +43,7 @@ if (isset($_POST['reject'])) {
 
 
                     $message = "
-                    <h5>Your Event Had Been $status</h5>
+                    <h5>Your Event Has Been $status</h5>
                     <p>Organiser Name: $buyerName</p>
                     <p>Organiser Email: $buyerEmail</p>
                     <p>Created Event: $eventName</p>
@@ -83,8 +83,14 @@ if (isset($_POST['reject'])) {
         mysqli_stmt_bind_param($stmt, "si", $status, $eID);
         mysqli_stmt_execute($stmt);
         if (mysqli_stmt_affected_rows($stmt) == 1) {
+
+            $sqlgetSeller = "SELECT * FROM `event` INNER JOIN `user` ON `user`.`id` = `event`.`organiser_id` WHERE `event_id` = \"$eID\"";
+            $resultSeller = mysqli_query($conn, $sqlgetSeller);
+
+            if (mysqli_num_rows($resultSeller) > 0) {
+                while ($rowSeller = mysqli_fetch_assoc($resultSeller)) {
             
-            $buyerEmail = "koku5566@gmail.com"; //$rowSeller['email']; //--------------Need Change-----------------
+                    $buyerEmail = "koku5566@gmail.com"; //$rowSeller['email']; //--------------Need Change-----------------
                     $eventName = $rowSeller['event_name'];
                     $buyerName = $rowSeller['name'];
                     $to = $buyerEmail;
@@ -99,7 +105,7 @@ if (isset($_POST['reject'])) {
 
 
                     $message = "
-                    <h5>Your Event Had Been $status</h5>
+                    <h5>Your Event Has Been $status</h5>
                     <p>Organiser Name: $buyerName</p>
                     <p>Organiser Email: $buyerEmail</p>
                     <p>Created Event: $eventName</p>
@@ -124,6 +130,8 @@ if (isset($_POST['reject'])) {
                     } else {
                         echo "<script>alert('Error')</script>";
                     }
+                }
+            }
 
         } else {
             $error = mysqli_stmt_error($stmt);
