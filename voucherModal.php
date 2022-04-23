@@ -73,7 +73,7 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1">
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning">Apply</button>
+        <button type="button" class="btn btn-warning" onclick="myFunction()">Apply</button>
       </div>
     </div>
   </div>
@@ -215,3 +215,12 @@
     </div>
   </div>
 </div>
+
+<script>
+   function myFunction() 
+   {
+   var x = document.getElementById("defaultCheck1").value;
+   document.getElementById("demo").innerHTML = x;
+   console.log(x);
+   }
+</script>
