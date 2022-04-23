@@ -382,7 +382,7 @@
 						<div class="col-xl-6 col-md-12">
 							<div class="row">
 								<?php 
-									
+									echo($sql_shop);
 									$sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$i_shop_id'";
 									$result_shop = mysqli_query($conn, $sql_shop);
 
