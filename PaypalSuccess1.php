@@ -152,17 +152,23 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$user_address."</span>
         <span>".$create_time."</span>
         <span>".$shop_id."</span>
-        <span>".$shippingMethod."</span>
+        <span>".$date."</span>
+        <span>".$paid."</span>
+
 
    
-    ");   */
+    ");    */
 
      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
     $shippingMethod = $_SESSION['shippingMethod'];  
 
-
+    echo(" 
+    <span>".$date."</span>
+    <span>".$paid."</span>
+    ");
+    
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
     if ($stmt = mysqli_prepare($conn, $sql2)) {
