@@ -112,23 +112,28 @@ $queryKL = mysqli_query($conn, $sql);
 
 
     /* deduct stock */
-     $stocksql = "SELECT product.product_stock, variation.product_stock
-    FROM `product`
-    JOIN  `variation`
+     $stocksql = "SELECT product_stock, FROM `product`
     ";
-    $stocksql1 = mysqli_query($conn, $stocksql);
-    $row3 = mysqli_fetch_array($stocksql1);
+    $stockresult = mysqli_query($conn, $stocksql);
+    $row3 = mysqli_fetch_array($stockresult);
 
-    $stock = $row3['product.product_stock'];
+    $stocksql2 = "SELECT product_stock, FROM `variation`
+    ";
+    $variationresult = mysqli_query($conn, $stocksql2);
+    $row4 = mysqli_fetch_array($variationresult);
+
+/*     $stock = $row3['product.product_stock'];
     $variationStock = $row3['variation.product_stock'];
     $deductQuantity1 = $stock-$product_quantity;
-    $deductQuantity2 = $variationStock-$product_quantity;
+    $deductQuantity2 = $variationStock-$product_quantity; */
      
 
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
-        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
+        $stock = $row3['product_stock'];
+        $deductQuantity1 = $stock-$product_quantity;
+        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
@@ -136,6 +141,8 @@ $queryKL = mysqli_query($conn, $sql);
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
     if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
+        $variationStock = $row4['product_stock'];
+        $deductQuantity2 = $variationStock-$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
         $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
