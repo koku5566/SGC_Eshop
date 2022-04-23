@@ -51,21 +51,21 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"row2\">
-			<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
-				<div class=\"col2\">
-					<div class=\"container-col2\">
-						<div class=\"container-left-col2\">
-							<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
-							<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-							<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
+			<div class=\"row\">
+				<div class=\"col-10\">
+					<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
+						<div class=\"container-col2\">
+							<div class=\"container-left-col2\">
+								<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
+								<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
+								<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
+							</div>
 						</div>
-						<div class=\"container-right-col2\">
-							<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-						</div>
-					</div>
+					</a>
 				</div>
-			</a>
+				<div class=\"col-2\">
+					<button name=\"remove\" value=".$row["address_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+				</div>
 			</div>
 			");
 	}
