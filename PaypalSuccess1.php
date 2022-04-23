@@ -121,8 +121,8 @@ $queryKL = mysqli_query($conn, $sql);
 
     $stock = $row3['product.product_stock'];
     $variationStock = $row3['variation.product_stock'];
-    $deductQuantity1 = $stock - $product_quantity;
-    $deductQuantity2 = $variationStock - $product_quantity;
+    $deductQuantity1 = $stock-$product_quantity;
+    $deductQuantity2 = $variationStock-$product_quantity;
      
 
     if ($variation_id == "") {
