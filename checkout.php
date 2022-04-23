@@ -12,7 +12,6 @@
  // change address
  if(isset($_GET['addressid']))
  {
-     echo ("$_GET[addressid]");
      $_SESSION['getaddress'] = $_GET['addressid'];
      $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
