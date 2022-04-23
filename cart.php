@@ -238,12 +238,12 @@
         </div>
     </div>
     <div class="shopping-cart-footer" >
-        <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
-            <form class="column text-lg" action="cart_manage.php" method="POST">
+        <form action="cart_manage.php" method="POST">
+            <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
-            </form>
-        </div>
+             </div> 
+        </form>
         <!-- <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> -->
     </div>
 </div>
