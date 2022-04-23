@@ -160,11 +160,10 @@ $price = 0;
 
 <div class="App">
   <h1>Your Payment has been Successful</h1>  
-	  <div class="status">
       <h4>Payment Information</h4>
       <p>Reference Number: <?php echo $row['invoice_id']; ?></p>
       <p>Transaction ID: <?php echo $row['transaction_id']; ?></p>
-      <p>Paid Amount: <?php echo $row['payment_amount']; ?></p>
+      <p>Paid Amount: RM <?php echo $row['payment_amount']; ?></p>
       <p>Payment Status: <?php echo $row['payment_status']; ?></p>
       <h4>Product Information</h4>
       <p>Product id: <?php echo $row['product_id']; ?></p>
