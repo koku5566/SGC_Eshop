@@ -231,7 +231,7 @@
                     
                     <tbody> 
                      <?php 
-                        $shopId = $_SESSION['uid'];
+                        $shopId = $_SESSION['userid'];
 
                         $sqlp = 
                         "SELECT 
@@ -245,7 +245,7 @@
                     
                          FROM shopProfile
                          INNER JOIN product ON shopProfile.shop_id = product.shop_id
-                         ";
+                         WHERE product.shop_id = '$shopId'";
                     
                     
                        $stmt = $conn->prepare($sqlp);
