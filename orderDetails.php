@@ -89,6 +89,8 @@ $order_id = $_GET['order_id'];
                     </div>
                     
                 </div>
+                <div class="card-footer">
+                    </div>
                 
                 <?php } ?>
             </div>
