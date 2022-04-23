@@ -93,9 +93,6 @@ $order_id = $_GET['order_id'];
                 </div>
                 <div class="card-footer">
                 
-                
-                    <span class="col-6" style="margin-left:40%;">Order Status: <?php echo $row2['order_status']?></span>
-                </div>
                 <?php } ?>
             </div>
           
