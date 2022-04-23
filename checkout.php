@@ -97,7 +97,7 @@ $shippingfee = 8.6;
                 </button></a>
 			</div>
 			");
-	} 
+	 
     ?>
         </div>  
         <div class="modal-footer">
@@ -124,6 +124,7 @@ $shippingfee = 8.6;
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $addressrow['address'],',',$addressrow['postal_code'],',', $addressrow['area'],',',$addressrow['state'],',',$addressrow['country']; ?></label></div>
             </div>
+    }
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div></div>
