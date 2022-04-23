@@ -232,7 +232,7 @@
                         <a class="collapse-item" href="/seller/promotion.php">Promotion</a>
                         <a class="collapse-item" href="/seller/myVoucher.php">My Voucher</a>
                         <a class="collapse-item" href="/seller/createVoucher.php">Create Voucher</a>
-                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "SELLER") :?>
+                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] != "ADMIN") :?>
                             <a class="collapse-item" href="/seller/voucherApproved.php">Voucher Approved</a>
                         <?php endif?>
                     </div>
