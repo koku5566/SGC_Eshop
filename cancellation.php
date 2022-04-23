@@ -78,7 +78,7 @@ if(@$_POST){
       <!--------------------ASK REASON TO CANCEL---------------->
       <div class="card-body">
           <h2>Please tell us the reason why you want to cancel</h2>
-          <form method="post" action="cancellation.php" style="font-size:25px;">
+          <form method="post" action="getOrder.php" style="font-size:25px;">
                 <input type="radio" id="id_1" name="reason" value="Regrets"  checked>
                 <label for="id_1" >Regrets</label><br>
                 <input type="radio" id="id_2" name="reason" value="Change Of Mind">
