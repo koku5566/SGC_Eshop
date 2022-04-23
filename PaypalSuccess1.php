@@ -163,7 +163,7 @@ $queryKL = mysqli_query($conn, $sql);
     $date = date("Y-m-d");
     $paid = "Paid";
     $emptyint = 0;
-    $emptystring  ='0';
+    $emptystring  ="0";
     $shippingMethod = $_SESSION['shippingMethod'];  
 
 /*     echo(" 
