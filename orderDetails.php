@@ -29,7 +29,7 @@ $order_id = $_GET['order_id'];
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                
                 <?php
                     $shippingfee = 8.6;
                     $sql2 = "SELECT * FROM myOrder 
@@ -41,6 +41,7 @@ $order_id = $_GET['order_id'];
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
                 ?>
+                <div class="card">
                 <div class="card-body">
                     <div class="row">
                         
@@ -89,11 +90,11 @@ $order_id = $_GET['order_id'];
                     </div>
                     
                 </div>
-
+                <?php }?>
                 </div>
             <br>
             
-            <?php }?>
+            
         </section>
     </div>
     
