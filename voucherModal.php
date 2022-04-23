@@ -221,7 +221,7 @@
       var values = new Array();
       $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
-      echo (values);
+      echo ("values");
   // or you can do something to the actual checked checkboxes by working directly with  'this'
   // something like $(this).hide() (only something useful, probably) :P
 });
