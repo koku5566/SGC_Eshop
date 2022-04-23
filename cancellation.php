@@ -3,20 +3,13 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-if(@$_POST){
 
+if(isset($_POST['cancel']))
+{
   $reason = $_POST['reason'];
-  $order_id = $_POST['order_id'];
-  
+  $order_id = $_POST['$order_id'];
+  $sqlc = "UPDATE myOrder SET reason_type ='$reason' , order_status = 'Cancelled' WHERE order_id = '$order_id' ";
 
-  $sql = "UPDATE myOrder SET reason_type = '$reason' , order_status='Cancelled' WHERE order_id = '$order_id'";
-  $orderCancel = $conn->query($sql);
-  if($orderCancel){
-        
-    echo 'Order Cancelled <a href="getOrder.php">Click to return order page.</a>';
-}else{
-    echo 'Cancel FAILED. <a href="getOrder.php">Click to return order page.</a>';
-}
 }
 ?>
 
@@ -78,17 +71,17 @@ if(@$_POST){
       <!--------------------ASK REASON TO CANCEL---------------->
       <div class="card-body">
           <h2>Please tell us the reason why you want to cancel</h2>
-          <form method="post" action="getOrder.php" style="font-size:25px;">
-                <input type="radio" id="id_1" name="reason" value="Regrets"  checked>
+          <form method="post" action="cancellation.php" style="font-size:25px;">
+                <input type="radio" id="id_1" name="reason" value="Regrets"  >
                 <label for="id_1" >Regrets</label><br>
                 <input type="radio" id="id_2" name="reason" value="Change Of Mind">
                 <label for="id_2">Change of Mind</label><br>
                 <input type="radio" id="id_3" name="reason" value="Change Color">
                 <label for="id_3">Change Color</label><br>
-                <input type="radio" id="id_4" name="reason" value="Others" checked>
+                <input type="radio" id="id_4" name="reason" value="Others" >
                 <label for="id_1">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
-                <input class="btn btn-primary" type="submit" value="Confirm">
+                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm">
             </form>
       </div>
       <!-----------------END OF ASK REASON TO CANCEL------------>
