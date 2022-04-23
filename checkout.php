@@ -7,17 +7,17 @@
 	 		window.location.href='login.php';</script>";
      } 
  
-     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country, userAddress.user_id 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
-     WHERE userAddress.user_id= '$_SESSION[userid]';";
+     WHERE userAddress.user_id= '$_SESSION[uid]';";
 
 
 //Username and address
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-            $_SESSION['getaddress'] = $userrow['user_id'];
+            $_SESSION['getaddress'] = $userrow['userAddress.user_id'];
             $_SESSION['userEmail'] = $userrow['email'];
             $_SESSION['userName'] = $userrow['name'];
 
@@ -83,7 +83,7 @@ $shippingfee = 8.6;
 	while($addressrow = mysqli_fetch_array($res_data)){
 		echo("
 			<div>
-            <a href=\"checkout.php?addressid=".$addressrow["address_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
+            <a href=\"checkout.php?addressid=".$addressrow["user_id"]."\"><button class=\"btn btn-default\" name=\"address-option\" value=".$addressrow["address_id"].">
 				".$addressrow["contact_name"]."
 				".$addressrow["phone_number"]."
 				".$addressrow["address"]."
