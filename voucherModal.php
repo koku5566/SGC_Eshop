@@ -223,7 +223,10 @@
       values.push($(this).val());
       for( var i=0; i<values.length;i++)
       {
-          console.log (values[i]);
+          $amount = values;
+          <?php
+          echo "<p>$amount</p>"
+          ?>;
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
