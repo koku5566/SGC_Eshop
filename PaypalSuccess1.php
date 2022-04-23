@@ -7,20 +7,6 @@
 		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid'");
 		$row1 = mysqli_fetch_array($results);
 
-    /* deduct stock */
-    $stocksql = "SELECT product_stock, FROM `product`
-    ";
-    $stockresult = mysqli_query($conn, $stocksql);
-    while($row3 = mysqli_fetch_array($stockresult)){
-        $stock = $row3['product_stock'];
-    }
-
-    $stocksql2 = "SELECT product_stock, FROM `variation`
-    ";
-    $variationresult = mysqli_query($conn, $stocksql2);
-    while($row4 = mysqli_fetch_array($variationresult)){
-        $variationStock = $row4['product_stock'];
-    }
 
 $uid = $_SESSION['userid'];
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
@@ -50,6 +36,8 @@ $queryKL = mysqli_query($conn, $sql);
     $product_name = $rowKL['P_name'];
     $product_quantity = $rowKL['P_quantity'];
     $shop_id = $rowKL['shop_id'];
+    $shop_id = $rowKL['shop_id'];
+    
 
     $variation_message = "";
     $showNotif = false;
@@ -125,11 +113,21 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $row1['payment_amount'];
 
-/*     $stock = $row3['product.product_stock'];
-    $variationStock = $row3['variation.product_stock'];
-    $deductQuantity1 = $stock-$product_quantity;
-    $deductQuantity2 = $variationStock-$product_quantity; */
-     
+    /* deduct stock */
+/*     $stocksql = "SELECT product_stock, FROM `product`
+    ";
+    $stockresult = mysqli_query($conn, $stocksql);
+    while($row3 = mysqli_fetch_array($stockresult)){
+        $stock = $row3['product_stock'];
+    }
+
+    $stocksql2 = "SELECT product_stock, FROM `variation`
+    ";
+    $variationresult = mysqli_query($conn, $stocksql2);
+    while($row4 = mysqli_fetch_array($variationresult)){
+        $variationStock = $row4['product_stock'];
+    }
+      */
 
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
