@@ -17,7 +17,7 @@
             
             $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
-            $_SESSION['getaddress'] = $userrow['user_id'];
+            $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
             $_SESSION['userName'] = $userrow['name'];
 
