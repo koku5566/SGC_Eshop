@@ -112,7 +112,7 @@ $queryKL = mysqli_query($conn, $sql);
 
 
     /* deduct stock */
-/*     $stocksql = "SELECT product.product_stock, variation.product_stock
+     $stocksql = "SELECT product.product_stock, variation.product_stock
     FROM `product`
     JOIN  `variation`
     ";
@@ -140,7 +140,7 @@ $queryKL = mysqli_query($conn, $sql);
         $bp1 = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    } */
+    } 
 
 /*    echo(" 
         <span>".$invoice_id."</span>
