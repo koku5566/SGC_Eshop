@@ -249,7 +249,7 @@
                   </div>
                </div>      
             </div>
-            <?php echo $campusId?>
+            <?php echo "aaaaaa".$campusId?>
             <div class="d-sm-flex align-items-center mb-4" style="justify-content: end;">
                <button type="submit" id="AddFacility" name="AddFacility" class="btn btn-outline-primary"></i>Add Facility</button>
             </div>
