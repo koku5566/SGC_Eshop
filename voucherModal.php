@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" onclick="myFunction()">Apply</button>
+        <button type="button" class="btn btn-warning" onclick="handleChange(cb)">Apply</button>
       </div>
     </div>
   </div>
@@ -217,9 +217,16 @@
 </div>
 
 <script>
-   function myFunction() 
-   {
-   var x = document.getElementById("defaultCheck1").value;
-   console.log(x);
-   }
+   function handleChange(cb) {
+    var allCB = document.querySelectorAll("input[id='defaultCheck1']");
+    console.log(allCB);
+   //  for(var i=0; i< allCB.length; i++){
+   //      allCB[i].checked=true;
+   //  }
+}
+   // function myFunction() 
+   // {
+   // var x = document.getElementById("defaultCheck1").value;
+   // console.log(x);
+   // }
 </script>
