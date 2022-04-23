@@ -17,13 +17,14 @@ product.product_price,
 product.product_variation,
 orderDetails.quantity,
 orderDetails.amount,
+user.user_id,
 shopProfile.shop_name
 FROM
 myOrder
 JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
 JOIN product ON orderDetails.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-JOIN user on myOrder.userID = user.userID 
+JOIN user on myOrder.userID = user.user_id 
 WHERE myOrder.userID = '$userid'
 ORDER BY myOrder.order_id DESC
 ";
