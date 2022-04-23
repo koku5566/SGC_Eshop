@@ -220,7 +220,6 @@
    function myFunction() 
    {
    var x = document.getElementById("defaultCheck1").value;
-   document.getElementById("demo").innerHTML = x;
    console.log(x);
    }
 </script>
