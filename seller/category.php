@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) || $_SESSION['role'] != "ADMIN"){
+    if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) || $_SESSION['role'] != "ADMIN"){
         ?>
             <script type="text/javascript">
                 window.location.href = window.location.origin + "/login.php";
