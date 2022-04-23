@@ -219,10 +219,10 @@
 							<!-- Shipping Option -->
                             <div class="row mb-4" id="ShippingOptionDiv">
 								<div class="col-12">
-                                    <span style="font-weight: bold;"><?php echo($i_product_self_collect == 0 ? "" :  "This is a product able to make self collect"); ?></span>
+                                    <span style="font-weight: bold;"><?php echo($i_product_self_collect == 0 ? "" :  "This is a product that allow self collection"); ?></span>
                                 </div>
                                 <div class="col-12">
-                                    <span style="font-weight: bold;"><?php echo($i_product_virtual == 0 ? "" :  "This is a virtual product without shippingment"); ?></span>
+                                    <span style="font-weight: bold;"><?php echo($i_product_virtual == 0 ? "" :  "This is a virtual product without shipment"); ?></span>
                                 </div>
                             </div>
                             <!-- Price -->
@@ -382,10 +382,10 @@
 						<div class="col-xl-6 col-md-12">
 							<div class="row">
 								<?php 
-									echo($sql_shop);
+									
 									$sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$i_shop_id'";
 									$result_shop = mysqli_query($conn, $sql_shop);
-
+									echo($sql_shop);
 									if (mysqli_num_rows($result_shop) > 0) {
 										while($row_shop = mysqli_fetch_assoc($result_shop)) {
 											$shop_id = $row_shop['shop_id'];

@@ -228,10 +228,10 @@
 							<!-- Shipping Option -->
                             <div class="row mb-4" id="ShippingOptionDiv">
 								<div class="col-12">
-                                    <span style="font-weight: bold;"><?php echo($i_product_self_collect == 0 ? "" :  "This is a product able to make self collect"); ?></span>
+                                    <span style="font-weight: bold;"><?php echo($i_product_self_collect == 0 ? "" :  "This is a product that allow self collection"); ?></span>
                                 </div>
                                 <div class="col-12">
-                                    <span style="font-weight: bold;"><?php echo($i_product_virtual == 0 ? "" :  "This is a virtual product without shippingment"); ?></span>
+                                    <span style="font-weight: bold;"><?php echo($i_product_virtual == 0 ? "" :  "This is a virtual product without shipment"); ?></span>
                                 </div>
                             </div>
                             <!-- Price -->
