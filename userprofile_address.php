@@ -51,7 +51,7 @@
 	$res_data = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($res_data)){
 		echo("
-			<div class=\"row\" style=\"border-left: 3px solid #a31f37;\">
+			<div class=\"row\" style=\"border-left: 3px solid #a31f37; margin-bottom: 1rem;\">
 				<div class=\"col-10\" style=\"background-color: lightyellow;\">
 					<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
 						<div class=\"container-col2\">
