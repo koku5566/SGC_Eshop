@@ -239,7 +239,7 @@
     </div>
     <div class="shopping-cart-footer" >
         <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
-            <form action="cart_manage.php" method="POST">
+            <form class="column text-lg" action="cart_manage.php" method="POST">
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
             </form>
