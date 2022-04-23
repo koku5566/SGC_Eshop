@@ -114,7 +114,7 @@
 							<p style=\"font-size: 1.15rem;\">".$row["account_no"]."</p>
 						</div>
 						<div class=\"container-right-col2\">
-							<button name=\"removeC\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+							<button name=\"removeB\" value=".$row["bankAcc_id"]." class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
 						</div>
 					</div>
 				</div>
