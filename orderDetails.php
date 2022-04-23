@@ -64,7 +64,7 @@ $order_id = $_GET['order_id'];
                 </div>
                 <br>
                 
-                <?php }?>
+                
                 
                 <div class="card-footer">
                     <div class="col-4" style="text-align:right; margin-left:60%">
@@ -96,7 +96,7 @@ $order_id = $_GET['order_id'];
                     </div>
                 
                 </div>
-                
+                <?php }?>
             <br>
             
             
