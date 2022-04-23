@@ -8,6 +8,8 @@
      } 
  
      $userID = $_SESSION["userid"];
+     echo (" $userID
+     ");
 
  // change address
  if(isset($_GET['addressid']))
