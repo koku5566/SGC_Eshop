@@ -116,7 +116,7 @@ if (isset($_POST["completeRegister"])) {
                     <p>Buyer Name: $buyerName</p>
                     <p>Buyer Email: $buyerEmail</p>
                     <p>Buyer Contact: $contact</p>
-                    <p>Total Price: $price</p>
+                    <p>Total Price: Free</p>
                     <p>Register Event: $eventName</p>
                     <p>Ticket: $ticketType</p>
                     <h5>Barcode below is your ticket for organizer check in purposes. Kindly bookmark this email and keep it safely</h5>

@@ -31,7 +31,7 @@ $row = mysqli_fetch_array($resultsql);
       <p>Buyer Name: <?php echo $row['buyer_name']; ?></p>
       <p>Buyer Email: <?php echo $row['buyer_email']; ?></p>
       <p>Buyer Contact: <?php echo $row['buyer_contact']; ?></p>
-      <p>Total Price: <?php echo $row['total_price']; ?></p>
+      <p>Total Price: Free </p>
       <p>Register Event: <?php echo $row['event_name']; ?></p>
       <p>Ticket: <?php echo $row['ticket_name']; ?></p>
       <br>
