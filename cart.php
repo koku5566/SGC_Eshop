@@ -41,6 +41,9 @@
                         $shop_id = $row['shopID'];
                         $shop_name = $row['shop_name'];
 
+                        //total price for each shop
+                        $total = 0;
+
                         //header for each shop 
                         echo "<tr >   
                             <td colspan='6'>$shop_name</td>
@@ -193,9 +196,14 @@
                                 </tr>";
                             $i++;
 
+                            $product_total = $product_price * $product_quantity;
+                            $total += $product_total;
                         //end looping product for each shop    
                         }
 
+                        echo "<tr >   
+                                <td colspan='6'>Total: ".number_format($total,2)."</td>
+                            </tr>";
                     // end of looping shop    
                     }
                     
