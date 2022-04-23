@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning" onclick="handleChange()">Apply</button>
+        <button type="button" class="btn btn-warning" onclick="applyVoucher()">Apply</button>
       </div>
     </div>
   </div>
@@ -217,7 +217,7 @@
 </div>
 
 <script>
-   function handleChange() {
+   function applyVoucher() {
       var values = new Array();
       $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
