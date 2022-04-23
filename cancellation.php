@@ -4,15 +4,17 @@
 <?php
 $order_id = $_GET['order_id'];
 
-if(isset($_POST['cancel']))
-{
-  $reason = $_POST['reason'];
-  $order_id = $_POST['$order_id'];
-  $sqlc = "UPDATE myOrder SET reason_type ='$reason' , order_status = 'Cancelled' WHERE order_id = '$order_id' ";
-
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+  $conn->query("UPDATE myOrder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
 }
 ?>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Order Cancelled!");
+}
 
+</script>
 
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
@@ -82,6 +84,8 @@ if(isset($_POST['cancel']))
                 <label for="id_1">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
                 <input class="btn btn-primary" type="submit" name="cancel" value="Confirm">
+                <a href="orderDetails.php?cancel&id=<?php echo $row['order_id']?>" onclick="return confirm_click();">
+                <button type="button" class="btn btn-primary">Confirm</button></a>
             </form>
       </div>
       <!-----------------END OF ASK REASON TO CANCEL------------>
