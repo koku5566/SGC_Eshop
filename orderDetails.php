@@ -3,15 +3,8 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-$shippingfee = 8.6;
-                    $sql3 = "SELECT * FROM myOrder 
-                    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-                    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-                    WHERE myOrder.order_id = $order_id";
-                    
-                    $result3 = $conn->query($sql3);
-                    while($row3 = $result3->fetch_assoc()){
-                        
+
+
 ?>
 
 
@@ -103,7 +96,7 @@ $shippingfee = 8.6;
                     </div>
                 
                 </div>
-                <?php }?>
+                
             <br>
             
             
