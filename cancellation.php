@@ -13,7 +13,9 @@ if(@$_POST){
   $sql = "UPDATE myOrder SET reason_type = '$reason' , order_status='To respond' WHERE order_id = '$order_id'";
   $cancelOrder = $conn->query($sql);
 }
-  
+if(isset($_GET["cancel"]) && isset($_GET["id"])){
+  $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = ".$_GET["id"]);
+}
 ?>
 
 
@@ -84,7 +86,7 @@ if(@$_POST){
                 <input type="radio" id="id_4" name="reason" value="Others" >
                 <label for="id_1">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
-                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm">
+                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" onclick="return confirm_click();">
                 
             </form>
       </div>
@@ -102,3 +104,10 @@ if(@$_POST){
 <style>
 
 </style>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Order Cancelled");
+}
+
+</script>
