@@ -162,7 +162,7 @@ $queryKL = mysqli_query($conn, $sql);
     $paid = "Paid";
     $shippingMethod = $_SESSION['shippingMethod'];  
 
-    $usersql ="SELECT id FROM `user` WHERE user.user_id= '$uid'";
+    $usersql ="SELECT id FROM `user` WHERE user_id= '$uid'";
         $usersql1 = mysqli_query($conn, $suersql);
         $userrow = mysqli_fetch_array($userresult);
         $userid = $userresult['id'];
