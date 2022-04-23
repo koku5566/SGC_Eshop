@@ -115,12 +115,13 @@ $queryKL = mysqli_query($conn, $sql);
      $stocksql = "SELECT product_stock, FROM `product`
     ";
     $stockresult = mysqli_query($conn, $stocksql);
-    $row3 = mysqli_fetch_assoc($stockresult);
+    while ($row3 = mysqli_fetch_array($stockresult)) {
+
 
     $stocksql2 = "SELECT product_stock, FROM `variation`
     ";
     $variationresult = mysqli_query($conn, $stocksql2);
-    $row4 = mysqli_fetch_assoc($variationresult);
+    while ($row4 = mysqli_fetch_array($variationresult)) {
 
 /*     $stock = $row3['product.product_stock'];
     $variationStock = $row3['variation.product_stock'];
@@ -147,8 +148,8 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    } 
-
+    } }
+    }
 /*    echo(" 
         <span>".$invoice_id."</span>
         <span>".$variation_id."</span>
