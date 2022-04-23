@@ -243,7 +243,7 @@ div.absolute {
   height: 65px;
   width: 65px;
   left: 320px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 .profile-pic:hover .-label {
   display: flex;
