@@ -4,7 +4,7 @@
     if ($_SESSION['login'] == "" || $_SESSION['uid'] == ""){
         ?>
             <script type="text/javascript">
-                window.location.href = window.location.origin + "/login.php";
+                //window.location.href = window.location.origin + "/login.php";
             </script>
         <?php
         exit;

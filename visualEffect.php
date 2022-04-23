@@ -24,6 +24,7 @@
 	LIMIT 1";
 	$result_product = mysqli_query($conn, $sql_product);
 
+	echo($sql_product);
 	if (mysqli_num_rows($result_product) > 0) {
 		while($row_product = mysqli_fetch_assoc($result_product)) {
 			$i_product_id = $row_product['product_id'];
@@ -58,7 +59,7 @@
 	else{
 		?>
 			<script type="text/javascript">
-				window.location.href = window.location.origin + "/index.php";
+				//window.location.href = window.location.origin + "/index.php";
 			</script>
 		<?php
 	}
