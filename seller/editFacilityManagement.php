@@ -91,7 +91,7 @@
     {
         $Id = $_GET['id'];
         $_SESSION['Id'] = $_GET['id'];
-        $campusId = $_SESSION['uid'];
+        $campusId = $_SESSION['userid'];
 
         $sql_facility = "SELECT * FROM facilityPic WHERE id = '$Id' AND campus_id = '$campusId'";
         $result_facility = mysqli_query($conn, $sql_facility);
