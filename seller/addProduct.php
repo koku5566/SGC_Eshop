@@ -127,6 +127,7 @@
         $sql_insert .= "'$categoryCombinationId', '$shopId'";
         $sql_insert .= ") ";
 
+        echo($sql_insert);
         if(mysqli_query($conn, $sql_insert)){
             //Got Variation
             if($variationType == 1)
