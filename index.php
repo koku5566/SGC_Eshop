@@ -150,7 +150,7 @@
                                             Event
                                             </a>
                                             <li class="menu-item" style="display: list-item;">
-                                            <a href="facilityRental.php" class="nav-link">
+                                            <a href="facilityrental.php" class="nav-link">
                                             <img src="/img/resource/facility.png" style="width:25px;margin-right:5px;">
                                             Facility Rental
                                             </a>

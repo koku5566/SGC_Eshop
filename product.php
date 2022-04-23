@@ -27,7 +27,7 @@
 	LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
 	LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
 	LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-	LEFT JOIN (SELECT round(AVG(rr.rating),0) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+	LEFT JOIN (SELECT round(AVG(rr.rating),0) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.user_id = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
 	LEFT JOIN (SELECT product_id, COUNT(rating) AS total_rated FROM reviewRating WHERE product_id = '$id' GROUP BY product_id) AS H ON A.product_id = H.product_id
 	WHERE A.product_id = '$id' AND A.product_status = 'A'
 	LIMIT 1";
@@ -78,7 +78,7 @@
 		$selectedPID = SanitizeString($_POST['pid']);
 			$sql = "SELECT rr.rr_id, rr.product_id, rr.user_id, u.name, u.email, u.profile_picture, u.role, rr.message, rr.rating, rr.pic1, rr.pic2, rr.pic3, rr.pic4, rr.pic5, rr.status, rr.seller_id, rr.r_message 
 					FROM user u INNER JOIN  reviewRating rr 
-					ON  u.userID = rr.user_id 
+					ON  u.user_id = rr.user_id 
 					WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id' && rr.rr_id = ? 
 					ORDER BY rr.rr_id";
 			
@@ -608,7 +608,7 @@
 									<?php			
 									$sql ="SELECT avg(rr.rating)
 										FROM user u INNER JOIN  reviewRating rr 
-										ON  u.userID = rr.user_id 
+										ON  u.user_id = rr.user_id 
 										WHERE rr.disable_date IS NULL && rr.product_id = '$i_product_id'
 										ORDER BY rr.rr_id";
 									if($stmt = mysqli_prepare ($conn, $sql)){
@@ -741,7 +741,7 @@
 								LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
 								LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
 								LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-								LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.userID = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
+								LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.user_id = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
 								WHERE A.product_id = '$id'
 								LIMIT 1";
 								$result_1 = mysqli_query($conn, $sql_1);
