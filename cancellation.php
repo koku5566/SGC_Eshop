@@ -5,7 +5,7 @@
 $order_id = $_GET['order_id'];
 $reason = $_POST['reason'];
 $order_id = $_POST['order_id'];
-$sql = "UPDATE myorder SET reason_type = '$reason' , order_status='Cancelled' WHERE order_id = '$order_id'";
+$sql = "UPDATE myOrder SET reason_type = '$reason' , order_status='Cancelled' WHERE order_id = '$order_id'";
 $cancelOrder = $conn->query($sql);
 
 ?>
