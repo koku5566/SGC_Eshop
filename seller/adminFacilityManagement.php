@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['id'], $_POST['dfacili
       
       <tbody>
       <?php
-      $campusId = $_SESSION["uid"];
+      $campusId = $_SESSION["userid"];
       $getPic= "SELECT * FROM facilityPic WHERE campus_id = '$campusId'";
       $getCategory = mysqli_query($conn, $getPic);
       $showCategory = mysqli_fetch_all($getCategory, MYSQLI_ASSOC);
