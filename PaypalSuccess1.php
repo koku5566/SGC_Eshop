@@ -177,17 +177,15 @@ $queryKL = mysqli_query($conn, $sql);
     if ($stmt = mysqli_prepare($conn, $sql2)) {
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
     }
     $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     if ($stmt4 = mysqli_prepare($conn, $sql3)) {
         $bp = mysqli_stmt_bind_param($stmt4, "ssisisssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $date, $paid, $emptystring, $null, $invoice_id );
         $bp = mysqli_stmt_execute($stmt4);
-        mysqli_stmt_close($stmt4);
     }   
     
 }
-if (mysqli_stmt_affected_rows($stmt) == 1) {
+if (mysqli_stmt_affected_rows($stmt) == 0) {
     $to = $userEmail;
     $subject = "Here is your SGC E-Shop Invoice";
     $from = "info@sgcprototype2.com";
