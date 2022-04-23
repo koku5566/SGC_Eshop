@@ -80,7 +80,7 @@ if(isset($_POST['cancel']))
                 <input type="radio" id="id_4" name="reason_type" value="Others" >
                 <label for="id_1">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['cancelOrder']; ?>">
-                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" onclick="return confirm_click();">
+                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" >
                 
             </form>
       </div>
