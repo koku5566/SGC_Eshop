@@ -162,11 +162,6 @@ $queryKL = mysqli_query($conn, $sql);
     $paid = "Paid";
     $shippingMethod = $_SESSION['shippingMethod'];  
 
-    $usersql ="SELECT id FROM `user` WHERE user_id= '$uid'";
-        $usersql1 = mysqli_query($conn, $suersql);
-        $userrow = mysqli_fetch_array($userresult);
-        $userid = $userresult['id'];
-
 
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -174,9 +169,9 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-           $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?,?)";
+           $sql3 = "INSERT INTO `myOrder`(`userID` `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?)";
         if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp3 = mysqli_stmt_bind_param($stmt4, "ssissss", $userid, $uid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
+            $bp3 = mysqli_stmt_bind_param($stmt4, "sissss", $uid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
             $bp3 = mysqli_stmt_execute($stmt4);
     }   
     
