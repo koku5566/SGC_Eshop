@@ -160,13 +160,13 @@ $queryKL = mysqli_query($conn, $sql);
      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
-    $shippingMethod = $_SESSION['shippingMethod']; 
+    $shippingMethod = $_SESSION['shippingMethod'];  
 
-    $usersql ="SELECT user.user_id FROM `user` WHERE user.user_id= '.$uid.'";
+    $usersql ="SELECT id FROM `user` WHERE user.user_id= '.$uid.'";
         $usersql1 = mysqli_query($conn, $suersql);
         $userrow = mysqli_fetch_array($userresult);
+        $userid = $userresult['id'];
 
-    $userid = $userresult['id'];   
 
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
