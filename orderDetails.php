@@ -94,8 +94,8 @@ $order_id = $_GET['order_id'];
                         </div>
                         
                     </div>
-                        <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row['order_id'];?>">Cancel Order</a>
-                       <a class="btn btn-primary"style="margin-left:10px;" href="orderDetails.php?order_id=<?php echo $row['order_id'];?>">Confirm Order</a>
+                        <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
+                       <a class="btn btn-primary"style="margin-left:10px;" href="orderDetails.php?order_id=<?php echo $row2['order_id'];?>">Confirm Order</a>
                     </div>
                     <?php }?>
                 </div>

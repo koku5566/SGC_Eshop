@@ -47,6 +47,25 @@
       <h2 class="font-weight-bold text-center">ARE YOU SURE YOU WANT TO CANCEL YOUR ORDER?</h2>
       <hr class="mx-auto">
     </div>
+    <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-1"><img src=/img/product/<?php echo $productcover?> style="object-fit:contain;width:100%;height:100%"></div>
+                        <div class="col-5">
+                            <?php echo $productname ?>
+                        </div>
+                        <div class="col-2">RM
+                            <?php echo $productprice ?>.00
+                        </div>
+                        <div class="col-2">X
+                            <?php echo $qty ?>
+                        </div>
+                        <div class="col-2 red-text">RM
+                            <?php echo $amt ?>.00
+                        </div>
+                        
+                    </div>
+                </div>
   </section>    
 </div>
 
