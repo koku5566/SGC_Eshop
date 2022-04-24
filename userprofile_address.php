@@ -74,13 +74,7 @@
 		}
 	}else{
 		echo("
-		<div class=\"col-10\" style=\"background-color: lightyellow;\">
-			<div class=\"container-col2\">
-				<div class=\"container-left-col2\">
-					<p style=\"font-weight: bold; font-size: 1.6rem;\">No Address</p>
-				</div>
-			</div>
-		</div>
+		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>
 		");
 	}
 ?>
