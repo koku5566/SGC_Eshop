@@ -35,10 +35,16 @@
 
 <!-- Retrieve and Update Data -->
 <?php
+ //Retrieve Data
+ $shopId = $_SESSION['userid'];
+ echo $shopId;
+ $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+ $result1 = mysqli_query($conn, $sql);
+
  if(isset($_POST['saveBtn']))
  {
   $shopId = $_SESSION['userid'];
-  echo $shopId;
+  echo "Hi";
   $profileIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
@@ -88,12 +94,6 @@
           }
       }
   }
-  //Retrieve Data
-  $shopId = $_SESSION['userid'];
-  echo $shopId;
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
-  $result1 = mysqli_query($conn, $sql);
-
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     //Update Data
