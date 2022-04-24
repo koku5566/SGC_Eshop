@@ -23,7 +23,7 @@
     $stmt->execute();
     $oresult = $stmt->get_result();
     while ($orow = $oresult->fetch_assoc()) {
-        $orderid = $orow['order_id'];
+        $orderid = $orow['invoice_id'];
         $orderstatus = $orow['order_status'];
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
@@ -43,7 +43,7 @@
     userAddress.address
     FROM
     myOrder
-    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+    JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON orderDetails.product_id = product.product_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
@@ -54,7 +54,7 @@
     $result = $stmt->get_result();
 
     //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
@@ -73,7 +73,7 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
+            //header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
             <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
           <?php
         } 
