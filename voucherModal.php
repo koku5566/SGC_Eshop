@@ -73,7 +73,7 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['shop_id']; ?>" data-id="<?php echo $row['voucher_id']; ?>" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['shop_id']; ?>" data-voucher-id="<?php echo $row['voucher_id']; ?>" id="defaultCheck1">
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_amount" value="<?php echo $row['discount_amount']; ?>">
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_type" value="<?php echo $row['voucher_type']; ?>">
 
@@ -224,7 +224,7 @@
       var values = new Array();
       $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
-      var voucher_id = $(this).data('data-id');
+      var voucher_id = this.getAttribute("data-voucher-id");
       for( var i=0; i<values.length;i++)
       {
          console.log(i +" is "+ values[i]);
