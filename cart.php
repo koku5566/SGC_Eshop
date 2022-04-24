@@ -703,6 +703,7 @@ select.form-control {
     var subtotal_tol = 0;
 
     calling();
+    discountAmount();
 
     function calling()
     {
@@ -720,14 +721,14 @@ select.form-control {
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     } 
 
-    // function discountAmount()
-    // {
-    //     var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
-    //     var beforeDiscount = parseFloat(document.getElementById('discount_kl').innerText);
+    function discountAmount()
+    {
+        var afterDiscount = parseFloat(document.getElementById('discount_kl').innerText);
+        var beforeDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
 
-    //     var discountTotal = afterDiscount - beforeDiscount;
-    //     document.getElementById('discount').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
-    // }
+        var discountTotal = afterDiscount - beforeDiscount;
+        document.getElementById('discount_kl').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
+    }
      
 
     function save_to_db(cart_id, quantity) {
