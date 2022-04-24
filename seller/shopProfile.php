@@ -105,6 +105,7 @@
       }
       //Retrieve Data
   $shopId = $_SESSION['userid'];
+  echo $shopId;
   $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
   $result1 = mysqli_query($conn, $sql);
    } 
