@@ -230,7 +230,13 @@
          console.log(i +" is "+ values[i]);
 
          console.log("voucher Id: " + voucher_id);
+
+         var amount = $('#'+voucher_id+"_amount").val();
+         var type = $('#'+voucher_id+"_type").val();
          
+         console.log("Amount: " +  amount);
+         console.log("type: " + type);
+
          //get tr element id
          var test = document.getElementById(values[i]).innerHTML;
          console.log("id: " + test);
