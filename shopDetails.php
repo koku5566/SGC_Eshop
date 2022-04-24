@@ -137,7 +137,7 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Vouchers</strong></h4>
           <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
            <?php
                   if ($result2->num_rows > 0) {
@@ -177,7 +177,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sales</strong></h4>
+          <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
