@@ -130,8 +130,8 @@
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
-            <!---------FOR STANDARD SHIPPING STATUS------------->
-            <?php if($deliverymethod == 'standard'){?>
+            <!---------FOR standard-delivery SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard-delivery'){?>
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step" id="placed">
                     <div class="step-icon-wrap">
@@ -262,7 +262,7 @@
                                 ?>
                                     <tr>
                                         <?php 
-                                if($orderstatus =='Paid'&& $deliverymethod=='standard' && $orderstatus!='Delivered'){?>
+                                if($orderstatus =='Paid'&& $deliverymethod=='standard-delivery' && $orderstatus!='Delivered'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
                                                 <?php //echo date("Y-m-d H:i:s");?> 
@@ -748,7 +748,7 @@ var orderstatus = document.getElementById("orderstatus").value;
 var deliverymethod = document.getElementById("deliverymethod").value;
 
 console.log(orderstatus);
-if (deliverymethod == "standard") {
+if (deliverymethod == "standard-delivery") {
     if(orderstatus == 'Placed')
     {
         document.getElementById("placed").className ="step completed";

@@ -28,7 +28,7 @@
     shopProfile.shop_profile_image
     FROM
     myOrder
-    JOIN user ON myOrder.userID = user.user_id
+    JOIN user ON myOrder.userID = user.userID
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
     JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
     JOIN product ON orderDetails.product_id = product.product_id
@@ -85,7 +85,7 @@
         //order received
         if(isset($_POST["receivedBtn"])){
             $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-            $status = "Received";
+            $status = "Delivered";
             $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
             $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
     
@@ -137,8 +137,8 @@
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
         <div class="card-body">
-            <!---------FOR STANDARD SHIPPING STATUS------------->
-            <?php if($deliverymethod == 'standard'){?>
+            <!---------FOR standard-delivery SHIPPING STATUS------------->
+            <?php if($deliverymethod == 'standard-delivery'){?>
             <div class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
                 <div class="step" id="placed">
                     <div class="step-icon-wrap">
@@ -544,7 +544,7 @@ var orderstatus = document.getElementById("orderstatus").value;
 var deliverymethod = document.getElementById("deliverymethod").value;
 
 console.log(orderstatus);
-if (deliverymethod == "standard") {
+if (deliverymethod == "standard-delivery") {
     if(orderstatus == 'Placed')
     {
         document.getElementById("placed").className ="step completed";

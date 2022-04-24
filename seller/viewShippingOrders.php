@@ -244,7 +244,7 @@ $completedresult = $stmt->get_result();
                         <div class="tab-pane show active fade" id="all" role="tabpanel" aria-labelledby="all-tab">
                             
                             <?php       
-                              $sqlheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE orderDetails.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
+                              $sqlheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
                               $resultheader = mysqli_query($conn, $sqlheader);
                               if (mysqli_num_rows($resultheader) > 0) {
                               while ($rowheader = mysqli_fetch_assoc($resultheader)) {
@@ -258,18 +258,22 @@ $completedresult = $stmt->get_result();
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $rowheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <?php
 
-                                            $aoID = $rowheader['order_id'];
+                                            $aoID = $rowheader['invoice_id'];
                                             //Loop product in each order
                                             $allsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
-                                                        INNER JOIN user ON myOrder.user_id = user.user_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
                                                         WHERE orderDetails.order_id = '$aoID' AND orderDetails.shop_id = '$user_id' ";
+                                                        /*SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                                        INNER JOIN user ON myOrder.userID = user.user_id
+                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
+                                                        WHERE orderDetails.order_id = '$aoID' AND orderDetails.shop_id = '$user_id' */
                                           
                                             $allresult = mysqli_query($conn, $allsql);
                                             if (mysqli_num_rows($allresult) > 0) {
