@@ -73,7 +73,8 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['voucher_code']; ?>" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" name="user_group[]" multiple value="<?php echo $row['shop_id']; ?>, <?php echo $row['discount_amount']; ?>, <?php echo $row['voucher_type']; ?>" id="defaultCheck1">
+               
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
@@ -225,19 +226,19 @@
       {
          console.log(i +" is "+ values[i]);
 
-         $.ajax({
-            method: "POST",
-            url: "cart_manage.php",
-            data: { voucher_code: values[i]}
-         })
-         .done(function( msg ) {
-               alert(msg);
-               //window.location.href = window.location.origin + '/cart.php';
-         });
+         // $.ajax({
+         //    method: "POST",
+         //    url: "cart_manage.php",
+         //    data: { voucher_code: values[i]}
+         // })
+         // .done(function( msg ) {
+         //       alert(msg);
+         //       window.location.href = window.location.origin + '/cart.php';
+         // });
          
          //get tr element id
-         // var test = document.getElementById(values[i]).innerText;
-         // console.log("id: " + test);
+         var test = document.getElementById(values[i]).innerText;
+         console.log("id: " + test);
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
