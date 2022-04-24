@@ -257,7 +257,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $rowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
                                             </div>
                                             </div>
 
@@ -299,8 +299,8 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $arow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $arow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Update Pick-Up</a>
+                                                            <?php if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
@@ -339,7 +339,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
                                             </div>
                                             </div>
 
@@ -378,8 +378,8 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $tsrow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($tsrow['order_status'] == 'Paid'&&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Update Pick-Up</a>
+                                                            <?php if ($tsrow['order_status'] == 'Paid'&&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
@@ -415,7 +415,8 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $purowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+
                                             </div>
                                             </div>
 
@@ -454,8 +455,8 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $purow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $purow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($purow['order_status'] == 'Paid'&&  $purow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($purow['delivery_method'] == 'self-collection' && $purow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Update Pick-Up</a>
+                                                            <?php if ($purow['order_status'] == 'Paid'&&  $purow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['invoice_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($purow['delivery_method'] == 'self-collection' && $purow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['invoice_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $purow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
@@ -489,7 +490,8 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $srowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                    <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
+                                                    <span class="pr-1"><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+
                                                 </div>
                                             </div>
 
@@ -527,9 +529,9 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $srow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $srow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($srow['order_status'] == 'Paid' &&  $srow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php if ($srow['order_status'] == 'Paid' &&  $srow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Update Pick-Up</a>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
@@ -549,20 +551,20 @@ $user_id = $_SESSION["userid"];
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
-                              $sresultheader = mysqli_query($conn, $sqlsheader);
-                              if (mysqli_num_rows($sresultheader) > 0) {
-                              while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
+                              $sqlcheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
+                              $cresultheader = mysqli_query($conn, $sqlsheader);
+                              if (mysqli_num_rows($cresultheader) > 0) {
+                              while ($srowheader = mysqli_fetch_assoc($cresultheader)) {
                               //Loop header
                               ?>
                                     <div class="card mt-2">
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col md-auto text-start">
-                                                    <span><strong><?php echo $srowheader['username']; ?></strong></span>
+                                                    <span><strong><?php echo $crowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                    <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
+                                                    <span class="pr-1"><strong>Order ID:<?php echo $crowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
                                                 </div>
                                             </div>
 
@@ -572,37 +574,37 @@ $user_id = $_SESSION["userid"];
 
                                             $coID = $srowheader['invoice_id'];
                                             //Loop product in each order
-                                            $ssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
+                                            $csql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON productTransaction.product_id = product.product_id
                                                         WHERE productTransaction.invoice_id = '$coID' AND productTransaction.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
-                                            $sresult = mysqli_query($conn, $ssql);
+                                            $cresult = mysqli_query($conn, $csql);
                                             if (mysqli_num_rows($sresult) > 0) {
-                                                while ($srow = mysqli_fetch_assoc($sresult)) {
+                                                while ($crow = mysqli_fetch_assoc($cresult)) {
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $srow['product_cover_picture'] ?>" alt="<?php echo $srow['product_name'] ?>" />
+                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $crow['product_cover_picture'] ?>" alt="<?php echo $crow['product_name'] ?>" />
                                                         </div>
                                                         <div class="col-3">
-                                                            <?php echo $srow['product_name'] ?>
+                                                            <?php echo $crow['product_name'] ?>
                                                         </div>
                                                         <div class="col-1">
                                                             x
-                                                            <?php echo $srow['quantity'] ?>
+                                                            <?php echo $crow['quantity'] ?>
                                                         </div>
 
                                                         <div class="col-1">
                                                             RM
-                                                            <?php echo $srow['product_price'] ?>.00
+                                                            <?php echo $crow['product_price'] ?>.00
                                                         </div>
-                                                        <div class="col-2"><?php echo $srow['order_status'] ?></div>
-                                                        <div class="col-2"> <?php echo $srow['tracking_number'] ?></div>
+                                                        <div class="col-2"><?php echo $crow['order_status'] ?></div>
+                                                        <div class="col-2"> <?php echo $crow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($srow['order_status'] == 'Paid' &&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php if ($crow['order_status'] == 'Paid' &&  $crow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Arrange Shipment</a>
+                                                            <?php } else if ($crow['delivery_method'] == 'self-collection' && $crow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $crow['invoice_id']; ?>">Update Pick-Up</a>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $crow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
