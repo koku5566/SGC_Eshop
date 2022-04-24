@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $orderid = $_GET['order_id'];
+    $invoice_id = $_GET['invoice_id'];
 
     //=========sql to get order information=============
     $deliverymethod="";
@@ -18,9 +18,8 @@
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address,
-    orderDetails.quantity,
-    orderDetails.amount,
-    orderDetails.shop_id,
+    productTransaction.quantity,
+    productTransaction.shop_id,
     product.product_name,
     product.product_price,
     product.product_cover_picture,
@@ -30,10 +29,10 @@
     myOrder
     JOIN user ON myOrder.userID = user.userID
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-    JOIN product ON orderDetails.product_id = product.product_id
-    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-    WHERE myOrder.order_id = '$orderid';";
+    JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+    JOIN product ON productTransaction.product_id = product.product_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
+    WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
@@ -48,7 +47,6 @@
         $trackingnum = $orow['tracking_number'];
         $orderdate = $orow['order_date'];
         $qty = $orow['quantity'];
-        $amt = $orow['amount'];
         $productname = $orow['product_name'];
         $productprice = $orow['product_price'];
         $productcover = $orow['product_cover_picture'];
@@ -67,36 +65,38 @@
     //complete pick up
     if(isset($_POST["completeBtn"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $status = "Completed";
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";?>
-            <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+            <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
             <?php
            // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
           $_SESSION['status'] = "Order status update failed";?>
-           <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+           <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
           <?php
         }
     }
         //order received
         if(isset($_POST["receivedBtn"])){
             $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+            $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
             $status = "Delivered";
-            $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
-    
+            $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
+            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
+        
             if ($conn->query($insertsql)&& $conn->query($updatesql)) {
                 $_SESSION['success'] = "Thank you for updating!";?>
-                <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+                <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
                 <?php
                // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
                 } else {
               $_SESSION['status'] = "Order status update failed";?>
-               <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+               <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
               <?php
             }
         }
@@ -232,6 +232,7 @@
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
                     </form>
                 <?php } ?>
@@ -239,6 +240,7 @@
                 <?php if($orderstatus =='Shipped'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="receivedBtn" class="btn btn-primary">Order Received</button>
                     </form>
                 <?php } ?>
