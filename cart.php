@@ -719,6 +719,15 @@ select.form-control {
         document.getElementById('subtotal_count_hidden').value = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     } 
+
+    // function discountAmount()
+    // {
+    //     var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
+    //     var beforeDiscount = parseFloat(document.getElementById('discount_kl').innerText);
+
+    //     var discountTotal = afterDiscount - beforeDiscount;
+    //     document.getElementById('discount').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
+    // }
      
 
     function save_to_db(cart_id, quantity) {
