@@ -497,7 +497,7 @@
 																if($i < $c9){
 																	 echo '<i class="fa fa-star tqy"></i> ';
 																 }else{
-																	 echo '<i class="fa fa-star ratingStar" style = "color: transparent;"></i> ';
+																	 echo '<i class="fa fa-star ratingStar tqy" ></i> ';
 																 }
 															}else{
 																echo '';
