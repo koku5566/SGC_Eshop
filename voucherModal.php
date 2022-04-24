@@ -225,6 +225,7 @@
       $.each($("input[name='user_group[]']:checked"), function() {
       values.push($(this).val());
       var voucher_id = this.getAttribute("data-voucher-id");
+      this.disabled = true;
       for( var i=0; i<values.length;i++)
       {
          console.log(i +" is "+ values[i]);
