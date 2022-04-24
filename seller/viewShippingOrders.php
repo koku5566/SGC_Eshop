@@ -423,7 +423,7 @@ $user_id = $_SESSION["userid"];
                                         <div class="card-body">
                                             <?php
 
-                                            $poID = $purowheader['order_id'];
+                                            $poID = $purowheader['invoice_id'];
                                             //Loop product in each order
 
                                             $pusql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
