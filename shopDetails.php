@@ -7,6 +7,7 @@
       die("Connection failed: " . $conn->connect_error);
     }
     $shop_id = $_GET['id'];
+    $discountAmount = $row['voucher.discount_amount'];
     $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
     $sql2 = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
              JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
@@ -14,9 +15,11 @@
              JOIN product ON productVoucher.product_id = product.product_id
              JOIN shopProfile ON product.shop_id = shopProfile.shop_id
              WHERE shop_id = '$shop_id'"; 
-             echo "voucher.voucher_code";
+             echo hi;
     $result1 = $conn->query($sql1);
+    echo hello;
     $result2 = $conn->query($sql2);
+    echo halo;
 
     //Added by Maverick
     $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$shop_id'";
