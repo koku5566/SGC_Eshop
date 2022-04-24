@@ -339,8 +339,11 @@ $_SESSION["userId"] = "U000018";
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
-                        <?php while($row = $orders ->fetch_assoc()){ 
-                            
+                        <?php 
+                        $totalamount = 0;
+                        while($row = $orders ->fetch_assoc()){ 
+                            $amount =  $row['product_price']*$row['quantity'];
+                            $totalamount += $amount;
                             ?>
                         
                             <div class="card">
@@ -379,7 +382,7 @@ $_SESSION["userId"] = "U000018";
                                                     <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
                                                     <td style="text-align: left;"><?php echo $row['product_name']?></td>
                                                     <td style="text-align: center;"><?php echo $row['quantity']?></td>
-                                                    <td style="text-align: center;">RM<?php echo $row['product_price']*$row['quantity']?></td>.00</td>
+                                                    <td style="text-align: center;">RM<?php  echo $amount?></td>.00</td>
                                                     
                                                 </tr>
                                             
@@ -418,7 +421,7 @@ $_SESSION["userId"] = "U000018";
 												<input style="margin-left:10px;" type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
                                              <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:30%;" >RM<?php echo $row['product_price']*$row['quantity']?>.00</span>
+                                             <span style="margin-left:30%;" >RM<?php echo $totalamount?>.00</span>
                                             </tr>
                                         </thead>
                                     </table>
