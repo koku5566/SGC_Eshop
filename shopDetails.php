@@ -331,6 +331,10 @@
            cpnBtn.innerHTML = "COPIED";
          }, 3000);
        }
+
+       $('.carousel').carousel({
+        interval: 2000
+        })
     </script>
 
     <?php
