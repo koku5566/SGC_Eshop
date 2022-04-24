@@ -235,7 +235,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
@@ -715,7 +715,7 @@ select.form-control {
         }
 
         //subtotal_tol = subtotal_tol + parseFloat(document.getElementById("subtotal_kl").innerHTML) + parseFloat(document.getElementById("subtotal_sj").innerHTML);
-        //subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
+        subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
         document.getElementById('subtotal_count_hidden').value = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     } 
