@@ -3,15 +3,6 @@
 	require __DIR__ .'/PHP_product.php';
 ?>
 <?php
-    if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
-        ?>
-            <script type="text/javascript">
-                window.location.href = window.location.origin + "/seller/sellerLogin.php";
-            </script>
-        <?php
-        exit;
-	}
-
     $_SESSION['productID'] = $_GET['id'];
 	$_SESSION['variationId'] = "";
 ?>

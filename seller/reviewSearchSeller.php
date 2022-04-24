@@ -1,7 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","3g48B8Qn8k6v6VF","sgcprot1_SGC_ESHOP");
-$seller = "14"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
-
+$seller = "U000061"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+//$_SESSION['userid']
 $output = '';
 
 
@@ -132,7 +132,7 @@ if(mysqli_num_rows($result) > 0)
 }
 else
 {
- echo 'Data Not Found';
+ //echo 'Data Not Found';
 }
 
 ?>

@@ -409,7 +409,7 @@
                                                                 {
                                                                     echo("
                                                                         <div style=\"position: absolute;width: 100%;height: 48%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
-                                                                            <p style=\"color: white;\">Product get banned, please contact administrator for future help</p>
+                                                                            <p style=\"color: white;\">Product get banned, please contact administrator for further help</p>
                                                                         </div>
                                                                     ");
                                                                 }
