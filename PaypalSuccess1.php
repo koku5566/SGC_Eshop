@@ -167,6 +167,7 @@ $queryKL = mysqli_query($conn, $sql);
      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
+    $orderid = 1;
     $emptyint = 0;
     $emptystring  ="0";
     $null = NULL;
@@ -198,7 +199,7 @@ if ($stmt4 = mysqli_prepare($conn, $sql3)) {
 //--CAROL ADD--- (insert to orderStatus tbl )
 $sql6 = "INSERT INTO `orderStatus`(`order_id`,`invoice_id`, `status`) VALUES (?,?,?)";
 if ($stmt6 = mysqli_prepare($conn, $sql6)) {
-    $bp = mysqli_stmt_bind_param($stmt6, "iss", 1, $invoice_id , $paid);
+    $bp = mysqli_stmt_bind_param($stmt6, "iss", $orderid, $invoice_id , $paid);
     $bp = mysqli_stmt_execute($stmt6);
 }    
 //-------------
