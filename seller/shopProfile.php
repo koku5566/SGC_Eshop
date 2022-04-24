@@ -6,7 +6,7 @@
 <?php
     if($_SESSION['role'] != "SELLER")
 	{
-		?><script>window.location = '<?php //echo("$domain/index.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
     }
 ?>
