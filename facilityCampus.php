@@ -33,7 +33,7 @@
                 <div class="container-fluid" style="width:80%">
                     
                     <div class="card-header py-3">
-                        <h5><?php echo($shopName); ?></h5>
+                        <h5>SEGi CAMPUS</h5>
                     </div>
                    <!-- Slideshow -->
                     <div class="w3-display-middle" style="width:100%">
@@ -93,7 +93,7 @@
                    
                     <br>
                     <div class="card-header py-3">
-                                    <h5>BOOK YOUR FACILITIES</h5>
+                                    <h5><?php echo($shopName); ?> | BOOK YOUR FACILITIES</h5>
                                 </div>
 
                     <div class="row">
