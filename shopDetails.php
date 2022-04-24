@@ -8,7 +8,7 @@
     }
     $shop_id = $_GET['id'];
     $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
-    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher 
+    $sql2 = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
              JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
              JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
              JOIN product ON productVoucher.product_id = product.product_id
