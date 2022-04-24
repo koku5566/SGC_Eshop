@@ -6,7 +6,7 @@
 <?php
   //  if($_SESSION['role'] != "SELLER")
 	//{
-	//	?><!--<script>window.location = '<?php //echo("$domain/index.php");?>'</script><?php
+	//	?><!--<script>window.location = '<?php //echo("$domain/index.php");?>'</script>--><?php
 	//	exit;
   //  }
 ?>
@@ -126,7 +126,7 @@
         $shopId = $_SESSION['userid'];
         $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
         $result1 = mysqli_query($conn, $sql);
-        
+
         while ($row = mysqli_fetch_assoc($result1))
         {
           $shopCoverImage = $row['shop_profile_cover'];
