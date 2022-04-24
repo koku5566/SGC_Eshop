@@ -231,15 +231,26 @@
 
          console.log("voucher Id: " + voucher_id);
 
-         var amount = $('#'+voucher_id+"_amount").val();
+         var amount = parseFloat($('#'+voucher_id+"_amount").val());
          var type = $('#'+voucher_id+"_type").val();
          
          console.log("Amount: " +  amount);
          console.log("type: " + type);
 
          //get tr element id
-         var test = document.getElementById(values[i]).innerHTML;
-         console.log("id: " + test);
+         var current_price = parseFloat(document.getElementById(values[i]).innerHTML);
+
+         var after_discount = 0;
+         if (type == "cashback") {
+            after_discount = current_price - amount;
+         }
+         else if(type == "%")
+         {
+            after_discount = (current_price * ((100 - amount) / 100) );
+         }
+
+         document.getElementById(values[i]).innerHTML = after_discount;
+         console.log("after discount: " + after_discount);
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
