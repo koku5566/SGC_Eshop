@@ -400,7 +400,7 @@
 							<div class="row">
 								<?php 
 									
-									$sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON  WHERE shop_id = '$i_shop_id'";
+									$sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$i_shop_id'";
 									$result_shop = mysqli_query($conn, $sql_shop);
 
 									if (mysqli_num_rows($result_shop) > 0) {
