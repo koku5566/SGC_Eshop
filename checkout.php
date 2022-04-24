@@ -269,9 +269,19 @@ $shippingfee = 8.6;
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
             </div> -->
-            <div class="shipping-option" >
+            <div>
                 <div class="row">
-                    <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
+                    <div class="col"><label class="form-label"><strong>Message</strong></label>
+                        <div class="row">
+                            <div class="col"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Leave a message to seller"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
+            <div class="row">
+                 <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
                 </div>
                 <div class="row">
                     <div class="col-2">
@@ -282,6 +292,7 @@ $shippingfee = 8.6;
                              </label>
                         </div>
                     </div>
+                </div>
                     <div class="col2">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="shipping-option" id="pickup" value="pick-up"required >
@@ -289,24 +300,6 @@ $shippingfee = 8.6;
                                 Pick-up
                             </label>
                         </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div>
-                <div class="row">
-                    <div class="col"><label class="form-label">Message</label>
-                        <div class="row">
-                            <div class="col"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Leave a message to seller"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
-            <div class="row">
-                <div class = "col"></div>
                 <!-- <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Payment Method</strong><br></label>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-3" required><label class="form-check-label" for="formCheck-3">Credit/Debit Card</label></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="paymentmethod" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Online Banking</label></div>
