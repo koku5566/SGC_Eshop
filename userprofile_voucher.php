@@ -192,9 +192,6 @@
 <?php require __DIR__ . '/footer.php' ?>
 
 
-<?php require __DIR__ . '/footer.php' ?>
-
-
 <style>
 #voucherlogo{
    height: 100px;
