@@ -233,7 +233,9 @@
       //           alert(msg);
       //           window.location.href = window.location.origin + '/cart.php';
       //    });
-          
+         
+         //get tr element id
+         console.log("Id: "+$('#'+value[i]).attr('span').value);
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
