@@ -226,6 +226,7 @@
       values.push($(this).val());
       var voucher_id = this.getAttribute("data-voucher-id");
       this.disabled = true;
+      this.checked = false;
       for( var i=0; i<values.length;i++)
       {
          console.log(i +" is "+ values[i]);
@@ -252,7 +253,7 @@
             after_discount = (current_price * ((100 - amount) / 100));
          }
 
-         document.getElementById(values[i]).innerText = after_discount;
+         document.getElementById(values[i]).innerText = (Math.round((after_discount + Number.EPSILON) * 100) / 100).toFixed(2);
          console.log("after discount: " + after_discount);
       }
      
