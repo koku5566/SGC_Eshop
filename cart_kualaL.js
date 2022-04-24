@@ -8,7 +8,7 @@ var count_input = document.getElementsByClassName('sub_kl')
 var removeCartItemButtons = document.getElementsByClassName('removeItem_kl')
     console.log(removeCartItemButtons)
 
-var discount_count = document.getElementById("discount").innerText
+var discount_count = document.getElementById("discount").innerText;
     //console.log(parseFloat(discount_count) / 100.0)
 
 
