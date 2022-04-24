@@ -34,12 +34,6 @@
 ?>
 
 <!-- Select Data -->
-<?php
-  $shopId = $_SESSION['userid'];
-  echo $shopId;
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = $shopId";
-  $result1 = mysqli_query($conn, $sql); 
-?>
 
 <!-- Update Profile -->
 <?php
@@ -113,6 +107,13 @@ echo $shopId;
       }
    }
  
+
+  $shopId = $_SESSION['userid'];
+  echo $shopId;
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $result1 = mysqli_query($conn, $sql); 
+
+
 ?>
 
 <!-- Icon -->
@@ -129,12 +130,13 @@ echo $shopId;
       <div>
 
       <?php
-        while ($row=mysqli_fetch_assoc($result1))
+        while ($row = mysqli_fetch_assoc($result1))
         {
           $shopCoverImage = $row['shop_profile_cover'];
           $shopProfilePic = $row['shop_profile_image'];
           $shopName = $row['shop_name'];
           $shopDescription = $row['shop_description'];
+          echo $shopCoverImage , $shopName, $shopDescription;
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
