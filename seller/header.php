@@ -147,6 +147,7 @@
             </li>
             <?php endif?>
 
+            <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "SELLER") :?>
             <!-- Nav Item - Shipment Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipment"
@@ -295,7 +296,8 @@
                     <i class="fas fa-fw fa-user"></i>
                     <span>Customer Services</span></a>
             </li>
-
+            <?php endif?>
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
