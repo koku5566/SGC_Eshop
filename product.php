@@ -483,8 +483,11 @@
 								<div id = "modalResult" style = "height: 100%"></div>
 								-->
 								<div style="height: 100%">
-											
+											<!--
 											<img src = "https://pbs.twimg.com/profile_images/1452244355062829065/jUmYXUCM_400x400.jpg" class = "reviewprofilepic">
+											-->
+											<?php echo (isset($c6) && !empty ($c6))? "<img src='data:image;base64,".base64_encode($c6)."' class = 'reviewprofilepic'>" : "<img src = 'https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6' class = 'reviewprofilepic'>"; ?>
+											
 											<div class = "namestar">
 												<h6 style = "font-size: 1rem; padding-top: 1rem; margin-bottom: 0px;"><?php echo (isset($c4) && !empty ($c4))? $c4 : ''; ?></h6>
 												<div style="margin-bottom: 0.1em;">	
