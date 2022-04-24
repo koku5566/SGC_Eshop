@@ -153,16 +153,16 @@
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
                 <h3>RM
-                  <?php echo " " . $row2["discount_amount"]. " "; ?>
+                  <?php echo " " . $row2["voucher.discount_amount"]. " "; ?>
                 </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
+                  <span id="cpnCode"><?php echo " " . $row2["voucher.voucher_code"]. " "; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
+                  <?php echo " From " . $row2["voucher.voucher_startdate"]. " till " . $row2["voucher.voucher_expired"]. " "; ?>
                 </p>
                 
                 <!--<div class="circle1"></div>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
