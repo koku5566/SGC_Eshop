@@ -8,7 +8,7 @@ var count_input = document.getElementsByClassName('sub_kl')
 var removeCartItemButtons = document.getElementsByClassName('removeItem_kl')
     console.log(removeCartItemButtons)
 
-var discount_count = document.getElementById("discount").innerText;
+// var discount_count = document.getElementById("discount").innerText;
     //console.log(parseFloat(discount_count) / 100.0)
 
 
@@ -42,14 +42,14 @@ function calsubtotal()
 //     document.getElementById("txtDecimalResult").value= result;
 //     console.log(result)
 // }
-function caldistotal()
-{
-    kldiscount = 0;
+// function caldistotal()
+// {
+//     kldiscount = 0;
         
-    kldiscount = kltotal - Number(document.getElementById('discount').innerText);
-    console.log("after discount: " + kldiscount)
-    //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
-}
+//     kldiscount = kltotal - Number(document.getElementById('discount').innerText);
+//     console.log("after discount: " + kldiscount)
+//     //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
+// }
 
 // Use array to find the row index
 const arr = new Array();
