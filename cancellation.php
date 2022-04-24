@@ -8,7 +8,7 @@ if(isset($_POST['cancel']))
   $reason_type = $_POST['reason_type'];
   $order_id = $_POST['order_id'];
   $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
-  $result = $conn->query($query);
+  
   if (mysqli_query($conn, $query)) {
     echo "Order Cancellation Pending. Please wait for responds";
    } else {
