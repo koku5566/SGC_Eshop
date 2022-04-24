@@ -294,14 +294,14 @@ $shippingfee = 8.6;
 
 
             </div>
-            <div>
+            <!-- <div>
                 <div class="row">
                     <!-- <div class="col"><label class="form-label">Message</label>
                         <div class="row">
                             <div class="col"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Leave a message to seller"></div>
                         </div> -->
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
