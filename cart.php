@@ -81,7 +81,7 @@
                             //check product available
                             if ($rowKL['P_status'] == 'A') {
                                 
-                                $stock_message = "RM <span id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
+                                $stock_message = "RM <span name='".$product_id."' id='tpkl[$i]'></span><input class='sub_kl' id='subkl[$i]' type='hidden' value='".$product_price."' readonly>";
 
                                 if ($rowKL['variation_id'] == "" ) {
                                     $product_price = $rowKL['P_price'];
