@@ -235,7 +235,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: RM<span class="text-medium" id="discount_kl" >0</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
@@ -723,8 +723,8 @@ select.form-control {
 
     function discountAmount()
     {
-        var afterDiscount = parseFloat(document.getElementById('discount_kl').innerText);
-        var beforeDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
+        var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
+        var beforeDiscount = parseFloat(document.getElementById('discount_kl').innerText);
 
         var discountTotal = afterDiscount - beforeDiscount;
         document.getElementById('discount_kl').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
