@@ -229,7 +229,7 @@
             </table>
 
             <?php 
-            $now = date('Y-m-d'); 
+            $now = date('2022-04-20'); 
             $today = strtotime($now);
             $datediff = $today - $orderdate;
             echo round($datediff / (60 * 60 * 24));
