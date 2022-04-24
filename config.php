@@ -14,7 +14,7 @@ $paypalConfig = [
     'client_id' => 'AfVucqlI4wppM3dgw64w50OfTjj3rajP_qfFaDKoqTP7QXOgYI5UcuEWsogFS1xL4EEdo3zHlcsKAJxs',
     'client_secret' => 'EHXBKEv-_c5nqL1Wyj4LAaCAA-Sam3mFCK1XQv6555_AktOE5Ksge_SYZhikgWPWr929bmn8lN01Dui4',
     'return_url' => 'https://eshop.sgcprototype2.com/response.php',
-    'cancel_url' => 'https://eshop.sgcprototype2.com/payment-cancelled.html'
+    'cancel_url' => 'https://eshop.sgcprototype2.com/paymentCancelled.php'
 ];
 
 // Database settings. Change these for your database configuration.
