@@ -39,7 +39,7 @@
                      <th>Voucher Expired</th>
                      <th>Voucher Display</th>
                      <th>Voucher Limit</th>
-                     <th>Status</th>
+                     <th>Edit</th>
                      <th>List/Delist</th>
                   </tr>
                </thead>
@@ -88,21 +88,7 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
-                     <td>
-                        <span class="badge badge-primary">
-                           <?php 
-                           
-                              if($r['voucher_status'] == 2 ){
-                                 echo "Pending";
-                              }elseif($r['voucher_status'] == 1 ){
-                                 echo "Approved";
-                              }elseif($r['voucher_status'] == 0 ){
-                                 echo "Rejected";
-                              }
-
-                           ?>
-                        </span>
-                     </td>
+                     <td><?php echo ("<a href=\"?{$toggle}edit=$voucher_id\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>"); ?></td>
                      <td>
                         <?php if ($r['voucher_list'] == 0 ){
                            echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");

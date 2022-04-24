@@ -154,7 +154,7 @@
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
       $vstatus = "2";
-      $vlist = "0";
+      $vlist = "1";
       $date = date('Y-m-d H:i:s');
 
       
