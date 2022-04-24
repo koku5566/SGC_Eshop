@@ -1,4 +1,6 @@
 var t = $('#transactionTable').DataTable({//call table id
+    responsive: true,
+    scrollX: true,
     dom: 'Bfrtip',
         buttons: [
             {
@@ -15,7 +17,10 @@ var t = $('#transactionTable').DataTable({//call table id
             },
         ]
 });
+
 var t2 = $('#customFormData').DataTable({//call table id
+    responsive: true,
+    scrollX: true,
     dom: 'Bfrtip',
         buttons: [
             {

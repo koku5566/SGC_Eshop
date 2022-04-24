@@ -187,56 +187,54 @@ var options = {
                         <thead>
                             <!-- replace with proper value -->
                             <tr>
-                                <th>No.</th>
                                 <?php
-                                    //$sql2 = "SELECT * FROM `formElement` WHERE `event_id` =  \"$eventid\" ORDER BY `form_element_id` ASC";
-                                    //$result2 = mysqli_query($conn, $sql2);
-                                    //if (mysqli_num_rows($result2) > 0) {
-                                    //    while ($row2 = mysqli_fetch_assoc($result2)) {
-                                    //        echo("
-                                    //            <th>".$row2['field_name']."</th>
-                                    //        ");
-                                    //    }
-                                    //}
-                                    //else
-                                    //{
-                                    //    echo("<th style=\"text-align:center;\">No Transaction yet</th>");
-                                    //    
-                                    //}
+                                    $sql2 = "SELECT * FROM `formElement` WHERE `event_id` =  \"$eventid\" ORDER BY `form_element_id` ASC";
+                                    $result2 = mysqli_query($conn, $sql2);
+                                    if (mysqli_num_rows($result2) > 0) {
+                                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                                            echo("
+                                                <th>".$row2['field_name']."</th>
+                                            ");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo("<th style=\"text-align:center;\">No Transaction yet</th>");
+                                        
+                                    }
                                 ?>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-//                                $sql3 = "SELECT * FROM `formEntry` WHERE `event_id` = \"$eventid\"";
-//                                $result3 = mysqli_query($conn, $sql3);
-//                                if (mysqli_num_rows($result3) > 0) {
-//                                    while ($row3 = mysqli_fetch_assoc($result3)) {
-//                                        $entry = $row3['entry_id'];
-//                                        $sql4 = "SELECT * FROM `formEntry`
-//                                        INNER JOIN `formResponse`
-//                                        ON `formEntry`.`entry_id` = `formResponse`.`entry_id`
-//                                        INNER JOIN `formElement`
-//                                        ON `formElement`.`form_element_id` = `formResponse`.`form_id`
-//                                        WHERE `formEntry`.`entry_id` =  \"$entry\" 
-//                                        ORDER BY `formElement`.`form_element_id` ASC";
-//                                        $result4 = mysqli_query($conn, $sql4);
-//                                        echo("
-//                                            <tr>
-//                                            <td>1</td>
-//
-//                                        ");
-//                                        while ($row4 = mysqli_fetch_assoc($result4)) {
-//                                            echo("  
-//                                                <td>".$row4['value']."</td>
-//                                            "); 
-//                                        }
-//                                        echo("
-//                                        </tr>
-//
-//                                        ");
-//                                    }
-//                                }
+                                $sql3 = "SELECT * FROM `formEntry` WHERE `event_id` = \"$eventid\"";
+                                $result3 = mysqli_query($conn, $sql3);
+                                if (mysqli_num_rows($result3) > 0) {
+                                    while ($row3 = mysqli_fetch_assoc($result3)) {
+                                        $entry = $row3['entry_id'];
+                                        $sql4 = "SELECT * FROM `formEntry`
+                                        INNER JOIN `formResponse`
+                                        ON `formEntry`.`entry_id` = `formResponse`.`entry_id`
+                                        INNER JOIN `formElement`
+                                        ON `formElement`.`form_element_id` = `formResponse`.`form_id`
+                                        WHERE `formEntry`.`entry_id` =  \"$entry\" 
+                                        ORDER BY `formElement`.`form_element_id` ASC";
+                                        $result4 = mysqli_query($conn, $sql4);
+                                        echo("
+                                            <tr>
+
+                                        ");
+                                        while ($row4 = mysqli_fetch_assoc($result4)) {
+                                            echo("  
+                                                <td>".$row4['value']."</td>
+                                            "); 
+                                        }
+                                        echo("
+                                        </tr>
+
+                                        ");
+                                    }
+                                }
                             ?>
                         </tbody>
                     </table>
@@ -250,6 +248,7 @@ var options = {
     <!-- Below Template -->
 </div>
 <!-- /.container-fluid -->
+
 <script src="../js/eventDetails.js"></script>
 
 <?php

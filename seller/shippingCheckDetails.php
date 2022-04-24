@@ -66,39 +66,40 @@
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
-        echo $trackingnum, $status, $invoice_id;
-        $insertsql = "INSERT INTO orderStatus (order_id, invoice_id, status) VALUES('$order_id',$invoice_id', '$status')";
+        //echo $trackingnum, $status, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id, invoice_id, status) VALUES('$order_id','$invoice_id', '$status')";
         $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE invoice_id = '$invoice_id'";
          //$conn->query($insertsql);
         // $conn->query($updatesql);
         //$iquery_run = mysqli_query($conn,$insertsql);
         //$uquery_run = mysqli_query($conn,$updatesql);
-        echo ' helds';
+
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
            
-            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
-            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+            //header('Location: ' . $_SERVER['HTTP_REFERER']); 
+             ?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
           <?php
            $_SESSION['success'] = "Order Status has been updated";
         } 
         else {
           
-          header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
-          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+          //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
+           <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
     <?php $_SESSION['status'] = "Order status update failed";
         }
     }
     
     //pick up status update
     if(isset($_POST["status_update"])){
-        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
-        echo $pickupstat,$order_id, $invoice_id;
-        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
+        //echo $pickupstat,$orderid, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id,'$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
-        if ($conn->query($updatesql)) {
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['success'] = "Order Status has been updated";?>
             <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
