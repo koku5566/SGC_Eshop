@@ -15,11 +15,8 @@
              JOIN product ON productVoucher.product_id = product.product_id
              JOIN shopProfile ON product.shop_id = shopProfile.shop_id
              WHERE shop_id = '$shop_id'"; 
-             echo hi;
     $result1 = $conn->query($sql1);
-    echo hello;
     $result2 = $conn->query($sql2);
-    echo halo;
 
     //Added by Maverick
     $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$shop_id'";
