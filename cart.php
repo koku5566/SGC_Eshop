@@ -708,17 +708,19 @@ select.form-control {
     {
         subtotal_tol = 0;
 
+        var updateSub = document.getElementsByClassName('sbt');
+        for(var i=0; i<updateSub.length;i++)
+        {
+            //updateSub[i].innerText;
+            console.log(updateSub[i].innerText);
+        }
+
         //subtotal_tol = subtotal_tol + parseFloat(document.getElementById("subtotal_kl").innerHTML) + parseFloat(document.getElementById("subtotal_sj").innerHTML);
         subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
         document.getElementById('subtotal_count_hidden').value = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     }  
 
-    function updateLatestSub()
-    {
-        var updateSub = document.getElementsByClassName('sbt');
-        console.log (updateSub);
-    }
     function save_to_db(cart_id, quantity) {
        
         $.ajax({
@@ -729,7 +731,6 @@ select.form-control {
         .done(function( msg ) {
                 window.location.href = window.location.origin + '/cart.php';
          });
-
     }
 
     //update product variation
