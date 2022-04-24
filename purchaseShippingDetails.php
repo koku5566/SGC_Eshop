@@ -228,6 +228,19 @@
                 </tbody>
             </table>
 
+            <?php 
+            $now = date('Y-m-d'); 
+            $today = strtotime($now);
+            $datediff = $today - $orderdate;
+            echo round($datediff / (60 * 60 * 24));
+            
+            if($orderstatus =='Paid'){?>
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
+                    <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
+                    </form>
+                <?php } ?>
 
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
