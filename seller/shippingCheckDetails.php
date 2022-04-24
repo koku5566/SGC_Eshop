@@ -62,7 +62,9 @@
 
     //=======================POST METHOD================================
     if(isset($_POST["tracking_send"])){
-        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
         echo $trackingnum, $status, $invoice_id;
@@ -90,9 +92,11 @@
     
     //pick up status update
     if(isset($_POST["status_update"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
-        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id', '$pickupstat')";
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+        echo $pickupstat,$order_id, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
@@ -275,7 +279,8 @@
                                                 <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
+                                            <input type="hidden" name="order_id" value="<?php echo $order_id?>">
+                                             <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <input class="form-control input" name="tracking_number"
@@ -305,7 +310,8 @@
                                                 <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
+                                                <input type="hidden" name="order_id" value="<?php echo $order_id?>">
+                                                <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">
