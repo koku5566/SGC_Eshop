@@ -238,7 +238,11 @@
         display: flex;    
         overflow-x: auto;
       }
-      
+
+      .voucherContainer::-webkit-scrollbar {    
+        display: none;
+      }
+
       .voucherColumn{
         margin-right: 15px;
       }
