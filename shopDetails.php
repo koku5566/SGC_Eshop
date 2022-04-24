@@ -18,13 +18,14 @@
     //Fetch each promotion image information
     $promotion_title = array();
     $promotion_image = array();
+    $userId = $_GET['id'];
 
     //If you want to use this code to show promotions from respective stores. Temporarily unavailable because the seller on the store details page is not defined here.
     //$userId = $_SESSION['userid'];
     //$sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE promotionEnd_Date >= now() AND `status` = 0";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE shop_id='$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
