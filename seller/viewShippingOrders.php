@@ -256,10 +256,11 @@ $user_id = $_SESSION["userid"];
                                                 <div class="col md-auto text-start">
                                                     <span><strong><?php echo $rowheader['username']; ?></strong></span>
                                                 </div>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;">
+                                                <div class="col md-auto text-end" style="text-align:right;">
                                                 <span><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>
                                             </div>
+                                            </div>
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -269,7 +270,7 @@ $user_id = $_SESSION["userid"];
                                             $allsql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON productTransaction.product_id = product.product_id
-                                                        WHERE productTransaction.invoice_id = '$aoID' AND productTransaction.shop_id = '$user_id' ";
+                                                        WHERE productTransaction.invoice_id = '$aoID' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
                                                         /*SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
@@ -337,10 +338,11 @@ $user_id = $_SESSION["userid"];
                                                 <div class="col md-auto text-start">
                                                     <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
                                                 </div>
-                                            </div>
-                                            <div class="col md-auto text-end" style="text-align:right;">
+                                                <div class="col md-auto text-end" style="text-align:right;">
                                                 <span><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>
                                             </div>
+                                            </div>
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -400,7 +402,7 @@ $user_id = $_SESSION["userid"];
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php       
-                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND productTransaction.shop_id = '$user_id' ";
+                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
@@ -410,12 +412,13 @@ $user_id = $_SESSION["userid"];
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col md-auto text-start">
-                                                    <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
+                                                    <span><strong><?php echo $purowheader['username']; ?></strong></span>
                                                 </div>
+                                                <div class="col md-auto text-end" style="text-align:right;">
+                                                <span><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>
                                             </div>
-                                            <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>
                                             </div>
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -473,7 +476,7 @@ $user_id = $_SESSION["userid"];
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Shipped' AND productTransaction.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Shipped' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -485,10 +488,11 @@ $user_id = $_SESSION["userid"];
                                                 <div class="col md-auto text-start">
                                                     <span><strong><?php echo $srowheader['username']; ?></strong></span>
                                                 </div>
+                                                <div class="col md-auto text-end" style="text-align:right;">
+                                                    <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
+                                                </div>
                                             </div>
-                                            <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
-                                            </div>
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -545,7 +549,7 @@ $user_id = $_SESSION["userid"];
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -557,10 +561,11 @@ $user_id = $_SESSION["userid"];
                                                 <div class="col md-auto text-start">
                                                     <span><strong><?php echo $srowheader['username']; ?></strong></span>
                                                 </div>
+                                                <div class="col md-auto text-end" style="text-align:right;">
+                                                    <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
+                                                </div>
                                             </div>
-                                            <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
-                                            </div>
+
                                         </div>
                                         <div class="card-body">
                                             <?php
