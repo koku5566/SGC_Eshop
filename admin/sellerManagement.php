@@ -59,6 +59,10 @@
   
 </div>
 
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
 <style>
 body{
     background-color: #EEEDEE;
@@ -70,7 +74,3 @@ body{
   padding: 30px;
 }
 </style>
-
-<?php
-    require __DIR__ . '/footer.php'
-?>
