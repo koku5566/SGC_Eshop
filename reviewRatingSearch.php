@@ -67,7 +67,7 @@ if(mysqli_num_rows($result) > 0)
 		 $profilePicR .= '<img src = "https://us.123rf.com/450wm/panyamail/panyamail1809/panyamail180900248/109879025-user-avatar-icon-sign-profile-symbol.jpg?ver=6" class = "reviewprofilepic">';
 	 }else{
 		 //DISPLAY PROFILE PIC NO LE JIU DEFAULT ^^
-		 $profilePicR .= '<img src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" class = "reviewprofilepic">';
+		 $profilePicR .= '<img src="data:image;base64,'.base64_encode($row["profile_picture"]).'" class = "reviewprofilepic">';
 	 }
 	 
 	 
