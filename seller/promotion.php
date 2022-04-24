@@ -286,7 +286,7 @@
                                     if ($_SESSION['role'] == "SELLER")
                                     { 
                                         $userId = $_SESSION['userid'];
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1 OR `status` = 9 OR `status` = 2 ";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND (`status` = 1 OR `status` = 9 OR `status` = 2) ";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){
 
