@@ -409,9 +409,7 @@
 											$shop_name = $row_shop['shop_name'];
 											$shop_pic = $row_shop['shop_profile_image'];
 
-											$temptime = strtotime($row_shop['registration_date']);
-
-											$shop_joinby = date('Y',$temptime);
+											$shop_joinby = date('Y',$row_shop['registration_date']);
 										}
 
 										if($shop_pic != "")
