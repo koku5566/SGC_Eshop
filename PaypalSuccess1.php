@@ -197,11 +197,11 @@ if ($stmt4 = mysqli_prepare($conn, $sql3)) {
     $bp = mysqli_stmt_execute($stmt4);
 }   
 //--CAROL ADD--- (insert to orderStatus tbl )
-/* $sql4 = "INSERT INTO `orderStatus`(,`invoice_id`, `status`) VALUES (?,?,?)";
-if ($stmt5 = mysqli_prepare($conn, $sql4)) {
-    $bp = mysqli_stmt_bind_param($stmt5, "ss",  $invoice_id , $paid);
-    $bp = mysqli_stmt_execute($stmt5);
-}    */
+$sql6 = "INSERT INTO `orderStatus`(,`invoice_id`, `status`) VALUES (?,?,?)";
+if ($stmt6 = mysqli_prepare($conn, $sql6)) {
+    $bp = mysqli_stmt_bind_param($stmt6, "ss",  $invoice_id , $paid);
+    $bp = mysqli_stmt_execute($stmt6);
+}    
 //-------------
 
 if (mysqli_stmt_affected_rows($stmt) == 1) {
