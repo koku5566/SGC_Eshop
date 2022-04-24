@@ -4,133 +4,133 @@
 
 <?php
 $user_id = $_SESSION["userid"];
-/*QUERY FOR ALL ORDER */
-$sql = "SELECT
-DISTINCT myOrder.order_id,
-myOrder.order_status,
-myOrder.delivery_method,
-myOrder.tracking_number,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-user.username,
-orderDetails.amount
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
-WHERE orderDetails.shop_id = '$user_id'
-ORDER BY myOrder.order_id DESC
-";
+// /*QUERY FOR ALL ORDER */
+// $sql = "SELECT
+// DISTINCT myOrder.order_id,
+// myOrder.order_status,
+// myOrder.delivery_method,
+// myOrder.tracking_number,
+// product.product_name,
+// product.product_cover_picture,
+// product.product_price,
+// orderDetails.quantity,
+// user.username,
+// orderDetails.amount
+// FROM
+// myOrder
+// JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+// JOIN user ON myOrder.user_id = user.user_id
+// JOIN product ON orderDetails.product_id = product.product_id
+// WHERE orderDetails.shop_id = '$user_id'
+// ORDER BY myOrder.order_id DESC
+// ";
 
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-
-
-/*QUERY FOR TO SHIP */
-$allsql = "SELECT
-DISTINCT myOrder.order_id,
-myOrder.order_status,
-myOrder.delivery_method,
-myOrder.tracking_number,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-user.username,
-orderDetails.amount
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status = 'Paid'
-AND myOrder.user_id = '$user_id'
-ORDER BY myOrder.order_id DESC";
-
-$stmt = $conn->prepare($allsql);
-$stmt->execute();
-$aallresult = $stmt->get_result();
-
-/*QUERY FOR PICK UP */
-$pickupsql = "SELECT
-DISTINCT myOrder.order_id,
-myOrder.order_status,
-myOrder.delivery_method,
-myOrder.tracking_number,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-user.username,
-orderDetails.amount
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' AND myOrder.user_id = '$user_id'
-ORDER BY myOrder.order_id DESC";
-
-$stmt = $conn->prepare($pickupsql);
-$stmt->execute();
-$pickupresult = $stmt->get_result();
+// $stmt = $conn->prepare($sql);
+// $stmt->execute();
+// $result = $stmt->get_result();
 
 
+// /*QUERY FOR TO SHIP */
+// $allsql = "SELECT
+// DISTINCT myOrder.order_id,
+// myOrder.order_status,
+// myOrder.delivery_method,
+// myOrder.tracking_number,
+// product.product_name,
+// product.product_cover_picture,
+// product.product_price,
+// orderDetails.quantity,
+// user.username,
+// orderDetails.amount
+// FROM
+// myOrder
+// JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+// JOIN user ON myOrder.user_id = user.user_id
+// JOIN product ON orderDetails.product_id = product.product_id
+// WHERE myOrder.order_status = 'Paid'
+// AND myOrder.user_id = '$user_id'
+// ORDER BY myOrder.order_id DESC";
 
-/*QUERY FOR SHIPPING */
-$shippingsql = "SELECT
-DISTINCT myOrder.order_id,
-myOrder.order_status,
-myOrder.delivery_method,
-myOrder.tracking_number,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-user.username,
-orderDetails.amount
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status != 'Shipped' 
-AND myOrder.user_id = '$user_id'
-ORDER BY myOrder.order_id DESC";
+// $stmt = $conn->prepare($allsql);
+// $stmt->execute();
+// $aallresult = $stmt->get_result();
 
-$stmt = $conn->prepare($shippingsql);
-$stmt->execute();
-$shippingresult = $stmt->get_result();
+// /*QUERY FOR PICK UP */
+// $pickupsql = "SELECT
+// DISTINCT myOrder.order_id,
+// myOrder.order_status,
+// myOrder.delivery_method,
+// myOrder.tracking_number,
+// product.product_name,
+// product.product_cover_picture,
+// product.product_price,
+// orderDetails.quantity,
+// user.username,
+// orderDetails.amount
+// FROM
+// myOrder
+// JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+// JOIN user ON myOrder.user_id = user.user_id
+// JOIN product ON orderDetails.product_id = product.product_id
+// WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' AND myOrder.user_id = '$user_id'
+// ORDER BY myOrder.order_id DESC";
+
+// $stmt = $conn->prepare($pickupsql);
+// $stmt->execute();
+// $pickupresult = $stmt->get_result();
 
 
-/*QUERY FOR COMPLETED */
-$completedsql = "SELECT
-DISTINCT myOrder.order_id,
-myOrder.order_status,
-myOrder.delivery_method,
-myOrder.tracking_number,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-orderDetails.quantity,
-user.username,
-orderDetails.amount
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN user ON myOrder.user_id = user.user_id
-JOIN product ON orderDetails.product_id = product.product_id
-WHERE myOrder.order_status = 'Received'
-AND myOrder.user_id = '$user_id'
-ORDER BY myOrder.order_id DESC";
 
-$stmt = $conn->prepare($completedsql);
-$stmt->execute();
-$completedresult = $stmt->get_result();
+// /*QUERY FOR SHIPPING */
+// $shippingsql = "SELECT
+// DISTINCT myOrder.order_id,
+// myOrder.order_status,
+// myOrder.delivery_method,
+// myOrder.tracking_number,
+// product.product_name,
+// product.product_cover_picture,
+// product.product_price,
+// orderDetails.quantity,
+// user.username,
+// orderDetails.amount
+// FROM
+// myOrder
+// JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+// JOIN user ON myOrder.user_id = user.user_id
+// JOIN product ON orderDetails.product_id = product.product_id
+// WHERE myOrder.order_status != 'Shipped' 
+// AND myOrder.user_id = '$user_id'
+// ORDER BY myOrder.order_id DESC";
+
+// $stmt = $conn->prepare($shippingsql);
+// $stmt->execute();
+// $shippingresult = $stmt->get_result();
+
+
+// /*QUERY FOR COMPLETED */
+// $completedsql = "SELECT
+// DISTINCT myOrder.order_id,
+// myOrder.order_status,
+// myOrder.delivery_method,
+// myOrder.tracking_number,
+// product.product_name,
+// product.product_cover_picture,
+// product.product_price,
+// orderDetails.quantity,
+// user.username,
+// orderDetails.amount
+// FROM
+// myOrder
+// JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+// JOIN user ON myOrder.user_id = user.user_id
+// JOIN product ON orderDetails.product_id = product.product_id
+// WHERE myOrder.order_status = 'Received'
+// AND myOrder.user_id = '$user_id'
+// ORDER BY myOrder.order_id DESC";
+
+// $stmt = $conn->prepare($completedsql);
+// $stmt->execute();
+// $completedresult = $stmt->get_result();
 ?>
 
 
@@ -266,10 +266,10 @@ $completedresult = $stmt->get_result();
 
                                             $aoID = $rowheader['invoice_id'];
                                             //Loop product in each order
-                                            $allsql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                            $allsql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
-                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$aoID' AND orderDetails.shop_id = '$user_id' ";
+                                                        INNER JOIN product ON productTransaction.product_id = product.product_id
+                                                        WHERE productTransaction.invoice_id = '$aoID' AND productTransaction.shop_id = '$user_id' ";
                                                         /*SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON orderDetails.product_id = product.product_id
@@ -324,7 +324,8 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php       
-                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Paid' AND orderDetails.shop_id = '$user_id' ";
+                            
+                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Paid' AND productTransaction.shop_id = '$user_id' ";
                               $tsresultheader = mysqli_query($conn, $sqltsheader);
                               if (mysqli_num_rows($tsresultheader) > 0) {
                               while ($tsrowheader = mysqli_fetch_assoc($tsresultheader)) {
@@ -346,10 +347,11 @@ $completedresult = $stmt->get_result();
 
                                             $toID = $tsrowheader['order_id'];
                                             //Loop product in each order
-                                            $tssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+
+                                            $tssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
-                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$toID' AND orderDetails.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
+                                                        INNER JOIN product ON productTransaction.product_id = product.product_id
+                                                        WHERE productTransaction.invoice_id = '$toID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
@@ -398,7 +400,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Pick Up--------------------------------------->
                             <div class="tab-pane fade" id="topickup" role="tabpanel" aria-labelledby="topickup-tab">
                             <?php       
-                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE  myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlpuheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.delivery_method = 'self-collection' AND myOrder.order_status ='Paid' AND productTransaction.shop_id = '$user_id' ";
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
@@ -420,10 +422,11 @@ $completedresult = $stmt->get_result();
 
                                             $poID = $purowheader['order_id'];
                                             //Loop product in each order
-                                            $pusql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+
+                                            $pusql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
-                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$poID' AND orderDetails.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status != 'Ready' ORDER BY myOrder.order_id DESC";
+                                                        INNER JOIN product ON productTransaction.product_id = product.product_id
+                                                        WHERE productTransaction.invoice_id = '$poID' AND productTransaction.shop_id = '$user_id' AND myOrder.delivery_method = 'self-collection' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
                                             
                                             $puresult = mysqli_query($conn, $pusql);
                                             if (mysqli_num_rows($puresult) > 0) {
@@ -470,7 +473,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Shipping--------------------------------------->
                             <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Shipped' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Shipped' AND productTransaction.shop_id = '$user_id' ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -492,10 +495,10 @@ $completedresult = $stmt->get_result();
 
                                             $soID = $srowheader['order_id'];
                                             //Loop product in each order
-                                            $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                            $ssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
-                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$soID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        INNER JOIN product ON productTransaction.product_id = product.product_id
+                                                        WHERE productTransaction.invoice_id = '$soID' AND productTransaction.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
@@ -542,7 +545,7 @@ $completedresult = $stmt->get_result();
                             <!--------------------------------Completed--------------------------------------->
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             <?php       
-                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN orderDetails ON myOrder.order_id = orderDetails.order_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND orderDetails.shop_id = '$user_id' ";
+                              $sqlsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ";
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
@@ -564,10 +567,10 @@ $completedresult = $stmt->get_result();
 
                                             $coID = $srowheader['order_id'];
                                             //Loop product in each order
-                                            $ssql = "SELECT * FROM orderDetails INNER JOIN myOrder ON orderDetails.order_id = myOrder.order_id
+                                            $ssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
-                                                        INNER JOIN product ON orderDetails.product_id = product.product_id
-                                                        WHERE orderDetails.order_id = '$coID' AND orderDetails.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        INNER JOIN product ON productTransaction.product_id = product.product_id
+                                                        WHERE productTransaction.invoice_id = '$coID' AND productTransaction.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
                                             
                                             $sresult = mysqli_query($conn, $ssql);
                                             if (mysqli_num_rows($sresult) > 0) {
