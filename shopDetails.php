@@ -13,7 +13,7 @@
              JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
              JOIN product ON productVoucher.product_id = product.product_id
              JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-             WHERE shop_id = $shop_id"; 
+             WHERE shop_id = '$shop_id'"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
 
