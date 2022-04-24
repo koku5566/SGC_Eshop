@@ -300,7 +300,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2">
                                                             <?php if ($arow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
@@ -339,13 +339,13 @@ $user_id = $_SESSION["userid"];
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $tsrowheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <?php
 
-                                            $toID = $tsrowheader['order_id'];
+                                            $toID = $tsrowheader['invoice_id'];
                                             //Loop product in each order
 
                                             $tssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
@@ -378,7 +378,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2">
                                                             <?php if ($tsrow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
@@ -414,7 +414,7 @@ $user_id = $_SESSION["userid"];
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $tsrowheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -453,7 +453,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2">
                                                             <?php if ($purow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($purow['delivery_method'] == 'self-collection' && $purow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $purow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
@@ -487,13 +487,13 @@ $user_id = $_SESSION["userid"];
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $srowheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <?php
 
-                                            $soID = $srowheader['order_id'];
+                                            $soID = $srowheader['invoice_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
@@ -559,13 +559,13 @@ $user_id = $_SESSION["userid"];
                                                 </div>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;">
-                                                <span><strong>Order ID:<?php echo $srowheader['order_id']; ?> </strong></span>
+                                                <span><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <?php
 
-                                            $coID = $srowheader['order_id'];
+                                            $coID = $srowheader['invoice_id'];
                                             //Loop product in each order
                                             $ssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
@@ -597,7 +597,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2">
                                                             <?php if ($srow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Check Details</a><?php } ?>
+                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
                                                     </div>
                                             <?php
