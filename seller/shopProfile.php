@@ -33,9 +33,7 @@
 //    }
 ?>
 
-<!-- Select Data -->
-
-<!-- Update Profile -->
+<!-- Retrieve and Update Data -->
 <?php
  if(isset($_POST['saveBtn']))
  {
@@ -91,7 +89,6 @@
   }
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
-echo $shopId;
     $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = $shopId";
 
       if (mysqli_query($conn, $update))
@@ -106,14 +103,10 @@ echo $shopId;
           echo 'Update Fail';
       }
    }
- 
-
-  $shopId = $_SESSION['userid'];
-  echo $shopId;
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
-  $result1 = mysqli_query($conn, $sql); 
-
-
+    //Retrieve Data
+    $shopId = $_SESSION['userid'];
+    $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+    $result1 = mysqli_query($conn, $sql); 
 ?>
 
 <!-- Icon -->
@@ -136,7 +129,7 @@ echo $shopId;
           $shopProfilePic = $row['shop_profile_image'];
           $shopName = $row['shop_name'];
           $shopDescription = $row['shop_description'];
-          echo $shopCoverImage , $shopName, $shopDescription;
+        
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
