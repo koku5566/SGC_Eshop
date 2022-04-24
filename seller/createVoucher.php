@@ -177,7 +177,7 @@
             {
                 if($vstatus == 2)
                 {
-                    echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
+                    echo '<script>alert("Your voucher has been listed.")</script>';
                     ?>
                         <script type="text/javascript">
                             window.location.href = window.location.origin + "/seller/createVoucher.php";

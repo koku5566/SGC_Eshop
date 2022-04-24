@@ -400,7 +400,7 @@
 							<div class="row">
 								<?php 
 									
-									$sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$i_shop_id'";
+									$sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$i_shop_id'";
 									$result_shop = mysqli_query($conn, $sql_shop);
 
 									if (mysqli_num_rows($result_shop) > 0) {
@@ -408,8 +408,6 @@
 											$shop_id = $row_shop['shop_id'];
 											$shop_name = $row_shop['shop_name'];
 											$shop_pic = $row_shop['shop_profile_image'];
-
-											$shop_joinby = substr($row_shop['registration_date'], -4);
 										}
 
 										if($shop_pic != "")
@@ -439,35 +437,41 @@
 										");
 									}
 								
-									$sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE shop_id = '$i_shop_id'";
-									$result_shop = mysqli_query($conn, $sql_shop);
-
-									if (mysqli_num_rows($result_shop) > 0) {
-										while($row_shop = mysqli_fetch_assoc($result_shop)) {
-											$shop_totalProduct = $row_shop['total_Product'];
-										}
-									}
 								?>
 							</div>
 						</div>
 						<div class="col-xl-4 col-md-8">
 							<div class="row">
-								<?php 
-									
-									
-								
-								?>
 								<div class="col list-parent"> 
 									<i class="fa fa-star"></i>
-									<span><?php echo($shop_rating); ?></span>
+									<?php
+									 $sql ="SELECT sp.shop_id, sp.shop_name, COALESCE(ROUND(AVG(rr.rating), 1),'Not Rated')  AS shop_rating
+											FROM  shopProfile sp LEFT JOIN reviewRating rr
+											ON sp.shop_id = rr.seller_id
+											WHERE rr.disable_date IS NULL && sp.shop_id = '$id'
+											GROUP BY sp.shop_id
+											LIMIT 1";
+									if($stmt = mysqli_prepare ($conn, $sql)){
+										mysqli_stmt_execute($stmt);
+										mysqli_stmt_bind_result($stmt, $f1,$f2,$f3);
+										
+										while(mysqli_stmt_fetch($stmt)){
+											echo"<span>$f3</span>";
+										}
+										mysqli_stmt_close($stmt);												
+									}														
+									?>
+									<!--
+									<span>4.5</span>
+									-->
 								</div>
 								<div class="col list-parent"> 
 									<i class="fa fa-gift"></i>
-									<span><?php echo($shop_totalProduct); ?></span>
+									<span>120</span>
 								</div>
 								<div class="col list-parent"> 
 									<i class="fa fa-calendar"></i>
-									<span><?php echo($shop_joinby); ?></span>
+									<span>2021</span>
 								</div>
 							</div>
 						</div>
@@ -755,14 +759,12 @@
 								//Fetch each product information
 								$id = $row['product_id'];
 								$sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-								C.max_price,D.min_price,F.total_stock, R.rating ,I.shop_address_state  
-								FROM `product` AS A 
+								C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
 								LEFT JOIN variation AS B ON A.product_id = B.product_id 
 								LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
 								LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
 								LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
 								LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.user_id = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
-								LEFT JOIN shopProfile AS I ON A.shop_id = I.shop_id 
 								WHERE A.product_id = '$id'
 								LIMIT 1";
 								$result_1 = mysqli_query($conn, $sql_1);
@@ -903,7 +905,7 @@
 
 										//Start of Location Division
 										//$location = $row_1['location'];
-										$location = $row_1['shop_address_state'];
+										$location = "Subang Jaya";
 										echo("
 											<div class=\"Location\">
 												<span style=\"font-size: 10pt; color:grey;\" >$location</span>
