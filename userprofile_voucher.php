@@ -1,21 +1,21 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if(!isset($_SESSION)){
-      session_start();
-   }
-   if(!isset($_SESSION['id']))
-   {
-         $_SESSION['id'] = "";
-   }
+   //  if(!isset($_SESSION)){
+   //    session_start();
+   // }
+   // if(!isset($_SESSION['id']))
+   // {
+   //       $_SESSION['id'] = "";
+   // }
  ?>
 
 <?php	
-	if($_SESSION['login'] == false)
-	{
-		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
-		exit;
-    }
+	// if($_SESSION['login'] == false)
+	// {
+	// 	
+	// 	exit;
+   //  }
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
