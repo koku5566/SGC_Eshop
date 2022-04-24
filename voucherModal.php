@@ -238,7 +238,7 @@
          console.log("type: " + type);
 
          //get tr element id
-         var current_price = parseFloat(document.getElementById(values[i]).innerHTML);
+         var current_price = parseFloat(document.getElementById(values[i]).innerHTML).toFixed(2);
 
          console.log("current price: " + current_price);
 
