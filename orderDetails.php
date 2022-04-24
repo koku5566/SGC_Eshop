@@ -94,16 +94,21 @@ $order_id = $_GET['order_id'];
                         </div>
                         
                     </div>
-                
+                        
+                       <?php if($row2['order_status'] !='Completed'){?>
+                        <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
+                        <a class="btn btn-primary"style="margin-left:10px;" href="orderDetails.php?order_id=<?php echo $row2['order_id'];?>">Confirm Order</a>
+                            <?php } else{ ?>
+                        <a class= "btn btn-primary" href="getOrder.php">Back</a>
+                        <?php }?>
+                    </div>
+                    <?php }?>
                 </div>
-                <?php }?>
-            <br>
-            
-            
+                <br>
+            </div>
         </section>
     </div>
-    
-                <!-- /.container-fluid -->
+<!-- /.container-fluid -->
 
 <?php
     require __DIR__ . '/footer.php'

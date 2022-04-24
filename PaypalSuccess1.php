@@ -7,6 +7,7 @@
 		$results = mysqli_query($conn,"SELECT * FROM payments where id='$paymentid'");
 		$row1 = mysqli_fetch_array($results);
 
+
 $uid = $_SESSION['userid'];
 $sql ="SELECT product.product_name AS P_name, product.product_price AS P_price, cart.variation_id AS variation_id, 
 cart.quantity AS P_quantity, product.product_variation AS P_variation, product.product_stock AS product_stock,
@@ -36,6 +37,8 @@ $queryKL = mysqli_query($conn, $sql);
     $product_quantity = $rowKL['P_quantity'];
     $shop_id = $rowKL['shop_id'];
 
+    
+
     $variation_message = "";
     $showNotif = false;
 
@@ -44,7 +47,7 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
-            $variation_id = "";
+            $variation_id = "0";
 
             $variation_message = "<option selected>Not Variation</option>";
         }
@@ -110,37 +113,40 @@ $queryKL = mysqli_query($conn, $sql);
     $transaction_id = $row1['transaction_id'];
     $paidAmount = $row1['payment_amount'];
 
-
     /* deduct stock */
-/*     $stocksql = "SELECT product.product_stock, variation.product_stock
-    FROM `product`
-    JOIN  `variation`
+     $stocksql = "SELECT product_stock FROM `product`
     ";
-    $stocksql1 = mysqli_query($conn, $stocksql);
-    $row3 = mysqli_fetch_array($stocksql1);
+    $stockresult = mysqli_query($conn, $stocksql);
+    while($row3 = mysqli_fetch_array($stockresult)){
+        $stock = $row3['product_stock'];
+    }
 
-    $stock = $row3['product.product_stock'];
-    $variationStock = $row3['product_stock'];
-    $deductQuantity1 = $stock - $product_quantity;
-    $deductQuantity2 = $variationStock - $product_quantity;
-     
+    $stocksql2 = "SELECT product_stock FROM `variation`
+    ";
+    $variationresult = mysqli_query($conn, $stocksql2);
+    while($row4 = mysqli_fetch_array($variationresult)){
+        $variationStock = $row4['product_stock'];
+    }
+      
 
     if ($variation_id == "") {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
-        $bp2 = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity,$product_id);
-        $bp2 = mysqli_stmt_execute($stmt2);
+        $deductQuantity1 = $stock-$product_quantity;
+        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity1,$product_id);
+        $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
     }
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
     if ($stmt3 = mysqli_prepare($conn,$deductsql2)){
-        $bp1 = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
-        $bp1 = mysqli_stmt_execute($stmt3);
+        $deductQuantity2 = $variationStock-$product_quantity;
+        $bp = mysqli_stmt_bind_param($stmt3,"ii",$deductQuantity2,$variation_id);
+        $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-    } */
+    } 
 
 /*    echo(" 
         <span>".$invoice_id."</span>
@@ -152,21 +158,25 @@ $queryKL = mysqli_query($conn, $sql);
         <span>".$user_address."</span>
         <span>".$create_time."</span>
         <span>".$shop_id."</span>
-        <span>".$shippingMethod."</span>
+        <span>".$date."</span>
+        <span>".$paid."</span>
+
 
    
-    ");   */
+    ");    */
 
      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
+    $emptyint = 0;
+    $emptystring  ="0";
+    $null = NULL;
     $shippingMethod = $_SESSION['shippingMethod'];  
 
-    $usersql ="SELECT id FROM `user` WHERE user.user_id= '.$uid.'";
-        $usersql1 = mysqli_query($conn, $suersql);
-        $userrow = mysqli_fetch_array($userresult);
-        $userid = $userresult['id'];
-
+/*     echo(" 
+    <span>".$date."</span>
+    <span>".$paid."</span>
+    "); */
 
     
     $sql2 = "INSERT INTO `productTransaction`(`invoice_id`, `user_id`, `product_id`, `variation_id`, `payment_status`, `address_id`, `shop_id`, `createdtime`, `quantity`) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -174,15 +184,15 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
-           $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID` `address_id`, `delivery_method`, `order_date`, `order_status`, `invoice_id`) VALUES (?,?,?,?,?,?,?)";
-        if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-            $bp3 = mysqli_stmt_bind_param($stmt4, "ssissss", $userid, $user_address,  $shippingMethod, $date, $paid, $invoice_id );
-            $bp3 = mysqli_stmt_execute($stmt4);
-    }   
     
 }
+$sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+if ($stmt4 = mysqli_prepare($conn, $sql3)) {
+    $bp = mysqli_stmt_bind_param($stmt4, "ssisisssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $date, $paid, $emptystring, $null, $invoice_id );
+    $bp = mysqli_stmt_execute($stmt4);
+}   
+
 if (mysqli_stmt_affected_rows($stmt) == 1) {
-    $ticketID = mysqli_stmt_insert_id($stmt);
     $to = $userEmail;
     $subject = "Here is your SGC E-Shop Invoice";
     $from = "info@sgcprototype2.com";

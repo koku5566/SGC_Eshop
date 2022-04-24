@@ -41,9 +41,12 @@
                         $shop_id = $row['shopID'];
                         $shop_name = $row['shop_name'];
 
+                        //total price for each shop
+                        $total = 0;
+
                         //header for each shop 
                         echo "<tr >   
-                            <td colspan='6'>$shop_name</td>
+                            <td colspan='6'>SHOP NAME: $shop_name</td>
                             </tr>";
 
                         //select product from this shop
@@ -139,7 +142,7 @@
                             }
     
                             echo "
-                                <tr>
+                                <tr id='".$product_id."'>
                                     <td>
                                         <div class='product-item'>
                                             <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
@@ -174,7 +177,7 @@
                                             <span class = 'add' id='addkl[$i]'>+</span>
                                         </div>
                                     </td>
-                                    <td class='text-center text-lg text-medium' >";
+                                    <td class='text-center text-lg text-medium' id='".$product_id."'>";
     
                             echo $stock_message; 
                         
@@ -193,9 +196,23 @@
                                 </tr>";
                             $i++;
 
+                            $product_total = $product_price * $product_quantity;
+                            $total += $product_total;
                         //end looping product for each shop    
                         }
 
+                        echo "<tr >  
+                                <td colspan='4'>";
+                    ?>
+                    
+                    <?php
+                            require __DIR__ .'/voucherModal.php'
+                        ?>
+                    <?php
+                        echo"
+                                </td>
+                                <td colspan='2' style='text-align: right;'>Total: ".number_format($total,2)."</td>
+                            </tr>";
                     // end of looping shop    
                     }
                     
@@ -209,7 +226,7 @@
                         <!-- Select voucher Modal -->
                         
                         <?php
-                            require __DIR__ .'/voucherModal.php'
+                            //require __DIR__ .'/voucherModal.php'
                         ?>
                     <!-- </form> -->
                         <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
@@ -238,12 +255,12 @@
         </div>
     </div>
     <div class="shopping-cart-footer" >
-        <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
-            <form action="cart_manage.php" method="POST">
+        <form class = "footer" action="cart_manage.php" method="POST">
+            <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
-            </form>
-        </div>
+             </div> 
+        </form>
         <!-- <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> -->
     </div>
 </div>
@@ -670,6 +687,12 @@ select.form-control {
 
 .form-control-sm:not(textarea) {
     height: 36px;
+}
+
+.footer
+{
+    float:right;
+    margin-bottom: 10px;
 }
 </style>
 

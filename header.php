@@ -14,7 +14,7 @@
     {
         $productArray[] = $row;
     }
-
+    date_default_timezone_set("Asia/Kuala_Lumpur");
     function SanitizeString(string $str):string{
 		if(get_magic_quotes_gpc()){
 			$str = stripslashes($str); // take out all backslash inside the string

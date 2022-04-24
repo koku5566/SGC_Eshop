@@ -73,7 +73,7 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['discount_amount']; ?>" id="defaultCheck1">
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
@@ -172,7 +172,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-warning">Apply</button>
+        <button type="button" class="btn btn-warning" onclick="useVoucher()">Apply</button>
       </div>
     </div>
   </div>
@@ -215,3 +215,30 @@
     </div>
   </div>
 </div>
+
+<script>
+   function useVoucher() {
+      var values = new Array();
+      $.each($("input[name='user_group[]']:checked"), function() {
+      values.push($(this).val());
+      for( var i=0; i<values.length;i++)
+      {
+          //console.log(i +"is"+ values[i]);
+      //     $.ajax({
+      //       method: "POST",
+      //       url: "cart_manage.php",
+      //       data: { product_id: product_id}
+      //   })
+      //   .done(function( msg ) {
+      //           alert(msg);
+      //           window.location.href = window.location.origin + '/cart.php';
+      //    });
+          
+      }
+     
+  // or you can do something to the actual checked checkboxes by working directly with  'this'
+  // something like $(this).hide() (only something useful, probably) :P
+});
+}
+
+</script>

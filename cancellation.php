@@ -2,122 +2,94 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-$sql_cancel = "SELECT
-myOrder.order_id,
-myOrder.order_status,
-product.product_name,
-product.product_cover_picture,
-product.product_price,
-product.product_variation,
-orderDetails.quantity,
-orderDetails.amount,
-shopProfile.shop_name,
-cancellation.cancellation_id
-
-FROM
-myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.id
-JOIN shopProfile ON product.shop_id = shopProfile.shop_id   
-JOIN cancellation ON myOrder.cancellation_id = cancellation.cancellation_id
-
-";
-$stmt_cancel = $conn->prepare($sql_cancel);
-$stmt_cancel->execute();
-$cancelOrders = $stmt_cancel->get_result();
-
+$order_id = $_GET['order_id'];
+if(isset($_POST['cancel']))
+{
+  $reason_type = $_POST['reason_type'];
+  $order_id = $_POST['order_id'];
+  $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
+}
 
 ?>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid" style="width:80%">
-                         <!---CANCEL ORDER----->
-                    <h1 style="text-align:center; color: red ;">CANCELLATION</h1>
-                    <a href="index.php" style="font-size:20px;">BACK</a>
-                    <section id="orders" class="order container my-5 py-3 ">
-                        <div class="container mt-2">
-                            <h2 class="font-weight-bold text-center">ARE YOU SURE YOU WANT TO CANCEL YOUR ORDER?</h2>
-                            <hr class="mx-auto">
-                        </div>
-                        <!--CANCELLATION START HERE-->
-                        <?php while($row = $cancelOrders ->fetch_assoc()){ ?>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0"><?php echo $row['shop_name']?></h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product(s)</th>
-                                                <th>Product Name</th>
-                                                <th>Product Variation</th>
-                                                <th>Product Quantity</th>
-                                                <th>Total Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p>Tell us why do you want to cancel the order</p>
-                                    <form action="cancellationConfirm.php" method="POST">
-                                    <div class="form-check" >
-                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Wrong Item">
-                                      <label class="form-check-label" for="flexRadioDefault1" style="font-size:19px;" >
-                                        Wrong Item Choosen
-                                      </label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  value="Double Payment">
-                                      <label class="form-check-label" for="flexRadioDefault2" style="font-size:19px;">
-                                        Double Payment
-                                      </label>
-                                    </div>
-                                    <div class="form-check" >
-                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"  value="Regrets">
-                                      <label class="form-check-label" for="flexRadioDefault3" style="font-size:19px;">
-                                        Regrets
-                                      </label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"value="Change Color" >
-                                      <label class="form-check-label" for="flexRadioDefault4" style="font-size:19px;">
-                                        Change color
-                                      </label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="Others">
-                                      <label class="form-check-label" for="flexRadioDefault5" style="font-size:19px;" >
-                                        Others
-                                      </label>
-                                    </div>
 
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary " style="" name="save_cancellation">Confirm</button>
-                            </div>
-                            </form>
-                        </div> <?php }?>
+<!-- Begin Page Content -->
+<div class="container-fluid" style="width:80%">
+  <h1 style="text-align:center; color: red ;">Cancellation</h1>
+  <a href="getOrder.php" style="font-size:20px;">BACK</a>
+  <section id="orders" class="order container my-5 py-3 ">
+    <div class="container mt-2">
+      <h2 class="font-weight-bold text-center">ARE YOU SURE YOU WANT TO CANCEL THE ORDER?</h2>
+      <hr class="mx-auto">
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="order-list-panel">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">Product</div>
+            <div class="col-2">Unit Price</div>
+            <div class="col-2">Quantity</div>
+            <div class="col-2">Total Price</div>
+          </div>
+        </div>
+      </div>
+      <!-----------------THIS IS THE DETAILS------------------->
+      <?php
+        $shippingfee = 8.6;
+        $sql2 = "SELECT * FROM myOrder 
+        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
+        JOIN product ON orderDetails.product_id = product.product_id
+        JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
+        WHERE myOrder.order_id = $order_id";
+        $result2 = $conn->query($sql2);
+        while($row2 = $result2->fetch_assoc()){
+      ?>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-1"><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
+            <div class="col-5">
+              <?php echo $row2['product_name']; ?>
+            </div>
+            <div class="col-2">RM
+              <?php echo $row2['product_price']; ?>.00
+            </div>
+            <div class="col-2">X
+              <?php echo $row2['quantity']; ?>
+            </div>
+            <div class="col-2 red-text">RM
+              <?php echo $row2['amount']; ?>.00
+            </div>
+          </div>
+        </div>
+        <?php }?>
+      </div>
 
-                 </div>
+      <!--------------------END OF DETAILS---------------------->
+      <!--------------------ASK REASON TO CANCEL---------------->
+      <div class="card-body">
+          <h2>Please tell us the reason why you want to cancel</h2>
+          <form method="post" action="getOrder.php" style="font-size:25px;">
+                <input type="radio" id="id_1" name="reason_type" value="Regrets"  >
+                <label for="id_1" >Regrets</label><br>
+                <input type="radio" id="id_2" name="reason_type" value="Change Of Mind">
+                <label for="id_2">Change of Mind</label><br>
+                <input type="radio" id="id_3" name="reason_type" value="Change Color">
+                <label for="id_3">Change Color</label><br>
+                <input type="radio" id="id_4" name="reason_type" value="Others" >
+                <label for="id_1">Others</label><br>
+                <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
+                <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" >
+                
+            </form>
+      </div>
+      <!-----------------END OF ASK REASON TO CANCEL------------>
 
-                <!-- /.container-fluid -->
+    </div>
+  </section>
+</div>
+<!-- /.container-fluid -->
 
 <?php
     require __DIR__ . '/footer.php'
@@ -126,3 +98,10 @@ $cancelOrders = $stmt_cancel->get_result();
 <style>
 
 </style>
+<script type="text/javascript">
+function confirm_click()
+{
+return confirm("Order Cancelled");
+}
+
+</script>
