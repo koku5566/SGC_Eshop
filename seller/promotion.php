@@ -286,8 +286,10 @@
                                     if ($_SESSION['role'] == "SELLER")
                                     { 
                                         $userId = $_SESSION['userid'];
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1 OR `status` = 9 OR `status` = 2 ";
-                                        $result = $conn->query($sql);
+                                        $sql_status1 = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1";
+                                        $sql_status9 = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 9";
+                                        $sql_status2 = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 2";
+                                        $result = $conn->query($sql_status1, $sql_status9, $sql_status2);
                                         if($result-> num_rows > 0){
 
                                             while($row = $result->fetch_assoc())
