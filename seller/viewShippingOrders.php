@@ -257,7 +257,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $rowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $rowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
                                             </div>
                                             </div>
 
@@ -326,7 +326,7 @@ $user_id = $_SESSION["userid"];
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php       
                             
-                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Paid' AND productTransaction.shop_id = '$user_id' ";
+                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Paid' AND productTransaction.shop_id = '$user_id'AND myOrder.delivery_method = 'standard-delivery' ";
                               $tsresultheader = mysqli_query($conn, $sqltsheader);
                               if (mysqli_num_rows($tsresultheader) > 0) {
                               while ($tsrowheader = mysqli_fetch_assoc($tsresultheader)) {
@@ -339,7 +339,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
                                             </div>
                                             </div>
 
@@ -353,7 +353,7 @@ $user_id = $_SESSION["userid"];
                                             $tssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON productTransaction.product_id = product.product_id
-                                                        WHERE productTransaction.invoice_id = '$toID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_status = 'Paid' ORDER BY myOrder.order_id DESC";
+                                                        WHERE productTransaction.invoice_id = '$toID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_status = 'Paid' AND myOrder.delivery_method = 'standard-delivery'  ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
@@ -415,7 +415,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $purowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
 
                                             </div>
                                             </div>
@@ -490,7 +490,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $srowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                    <span class="pr-1"><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                    <span class="pr-1"><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
 
                                                 </div>
                                             </div>

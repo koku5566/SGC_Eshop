@@ -18,7 +18,7 @@
     myOrder
     JOIN user ON myOrder.userID = user.user_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    WHERE myOrder.order_id = '$orderid';";
+    WHERE myOrder.invoice_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
@@ -47,14 +47,14 @@
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON orderDetails.product_id = product.product_id
     JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    WHERE myOrder.order_id = '$orderid';";
+    WHERE myOrder.invoice_id = '$orderid';";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
 
     //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
@@ -65,7 +65,7 @@
         $status = "Shipped";
         echo $trackingnum, $status, $orderid;
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE order_id = '$orderid'";
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE invoice_id = '$orderid'";
          //$conn->query($insertsql);
         // $conn->query($updatesql);
         //$iquery_run = mysqli_query($conn,$insertsql);
@@ -73,11 +73,15 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);            
+            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+          <?php
         } 
         else {
           $_SESSION['status'] = "Order status update failed";
-          header('Location: ' . $_SERVER['HTTP_REFERER']);          
+          //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
+          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+    <?php
         }
     }
     
@@ -86,7 +90,7 @@
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
-        $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE order_id = '$orderid'";
+        $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$orderid'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";?>
