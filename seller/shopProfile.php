@@ -102,7 +102,7 @@
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
-          echo 'Success';
+          echo 'Success, please refesh again if not show the updated profile details.';
       }
       else
       {
