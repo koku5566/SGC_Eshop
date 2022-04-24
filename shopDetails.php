@@ -242,7 +242,7 @@
          padding: 10px 45px;
          border-radius: 15px;
          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
-         margin: 0 10px;
+         margin: 5px;
       }
       
       .logo{
