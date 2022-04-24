@@ -75,15 +75,11 @@
 	}else{
 		echo("
 		<div class=\"col-10\" style=\"background-color: lightyellow;\">
-			<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
-				<div class=\"container-col2\">
-					<div class=\"container-left-col2\">
-						<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
-						<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-						<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
-					</div>
+			<div class=\"container-col2\">
+				<div class=\"container-left-col2\">
+					<p style=\"font-weight: bold; font-size: 1.6rem;\">No Address</p>
 				</div>
-			</a>
+			</div>
 		</div>
 		");
 	}
