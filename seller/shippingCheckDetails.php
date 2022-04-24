@@ -38,8 +38,7 @@
     product.product_name,
     product.product_cover_picture,
     product.product_price,
-    orderDetails.quantity,
-    orderDetails.amount,
+    productTransaction.quantity,
     user.username,
     userAddress.address
     FROM
@@ -54,12 +53,13 @@
     $stmt->execute();
     $result = $stmt->get_result();
 
-    //=========sql to get shipping status=================
+    //============sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY order_id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
 
+    //=======================POST METHOD================================
     if(isset($_POST["tracking_send"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
@@ -369,7 +369,8 @@
                     <?php
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
-                    $totalprice += $row['amount'];
+                    $itemamount = $row['product_price']* $row['quantity'];
+                    $totalprice += $itemamount;
                     ?>
                     <!--Start of order item-->
                     <div class="card">
@@ -392,7 +393,7 @@
                                     <?php echo $row['quantity']?>
                                 </div>
                                 <div class="col-3 red-text">RM
-                                    <?php echo $row['amount']?>.00
+                                    <?php echo $itemamount?>.00
                                 </div>
                             </div>
                         </div>
