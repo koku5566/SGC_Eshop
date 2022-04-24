@@ -120,7 +120,7 @@
             <?php
                 }
               } else {
-                echo "error";
+                echo "<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Voucher.</p></div>";
               }
               $conn->close();
             ?>
@@ -131,7 +131,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sellers</strong></h4>
+          <h4 class="mb-5"><strong>Best Sales</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
@@ -161,7 +161,7 @@
             <?php
                 }
               } else {
-                echo "error";
+                echo "<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No item.</p></div>";
               }
               $conn->close();
             ?>
