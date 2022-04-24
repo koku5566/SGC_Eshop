@@ -223,7 +223,17 @@
       values.push($(this).val());
       for( var i=0; i<values.length;i++)
       {
-          console.log(values[i]);
+          //console.log(i +"is"+ values[i]);
+      //     $.ajax({
+      //       method: "POST",
+      //       url: "cart_manage.php",
+      //       data: { product_id: product_id}
+      //   })
+      //   .done(function( msg ) {
+      //           alert(msg);
+      //           window.location.href = window.location.origin + '/cart.php';
+      //    });
+          
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'

@@ -53,4 +53,11 @@
                 window.location.href = window.location.origin + '/checkout.php';
             </script>";
     }
-?>
+
+    // if (isset($_POST['product_id']))
+    // {
+    //     $_SESSION['product_id'] = $_POST['product_id'];
+
+    //     echo "";
+    // }
+?> 

@@ -16,23 +16,25 @@
      $usersql ="SELECT user.email,userAddress.address_id,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
      FROM `userAddress`
      JOIN user ON userAddress.user_id = user.user_id
-     WHERE userAddress.address_id= '$_SESSION[getaddress]';";
+     WHERE userAddress.address_id= '$_SESSION[getaddress]'";
  }
+else{
+    $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
+    FROM `userAddress`
+    JOIN user ON userAddress.user_id = user.user_id
+    WHERE userAddress.user_id = '$userID'"; 
+}
 
-
-     $usersql ="SELECT user.email,userAddress.address_id,user.name,userAddress.user_id,userAddress.contact_name,userAddress.phone_number,userAddress.address,userAddress.postal_code,userAddress.area,userAddress.state,userAddress.country 
-     FROM `userAddress`
-     JOIN user ON userAddress.user_id = user.user_id
-     WHERE userAddress.user_id = '$userID'";
+    
 
 
 //Username and address
             
-            $userresult = mysqli_query($conn, $usersql);  
+           $userresult = mysqli_query($conn, $usersql);  
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
-            $_SESSION['userName'] = $userrow['name'];
+            $_SESSION['userName'] = $userrow['name']; 
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
@@ -46,7 +48,6 @@
                 }
               }  
  */
-
 
 
     //get subtotal
@@ -97,7 +98,7 @@ $shippingfee = 8.6;
                 </button></a>
 			</div>
 			");
-	} 
+    }
     ?>
         </div>  
         <div class="modal-footer">
@@ -124,6 +125,7 @@ $shippingfee = 8.6;
             <div class="row">
                 <div class="col"><label class="col-form-label" style="margin-left: 14px;"><?php echo $userrow['address'],',',$userrow['postal_code'],',', $userrow['area'],',',$userrow['state'],',',$userrow['country']; ?></label></div>
             </div>
+    
         </div>
         <div style="padding: 12px;background: var(--bs-body-bg);border-width: 1px;box-shadow: 0px 0px 1px var(--bs-gray-500);margin-top: 15px;">
             <div></div>
