@@ -10,7 +10,8 @@ if(isset($_POST['cancel']))
   $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
   echo "$query";
   if (mysqli_query($conn, $query)) {
-    echo "Order Cancellation Pending. Please wait for responds";
+    ?><script>window.location = '<?php echo("$domain/getOrder.php");?>'</script><?php
+		exit;
    } else {
     echo "Error updating record: " . mysqli_error($conn);
    }
@@ -79,7 +80,7 @@ if(isset($_POST['cancel']))
       <!--------------------ASK REASON TO CANCEL---------------->
       <div class="card-body">
           <h2>Please tell us the reason why you want to cancel</h2>
-          <form method="post" action="getOrder.php" style="font-size:25px;">
+          <form method="post" action="cancellation.php" style="font-size:25px;">
                 <input type="radio" id="id_1" name="reason_type" value="Regrets"  >
                 <label for="id_1" >Regrets</label><br>
                 <input type="radio" id="id_2" name="reason_type" value="Change Of Mind">

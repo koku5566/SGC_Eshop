@@ -62,7 +62,8 @@
 
     //=======================POST METHOD================================
     if(isset($_POST["tracking_send"])){
-        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
         echo $trackingnum, $status, $invoice_id;
@@ -75,34 +76,38 @@
         echo ' helds';
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
            
-            //header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
+            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
           <?php
            $_SESSION['success'] = "Order Status has been updated";
         } 
         else {
           
-          //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
-          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+          header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
+          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
     <?php $_SESSION['status'] = "Order status update failed";
         }
     }
     
     //pick up status update
     if(isset($_POST["status_update"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
-        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id', '$pickupstat')";
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+        echo $pickupstat,$order_id, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['success'] = "Order Status has been updated";?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
 
             <?php
             } else {
-          $_SESSION['status'] = "Order status update failed";?>
-          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+            header('Location: ' . $_SERVER['HTTP_REFERER']);  
+            $_SESSION['status'] = "Order status update failed";?>
+          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
 
           <?php
         }
@@ -275,16 +280,15 @@
                                                 <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
+                                            <input type="hidden" name="order_id" value="<?php echo $order_id?>">
+                                             <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <input class="form-control input" name="tracking_number"
                                                             type="text" style="width:250px">
                                                     </div>
                                                     <div class="col">
-                                                        <button class="form-control btn btn-secondary" type="submit"
-                                                            id="tracking_send" name="tracking_send"
-                                                            style="width:100px">Send</button>
+                                                        <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send"style="width:100px">Send</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -305,7 +309,8 @@
                                                 <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
+                                                <input type="hidden" name="order_id" value="<?php echo $order_id?>">
+                                                <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">
@@ -314,9 +319,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col">
-                                                        <button class="form-control btn btn-secondary" type="submit"
-                                                            id="status_update" name="status_update"
-                                                            style="width:100px">Update</button>
+                                                        <button class="form-control btn btn-secondary" type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
                                                     </div>
                                                 </div>
 
