@@ -54,10 +54,16 @@
             </script>";
     }
 
-    // if (isset($_POST['product_id']))
-    // {
-    //     $_SESSION['product_id'] = $_POST['product_id'];
+    // validate voucher code
+    if (isset($_POST['voucher_code'])) {
 
-    //     echo "";
-    // }
+        $voucher_code = $_POST['voucher_code'];
+
+        $sql_voucher_code = "SELECT `discount_amount`, `vouncher_type` FROM `vouncher` WHERE `vouncher_code` = '$voucher_code'";
+        $query_voucher_code = mysqli_query($conn, $sql_voucher_code);
+
+        while ($row = mysqli_fetch_assoc($query_voucher_code)) {
+            echo $row['discount_amount']." and ".$row['vouncher_type'];
+        }
+    }
 ?> 
