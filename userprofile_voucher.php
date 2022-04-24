@@ -1,22 +1,12 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if(!isset($_SESSION)){
-      session_start();
-   }
-   if(!isset($_SESSION['id']))
-   {
-         $_SESSION['id'] = "";
-   }
+    if($_SESSION['login'] == false)
+    {
+       ?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+       exit;
+     }
  ?>
-
-<?php	
-	if($_SESSION['login'] == false)
-	{
-		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
-		exit;
-    }
-?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -50,12 +40,11 @@
                                     <hr>
                                     <?php
 
-                                    $uid = $_SESSION['userid'];
+                                    $userid = $_SESSION["userid"];
 
                                     $sql_voucherR =
                                     "SELECT 
                                     voucherRedemption.voucher_id,
-                                    voucherRedemption.id,
                                     voucher.voucher_id,
                                     voucher.voucher_code,
                                     voucher.voucher_type,
@@ -74,7 +63,7 @@
                                     JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                                     JOIN product ON productVoucher.product_id = product.product_id
                                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                                    WHERE voucherRedemption.id = $uid
+                                    WHERE voucherRedemption.user_id = $userid
                                     GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
                                     ";
 
@@ -189,9 +178,6 @@
       </div>
    </div>
 </div>
-
-<?php require __DIR__ . '/footer.php' ?>
-
 
 <?php require __DIR__ . '/footer.php' ?>
 

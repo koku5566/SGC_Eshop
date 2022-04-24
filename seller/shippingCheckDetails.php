@@ -9,6 +9,7 @@
     $totalprice = 0;
     $shippingfee = 8.6;
     $orderinfosql = "SELECT
+    myOrder.invoice_id,
     myOrder.order_id,
     myOrder.order_status,
     myOrder.delivery_method,
@@ -17,7 +18,7 @@
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
-    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -29,7 +30,7 @@
         $username = $orow['username'];
         $address = $orow['address'];
     }
-
+    echo $orderid, $orderstatus, $deliverymethod, $username, $address;
     //=========sql to get order item information===========
     $sql = "SELECT
     myOrder.order_id,
@@ -45,16 +46,16 @@
     myOrder
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
     JOIN user ON myOrder.userID = user.user_id
-    JOIN product ON orderDetails.product_id = product.product_id
-    JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    WHERE myOrder.invoice_id = '$orderid';";
+    JOIN product ON productTransaction.product_id = product.product_id
+    JOIN userAddress ON myOrder.userID = userAddress.user_id
+    WHERE myOrder.invoice_id = '$orderid'";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
 
     //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY order_id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
@@ -64,7 +65,7 @@
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
         echo $trackingnum, $status, $orderid;
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
+        $insertsql = "INSERT INTO orderStatus (invoice_id, status) VALUES('$orderid', '$status')";
         $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE invoice_id = '$orderid'";
          //$conn->query($insertsql);
         // $conn->query($updatesql);

@@ -107,50 +107,6 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="index.php"><h6 class="m-0 font-weight-bold text-primary mb-3">All Category</h6></a>
-                                                <div class="browse-menus">
-                                                    <div class="browse-menu active">
-                                                        <ul class="main-menu">
-                                                            <!-- PHP Loop here - Category -->
-                                                            <?php
-                                                                //Just List all sub category
-                                                                $maincategoryid = $_SESSION['mainCategory'];
-
-                                                                $sql_1 = "SELECT B.category_id AS subCategoryId,B.category_name AS subCategoryName FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE main_category = '$maincategoryid' AND sub_Yes = '1'";
-                                                                $result_1 = mysqli_query($conn, $sql_1);
-
-                                                                if (mysqli_num_rows($result_1) > 0) {
-                                                                    
-                                                                    while($row_1 = mysqli_fetch_assoc($result_1)) {
-
-                                                                        $subCategoryId = $row_1["subCategoryId"];
-                                                                        $subCategoryName = $row_1["subCategoryName"];
-                                                                        $subPicName = "";
-
-                                                                        
-                                                                        echo("<li class=\"menu-item\"style=\"display:flex;\">");
-                                                                        //Make it Active
-                                                                        if(isset($_SESSION['subCategory']) && $_SESSION['subCategory'] == $subCategoryId)
-                                                                        {
-                                                                            echo("<i class=\"fa fa-caret-right\" style=\"padding: .3rem 0 0px;font-size: larger;color:#a31f37;\"></i>");
-                                                                            echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\" style=\"padding-left: 0.9rem;\">$subCategoryName</a>");
-                                                                        }
-                                                                        else{
-                                                                            echo("<a href=\"category.php?subCategory=$subCategoryId\" class=\"dropdown-item\">$subCategoryName</a>");
-                                                                        }
-                                                                        echo("</li>");
-                                                                        
-                                                                    }
-                                                                } 
-                                                            ?>
-                                                            
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
                                                 <h6 class="m-0 font-weight-bold text-primary mb-3">Rating</h6>
                                                 <div class="form-check" id="rating_bar">
                                                     <?php
@@ -185,10 +141,15 @@
                                                                 array_push($ratingArray,"<a href=\"?Rating={$counter}\"><span class=\"fa fa-star ratingStar\"></span></a>");
                                                             } 
 
-                                                            
+                                                            foreach ($ratingArray as $value) {
+                                                                echo("{$value}");
+                                                            }
+
+                                                            /*
                                                             foreach (array_reverse($ratingArray) as $value) {
                                                                 echo("{$value}");
                                                             }
+                                                            */
                                                         }
                                                         else
                                                         {
@@ -643,11 +604,7 @@
         padding: 0 10px;
     }
 
-    .dropdown-item:focus, .dropdown-item:hover {
-        color: #a31f37;
-        text-decoration: none;
-        background-color: transparent;
-    }
+
 
 </style>
 
