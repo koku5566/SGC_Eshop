@@ -63,7 +63,6 @@
     //=======================POST METHOD================================
     if(isset($_POST["tracking_send"])){
         $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
@@ -77,15 +76,15 @@
         echo ' helds';
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
            
-            //header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
+            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
           <?php
            $_SESSION['success'] = "Order Status has been updated";
         } 
         else {
           
-          //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
-          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
+          header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
+          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
     <?php $_SESSION['status'] = "Order status update failed";
         }
     }
@@ -287,9 +286,7 @@
                                                             type="text" style="width:250px">
                                                     </div>
                                                     <div class="col">
-                                                        <button class="form-control btn btn-secondary" type="submit"
-                                                            id="tracking_send" name="tracking_send"
-                                                            style="width:100px">Send</button>
+                                                        <button class="form-control btn btn-secondary" type="submit" id="tracking_send" name="tracking_send"style="width:100px">Send</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -320,9 +317,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col">
-                                                        <button class="form-control btn btn-secondary" type="submit"
-                                                            id="status_update" name="status_update"
-                                                            style="width:100px">Update</button>
+                                                        <button class="form-control btn btn-secondary" type="submit" id="status_update" name="status_update" style="width:100px">Update</button>
                                                     </div>
                                                 </div>
 
