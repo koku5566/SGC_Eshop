@@ -6,9 +6,9 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $userId = $_GET['id'];
-    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$userId'";
-    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE shop_id='$userId'"; 
+    $shop_id = $_GET['id'];
+    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
+    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE shop_id='$shop_id'"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
 ?>
@@ -18,14 +18,14 @@
     //Fetch each promotion image information
     $promotion_title = array();
     $promotion_image = array();
-    $userId = $_GET['id'];
+    $user_id = $_GET['id'];
 
     //If you want to use this code to show promotions from respective stores. Temporarily unavailable because the seller on the store details page is not defined here.
     //$userId = $_SESSION['userid'];
     //$sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE shop_id='$userId' AND promotionEnd_Date >= now() AND `status` = 0";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE `user_id`='$user_id' AND promotionEnd_Date >= now() AND `status` = 0";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
