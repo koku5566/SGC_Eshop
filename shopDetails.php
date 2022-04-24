@@ -145,8 +145,6 @@
                     while($row2 = $result2->fetch_assoc()) {
           ?>
           <div class="voucherContainer">
-            <div class="voucherRow">
-            <div class="voucherColumn">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
@@ -166,8 +164,6 @@
                 <!--<div class="circle1"></div>
                 <div class="circle2"></div>-->
               </div>
-            </div>
-            </div>
             <?php
                 }
               } else {
@@ -235,10 +231,13 @@
       }
 
       .voucherContainer{
-        overflow-x: scroll;
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: #08c708;
+        width: 300px;
+        overflow-x: auto;
         overflow-y: hidden;
-        height: 80px;
-        white-space:nowrap;
+        white-space: nowrap;
       }
 
       .coupon-card{
@@ -247,15 +246,7 @@
          text-align: center;
          padding: 10px 45px;
          border-radius: 15px;
-         /*box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);*/
-         box-shadow: 1px 1px 10px #999;
-        margin: 2px;
-        max-height: 50px;
-        cursor: pointer;
-        display:inline-block;
-        display:inline;
-        zoom:1;
-        vertical-align:top;
+         box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
       }
       
       .logo{
