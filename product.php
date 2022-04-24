@@ -409,7 +409,7 @@
 											$shop_name = $row_shop['shop_name'];
 											$shop_pic = $row_shop['shop_profile_image'];
 
-											$shop_joinby = date('Y',$row_shop['registration_date']);
+											$shop_joinby = substr($row_shop['registration_date'], -4);
 										}
 
 										if($shop_pic != "")
