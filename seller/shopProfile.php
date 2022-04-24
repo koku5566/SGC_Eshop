@@ -4,11 +4,11 @@
 
 <!-- redirect user that is not a seller to home page-->
 <?php
-  //  if($_SESSION['role'] != "SELLER")
-	//{
-	//	?><!--<script>window.location = '<?php //echo("$domain/index.php");?>'</script>--><?php
-	//	exit;
-  //  }
+    if($_SESSION['role'] != "SELLER")
+	{
+		?><script>window.location = '<?php //echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
 ?>
 
 <!-- Insert data -->
@@ -35,9 +35,9 @@
 
 <!-- Retrieve Data -->
 <?php
-  //$shopId = $_SESSION['userid'];
-  //$sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
-  //$result1 = mysqli_query($conn, $sql);
+  $shopId = $_SESSION['userid'];
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $result1 = mysqli_query($conn, $sql);
 ?>
 
 <!-- Retrieve and Update Data -->
