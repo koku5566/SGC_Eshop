@@ -118,7 +118,6 @@ $queryKL = mysqli_query($conn, $sql);
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
         $stock = $row3['product_stock'];
-        echo ("$stock");
     }
 
     $stocksql2 = "SELECT product_stock FROM `variation` 
@@ -133,10 +132,9 @@ $queryKL = mysqli_query($conn, $sql);
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
         $deductQuantity1 = $stock-$product_quantity;
-        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity1,$product_id);
+        $bp = mysqli_stmt_bind_param($stmt2,"is",$deductQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
-            echo("$deductQuantity1");
     } 
     }
     else {
