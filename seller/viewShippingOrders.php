@@ -299,7 +299,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $arow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $arow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($arow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['order_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
@@ -378,7 +378,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $tsrow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($tsrow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php if ($tsrow['order_status'] == 'Paid'&&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['order_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
@@ -454,7 +454,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $purow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $purow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($purow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php if ($purow['order_status'] == 'Paid'&&  $purow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($purow['delivery_method'] == 'self-collection' && $purow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $purow['order_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $purow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
@@ -527,7 +527,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $srow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $srow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($srow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php if ($srow['order_status'] == 'Paid' &&  $srow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
@@ -600,7 +600,7 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $srow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $srow['tracking_number'] ?></div>
                                                         <div class="col-2">
-                                                            <?php if ($srow['order_status'] == 'Paid') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
+                                                            <?php if ($srow['order_status'] == 'Paid' &&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Arrange Shipment</a>
                                                             <?php } else if ($srow['delivery_method'] == 'self-collection' && $srow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $srow['order_id']; ?>">Update Pick-Up</a>
                                                             <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $srow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                         </div>
