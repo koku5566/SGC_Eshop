@@ -35,15 +35,6 @@ function calsubtotal()
     document.getElementById('subtotal_kl').innerHTML = (Math.round((kltotal + Number.EPSILON) * 100) / 100).toFixed(2);
 }
 
-function caldistotal()
-{
-    kldiscount = 0;
-        
-    kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
-    console.log("after discount: " + kldiscount)
-    //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
-}
-
 // Use array to find the row index
 const arr = new Array();
 
