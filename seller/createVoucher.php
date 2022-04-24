@@ -154,7 +154,7 @@
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
       $vstatus = "2";
-      $vlist = "0";
+      $vlist = "1";
       $date = date('Y-m-d H:i:s');
 
       
@@ -177,7 +177,7 @@
             {
                 if($vstatus == 2)
                 {
-                    echo '<script>alert("Promotion is pending to added, need to be approved by admin!")</script>';
+                    echo '<script>alert("Your voucher has been listed.")</script>';
                     ?>
                         <script type="text/javascript">
                             window.location.href = window.location.origin + "/seller/createVoucher.php";

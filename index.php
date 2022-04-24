@@ -240,7 +240,7 @@
                                 $today = strtotime($td);
                                 $expired = strtotime($expr);
 
-                                if($row['voucher_display'] == 1   && $row['voucher_limit'] > 0 && $expired > $today && $row['voucher_list'] == 1 &&  $row['voucher_status'] == 1){
+                                if($row['voucher_display'] == 1   && $row['voucher_limit'] > 0 && $expired > $today && $row['voucher_list'] == 1){
                             ?>
 
                             <div class="col-md-2 m-4">
@@ -309,6 +309,7 @@
                                             JOIN product ON productVoucher.product_id = product.product_id
                                             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                                             WHERE voucher.voucher_id = $voucher_id
+                                            GROUP BY product.product_id
                                             ";
                 
                                             $sm = $conn->prepare($sql_pn);
