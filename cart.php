@@ -235,7 +235,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
