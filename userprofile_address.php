@@ -48,28 +48,34 @@
 	
 	$sql = "SELECT * FROM userAddress WHERE user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql);
-	while($row = mysqli_fetch_array($res_data)){
-		echo("
-			<div class=\"row\" style=\"border-left: 3px solid #a31f37; margin-bottom: 1rem;\">
-				<div class=\"col-10\" style=\"background-color: lightyellow;\">
-					<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
-						<div class=\"container-col2\">
-							<div class=\"container-left-col2\">
-								<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
-								<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
-								<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
+	$res_data = $conn->query($sql);
+	if($res_data->num_rows>0){
+		while($row = $res_data->fetch_assoc()){
+			echo("
+				<div class=\"row\" style=\"border-left: 3px solid #a31f37; margin-bottom: 1rem;\">
+					<div class=\"col-10\" style=\"background-color: lightyellow;\">
+						<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
+							<div class=\"container-col2\">
+								<div class=\"container-left-col2\">
+									<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
+									<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
+									<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
+								</div>
 							</div>
-						</div>
-					</a>
+						</a>
+					</div>
+					<div class=\"col-2\">
+						<form method=\"post\" style=\"height:100%;width:100%;\">
+							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+						</form>
+					</div>
 				</div>
-				<div class=\"col-2\">
-					<form method=\"post\" style=\"height:100%;width:100%;\">
-						<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
-					</form>
-				</div>
-			</div>
-			");
+				");
+		}
+	}else{
+		echo("
+		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No Address</p></div>
+		");
 	}
 ?>
 	                            </div>

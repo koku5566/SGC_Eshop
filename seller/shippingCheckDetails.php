@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $orderid = $_GET['order_id'];
+    $invoice_id = $_GET['order_id'];
     
     //=========sql to get order information=============
     $orderstatus = "";
@@ -19,18 +19,19 @@
     myOrder
     JOIN user ON myOrder.userID = user.user_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
-    WHERE myOrder.invoice_id = '$orderid';";
+    WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
     while ($orow = $oresult->fetch_assoc()) {
-        $orderid = $orow['invoice_id'];
+        $order_id = $orow['order_id'];
+        $invoice_id = $orow['invoice_id'];
         $orderstatus = $orow['order_status'];
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
         $address = $orow['address'];
     }
-    echo $orderid, $orderstatus, $deliverymethod, $username, $address;
+   // echo $invoice_id, $orderstatus, $deliverymethod, $username, $address;
     //=========sql to get order item information===========
     $sql = "SELECT
     myOrder.order_id,
@@ -38,8 +39,7 @@
     product.product_name,
     product.product_cover_picture,
     product.product_price,
-    orderDetails.quantity,
-    orderDetails.amount,
+    productTransaction.quantity,
     user.username,
     userAddress.address
     FROM
@@ -48,25 +48,26 @@
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
-    WHERE myOrder.invoice_id = '$orderid'";
+    WHERE myOrder.invoice_id = '$invoice_id'";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$orderid' ORDER BY order_id ASC";
+    //============sql to get shipping status=================
+    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$invoice_id' ORDER BY order_id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
 
+    //=======================POST METHOD================================
     if(isset($_POST["tracking_send"])){
-        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
         $status = "Shipped";
-        echo $trackingnum, $status, $orderid;
-        $insertsql = "INSERT INTO orderStatus (invoice_id, status) VALUES('$orderid', '$status')";
-        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE invoice_id = '$orderid'";
+        echo $trackingnum, $status, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id, invoice_id, status) VALUES('$invoice_id', '$status')";
+        $updatesql ="UPDATE myOrder SET tracking_number = '$trackingnum', order_status = '$status' WHERE invoice_id = '$invoice_id'";
          //$conn->query($insertsql);
         // $conn->query($updatesql);
         //$iquery_run = mysqli_query($conn,$insertsql);
@@ -75,13 +76,13 @@
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             $_SESSION['success'] = "Order Status has been updated";
             //header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
           <?php
         } 
         else {
           $_SESSION['status'] = "Order status update failed";
           //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
-          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
     <?php
         }
     }
@@ -89,18 +90,18 @@
     //pick up status update
     if(isset($_POST["status_update"])){
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
-        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$pickupstat')";
-        $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$orderid'";
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id', '$pickupstat')";
+        $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";?>
-            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
 
             <?php
             } else {
           $_SESSION['status'] = "Order status update failed";?>
-          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $orderid;?>'</script>
+          <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
 
           <?php
         }
@@ -130,7 +131,7 @@
         <?php if($deliverymethod =='self-collection'){?><div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">PICK UP ORDER </span><span class="text-size-medium"></span></div><?php } else{ ?>
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Tracking No - </span><span class="text-size-medium"></span><?php echo $trackingnum?></div> <?php }?>
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $invoice_id?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
@@ -208,7 +209,7 @@
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col section-body ">
-                            <?php echo $orderid?>
+                            <?php echo $invoice_id?>
                         </div>
                     </div>
                 </div>
@@ -273,7 +274,7 @@
                                                 <?php //echo date("Y-m-d H:i:s");?> 
                                             </td>
                                             <td>Tracking No: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $orderid?>">
+                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <input class="form-control input" name="tracking_number"
@@ -303,7 +304,7 @@
                                                 <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $orderid?>">
+                                                <input type="hidden" name="order_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">
@@ -369,7 +370,8 @@
                     <?php
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
-                    $totalprice += $row['amount'];
+                    $itemamount = $row['product_price']* $row['quantity'];
+                    $totalprice += $itemamount;
                     ?>
                     <!--Start of order item-->
                     <div class="card">
@@ -392,7 +394,7 @@
                                     <?php echo $row['quantity']?>
                                 </div>
                                 <div class="col-3 red-text">RM
-                                    <?php echo $row['amount']?>.00
+                                    <?php echo $itemamount?>.00
                                 </div>
                             </div>
                         </div>
