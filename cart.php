@@ -211,7 +211,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right;'>Total: <span id='".$shop_id."'>".number_format($total,2)."</span></td>
+                                <td colspan='2' style='text-align: right;'>Total: <span id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
