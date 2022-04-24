@@ -703,7 +703,7 @@ select.form-control {
     var subtotal_tol = 0;
 
     calling();
-    discountAmount();
+    //discountAmount();
 
     function calling()
     {
