@@ -13,6 +13,7 @@
 	}
 
     $_SESSION['productID'] = $_GET['id'];
+	$_SESSION['variationId'] = "";
 ?>
 <?php
 	//Fetch each product information
