@@ -40,6 +40,7 @@ $queryKL = mysqli_query($conn, $sql);
     
 
     $variation_message = "";
+    $variationEmpty = "";
     $showNotif = false;
 
     if ($rowKL['P_status'] == 'A') {
@@ -47,7 +48,6 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
-            $variationEmpty = "";
             $variation_message = "<option selected>Not Variation</option>";
         }
         else if ($rowKL['variation_id'] != "") {
