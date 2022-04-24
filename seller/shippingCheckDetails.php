@@ -98,7 +98,7 @@
         $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
-        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+        if ($conn->query($insertsql)) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['success'] = "Order Status has been updated";?>
             <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
@@ -309,7 +309,7 @@
                                                 <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
-                                                <input type="text" name="order_id" value="<?php echo $order_id?>">
+                                                <input type="hidden" name="order_id" value="<?php echo $order_id?>">
                                                 <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
