@@ -74,7 +74,7 @@ $shippingfee = 8.6;
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Select Address</h4>
+          <h4 class="modal-title"><strong>Select Address</strong></h4>
         </div>
         <div class="modal-body">
     <?php
