@@ -15,6 +15,7 @@
     myOrder.order_date,
     myOrder.tracking_number,
     user.username,
+    user.email,
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address,
@@ -24,7 +25,8 @@
     product.product_price,
     product.product_cover_picture,
     shopProfile.shop_name,
-    shopProfile.shop_profile_image
+    shopProfile.shop_profile_image,
+    shopProfile.shop_id
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -43,6 +45,7 @@
         $username = $orow['username'];
         $contactname = $orow['contact_name'];
         $phone = $orow['phone_number'];
+        $buyeremail = $orow['email'];
         $address = $orow['address'];
         $trackingnum = $orow['tracking_number'];
         $orderdate = $orow['order_date'];
@@ -52,9 +55,20 @@
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
+        $shopid = $orow['shop_id'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
+
+    //======to get seller email ==============================
+    $selleremailsql =" SELECT email FROM user WHERE email = '$shopid'";
+    $stmt = $conn->prepare($selleremailsql);
+    $stmt->execute();
+    $selleremailresult = $stmt->get_result();
+    while ($sEmailrow = $selleremailresult->fetch_assoc()) {
+        $selleremail = $sEmailrow['email'];
+    }
+
 
     //=========sql to get shipping status=================
     $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.invoice_id = orderStatus.invoice_id WHERE myOrder.invoice_id = '$invoice_id' ORDER BY order_id ASC";
@@ -100,6 +114,52 @@
               <?php
             }
         }
+
+    //pick up status update
+    if(isset($_POST["remind_seller"])){
+        $buyer_email = mysqli_real_escape_string($conn, SanitizeString($_POST["buyeremail"]));
+        $seller_email = mysqli_real_escape_string($conn, SanitizeString($_POST["selleremail"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+
+       
+        echo $buyer_email,$seller_email;
+        $to = $seller_email;
+        $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
+        $from = "event@sgcprototype2.com";
+        $from2 = "event@sgcprototype2.com";
+        $fromName = "SGC E-Shop Admin";
+
+        $headers =  "From: $fromName <$from> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+        $message = "
+        <h5>Remember to ship order items for '$invoice_id'</h5>
+        <p>Your customer has notify you that the  order has not been shipped yet. Please kindly ship all order items to keep a good rating for your shop. :)
+        <h4>Thank you</h4>
+        <h4>Best Regards</h4>
+        <h4>SGC Eshop</h4>
+        ";
+
+        $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+
+        $boundary = md5(time());
+        $headers .= " boundary=\"{$boundary}\"";
+        $message = "--{$boundary}\r\n";
+        $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+        $message .= "Content-Transfer-Encoding: 7bit\r\n";
+        $message .= $HTMLcontent . "\r\n";
+        $message .= "--{$boundary}\r\n";
+        $returnPath = "-f" . $from2;
+
+        if (@mail($to, $subject, $message, $headers, $returnPath)) {
+            echo "<script>alert('A notification email has been sent to the seller')</script>";
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+        
+    }
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
@@ -132,7 +192,7 @@
         <?php endif; ?>
         </div>      
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $invoice_id?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
@@ -229,16 +289,19 @@
             </table>
 
             <?php 
-            $now = date('2022-04-20'); 
+            //calculate how many days passed since order date
+            $now = date('Y-m-d'); 
             $today = strtotime($now);
             $datediff = $today - $orderdate;
-            echo round($datediff / (60 * 60 * 24));
+            $days=  round($datediff / (60 * 60 * 24));
             
-            if($orderstatus =='Paid'){?>
+            //Remind seller function is available if seller did not ship out item for 5 days
+            if($orderstatus =='Paid' && $days > 5 ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
-                    <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="buyeremail" value="<?php echo $buyeremail; ?>">
+                    <input type="hidden" name="selleremail" value="<?php echo $selleremail?>">
                     <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
-                    <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
+                    <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
                 <?php } ?>
 
