@@ -459,10 +459,7 @@
 											echo"<span>$f3</span>";
 										}
 										mysqli_stmt_close($stmt);												
-									}
-									
-									
-									
+									}														
 									?>
 									<!--
 									<span>4.5</span>
