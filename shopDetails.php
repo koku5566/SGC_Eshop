@@ -53,11 +53,11 @@
               $picName = "/img/promotion/".$promotion_image[$i];
               if($i == 0)
               {
-                echo("<div class=\"carousel-item active\" data-target=\"#custCarousel\" data-slide-to=\"0\" class=\"active\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+                echo("<div class=\"carousel-item active\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
               }
               else
               {
-                echo("<div class=\"carousel-item\" data-target=\"#custCarousel\" data-slide-to=\"1\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
+                echo("<div class=\"carousel-item\"> <img src=\"$picName\" alt=\"".$promotion_title[$i]."\"> </div>");
               }
             }
           }
@@ -321,20 +321,16 @@
     </style>
 
     <script>
-      var cpnBtn = document.getElementById("cpnBtn");
-      var cpnCode = document.getElementById("cpnCode");
-      
-      cpnBtn.onclick = function(){
-        navigator.clipboard.writeText(cpnCode.innerHTML);
-        cpnBtn.innerHTML = "COPIED";
-        setTimeout(function(){
-          cpnBtn.innerHTML = "COPIED";
-        }, 3000);
-      }
-
-      $('.carousel').carousel({
-      interval: 2000
-      })
+       var cpnBtn = document.getElementById("cpnBtn");
+       var cpnCode = document.getElementById("cpnCode");
+       
+       cpnBtn.onclick = function(){
+         navigator.clipboard.writeText(cpnCode.innerHTML);
+         cpnBtn.innerHTML = "COPIED";
+         setTimeout(function(){
+           cpnBtn.innerHTML = "COPIED";
+         }, 3000);
+       }
     </script>
 
     <?php
