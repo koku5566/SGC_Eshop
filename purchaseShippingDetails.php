@@ -61,7 +61,7 @@
     $estimateddelivery = strtotime('+7 day',$orderdate); 
 
     //======to get seller email ==============================
-    $selleremailsql =" SELECT email FROM user WHERE email = '$shopid'";
+    $selleremailsql =" SELECT email FROM user WHERE user_id = '$shopid'";
     $stmt = $conn->prepare($selleremailsql);
     $stmt->execute();
     $selleremailresult = $stmt->get_result();
