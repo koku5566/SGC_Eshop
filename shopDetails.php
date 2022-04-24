@@ -238,8 +238,13 @@
         display: flex;    
         overflow-x: auto;
       }
+
+      .voucherContainer::-webkit-scrollbar {    
+        display: none;
+      }
+
       .voucherColumn{
-        margin: 0 10px 0 0;
+        margin-right: 15px;
       }
 
       .coupon-card{
