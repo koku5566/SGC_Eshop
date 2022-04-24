@@ -408,6 +408,8 @@
 											$shop_id = $row_shop['shop_id'];
 											$shop_name = $row_shop['shop_name'];
 											$shop_pic = $row_shop['shop_profile_image'];
+											$shop_rating = $row_shop['shop_rating'];
+											$shop_joinby = substr($row_shop['registration_date'], -4);
 										}
 
 										if($shop_pic != "")

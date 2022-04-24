@@ -11,6 +11,55 @@
     $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
+
+    //Added by Maverick
+    $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$i_shop_id'";
+    $result_shop = mysqli_query($conn, $sql_shop);
+
+    if (mysqli_num_rows($result_shop) > 0) {
+      while($row_shop = mysqli_fetch_assoc($result_shop)) {
+        $shop_id = $row_shop['shop_id'];
+        $shop_name = $row_shop['shop_name'];
+        $shop_pic = $row_shop['shop_profile_image'];
+        $shop_rating = $row_shop['shop_rating'];
+        $shop_joinby = substr($row_shop['registration_date'], -4);
+      }
+
+      if($shop_pic != "")
+      {
+        echo("
+        <div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
+          <img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/$shop_pic\">
+        </div>
+        ");
+      }
+      else
+      {
+        echo("
+        <div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
+          <img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/store.png\">
+        </div>
+        ");
+      }
+      
+      echo("
+      <div class=\"col-xl-9 col-md-8 sidebar-brand-text\" style=\"font-size: 1.5rem;\">
+        <b>$shop_name</b>
+        <a href=\"shopDetails.php?id=$shop_id\" class=\"btn btn-primary\" style=\"width: 50%;position: absolute;bottom: 10px;left: 0;\">
+          <span class=\"text\">View Shop</span>
+        </a>
+      </div>
+      ");
+    }
+  
+    $sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE shop_id = '$i_shop_id'";
+    $result_shop = mysqli_query($conn, $sql_shop);
+
+    if (mysqli_num_rows($result_shop) > 0) {
+      while($row_shop = mysqli_fetch_assoc($result_shop)) {
+        $shop_totalProduct = $row_shop['total_Product'];
+      }
+    }
 ?>
 
 <!-- Promotion banner by Lim Qiu Xiong-->
@@ -77,10 +126,23 @@
     <!--Main layout-->
     <main class="mt-5">
     <div class="container">
-
+        
       <section class="text-center">
         <div class="ratingContainer shadow rounded">
-          <p class="text-center">SEGi College Penang | Joined<span style="color: red;">2021</span>   Rating<span style="color: red;">4.9 out of 5.0</span>   Products<span style="color: red;">12</span></p>
+          <div class="row">
+            <div class="col list-parent"> 
+              <i class="fa fa-star"></i>
+              <span><?php echo($shop_rating); ?></span>
+            </div>
+            <div class="col list-parent"> 
+              <i class="fa fa-gift"></i>
+              <span><?php echo($shop_totalProduct); ?></span>
+            </div>
+            <div class="col list-parent"> 
+              <i class="fa fa-calendar"></i>
+              <span><?php echo($shop_joinby); ?></span>
+            </div>
+          </div>
         </div>
       </section><br>
 

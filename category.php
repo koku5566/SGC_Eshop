@@ -241,9 +241,7 @@
                                                     <div class="col">
                                                         <select class="form-select" name="SortBy" onchange="this.form.submit()">
                                                             <option value="Latest" <?php echo($_SESSION['SortBy'] == "Latest" ? "selected" : ""); ?>>Latest</option>
-                                                            <option value="Rating" <?php echo($_SESSION['SortBy'] == "Rating" ? "selected" : ""); ?>>Rating</option>
                                                             <option value="Sold" <?php echo($_SESSION['SortBy'] == "Sold" ? "selected" : ""); ?>>Sold</option>
-                                                            <option value="Price" <?php echo($_SESSION['SortBy'] == "Price" ? "selected" : ""); ?>>Price</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -269,17 +267,6 @@
                                                 LEFT JOIN (SELECT DISTINCT(product_id), rating FROM reviewRating t1 WHERE rating = (SELECT MIN(rating) FROM reviewRating WHERE product_id = t1.product_id)) AS R ON A.product_id = R.product_id 
                                                 LEFT JOIN categoryCombination AS C ON A.category_id = C.combination_id 
                                                 WHERE A.product_status = 'A' ";
-
-                                                $id = $row['product_id'];
-                                                $sql_1 = "SELECT A.product_id, A.product_name,A.product_cover_picture,A.product_variation,A.product_price,A.product_stock,A.product_sold,A.product_status,
-                                                C.max_price,D.min_price,F.total_stock, R.rating FROM `product` AS A 
-                                                LEFT JOIN variation AS B ON A.product_id = B.product_id 
-                                                LEFT JOIN (SELECT product_id,product_price AS max_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price DESC LIMIT 1) AS C ON A.product_id = C.product_id 
-                                                LEFT JOIN (SELECT product_id,product_price AS min_price FROM `variation` WHERE product_id = '$id' ORDER BY product_price ASC LIMIT 1) AS D ON A.product_id = D.product_id 
-                                                LEFT JOIN (SELECT product_id, SUM(product_stock) AS total_stock FROM `variation` WHERE product_id = '$id' GROUP BY product_id) AS F ON A.product_id = F.product_id
-                                                LEFT JOIN (SELECT avg(rr.rating) AS rating, rr.product_id FROM user u INNER JOIN  reviewRating rr ON  u.user_id = rr.user_id WHERE rr.disable_date IS NULL AND rr.product_id = '$id') AS R ON A.product_id = R.product_id 
-                                                WHERE A.product_id = '$id'
-                                                LIMIT 1";
 
                                                 //Set to sql
                                                 if(isset($_SESSION['mainCategory']))
@@ -337,14 +324,8 @@
                                                         case "Latest" :
                                                             $sql .= " ORDER BY product_id DESC";
                                                             break;
-                                                        case "Rating" :
-                                                            $sql .= " ORDER BY product_id ASC";
-                                                            break;
                                                         case "Sold" :
                                                             $sql .= " ORDER BY product_sold ASC";
-                                                            break;
-                                                        case "Price" :
-                                                            $sql .= " ORDER BY product_price ASC";
                                                             break;
                                                         default:
                                                             break;
