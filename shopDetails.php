@@ -170,7 +170,7 @@
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
-          <div class="row overflow-hidden">
+          <div class="row overflow-scroll">
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
