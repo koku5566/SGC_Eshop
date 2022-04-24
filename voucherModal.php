@@ -73,8 +73,9 @@
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" name="user_group[]" multiple value="<?php echo $row['shop_id']; ?>, <?php echo $row['discount_amount']; ?>, <?php echo $row['voucher_type']; ?>" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['shop_id']; ?>" id="defaultCheck1">
                
+
                <label class="form-check-label" for="defaultCheck1">
                   <div class="col-sm-12">
                      <div class="card m-2">
