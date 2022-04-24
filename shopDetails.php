@@ -144,9 +144,9 @@
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
-          <div class="container horizontal-scrollable">
+          <div class="voucherContainer">
             <div class="row">
-            <div class="voucher">
+            <div class="voucherColumn">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
@@ -235,14 +235,10 @@
       }
 
       .voucherContainer{
-        background-color: #f0f0f0;
-        border: none;
-        border-radius: 5px;
-        height: 15vh; /* should be remove after add in voucher */
-        width: 180vh; /* should be remove after add in voucher */
-        margin:; /* Better set align center */
+        display: flex;    
+        overflow-x: auto;
       }
-      .voucher{
+      .voucherColumn{
         margin: 0 10px 0 0;
       }
 
