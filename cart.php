@@ -235,7 +235,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
@@ -703,6 +703,7 @@ select.form-control {
     var subtotal_tol = 0;
 
     calling();
+    discountAmount();
 
     function calling()
     {
@@ -714,12 +715,20 @@ select.form-control {
             subtotal_tol += parseFloat(updateSub[i].innerText);
         }
 
-
         //subtotal_tol = subtotal_tol + parseFloat(document.getElementById("subtotal_kl").innerHTML) + parseFloat(document.getElementById("subtotal_sj").innerHTML);
         //subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
         document.getElementById('subtotal_count_hidden').value = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
-    }  
+    } 
+    
+    function discountAmount()
+    {
+        var afterDiscount = parseFloat(document.getElementById('discount').innerText);
+        var beforeDiscount = pasrseFloat(document.getElementById('subtotal_count').innerText);
+
+        var discountTotal = afterDiscount - beforeDiscount;
+        document.getElementById('discount').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
+    }
 
     function save_to_db(cart_id, quantity) {
        

@@ -256,6 +256,7 @@
          document.getElementById(values[i]).innerText = (Math.round((after_discount + Number.EPSILON) * 100) / 100).toFixed(2);
          console.log("after discount: " + after_discount);
          calling();
+         discountAmount();
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
