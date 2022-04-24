@@ -163,13 +163,14 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Vouchers</strong></h4>
           <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
           <?php
                   if ($result2->num_rows > 0) {
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
+          <div class="overflow-hidden">
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
@@ -199,13 +200,14 @@
               $conn->close();
             ?>
           </div>
+        </div>
         </section>
 
         <hr class="my-5" />
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sales</strong></h4>
+          <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
