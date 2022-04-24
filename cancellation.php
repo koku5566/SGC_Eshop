@@ -41,7 +41,7 @@ if(isset($_POST['cancel']))
         JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
         JOIN product ON orderDetails.product_id = product.product_id
         JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-        WHERE myOrder.order_id = $order_id";
+        WHERE myOrder.order_id = '$order_id' ";
         $result2 = $conn->query($sql2);
         while($row2 = $result2->fetch_assoc()){
       ?>
