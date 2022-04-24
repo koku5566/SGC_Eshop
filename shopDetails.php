@@ -170,7 +170,8 @@
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
-            <div class="voucher overflow-hidden">
+          <div class="overflow-hidden">
+            <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
@@ -199,6 +200,7 @@
               $conn->close();
             ?>
           </div>
+        </div>
         </section>
 
         <hr class="my-5" />
