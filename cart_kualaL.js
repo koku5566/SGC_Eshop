@@ -8,7 +8,7 @@ var count_input = document.getElementsByClassName('sub_kl')
 var removeCartItemButtons = document.getElementsByClassName('removeItem_kl')
     console.log(removeCartItemButtons)
 
-// var discount_count = document.getElementById("discount").innerText;
+var discount_count = document.getElementById("discount_kl").innerText
     //console.log(parseFloat(discount_count) / 100.0)
 
 
@@ -37,19 +37,19 @@ function calsubtotal()
 
 // function convertdecimal() 
 // {
-//     var percent = parseFloat(document.getElementById("discount").innerText);
+//     var percent = parseFloat(document.getElementById("discount_kl").innerText);
 //     var result = percent / 100;
 //     document.getElementById("txtDecimalResult").value= result;
 //     console.log(result)
 // }
-// function caldistotal()
-// {
-//     kldiscount = 0;
+function caldistotal()
+{
+    kldiscount = 0;
         
-//     kldiscount = kltotal - Number(document.getElementById('discount').innerText);
-//     console.log("after discount: " + kldiscount)
-//     //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
-// }
+    kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
+    console.log("after discount: " + kldiscount)
+    //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
+}
 
 // Use array to find the row index
 const arr = new Array();
@@ -68,7 +68,7 @@ function useArray()
     console.log('arr length: ' + arr.length);
     for (let index = 0; index < arr.length; index++) {
         kltotal = kltotal + Number(document.getElementById('subkl['+arr[index]+']').value);
-        kldiscount = kltotal - Number(document.getElementById('discount').innerText);
+        kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
         //kltotal = kltotal + parseInt(document.getElementById('tpkl['+arr[index]+']').innerText);
     }
     document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
@@ -97,7 +97,7 @@ function removeint(x)
     console.log("after remove arr length: " + arr.length);
     for (let index = 0; index < arr.length; index++) {
         kltotal = kltotal + Number(document.getElementById('subkl['+arr[index]+']').value);
-        kldiscount = kltotal - Number(document.getElementById('discount').innerText);
+        kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
         //kltotal = kltotal + parseInt(document.getElementById('tpkl['+arr[index]+']').innerText);
     }
 
@@ -180,7 +180,7 @@ for (var i = 0; i < count_input.length; i++)
                 kltotal = kltotal + toprice_kl;
 
                 //cal final total with discount
-                kldiscount = kltotal - Number(document.getElementById('discount').innerText);
+                kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
 
                 document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
                 calling();
@@ -211,7 +211,7 @@ for (var i = 0; i < count_input.length; i++)
                 kltotal = kltotal + toprice_kl;
 
                 //cal final total with discount
-                kldiscount = kltotal - Number(document.getElementById('discount').innerText);
+                kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
                 
                 document.getElementById('subtotal_kl').innerText = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
                 calling();
