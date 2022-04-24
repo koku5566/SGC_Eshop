@@ -197,7 +197,7 @@
                                 <?php
                                     if ($_SESSION['role'] == "SELLER")
                                     { 
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE promotionEnd_Date <= now() AND `status` = 0";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 0";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){
 
