@@ -35,7 +35,7 @@
 
 <!-- Retrieve Data -->
 <?php
-  $shopId = $_SESSION['userid'];
+  //$shopId = $_SESSION['userid'];
   $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
   $result1 = mysqli_query($conn, $sql);
 ?>
