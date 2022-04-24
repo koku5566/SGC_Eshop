@@ -104,15 +104,15 @@
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);  
+           // header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['success'] = "Order Status has been updated";?>
-            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
 
             <?php
             } else {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);  
+            //header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['status'] = "Order status update failed";?>
-          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+           <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
 
           <?php
         }
