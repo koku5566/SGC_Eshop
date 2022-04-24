@@ -91,11 +91,11 @@
     
     //pick up status update
     if(isset($_POST["status_update"])){
-        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
-        echo $pickupstat,$order_id, $invoice_id;
-        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES($order_id,'$invoice_id','$pickupstat')";
+        //echo $pickupstat,$orderid, $invoice_id;
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id,'$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
