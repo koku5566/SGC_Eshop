@@ -77,7 +77,7 @@
             $Panel = $_SESSION['AdminPanel'];
             ?>
                 <script type="text/javascript">
-                    alert("Approve Successful");
+                    alert("Unban Successful");
                     window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
