@@ -309,7 +309,7 @@
                                                 <?php //echo date("Y-m-d H:i:s");?>
                                             </td>
                                             <td>Update Pick-Up Status: <br>
-                                                <input type="hidden" name="order_id" value="<?php echo $order_id?>">
+                                                <input type="text" name="order_id" value="<?php echo $order_id?>">
                                                 <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <div class="row">
                                                     <div class="col">
