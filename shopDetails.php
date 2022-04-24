@@ -14,6 +14,7 @@
              JOIN product ON productVoucher.product_id = product.product_id
              JOIN shopProfile ON product.shop_id = shopProfile.shop_id
              WHERE shop_id = '$shop_id'"; 
+             echo "voucher.voucher_code";
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
 
