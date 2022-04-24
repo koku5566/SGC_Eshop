@@ -309,6 +309,7 @@
                                             JOIN product ON productVoucher.product_id = product.product_id
                                             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                                             WHERE voucher.voucher_id = $voucher_id
+                                            GROUP BY voucher.voucher_id
                                             ";
                 
                                             $sm = $conn->prepare($sql_pn);
