@@ -356,11 +356,11 @@
                             }
                             else{
 
-                                $uid = $_SESSION['uid'];
+                                $userid = $_SESSION['userid'];
                                 $voucher_id = $_POST['voucher_id'];
 
                                 $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
-                                        VALUES ('$voucher_id','$uid')";
+                                        VALUES ('$voucher_id','$userid')";
                                         
                                 if($conn->query($sqlc))
                                 {

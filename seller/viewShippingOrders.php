@@ -339,7 +339,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $tsrowheader['delivery_method'] ?> </strong></span>
                                             </div>
                                             </div>
 
@@ -361,7 +361,7 @@ $user_id = $_SESSION["userid"];
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $tsrow['product_cover_picture'] ?>" alt="<?php echo $tsrow['product_name'] ?>" />
+                                                            <img class="card-img-top" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $tsrow['product_cover_picture'] ?>" alt="<?php echo $tsrow['product_name'] ?>" />
                                                         </div>
                                                         <div class="col-3">
                                                             <?php echo $tsrow['product_name'] ?>
@@ -415,7 +415,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $purowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1"><strong>Order ID:<?php echo $purowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $purowheader['delivery_method'] ?> </strong></span>
 
                                             </div>
                                             </div>
@@ -490,7 +490,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $srowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                    <span class="pr-1"><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                    <span class="pr-1"><strong>Order ID:<?php echo $srowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $srowheader['delivery_method'] ?> </strong></span>
 
                                                 </div>
                                             </div>
@@ -554,7 +554,7 @@ $user_id = $_SESSION["userid"];
                               $sqlcheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
                               $cresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($cresultheader) > 0) {
-                              while ($srowheader = mysqli_fetch_assoc($cresultheader)) {
+                              while ($crowheader = mysqli_fetch_assoc($cresultheader)) {
                               //Loop header
                               ?>
                                     <div class="card mt-2">
@@ -564,7 +564,7 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $crowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                    <span class="pr-1"><strong>Order ID:<?php echo $crowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $rowheader['delivery_method'] ?> </strong></span>
+                                                    <span class="pr-1"><strong>Order ID:<?php echo $crowheader['invoice_id']; ?> </strong></span>|<span class="pr-1"><strong><?php echo $crowheader['delivery_method'] ?> </strong></span>
                                                 </div>
                                             </div>
 
