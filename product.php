@@ -460,11 +460,11 @@
 								</div>
 								<div class="col list-parent"> 
 									<i class="fa fa-gift"></i>
-									<span>120</span>
+									<span><?php echo($shop_totalProduct); ?></span>
 								</div>
 								<div class="col list-parent"> 
 									<i class="fa fa-calendar"></i>
-									<span>2021</span>
+									<span><?php echo($shop_joinby); ?></span>
 								</div>
 							</div>
 						</div>

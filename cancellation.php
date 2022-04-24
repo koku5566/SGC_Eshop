@@ -10,7 +10,7 @@ if(isset($_POST['cancel']))
   $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
   echo "$query";
   if (mysqli_query($conn, $query)) {
-    ?><script>window.location = '<?php echo("$domain/E404.php");?>'</script><?php
+    ?><script>window.location = '<?php echo("$domain/getOrder.php");?>'</script><?php
 		exit;
    } else {
     echo "Error updating record: " . mysqli_error($conn);

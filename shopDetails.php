@@ -132,7 +132,23 @@
           <div class="row">
             <div class="col list-parent"> 
               <i class="fa fa-star"></i>
-              <span><?php echo($shop_rating); ?></span>
+              <?php
+                  $sql ="SELECT sp.shop_id, sp.shop_name, COALESCE(ROUND(AVG(rr.rating), 1),'Not Rated')  AS shop_rating
+                      FROM  shopProfile sp LEFT JOIN reviewRating rr
+                      ON sp.shop_id = rr.seller_id
+                      WHERE rr.disable_date IS NULL && sp.shop_id = '$i_shop_id'
+                      GROUP BY sp.shop_id
+                      LIMIT 1";
+                  if($stmt = mysqli_prepare ($conn, $sql)){
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_bind_result($stmt, $f1,$f2,$f3);
+                    
+                    while(mysqli_stmt_fetch($stmt)){
+                      echo"<span>$f3</span>";
+                    }
+                    mysqli_stmt_close($stmt);												
+                  }														
+                ?>
             </div>
             <div class="col list-parent"> 
               <i class="fa fa-gift"></i>
@@ -147,14 +163,14 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Vouchers</strong></h4>
           <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
           <?php
                   if ($result2->num_rows > 0) {
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
-            <div class="voucher">
+            <div class="voucher overflow-hidden">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
@@ -189,7 +205,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sales</strong></h4>
+          <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
