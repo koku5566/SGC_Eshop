@@ -97,9 +97,10 @@
     echo $shopId;
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
-    echo "Hi";
+    echo "$shopName";
+    echo "$shopDescription";
     $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = $shopId";
-
+    echo "Hello";
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
