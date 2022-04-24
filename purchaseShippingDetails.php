@@ -121,7 +121,6 @@
         $seller_email = mysqli_real_escape_string($conn, SanitizeString($_POST["selleremail"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
 
-       
         echo $buyer_email,$seller_email;
         $to = $seller_email;
         $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
@@ -296,7 +295,7 @@
             $days=  round($datediff / (60 * 60 * 24));
             
             //Remind seller function is available if seller did not ship out item for 5 days
-            if($orderstatus =='Paid' && $days > 5 ){?>
+            if($orderstatus =='Paid' ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="buyeremail" value="<?php echo $buyeremail; ?>">
                     <input type="hidden" name="selleremail" value="<?php echo $selleremail?>">
