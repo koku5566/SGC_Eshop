@@ -87,7 +87,7 @@
                                     $product_price = $rowKL['P_price'];
                                     $product_stock = $rowKL['product_stock'];
     
-                                    $variation_message = "<option selected>Not Variation</option>";
+                                    $variation_message = "<option selected>No Variation</option>";
                                 }
                                 else if ($rowKL['variation_id'] != "") {
                                     
@@ -114,7 +114,7 @@
                                     {
     
                                         if ($row['variation_1_choice'] == "") {
-                                            $variation_message ="<option value='".$row['variation_id']."' disabled selected>Not Variation</option>";
+                                            $variation_message ="<option value='".$row['variation_id']."' disabled selected>No Variation</option>";
                                         }
                                         else if ($row['variation_1_choice'] != "") {
             
