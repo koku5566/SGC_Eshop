@@ -8,7 +8,7 @@
     }
     $shop_id = $_GET['id'];
     $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
-    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher WHERE shop_id='$shop_id'"; 
+    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
 ?>
@@ -25,7 +25,7 @@
     //$sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.userID WHERE B.userID = '$userId' AND promotionEnd_Date >= now() AND `status` = 0";
 
 
-    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE `user_id`='$user_id' AND promotionEnd_Date >= now() AND `status` = 0";
+    $sql_promotion = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE A.user_id='$user_id' AND promotionEnd_Date >= now() AND `status` = 0";
 
     $result_promotion = mysqli_query($conn, $sql_promotion);
     
