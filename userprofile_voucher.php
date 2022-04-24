@@ -55,7 +55,6 @@
                                     $sql_voucherR =
                                     "SELECT 
                                     voucherRedemption.voucher_id,
-                                    voucherRedemption.id,
                                     voucher.voucher_id,
                                     voucher.voucher_code,
                                     voucher.voucher_type,
@@ -74,8 +73,8 @@
                                     JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                                     JOIN product ON productVoucher.product_id = product.product_id
                                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                                    -- WHERE voucherRedemption.id = $userid
-                                    -- GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
+                                    WHERE voucherRedemption.user_id = $userid
+                                    GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
                                     ";
 
                                     $stmt = $conn->prepare($sql_voucherR);
