@@ -93,6 +93,7 @@ if(isset($_POST['signup']))
 
 								<button type="submit" class="btn btn-primary btn-block" name="signup">SIGN UP</button>
 
+								<div hidden>
 								<div class="or-container">
 									<div class="or-line"></div>
 									<span style="padding: 0 1rem">OR</span>
@@ -108,6 +109,7 @@ if(isset($_POST['signup']))
 								<a href="index.html" class="btn btn-facebook btn-block">
 									<i class="fab fa-facebook-f fa-fw"></i> Facebook
 								</a>
+								</div>
                             </form>
 
                             <hr>
@@ -121,17 +123,6 @@ if(isset($_POST['signup']))
         </div>
     </div>
 </div>
-
-<?php
-if(isset($_SESSION['AddUser']))
-	{
-		if($_SESSION['AddUser'] == true)
-		{
-			echo "<script>alert('Registered Successfull');</script>";
-		}
-		$_SESSION['AddUser'] = NULL;
-	}
-?>
 
 <?php require __DIR__ . '/footer.php' ?>
 
