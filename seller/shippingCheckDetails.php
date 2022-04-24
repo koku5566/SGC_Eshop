@@ -75,18 +75,18 @@
         //$uquery_run = mysqli_query($conn,$updatesql);
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
-           
+            $_SESSION['success'] = "Order Status has been updated";
             //header('Location: ' . $_SERVER['HTTP_REFERER']); 
              ?>
             <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
           <?php
-           $_SESSION['success'] = "Order Status has been updated";
+           
         } 
         else {
-          
+            $_SESSION['status'] = "Order status update failed";
           //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
-    <?php $_SESSION['status'] = "Order status update failed";
+    <?php 
         }
     }
     
