@@ -235,16 +235,21 @@
       }
 
       .voucherContainer{
-        display: flex;    
-        overflow-x: auto;
-      }
-
-      .voucherContainer::-webkit-scrollbar {    
-        display: none;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 80px;
+        white-space:nowrap;
       }
 
       .voucherColumn{
-        margin-right: 15px;
+        box-shadow: 1px 1px 10px #999;
+        margin: 2px;
+        max-height: 50px;
+        cursor: pointer;
+        display:inline-block;
+        display:inline;
+        zoom:1;
+        vertical-align:top;
       }
 
       .coupon-card{
