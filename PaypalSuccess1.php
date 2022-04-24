@@ -128,7 +128,7 @@ $queryKL = mysqli_query($conn, $sql);
     }
       
 
-    if ($$rowKL['variation_id'] == 0) {
+    if ($rowKL['variation_id'] == 0) {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
         $deductQuantity1 = $stock-$product_quantity;
