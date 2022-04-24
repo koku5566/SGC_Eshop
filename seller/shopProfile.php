@@ -35,12 +35,6 @@
 
 <!-- Retrieve and Update Data -->
 <?php
- //Retrieve Data
- $shopId = $_SESSION['userid'];
- $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
- $result1 = mysqli_query($conn, $sql);
-
-
   $profileIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
@@ -128,6 +122,11 @@
       <div>
 
       <?php
+      //Retrieve Data
+        $shopId = $_SESSION['userid'];
+        $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+        $result1 = mysqli_query($conn, $sql);
+        
         while ($row = mysqli_fetch_assoc($result1))
         {
           $shopCoverImage = $row['shop_profile_cover'];
