@@ -235,7 +235,8 @@
       //    });
          
          //get tr element id
-         console.log("Id: "+ document.getElementById(value[i]).getElementsByTagName("span").innerHTML);
+         var test = document.getElementById(values[i]).querySelectorAll('.sub_kl');
+         console.log("id: " + test[0].value);
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
