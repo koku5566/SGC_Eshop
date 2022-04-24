@@ -9,6 +9,7 @@
     $totalprice = 0;
     $shippingfee = 8.6;
     $orderinfosql = "SELECT
+    myOrder.invoice_id,
     myOrder.order_id,
     myOrder.order_status,
     myOrder.delivery_method,
@@ -47,7 +48,7 @@
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
-    WHERE myOrder.invoice_id = '$orderid';";
+    WHERE myOrder.invoice_id = '$orderid'";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
