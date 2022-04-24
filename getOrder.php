@@ -8,6 +8,7 @@ $user_id = $_SESSION["userid"]; //EXP: U000063
 $sql_2 = "SELECT
 DISTINCT
 myOrder.order_id,
+myOrder.invoice_id,
 myOrder.order_status,
 myOrder.order_date,
 myOrder.delivery_method,
@@ -406,9 +407,9 @@ $_SESSION["userId"] = "U000018";
 
                                             <!-- **CAROL PART** (TRACK SHIPMENT BUTTON)-->
                                             <?php if($row['delivery_method'] =='standard'){?>
-                                            <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['invoice_id'];?>">Track Shipment</a>
+                                            <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?invoice_id=<?php echo $row['invoice_id'];?>">Track Shipment</a>
                                             <?php } else{ ?>
-                                                <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['invoice_id'];?>">Check Status</a>
+                                                <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?invoice_id=<?php echo $row['invoice_id'];?>">Check Status</a>
                                             <?php }?>
                                             <!-- **END OF CAROL PART**--->
                                              
