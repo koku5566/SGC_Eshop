@@ -142,6 +142,7 @@
                         <a class="collapse-item" href="../adminManageUser.php">User Management</a>
                         <a class="collapse-item" href="adminManage.php">Product Management</a>
                         <a class="collapse-item" href="category.php">Category Management</a>
+                        <a class="collapse-item" href="admin/promotion.php">Promotion Management</a>
                     </div>
                 </div>
             </li>
