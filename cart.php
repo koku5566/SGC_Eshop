@@ -724,7 +724,7 @@ select.form-control {
     function discountAmount()
     {
         var afterDiscount = parseFloat(document.getElementById('discount').innerText);
-        var beforeDiscount = parseFloat(document.getElementById('subtotal_count').innerText);
+        var beforeDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
 
         var discountTotal = afterDiscount - beforeDiscount;
         document.getElementById('discount').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
