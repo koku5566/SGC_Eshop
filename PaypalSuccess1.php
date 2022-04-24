@@ -244,7 +244,7 @@ mysqli_stmt_close($stmt);
 
 ?>
     <link rel="stylesheet" type="text/css" href="css\payment.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
 
 <div class="container-fluid" style="width:80%">
     <div class="App">
