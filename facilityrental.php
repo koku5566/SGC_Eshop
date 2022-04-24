@@ -13,7 +13,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <?php
-                                        $sql = "SELECT DISTINCT(shop_id), shop_name, shop_profile_image FROM shopProfile AS A LEFT JOIN user AS B ON A.shop_id = B.user_id WHERE B.role = 'ADMIN' AND B.user_id != 'U000001' ;";
+                                        $sql = "SELECT DISTINCT(shop_id), shop_name, shop_profile_image FROM shopProfile AS A LEFT JOIN user AS B ON A.shop_id = B.user_id WHERE B.role = 'ADMIN';
                                                                                                                                                                                                 
                                         $result = mysqli_query($conn, $sql);
  
