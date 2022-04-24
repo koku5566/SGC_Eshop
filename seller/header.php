@@ -226,7 +226,6 @@
                         <a class="collapse-item" href="/seller/promotion.php">Promotion</a>
                         <a class="collapse-item" href="/seller/myVoucher.php">My Voucher</a>
                         <a class="collapse-item" href="/seller/createVoucher.php">Create Voucher</a>
-                        <a class="collapse-item" href="/seller/voucherApproved.php">Voucher Approved</a>
                     </div>
                 </div>
             </li>
