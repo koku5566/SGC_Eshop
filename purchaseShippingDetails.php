@@ -297,9 +297,9 @@
             //Remind seller function is available if seller did not ship out item for 5 days
             if($orderstatus =='Paid' ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
-                    <input type="hidden" name="buyeremail" value="<?php echo $buyeremail; ?>">
-                    <input type="hidden" name="selleremail" value="<?php echo $selleremail?>">
-                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
+                    <input type="text" name="buyeremail" value="<?php echo $buyeremail; ?>">
+                    <input type="text" name="selleremail" value="<?php echo $selleremail?>">
+                    <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
                 <?php } ?>
