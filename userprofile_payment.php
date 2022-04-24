@@ -68,8 +68,9 @@
 
 	$sql_1 = "SELECT * FROM userCard WHERE user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql_1);
-	while($row = mysqli_fetch_array($res_data)){
+	$res_data = $conn->query($sql_1);
+	if($res_data->num_rows>0){
+		while($row = $res_data->fetch_assoc()){
 		echo("
 			<div class=\"row2\">
 				<div class=\"col2\">
@@ -86,6 +87,11 @@
 				</div>
 			</div>
 			");
+		}
+	}else{
+		echo("
+		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No Credit / Debit Card</p></div>
+		");
 	}
 ?>
 
@@ -102,8 +108,9 @@
 <?php
 	$sql_2 = "SELECT * FROM userBankAccount WHERE user_id ='$UID'";
 
-	$res_data = mysqli_query($conn,$sql_2);
-	while($row = mysqli_fetch_array($res_data)){
+	$res_data = $conn->query($sql_2);
+	if($res_data->num_rows>0){
+		while($row = $res_data->fetch_assoc()){
 		echo("
 			<div class=\"row2\">
 				<div class=\"col2\">
@@ -120,6 +127,11 @@
 				</div>
 			</div>
 			");
+		}
+	}else{
+		echo("
+		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No Bank Account</p></div>
+		");
 	}
 ?>
 </form>

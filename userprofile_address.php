@@ -74,7 +74,7 @@
 		}
 	}else{
 		echo("
-		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>
+		<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No Address</p></div>
 		");
 	}
 ?>
