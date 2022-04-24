@@ -235,7 +235,7 @@
       //    });
          
          //get tr element id
-         var test = document.getElementsByTagName(values[i]).innerText;
+         var test = document.getElementsByClassName(values[i]).innerText;
          console.log("id: " + test);
       }
      
