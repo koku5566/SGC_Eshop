@@ -8,7 +8,12 @@
     }
     $shop_id = $_GET['id'];
     $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
-    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
+    $sql2 = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
+             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+             JOIN product ON productVoucher.product_id = product.product_id
+             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+             WHERE shop_id = '$shop_id'"; 
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
 
@@ -137,7 +142,7 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
+          <h4 class="mb-5"><strong>Vouchers</strong></h4>
           <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
            <?php
                   if ($result2->num_rows > 0) {
@@ -148,16 +153,16 @@
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
                 <h3>RM
-                  <?php echo " " . $row2["discount_amount"]. " "; ?>
+                  <?php echo " " . $row2["voucher.discount_amount"]. " "; ?>
                 </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
+                  <span id="cpnCode"><?php echo " " . $row2["voucher.voucher_code"]. " "; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
+                  <?php echo " From " . $row2["voucher.voucher_startdate"]. " till " . $row2["voucher.voucher_expired"]. " "; ?>
                 </p>
                 
                 <!--<div class="circle1"></div>
@@ -177,7 +182,7 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sales</strong></h4>
+          <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
@@ -198,7 +203,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>

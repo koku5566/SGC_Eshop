@@ -282,7 +282,7 @@ $user_id = $_SESSION["userid"];
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $arow['product_cover_picture'] ?>" alt="<?php echo $arow['product_name'] ?>" />
+                                                            <img class="card-img-top" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $arow['product_cover_picture'] ?>" alt="<?php echo $arow['product_name'] ?>" />
                                                         </div>
                                                         <div class="col-3">
                                                             <?php echo $arow['product_name'] ?>
@@ -512,7 +512,7 @@ $user_id = $_SESSION["userid"];
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $srow['product_cover_picture'] ?>" alt="<?php echo $srow['product_name'] ?>" />
+                                                            <img class="card-img-top " style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $srow['product_cover_picture'] ?>" alt="<?php echo $srow['product_name'] ?>" />
                                                         </div>
                                                         <div class="col-3">
                                                             <?php echo $srow['product_name'] ?>
@@ -585,7 +585,7 @@ $user_id = $_SESSION["userid"];
                                             ?>
                                                     <div class="row">
                                                         <div class="col-1 image-container">
-                                                            <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $crow['product_cover_picture'] ?>" alt="<?php echo $crow['product_name'] ?>" />
+                                                            <img class="card-img-top " style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $crow['product_cover_picture'] ?>" alt="<?php echo $crow['product_name'] ?>" />
                                                         </div>
                                                         <div class="col-3">
                                                             <?php echo $crow['product_name'] ?>

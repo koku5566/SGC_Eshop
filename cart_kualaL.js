@@ -35,22 +35,6 @@ function calsubtotal()
     document.getElementById('subtotal_kl').innerHTML = (Math.round((kltotal + Number.EPSILON) * 100) / 100).toFixed(2);
 }
 
-// function convertdecimal() 
-// {
-//     var percent = parseFloat(document.getElementById("discount_kl").innerText);
-//     var result = percent / 100;
-//     document.getElementById("txtDecimalResult").value= result;
-//     console.log(result)
-// }
-function caldistotal()
-{
-    kldiscount = 0;
-        
-    kldiscount = kltotal - Number(document.getElementById('discount_kl').innerText);
-    console.log("after discount: " + kldiscount)
-    //document.getElementById('subtotal_kl').innerHTML = (Math.round((kldiscount + Number.EPSILON) * 100) / 100).toFixed(2);
-}
-
 // Use array to find the row index
 const arr = new Array();
 

@@ -16,13 +16,12 @@ product.product_name,
 product.product_cover_picture,
 product.product_price,
 product.product_variation,
-orderDetails.quantity,
-orderDetails.amount,
+productTransaction.quantity,
 shopProfile.shop_name
 FROM
 myOrder
-JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-JOIN product ON orderDetails.product_id = product.product_id
+JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+JOIN product ON productTransaction.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
 JOIN user on myOrder.userID = user.user_id 
 WHERE myOrder.userID = '$user_id'
@@ -340,8 +339,11 @@ $_SESSION["userId"] = "U000018";
                             <h2 class="font-weight-bold text-center">YOUR ORDERS</h2>
                             <hr class="mx-auto">
                         </div>
-                        <?php while($row = $orders ->fetch_assoc()){ 
-                            
+                        <?php 
+                        $totalamount = 0;
+                        while($row = $orders ->fetch_assoc()){ 
+                            $amount =  $row['product_price']*$row['quantity'];
+                            $totalamount += $amount;
                             ?>
                         
                             <div class="card">
@@ -380,7 +382,7 @@ $_SESSION["userId"] = "U000018";
                                                     <td><img src=/img/product/<?php echo $row['product_cover_picture']?> style="object-fit:contain;width:30%;height:30%"><td>
                                                     <td style="text-align: left;"><?php echo $row['product_name']?></td>
                                                     <td style="text-align: center;"><?php echo $row['quantity']?></td>
-                                                    <td style="text-align: center;">RM<?php echo $row['amount']?>.00</td>
+                                                    <td style="text-align: center;">RM<?php  echo $amount?></td>.00</td>
                                                     
                                                 </tr>
                                             
@@ -404,9 +406,9 @@ $_SESSION["userId"] = "U000018";
 
                                             <!-- **CAROL PART** (TRACK SHIPMENT BUTTON)-->
                                             <?php if($row['delivery_method'] =='standard'){?>
-                                            <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Track Shipment</a>
+                                            <a class="btn btn-primary " style="margin-left:10px;"  href="purchaseShippingDetails.php?order_id=<?php echo $row['invoice_id'];?>">Track Shipment</a>
                                             <?php } else{ ?>
-                                                <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['order_id'];?>">Check Status</a>
+                                                <a class="btn btn-primary"style="margin-left:10px;" href="purchaseShippingDetails.php?order_id=<?php echo $row['invoice_id'];?>">Check Status</a>
                                             <?php }?>
                                             <!-- **END OF CAROL PART**--->
                                              
@@ -419,7 +421,7 @@ $_SESSION["userId"] = "U000018";
 												<input style="margin-left:10px;" type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
                                              <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:30%;" >RM<?php echo $row['amount']?>.00</span>
+                                             <span style="margin-left:30%;" >RM<?php echo $totalamount?>.00</span>
                                             </tr>
                                         </thead>
                                     </table>
