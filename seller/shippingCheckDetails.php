@@ -76,15 +76,16 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
            
-            header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
-            <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+            //header('Location: ' . $_SERVER['HTTP_REFERER']); 
+             ?>
+            <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
           <?php
            $_SESSION['success'] = "Order Status has been updated";
         } 
         else {
           
-          header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
-          <!-- <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> -->
+          //header('Location: ' . $_SERVER['HTTP_REFERER']);      ?>
+           <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
     <?php $_SESSION['status'] = "Order status update failed";
         }
     }
