@@ -235,7 +235,7 @@
       //    });
          
          //get tr element id
-         console.log("Id: "+$('#'+value[i]).attr('span').value);
+         console.log("Id: "+$('#'+value[i]).val());
       }
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
