@@ -17,7 +17,7 @@
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
-    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$orderid';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
@@ -46,7 +46,7 @@
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
-    JOIN userAddress ON myOrder.user_id = userAddress.user_id
+    JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$orderid';";
 
     $stmt = $conn->prepare($sql);
