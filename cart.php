@@ -211,7 +211,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right;'>Total: <span id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right;'>Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
@@ -714,6 +714,11 @@ select.form-control {
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
     }  
 
+    function updateLatestSub()
+    {
+        var updateSub = document.getElementsByClassName('sbt');
+        console.log (updateSub);
+    }
     function save_to_db(cart_id, quantity) {
        
         $.ajax({

@@ -187,6 +187,7 @@ var options = {
                         <thead>
                             <!-- replace with proper value -->
                             <tr>
+                                <th>No.</th>
                                 <?php
                                     $sql2 = "SELECT * FROM `formElement` WHERE `event_id` =  \"$eventid\" ORDER BY `form_element_id` ASC";
                                     $result2 = mysqli_query($conn, $sql2);
@@ -222,6 +223,7 @@ var options = {
                                         $result4 = mysqli_query($conn, $sql4);
                                         echo("
                                             <tr>
+                                            <td>1</td>
 
                                         ");
                                         while ($row4 = mysqli_fetch_assoc($result4)) {
