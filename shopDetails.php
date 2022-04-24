@@ -235,9 +235,6 @@
       }
 
       .voucherContainer{
-        background-color: #f0f0f0;
-        border: none;
-        border-radius: 5px;
         display: flex;    
         overflow-x: auto;
       }
