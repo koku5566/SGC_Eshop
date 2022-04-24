@@ -35,7 +35,7 @@
 
 <!-- Select Data -->
 <?php
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = 'U000002'";
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = $shopId";
   $result1 = mysqli_query($conn, $sql); 
 ?>
 
@@ -93,10 +93,11 @@
           }
       }
   }
+    $shopId = $_SESSION['userid'];
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
 
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = 'U000002'";
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_media='$shopMedia' WHERE shop_id = $shopId";
 
       if (mysqli_query($conn, $update))
       { 
