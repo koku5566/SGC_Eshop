@@ -37,7 +37,6 @@
 <?php
  if(isset($_POST['saveBtn']))
  {
-  $shopId = $_SESSION['userid'];
   $profileIMG = array_filter($_FILES['profileImage']['name']);
   $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
