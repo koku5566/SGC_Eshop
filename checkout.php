@@ -286,7 +286,7 @@ $shippingfee = 8.6;
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="shipping-option" id="self-collection" value="self-collection"required >
                             <label class="form-check-label" for="self-collection">
-                                self collection
+                                Self collection
                             </label>
                         </div>
                     </div>
@@ -296,10 +296,10 @@ $shippingfee = 8.6;
             </div>
             <div>
                 <div class="row">
-                    <div class="col"><label class="form-label">Message</label>
+                    <!-- <div class="col"><label class="form-label">Message</label>
                         <div class="row">
                             <div class="col"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Leave a message to seller"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
