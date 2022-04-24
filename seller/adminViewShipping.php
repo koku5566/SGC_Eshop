@@ -58,7 +58,7 @@ require __DIR__ . '/header.php'
 
                             $sql = "SELECT * FROM myOrder JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id";
                             $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result1) > 0) {
+                            if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {?>
                                         <tr>
                                         <td><?php echo $row['order_date']?></td>
@@ -105,7 +105,7 @@ function linkTrack() {
     });
   }
 
-var t = $('#transactionTable').DataTable({//call table id
+var t = $('#shippingOrderTable').DataTable({//call table id
     dom: 'Bfrtip',
         buttons: [
             {

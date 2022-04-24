@@ -295,14 +295,20 @@
             $days=  round($datediff / (60 * 60 * 24));
             
             //Remind seller function is available if seller did not ship out item for 5 days
-            if($orderstatus =='Paid' ){?>
+            if($orderstatus =='Paid'&& $days >=5 ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="text" name="buyeremail" value="<?php echo $buyeremail; ?>">
                     <input type="text" name="selleremail" value="<?php echo $selleremail?>">
                     <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
-                <?php } ?>
+                <?php }else if ($orderstatus == 'Paid' && days <5) {?>
+                    <div class="tooltip">
+                        <button class="btn btn-primary">Remind Seller</button> 
+                        <span class="tooltiptext">You can remind seller if order has not been shipped after 5 days</span>
+                    </div>
+                    <?php
+                 }?>
 
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
@@ -615,6 +621,29 @@
     .track-shipping tr:first-child td {
     color: green;
     }
+    .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 </style>
 
 <script>
