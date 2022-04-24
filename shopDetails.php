@@ -6,16 +6,18 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
+
     $shop_id = $_GET['id'];
     $discountAmount = $row['voucher.discount_amount'];
-    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
-    $sql2 = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
+    $sql_product = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
+    $sql_voucher = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
              JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
              JOIN product ON productVoucher.product_id = product.product_id
              JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-             WHERE shop_id = '$shop_id'"; 
-    $result1 = $conn->query($sql1);
-    $result2 = mysqli_query($conn, $sql2);
+             WHERE product.shop_id = '$shop_id' 
+             GROUP BY voucher.voucher_id";
+    $result_product = $conn->query($sql_product );
+    $result_voucher = $conn->query($sql_voucher);
 
     //Added by Maverick
     $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$shop_id'";
@@ -145,28 +147,26 @@
           <h4 class="mb-5"><strong>Vouchers</strong></h4>
           <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
            <?php
-                  if ($result2->num_rows > 0) {
+                  if ($result_voucher->num_rows > 0) {
                     // output data of each row
-                    while($row2 = $result2->fetch_assoc()) {
+                    while($row2 = $result_voucher->fetch_assoc()) {
            ?>
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
                 <h3>RM
-                  <?php echo " " . $row2["voucher.discount_amount"]. " "; ?>
+                  <?php echo $row2["discount_amount"]; ?>
                 </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode"><?php echo " " . $row2["voucher.voucher_code"]. " "; ?></span>
+                  <span id="cpnCode"><?php echo $row2["voucher_code"]; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
                 <p>
-                  <?php echo " From " . $row2["voucher.voucher_startdate"]. " till " . $row2["voucher.voucher_expired"]. " "; ?>
+                  <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
-                <!--<div class="circle1"></div>
-                <div class="circle2"></div>-->
               </div>
               <?php
                    }
@@ -185,9 +185,9 @@
           <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
-              if ($result1->num_rows > 0) {
+              if ($result_product->num_rows > 0) {
                 // output data of each row
-                while($row1 = $result1->fetch_assoc()) {
+                while($row1 = $result_product->fetch_assoc()) {
             ?>
             
             <div class="col-lg-3 col-md-6 mb-4">
@@ -287,24 +287,6 @@
         color: #7158fe;
         cursor: pointer;
         font-size: 10px;
-      }
-      
-      .circle1, .circle2{
-        background: #fff;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        position: absolute;
-        top: 14.5%;
-        transform: translateY(-50%);
-      }
-      
-      .circle1{
-        left: 40px;
-      }
-      
-      .circle2{
-        right: 925px;
       }
 
       .imgContainer
