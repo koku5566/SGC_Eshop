@@ -240,6 +240,8 @@
          //get tr element id
          var current_price = parseFloat(document.getElementById(values[i]).innerHTML);
 
+         console.log("current price: " + current_price);
+
          var after_discount = 0;
          if (type == "cashback") {
             after_discount = current_price - amount;
@@ -249,7 +251,7 @@
             after_discount = (current_price * ((100 - amount) / 100) );
          }
 
-         document.getElementById(values[i]).innerHTML = after_discount;
+         document.getElementById(values[i]).innerText = after_discount;
          console.log("after discount: " + after_discount);
       }
      
