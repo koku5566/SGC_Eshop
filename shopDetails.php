@@ -145,7 +145,7 @@
                     while($row2 = $result2->fetch_assoc()) {
           ?>
           <div class="voucherContainer">
-            <div class="row">
+            <div class="voucherRow">
             <div class="voucherColumn">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
@@ -241,7 +241,7 @@
         white-space:nowrap;
       }
 
-      .voucherColumn{
+      .voucherRow{
         box-shadow: 1px 1px 10px #999;
         margin: 2px;
         max-height: 50px;
