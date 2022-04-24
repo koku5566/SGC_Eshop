@@ -3,11 +3,11 @@ require __DIR__ . '/header.php'
 ?>
 
 <?php
-/*     if($_SESSION['login'] == false || $_SESSION['role'] == "USER")
+    if($_SESSION['login'] == false || $_SESSION['role'] == "USER")
 	{
 		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
-    } */
+    }
 ?>
 
 <!-- Begin Page Content -->
