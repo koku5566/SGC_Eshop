@@ -109,6 +109,7 @@
       }
       else
       {
+        echo($update);
           /*Fail*/
           echo 'Update Fail';
       }
