@@ -408,7 +408,7 @@
 											$shop_id = $row_shop['shop_id'];
 											$shop_name = $row_shop['shop_name'];
 											$shop_pic = $row_shop['shop_profile_image'];
-
+											$shop_rating = $row_shop['shop_rating'];
 											$shop_joinby = substr($row_shop['registration_date'], -4);
 										}
 
@@ -452,11 +452,6 @@
 						</div>
 						<div class="col-xl-4 col-md-8">
 							<div class="row">
-								<?php 
-									
-									
-								
-								?>
 								<div class="col list-parent"> 
 									<i class="fa fa-star"></i>
 									<span><?php echo($shop_rating); ?></span>
