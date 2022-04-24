@@ -9,12 +9,17 @@
         <?php
         exit;
 	}
+    if($_SESSION['role'] != "SELLER")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
 
     if(isset($_POST['edit'])){
         $statusMsg = $errorMsg = $errorUpload = $errorUploadType = ''; 
 
         //Basic Details
-        $shopId = $_SESSION['uid']; // Temporary only, after that need link with session userid 
+        $shopId = $_SESSION['userid']; // Temporary only, after that need link with session userid 
 
         $productId = $_SESSION['productId'];
         $productSKU = $_POST['productSKU'];

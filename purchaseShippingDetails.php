@@ -227,7 +227,8 @@
                 ?>
                 </tbody>
             </table>
-            
+
+
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
