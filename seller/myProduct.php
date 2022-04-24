@@ -200,7 +200,7 @@
                             <nav id="myTab" class="nav nav-tabs" role="tablist">
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "All" ? "active" : "" ); ?>" id="nav-all-tab" href="?Panel=All" aria-selected="<?php echo($_GET['Panel'] == "All" ? "true" : "false"); ?>">All</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Publish" ? "active" : ""); ?>" id="nav-published-tab" href="?Panel=Publish" aria-selected="<?php echo($_GET['Panel'] == "Publish" ? "true" : "false"); ?>">Published</a>
-                                <a class="nav-item nav-link <?php echo($_GET['Panel'] == "OutOfStock" ? "active" : ""); ?>" id="nav-sold-tab" href="?Panel=OutOfStock" aria-selected="<?php echo($_GET['Panel'] == "OutOfStock" ? "true" : "false"); ?>">Out of Stock</a>
+                                
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Violation" ? "active" : ""); ?>" id="nav-violation-tab" href="?Panel=Violation" aria-selected="<?php echo($_GET['Panel'] == "Violation" ? "true" : "false"); ?>">Banned</a>
                                 <a class="nav-item nav-link <?php echo($_GET['Panel'] == "Unpublish" ? "active" : ""); ?>" id="nav-unpublish-tab" href="?Panel=Unpublish" aria-selected="<?php echo($_GET['Panel'] == "Delisted" ? "true" : "false"); ?>">Delisted</a>
                             </nav>
@@ -408,7 +408,7 @@
                                                                 if($row_1['product_status'] == "B")
                                                                 {
                                                                     echo("
-                                                                        <div style=\"position: absolute;width: 100%;height: 40%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
+                                                                        <div style=\"position: absolute;width: 100%;height: 48%;background-color: rgba(9, 9, 9, 0.6);padding: 10px;\">
                                                                             <p style=\"color: white;\">Product get banned, please contact administrator for future help</p>
                                                                         </div>
                                                                     ");
