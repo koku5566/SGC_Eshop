@@ -189,20 +189,20 @@ var options = {
                             <tr>
                                 <th>No.</th>
                                 <?php
-                                    $sql2 = "SELECT * FROM `formElement` WHERE `event_id` =  \"$eventid\" ORDER BY `form_element_id` ASC";
-                                    $result2 = mysqli_query($conn, $sql2);
-                                    if (mysqli_num_rows($result2) > 0) {
-                                        while ($row2 = mysqli_fetch_assoc($result2)) {
-                                            echo("
-                                                <th>".$row2['field_name']."</th>
-                                            ");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        echo("<th style=\"text-align:center;\">No Transaction yet</th>");
-                                        
-                                    }
+                                    //$sql2 = "SELECT * FROM `formElement` WHERE `event_id` =  \"$eventid\" ORDER BY `form_element_id` ASC";
+                                    //$result2 = mysqli_query($conn, $sql2);
+                                    //if (mysqli_num_rows($result2) > 0) {
+                                    //    while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    //        echo("
+                                    //            <th>".$row2['field_name']."</th>
+                                    //        ");
+                                    //    }
+                                    //}
+                                    //else
+                                    //{
+                                    //    echo("<th style=\"text-align:center;\">No Transaction yet</th>");
+                                    //    
+                                    //}
                                 ?>
                             </tr>
                         </thead>
