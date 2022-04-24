@@ -398,11 +398,11 @@
 
                                                                 if($row_1['product_status'] == "A")
                                                                 {
-                                                                    echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"UnpublishProduct\" value=\"".$row_1['product_id']."\" >Delist</button>");
+                                                                    echo("<button class=\"btn btn-outline-secondary\" style=\"border:none;width:100%;\" name=\"BanProduct\" value=\"".$row_1['product_id']."\" >Ban</button>");
                                                                 }
-                                                                else if($row_1['product_status'] == "I")
+                                                                else if($row_1['product_status'] == "B")
                                                                 {
-                                                                    echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"PublishProduct\" value=\"".$row_1['product_id']."\" >Publish</button>");
+                                                                    echo("<button class=\"btn btn-outline-info\" style=\"border:none;width:100%;\" name=\"UnbanProduct\" value=\"".$row_1['product_id']."\" >Unban</button>");
                                                                 }
 
                                                                 echo("
