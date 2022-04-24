@@ -230,10 +230,6 @@
       }
 
       .voucherContainer{
-        margin: 4px, 4px;
-        padding: 4px;
-        background-color: #08c708;
-        width: 300px;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
