@@ -5,8 +5,6 @@
 <?php
     $_SESSION['productID'] = $_GET['id'];
 	$_SESSION['variationId'] = "";
-	$_SESSION['userid'] = "U000061";
-	$sellerid = $_SESSION["userid"];
 ?>
 <?php
 	//Fetch each product information
@@ -443,7 +441,7 @@
 									 $sql ="SELECT sp.shop_id, sp.shop_name, COALESCE(ROUND(AVG(rr.rating), 1),'Not Rated')  AS shop_rating
 											FROM  shopProfile sp LEFT JOIN reviewRating rr
 											ON sp.shop_id = rr.seller_id
-											WHERE rr.disable_date IS NULL && sp.shop_id = '$sellerid'
+											WHERE rr.disable_date IS NULL && sp.shop_id = '$i_shop_id'
 											GROUP BY sp.shop_id
 											LIMIT 1";
 									if($stmt = mysqli_prepare ($conn, $sql)){
