@@ -709,7 +709,11 @@ select.form-control {
         subtotal_tol = 0;
 
         var updateSub = document.getElementsByClassName('sbt');
-        console.log (updateSub);
+        for(var i=0; i<updateSub.length;i++)
+        {
+            //updateSub[i].innerText;
+            console.log(updateSub[i].innerText);
+        }
 
         //subtotal_tol = subtotal_tol + parseFloat(document.getElementById("subtotal_kl").innerHTML) + parseFloat(document.getElementById("subtotal_sj").innerHTML);
         subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
