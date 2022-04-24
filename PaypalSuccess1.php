@@ -40,7 +40,6 @@ $queryKL = mysqli_query($conn, $sql);
     
 
     $variation_message = "";
-    $variationEmpty = "";
     $showNotif = false;
 
     if ($rowKL['P_status'] == 'A') {
@@ -48,6 +47,7 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
+            $rowKL['variation_id'] = 0;
             $variation_message = "<option selected>Not Variation</option>";
         }
         else if ($rowKL['variation_id'] != "") {
@@ -128,7 +128,7 @@ $queryKL = mysqli_query($conn, $sql);
     }
       
 
-    if ($variationEmpty == "") {
+    if ($$rowKL['variation_id'] == 0) {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
         $deductQuantity1 = $stock-$product_quantity;
