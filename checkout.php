@@ -284,9 +284,9 @@ $shippingfee = 8.6;
                     </div>
                     <div class="col2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping-option" id="pickup" value="pick-up"required >
-                            <label class="form-check-label" for="pickup">
-                                Pick-up
+                            <input class="form-check-input" type="radio" name="shipping-option" id="self-collection" value="self-collection"required >
+                            <label class="form-check-label" for="self-collection">
+                                self collection
                             </label>
                         </div>
                     </div>

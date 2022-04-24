@@ -184,6 +184,11 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt, "sssssissi", $invoice_id, $uid, $product_id, $variation_id, $payment_status, $user_address, $shop_id, $create_time, $product_quantity);
         $bp = mysqli_stmt_execute($stmt);
     }
+
+    $sql4 = "DELETE FROM cart WHERE cart_ID = '$cart_id'";
+    if ($stmt5 = mysqli_prepare($conn, $sql4)) {
+        $bp = mysqli_stmt_execute($stmt5);
+    }
     
 }
 $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
