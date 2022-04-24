@@ -8,12 +8,13 @@ if(isset($_POST['cancel']))
   $reason_type = $_POST['reason_type'];
   $order_id = $_POST['order_id'];
   $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
-  $cancelOrder = $conn->query($query);
-  if($cancelOrder){
-      
-      echo 'Cancel Pending. Please wait for respond. <a href="getOrder.php">Click to return order page.</a>';
-  }else{
-      echo 'Cancel FAILED. <a href="getOrder.php">Click to return order page.</a>';
+  if (mysqli_query($conn, $query))
+  { 
+      echo 'Order cancellation pending.<a href="getOrder.php">Click to return order page.</a>';
+  }
+  else
+  {
+      echo 'Cancellation Failed. <a href="getOrder.php">Click to return order page.</a>';
   }
 }
 
