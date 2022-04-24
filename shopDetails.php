@@ -241,8 +241,14 @@
         white-space:nowrap;
       }
 
-      .voucherRow{
-        box-shadow: 1px 1px 10px #999;
+      .coupon-card{
+         background: linear-gradient(135deg, #7158fe, #9d4de6);
+         color: #fff;
+         text-align: center;
+         padding: 10px 45px;
+         border-radius: 15px;
+         /*box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);*/
+         box-shadow: 1px 1px 10px #999;
         margin: 2px;
         max-height: 50px;
         cursor: pointer;
@@ -250,15 +256,6 @@
         display:inline;
         zoom:1;
         vertical-align:top;
-      }
-
-      .coupon-card{
-         background: linear-gradient(135deg, #7158fe, #9d4de6);
-         color: #fff;
-         text-align: center;
-         padding: 10px 45px;
-         border-radius: 15px;
-         box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
       }
       
       .logo{
