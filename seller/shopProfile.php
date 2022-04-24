@@ -37,7 +37,6 @@
 <?php
  //Retrieve Data
  $shopId = $_SESSION['userid'];
- echo $shopId;
  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
  $result1 = mysqli_query($conn, $sql);
 
@@ -69,30 +68,30 @@
       }
   }
 
-  $coverIMG = array_filter($_FILES['profileCover']['name']);
-  $targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
-  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-  $profileCover = "";
-  //$imageProperties = getimageSize($_FILES['profileCover']['tmp_name']);
-  $coverImgContent = addslashes(file_get_contents($_FILES['profileCover']['name']));
-  if (!empty($profileIMG)) {
-      foreach ($_FILES['profileCover']['name'] as $key => $val) {
-          // File upload path 
-          echo (var_dump($_FILES['profileCover']));
-          $fileName = basename($_FILES['profileCover']['name'][$key]);
-          $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-          $fileName = round(microtime(true) * 1000) . "." . $ext;
-          $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
-          // Check whether file type is valid 
-          $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-          if (in_array($fileType, $allowTypes)) {
-              if (move_uploaded_file($_FILES["profileCover"]["tmp_name"][$key], $targetFilePath)) {
-                  $profileCover  = "$fileName";
-              }
-          }
-      }
-  }
+  //$coverIMG = array_filter($_FILES['profileCover']['name']);
+  //$targetDir = dirname(__DIR__, 1) . "/img/shop_logo/";
+  //$allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
+  //$profileCover = "";
+  ////$imageProperties = getimageSize($_FILES['profileCover']['tmp_name']);
+  //$coverImgContent = addslashes(file_get_contents($_FILES['profileCover']['name']));
+  //if (!empty($profileIMG)) {
+  //    foreach ($_FILES['profileCover']['name'] as $key => $val) {
+  //        // File upload path 
+  //        echo (var_dump($_FILES['profileCover']));
+  //        $fileName = basename($_FILES['profileCover']['name'][$key]);
+  //        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+  //        $fileName = round(microtime(true) * 1000) . "." . $ext;
+  //        $targetFilePath = $targetDir . $fileName;
+  //        echo ($targetFilePath);
+  //        // Check whether file type is valid 
+  //        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+  //        if (in_array($fileType, $allowTypes)) {
+  //            if (move_uploaded_file($_FILES["profileCover"]["tmp_name"][$key], $targetFilePath)) {
+  //                $profileCover  = "$fileName";
+  //            }
+  //        }
+  //    }
+  //}
     $shopId = $_SESSION['userid'];
     echo $shopId;
     $shopName = $_POST['name'];
