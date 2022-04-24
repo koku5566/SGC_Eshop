@@ -196,9 +196,9 @@ if ($stmt4 = mysqli_prepare($conn, $sql3)) {
     $bp = mysqli_stmt_execute($stmt4);
 }   
 //--CAROL ADD--- (insert to orderStatus tbl )
-$sql6 = "INSERT INTO `orderStatus`(,`invoice_id`, `status`) VALUES (?,?,?)";
+$sql6 = "INSERT INTO `orderStatus`(`order_id`,`invoice_id`, `status`) VALUES (?,?,?)";
 if ($stmt6 = mysqli_prepare($conn, $sql6)) {
-    $bp = mysqli_stmt_bind_param($stmt6, "ss",  $invoice_id , $paid);
+    $bp = mysqli_stmt_bind_param($stmt6, "iss", 1, $invoice_id , $paid);
     $bp = mysqli_stmt_execute($stmt6);
 }    
 //-------------
