@@ -223,6 +223,10 @@
       </div>
     </main>
     <!--Main layout-->
+    
+    <?php
+    require __DIR__ . '/footer.php'
+    ?>
 
     <style>
       
@@ -364,7 +368,3 @@
          }, 3000);
        }
     </script>
-
-    <?php
-    require __DIR__ . '/footer.php'
-?>
