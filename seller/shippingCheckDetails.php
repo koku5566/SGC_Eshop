@@ -72,7 +72,7 @@
         // $conn->query($updatesql);
         //$iquery_run = mysqli_query($conn,$insertsql);
         //$uquery_run = mysqli_query($conn,$updatesql);
-
+        echo ' helds';
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
            
             //header('Location: ' . $_SERVER['HTTP_REFERER']);  ?>
@@ -94,7 +94,7 @@
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id', '$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
-
+        echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Order Status has been updated";?>
             <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script>
@@ -299,7 +299,7 @@
                                         }
 
 
-                                else if($orderstatus!='Ready' && $deliverymethod=='self-collection' && $orderstatus!='Completed'){?>
+                                    else if($orderstatus!='Ready' && $deliverymethod=='self-collection' && $orderstatus!='Completed'){?>
                                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
                                             <td>
                                                 <?php //echo date("Y-m-d H:i:s");?>
@@ -322,7 +322,12 @@
 
                                             </td>
                                         </form>
-                                        <?php }?>
+                                        <?php } else if($orderstatus =='Placed'){?>
+                                            <td>
+                                            </td>
+                                            <td>Waiting for customer to pay </td>
+                                     <?php
+                                        }?>
                                     </tr>
                                 </tbody>
                             </table>
