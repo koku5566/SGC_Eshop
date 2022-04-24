@@ -13,7 +13,7 @@
     $result2 = $conn->query($sql2);
 
     //Added by Maverick
-    $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$i_shop_id'";
+    $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$shop_id'";
     $result_shop = mysqli_query($conn, $sql_shop);
 
     if (mysqli_num_rows($result_shop) > 0) {
@@ -24,35 +24,9 @@
         $shop_rating = $row_shop['shop_rating'];
         $shop_joinby = substr($row_shop['registration_date'], -4);
       }
-
-      if($shop_pic != "")
-      {
-        echo("
-        <div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-          <img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/$shop_pic\">
-        </div>
-        ");
-      }
-      else
-      {
-        echo("
-        <div class=\"col-xl-3 col-md-4\" style=\"text-align: center;\">
-          <img class=\"img-thumbnail\" style=\"min-height:10px; width: inherit;max-width: fit-content;\"src=\"/img/shop_logo/store.png\">
-        </div>
-        ");
-      }
-      
-      echo("
-      <div class=\"col-xl-9 col-md-8 sidebar-brand-text\" style=\"font-size: 1.5rem;\">
-        <b>$shop_name</b>
-        <a href=\"shopDetails.php?id=$shop_id\" class=\"btn btn-primary\" style=\"width: 50%;position: absolute;bottom: 10px;left: 0;\">
-          <span class=\"text\">View Shop</span>
-        </a>
-      </div>
-      ");
     }
   
-    $sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE shop_id = '$i_shop_id'";
+    $sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE shop_id = '$shop_id'";
     $result_shop = mysqli_query($conn, $sql_shop);
 
     if (mysqli_num_rows($result_shop) > 0) {
@@ -163,14 +137,13 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Vouchers</strong></h4>
+          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
           <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
           <?php
                   if ($result2->num_rows > 0) {
                     // output data of each row
                     while($row2 = $result2->fetch_assoc()) {
           ?>
-          <div class="overflow-hidden">
             <div class="voucher">
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
@@ -200,14 +173,13 @@
               $conn->close();
             ?>
           </div>
-        </div>
         </section>
 
         <hr class="my-5" />
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Products</strong></h4>
+          <h4 class="mb-5"><strong>Best Sales</strong></h4>
           <div class="row">
             <?php
               if ($result1->num_rows > 0) {
