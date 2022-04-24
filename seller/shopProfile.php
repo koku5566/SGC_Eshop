@@ -93,6 +93,8 @@
           }
       }
   }
+    $shopId = $_SESSION['userid'];
+    echo $shopId;
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
     echo "Hi";
