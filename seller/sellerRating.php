@@ -31,7 +31,7 @@
     </div>
     
     <div class="row reviewContainer">
-      <h4><b>User Review</b></h4>
+      <h4><b>User Review</b></h4><br>
       <?php
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
