@@ -125,11 +125,7 @@
                                                     
                                         }
                                     }
-    
-                                }
-    
-                                
-                                
+                                }         
                             }
                             else if ($rowKL['P_status'] != 'A') {
                                 $showNotif = true;
@@ -145,9 +141,7 @@
                                         <div class='product-item'>
                                             <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
                                             <div class='product-info'>
-                                                <label> Cart: ".$cart_id."</label><br>
-                                                <label>".$product_id."</label>
-                                                <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                                <h4 class='product-title' style='margin-top: 40px;'><a href='#'>".$product_name."</a></h4>
                                             </div>
                                         </div>
                                     </td>
@@ -233,10 +227,10 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount" style="font-weight: bold;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
+                <div class="column text-lg" id="discount" style="font-weight: bold; color:black;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
-                <div class="column text-lg" style="font-weight: bold;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+                <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
     </div>
     <div class="shopping-cart-footer">
@@ -254,7 +248,7 @@
     </div>
     <div class="shopping-cart-footer" >
         <form class = "footer" action="cart_manage.php" method="POST">
-            <div class="column text-lg" style="font-weight: bold;">Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
+            <div class="column text-lg" style="font-weight: bold; color:black;">Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
              </div> 

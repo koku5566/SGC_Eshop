@@ -22,7 +22,7 @@
           <div class='product-item'>
               <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
               <div class='product-info'>
-                  <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                  <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>-</span>
               </div>
           </div>
           <div class='form-group'>

@@ -6,7 +6,7 @@
 <link href="/css/voucher.css" rel="stylesheet" type="text/css">
 
 <div class="container">
-   <div class="row" rowspan="6" >
+   <div class="row">
       <div class="col-md-12">
          <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#selectvoucher">
             <img class="m-2 selectvoucher" src="./img/voucher.png" style="float: left;">
