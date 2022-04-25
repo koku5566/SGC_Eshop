@@ -16,7 +16,7 @@ if(isset($_POST['Delete']))
 		
             <script type="text/javascript">
                 alert(" Deleted Successful");
-                window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                window.location.href = window.location.origin + "/admin/adminFacilityManagement.php";
             </script>
         <?php
     }
