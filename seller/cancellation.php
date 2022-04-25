@@ -63,7 +63,7 @@
                                             }
                                             ?>
                                         </div>
-                                        <div class="col-3"><?php echo $row["order_status"]; ?></div>
+                                        
                                     </div>
                                     <hr>
                                     <?php } ?>
