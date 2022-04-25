@@ -306,9 +306,6 @@
 
     }
 
-    var times = document.getElementsByClassName("form-check-input");
-   console.log("time:" + times);
-
    function getSelectItemThat(id) {
         
     var times = document.getElementsByClassName("form-check-input");
