@@ -163,15 +163,15 @@
       <label class="form-label">Shop Description</label><br>
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
-    <!--<div class="row">
+    <div class="row">
       <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
          Image display frame (place where the image will display)
-          <img id="frame" src="" class="img-fluid" />
+          <img id="frame" src="" width="100px" height="100px" />
         
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
-    </div>-->
+    </div>
 
 
     <div class="text-center">
