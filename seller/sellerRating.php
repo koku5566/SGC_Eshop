@@ -30,8 +30,11 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     
-    <div class="row reviewContainer">
+    <div class="row">
       <h4><b>User Review</b></h4>
+    </div>
+
+    <div class="row reviewContainer">
       <?php
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
@@ -47,7 +50,7 @@
       <div class="col-lg-6 col-md-12">
         <p>
         <?php
-            echo "<br>User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
+            echo "User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
         ?>
         </p>
       </div>
