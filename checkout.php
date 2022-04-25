@@ -352,6 +352,7 @@ $(document).ready(function() {
     var shippingtotal = parseFloat(document.getElementById("shippingprice").value);
     var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
     var selection = "";
+    var sfee = 0;
 
 
    $('input[name="delivery-option"]').click(function() {
@@ -361,10 +362,12 @@ $(document).ready(function() {
         {
             document.getElementById("shipping-fee").textContent = shippingtotal.toFixed(2);
             document.getElementById("shipping-total").value = shippingtotal.toFixed(2);
+            sfee= shippingtotal.toFixed(2);
         }
         else{
             document.getElementById("shipping-fee").textContent = noshippingfee.toFixed(2);
             document.getElementById("shipping-total").value = noshippingfee.toFixed(2);
+            sfee = noshippingfee.toFixed(2);
         }
     // display = this.value
     //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
@@ -382,8 +385,8 @@ $(document).ready(function() {
    //to calculate total payment amount 
    var shipping = document.getElementById("shipping-total").value;
    var subtotal = document.getElementById("subtotal-amount").value;
-   var total = subtotal + shipping;
-   console.log(shipping, subtotal, total);
+   var total = subtotal + sfee;
+   console.log(sfee, subtotal, total);
    document.getElementById("total-amount").value = total;
 
 });
