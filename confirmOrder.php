@@ -59,7 +59,7 @@ if(isset($_POST['confirm']))
 
       <!--------------------END OF DETAILS---------------------->
       
-      <div class="card-body">
+      <div class="card-footer">
           
           <form method="post" action="confirmOrder.php" style="font-size:25px;">
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
