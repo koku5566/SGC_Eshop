@@ -386,8 +386,8 @@ $(document).ready(function() {
    var subtotal = document.getElementById("subtotal-amount").value;
    var total = parseFloat(subtotal) + parseFloat(shipping);
    console.log(shipping, subtotal, total);
-   document.getElementById("totalAmount").textContent = total;
-
+   document.getElementById("totalAmount").textContent = parseFloat(total.toFixed(2));
+   document.getElementById("total-amount").value;
 
 });
 
