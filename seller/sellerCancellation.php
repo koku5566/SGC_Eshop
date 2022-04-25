@@ -61,48 +61,10 @@
                                             <?php
                                             }
                                             ?>
-                                        <!-----------------------SHOW CANCELLATION DATA-------------------------->
-                                        <?php
-                                            $sql3 = "SELECT * FROM myOrder";
-                                            $result3 = $conn->query($sql3);
-                                            while($row3 = $result3->fetch_assoc()){
-                                            $order_id = $row3['order_id'];
-                                        ?>
-                                            <div class="row">
-                                        <div class="col-2">
-                                            <?php echo $order_id; ?>
-                                        </div>
-                                        <div class="col-7">
-                                            <?php
-                                            $sql2 = "SELECT
-                                            DISTINCT
-                                            *
-                                            FROM
-                                            myOrder
-                                            JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
-                                            JOIN product ON productTransaction.product_id = product.product_id
-                                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                                            JOIN user on myOrder.userID = user.user_id 
-                                            WHERE order_id = '$order_id'";
-                                            $result2 = $conn->query($sql2);
-                                            while($row2 = $result2->fetch_assoc()){
-                                            ?>
-                                            <div class="row">
-                                                <div class="col-2">
-                                                <img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%">
-                                                </div>
-                                                <div class="col-4">
-                                                    <?php echo $row2['product_name']?>
-                                                </div>
-                                                <div class="col-3">
-                                                   <?php echo $row2['cancellation_status']?>
-                                                </div>
-                                            </div>
-                                                
-                                        <?php }?>
+                                        
                                         </div>
                                         <div class="col-3">
-                                        
+                                        <a style="margin-left:10px;"  href="cancelAction.php?order_id=<?php echo $order_id;?>">Actions</a>
                                         </div>
                                     </div>
                                     <hr>
