@@ -3,14 +3,9 @@
 ?>
 
 <?php
-  $shop_id = $_GET['id'];
-  $shopName = 'shop_name';
-  $sql_rating = "SELECT shop_name FROM shopProfile WHERE shop_id='$shop_id'";
-?>
-
-<?php
-$shopName = $_SESSION['shop_name'];
-$output = '';
+  $shopId = $_SESSION['userid'];
+  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $rating_result = mysqli_query($conn, $sql);
 ?>
 
 <!-- Icon -->
@@ -19,8 +14,16 @@ $output = '';
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">            
   <div class="container ratingContainer">
+
+  <?php
+        while ($row = mysqli_fetch_assoc($rating_result))
+        {
+          $shopName = $row['shop_name'];
+        }
+  ?>
+
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><input value="<?php echo $shopName ?>"></input>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5><?php echo $shopName ?></h5>
     </div>
     <div class="row descriptionContainer">
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
