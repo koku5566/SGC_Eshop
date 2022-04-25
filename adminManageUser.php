@@ -75,7 +75,7 @@
 				<tbody>
 				<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 					<?php
-						$sql = "SELECT * FROM user";
+						$sql = "SELECT * FROM user where user_id='a'";
 						$res_data = $conn->query($sql);
 						if($res_data->num_rows>0){
 							while($row = $res_data->fetch_assoc()){
