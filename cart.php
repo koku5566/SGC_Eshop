@@ -210,7 +210,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right; text-weight: bold;' >Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right; font-weight: bold;' >Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
