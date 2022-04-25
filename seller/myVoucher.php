@@ -197,6 +197,7 @@
                                  </div>
                                  <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
                                  <br>
+                                 <br>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Display Setting</label>
