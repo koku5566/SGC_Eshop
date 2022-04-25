@@ -43,7 +43,7 @@
       if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "Product id: " . $row["product_id"]. " User id: " . $row["user_id"]. " " . $row["message"]. "Rating: " . $row["rating"]. " " . $row["pic1"]. "<br>";
+          echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. " " . $row["pic1"]. "<br>";
         }
       } else {
         echo "<br> 0 results";
@@ -86,5 +86,6 @@ background-color: #EEEDEE;
 .reviewContainer{
   background-color: #EEEDEE;
   margin: 30px 0;
+  padding: 15px;
 }
 </style>
