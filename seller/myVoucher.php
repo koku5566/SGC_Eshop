@@ -116,13 +116,26 @@
                         }
                         ?>
                      </td>
-                     <?php
+                  </tr>
+
+                  <?php 
+                  }?>
+
+               </tbody>
+
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
+<?php
 
    if(isset($_POST['list'])){
          
       $voucher_id = $_POST['voucher_id'];
 
-      $sqll = "UPDATE voucher SET voucher_list = 0
+      $sqll = "UPDATE voucher SET voucher_list = '0'
                WHERE voucher_id = '$voucher_id'";
                   
       if($conn->query($sqll))
@@ -138,7 +151,7 @@
       
       $voucher_id = $_POST['voucher_id'];
 
-      $sqldl = "UPDATE voucher SET voucher_list = 1
+      $sqldl = "UPDATE voucher SET voucher_list = '1'
                WHERE voucher_id = '$voucher_id'";
                   
       if($conn->query($sqldl))
@@ -151,20 +164,6 @@
    }
    
 ?>
-                  </tr>
-
-                  <?php 
-                  }?>
-
-               </tbody>
-
-            </table>
-         </div>
-      </div>
-   </div>
-</div>
-
-
 
 <script type ="module">
   $(document).ready(function() {
