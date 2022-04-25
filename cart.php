@@ -328,17 +328,17 @@
                 if(i == id)
                 {
                     document.getElementById(i).disabled = false;
-
-                    // var temp_shop_id = document.getElementById(i).value;
-                    // console.log("Temp Shop ID: " + temp_shop_id);
-
-                    // if (temp_shop_id == shop_id) {
-                    //     document.getElementById(i).disabled = true;
-                    // }
-
                 }
                 else{
                     document.getElementById(i).checked = false;
+
+                    var temp_shop_id = document.getElementById(i).value;
+                    console.log("Temp Shop ID: " + temp_shop_id);
+
+                    if (temp_shop_id != shop_id) {
+                        document.getElementById(i).disabled = false;
+                    }
+                    
                     document.getElementById(i).disabled = true;
                 }
                 
