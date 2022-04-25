@@ -141,7 +141,7 @@
                                         <div class='product-item'>
                                             <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
                                             <div class='product-info'>
-                                                <h4 class='product-title' style='margin-top: 50px;'><a href='#'>".$product_name."</a></h4>
+                                                <h4 class='product-title' style='margin-top: 40px;'><a href='#'>".$product_name."</a></h4>
                                             </div>
                                         </div>
                                     </td>
