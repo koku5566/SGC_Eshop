@@ -97,16 +97,10 @@ background-color: #EEEDEE;
 .reviewContainer{
   background-color: #EEEDEE;
   padding: 15px;
-}
-
-.reviewTitle{
-  background-color: #EEEDEE;
   margin: 30px 0;
-  padding: 15px;
 }
 
-.reviewContent{
+.reviewTitle .reviewContent{
   background-color: #EEEDEE;
-  padding: 0 15px;
 }
 </style>
