@@ -329,7 +329,7 @@
                                                             while($row_1 = mysqli_fetch_assoc($result_1)) {
                                                                 
                                                                 echo("
-                                                                    <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
+                                                                    <div class=\"col-xl-3 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
                                                                             <div class=\"card\">
                                                                                 <div class=\"image-container\">
                                                                                     <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
