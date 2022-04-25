@@ -55,10 +55,34 @@
                                                 <div class="col-3">
                                                    <?php echo $row2['order_status']?>
                                                 </div>
-                                                
-                                                
-                                                
                                             </div>
+                                                <!----------------SHOW CANCELLATION APPROVE DATA------------------->
+                                                <?php if($row2['cancellation_status'] =='approve'){?>
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                        <img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <?php echo $row2['product_name']?>
+                                                        </div>
+                                                        <div class="col-3">
+                                                        <?php echo $row2['cancellation_status']?>
+                                                        </div>
+                                                    </div>
+                                                <?php }else{?>
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                        <img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <?php echo $row2['product_name']?>
+                                                        </div>
+                                                        <div class="col-3">
+                                                        <?php echo $row2['cancellation_status']?>
+                                                        </div>
+                                                    </div>
+                                                <?php }?>
+
                                             <?php
                                             }
                                             ?>
