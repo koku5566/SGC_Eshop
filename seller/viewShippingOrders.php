@@ -309,7 +309,9 @@ $user_id = $_SESSION["userid"];
                                                                 <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Update Pick-Up</a>
                                                                 <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                                 </div>
-                                                            <?php } 
+                                                            <?php 
+                                                             $i++;
+                                                            }
                                                            ?>
                                                         
                                                     </div>
