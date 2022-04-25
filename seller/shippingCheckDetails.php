@@ -170,7 +170,7 @@
             <h4>SGC Eshop</h4>
             ";
     
-            $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+            $HTMLcontent = "<p><b>Dear buyer</b>,</p><p>$message</p>";
     
             $boundary = md5(time());
             $headers .= " boundary=\"{$boundary}\"";

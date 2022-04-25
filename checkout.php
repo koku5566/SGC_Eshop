@@ -61,7 +61,7 @@ else{
 
 //calculate shipping fee
 
-$shippingfee = 8.6;
+$shippingfee = 10;
 
 ?>
 
@@ -269,6 +269,7 @@ $shippingfee = 8.6;
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
             </div> -->
+            <input type="hidden" id ="shippingprice" name="shippingprice" value ="<?php echo $shippingfee;?>">
             <div class="shipping-option" >
                 <div class="row">
                     <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
@@ -276,7 +277,7 @@ $shippingfee = 8.6;
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping-option" id="standarddelivery" value="standard-delivery"checked>
+                            <input class="form-check-input" type="radio" name="delivery-option" id="standarddelivery" value="standard-delivery"checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
                              </label>
@@ -284,7 +285,7 @@ $shippingfee = 8.6;
                     </div>
                     <div class="col2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="shipping-option" id="self-collection" value="self-collection"required >
+                            <input class="form-check-input" type="radio" name="delivery-option" id="self-collection" value="self-collection"required >
                             <label class="form-check-label" for="self-collection">
                                 Self collection
                             </label>
@@ -317,7 +318,7 @@ $shippingfee = 8.6;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
-                        <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM 10</span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span id="shipping-fee" style= "float: right;"><?php echo $shippingfee;?></span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
@@ -338,7 +339,33 @@ $shippingfee = 8.6;
 </div>
 </div>
                 <!-- /.container-fluid -->
+<script>
 
+$(document).ready(function() {
+    var noshippingfee = 0;
+    var shippingtotal = parseFloat(document.getElementById("shippingtotal").value);
+   $('input[name="delivery-option"]').click(function() {
+       if($(this).attr('id') == 'standarddelivery') {
+         document.getElementById("shipping-fee").textContent= $shippingtotal.toFixed(2);        
+         console.log(shippingtotal.toFixed(2));
+       }
+
+       else {
+            document.getElementById("shipping-fee").textContent= $noshippingfee.toFixed(2);        
+
+       }
+   });
+});
+
+  function discountAmount()
+{
+    var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
+    var beforeDiscount = parseFloat(document.getElementById('subtotal_count').innerText);
+    var discountTotal = afterDiscount - beforeDiscount;
+    document.getElementById('discount_kl').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
+}
+ 
+</script>
 <?php
     require __DIR__ . '/footer.php'
 ?>
