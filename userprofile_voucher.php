@@ -49,9 +49,11 @@
  GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
  ";
 
-  $stmt = $conn->prepare($sql_voucherR);
-  //$stmt->execute();
-   $result = $stmt->get_result();
+   //$stmt = $conn->prepare($sql_voucherR);
+   //$stmt->execute();
+   //$result = $stmt->get_result();
+
+   $result_upvoucher = mysqli_query($conn, $sql_voucher);
 
 ?>
    
@@ -75,7 +77,7 @@
 
                                     <div class="col-sm-12">
                                        <?php
-                                       //while ($row = $result->fetch_assoc()) {
+                                       while ($row = mysqli_fetch_assoc($result_upvoucher)) {
                                        ?>
                                        <div class="card m-2">
                                           <div class="card-body">
@@ -167,7 +169,7 @@
                                     </div>
                             
                                     <?php 
-                                    //}?>
+                                    }?>
                               
                                  </div>
                               </div>
