@@ -263,7 +263,10 @@
   // something like $(this).hide() (only something useful, probably) :P
    });
 
-   var chks = document.getElementsByClassName('form-check-input');
+  
+
+      window.onload = function () {
+         var chks = document.getElementsByClassName('form-check-input');
         for (var i = 0; i < chks.length; i++) {
             chks[i].onclick = function () {
                 for (var i = 0; i < chks.length; i++) {
@@ -272,7 +275,8 @@
                     }
                 }
             };
-        }
+        } 
+    };
 }
 
 </script>
