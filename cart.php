@@ -216,17 +216,18 @@
                 <div class="column">
                     <form class="coupon-form" method="post"> -->
                         <!-- Select voucher Modal -->
-                        
+                    <div class="vModal" style="float: left;">
                         <?php
                             require __DIR__ .'/voucherModal.php'
                         ?>
+                    </div>
                     <!-- </form> -->
                         <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
                         <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
                 <!-- </div>
             </div> -->
     
-            <div class="shopping-cart-footer-1" >
+            <div class="shopping-cart-footer" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
             <div class="shopping-cart-discount-footer" >
