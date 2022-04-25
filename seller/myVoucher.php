@@ -96,7 +96,7 @@
 
                            echo ("
 
-                           <form action=\"/seller/myVoucher.php\" method=\"POST\" enctype=\"multipart/form-data\">
+                           <form action=\".$return\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
@@ -109,7 +109,7 @@
 
                            echo ("
 
-                           <form action=\"/seller/myVoucher.php\" method=\"POST\" enctype=\"multipart/form-data\">
+                           <form action=\".$return\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
                            </form>
