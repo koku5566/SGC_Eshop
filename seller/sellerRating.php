@@ -86,7 +86,5 @@ background-color: #EEEDEE;
 .reviewContainer{
   background-color: #EEEDEE;
   margin: 30px 0;
-  padding: 15px;
-  height: 200px; //should be remove after adding the review (id inside span of review)
 }
 </style>
