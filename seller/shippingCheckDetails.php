@@ -13,12 +13,17 @@
     myOrder.order_id,
     myOrder.order_date,
     myOrder.order_status,
+    myOrder.tracking_number,
     myOrder.delivery_method,
+    productTransaction.shop_id,
     user.username,
+    productTransaction.shop_id,
+    user.email
     userAddress.address
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
+    JOIN productTransaction ON myOrder.invoice_id= productTransaction.invoice_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
@@ -31,10 +36,13 @@
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
         $address = $orow['address'];
+        $buyeremail = $orow['email'];
         $orderdate = $orow['order_date'];
+        $trackingnum = $orow['tracking_num'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
+    
    // echo $invoice_id, $orderstatus, $deliverymethod, $username, $address;
     //=========sql to get order item information===========
     $sql = "SELECT
@@ -69,6 +77,7 @@
         $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $trackingnum = mysqli_real_escape_string($conn, SanitizeString($_POST["tracking_number"]));
+        $buyeremail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyer_email"]));
         $status = "Shipped";
         //echo $trackingnum, $status, $invoice_id;
         $insertsql = "INSERT INTO orderStatus (order_id, invoice_id, status) VALUES('$order_id','$invoice_id', '$status')";
@@ -80,10 +89,10 @@
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
             //===============email function=======================
-            $to = $seller_email;
+            $to = $buyeremail;
             $subject = "Your Order has been shipped out." ;
-            $from = "event@sgcprototype2.com";
-            $from2 = "event@sgcprototype2.com";
+            $from = "shipping@sgcprototype2.com";
+            $from2 = "shipping@sgcprototype2.com";
             $fromName = "SGC E-Shop Admin";
     
             $headers =  "From: $fromName <$from> \r\n";
@@ -92,7 +101,7 @@
     
     
             $message = "
-            <h5>Your Order for <strong>'$invoice_id'</strong>shipped out.</h5>
+            <h5>Your Order for <strong>$invoice_id</strong> has been shipped out.</h5>
             <a>Track Here</a>
             <p>
             <h4>Thank you</h4>
@@ -137,6 +146,7 @@
         $order_id = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+        $buyeremail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyer_email"]));
         //echo $pickupstat,$orderid, $invoice_id;
         $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
@@ -144,10 +154,10 @@
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
 
             //===============email function=======================
-            $to = $seller_email;
+            $to = $buyeremail;
             $subject = "Your Self-Collection Order is Ready to Pick Up" ;
-            $from = "event@sgcprototype2.com";
-            $from2 = "event@sgcprototype2.com";
+            $from = "shipping@sgcprototype2.com";
+            $from2 = "shipping@sgcprototype2.com";
             $fromName = "SGC E-Shop Admin";
     
             $headers =  "From: $fromName <$from> \r\n";
@@ -156,7 +166,7 @@
     
     
             $message = "
-            <h5>Your Order <strong>'$invoice_id'</strong> is ready to pick up.</h5>
+            <h5>Your Order <strong>$invoice_id</strong> is ready to pick up.</h5>
             <p>Your pick up address will be: 
             <h4>Thank you</h4>
             <h4>Best Regards</h4>
@@ -364,6 +374,8 @@
                                             <td>Tracking No: <br>
                                             <input type="hidden" name="order_id" value="<?php echo $order_id?>">
                                              <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
+                                             <input type="hidden" name="buyer_email" value="<?php echo $buyeremail?>">
+
                                                 <div class="row">
                                                     <div class="col">
                                                         <input class="form-control input" name="tracking_number"
@@ -393,6 +405,7 @@
                                             <td>Update Pick-Up Status: <br>
                                                 <input type="hidden" name="order_id" value="<?php echo $order_id?>">
                                                 <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
+                                                <input type="hidden" name="buyer_email" value="<?php echo $buyeremail?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">

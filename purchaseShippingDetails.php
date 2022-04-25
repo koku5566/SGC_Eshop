@@ -124,8 +124,8 @@
         //echo $buyer_email,$seller_email;
         $to = $seller_email;
         $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
-        $from = "event@sgcprototype2.com";
-        $from2 = "event@sgcprototype2.com";
+        $from = "shipping@sgcprototype2.com";
+        $from2 = "shipping@sgcprototype2.com";
         $fromName = "SGC E-Shop Admin";
 
         $headers =  "From: $fromName <$from> \r\n";
