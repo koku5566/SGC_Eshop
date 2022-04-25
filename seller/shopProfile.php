@@ -151,7 +151,7 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage[]"  value="" onchange="loadImage(event)" required/>
+        <input id="file" type="file" name="profileImage[]"  value="" onchange="loadImage(event)"/>
         <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-5" width="200"/>
       </div>
     </div>
