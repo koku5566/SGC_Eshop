@@ -93,6 +93,9 @@
 								</tr>
 								");
 							}
+						}else{
+							echo("");
+						}
 					?>
 				</form>
 				</tbody>
