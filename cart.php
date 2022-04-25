@@ -309,27 +309,29 @@
     function getSelectItemThat(id) {
         
         var times = document.getElementsByClassName("form-check-input");
+        $shop_id = document.getElementById(id).value;
 
         if(document.getElementById(id).checked != true){
-            // for (var i = 0;i < times.length; i++)
-            // {
+            for (var i = 0;i < times.length; i++)
+            {
                 
-            //     document.getElementById(i).disabled = false;
+                document.getElementById(i).disabled = false;
                 
-            // }
+            }
             document.getElementById(id).checked = false;
         }
         else{
             for (var i = 0;i < times.length; i++)
             {
-                // if(i == id)
-                // {
-                //     document.getElementById(i).disabled = false;
-                // }
-                //else{
+
+                if(i == id)
+                {
+                    document.getElementById(i).disabled = false;
+                }
+                else{
                     document.getElementById(i).checked = false;
-                    //document.getElementById(i).disabled = true;
-                //}
+                    document.getElementById(i).disabled = true;
+                }
                 
             }
             document.getElementById(id).checked = true;
