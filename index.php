@@ -319,7 +319,7 @@
                                                 while ($r = $res->fetch_assoc()) {
                                             ?>
 
-                                            <p><?php echo $r['product_name'];?>, </p>
+                                            <p><?php echo $r['product_name'];?></p>
                                             <?php 
 
                                         }?>
