@@ -33,6 +33,7 @@ $order_id = $_GET['order_id'];
                 
                 <?php
                     $shippingfee = 8.6;
+                    $totalamount = 0;
                     $sql2 = "SELECT
                     DISTINCT
                     *
@@ -46,6 +47,8 @@ $order_id = $_GET['order_id'];
                     
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
+                        $amount =  $row2['product_price']*$row2['quantity'];
+                        $totalamount += $amount;
                 ?>
                 <div class="card">
                 <div class="card-body">
