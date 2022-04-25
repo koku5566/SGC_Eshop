@@ -22,7 +22,6 @@
         
         <table class="table" style="border: groove;">
             <thead>
-            <span></span>
                 <tr>
                     <th>Product Name</th>
                     <th class="text-center">Variations</th>
@@ -210,7 +209,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right; font-weight: bold;' >Total for this shop: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right; font-weight: bold;' >Shop Total Price: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
