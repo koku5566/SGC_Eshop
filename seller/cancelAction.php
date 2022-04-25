@@ -24,7 +24,7 @@ if(isset($_POST['approve']))
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
   <h1 style="text-align:center; color: red ;">Cancellation Reply</h1>
-  <a href="getOrder.php" style="font-size:20px;">BACK</a>
+  <a href="sellerCancellation.php" style="font-size:20px;">BACK</a>
   <section id="orders" class="order container my-5 py-3 ">
     <div class="container mt-2">
       <h2 class="font-weight-bold text-center">Please give respond to your buyer.</h2>
