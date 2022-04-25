@@ -29,7 +29,7 @@ if(isset($_POST['approve']))
     echo "Error updating record: " . mysqli_error($conn);
    }
   
-
+}
 
 ?>
 
