@@ -56,7 +56,7 @@
                                                    <?php echo $row2['order_status']?>
                                                 </div>
                                             </div>
-                                            !----------------SHOW CANCELLATION APPROVE DATA------------------->
+                                            <!----------------SHOW CANCELLATION APPROVE DATA------------------->
                                                 <?php if($row2['cancellation_status'] =='approve'){?>
                                                     <div class="row">
                                                         <div class="col-2">
