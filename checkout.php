@@ -369,11 +369,6 @@ $(document).ready(function() {
     //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
     //      console.log(shippingtotal.toFixed(2));
     //    }
-
-       else {
-            document.getElementById("shipping-fee").textContent= noshippingfee.toFixed(2);        
-
-       }
    });
 });
 
