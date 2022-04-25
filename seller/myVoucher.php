@@ -135,8 +135,8 @@
       
       $voucher_id = $_POST['voucher_id'];
 
-      $sqll = "UPDATE voucher SET (voucher_list)
-               VALUES voucher_list = 0";
+      $sqll = "UPDATE voucher SET voucher_list = '0'
+               WHERE voucher_id = '$voucher_id'";
                   
       if($conn->query($sqll))
       {
