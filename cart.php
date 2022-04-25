@@ -309,7 +309,8 @@
     function getSelectItemThat(id) {
         
         var times = document.getElementsByClassName("form-check-input");
-        $shop_id = document.getElementById(id).value;
+        var shop_id = document.getElementById(id).value;
+        console.log("Shop ID: " + $shop_id);
 
         if(document.getElementById(id).checked != true){
             for (var i = 0;i < times.length; i++)
@@ -327,10 +328,18 @@
                 if(i == id)
                 {
                     document.getElementById(i).disabled = false;
+
+                    var temp_shop_id = document.getElementById(i).value;
+                    console.log("Temp Shop ID: " + temp_shop_id);
+
+                    if (temp_shop_id == shop_id) {
+                        document.getElementById(i).disabled = true;
+                    }
+
                 }
                 else{
                     document.getElementById(i).checked = false;
-                    document.getElementById(i).disabled = true;
+                    //document.getElementById(i).disabled = true;
                 }
                 
             }
