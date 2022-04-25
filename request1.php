@@ -27,7 +27,8 @@ $payer->setPaymentMethod('paypal');
 // Set some example data for the payment.
 $currency = 'MYR';
 $item_qty = 1;
-$amountPayable = $_POST['amount'];
+//$amountPayable = $_POST['amount'];
+$amountPayable = $_POST['total-amount'];
 $product_name = $_POST['item_name'];
 $item_code = $_POST['item_number'];
 $description = 'Paypal transaction';
