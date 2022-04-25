@@ -144,6 +144,9 @@
                         <a class="collapse-item" href="category.php">Category Management</a>
                         <a class="collapse-item" href="promotion.php">Promotion Management</a>
                         <a class="collapse-item" href="adminTransaction.php">Transaction History</a>
+                        <a class="collapse-item" href="adminViewShipping.php">Order Delivery History</a>
+                        <a class="collapse-item" href="adminEventDetails.php">Event Management</a>
+
                     </div>
                 </div>
             </li>
