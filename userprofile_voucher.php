@@ -71,7 +71,7 @@
                                           <div class="card-body">
                                              <div class="row">
                                                 <div class="col-mb-3 m-2">
-                                                   <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                   <img class="m-2" src="../img/shop_logo/<?php echo $UID; ?>" id="voucherlogo">
                                                 </div>
                                                 <div class="col-mb-7 m-2">
                                                    <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
