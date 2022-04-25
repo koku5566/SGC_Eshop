@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
 <?php
     require __DIR__ . '/header.php';
 
@@ -293,7 +295,7 @@
             $today = strtotime($now);
             $datediff = $today - $orderdate;
             $days=  round($datediff / (60 * 60 * 24));
-            echo $days;
+            
             //Remind seller function is available if seller did not ship out item for 5 days
             if($orderstatus =='Paid'&& $days >=5  ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
@@ -302,10 +304,11 @@
                     <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
-                <?php }else if ($orderstatus == 'Paid' && $days <5 ) { echo 'hi'?>
-                    
-                        <button class="btn btn-primary" disabled>Remind Seller</button> 
-                   
+                <?php }else if ($orderstatus == 'Paid' && $days <5 ) {?>
+                
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+                            <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Remind Seller</button>
+                    </span>                   
                     <?php
                  }?>
 
@@ -646,6 +649,11 @@
 </style>
 
 <script>
+//for tooltip
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 var orderstatus = document.getElementById("orderstatus").value;
 var deliverymethod = document.getElementById("deliverymethod").value;
 
