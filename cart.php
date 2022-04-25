@@ -310,31 +310,33 @@
         
         var times = document.getElementsByClassName("form-check-input");
 
-        if(document.getElementById(id).checked != true){
-                for (var i = 0;i < times.length; i++)
+        // if(document.getElementById(id).checked != true){
+        //     for (var i = 0;i < times.length; i++)
+        //     {
+                
+        //         document.getElementById(i).disabled = false;
+                
+        //     }
+        //     document.getElementById(id).checked = false;
+        // }
+        // else{
+            for (var i = 0;i < times.length; i++)
+            {
+                if(i == id)
                 {
-                  
                     document.getElementById(i).disabled = false;
-                   
-                }
-            	document.getElementById(id).checked = false;
-            }
-        	else{
-              for (var i = 0;i < times.length; i++)
-              {
-              	if(i == id)
-                {
-                	document.getElementById(i).disabled = false;
                 }
                 else{
-                document.getElementById(i).checked = false;
-                  document.getElementById(i).disabled = true;
-                  }
-                  
-              }
-              document.getElementById(id).checked = true;
-              
+                    document.getElementById(i).checked = false;
+                    document.getElementById(i).disabled = true;
+                }
+                
             }
+            document.getElementById(id).checked = true;
+            
+        //}
 
     }
+
+
 </script>
