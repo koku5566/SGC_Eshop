@@ -53,7 +53,7 @@
 		while($row = $res_data->fetch_assoc()){
 			echo("
 				<div class=\"row\" style=\"border-left: 3px solid #a31f37; margin-bottom: 1rem;\">
-					<div class=\"col-10\" style=\"background-color: lightyellow;\">
+					<div class=\"col-11\" style=\"background-color: lightyellow;\">
 						<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
 							<div class=\"container-col2\">
 								<div class=\"container-left-col2\">
@@ -64,7 +64,7 @@
 							</div>
 						</a>
 					</div>
-					<div class=\"col-2\">
+					<div class=\"col-1\">
 						<form method=\"post\" style=\"height:100%;width:100%;\">
 							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;\" class=\"btn btn-primary\">R<br>E<br>M<br>O<br>V<br>E</button>
 						</form>
