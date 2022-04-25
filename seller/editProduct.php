@@ -11,7 +11,8 @@
 	}
     if($_SESSION['role'] != "SELLER")
 	{
-		echo($_SESSION['role']);
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
     }
 
     if(isset($_POST['edit'])){
@@ -193,7 +194,7 @@
     {
         $productId = $_GET['id'];
         $_SESSION['productId'] = $_GET['id'];
-        $shopId = $_SESSION['uid'];
+        $shopId = $_SESSION['userid'];
 
         //$sql_product = "SELECT * FROM product WHERE product_id = '$productId'";
         $sql_product = "SELECT * FROM product WHERE product_id = '$productId' AND shop_id = '$shopId'";
