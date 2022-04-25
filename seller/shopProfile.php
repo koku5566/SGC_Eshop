@@ -169,7 +169,7 @@
           <img id="frame" src="" />
         
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="media" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="image" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
 
@@ -314,7 +314,7 @@ function preview() {
 
 /* Preview Multiple Images */
 $(function() {
-  $('.media').change(function() {
+  $(":image").change(function() {
     if (this.files && this.files[0]) {
       for (var i = 0; i < this.files.length; i++) {
         var reader = new FileReader();
