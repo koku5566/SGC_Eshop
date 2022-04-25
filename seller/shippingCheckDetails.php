@@ -15,15 +15,12 @@
     myOrder.order_status,
     myOrder.tracking_number,
     myOrder.delivery_method,
-    productTransaction.shop_id,
     user.username,
-    productTransaction.shop_id,
-    user.email
+    user.email,
     userAddress.address
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
-    JOIN productTransaction ON myOrder.invoice_id= productTransaction.invoice_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
