@@ -93,7 +93,7 @@
                      <td>
                         <?php 
                            echo ("
-                              <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal<?php echo $vid; ?>\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
+                              <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
                            ");
                         ?>
                      </td>
@@ -140,24 +140,24 @@
    </div>
 </div>
 
-               <!-- Edit Voucher Modal -->
-               <div class="modal fade" id="editVoucherModal<?php echo $row['voucher_id']; ?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" style="min-width: 88%;">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="editVoucherModalLabel">Edit Voucher</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                           ......
-                        </div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                           <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                     </div>
-                  </div>
+      <!-- Edit Voucher Modal -->
+      <div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
+         <div class="modal-dialog" style="min-width: 88%;">
+            <div class="modal-content">
+               <div class="modal-header">
+               <h5 class="modal-title" id="editVoucherModalLabel">Edit Voucher</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
+               <div class="modal-body">
+                  ......
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+         </div>
+      </div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------- -->
 
