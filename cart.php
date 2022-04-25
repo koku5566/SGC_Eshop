@@ -246,7 +246,7 @@
                 <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
         </div>
     </div>
-    <div class="shopping-cart-footer" style="padding: auto;">
+    <div class="shopping-cart-footer">
         <form class = "footer" action="cart_manage.php" method="POST">
             <div class="column text-lg" style="font-weight: bold; color:black;">Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
