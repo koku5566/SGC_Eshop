@@ -310,7 +310,7 @@
         
         var times = document.getElementsByClassName("form-check-input");
         var shop_id = document.getElementById(id).value;
-        console.log("Shop ID: " + $shop_id);
+        console.log("Shop ID: " + shop_id);
 
         if(document.getElementById(id).checked != true){
             for (var i = 0;i < times.length; i++)
