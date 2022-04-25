@@ -48,8 +48,6 @@
 
                      $shopId = $_SESSION['userid'];
 
-                     $return = $_SERVER['PHP_SELF'];
-
                      $sql_myvoucher =
                      "SELECT
                         voucher.voucher_id,
@@ -81,6 +79,7 @@
                      while ($r = $res->fetch_assoc()) {
 
                         $vid = $r['voucher_id'];
+                        $return = $_SERVER['PHP_SELF'];
 
                   ?>
                   <tr>
