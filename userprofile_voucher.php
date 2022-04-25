@@ -53,7 +53,7 @@
    //$stmt->execute();
    //$result = $stmt->get_result();
 
-   $result_upvoucher = mysqli_query($conn, $sql_voucher);
+   $result_upvoucher = mysqli_query($conn, $sql_voucherR);
 
 ?>
    
