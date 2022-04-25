@@ -28,7 +28,19 @@
                     $_SESSION['userid'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
-					?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+					
+                    if($_SESSION['role'] == "USER")
+                    {
+                        ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+                    }
+                    else if($_SESSION['role'] == "SELLER")
+                    {
+                        ?><script>window.location = '<?php echo("$domain/seller/index.php");?>'</script><?php
+                    }
+                    else if($_SESSION['role'] == "ADMIN")
+                    {
+                        ?><script>window.location = '<?php echo("$domain/admin/index.php");?>'</script><?php
+                    }
 				}
 			} else {
 				echo "<script>alert('Invalid Username/Email or Password')</script>";
