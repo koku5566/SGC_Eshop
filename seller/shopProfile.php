@@ -102,9 +102,10 @@
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          header("Refresh:0");
+          //header("Refresh:0");
           //echo 'Success, please refesh again if not show the updated profile details.';
           //header("Location:/shopProfile.php");
+          ?><script>window.location = '<?php echo("$domain/seller/shopProfile.php");?>'</script><?php
       }
       else
       {
