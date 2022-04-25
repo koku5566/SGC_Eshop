@@ -216,7 +216,6 @@ div.editBtnContainer {
   display: flex;
   justify-content: right;
   align-items: center;
-  position: absolute;
   transition: all 0.3s ease;
 }
 
