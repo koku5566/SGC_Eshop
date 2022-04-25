@@ -214,25 +214,6 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                       <table class="table" id="createvouchertable">
-                                          <thead>
-                                             <tr>
-                                                <th>Product Image</th>
-                                                <th>Product Name</th>
-                                                <th>Product ID</th> <!-- data-visible="false" -->
-                                                <th>Product SKU</th>
-                                                <th>Price (RM)</th>
-                                                <th></th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                             
-                                          </tbody>
-                                       </table>
-                                    </div>
-                                 </div>
                               </div>
                            </div>
                            <div class="modal-footer">
