@@ -210,7 +210,6 @@ a.btn.btn-back
 .order-table>table>thead>tr>td,
 .order-table>table>tbody>tr>th,
 .order-table>table>tbody>tr>td {
-    margin-top: 15px;
     vertical-align: middle !important;
     color: black;
 }
