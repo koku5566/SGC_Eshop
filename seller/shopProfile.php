@@ -104,7 +104,7 @@
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
           //echo 'Success, please refesh again if not show the updated profile details.';
-          header("Location:shopProfile.php");
+          header("Location:/seller/shopProfile.php");
       }
       else
       {
