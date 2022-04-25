@@ -196,6 +196,7 @@
                                     <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
                                  </div>
                                  <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                 <br>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Display Setting</label>
@@ -212,6 +213,26 @@
                                           </label>
                                           <small class="text-muted m-2">Voucher will not be displayed on any page but you may share the voucher code with the users.</small>
                                        </div>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <table class="table" id="voucherReview">
+                                          <thead>
+                                             <tr>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product ID</th>
+                                                <th>Product SKU</th>
+                                                <th>Price(RM)</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                
+                                             </tr>
+                                          </tbody>
+                                       </table>
                                     </div>
                                  </div>
                               </div>
