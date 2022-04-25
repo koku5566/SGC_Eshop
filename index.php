@@ -347,7 +347,7 @@
 
                         if(isset($_POST['claim'])){
 
-                            if (!isset($_SESSION['login']) || !isset($_SESSION['uid']) ){
+                            if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) ){
                                 ?>
                                     <script type="text/javascript">
                                         window.location.href = window.location.origin + "/login.php";
