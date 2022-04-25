@@ -102,10 +102,6 @@ var t = $('#transactionTable').DataTable({//call table id
                 title: 'Transaction List'
             },
             {
-                extend: 'pdfHtml5',
-                title: 'Transaction List'
-            },
-            {
                 extend: 'csvHtml5',
                 title: 'Transaction List'
             },
