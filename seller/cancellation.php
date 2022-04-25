@@ -12,11 +12,11 @@
                                         <div class="col-2">
                                            <b>Order ID</b>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <b>Product Detail</b>
                                         </div>
-                                        <div class="col-2"><b>Status</b></div>
-                                        <div class="col-2"><b>Actions</b></div>
+                                        <div class="col-3"><b>Status</b></div>
+                                        <div class="col-3"><b>Actions</b></div>
                                     </div>
                                     <hr>
 
@@ -49,13 +49,13 @@
                                                 <div class="col-2">
                                                 <img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%">
                                                 </div>
-                                                <div class="col-5">
+                                                <div class="col-4">
                                                     <?php echo $row2['product_name']?>
                                                 </div>
-                                                <div class="col-1">
+                                                <div class="col-3">
                                                    x <?php echo $row2['order_status']?>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                 <a class="btn btn-primary " style="margin-left:10px;"  href="cancelActions.php?order_id=<?php echo $row2['order_id'];?>">Actions</a>
                                                 </div>
                                             </div>
