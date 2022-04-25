@@ -132,7 +132,7 @@
 
                   <!--------------------------------------- Edit Voucher Modal -------------------------------------------->
                   <div class="modal fade" id="editVoucherModal<?php echo $r['voucher_id']?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
-                     <div class="modal-dialog" style="min-width: 88%;">
+                     <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
                            <h5 class="modal-title" id="editVoucherModalLabel">Edit Voucher</h5>
