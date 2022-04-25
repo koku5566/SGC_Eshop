@@ -35,15 +35,6 @@
 
 		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
 
-		if ($_POST['inpEditRole'] == "SELLER"){
-			$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID
-			AND INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$UID','$username')";
-			if (mysqli_query($conn, $sql)){
-				echo "";
-			}else{
-				echo "Error: ".$sql."<br>".mysqli_error($conn);
-			}
-		}
 		if (mysqli_query($conn, $sql)) {
             echo "<script>alert('User Detail Edited');</script>";
 		} else {
