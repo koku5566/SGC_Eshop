@@ -29,7 +29,8 @@
                     <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
                         <p><span class="footer-title">Explore</span></p>
                         <p class="a-nostyle">
-                            <a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
+                            <a href="helpCenter.php">Help Center</a><br>
+							<a href="https://kuula.co/share/collection/7lzw2?fs=1&amp;vr=1&amp;zoom=0&amp;thumbs=-1&amp;chromeless=1&amp;logo=1&amp;logosize=200">Virtual Tour</a><br>
                             <a href="https://colleges.segi.edu.my/penang/ir-4-0/">IR 4.0</a><br>
                             <a href="https://colleges.segi.edu.my/penang/news/">News</a><br>
                             <a href="https://colleges.segi.edu.my/penang/events-pg/">Events</a><br>
