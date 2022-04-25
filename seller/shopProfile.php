@@ -102,7 +102,7 @@
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
-          header("refresh:1; url=https://eshop.sgcprototype2.com/seller/shopProfile.php");
+          header("Refresh:0");
           //echo 'Success, please refesh again if not show the updated profile details.';
           //header("Location:/shopProfile.php");
       }
