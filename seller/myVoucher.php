@@ -217,7 +217,7 @@
                                  </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
-                                       <table class="table" id="voucherReview">
+                                       <table class="table">
                                           <thead>
                                              <tr>
                                                 <th>Product Image</th>
