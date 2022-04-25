@@ -105,24 +105,25 @@
                         if ($expired > $today){
 
                            echo("<span class=\"badge bg-secondary\">Secondary</span>");
-
-                        }elseif($today >= $startdate && $startdate < $expired){
-
-                           echo("<span class=\"badge bg-success\">On-going</span>");
-
-                        }elseif($today < $startdate){
-
-                           echo("<span class=\"badge bg-warning\">Up-coming</span>");
-
-                        }elseif($r['voucher_limit'] == 0){
-
-                           echo("<span class=\"badge bg-info\">Finish</span>");
-
-                        }elseif($r['voucher_limit'] == 0){
-
-                           echo("<span class=\"badge bg-info\">Finish</span>");
-
                         }
+
+                        // }elseif($today >= $startdate && $startdate < $expired){
+
+                        //    echo("<span class=\"badge bg-success\">On-going</span>");
+
+                        // }elseif($today < $startdate){
+
+                        //    echo("<span class=\"badge bg-warning\">Up-coming</span>");
+
+                        // }elseif($r['voucher_limit'] == 0){
+
+                        //    echo("<span class=\"badge bg-info\">Finish</span>");
+
+                        // }elseif($r['voucher_limit'] == 0){
+
+                        //    echo("<span class=\"badge bg-info\">Finish</span>");
+
+                        // }
                            // echo ("
                            //    <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal$vid\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
                            // ");
