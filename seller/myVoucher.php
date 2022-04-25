@@ -95,7 +95,7 @@
                            echo ("
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"text\" name=\"vid\" value=\"$vid\">
-                              <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
+                              <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal<?php echo $vedit; ?>\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
                            </form>
                            ");
                         ?>
@@ -143,8 +143,8 @@
    </div>
 </div>
 
-                  <!-- Edit Voucher Modal -->
-                  <div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
+               <!-- Edit Voucher Modal -->
+               <div class="modal fade" id="editVoucherModal<?php echo $row['voucher_id']; ?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
                   <div class="modal-dialog" style="min-width: 88%;">
                      <div class="modal-content">
                         <div class="modal-header">
@@ -230,36 +230,13 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-row">
-                                       <div class="form-group col-md-12">
-                                          <table class="table" id="createvouchertable">
-                                             <thead>
-                                                <tr>
-                                                   <th>Product Image</th>
-                                                   <th>Product Name</th>
-                                                   <th>Product ID</th> <!-- data-visible="false" -->
-                                                   <th>Product SKU</th>
-                                                   <th>Price (RM)</th>
-                                                   <th></th>
-                                                </tr>
-                                             </thead>
-                                             <tbody>
-                                                
-                                             </tbody>
-                                          </table>
-                                       </div>
-                                       <div class="form-group col-md-12">
-                                          <label for="">Applicable products</label>
-                                          <button type="button" class="btn btn-light btn-lg btn-block rounded p-1" data-toggle="modal" data-target="#selectproduct" style="border: dashed;" >+ Add Products</button>
-                                       </div>
-                                    </div>
                                  </div>
                               </div>
                            </form>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                           <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                      </div>
                   </div>
