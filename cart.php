@@ -225,27 +225,27 @@
                         <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
                 <!-- </div>
             </div> -->
-    
-            <div class="shopping-cart-footer" >
-                <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
-            </div>
             <div class="shopping-cart-discount-footer" >
                 <div class="column text-lg" id="discount" style="font-weight: bold; color:black;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
+            <div class="shopping-cart-footer" >
+                <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+            </div>
+            
     </div>
-    <div class="shopping-cart-footer">
+    <!-- <div class="shopping-cart-footer">
         <div class="column">
             <form class="coupon-form" method="post">        
-                <!-- Select voucher Modal -->
+                 Select voucher Modal
                 
                 <?php
                     //require __DIR__ .'/voucherModal.php'
                 ?>
             </form>
-                <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
-                <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
+                <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
+                <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> 
         </div>
-    </div>
+    </div> -->
     <div class="shopping-cart-footer">
         <form class = "footer" action="cart_manage.php" method="POST">
             <div class="column text-lg" style="font-weight: bold; color:black;">Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>

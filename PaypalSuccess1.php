@@ -135,7 +135,7 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_bind_param($stmt2,"is",$deductQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
-
+    } 
     $addsql = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
     if ($stmt7 = mysqli_prepare($conn,$addsql)){
         $addQuantity1 = $stock+$product_quantity;
@@ -155,9 +155,9 @@ $queryKL = mysqli_query($conn, $sql);
         $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
         if ($stmt8 = mysqli_prepare($conn,$addsql2)){
             $addQuantity2 = $stock+$product_quantity;
-            $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity2,$product_id);
+            $bp = mysqli_stmt_bind_param($stmt8,"is",$addQuantity2,$product_id);
             $bp = mysqli_stmt_execute($stmt8);
-            mysqli_stmt_close($stmt8);        
+                mysqli_stmt_close($stmt8);        
         } 
     } 
 
