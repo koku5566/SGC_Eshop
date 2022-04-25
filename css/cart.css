@@ -377,13 +377,11 @@ select.form-control {
 .shopping-cart-footer {
     display: table;
     width: 100%;
-    padding: inherit;
     color: black;
 }
 
 .shopping-cart-footer>.column {
     display: table-cell;
-    padding: inherit;
     vertical-align: middle
 }
 
