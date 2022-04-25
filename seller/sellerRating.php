@@ -46,7 +46,7 @@
           echo "Product id: " . $row["product_id"]. " User id: " . $row["user_id"]. " " . $row["message"]. "Rating: " . $row["rating"]. " " . $row["pic1"]. "<br>";
         }
       } else {
-        echo "0 results";
+        echo "<br> 0 results";
       }
       $conn->close();
       ?>
