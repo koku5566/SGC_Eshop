@@ -330,7 +330,6 @@
                                                                 
                                                                 echo("
                                                                     <div class=\"col-xl-2 col-lg-4 col-sm-6 product-item\" style=\"padding-bottom: .625rem;\">
-                                                                        <a data-sqe=\"link\" href=\"editProduct.php?id=".$row_1['product_id']."\">
                                                                             <div class=\"card\">
                                                                                 <div class=\"image-container\">
                                                                                     <img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\" src=\"/img/product/".$row_1['product_cover_picture']."\" alt=\"".$row_1['product_name']."\">
@@ -417,8 +416,7 @@
                                                                                         
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>   
-
+                                                                            </div>  
                                                                     </div>
                                                                 ");
                                                             }
