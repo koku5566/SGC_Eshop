@@ -295,19 +295,17 @@
             $days=  round($datediff / (60 * 60 * 24));
             echo $days;
             //Remind seller function is available if seller did not ship out item for 5 days
-            if($orderstatus =='Paid'&& $days >=5 ){?>
+            if($orderstatus =='Paid'&& $days >=5  ){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="text" name="buyeremail" value="<?php echo $buyeremail; ?>">
                     <input type="text" name="selleremail" value="<?php echo $selleremail?>">
                     <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
-                <?php }else if ($orderstatus == 'Paid' && $days <5) { echo 'hi'?>
+                <?php }else if ($orderstatus == 'Paid' && $days <5 ) { echo 'hi'?>
                     
-                    <div class="tooltip">
                         <button class="btn btn-primary" disabled>Remind Seller</button> 
-                        <span class="tooltiptext">You can remind seller if order has not been shipped after 5 days</span>
-                    </div>
+                   
                     <?php
                  }?>
 
