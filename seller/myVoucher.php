@@ -320,6 +320,10 @@
 
        if($vd == 0 || $vl == 0 || $ve < $today){
 
+         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
+
+       }else{
+
          $voucher_id2 = $_POST['vid'];
 
          $sqldl = "UPDATE voucher SET voucher_list = '1'
@@ -332,10 +336,6 @@
          else{
             echo '<script>alert("Your voucher failed to be listed.")</script>';
          }
-
-       }else{
-
-         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
        }
 
