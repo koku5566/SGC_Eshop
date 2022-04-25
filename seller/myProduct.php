@@ -90,11 +90,13 @@
     }
     else if(isset($_POST['DeleteProduct']))
     {
+        //////////////////here
         $productId = $_POST['DeleteProductID'];
         $sql_delete = "DELETE FROM product WHERE product_id = '$productId'";
         if(mysqli_query($conn, $sql_delete))
         {
             $sql_deleteVar = "DELETE FROM variation WHERE product_id = '$productId'";
+            ////////////////////here
             if(mysqli_query($conn, $sql_deleteVar))
             {
                 $Panel = $_SESSION['Panel'];

@@ -135,15 +135,31 @@
       
       $voucher_id = $_POST['voucher_id'];
 
-      $sqll = "UPDATE voucher SET voucher_list = '0'
+      $sqll = "UPDATE voucher SET voucher_list = 0
                WHERE voucher_id = '$voucher_id'";
                   
       if($conn->query($sqll))
       {
-         echo '<script>alert("Your voucher is been delisted.")</script>';
+         echo '<script>alert("Your voucher has been delisted.")</script>';
       }
       else{
          echo '<script>alert("Your voucher failed to be delisted.")</script>';
+      }
+   }
+
+   if(isset($_POST['delist'])){
+      
+      $voucher_id = $_POST['voucher_id'];
+
+      $sqldl = "UPDATE voucher SET voucher_list = 1
+               WHERE voucher_id = '$voucher_id'";
+                  
+      if($conn->query($sqldl))
+      {
+         echo '<script>alert("Your voucher has been listed.")</script>';
+      }
+      else{
+         echo '<script>alert("Your voucher failed to be listed.")</script>';
       }
    }
    
