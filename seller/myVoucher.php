@@ -143,7 +143,7 @@
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Code</label>
-                                       <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code" value="<?php $r['voucher_code']?>">
+                                       <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code" value="<?php echo $r['voucher_code']?>">
                                     </div>
                                  </div>
                                  <div class="form-row">
@@ -155,7 +155,7 @@
                                                 <div class="input-group-prepend">
                                                    <span class="input-group-text" id="basic-addon1">Start</span>
                                                 </div>
-                                                <input type="date" name="voucherStartdate" aria-label="start date" class="form-control" value="<?php $r['voucher_startdate']?>">
+                                                <input type="date" name="voucherStartdate" aria-label="start date" class="form-control" value="<?php echo $r['voucher_startdate']?>">
                                              </div>
                                           </div>
                                           <div class="col-md-6">
@@ -163,7 +163,7 @@
                                                 <div class="input-group-prepend">
                                                    <span class="input-group-text" id="basic-addon1">End</span>
                                                 </div>
-                                                <input type="date" name="voucherExpired" aria-label="end date" class="form-control" value="<?php $r['voucher_expired']?>">
+                                                <input type="date" name="voucherExpired" aria-label="end date" class="form-control" value="<?php echo $r['voucher_expired']?>">
                                              </div>
                                           </div>
                                        </div>
@@ -173,7 +173,7 @@
                                     <div class="form-group col-md-8">
                                        <label class="" for="">Voucer Discount Amount</label>
                                        <div class="input-group col-mb-6">
-                                          <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" value="<?php $r['discount_amount']?>">
+                                          <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" value="<?php echo $r['discount_amount']?>">
                                           <div class="input-group-append">
                                              <select name="voucherType" class="custom-select">
                                                 <option value="<?php $r['voucher_type']?>">Please choose</option>
@@ -185,13 +185,13 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                        <label for="">Voucher Limit</label>
-                                       <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit" value="<?php $r['voucher_limit']?>">
+                                       <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit" value="<?php echo $r['voucher_limit']?>">
                                     </div>
                                  </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                     <label for="">Voucher Details</label>
-                                    <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required><?php $r['voucher_details']?></textarea>
+                                    <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required><?php echo $r['voucher_details']?></textarea>
                                     <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
                                  </div>
                               </div>
