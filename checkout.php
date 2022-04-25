@@ -317,7 +317,7 @@ $shippingfee = 10;
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style ="float: right;">RM<span id="shipping-fee" >10.00</span></span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php //echo $_SESSION['subtotal']?></span></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php //echo $_SESSION['subtotal']?></span>.00</span></li>
                     </ul>
                 </div>
             </div>

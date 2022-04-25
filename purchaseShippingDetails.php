@@ -26,7 +26,8 @@
     product.product_cover_picture,
     shopProfile.shop_name,
     shopProfile.shop_profile_image,
-    shopProfile.shop_id
+    shopProfile.shop_id,
+    shopProfile.shop_address_state,
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -56,6 +57,7 @@
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
         $shopid = $orow['shop_id'];
+        $shopaddress= $orow['shop_address_state'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
@@ -278,7 +280,7 @@
                 ?>
                  <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed' && $orderstatus =='Failed'){?> <{?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
                         <td><?php echo $srow['datetime'] ?></th>
-                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><br><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><br><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php } else if($srow['status'] =='Ready'){?> Please pick up at following address: <?php echo $shopaddress; }?></td>
                     </tr>
                 <?php 
                 }
