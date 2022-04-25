@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
     require __DIR__ . '/header.php';
 
@@ -339,6 +340,11 @@ $shippingfee = 10;
 </div>
 </div>
                 <!-- /.container-fluid -->
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
 <script>
 
 $(document).ready(function() {
@@ -374,6 +380,3 @@ $(document).ready(function() {
 
 
 </script>
-<?php
-    require __DIR__ . '/footer.php'
-?>
