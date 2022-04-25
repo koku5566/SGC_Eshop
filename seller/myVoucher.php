@@ -322,7 +322,7 @@
        $today = strtotime($td);
        $expire = strtotime($ve);
 
-       if($vd == 0 || $vl == 0 || $ve <= $today){
+       if($vd == 0 || $vl == 0 || $expire < $today){
 
          echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
