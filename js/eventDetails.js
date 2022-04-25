@@ -8,10 +8,6 @@ var t = $('#transactionTable').DataTable({//call table id
                 title: 'Transaction List'
             },
             {
-                extend: 'pdfHtml5',
-                title: 'Transaction List'
-            },
-            {
                 extend: 'csvHtml5',
                 title: 'Transaction List'
             },
@@ -23,10 +19,6 @@ var t2 = $('#customFormData').DataTable({//call table id
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Custom Form Data'
-            },
-            {
-                extend: 'pdfHtml5',
                 title: 'Custom Form Data'
             },
             {
