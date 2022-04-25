@@ -97,6 +97,11 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+.container-right-col2 {
+	width: 20%;
+	display: table-cell;
+	vertical-align: middle;
+}
 
 @media only screen and (max-width: 768px) {
 	.container-left-col2 {
