@@ -111,24 +111,6 @@
                 <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="../seller/dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
             <!-- Nav Item - Shipment Collapse Menu -->
             <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
             <li class="nav-item">

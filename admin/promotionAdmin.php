@@ -22,7 +22,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Approved Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -41,7 +41,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Rejected Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -60,7 +60,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Deleted Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -114,7 +114,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Edited Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
