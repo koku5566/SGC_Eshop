@@ -12,10 +12,11 @@
                                         <div class="col-2">
                                            <b>Order ID</b>
                                         </div>
-                                        <div class="col-7">
+                                        <div class="col-6">
                                             <b>Product Detail</b>
                                         </div>
-                                        <div class="col-3"><b>Status</b></div>
+                                        <div class="col-2"><b>Status</b></div>
+                                        <div class="col-2"><b>Actions</b></div>
                                     </div>
                                     <hr>
 
@@ -31,7 +32,16 @@
                                         </div>
                                         <div class="col-7">
                                             <?php
-                                            $sql2 = "SELECT * FROM orderDetails JOIN product ON orderDetails.product_id = product.product_id JOIN shopProfile ON product.shop_id = shopProfile.shop_id WHERE order_id = $order_id";
+                                            $sql2 = "SELECT
+                                            DISTINCT
+                                            *
+                                            FROM
+                                            myOrder
+                                            JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+                                            JOIN product ON productTransaction.product_id = product.product_id
+                                            JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                                            JOIN user on myOrder.userID = user.user_id 
+                                            WHERE order_id = '$order_id'";
                                             $result2 = $conn->query($sql2);
                                             while($row2 = $result2->fetch_assoc()){
                                             ?>
@@ -43,10 +53,10 @@
                                                     <?php echo $row2['product_name']?>
                                                 </div>
                                                 <div class="col-1">
-                                                   x <?php echo $row2['quantity']?>
+                                                   x <?php echo $row2['order_status']?>
                                                 </div>
                                                 <div class="col-2">
-                                                    RM <?php echo $row2['price']?>
+                                                <a class="btn btn-primary " style="margin-left:10px;"  href="cancelActions.php?order_id=<?php echo $row2['order_id'];?>">Actions</a>
                                                 </div>
                                             </div>
                                             <?php

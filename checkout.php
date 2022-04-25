@@ -277,7 +277,7 @@ $shippingfee = 10;
                 <div class="row">
                     <div class="col-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="delivery-option" id="standarddelivery" value="standard-delivery"checked>
+                            <input class="form-check-input" type="radio" name="delivery-option" id="standard-delivery" value="standard-delivery"checked>
                             <label class="form-check-label" for="standarddelivery">
                                 Standard Delivery
                              </label>
@@ -345,7 +345,7 @@ $(document).ready(function() {
     var noshippingfee = 0;
     var shippingtotal = parseFloat(document.getElementById("shippingtotal").value);
    $('input[name="delivery-option"]').click(function() {
-       if($(this).attr('id') == 'standarddelivery') {
+       if($(this).attr('id') == 'standard-delivery') {
          document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
          console.log(shippingtotal.toFixed(2));
        }

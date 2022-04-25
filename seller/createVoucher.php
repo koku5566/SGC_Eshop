@@ -153,13 +153,12 @@
       $voucherType = $_POST['voucherType'];
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
-      $vstatus = "2";
       $vlist = "1";
       $date = date('Y-m-d H:i:s');
 
       
-      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_status, voucher_list)
-               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vstatus', '$vlist');";
+      $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_list)
+               VALUES ('$voucherCode', '$voucherStartdate', '$voucherExpired', '$discountAmount', '$voucherLimit', '$voucherDetails', '$voucherDisplay', '$voucherType', '$date', '$vlist');";
       
       mysqli_query($conn, $sqlv);
 
@@ -175,32 +174,18 @@
 
          if($res)
             {
-                if($vstatus == 2)
-                {
-                    echo '<script>alert("Your voucher has been listed.")</script>';
-                    ?>
-                        <script type="text/javascript">
-                            window.location.href = window.location.origin + "/seller/createVoucher.php";
-                        </script>
-                    <?php
-                }
-                else if ($vstatus == 0)
-                {
-                    echo '<script>alert("Voucher is added")</script>';
-                }
+               echo '<script>alert("Voucher added succesfully.")</script>';
             }
             else
             {
-                echo '<script>alert("Failed")</script>';
+                echo '<script>alert("Voucher added failed.")</script>';
             }
-         
       }
 
     }
     else {
        echo "error";
     }
-   
    
 ?>
 
@@ -223,7 +208,7 @@
                             <th></th>
                             <th>Product Image</th>
                             <th>Product Name</th>
-                            <th>Product ID</th> <!-- data-visible="false" -->
+                            <th>Product ID</th>
                             <th>Product SKU</th>
                             <th>Price (RM)</th>
                         </tr>
@@ -241,6 +226,8 @@
                          product.product_cover_picture,
                          product.product_id,
                          product.product_sku,
+                         product.product_stock,
+                         product.product_status,
                          product.product_price
                     
                          FROM shopProfile
@@ -252,6 +239,9 @@
                        $stmt->execute();
                        $res = $stmt->get_result();
                        while ($row = $res->fetch_assoc()) {
+                          if($row['product_stock'] > 0 && $row['product_status'] == "A")
+                          {
+
                          
                      ?>
                      <tr>
@@ -263,6 +253,7 @@
                         <td><?php echo $row['product_price']; ?></td>
                      </tr>
                      <?php 
+                        }
                      }?>
                     </tbody>
                </table>

@@ -249,7 +249,7 @@ $user_id = $_SESSION["userid"];
                               if (mysqli_num_rows($resultheader) > 0) {
                               while ($rowheader = mysqli_fetch_assoc($resultheader)) {
                                 $i=0;
-                                        //Loop header
+                                //Loop header
                               ?>
                                     <div class="card mt-2">
                                         <div class="card-header">
@@ -286,7 +286,7 @@ $user_id = $_SESSION["userid"];
                                                     <div class="row">
                                                         <div class="col-1 image-container">
                                                             <img class="card-img-top" style="object-fit:contain;width:100%;height:100%" src="/img/product/<?php echo $arow['product_cover_picture'] ?>" alt="<?php echo $arow['product_name'] ?>" />
-                                                        </div>
+                                                    </div>
                                                         <div class="col-3">
                                                             <?php echo $arow['product_name'] ?>
                                                         </div>
@@ -302,14 +302,16 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"><?php echo $arow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $arow['tracking_number'] ?></div>
                                                             <?php 
-                                                            for($i = 0; $i<=0;$i++){?>
+                                                            while($i < 1){?>
                                                                 <div class="col-2">
                                                                 <?php 
                                                                 if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Arrange Shipment</a>
                                                                 <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Update Pick-Up</a>
                                                                 <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                                 </div>
-                                                            <?php } 
+                                                            <?php 
+                                                             $i++;
+                                                            }
                                                            ?>
                                                         
                                                     </div>

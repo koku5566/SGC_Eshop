@@ -97,7 +97,8 @@
  {
     $shopName = $_POST['name'];
     $shopDescription = $_POST['description'];
-    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription' WHERE shop_id = '$shopId'";
+    $shopAddress = $_POST['address'];
+    $update = "UPDATE shopProfile SET shop_profile_cover='$profileCover', shop_profile_image='$profilePic', shop_name='$shopName', shop_description='$shopDescription', shop_address_state='$shopAddress' WHERE shop_id = '$shopId'";
       if (mysqli_query($conn, $update))
       { 
           /*Successful*/
@@ -133,7 +134,7 @@
           $shopProfilePic = $row['shop_profile_image'];
           $shopName = $row['shop_name'];
           $shopDescription = $row['shop_description'];
-        
+          $shopAddress = $row['shop_address_state'];
       ?>
 
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
@@ -163,14 +164,18 @@
       <label class="form-label">Shop Description</label><br>
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
-    <div class="row">
-      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
+    <!--<div class="row">
+      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">-->
          <!--Image display frame (place where the image will display)-->
-          <img id="frame" src="" />
+          <!--<img id="frame" src="" />
         
-        <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
+        <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image</label>
         <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
+    </div>-->
+    <div class="row">
+      <label class="form-label">Address</label><br>
+      <input type="text" class="form-control" name="address" value="<?php echo $shopAddress ?>" required />
     </div>
 
 

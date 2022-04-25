@@ -48,6 +48,8 @@
 
                      $shopId = $_SESSION['userid'];
 
+                     $return = $_SERVER['PHP_SELF'];
+
                      $sql_myvoucher =
                      "SELECT
                         voucher.voucher_id,
@@ -78,6 +80,8 @@
 
                      while ($r = $res->fetch_assoc()) {
 
+                        $vid = $r['voucher_id'];
+
                   ?>
                   <tr>
                      <td><?php echo $r['voucher_code']; ?></td>
@@ -89,9 +93,26 @@
                      <td><?php echo $r['voucher_limit']; ?></td>
                      <td>
                         <?php if ($r['voucher_list'] == 0 ){
-                           echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");
+
+                           echo ("
+                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
+                           </form>
+
+                           ");
+
                         }else if($r['voucher_list'] == 1 ){
-                           echo ("<button type=\"button\" class=\"btn btn-light\">List</button>");
+
+                           echo ("
+
+                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
+                           </form>
+
+                           ");
+
                         }
                         ?>
                      </td>
@@ -107,6 +128,26 @@
       </div>
    </div>
 </div>
+
+<?php
+
+   if(isset($_POST['list'])){
+      
+      $voucher_id = $_POST['voucher_id'];
+
+      $sqll = "UPDATE voucher SET voucher_list = '0'
+               WHERE voucher_id = '$voucher_id'";
+                  
+      if($conn->query($sqll))
+      {
+         echo '<script>alert("Your voucher is been delisted.")</script>';
+      }
+      else{
+         echo '<script>alert("Your voucher failed to be delisted.")</script>';
+      }
+   }
+   
+?>
 
 <script type ="module">
   $(document).ready(function() {
