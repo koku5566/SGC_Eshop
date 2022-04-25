@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
     require __DIR__ . '/header.php';
 
@@ -25,9 +24,6 @@ else{
     JOIN user ON userAddress.user_id = user.user_id
     WHERE userAddress.user_id = '$userID'"; 
 }
-
-    
-
 
 //Username and address
             
@@ -65,6 +61,7 @@ else{
 $shippingfee = 10;
 
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!--     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../css/checkout.css">
