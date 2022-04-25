@@ -96,7 +96,7 @@
 
                            echo ("
 
-                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                           <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
@@ -109,7 +109,7 @@
 
                            echo ("
 
-                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                           <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
                            </form>
@@ -155,7 +155,7 @@
       $voucher_id2 = $_POST['voucher_id'];
 
       $sqldl = "UPDATE voucher SET voucher_list = '1'
-               WHERE voucher_id = '$voucher_id2'";
+                WHERE voucher_id = '$voucher_id2'";
                   
       if($conn->query($sqldl))
       {
