@@ -2,21 +2,34 @@
     require __DIR__ . '/header.php'
 ?>
 <?php
-     if(isset($_POST['save_cancellation']))
-     {
-         $cancel = $_POST['flexRadioDefault'];
-        // echo $cancel;
-         $query = "INSERT INTO cancellation (cancellation_reason) VALUES ('$cancel') ";
-         $queryR = mysqli_query($conn,$query); 
-     }
+$order_id = $_GET['order_id'];
+if(isset($_POST['confirm']))
+{
+  
+  $order_id = $_POST['order_id'];
+  $query = "UPDATE myOrder SET order_status = 'Completed' WHERE order_id = '$order_id' ";
+  echo "$query";
+  if (mysqli_query($conn, $query)) {
+    ?><script>window.location = '<?php echo("$domain/getOrder.php");?>'</script><?php
+		exit;
+   } else {
+    echo "Error updating record: " . mysqli_error($conn);
+   }
+    
+}
+  
+
+
 ?>
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
-<h1 style="text-align:center; color: red ;">Cancellation</h1>
+  <h1 style="text-align:center; color: red ;">Order Confirmation</h1>
   <a href="getOrder.php" style="font-size:20px;">BACK</a>
   <section id="orders" class="order container my-5 py-3 ">
     <div class="container mt-2">
-      <h2 class="font-weight-bold text-center">ARE YOU SURE YOU WANT TO CANCEL THE ORDER?</h2>
+      <h2 class="font-weight-bold text-center">ARE YOU SURE YOU WANT TO CONFIRM YOUR ORDER?</h2>
       <hr class="mx-auto">
     </div>
     <div class="card">
@@ -31,7 +44,7 @@
           </div>
         </div>
       </div>
-      <!-----------------THIS IS THE SHOW DETAILS------------------->
+      <!-----------------THIS IS THE DETAILS------------------->
       <?php
         $shippingfee = 8.6;
         $sql2 = "SELECT * FROM myOrder 
@@ -60,14 +73,24 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
-            <span>Cancellation Reason: <?php echo $row2['reason_type']?></span>
-        </div>
         <?php }?>
       </div>
-      <!--------------------END OF SHOW DETAILS---------------------->
-</div>
 
+      <!--------------------END OF DETAILS---------------------->
+      
+      <div class="card-body">
+          
+          <form method="post" action="confirmOrder.php" style="font-size:25px;">
+                <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
+                <input class="btn btn-primary" type="submit" name="confirm" value="Confirm Order" >
+                
+            </form>
+      </div>
+    
+
+    </div>
+  </section>
+</div>
 <!-- /.container-fluid -->
 
 <?php
