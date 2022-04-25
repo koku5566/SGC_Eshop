@@ -4,10 +4,8 @@
 
 <?php
   $shopId = $_SESSION['userid'];
-  $sql_review = "SELECT user.username FROM user 
-           JOIN reviewRating ON user.user_id = reviewRating.user_id 
-           GROUP BY user.username";
-  $review_result = mysqli_query($conn, $sql_review);
+  $sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $rating_result = mysqli_query($conn, $sql_shop);
 ?>
 
 <!-- Icon -->
@@ -17,15 +15,16 @@
 <div class="container-fluid" style="width:80%">            
   <div class="container ratingContainer">
 
-  <?php
+    <div class="row">
+    <?php
         while ($row = mysqli_fetch_assoc($rating_result))
         {
           $shopName = $row['shop_name'];
-        }
-  ?>
-
-    <div class="row">
+    ?>
       <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5><?php echo $shopName ?></h5>
+      <?php
+        }
+      ?>
     </div>
 
     <div class="row descriptionContainer">
@@ -44,7 +43,6 @@
           }
           
           $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
-          //$query = "SELECT username FROM user WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
           
           if ($result->num_rows > 0) {
