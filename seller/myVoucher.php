@@ -318,7 +318,7 @@
        $ve = $_POST['ve'];
        $vl = $_POST['vl'];
 
-       if($vd == 0 || $vl == 0 || $ve < $today){
+       if($vd == 0 || $vl == 0){
 
          echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
