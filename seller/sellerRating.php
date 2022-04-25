@@ -37,13 +37,13 @@
         die("Connection failed: " . $conn->connect_error);
       }
       
-      $sql = "SELECT product_id, user_id, message, rating, pic1 FROM reviewRating WHERE seller_id = '$shopId'";
+      $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
       $result = $conn->query($sql);
       
       if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. " " . $row["pic1"]. "<br>";
+          echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
         }
       } else {
         echo "<br> 0 results";
