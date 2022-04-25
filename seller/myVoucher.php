@@ -83,8 +83,8 @@
                         $vid = $r['voucher_id'];
 
                         $td = date('y-m-d');
-                        $expr = $row['voucher_expired'];
-                        $strt = $row['voucher_startdate'];
+                        $expr = $r['voucher_expired'];
+                        $strt = $r['voucher_startdate'];
                                 
                         $today = strtotime($td);
                         $expired = strtotime($expr);
@@ -104,7 +104,7 @@
                         
                         if ($expired > $today){
 
-                           echo("<span class=\"badge bg-secondary\">Secondary</span>");
+                           echo("<span class=\"badge bg-secondary\">Expired</span>");
                         }
 
                         // }elseif($today >= $startdate && $startdate < $expired){
@@ -114,10 +114,6 @@
                         // }elseif($today < $startdate){
 
                         //    echo("<span class=\"badge bg-warning\">Up-coming</span>");
-
-                        // }elseif($r['voucher_limit'] == 0){
-
-                        //    echo("<span class=\"badge bg-info\">Finish</span>");
 
                         // }elseif($r['voucher_limit'] == 0){
 
