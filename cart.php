@@ -225,12 +225,12 @@
                         <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
                 <!-- </div>
             </div> -->
-
-            <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount" style="font-weight: bold; color:black;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
-            </div>
+    
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+            </div>
+            <div class="shopping-cart-discount-footer" >
+                <div class="column text-lg" id="discount" style="font-weight: bold; color:black;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
     </div>
     <div class="shopping-cart-footer">
