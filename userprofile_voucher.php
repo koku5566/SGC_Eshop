@@ -1,5 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
+
+    $useridup = $_SESSION["userid"];
  ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -33,7 +35,6 @@
                                     </div>
                                     <hr>
                                     <?php
-                                      $useridup = $_SESSION["userid"];
 
                                       $sql_voucherR =
                                       "SELECT 
