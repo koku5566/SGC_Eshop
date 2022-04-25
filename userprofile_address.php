@@ -66,7 +66,7 @@
 					</div>
 					<div class=\"col-2\">
 						<form method=\"post\" style=\"height:100%;width:100%;\">
-							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\">R<br>E<br>M<br>O<br>V<br>E</button>
+							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;\" class=\"btn btn-primary\">R<br>E<br>M<br>O<br>V<br>E</button>
 						</form>
 					</div>
 				</div>
