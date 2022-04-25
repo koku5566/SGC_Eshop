@@ -53,10 +53,10 @@
                                                     <?php echo $row2['product_name']?>
                                                 </div>
                                                 <div class="col-1">
-                                                   x <?php echo $row2['quantity']?>
+                                                   x <?php echo $row2['order_status']?>
                                                 </div>
                                                 <div class="col-2">
-                                                    RM <?php echo $row2['price']?>
+                                                    
                                                 </div>
                                             </div>
                                             <?php
