@@ -81,6 +81,8 @@
                      while ($r = $res->fetch_assoc()) {
 
                         $vid = $r['voucher_id'];
+                        $vd = $r['voucher_display'];
+                        $vl = $r['voucher_limit'];
 
                         $td = date('y-m-d');
                         $expr = $r['voucher_expired'];
@@ -133,6 +135,9 @@
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
+                              <input type=\"hidden\" name=\"ve\" value=\"$ve\">
+                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
 
@@ -146,6 +151,9 @@
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
+                              <input type=\"hidden\" name=\"ve\" value=\"$ve\">
+                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-primary\">List</button>
                            </form>
 
@@ -306,7 +314,11 @@
 
    if(isset($_POST['delist'])){
 
-      if($r['voucher_display'] == 0 && $r['voucher_limit'] == 0 && $expired < $today){
+      $vd = $_POST['vd'];
+      $ve = $_POST['ve'];
+      $vl = $_POST['vl'];
+
+      if($vd == 0 && $vl == 0 && $expired < $today){
 
          echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
