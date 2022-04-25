@@ -316,12 +316,14 @@
             document.getElementById(i).checked = false;
         }
 
-        if ( document.getElementById(id).checked == true) {
+        if ( document.getElementById(id).checked === true) {
              document.getElementById(id).checked = false;
+             console.log("False");
         }
-        else
+        else if (document.getElementById(id).checked === false)
         {
             document.getElementById(id).checked = true;
+            console.log("True");
         }
         
 
