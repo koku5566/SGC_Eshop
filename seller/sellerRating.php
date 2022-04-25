@@ -21,7 +21,7 @@
         {
           $shopName = $row['shop_name'];
     ?>
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>  <?php echo $shopName ?></h5>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5 class="ml-3"><?php echo $shopName ?></h5>
       <?php
         }
       ?>
