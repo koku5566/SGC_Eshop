@@ -75,7 +75,7 @@
 				<tbody>
 				<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 					<?php
-						$sql = "SELECT * FROM user WHERE user_id='sada'";
+						$sql = "SELECT * FROM user";
 						$res_data = $conn->query($sql);
 						if($res_data->num_rows>0){
 							while($row = $res_data->fetch_assoc()){
@@ -93,11 +93,6 @@
 								</tr>
 								");
 							}
-						}else{
-							echo("
-							<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No User</p></div>
-							");
-						}
 					?>
 				</form>
 				</tbody>
