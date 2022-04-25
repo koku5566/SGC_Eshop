@@ -113,7 +113,7 @@
                         <tr>
                            <th>Product Image</th>
                            <th>Product Name</th>
-                           <th data-visible="false">Product ID</th> <!-- data-visible="false" -->
+                           <th>Product ID</th> <!-- data-visible="false" -->
                            <th>Product SKU</th>
                            <th>Price (RM)</th>
                            <th></th>
@@ -208,7 +208,7 @@
                             <th></th>
                             <th>Product Image</th>
                             <th>Product Name</th>
-                            <th data-visible="false">Product ID</th>
+                            <th>Product ID</th>
                             <th>Product SKU</th>
                             <th>Price (RM)</th>
                         </tr>
