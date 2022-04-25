@@ -258,9 +258,9 @@
                 <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="sellerTransaction.php">Transaction History</a>
-                        <a class="collapse-item" href="register.html">My Balance</a>
+<!--                         <a class="collapse-item" href="register.html">My Balance</a>
                         <a class="collapse-item" href="forgot-password.html">Bank Account</a>
-                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a>
+                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a> -->
                     </div>
                 </div>
             </li>
@@ -526,3 +526,14 @@
 
                 </nav>
                 <!-- End of Topbar -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6266a4827b967b11798c6607/1g1gf57tj';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>

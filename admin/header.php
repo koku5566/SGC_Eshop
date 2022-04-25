@@ -3,19 +3,10 @@
 ?>
 
 <?php
+
     $domain_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
-    //Load Search Auto Complete Array
-    $sql = "SELECT product_name FROM product";
-    $result = mysqli_query($conn, $sql);
-
-    $emparray = array();
-    while($row =mysqli_fetch_assoc($result))
-    {
-        $productArray[] = $row;
-    }
-    date_default_timezone_set("Asia/Kuala_Lumpur");
-    function SanitizeString(string $str):string{
+    function SanitizeString(string $str){
 		if(get_magic_quotes_gpc()){
 			$str = stripslashes($str); // take out all backslash inside the string
 		}
@@ -25,7 +16,6 @@
         return $str;
     }
 
-    /*
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['search'])) {
             $searchTerm = test_input($_POST["search"]);
@@ -33,14 +23,13 @@
             if (preg_match("/^[a-zA-Z-' ]*$/",$searchTerm)) {
                 ?>
                     <script type="text/javascript">
-                        window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
+                    window.location.href = window.location.origin + "/search.php?search=<?php echo($searchTerm)?>";
                     </script>
                 <?php
 
             }
         }
-    }
-    */
+      }
       
     function test_input($data) {
         $data = trim($data);
@@ -52,7 +41,7 @@
     if(!isset($_SESSION)){
         session_start();
     }
-
+    
     //Login
     if(!isset($_SESSION['login']))
     {
@@ -65,10 +54,6 @@
     if(!isset($_SESSION['id']))
     {
         $_SESSION['id'] = "";
-    }
-    if(!isset($_SESSION['uid']))
-    {
-        $_SESSION['uid'] = "";
     }
     if(!isset($_SESSION['userid']))
     {
@@ -83,6 +68,7 @@
     $_SESSION['enableSeller'] = false;
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,88 +80,99 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SGC E-Shop</title>
+    <title>Admin - SGC E-Shop</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/classic.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sellerClassic.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-    <div class="loader-wrapper">
-        <span class="loader"><span class="loader-inner"></span></span>
-    </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+                <div class="sidebar-brand-icon">
+                    <img src="../img/segilogo.png" style="width:50px;height:50px;" alt="">
+                </div>
+                <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Shipment Collapse Menu -->
+            <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
+                    aria-expanded="true" aria-controls="collapseAdmin">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Admin Panel</span>
+                </a>
+                <div id="collapseAdmin" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="adminManageUser.php">User Management</a>
+                        <a class="collapse-item" href="adminManage.php">Product Management</a>
+						<a class="collapse-item" href="review.php">Product Review</a>
+                        <a class="collapse-item" href="category.php">Category Management</a>
+                        <a class="collapse-item" href="promotion.php">Promotion Management</a>
+                        <a class="collapse-item" href="adminTransaction.php">Transaction History</a>
+                        <a class="collapse-item" href="adminViewShipping.php">Order Delivery History</a>
+                        <a class="collapse-item" href="eventAdminDashboard.php">Event Management</a>
+						<a class="collapse-item" href="helpCenterAdmin1.php">Help Center</a>
+
+                    </div>
+                </div>
+            </li>
+            <?php endif?>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+
             <!-- Main Content -->
             <div id="content">
+
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                        <div class="sidebar-brand-icon">
-                            <img src="img/segilogo.png" style="width:50px;height:50px;" alt="">
-                        </div>
-                        <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
-                    </a>
-
-                    <!-- Topbar Search -->
-                    <form method="get" action="<?php echo htmlspecialchars("/search.php");?>" 
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input id="searchInput" name="Search" type="text" class="form-control bg-light border-0 small" placeholder="Search for...">
-                            <div class="input-group-append" id="searchButton">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
                         <!--Login-->
                         <?php if ($_SESSION['login'] == true) :?>
-
-                        <!--Cart-->
-                        <li class="nav-item no-arrow">
-                            <a class="nav-link" href="cart.php">
-                                <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
-                            </a>
-                        </li>
-                        
-                        <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -200,29 +197,16 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <!--Admin Panel-->
                                 <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-                                <a class="dropdown-item" href="../admin/adminManage.php">
+                                <a class="dropdown-item" href="../index.php">
                                     <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Admin
+                                    Buyer
                                 </a>
                                 <?php endif?>
-
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "SELLER") :?>
-                                <a class="dropdown-item" href="../seller/viewShippingOrders.php">
-                                    <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Seller
-                                </a>
-                                <?php endif?>
-
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "USER") :?>
+                            
                                 <a class="dropdown-item" href="../userProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>
-                                <a class="dropdown-item" href="../getOrder.php">
-                                    <i class="fa-solid fa-dollar-sign fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    My Purchase
-                                </a>
-                                <?php endif?>
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -259,5 +243,6 @@
                         </li>
                         <?php endif?>
                     </ul>
+
                 </nav>
                 <!-- End of Topbar -->

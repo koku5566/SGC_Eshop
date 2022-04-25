@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
     require __DIR__ . '/header.php';
 
@@ -339,26 +340,43 @@ $shippingfee = 10;
 </div>
 </div>
                 <!-- /.container-fluid -->
+
+<?php
+    require __DIR__ . '/footer.php'
+?>
+
 <script>
 
 $(document).ready(function() {
     var noshippingfee = 0;
     var shippingtotal = parseFloat(document.getElementById("shippingtotal").value);
+    var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
+    var selection = "";
+
+
    $('input[name="delivery-option"]').click(function() {
-       if($(this).attr('id') == 'standard-delivery') {
-         document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
-         console.log(shippingtotal.toFixed(2));
-       }
+        selection = this.value;
 
-       else {
-            document.getElementById("shipping-fee").textContent= noshippingfee.toFixed(2);        
-
-       }
+        if(selection == "standard-delivery")
+        {
+            document.getElementById("shipping-fee").textContent = shippingtotal;
+        }
+        else{
+            document.getElementById("shipping-fee").textContent = noshippingfee;
+        }
+    // display = this.value
+    //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
+    //     deliveryRdBtn.onclick = function() {
+    //         var option = deliveryRdBtn.value;
+    //         display.textContent= shippingtotal.toFixed(2);
+    //     }
+    //    }
+    //    if($(this).attr('id') == 'standard-delivery') {
+    //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
+    //      console.log(shippingtotal.toFixed(2));
+    //    }
    });
 });
 
 
 </script>
-<?php
-    require __DIR__ . '/footer.php'
-?>
