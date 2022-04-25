@@ -314,7 +314,7 @@ function preview() {
 
 /* Preview Multiple Images */
 $(function() {
-  var preview = change(function(event) {
+  var preview = function(event) {
     if (this.files && this.files[0]) {
       for (var i = 0; i < this.files.length; i++) {
         var reader = new FileReader();
