@@ -94,8 +94,9 @@
                         <?php if ($r['voucher_list'] == 0 ){
 
                            echo ("
+
                            <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
 
@@ -106,7 +107,7 @@
                            echo ("
 
                            <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
                            </form>
 
@@ -131,7 +132,7 @@
 <?php
 
    if(isset($_POST['list'])){
-      
+         
       $voucher_id = $_POST['voucher_id'];
 
       $sqll = "UPDATE voucher SET voucher_list = 0
