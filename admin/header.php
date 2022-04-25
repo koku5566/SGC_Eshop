@@ -129,6 +129,8 @@
                         <a class="collapse-item" href="../admin/adminTransaction.php">Transaction History</a>
                         <a class="collapse-item" href="../admin/adminViewShipping.php">Order Delivery History</a>
                         <a class="collapse-item" href="../admin/eventAdminDashboard.php">Event Management</a>
+                        <a class="collapse-item" href="adminFacilityManagement.php">Facility Management</a>
+                        <a class="collapse-item" href="facilityManagement.php">Add Facility</a>
 						<a class="collapse-item" href="../admin/helpCenterAdmin1.php">Help Center</a>
                     </div>
                 </div>

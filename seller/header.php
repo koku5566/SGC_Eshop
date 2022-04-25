@@ -155,23 +155,6 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Facility Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFacility"
-                    aria-expanded="true" aria-controls="collapseFacility">
-                    <i class="fas fa-fw fa-suitcase"></i>
-                    <span>Facility</span>
-                </a>
-                <div id="collapseFacility" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="adminFacilityManagement.php">My Facilities</a>
-                        <a class="collapse-item" href="facilityManagement.php">Add Facility</a>
-                        
-                        
-                    </div>
-                </div>
-            </li>
             <!-- Nav Item - Event Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
@@ -182,7 +165,7 @@
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="eventSellerDashboard.php">Event Dashboard</a>
-                        <a class="collapse-item" href="createEvent.html">Create New Event</a>
+                        <a class="collapse-item" href="createEvent.php">Create New Event</a>
                     </div>
                 </div>
             </li>
@@ -213,9 +196,6 @@
                 <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="sellerTransaction.php">Transaction History</a>
-<!--                         <a class="collapse-item" href="register.html">My Balance</a>
-                        <a class="collapse-item" href="forgot-password.html">Bank Account</a>
-                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a> -->
                     </div>
                 </div>
             </li>
@@ -229,35 +209,9 @@
                 </a>
                 <div id="collapseShop" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Shop Rating</a>
                         <a class="collapse-item" href="../seller/shopProfile.php">Shop Profile</a>
-                        <a class="collapse-item" href="forgot-password.html">Shop Decoration</a>
-                        <a class="collapse-item" href="forgot-password.html">Shop Categories</a>
-                        <a class="collapse-item" href="forgot-password.html">My Reports</a>
                     </div>
                 </div>
-            </li>
-
-             <!-- Nav Item - Setting Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"
-                    aria-expanded="true" aria-controls="collapseSetting">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Setting</span>
-                </a>
-                <div id="collapseSetting" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">My Address</a>
-                        <a class="collapse-item" href="register.html">Shop Setting</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Customer Services -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Customer Services</span></a>
             </li>
             <?php endif?>
 
