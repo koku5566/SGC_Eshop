@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/seller/header.php' ?>
+<?php require __DIR__ . '/admin/header.php' ?>
 
 <?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
@@ -171,4 +171,4 @@ if(isset($_POST['signup']))
     </div>
 </div>
 
-<?php require __DIR__ . '/footer.php' ?>
+<?php require __DIR__ . '/admin/footer.php' ?>
