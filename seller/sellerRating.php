@@ -31,7 +31,7 @@
     </div>
     
     <div class="row reviewContainer">
-      <h4><b>User Review</b></h4><br>
+      <h4><b>User Review</b></h4>
       <?php
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
@@ -47,7 +47,7 @@
       <div class="col-lg-6 col-md-12">
         <p>
         <?php
-            echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
+            echo "<br>User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
         ?>
         </p>
       </div>
