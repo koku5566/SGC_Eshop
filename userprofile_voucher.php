@@ -50,7 +50,7 @@
  ";
 
   $stmt = $conn->prepare($sql_voucherR);
-//  $stmt->execute();
+  $stmt->execute();
 //  $result = $stmt->get_result();
 
 ?>
