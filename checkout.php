@@ -317,7 +317,7 @@ $shippingfee = 10;
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style ="float: right;">RM<span id="shipping-fee" >10.00</span></span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="total-amount"><?php //echo $_SESSION['subtotal']?></span></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php //echo $_SESSION['subtotal']?></span></span></li>
                     </ul>
                 </div>
             </div>
@@ -325,6 +325,7 @@ $shippingfee = 10;
             <div class = 'row'>
             <input type = "hidden"  id ="subtotal-amount" name = "amount" value =<?php echo $_SESSION['subtotal']?>>
             <input type = "hidden" id="shipping-total" name="shipping-total" value ="10.00" > 
+            <input type = "hidden" id="total-amount" name="total-amount" value ="" > 
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = "e-shop1">
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
@@ -385,7 +386,8 @@ $(document).ready(function() {
    var subtotal = document.getElementById("subtotal-amount").value;
    var total = parseFloat(subtotal) + parseFloat(shipping);
    console.log(shipping, subtotal, total);
-   document.getElementById("total-amount").value = total;
+   document.getElementById("totalAmount").textContent = total;
+
 
 });
 
