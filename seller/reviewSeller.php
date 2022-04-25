@@ -17,7 +17,19 @@ if($_SESSION['login'] == false)
 			  </script>";
     }
 */
-
+ if (!isset($_SESSION['login']) || !isset($_SESSION['userid'])){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/login.php";
+            </script>
+        <?php
+        exit;
+	}
+    if($_SESSION['role'] != "SELLER")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
 
 
 ?>
