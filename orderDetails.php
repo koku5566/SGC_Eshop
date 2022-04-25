@@ -65,7 +65,7 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['quantity']; ?>
                         </div>
                         <div class="col-2 red-text">RM
-                            <?php echo $row2['amount']; ?>.00
+                        <?php  echo $amount?></td>.00
                         </div>
                         
                     </div>
