@@ -47,8 +47,8 @@ $queryKL = mysqli_query($conn, $sql);
         if ($rowKL['variation_id'] == "" ) {
             $product_price = $rowKL['P_price'];
             $product_stock = $rowKL['product_stock'];
-
-            $variation_message = "0";
+            $rowKL['variation_id'] = 0;
+            $variation_message = "<option selected>Not Variation</option>";
         }
         else if ($rowKL['variation_id'] != "") {
             
@@ -113,14 +113,14 @@ $queryKL = mysqli_query($conn, $sql);
     $paidAmount = $row1['payment_amount'];
 
     /* deduct stock */
-     $stocksql = "SELECT product_stock FROM `product`
+     $stocksql = "SELECT product_stock FROM `product` WHERE product_id = '$product_id';
     ";
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
         $stock = $row3['product_stock'];
     }
 
-    $stocksql2 = "SELECT product_stock FROM `variation`
+    $stocksql2 = "SELECT product_stock FROM `variation` 
     ";
     $variationresult = mysqli_query($conn, $stocksql2);
     while($row4 = mysqli_fetch_array($variationresult)){
@@ -128,11 +128,11 @@ $queryKL = mysqli_query($conn, $sql);
     }
       
 
-    if ($variation_message == "0") {
+    if ($variation_id == 0) {
     $deductsql = "UPDATE `product` SET `product_stock` = ? WHERE `product_id` = ?";
     if ($stmt2 = mysqli_prepare($conn,$deductsql)){
         $deductQuantity1 = $stock-$product_quantity;
-        $bp = mysqli_stmt_bind_param($stmt2,"ii",$deductQuantity1,$product_id);
+        $bp = mysqli_stmt_bind_param($stmt2,"is",$deductQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
@@ -167,6 +167,7 @@ $queryKL = mysqli_query($conn, $sql);
      date_default_timezone_set("Asia/Kuala_Lumpur");
     $date = date("Y-m-d");
     $paid = "Paid";
+    $orderid = 1;
     $emptyint = 0;
     $emptystring  ="0";
     $null = NULL;
@@ -192,13 +193,13 @@ $queryKL = mysqli_query($conn, $sql);
 }
 $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`, `return_id`, `reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-    $bp = mysqli_stmt_bind_param($stmt4, "ssisisssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $date, $paid, $emptystring, $null, $invoice_id );
+    $bp = mysqli_stmt_bind_param($stmt4, "ssisissssiis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $date, $paid, $null, $null, $invoice_id );
     $bp = mysqli_stmt_execute($stmt4);
 }   
 //--CAROL ADD--- (insert to orderStatus tbl )
-$sql6 = "INSERT INTO `orderStatus`(,`invoice_id`, `status`) VALUES (?,?,?)";
+$sql6 = "INSERT INTO `orderStatus`(`order_id`,`invoice_id`, `status`) VALUES (?,?,?)";
 if ($stmt6 = mysqli_prepare($conn, $sql6)) {
-    $bp = mysqli_stmt_bind_param($stmt6, "ss",  $invoice_id , $paid);
+    $bp = mysqli_stmt_bind_param($stmt6, "iss", $orderid, $invoice_id , $paid);
     $bp = mysqli_stmt_execute($stmt6);
 }    
 //-------------

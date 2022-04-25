@@ -28,7 +28,7 @@ require __DIR__ . '/header.php'
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 
-    <h1>Order Shipping History</h1>
+    <h1>Order Delivery History</h1>
     <div class="card">
   <!--       <div class="card-body">
     <div class="card" style="margin-top: 40px;"> -->
@@ -58,7 +58,7 @@ require __DIR__ . '/header.php'
 
                             $sql = "SELECT * FROM myOrder JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id";
                             $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result1) > 0) {
+                            if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {?>
                                         <tr>
                                         <td><?php echo $row['order_date']?></td>
@@ -67,7 +67,7 @@ require __DIR__ . '/header.php'
                                         <td><?php echo $row['userID']?></td>
                                         <td><?php echo $row['delivery_method']?></td>
                                         <td><?php echo $row['order_status']?></td>
-                                        <td><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button></td>
+                                        <td><?php if ($srow['tracking_number']!= null && $row['delivery_method']=='standard-delivery') {?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
                                         </tr>
                                     <?php 
                                 }
@@ -105,20 +105,20 @@ function linkTrack() {
     });
   }
 
-var t = $('#transactionTable').DataTable({//call table id
+var t = $('#shippingOrderTable').DataTable({//call table id
     dom: 'Bfrtip',
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Transaction List'
+                title: 'Order Delivery List'
             },
             {
                 extend: 'pdfHtml5',
-                title: 'Transaction List'
+                title: 'Order Delivery List'
             },
             {
                 extend: 'csvHtml5',
-                title: 'Transaction List'
+                title: 'Order Delivery List'
             },
         ]
 });

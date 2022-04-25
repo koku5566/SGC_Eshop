@@ -248,7 +248,7 @@ var options = {
     <!-- Below Template -->
 </div>
 <!-- /.container-fluid -->
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 <script src="../js/eventDetails.js"></script>
 
 <?php

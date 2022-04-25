@@ -87,7 +87,7 @@
                                     $product_price = $rowKL['P_price'];
                                     $product_stock = $rowKL['product_stock'];
     
-                                    $variation_message = "<option selected>Not Variation</option>";
+                                    $variation_message = "<option selected>No Variation</option>";
                                 }
                                 else if ($rowKL['variation_id'] != "") {
                                     
@@ -114,7 +114,7 @@
                                     {
     
                                         if ($row['variation_1_choice'] == "") {
-                                            $variation_message ="<option value='".$row['variation_id']."' disabled selected>Not Variation</option>";
+                                            $variation_message ="<option value='".$row['variation_id']."' disabled selected>No Variation</option>";
                                         }
                                         else if ($row['variation_1_choice'] != "") {
             
@@ -211,7 +211,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right;'>Total: <span id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right;'>Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
@@ -235,7 +235,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >5.10</span></div>
+                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
@@ -703,16 +703,33 @@ select.form-control {
     var subtotal_tol = 0;
 
     calling();
+    discountAmount();
 
     function calling()
     {
         subtotal_tol = 0;
 
+        var updateSub = document.getElementsByClassName('sbt');
+        for(var i=0; i<updateSub.length;i++)
+        {
+            subtotal_tol += parseFloat(updateSub[i].innerText);
+        }
+
         //subtotal_tol = subtotal_tol + parseFloat(document.getElementById("subtotal_kl").innerHTML) + parseFloat(document.getElementById("subtotal_sj").innerHTML);
-        subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
+        //subtotal_tol = parseFloat(document.getElementById("subtotal_kl").innerHTML);
         document.getElementById('subtotal_count_hidden').value = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);
         document.getElementById('subtotal_count').innerHTML = (Math.round((subtotal_tol + Number.EPSILON) * 100) / 100).toFixed(2);      
-    }  
+    } 
+
+    function discountAmount()
+    {
+        var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
+        var beforeDiscount = parseFloat(document.getElementById('subtotal_count').innerText);
+
+        var discountTotal = afterDiscount - beforeDiscount;
+        document.getElementById('discount_kl').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
+    }
+     
 
     function save_to_db(cart_id, quantity) {
        
@@ -724,7 +741,6 @@ select.form-control {
         .done(function( msg ) {
                 window.location.href = window.location.origin + '/cart.php';
          });
-
     }
 
     //update product variation

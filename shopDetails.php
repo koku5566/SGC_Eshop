@@ -6,11 +6,18 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
+
     $shop_id = $_GET['id'];
-    $sql1 = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
-    $sql2 = "SELECT discount_amount, voucher_code, voucher_startdate, voucher_expired FROM voucher"; 
-    $result1 = $conn->query($sql1);
-    $result2 = $conn->query($sql2);
+    $discountAmount = $row['voucher.discount_amount'];
+    $sql_product = "SELECT product_name, product_description, product_price, product_cover_picture FROM product WHERE shop_id='$shop_id'";
+    $sql_voucher = "SELECT voucher.discount_amount, voucher.voucher_code, voucher.voucher_startdate, voucher.voucher_expired FROM voucher 
+             JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
+             JOIN product ON productVoucher.product_id = product.product_id
+             JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+             WHERE product.shop_id = '$shop_id' 
+             GROUP BY voucher.voucher_id";
+    $result_product = $conn->query($sql_product );
+    $result_voucher = $conn->query($sql_voucher);
 
     //Added by Maverick
     $sql_shop = "SELECT A.shop_id, A.shop_name, A.shop_profile_image, U.registration_date FROM shopProfile AS A LEFT JOIN user AS U ON A.shop_id = U.user_id  WHERE shop_id = '$shop_id'";
@@ -137,24 +144,22 @@
       </section><br>
 
         <section class="text-center">
-          <h4 class="mb-5"><strong>Shop Voucher</strong></h4>
-          <div class="d-flex align-items-center"> <!--<div class="voucherContainer d-flex align-items-center">-->
-          <?php
-                  if ($result2->num_rows > 0) {
+          <h4 class="mb-5"><strong>Vouchers</strong></h4>
+          <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
+           <?php
+                  if ($result_voucher->num_rows > 0) {
                     // output data of each row
-                    while($row2 = $result2->fetch_assoc()) {
-          ?>
-          <div class="row overflow-scroll">
-            <div class="voucher">
+                    while($row2 = $result_voucher->fetch_assoc()) {
+           ?>
               <div class="coupon-card">
                 <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
                 <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
                 <h3>RM
-                  <?php echo " " . $row2["discount_amount"]. " "; ?>
+                  <?php echo $row2["discount_amount"]; ?>
                 </h3>
                 
                 <div class="coupon-row">
-                  <span id="cpnCode"><?php echo " " . $row2["voucher_code"]. " "; ?></span>
+                  <span id="cpnCode"><?php echo $row2["voucher_code"]; ?></span>
                   <span id="cpnBtn">COPY</span>
                 </div>
                 
@@ -162,17 +167,14 @@
                   <?php echo " From " . $row2["voucher_startdate"]. " till " . $row2["voucher_expired"]. " "; ?>
                 </p>
                 
-                <!--<div class="circle1"></div>
-                <div class="circle2"></div>-->
               </div>
-            </div>
-            <?php
-                }
-              } else {
-                echo "<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Voucher.</p></div>";
-              }
-              $conn->close();
-            ?>
+              <?php
+                   }
+                 } else {
+                   echo "<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No Voucher.</p></div>";
+                 }
+                 $conn->close();
+              ?>
           </div>
         </section>
 
@@ -180,12 +182,12 @@
 
         <!--Section: Content-->
         <section class="text-center">
-          <h4 class="mb-5"><strong>Best Sales</strong></h4>
+          <h4 class="mb-5"><strong>Products</strong></h4>
           <div class="row">
             <?php
-              if ($result1->num_rows > 0) {
+              if ($result_product->num_rows > 0) {
                 // output data of each row
-                while($row1 = $result1->fetch_assoc()) {
+                while($row1 = $result_product->fetch_assoc()) {
             ?>
             
             <div class="col-lg-3 col-md-6 mb-4">
@@ -201,7 +203,7 @@
                 </div>
                 <div class="card-body">
                   <?php
-                      echo " " . $row1["product_name"]. "<br>" . $row1["product_description"]. "<br>RM " . $row1["product_price"]. "<br>";
+                      echo " " . $row1["product_name"]. "<br>RM " . $row1["product_price"]. "<br>";
                   ?>
                   <!--<a href="#!" class="btn btn-primary">Button</a>-->
                 </div>
@@ -221,6 +223,10 @@
       </div>
     </main>
     <!--Main layout-->
+    
+    <?php
+    require __DIR__ . '/footer.php'
+    ?>
 
     <style>
       
@@ -233,15 +239,9 @@
       }
 
       .voucherContainer{
-        background-color: #f0f0f0;
-        border: none;
-        border-radius: 5px;
-        height: 15vh; /* should be remove after add in voucher */
-        width: 180vh; /* should be remove after add in voucher */
-        margin:; /* Better set align center */
-      }
-      .voucher{
-        margin: 0 10px 0 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
       }
 
       .coupon-card{
@@ -251,6 +251,7 @@
          padding: 10px 45px;
          border-radius: 15px;
          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
+         margin: 10px 5px;
       }
       
       .logo{
@@ -290,24 +291,6 @@
         color: #7158fe;
         cursor: pointer;
         font-size: 10px;
-      }
-      
-      .circle1, .circle2{
-        background: #fff;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        position: absolute;
-        top: 14.5%;
-        transform: translateY(-50%);
-      }
-      
-      .circle1{
-        left: 40px;
-      }
-      
-      .circle2{
-        right: 925px;
       }
 
       .imgContainer
@@ -385,7 +368,3 @@
          }, 3000);
        }
     </script>
-
-    <?php
-    require __DIR__ . '/footer.php'
-?>

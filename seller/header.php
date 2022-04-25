@@ -143,6 +143,7 @@
                         <a class="collapse-item" href="adminManage.php">Product Management</a>
                         <a class="collapse-item" href="category.php">Category Management</a>
                         <a class="collapse-item" href="promotion.php">Promotion Management</a>
+                        <a class="collapse-item" href="adminTransaction.php">Transaction History</a>
                     </div>
                 </div>
             </li>
@@ -240,7 +241,7 @@
                 </a>
                 <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">My Income</a>
+                        <a class="collapse-item" href="sellerTransaction.php">Transaction History</a>
                         <a class="collapse-item" href="register.html">My Balance</a>
                         <a class="collapse-item" href="forgot-password.html">Bank Account</a>
                         <a class="collapse-item" href="forgot-password.html">Payment Settings</a>

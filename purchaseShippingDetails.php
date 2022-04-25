@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-    $orderid = $_GET['order_id'];
+    $invoice_id = $_GET['invoice_id'];
 
     //=========sql to get order information=============
     $deliverymethod="";
@@ -15,25 +15,26 @@
     myOrder.order_date,
     myOrder.tracking_number,
     user.username,
+    user.email,
     userAddress.contact_name,
     userAddress.phone_number,
     userAddress.address,
-    orderDetails.quantity,
-    orderDetails.amount,
-    orderDetails.shop_id,
+    productTransaction.quantity,
+    productTransaction.shop_id,
     product.product_name,
     product.product_price,
     product.product_cover_picture,
     shopProfile.shop_name,
-    shopProfile.shop_profile_image
+    shopProfile.shop_profile_image,
+    shopProfile.shop_id
     FROM
     myOrder
-    JOIN user ON myOrder.userID = user.userID
-    JOIN userAddress ON myOrder.user_id = userAddress.user_id
-    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-    JOIN product ON orderDetails.product_id = product.product_id
-    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
-    WHERE myOrder.order_id = '$orderid';";
+    JOIN user ON myOrder.userID = user.user_id
+    JOIN userAddress ON myOrder.userID = userAddress.user_id
+    JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+    JOIN product ON productTransaction.product_id = product.product_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
+    WHERE myOrder.invoice_id =  '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
@@ -44,22 +45,33 @@
         $username = $orow['username'];
         $contactname = $orow['contact_name'];
         $phone = $orow['phone_number'];
+        $buyeremail = $orow['email'];
         $address = $orow['address'];
         $trackingnum = $orow['tracking_number'];
         $orderdate = $orow['order_date'];
         $qty = $orow['quantity'];
-        $amt = $orow['amount'];
         $productname = $orow['product_name'];
         $productprice = $orow['product_price'];
         $productcover = $orow['product_cover_picture'];
         $shopname = $orow['shop_name'];
         $shopprofile = $orow['shop_profile_image'];
+        $shopid = $orow['shop_id'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
 
+    //======to get seller email ==============================
+    $selleremailsql =" SELECT email FROM user WHERE user_id = '$shopid'";
+    $stmt = $conn->prepare($selleremailsql);
+    $stmt->execute();
+    $selleremailresult = $stmt->get_result();
+    while ($sEmailrow = $selleremailresult->fetch_assoc()) {
+        $selleremail = $sEmailrow['email'];
+    }
+
+
     //=========sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.order_id = '$orderid' ORDER BY id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.invoice_id = orderStatus.invoice_id WHERE myOrder.invoice_id = '$invoice_id' ORDER BY order_id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();
@@ -67,39 +79,86 @@
     //complete pick up
     if(isset($_POST["completeBtn"])){
         $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $status = "Completed";
-        $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
 
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
             $_SESSION['success'] = "Thank you for updating!";?>
-            <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+            <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
             <?php
            // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
             } else {
           $_SESSION['status'] = "Order status update failed";?>
-           <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+           <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
           <?php
         }
     }
         //order received
         if(isset($_POST["receivedBtn"])){
             $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+            $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
             $status = "Delivered";
-            $insertsql = "INSERT INTO orderStatus (order_id, status) VALUES('$orderid', '$status')";
-            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE order_id = '$orderid'";
-    
+            $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
+            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
+        
             if ($conn->query($insertsql)&& $conn->query($updatesql)) {
                 $_SESSION['success'] = "Thank you for updating!";?>
-                <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+                <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
                 <?php
                // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
                 } else {
               $_SESSION['status'] = "Order status update failed";?>
-               <script>window.location = 'purchaseShippingDetails.php?order_id=<?php echo $orderid;?>'</script>
+               <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
               <?php
             }
         }
+
+    //pick up status update
+    if(isset($_POST["remind_seller"])){
+        $buyer_email = mysqli_real_escape_string($conn, SanitizeString($_POST["buyeremail"]));
+        $seller_email = mysqli_real_escape_string($conn, SanitizeString($_POST["selleremail"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+
+        echo $buyer_email,$seller_email;
+        $to = $seller_email;
+        $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
+        $from = "event@sgcprototype2.com";
+        $from2 = "event@sgcprototype2.com";
+        $fromName = "SGC E-Shop Admin";
+
+        $headers =  "From: $fromName <$from> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+        $message = "
+        <h5>Remember to ship order items for '$invoice_id'</h5>
+        <p>Your customer has notify you that the  order has not been shipped yet. Please kindly ship all order items to keep a good rating for your shop. :)
+        <h4>Thank you</h4>
+        <h4>Best Regards</h4>
+        <h4>SGC Eshop</h4>
+        ";
+
+        $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+
+        $boundary = md5(time());
+        $headers .= " boundary=\"{$boundary}\"";
+        $message = "--{$boundary}\r\n";
+        $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+        $message .= "Content-Transfer-Encoding: 7bit\r\n";
+        $message .= $HTMLcontent . "\r\n";
+        $message .= "--{$boundary}\r\n";
+        $returnPath = "-f" . $from2;
+
+        if (@mail($to, $subject, $message, $headers, $returnPath)) {
+            echo "<script>alert('A notification email has been sent to the seller')</script>";
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+        
+    }
 ?>
 
 <input type="hidden" id="orderstatus" value="<?php echo $orderstatus; ?>">
@@ -132,7 +191,7 @@
         <?php endif; ?>
         </div>      
         <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
-            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $orderid?></div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Order ID:</span><?php echo $invoice_id?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Status:</span> Order <?php echo ' ',$orderstatus ?></div>
             <div class="w-100 text-center py-1 px-2"><span class="text-size-medium">Expected Date:</span><?php echo date("Y-m-d",$estimateddelivery)?></div>
         </div>
@@ -228,10 +287,33 @@
                 </tbody>
             </table>
 
+            <?php 
+            //calculate how many days passed since order date
+            $now = date('Y-m-d'); 
+            $today = strtotime($now);
+            $datediff = $today - $orderdate;
+            $days=  round($datediff / (60 * 60 * 24));
+            
+            //Remind seller function is available if seller did not ship out item for 5 days
+            if($orderstatus =='Paid'&& $days >=5 ){?>
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
+                    <input type="text" name="buyeremail" value="<?php echo $buyeremail; ?>">
+                    <input type="text" name="selleremail" value="<?php echo $selleremail?>">
+                    <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
+                    <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
+                    </form>
+                <?php }else if ($orderstatus == 'Paid' && days <5) {?>
+                    <div class="tooltip">
+                        <button class="btn btn-primary">Remind Seller</button> 
+                        <span class="tooltiptext">You can remind seller if order has not been shipped after 5 days</span>
+                    </div>
+                    <?php
+                 }?>
 
                 <?php if($orderstatus =='Ready'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="completeBtn" class="btn btn-primary">Pick Up Completed</button>
                     </form>
                 <?php } ?>
@@ -239,6 +321,7 @@
                 <?php if($orderstatus =='Shipped'){?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="receivedBtn" class="btn btn-primary">Order Received</button>
                     </form>
                 <?php } ?>
@@ -538,6 +621,29 @@
     .track-shipping tr:first-child td {
     color: green;
     }
+    .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 </style>
 
 <script>
