@@ -2,9 +2,9 @@
     require __DIR__ . '/header.php';
 
     if (isset($_SESSION['login']) && $_SESSION['login']){
-        ?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
-		exit;
-	}
+	 	echo "<script>alert('Login to checkout');
+	 		window.location.href='login.php';</script>";
+     }  
  
      $userID = $_SESSION["userid"];
 
@@ -344,23 +344,33 @@ $shippingfee = 10;
 <script>
 
 $(document).ready(function() {
-
     var noshippingfee = 0;
     var shippingtotal = parseFloat(document.getElementById("shippingprice").value);
     var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
     var selection = "";
+
 
    $('input[name="delivery-option"]').click(function() {
         selection = this.value;
 
         if(selection == "standard-delivery")
         {
-            document.getElementById("shipping-fee").textContent = shippingtotal.toFixed(2);
+            document.getElementById("shipping-fee").textContent = shippingtotal;
         }
         else{
-            document.getElementById("shipping-fee").textContent = noshippingfee.toFixed(2);
+            document.getElementById("shipping-fee").textContent = noshippingfee;
         }
-   
+    // display = this.value
+    //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
+    //     deliveryRdBtn.onclick = function() {
+    //         var option = deliveryRdBtn.value;
+    //         display.textContent= shippingtotal.toFixed(2);
+    //     }
+    //    }
+    //    if($(this).attr('id') == 'standard-delivery') {
+    //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
+    //      console.log(shippingtotal.toFixed(2));
+    //    }
    });
 });
 
