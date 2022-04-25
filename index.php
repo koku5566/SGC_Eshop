@@ -350,7 +350,7 @@
                             $userid = $_SESSION['userid'];
                             $voucher_id = $_POST['voucher_id'];
 
-                            if ($userid != ""){
+                            if ($userid == ""){
                                 ?>
                                     <script type="text/javascript">
                                         alert("Voucher claimed failed. Login to claimed voucher.")
