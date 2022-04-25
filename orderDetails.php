@@ -75,7 +75,7 @@ $order_id = $_GET['order_id'];
                     <div class="col-4" style="text-align:right; margin-left:60%">
                         <div class="row p-2">
                             <div class="col">Total:</div>
-                            <div class="col"> RM<?php echo $row2['amount']?>.00</div>
+                            <div class="col"> RM<?php  echo $amount?></td>.00</div>
                         </div>
                         <div class="row p-2">
                             <div class="col">Discounts:</div>
