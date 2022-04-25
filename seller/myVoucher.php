@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if(!isset($_SESSION)){
+      session_start();
+   }
+   
+   if(!isset($_SESSION['id']))
+   {
+         $_SESSION['id'] = "";
+   }
+
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -31,7 +40,6 @@
                      <th>Voucher Expired</th>
                      <th>Voucher Display</th>
                      <th>Voucher Limit</th>
-                     <th>Edit</th>
                      <th>List/Delist</th>
                   </tr>
                </thead>
@@ -50,7 +58,6 @@
                         voucher.voucher_expired,
                         voucher.voucher_display,
                         voucher.voucher_limit,
-                        voucher.voucher_status,
                         voucher.voucher_list
                         -- shopProfile.shop_name,
                         -- shopProfile.shop_profile_image,
@@ -80,7 +87,6 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
-                     <td><?php echo ("<a href=\"?{$toggle}edit=$voucher_id\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>"); ?></td>
                      <td>
                         <?php if ($r['voucher_list'] == 0 ){
                            echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");

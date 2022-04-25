@@ -1,16 +1,5 @@
 <?php
     require __DIR__ . '/header.php';
-
-    if (!isset($_SESSION['userid'])){
-      ?>
-          <script type="text/javascript">
-              window.location.href = window.location.origin + "/login.php";
-          </script>
-      <?php
-      exit;
-   }
-
-    $useridup = $_SESSION["userid"];
  ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -45,9 +34,12 @@
                                     <hr>
                                     <?php
 
+                                       $userid = $_SESSION["userid"];
+
                                       $sql_voucherR =
                                       "SELECT 
                                       voucherRedemption.voucher_id,
+                                      voucherRedemption.user_id,
                                       voucher.voucher_id,
                                       voucher.voucher_code,
                                       voucher.voucher_type,
@@ -66,7 +58,7 @@
                                       JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                                       JOIN product ON productVoucher.product_id = product.product_id
                                       JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                                      WHERE voucherRedemption.user_id = $useridup
+                                      WHERE voucherRedemption.user_id = '$userid'
                                       GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
                                       ";
                                      
