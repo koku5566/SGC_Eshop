@@ -35,11 +35,11 @@
                     }
                     else if($_SESSION['role'] == "SELLER")
                     {
-                        ?><script>window.location = '<?php echo("$domain/seller/index.php");?>'</script><?php
+                        ?><script>window.location = '<?php echo("$domain/seller/viewShippingOrders.php");?>'</script><?php
                     }
                     else if($_SESSION['role'] == "ADMIN")
                     {
-                        ?><script>window.location = '<?php echo("$domain/admin/index.php");?>'</script><?php
+                        ?><script>window.location = '<?php echo("$domain/admin/adminManage.php");?>'</script><?php
                     }
 				}
 			} else {

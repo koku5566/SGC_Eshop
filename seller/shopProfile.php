@@ -140,7 +140,7 @@
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 
       <img class="relative bg-image img-fluid" id="backgroundImage" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
-      <div>
+      <div class="editBtnContainer">
         <input type="file" id="actual-btn" name="profileCover[]" onchange="loadCover(event)" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
@@ -209,14 +209,13 @@ body{
   position: relative;
 } 
 
-div.absolute {
+div.editBtnContainer {
   /*position: absolute;
   top: 490px;
   right: 180px;*/
   display: flex;
   justify-content: right;
   align-items: center;
-  position: absolute;
   transition: all 0.3s ease;
 }
 

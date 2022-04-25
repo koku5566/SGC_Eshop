@@ -138,10 +138,7 @@
                             <div class="col-xl-12">
                                 <?php
                                     $userId = $_SESSION['userid'];
-                                    ($_SESSION['role']=="ADMIN")
-                                    {
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1 AND promotionEnd_Date >= now()";
-                                    }
+                                    $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1 AND promotionEnd_Date >= now()";
 
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
@@ -191,8 +188,6 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                    if ($_SESSION['role'] == "ADMIN")
-                                    { 
                                         $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE promotionEnd_Date <= now() AND `status` = 1";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){ 
@@ -222,7 +217,7 @@
                                         else{
                                             echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
                                         }
-                                    }
+                                    
                                 ?>
                             </div>
                         </div>
@@ -243,8 +238,6 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                    if ($_SESSION['role'] == "ADMIN")
-                                    { 
                                         $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE `status` = 2";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){ 
@@ -266,7 +259,7 @@
                                         else{
                                             echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
                                         }
-                                    }
+                                    
                                 ?>
                             </div>
                         </div>
@@ -352,8 +345,7 @@
                                 <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                             <?php
-                                if ($_SESSION['role'] == "ADMIN")
-                                { echo ("
+                                 echo ("
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                             <p class=\"p-title\">Banner display at:</p>
@@ -366,7 +358,7 @@
                                             </div>
                                         </div>
                                     </div>");
-                                }
+                                
                             ?>
                         </div>
                     </div>
