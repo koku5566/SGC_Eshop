@@ -129,15 +129,15 @@
                 </a>
                 <div id="collapseAdmin" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="adminManageUser.php">User Management</a>
-                        <a class="collapse-item" href="adminManage.php">Product Management</a>
-						<a class="collapse-item" href="review.php">Product Review</a>
-                        <a class="collapse-item" href="category.php">Category Management</a>
-                        <a class="collapse-item" href="promotion.php">Promotion Management</a>
-                        <a class="collapse-item" href="adminTransaction.php">Transaction History</a>
-                        <a class="collapse-item" href="adminViewShipping.php">Order Delivery History</a>
-                        <a class="collapse-item" href="eventAdminDashboard.php">Event Management</a>
-						<a class="collapse-item" href="helpCenterAdmin1.php">Help Center</a>
+                        <a class="collapse-item" href="../admin/adminManageUser.php">User Management</a>
+                        <a class="collapse-item" href="../admin/adminManage.php">Product Management</a>
+						<a class="collapse-item" href="../admin/review.php">Product Review</a>
+                        <a class="collapse-item" href="../admin/category.php">Category Management</a>
+                        <a class="collapse-item" href="../admin/promotion.php">Promotion Management</a>
+                        <a class="collapse-item" href="../admin/adminTransaction.php">Transaction History</a>
+                        <a class="collapse-item" href="../admin/adminViewShipping.php">Order Delivery History</a>
+                        <a class="collapse-item" href="../admin/eventAdminDashboard.php">Event Management</a>
+						<a class="collapse-item" href="../admin/helpCenterAdmin1.php">Help Center</a>
 
                     </div>
                 </div>
