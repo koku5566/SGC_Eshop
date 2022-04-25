@@ -33,7 +33,7 @@
         $contact = $_POST['inpEditContact'];
         $role = $_POST['inpEditRole'];
 
-		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', WHERE username='$UID'";
+		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
 
 		if (mysqli_query($conn, $sql)) {
             echo "<script>alert('User Detail Edited');</script>";
