@@ -195,9 +195,46 @@
                                     <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required><?php echo $r['voucher_details']?></textarea>
                                     <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
                                  </div>
-                                 <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
-                                 <br>
-                                 <br>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                    </div>
+                                 </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Display Setting</label>
@@ -217,7 +254,6 @@
                                     </div>
                                  </div>
                                  <div class="form-row">
-                                    <div class="form-group col-md-12">
                                        <table class="table">
                                           <thead>
                                              <tr>
@@ -229,7 +265,6 @@
                                              </tr>
                                           </thead>
                                        </table>
-                                    </div>
                                  </div>
                               </div>
                            </div>
