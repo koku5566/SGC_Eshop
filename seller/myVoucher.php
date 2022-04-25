@@ -121,18 +121,7 @@
                      </td>
                   </tr>
 
-                  <?php 
-                  }?>
-
-               </tbody>
-
-            </table>
-         </div>
-      </div>
-   </div>
-</div>
-
-<?php
+                  <?php
 
    if(isset($_POST['list'])){
          
@@ -167,6 +156,19 @@
    }
    
 ?>
+
+
+                  <?php 
+                  }?>
+
+               </tbody>
+
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
 
 <script type ="module">
   $(document).ready(function() {
