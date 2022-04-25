@@ -33,11 +33,15 @@ $order_id = $_GET['order_id'];
                 
                 <?php
                     $shippingfee = 8.6;
-                    $sql2 = "SELECT * FROM myOrder 
-                    JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-                    JOIN product ON orderDetails.product_id = product.product_id
-                    JOIN shopProfile ON orderDetails.shop_id = shopProfile.shop_id
+                    $sql2 = "SELECT
+                    DISTINCT
+                    *
+                    FROM
+                    myOrder
                     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+                    JOIN product ON productTransaction.product_id = product.product_id
+                    JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                    JOIN user on myOrder.userID = user.user_id 
                     WHERE myOrder.order_id = $order_id";
                     
                     $result2 = $conn->query($sql2);
