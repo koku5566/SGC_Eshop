@@ -102,7 +102,7 @@
                      <td>
                         <?php 
                         
-                        if ($expired > $today){
+                        if ($expired < $today){
 
                            echo("<span class=\"badge bg-secondary\">Expired</span>");
 
