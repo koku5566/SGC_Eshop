@@ -114,7 +114,7 @@
 
                             echo("<span class=\"badge bg-warning\">Up-coming</span>");
 
-                         }elseif($today >= $startdate && $startdate < $expired){
+                         }elseif($today > $startdate && $today = $startdate && $startdate < $expired){
 
                            echo("<span class=\"badge bg-success\">On-going</span>");
 
