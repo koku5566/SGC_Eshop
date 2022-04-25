@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && 
 				
 					if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 					{
-						echo "<div class='alert alert-success'>Update Successfully</div>";
+						echo "<div class='alert alert-success'>Message Reply Successfully</div>";
 					}else{
 						echo "<div class='alert alert-danger'>Fail to Update</div>";
 					}
