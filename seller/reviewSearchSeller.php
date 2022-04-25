@@ -1,6 +1,17 @@
 <?php
 $conn = mysqli_connect("localhost","sgcprot1_SGC_ESHOP","3g48B8Qn8k6v6VF","sgcprot1_SGC_ESHOP");
-$seller = "U000061"; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
+
+if(!isset($_SESSION)){
+        session_start();
+}
+if(!isset($_SESSION['userid']))
+    {
+        $_SESSION['userid'] = "";
+    }
+
+
+
+$seller = $_SESSION['userid']; 	//FUTURE WOULD MAYBE TAKE SESSION REPLACE THIS NOW USE HARD CODE
 //$_SESSION['userid']
 $output = '';
 
