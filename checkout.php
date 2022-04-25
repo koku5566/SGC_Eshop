@@ -318,7 +318,7 @@ $shippingfee = 10;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
-                        <li class="list-group-item"><span>Shipping Total</span><span id="shipping-fee" style= "float: right;"><?php echo $shippingfee;?></span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span id="shipping-fee" style= "float: right;"></span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
@@ -346,25 +346,18 @@ $(document).ready(function() {
     var shippingtotal = parseFloat(document.getElementById("shippingtotal").value);
    $('input[name="delivery-option"]').click(function() {
        if($(this).attr('id') == 'standarddelivery') {
-         document.getElementById("shipping-fee").textContent= $shippingtotal.toFixed(2);        
+         document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
          console.log(shippingtotal.toFixed(2));
        }
 
        else {
-            document.getElementById("shipping-fee").textContent= $noshippingfee.toFixed(2);        
+            document.getElementById("shipping-fee").textContent= noshippingfee.toFixed(2);        
 
        }
    });
 });
 
-  function discountAmount()
-{
-    var afterDiscount = parseFloat(document.getElementById('subtotal_kl').innerText);
-    var beforeDiscount = parseFloat(document.getElementById('subtotal_count').innerText);
-    var discountTotal = afterDiscount - beforeDiscount;
-    document.getElementById('discount_kl').innerHTML = (Math.round((discountTotal + Number.EPSILON) * 100) / 100).toFixed(2);
-}
- 
+
 </script>
 <?php
     require __DIR__ . '/footer.php'
