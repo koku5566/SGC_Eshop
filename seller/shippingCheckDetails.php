@@ -64,7 +64,7 @@
     $result = $stmt->get_result();
 
     //============sql to get shipping status=================
-    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.order_id = orderStatus.order_id WHERE myOrder.invoice_id = '$invoice_id' ORDER BY order_id ASC";
+    $statussql= "SELECT myOrder.order_id, myOrder.invoice_id, myOrder.tracking_number, myOrder.delivery_method, orderStatus.status, orderStatus.datetime FROM myOrder JOIN orderStatus ON myOrder.invoice_id = orderStatus.invoice_id WHERE myOrder.invoice_id = '$invoice_id' ORDER BY order_id ASC";
     $stmt = $conn->prepare($statussql);
     $stmt->execute();
     $sresult = $stmt->get_result();

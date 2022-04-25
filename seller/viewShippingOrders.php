@@ -303,14 +303,14 @@ $user_id = $_SESSION["userid"];
                                                         <div class="col-2"> <?php echo $arow['tracking_number'] ?></div>
                                                             <?php 
                                                             for($i = 0; $i<=0;$i++){?>
-                                                                 <div class="col-2">
+                                                                <div class="col-2">
                                                                 <?php 
                                                                 if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Arrange Shipment</a>
                                                                 <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Update Pick-Up</a>
                                                                 <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
                                                                 </div>
                                                             <?php } 
-                                                            $i++;?>
+                                                           ?>
                                                         
                                                     </div>
                                             <?php
