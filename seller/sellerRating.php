@@ -51,7 +51,7 @@
         <div class="col-lg-6 col-md-12">
           <p>
           <?php
-              echo "User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
+              echo "User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "" . $row["pic4"]. "" . $row["pic5"]. "<br>";
           ?>
           </p>
         </div>
@@ -100,7 +100,12 @@ background-color: #EEEDEE;
   margin: 30px 0;
 }
 
-.reviewTitle .reviewContent{
+.reviewTitle {
+  background-color: #EEEDEE;
+  padding: 15px;
+}
+
+.reviewContent{
   background-color: #EEEDEE;
 }
 </style>
