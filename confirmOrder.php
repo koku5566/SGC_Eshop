@@ -34,15 +34,7 @@ if(isset($_POST['confirm']))
     </div>
     <div class="card">
       <div class="card-header">
-        <div class="order-list-panel">
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-5">Product</div>
-            <div class="col-2">Unit Price</div>
-            <div class="col-2">Quantity</div>
-            <div class="col-2">Total Price</div>
-          </div>
-        </div>
+        
       </div>
       <!-----------------THIS IS THE DETAILS------------------->
       <?php
