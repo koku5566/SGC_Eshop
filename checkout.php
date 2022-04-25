@@ -267,7 +267,7 @@ $shippingfee = 10;
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
                 </div>
             </div> -->
-            <input type="text" id ="shippingprice" name="shippingprice" value ="<?php echo $shippingfee;?>">
+            <input type="hidden" id ="shippingprice" name="shippingprice" value ="<?php echo $shippingfee;?>">
             <div class="shipping-option" >
                 <div class="row">
                     <div class="col"><label class="col-form-label" style="margin-top: 10px;"><strong>Shipping Option</strong></label></div>
@@ -316,7 +316,7 @@ $shippingfee = 10;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
-                        <li class="list-group-item"><span>Shipping Total</span><span id="shipping-fee" style= "float: right;"></span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM <span id="shipping-fee">10.00</span></span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
