@@ -368,27 +368,18 @@ $(document).ready(function() {
             document.getElementById("shipping-fee").textContent = noshippingfee.toFixed(2);
             document.getElementById("shipping-total").value = noshippingfee.toFixed(2);
         }
-    // display = this.value
-    //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
-    //     deliveryRdBtn.onclick = function() {
-    //         var option = deliveryRdBtn.value;
-    //         display.textContent= shippingtotal.toFixed(2);
-    //     }
-    //    }
-    //    if($(this).attr('id') == 'standard-delivery') {
-    //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
-    //      console.log(shippingtotal.toFixed(2));
-    //    }
+
+        //to calculate total payment amount 
+        var shipping = document.getElementById("shipping-total").value;
+        var subtotal = document.getElementById("subtotal-amount").value;
+        var total = parseFloat(subtotal) + parseFloat(shipping);
+        console.log(shipping, subtotal, total);
+        document.getElementById("totalAmount").textContent = parseFloat(total.toFixed(2));
+        document.getElementById("total-amount").value = total.toFixed(2);
+
    });
 
-   //to calculate total payment amount 
-   var shipping = document.getElementById("shipping-total").value;
-   var subtotal = document.getElementById("subtotal-amount").value;
-   var total = parseFloat(subtotal) + parseFloat(shipping);
-   console.log(shipping, subtotal, total);
-   document.getElementById("totalAmount").textContent = parseFloat(total.toFixed(2));
-   document.getElementById("total-amount").value;
-
+   
 });
 
 
