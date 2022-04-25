@@ -306,9 +306,9 @@
                     </form>
                 <?php }else if ($orderstatus == 'Paid' && $days <5 ) {?>
                 
-                    <span tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-                            <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Remind Seller</button>
-                    </span>                   
+                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" diasbled >
+                        Remind Seller
+                    </button>                
                     <?php
                  }?>
 
