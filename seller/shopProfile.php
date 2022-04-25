@@ -164,9 +164,9 @@
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
-         Image display frame (place where the image will display)
-          <img id="frame" src="" width="100px" height="100px" />
+      <div id="uploadContainer" name="mediaContainer" class="clearfix">
+         <!--Image display frame (place where the image will display)-->
+          <img id="frame" src="" />
         
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
         <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
