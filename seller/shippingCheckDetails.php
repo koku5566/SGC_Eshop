@@ -38,7 +38,7 @@
         $address = $orow['address'];
         $buyeremail = $orow['email'];
         $orderdate = $orow['order_date'];
-        $trackingnum = $orow['tracking_num'];
+        $trackingnum = $orow['tracking_number'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
