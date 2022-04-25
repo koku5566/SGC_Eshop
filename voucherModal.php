@@ -78,7 +78,7 @@
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_amount" value="<?php echo $row['discount_amount']; ?>">
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_type" value="<?php echo $row['voucher_type']; ?>">
 
-               <label class="form-check-label" for="<?php echo $n++; ?>">
+               <label class="form-check-label" for="<?php echo $n; ?>">
                   <div class="col-sm-12">
                      <div class="card m-2">
                         <div class="card-body">
