@@ -312,7 +312,7 @@
    function getSelectItemThat(id) {
         
     var times = document.getElementsByClassName("form-check-input");
-    for (var i = 1;i <= times.length; i++)
+    for (var i = 0;i < times.length; i++)
     {
         document.getElementById(i).checked = false;
     }
