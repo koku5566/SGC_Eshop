@@ -76,8 +76,9 @@
 				<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
 					<?php
 						$sql = "SELECT * FROM user";
-						$res_data = mysqli_query($conn,$sql);
-						while($row = mysqli_fetch_array($res_data)){
+						$res_data = $conn->query($sql);
+						if($res_data->num_rows>0){
+							while($row = $res_data->fetch_assoc()){
 							echo("
 								<tr>
 									<td class='text-center text-lg text-medium'>".$row["user_id"]."</td>
@@ -90,6 +91,11 @@
 									<td class='text-center text-lg text-medium'><button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editUserModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button></td>
 									<td class='text-center text-lg text-medium'><button type='button' class='remove btn btn-primary' data-toggle='modal' data-target='#deleteUserModal' value=".$row["username"]."><i class='fa fa-trash' aria-hidden='true'></i></button></td>
 								</tr>
+								");
+							}
+						}else{
+							echo("
+							<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\" style=\"font-size: 1.5rem;\">No User</p></div>
 							");
 						}
 					?>
