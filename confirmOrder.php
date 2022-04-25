@@ -42,7 +42,7 @@ if(isset($_POST['confirm']))
           
           <form method="post" action="confirmOrder.php" style="font-size:25px;">
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
-                <input class="btn btn-primary" type="submit" name="confirm" value="Confirm Order" >
+                <input class="btn btn-primary" type="submit" name="confirm" value="Confirm Order" style="text-align: center;" >
                 
             </form>
       </div>
