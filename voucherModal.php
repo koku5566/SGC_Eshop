@@ -265,18 +265,7 @@
    });
 
   
-   var times = document.getElementsByClassName("form-check-input");
-   console.log("time:" + times);
-
-   function getSelectItemThat(id) {
-        
-    var times = document.getElementsByClassName("form-check-input");
-    for (var i = 1;i <= times.length; i++)
-    {
-        document.getElementById(i).checked = false;
-    }
-    document.getElementById(id).checked = true;
-   }
+   
 }
 
 </script>

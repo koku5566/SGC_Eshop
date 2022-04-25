@@ -215,7 +215,7 @@
             <?php
                 require __DIR__ .'/voucherModal.php'
             ?>
-            
+
             <div class="shopping-cart-discount-footer" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
@@ -305,4 +305,17 @@
          });
 
     }
+
+    var times = document.getElementsByClassName("form-check-input");
+   console.log("time:" + times);
+
+   function getSelectItemThat(id) {
+        
+    var times = document.getElementsByClassName("form-check-input");
+    for (var i = 1;i <= times.length; i++)
+    {
+        document.getElementById(i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+   }
 </script>
