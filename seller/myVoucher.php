@@ -125,7 +125,7 @@
                         ?>
                      </td>
                      <td>
-                        <?php if ($r['voucher_list'] == 0 ){
+                        <?php if ($r['voucher_list'] == 0 && $r['voucher_display'] == 0 && $r['voucher_limit'] == 0 && $expired < $today){
 
                            $return = $_SERVER['PHP_SELF'];
 
@@ -138,7 +138,7 @@
 
                            ");
 
-                        }else if($r['voucher_list'] == 1 ){
+                        }elseif($r['voucher_list'] == 1 ){
 
                            $return = $_SERVER['PHP_SELF'];
 
@@ -305,25 +305,31 @@
    }
 
    if(isset($_POST['delist'])){
-      
-      $voucher_id2 = $_POST['vid'];
 
-      $sqldl = "UPDATE voucher SET voucher_list = '1'
-                WHERE voucher_id = '$voucher_id2'";
-                  
-      if($conn->query($sqldl))
-      {
-         echo '<script>alert("Your voucher has been listed.")</script>';
+      if($r['voucher_display'] == 0 && $r['voucher_limit'] == 0 && $expired < $today){
+
+         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
+
+      }else{
+
+         $voucher_id2 = $_POST['vid'];
+
+         $sqldl = "UPDATE voucher SET voucher_list = '1'
+                  WHERE voucher_id = '$voucher_id2'";
+                     
+         if($conn->query($sqldl))
+         {
+            echo '<script>alert("Your voucher has been listed.")</script>';
+         }
+         else{
+            echo '<script>alert("Your voucher failed to be listed.")</script>';
+         }
       }
-      else{
-         echo '<script>alert("Your voucher failed to be listed.")</script>';
-      }
+
    }
 
-   if(isset($_POST['edit'])){
+   //if(isset($_POST['edit'])){
 
-      
-      
       // $voucher_id2 = $_POST['vid'];
 
       // $sqldl = "UPDATE voucher SET voucher_list = '1'
@@ -336,7 +342,7 @@
       // else{
       //    echo '<script>alert("Your voucher failed to be listed.")</script>';
       // }
-   }
+   //}
    
 ?>
 
