@@ -55,8 +55,8 @@
 				<div class=\"row\" style=\"border-left: 3px solid #a31f37; margin-bottom: 1rem;\">
 					<div class=\"col-11\" style=\"background-color: lightyellow;\">
 						<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
-							<div class=\"container-col2\">
-								<div class=\"container-left-col1\">
+							<div class=\"container-col1\">
+								<div class=\"container-left-col2\">
 									<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
 									<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
 									<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
