@@ -127,7 +127,7 @@
                         ?>
                      </td>
                      <td>
-                        <?php if ($r['voucher_list'] == 0 && $r['voucher_display'] == 0 && $r['voucher_limit'] <= 0){
+                        <?php if ($r['voucher_list'] == 0 || $r['voucher_display'] == 0 || $r['voucher_limit'] <= 0){
 
                            $return = $_SERVER['PHP_SELF'];
 
