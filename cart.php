@@ -210,7 +210,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right;'>Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right; text-weight: bold;' >Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
@@ -237,7 +237,7 @@
                 <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
-                <div class="column text-lg" >Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+                <div class="column text-lg">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
     </div>
     <div class="shopping-cart-footer">
