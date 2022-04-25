@@ -134,10 +134,10 @@
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
-                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
-                              <input type=\"hidden\" name=\"ve\" value=\"$ve\">
-                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"text\" name=\"vd\" value=\"$vd\">
+                              <input type=\"text\" name=\"ve\" value=\"$ve\">
+                              <input type=\"text\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
 
@@ -150,10 +150,10 @@
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
-                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
-                              <input type=\"hidden\" name=\"ve\" value=\"$ve\">
-                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"text\" name=\"vd\" value=\"$vd\">
+                              <input type=\"text\" name=\"ve\" value=\"$ve\">
+                              <input type=\"text\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-primary\">List</button>
                            </form>
 
