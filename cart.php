@@ -329,17 +329,17 @@
                 {
                     document.getElementById(i).disabled = false;
 
-                    var temp_shop_id = document.getElementById(i).value;
-                    console.log("Temp Shop ID: " + temp_shop_id);
+                    // var temp_shop_id = document.getElementById(i).value;
+                    // console.log("Temp Shop ID: " + temp_shop_id);
 
-                    if (temp_shop_id == shop_id) {
-                        document.getElementById(i).disabled = true;
-                    }
+                    // if (temp_shop_id == shop_id) {
+                    //     document.getElementById(i).disabled = true;
+                    // }
 
                 }
                 else{
                     document.getElementById(i).checked = false;
-                    //document.getElementById(i).disabled = true;
+                    document.getElementById(i).disabled = true;
                 }
                 
             }
