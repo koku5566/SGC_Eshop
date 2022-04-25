@@ -95,7 +95,7 @@
                            echo ("
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
-                              <button type=\"edit\" name=\"edit\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
+                              <button type=\"submit\" name=\"edit\" class=\"btn btn-light\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
                            </form>
                            ");
                         ?>
