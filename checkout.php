@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
 
-/* 	  if($_SESSION['login'] == false)
+	if($_SESSION['login'] == false)
 	 {
 	 	echo "<script>alert('Login to checkout');
 	 		window.location.href='login.php';</script>";
@@ -316,7 +316,7 @@ $shippingfee = 10;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
-                        <li class="list-group-item"><span>Shipping Total</span><span id="shipping-fee" style= "float: right;"></span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span style= "float: right;">RM <span id="shipping-fee">10.00</span></span></li>
                         <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
                     </ul>
                 </div>
@@ -346,7 +346,7 @@ $shippingfee = 10;
 
 $(document).ready(function() {
     var noshippingfee = 0;
-    var shippingtotal = parseFloat(document.getElementById("shippingtotal").value);
+    var shippingtotal = parseFloat(document.getElementById("shippingprice").value);
     var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
     var selection = "";
 
