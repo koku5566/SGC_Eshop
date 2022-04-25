@@ -55,15 +55,17 @@
                                                 <div class="col-3">
                                                    x <?php echo $row2['order_status']?>
                                                 </div>
-                                                <div class="col-3">
                                                 
-                                                </div>
+                                                
+                                                
                                             </div>
                                             <?php
                                             }
                                             ?>
                                         </div>
+                                        <div class="col-3">
                                         <a class="btn btn-primary " style="margin-left:10px;"  href="cancelActions.php?order_id=<?php echo $row2['order_id'];?>">Actions</a>
+                                        </div>
                                     </div>
                                     <hr>
                                     <?php } ?>
