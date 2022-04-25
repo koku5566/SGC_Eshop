@@ -310,13 +310,18 @@
         
         var times = document.getElementsByClassName("form-check-input");
         var shop_id = document.getElementById(id).value;
-        console.log("Shop ID: " + shop_id);
 
         if(document.getElementById(id).checked != true){
             for (var i = 0;i < times.length; i++)
             {
-                
-                document.getElementById(i).disabled = false;
+                var temp_shop_id = document.getElementById(i).value;
+                if (temp_shop_id != shop_id) {
+                    document.getElementById(i).disabled = true;
+                }
+                else
+                {
+                    document.getElementById(i).disabled = false;
+                }
                 
             }
             document.getElementById(id).checked = false;
@@ -333,7 +338,6 @@
                     document.getElementById(i).checked = false;
 
                     var temp_shop_id = document.getElementById(i).value;
-                    console.log("Temp Shop ID: " + temp_shop_id);
 
                     if (temp_shop_id != shop_id) {
                         document.getElementById(i).disabled = false;
