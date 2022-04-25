@@ -216,7 +216,7 @@
                 <div class="column">
                     <form class="coupon-form" method="post"> -->
                         <!-- Select voucher Modal -->
-                    <form class="vModal" style="float: left;">
+                    <form class="coupon-form" style="float: left;">
                         <?php
                             require __DIR__ .'/voucherModal.php'
                         ?>
