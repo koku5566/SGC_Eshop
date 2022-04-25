@@ -351,7 +351,8 @@ select.form-control {
 }
 
 .shopping-cart-discount-footer>.column:last-child {
-    text-align: right
+    text-align: right;
+    color: black;
 }
 
 .shopping-cart-discount-footer>.column:last-child .btn {
@@ -377,7 +378,7 @@ select.form-control {
     display: table;
     width: 100%;
     padding: inherit;
-    /* border-top: 1px solid #e1e7ec */
+    color: black;
 }
 
 .shopping-cart-footer>.column {
