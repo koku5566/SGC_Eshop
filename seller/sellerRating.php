@@ -30,7 +30,7 @@
     </div>
     <div class="row reviewContainer">
       <h4><b>User Review</b></h4>
-      <p><span id="">
+      <p>
 
       <?php
       if ($conn->connect_error) {
@@ -46,12 +46,12 @@
           echo "Product id: " . $row["product_id"]. " User id: " . $row["user_id"]. " " . $row["message"]. "Rating: " . $row["rating"]. " " . $row["pic1"]. "<br>";
         }
       } else {
-        echo "<br><br> 0 results";
+        echo "<br> 0 results";
       }
       $conn->close();
       ?>
 
-      </span></p>
+      </p>
     </div>
   </div>
 </div>
