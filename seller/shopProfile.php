@@ -314,10 +314,9 @@ function preview() {
 
 /* Preview Multiple Images */
 $(function() {
-  $(":file").change(function() {
+  var preview = change(function(event) {
     if (this.files && this.files[0]) {
       for (var i = 0; i < this.files.length; i++) {
-        var preview = function (event);
         var reader = new FileReader();
         reader.onload = imageIsLoaded;
         reader.readAsDataURL(this.files[i]);
