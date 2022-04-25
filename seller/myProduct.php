@@ -105,14 +105,6 @@
                     </script>
                 <?php
             }
-            else
-            {
-                ?>
-                    <script type="text/javascript">
-                        alert("Product Cannot be delete <?php echo(mysqli_error($conn)); ?>");
-                    </script>
-                <?php
-            }
         }
     }
 ?>
