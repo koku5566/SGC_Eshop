@@ -2,6 +2,12 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+  $shop_id = $_GET['id'];
+  $shopName = 'shop_name';
+  $sql_rating = "SELECT shop_name FROM shopProfile WHERE shop_id='$shop_id'";
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
  
@@ -9,7 +15,7 @@
 <div class="container-fluid" style="width:80%">            
   <div class="container ratingContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5><?php echo $shopName; ?>SEGi College Subang Jaya</h5>
     </div>
     <div class="row descriptionContainer">
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
@@ -58,7 +64,7 @@ background-color: #EEEDEE;
 }
 
 .sellerProfilePic{
-  width: 50px;
+  width: 45px;
   height:40px;
 }
 
