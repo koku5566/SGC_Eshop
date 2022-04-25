@@ -308,18 +308,22 @@
 
     function getSelectItemThat(id) {
 
-        if ( document.getElementById(id).checked == true) {
-            document.getElementById(id).checked = false;
-        }
+        
         
         var times = document.getElementsByClassName("form-check-input");
         for (var i = 0;i < times.length; i++)
         {
             document.getElementById(i).checked = false;
         }
-        document.getElementById(id).checked = true;
 
+        if ( document.getElementById(id).checked == true) {
+             document.getElementById(id).checked = false;
+        }
+        else
+        {
+            document.getElementById(id).checked = true;
+        }
         
-   
+
     }
 </script>
