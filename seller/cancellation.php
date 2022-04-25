@@ -12,10 +12,11 @@
                                         <div class="col-2">
                                            <b>Order ID</b>
                                         </div>
-                                        <div class="col-7">
+                                        <div class="col-6">
                                             <b>Product Detail</b>
                                         </div>
-                                        <div class="col-3"><b>Status</b></div>
+                                        <div class="col-2"><b>Status</b></div>
+                                        <div class="col-2"><b>Actions</b></div>
                                     </div>
                                     <hr>
 
