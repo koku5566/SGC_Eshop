@@ -219,12 +219,12 @@
             </li>
             <!-- Nav Item - Event Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinance"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
                     aria-expanded="true" aria-controls="collapseFinance">
                     <i class="fas fa-fw fa-credit-card"></i>
                     <span>Event</span>
                 </a>
-                <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="eventSellerDashboard.php">Event Dashboard</a>
                         <a class="collapse-item" href="createEvent.html">Create New Event</a>
