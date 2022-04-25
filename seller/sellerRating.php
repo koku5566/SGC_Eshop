@@ -30,7 +30,7 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     
-    <div class="container reviewContainer">
+    <div class="reviewContainer">
       <div class="row reviewTitle">
         <h4><b>User Review</b></h4>
       </div>
