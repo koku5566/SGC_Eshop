@@ -30,7 +30,7 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     
-    <div class="row">
+    <div class="row reviewTitle">
       <h4><b>User Review</b></h4>
     </div>
 
@@ -92,9 +92,14 @@ background-color: #EEEDEE;
   padding: 10px;
 }
 
-.reviewContainer{
+.reviewTitle{
   background-color: #EEEDEE;
   margin: 30px 0;
   padding: 15px;
+}
+
+.reviewContainer{
+  background-color: #EEEDEE;
+  padding: 0 15px;
 }
 </style>
