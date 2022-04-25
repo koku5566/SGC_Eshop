@@ -74,11 +74,10 @@
                                        <div class="h1 text-gray-900 mb-4 container-left-col2">My Voucher</div>
                                     </div>
                                     <hr>
-
-                                    <div class="col-sm-12">
-                                       <?php
+                                    <?php
                                        while ($row = mysqli_fetch_assoc($result_upvoucher)) {
-                                       ?>
+                                    ?>
+                                    <div class="col-sm-12">
                                        <div class="card m-2">
                                           <div class="card-body">
                                              <div class="row">
