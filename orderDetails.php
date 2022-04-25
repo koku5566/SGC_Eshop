@@ -111,7 +111,7 @@ if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
                     </div>
                     <?php if($row2['order_status'] !='Completed'){?>
                         <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
-                        <a class="btn btn-primary "style="margin-left:10px;" href="orderDetails.php?comfirm&order_id==<?php echo $row2['order_id'];?>" onclick="return confirm_click();">Confirm Order</a>
+                        <a class="btn btn-primary "style="margin-left:10px;" href="orderDetails.php?comfirm&order_id=<?php echo $row2['order_id'];?>" onclick="return confirm_click();">Confirm Order</a>
                             <?php }else{?>
                                 <a class= "btn btn-primary" href="getOrder.php">Back</a>
                                 <?php }?>
