@@ -151,7 +151,7 @@
           <span class="glyphicon glyphicon-camera"></span>
           <span>Change<br>Image</span>
         </label>
-        <input id="file" type="file" name="profileImage[]"  value="" onchange="loadImage(event)"/>
+        <input id="file" type="file" name="profileImage[]"  value="" onchange="loadImage(event)" required/>
         <img src="/img/shop_logo/<?php echo $row['shop_profile_image']?>" id="profileImage" name="profileImage" class="mb-5" width="200"/>
       </div>
     </div>
@@ -175,7 +175,7 @@
     </div>-->
     <div class="row">
       <label class="form-label">Address</label><br>
-      <input type="text" class="form-control" name="address"><?php echo $shopAddress ?></input>
+      <input type="text" class="form-control" name="address" value="<?php echo $shopAddress ?>" required />
     </div>
 
 
