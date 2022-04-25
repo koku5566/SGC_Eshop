@@ -188,7 +188,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE promotionEnd_Date <= now() AND `status` = 1";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 1";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){ 
                                             while($row = $result->fetch_assoc())
