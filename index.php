@@ -228,12 +228,9 @@
                             GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image
                             "; 
 
-                            $stmt = $conn->prepare($sql_voucher);
-                            $stmt->execute();
-                            $result = $stmt->get_result();
-                            
-                            
-                            while ($row = $result->fetch_assoc()) {
+                            $result_voucher = mysqli_query($conn, $sql_voucher);
+
+                            while($row = mysqli_fetch_assoc($result_voucher)) {
                                 $td = date('y-m-d');
                                 $expr = $row['voucher_expired'];
                                 
