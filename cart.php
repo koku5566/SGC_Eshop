@@ -226,7 +226,7 @@
                 <!-- </div>
             </div> -->
     
-            <div class="shopping-cart-footer" >
+            <div class="shopping-cart-footer-1" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
             <div class="shopping-cart-discount-footer" >
