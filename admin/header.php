@@ -133,7 +133,7 @@
                         <a class="collapse-item" href="../admin/adminManage.php">Product Management</a>
 						<a class="collapse-item" href="../admin/review.php">Product Review</a>
                         <a class="collapse-item" href="../admin/category.php">Category Management</a>
-                        <a class="collapse-item" href="../admin/promotion.php">Promotion  Management</a>
+                        <a class="collapse-item" href="../admin/promotionAdmin.php">Promotion  Management</a>
                         <a class="collapse-item" href="../admin/adminTransaction.php">Transaction History</a>
                         <a class="collapse-item" href="../admin/adminViewShipping.php">Order Delivery History</a>
                         <a class="collapse-item" href="../admin/eventAdminDashboard.php">Event Management</a>
