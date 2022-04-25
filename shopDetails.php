@@ -33,7 +33,7 @@
       }
     }
   
-    $sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE shop_id = '$shop_id'";
+    $sql_shop = "SELECT COUNT(product_id) AS total_Product FROM product WHERE product_status = 'A' AND  shop_id = '$shop_id'";
     $result_shop = mysqli_query($conn, $sql_shop);
 
     if (mysqli_num_rows($result_shop) > 0) {
