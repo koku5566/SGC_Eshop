@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="../css/cart.css">
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">
-<div class="column"><button class="btn-back" onclick="history.back()"> < Back</button></div>
+<div class="column"><button class="btn btn-primary" type="submit" onclick="history.back()">BACK</button></div>
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         
