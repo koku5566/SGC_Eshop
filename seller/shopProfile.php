@@ -164,12 +164,12 @@
       <textarea class="form-control"  rows="3" name="description"><?php echo $shopDescription ?></textarea>
     </div>
     <div class="row">
-      <div id="uploadContainer" name="mediaContainer" class="clearfix">
+      <div id="uploadContainer" name="mediaContainer" class="imageContainer clearfix">
          <!--Image display frame (place where the image will display)-->
           <img id="frame" src="" />
         
         <label for="uploadBtn" id="myLabel" onclick="hideLabel()"><b>+</b><br>Add Image & Video</label>
-        <input class="form-control" type="file" id="uploadBtn" name="" onchange="preview()" width="100px" height="100px" multiple hidden/>       
+        <input class="form-control" type="file" id="uploadBtn" name="media" onchange="preview()" width="100px" height="100px" multiple hidden/>       
       </div>
     </div>
 
@@ -314,7 +314,7 @@ function preview() {
 
 /* Preview Multiple Images */
 $(function() {
-  $(":file").change(function() {
+  $('.media').change(function() {
     if (this.files && this.files[0]) {
       for (var i = 0; i < this.files.length; i++) {
         var reader = new FileReader();
