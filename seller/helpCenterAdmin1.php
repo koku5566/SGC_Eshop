@@ -4,7 +4,7 @@
 
 <?php
 
-$_SESSION["userId"] = "A000001";
+
 	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
             
@@ -397,7 +397,7 @@ $_SESSION["userId"] = "A000001";
 	}
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['CUmessagereply']) && !empty($_POST['CUmessagereply']) && $_POST['CUreplyadmin'] === 'Reply' ){
 		
-		$adminId = $_SESSION["userId"];
+		$adminId = $_SESSION['userid'];
 		$CUmessagereply = $_POST['CUmessagereply'];
 		//echo "<div class='alert alert-success'>$CUmessagereply</div>";
 		$selectedPID = $_POST['CUid2'];
