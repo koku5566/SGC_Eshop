@@ -2,11 +2,11 @@
 <?php
     require __DIR__ . '/header.php';
 
-	  if($_SESSION['login'] == false)
+/* 	  if($_SESSION['login'] == false)
 	 {
 	 	echo "<script>alert('Login to checkout');
 	 		window.location.href='login.php';</script>";
-     } 
+     }  */
  
      $userID = $_SESSION["userid"];
 
