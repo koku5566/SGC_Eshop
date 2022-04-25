@@ -102,5 +102,8 @@
 	.container-left-col2 {
 	display: block;
 	}
+	.container-right-col2 {
+	display: block;
+	}
 }
 </style>
