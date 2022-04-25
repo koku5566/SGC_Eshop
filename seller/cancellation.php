@@ -53,7 +53,7 @@
                                                     <?php echo $row2['product_name']?>
                                                 </div>
                                                 <div class="col-3">
-                                                   x <?php echo $row2['order_status']?>
+                                                   <?php echo $row2['order_status']?>
                                                 </div>
                                                 
                                                 
