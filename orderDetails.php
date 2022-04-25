@@ -93,7 +93,7 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $row2['amount']?>.00</strong></h5>
+                                <h5><strong>RM<?php echo $totalamount?>.00</strong></h5>
                             </div>
                             
                         </div>
