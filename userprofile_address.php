@@ -1,9 +1,9 @@
 <?php require __DIR__ . '/header.php' ?>
 
 <?php	
-	if($_SESSION['login'] == false)
+	if($_SESSION['login'] == false || $_SESSION['role'] == "SELLER")
 	{
-		?><script>window.location = '<?php echo("$domain/login.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/E404.php");?>'</script><?php
 		exit;
     }
 ?>
