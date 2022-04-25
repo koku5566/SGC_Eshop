@@ -216,11 +216,10 @@
                 <div class="column">
                     <form class="coupon-form" method="post"> -->
                         <!-- Select voucher Modal -->
-                    <form class="coupon-form" style="float: left;">
+
                         <?php
                             require __DIR__ .'/voucherModal.php'
                         ?>
-                    </form>
                     <!-- </form> -->
                         <!-- <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
                         <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button> -->
