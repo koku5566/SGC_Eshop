@@ -121,7 +121,7 @@
         $seller_email = mysqli_real_escape_string($conn, SanitizeString($_POST["selleremail"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
 
-        echo $buyer_email,$seller_email;
+        //echo $buyer_email,$seller_email;
         $to = $seller_email;
         $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
         $from = "event@sgcprototype2.com";
@@ -302,9 +302,9 @@
                     <input type="text" name="invoice_id" value="<?php echo $invoice_id?>">
                     <button type="submit" name="remind_seller" class="btn btn-primary">Remind Seller</button>
                     </form>
-                <?php }else if ($orderstatus == 'Paid' && days <5) {?>
+                <?php }else if ($orderstatus == 'Paid' && $days <5) {?>
                     <div class="tooltip">
-                        <button class="btn btn-primary">Remind Seller</button> 
+                        <button class="btn btn-primary" disabled>Remind Seller</button> 
                         <span class="tooltiptext">You can remind seller if order has not been shipped after 5 days</span>
                     </div>
                     <?php

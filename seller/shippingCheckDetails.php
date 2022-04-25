@@ -79,6 +79,44 @@
         //$uquery_run = mysqli_query($conn,$updatesql);
 
         if ($conn->query($insertsql)&& $conn->query($updatesql) ) {
+            //===============email function=======================
+            $to = $seller_email;
+            $subject = "Your Order has been shipped out." ;
+            $from = "event@sgcprototype2.com";
+            $from2 = "event@sgcprototype2.com";
+            $fromName = "SGC E-Shop Admin";
+    
+            $headers =  "From: $fromName <$from> \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: multipart/mixed;\r\n";
+    
+    
+            $message = "
+            <h5>Your Order for <strong>'$invoice_id'</strong>shipped out.</h5>
+            <a>Track Here</a>
+            <p>
+            <h4>Thank you</h4>
+            <h4>Best Regards</h4>
+            <h4>SGC Eshop</h4>
+            ";
+    
+            $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+    
+            $boundary = md5(time());
+            $headers .= " boundary=\"{$boundary}\"";
+            $message = "--{$boundary}\r\n";
+            $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+            $message .= "Content-Transfer-Encoding: 7bit\r\n";
+            $message .= $HTMLcontent . "\r\n";
+            $message .= "--{$boundary}\r\n";
+            $returnPath = "-f" . $from2;
+    
+            if (@mail($to, $subject, $message, $headers, $returnPath)) {
+                echo "<script>alert('A notification email has been sent to the buyer')</script>";
+            } else {
+                echo "<script>alert('Error')</script>";
+            }
+            //end of email func===============================================
             $_SESSION['success'] = "Order Status has been updated";
             //header('Location: ' . $_SERVER['HTTP_REFERER']); 
              ?>
@@ -104,6 +142,45 @@
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
         echo 'hello';
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+
+            //===============email function=======================
+            $to = $seller_email;
+            $subject = "Your Self-Collection Order is Ready to Pick Up" ;
+            $from = "event@sgcprototype2.com";
+            $from2 = "event@sgcprototype2.com";
+            $fromName = "SGC E-Shop Admin";
+    
+            $headers =  "From: $fromName <$from> \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: multipart/mixed;\r\n";
+    
+    
+            $message = "
+            <h5>Your Order <strong>'$invoice_id'</strong> is ready to pick up.</h5>
+            <p>Your pick up address will be: 
+            <h4>Thank you</h4>
+            <h4>Best Regards</h4>
+            <h4>SGC Eshop</h4>
+            ";
+    
+            $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+    
+            $boundary = md5(time());
+            $headers .= " boundary=\"{$boundary}\"";
+            $message = "--{$boundary}\r\n";
+            $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+            $message .= "Content-Transfer-Encoding: 7bit\r\n";
+            $message .= $HTMLcontent . "\r\n";
+            $message .= "--{$boundary}\r\n";
+            $returnPath = "-f" . $from2;
+    
+            if (@mail($to, $subject, $message, $headers, $returnPath)) {
+                echo "<script>alert('A notification email has been sent to the buyer')</script>";
+            } else {
+                echo "<script>alert('Error')</script>";
+            }
+            //end of email func===============================================
+
            // header('Location: ' . $_SERVER['HTTP_REFERER']);  
             $_SESSION['success'] = "Order Status has been updated";?>
             <script>window.location = 'shippingCheckDetails.php?order_id=<?php echo $invoice_id;?>'</script> 
