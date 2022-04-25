@@ -348,14 +348,6 @@
                         if(isset($_POST['claim'])){
 
                             if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) ){
-                                ?>
-                                    <script type="text/javascript">
-                                        window.location.href = window.location.origin + "/login.php";
-                                    </script>
-                                <?php
-                                exit;
-                            }
-                            else{
 
                                 $userid = $_SESSION['userid'];
                                 $voucher_id = $_POST['voucher_id'];
@@ -370,6 +362,18 @@
                                 else{
                                     echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
                                 }
+                                
+                            }
+                            else{
+
+                                ?>
+                                    <script type="text/javascript">
+                                        window.location.href = window.location.origin + "/login.php";
+                                    </script>
+                                <?php
+                                exit;
+
+                                
                             }
                         }
 
