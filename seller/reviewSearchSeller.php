@@ -65,7 +65,7 @@ if(isset($_POST["query"]))
 			  WHERE p.product_name LIKE '%".$search."%'
 			  OR rr.product_id LIKE '%".$search."%' 
 			  OR rr.message LIKE '%".$search."%') k
-			  WHERE k.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
+			  WHERE k.disable_date IS NULL && k.status = 0 && seller_id = '$seller' $rr $rr2";
   //echo "Rating = $rr |";
    //echo "Product = $rr2 ";
 }
@@ -85,7 +85,7 @@ else
 				(SELECT rr_id, product_id, user_id, message, rating, status, seller_id, r_message, disable_date
 				FROM reviewRating) rr
 				ON p.product_id = rr.product_id
-				WHERE rr.disable_date IS NULL && seller_id = '$seller' $rr $rr2";
+				WHERE rr.disable_date IS NULL && rr.status = 0 && seller_id = '$seller' $rr $rr2";
 		   
 	//echo "Rating = $rr |";
 	//echo "Product = $rr2 ";
