@@ -97,7 +97,7 @@
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
 
@@ -110,7 +110,7 @@
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
                            </form>
 
