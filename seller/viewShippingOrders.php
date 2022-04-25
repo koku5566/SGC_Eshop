@@ -552,7 +552,7 @@ $user_id = $_SESSION["userid"];
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
                             <?php       
                               $sqlcheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Delivered' OR myOrder.order_status ='Completed' AND productTransaction.shop_id = '$user_id' ORDER BY myOrder.order_id DESC ";
-                              $cresultheader = mysqli_query($conn, $sqlsheader);
+                              $cresultheader = mysqli_query($conn, $sqlcheader);
                               if (mysqli_num_rows($cresultheader) > 0) {
                               while ($crowheader = mysqli_fetch_assoc($cresultheader)) {
                               //Loop header
@@ -572,12 +572,12 @@ $user_id = $_SESSION["userid"];
                                         <div class="card-body">
                                             <?php
 
-                                            $coID = $srowheader['invoice_id'];
+                                            $coID = $crowheader['invoice_id'];
                                             //Loop product in each order
                                             $csql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON productTransaction.product_id = product.product_id
-                                                        WHERE productTransaction.invoice_id = '$coID' AND productTransaction.shop_id = '$user_id'  AND myOrder.order_status = 'Shipped' ORDER BY myOrder.order_id DESC";
+                                                        WHERE productTransaction.invoice_id = '$coID' AND productTransaction.shop_id = '$user_id'  AND myOrder.order_status = 'Completed' OR myOrder.order_status = 'Delivered' ORDER BY myOrder.order_id DESC";
                                             
                                             $cresult = mysqli_query($conn, $csql);
                                             if (mysqli_num_rows($sresult) > 0) {
