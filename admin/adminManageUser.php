@@ -142,7 +142,7 @@
 	</div>    
 </form>
 
-<?php require __DIR__ . '/admin/footer.php' ?>
+<?php require __DIR__ . '/footer.php' ?>
 
 <script>
 $(document).ready(function() {

@@ -171,4 +171,4 @@ if(isset($_POST['signup']))
     </div>
 </div>
 
-<?php require __DIR__ . '/admin/footer.php' ?>
+<?php require __DIR__ . '/footer.php' ?>
