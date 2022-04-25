@@ -94,7 +94,7 @@
                         <?php 
                            echo ("
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"edit\" class=\"btn btn-light\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
                            </form>
                            ");
@@ -122,7 +122,7 @@
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"hidden\" name=\"vid\" value=\"$vid\">
-                              <button type=\"submit\" name=\"list\" class=\"btn btn-light\">List</button>
+                              <button type=\"submit\" name=\"list\" class=\"btn btn-warning\">List</button>
                            </form>
 
                            ");
