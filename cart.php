@@ -216,7 +216,7 @@
                 <div class="column">
                     <form class="coupon-form" method="post"> -->
                         <!-- Select voucher Modal -->
-                        
+
                         <?php
                             require __DIR__ .'/voucherModal.php'
                         ?>
@@ -226,7 +226,7 @@
                 <!-- </div>
             </div> -->
     
-            <div class="shopping-cart-footer-1" >
+            <div class="shopping-cart-footer" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
             <div class="shopping-cart-discount-footer" >

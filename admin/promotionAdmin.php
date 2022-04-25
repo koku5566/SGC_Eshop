@@ -22,7 +22,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Approved Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -41,7 +41,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Rejected Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -60,7 +60,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Deleted Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -114,7 +114,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Promotion Edited Successful");
-                    window.location.href = window.location.origin + "/admin/promotion.php";
+                    window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                 </script>
             <?php
         }
@@ -188,7 +188,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE promotionEnd_Date <= now() AND `status` = 1";
+                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 1";
                                         $result = $conn->query($sql);
                                         if($result-> num_rows > 0){ 
                                             while($row = $result->fetch_assoc())
@@ -413,7 +413,7 @@
                                                         echo '<script>alert("Add promotion successfully!")</script>';
                                                         ?>
                                                             <script type="text/javascript">
-                                                                window.location.href = window.location.origin + "/admin/promotion.php";
+                                                                window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                                                             </script>
                                                         <?php
                                                     }
@@ -422,7 +422,7 @@
                                                         echo '<script>alert("Promotion is pending to added, need to be approved by admin.")</script>';
                                                         ?>
                                                             <script type="text/javascript">
-                                                                window.location.href = window.location.origin + "/admin/promotion.php";
+                                                                window.location.href = window.location.origin + "/admin/promotionAdmin.php";
                                                             </script>
                                                         <?php
                                                     }

@@ -111,14 +111,6 @@
                 <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
             <!-- Nav Item - Shipment Collapse Menu -->
             <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
             <li class="nav-item">
