@@ -64,7 +64,7 @@
                                             ?>
                                         </div>
                                         <div class="col-3">
-                                        <a style="margin-left:10px;"  href="cancelActions.php?order_id=<?php echo $row2['order_id'];?>">Actions</a>
+                                        <a style="margin-left:10px;"  href="cancelAction.php?order_id=<?php echo $row2['order_id'];?>">Actions</a>
                                         </div>
                                     </div>
                                     <hr>
