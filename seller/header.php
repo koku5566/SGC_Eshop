@@ -483,7 +483,7 @@
                                 </a>
                                 <?php endif?>
                             
-                                <a class="dropdown-item" href="../userProfile.php">
+                                <a class="dropdown-item" href="../seller/shopProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>

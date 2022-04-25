@@ -210,13 +210,19 @@ body{
 } 
 
 div.absolute {
-  position: absolute;
+  /*position: absolute;
   top: 490px;
-  right: 180px;
+  right: 180px;*/
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  position: absolute;
+  transition: all 0.3s ease;
 }
 
 .editBtn {
-  background-color: white;
+  background-color: #a41e38;
+  color: white;
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
@@ -238,7 +244,6 @@ div.absolute {
   justify-content: center;
   align-items: center;
   position: absolute;
-  transition: all 0.3s ease;
 }
 .profile-pic input {
   display: none;

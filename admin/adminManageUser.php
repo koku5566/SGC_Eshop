@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/seller/header.php' ?>
+<?php require __DIR__ . '/header.php' ?>
 
 <?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
@@ -52,7 +52,7 @@
 				<h6 class="m-0 font-weight-bold text-primary">User Table</h6>
 			</div>
 			<div class="pt-2">
-				<a href="../adminAddUser.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add User</a>
+				<a href="../admin/adminAddUser.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add User</a>
 			</div>
 		</div>
 	</div>

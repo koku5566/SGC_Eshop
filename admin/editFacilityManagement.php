@@ -74,7 +74,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Facility Edited Successful");
-                    window.location.href = window.location.origin + "/seller/adminFacilityManagement.php";
+                    window.location.href = window.location.origin + "/admin/adminFacilityManagement.php";
                 </script>
             <?php
         }

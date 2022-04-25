@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/seller/header.php' ?>
+<?php require __DIR__ . '/header.php' ?>
 
 <?php	
 	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
