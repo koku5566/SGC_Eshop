@@ -118,6 +118,7 @@ $queryKL = mysqli_query($conn, $sql);
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
         $stock = $row3['product_stock'];
+        $sold = $row3['product_sold'];
     }
 
     $stocksql2 = "SELECT product_stock FROM `variation` 
@@ -138,7 +139,7 @@ $queryKL = mysqli_query($conn, $sql);
     } 
     $addsql = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
     if ($stmt7 = mysqli_prepare($conn,$addsql)){
-        $addQuantity1 = $stock+$product_quantity;
+        $addQuantity1 = $sold+$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt7);
             mysqli_stmt_close($stmt7);        
@@ -154,7 +155,7 @@ $queryKL = mysqli_query($conn, $sql);
         }
         $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
         if ($stmt8 = mysqli_prepare($conn,$addsql2)){
-            $addQuantity2 = $stock+$product_quantity;
+            $addQuantity2 = $sold+$product_quantity;
             $bp = mysqli_stmt_bind_param($stmt8,"is",$addQuantity2,$product_id);
             $bp = mysqli_stmt_execute($stmt8);
                 mysqli_stmt_close($stmt8);        
