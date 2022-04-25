@@ -314,15 +314,15 @@
 
    if(isset($_POST['delist'])){
 
-      // $vd = $_POST['vd'];
-      // $ve = $_POST['ve'];
-      // $vl = $_POST['vl'];
+       $vd = $_POST['vd'];
+       $ve = $_POST['ve'];
+       $vl = $_POST['vl'];
 
-      // if($vd == 0 && $vl == 0){
+       if($vd == 0 && $vl == 0){
 
-      //    echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
+          echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
-      // }else{
+       }else{
 
          $voucher_id2 = $_POST['vid'];
 
@@ -336,7 +336,7 @@
          else{
             echo '<script>alert("Your voucher failed to be listed.")</script>';
          }
-      // }
+       }
 
    }
 

@@ -153,7 +153,7 @@
       $voucherType = $_POST['voucherType'];
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
-      $vlist = "1";
+      $vlist = "0";
       $date = date('Y-m-d H:i:s');
 
       
@@ -174,7 +174,7 @@
 
          if($res)
             {
-               echo '<script>alert("Voucher added succesfully.")</script>';
+               echo '<script>alert("Voucher added succesfully. Active and list your voucher at My Voucher.")</script>';
             }
             else
             {
