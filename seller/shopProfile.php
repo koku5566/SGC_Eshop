@@ -140,7 +140,7 @@
       <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 
       <img class="relative bg-image img-fluid" id="backgroundImage" name="backgroundImage" src="/img/shop_logo/<?php echo $row['shop_profile_cover']?>"><br><br> <?php //echo $shopProfilePic ?>
-      <div class="absolute">
+      <div>
         <input type="file" id="actual-btn" name="profileCover[]" onchange="loadCover(event)" hidden/>
         <label for="actual-btn" class="editBtn"><i class="far fa-image"></i> Edit Cover Photo</label>
       </div>
@@ -216,7 +216,8 @@ div.absolute {
 }
 
 .editBtn {
-  background-color: white;
+  background-color: red;
+  color: white;
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
