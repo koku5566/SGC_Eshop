@@ -121,11 +121,22 @@
                      </td>
                   </tr>
 
-                  <?php
+                  <?php 
+                  }?>
+
+               </tbody>
+
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
+<?php
 
    if(isset($_POST['list'])){
          
-      $voucher_id = $_POST['voucher_id'];
+      $voucher_id = $_POST['vid'];
 
       $sqll = "UPDATE voucher SET voucher_list = '0'
                WHERE voucher_id = '$voucher_id'";
@@ -141,7 +152,7 @@
 
    if(isset($_POST['delist'])){
       
-      $voucher_id2 = $_POST['voucher_id'];
+      $voucher_id2 = $_POST['vid'];
 
       $sqldl = "UPDATE voucher SET voucher_list = '1'
                 WHERE voucher_id = '$voucher_id2'";
@@ -156,19 +167,6 @@
    }
    
 ?>
-
-
-                  <?php 
-                  }?>
-
-               </tbody>
-
-            </table>
-         </div>
-      </div>
-   </div>
-</div>
-
 
 <script type ="module">
   $(document).ready(function() {
