@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if (!isset($_SESSION['userid'])){
+      ?>
+          <script type="text/javascript">
+              window.location.href = window.location.origin + "/login.php";
+          </script>
+      <?php
+      exit;
+   }
+
     $useridup = $_SESSION["userid"];
  ?>
 
