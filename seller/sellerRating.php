@@ -4,8 +4,8 @@
 
 <?php
   $shopId = $_SESSION['userid'];
-  $sql = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
-  $rating_result = mysqli_query($conn, $sql);
+  $sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $rating_result = mysqli_query($conn, $sql_shop);
 ?>
 
 <!-- Icon -->
@@ -37,7 +37,7 @@
         die("Connection failed: " . $conn->connect_error);
       }
       
-      $sql = "SELECT product_id, user_id, message, rating, pic1 FROM reviewRating";
+      $sql = "SELECT product_id, user_id, message, rating, pic1 FROM reviewRating WHERE seller_id = '$shopId'";
       $result = $conn->query($sql);
       
       if ($result->num_rows > 0) {
