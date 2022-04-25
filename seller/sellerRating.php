@@ -55,7 +55,7 @@
           ON user.user_id = reviewRating.user_id";
           $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
-          $user_result = mysqli_query($conn, $sql_user);
+          $result = mysqli_query($conn, $sql_user);
           
           if ($result->num_rows > 0) {
             // output data of each row
@@ -64,7 +64,7 @@
         <div class="col-lg-6 col-md-12">
           <p>
           <?php
-              echo "User id: " . $row["username"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br> <?php;
+              echo "User Name: " . $row["username"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br> <?php;
           ?>
           </p>
         </div>
