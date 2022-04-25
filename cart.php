@@ -22,7 +22,7 @@
     <!-- Shopping Cart-->
     <div class="table-responsive shopping-cart">
         
-        <table class="table" style="border: solid;">
+        <table class="table">
             <thead>
             <!-- <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span> -->
                 <tr>
