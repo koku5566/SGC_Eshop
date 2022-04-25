@@ -51,12 +51,12 @@
   if (!empty($profileIMG)) {
       foreach ($_FILES['profileImage']['name'] as $key => $val) {
           // File upload path 
-          echo (var_dump($_FILES['profileImage']));
+          //echo (var_dump($_FILES['profileImage']));
           $fileName = basename($_FILES['profileImage']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
+          //echo ($targetFilePath);
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
@@ -76,12 +76,12 @@
   if (!empty($profileIMG)) {
       foreach ($_FILES['profileCover']['name'] as $key => $val) {
           // File upload path 
-          echo (var_dump($_FILES['profileCover']));
+          //echo (var_dump($_FILES['profileCover']));
           $fileName = basename($_FILES['profileCover']['name'][$key]);
           $ext = pathinfo($fileName, PATHINFO_EXTENSION);
           $fileName = round(microtime(true) * 1000) . "." . $ext;
           $targetFilePath = $targetDir . $fileName;
-          echo ($targetFilePath);
+          //echo ($targetFilePath);
           // Check whether file type is valid 
           $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
           if (in_array($fileType, $allowTypes)) {
@@ -103,7 +103,8 @@
       { 
           /*Successful*/
           //header("refresh:1; url=shopProfile.php");
-          echo 'Success, please refesh again if not show the updated profile details.';
+          //echo 'Success, please refesh again if not show the updated profile details.';
+          header("Location:shopProfile.php");
       }
       else
       {
