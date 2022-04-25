@@ -318,7 +318,7 @@
        $ve = $_POST['ve'];
        $vl = $_POST['vl'];
 
-       if($vd == 0 && $vl == 0 && $ve < $today){
+       if($vd == 0 || $vl == 0 || $ve < $today){
 
          $voucher_id2 = $_POST['vid'];
 
