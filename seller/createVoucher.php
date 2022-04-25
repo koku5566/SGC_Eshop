@@ -227,6 +227,7 @@
                          product.product_id,
                          product.product_sku,
                          product.product_stock,
+                         product.product_status,
                          product.product_price
                     
                          FROM shopProfile
@@ -238,7 +239,7 @@
                        $stmt->execute();
                        $res = $stmt->get_result();
                        while ($row = $res->fetch_assoc()) {
-                          if($row['product_stock'] > 0)
+                          if($row['product_stock'] > 0 && $row['product_status'] == "A")
                           {
 
                          
