@@ -132,6 +132,17 @@
                      </td>
                   </tr>
 
+                  <?php 
+                  }?>
+
+               </tbody>
+
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
                   <!-- Edit Voucher Modal -->
                   <div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
                   <div class="modal-dialog" style="min-width: 88%;">
@@ -255,18 +266,6 @@
                </div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------- -->
-
-
-                  <?php 
-                  }?>
-
-               </tbody>
-
-            </table>
-         </div>
-      </div>
-   </div>
-</div>
 
 <?php
 
