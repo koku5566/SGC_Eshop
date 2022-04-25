@@ -175,8 +175,8 @@
                                        <div class="input-group col-mb-6">
                                           <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" value="<?php echo $r['discount_amount']?>">
                                           <div class="input-group-append">
-                                             <select name="voucherType" class="custom-select">
-                                                <option value="<?php echo $r['voucher_type']?>">Please choose</option>
+                                             <select name="voucherType" class="custom-select" value="<?php echo $r['voucher_type']?>">
+                                                <option value="">Please choose</option>
                                                 <option value="cashback">RM</option>
                                                 <option value="%">%</option>
                                              </select>
