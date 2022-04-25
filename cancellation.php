@@ -7,7 +7,7 @@ if(isset($_POST['cancel']))
 {
   $reason_type = $_POST['reason_type'];
   $order_id = $_POST['order_id'];
-  $query = "UPDATE myOrder SET reason_type = '$reason_type' , order_status = 'To respond' WHERE order_id = '$order_id' ";
+  $query = "UPDATE myOrder SET reason_type = '$reason_type' , cancellation_status = 'To respond' WHERE order_id = '$order_id' ";
   echo "$query";
   if (mysqli_query($conn, $query)) {
     ?><script>window.location = '<?php echo("$domain/getOrder.php");?>'</script><?php
