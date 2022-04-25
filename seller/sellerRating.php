@@ -4,8 +4,6 @@
 
 <?php
   $shopId = $_SESSION['userid'];
-  $sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
-  $rating_result = mysqli_query($conn, $sql_shop);
 ?>
 
 <!-- Icon -->
@@ -42,6 +40,7 @@
           }
           
           $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+          //$query = "SELECT username FROM user WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
           
           if ($result->num_rows > 0) {
@@ -84,7 +83,7 @@ background-color: #EEEDEE;
 
 .sellerProfilePic{
   width: 45px;
-  height:40px;
+  height:45px;
 }
 
 .descriptionContainer{
