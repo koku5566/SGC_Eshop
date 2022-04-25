@@ -338,8 +338,10 @@
                     if (temp_shop_id != shop_id) {
                         document.getElementById(i).disabled = false;
                     }
+                    else{
+                        document.getElementById(i).disabled = true;
+                    }
                     
-                    document.getElementById(i).disabled = true;
                 }
                 
             }
