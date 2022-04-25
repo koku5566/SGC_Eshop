@@ -421,8 +421,8 @@ $orders = $stmt_2->get_result();
 												<input type = "hidden" name = "rid" value = "<?php echo $row['product_id']?>">
 												<input style="margin-left:10px;" type = "submit" class="btn btn-primary" name = "wreview" value = "Review"></form>											  
 											 <!--CHEONG KIT MIN (END of Rating)-->
-                                             <span style="margin-left:20%;">Total</span>
-                                             <span style="margin-left:30%;" >RM<?php echo $totalamount?>.00</span>
+                                             <span style="margin-left:40%;">Total</span>
+                                             <span style="margin-left:6%;" >RM<?php echo $totalamount?>.00</span>
                                             </tr>
                                         </thead>
                                     </table>
