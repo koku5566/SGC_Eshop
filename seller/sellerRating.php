@@ -96,6 +96,7 @@ background-color: #EEEDEE;
 
 .reviewContainer{
   background-color: #EEEDEE;
+  padding: 15px;
 }
 
 .reviewTitle{
