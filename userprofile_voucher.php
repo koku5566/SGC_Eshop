@@ -22,7 +22,7 @@
 <br>
 
 <?php 
- $userid = $_SESSION["userid"];
+//  $userid = $_SESSION["userid"];
 
  $sql_voucherR =
  "SELECT 
@@ -49,9 +49,9 @@
  GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
  ";
 
- $stmt = $conn->prepare($sql_voucherR);
- $stmt->execute();
- $result = $stmt->get_result();
+//  $stmt = $conn->prepare($sql_voucherR);
+//  $stmt->execute();
+//  $result = $stmt->get_result();
 
 ?>
    
