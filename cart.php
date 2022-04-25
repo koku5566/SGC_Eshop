@@ -234,10 +234,10 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
+                <div class="column text-lg" id="discount" style="font-weight: bold;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
-                <div class="column text-lg">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
+                <div class="column text-lg" style="font-weight: bold;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
     </div>
     <div class="shopping-cart-footer">
@@ -255,7 +255,7 @@
     </div>
     <div class="shopping-cart-footer" >
         <form class = "footer" action="cart_manage.php" method="POST">
-            <div class="column text-lg" >Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
+            <div class="column text-lg" style="font-weight: bold;">Subtotal: RM <span class="text-medium" id="subtotal_count" >0</span>
                 <input id="subtotal_count_hidden" type="hidden" readonly name="subtotal" value="">
                 <button class="btn btn-checkout" type='submit'>Checkout</button>
              </div> 
