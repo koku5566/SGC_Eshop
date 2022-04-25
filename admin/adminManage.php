@@ -63,7 +63,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Ban Successful");
-                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
+                    window.location.href = window.location.origin + "/admin/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
@@ -78,7 +78,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Unban Successful");
-                    window.location.href = window.location.origin + "/seller/adminManage.php?Panel=<?php echo($Panel)?>";
+                    window.location.href = window.location.origin + "/admin/adminManage.php?Panel=<?php echo($Panel)?>";
                 </script>
             <?php
         }
@@ -96,7 +96,7 @@
                 ?>
                     <script type="text/javascript">
                         alert("Product Deleted Successful");
-                        window.location.href = window.location.origin + "/seller/myProduct.php?Panel=<?php echo($Panel)?>";
+                        window.location.href = window.location.origin + "/admin/myProduct.php?Panel=<?php echo($Panel)?>";
                     </script>
                 <?php
             }
@@ -337,9 +337,6 @@
                                                                                 <div class=\"card-body\">
                                                                                     <div class=\"Name\">
                                                                                         <p class=\"card-text product-name\">".$row_1['product_name']."</p>
-                                                                                    </div>
-                                                                                    <div class=\"Tag\">
-                                                                                        <span style=\"border: 1px dashed red; font-size:10pt;\">Student 10% discount</span>
                                                                                     </div>
                                                                                     <div class=\"Price\">
                                                                 ");

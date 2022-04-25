@@ -1,5 +1,14 @@
 <?php
-    require dirname(__DIR__, 1) . '/seller/header.php';
+    require __DIR__ . '/header.php';
+
+    if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) || $_SESSION['role'] != "ADMIN"){
+        ?>
+            <script type="text/javascript">
+                window.location.href = window.location.origin + "/login.php";
+            </script>
+        <?php
+        exit;
+	}
 
     if(isset($_POST['addMain'])){
 
@@ -17,6 +26,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -75,6 +86,8 @@
             foreach($_FILES['img']['name'] as $key=>$val){ 
                 // File upload path 
                 $fileName = basename($_FILES['img']['name'][$key]); 
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                $fileName = round(microtime(true) * 1000).".".$ext;
                 $targetFilePath = $targetDir.$fileName; 
                 // Check whether file type is valid 
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
@@ -124,25 +137,35 @@
         $sql_update .= "category_name = '$categoryName' ";
 
         $fileNames = array_filter($_FILES['img']['name']); 
+        $defaultFile = $_POST['imgDefault'];
 
         // File upload configuration 
         $targetDir = dirname(__DIR__, 1)."/img/category/"; 
         $allowTypes = array('jpg','png','jpeg'); 
 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['img']['name'] as $key=>$val){ 
-                // File upload path 
-                $fileName = basename($_FILES['img']['name'][$key]); 
-                $targetFilePath = $targetDir.$fileName; 
-                // Check whether file type is valid 
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
-                        $sql_update .= ", category_pic = '$fileName' ";
-                    }
+        foreach($_FILES['img']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['img']['name'][$key]); 
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $fileName = round(microtime(true) * 1000).".".$ext;
+            $targetFilePath = $targetDir.$fileName; 
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                if(move_uploaded_file($_FILES["img"]["tmp_name"][$key], $targetFilePath)){ 
+                    $sql_update .= ", category_pic = '$fileName' ";
                 }
-            } 
-        }
+            }
+            else if($defaultFile[$key] != "") //Get the default picture name
+            {
+                $fileName = $defaultFile[$key];
+                $sql_update .= ", category_pic = '$fileName' ";
+            }
+            else
+            {
+                $sql_update .= ", category_pic = '' ";
+            }
+        } 
 
         $sql_update .= " WHERE category_id = $categoryId ";
 
@@ -151,66 +174,62 @@
             //This is for redirect
             ?>
                 <script type="text/javascript">
-                    window.location.href = window.location.origin + "/admin/category.php";
+                    //window.location.href = window.location.origin + "/admin/category.php";
                 </script>
             <?php
         }
     }
     else if(isset($_POST['deleteCategory']))
     {
-        $mainCategoryId = "";
-        $mainCategoryId = "";
-        //If delete Sub
-        if(isset($_POST['deleteSub'])) 
-        {
-            $categoryId = $_POST['deleteSub'];
-            $sql = "SELECT product_id FROM product WHERE category_id = '$categoryId'";
-        }
-        //If delete Main / Only if all the cateogry don have sub or any product can be delete
-        else if(isset($_POST['deleteMain']))
-        {
-            $categoryId = $_POST['deleteMain'];
-            $sql = "SELECT product_id FROM product WHERE category_id = '$categoryId'";
-        }
+        $categoryId = $_POST['deleteCategoryId'];
+        $categoryName = $_POST['deleteCategoryName'];
+
+        $sql = "SELECT combination_id FROM categoryCombination WHERE main_category = '$categoryId' OR sub_category = '$categoryId'";
         $result = mysqli_query($conn, $sql);
+
+        $gotProduct = false;
         if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $cc_id = $row['combination_id'];
+
+                $sql_chkProduct = "SELECT product_id FROM product WHERE category_id = '$cc_id'";
+                $result_chkProduct = mysqli_query($conn, $sql_chkProduct);
+
+                if (mysqli_num_rows($result_chkProduct) > 0) {
+                    $gotProduct = true;
+                }
+            }
+        }
+
+        if($gotProduct == false)
+        {
+            $sql_delete = "DELETE FROM categoryCombination WHERE main_category = '$categoryId' OR sub_category = '$categoryId'";
+            mysqli_query($conn, $sql_delete);
+            
+            $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
+            mysqli_query($conn, $sql_delete);
+
             echo '<script language="javascript">';
-            echo 'alert("Fail to Delete Category, Because there are product in this category or its sub category")';
+            echo "alert(\"$categoryName has been deleted Successful\")";
             echo '</script>';
         }
         else
         {
-            $sql = "SELECT main_category,sub_category FROM categoryCombination WHERE combination_id = '$categoryId' ";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    if(isset($_POST['deleteSub'])) 
-                    {
-                        $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
-                        mysqli_query($conn, $sql_delete);
-                    }
-                    else if(isset($_POST['deleteMain']))
-                    {
-                        $sql_delete = "DELETE FROM category WHERE category_id = '$categoryId'";
-                        mysqli_query($conn, $sql_delete);
-                    }
-                }
-                $sql_delete = "DELETE FROM categoryCombination WHERE combination_id = '$categoryId'";
-                mysqli_query($conn, $sql_delete);
-            }
-        } 
+            echo '<script language="javascript">';
+            echo 'alert("Fail to Delete Category, Because there are product in this category or its sub category")';
+            echo '</script>';
+        }
     }
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid" style="width:80%;">
+<div class="container-fluid" id="mainContainer" style="min-height: 80vh;">
         <!-- Basic Infomation -->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Category List</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Manage Category List</h5>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
@@ -220,7 +239,7 @@
                                 <p class="p-title">Main Category</p>
                                 <?php
                                     //Main Category
-                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
+                                    $sql = "SELECT DISTINCT(B.category_id),B.category_name,B.category_pic, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '0' ORDER BY B.category_name ASC";
                                     $result = mysqli_query($conn, $sql);
 
                                     if (mysqli_num_rows($result) > 0) {
@@ -229,21 +248,29 @@
                                             $categoryId = $row["combination_id"];
                                             $mainCategoryId = $row["category_id"];
                                             $categoryName = $row["category_name"];
+                                            $picName = "";
+                                            if($row["category_pic"] != "")
+                                            {
+                                                $picName = "/img/category/".$row["category_pic"];
+                                            }
+                                            
 
                                             $sql_1 = "SELECT B.category_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.main_category = B.category_id WHERE A.sub_Yes = '1' AND A.main_category =  '$mainCategoryId' ORDER BY B.category_name ASC";
                                             $result_1 = mysqli_query($conn, $sql_1);
         
                                             if (mysqli_num_rows($result_1) > 0) 
                                             {
+                                                
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                            <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                $categoryName
+                                                                <i class=\"fa fa-angle-right\" style=\"float:right;margin-top:5px;\" aria-hidden=\"true\"></i>
+                                                            </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?toggle=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i></span></a>
-                                                            </div>
-                                                            <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,9 +281,12 @@
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                                <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                    $categoryName
+                                                                </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?edit=$mainCategoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?edit=$mainCategoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -284,7 +314,7 @@
                                     if(isset($_GET['toggle']))
                                     {
                                         $mainCategoryId = $_GET['toggle'];
-                                        $sql = "SELECT B.category_id,B.category_name, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY B.category_name ASC";
+                                        $sql = "SELECT B.category_id,B.category_name,B.category_pic, A.combination_id FROM categoryCombination AS A LEFT JOIN  category AS B ON A.sub_category = B.category_id WHERE A.sub_Yes = '1' AND main_category = (SELECT main_category FROM categoryCombination WHERE combination_id = '$mainCategoryId') ORDER BY B.category_name ASC";
                                         $result = mysqli_query($conn, $sql);
 
                                         if (mysqli_num_rows($result) > 0) {
@@ -292,13 +322,22 @@
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 $categoryId = $row["category_id"];
                                                 $categoryName = $row["category_name"];
+                                                $picName = "";
+                                                if($row["category_pic"] != "")
+                                                {
+                                                    $picName = "/img/category/".$row["category_pic"];
+                                                }
+
                                                 $toggle = "toggle=".$mainCategoryId."&";
                                                 echo("
                                                     <div>
                                                         <div class=\"input-group\">
-                                                            <input type=\"text\" value=\"$categoryName\" style=\"background-color:white;border-radius:0;\" class=\"form-control\" disabled>
+                                                                <a href=\"?toggle=$categoryId\" class=\"nav-link\">
+                                                                    <img src=\"$picName\" style=\"width:25px;margin-right:5px;\">
+                                                                    $categoryName
+                                                                </a>
                                                             <div class=\"input-group-append\">
-                                                                <a href=\"?{$toggle}edit=$categoryId\"><span style=\"height:100%;background-color:white;border-radius:0;\" class=\"input-group-text\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
+                                                                <a href=\"?{$toggle}edit=$categoryId\"><span class=\"input-group-text editIcon\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,15 +345,27 @@
                                             }
                                             echo("</div>");
                                             echo("
+                                                <div>
+                                                    <div class=\"input-group\">
+                                                        <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
+                                                    </div>
+                                                </div>
+                                            ");
+                                        }
+                                        else
+                                        {
+                                            echo("
+                                            <div class=\"categoryList\">
+                                            </div>
                                             <div>
                                                 <div class=\"input-group\">
                                                     <button type=\"button\" data-toggle=\"modal\" data-target=\"#addSubModel\" class=\"btn btn-outline-primary\" id=\"btnAddSubCategory\" style=\"width:100%\">Add New Sub Category</button>
                                                 </div>
                                             </div>
-                                        ");
+                                            
+                                            ");
                                         }
                                     }
-                                    
                                 ?>
                             </div>
                         </div>
@@ -328,43 +379,43 @@
             <div class="modal fade" id="addMainModel" tabindex="-1" role="dialog" aria-labelledby="addMainModel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" >Add Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-sm-4">
-                                <div class="image-container">
-                                    <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
-                                    <div class="image-layer">
-                                    </div>
-                                    <div class="image-tools-delete hide">
-                                        <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="image-tools-add">
-                                        <label class="custom-file-upload">
-                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
-                                            <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-sm-9">
-                                <div class="form-group">
-                                    <label for="addCategoryName">Category Name</label>
-                                    <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name" required>
-                                </div>
-                            </div>
-                            
+                        <div class="modal-header">
+                            <h5 class="modal-title" >Add Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="addMain" class="btn btn-primary">Add</button>
-                    </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-sm-4">
+                                    <div class="image-container">
+                                        <img class="card-img-top img-thumbnail" style="object-fit:contain;width:100%;height:100%" src="">
+                                        <div class="image-layer">
+                                        </div>
+                                        <div class="image-tools-delete hide">
+                                            <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="image-tools-add">
+                                            <label class="custom-file-upload">
+                                                <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
+                                                <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-sm-9">
+                                    <div class="form-group">
+                                        <label for="addCategoryName">Category Name</label>
+                                        <input type="text" class="form-control" name="addCategoryName" id="addCategoryName" aria-describedby="categoryName" placeholder="Enter Category Name" required>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="addMain" class="btn btn-primary">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -393,7 +444,7 @@
                                     </div>
                                     <div class="image-tools-add">
                                         <label class="custom-file-upload">
-                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
@@ -457,11 +508,12 @@
                                         if (mysqli_num_rows($result) > 0) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 
+                                                $picture = $row["category_pic"];
                                                 $picName = "";
 
                                                 if($row["category_pic"] != "")
                                                 {
-                                                    $picName = "/img/product/".$row["category_pic"];
+                                                    $picName = "/img/category/".$row["category_pic"];
                                                 }
                                                 
                                                 echo("<img class=\"card-img-top img-thumbnail editImage\" style=\"object-fit:contain;width:100%;height:100%\" src=\"$picName\">");
@@ -475,12 +527,13 @@
                                     
                                     <div class="image-layer">
                                     </div>
-                                    <div class="image-tools-delete <?php echo($picName != "" ? "" : "hide");?>">
+                                    <div class="image-tools-delete hide">
                                         <i class="fa fa-trash image-tools-delete-icon" aria-hidden="true"></i>
                                     </div>
                                     <div class="image-tools-add <?php echo($picName != "" ? "hide" : "");?>">
                                         <label class="custom-file-upload">
-                                            <input accept="image/*" name="img[]" type="file" class="imgInp"/>
+                                            <input accept=".png,.jpeg,.jpg" name="img[]" type="file" class="imgInp"/>
+                                            <input name="imgDefault[]" type="text" value="<?php echo($picture) ?>" hidden/>
                                             <i class="fa fa-plus image-tools-add-icon" aria-hidden="true"></i>
                                         </label>
                                     </div>
@@ -509,9 +562,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" data-toggle="modal" data-target="#deleteCategoryModel" class="btn btn-warning">Delete Category</button>
                         <button type="button" class="btn btn-secondary closeEditModel" data-dismiss="modal">Close</button>
                         <button type="submit" name="editCategory" class="btn btn-primary">Edit</button>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -523,18 +576,33 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" >Add Category</h5>
+                        <h5 class="modal-title" >Delete Category</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <h3>Are you sure you want to delete the below category ?</h3>
-                        <p id="deleteCategoryId"></p>
+                        <?php
+                        $category_id = $_GET['edit'];
+                        $sql = "SELECT category_name FROM category WHERE category_id = '$category_id'";
+                        $result = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $categoryName = $row["category_name"];
+                                echo("<input type=\"text\" value=\"$category_id\" class=\"form-control\" name=\"deleteCategoryId\" hidden>");
+                                echo("<input type=\"text\" value=\"$categoryName\" class=\"form-control\" name=\"deleteCategoryName\" readonly>");
+                            }
+                        }
+                        ?>
+                        <p>Caution</p>
+                        <p>Delete a main category will cause all of its sub category be also deleted !!!</p>
+                        <p>Only a category that are no product within it only able to delete</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="deleteCategory" class="btn btn-primary">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="submit" name="deleteCategory" class="btn btn-warning">Yes</button>
                     </div>
                     </div>
                 </div>
@@ -545,6 +613,32 @@
 <!-- /.container-fluid -->
 
 <style>
+    .nav-link{
+        flex: 1 1 auto;
+    }
+
+    .nav-link:hover{
+        color: #a31f37;
+    }
+
+    .editIcon{
+        color: #a31f37;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height:100%;
+        background-color:white;
+        border-radius:0;
+        border:none;
+    }
+
+    .editIcon:hover{
+        color: white;
+        background-color:#a31f37;
+    }
+
+    .p-title{
+        color: #a31f37;
+    }
+
     .image-container{
         width: 80px;
         height: 80px;
@@ -611,6 +705,12 @@
         display:none;
     }
 
+    .img-thumbnail{
+        min-height: 0;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+    }
+    
     .hide{
         display:none;
     }
@@ -634,7 +734,7 @@
 <script>
 
     window.addEventListener('load', function () {
-        if(<?php echo(isset($_GET['edit'])) ?> == 1)
+        if(<?php echo(isset($_GET['edit']) ? "1" : "0") ?> == 1)
         {
             $("#editCategoryModel").modal('show');
         }
@@ -658,6 +758,8 @@
             img.addEventListener('click', function handleClick(event) {
                 img.parentElement.previousElementSibling.previousElementSibling.src="";
                 img.parentElement.nextElementSibling.classList.remove("hide");
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+                img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
                 img.parentElement.classList.add("hide");
             });
         });
@@ -666,18 +768,43 @@
         imgInp.forEach(img => {
             img.addEventListener('change', function handleChange(event) {
                 const [file] = img.files;
-                if(img.files && img.files[0])
+                var maxsize = 2000000;
+                var extArr = ["jpg", "jpeg", "png"];
+                var imageValid = true;
+                for (var a = 0; a < this.files.length; a++)
                 {
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(file)
-                    img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
-                    img.parentElement.parentElement.classList.add("hide");
+                    var ext = img.files[a].name.split('.').pop();
+                    if(img.files[a].size >= maxsize || !extArr.includes(ext))
+                    {
+                        imageValid = false;
+                    }
+                }
+
+                if(imageValid)
+                {
+                    if(img.files && img.files[0])
+                    {
+                        if(img.files[0].size < maxsize)
+                        {
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.src = URL.createObjectURL(img.files[0]);
+                            img.parentElement.parentElement.previousElementSibling.previousElementSibling.classList.remove("hide");
+                            img.parentElement.parentElement.classList.add("hide");
+                        }
+                    }
+                }
+                else
+                {
+                    alert("This Image is not a valid format, only image that smaller than 2MB and with .jpg, .jpeg and .png extension are allowed");
+                    img.value = "";
                 }
             });
         });
+
+        
     }
 
 </script>
 
 <?php
-    require dirname(__DIR__, 1) . '/seller/footer.php';
+    require __DIR__ . '/footer.php';
 ?>
