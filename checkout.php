@@ -344,33 +344,23 @@ $shippingfee = 10;
 <script>
 
 $(document).ready(function() {
+
     var noshippingfee = 0;
     var shippingtotal = parseFloat(document.getElementById("shippingprice").value);
     var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
     var selection = "";
-
 
    $('input[name="delivery-option"]').click(function() {
         selection = this.value;
 
         if(selection == "standard-delivery")
         {
-            document.getElementById("shipping-fee").textContent = shippingtotal;
+            document.getElementById("shipping-fee").textContent = shippingtotal.toFixed(2);
         }
         else{
-            document.getElementById("shipping-fee").textContent = noshippingfee;
+            document.getElementById("shipping-fee").textContent = noshippingfee.toFixed(2);
         }
-    // display = this.value
-    //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
-    //     deliveryRdBtn.onclick = function() {
-    //         var option = deliveryRdBtn.value;
-    //         display.textContent= shippingtotal.toFixed(2);
-    //     }
-    //    }
-    //    if($(this).attr('id') == 'standard-delivery') {
-    //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
-    //      console.log(shippingtotal.toFixed(2));
-    //    }
+   
    });
 });
 
