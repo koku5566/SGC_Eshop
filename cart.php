@@ -24,7 +24,7 @@
         
         <table class="table" style="border: solid;">
             <thead>
-            <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span>
+            <!-- <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span> -->
                 <tr>
                     <th>Product Name</th>
                     <th class="text-center">Variations</th>
