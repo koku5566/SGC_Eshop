@@ -34,12 +34,12 @@
                                     <hr>
                                     <?php
 
-                                       $UID = $_SESSION["userid"];
-                                       $test = "U000062";
+                                       $userid = $_SESSION["userid"];
 
                                       $sql_voucherR =
                                       "SELECT 
                                       voucherRedemption.voucher_id,
+                                      voucherRedemption.user_id,
                                       voucher.voucher_id,
                                       voucher.voucher_code,
                                       voucher.voucher_type,
@@ -58,7 +58,7 @@
                                       JOIN productVoucher ON voucher.voucher_id = productVoucher.voucher_id
                                       JOIN product ON productVoucher.product_id = product.product_id
                                       JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-                                      WHERE voucherRedemption.user_id = 'U000062'
+                                      WHERE voucherRedemption.user_id = $userid
                                       GROUP BY voucher.voucher_id, shopProfile.shop_name, shopProfile.shop_profile_image, shopProfile.shop_id, voucherRedemption.voucher_id, voucherRedemption.user_id
                                       ";
                                      
@@ -74,7 +74,7 @@
                                                    <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                                 </div>
                                                 <div class="col-mb-7 m-2">
-                                                   <h6 class="card-title"><strong><?php echo $UID; ?></strong></h6>
+                                                   <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                                    <small>Validation:<?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                                    <u>
