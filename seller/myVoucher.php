@@ -93,10 +93,7 @@
                      <td>
                         <?php 
                            echo ("
-                           <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal<?php echo $vid; ?>\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
-                           </form>
                            ");
                         ?>
                      </td>
