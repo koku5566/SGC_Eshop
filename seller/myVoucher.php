@@ -40,6 +40,7 @@
                      <th>Voucher Expired</th>
                      <th>Voucher Display</th>
                      <th>Voucher Limit</th>
+                     <th>Edit</th>
                      <th>List/Delist</th>
                   </tr>
                </thead>
@@ -89,6 +90,16 @@
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>
                      <td><?php echo $r['voucher_limit']; ?></td>
+                     <td>
+                        <?php 
+                           echo ("
+                           <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <button type=\"edit\" name=\"edit\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
+                           </form>
+                           ");
+                        ?>
+                     </td>
                      <td>
                         <?php if ($r['voucher_list'] == 0 ){
 
