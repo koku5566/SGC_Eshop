@@ -347,10 +347,19 @@
 
                         if(isset($_POST['claim'])){
 
-                            if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) ){
+                            $userid = $_SESSION['userid'];
+                            $voucher_id = $_POST['voucher_id'];
 
-                                $userid = $_SESSION['userid'];
-                                $voucher_id = $_POST['voucher_id'];
+                            if (!isset($_SESSION['login']) || !isset($_SESSION['userid']) ){
+                                ?>
+                                    <script type="text/javascript">
+                                        alert("Voucher claimed failed. Login to claimed voucher.")
+                                        window.location.href = window.location.origin + "/login.php";
+                                    </script>
+                                <?php
+                                exit;
+                            }
+                            else{
 
                                 $sqlc = "INSERT INTO voucherRedemption (voucher_id, user_id)
                                         VALUES ('$voucher_id','$userid')";
@@ -360,22 +369,8 @@
                                     echo '<script>alert("Voucher claimed succesfully.")</script>';
                                 }
                                 else{
-                                    echo '<script>alert("Voucher claimed failed. Login to claimed voucher.")</script>';
-                                    echo $userid;
+                                    echo '<script>alert("Voucher claimed failed.")</script>';
                                 }
-                                
-                            }
-                            else{
-
-                                ?>
-                                    <script type="text/javascript">
-                                        alert("Voucher claimed failed. Login to claimed voucher.");
-                                        window.location.href = window.location.origin + "/login.php";
-                                    </script>
-                                <?php
-                                exit;
-
-                                
                             }
                         }
 
