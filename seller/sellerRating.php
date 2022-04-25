@@ -4,6 +4,10 @@
 
 <?php
   $shopId = $_SESSION['userid'];
+  $sql_review = "SELECT user.username FROM user 
+           JOIN reviewRating ON user.user_id = reviewRating.user_id 
+           GROUP BY user.username";
+  $review_result = mysqli_query($conn, $sql_review);
 ?>
 
 <!-- Icon -->
