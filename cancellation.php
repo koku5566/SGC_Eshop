@@ -93,8 +93,7 @@ if(isset($_POST['cancel']))
                 <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" >
                 
             </form>
-      </div>
-        </div>
+          
       <!-----------------END OF ASK REASON TO CANCEL------------>
 
     </div>
