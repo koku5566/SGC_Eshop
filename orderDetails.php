@@ -3,16 +3,17 @@
 ?>
 <?php
 $order_id = $_GET['order_id'];
-if(isset($_GET["cancel"]) && isset($_GET["id"])){
-    $id = $_GET["id"];
-    $conn->query("UPDATE myorder SET order_status = 'cancelled' WHERE order_id = $id");
+if(isset($_GET["confirm"]) && isset($_GET["order_id"])){
+    $order_id = $_GET["order_id"];
+    $conn->query("UPDATE myOrder SET order_status = 'Completed' WHERE order_id = $order_id");
 
     echo "<script>
-        alert('Order ID #$id has been cancelled');
+        alert('Order ID #$order_id , the order has completed');
         window.location.href='getOrder.php';
         </script>";
     exit;
 }
+
 
 ?>
 
