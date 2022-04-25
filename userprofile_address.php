@@ -66,7 +66,7 @@
 					</div>
 					<div class=\"col-2\">
 						<form method=\"post\" style=\"height:100%;width:100%;\">
-							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\"><i class='fa fa-trash' aria-hidden='true'></i></button>
+							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;width:100%;\" class=\"btn btn-primary\">R<br>E<br>M<br>O<br>V<br>E</button>
 						</form>
 					</div>
 				</div>
@@ -98,20 +98,8 @@
 	vertical-align: middle;
 }
 
-.container-right-col2 {
-	width: 20%;
-	display: table-cell;
-	vertical-align: middle;
-}
-
 @media only screen and (max-width: 768px) {
-	.row2 {
-	display: block; 
-	}
 	.container-left-col2 {
-	display: block;
-	}
-	.container-right-col2 {
 	display: block;
 	}
 }
