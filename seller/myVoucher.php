@@ -136,7 +136,7 @@
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <input type=\"text\" name=\"vd\" value=\"$vd\">
-                              <input type=\"text\" name=\"ve\" value=\"$ve\">
+                              <input type=\"text\" name=\"ve\" value=\"$expr\">
                               <input type=\"text\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
@@ -152,7 +152,7 @@
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
                               <input type=\"text\" name=\"vid\" value=\"$vid\">
                               <input type=\"text\" name=\"vd\" value=\"$vd\">
-                              <input type=\"text\" name=\"ve\" value=\"$ve\">
+                              <input type=\"text\" name=\"ve\" value=\"$expr\">
                               <input type=\"text\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-primary\">List</button>
                            </form>
@@ -318,7 +318,7 @@
        $ve = $_POST['ve'];
        $vl = $_POST['vl'];
 
-       if($vd == 0 && $vl == 0){
+       if($vd == 0 && $vl == 0 && $ve < $today){
 
           echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
