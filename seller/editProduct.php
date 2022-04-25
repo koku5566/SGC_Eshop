@@ -2,9 +2,11 @@
     require __DIR__ . '/header.php';
 
     if (!isset($_SESSION['login']) || !isset($_SESSION['userid'])){
+        echo(isset($_SESSION['login']));
+        echo(isset($_SESSION['userid']));
         ?>
             <script type="text/javascript">
-                window.location.href = window.location.origin + "/login.php";
+                //window.location.href = window.location.origin + "/login.php";
             </script>
         <?php
         exit;
