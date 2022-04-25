@@ -226,6 +226,7 @@
                          product.product_cover_picture,
                          product.product_id,
                          product.product_sku,
+                         product.product_stock,
                          product.product_price
                     
                          FROM shopProfile
@@ -239,6 +240,7 @@
                        while ($row = $res->fetch_assoc()) {
                           if($row['product_stock'] > 0)
                           {
+
                          
                      ?>
                      <tr>
