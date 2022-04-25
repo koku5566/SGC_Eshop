@@ -33,17 +33,8 @@
         $contact = $_POST['inpEditContact'];
         $role = $_POST['inpEditRole'];
 
-		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID'";
+		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', WHERE username='$UID'";
 
-		if ($_POST['inpEditRole'] == "SELLER"){
-			$sql = "UPDATE user SET name='$name', email='$email', contact='$contact', role='$role' WHERE username='$UID
-			AND INSERT INTO shopProfile (shop_id, shop_name) VALUES ('$UID','$username')";
-			if (mysqli_query($conn, $sql)){
-				echo "";
-			}else{
-				echo "Error: ".$sql."<br>".mysqli_error($conn);
-			}
-		}
 		if (mysqli_query($conn, $sql)) {
             echo "<script>alert('User Detail Edited');</script>";
 		} else {
@@ -76,7 +67,6 @@
 					<th class="text-center">Name</th>
 					<th class="text-center">Contact</th>
 					<th class="text-center">Registration Date</th>
-					<th class="text-center">Role</th>
 					<th class="text-center">Edit</th>
 					<th class="text-center">Remove</th>
 				</tr>
@@ -96,7 +86,6 @@
 									<td class='text-center text-lg text-medium'>".$row["name"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["contact"]."</td>
 									<td class='text-center text-lg text-medium'>".$row["registration_date"]."</td>
-									<td class='text-center text-lg text-medium'>".$row["role"]."</td>
 									<td class='text-center text-lg text-medium'><button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editUserModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button></td>
 									<td class='text-center text-lg text-medium'><button type='button' class='remove btn btn-primary' data-toggle='modal' data-target='#deleteUserModal' value=".$row["username"]."><i class='fa fa-trash' aria-hidden='true'></i></button></td>
 								</tr>
@@ -214,37 +203,6 @@ function editUser(username)
                             <div class="form-group">
                                 <label for="inpEditContact">Contact No.</label>
                                 <input type="text" name="inpEditContact" class="form-control" id="inpEditContact" placeholder="" value="`+contact+`" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="inpEditRole">Role</label>
-                                <select name="inpEditRole" class="form-control" id="inpEditRole" value="`+role+`" required>
-                                `;
-                                if(role == "ADMIN")
-                                {
-                                    priceHTML+=`
-                                    <option value="ADMIN" selected="selected">ADMIN</option>
-                                    <option value="SELLER">SELLER</option>
-                                    <option value="USER">USER</option>
-                                `;
-                                }
-                                else if(role == "SELLER")
-                                {
-                                    priceHTML+=`
-                                    <option value="ADMIN">ADMIN</option>
-                                    <option value="SELLER" selected="selected">SELLER</option>
-                                    <option value="USER">USER</option>
-                                `;
-                                }
-                                else if(role == "USER")
-                                {
-                                    priceHTML+=`
-                                    <option value="ADMIN">ADMIN</option>
-                                    <option value="SELLER">SELLER</option>
-                                    <option value="USER" selected="selected">USER</option>
-                                `;
-                                }
-                                priceHTML+=`
-                                </select>
                             </div>
                         </div>
 
