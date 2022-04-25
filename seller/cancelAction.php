@@ -10,7 +10,7 @@ if(isset($_POST['approve']))
   $query = "UPDATE myOrder SET cancellation_status = 'cancelled' WHERE order_id = '$order_id' ";
   echo "$query";
   if (mysqli_query($conn, $query)) {
-    ?><script>window.location = '<?php echo("$domain/sellerCancellation.php");?>'</script><?php
+    ?><script>window.location = '<?php echo("$domain/seller/sellerCancellation.php");?>'</script><?php
 		exit;
    } else {
     echo "Error updating record: " . mysqli_error($conn);
