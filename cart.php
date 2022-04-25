@@ -125,11 +125,7 @@
                                                     
                                         }
                                     }
-    
-                                }
-    
-                                
-                                
+                                }         
                             }
                             else if ($rowKL['P_status'] != 'A') {
                                 $showNotif = true;
@@ -145,9 +141,7 @@
                                         <div class='product-item'>
                                             <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
                                             <div class='product-info'>
-                                                <label> Cart: ".$cart_id."</label><br>
-                                                <label>".$product_id."</label>
-                                                <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>Black</span>
+                                                <h4 class='product-title'><a href='#'>".$product_name."</a></h4>
                                             </div>
                                         </div>
                                     </td>
@@ -233,7 +227,7 @@
             </div> -->
 
             <div class="shopping-cart-discount-footer" >
-                <div class="column text-lg" id="discount" style="font-weight: bold;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
+                <div class="column text-lg" id="discount" style="font-weight: bold; color:black;">Voucher Discount: -RM<span class="text-medium" id="discount_kl" >0</span></div>
             </div>
             <div class="shopping-cart-footer" >
                 <div class="column text-lg" style="font-weight: bold;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
