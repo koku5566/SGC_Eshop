@@ -377,7 +377,6 @@ select.form-control {
 .shopping-cart-footer {
     display: table;
     width: 100%;
-    padding: auto;
 }
 
 .shopping-cart-footer>.column {
