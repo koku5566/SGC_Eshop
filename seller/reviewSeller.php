@@ -23,7 +23,7 @@ if($_SESSION['login'] == false)
 ?>
 <?php
 
-$shopId = "U000061";
+$shopId = $_SESSION['userid'];
 //$_SESSION['userid']
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimg']) && !empty($_POST['uimg'])  ){	
             
