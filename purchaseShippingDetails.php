@@ -27,7 +27,7 @@
     shopProfile.shop_name,
     shopProfile.shop_profile_image,
     shopProfile.shop_id,
-    shopProfile.shop_address_state,
+    shopProfile.shop_address_state
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
