@@ -16,19 +16,6 @@ if(isset($_POST['approve']))
     echo "Error updating record: " . mysqli_error($conn);
    }
     
-}if(isset($_POST['decline']))
-{
-  
-  $order_id = $_POST['order_id'];
-  $query = "UPDATE myOrder SET cancellation_status = 'rejected' WHERE order_id = '$order_id' ";
-  echo "$query";
-  if (mysqli_query($conn, $query)) {
-    ?><script>window.location = '<?php echo("$domain/sellerCancellation.php");?>'</script><?php
-		exit;
-   } else {
-    echo "Error updating record: " . mysqli_error($conn);
-   }
-  
 }
 
 ?>
