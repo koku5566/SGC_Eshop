@@ -21,7 +21,7 @@
                                     <hr>
 
                                     <?php
-                                    $sql = "SELECT * FROM myOrder WHERE order_status IN ('To respond') ";
+                                    $sql = "SELECT * FROM myOrder WHERE cancellation_status IN ('To respond') ";
                                     $result = $conn->query($sql);
                                     while($row = $result->fetch_assoc()){
                                         $order_id = $row['order_id'];
