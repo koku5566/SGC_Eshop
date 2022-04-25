@@ -140,6 +140,7 @@
                            </div>
                            <div class="modal-body">
                               <div class="container">
+                                 <h5 class="mt-2 mb-4">Basic Information</h5>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Code</label>
@@ -174,9 +175,9 @@
                                        <label class="" for="">Voucer Discount Amount</label>
                                        <div class="input-group col-mb-6">
                                           <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" value="<?php echo $r['discount_amount']?>">
-                                          <div class="input-group-append" value="<?php echo $r['voucher_type']?>">
-                                             <select name="voucherType" class="custom-select">
-                                                <option value="">Please choose</option>
+                                          <div class="input-group-append">
+                                             <select name="voucherType" class="custom-select" value="<?php echo $r['voucher_type']?>">
+                                                <option value="<?php echo $r['voucher_type']?>">Please choose</option>
                                                 <option value="cashback">RM</option>
                                                 <option value="%">%</option>
                                              </select>
@@ -193,6 +194,44 @@
                                     <label for="">Voucher Details</label>
                                     <textarea name="voucherDetails" class="form-control" rows="10" placeholder="Please insert here" required><?php echo $r['voucher_details']?></textarea>
                                     <small class="text-muted m-2">Terms and Conditions may be applied here for futher agreement.</small>
+                                 </div>
+                                 <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <label for="">Voucher Display Setting</label>
+                                       <div class="form-check" value="<?php echo $r['voucher_display']?>">
+                                          <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios1" value="1" checked>
+                                          <label class="form-check-label" for="exampleRadios1">
+                                             Display on all pages.
+                                          </label>
+                                       </div>
+                                       <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios2" value="0">
+                                          <label class="form-check-label" for="exampleRadios2">
+                                             Do not display.
+                                          </label>
+                                          <small class="text-muted m-2">Voucher will not be displayed on any page but you may share the voucher code with the users.</small>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                       <table class="table" id="createvouchertable">
+                                          <thead>
+                                             <tr>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Product ID</th> <!-- data-visible="false" -->
+                                                <th>Product SKU</th>
+                                                <th>Price (RM)</th>
+                                                <th></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             
+                                          </tbody>
+                                       </table>
+                                    </div>
                                  </div>
                               </div>
                            </div>
