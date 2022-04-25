@@ -94,6 +94,7 @@ if(isset($_POST['cancel']))
                 
             </form>
       </div>
+        </div>
       <!-----------------END OF ASK REASON TO CANCEL------------>
 
     </div>
