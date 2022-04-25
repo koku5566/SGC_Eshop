@@ -30,37 +30,39 @@
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
     
-    <div class="row reviewTitle">
-      <h4><b>User Review</b></h4>
-    </div>
-
-    <div class="row reviewContainer">
-      <?php
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-        
-        $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-          // output data of each row
-          while($row = $result->fetch_assoc()) {
-      ?>
-      <div class="col-lg-6 col-md-12">
-        <p>
-        <?php
-            echo "User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
-        ?>
-        </p>
+    <div class="container reviewContainer">
+      <div class="row reviewTitle">
+        <h4><b>User Review</b></h4>
       </div>
-      <?php
+
+      <div class="row reviewContent">
+        <?php
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
           }
-        } else {
-          echo "<br> 0 results";
-        }
-        $conn->close();
-      ?>
+          
+          $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+        <div class="col-lg-6 col-md-12">
+          <p>
+          <?php
+              echo "User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
+          ?>
+          </p>
+        </div>
+        <?php
+            }
+          } else {
+            echo "<br> 0 results";
+          }
+          $conn->close();
+        ?>
+      </div>
     </div>
   </div>
 </div>
@@ -92,13 +94,17 @@ background-color: #EEEDEE;
   padding: 10px;
 }
 
+.reviewContainer{
+  background-color: #EEEDEE;
+}
+
 .reviewTitle{
   background-color: #EEEDEE;
   margin: 30px 0;
   padding: 15px;
 }
 
-.reviewContainer{
+.reviewContent{
   background-color: #EEEDEE;
   padding: 0 15px;
 }
