@@ -138,15 +138,8 @@
                             <div class="col-xl-12">
                                 <?php
                                     $userId = $_SESSION['userid'];
-                                    if($_SESSION['role']=="SELLER")
-                                    {
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 0 AND promotionEnd_Date >= now()";
-                                    }
-                                    else if($_SESSION['role']=="ADMIN")
-                                    {
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 1 AND promotionEnd_Date >= now()";
-                                    }
-
+                                    $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND `status` = 0 AND promotionEnd_Date >= now()";
+                                    
                                     $result = $conn->query($sql); 
                                     if($result-> num_rows > 0){
 
@@ -195,74 +188,37 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                    if ($_SESSION['role'] == "SELLER")
-                                    { 
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 0";
-                                        $result = $conn->query($sql);
-                                        if($result-> num_rows > 0){
+                                    $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 0";
+                                    $result = $conn->query($sql);
+                                    if($result-> num_rows > 0){
 
-                                            while($row = $result->fetch_assoc())
-                                            {
-                                                $promotionTitle = $row["promotion_title"];
-                                                echo ("<div class=\"row\"> 
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">Promotion Title</p>
+                                        while($row = $result->fetch_assoc())
+                                        {
+                                            $promotionTitle = $row["promotion_title"];
+                                            echo ("<div class=\"row\"> 
+                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                        <p class=\"p-title\">Promotion Title</p>
+                                                    </div>
+                                                    <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                        <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                            <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
                                                         </div>
-                                                        <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
-                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                            </div>
-                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                            </div>
-                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                            </div>
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                        </div>
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
                                                         </div>
                                                     </div>
-                                                    <hr>
-                                                    ");
-                                        
-                                            }
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
-                                        } 
-                                    }
-                                ?>
-                                <?php
-                                    if ($_SESSION['role'] == "ADMIN")
-                                    { 
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND promotionEnd_Date <= now() AND `status` = 1";
-                                        $result = $conn->query($sql);
-                                        if($result-> num_rows > 0){ 
-                                            while($row = $result->fetch_assoc())
-                                            {
-                                                $promotionTitle = $row["promotion_title"];
-                                                echo ("<div class=\"row\"> 
-                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                            <p class=\"p-title\">Promotion Title</p>
-                                                        </div>
-                                                        <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
-                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                            </div>
-                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                            </div>
-                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    ");
-                                            }
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
+                                                </div>
+                                                <hr>
+                                                ");
+                                    
                                         }
                                     }
+                                    else{
+                                        echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No history of previous promotion.</p></div>";
+                                    } 
                                 ?>
                             </div>
                         </div>
@@ -283,21 +239,64 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <?php
-                                    if ($_SESSION['role'] == "SELLER")
-                                    { 
-                                        $userId = $_SESSION['userid'];
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND (`status` = 1 OR `status` = 9 OR `status` = 2) ";
-                                        $result = $conn->query($sql);
-                                        if($result-> num_rows > 0){
+                                    $userId = $_SESSION['userid'];
+                                    $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE B.user_id = '$userId' AND (`status` = 1 OR `status` = 9 OR `status` = 2) ";
+                                    $result = $conn->query($sql);
+                                    if($result-> num_rows > 0){
 
-                                            while($row = $result->fetch_assoc())
+                                        while($row = $result->fetch_assoc())
+                                        {
+                                            $promotionTitle = $row["promotion_title"];
+                                            $status = $row["status"];
+
+                                            if($status == 9)
                                             {
-                                                $promotionTitle = $row["promotion_title"];
-                                                $status = $row["status"];
-
-                                                if($status == 9)
-                                                {
-                                                    echo ("<div class=\"row\"> 
+                                                echo ("<div class=\"row\"> 
+                                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                            <p class=\"p-title\">Promotion Title</p>
+                                                        </div>
+                                                        <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                            <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                            </div>
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class=\"col-xl-12\">
+                                                            <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    ");
+                                            }
+                                            else if($status == 1)
+                                            {
+                                                echo ("<div class=\"row\"> 
+                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                <p class=\"p-title\">Promotion Title</p>
+                                                            </div>
+                                                            <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
+                                                                <div class=\"col-xl-8 col-lg-8 col-sm-12\">
+                                                                    <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
+                                                                </div>
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
+                                                                </div>
+                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
+                                                                    <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class=\"col-xl-12\">
+                                                                <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    ");
+                                            }
+                                            else if($status == 2)
+                                            {
+                                                echo (" <div class=\"row\"> 
                                                             <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                                                 <p class=\"p-title\">Promotion Title</p>
                                                             </div>
@@ -310,89 +309,17 @@
                                                                 </div>
                                                             </div>
                                                             <div class=\"col-xl-12\">
-                                                                <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-exclamation \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Rejected by Admin</p>
+                                                                <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
                                                             </div>
                                                         </div>
                                                         <hr>
-                                                        ");
-                                                }
-                                                else if($status == 1)
-                                                {
-                                                    echo ("<div class=\"row\"> 
-                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <p class=\"p-title\">Promotion Title</p>
-                                                                </div>
-                                                                <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                                    </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?edit=".$row['promotionID']."\" ><i class=\"fa fa-edit \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Edit</a>
-                                                                    </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class=\"col-xl-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-check \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Approved by Admin</p>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                        ");
-                                                }
-                                                else if($status == 2)
-                                                {
-                                                    echo (" <div class=\"row\"> 
-                                                                <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                    <p class=\"p-title\">Promotion Title</p>
-                                                                </div>
-                                                                <div class=\"row col-xl-10 col-lg-10 col-sm-12\">
-                                                                    <div class=\"col-xl-8 col-lg-8 col-sm-12\">
-                                                                        <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                                    </div>
-                                                                    <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                        <a class=\"btn btn-outline-danger\" style=\"border:none;width:100%;\" href=\"?delete=".$row['promotionID']."\" ><i class=\"fa fa-trash \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class=\"col-xl-12\">
-                                                                    <p style=\"border:none;width:100%;margin:10px;\" href=\"?approveSection=".$row['promotionID']."\" ><i class=\"fa fa-clock \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>Pending</p>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                        ");
-                                                }
-                                            }
-                                        }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
-                                        } 
-                                    }
-                                ?>
-                                <?php
-                                    if ($_SESSION['role'] == "ADMIN")
-                                    { 
-                                        $sql = "SELECT * FROM promotion AS A LEFT JOIN user AS B ON A.user_id = B.user_id WHERE `status` = 2";
-                                        $result = $conn->query($sql);
-                                        if($result-> num_rows > 0){ 
-                                            while($row = $result->fetch_assoc())
-                                            {
-                                                $promotionTitle = $row["promotion_title"];
-                                                echo ("
-                                                        <div class=\"row\">
-                                                            <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                                                <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>
-                                                            </div>
-                                                            <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                                                <a class=\"btn btn-outline-primary\" style=\"border:none;width:100%;\" href=\"?requestSection=".$row['promotionID']."\" ><i class=\"fa fa-eye \" style=\"padding:0 10px;\" aria-hidden=\"true\"></i>View</a>
-                                                            </div>
-                                                        </div>
                                                     ");
                                             }
                                         }
-                                        else{
-                                            echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No pending request.</p></div>";
-                                        }
                                     }
+                                    else{
+                                        echo"<div class=\"text-center\" style=\"flex:auto;\"><p class=\"p-title\">No promotion request to Home Page.</p></div>";
+                                    } 
                                 ?>
                             </div>
                         </div>
@@ -478,8 +405,7 @@
                                 <small>The image size only that smaller than 2MB. This image should be landscape. Recommended image size in ratio 16:9. (Example: 1920 x 1080)</small>
                             </div>
                             <?php
-                                if ($_SESSION['role'] == "SELLER")
-                                { echo ("
+                                echo ("
                                     <div class=\"row\">
                                         <div class=\"col-xl-2 col-lg-2 col-sm-12\">
                                             <p class=\"p-title\">Banner display at:</p>
@@ -493,24 +419,7 @@
                                             </div>
                                         </div>
                                     </div>");
-                                }
-                            ?>
-                            <?php
-                                if ($_SESSION['role'] == "ADMIN")
-                                { echo ("
-                                    <div class=\"row\">
-                                        <div class=\"col-xl-2 col-lg-2 col-sm-12\">
-                                            <p class=\"p-title\">Banner display at:</p>
-                                        </div>
-                                        <div class=\"col-xl-10 col-lg-10 col-sm-12\">
-                                            <div class=\"input-group mb-3\">
-                                                <select class=\"form-control\" id=\"status\" name=\"status\" required>
-                                                    <option name=\"homePage\" value=\"1\">Home Page</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>");
-                                }
+                                
                             ?>
                         </div>
                     </div>
