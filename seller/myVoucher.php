@@ -49,7 +49,6 @@
                      $shopId = $_SESSION['userid'];
 
                      $return = $_SERVER['PHP_SELF'];
-                     //$vid = $_POST['voucher_id'];
 
                      $sql_myvoucher =
                      "SELECT
@@ -129,6 +128,26 @@
       </div>
    </div>
 </div>
+
+<?php
+
+   if(isset($_POST['list'])){
+      
+      $voucher_id = $_POST['voucher_id'];
+
+      $sqll = "UPDATE voucher SET (voucher_list)
+               VALUES voucher_list = 0";
+                  
+      if($conn->query($sqll))
+      {
+         echo '<script>alert("Your voucher is been delisted.")</script>';
+      }
+      else{
+         echo '<script>alert("Your voucher failed to be delisted.")</script>';
+      }
+   }
+   
+?>
 
 <script type ="module">
   $(document).ready(function() {
