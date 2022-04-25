@@ -1,6 +1,15 @@
 <?php
     require __DIR__ . '/header.php';
 
+    if(!isset($_SESSION)){
+      session_start();
+   }
+   
+   if(!isset($_SESSION['id']))
+   {
+         $_SESSION['id'] = "";
+   }
+
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
