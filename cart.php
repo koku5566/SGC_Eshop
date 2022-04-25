@@ -22,7 +22,7 @@
         
         <table class="table" style="border: groove;">
             <thead>
-            <!-- <span class = "college logo"><img src="https://feneducation.com/wp-content/uploads/2021/06/segi-kl-logo-1-01-1-300x150.png" alt="Logo"><strong class = "branch"> | SEGI COLLEGE KUALA LUMPUR</strong</span> -->
+            <span></span>
                 <tr>
                     <th>Product Name</th>
                     <th class="text-center">Variations</th>
@@ -210,7 +210,7 @@
                     <?php
                         echo"
                                 </td>
-                                <td colspan='2' style='text-align: right; font-weight: bold;' >Total: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
+                                <td colspan='2' style='text-align: right; font-weight: bold;' >Total for this shop: <span class = 'sbt' id='".$shop_id."'>".$total."</span></td>
                             </tr>";
                     // end of looping shop    
                     }
