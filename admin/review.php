@@ -8,20 +8,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   
  
-<?php
-/*
-if($_SESSION['login'] == false)
-	 {
-		echo "<script>
-				alert('Login to Continue');
-				window.location.href='helpCenterAdmin1.php';
-			  </script>";
+  <?php	
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
     }
-*/
-
-
-
 ?>
+
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage'], $_POST['t1faker']) && !empty($_POST['uimage']) && $_POST['t1faker'] === 'Delete'){
 	$selectedPID = $_POST['uimage'];
