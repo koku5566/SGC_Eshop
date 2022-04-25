@@ -51,8 +51,6 @@
                      $return = $_SERVER['PHP_SELF'];
                      //$vid = $_POST['voucher_id'];
 
-                     $vid = $r['voucher_code'];
-
                      $sql_myvoucher =
                      "SELECT
                         voucher.voucher_id,
@@ -82,6 +80,8 @@
                      $res = $stmt->get_result();
 
                      while ($r = $res->fetch_assoc()) {
+
+                        $vid = $r['voucher_id'];
 
                   ?>
                   <tr>
