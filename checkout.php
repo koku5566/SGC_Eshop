@@ -1,7 +1,8 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if (isset($_SESSION['login']) && $_SESSION['login']){
+ 	  if(!isset($_SESSION['login']))
+	 {
 	 	echo "<script>alert('Login to checkout');
 	 		window.location.href='login.php';</script>";
      }  
