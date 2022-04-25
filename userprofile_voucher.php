@@ -35,7 +35,7 @@
                                     <?php
 
                                        $UID = $_SESSION["userid"];
-                                       $test = "U000062";
+                                       $test = 'U000062';
 
                                       $sql_voucherR =
                                       "SELECT 
