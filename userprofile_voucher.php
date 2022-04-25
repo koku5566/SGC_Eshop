@@ -35,7 +35,7 @@
                                     <?php
 
                                        $UID = $_SESSION["userid"];
-                                       $test = 'U000062';
+                                       $test = "U000062";
 
                                       $sql_voucherR =
                                       "SELECT 
@@ -74,7 +74,7 @@
                                                    <img class="m-2" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
                                                 </div>
                                                 <div class="col-mb-7 m-2">
-                                                   <h6 class="card-title"><strong><?php echo $UID; ?></strong></h6>
+                                                   <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
                                                    <h5 class="card-subtitle text-muted"><?php echo $row['discount_amount']; ?> <?php echo $row['voucher_type']; ?> off</h5>
                                                    <small>Validation:<?php echo $row['voucher_startdate']; ?> ~ <?php echo $row['voucher_expired']; ?></small><br>
                                                    <u>
