@@ -1,14 +1,17 @@
 <?php
     require __DIR__ . '/header.php';
 
-    if (!isset($_SESSION['login']) || !isset($_SESSION['userid'])){
-        ?>
-            <script type="text/javascript">
-                window.location.href = window.location.origin + "/login.php";
-            </script>
-        <?php
-        exit;
-	}
+?>
+
+<?php	
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
+?>
+
+<?php
 
     //Promotion Status in DB - Approve Section
     if(isset($_POST['Approve']))

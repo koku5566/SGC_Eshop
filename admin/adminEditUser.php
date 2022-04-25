@@ -1,5 +1,13 @@
 <?php require __DIR__ . '/mysqli_connect.php' ?>
 
+<?php	
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
+?>
+
 <?php
 if(isset($_POST['editUser']))
 {

@@ -56,7 +56,7 @@
 					<div class=\"col-11\" style=\"background-color: lightyellow;\">
 						<a class=\"address-tag\" href=\"../userEditAddress.php?address-id=".$row["address_id"]."\">
 							<div class=\"container-col2\">
-								<div class=\"container-left-col1\">
+								<div class=\"container-left-col2\">
 									<p style=\"font-weight: bold; font-size: 1.6rem;\">".$row["contact_name"]."</p>
 									<p style=\"font-size: 1.3rem;\">".$row["phone_number"]."</p>
 									<p style=\"font-size: 1.15rem;\">".$row["address"].", ".$row["postal_code"]." ".$row["area"].", ".$row["state"].", ".$row["country"]."</p>
@@ -64,7 +64,7 @@
 							</div>
 						</a>
 					</div>
-					<div class=\"col-2\">
+					<div class=\"col-1\">
 						<form method=\"post\" style=\"height:100%;width:100%;\">
 							<button name=\"remove\" value=".$row["address_id"]." type=\"submit\" style=\"height:100%;\" class=\"btn btn-primary\">R<br>E<br>M<br>O<br>V<br>E</button>
 						</form>
@@ -97,9 +97,17 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+.container-right-col2 {
+	width: 20%;
+	display: table-cell;
+	vertical-align: middle;
+}
 
 @media only screen and (max-width: 768px) {
 	.container-left-col2 {
+	display: block;
+	}
+	.container-right-col2 {
 	display: block;
 	}
 }

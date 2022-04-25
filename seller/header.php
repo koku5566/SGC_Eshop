@@ -104,37 +104,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="viewShippingOrders.php">
                 <div class="sidebar-brand-icon">
                     <img src="../img/segilogo.png" style="width:50px;height:50px;" alt="">
                 </div>
                 <div class="sidebar-brand-text mx-3">SGC E-Shop</div>
             </a>
-
-            <!-- Nav Item - Shipment Collapse Menu -->
-            <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "ADMIN") :?>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
-                    aria-expanded="true" aria-controls="collapseAdmin">
-                    <i class="fas fa-fw fa-box"></i>
-                    <span>Admin Panel</span>
-                </a>
-                <div id="collapseAdmin" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../adminManageUser.php">User Management</a>
-                        <a class="collapse-item" href="adminManage.php">Product Management</a>
-						<a class="collapse-item" href="review.php">Product Review</a>
-                        <a class="collapse-item" href="category.php">Category Management</a>
-                        <a class="collapse-item" href="promotion.php">Promotion Management</a>
-                        <a class="collapse-item" href="adminTransaction.php">Transaction History</a>
-                        <a class="collapse-item" href="adminViewShipping.php">Order Delivery History</a>
-                        <a class="collapse-item" href="eventAdminDashboard.php">Event Management</a>
-						<a class="collapse-item" href="helpCenterAdmin1.php">Help Center</a>
-
-                    </div>
-                </div>
-            </li>
-            <?php endif?>
 
             <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "SELLER") :?>
             <!-- Nav Item - Shipment Collapse Menu -->

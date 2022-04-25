@@ -261,7 +261,18 @@
      
   // or you can do something to the actual checked checkboxes by working directly with  'this'
   // something like $(this).hide() (only something useful, probably) :P
-});
+   });
+
+   var chks = document.getElementsByTagName("INPUT");
+        for (var i = 0; i < chks.length; i++) {
+            chks[i].onclick = function () {
+                for (var i = 0; i < chks.length; i++) {
+                    if (chks[i] != this && this.checked) {
+                        chks[i].checked = false;
+                    }
+                }
+            };
+        }
 }
 
 </script>

@@ -2,10 +2,16 @@
     require __DIR__ . '/header.php'
 ?>
 
+
+<?php	
+	if($_SESSION['login'] == false || $_SESSION['role'] != "ADMIN")
+	{
+		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
+		exit;
+    }
+?>
+
 <?php
-
-
-	
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['uimage']) && !empty($_POST['uimage'])  ){	
             
             //echo "<script>alert('Gottacha');</script>";
