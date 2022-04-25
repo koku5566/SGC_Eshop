@@ -306,13 +306,21 @@
 
     }
 
-   function getSelectItemThat(id) {
-        
-    var times = document.getElementsByClassName("form-check-input");
-    for (var i = 0;i < times.length; i++)
-    {
-        document.getElementById(i).checked = false;
+    function getSelectItemThat(id) {
+
+        if ( document.getElementById(id).checked == true) {
+            document.getElementById(id).checked = false;
+        }
+        else
+        {
+            var times = document.getElementsByClassName("form-check-input");
+            for (var i = 0;i < times.length; i++)
+            {
+                document.getElementById(i).checked = false;
+            }
+            document.getElementById(id).checked = true;
+
+        }
+   
     }
-    document.getElementById(id).checked = true;
-   }
 </script>
