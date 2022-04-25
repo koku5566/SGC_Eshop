@@ -15,7 +15,7 @@
 <div class="container-fluid" style="width:80%">            
   <div class="container ratingContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5 value="<?php echo $shopName ?>SEGi College Subang Jaya"></h5>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><input value="<?php echo $shopName ?>"></input>
     </div>
     <div class="row descriptionContainer">
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
