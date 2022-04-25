@@ -8,6 +8,11 @@
   $sql_rating = "SELECT shop_name FROM shopProfile WHERE shop_id='$shop_id'";
 ?>
 
+<?php
+$shopName = $_SESSION['shop_name'];
+$output = '';
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
  
