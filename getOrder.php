@@ -35,7 +35,7 @@ $orders = $stmt_2->get_result();
 ?>
 <!--CHEONG KIT MIN (Rating)-->
 <?php
-$_SESSION["userId"] = "U000018";
+//$_SESSION["userId"] = "U000018";
 
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['rid'], $_POST['wreview']) && !empty($_POST['rid']) && $_POST['wreview'] === 'Review'){
@@ -73,7 +73,7 @@ $_SESSION["userId"] = "U000018";
 	
 		$shop_id = $_SESSION["shop_id_product"];
 		$product_id = $_POST['reviewid']; //change into btn click $_POST
-		$user_id = $_SESSION["userId"];	//change into S_SESSION [user id]
+		$user_id = $_SESSION['userid'];	//change into S_SESSION [user id]
 		$commentsec = $_POST['commentsec'];
 		$ratingsec = $_POST['rating'];
 		
