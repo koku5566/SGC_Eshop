@@ -48,6 +48,9 @@
 
                      $shopId = $_SESSION['userid'];
 
+                     $return = $_SERVER['PHP_SELF'];
+                     $vid = $_POST['voucher_id'];
+
                      $sql_myvoucher =
                      "SELECT
                         voucher.voucher_id,
@@ -89,11 +92,31 @@
                      <td><?php echo $r['voucher_limit']; ?></td>
                      <td>
                         <?php if ($r['voucher_list'] == 0 ){
-                           echo ("<button type=\"button\" class=\"btn btn-secondary\">Delist</button>");
+
+                           echo ("
+                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
+                           </form>
+
+                           ");
+
                         }else if($r['voucher_list'] == 1 ){
-                           echo ("<button type=\"button\" class=\"btn btn-light\">List</button>");
+
+                           echo ("
+
+                           <form action=\"<?php echo $return ?>\" method=\"POST\" enctype=\"multipart/form-data\">
+                              <input type=\"text\" name=\"vid\" value=\"$vid\">
+                              <button type=\"submit\" name=\"list\" class=\"btn btn-secondary\">List</button>
+                           </form>
+
+                           ");
+
                         }
                         ?>
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                            <button type="submit" name="claim" class="btn btn-warning btn-sm" style="float: right" id="claimVoucherBtn">CLAIM</button>
+                        </form>
                      </td>
                   </tr>
 
