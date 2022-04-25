@@ -25,16 +25,15 @@
     <div class="row">
       <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5><?php echo $shopName ?></h5>
     </div>
+
     <div class="row descriptionContainer">
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
+    
     <div class="row reviewContainer">
       <h4><b>User Review</b></h4>
-      <div class="col-lg-6 col-md-12">
-        <p>
-
-        <?php
-        if ($conn->connect_error) {
+      <?php
+      if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
         
@@ -44,8 +43,12 @@
         if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
-            echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";?>
-
+      ?>
+      <div class="col-lg-6 col-md-12">
+        <p>
+        <?php
+            echo " User id: " . $row["user_id"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" . $row["pic1"]. " " . $row["pic2"]. " " . $row["pic3"]. "<br>" . $row["pic4"]. "" . $row["pic5"]. "<br>";
+        ?>
         </p>
       </div>
       <?php
