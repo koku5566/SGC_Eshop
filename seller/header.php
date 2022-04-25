@@ -258,9 +258,9 @@
                 <div id="collapseFinance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="sellerTransaction.php">Transaction History</a>
-                        <a class="collapse-item" href="register.html">My Balance</a>
+<!--                         <a class="collapse-item" href="register.html">My Balance</a>
                         <a class="collapse-item" href="forgot-password.html">Bank Account</a>
-                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a>
+                        <a class="collapse-item" href="forgot-password.html">Payment Settings</a> -->
                     </div>
                 </div>
             </li>
