@@ -316,11 +316,11 @@
             {
                 var temp_shop_id = document.getElementById(i).value;
                 if (temp_shop_id != shop_id) {
-                    document.getElementById(i).disabled = true;
+                    document.getElementById(i).disabled = false;
                 }
                 else
                 {
-                    document.getElementById(i).disabled = false;
+                    document.getElementById(i).disabled = true;
                 }
                 
             }
