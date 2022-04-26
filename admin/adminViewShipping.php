@@ -67,7 +67,7 @@ require __DIR__ . '/header.php'
                                         <td><?php echo $row['userID']?></td>
                                         <td><?php echo $row['delivery_method']?></td>
                                         <td><?php echo $row['order_status']?></td>
-                                        <td><?php if ($srow['tracking_number']!= null && $row['delivery_method']=='standard-delivery') {?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php }?></td>
+                                        <td><?php if ($row['tracking_number']!= null && $row['delivery_method']=='standard-delivery') {?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php } else { ?>N/A <?php } ?></td>
                                         </tr>
                                     <?php 
                                 }
@@ -110,10 +110,6 @@ var t = $('#shippingOrderTable').DataTable({//call table id
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Order Delivery List'
-            },
-            {
-                extend: 'pdfHtml5',
                 title: 'Order Delivery List'
             },
             {

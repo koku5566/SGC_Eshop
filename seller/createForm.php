@@ -339,7 +339,7 @@
                 </div>
             </section>
             <div style="margin-top: 61px;text-align: center;margin-bottom: 61px;">
-                <div class="btn-group" role="group"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button>
+                <div class="btn-group" role="group"><a href="javascript:history.back(1)"><button class="btn btn-secondary" type="button" style="margin-left: 5px;margin-right: 5px;">Back</button></a>
                 <button class="btn btn-primary" type="button" style="margin-left: 5px;margin-right: 5px;background: rgb(163, 31, 55);" id="completeBtn">Complete</button></div>
             </div>
         

@@ -7,7 +7,7 @@
     $orderstatus = "";
     $deliverymethod="";
     $totalprice = 0;
-    $shippingfee = 8.6;
+    $shippingfee = 10.00;
     $orderinfosql = "SELECT
     myOrder.invoice_id,
     myOrder.order_id,
@@ -17,7 +17,7 @@
     myOrder.delivery_method,
     user.username,
     user.email,
-    userAddress.address
+    userAddress.address,
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -50,10 +50,12 @@
     product.product_price,
     productTransaction.quantity,
     user.username,
-    userAddress.address
+    userAddress.address,
+    shopProfile.shop_address_state
     FROM
     myOrder
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
@@ -99,7 +101,7 @@
     
             $message = "
             <h5>Your Order for <strong>$invoice_id</strong> has been shipped out.</h5>
-            <a>Track Here</a>
+            <button>Track Here</a>
             <p>
             <h4>Thank you</h4>
             <h4>Best Regards</h4>
@@ -144,6 +146,7 @@
         $pickupstat = mysqli_real_escape_string($conn, SanitizeString($_POST["pickup"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
         $buyeremail = mysqli_real_escape_string($conn, SanitizeString($_POST["buyer_email"]));
+        $shopaddress = mysqli_real_escape_string($conn, SanitizeString($_POST["shop_address"]));
         //echo $pickupstat,$orderid, $invoice_id;
         $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$order_id','$invoice_id','$pickupstat')";
         $updatesql ="UPDATE myOrder SET order_status = '$pickupstat' WHERE invoice_id = '$invoice_id'";
@@ -164,7 +167,7 @@
     
             $message = "
             <h5>Your Order <strong>$invoice_id</strong> is ready to pick up.</h5>
-            <p>Your pick up address will be: 
+            <p>Your pick up address will be: $shopaddress </p>
             <h4>Thank you</h4>
             <h4>Best Regards</h4>
             <h4>SGC Eshop</h4>
@@ -344,6 +347,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
+                                         $shopaddress = $srow['shop_address_state'];
                                     ?>
                                     <tr>
                                         <td>
@@ -403,6 +407,7 @@
                                                 <input type="hidden" name="order_id" value="<?php echo $order_id?>">
                                                 <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
                                                 <input type="hidden" name="buyer_email" value="<?php echo $buyeremail?>">
+                                                <input type="hidden" name ="shop_address" value="<?php echo $shopaddress?>">
                                                 <div class="row">
                                                     <div class="col">
                                                         <select id="pickup" name="pickup" class="form-control">

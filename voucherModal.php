@@ -68,16 +68,17 @@
          $stmt->execute();
          $result = $stmt->get_result();
 
+         $n = 0;
          while ($row = $result->fetch_assoc()) {
 
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
-               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['shop_id']; ?>" data-voucher-id="<?php echo $row['voucher_id']; ?>" id="defaultCheck1">
+               <input class="form-check-input" type="checkbox" name="user_group[]" value="<?php echo $row['shop_id']; ?>" data-voucher-id="<?php echo $row['voucher_id']; ?>" id="<?php echo $n++; ?>" onclick="getSelectItemThat(this.id)">
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_amount" value="<?php echo $row['discount_amount']; ?>">
                <input type="hidden" id="<?php echo $row['voucher_id']; ?>_type" value="<?php echo $row['voucher_type']; ?>">
 
-               <label class="form-check-label" for="defaultCheck1">
+               <label class="form-check-label" for="<?php echo $n; ?>">
                   <div class="col-sm-12">
                      <div class="card m-2">
                         <div class="card-body">
@@ -264,19 +265,7 @@
    });
 
   
-
-      window.onload = function () {
-         var chks = document.getElementsByClassName('form-check-input');
-        for (var i = 0; i < chks.length; i++) {
-            chks[i].onclick = function () {
-                for (var i = 0; i < chks.length; i++) {
-                    if (chks[i] != this && this.checked) {
-                        chks[i].checked = false;
-                    }
-                }
-            };
-        } 
-    };
+   
 }
 
 </script>

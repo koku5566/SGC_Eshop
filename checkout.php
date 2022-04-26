@@ -316,14 +316,16 @@ $shippingfee = 10;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Order Summary</strong><br></label>
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
-                        <li class="list-group-item"><span>Shipping Total</span><span style ="float: right;">RM<span id="shipping-fee">10.00</span></span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span style= "float: right;font-size: 30px; color:#A71337;">RM <?php echo $_SESSION['subtotal']?></span></li>
+                        <li class="list-group-item"><span>Shipping Total</span><span style ="float: right;">RM<span id="shipping-fee" >10.00</span></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php //echo $_SESSION['subtotal']?></span>.00</span></li>
                     </ul>
                 </div>
             </div>
             <br>
             <div class = 'row'>
-            <input type = "hidden" name = "amount" value =<?php echo $_SESSION['subtotal']?>>
+            <input type = "hidden"  id ="subtotal-amount" name = "amount" value =<?php echo $_SESSION['subtotal']?>>
+            <input type = "hidden" id="shipping-total" name="shipping-total" value ="10.00" > 
+            <input type = "hidden" id="total-amount" name="total-amount" value ="" > 
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = "e-shop1">
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>
@@ -345,10 +347,13 @@ $shippingfee = 10;
 <script>
 
 $(document).ready(function() {
+
+    //to fill in shipping fee
     var noshippingfee = 0;
     var shippingtotal = parseFloat(document.getElementById("shippingprice").value);
     var deliveryRdBtn = document.querySelectorAll('input[name="delivery-option"]');
     var selection = "";
+
 
 
    $('input[name="delivery-option"]').click(function() {
@@ -356,23 +361,25 @@ $(document).ready(function() {
 
         if(selection == "standard-delivery")
         {
-            document.getElementById("shipping-fee").textContent = shippingtotal;
+            document.getElementById("shipping-fee").textContent = shippingtotal.toFixed(2);
+            document.getElementById("shipping-total").value = shippingtotal.toFixed(2);
         }
         else{
-            document.getElementById("shipping-fee").textContent = noshippingfee;
+            document.getElementById("shipping-fee").textContent = noshippingfee.toFixed(2);
+            document.getElementById("shipping-total").value = noshippingfee.toFixed(2);
         }
-    // display = this.value
-    //    for(var i =0; iLen = deliveryRdBtn.length; i++) {
-    //     deliveryRdBtn.onclick = function() {
-    //         var option = deliveryRdBtn.value;
-    //         display.textContent= shippingtotal.toFixed(2);
-    //     }
-    //    }
-    //    if($(this).attr('id') == 'standard-delivery') {
-    //      document.getElementById("shipping-fee").textContent= shippingtotal.toFixed(2);        
-    //      console.log(shippingtotal.toFixed(2));
-    //    }
+
+        //to calculate total payment amount 
+        var shipping = document.getElementById("shipping-total").value;
+        var subtotal = document.getElementById("subtotal-amount").value;
+        var total = parseFloat(subtotal) + parseFloat(shipping);
+        console.log(shipping, subtotal, total);
+        document.getElementById("totalAmount").textContent = parseFloat(total.toFixed(2));
+        document.getElementById("total-amount").value = total.toFixed(2);
+
    });
+
+   
 });
 
 

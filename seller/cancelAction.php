@@ -18,6 +18,21 @@ if(isset($_POST['approve']))
     
 }
 
+if(isset($_POST['reject']))
+{
+  
+  $order_id = $_POST['order_id'];
+  $query = "UPDATE myOrder SET cancellation_status = 'rejected' WHERE order_id = '$order_id' ";
+  echo "$query";
+  if (mysqli_query($conn, $query)) {
+    ?><script>window.location = '<?php echo("$domain/seller/sellerCancellation.php");?>'</script><?php
+		exit;
+   } else {
+    echo "Error updating record: " . mysqli_error($conn);
+   }
+    
+}
+
 ?>
 
 
@@ -41,7 +56,7 @@ if(isset($_POST['approve']))
           <form method="post" action="cancelAction.php" style="font-size:25px;">
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
                 <input class="btn btn-primary" type="submit" name="approve" value="Approve" style="display:grid ; margin:auto ;" >
-                <input class="btn btn-primary" type="submit" name="decline" value="Decline" style="display:grid ; margin:auto ;" >
+                <input class="btn btn-primary" type="submit" name="reject" value="Reject" style="display:grid ; margin:auto ;" >
                 
             </form>
       </div>

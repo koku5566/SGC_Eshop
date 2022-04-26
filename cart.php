@@ -215,7 +215,7 @@
             <?php
                 require __DIR__ .'/voucherModal.php'
             ?>
-            
+
             <div class="shopping-cart-discount-footer" >
                 <div class="column text-lg" style="font-weight: bold; color:black;">Total: RM <span class="text-medium" id="subtotal_kl" >0</span></div>
             </div>
@@ -305,4 +305,49 @@
          });
 
     }
+
+    function getSelectItemThat(id) {
+        
+        var times = document.getElementsByClassName("form-check-input");
+        var shop_id = document.getElementById(id).value;
+
+        if(document.getElementById(id).checked != true){
+            for (var i = 0;i < times.length; i++)
+            {
+            
+                document.getElementById(i).disabled = false;
+              
+            }
+            document.getElementById(id).checked = false;
+        }
+        else{
+            for (var i = 0;i < times.length; i++)
+            {
+
+                if(i == id)
+                {
+                    document.getElementById(i).disabled = false;
+                }
+                else{
+                    document.getElementById(i).checked = false;
+
+                    var temp_shop_id = document.getElementById(i).value;
+
+                    if (temp_shop_id != shop_id) {
+                        document.getElementById(i).disabled = false;
+                    }
+                    else{
+                        document.getElementById(i).disabled = true;
+                    }
+                    
+                }
+                
+            }
+            document.getElementById(id).checked = true;
+            
+        }
+
+    }
+
+
 </script>

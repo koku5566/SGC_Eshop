@@ -2,42 +2,80 @@
     require __DIR__ . '/header.php'
 ?>
 
+<?php
+  $shopId = $_SESSION['userid'];
+  $sql_shop = "SELECT * FROM shopProfile WHERE shop_id = '$shopId'";
+  $rating_result = mysqli_query($conn, $sql_shop);
+?>
+
+<?php
+  $sql_user = "SELECT username FROM user
+  INNER JOIN reviewRating
+  ON user.user_id = reviewRating.user_id";
+
+  $user_result = mysqli_query($conn, $sql_user);
+?>
+
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
  
 <!-- Begin Page Content -->
 <div class="container-fluid" style="width:80%">            
   <div class="container ratingContainer">
+
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
+    <?php
+        while ($row = mysqli_fetch_assoc($rating_result))
+        {
+          $shopName = $row['shop_name'];
+    ?>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5 class="ml-3"><?php echo $shopName ?></h5>
+      <?php
+        }
+      ?>
     </div>
+
     <div class="row descriptionContainer">
       <p><b>Shop Description</b><br> Joined<span id=""></span> Rating<span id=""></span><br> Products<span id=""></span></p>
     </div>
-    <div class="row reviewContainer">
-      <h4><b>User Review</b></h4>
-      <p><span id="">
+    
+    <div class="reviewContainer">
+      <div class="row reviewTitle">
+        <h4><b>User Review</b></h4>
+      </div>
 
-      <?php
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-      
-      $sql = "SELECT product_id, user_id, message, rating, pic1 FROM reviewRating";
-      $result = $conn->query($sql);
-      
-      if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-          echo "Product id: " . $row["product_id"]. " User id: " . $row["user_id"]. " " . $row["message"]. "Rating: " . $row["rating"]. " " . $row["pic1"]. "<br>";
-        }
-      } else {
-        echo "0 results";
-      }
-      $conn->close();
-      ?>
-
-      </span></p>
+      <div class="row reviewContent">
+        <?php
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          
+          $sql_user = "SELECT username FROM user
+          INNER JOIN reviewRating
+          ON user.user_id = reviewRating.user_id";
+          $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+          $result = $conn->query($sql);
+          $result = mysqli_query($conn, $sql_user);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+        <div class="col-lg-6 col-md-12">
+          <p>
+          <?php
+              echo "User Name: " . $row["username"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br> <?php;
+          ?>
+          </p>
+        </div>
+        <?php
+            }
+          } else {
+            echo "<br> 0 results";
+          }
+          $conn->close();
+        ?>
+      </div>
     </div>
   </div>
 </div>
@@ -58,8 +96,8 @@ background-color: #EEEDEE;
 }
 
 .sellerProfilePic{
-  width: 50px;
-  height:40px;
+  width: 45px;
+  height:45px;
 }
 
 .descriptionContainer{
@@ -71,8 +109,16 @@ background-color: #EEEDEE;
 
 .reviewContainer{
   background-color: #EEEDEE;
-  margin: 30px 0;
   padding: 15px;
-  height: 200px; //should be remove after adding the review (id inside span of review)
+  margin: 30px 0;
+}
+
+.reviewTitle {
+  background-color: #EEEDEE;
+  padding: 15px;
+}
+
+.reviewContent{
+  background-color: #EEEDEE;
 }
 </style>

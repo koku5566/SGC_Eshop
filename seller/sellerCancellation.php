@@ -55,11 +55,8 @@
                                                 <div class="col-3">
                                                    <?php echo $row2['order_status']?>
                                                 </div>
-                                                
-                                                
-                                                
                                             </div>
-                                            <?php
+                                          <?php
                                             }
                                             ?>
                                         </div>
@@ -69,6 +66,7 @@
                                     </div>
                                     <hr>
                                     <?php } ?>
+                                    
                                 </div>
             </div>
     </div>
