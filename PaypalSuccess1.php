@@ -113,12 +113,11 @@ $queryKL = mysqli_query($conn, $sql);
     $paidAmount = $row1['payment_amount'];
 
     /* deduct stock */
-     $stocksql = "SELECT product_stock FROM `product` WHERE product_id = '$product_id'";
+     $stocksql = "SELECT product_stock, product_sold FROM `product` WHERE product_id = '$product_id'";
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
         $stock = $row3['product_stock'];
         $sold = $row3['product_sold'];
-        echo ("$sold");
     }
 
     $stocksql2 = "SELECT product_stock FROM `variation`";
@@ -141,8 +140,7 @@ $queryKL = mysqli_query($conn, $sql);
         $addQuantity1 = $sold+$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt7);
-            mysqli_stmt_close($stmt7);    
-            echo ("$addQuantity1");    
+            mysqli_stmt_close($stmt7);       
     }  
     }
     else {
