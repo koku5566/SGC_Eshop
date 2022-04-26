@@ -165,7 +165,7 @@
                   </tr>
 
                   <!--------------------------------------- Edit Voucher Modal -------------------------------------------->
-                  <!-- <div class="modal fade" id="editVoucherModal<?php echo $r['voucher_id']?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
+                  <!-- <div class="modal fade" id="editVoucherModal<?php //echo $r['voucher_id']?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
                      <div class="modal-dialog" style="min-width: 88%; max-height:100%;">
                         <div class="modal-content">
                            <div class="modal-header">
@@ -178,7 +178,7 @@
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Code</label>
-                                       <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code" value="<?php echo $r['voucher_code']?>">
+                                       <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code" value="<?php //echo $r['voucher_code']?>">
                                     </div>
                                  </div>
                                  <div class="form-row">
@@ -305,10 +305,18 @@
                   
       if($conn->query($sqll))
       {
-         echo '<script>alert("Your voucher has been delisted.")</script>';
+         echo 
+         '<script type=\"text/javascript\">
+         alert("Your voucher has been delisted.");
+         window.location.href = window.location.origin + "/seller/myVoucher.php";
+         </script>';
       }
       else{
-         echo '<script>alert("Your voucher failed to be delisted.")</script>';
+         echo 
+         '<script>
+         alert("Your voucher failed to be delisted.");
+         window.location.href = window.location.origin + "/seller/myVoucher.php";
+         </script>';
       }
    }
 
@@ -324,7 +332,11 @@
 
        if($vd == 0 || $vl == 0 || $expire < $today){
 
-         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
+         echo 
+         '<script>
+         alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.");
+         window.location.href = window.location.origin + "/seller/myVoucher.php";
+         </script>';
 
        }else{
 
@@ -335,10 +347,18 @@
                      
          if($conn->query($sqldl))
          {
-            echo '<script>alert("Your voucher has been listed.")</script>';
+            echo 
+            '<script>
+            alert("Your voucher has been listed.");
+            window.location.href = window.location.origin + "/seller/myVoucher.php";
+            </script>';
          }
          else{
-            echo '<script>alert("Your voucher failed to be listed.")</script>';
+            echo 
+            '<script>
+            alert("Your voucher failed to be listed.");
+            window.location.href = window.location.origin + "/seller/myVoucher.php";
+            </script>';
          }
 
        }
