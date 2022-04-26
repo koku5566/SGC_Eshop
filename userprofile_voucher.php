@@ -46,6 +46,7 @@
                                       voucher.discount_amount,
                                       voucher.voucher_display,
                                       voucher.voucher_limit,
+                                      voucher.voucher_list,
                                       voucher.voucher_startdate,
                                       voucher.voucher_expired,
                                       voucher.voucher_details,
@@ -72,7 +73,7 @@
                                           $today = strtotime($td);
                                           $expired = strtotime($expr);
 
-                                          if($row['voucher_display'] == 1 ){
+                                          if($row['voucher_display'] == 1 && $row['voucher_list'] == 1 && $row['voucher_limit'] > 0 && $expired > $today ){
                                     ?>
                                     <div class="col-sm-12">
                                        <div class="card m-2">
