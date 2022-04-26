@@ -75,8 +75,8 @@
           </p>
         </div>
         <?php
-           } }
-          } } else {
+            }
+           } else {
             echo "<br> 0 results";
           }
           $conn->close();
