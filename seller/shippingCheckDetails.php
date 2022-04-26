@@ -47,12 +47,12 @@
     myOrder.order_status,
     product.product_name,
     product.product_cover_picture,
-    product.product_price,
-    productTransaction.quantity,
+    product.product_price AS Pprice,
+    productTransaction.quantity ,
     user.username,
     userAddress.address,
     shopProfile.shop_address_state,
-    variation.product_price
+    variation.product_price AS Vprice
     FROM
     myOrder
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
@@ -478,8 +478,13 @@
                     <?php
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
-                    $itemamount = $row['product_price']* $row['quantity'];
-                    echo 'hi', $row['variation.product_price'];
+                    if ($row['Pprice']==0){ 
+                        $itemamount = $row['Vprice']* $row['quantity'];
+                    }
+                    else{
+                        $itemamount = $row['Pprice']* $row['quantity'];
+                    }
+
                     $totalprice += $itemamount;
                     ?>
                     <!--Start of order item-->
@@ -497,7 +502,7 @@
                                     <?php echo $row['product_name']?>
                                 </div>
                                 <div class="col-2">RM
-                                    <?php if($row['product.product_price'] == 0) { echo $row['variation.product_price'];} else { echo $row['product.product_price'];}?>
+                                    <?php if($row['Pprice'] == 0) { echo $row['Vprice'];} else { echo $row['Pprice'];}?>
                                 </div>
                                 <div class="col-1">X
                                     <?php echo $row['quantity']?>
