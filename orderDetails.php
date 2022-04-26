@@ -31,7 +31,7 @@ $order_id = $_GET['order_id'];
                 </div>
                 
                 <?php
-                    $shippingfee = 8.6;
+                    $shippingfee = 10;
                     $totalamount = 0;
                     $payableamt = 0;
                     $sql2 = "SELECT
