@@ -49,13 +49,8 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
           }
-          
-          $sql_user = "SELECT username FROM user
-          INNER JOIN reviewRating
-          ON user.user_id = reviewRating.user_id";
-          $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+          $sql = "SELECT message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
-          $user_result = mysqli_query($conn, $sql_user);
           
           if ($result->num_rows > 0) {
             // output data of each row
