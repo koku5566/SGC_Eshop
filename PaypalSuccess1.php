@@ -137,13 +137,13 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_execute($stmt2);
             mysqli_stmt_close($stmt2);
     } 
-    $addsql = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
+/*     $addsql = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
     if ($stmt7 = mysqli_prepare($conn,$addsql)){
         $addQuantity1 = $sold+$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt7);
             mysqli_stmt_close($stmt7);        
-    } 
+    }  */
     }
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
@@ -153,13 +153,13 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-        $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
+/*         $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
         if ($stmt8 = mysqli_prepare($conn,$addsql2)){
             $addQuantity2 = $sold+$product_quantity;
             $bp = mysqli_stmt_bind_param($stmt8,"is",$addQuantity2,$product_id);
             $bp = mysqli_stmt_execute($stmt8);
                 mysqli_stmt_close($stmt8);        
-        } 
+        }  */
     } 
 
 /*    echo(" 
