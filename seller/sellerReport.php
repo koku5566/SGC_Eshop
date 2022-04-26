@@ -1,6 +1,10 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+
+<?php
+  $shopId = $_SESSION['userid'];
+?>
   
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -13,6 +17,26 @@
     </div>
     <div class="row statisticContainer">
       <h4><b>Sales Statistic</b><span id=""></span></h4>
+      <?php
+          if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          $sql = "SELECT user.username
+          FROM orderDetails
+          WHERE shop_id = '$shopId'";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+              echo "Amount: " . $row["amount"]. "Quantity" . $row["quantity"]. "";
+            }
+          } else {
+           echo "<br> 0 result";
+         }
+         $conn->close();
+        ?>
+
     </div>
     <div class="row categoryContainer">
       <h4><b>Sales by Category</b></h4>
