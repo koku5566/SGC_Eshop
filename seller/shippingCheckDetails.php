@@ -55,7 +55,7 @@
     FROM
     myOrder
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
-    JOIN shopProfile ON productTransaction.shop_id = shopProfile_shop_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
