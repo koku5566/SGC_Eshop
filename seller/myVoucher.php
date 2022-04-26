@@ -127,17 +127,17 @@
                         ?>
                      </td>
                      <td>
-                        <?php if ($r['voucher_list'] == 0 || $r['voucher_display'] == 0 || $r['voucher_limit'] <= 0 || $expired < $today){
+                        <?php if ($r['voucher_list'] == 0){
 
                            $return = $_SERVER['PHP_SELF'];
 
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
-                              <input type=\"text\" name=\"vd\" value=\"$vd\">
-                              <input type=\"text\" name=\"ve\" value=\"$expr\">
-                              <input type=\"text\" name=\"vl\" value=\"$vl\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
+                              <input type=\"hidden\" name=\"ve\" value=\"$expr\">
+                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"delist\" class=\"btn btn-secondary\">Delist</button>
                            </form>
 
@@ -150,10 +150,10 @@
                            echo ("
 
                            <form action=\"\" method=\"POST\" enctype=\"multipart/form-data\">
-                              <input type=\"text\" name=\"vid\" value=\"$vid\">
-                              <input type=\"text\" name=\"vd\" value=\"$vd\">
-                              <input type=\"text\" name=\"ve\" value=\"$expr\">
-                              <input type=\"text\" name=\"vl\" value=\"$vl\">
+                              <input type=\"hidden\" name=\"vid\" value=\"$vid\">
+                              <input type=\"hidden\" name=\"vd\" value=\"$vd\">
+                              <input type=\"hidden\" name=\"ve\" value=\"$expr\">
+                              <input type=\"hidden\" name=\"vl\" value=\"$vl\">
                               <button type=\"submit\" name=\"list\" class=\"btn btn-primary\">List</button>
                            </form>
 
@@ -318,7 +318,15 @@
        $ve = $_POST['ve'];
        $vl = $_POST['vl'];
 
-       if($vd == 0 || $vl == 0 || $ve < $today){
+       $td = date('y-m-d');       
+       $today = strtotime($td);
+       $expire = strtotime($ve);
+
+       if($vd == 0 || $vl == 0 || $expire < $today){
+
+         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
+
+       }else{
 
          $voucher_id2 = $_POST['vid'];
 
@@ -332,10 +340,6 @@
          else{
             echo '<script>alert("Your voucher failed to be listed.")</script>';
          }
-
-       }else{
-
-         echo '<script>alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.")</script>';
 
        }
 
