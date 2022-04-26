@@ -55,22 +55,33 @@
           ON user.user_id = reviewRating.user_id";
           $sql = "SELECT user_id, message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
-          $result = mysqli_query($conn, $sql_user);
+          $user_result = mysqli_query($conn, $sql_user);
           
           if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
         ?>
+
+        <?php
+          $sql_user = "SELECT username FROM user
+          INNER JOIN reviewRating
+          ON user.user_id = reviewRating.user_id";
+          $user_result = mysqli_query($conn, $sql_user);
+          
+          if ($user_result->num_rows > 0) {
+            // output data of each row
+            while($row = $user_result->fetch_assoc()) {
+        ?>
         <div class="col-lg-6 col-md-12">
           <p>
-          <?php
-              echo "User Name: " . $row["username"]. "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br> <?php;
+          <?php echo "User Name: " . $row["username"]. "" ?> 
+          <?php echo "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br><?php;
           ?>
           </p>
         </div>
         <?php
-            }
-          } else {
+           } }
+          } } else {
             echo "<br> 0 results";
           }
           $conn->close();
