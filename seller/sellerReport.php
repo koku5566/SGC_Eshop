@@ -70,7 +70,7 @@ body{
   background-color: grey;
   margin-top: 20px;
   padding: 5px;
-  height: 200px; //should be remove after adding the review (id inside span of review)
+  color: #EEEDEE;
 }
 
 .categoryContainer{
