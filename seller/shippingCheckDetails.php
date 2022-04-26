@@ -7,7 +7,7 @@
     $orderstatus = "";
     $deliverymethod="";
     $totalprice = 0;
-    $shippingfee = 8.6;
+    $shippingfee = 10.00;
     $orderinfosql = "SELECT
     myOrder.invoice_id,
     myOrder.order_id,
