@@ -113,7 +113,7 @@ $queryKL = mysqli_query($conn, $sql);
     $paidAmount = $row1['payment_amount'];
 
     /* deduct stock */
-     $stocksql = "SELECT product_stock FROM `product` WHERE product_id = '$product_id';
+     $stocksql = "SELECT product_stock FROM `product` WHERE product_id = '$product_id'
     ";
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
@@ -121,7 +121,7 @@ $queryKL = mysqli_query($conn, $sql);
         $sold = $row3['product_sold'];
     }
 
-    $stocksql2 = "SELECT product_stock FROM `variation`;
+    $stocksql2 = "SELECT product_stock FROM `variation`
     ";
     $variationresult = mysqli_query($conn, $stocksql2);
     while($row4 = mysqli_fetch_array($variationresult)){
