@@ -20,7 +20,7 @@ $inputFields->setAllowNote(true)
     ->setAddressOverride(0);
 
 session_start();
-$_SESSION['shippingMethod'] = $_POST['shipping-option'];     
+$_SESSION['shippingMethod'] = $_POST['delivery-option'];     
 
 $payer = new Payer();
 $payer->setPaymentMethod('paypal');

@@ -10,47 +10,70 @@
 
 <?php
 if(isset($_POST['update']))
+{
+	$_SESSION['Update'] = false;
+
+	$UID = $_SESSION['id'];
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+	$contact = $_POST['contact'];
+
+	if($_FILES['proPic']['tmp_name'] != "")
 	{
-		$_SESSION['Update'] = false;
+		$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+	}
 
-		$UID = $_SESSION['id'];
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$password = md5($_POST['password']);
-		$contact = $_POST['contact'];
+	$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
-		if($_FILES['proPic']['tmp_name'] != "")
-		{
-			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+	$stmt_u = mysqli_query($conn, $sql_u);
+
+	if (mysqli_num_rows($stmt_u) > 0) {	
+	
+		if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
+			$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 		}
-
-		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
-
-		$stmt_u = mysqli_query($conn, $sql_u);
-
-		if (mysqli_num_rows($stmt_u) > 0) {	
+		else{
+			$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
+		}
 		
-			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
-			}
-			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
-			}
-			
-			if (mysqli_query($conn, $sql)) {
-				$_SESSION['Update'] = true;
-				?><script>alert('Details Updated');
-				window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
-			} else {
-				echo "<script>alert('Email Address Already Exists');</script>";
-				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-		}
-		else
-		{
-			echo("<script>alert('Error');</script>");
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['Update'] = true;
+			?><script>alert('Details Updated');
+			window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
+		} else {
+			echo "<script>alert('Email Address Already Exists');</script>";
+			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
+	else
+	{
+		echo("<script>alert('Error');</script>");
+	}
+}
+
+if(isset($_POST['editPassword']))
+{
+	$UID=$_POST['editPassword'];
+
+	$password = md5($_POST['inpPass']);
+	$password1 = md5($_POST['inpPass1']);
+
+	if($password==$password1){
+		$sql = "UPDATE user SET password='$password' WHERE username='$UID'";
+
+		if (mysqli_query($conn, $sql)) {
+			?><script>alert('Password Updated, Please Re-Login');
+			window.location = '<?php echo("$domain/logout.php");?>'</script><?php
+		} else {
+			echo "Error: " . mysqli_error($conn);
+		}
+	}
+	else
+	{
+		echo("<script>alert('Password NOT Match');</script>");
+	}
+}
 ?>
 
 <div class="row">
@@ -84,6 +107,9 @@ if(isset($_POST['update']))
 						<img class=\"card-img-top img-thumbnail\" src=\"data:image;base64,".base64_encode($row["profile_picture"])."\" alt=\"Image.jpg\">
 						</div>
 
+						<div class=\image-tools-delete\">
+							<i class=\"fa fa-trash image-tools-delete-icon\" aria-hidden=\"true\"></i>
+						</div>
 						<div class=\"image-tools-add\">
 							<label class=\"custom-file-upload\">
 								<input type=\"file\" accept=\".png,.jpg,.jpeg\" name=\"proPic\" id=\"profilePic\" value=\"data:image;base64,".base64_encode($row["profile_picture"])."\" hidden/>
@@ -111,6 +137,7 @@ if(isset($_POST['update']))
 					<div class=\"form-group\">
 					<label>Password</label>
 					<input type=\"password\" name=\"password\" pattern=\"(?=.*\d).{8,}\" maxlength=\"50\" title=\"Use 8 or more characters with a mix of letters and numbers\" class=\"form-control\"/>
+					<button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editPassModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button>
 					</div>
 
 					<div class=\"form-group\">
@@ -134,6 +161,22 @@ if(isset($_POST['update']))
     </div>
 </div>
 </div>
+
+<!-- Edit User Modal -->
+<form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	<div class="modal fade" id="editPassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content" id="editPass">
+				<div class="modal-header">
+					<h5 class="modal-title">Edit Password</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 
 <?php require __DIR__ . '/footer.php' ?>
 
@@ -173,4 +216,80 @@ img.addEventListener('change', function handleChange(event) {
 		img.value=null;
 	}
 });
+
+const deleteImg = document.querySelectorAll('.image-tools-delete-icon');
+
+deleteImg.forEach(img => {
+	img.addEventListener('click', function handleClick(event) {
+		img.parentElement.previousElementSibling.previousElementSibling.src="";
+		img.parentElement.nextElementSibling.classList.remove("hide");
+		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.value=null;
+		img.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value=null;
+	});
+});
+
+
+
+
+const editButton = document.querySelectorAll('.edit');
+editButton.forEach(btn => {
+	btn.addEventListener('click', function handleClick(event) {
+		editUser(btn.value);
+	});
+});
+
+function editUser(username) 
+{
+	$.ajax({
+		url:"editPassword.php",
+		method:"POST",
+		data:{
+			username:username,
+			editUser:1
+		},
+		dataType: 'JSON',
+		success: function(response){
+			var len = response.length;
+			for(var i=0; i<len; i++){
+				var password = response[i].password;
+				var password1 = response[i].password1;
+
+				var priceHTML = `
+						<div class="modal-header">
+                            <h5 class="modal-title" >Change Password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inpPass">Password</label>
+                                <input required type="password" name="inpPass" class="form-control" id="inpPass" value="`+password+`" pattern=\"(?=.*\d).{8,}\" placeholder=\"Use 8 or more characters with a mix of letters and numbers\" title=\"Use 8 or more characters with a mix of letters and numbers\">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inpPass1">Confirm Password</label>
+                                <input required type="password" name="inpPass1" class="form-control" id="inpPass1" placeholder="" value="`+password1+`">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="editPassword" value="`+username+`" class="btn btn-primary">Save Changes</button>
+                        </div>
+				`;
+				$("#editPass").empty();
+				$("#editPass").append(priceHTML);
+			}
+			if(!!document.getElementById("VariationErrorMsg"))
+			{
+				document.getElementById("VariationErrorMsg").remove();
+			}
+		},
+		error: function(err) {
+			alert(err.responseText);
+		}
+	});
+}
 </script>

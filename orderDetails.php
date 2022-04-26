@@ -43,6 +43,8 @@ $order_id = $_GET['order_id'];
                     JOIN product ON productTransaction.product_id = product.product_id
                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                     JOIN user on myOrder.userID = user.user_id 
+                    JOIN cart ON myOrder.userID = cart.user_ID
+                    JOIN variation ON product.product_id = variation.product_id
                     WHERE myOrder.order_id = $order_id";
                     
                     $result2 = $conn->query($sql2);
@@ -100,7 +102,7 @@ $order_id = $_GET['order_id'];
                         </div>
                         
                     </div>
-                    <?php if($row2['order_status'] !='Completed' && $row2['cancellation_status'] =='rejected'){?>
+                    <?php if($row2['order_status'] !='Completed' || $row2['cancellation_status'] =='rejected' || $row2['order_status'] =='Paid' ){?>
                         <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
                         <?php }else{?>
                         <a class= "btn btn-primary" href="getOrder.php">Back</a>

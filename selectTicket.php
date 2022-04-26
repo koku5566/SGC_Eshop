@@ -35,7 +35,7 @@ if (isset($_GET['eventID'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * FROM `ticketType` WHERE `event_id` = $eID";
+                                $sql = "SELECT * FROM `ticketType` WHERE `event_id` = $eID AND `current_quantity` > 0";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {

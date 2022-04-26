@@ -113,16 +113,14 @@ $queryKL = mysqli_query($conn, $sql);
     $paidAmount = $row1['payment_amount'];
 
     /* deduct stock */
-     $stocksql = "SELECT product_stock FROM `product` WHERE product_id = '$product_id';
-    ";
+     $stocksql = "SELECT product_stock, product_sold FROM `product` WHERE product_id = '$product_id'";
     $stockresult = mysqli_query($conn, $stocksql);
     while($row3 = mysqli_fetch_array($stockresult)){
         $stock = $row3['product_stock'];
         $sold = $row3['product_sold'];
     }
 
-    $stocksql2 = "SELECT product_stock FROM `variation` 
-    ";
+    $stocksql2 = "SELECT product_stock FROM `variation`";
     $variationresult = mysqli_query($conn, $stocksql2);
     while($row4 = mysqli_fetch_array($variationresult)){
         $variationStock = $row4['product_stock'];
@@ -142,8 +140,8 @@ $queryKL = mysqli_query($conn, $sql);
         $addQuantity1 = $sold+$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt7);
-            mysqli_stmt_close($stmt7);        
-    } 
+            mysqli_stmt_close($stmt7);       
+    }  
     }
     else {
         $deductsql2 = "UPDATE `variation` SET `product_stock` = ? WHERE `variation_id` = ?";
@@ -153,13 +151,13 @@ $queryKL = mysqli_query($conn, $sql);
         $bp = mysqli_stmt_execute($stmt3);
             mysqli_stmt_close($stmt3);
         }
-        $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
+         $addsql2 = "UPDATE `product` SET `product_sold` = ? WHERE `product_id` = ?";
         if ($stmt8 = mysqli_prepare($conn,$addsql2)){
             $addQuantity2 = $sold+$product_quantity;
             $bp = mysqli_stmt_bind_param($stmt8,"is",$addQuantity2,$product_id);
             $bp = mysqli_stmt_execute($stmt8);
                 mysqli_stmt_close($stmt8);        
-        } 
+        }  
     } 
 
 /*    echo(" 
@@ -184,7 +182,7 @@ $queryKL = mysqli_query($conn, $sql);
     $paid = "Paid";
     $orderid = 1;
     $emptyint = 0;
-    $emptystring  ="0";
+    $emptystring ="0";
     $null = NULL;
     $shippingMethod = $_SESSION['shippingMethod'];  
 
@@ -208,7 +206,7 @@ $queryKL = mysqli_query($conn, $sql);
 }
 $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`,`cancellation_status`,`reason_type`, `sku`, `order_date`, `order_status`,`invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-    $bp = mysqli_stmt_bind_param($stmt4, "ssissssss", $emptystring, $uid, $user_address, $shippingMethod, $emptystring, $emptystring, $emptystring, $date, $paid, $invoice_id);
+    $bp = mysqli_stmt_bind_param($stmt4, "ssisssssss", $emptystring, $uid, $user_address, $shippingMethod, $emptystring, $emptystring, $emptystring, $date, $paid, $invoice_id);
     $bp = mysqli_stmt_execute($stmt4);
 }   
 //--CAROL ADD--- (insert to orderStatus tbl )
