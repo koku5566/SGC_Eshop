@@ -50,7 +50,7 @@
           if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
           }
-          $sql = "SELECT user.username, reviewRating.message, reviewRating.rating, reviewRating.pic1, reviewRating.pic2, reviewRating.pic3, reviewRating.pic4, reviewRating.pic5
+          $sql = "SELECT user.username, user.profile_picture, reviewRating.message, reviewRating.rating, reviewRating.pic1, reviewRating.pic2, reviewRating.pic3, reviewRating.pic4, reviewRating.pic5
           FROM reviewRating
           INNER JOIN user
           ON reviewRating.user_id = user.user_id
@@ -64,8 +64,8 @@
 
         <div class="col-lg-6 col-md-12">
           <p>
-          <?php echo "User Name: " . $row["username"]. "" ?> 
-          <?php echo "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/product/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br><?php;
+          <?php echo "Username: " . $row["username"]. ""?> 
+          <?php echo "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row['pic1']?>"/> <img src="/img/rating/<?php echo $row['pic2']?>"/> <img src="/img/rating/<?php echo $row['pic3']?>"/> <img src="/img/rating/<?php echo $row['pic4']?>"/> <img src="/img/rating/<?php echo $row['pic5']?>"/> <br><?php;
           ?>
           </p>
         </div>
