@@ -33,6 +33,7 @@ $order_id = $_GET['order_id'];
                 <?php
                     $shippingfee = 8.6;
                     $totalamount = 0;
+                    $payableamt = 0;
                     $sql2 = "SELECT
                     DISTINCT
                     *
@@ -48,6 +49,7 @@ $order_id = $_GET['order_id'];
                     while($row2 = $result2->fetch_assoc()){
                         $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
+                        $payableamt = $totalamount + $shippingfee;
                 ?>
                 <div class="card">
                 <div class="card-body">
@@ -83,7 +85,7 @@ $order_id = $_GET['order_id'];
                         <div class="row p-2">
                             <div class="col">Delivery Fees:</div>
                             <div class="col">
-                                    0.00
+                                   <?php echo $shippingfee?>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -92,7 +94,7 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $totalamount?>.00</strong></h5>
+                                <h5><strong>RM<?php echo $payableamt?>.00</strong></h5>
                             </div>
                             
                         </div>
