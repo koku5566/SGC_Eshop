@@ -4,6 +4,8 @@
 
 <?php
   $shopId = $_SESSION['userid'];
+  $sql_shop = "SELECT shop_name FROM shopProfile WHERE shop_id = '$shopId'";
+  $shop_result = mysqli_query($conn, $sql_shop);
 ?>
   
 <!-- Icon -->
@@ -13,7 +15,17 @@
 <div class="container-fluid" style="width:80%">
   <div class="container reportContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
+
+    <?php
+    while ($row = mysqli_fetch_assoc($shop_result))
+        {
+          $shopName = $row['shop_name'];
+    ?>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5><?php echo $shopName ?></h5>
+    <?php
+      }
+    ?>
+      
     </div>
     <div class="row statisticContainer">
       <h4><b>Sales Statistic</b><span id=""></span></h4>
