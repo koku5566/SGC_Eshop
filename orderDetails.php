@@ -94,7 +94,7 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $payableamt?>.00</strong></h5>
+                                <h5><strong>RM<?php echo $payableamt?></strong></h5>
                             </div>
                             
                         </div>
