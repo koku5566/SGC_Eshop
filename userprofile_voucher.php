@@ -72,7 +72,7 @@
                                           $today = strtotime($td);
                                           $expired = strtotime($expr);
 
-                                          if($row['voucher_display'] == 1 && $row['voucher_limit'] > 0 && $expired > $today && $row['voucher_list'] == 1){
+                                          if($row['voucher_display'] == 1 ){
                                     ?>
                                     <div class="col-sm-12">
                                        <div class="card m-2">
