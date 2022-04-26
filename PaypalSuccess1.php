@@ -184,7 +184,7 @@ $queryKL = mysqli_query($conn, $sql);
     $paid = "Paid";
     $orderid = 1;
     $emptyint = 0;
-    $emptystring  ="0";
+    $emptystring ="0";
     $null = NULL;
     $shippingMethod = $_SESSION['shippingMethod'];  
 
