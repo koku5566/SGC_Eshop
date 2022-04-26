@@ -548,7 +548,7 @@
                                     Delivery Fees:
                                 </div>
                                 <div class="col">
-                                    RM8.60
+                                    RM <?php echo number_format(shippingfee,2);?>
                                 </div>
                             </div>
                             <div class="row p-2">
