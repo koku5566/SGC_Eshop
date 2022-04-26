@@ -208,7 +208,7 @@ $queryKL = mysqli_query($conn, $sql);
 }
 $sql3 = "INSERT INTO `myOrder`(`user_id`, `userID`,`address_id`, `delivery_method`, `return_id`,`cancellation_status`,`reason_type`, `sku`, `order_date`, `order_status`, `tracking_number`, `cancellation_id`, `invoice_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 if ($stmt4 = mysqli_prepare($conn, $sql3)) {
-    $bp = mysqli_stmt_bind_param($stmt4, "ssisissssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring,$emptystring, $emptystring, $date, $paid, $emptyint, $null, $invoice_id );
+    $bp = mysqli_stmt_bind_param($stmt4, "ssisissssssis", $emptystring, $uid, $user_address, $shippingMethod, $emptyint, $emptystring, $emptystring, $emptystring, $date, $paid, $emptyint, $emptyint, $invoice_id );
     $bp = mysqli_stmt_execute($stmt4);
 }   
 //--CAROL ADD--- (insert to orderStatus tbl )
