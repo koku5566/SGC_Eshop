@@ -29,7 +29,7 @@
           if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-              echo "Amount: " . $row["amount"]. "Quantity" . $row["quantity"]. "";
+              echo "Amount: " . $row["amount"]. "   Quantity" . $row["quantity"]. "<br>";
             }
           } else {
            echo "<br> 0 result";
