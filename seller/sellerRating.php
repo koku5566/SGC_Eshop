@@ -45,27 +45,43 @@
       </div>
 
       <div class="row reviewContent">
-      <?php
-          $sql_user = "SELECT username FROM user
-          INNER JOIN reviewRating
-          ON user.user_id = reviewRating.user_id";
-          $user_result = mysqli_query($conn, $sql_user);
-          
-          if ($user_result->num_rows > 0) {
-          // output data of each row
-          while($row = $user_result->fetch_assoc()) {
-        ?>
-
         <?php
-        if ($conn->connect_error) {
+          if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
           }
-          $sql = "SELECT message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+          $sql = "SELECT user.username, reviewRating.message, reviewRating.rating, reviewRating.pic1, reviewRating.pic2, reviewRating.pic3, reviewRating.pic4, reviewRating.pic5
+          FROM reviewRating
+          INNER JOIN user
+          ON reviewRating.user_id = user.user_id
+          WHERE seller_id = '$shopId'";
           $result = $conn->query($sql);
           
           if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
+        ?>
+
+        <?php
+          //$sql_user = "SELECT username FROM user
+          //INNER JOIN reviewRating
+          //ON user.user_id = reviewRating.user_id";
+          //$user_result = mysqli_query($conn, $sql_user);
+          //
+          //if ($user_result->num_rows > 0) {
+          //// output data of each row
+          //while($row = $user_result->fetch_assoc()) {
+        ?>
+
+        <?php
+        //if ($conn->connect_error) {
+        //    die("Connection failed: " . $conn->connect_error);
+        //  }
+        //  $sql = "SELECT message, rating, pic1, pic2, pic3, pic4, pic5 FROM reviewRating WHERE seller_id = '$shopId'";
+        //  $result = $conn->query($sql);
+        //  
+        //  if ($result->num_rows > 0) {
+        //    // output data of each row
+        //    while($row = $result->fetch_assoc()) {
         ?>
         <div class="col-lg-6 col-md-12">
           <p>
@@ -82,11 +98,11 @@
           $conn->close();
         ?>
         <?php
-            }
-           } else {
-            echo "";
-          }
-          $conn->close();
+        //    }
+        //   } else {
+        //    echo "";
+        //  }
+        //  $conn->close();
         ?>
       </div>
     </div>
