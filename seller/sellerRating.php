@@ -51,7 +51,7 @@
           ON user.user_id = reviewRating.user_id";
           $user_result = mysqli_query($conn, $sql_user);
           
-          //if ($user_result->num_rows > 0) {
+          if ($user_result->num_rows > 0) {
           // output data of each row
           while($row = $user_result->fetch_assoc()) {
         ?>
@@ -82,7 +82,11 @@
           $conn->close();
         ?>
         <?php
+            }
+           } else {
+            echo "";
           }
+          $conn->close();
         ?>
       </div>
     </div>
