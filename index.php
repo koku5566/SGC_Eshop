@@ -5,7 +5,7 @@
 <?php
     if($_SESSION['role'] == "SELLER")
 	{
-		?><script>window.location = '<?php echo("$domain/seller/dashboard.php");?>'</script><?php
+		?><script>window.location = '<?php echo("$domain/seller/viewShippingOrders.php");?>'</script><?php
 		exit;
     }
 ?>
