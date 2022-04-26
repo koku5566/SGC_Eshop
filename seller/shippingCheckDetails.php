@@ -51,11 +51,13 @@
     productTransaction.quantity,
     user.username,
     userAddress.address,
-    shopProfile.shop_address_state
+    shopProfile.shop_address_state,
+    variation.product_price
     FROM
     myOrder
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
     JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
+    JOIN variation ON productTransaction.variation_id = variation.variation_id
     JOIN user ON myOrder.userID = user.user_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
@@ -494,13 +496,13 @@
                                     <?php echo $row['product_name']?>
                                 </div>
                                 <div class="col-2">RM
-                                    <?php echo $row['product_price']?>.00
+                                    <?php if($row['product.product_price'] == 0) { echo $row['variation.product_price'];} else { echo $row['product.product_price'];}?>
                                 </div>
                                 <div class="col-1">X
                                     <?php echo $row['quantity']?>
                                 </div>
                                 <div class="col-3 red-text">RM
-                                    <?php echo $itemamount?>.00
+                                    <?php echo number_format($itemamount,2);?>
                                 </div>
                             </div>
                         </div>
@@ -548,7 +550,7 @@
                                     Delivery Fees:
                                 </div>
                                 <div class="col">
-                                    RM <?php echo number_format(shippingfee,2);?>
+                                    RM <?php echo number_format($shippingfee,2);?>
                                 </div>
                             </div>
                             <div class="row p-2">
