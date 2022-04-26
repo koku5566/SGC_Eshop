@@ -21,7 +21,7 @@
           if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
           }
-          $sql = "SELECT user.username
+          $sql = "SELECT amount, quantity
           FROM orderDetails
           WHERE shop_id = '$shopId'";
           $result = $conn->query($sql);
