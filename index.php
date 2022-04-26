@@ -278,7 +278,7 @@
                                             <div class="d-flex justify-content-center">
                                                 <div class="card m-2" id="termsvouchercard">
                                                 <div class="container">
-                                                    <img class="mt-3" src="../img/shop_logo/<?php echo $row['shop_profile_image']; ?>" id="voucherlogo">
+                                                    <img class="mt-3" src="../img/shop_logo/Penang.jpg" id="voucherlogo">
                                                 </div>
                                                 <div class="card-body">
                                                     <h6 class="card-title"><strong><?php echo $row['shop_name']; ?></strong></h6>
