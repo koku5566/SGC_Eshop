@@ -1,6 +1,12 @@
 <?php
     require __DIR__ . '/header.php'
 ?>
+
+<?php
+  $shopId = $_SESSION['userid'];
+  $sql_shop = "SELECT shop_name FROM shopProfile WHERE shop_id = '$shopId'";
+  $shop_result = mysqli_query($conn, $sql_shop);
+?>
   
 <!-- Icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -9,10 +15,40 @@
 <div class="container-fluid" style="width:80%">
   <div class="container reportContainer">
     <div class="row">
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5>SEGi College Subang Jaya</h5>
+
+    <?php
+    while ($row = mysqli_fetch_assoc($shop_result))
+        {
+          $shopName = $row['shop_name'];
+    ?>
+      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5 class="ml-3"><?php echo $shopName ?></h5>
+    <?php
+      }
+    ?>
+      
     </div>
     <div class="row statisticContainer">
       <h4><b>Sales Statistic</b><span id=""></span></h4>
+      <?php
+          if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          $sql = "SELECT amount, quantity
+          FROM orderDetails
+          WHERE shop_id = '$shopId'";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+              echo "Amount: " . $row["amount"]. "   Quantity: " . $row["quantity"]. "";
+            }
+          } else {
+           echo "<br> 0 result";
+         }
+         $conn->close();
+        ?>
+
     </div>
     <div class="row categoryContainer">
       <h4><b>Sales by Category</b></h4>
@@ -46,7 +82,7 @@ body{
   background-color: grey;
   margin-top: 20px;
   padding: 5px;
-  height: 200px; //should be remove after adding the review (id inside span of review)
+  color: #EEEDEE;
 }
 
 .categoryContainer{
