@@ -229,9 +229,6 @@
   .ratingContainer{
     background-color: white;
     padding: 15px;
-    position: absolute;
-    margin-top: -70px;
-    width: 86%;
   }
 
   .voucherContainer{
