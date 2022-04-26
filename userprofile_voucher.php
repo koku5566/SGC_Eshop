@@ -65,6 +65,14 @@
                                        $result_upvoucher = mysqli_query($conn, $sql_voucherR);
 
                                        while ($row = mysqli_fetch_assoc($result_upvoucher)) {
+
+                                          $td = date('y-m-d');
+                                          $expr = $row['voucher_expired'];
+                                          
+                                          $today = strtotime($td);
+                                          $expired = strtotime($expr);
+
+                                          if($row['voucher_display'] == 1 ){
                                     ?>
                                     <div class="col-sm-12">
                                        <div class="card m-2">
@@ -157,6 +165,9 @@
                                     </div>
                             
                                     <?php 
+                                       }else{
+                                          ;
+                                      }
                                     }?>
                               
                                  </div>
