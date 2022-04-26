@@ -99,38 +99,7 @@
     <a class="carousel-control-prev" style="bottom: 10%;" href="#custCarousel" data-slide="prev"> <span class="border bg-secondary rounded carousel-control-prev-icon"></span> </a> 
     <a class="carousel-control-next" style="bottom: 10%;" href="#custCarousel" data-slide="next"> <span class="border bg-secondary rounded carousel-control-next-icon"></span> </a> 
                     
-  </div>
-
-  <div class="row">
-    <div class="col list-parent"> 
-      <i class="fa fa-star"></i>
-      <?php
-          $sql ="SELECT sp.shop_id, sp.shop_name, COALESCE(ROUND(AVG(rr.rating), 1),'Not Rated')  AS shop_rating
-              FROM  shopProfile sp LEFT JOIN reviewRating rr
-              ON sp.shop_id = rr.seller_id
-              WHERE rr.disable_date IS NULL && sp.shop_id = '$shop_id'
-              GROUP BY sp.shop_id
-              LIMIT 1";
-          if($stmt = mysqli_prepare ($conn, $sql)){
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $f1,$f2,$f3);
-            
-            while(mysqli_stmt_fetch($stmt)){
-              echo"<span>$f3</span>";
-            }
-            mysqli_stmt_close($stmt);												
-          }														
-        ?>
     </div>
-    <div class="col list-parent"> 
-      <i class="fa fa-gift"></i>
-      <span><?php echo($shop_totalProduct); ?></span>
-    </div>
-    <div class="col list-parent"> 
-      <i class="fa fa-calendar"></i>
-      <span><?php echo($shop_joinby); ?></span>
-    </div>
-  </div>
 </div>
 <!-- End Promotion banner by Lim Qiu Xiong-->
 
@@ -138,6 +107,42 @@
 <!--Main layout-->
 <main class="mt-5">
 <div class="container">
+    
+  <section class="text-center">
+    <div class="ratingContainer shadow rounded">
+      <div class="row">
+        <div class="col list-parent"> 
+          <i class="fa fa-star"></i>
+          <?php
+              $sql ="SELECT sp.shop_id, sp.shop_name, COALESCE(ROUND(AVG(rr.rating), 1),'Not Rated')  AS shop_rating
+                  FROM  shopProfile sp LEFT JOIN reviewRating rr
+                  ON sp.shop_id = rr.seller_id
+                  WHERE rr.disable_date IS NULL && sp.shop_id = '$shop_id'
+                  GROUP BY sp.shop_id
+                  LIMIT 1";
+              if($stmt = mysqli_prepare ($conn, $sql)){
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $f1,$f2,$f3);
+                
+                while(mysqli_stmt_fetch($stmt)){
+                  echo"<span>$f3</span>";
+                }
+                mysqli_stmt_close($stmt);												
+              }														
+            ?>
+        </div>
+        <div class="col list-parent"> 
+          <i class="fa fa-gift"></i>
+          <span><?php echo($shop_totalProduct); ?></span>
+        </div>
+        <div class="col list-parent"> 
+          <i class="fa fa-calendar"></i>
+          <span><?php echo($shop_joinby); ?></span>
+        </div>
+      </div>
+    </div>
+  </section><br>
+
   <section class="text-center">
     <h4 class="mb-5"><strong>Vouchers</strong></h4>
     <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
