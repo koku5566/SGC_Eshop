@@ -479,6 +479,7 @@
                     $i=0;
                     while ($row = $result->fetch_assoc()) {
                     $itemamount = $row['product_price']* $row['quantity'];
+                    echo $row['variation.product_price'];
                     $totalprice += $itemamount;
                     ?>
                     <!--Start of order item-->
