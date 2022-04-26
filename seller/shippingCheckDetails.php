@@ -17,7 +17,7 @@
     myOrder.delivery_method,
     user.username,
     user.email,
-    userAddress.address.userAddress,
+    userAddress.address,
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
