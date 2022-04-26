@@ -141,7 +141,8 @@ $queryKL = mysqli_query($conn, $sql);
         $addQuantity1 = $sold+$product_quantity;
         $bp = mysqli_stmt_bind_param($stmt7,"is",$addQuantity1,$product_id);
         $bp = mysqli_stmt_execute($stmt7);
-            mysqli_stmt_close($stmt7);        
+            mysqli_stmt_close($stmt7);    
+            echo ("$addQuantity1");    
     }  
     }
     else {
