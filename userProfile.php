@@ -137,7 +137,7 @@ if(isset($_POST['editPassword']))
 					<div class=\"form-group\">
 					<label>Password</label>
 					<input type=\"password\" name=\"password\" pattern=\"(?=.*\d).{8,}\" maxlength=\"50\" title=\"Use 8 or more characters with a mix of letters and numbers\" class=\"form-control\"/>
-					<button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editUserModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button>
+					<button type='button' class='edit btn btn-primary' data-toggle='modal' data-target='#editPassModal' value=".$row["username"]."><i class='fa fa-edit' aria-hidden='true'></i></button>
 					</div>
 
 					<div class=\"form-group\">
@@ -164,9 +164,9 @@ if(isset($_POST['editPassword']))
 
 <!-- Edit User Modal -->
 <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="editPassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-			<div class="modal-content" id="editProfile">
+			<div class="modal-content" id="editPass">
 				<div class="modal-header">
 					<h5 class="modal-title">Edit Password</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -279,8 +279,8 @@ function editUser(username)
                             <button type="submit" name="editPassword" value="`+username+`" class="btn btn-primary">Save Changes</button>
                         </div>
 				`;
-				$("#editProfile").empty();
-				$("#editProfile").append(priceHTML);
+				$("#editPass").empty();
+				$("#editPass").append(priceHTML);
 			}
 			if(!!document.getElementById("VariationErrorMsg"))
 			{
