@@ -64,8 +64,8 @@
 
         <div class="col-lg-6 col-md-12">
           <p>
-          <?php echo " " . $row["profile_picture"]. "" . $row["username"]. ""?> 
-          <?php echo "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row1['pic1']?>"/> <img src="/img/rating/<?php echo $row1['pic2']?>"/> <img src="/img/rating/<?php echo $row1['pic3']?>"/> <img src="/img/rating/<?php echo $row1['pic4']?>"/> <img src="/img/rating/<?php echo $row1['pic5']?>"/> <br><?php;
+          <?php echo "" . $row['profile_picture']. "" . $row["username"]. ""?> 
+          <?php echo "<br>Rating: " . $row["rating"]. "<br>" . $row["message"]. "<br>" ?><img src="/img/rating/<?php echo $row['pic1']?>"/> <img src="/img/rating/<?php echo $row['pic2']?>"/> <img src="/img/rating/<?php echo $row['pic3']?>"/> <img src="/img/rating/<?php echo $row['pic4']?>"/> <img src="/img/rating/<?php echo $row['pic5']?>"/> <br><?php;
           ?>
           </p>
         </div>
