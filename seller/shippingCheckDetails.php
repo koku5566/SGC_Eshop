@@ -502,7 +502,7 @@
                                     <?php echo $row['product_name']?>
                                 </div>
                                 <div class="col-2">RM
-                                    <?php if($row['product.product_price'] == 0) { echo $row['variation.product_price'];} else { echo $row['product.product_price'];}?>
+                                    <?php if($row['Pprice'] == 0) { echo $row['Vprice'];} else { echo $row['Pprice'];}?>
                                 </div>
                                 <div class="col-1">X
                                     <?php echo $row['quantity']?>
