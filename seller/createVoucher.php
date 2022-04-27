@@ -320,6 +320,7 @@
    },
    order: [[ 1, 'asc' ]]
    } );
+
    //-----------------------Delete Row-----------------------------//
    
    $('#createvouchertable tbody').on( 'click', 'button', function () {
@@ -327,6 +328,7 @@
    row.remove().draw(false);
    
    });
+   
    //----------------------------Multiselect Function--------------------------------//
    $('#vouchertable tbody').on( 'click', 'tr', function () {
     
