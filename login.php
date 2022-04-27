@@ -25,6 +25,7 @@
 					$Login = true;
 					$_SESSION['login'] = true;
 					$_SESSION['id'] = $row["username"];
+                    $_SESSION['uid'] = $row["id"];
                     $_SESSION['userid'] = $row["user_id"];
 					$_SESSION['name'] = $row["name"];
 					$_SESSION['role'] = $row["role"];
