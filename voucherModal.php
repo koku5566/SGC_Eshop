@@ -48,6 +48,7 @@
          voucher.discount_amount,
          voucher.voucher_display,
          voucher.voucher_limit,
+         voucher.voucher_list,
          voucher.voucher_startdate,
          voucher.voucher_expired,
          voucher.voucher_details,
