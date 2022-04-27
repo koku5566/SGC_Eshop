@@ -41,6 +41,7 @@
                      <th>Voucher Display</th>
                      <th>Voucher Limit</th>
                      <th>Status</th>
+                     <th>Edit</th>
                      <th>List/Delist</th>
                   </tr>
                </thead>
@@ -121,9 +122,13 @@
                             echo("<span class=\"badge bg-warning\">Up-coming</span>");
 
                          }
-                           // echo ("
-                           //    <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal$vid\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
-                           // ");
+                        ?>
+                     </td>
+                     <td>
+                        <?php 
+                            echo ("
+                               <button type=\"submit\" name=\"edit\" class=\"btn btn-light\" data-bs-toggle=\"modal\" data-bs-target=\"#editVoucherModal$vid\"><i class=\"fa fa-edit\" aria-hidden=\"true\"></i></button>
+                            ");
                         ?>
                      </td>
                      <td>
