@@ -170,6 +170,8 @@
                   </tr>
 
                   <!--------------------------------------- Edit Voucher Modal -------------------------------------------->
+                  
+
                   <div class="modal fade" id="editVoucherModal<?php echo $r['voucher_id']?>" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
                      <div class="modal-dialog" style="min-width: 88%; max-height:100%;">
                         <div class="modal-content">
@@ -177,9 +179,12 @@
                            <h5 class="modal-title" id="editVoucherModalLabel">Edit Voucher</h5>
                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
+                           <form method="POST" enctype="multipart/form-data">
                            <div class="modal-body">
                               <div class="container">
+                                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                                  <h5 class="mt-2 mb-4">Basic Information</h5>
+                                 <input type="text" name="voucherID" class="form-control" value="<?php echo $r['voucher_id']?>">
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Code</label>
@@ -261,8 +266,9 @@
                            </div>
                            <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="submit" name="editVoucher" class="btn btn-primary">Save changes</button>
                            </div>
+                           </form>
                         </div>
                      </div>
                   </div>
@@ -355,21 +361,25 @@
 
    }
 
-   //if(isset($_POST['edit'])){
+   if(isset($_POST['editVoucher'])){
 
-      // $voucher_id2 = $_POST['vid'];
+       $edit_vid = $_POST['vid'];
 
-      // $sqldl = "UPDATE voucher SET voucher_list = '1'
-      //           WHERE voucher_id = '$voucher_id2'";
+       $sqldl = "UPDATE voucher SET voucher_list = '1'
+                 WHERE voucher_id = '$edit_vid'";
                   
-      // if($conn->query($sqldl))
-      // {
-      //    echo '<script>alert("Your voucher has been listed.")</script>';
-      // }
-      // else{
-      //    echo '<script>alert("Your voucher failed to be listed.")</script>';
-      // }
-   //}
+       if($conn->query($sqldl))
+       {
+          echo '<script>alert("Edit succesfully.")</script>';
+       }
+       else{
+          echo 
+          '<script>
+            alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.");
+            window.location.href = window.location.origin + "/seller/myVoucher.php";
+          </script>';
+       }
+   }
    
 ?>
 
