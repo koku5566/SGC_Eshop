@@ -54,7 +54,53 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button id="btnPrint" onclick="hideButton()" class="printButton text-right">PRINT REPORT</button>
+    <button class="printButton" data-bs-toggle="modal" data-bs-target="">PRINT REPORT</button>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <?php
+        while ($row = mysqli_fetch_assoc($shop_result))
+            {
+              $shopName = $row['shop_name'];
+      ?>
+        <h5 class="ml-3"><?php echo $shopName ?></h5>
+      <?php
+        }
+      ?>
+
+      <h4><b>Sales Statistic</b><span id=""></span></h4>
+      <?php
+          if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          $sql = "SELECT amount, quantity
+          FROM orderDetails
+          WHERE shop_id = '$shopId'";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+              echo "Amount: " . $row["amount"]. "   Quantity: " . $row["quantity"]. "";
+            }
+          } else {
+           echo "<br> 0 result";
+         }
+         $conn->close();
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="btnPrint" onclick="hideButton()" class="printButton text-right">PRINT REPORT</button>
+      </div>
+    </div>
   </div>
 </div>
 <!-- /.container-fluid -->
