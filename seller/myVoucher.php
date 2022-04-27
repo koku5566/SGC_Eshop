@@ -302,7 +302,7 @@
       if($conn->query($sqll))
       {
          echo 
-         '<script type=\"text/javascript\">
+         '<script>
          alert("Your voucher has been delisted.");
          window.location.href = window.location.origin + "/seller/myVoucher.php";
          </script>';
