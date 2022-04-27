@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/header.php'
+  //  require __DIR__ . '/header.php'
 ?>
 
 <?php
@@ -21,7 +21,7 @@
         {
           $shopName = $row['shop_name'];
     ?>
-      <img id="" class="sellerProfilePic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle"><h5 class="ml-3"><?php echo $shopName ?></h5>
+      <h5 class="ml-3"><?php echo $shopName ?></h5>
     <?php
       }
     ?>
@@ -54,13 +54,13 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button id="btnPrint" class="printButton text-right">PRINT REPORT</button>
+    <button id="btnPrint" onclick="(hideButton) class="printButton text-right">PRINT REPORT</button>
   </div>
 </div>
 <!-- /.container-fluid -->
 
 <?php
-require __DIR__ . '/footer.php'
+//require __DIR__ . '/footer.php'
 ?>
 
 <style>
@@ -71,11 +71,6 @@ body{
   background-color: white;
   margin: 25px auto;
   padding: 30px;
-}
-
-.sellerProfilePic{
-  width: 50px;
-  height:40px;
 }
 
 .statisticContainer{
@@ -102,6 +97,15 @@ body{
 </style>
 
 <script>
+function hideButton() {
+var x = document.getElementById("btnPrint");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 const $btnPrint = document.querySelector("#btnPrint");
 $btnPrint.addEventListener("click", () => {
     window.print();
