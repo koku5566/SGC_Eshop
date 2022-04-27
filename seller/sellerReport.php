@@ -54,7 +54,7 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button class="printButton" data-bs-toggle="modal" data-bs-target="reportModal">PRINT REPORT</button>
+    <button class="printButton" data-bs-toggle="modal" data-bs-target="#reportModal">PRINT REPORT</button>
   </div>
 </div>
 
@@ -97,7 +97,6 @@
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button id="btnPrint" onclick="hideButton()" class="printButton text-right">PRINT REPORT</button>
       </div>
     </div>
