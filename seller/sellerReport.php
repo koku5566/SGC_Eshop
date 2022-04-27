@@ -1,8 +1,6 @@
-<div id="btnPrint">
 <?php
     require __DIR__ . '/header.php'
 ?>
-</div>
 
 <?php
   $shopId = $_SESSION['userid'];
@@ -61,11 +59,9 @@
 </div>
 <!-- /.container-fluid -->
 
-<div id="btnPrint">
 <?php
 require __DIR__ . '/footer.php'
 ?>
-</div>
 
 <style>
 body{
