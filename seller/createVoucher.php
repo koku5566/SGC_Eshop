@@ -41,6 +41,9 @@
                <div class="form-group col-md-12">
                   <label for="">Voucher Claim Period</label>
                   <div class="row">
+                     <?php 
+
+                     ?>
                      <div class="col-md-6">
                         <div class="input-group">
                            <div class="input-group-prepend">
@@ -267,7 +270,7 @@
                </table>
             </div>
          </div>
-         <!-- <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">   Select All -->
+         <input type="checkbox" class="selectAll" name="selectAll" value="all" id="selectAll">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -330,17 +333,17 @@
     
      $(this).toggleClass('selected');
    });
-      // $("#selectAll").on( "click", function(e) {
-      //    if ($(this).is( ":checked" )) {
-      //       vouchertable.rows({
-      //          page:'current'
-      //       } ).select(); 
-      //    }else {
-      //       vouchertable.rows({
-      //          page:'current'
-      //       } ).deselect(); 
-      //    }
-      // });
+       $("#selectAll").on( "click", function(e) {
+          if ($(this).is( ":checked" )) {
+             vouchertable.rows({
+                page:'current'
+             } ).select(); 
+          }else {
+             vouchertable.rows({
+                page:'current'
+             } ).deselect(); 
+          }
+       });
       $('#select').click( function () {
          var testdata = [];
          testdata = vouchertable.rows('.selected').data();
