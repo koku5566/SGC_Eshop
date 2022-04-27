@@ -1,6 +1,8 @@
+<div id="btnPrint">
 <?php
     require __DIR__ . '/header.php'
 ?>
+</div>
 
 <?php
   $shopId = $_SESSION['userid'];
@@ -54,14 +56,16 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button id="btnPrint" onclick="(hideButton)" class="printButton text-right">PRINT REPORT</button>
+    <button id="btnPrint" onclick="hideButton()" class="printButton text-right">PRINT REPORT</button>
   </div>
 </div>
 <!-- /.container-fluid -->
 
+<div id="btnPrint">
 <?php
 require __DIR__ . '/footer.php'
 ?>
+</div>
 
 <style>
 body{
