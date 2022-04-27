@@ -379,12 +379,16 @@
                   
        if($conn->query($sqledit))
        {
-          echo '<script>alert("Edit succesfully.")</script>';
+          echo 
+          '<script>
+            alert("Edit succesfully.")
+            window.location.href = window.location.origin + "/seller/myVoucher.php";
+           </script>';
        }
        else{
           echo 
           '<script>
-            alert("Your voucher cannot be list due to the Voucher Display, Voucher Status or Expired Date.");
+            alert("Edit failed.");
             window.location.href = window.location.origin + "/seller/myVoucher.php";
           </script>';
        }
