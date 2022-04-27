@@ -146,8 +146,8 @@
    if($_SERVER['REQUEST_METHOD'] == 'POST'|| isset($_POST['submit'])){
 
       $voucherCode = $_POST['voucherCode'];
-      $voucherStartdate = $_POST['voucherStartdate'];
-      $voucherExpired = $_POST['voucherExpired'];
+      // $voucherStartdate = $_POST['voucherStartdate'];
+      // $voucherExpired = $_POST['voucherExpired'];
       $discountAmount = $_POST['discountAmount'];
       $voucherLimit = $_POST['voucherLimit'];
       $voucherType = $_POST['voucherType'];
@@ -155,6 +155,8 @@
       $voucherDisplay = $_POST['voucherDisplay'];
       $vlist = "0";
       $date = date('Y-m-d H:i:s');
+      $voucher_Date = date('Y-m-d', strtotime($_POST['voucherStartdate']));
+      $voucherEnd_Date = date('Y-m-d', strtotime($_POST['voucherExpired']));
 
       
       $sqlv = "INSERT INTO voucher (voucher_code, voucher_startdate, voucher_expired, discount_amount, voucher_limit, voucher_details, voucher_display, voucher_type, created_at, voucher_list)
