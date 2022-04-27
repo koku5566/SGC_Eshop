@@ -8,7 +8,7 @@
  echo $_SESSION['userid'];
 
 $customerUID = $_SESSION['userid'];
-//$customerUID = 'U000018';
+ //$customerUID = 'U000018';
   //Under the same seller
   $productlength =[];
   $productwidth = [];
