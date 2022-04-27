@@ -220,7 +220,7 @@
                                        <div class="input-group col-mb-6">
                                           <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" value="<?php echo $r['discount_amount']?>">
                                           <div class="input-group-append">
-                                             <select name="voucherType" class="custom-select">
+                                             <select name="voucherType" class="custom-select" value="<?php echo $r['voucher_type']?>">
                                                 <option value="<?php echo $r['voucher_type']?>">Please choose</option>
                                                 <option value="cashback">RM</option>
                                                 <option value="%">%</option>
@@ -243,11 +243,11 @@
                                     <div class="form-group col-md-12">
                                        <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
                                     </div>
-                                 </div> <br><br>
+                                 </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
                                        <label for="">Voucher Display Setting</label>
-                                       <div class="form-check">
+                                       <div class="form-check" value="<?php echo $r['voucher_display']?>">
                                           <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios1" value="1" checked>
                                           <label class="form-check-label" for="exampleRadios1">
                                              Display on all pages.
@@ -336,19 +336,10 @@
 
        }else{
 
-         $voucher_id = $_POST['voucherID'];
-         $voucherCode = $_POST['voucherCode'];
-         $voucherStartdate = $_POST['voucherStartdate'];
-         $voucherExpired = $_POST['voucherExpired'];
-         $discountAmount = $_POST['discountAmount'];
-         $voucherLimit = $_POST['voucherLimit'];
-         $voucherType = $_POST['voucherType'];
-         $voucherDetails = $_POST['voucherDetails'];
-         $voucherDisplay = $_POST['voucherDisplay'];
-         $date = date('Y-m-d H:i:s');
+         $voucher_id2 = $_POST['vid'];
 
-         $sqldl = "UPDATE voucher SET voucher_code = '$voucherCode', voucher_startdate = '$voucherStartdate', voucher_expired = '$voucherExpired', discount_amount = '$discountAmount', voucher_limit = '$voucherLimit', voucher_type = '$voucherType', voucher_details = '$voucherDetails', voucher_display = '$voucherDisplay', created_at = '$date'
-                  WHERE voucher_id = '$voucher_id'";
+         $sqldl = "UPDATE voucher SET voucher_list = '1'
+                  WHERE voucher_id = '$voucher_id2'";
                      
          if($conn->query($sqldl))
          {
@@ -372,13 +363,21 @@
 
    if(isset($_POST['editVoucher'])){
 
-       $edit_vid = $_POST['vid'];
-       $edit_vid = $_POST['vid'];
+      $voucher_id = $_POST['voucherID'];
+      $voucherCode = $_POST['voucherCode'];
+      $voucherStartdate = $_POST['voucherStartdate'];
+      $voucherExpired = $_POST['voucherExpired'];
+      $discountAmount = $_POST['discountAmount'];
+      $voucherLimit = $_POST['voucherLimit'];
+      $voucherType = $_POST['voucherType'];
+      $voucherDetails = $_POST['voucherDetails'];
+      $voucherDisplay = $_POST['voucherDisplay'];
+      $date = date('Y-m-d H:i:s');
 
-       $sqldl = "UPDATE voucher SET voucher_list = '1'
-                 WHERE voucher_id = '$edit_vid'";
+      $sqledit = "UPDATE voucher SET voucher_code = '$voucherCode', voucher_startdate = '$voucherStartdate', voucher_expired = '$voucherExpired', discount_amount = '$discountAmount', voucher_limit = '$voucherLimit', voucher_type = '$voucherType', voucher_details = '$voucherDetails', voucher_display = '$voucherDisplay', created_at = '$date'
+               WHERE voucher_id = '$voucher_id'";
                   
-       if($conn->query($sqldl))
+       if($conn->query($sqledit))
        {
           echo '<script>alert("Edit succesfully.")</script>';
        }
