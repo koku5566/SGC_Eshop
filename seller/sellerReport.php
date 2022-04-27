@@ -54,11 +54,11 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button class="printButton" data-bs-toggle="modal" data-bs-target="">PRINT REPORT</button>
+    <button class="printButton" data-bs-toggle="modal" data-bs-target="reportModal">PRINT REPORT</button>
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reportModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
