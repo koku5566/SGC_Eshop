@@ -34,7 +34,7 @@
             <div class="form-row">
                <div class="form-group col-md-12">
                   <label for="">Voucher Code</label>
-                  <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code">
+                  <input type="text" name="voucherCode" aria-label="First name" class="form-control" placeholder="Enter voucher code" required>
                </div>
             </div>
             <div class="form-row">
@@ -46,7 +46,7 @@
                            <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">Start</span>
                            </div>
-                           <input type="date" name="voucherStartdate" aria-label="start date" class="form-control">
+                           <input type="date" name="voucherStartdate" min="<?php echo date("Y-m-d", strtotime("-1 month")); ?>" aria-label="start date" class="form-control" required>
                         </div>
                      </div>
                      <div class="col-md-6">
@@ -54,7 +54,7 @@
                            <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">End</span>
                            </div>
-                           <input type="date" name="voucherExpired" aria-label="end date" class="form-control">
+                           <input type="date" name="voucherExpired" min="<?php echo date("Y-m-d",  strtotime("-1 month")); ?>" aria-label="end date" class="form-control" required>
                         </div>
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                <div class="form-group col-md-8">
                   <label class="" for="">Voucer Discount Amount</label>
                   <div class="input-group col-mb-6">
-                     <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00">
+                     <input type="text" name="discountAmount" aria-label="discountAmount" class="form-control" placeholder="00.00" required>
                      <div class="input-group-append">
-                        <select name="voucherType" class="custom-select">
+                        <select name="voucherType" class="custom-select" required>
                            <option value="">Please choose</option>
                            <option value="cashback">RM</option>
                            <option value="%">%</option>
@@ -76,7 +76,7 @@
                </div>
                <div class="form-group col-md-4">
                   <label for="">Voucher Limit</label>
-                  <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit">
+                  <input type="text" name="voucherLimit" class="form-control" placeholder="Voucher Redeem/Use limit" required>
                </div>
             </div>
             <div class="form-row">
