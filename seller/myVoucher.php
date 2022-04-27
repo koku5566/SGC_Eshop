@@ -241,11 +241,6 @@
                                  </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-12">
-                                       <h5 class="mt-2 mb-4">Voucher Display and Applicable Products</h5>
-                                    </div>
-                                 </div>
-                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
                                        <label for="">Voucher Display Setting</label>
                                        <div class="form-check" value="<?php echo $r['voucher_display']?>">
                                           <input class="form-check-input" type="radio" name="voucherDisplay" id="exampleRadios1" value="1" checked>
