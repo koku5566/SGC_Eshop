@@ -182,7 +182,7 @@
                            <form method="POST" enctype="multipart/form-data">
                            <div class="modal-body">
                               <div class="container">
-                                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                                 <form method="POST" enctype="multipart/form-data">
                                  <h5 class="mt-2 mb-4">Basic Information</h5>
                                  <input type="hidden" name="voucherID" class="form-control" value="<?php echo $r['voucher_id']?>">
                                  <div class="form-row">
