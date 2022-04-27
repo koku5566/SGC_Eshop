@@ -372,16 +372,17 @@
       $voucherType = $_POST['voucherType'];
       $voucherDetails = $_POST['voucherDetails'];
       $voucherDisplay = $_POST['voucherDisplay'];
+      $voucherlist = '0';
       $date = date('Y-m-d H:i:s');
 
-      $sqledit = "UPDATE voucher SET voucher_code = '$voucherCode', voucher_startdate = '$voucherStartdate', voucher_expired = '$voucherExpired', discount_amount = '$discountAmount', voucher_limit = '$voucherLimit', voucher_type = '$voucherType', voucher_details = '$voucherDetails', voucher_display = '$voucherDisplay', created_at = '$date'
+      $sqledit = "UPDATE voucher SET voucher_code = '$voucherCode', voucher_startdate = '$voucherStartdate', voucher_expired = '$voucherExpired', discount_amount = '$discountAmount', voucher_limit = '$voucherLimit', voucher_type = '$voucherType', voucher_details = '$voucherDetails', voucher_display = '$voucherDisplay', created_at = '$date', voucher_list = '$voucherlist'
                WHERE voucher_id = '$voucher_id'";
                   
        if($conn->query($sqledit))
        {
           echo 
           '<script>
-            alert("Edit succesfully.")
+            alert("Edit succesfully. Active and list your voucher at My Voucher.")
             window.location.href = window.location.origin + "/seller/myVoucher.php";
            </script>';
        }
