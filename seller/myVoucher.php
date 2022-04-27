@@ -34,8 +34,8 @@
                <thead>
                   <tr>
                      <th>Voucher Code</th>
-                     <th>Voucher Type</th>
                      <th>Discount Amount</th>
+                     <th>Voucher Type</th>
                      <th>Voucher Start</th>
                      <th>Voucher Expired</th>
                      <th>Voucher Display</th>
@@ -96,8 +96,8 @@
                   ?>
                   <tr>
                      <td><?php echo $r['voucher_code']; ?></td>
-                     <td><?php echo $r['voucher_type']; ?></td>
                      <td><?php echo $r['discount_amount']; ?></td>
+                     <td><?php echo $r['voucher_type']; ?></td>
                      <td><?php echo $r['voucher_startdate']; ?></td>
                      <td><?php echo $r['voucher_expired']; ?></td>
                      <td><?php echo $r['voucher_display']; ?></td>

@@ -71,6 +71,14 @@
          $n = 0;
          while ($row = $result->fetch_assoc()) {
 
+            $td = date('y-m-d');
+            $expr = $row['voucher_expired'];
+                                          
+            $today = strtotime($td);
+            $expired = strtotime($expr);
+
+            if($row['voucher_display'] == 1 && $row['voucher_list'] == 1 && $row['voucher_limit'] > 0 && $expired > $today ){
+
          ?>
 
             <div class="form-check mt-2 mb-2 ml-4 mr-4">
@@ -171,6 +179,8 @@
             </div>
 
             <?php 
+            }
+            
             }?>
          </div>
       </div>
