@@ -1,5 +1,5 @@
 <?php
-  //  require __DIR__ . '/header.php'
+    require __DIR__ . '/header.php'
 ?>
 
 <?php
@@ -54,13 +54,13 @@
       <h4><b>Sales by Category</b></h4>
       <p><span id=""></span></p>
     </div>
-    <button id="btnPrint" onclick="(hideButton) class="printButton text-right">PRINT REPORT</button>
+    <button id="btnPrint" onclick="(hideButton)" class="printButton text-right">PRINT REPORT</button>
   </div>
 </div>
 <!-- /.container-fluid -->
 
 <?php
-//require __DIR__ . '/footer.php'
+require __DIR__ . '/footer.php'
 ?>
 
 <style>
