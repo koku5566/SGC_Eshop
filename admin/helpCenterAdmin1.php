@@ -179,7 +179,8 @@
             $acategorylist = $_POST['acategorylist'];
             $aquestion = $_POST['aquestion'];
             $aans = $_POST['aans'];
-            
+            $aamin = $_SESSION['userid'];
+			
             //Image information 
                 $name= $_FILES['aimg']['name'];
                 $size = $_FILES['aimg']['size'];
@@ -194,9 +195,9 @@
                 if($size == 0){
                     //echo "<script>alert('NO PIC')</script>";
                     
-                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`) VALUES (?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`, `admin_id`) VALUES (?,?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 'sss', $acategorylist, $aquestion, $aans); 	//s=string , d=decimal value, i=integer
+                        mysqli_stmt_bind_param($stmt, 'ssss', $acategorylist, $aquestion, $aans, $aamin); 	//s=string , d=decimal value, i=integer
                 
                         mysqli_stmt_execute($stmt);
                     
@@ -237,9 +238,9 @@
                     }
                     $imageData = file_get_contents($temp);
                     
-                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`) VALUES (?,?,?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`, `admin_id`) VALUES (?,?,?,?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 'sssss',$acategorylist, $aquestion, $aans, $imageData,$type); 	//s=string , d=decimal value, i=integer
+                        mysqli_stmt_bind_param($stmt, 'ssssss',$acategorylist, $aquestion, $aans, $imageData,$type,$aamin); 	//s=string , d=decimal value, i=integer
                 
                         mysqli_stmt_execute($stmt);
                     
