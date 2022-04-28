@@ -30,15 +30,6 @@
   
     <div class="row">
       <h2>Seller</h2>
-      <?php
-        while ($row = mysqli_fetch_assoc($seller_result))
-        {
-          $sellerProfilePic = $row['profile_picture'];
-          $sellerID = $row['user_id'];
-          $sellerName = $row['name'];
-          $sellerEmail = $row['email'];
-          $sellerContact = $row['contact'];
-      ?>
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
           <table class="table">
             <thead>
@@ -52,6 +43,15 @@
               </tr>
             </thead>
             <tbody>
+            <?php
+              while ($row = mysqli_fetch_assoc($seller_result))
+              {
+                $sellerProfilePic = $row['profile_picture'];
+                $sellerID = $row['user_id'];
+                $sellerName = $row['name'];
+                $sellerEmail = $row['email'];
+                $sellerContact = $row['contact'];
+            ?>
               <tr>
                 <th scope="row">1</th>
                 <td><?php //echo $sellerProfilePic ?></td>
