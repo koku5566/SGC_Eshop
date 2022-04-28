@@ -42,7 +42,6 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody>
             <?php
               while ($row = mysqli_fetch_assoc($seller_result))
               {
@@ -52,6 +51,7 @@
                 $sellerEmail = $row['email'];
                 $sellerContact = $row['contact'];
             ?>
+            <tbody>
               <tr>
                 <th scope="row">1</th>
                 <td><?php //echo $sellerProfilePic ?></td>
@@ -59,7 +59,7 @@
                 <td><?php echo $sellerName ?></td>
                 <td><?php echo $sellerEmail ?></td>
                 <td><?php echo $sellerContact ?></td>
-                <td>EDIT<br>DELETE</td>
+                <td>EDIT<br><button style="border: none, background: none">DELETE</button></td>
               </tr>
               <!--<tr>
                 <th scope="row">2</th>
