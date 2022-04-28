@@ -8,22 +8,21 @@ $user_id = $_SESSION["userid"]; //EXP: U000063
 $sql_2 = "SELECT
 DISTINCT
 myOrder.order_id,
-myOrder.invoice_id,
-myOrder.order_status,
-myOrder.order_date,
-myOrder.delivery_method,
-product.product_id,
 product.product_name,
+product.product_price AS prodPrice,
 product.product_cover_picture,
-product.product_price,
-product.product_variation,
-productTransaction.quantity,
-shopProfile.shop_name
+shopProfile.shop_name,
+variation.product_price AS variantProdPrice,
+productTransaction.quantity
+
 FROM
 myOrder
 JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
 JOIN product ON productTransaction.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+JOIN user on myOrder.userID = user.user_id 
+JOIN cart ON myOrder.userID = cart.user_ID
+JOIN variation ON product.product_id = variation.product_id
 JOIN user on myOrder.userID = user.user_id 
 WHERE myOrder.userID = '$user_id'
 ORDER BY myOrder.order_id DESC
