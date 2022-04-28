@@ -13,17 +13,20 @@
 
 <!-- Delete Data-->
 <?php
-$id = $_POST['delete'];
-$sql = "DELETE FROM user WHERE user_id = '$id'";
-$delete_result = mysqli_query($conn, $sql);
-
-if($delete_result)
+if(isset($_POST['delete']))
 {
-  echo "$id'has been deleted'";
-}else{
-  echo 'Data Not Deleted';
+  $id = $_POST['delete'];
+  $sql = "DELETE FROM user WHERE user_id = '$id'";
+  $delete_result = mysqli_query($conn, $sql);
+  
+  if($delete_result)
+  {
+    echo "$id'has been deleted'";
+  }else{
+    echo 'Data Not Deleted';
+  }
+  mysqli_close($conn);
 }
-mysqli_close($conn);
 ?>
 
 <?php
