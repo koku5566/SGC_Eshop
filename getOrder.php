@@ -117,7 +117,7 @@ $orders = $stmt_2->get_result();
 				if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
 				{
 					//echo "<script>alert('Insert successfully');</script>";
-					
+					echo "<div class='alert alert-success'>Thanks for the review.</div>";
 					for($r = 0; $r< 5; $r++){
 						//move_uploaded_file($tempNamepic[$r], $gotpic[$r]);
 						if(!empty($tempNamepic[$r])){
@@ -740,8 +740,10 @@ $orders = $stmt_2->get_result();
 /*******************************************************************************************************************************************/
 	
 
-										
-											  
+$(".alert.alert-success").delay(2000).slideUp(200, function() {
+	$(this).alert('close');
+});							
+								  
 										
 									
 
