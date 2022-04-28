@@ -66,4 +66,53 @@
             echo $row['discount_amount']." and ".$row['vouncher_type'];
         }
     }
+
+    // send email notification to user.
+    if (isset($_POST['notify']))
+    {
+        $user_id = $_POST['userID'];
+
+        $sql_user_id ="SELECT *
+                    FROM `user`
+                    WHERE userAddress.user_id = '$userID'"; 
+
+        $query_user_id = mysqli_query($conn, $sql_user_id);  
+        $row = mysqli_fetch_assoc($query_user_id);
+        $user_email = $row['email'];
+        $user_name = $row['name'];
+
+        $to = $user_email;
+        $subject = "Product out of stock";
+        $from = "info@sgcprototype2.com";
+        $from2 = "info@sgcprototype2.com";
+        $fromName = "SGC E-Shop";
+
+        $headers =  "From: $fromName <$from> \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed;\r\n";
+
+
+        $message = "
+            <p>We will infom you when this product is restock agian. Thank you.</p>
+        ";
+
+        $HTMLcontent = "<p><b>Dear $user_name</b>,</p><p>$message</p>";
+
+        $boundary = md5(time());
+        $headers .= " boundary=\"{$boundary}\"";
+        $message = "--{$boundary}\r\n";
+        $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+        $message .= "Content-Transfer-Encoding: 7bit\r\n";
+        $message .= $HTMLcontent . "\r\n";
+        $message .= "--{$boundary}\r\n";
+        $returnPath = "-f" . $from2;
+
+        if (@mail($to, $subject, $message, $headers, $returnPath)) {
+            echo "<script type='text/javascript'>
+                    window.location.href = window.location.origin + '/cart.php';
+                </script>";
+        } else {
+            echo "<script>alert('Error')</script>";
+        }
+    }
 ?> 

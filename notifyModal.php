@@ -31,8 +31,10 @@
           </div>
       </div>
         <div class='modal-footer'>
-          <!-- <button type='button' class='btn btn-secondary' id = 'btnB' data-dismiss='modal'>Back</button> -->
-          <button type='button' class='btnN' >Notify Me</button>
+          <form action='cart_manage.php' method='POST'>
+            <input type='hidden' value='".$userID."' name='userID'>
+            <button type='submit' class='btnN' name='notify'>Notify Me</button>
+          </form>
         </div>
       </div>
     </div>
