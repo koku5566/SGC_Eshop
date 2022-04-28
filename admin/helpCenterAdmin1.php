@@ -147,7 +147,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['pid']) && !empty($_POST['pid']) && $_POST['dContent'] === 'Delete'){	
     
         $selectedPID = $_POST['pid'];
-                echo "<script>alert($selectedPID);</script>";
+                //echo "<script>alert($selectedPID);</script>";
                 $sql = "UPDATE helpCenter SET disable_date=? WHERE hc_id=?;";
                 $today = date("Y-m-d");
                  
