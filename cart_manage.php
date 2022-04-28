@@ -113,6 +113,9 @@
                 </script>";
         } else {
             echo "<script>alert('Error')</script>";
+            echo "<script type='text/javascript'>
+                    window.location.href = window.location.origin + '/cart.php';
+                </script>";
         }
     }
 ?> 
