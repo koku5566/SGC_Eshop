@@ -652,7 +652,7 @@
 									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
 									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 46px;'>Image:</label>
-									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
+									<input type = 'file'  name ='aimg' id = 'addimg' accept='image/png, image/jpeg, image/jpg'><br><br>
 																		
 									
 									
@@ -703,7 +703,7 @@
 											<br><br>		
 										
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
+										<input type = 'file'  name ='acImage' id = 'acImg' accept='image/png, image/jpeg, image/jpg' required><br><br>
 
 										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
 										
