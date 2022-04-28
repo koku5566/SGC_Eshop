@@ -36,7 +36,14 @@ $order_id = $_GET['order_id'];
                     $payableamt = 0;
                     $sql2 = "SELECT
                     DISTINCT
-                    *
+                    myOrder.order_id,
+                    product.product_name,
+                    product.product_price AS prodPrice,
+                    product.product_cover_picture,
+                    shopProfile.shop_name,
+                    variation.product_price AS variantProdPrice,
+                    productTransaction.quantity
+                    
                     FROM
                     myOrder
                     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
@@ -62,8 +69,8 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                            <?php if($row2['product_price'] == 0){?>
-                                <?php echo $row2['variation.product_price']?>
+                            <?php if($row2['prodPrice'] == 0){?>
+                                <?php echo $row2['variantProdPrice']?>
                                 <?php }else{?>
                                     <?php echo $row2['product_price']; ?>.00
                                     <?php }?>
