@@ -74,12 +74,15 @@
 
         $sql_user_id ="SELECT *
                     FROM `user`
-                    WHERE userAddress.user_id = '$userID'"; 
+                    WHERE `user_id` = '$user_id'"; 
 
         $query_user_id = mysqli_query($conn, $sql_user_id);  
-        $row = mysqli_fetch_assoc($query_user_id);
-        $user_email = $row['email'];
-        $user_name = $row['name'];
+        while ($row = mysqli_fetch_assoc($query_user_id);) {
+            $user_email = $row['email'];
+            $user_name = $row['name'];
+        }
+        
+    
 
         $to = $user_email;
         $subject = "Product out of stock";
