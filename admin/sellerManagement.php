@@ -13,22 +13,22 @@
 
 <!-- Update Data-->
 <?php
-if(isset($_POST['edit']))
-{
-  $shopId = $_SESSION['userid'];
-  $_SESSION['DeleteUser'] = false;
-  $id = $_POST['delete'];
-  $sql = "DELETE FROM user WHERE shop_id = '$id'";
-  $delete_result = mysqli_query($conn, $sql);
-  
-  if($delete_result)
-  {
-    echo "$id'has been deleted'";
-  }else{
-    echo 'Data Not Deleted';
-  }
-  mysqli_close($conn);
-}
+//if(isset($_POST['edit']))
+//{
+//  $shopId = $_SESSION['userid'];
+//  $_SESSION['DeleteUser'] = false;
+//  $id = $_POST['delete'];
+//  $sql = "DELETE FROM user WHERE shop_id = '$id'";
+//  $delete_result = mysqli_query($conn, $sql);
+//  
+//  if($delete_result)
+//  {
+//    echo "$id'has been deleted'";
+//  }else{
+//    echo 'Data Not Deleted';
+//  }
+//  mysqli_close($conn);
+//}
 ?>
 
 <?php
