@@ -2,13 +2,18 @@
     require __DIR__ . '/header.php'
 ?>
 
-<!--Retrieve Data-->
 <?php	
 	if($_SESSION['role'] != "ADMIN")
 	{
 		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
     }
+?>
+
+
+<?php
+  $sql = "SELECT * FROM user";
+  $seller_result = mysqli_query($conn, $sql);
 ?>
 
 <!-- Update Data-->
@@ -34,9 +39,11 @@
 <?php
 //if(isset($_POST['edit']))
 //{
-//   $shopId = $_SESSION['userid'];
-//   $shopName = $_POST['name'];
-//   $update = "UPDATE user SET name='$shopName' WHERE user_id = '$shopId'";
+//   $sellerId = $_SESSION['user_id'];
+//   $sellerName = $_POST['name'];
+//   $sellerEmail = $_POST['email'];
+//   $sellerContact = $_POST['contact'];
+//   $update = "UPDATE user SET name='$sellerName', email='$sellerEmail', contact='$sellerContact' WHERE user_id = '$sellerId'";
 //     if (mysqli_query($conn, $update))
 //     { 
 //         /*Successful*/
@@ -72,11 +79,6 @@
 //  }
 //  mysqli_close($conn);
 //}
-?>
-
-<?php
-  $sql = "SELECT * FROM user";
-  $seller_result = mysqli_query($conn, $sql);
 ?>
 
 <div class="container-fluid" style="width:100%;">
