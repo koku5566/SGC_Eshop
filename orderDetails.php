@@ -58,6 +58,12 @@ $order_id = $_GET['order_id'];
                     while($row2 = $result2->fetch_assoc()){
                         $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
+                        $totalPamt = $totalP + $shippingfee;
+                        if($row2['prodPrice'] == 0 ){
+                            $totalP = $row2['variantProdPrice'] ;
+                        } else{ 
+                            $totalP = $row2['prodPrice'] ;
+                         }
                 ?>
                 <div class="card">
                 <div class="card-body">
@@ -68,11 +74,7 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                            <?php if($row2['prodPrice'] == 0 ){?>
-                                <?php echo $row2['variantProdPrice'] ?>
-                            <?php } else{ ?>
-                                <?php echo $row2['prodPrice'] ?>
-                            <?php }?>                       
+                            <?php echo $totalP?>                       
                         </div>
                         <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
@@ -89,11 +91,7 @@ $order_id = $_GET['order_id'];
                         <div class="row p-2">
                             <div class="col">Total:</div>
                             <div class="col"> 
-                            <?php if($row2['prodPrice'] == 0 ){?>
-                                <?php echo $row2['variantProdPrice'] ?>
-                            <?php } else{ ?>
-                                <?php echo $row2['prodPrice'] ?>
-                            <?php }?>
+                            <?php echo $totalP?>
                             </div>
                         </div>
                         <div class="row p-2">
@@ -112,7 +110,7 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $payableamt?></strong></h5>
+                                <h5><strong>RM<?php echo $totalPamt?></strong></h5>
                             </div>
                             
                         </div>
