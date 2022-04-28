@@ -276,7 +276,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategoryName']) && !empty($_POST['acCategoryName']) ){
            
             $acCategoryName = $_POST['acCategoryName'];
-            echo "$acCategoryName";
+            //echo "$acCategoryName";
             
             //Image information 
                 $name= $_FILES['acImage']['name'];
@@ -310,7 +310,7 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             //echo "<script>alert('Insert successfully');</script>";
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New category successfully added</div>";
                            // $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
 							$sql = "UPDATE helpCenterCategory AS a, (SELECT id from helpCenterCategory order by id desc LIMIT 1) AS b 
 									SET a.hcc_id = concat('HCC', b.id)
