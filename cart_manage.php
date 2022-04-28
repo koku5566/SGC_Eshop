@@ -77,7 +77,7 @@
                     WHERE `user_id` = '$user_id'"; 
 
         $query_user_id = mysqli_query($conn, $sql_user_id);  
-        while ($row = mysqli_fetch_assoc($query_user_id);) {
+        while ($row = mysqli_fetch_assoc($query_user_id)) {
             $user_email = $row['email'];
             $user_name = $row['name'];
         }
