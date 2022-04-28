@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php'
 ?>
 
+<!--Retrieve Data-->
 <?php	
 	if($_SESSION['role'] != "ADMIN")
 	{
@@ -10,8 +11,23 @@
     }
 ?>
 
+<!-- Delete Data-->
 <?php
-  $sql = "SELECT * FROM user";
+$id = $_POST['delete'];
+$sql = "DELETE FROM user WHERE user_id = '$id'";
+$delete_result = mysqli_query($conn, $sql);
+
+if($delete_result)
+{
+  echo "$id'has been deleted'";
+}else{
+  echo 'Data Not Deleted';
+}
+mysqli_close($conn);
+?>
+
+<?php
+  $sql = "SELECT * FROM user WHERE role = SELLER";
   $seller_result = mysqli_query($conn, $sql);
 ?>
 
@@ -59,28 +75,12 @@
                 <td><?php echo $sellerName ?></td>
                 <td><?php echo $sellerEmail ?></td>
                 <td><?php echo $sellerContact ?></td>
-                <td>EDIT<br><button class="delete">DELETE</button></td>
+                <td><button class="delete">EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
               </tr>
-              <!--<tr>
-                <th scope="row">2</th>
-                <td>natasha</td>
-                <td>natasha@gmail.com</td>
-                <td>01123456789</td>
-                <td>Tokyo</td>
-                <td>EDIT<br>DELETE</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>natasha</td>
-                <td>natasha@gmail.com</td>
-                <td>01123456789</td>
-                <td>Georgetown</td>
-                <td>EDIT<br>DELETE</td>
-              </tr>-->
             </tbody>
             <?php
-          }
-        ?>
+              }
+            ?>
           </table>
         </form>
     </div>
