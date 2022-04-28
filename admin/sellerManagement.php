@@ -11,12 +11,57 @@
     }
 ?>
 
+<!-- Update Data-->
+<?php
+if(isset($_POST['edit']))
+{
+  $shopId = $_SESSION['userid'];
+  $_SESSION['DeleteUser'] = false;
+  $id = $_POST['delete'];
+  $sql = "DELETE FROM user WHERE shop_id = '$id'";
+  $delete_result = mysqli_query($conn, $sql);
+  
+  if($delete_result)
+  {
+    echo "$id'has been deleted'";
+  }else{
+    echo 'Data Not Deleted';
+  }
+  mysqli_close($conn);
+}
+?>
+
+<?php
+if(isset($_POST['edit']))
+{
+   $shopId = $_SESSION['userid'];
+   $shopName = $_POST['name'];
+   $update = "UPDATE user SET name='$shopName' WHERE user_id = '$shopId'";
+     if (mysqli_query($conn, $update))
+     { 
+         /*Successful*/
+         //header("Refresh:0");
+         //echo 'Success, please refesh again if not show the updated profile details.';
+         //header("Location:/shopProfile.php");
+         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
+     }
+     else
+     {
+       echo($update);
+         /*Fail*/
+         echo 'Update Fail';
+     }
+  } 
+?>
+
 <!-- Delete Data-->
 <?php
 if(isset($_POST['delete']))
 {
+  $shopId = $_SESSION['userid'];
+  $_SESSION['DeleteUser'] = false;
   $id = $_POST['delete'];
-  $sql = "DELETE FROM user WHERE user_id = '$id'";
+  $sql = "DELETE FROM user WHERE username = '$id'";
   $delete_result = mysqli_query($conn, $sql);
   
   if($delete_result)
@@ -78,7 +123,7 @@ if(isset($_POST['delete']))
                 <td><?php echo $sellerName ?></td>
                 <td><?php echo $sellerEmail ?></td>
                 <td><?php echo $sellerContact ?></td>
-                <td><button class="delete">EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
+                <td><button name="edit" class="delete">EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
               </tr>
             </tbody>
             <?php
