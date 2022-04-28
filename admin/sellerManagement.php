@@ -33,25 +33,25 @@
 
 <?php
 if(isset($_POST['edit']))
-{
-   $shopId = $_SESSION['userid'];
-   $shopName = $_POST['name'];
-   $update = "UPDATE user SET name='$shopName' WHERE user_id = '$shopId'";
-     if (mysqli_query($conn, $update))
-     { 
-         /*Successful*/
-         //header("Refresh:0");
-         //echo 'Success, please refesh again if not show the updated profile details.';
-         //header("Location:/shopProfile.php");
-         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
-     }
-     else
-     {
-       echo($update);
-         /*Fail*/
-         echo 'Update Fail';
-     }
-  } 
+//{
+//   $shopId = $_SESSION['userid'];
+//   $shopName = $_POST['name'];
+//   $update = "UPDATE user SET name='$shopName' WHERE user_id = '$shopId'";
+//     if (mysqli_query($conn, $update))
+//     { 
+//         /*Successful*/
+//         //header("Refresh:0");
+//         //echo 'Success, please refesh again if not show the updated profile details.';
+//         //header("Location:/shopProfile.php");
+//         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
+//     }
+//     else
+//     {
+//       echo($update);
+//         /*Fail*/
+//         echo 'Update Fail';
+//     }
+//} 
 ?>
 
 <!-- Delete Data-->
