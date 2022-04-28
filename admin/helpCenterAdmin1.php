@@ -444,7 +444,8 @@
 		 
 		 /**/
 		 if(mail($to, $subject, $content, $header)){
-			  echo "<script>alert('Email sent!')</script>";
+			  //echo "<script>alert('Email sent!')</script>";
+			  echo "<div class='alert alert-success'>Email sent!</div>";
 			  $sql = "UPDATE 
 					 `contactUs` SET status =?, r_message=?, admin_id=?
 			          WHERE cu_id =?";
