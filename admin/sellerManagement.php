@@ -78,11 +78,11 @@
                 <td>EDIT<br>DELETE</td>
               </tr>-->
             </tbody>
-          </table>
-        </form>
-        <?php
+            <?php
           }
         ?>
+          </table>
+        </form>
     </div>
   </div>
 </div>
@@ -104,7 +104,7 @@ body{
 
 .delete{
   border: none;
-  background-color: none;
+  background-color: white;
   color:grey;
 }
 </style>
