@@ -62,7 +62,12 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                            <?php echo $row2['product_price']; ?>.00
+                            <?php if($row2['product_price'] == 0){?>
+                                <?php echo $row2['variation.product_price']?>
+                                <?php }else{?>
+                                    <?php echo $row2['product_price']; ?>.00
+                                    <?php }?>
+                           
                         </div>
                         <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
