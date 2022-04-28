@@ -33,7 +33,7 @@ $order_id = $_GET['order_id'];
                 <?php
                     $shippingfee = 10;
                     $totalamount = 0;
-                   // $payableamt = 0;
+                    $totalP = 0;
                     $sql2 = "SELECT
                     DISTINCT
                     myOrder.order_id,
@@ -64,6 +64,7 @@ $order_id = $_GET['order_id'];
                         } else{ 
                             $totalP = $row2['prodPrice'] ;
                          }
+
                 ?>
                 <div class="card">
                 <div class="card-body">
@@ -74,7 +75,7 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                            <?php echo $totalP?>                       
+                            <?php echo $totalP ?>                       
                         </div>
                         <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
