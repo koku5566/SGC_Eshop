@@ -11,8 +11,7 @@
 ?>
 
 <?php
-  $sellerId = $_SESSION['userid'];
-  $sql = "SELECT * FROM user WHERE user_id = '$sellerId'";
+  $sql = "SELECT * FROM user";
   $seller_result = mysqli_query($conn, $sql);
 ?>
 
@@ -55,7 +54,7 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td><?php echo $sellerProfilePic ?></td>
+                <td><?php //echo $sellerProfilePic ?></td>
                 <td><?php echo $sellerID ?></td>
                 <td><?php echo $sellerName ?></td>
                 <td><?php echo $sellerEmail ?></td>
