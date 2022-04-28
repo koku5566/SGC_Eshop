@@ -15,17 +15,15 @@ myOrder.delivery_method,
 product.product_id,
 product.product_name,
 product.product_cover_picture,
-product.product_price AS prodPrice,
+product.product_price,
 product.product_variation,
 productTransaction.quantity,
-variation.product_price AS variantProdPrice,
 shopProfile.shop_name
 FROM
 myOrder
 JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
 JOIN product ON productTransaction.product_id = product.product_id
 JOIN shopProfile ON product.shop_id = shopProfile.shop_id
-JOIN variation ON product.product_id = variation.product_id
 JOIN user on myOrder.userID = user.user_id 
 WHERE myOrder.userID = '$user_id'
 ORDER BY myOrder.order_id DESC
@@ -345,13 +343,8 @@ $orders = $stmt_2->get_result();
                         <?php 
                         $totalamount = 0;
                         while($row = $orders ->fetch_assoc()){ 
-                           // $amount =  $row['product_price']*$row['quantity'];
+                            $amount =  $row['product_price']*$row['quantity'];
                             $totalamount += $amount;
-                            if($row2['prodPrice'] == 0 ){
-                                $amount = $row2['variantProdPrice'] *$row2['quantity'];
-                            } else{ 
-                                $amount = $row2['prodPrice'] *$row2['quantity'];
-                             }
                             ?>
                         
                             <div class="card">
