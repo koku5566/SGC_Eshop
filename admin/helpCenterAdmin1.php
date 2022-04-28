@@ -204,7 +204,7 @@
                         {
                            
                             
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New question added successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
                             $sql = "UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 									SET a.hc_id = concat('HC', b.id)
@@ -246,7 +246,7 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             //echo "<script>alert('Insert successfully');</script>";
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New question added successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
 							$sql ="UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 								   SET a.hc_id = concat('HC', b.id)
