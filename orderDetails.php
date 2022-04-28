@@ -33,7 +33,7 @@ $order_id = $_GET['order_id'];
                 <?php
                     $shippingfee = 10;
                     $totalamount = 0;
-                    $payableamt = 0;
+                   // $payableamt = 0;
                     $sql2 = "SELECT
                     DISTINCT
                     myOrder.order_id,
@@ -58,7 +58,7 @@ $order_id = $_GET['order_id'];
                     while($row2 = $result2->fetch_assoc()){
                         $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
-                        $payableamt = $totalamount + $shippingfee;
+                        //$payableamt = $totalamount + $shippingfee;
                         if ($row2['prodPrice']==0){ 
                             $payableamt = $row['variantProdPrice']* $row['quantity'];
                         }
