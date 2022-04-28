@@ -56,13 +56,13 @@ $order_id = $_GET['order_id'];
                     
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
-                        $amount =  $row2['product_price']*$row2['quantity'];
+                       // $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
-                        $totalPamt = $totalP + $shippingfee;
+                        $totalPamt = $amount + $shippingfee;
                         if($row2['prodPrice'] == 0 ){
-                            $totalP = $row2['variantProdPrice'] *$row2['quantity'];
+                            $amount = $row2['variantProdPrice'] *$row2['quantity'];
                         } else{ 
-                            $totalP = $row2['prodPrice'] *$row2['quantity'];
+                            $amount = $row2['prodPrice'] *$row2['quantity'];
                          }
 
                 ?>
