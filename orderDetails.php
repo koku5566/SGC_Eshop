@@ -58,13 +58,6 @@ $order_id = $_GET['order_id'];
                     while($row2 = $result2->fetch_assoc()){
                         $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
-                        //$payableamt = $totalamount + $shippingfee;
-                        if ($row2['prodPrice']==0){ 
-                            $payableamt = $row['variantProdPrice']* $row['quantity'];
-                        }
-                        else{
-                            $payableamt = $row['prodPrice']* $row['quantity'];
-                        }
                 ?>
                 <div class="card">
                 <div class="card-body">
@@ -74,7 +67,12 @@ $order_id = $_GET['order_id'];
                         <div class="col-5">
                             <?php echo $row2['product_name']; ?>
                         </div>
-                        <div class="col-2">RM<?php echo $payableamt?>                          
+                        <div class="col-2">RM
+                            <?php if($row2['prodPrice'] == 0 ){?>
+                                <?php echo $row2['variantProdPrice'] ?>
+                            <?php } else{ ?>
+                                <?php echo $row2['prodPrice'] ?>
+                            <?php }?>                       
                         </div>
                         <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
@@ -91,7 +89,11 @@ $order_id = $_GET['order_id'];
                         <div class="row p-2">
                             <div class="col">Total:</div>
                             <div class="col"> 
-
+                            <?php if($row2['prodPrice'] == 0 ){?>
+                                <?php echo $row2['variantProdPrice'] ?>
+                            <?php } else{ ?>
+                                <?php echo $row2['prodPrice'] ?>
+                            <?php }?>
                             </div>
                         </div>
                         <div class="row p-2">
