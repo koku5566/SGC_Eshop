@@ -60,9 +60,9 @@ $order_id = $_GET['order_id'];
                         $totalamount += $amount;
                         $totalPamt = $totalP + $shippingfee;
                         if($row2['prodPrice'] == 0 ){
-                            $totalP = $row2['variantProdPrice'] ;
+                            $totalP = $row2['variantProdPrice'] *$row2['quantity'];
                         } else{ 
-                            $totalP = $row2['prodPrice'] ;
+                            $totalP = $row2['prodPrice'] *$row2['quantity'];
                          }
 
                 ?>
