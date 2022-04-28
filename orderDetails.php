@@ -92,7 +92,7 @@ $order_id = $_GET['order_id'];
                         <div class="row p-2">
                             <div class="col">Total:</div>
                             <div class="col"> 
-                            <?php echo $totalP?>
+                            <?php  echo $amount * $row2['quantity']?>
                             </div>
                         </div>
                         <div class="row p-2">
