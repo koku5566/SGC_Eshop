@@ -343,8 +343,13 @@ $orders = $stmt_2->get_result();
                         <?php 
                         $totalamount = 0;
                         while($row = $orders ->fetch_assoc()){ 
-                            $amount =  $row['product_price']*$row['quantity'];
+                           // $amount =  $row['product_price']*$row['quantity'];
                             $totalamount += $amount;
+                            if($row2['prodPrice'] == 0 ){
+                                $amount = $row2['variantProdPrice'] *$row2['quantity'];
+                            } else{ 
+                                $amount = $row2['prodPrice'] *$row2['quantity'];
+                             }
                             ?>
                         
                             <div class="card">
