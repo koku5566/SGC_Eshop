@@ -35,10 +35,10 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">User Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
-                <th scope="col">Address</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -59,7 +59,7 @@
                 <td><?php echo $sellerName ?></td>
                 <td><?php echo $sellerEmail ?></td>
                 <td><?php echo $sellerContact ?></td>
-                <td>EDIT<br><button style="border: none, background: none">DELETE</button></td>
+                <td>EDIT<br><button class="delete">DELETE</button></td>
               </tr>
               <!--<tr>
                 <th scope="row">2</th>
@@ -100,5 +100,11 @@ body{
   background-color: white;
   margin: 25px auto;
   padding: 30px;
+}
+
+.delete{
+  border: none;
+  background-color: none;
+  color:grey;
 }
 </style>
