@@ -32,7 +32,7 @@
 ?>
 
 <?php
-if(isset($_POST['edit']))
+//if(isset($_POST['edit']))
 //{
 //   $shopId = $_SESSION['userid'];
 //   $shopName = $_POST['name'];
@@ -43,7 +43,7 @@ if(isset($_POST['edit']))
 //         //header("Refresh:0");
 //         //echo 'Success, please refesh again if not show the updated profile details.';
 //         //header("Location:/shopProfile.php");
-//         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
+//         ?><!--<script>window.location = '<?php //echo("$domain/admin/sellerManagament.php");?>'</script>--><?php
 //     }
 //     else
 //     {
@@ -77,6 +77,41 @@ if(isset($_POST['edit']))
 <?php
   $sql = "SELECT * FROM user WHERE role = SELLER";
   $seller_result = mysqli_query($conn, $sql);
+?>
+
+<?php
+	if(isset($_POST['delete']))
+	{
+		$_SESSION['DeleteUser'] = false;
+		$UN = $_POST['deleteStaff'];
+
+		$sql = "DELETE FROM user WHERE username = '$UN'";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['DeleteUser'] = true;
+            echo "<script>alert('$UN Has Been Removed');</script>";
+		} else {
+			echo "Error: " . mysqli_error($conn);
+		}
+	}
+
+	if(isset($_POST['edit']))
+	{
+        $UID=$_POST['editStaff'];
+
+        $name = $_POST['inpEditName'];
+		$email = $_POST['inpEditEmail'];
+        $contact = $_POST['inpEditContact'];
+        $role = $_POST['inpEditRole'];
+
+		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
+
+		if (mysqli_query($conn, $sql)) {
+            echo "<script>alert('User Detail Edited');</script>";
+		} else {
+			echo "Error: " . mysqli_error($conn);
+		}
+	}
 ?>
 
 <div class="container-fluid" style="width:100%;">
