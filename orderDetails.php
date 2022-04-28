@@ -58,7 +58,7 @@ $order_id = $_GET['order_id'];
                     while($row2 = $result2->fetch_assoc()){
                        // $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
-                        $totalPamt = $amount + $shippingfee;
+                       // $totalPamt = $amount + $shippingfee;
                         if($row2['prodPrice'] == 0 ){
                             $amount = $row2['variantProdPrice'] *$row2['quantity'];
                         } else{ 
@@ -111,7 +111,7 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $totalPamt?></strong></h5>
+                                <h5><strong>RM<?php  echo $amount * $row2['quantity'] + $shippingfee?></strong></h5>
                             </div>
                             
                         </div>
