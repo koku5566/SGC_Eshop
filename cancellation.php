@@ -71,7 +71,7 @@ if(isset($_POST['cancel']))
        $result2 = $conn->query($sql2);
        while($row2 = $result2->fetch_assoc()){
         
-          $totalamount += $amount;
+          $totalamount =$amount * $row2['quantity'];
           if($row2['prodPrice'] == 0 ){
             $amount = $row2['variantProdPrice'] *$row2['quantity'];
         } else{ 
@@ -86,7 +86,7 @@ if(isset($_POST['cancel']))
               <?php echo $row2['product_name']; ?>
             </div>
             <div class="col-2">RM
-              <?php echo $row2['product_price']; ?>.00
+              <?php echo $amount ?>.00
             </div>
             <div class="col-2">X
               <?php echo $row2['quantity']; ?>
