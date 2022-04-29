@@ -244,13 +244,7 @@ $shippingfee = 10;
                             </td>
                             
                                 <td>
-                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='     width: 250px;
-                                height: 200px;
-                                display: inline-block; /* makes it fit in like an <img> */
-                                background-size: cover; /* or contain */
-                                background-position: center center;
-                                background-repeat: no-repeat;
-                            '></a>
+                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:250px; height:250px; background-color:red;text-align:center; vertical-align:middle'></a>
                                 </td>
                                 <td>
                                 <span>".$product_name."</span>
