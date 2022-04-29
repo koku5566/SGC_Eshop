@@ -133,6 +133,7 @@ $shippingfee = 10;
                 <div class="col"><label class="form-label" style="font-size: 20px;"><strong>Your Order</strong></label>
                     <div class="table-responsive">
                         <table class="table">
+                        <div class="table-responsive shopping-cart">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -270,6 +271,7 @@ $shippingfee = 10;
                     </div>
                 </div>
             </div>
+                </div>
             <!-- <div style="margin-top: 40px;"><label class="form-label" style="margin-top: 10px;">Voucher</label>
                 <div class="row">
                     <div class="col-lg-11 offset-lg-0"><input type="text" style="border-color: rgba(0,0,0,0.32);width: 240.8px;padding: 7px 2px;" placeholder="Enter voucher code"><button class="btn btn-primary text-center" type="button" style="text-align: right;background: #A71337;width: 122.95px;margin-left: 11px;">Apply</button></div>
