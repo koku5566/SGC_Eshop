@@ -103,7 +103,7 @@
     
             $message = "
             <h5>Your Order for <strong>$invoice_id</strong> has been shipped out.</h5>
-            <button>Track Here</a>
+            <a href='https://eshop.sgcprototype2.com/seller/shippingCheckDetails.php?order_id=$invoice_id'>Track Here</a>
             <p>
             <h4>Thank you</h4>
             <h4>Best Regards</h4>
