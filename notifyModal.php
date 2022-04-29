@@ -25,11 +25,6 @@
                   <h4 class='product-title'><a href='#'>".$product_name."</a></h4><span><em>Size:</em>-</span><span><em>Color:</em>-</span>
               </div>
           </div>
-//           <div class='form-group'>
-//               <!-- <label for='exampleInputEmail1'>Email address</label> -->
-//               <input type='email' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' placeholder='Enter Your email address'>
-//           </div>
-      </div>
         <div class='modal-footer'>
           <form action='cart_manage.php' method='POST'>
             <input type='hidden' value='".$userID."' name='userID'>
