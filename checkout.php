@@ -244,7 +244,7 @@ $shippingfee = 10;
                             </td>
                             
                                 <td>
-                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:250px; height:250px; background-color:red;text-align:center; vertical-align:middle'></a>
+                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:100px; height:100px; background-color:red;text-align:center; vertical-align:middle'></a>
                                 </td>
                                 <td>
                                 <span>".$product_name."</span>
