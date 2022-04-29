@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/header.php';
-    require_once __DIR__ . '/mysqli_connect.php'
-    session_start();
+    include __DIR__ . '/mysqli_connect.php'
+    //session_start();
 
     //remove product from cart table
     if (isset($_POST['removeItemBtn'])) {
