@@ -13,7 +13,7 @@ switch($searchBy){
         $sql =" SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
         INNER JOIN user ON myOrder.userID = user.user_id
         INNER JOIN product ON productTransaction.product_id = product.product_id
-        WHERE productTransaction.invoice_id = '$aoID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_id  LIKE '%$keyword%' AND myOrder.invoice_id LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
+        WHERE productTransaction.shop_id = '$user_id' AND myOrder.order_id  LIKE '%$keyword%' AND myOrder.invoice_id LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
         break;
     case "name":
         $sql ="SELECT
