@@ -330,17 +330,16 @@ $user_id = $_SESSION["userid"];
                             </div>
                                 <!--End of Order Item-->
 
-
-
-                            
                             <!--------------------------------To ship--------------------------------------->
                             <div class="tab-pane fade" id="toship" role="tabpanel" aria-labelledby="toship-tab">
                             <?php       
                             
-                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id WHERE myOrder.order_status = 'Paid' AND productTransaction.shop_id = '$user_id'AND myOrder.delivery_method = 'standard-delivery' ";
+                              $sqltsheader = "SELECT * FROM myOrder INNER JOIN user ON myOrder.userID = user.user_id INNER JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+                               WHERE myOrder.order_status = 'Paid' AND productTransaction.shop_id = '$user_id'AND myOrder.delivery_method = 'standard-delivery' ";
                               $tsresultheader = mysqli_query($conn, $sqltsheader);
                               if (mysqli_num_rows($tsresultheader) > 0) {
                               while ($tsrowheader = mysqli_fetch_assoc($tsresultheader)) {
+                                $i=0;
                               //Loop header
                               ?>
                                     <div class="card mt-2">
@@ -350,7 +349,9 @@ $user_id = $_SESSION["userid"];
                                                     <span><strong><?php echo $tsrowheader['username']; ?></strong></span>
                                                 </div>
                                                 <div class="col md-auto text-end" style="text-align:right;">
-                                                <span class="pr-1"><strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $tsrowheader['delivery_method'] ?> </strong></span>
+                                                <span class="pr-1">
+                                                    <strong>Order ID:<?php echo $tsrowheader['invoice_id']; ?> </strong></span>|<span class="pl-1"><strong><?php echo $tsrowheader['delivery_method'] ?></strong>
+                                                </span>
                                             </div>
                                             </div>
 
@@ -364,7 +365,11 @@ $user_id = $_SESSION["userid"];
                                             $tssql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id = myOrder.invoice_id
                                                         INNER JOIN user ON myOrder.userID = user.user_id
                                                         INNER JOIN product ON productTransaction.product_id = product.product_id
-                                                        WHERE productTransaction.invoice_id = '$toID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_status = 'Paid' AND myOrder.delivery_method = 'standard-delivery'  ORDER BY myOrder.order_id DESC";
+                                                        WHERE productTransaction.invoice_id = '$toID' 
+                                                        AND productTransaction.shop_id = '$user_id' 
+                                                        AND myOrder.order_status = 'Paid' 
+                                                        AND myOrder.delivery_method = 'standard-delivery'  
+                                                        ORDER BY myOrder.order_id DESC";
                                             
                                             $tsresult = mysqli_query($conn, $tssql);
                                             if (mysqli_num_rows($tsresult) > 0) {
@@ -388,11 +393,18 @@ $user_id = $_SESSION["userid"];
                                                         </div>
                                                         <div class="col-2"><?php echo $tsrow['order_status'] ?></div>
                                                         <div class="col-2"> <?php echo $tsrow['tracking_number'] ?></div>
-                                                        <div class="col-2">
-                                                            <?php if ($tsrow['order_status'] == 'Paid'&&  $tsrow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Arrange Shipment</a>
-                                                            <?php } else if ($tsrow['delivery_method'] == 'self-collection' && $tsrow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Update Pick-Up</a>
-                                                            <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $tsrow['invoice_id']; ?>">Check Details</a><?php } ?>
-                                                        </div>
+                                                        <?php 
+                                                            while($i < 1){?>
+                                                                <div class="col-2">
+                                                                <?php 
+                                                                if ($arow['order_status'] == 'Paid' && $arow['delivery_method'] == 'standard-delivery') { ?><a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Arrange Shipment</a>
+                                                                <?php } else if ($arow['delivery_method'] == 'self-collection' && $arow['order_status'] == 'Paid') { ?> <a class="btn btn-primary btn-sm" href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Update Pick-Up</a>
+                                                                <?php } else { ?> <a href="shippingCheckDetails.php?order_id=<?php echo $arow['invoice_id']; ?>">Check Details</a><?php } ?>
+                                                                </div>
+                                                            <?php 
+                                                             $i++;
+                                                            }
+                                                           ?>
                                                     </div>
                                             <?php
                                                 }
