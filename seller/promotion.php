@@ -227,7 +227,7 @@
             </div>
         </div>
 
-        <!-- Approved Section-->
+        <!-- Request Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
@@ -376,7 +376,7 @@
 
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <p class="p-title">Cover Image</p>
+                                    <p class="p-title">Promotion Image</p>
                                 </div>
                             </div>
 
@@ -463,7 +463,9 @@
 
                                     if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
                                         $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
-                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
+                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES 
+                                                WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), 
+                                                '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
                                                 
                                                 $result = mysqli_query($conn,$sql);
 
@@ -871,7 +873,7 @@
         }
         else
         {
-            alert("Please Select a Cover Picture");
+            alert("Please Select a Promotion Picture");
         }
     }
 
@@ -882,7 +884,7 @@
         }
         else
         {
-            alert("Please Select a Cover Picture");
+            alert("Please Select a Promotion Picture");
         }
     }
 

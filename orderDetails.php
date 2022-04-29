@@ -4,6 +4,41 @@
 <?php
 $order_id = $_GET['order_id'];
 
+
+                         $sql4 = "SELECT
+                         DISTINCT
+                         myOrder.order_id,
+                         product.product_name,
+                         product.product_price ,
+                         product.product_cover_picture,
+                         shopProfile.shop_name,
+                         variation.product_price ,
+                         productTransaction.quantity
+                         
+                         FROM
+                         myOrder
+                         JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+                         JOIN product ON productTransaction.product_id = product.product_id
+                         JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                         JOIN user on myOrder.userID = user.user_id 
+                         JOIN cart ON myOrder.userID = cart.user_ID
+                         JOIN variation ON product.product_id = variation.product_id
+                         WHERE myOrder.order_id = $order_id";
+                         
+                         $result4 = $conn->query($sql4);
+                         while($row4 = $result4->fetch_assoc()){
+                             $amount =  $row4['product_price']*$row2['quantity'];
+                             $totalamount += $amount;
+                            // $totalPamt = $amount + $shippingfee;
+                             if($row4['prodPrice'] == 0 ){
+                                 $amount = $row4['variantProdPrice'] *$row4['quantity'];
+                             } else{ 
+                                 $amount = $row4['prodPrice'] *$row4['quantity'];
+                              }
+                            }
+                              
+                       
+
 ?>
 
 
@@ -38,10 +73,10 @@ $order_id = $_GET['order_id'];
                     DISTINCT
                     myOrder.order_id,
                     product.product_name,
-                    product.product_price AS prodPrice,
+                    product.product_price ,
                     product.product_cover_picture,
                     shopProfile.shop_name,
-                    variation.product_price AS variantProdPrice,
+                    
                     productTransaction.quantity
                     
                     FROM
@@ -51,23 +86,24 @@ $order_id = $_GET['order_id'];
                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                     JOIN user on myOrder.userID = user.user_id 
                     JOIN cart ON myOrder.userID = cart.user_ID
-                    JOIN variation ON product.product_id = variation.product_id
+                    
                     WHERE myOrder.order_id = $order_id";
                     
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
-                       // $amount =  $row2['product_price']*$row2['quantity'];
+                        $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
                        // $totalPamt = $amount + $shippingfee;
-                        if($row2['prodPrice'] == 0 ){
+                        /*if($row2['prodPrice'] == 0 ){
                             $amount = $row2['variantProdPrice'] *$row2['quantity'];
                         } else{ 
                             $amount = $row2['prodPrice'] *$row2['quantity'];
-                         }
+                         }*/
 
                 ?>
                 <div class="card">
                 <div class="card-body">
+
                     <div class="row">
                         
                         <div class="col-1"><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
@@ -83,8 +119,9 @@ $order_id = $_GET['order_id'];
                         <div class="col-2 red-text">RM
                         <?php  echo $amount?></td>
                         </div>
-                        
+                       
                     </div>
+
                 </div>
                 <br>
                 <div class="card-footer">
@@ -125,6 +162,7 @@ $order_id = $_GET['order_id'];
                         
                        
                     </div>
+                    
                     <?php }?>
                 </div>
                 <br>
