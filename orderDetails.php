@@ -87,7 +87,7 @@ $order_id = $_GET['order_id'];
                     </div>
                 </div>
                 <br>
-                
+                <php }?>
                 <br>
             </div>
         </section>
