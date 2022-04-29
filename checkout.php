@@ -57,7 +57,6 @@ else{
 
 
 //calculate shipping fee
-
 $shippingfee = 10;
 
 ?>

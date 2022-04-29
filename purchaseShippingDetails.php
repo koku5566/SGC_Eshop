@@ -6,28 +6,12 @@
     //=========sql to get order information=============
     $deliverymethod="";
     $totalprice = 0;
-    $shippingfee = 8.6;
-   // $ordertotal = $amt * $shippingfee;
-    $orderinfosql = "SELECT
-    myOrder.order_id,
-    myOrder.order_status,
-    myOrder.delivery_method,
-    myOrder.order_date,
-    myOrder.tracking_number,
-    user.username,
-    user.email,
-    userAddress.contact_name,
-    userAddress.phone_number,
-    userAddress.address,
-    productTransaction.quantity,
-    productTransaction.shop_id,
-    product.product_name,
-    product.product_price,
-    product.product_cover_picture,
-    shopProfile.shop_name,
-    shopProfile.shop_profile_image,
-    shopProfile.shop_id,
-    shopProfile.shop_address_state
+    $orderinfosql = "SELECT myOrder.order_id, myOrder.order_status,
+    myOrder.delivery_method,myOrder.order_date,myOrder.tracking_number,
+    user.username,user.email, userAddress.contact_name, userAddress.phone_number,
+    userAddress.address, productTransaction.quantity, productTransaction.shop_id,
+    product.product_name,product.product_price,product.product_cover_picture,
+    shopProfile.shop_name, shopProfile.shop_profile_image,shopProfile.shop_id, shopProfile.shop_address_state
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -35,7 +19,7 @@
     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
     JOIN product ON productTransaction.product_id = product.product_id
     JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
-    WHERE myOrder.invoice_id =  '$invoice_id';";
+    WHERE myOrder.invoice_id =  '$invoice_id'";
     $stmt = $conn->prepare($orderinfosql);
     $stmt->execute();
     $oresult = $stmt->get_result();
@@ -96,33 +80,32 @@
           <?php
         }
     }
-        //order received
-        if(isset($_POST["receivedBtn"])){
-            $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
-            $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
-            $status = "Delivered";
-            $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
-            $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
-        
-            if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-                $_SESSION['success'] = "Thank you for updating!";?>
-                <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
-                <?php
-               // header("Location:purchaseShippingDetails.php?order_id=".$orderid);
-                } else {
-              $_SESSION['status'] = "Order status update failed";?>
-               <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
-              <?php
-            }
+    
+    //order received
+    if(isset($_POST["receivedBtn"])){
+        $orderid = mysqli_real_escape_string($conn, SanitizeString($_POST["order_id"]));
+        $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
+        $status = "Delivered";
+        $insertsql = "INSERT INTO orderStatus (order_id,invoice_id, status) VALUES('$orderid','$invoice_id', '$status')";
+        $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
+    
+        if ($conn->query($insertsql)&& $conn->query($updatesql)) {
+            $_SESSION['success'] = "Thank you for updating!";?>
+            <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
+            <?php
+            } else {
+          $_SESSION['status'] = "Order status update failed";?>
+           <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
+          <?php
         }
+    }
 
-    //pick up status update
+    //remind seller
     if(isset($_POST["remind_seller"])){
         $buyer_email = mysqli_real_escape_string($conn, SanitizeString($_POST["buyeremail"]));
         $seller_email = mysqli_real_escape_string($conn, SanitizeString($_POST["selleremail"]));
         $invoice_id = mysqli_real_escape_string($conn, SanitizeString($_POST["invoice_id"]));
 
-        //echo $buyer_email,$seller_email;
         $to = $seller_email;
         $subject = "Remind to Ship for Order Number: '$invoice_id'" ;
         $from = "shipping@sgcprototype2.com";
@@ -136,7 +119,9 @@
 
         $message = "
         <h5>Remember to ship order items for '$invoice_id'</h5>
-        <p>Your customer has notify you that the  order has not been shipped yet. Please kindly ship all order items to keep a good rating for your shop. :)
+        <p>Your customer has notify you that the order has not been shipped yet. 
+            Please kindly ship all order items to keep a good rating for your shop. :)
+        </p>
         <h4>Thank you</h4>
         <h4>Best Regards</h4>
         <h4>SGC Eshop</h4>
@@ -278,9 +263,18 @@
                 <?php                       
                      while ($srow = $sresult->fetch_assoc()) {
                 ?>
-                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success"><?php } else if ($srow['status'] =='Failed' && $orderstatus =='Failed'){?> <{?><tr class="table-danger"> <?php }  else { ?><tr> <?php } ?>  <!-- if pick up order is ready, set row to green colour-->
+                
+                 <?php if($srow['status']=='Ready' && $orderstatus =='Ready'){?> <tr class="table-success">
+                     <?php } else if ($srow['status'] =='Failed' && $orderstatus =='Failed'){?> <{?><tr class="table-danger"> 
+                     <?php }  else { ?><tr> <?php } ?>  
                         <td><?php echo $srow['datetime'] ?></th>
-                        <td>Order<?php echo ' ', $srow['status']; ?><br><?php if($srow['status'] =='Shipped'){ echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><br><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button><?php } else if($srow['status'] =='Ready'){?> Please pick up at following address: <?php echo $shopaddress; }?></td>
+                        <td>Order<?php echo ' ', $srow['status']; ?><br>
+                            <?php if($srow['status'] =='Shipped')
+                            { echo 'Tracking Number: ',$srow['tracking_number'] ;?><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><br>
+                            <button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button>
+                            <?php } 
+                            else if($srow['status'] =='Ready'){?> Please pick up at following address: <?php echo $shopaddress; }?>
+                        </td>
                     </tr>
                 <?php 
                 }
@@ -690,7 +684,7 @@ else{
     {
         document.getElementById("pplaced").className ="step completed";
         document.getElementById("ppaid").className ="step completed";
-        document.getElementById("ppreparing").className ="step completed";
+        document.getElementById("pready").className ="step completed";
     }
     else if(orderstatus == 'Completed')
     {
