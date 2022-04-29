@@ -172,6 +172,7 @@ $shippingfee = 10;
                                 $product_name = $rowKL['P_name'];
                                 $product_quantity = $rowKL['P_quantity'];
                                 $shop_id = $rowKL['shop_id'];
+                                $product_image = $rowKL['P_pic'];
 
                                 $variation_message = "";
                                 $showNotif = false;
@@ -241,6 +242,9 @@ $shippingfee = 10;
                             <td>
 
                             </td>
+                            <td>
+                            <a class='product-thumb' href='#'><img src='/img/product/$product_image' alt='Product'></a>
+                            </td>
                                 <td>
                                 <span>".$product_name."</span>
                                 </td>
@@ -248,7 +252,7 @@ $shippingfee = 10;
                                 <span>".$variation_message."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price."</span>
+                                <span>RM ".$product_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
