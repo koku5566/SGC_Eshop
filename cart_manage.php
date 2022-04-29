@@ -85,7 +85,7 @@
     
 
         $to = $user_email;
-        $subject = "Product out of stock";
+        $subject = "Product out of stock1";
         $from = "info@sgcprototype2.com";
         $from2 = "info@sgcprototype2.com";
         $fromName = "SGC E-Shop";
