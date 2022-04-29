@@ -38,10 +38,10 @@ $order_id = $_GET['order_id'];
                     DISTINCT
                     myOrder.order_id,
                     product.product_name,
-                    product.product_price AS prodPrice,
+                    product.product_price ,
                     product.product_cover_picture,
                     shopProfile.shop_name,
-                    variation.product_price AS variantProdPrice,
+                    variation.product_price ,
                     productTransaction.quantity
                     
                     FROM
@@ -56,14 +56,14 @@ $order_id = $_GET['order_id'];
                     
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
-                       // $amount =  $row2['product_price']*$row2['quantity'];
+                        $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
                        // $totalPamt = $amount + $shippingfee;
-                        if($row2['prodPrice'] == 0 ){
+                        /*if($row2['prodPrice'] == 0 ){
                             $amount = $row2['variantProdPrice'] *$row2['quantity'];
                         } else{ 
                             $amount = $row2['prodPrice'] *$row2['quantity'];
-                         }
+                         }*/
 
                 ?>
                 <div class="card">
