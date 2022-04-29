@@ -65,6 +65,7 @@ $shippingfee = 10;
 
 <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../css/cart.css">
 
      <!-- Address Modal -->
      <div class="modal fade" id="myModal" role="dialog">
