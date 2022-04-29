@@ -10,47 +10,47 @@
 
 <?php
 if(isset($_POST['update']))
+{
+	$_SESSION['Update'] = false;
+
+	$UID = $_SESSION['id'];
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+	$contact = $_POST['contact'];
+
+	if($_FILES['proPic']['tmp_name'] != "")
 	{
-		$_SESSION['Update'] = false;
+		$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+	}
 
-		$UID = $_SESSION['id'];
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$password = md5($_POST['password']);
-		$contact = $_POST['contact'];
+	$sql_u = "SELECT * FROM user WHERE username = '$UID'";
 
-		if($_FILES['proPic']['tmp_name'] != "")
-		{
-			$proPic = addslashes(file_get_contents($_FILES['proPic']['tmp_name']));
+	$stmt_u = mysqli_query($conn, $sql_u);
+
+	if (mysqli_num_rows($stmt_u) > 0) {	
+	
+		if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
+			$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
 		}
-
-		$sql_u = "SELECT * FROM user WHERE username = '$UID'";
-
-		$stmt_u = mysqli_query($conn, $sql_u);
-
-		if (mysqli_num_rows($stmt_u) > 0) {	
+		else{
+			$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
+		}
 		
-			if($_FILES['proPic']['tmp_name'] != "" || $_POST['password'] != ""){
-				$sql = "UPDATE user SET profile_picture='$proPic', name='$name', email='$email', password='$password', contact='$contact' WHERE username='$UID'";
-			}
-			else{
-				$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
-			}
-			
-			if (mysqli_query($conn, $sql)) {
-				$_SESSION['Update'] = true;
-				?><script>alert('Details Updated');
-				window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
-			} else {
-				echo "<script>alert('Email Address Already Exists');</script>";
-				//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-		}
-		else
-		{
-			echo("<script>alert('Error');</script>");
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['Update'] = true;
+			?><script>alert('Details Updated');
+			window.location = '<?php echo("$domain/userProfile.php");?>'</script><?php
+		} else {
+			echo "<script>alert('Email Address Already Exists');</script>";
+			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
+	else
+	{
+		echo("<script>alert('Error');</script>");
+	}
+}
 ?>
 
 <div class="row">

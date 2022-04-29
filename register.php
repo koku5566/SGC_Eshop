@@ -2,49 +2,49 @@
 
 <?php
 if(isset($_POST['signup']))
+{
+	$_SESSION['AddUser'] = false;
+	if(!empty($_POST['username']) && !empty($_POST['password']) && isset($_POST['username'],$_POST['password']))
 	{
-		$_SESSION['AddUser'] = false;
-		if(!empty($_POST['username']) && !empty($_POST['password']) && isset($_POST['username'],$_POST['password']))
-		{
-			$username = $_POST['username'];
-			$email = $_POST['email'];
-			$password = md5($_POST['password']);
-			$password1 = md5($_POST['password1']);
-			$contact = ("6010-0000000");
-			$date = date("d/m/Y");
+		$username = $_POST['username'];
+		$email = $_POST['email'];
+		$password = md5($_POST['password']);
+		$password1 = md5($_POST['password1']);
+		$contact = ("6010-0000000");
+		$date = date("d/m/Y");
 
-			if($password==$password1){
-				$sql_u = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
+		if($password==$password1){
+			$sql_u = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
 
-				$stmt_u = mysqli_query($conn, $sql_u);
+			$stmt_u = mysqli_query($conn, $sql_u);
 
-				if (mysqli_num_rows($stmt_u) > 0) {	
-					echo("<script>alert('User Already Exists');</script>");
-				}
-				else
-				{
-					//Save new user
-					$sql  = "INSERT INTO user (user_id, username, email, password, name, contact, registration_date, role)
-					VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','USER')";
-					if(mysqli_query($conn, $sql))
-					{
-						$_SESSION['AddUser'] = true;
-						echo "<script>alert('Registered Successful');
-						window.location.href='login.php';</script>";
-					}
-					else
-					{
-						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-					}
-					mysqli_close($conn);
-				}
+			if (mysqli_num_rows($stmt_u) > 0) {	
+				echo("<script>alert('User Already Exists');</script>");
 			}
 			else
 			{
-				echo("<script>alert('Password NOT Match');</script>");
+				//Save new user
+				$sql  = "INSERT INTO user (user_id, username, email, password, name, contact, registration_date, role)
+				VALUES ((SELECT CONCAT('U',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'user'), 6, 0))) AS newUserId),'$username','$email','$password','$username','$contact','$date','USER')";
+				if(mysqli_query($conn, $sql))
+				{
+					$_SESSION['AddUser'] = true;
+					echo "<script>alert('Registered Successful');
+					window.location.href='login.php';</script>";
+				}
+				else
+				{
+					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+				}
+				mysqli_close($conn);
 			}
 		}
+		else
+		{
+			echo("<script>alert('Password NOT Match');</script>");
+		}
 	}
+}
 ?>
 
 <div class="bg-gradient-primary" style="margin-top: -1.5rem !important; padding: 4rem 0;">
