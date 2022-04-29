@@ -10,37 +10,37 @@
 
 <?php
 if(isset($_POST['addCard']))
-	{
-		$_SESSION['AddCard'] = false;
-		$uid = $_SESSION['userid'];
+{
+	$_SESSION['AddCard'] = false;
+	$uid = $_SESSION['userid'];
 
-		$cardNo = $_POST['cardNo'];
-		$expDate = $_POST['expDate'];
-		$cardCVV = $_POST['cardCVV'];
-		$name = $_POST['name'];
+	$cardNo = $_POST['cardNo'];
+	$expDate = $_POST['expDate'];
+	$cardCVV = $_POST['cardCVV'];
+	$name = $_POST['name'];
 
-		$sql_u = "SELECT * FROM userCard WHERE card_number = '$accountNo'";
+	$sql_u = "SELECT * FROM userCard WHERE card_number = '$accountNo'";
 
-		$stmt_u = mysqli_query($conn, $sql_u);
+	$stmt_u = mysqli_query($conn, $sql_u);
 
-		if (mysqli_num_rows($stmt_u) > 0) {	
-			echo("<script>alert('Card Already Exists');</script>");
-		}
-		else
-		{
-			$sql = "INSERT INTO userCard (user_id, card_number, expiry_date, card_cvv, name)
-			VALUES ('$uid','$cardNo','$expDate','$cardCVV','$name')";
-
-			if (mysqli_query($conn, $sql)) {
-				$_SESSION['AddCard'] = true;
-				echo "<script>alert('Card Added');
-				window.location.href='../userprofile_payment.php';</script>";
-			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-			mysqli_close($conn);
-		}
+	if (mysqli_num_rows($stmt_u) > 0) {	
+		echo("<script>alert('Card Already Exists');</script>");
 	}
+	else
+	{
+		$sql = "INSERT INTO userCard (user_id, card_number, expiry_date, card_cvv, name)
+		VALUES ('$uid','$cardNo','$expDate','$cardCVV','$name')";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['AddCard'] = true;
+			echo "<script>alert('Card Added');
+			window.location.href='../userprofile_payment.php';</script>";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+		mysqli_close($conn);
+	}
+}
 ?>
 
 <div class="row">

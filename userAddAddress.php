@@ -10,40 +10,40 @@
 
 <?php
 if(isset($_POST['addAddress']))
-	{
-		$_SESSION['AddAddress'] = false;
-		$uid = $_SESSION['userid'];
+{
+	$_SESSION['AddAddress'] = false;
+	$uid = $_SESSION['userid'];
 
-		$name = $_POST['name'];
-		$contact = $_POST['contact'];
-		$address = $_POST['address'];
-		$postal = $_POST['postal'];
-		$area = $_POST['area'];
-		$state = $_POST['state'];
-		$country = $_POST['country'];
+	$name = $_POST['name'];
+	$contact = $_POST['contact'];
+	$address = $_POST['address'];
+	$postal = $_POST['postal'];
+	$area = $_POST['area'];
+	$state = $_POST['state'];
+	$country = $_POST['country'];
 
-		$sql_u = "SELECT * FROM userAddress WHERE address = '$address'";
+	$sql_u = "SELECT * FROM userAddress WHERE address = '$address'";
 
-		$stmt_u = mysqli_query($conn, $sql_u);
+	$stmt_u = mysqli_query($conn, $sql_u);
 
-		if (mysqli_num_rows($stmt_u) > 0) {	
-			echo("<script>alert('Address Already Exists');</script>");
-		}
-		else
-		{
-			$sql = "INSERT INTO userAddress (user_id, contact_name, phone_number, address, postal_code, area, state, country)
-			VALUES ('$uid','$name','$contact','$address','$postal','$area','$state','$country')";
-
-			if (mysqli_query($conn, $sql)) {
-				$_SESSION['AddAddress'] = true;
-				echo "<script>alert('New Address Added');
-				window.location.href='../userprofile_address.php';</script>";
-			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-			mysqli_close($conn);
-		}
+	if (mysqli_num_rows($stmt_u) > 0) {	
+		echo("<script>alert('Address Already Exists');</script>");
 	}
+	else
+	{
+		$sql = "INSERT INTO userAddress (user_id, contact_name, phone_number, address, postal_code, area, state, country)
+		VALUES ('$uid','$name','$contact','$address','$postal','$area','$state','$country')";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['AddAddress'] = true;
+			echo "<script>alert('New Address Added');
+			window.location.href='../userprofile_address.php';</script>";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+		mysqli_close($conn);
+	}
+}
 ?>
 
 <div class="row">

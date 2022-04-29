@@ -10,36 +10,36 @@
 
 <?php
 if(isset($_POST['addBank']))
-	{
-		$_SESSION['AddBank'] = false;
-		$uid = $_SESSION['userid'];
+{
+	$_SESSION['AddBank'] = false;
+	$uid = $_SESSION['userid'];
 
-		$bankName = $_POST['bankName'];
-		$name = $_POST['name'];
-		$accountNo = $_POST['accountNo'];
+	$bankName = $_POST['bankName'];
+	$name = $_POST['name'];
+	$accountNo = $_POST['accountNo'];
 
-		$sql_u = "SELECT * FROM userBankAccount WHERE account_no = '$accountNo'";
+	$sql_u = "SELECT * FROM userBankAccount WHERE account_no = '$accountNo'";
 
-		$stmt_u = mysqli_query($conn, $sql_u);
+	$stmt_u = mysqli_query($conn, $sql_u);
 
-		if (mysqli_num_rows($stmt_u) > 0) {	
-			echo("<script>alert('Bank Account Already Exists');</script>");
-		}
-		else
-		{
-			$sql = "INSERT INTO userBankAccount (user_id, bank_name, bankAcc_name, account_no)
-			VALUES ('$uid','$bankName','$name','$accountNo')";
-
-			if (mysqli_query($conn, $sql)) {
-				$_SESSION['AddBank'] = true;
-				echo "<script>alert('New Bank Account Added');
-				window.location.href='../userprofile_payment.php';</script>";
-			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
-			mysqli_close($conn);
-		}
+	if (mysqli_num_rows($stmt_u) > 0) {	
+		echo("<script>alert('Bank Account Already Exists');</script>");
 	}
+	else
+	{
+		$sql = "INSERT INTO userBankAccount (user_id, bank_name, bankAcc_name, account_no)
+		VALUES ('$uid','$bankName','$name','$accountNo')";
+
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['AddBank'] = true;
+			echo "<script>alert('New Bank Account Added');
+			window.location.href='../userprofile_payment.php';</script>";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+		mysqli_close($conn);
+	}
+}
 ?>
 
 <div class="row">
