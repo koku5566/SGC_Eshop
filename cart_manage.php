@@ -111,6 +111,7 @@
         $returnPath = "-f" . $from2;
 
         if (@mail($to, $subject, $message, $headers, $returnPath)) {
+             echo "<script>alert('Email Sent')</script>";
             echo "<script type='text/javascript'>
                     window.location.href = window.location.origin + '/cart.php';
                 </script>";
