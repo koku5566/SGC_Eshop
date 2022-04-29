@@ -1,6 +1,6 @@
 <?php
     require __DIR__ . '/header.php';
-//     include __DIR__.'/mysqli_connect.php';
+    require_once __DIR__ . '/mysqli_connect.php'
     session_start();
 
     //remove product from cart table
