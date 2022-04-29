@@ -135,6 +135,7 @@ $shippingfee = 10;
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th></th>
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
