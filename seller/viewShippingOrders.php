@@ -429,6 +429,7 @@ $user_id = $_SESSION["userid"];
                               $puresultheader = mysqli_query($conn, $sqlpuheader);
                               if (mysqli_num_rows($puresultheader) > 0) {
                               while ($purowheader = mysqli_fetch_assoc($puresultheader)) {
+                                $i=0;
                               //Loop header
                               ?>
                                     <div class="card mt-2">
@@ -511,6 +512,7 @@ $user_id = $_SESSION["userid"];
                               $sresultheader = mysqli_query($conn, $sqlsheader);
                               if (mysqli_num_rows($sresultheader) > 0) {
                               while ($srowheader = mysqli_fetch_assoc($sresultheader)) {
+                                $i=0;
                               //Loop header
                               ?>
                                     <div class="card mt-2">
@@ -592,6 +594,7 @@ $user_id = $_SESSION["userid"];
                               $cresultheader = mysqli_query($conn, $sqlcheader);
                               if (mysqli_num_rows($cresultheader) > 0) {
                               while ($crowheader = mysqli_fetch_assoc($cresultheader)) {
+                                $i=0;
                               //Loop header
                               ?>
                                     <div class="card mt-2">
