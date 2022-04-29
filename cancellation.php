@@ -48,20 +48,35 @@ if(isset($_POST['cancel']))
       <?php
        $shippingfee = 8.6;
        $totalamount = 0;
+       $amount=0;
        $sql2 = "SELECT
        DISTINCT
-       *
+       myOrder.order_id,
+       product.product_name,
+       product.product_price AS prodPrice,
+       product.product_cover_picture,
+       shopProfile.shop_name,
+       variation.product_price AS variantProdPrice,
+       productTransaction.quantity
+       
        FROM
        myOrder
        JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
        JOIN product ON productTransaction.product_id = product.product_id
        JOIN shopProfile ON product.shop_id = shopProfile.shop_id
        JOIN user on myOrder.userID = user.user_id 
+       JOIN cart ON myOrder.userID = cart.user_ID
+       JOIN variation ON product.product_id = variation.product_id
        WHERE myOrder.order_id = '$order_id' ";
        $result2 = $conn->query($sql2);
        while($row2 = $result2->fetch_assoc()){
-         $amount =  $row2['product_price']*$row2['quantity'];
+        
           $totalamount += $amount;
+          if($row2['prodPrice'] == 0 ){
+            $amount = $row2['variantProdPrice'] *$row2['quantity'];
+        } else{ 
+            $amount = $row2['prodPrice'] *$row2['quantity'];
+         }
       ?>
      <div class="card">
         <div class="card-body">
