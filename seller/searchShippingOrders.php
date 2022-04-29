@@ -10,20 +10,10 @@ $keyword = $_GET['keyword'];
 
 switch($searchBy){
     case "id":
-        $sql ="SELECT
-        myOrder.order_id,
-        product.product_name,
-        product.product_cover_picture,
-        product.product_price,
-        orderDetails.quantity,
-        orderDetails.amount,
-        user.username
-        FROM
-        myOrder
-        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-        JOIN user ON myOrder.user_id = user.user_id
-        JOIN product ON orderDetails.product_id = product.id 
-        WHERE myOrder.order_id LIKE '%$keyword%'";
+        $sql =" SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
+        INNER JOIN user ON myOrder.userID = user.user_id
+        INNER JOIN product ON productTransaction.product_id = product.product_id
+        WHERE productTransaction.invoice_id = '$aoID' AND productTransaction.shop_id = '$user_id' AND myOrder.order_id  LIKE '%$keyword%' AND myOrder.invoice_id LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
         break;
     case "name":
         $sql ="SELECT
