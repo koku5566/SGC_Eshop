@@ -244,19 +244,19 @@ $shippingfee = 10;
                             </td>
                             
                                 <td>
-                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:100px; height:100px; text-align:center; vertical-align:middle'></a>
+                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:80px; height:80px; text-align:center; vertical-align:middle'></a>
                                 </td>
                                 <td>
-                                <span  style='text-align:center; vertical-align:middle;'>".$product_name."</span>
+                                <span >".$product_name."</span>
                                 </td>
                                 <td>
-                                <span style='text-align:center; vertical-align:middle;>".$variation_message."</span>
+                                <span>".$variation_message."</span>
                                 </td>
                                 <td>
-                                <span style='text-align:center; vertical-align:middle;>RM ".$product_price."</span>
+                                <span>RM ".$product_price."</span>
                                 </td>
                                 <td>
-                                <span style='text-align:center; vertical-align:middle;>".$product_quantity."</span>
+                                <span>".$product_quantity."</span>
                                 </td>
                                                                               
                             </tr> ");             
