@@ -57,10 +57,10 @@
             
             if ($userId == "")
             {
-                echo "<script type='text/javascript'>
-                    alert('Voucher claimed failed. Login to claimed voucher.')
-                    window.location.href = window.location.origin + '/login.php';
-                </script>";
+                echo "<script>alert('Hi')</script>";
+//                 echo "<script type='text/javascript'>
+//                     window.location.href = window.location.origin + '/login.php';
+//                 </script>";
             }
             
             //Joel you can use this 
