@@ -55,13 +55,15 @@
             $shopId = $_SESSION["shopId"];
             $product_id = $_SESSION["productID"];
             
-//             if ($userId == "")
-//             {
-//                 echo "<script>alert('Hi')</script>";
-// //                 echo "<script type='text/javascript'>
-// //                     window.location.href = window.location.origin + '/login.php';
-// //                 </script>";
-//             }
+            if ($userId == "")
+            {
+                echo "<script>alert('Hi')</script>";
+                echo "<script type='text/javascript'>
+                            window.location.href = window.location.origin + '/login.php';
+                        </script>";
+
+                return;
+            }
             
             //Joel you can use this 
             if($_SESSION["variationId"] != "")
