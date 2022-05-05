@@ -57,15 +57,10 @@
             
             if ($userId == "")
             {
-                // echo "<script>alert('Hi')</script>";
-                echo "<script type='text/javascript'>
-                            window.location.href = window.location.origin + '/login.php';
-                        </script>";
-
-                return;
+                echo json_encode("login");
             }
             
-            else {
+            else if ($userId != ""){
                 //Joel you can use this 
                 if($_SESSION["variationId"] != "")
                 {
