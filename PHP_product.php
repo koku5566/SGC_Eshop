@@ -55,9 +55,19 @@
             $shopId = $_SESSION["shopId"];
             $product_id = $_SESSION["productID"];
             
-
+            if ($userId == "")
+            {
+                ?>
+                    <script type="text/javascript">
+                        alert("Voucher claimed failed. Login to claimed voucher.")
+                        window.location.href = window.location.origin + "/login.php";
+                    </script>
+                <?php
+                exit;
+            }
+            
             //Joel you can use this 
-            if($_SESSION["variationId"] != "")
+            else if($_SESSION["variationId"] != "")
             {
                 $variationId = $_SESSION["variationId"];
                 
@@ -83,14 +93,7 @@
         }
         else
         {
-            ?>
-            <script type="text/javascript">
-                alert("Voucher claimed failed. Login to claimed voucher.")
-                window.location.href = window.location.origin + "/login.php";
-            </script>
-            <?php
-            exit;
-            //echo json_encode("login");
+            echo json_encode("login");
         }
     }
 ?>
