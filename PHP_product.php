@@ -57,7 +57,7 @@
             
             if ($userId == "")
             {
-                echo "<script>alert('Hi')</script>";
+                // echo "<script>alert('Hi')</script>";
                 echo "<script type='text/javascript'>
                             window.location.href = window.location.origin + '/login.php';
                         </script>";
