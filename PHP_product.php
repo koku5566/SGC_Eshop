@@ -83,7 +83,11 @@
         }
         else
         {
-            echo json_encode("login");
+            <script type="text/javascript">
+                alert("Voucher claimed failed. Login to claimed voucher.")
+                window.location.href = window.location.origin + "/login.php";
+            </script>
+            //echo json_encode("login");
         }
     }
 ?>
