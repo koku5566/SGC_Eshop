@@ -48,7 +48,7 @@
     }
     else if(isset($_POST['addToCart']))
     {
-        if(isset($_SESSION["userid"]) || $_SESSION["userid"] == "")
+        if(isset($_SESSION["userid"]) && $_SESSION["userid"] != "")
         {
             $quatity = $_POST['quantity'];
             $userId = $_SESSION["userid"];
