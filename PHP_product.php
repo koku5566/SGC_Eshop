@@ -55,38 +55,32 @@
             $shopId = $_SESSION["shopId"];
             $product_id = $_SESSION["productID"];
             
-            // if ($userId == "")
-            // {
-            //     echo json_encode("login");
-            // }
             
-            // else if ($userId != ""){
-                //Joel you can use this 
-                if($_SESSION["variationId"] != "")
-                {
-                    $variationId = $_SESSION["variationId"];
-                    
-                    $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
-                                    VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
-                }
-                else
-                {
-                    //You need change the query to no insert the variation
-                    $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
-                                    VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId',null)";
-                }
-        
-                if(mysqli_query($conn, $sql_insert_cart))
-                {
-                    
-                    echo json_encode("success");
-                }
-                else
-                {
-                    echo json_encode("fail");
-                }
-            // }
-            
+            //Joel you can use this 
+            if($_SESSION["variationId"] != "")
+            {
+                $variationId = $_SESSION["variationId"];
+                
+                $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
+                                VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId','$variationId')";
+            }
+            else
+            {
+                //You need change the query to no insert the variation
+                $sql_insert_cart = "INSERT INTO `cart`(`user_ID`, `product_ID`, `voucher_ID`, `before_Price`, `after_Price`, `variety`, `quantity`, `remove_Product`, `create_at`, `update_at`, `shop_id`, `variation_id`) 
+                                VALUES ('$userId','$product_id','0','0','0','0','$quatity','0',now(),now(),'$shopId',null)";
+            }
+    
+            if(mysqli_query($conn, $sql_insert_cart))
+            {
+                
+                echo json_encode("success");
+            }
+            else
+            {
+                echo json_encode("fail");
+            }
+           
         }
         else
         {
