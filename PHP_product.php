@@ -60,7 +60,7 @@
                 echo "<script type='text/javascript'>
                     alert('Voucher claimed failed. Login to claimed voucher.')
                     window.location.href = window.location.origin + '/login.php';
-                </script>"
+                </script>";
             }
             
             //Joel you can use this 
