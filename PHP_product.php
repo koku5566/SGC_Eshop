@@ -48,19 +48,19 @@
     }
     else if(isset($_POST['addToCart']))
     {
-        if(isset($_SESSION["userid"]))
+        if(isset($_SESSION["userid"]) || $_SESSION["userid"] == "")
         {
             $quatity = $_POST['quantity'];
             $userId = $_SESSION["userid"];
             $shopId = $_SESSION["shopId"];
             $product_id = $_SESSION["productID"];
             
-            if ($userId == "")
-            {
-                echo json_encode("login");
-            }
+            // if ($userId == "")
+            // {
+            //     echo json_encode("login");
+            // }
             
-            else if ($userId != ""){
+            // else if ($userId != ""){
                 //Joel you can use this 
                 if($_SESSION["variationId"] != "")
                 {
@@ -85,7 +85,7 @@
                 {
                     echo json_encode("fail");
                 }
-            }
+            // }
             
         }
         else
