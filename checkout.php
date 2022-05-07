@@ -1,11 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
- 	  if(!isset($_SESSION['login']))
-	 {
-	 	echo "<script>alert('Login to checkout');
-	 		window.location.href='login.php';</script>";
-     }  
+	if($_SESSION['login'] == false || $_SESSION['role'] == "SELLER")
+	{
+		?><script>window.location = '<?php echo("$domain/E404.php");?>'</script><?php
+		exit;
+    }
  
      $userID = $_SESSION["userid"];
 
