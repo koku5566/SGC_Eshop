@@ -32,7 +32,7 @@ switch($searchBy){
         $sql ="SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
         INNER JOIN user ON myOrder.userID = user.user_id
         INNER JOIN product ON productTransaction.product_id = product.product_id
-        WHERE productTransaction.shop_id = '$user_id' AND shipment.tracking_number LIKE '%$keyword%' ORDER BY myOrder.order_id DESC";
+        WHERE productTransaction.shop_id = '$user_id' AND myOrder.tracking_number LIKE '%$keyword%' ORDER BY myOrder.order_id DESC";
         break;
     default:
         echo "Please search again";

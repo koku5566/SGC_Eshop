@@ -102,7 +102,6 @@
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: multipart/mixed;\r\n";
     
-    
             $message = "
             <h5>Your Order for <strong>$invoice_id</strong> has been delivered and completed. </h5>
             <p>
@@ -359,6 +358,7 @@
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" >
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>">
                     <input type="hidden" name="invoice_id" value="<?php echo $invoice_id?>">
+                    <input type="hidden" name="selleremail" value="<?php echo $selleremail?>">
                     <button type="submit" name="receivedBtn" class="btn btn-primary">Order Received</button>
                     </form>
                 <?php } ?>
