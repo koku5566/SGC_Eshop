@@ -38,24 +38,44 @@
 
 <!-- Edit and Update Data-->
 <?php
+//if(isset($_POST['edit']))
+//{
+//   $sellerName = $_POST['name'];
+//   $sellerEmail = $_POST['email'];
+//   $sellerContact = $_POST['contact'];
+//   $update = "UPDATE user SET name='$sellerName', email='$sellerEmail', contact='$sellerContact' WHERE user_id = '$sellerId'";
+//     if (mysqli_query($conn, $update))
+//     { 
+//         /*Successful*/
+//         ?><!--<script>window.location = '<?php //echo("$domain/admin/sellerManagament.php");?>'</script>--><?php
+//     }
+//     else
+//     {
+//       echo($update);
+//         /*Fail*/
+//         echo 'Update Fail';
+//     }
+//} 
+?>
+
+<?php
 if(isset($_POST['edit']))
 {
-   $sellerName = $_POST['name'];
-   $sellerEmail = $_POST['email'];
-   $sellerContact = $_POST['contact'];
-   $update = "UPDATE user SET name='$sellerName', email='$sellerEmail', contact='$sellerContact' WHERE user_id = '$sellerId'";
-     if (mysqli_query($conn, $update))
-     { 
-         /*Successful*/
-         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
-     }
-     else
-     {
-       echo($update);
-         /*Fail*/
-         echo 'Update Fail';
-     }
-} 
+	$UID=$_POST['edit'];
+
+	$name = $_POST['sellerName'];
+	$email = $_POST['sellerEmail'];
+	$contact = $_POST['sellerContact'];
+	$profile = $_POST['sellerProfile'];
+
+	$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE user_id='$UID'";
+
+	if (mysqli_query($conn, $sql)) {
+		echo "<script>alert('User Detail Edited');</script>";
+	} else {
+		echo "Error: " . mysqli_error($conn);
+	}
+}
 ?>
 
 <!-- Delete Data-->
@@ -115,11 +135,11 @@ if(isset($_POST['delete']))
             ?>
             <tbody>
               <tr>
-                <td><?php //echo $sellerProfilePic ?></td>
-                <td><?php echo $sellerID ?></td>
-                <td><?php echo $sellerName ?></td>
-                <td><?php echo $sellerEmail ?></td>
-                <td><?php echo $sellerContact ?></td>
+                <td id="sellerProfile" name="sellerProfile"><?php //echo $sellerProfilePic ?></td>
+                <td id="sellerID" name="sellerID"><?php echo $sellerID ?></td>
+                <td id="sellerName" name="sellerName"><?php echo $sellerName ?></td>
+                <td id="sellerEmail" name="sellerEmail"><?php echo $sellerEmail ?></td>
+                <td id="sellerContact" name="sellerContact"><?php echo $sellerContact ?></td>
                 <td><button name="edit" class="delete">EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
               </tr>
             </tbody>
