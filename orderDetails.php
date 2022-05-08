@@ -76,7 +76,7 @@ $order_id = $_GET['order_id'];
                     product.product_price ,
                     product.product_cover_picture,
                     shopProfile.shop_name,
-                    
+                    myOrder.cancellation_status,
                     productTransaction.quantity
                     
                     FROM
