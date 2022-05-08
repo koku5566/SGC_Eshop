@@ -40,12 +40,12 @@
         //   mysqli_stmt_close($stmt);
         // }
         
-        $sql = "INSERT INTO `ticketType`(`ticket_name`, `capacity`, `sales_start`, `sales_end`, `price`, `event_id`) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO `ticketType`(`ticket_name`, `capacity`, `sales_start`, `sales_end`, `price`, `event_id`, `current_quantity`) VALUES (?,?,?,?,?,?,?)";
             if ($stmt = mysqli_prepare($conn,$sql)){
                 if(false===$stmt){
                     die('Error with prepare: ') . htmlspecialchars($mysqli->error);
                 }
-                $bp = mysqli_stmt_bind_param($stmt,"sissdi",$tName,$tCapacity,$tSalesStart,$tsalesEnd,$tPrice,$eventID);
+                $bp = mysqli_stmt_bind_param($stmt,"sissdii",$tName,$tCapacity,$tSalesStart,$tsalesEnd,$tPrice,$eventID,$tCapacity);
                 if(false===$bp){
                     die('Error with bind_param: ') . htmlspecialchars($stmt->error);
                 }

@@ -4,6 +4,41 @@
 <?php
 $order_id = $_GET['order_id'];
 
+
+                         $sql4 = "SELECT
+                         DISTINCT
+                         myOrder.order_id,
+                         product.product_name,
+                         product.product_price ,
+                         product.product_cover_picture,
+                         shopProfile.shop_name,
+                         variation.product_price ,
+                         productTransaction.quantity
+                         
+                         FROM
+                         myOrder
+                         JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+                         JOIN product ON productTransaction.product_id = product.product_id
+                         JOIN shopProfile ON product.shop_id = shopProfile.shop_id
+                         JOIN user on myOrder.userID = user.user_id 
+                         JOIN cart ON myOrder.userID = cart.user_ID
+                         JOIN variation ON product.product_id = variation.product_id
+                         WHERE myOrder.order_id = $order_id";
+                         
+                         $result4 = $conn->query($sql4);
+                         while($row4 = $result4->fetch_assoc()){
+                             $amount =  $row4['product_price']*$row2['quantity'];
+                             $totalamount += $amount;
+                            // $totalPamt = $amount + $shippingfee;
+                             if($row4['prodPrice'] == 0 ){
+                                 $amount = $row4['variantProdPrice'] *$row4['quantity'];
+                             } else{ 
+                                 $amount = $row4['prodPrice'] *$row4['quantity'];
+                              }
+                            }
+                              
+                       
+
 ?>
 
 
@@ -33,10 +68,17 @@ $order_id = $_GET['order_id'];
                 <?php
                     $shippingfee = 10;
                     $totalamount = 0;
-                    $payableamt = 0;
+                    $totalP = 0;
                     $sql2 = "SELECT
                     DISTINCT
-                    *
+                    myOrder.order_id,
+                    product.product_name,
+                    product.product_price ,
+                    product.product_cover_picture,
+                    shopProfile.shop_name,
+                    myOrder.cancellation_status,
+                    productTransaction.quantity
+                    
                     FROM
                     myOrder
                     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
@@ -44,17 +86,24 @@ $order_id = $_GET['order_id'];
                     JOIN shopProfile ON product.shop_id = shopProfile.shop_id
                     JOIN user on myOrder.userID = user.user_id 
                     JOIN cart ON myOrder.userID = cart.user_ID
-                    JOIN variation ON product.product_id = variation.product_id
+                    
                     WHERE myOrder.order_id = $order_id";
                     
                     $result2 = $conn->query($sql2);
                     while($row2 = $result2->fetch_assoc()){
                         $amount =  $row2['product_price']*$row2['quantity'];
                         $totalamount += $amount;
-                        $payableamt = $totalamount + $shippingfee;
+                       // $totalPamt = $amount + $shippingfee;
+                        /*if($row2['prodPrice'] == 0 ){
+                            $amount = $row2['variantProdPrice'] *$row2['quantity'];
+                        } else{ 
+                            $amount = $row2['prodPrice'] *$row2['quantity'];
+                         }*/
+
                 ?>
                 <div class="card">
                 <div class="card-body">
+
                     <div class="row">
                         
                         <div class="col-1"><img src=/img/product/<?php echo $row2['product_cover_picture']?> style="object-fit:contain;width:100%;height:100%"></div>
@@ -62,7 +111,7 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                            <?php echo $row2['product_price']; ?>.00
+                        <?php echo $row2['product_price']; ?>                    
                         </div>
                         <div class="col-2">X
                             <?php echo $row2['quantity']; ?>
@@ -70,15 +119,18 @@ $order_id = $_GET['order_id'];
                         <div class="col-2 red-text">RM
                         <?php  echo $amount?></td>
                         </div>
-                        
+                       
                     </div>
+
                 </div>
                 <br>
                 <div class="card-footer">
                     <div class="col-4" style="text-align:right; margin-left:60%">
                         <div class="row p-2">
                             <div class="col">Total:</div>
-                            <div class="col"> RM<?php  echo $amount?></td>.00</div>
+                            <div class="col"> 
+                            <?php  echo $amount * $row2['quantity']?>
+                            </div>
                         </div>
                         <div class="row p-2">
                             <div class="col">Discounts:</div>
@@ -96,20 +148,20 @@ $order_id = $_GET['order_id'];
                                 
                             </div>
                             <div class="col red-text">
-                                <h5><strong>RM<?php echo $payableamt?></strong></h5>
+                                <h5><strong>RM<?php  echo $amount * $row2['quantity'] + $shippingfee?></strong></h5>
                             </div>
                             
                         </div>
                         
                     </div>
-                    <?php if($row2['order_status'] !='Completed' || $row2['cancellation_status'] =='rejected' || $row2['order_status'] =='Paid' ){?>
+                    <?php if($row2['order_status'] !='Completed' ||$row2['order_status'] =='Paid' || $row2['cancellation_status'] =='rejected'){?>
                         <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
-                        <?php }else{?>
-                        <a class= "btn btn-primary" href="getOrder.php">Back</a>
-                    <?php }?>
-                        
-                       
+                        <?php } else{ ?>
+                            <a class= "btn btn-primary" href="getOrder.php">Back</a>
+                            <?php echo $row2['cancellation_status']; ?>
+                            <?php }?>
                     </div>
+                    
                     <?php }?>
                 </div>
                 <br>

@@ -48,20 +48,28 @@ if(isset($_POST['cancel']))
       <?php
        $shippingfee = 8.6;
        $totalamount = 0;
+       $amount=0;
        $sql2 = "SELECT
        DISTINCT
-       *
+       myOrder.order_id,
+       product.product_name,
+       product.product_price,
+       product.product_cover_picture,
+       shopProfile.shop_name,
+       productTransaction.quantity
+       
        FROM
        myOrder
        JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
        JOIN product ON productTransaction.product_id = product.product_id
        JOIN shopProfile ON product.shop_id = shopProfile.shop_id
        JOIN user on myOrder.userID = user.user_id 
+       JOIN cart ON myOrder.userID = cart.user_ID
        WHERE myOrder.order_id = '$order_id' ";
        $result2 = $conn->query($sql2);
        while($row2 = $result2->fetch_assoc()){
-         $amount =  $row2['product_price']*$row2['quantity'];
-          $totalamount += $amount;
+        $amount =  $row2['product_price']*$row2['quantity'];
+                        $totalamount += $amount;
       ?>
      <div class="card">
         <div class="card-body">
@@ -71,7 +79,7 @@ if(isset($_POST['cancel']))
               <?php echo $row2['product_name']; ?>
             </div>
             <div class="col-2">RM
-              <?php echo $row2['product_price']; ?>.00
+              <?php echo $amount ?>.00
             </div>
             <div class="col-2">X
               <?php echo $row2['quantity']; ?>
@@ -96,7 +104,7 @@ if(isset($_POST['cancel']))
                 <input type="radio" id="id_3" name="reason_type" value="Change Color">
                 <label for="id_3">Change Color</label><br>
                 <input type="radio" id="id_4" name="reason_type" value="Others" >
-                <label for="id_1">Others</label><br>
+                <label for="id_4">Others</label><br>
                 <input type="hidden" id="order_id" name="order_id" value="<?php echo $_GET['order_id']; ?>">
                 <input class="btn btn-primary" type="submit" name="cancel" value="Confirm" >
                 

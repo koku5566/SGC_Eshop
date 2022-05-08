@@ -3,11 +3,11 @@ require __DIR__ . '/header.php'
 ?>
 
 <?php
-    if($_SESSION['login'] == false || $_SESSION['role'] == "USER")
+     if($_SESSION['login'] == false || $_SESSION['role'] == "ADMIN")
 	{
 		?><script>window.location = '<?php echo("$domain/index.php");?>'</script><?php
 		exit;
-    }
+    } 
 ?>
 
 <!-- Begin Page Content -->
@@ -28,54 +28,55 @@ require __DIR__ . '/header.php'
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 
-    <h1>Transaction History</h1>
+    <h1>Order Shipping History</h1>
     <div class="card">
   <!--       <div class="card-body">
     <div class="card" style="margin-top: 40px;"> -->
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
-                    <h4>Transaction List</h4>
+                    <h4>Order List</h4>
                 </div>
             </div>
             <div class="row" style="margin-top:20px">
                 <div class="col-12">
-                    <table id="transactionTable">
+                    <table id="shippingOrderTable">
                         <thead>
-                            <!-- replace with proper value -->
                             <tr>
-                                <th>Transaction ID</th>
+                                <th>Order Date</th>
                                 <th>Invoice ID</th>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Payment Amount</th>
-                                <th>Transaction Date</th>
+                                <th>Seller ID</th>
+                                <th>Buyer ID</th>
+                                <th>Delivery Method</th>
+                                <th>Order Status</th>
+                                <th>Track</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 
-                            $sqlpayment = "SELECT * FROM `payments`";
-                            $result1 = mysqli_query($conn, $sqlpayment);
+                            $sql = "SELECT * FROM myOrder JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id";
+                            $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result1) > 0) {
-                                while ($row1 = mysqli_fetch_assoc($result1)) {
-                                    echo("
+                                while ($row = mysqli_fetch_assoc($result)) {?>
                                         <tr>
-                                        <td>".$row1['transaction_id']."</td>
-                                        <td>".$row1['invoice_id']."</td>
-                                        <td>".$row1['product_id']."</td>
-                                        <td>".$row1['product_name']."</td>
-                                        <td>".$row1['payment_amount']."</td>
-                                        <td>".$row1['createdtime']."</td>
+                                        <td><?php echo $row['order_date']?></td>
+                                        <td><?php echo $row['invoice_id']?></td>
+                                        <td><?php echo $row['shop_id']?></td>
+                                        <td><?php echo $row['userID']?></td>
+                                        <td><?php echo $row['delivery_method']?></td>
+                                        <td><?php echo $row['order_status']?></td>
+                                        <td><input type="hidden" id="TrackNo" value="<?php echo $srow['tracking_number'];?>"><button class="btn btn-info btn-sm" onclick="linkTrack()">TRACK</button></td>
                                         </tr>
-                                    ");
+                                    <?php 
                                 }
                             }
                             else
                             {
                                 echo("
                                         <tr>
-                                        <td colspan=\"10\" style=\"text-align:center;\">Transaction is empty</td>
+                                        <td colspan=\"10\" style=\"text-align:center;\">Shipping Order is empty</td>
                                         </tr>
                                 ");
                             }
@@ -93,12 +94,26 @@ require __DIR__ . '/header.php'
 </div>
 <!-- /.container-fluid -->
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="//www.tracking.my/track-button.js"></script>
+
 <script>
+function linkTrack() {
+    var num = document.getElementById("TrackNo").value;
+    console.log(num);
+    TrackButton.track({
+      tracking_no: num
+    });
+  }
+
 var t = $('#transactionTable').DataTable({//call table id
     dom: 'Bfrtip',
         buttons: [
             {
                 extend: 'excelHtml5',
+                title: 'Transaction List'
+            },
+            {
+                extend: 'pdfHtml5',
                 title: 'Transaction List'
             },
             {

@@ -147,7 +147,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['pid']) && !empty($_POST['pid']) && $_POST['dContent'] === 'Delete'){	
     
         $selectedPID = $_POST['pid'];
-                echo "<script>alert($selectedPID);</script>";
+                //echo "<script>alert($selectedPID);</script>";
                 $sql = "UPDATE helpCenter SET disable_date=? WHERE hc_id=?;";
                 $today = date("Y-m-d");
                  
@@ -179,7 +179,8 @@
             $acategorylist = $_POST['acategorylist'];
             $aquestion = $_POST['aquestion'];
             $aans = $_POST['aans'];
-            
+            $aamin = $_SESSION['userid'];
+			
             //Image information 
                 $name= $_FILES['aimg']['name'];
                 $size = $_FILES['aimg']['size'];
@@ -194,9 +195,9 @@
                 if($size == 0){
                     //echo "<script>alert('NO PIC')</script>";
                     
-                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`) VALUES (?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`, `admin_id`) VALUES (?,?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 'sss', $acategorylist, $aquestion, $aans); 	//s=string , d=decimal value, i=integer
+                        mysqli_stmt_bind_param($stmt, 'ssss', $acategorylist, $aquestion, $aans, $aamin); 	//s=string , d=decimal value, i=integer
                 
                         mysqli_stmt_execute($stmt);
                     
@@ -204,7 +205,7 @@
                         {
                            
                             
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New question added successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
                             $sql = "UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 									SET a.hc_id = concat('HC', b.id)
@@ -237,16 +238,16 @@
                     }
                     $imageData = file_get_contents($temp);
                     
-                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`) VALUES (?,?,?,?,?)";
+                    $sql = "INSERT INTO `helpCenter`(`hcc_id`, `question`, `answer`,`pic`,`pic_type`, `admin_id`) VALUES (?,?,?,?,?,?)";
                     if($stmt = mysqli_prepare($conn, $sql)){
-                        mysqli_stmt_bind_param($stmt, 'sssss',$acategorylist, $aquestion, $aans, $imageData,$type); 	//s=string , d=decimal value, i=integer
+                        mysqli_stmt_bind_param($stmt, 'ssssss',$acategorylist, $aquestion, $aans, $imageData,$type,$aamin); 	//s=string , d=decimal value, i=integer
                 
                         mysqli_stmt_execute($stmt);
                     
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             //echo "<script>alert('Insert successfully');</script>";
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New question added successfully</div>";
                             //$sql = "UPDATE helpCenter set hc_id = concat('HC',id) WHERE id = (select id from helpCenter order by id desc LIMIT 1);";
 							$sql ="UPDATE helpCenter AS a, (SELECT id from helpCenter order by id desc LIMIT 1) AS b 
 								   SET a.hc_id = concat('HC', b.id)
@@ -276,7 +277,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['acCategoryName']) && !empty($_POST['acCategoryName']) ){
            
             $acCategoryName = $_POST['acCategoryName'];
-            echo "$acCategoryName";
+            //echo "$acCategoryName";
             
             //Image information 
                 $name= $_FILES['acImage']['name'];
@@ -310,7 +311,7 @@
                         if(mysqli_stmt_affected_rows($stmt) == 1)	//why check with 1? this sequal allow insert 1 row nia
                         {
                             //echo "<script>alert('Insert successfully');</script>";
-							echo "<div class='alert alert-success'>Insert Successfully</div>";
+							echo "<div class='alert alert-success'>New category successfully added</div>";
                            // $sql = "UPDATE helpcentercategory set hcc_id = concat('HCC',id)WHERE id = (select id from helpcentercategory order by id desc LIMIT 1);";
 							$sql = "UPDATE helpCenterCategory AS a, (SELECT id from helpCenterCategory order by id desc LIMIT 1) AS b 
 									SET a.hcc_id = concat('HCC', b.id)
@@ -444,7 +445,8 @@
 		 
 		 /**/
 		 if(mail($to, $subject, $content, $header)){
-			  echo "<script>alert('Email sent!')</script>";
+			  //echo "<script>alert('Email sent!')</script>";
+			  echo "<div class='alert alert-success'>Email sent!</div>";
 			  $sql = "UPDATE 
 					 `contactUs` SET status =?, r_message=?, admin_id=?
 			          WHERE cu_id =?";
@@ -652,7 +654,7 @@
 									<textarea id = 'addans' name = "aans"class = 'textarea' required></textarea><br><br>
 
 									<label for = 'addimg' class = 'labelinput' style = 'vertical-align: center; margin-left: 46px;'>Image:</label>
-									<input type = 'file'  name ='aimg' id = 'addimg'><br><br>
+									<input type = 'file'  name ='aimg' id = 'addimg' accept='image/png, image/jpeg, image/jpg'><br><br>
 																		
 									
 									
@@ -703,7 +705,7 @@
 											<br><br>		
 										
 										<label for = 'acImg' class = 'labelinput' style = 'margin-left: 46px;' id = 'acImgLabel'>Image:</label>
-										<input type = 'file'  name ='acImage' id = 'acImg' required><br><br>
+										<input type = 'file'  name ='acImage' id = 'acImg' accept='image/png, image/jpeg, image/jpg' required><br><br>
 
 										<img type='image' src = 'https://www.freeiconspng.com/thumbs/edit-icon-png/edit-new-icon-22.png' class = 'imgset' id= "acdSwitchImg">
 										

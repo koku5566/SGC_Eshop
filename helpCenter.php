@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['img'])){	//check wheth
 <!--START OF TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->		
 	<main>
 		<h1 id="faq">Frequently Asked Question</h1>
-			<div id="showHC1">	
+			<div id="showHC1" style="max-height: 800px; overflow: auto;">	
 				<?php
 					echo "<script>let u = []; let functionArr = [];</script>";
 					

@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php';
 
     $invoice_id = $_GET['order_id'];
+
     
     //=========sql to get order information=============
     $orderstatus = "";
@@ -17,10 +18,16 @@
     myOrder.delivery_method,
     user.username,
     user.email,
-    userAddress.address
+    userAddress.address,
+    userAddress.postal_code,
+    userAddress.area,
+    userAddress.state,
+    shopProfile.shop_address_state
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
+    JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
@@ -33,9 +40,13 @@
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
         $address = $orow['address'];
+        $postalCode = $orow['postal_code'];
+        $area = $orow['area'];
+        $state = $orow['state'];
         $buyeremail = $orow['email'];
         $orderdate = $orow['order_date'];
         $trackingnum = $orow['tracking_number'];
+        $shopaddress = $orow['shop_address_state'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
@@ -103,7 +114,7 @@
     
             $message = "
             <h5>Your Order for <strong>$invoice_id</strong> has been shipped out.</h5>
-            <button>Track Here</a>
+            <a href='https://eshop.sgcprototype2.com/purchaseShippingDetails.php?invoice_id=$invoice_id'>Track Here</a>
             <p>
             <h4>Thank you</h4>
             <h4>Best Regards</h4>
@@ -325,7 +336,7 @@
                                 <?php echo $username?>
                             </div>
                             <div id="recipient-address">
-                                <?php echo $address?>
+                                <?php echo $address,' ', $postalCode,' ', $area,' ', $country?>
                             </div>
                         </div>
                     </div>
@@ -349,7 +360,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                         $shopaddress = $srow['shop_address_state'];
+                                     
                                     ?>
                                     <tr>
                                         <td>

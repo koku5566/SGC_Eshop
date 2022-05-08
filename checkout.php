@@ -1,11 +1,11 @@
 <?php
     require __DIR__ . '/header.php';
 
- 	  if(!isset($_SESSION['login']))
-	 {
-	 	echo "<script>alert('Login to checkout');
-	 		window.location.href='login.php';</script>";
-     }  
+	if($_SESSION['login'] == false || $_SESSION['role'] == "SELLER")
+	{
+		?><script>window.location = '<?php echo("$domain/E404.php");?>'</script><?php
+		exit;
+    }
  
      $userID = $_SESSION["userid"];
 
@@ -31,7 +31,7 @@ else{
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
-            $_SESSION['userName'] = $userrow['name']; 
+            $_SESSION['userName'] = $userrow['contact_name']; 
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
@@ -57,7 +57,6 @@ else{
 
 
 //calculate shipping fee
-
 $shippingfee = 10;
 
 ?>
@@ -135,6 +134,7 @@ $shippingfee = 10;
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th></th>
                                     <th>Product</th>
                                     <th>Variation</th>
                                     <th>Unit Price</th>
@@ -172,6 +172,7 @@ $shippingfee = 10;
                                 $product_name = $rowKL['P_name'];
                                 $product_quantity = $rowKL['P_quantity'];
                                 $shop_id = $rowKL['shop_id'];
+                                $product_image = $rowKL['P_pic'];
 
                                 $variation_message = "";
                                 $showNotif = false;
@@ -241,14 +242,18 @@ $shippingfee = 10;
                             <td>
 
                             </td>
+                            
                                 <td>
-                                <span>".$product_name."</span>
+                                <a href='#'><img src='/img/product/$product_image' alt='Product' style='width:80px; height:80px; text-align:center; vertical-align:middle'></a>
+                                </td>
+                                <td>
+                                <span >".$product_name."</span>
                                 </td>
                                 <td>
                                 <span>".$variation_message."</span>
                                 </td>
                                 <td>
-                                <span>".$product_price."</span>
+                                <span>RM ".$product_price."</span>
                                 </td>
                                 <td>
                                 <span>".$product_quantity."</span>
@@ -317,7 +322,7 @@ $shippingfee = 10;
                     <ul class="list-group">
                     <li class="list-group-item"><span>Order Total</span><span style= "float: right;">RM <?php echo $subtotal; ?></span></li>
                         <li class="list-group-item"><span>Shipping Total</span><span style ="float: right;">RM<span id="shipping-fee" >10.00</span></span></li>
-                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php $total = $_SESSION['subtotal']+ $shippingfee; echo number_format($total,2);?></span></span></li>
+                        <li class="list-group-item"><span>Total Payment</span><span  style= "float: right;font-size: 30px; color:#A71337;">RM <span id="totalAmount"><?php $total = $_SESSION['subtotal']+ $shippingfee; echo $total;?></span></span></li>
                     </ul>
                 </div>
             </div>
@@ -325,7 +330,7 @@ $shippingfee = 10;
             <div class = 'row'>
             <input type = "hidden"  id ="subtotal-amount" name = "amount" value =<?php echo $_SESSION['subtotal']?>>
             <input type = "hidden" id="shipping-total" name="shipping-total" value ="10.00" > 
-            <input type = "hidden" id="total-amount" name="total-amount" value ="<?php echo number_format($total,2);?>" > 
+            <input type = "hidden" id="total-amount" name="total-amount" value ="<?php echo $total;?>" >   <!-- echo number_format($total,2); -->
             <input type = "hidden" name = "item_name" value = "e-shop">
             <input type = "hidden" name = "item number" value = "e-shop1">
             <div class="col"><button class="btn btn-primary text-center" type="submit" style="text-align: right;background: #A71337;width: 200.95px;float: right;" name="placeOrder">Place Order</button></div>

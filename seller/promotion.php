@@ -227,7 +227,7 @@
             </div>
         </div>
 
-        <!-- Approved Section-->
+        <!-- Request Section-->
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">
@@ -376,7 +376,7 @@
 
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <p class="p-title">Cover Image</p>
+                                    <p class="p-title">Promotion Image</p>
                                 </div>
                             </div>
 
@@ -463,7 +463,9 @@
 
                                     if(move_uploaded_file($_FILES["img"]["tmp_name"][0], $targetFilePath)){ 
                                         $sql = "INSERT INTO `promotion` (`promotionID`,`promotion_title`,`promotion_image`, `promotion_Date`, `promotionEnd_Date`, `status`, `user_id`) 
-                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
+                                                VALUES((SELECT CONCAT('PR',(SELECT LPAD((SELECT AUTO_INCREMENT FROM information_schema.TABLES 
+                                                WHERE TABLE_SCHEMA = 'sgcprot1_SGC_ESHOP' AND TABLE_NAME = 'promotion'), 6, 0))) AS newCombinationId), 
+                                                '$title','$fileName','$dateStart','$dateEnd','$status', '$userId')";
                                                 
                                                 $result = mysqli_query($conn,$sql);
 
@@ -502,86 +504,6 @@
         </div>
 
     </div>
-
-    <!-- Request - View/Approve/Reject Section -->
-    <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal fade" id="requestSectionModel" tabindex="-1" role="dialog" aria-labelledby="requestSectionModel" <?php echo(isset($_GET['requestSection']) ? "" : "aria-hidden=\"true\"");?> >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" >Request Section</h5>
-                        <button type="button" class="close requestSectionModel" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="image-container">
-                                    <?php
-                                        $promotionId = $_GET['requestSection'];
-                                        $sql = "SELECT promotion_image FROM promotion WHERE promotionID = '$promotionId'";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while($row = mysqli_fetch_assoc($result)) {
-                                                
-                                                $picture = $row["promotion_image"];
-                                                $picName = "";
-
-                                                if($row["promotion_image"] != "")
-                                                {
-                                                    $picName = "/img/promotion/".$row["promotion_image"];
-                                                }
-                                                
-                                                echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%;min-height:10px;\" src=\"$picName\">");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo("<img class=\"card-img-top img-thumbnail\" style=\"object-fit:contain;width:100%;height:100%\">");
-                                        }
-                                    ?>
-                                    
-                                    <div class="image-layer">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Promotion Title</label>
-                                    <?php
-                                    $promotionId = $_GET['requestSection'];
-                                    $sql = "SELECT promotionID, promotion_title, promotion_Date, promotionEnd_Date FROM promotion WHERE promotionID = '$promotionId'";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            $promotionId = $row["promotionID"];
-                                            $promotionTitle = $row["promotion_title"];
-                                            $promotionDate = $row["promotion_Date"];
-                                            $promotionEnd_Date = $row["promotionEnd_Date"];
-
-                                            echo("<br><input type=\"text\" class=\"form-control\" name=\"requestSectionID\" value=\"$promotionId\" hidden>");
-                                            echo("<input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionTitle\" readonly>");
-                                            echo("<br>Start Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionDate\" readonly>");
-                                            echo("<br>End Date: <input type=\"text\" class=\"form-control\" name=\"requestSectionTitle\" value=\"$promotionEnd_Date\" readonly>");
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary requestSectionModel" data-dismiss="modal">Close</button>
-                        <button type="submit" name="Approve"  class="btn btn-success" value="<?php echo $_GET['requestSection']; ?>">Approve</button>
-                        <button type="submit" name="Reject"  class="btn btn-danger" value="<?php echo $_GET['requestSection']; ?>">Reject</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Delete Promotion Modal - deletePromotionModel -->
     <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -871,7 +793,7 @@
         }
         else
         {
-            alert("Please Select a Cover Picture");
+            alert("Please Select a Promotion Picture");
         }
     }
 
@@ -882,7 +804,7 @@
         }
         else
         {
-            alert("Please Select a Cover Picture");
+            alert("Please Select a Promotion Picture");
         }
     }
 

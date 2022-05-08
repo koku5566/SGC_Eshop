@@ -168,13 +168,15 @@
                         <!--Login-->
                         <?php if ($_SESSION['login'] == true) :?>
 
+                        <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "USER") :?>
                         <!--Cart-->
                         <li class="nav-item no-arrow">
                             <a class="nav-link" href="cart.php">
                                 <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
                             </a>
                         </li>
-                        
+                        <?php endif?>
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -206,18 +208,12 @@
                                 </a>
                                 <?php endif?>
 
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "SELLER") :?>
-                                <a class="dropdown-item" href="../seller/viewShippingOrders.php">
-                                    <i class="fa-solid fa-repeat fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Seller
-                                </a>
-                                <?php endif?>
-
-                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "USER") :?>
                                 <a class="dropdown-item" href="../userProfile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Account
                                 </a>
+
+                                <?php if ($_SESSION['login'] == true && $_SESSION['role'] == "USER") :?>
                                 <a class="dropdown-item" href="../getOrder.php">
                                     <i class="fa-solid fa-dollar-sign fa-sm fa-fw mr-2 text-gray-400"></i>
                                     My Purchase

@@ -27,7 +27,8 @@ if(isset($_POST["restriction"]) && !empty($_POST["restriction"]) && $_POST["rest
 if(isset($_POST["restriction2"]) && !empty($_POST["restriction2"]) && $_POST["restriction2"] !== "All"){
 	$restriction2 = mysqli_real_escape_string($conn, $_POST["restriction2"]);
 	if($_POST["restriction2"] == "1"){
-		$rr2 = " && message IS NOT NULL && pic1 IS NULL && pic2 IS NULL && pic3 IS NULL && pic4 IS NULL && pic5 IS NULL";
+		//$rr2 = " && message IS NOT NULL && pic1 IS NULL && pic2 IS NULL && pic3 IS NULL && pic4 IS NULL && pic5 IS NULL";
+		$rr2 = " && message IS NOT NULL && pic1 = '' && pic2 = '' && pic3 = '' && pic4 = '' && pic5 = ''";
 	}
 	//$rr2 = " && product_id = '$restriction2' ";
 	

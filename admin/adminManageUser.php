@@ -9,38 +9,38 @@
 ?>
 
 <?php
-	if(isset($_POST['deleteStaff']))
-	{
-		$_SESSION['DeleteUser'] = false;
-		$UN = $_POST['deleteStaff'];
+if(isset($_POST['deleteStaff']))
+{
+	$_SESSION['DeleteUser'] = false;
+	$UN = $_POST['deleteStaff'];
 
-		$sql = "DELETE FROM user WHERE username = '$UN'";
+	$sql = "DELETE FROM user WHERE username = '$UN'";
 
-		if (mysqli_query($conn, $sql)) {
-			$_SESSION['DeleteUser'] = true;
-            echo "<script>alert('$UN Has Been Removed');</script>";
-		} else {
-			echo "Error: " . mysqli_error($conn);
-		}
+	if (mysqli_query($conn, $sql)) {
+		$_SESSION['DeleteUser'] = true;
+		echo "<script>alert('$UN Has Been Removed');</script>";
+	} else {
+		echo "Error: " . mysqli_error($conn);
 	}
+}
 
-	if(isset($_POST['editStaff']))
-	{
-        $UID=$_POST['editStaff'];
+if(isset($_POST['editStaff']))
+{
+	$UID=$_POST['editStaff'];
 
-        $name = $_POST['inpEditName'];
-		$email = $_POST['inpEditEmail'];
-        $contact = $_POST['inpEditContact'];
-        $role = $_POST['inpEditRole'];
+	$name = $_POST['inpEditName'];
+	$email = $_POST['inpEditEmail'];
+	$contact = $_POST['inpEditContact'];
+	$role = $_POST['inpEditRole'];
 
-		$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
+	$sql = "UPDATE user SET name='$name', email='$email', contact='$contact' WHERE username='$UID'";
 
-		if (mysqli_query($conn, $sql)) {
-            echo "<script>alert('User Detail Edited');</script>";
-		} else {
-			echo "Error: " . mysqli_error($conn);
-		}
+	if (mysqli_query($conn, $sql)) {
+		echo "<script>alert('User Detail Edited');</script>";
+	} else {
+		echo "Error: " . mysqli_error($conn);
 	}
+}
 ?>
 
 <div class="container-fluid">
