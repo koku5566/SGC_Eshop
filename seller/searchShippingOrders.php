@@ -16,53 +16,22 @@ switch($searchBy){
         WHERE productTransaction.shop_id = '$user_id' AND myOrder.order_id  LIKE '%$keyword%' OR myOrder.invoice_id LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
         break;
     case "name":
-        $sql ="SELECT
-        myOrder.order_id,
-        product.product_name,
-        product.product_cover_picture,
-        product.product_price,
-        orderDetails.quantity,
-        orderDetails.amount,
-        user.username
-        FROM
-        myOrder
-        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-        JOIN product ON orderDetails.product_id = product.id 
-        JOIN user ON myOrder.user_id = user.user_id
-        WHERE user.username LIKE '%$keyword%'";
+        $sql ="SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
+        INNER JOIN user ON myOrder.userID = user.user_id
+        INNER JOIN product ON productTransaction.product_id = product.product_id
+        WHERE productTransaction.shop_id = '$user_id' AND user.username  LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
         break;
     case "product":
-        $sql ="SELECT
-        myOrder.order_id,
-        product.product_name,
-        product.product_cover_picture,
-        product.product_price,
-        orderDetails.quantity,
-        orderDetails.amount,
-        user.username
-        FROM
-        myOrder
-        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-        JOIN product ON orderDetails.product_id = product.id 
-        JOIN user ON myOrder.user_id = user.user_id
-        WHERE product.product_name LIKE '%$keyword%'";
+        $sql = "SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
+        INNER JOIN user ON myOrder.userID = user.user_id
+        INNER JOIN product ON productTransaction.product_id = product.product_id
+        WHERE productTransaction.shop_id = '$user_id' AND product.product_name  LIKE '%$keyword%'ORDER BY myOrder.order_id DESC";
         break;
     case "trackingnumber":
-        $sql ="SELECT
-        myOrder.order_id,
-        product.product_name,
-        product.product_cover_picture,
-        product.product_price,
-        orderDetails.quantity,
-        orderDetails.amount,
-        user.username
-        FROM
-        myOrder
-        JOIN orderDetails ON myOrder.order_id = orderDetails.order_id
-        JOIN product ON orderDetails.product_id = product.id 
-        JOIN user ON myOrder.user_id = user.user_id
-        JOIN shipment ON shipment.order_id = myOrder.order_id 
-        WHERE shipment.tracking_number LIKE '%$keyword%'";
+        $sql ="SELECT * FROM productTransaction INNER JOIN myOrder ON productTransaction.invoice_id  = myOrder.invoice_id
+        INNER JOIN user ON myOrder.userID = user.user_id
+        INNER JOIN product ON productTransaction.product_id = product.product_id
+        WHERE productTransaction.shop_id = '$user_id' AND shipment.tracking_number LIKE '%$keyword%' ORDER BY myOrder.order_id DESC";
         break;
     default:
         echo "Please search again";

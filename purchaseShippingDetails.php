@@ -90,7 +90,46 @@
         $updatesql = "UPDATE myOrder SET order_status = '$status' WHERE invoice_id = '$invoice_id'";
     
         if ($conn->query($insertsql)&& $conn->query($updatesql)) {
-            $_SESSION['success'] = "Thank you for updating!";?>
+            $_SESSION['success'] = "Thank you for updating!";
+                    //===============email function=======================
+            $to = $selleremail;
+            $subject = "Order $invoice_id has completed successfully" ;
+            $from = "shipping@sgcprototype2.com";
+            $from2 = "shipping@sgcprototype2.com";
+            $fromName = "SGC E-Shop Admin";
+    
+            $headers =  "From: $fromName <$from> \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: multipart/mixed;\r\n";
+    
+    
+            $message = "
+            <h5>Your Order for <strong>$invoice_id</strong> has been delivered and completed. </h5>
+            <p>
+            <h4>Thank you</h4>
+            <h4>Best Regards</h4>
+            <h4>SGC Eshop</h4>
+            ";
+    
+            $HTMLcontent = "<p><b>Dear seller</b>,</p><p>$message</p>";
+    
+            $boundary = md5(time());
+            $headers .= " boundary=\"{$boundary}\"";
+            $message = "--{$boundary}\r\n";
+            $message .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+            $message .= "Content-Transfer-Encoding: 7bit\r\n";
+            $message .= $HTMLcontent . "\r\n";
+            $message .= "--{$boundary}\r\n";
+            $returnPath = "-f" . $from2;
+    
+            if (@mail($to, $subject, $message, $headers, $returnPath)) {
+                echo "<script>alert('Thank you!')</script>";
+            } else {
+                echo "<script>alert('Error')</script>";
+            }
+            //end of email func===============================================
+            ?>
+            
             <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
             <?php
             } else {
@@ -121,6 +160,7 @@
         <h5>Remember to ship order items for '$invoice_id'</h5>
         <p>Your customer has notify you that the order has not been shipped yet. 
             Please kindly ship all order items to keep a good rating for your shop. :)
+            <a href='https://eshop.sgcprototype2.com/seller/shippingCheckDetails.php?order_id=$invoice_id'>Update Here</a>
         </p>
         <h4>Thank you</h4>
         <h4>Best Regards</h4>
@@ -143,7 +183,9 @@
         } else {
             echo "<script>alert('Error')</script>";
         }
-        
+        ?>
+        <script>window.location = 'purchaseShippingDetails.php?invoice_id=<?php echo $invoice_id;?>'</script>
+        <?php
     }
 ?>
 
@@ -246,7 +288,8 @@
                     <strong>Delivery Details </strong>
                 </div>
                 <div class="row">
-                    <div id="recepient-name"> </div><?php echo $phone ?><br>
+                    <div id="recepient-phone"> </div><?php echo $phone ?><br>
+                    <div id="recepient-name"> </div><?php echo $contactname ?><br>
                     <div id="address"><?php echo $address?> </div>
                 </div>
             </div>
