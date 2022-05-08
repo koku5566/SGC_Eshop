@@ -123,9 +123,10 @@
     
             if (@mail($to, $subject, $message, $headers, $returnPath)) {
                 echo "<script>alert('Thank you!')</script>";
-            } else {
-                echo "<script>alert('Error')</script>";
-            }
+             }
+            //else {
+            //     echo "<script>alert('Error')</script>";
+            // }
             //end of email func===============================================
             ?>
             

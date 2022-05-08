@@ -2,6 +2,7 @@
     require __DIR__ . '/header.php';
 
     $invoice_id = $_GET['order_id'];
+    $shopaddress="";
     
     //=========sql to get order information=============
     $orderstatus = "";
@@ -20,10 +21,13 @@
     userAddress.address,
     userAddress.postal_code,
     userAddress.area,
-    userAddress.state
+    userAddress.state,
+    shopProfile.shop_address_state,
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
+    JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
+    JOIN shopProfile ON productTransaction.shop_id = shopProfile.shop_id
     JOIN userAddress ON myOrder.userID = userAddress.user_id
     WHERE myOrder.invoice_id = '$invoice_id';";
     $stmt = $conn->prepare($orderinfosql);
