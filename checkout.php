@@ -31,7 +31,7 @@ else{
             $userrow = mysqli_fetch_assoc($userresult);     
             $_SESSION['getaddress'] = $userrow['address_id'];
             $_SESSION['userEmail'] = $userrow['email'];
-            $_SESSION['userName'] = $userrow['name']; 
+            $_SESSION['userName'] = $userrow['contact_name']; 
 
 /*             if(isset($_POST['address-option'])){
                 $UID = $_POST['address-option'];
