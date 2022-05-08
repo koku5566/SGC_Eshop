@@ -53,10 +53,9 @@ if(isset($_POST['cancel']))
        DISTINCT
        myOrder.order_id,
        product.product_name,
-       product.product_price AS prodPrice,
+       product.product_price,
        product.product_cover_picture,
        shopProfile.shop_name,
-       variation.product_price AS variantProdPrice,
        productTransaction.quantity
        
        FROM
@@ -66,7 +65,6 @@ if(isset($_POST['cancel']))
        JOIN shopProfile ON product.shop_id = shopProfile.shop_id
        JOIN user on myOrder.userID = user.user_id 
        JOIN cart ON myOrder.userID = cart.user_ID
-       JOIN variation ON product.product_id = variation.product_id
        WHERE myOrder.order_id = '$order_id' ";
        $result2 = $conn->query($sql2);
        while($row2 = $result2->fetch_assoc()){
