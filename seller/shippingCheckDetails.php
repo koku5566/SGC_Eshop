@@ -17,7 +17,10 @@
     myOrder.delivery_method,
     user.username,
     user.email,
-    userAddress.address
+    userAddress.address,
+    userAddress.postal_code,
+    userAddress.area,
+    userAddress.state
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -33,6 +36,9 @@
         $deliverymethod = $orow['delivery_method'];
         $username = $orow['username'];
         $address = $orow['address'];
+        $postalCode = $orow['postal_code'];
+        $area = $orow['area'];
+        $state = $orow['state'];
         $buyeremail = $orow['email'];
         $orderdate = $orow['order_date'];
         $trackingnum = $orow['tracking_number'];
@@ -325,7 +331,7 @@
                                 <?php echo $username?>
                             </div>
                             <div id="recipient-address">
-                                <?php echo $address?>
+                                <?php echo $address,' ', $postalCode,' ', $area,' ', $country?>
                             </div>
                         </div>
                     </div>
