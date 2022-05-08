@@ -157,7 +157,7 @@ $order_id = $_GET['order_id'];
                     <?php if($row2['order_status'] !='Completed' || $row2['cancellation_status'] =='rejected' || $row2['order_status'] =='Paid' ){?>
                         <a class="btn btn-primary " style="margin-left:10px;"  href="cancellation.php?order_id=<?php echo $row2['order_id'];?>">Cancel Order</a>
                         
-                        <?php }else if ($row2['cancellation_status'] =='To respond' || $row2['cancellation_status'] =='Cancelled')  {?>
+                        <?php } else if($row2['cancellation_status'] =='To respond' || $row2['cancellation_status'] =='cancelled'){?>
                             <a class= "btn btn-primary" href="getOrder.php">Back</a>
                             <?php echo $row2['cancellation_status']; ?>
                         <?php } else{ ?>
