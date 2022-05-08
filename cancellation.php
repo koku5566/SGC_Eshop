@@ -70,13 +70,8 @@ if(isset($_POST['cancel']))
        WHERE myOrder.order_id = '$order_id' ";
        $result2 = $conn->query($sql2);
        while($row2 = $result2->fetch_assoc()){
-        
-          $totalamount =$amount * $row2['quantity'];
-          if($row2['prodPrice'] == 0 ){
-            $amount = $row2['variantProdPrice'] *$row2['quantity'];
-        } else{ 
-            $amount = $row2['prodPrice'] *$row2['quantity'];
-         }
+        $amount =  $row2['product_price']*$row2['quantity'];
+                        $totalamount += $amount;
       ?>
      <div class="card">
         <div class="card-body">
