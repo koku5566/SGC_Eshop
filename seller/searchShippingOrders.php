@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <?php
+$user_id = $_SESSION["userid"];
 $searchBy = $_GET['searchBy'];
 $keyword = $_GET['keyword'];
 
