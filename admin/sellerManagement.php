@@ -59,9 +59,9 @@
 ?>
 
 <?php
-if(isset($_POST['edit']))
+if(isset($_POST['editSeller']))
 {
-	$UID=$_POST['edit'];
+	$UID=$_POST['editSeller'];
 
 	$name = $_POST['sellerName'];
 	$email = $_POST['sellerEmail'];
@@ -140,7 +140,7 @@ if(isset($_POST['delete']))
                 <td id="sellerName" name="sellerName"><?php echo $sellerName ?></td>
                 <td id="sellerEmail" name="sellerEmail"><?php echo $sellerEmail ?></td>
                 <td id="sellerContact" name="sellerContact"><?php echo $sellerContact ?></td>
-                <td><button name="edit" class="delete">EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
+                <td><button name="edit" class="delete" data-toggle='modal' data-target='#edit Modal'>EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
               </tr>
             </tbody>
             <?php
@@ -149,6 +149,33 @@ if(isset($_POST['delete']))
           </table>
         </form>
     </div>
+
+    <!-- Edit Modal -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+    	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    			<div class="modal-content" id="editProfile">
+    				<div class="modal-header">
+    					<h5 class="modal-title">Edit Staff Information</h5>
+    					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+    					</button>
+    				</div>
+
+            <div class="modal-body">
+              <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" name="sellerName" class="form-control" id="sellerName" placeholder="" value="`+name+`" required>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" name="editSeller" value="`+username+`" class="btn btn-primary">Save Changes</button>
+            </div>
+    			</div>
+    		</div>
+    	</div>
+    </form>
   </div>
 </div>
 
