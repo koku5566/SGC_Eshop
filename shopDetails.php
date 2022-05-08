@@ -145,15 +145,13 @@
 
   <section class="text-center">
     <h4 class="mb-5"><strong>Vouchers</strong></h4>
-    <div class="d-flex align-items-center voucherContainer"> <!--<div class="voucherContainer d-flex align-items-center">-->
+    <div class="d-flex align-items-center voucherContainer">
      <?php
             if ($result_voucher->num_rows > 0) {
               // output data of each row
               while($row2 = $result_voucher->fetch_assoc()) {
      ?>
         <div class="coupon-card">
-          <!--<img src="https://cdn.mos.cms.futurecdn.net/tQxVwcJSowYD7xwWDYidd9.jpg" class="logo">-->
-          <!--<h3>20% flat off on all rides within the city <br> using HDFC Credit Card</h3>-->
           <h3>RM
             <?php echo $row2["discount_amount"]; ?>
           </h3>

@@ -12,7 +12,7 @@
 
 
 <?php
-  $sql = "SELECT * FROM user";
+  $sql = "SELECT * FROM user WHERE role = 'SELLER'";
   $seller_result = mysqli_query($conn, $sql);
 ?>
 
@@ -36,49 +36,45 @@
 //}
 ?>
 
+<!-- Edit and Update Data-->
 <?php
-//if(isset($_POST['edit']))
-//{
-//   $sellerId = $_SESSION['user_id'];
-//   $sellerName = $_POST['name'];
-//   $sellerEmail = $_POST['email'];
-//   $sellerContact = $_POST['contact'];
-//   $update = "UPDATE user SET name='$sellerName', email='$sellerEmail', contact='$sellerContact' WHERE user_id = '$sellerId'";
-//     if (mysqli_query($conn, $update))
-//     { 
-//         /*Successful*/
-//         //header("Refresh:0");
-//         //echo 'Success, please refesh again if not show the updated profile details.';
-//         //header("Location:/shopProfile.php");
-//         ?><!--<script>window.location = '<?php //echo("$domain/admin/sellerManagament.php");?>'</script>--><?php
-//     }
-//     else
-//     {
-//       echo($update);
-//         /*Fail*/
-//         echo 'Update Fail';
-//     }
-//} 
+if(isset($_POST['edit']))
+{
+   $sellerName = $_POST['name'];
+   $sellerEmail = $_POST['email'];
+   $sellerContact = $_POST['contact'];
+   $update = "UPDATE user SET name='$sellerName', email='$sellerEmail', contact='$sellerContact' WHERE user_id = '$sellerId'";
+     if (mysqli_query($conn, $update))
+     { 
+         /*Successful*/
+         ?><script>window.location = '<?php echo("$domain/admin/sellerManagament.php");?>'</script><?php
+     }
+     else
+     {
+       echo($update);
+         /*Fail*/
+         echo 'Update Fail';
+     }
+} 
 ?>
 
 <!-- Delete Data-->
 <?php
-//if(isset($_POST['delete']))
-//{
-//  $shopId = $_SESSION['userid'];
-//  $_SESSION['DeleteUser'] = false;
-//  $id = $_POST['delete'];
-//  $sql = "DELETE FROM user WHERE username = '$id'";
-//  $delete_result = mysqli_query($conn, $sql);
-//  
-//  if($delete_result)
-//  {
-//    echo "$id'has been deleted'";
-//  }else{
-//    echo 'Data Not Deleted';
-//  }
-//  mysqli_close($conn);
-//}
+if(isset($_POST['delete']))
+{
+  $_SESSION['DeleteUser'] = false;
+  $id = $_POST['delete'];
+  $sql = "DELETE FROM user WHERE user_id = '$id'";
+  $delete_result = mysqli_query($conn, $sql);
+  
+  if($delete_result)
+  {
+    echo 'Deleted';
+  }else{
+    echo 'Fail to delete';
+  }
+  mysqli_close($conn);
+}
 ?>
 
 <div class="container-fluid" style="width:100%;">
@@ -119,7 +115,6 @@
             ?>
             <tbody>
               <tr>
-                <th scope="row">1</th>
                 <td><?php //echo $sellerProfilePic ?></td>
                 <td><?php echo $sellerID ?></td>
                 <td><?php echo $sellerName ?></td>
