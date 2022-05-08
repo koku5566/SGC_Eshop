@@ -2,7 +2,7 @@
     require __DIR__ . '/header.php';
 
     $invoice_id = $_GET['order_id'];
-    $shopaddress="";
+
     
     //=========sql to get order information=============
     $orderstatus = "";
@@ -360,7 +360,7 @@
                                 <tbody>
                                     <?php                       
                                      while ($srow = $sresult->fetch_assoc()) {
-                                         $shopaddress = $srow['shop_address_state'];
+                                     
                                     ?>
                                     <tr>
                                         <td>
