@@ -155,42 +155,29 @@ if(isset($_POST['delete']))
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Edit Seller Information</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="sellerName" class="form-control" id="sellerName" placeholder="" value="`+name+`" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="sellerEmail" class="form-control" id="sellerEmail" placeholder="" value="`+email+`" required>
+            </div>
+            <div class="form-group">
+                <label>Contact</label>
+                <input type="text" name="sellerContact" class="form-control" id="sellerContact" placeholder="" value="`+contact+`" required>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" name="editSeller" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
-    	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    			<div class="modal-content" id="editProfile">
-    				<div class="modal-header">
-    					<h5 class="modal-title">Edit Staff Information</h5>
-    					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    					<span aria-hidden="true">&times;</span>
-    					</button>
-    				</div>
-
-            <div class="modal-body">
-              <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" name="sellerName" class="form-control" id="sellerName" placeholder="" value="`+name+`" required>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="submit" name="editSeller" value="`+username+`" class="btn btn-primary">Save Changes</button>
-            </div>
-    			</div>
-    		</div>
-    	</div>
   </div>
 </div>
 
