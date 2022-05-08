@@ -356,7 +356,13 @@ $orders = $stmt_2->get_result();
                                              Purchase Date: &nbsp;&nbsp;<?php echo $row['order_date']?></strong></span>
                                             </div>
                                             <div class="col md-auto text-end" style="text-align:right;"><span><strong>
-                                             Order Status: &nbsp;&nbsp;<?php echo $row['order_status']?></strong></span>
+                                             Order Status: &nbsp;&nbsp;
+                                             <?php if($row['cancellation_status'] =='To respond'){?>
+                                                <?php echo $row['cancellation_status']?>
+                                            <?php } else{ ?>
+                                                <?php echo $row['order_status']?>
+                                            <?php }?>
+                                            </strong></span>
                                             </div>
                                         </div>
                                 </div>
