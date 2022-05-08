@@ -22,7 +22,7 @@
     userAddress.postal_code,
     userAddress.area,
     userAddress.state,
-    shopProfile.shop_address_state,
+    shopProfile.shop_address_state
     FROM
     myOrder
     JOIN user ON myOrder.userID = user.user_id
@@ -46,6 +46,7 @@
         $buyeremail = $orow['email'];
         $orderdate = $orow['order_date'];
         $trackingnum = $orow['tracking_number'];
+        $shopaddress = $orow['shop_address_state'];
     }
     $orderdate = strtotime($orderdate);
     $estimateddelivery = strtotime('+7 day',$orderdate); 
