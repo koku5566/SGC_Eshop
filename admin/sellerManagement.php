@@ -161,15 +161,15 @@ if(isset($_POST['delete']))
           <div class="modal-body">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="sellerName" class="form-control" id="sellerName" placeholder="" value="`+name+`" required>
+                <input type="text" name="sellerName" class="form-control" id="sellerName" placeholder="" value="<?php echo $sellerName ?>" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="sellerEmail" class="form-control" id="sellerEmail" placeholder="" value="`+email+`" required>
+                <input type="text" name="sellerEmail" class="form-control" id="sellerEmail" placeholder="" value="<?php echo $sellerEmail ?>" required>
             </div>
             <div class="form-group">
                 <label>Contact</label>
-                <input type="text" name="sellerContact" class="form-control" id="sellerContact" placeholder="" value="`+contact+`" required>
+                <input type="text" name="sellerContact" class="form-control" id="sellerContact" placeholder="" value="<?php echo $sellerContact ?>" required>
             </div>
           </div>
           <div class="modal-footer">
