@@ -111,10 +111,10 @@ $order_id = $_GET['order_id'];
                             <?php echo $row2['product_name']; ?>
                         </div>
                         <div class="col-2">RM
-                        <?php  echo $amount?>                     
+                        <?php echo $row2['product_price']; ?>                    
                         </div>
                         <div class="col-2">X
-                            <?php echo $row2['product_price']; ?>
+                            <?php echo $row2['quantity']; ?>
                         </div>
                         <div class="col-2 red-text">RM
                         <?php  echo $amount?></td>
