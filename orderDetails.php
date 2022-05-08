@@ -71,14 +71,7 @@ $order_id = $_GET['order_id'];
                     $totalP = 0;
                     $sql2 = "SELECT
                     DISTINCT
-                    myOrder.order_id,
-                    product.product_name,
-                    product.product_price ,
-                    product.product_cover_picture,
-                    shopProfile.shop_name,
-                    
-                    productTransaction.quantity
-                    
+                        *
                     FROM
                     myOrder
                     JOIN productTransaction ON myOrder.invoice_id = productTransaction.invoice_id
