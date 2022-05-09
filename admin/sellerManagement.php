@@ -85,10 +85,11 @@ if(isset($_POST['delete']))
   $_SESSION['DeleteUser'] = false;
   $id = $_POST['delete'];
   $sql = "DELETE FROM user WHERE user_id = '$id'";
-  $delete_result = mysqli_query($conn, $sql);
+  //$delete_result = mysqli_query($conn, $sql);
   
-  if($delete_result)
+  if (mysqli_query($conn, $sql))
   {
+    $_SESSION['DeleteUser'] = true;
     echo 'Deleted';
   }else{
     echo 'Fail to delete';
