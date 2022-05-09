@@ -151,7 +151,7 @@ if(isset($_POST['delete']))
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal" id="editModal" tabindex="-1">
+    <div class="modal" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
