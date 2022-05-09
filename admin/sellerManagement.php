@@ -85,10 +85,11 @@ if(isset($_POST['delete']))
   $_SESSION['DeleteUser'] = false;
   $id = $_POST['delete'];
   $sql = "DELETE FROM user WHERE user_id = '$id'";
-  $delete_result = mysqli_query($conn, $sql);
+  //$delete_result = mysqli_query($conn, $sql);
   
-  if($delete_result)
+  if (mysqli_query($conn, $sql))
   {
+    $_SESSION['DeleteUser'] = true;
     echo 'Deleted';
   }else{
     echo 'Fail to delete';
@@ -140,7 +141,7 @@ if(isset($_POST['delete']))
                 <td id="sellerName" name="sellerName"><?php echo $sellerName ?></td>
                 <td id="sellerEmail" name="sellerEmail"><?php echo $sellerEmail ?></td>
                 <td id="sellerContact" name="sellerContact"><?php echo $sellerContact ?></td>
-                <td><button name="edit" class="delete" data-toggle='modal' data-target='#editModal'>EDIT<button><br><button name="delete" class="delete" data-toggle='modal' data-target='#editModal'>DELETE</button></td>
+                <td><button name="edit" class="delete" data-toggle='modal' data-target='#editModal'>EDIT<button></br><button name="delete" class="delete">DELETE</button></td>
               </tr>
             </tbody>
             <?php
@@ -151,7 +152,7 @@ if(isset($_POST['delete']))
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal" id="editModal" tabindex="-1">
+    <div class="modal" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
