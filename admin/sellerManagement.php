@@ -140,7 +140,7 @@ if(isset($_POST['delete']))
                 <td id="sellerName" name="sellerName"><?php echo $sellerName ?></td>
                 <td id="sellerEmail" name="sellerEmail"><?php echo $sellerEmail ?></td>
                 <td id="sellerContact" name="sellerContact"><?php echo $sellerContact ?></td>
-                <td><button name="edit" class="delete" data-toggle='modal' data-target='#editModal'>EDIT<button><br><button name="delete" class="delete">DELETE</button></td>
+                <td><button name="edit" class="delete" data-toggle='modal' data-target='#editModal'>EDIT<button><br><button name="delete" class="delete" data-toggle='modal' data-target='#editModal'>DELETE</button></td>
               </tr>
             </tbody>
             <?php
@@ -151,7 +151,7 @@ if(isset($_POST['delete']))
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal" id="editModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
