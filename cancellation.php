@@ -79,7 +79,7 @@ if(isset($_POST['cancel']))
               <?php echo $row2['product_name']; ?>
             </div>
             <div class="col-2">RM
-              <?php echo $amount ?>.00
+              <?php echo $row2['product_price']; ?>.00
             </div>
             <div class="col-2">X
               <?php echo $row2['quantity']; ?>
